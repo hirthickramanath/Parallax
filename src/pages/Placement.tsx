@@ -1,0 +1,132 @@
+import { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import tests from "../../content/placement.json";
+import { QuestionCard } from "../components/learning/QuestionCard";
+import { useLearning } from "../hooks/useLearning";
+import { Button } from "../components/ui/button";
+export function Placement() {
+  const [params] = useSearchParams();
+  const unit = params.get("unit");
+  return <PlacementTest key={unit || "diagnostic"} unit={unit} />;
+}
+function PlacementTest({ unit }: { unit: string | null }) {
+  const selected = tests.filter((t) => !unit || t.unit === unit);
+  const questions = selected.flatMap((t) =>
+    t.questions.slice(0, unit ? 5 : 4).map(([prompt, answer], i) => ({
+      unit: t.unit,
+      id: `${t.unit}-${i}`,
+      prompt,
+      answer,
+    })),
+  );
+  const [index, setIndex] = useState(0),
+    [results, setResults] = useState<Record<string, boolean>>({}),
+    [finished, setFinished] = useState(false);
+  const store = useLearning();
+  const q = questions[index];
+  if (!q)
+    return (
+      <main id="main" className="workspace-page">
+        <h1>No bridge test found.</h1>
+        <Link to="/placement">Open diagnostic</Link>
+      </main>
+    );
+  function finish() {
+    if (unit) {
+      const score =
+        Object.values(results).filter(Boolean).length / questions.length;
+      const current = store.records.units[unit];
+      store.put("units", unit, {
+        skipTestScore: score,
+        skippedWithCredit: score >= 0.8 || !!current?.skippedWithCredit,
+        completedAt: score >= 0.8 ? Date.now() : current?.completedAt || null,
+      });
+    }
+    setFinished(true);
+  }
+  return (
+    <main id="main" className="workspace-page">
+      <p className="eyebrow">
+        {unit ? "BRIDGE SKIP TEST" : "BRIDGE READINESS DIAGNOSTIC"}
+      </p>
+      <h1>
+        {unit ? `Check your ${unit} foundation.` : "Find your starting point."}
+      </h1>
+      <p className="page-description">
+        {unit
+          ? "Five representative numeric questions. At least 80% grants skip credit for this Bridge unit."
+          : "Forty short diagnostic questions across maths, physics, and chemistry. Results suggest Bridge units to revisit; separate skip tests grant credit."}{" "}
+        This draft is a screening tool, not a complete JEE-level placement
+        assessment.
+      </p>
+      {finished ? (
+        <section className="empty-card">
+          <h2>
+            {Object.values(results).filter(Boolean).length} / {questions.length}{" "}
+            correct
+          </h2>
+          {selected.map((t) => {
+            const subset = questions.filter((q) => q.unit === t.unit);
+            const score =
+              subset.filter((q) => results[q.id]).length / subset.length;
+            return (
+              <p key={t.unit}>
+                {t.unit}: {Math.round(score * 100)}% ·{" "}
+                {score >= 0.8 ? "Foundation looks ready" : "Review recommended"}{" "}
+                {!unit && (
+                  <Link to={`/placement?unit=${t.unit}`}>Take skip test →</Link>
+                )}
+              </p>
+            );
+          })}
+          {unit && (
+            <p>
+              {store.records.units[unit]?.skippedWithCredit
+                ? "Skip credit saved. Dependent units can use this prerequisite."
+                : "No skip credit granted. Review the unit and try again."}
+            </p>
+          )}
+          <Link to="/learn">Back to course</Link>
+        </section>
+      ) : (
+        <>
+          <progress
+            aria-label="Diagnostic progress"
+            value={index + 1}
+            max={questions.length}
+          />
+          <p>
+            {index + 1} of {questions.length} · {q.unit}
+          </p>
+          <QuestionCard
+            key={q.id}
+            lessonId="placement"
+            question={{
+              id: q.id,
+              prompt: q.prompt,
+              answer: q.answer,
+              type: "numeric",
+              conceptual: false,
+              tier: unit ? "skip-test" : "placement",
+              explanation: `Reference answer: ${q.answer}. Review the related Bridge topic if the result was unfamiliar.`,
+              unit: "as stated in the question",
+            }}
+            onResult={(id, correct) =>
+              setResults((r) => ({ ...r, [id]: correct }))
+            }
+          />
+          <Button
+            disabled={results[q.id] === undefined}
+            onClick={() =>
+              index === questions.length - 1 ? finish() : setIndex((i) => i + 1)
+            }
+          >
+            {index === questions.length - 1
+              ? "Finish diagnostic"
+              : "Next question"}
+          </Button>
+        </>
+      )}
+    </main>
+  );
+}

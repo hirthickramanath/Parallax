@@ -1,0 +1,192 @@
+---
+{
+  "id": "PB1.4",
+  "title": "Gravitation and SHM",
+  "hook": "Can a swinging bob measure a planet\u2019s gravity?",
+  "recap": [
+    "A pendulum\u2019s restoring torque gives \u03b8\u0308 + (g/L)sin \u03b8 = 0.",
+    "T = 2\u03c0\u221a(L/g) requires small amplitude.",
+    "Repeated timing reduces random timing error, not model bias."
+  ],
+  "questions": [
+    {
+      "id": "mass",
+      "prompt": "In the ideal small-angle model, which affects period?",
+      "options": [
+        "Bob mass",
+        "String length",
+        "Bob colour"
+      ],
+      "answer": "String length",
+      "explanation": "T = 2\u03c0\u221a(L/g), independent of bob mass.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "angle",
+      "prompt": "Why does a 60\u00b0 release bias a small-angle estimate of g?",
+      "options": [
+        "The approximation sin \u03b8 \u2248 \u03b8 is inadequate",
+        "Gravity changes sign"
+      ],
+      "answer": "The approximation sin \u03b8 \u2248 \u03b8 is inadequate",
+      "explanation": "The nonlinear period is longer than the small-angle period.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "precision",
+      "prompt": "Does timing more cycles remove large-angle model error?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It reduces relative timing uncertainty, not model bias.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "period",
+      "prompt": "Small-angle period at L = 1 m and g = 9.81 m/s\u00b2?",
+      "options": null,
+      "answer": "2.006",
+      "explanation": "Use 2\u03c0\u221a(1/9.81).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "s"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Quadrupling length multiplies the small-angle period by?",
+      "options": [
+        "2",
+        "4",
+        "16"
+      ],
+      "answer": "2",
+      "explanation": "The period scales with \u221aL.",
+      "type": "mcq",
+      "conceptual": false,
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is g from L = 1 m and ten oscillations taking 20 s?",
+      "options": null,
+      "answer": "9.8696",
+      "explanation": "One period is 2 s, so g = 4\u03c0\u00b2L/T\u00b2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "m/s\u00b2"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why time many pendulum cycles?",
+      "back": "The same absolute stopwatch uncertainty becomes a smaller fraction of the total time. This does not remove model bias.",
+      "concept": "measurement-uncertainty"
+    },
+    {
+      "front": "When does T = 2\u03c0\u221a(L/g) hold?",
+      "back": "For an ideal point-mass, fixed-length, undamped pendulum in uniform gravity at small angle.",
+      "concept": "pendulum-period"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics (edition and section review pending)",
+    "Carroll & Ostlie, An Introduction to Modern Astrophysics (edition and section review pending)"
+  ]
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="A gravity meter made of string" layer="puzzle">
+
+Would a heavier bob swing faster? Would a larger release angle change the period? Record your two predictions before opening the apparatus.
+
+</LessonSection>
+
+<LessonSection id="story" title="Timekeeping as an experiment" layer="story">
+
+Pendulums linked regular motion to practical timing and measurements of gravity. A useful scientific instrument needs not only a repeatable signal but a model that connects that signal to the desired quantity. We avoid unverified historical dates in this draft.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="The restoring tendency" layer="intuition">
+
+Gravity pulls the displaced bob toward the lowest point. Near that point the restoring influence is approximately proportional to displacement, the hallmark of simple harmonic motion.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Idealization and misconception" layer="concept">
+
+Use a point bob on a massless inextensible string of length L, fixed pivot, uniform gravity, and negligible drag. Misconception: a formula that works for small swings must work equally well at any amplitude.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive the period, then test its limits" layer="theory" fullOnly>
+
+About the pivot, gravity gives torque $-mgL\sin\theta$. For a point bob, $I=mL^2$, so $I\ddot\theta=-mgL\sin\theta$. Dividing by positive $mL^2$ gives
+
+$$\ddot\theta+\frac gL\sin\theta=0.$$
+
+For $|\theta|\ll1$ in radians, $\sin\theta\approx\theta$. Let $\omega^2=g/L$. The linear equation has solution $\theta=A\cos\omega t+B\sin\omega t$. Release from rest at amplitude $\theta_0$ gives $A=\theta_0$, $B=0$. One cycle corresponds to $\omega T=2\pi$, hence
+
+$$T_0=2\pi\sqrt{\frac Lg},\qquad g=\frac{4\pi^2L}{T_0^2}.$$
+
+The small-angle assumption is the only approximation introduced in this derivation beyond the ideal apparatus assumptions.
+
+For finite amplitude, energy conservation with release from rest gives
+
+$$\frac12L^2\dot\theta^2=gL(\cos\theta-\cos\theta_0).$$
+
+Separate variables and integrate a quarter-cycle:
+
+$$T=4\sqrt{\frac L{2g}}\int_0^{\theta_0}\frac{d\theta}{\sqrt{\cos\theta-\cos\theta_0}}.$$
+
+Substitute $\sin(\theta/2)=k\sin\phi$, where $k=\sin(\theta_0/2)$. The square-root factors cancel with the differential, yielding
+
+$$T=4\sqrt{\frac Lg}\int_0^{\pi/2}\frac{d\phi}{\sqrt{1-k^2\sin^2\phi}}.$$
+
+As $\theta_0\to0$, $k\to0$ and the integral tends to $\pi/2$, recovering $T_0$. The lab evaluates this integral numerically.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="The virtual pendulum bench" layer="interactive">
+
+<Widget name="pendulum_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="Infer gravity from ten swings" layer="worked" fullOnly>
+
+For L = 1.00 m and a synthetic ten-cycle time of 20.0 s, T = 2.00 s and g = 4π²(1.00)/(2.00)² ≈ 9.87 m/s². This estimate is not a real measurement. A 1% relative period error contributes about 2% relative error to g.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Solve both tagged problems below. Go further: use logarithmic differentiation to derive δg/g ≈ δL/L − 2δT/T for small signed errors. Independent uncertainty estimates require quadrature rather than signed addition.
+
+</LessonSection>
+
+<LessonSection id="check" title="Separate precision from validity" layer="check">
+
+Can repeated timings repair an invalid small-angle assumption? Explain before answering.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Different world, different clock" layer="connections">
+
+A pendulum on another planet responds to its local g. In free fall, a laboratory’s effective gravity changes dramatically. What makes a freely falling laboratory special?
+
+</LessonSection>
+
