@@ -4,6 +4,8 @@ An astrophysics-focused science learning website: full maths and physics, suppor
 
 ## Run locally
 
+The repository pins Node.js 24.19.0 in `.node-version` for Cloudflare Pages and requires Node >=24.12.0. If Pages has a `NODE_VERSION` environment variable, remove the old override or set it to `24.19.0` for production and previews. Keep the build command `npm run build` and output directory `dist`.
+
 Install Node.js 24 LTS from https://nodejs.org/ if Node/npm are unavailable. Open the repository folder in VS Code → Terminal → New Terminal. The terminal must be in the folder containing `package.json`.
 
 ```sh
