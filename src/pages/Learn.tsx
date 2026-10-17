@@ -1,0 +1,3 @@
+import { Link } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+export function Learn() { return <main id="main" className="placeholder"><p className="eyebrow">YOUR LEARNING JOURNEY</p><h1>A universe,<br/><em>one idea at a time.</em></h1><p>The course map is the next chapter of the build. It will organise 62 units and 351 lessons into nine prerequisite-aware phases.</p><div className="notice"><strong>Foundation preview</strong><p>Lessons, accounts, and progress saving are not connected yet. No learning progress is being recorded.</p></div><Button variant="outline" asChild><Link to="/">Back to the beginning</Link></Button></main>; }
