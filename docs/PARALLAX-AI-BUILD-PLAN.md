@@ -115,3 +115,7 @@ Verify the first lesson, then build the retained bridge and foundational physics
 
 - `EXCLUDED-SUBJECTS-AI-BUILD-PLAN.md`: broader science, mind, Earth, and philosophy curriculum on a separate future website.
 - `ENGINEERING-TECH-AI-BUILD-PLAN.md`: separate engineering and technology curriculum, architecture, and project plan.
+
+## Experimental teaching amendment
+
+Apply `EXPERIMENTAL-TEACHING.md` to physics and maths: predict, investigate, conjecture, explain, derive/prove fully, stress-test, and transfer. This changes presentation, not the required theoretical depth or curriculum outcomes. Preserve the original layer order and Full/Quick semantics. The `/teaching-lab` previews are not completed curriculum lessons.
