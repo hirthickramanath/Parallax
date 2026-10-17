@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import { auth } from "../../lib/firebase";
+import { useConversation } from "../../hooks/useConversation";
 import { Button } from "../ui/button";
 export function TutorPanel({
   lessonId,
@@ -13,28 +14,29 @@ export function TutorPanel({
   sectionId?: string;
   depth: "quick" | "full";
 }) {
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>(
-      [],
-    ),
-    [input, setInput] = useState(""),
+  const chat = useConversation(lessonId);
+  const [input, setInput] = useState(""),
     [busy, setBusy] = useState(false),
-    [error, setError] = useState("");
-  const controller = useRef<AbortController | null>(null);
+    [error, setError] = useState(""),
+    [remaining, setRemaining] = useState<number | null>(null);
+  const controller = useRef<AbortController | null>(null),
+    sending = useRef(false);
   const endpoint = import.meta.env.VITE_TUTOR_URL as string | undefined;
+  useEffect(() => () => controller.current?.abort(), []);
   async function send(text: string) {
-    if (!endpoint || busy || !text.trim()) return;
+    if (!endpoint || sending.current || !text.trim()) return;
+    sending.current = true;
     setBusy(true);
     setError("");
-    const previous = messages;
-    setMessages((m) => [
-      ...m,
-      { role: "user", content: text },
-      { role: "assistant", content: "" },
-    ]);
+    const previous = chat.messages;
+    chat.append("user", text);
+    const replyId = chat.append("assistant", "");
     setInput("");
     controller.current = new AbortController();
+    let reply = "";
     try {
       const token = await auth.currentUser?.getIdToken();
+      if (!token) throw Error("Sign in again before asking the tutor.");
       const result = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -45,53 +47,86 @@ export function TutorPanel({
           lessonId,
           sectionId,
           depth,
+          conversationId: chat.id,
           message: text,
-          history: previous.slice(-10),
+          history: previous
+            .filter((m) => m.content)
+            .slice(-10)
+            .map(({ role, content }) => ({ role, content })),
         }),
-        signal: controller.current.signal,
+        signal: AbortSignal.any([
+          controller.current.signal,
+          AbortSignal.timeout(60000),
+        ]),
       });
+      const allowance = result.headers.get("X-Tutor-Remaining");
+      if (allowance !== null && Number.isFinite(Number(allowance)))
+        setRemaining(Number(allowance));
       if (!result.ok)
         throw Error(
           result.status === 429
             ? "Daily tutor limit reached. Come back tomorrow."
             : result.status === 503
-              ? "Tutor is not available yet. Your lessons still work."
+              ? "Tutor resting. Please try later."
               : "Tutor could not connect. Please try later.",
         );
       if (!result.body) throw Error("No streamed response");
       const reader = result.body.getReader(),
         decoder = new TextDecoder();
       let buffer = "";
-      for (;;) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        let split;
-        while ((split = buffer.indexOf("\n\n")) >= 0) {
-          const event = buffer.slice(0, split);
-          buffer = buffer.slice(split + 2);
-          if (!event.startsWith("data: ")) continue;
-          const data = JSON.parse(event.slice(6)) as {
-            text?: string;
-            error?: string;
-          };
-          if (data.error) throw Error(data.error);
-          if (data.text)
-            setMessages((m) =>
-              m.map((message, index) =>
-                index === m.length - 1
-                  ? { ...message, content: message.content + data.text }
-                  : message,
-              ),
-            );
+      try {
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += decoder
+            .decode(value, { stream: true })
+            .replace(/\r\n/g, "\n");
+          if (buffer.length > 100000)
+            throw Error("Tutor reply exceeded the message limit.");
+          let split;
+          while ((split = buffer.indexOf("\n\n")) >= 0) {
+            const event = buffer.slice(0, split);
+            buffer = buffer.slice(split + 2);
+            if (!event.startsWith("data: ")) continue;
+            const data = JSON.parse(event.slice(6)) as {
+              text?: string;
+              error?: string;
+            };
+            if (data.error) throw Error(data.error);
+            if (data.text) {
+              reply += data.text;
+              if (reply.length > 20000)
+                throw Error("Tutor reply exceeded the message limit.");
+              chat.replace(replyId, reply);
+            }
+          }
         }
+      } finally {
+        await reader.cancel().catch(() => {});
+        reader.releaseLock();
       }
     } catch (cause) {
+      const stopped = controller.current?.signal.aborted;
       setError(
-        cause instanceof Error ? cause.message : "Tutor is unavailable.",
+        stopped
+          ? "Reply stopped. The text received so far is saved."
+          : cause instanceof DOMException && cause.name === "TimeoutError"
+            ? "Tutor timed out. Partial text is saved."
+            : cause instanceof Error
+              ? cause.message
+              : "Tutor is unavailable.",
       );
+      if (!reply)
+        chat.replace(
+          replyId,
+          stopped
+            ? "[Reply stopped before any text arrived.]"
+            : "[No reply was received. Retry when the tutor is available.]",
+        );
     } finally {
+      sending.current = false;
       setBusy(false);
+      void chat.flush();
     }
   }
   return (
@@ -100,8 +135,13 @@ export function TutorPanel({
       <h3>Ask a different question.</h3>
       {!endpoint && (
         <p className="info-box">
-          Tutor integration is not activated. No AI request is sent. An eligible
-          provider and deployed Worker are required.
+          Tutor integration is not activated. An eligible provider and deployed
+          Worker are required. Previously saved conversations remain available.
+        </p>
+      )}
+      {remaining !== null && (
+        <p className="source-note" role="status">
+          {remaining} requests remaining today · resets at 00:00 UTC.
         </p>
       )}
       <div className="tutor-actions">
@@ -122,8 +162,8 @@ export function TutorPanel({
         ))}
       </div>
       <div className="chat-messages" aria-live="polite">
-        {messages.map((message, i) => (
-          <article key={i} className={message.role}>
+        {chat.messages.slice(-100).map((message) => (
+          <article key={message.id} className={message.role}>
             <strong>{message.role === "user" ? "You" : "Tutor"}</strong>
             <ReactMarkdown
               remarkPlugins={[remarkMath]}
@@ -159,6 +199,9 @@ export function TutorPanel({
           </button>
         )}
       </form>
+      <p className="source-note" role="status">
+        {chat.status}
+      </p>
       {error && <p role="alert">{error}</p>}
     </aside>
   );

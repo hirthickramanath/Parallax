@@ -17,9 +17,9 @@ If npm cannot find `package.json`, change to the repository folder. If a port is
 
 ## Current release
 
-The app includes Google/email-link sign-in, a dashboard, a 327-entry retained course map, four **draft** MDX lessons, a section-based player, virtual pendulum/orbit labs, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, concept revision, Bridge diagnostic/skip tests, weekly planning and settings. Unauthored lesson entries are clearly marked and cannot be played.
+The app includes Google/email-link sign-in, a dashboard, a 354-entry expanded course map, fifteen **draft** MDX lessons, a section-based player, virtual pendulum/orbit labs, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, multi-card concept revision, a visual prerequisite map, an exam-date revision schedule, mixed conceptual/numeric Bridge tests, balanced weekly planning, optional foreground reminders and settings. Unauthored lesson entries are clearly marked and cannot be played.
 
-The tutor interface and authenticated Worker are implemented but disabled. This repository is not a complete authored or scientifically verified course. Detailed capability boundaries, deployment instructions and remaining work are in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
+The tutor interface and authenticated Worker are implemented but disabled. This repository is not a complete authored or scientifically verified course. Current capability boundaries and remaining work are in [docs/FOLLOWUP-RELEASE.md](docs/FOLLOWUP-RELEASE.md); the first integrated release and deployment instructions are recorded in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
 
 ## Verification
 

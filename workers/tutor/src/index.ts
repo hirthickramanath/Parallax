@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { validateRequest, tutorPrompt, quotaDecision } from "./core";
+import { normalizeStream, providerDeadline } from "./stream";
 interface Env {
   SITE_ORIGIN: string;
   FIREBASE_PROJECT_ID: string;
@@ -86,8 +87,15 @@ export default {
         issuer: `https://securetoken.google.com/${env.FIREBASE_PROJECT_ID}`,
         audience: env.FIREBASE_PROJECT_ID,
         algorithms: ["RS256"],
+        requiredClaims: ["sub", "iat", "exp", "auth_time"],
       });
-      if (!payload.sub || payload.sub.length > 128) throw Error();
+      if (
+        !payload.sub ||
+        payload.sub.length > 128 ||
+        Number(payload.iat) > Date.now() / 1000 ||
+        Number(payload.auth_time) > Date.now() / 1000
+      )
+        throw Error();
       uid = payload.sub;
     } catch {
       return Response.json(
@@ -153,59 +161,17 @@ export default {
         { status: 429, headers },
       );
     try {
-      const provider = await env.AI.run(env.AI_MODEL, {
-        messages: [
-          { role: "system", content: tutorPrompt(lesson, body) },
-          ...body.history,
-          { role: "user", content: body.message },
-        ],
-        stream: true,
-      });
-      const encoder = new TextEncoder();
-      const stream = new ReadableStream<Uint8Array>({
-        async start(controller) {
-          const reader = provider.getReader(),
-            decoder = new TextDecoder();
-          let buffer = "";
-          try {
-            for (;;) {
-              const { value, done } = await reader.read();
-              if (done) break;
-              buffer += decoder.decode(value, { stream: true });
-              let newline;
-              while ((newline = buffer.indexOf("\n")) >= 0) {
-                const line = buffer.slice(0, newline).trim();
-                buffer = buffer.slice(newline + 1);
-                if (!line.startsWith("data: ") || line === "data: [DONE]")
-                  continue;
-                const chunk = JSON.parse(line.slice(6)) as {
-                  response?: string;
-                  error?: unknown;
-                };
-                if (chunk.error) throw Error();
-                if (chunk.response)
-                  controller.enqueue(
-                    encoder.encode(
-                      `data: ${JSON.stringify({ text: chunk.response })}\n\n`,
-                    ),
-                  );
-              }
-            }
-          } catch {
-            controller.enqueue(
-              encoder.encode(
-                'data: {"error":"Tutor resting until tomorrow. Please try later."}\n\n',
-              ),
-            );
-          } finally {
-            reader.releaseLock();
-            controller.close();
-          }
-        },
-        cancel() {
-          void provider.cancel();
-        },
-      });
+      const provider = await providerDeadline(
+        env.AI.run(env.AI_MODEL, {
+          messages: [
+            { role: "system", content: tutorPrompt(lesson, body) },
+            ...body.history,
+            { role: "user", content: body.message },
+          ],
+          stream: true,
+        }),
+      );
+      const stream = normalizeStream(provider);
       return new Response(stream, {
         headers: { ...headers, "Content-Type": "text/event-stream" },
       });

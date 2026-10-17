@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { LockKeyhole, CheckCircle2, ArrowRight } from "lucide-react";
 import { course, phases, missingNeeds } from "../lib/course";
 import { useLearning } from "../hooks/useLearning";
 export function Learn() {
   const store = useLearning();
+  const [params] = useSearchParams();
   const [phase, setPhase] = useState(0),
-    [search, setSearch] = useState("");
+    [search, setSearch] = useState(params.get("search") || "");
   const units = course.units.filter(
     (u) =>
       (search ? true : u.phase === phase) &&
@@ -20,9 +21,9 @@ export function Learn() {
       <p className="eyebrow">YOUR PATH TO THE UNIVERSE</p>
       <h1>One idea builds the next.</h1>
       <p className="page-description">
-        327 retained curriculum entries · 56 units · 4 playable drafts. Expanded
-        chemistry is still being mapped; the other entries are not authored
-        lessons.
+        {course.lessons.length} curriculum entries · {course.units.length} units
+        · {Object.keys(course.authored).length} playable drafts. Unavailable
+        entries are curriculum stubs, not authored lessons.
       </p>
       <Link className="text-button" to="/placement">
         Check your starting point — Bridge diagnostic →

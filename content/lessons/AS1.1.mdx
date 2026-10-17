@@ -1,0 +1,199 @@
+---
+{
+  "id": "AS1.1",
+  "title": "Celestial coordinates and time",
+  "hook": "Why can a star keep nearly fixed celestial coordinates yet move across your sky?",
+  "recap": [
+    "Celestial coordinates and local horizon coordinates refer to different frames.",
+    "Right ascension is an equatorial longitude; declination is latitude-like.",
+    "Hour angle relates local sidereal time to right ascension.",
+    "Observer latitude and Earth\u2019s rotation determine a source\u2019s local altitude."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Do horizon coordinates depend on observer position and time?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The local frame changes with latitude and Earth\u2019s rotation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Does right ascension in hours mean the same thing as local civil time?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is an angular coordinate, not a civil clock reading.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Can a source move below the horizon while its RA/declination remain nearly fixed?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The observer\u2019s frame rotates relative to the sky.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "Convert RA = 6 h to degrees.",
+      "options": null,
+      "answer": "90",
+      "explanation": "15 degrees per hour of right ascension.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "Upper transit altitude for \u03c6=30\u00b0, \u03b4=20\u00b0, in degrees?",
+      "options": null,
+      "answer": "80",
+      "explanation": "90\u2212|\u03c6\u2212\u03b4|.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "Why does precise telescope pointing need a stated epoch/reference frame?",
+      "options": [
+        "Catalogue directions evolve through several effects",
+        "Coordinates are meaningless"
+      ],
+      "answer": "Catalogue directions evolve through several effects",
+      "explanation": "Precession, proper motion and other corrections matter for precision.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why do local horizon coordinates change during an observation?",
+      "back": "Celestial coordinates and local horizon coordinates refer to different frames.",
+      "concept": "as1-1-foundation"
+    },
+    {
+      "front": "What do right ascension and declination measure?",
+      "back": "Right ascension is an equatorial longitude; declination is latitude-like.",
+      "concept": "as1-1-foundation"
+    },
+    {
+      "front": "How is hour angle related to sidereal time?",
+      "back": "Hour angle relates local sidereal time to right ascension.",
+      "concept": "as1-1-foundation"
+    },
+    {
+      "front": "What determines a catalogue source\u2019s local altitude?",
+      "back": "Observer latitude and Earth\u2019s rotation determine a source\u2019s local altitude.",
+      "concept": "as1-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll & Ostlie, An Introduction to Modern Astrophysics \u2014 edition/section review pending",
+    "OpenStax Astronomy \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+Why can a star keep nearly fixed celestial coordinates yet move across your sky? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Predicting where to point a telescope requires both a sky catalogue and an observer-dependent transformation. A catalogue direction can remain nearly fixed over a short observation while the horizon rotates relative to it as Earth turns. Precision work additionally accounts for precession, proper motion and other effects.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+Imagine marking directions on a distant celestial sphere. Rotate the observer rather than the stars: the marks cross the local horizon even though their equatorial labels barely change. Time supplies the rotation angle.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+Declination δ is measured north or south of the celestial equator. Right ascension α is measured eastward along it, conventionally in hours where 24 h corresponds to 360°. Local hour angle H = local sidereal time − α, with a consistent angular unit and wrap convention. Altitude h is above the local horizon.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+Use equatorial Cartesian axes with the celestial pole as z. A unit source direction is
+
+$$\mathbf s=(\cos\delta\cos\alpha,\cos\delta\sin\alpha,\sin\delta).$$
+
+At observer latitude φ and local sidereal angle θ, the local zenith direction is
+
+$$\mathbf z=(\cos\phi\cos\theta,\cos\phi\sin\theta,\sin\phi).$$
+
+Their dot product is cos of the zenith distance. Since altitude is 90° minus that distance, the same dot product equals sin h. Applying the cosine difference identity gives
+
+$$\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta\cos H,\quad H=\theta-\alpha.$$
+
+This is a geometric transformation, not a change in the star’s intrinsic position. Use radians consistently inside trigonometric calculations, even if catalogue angles are presented in hours or degrees.
+
+At upper meridian transit H=0, the formula becomes sin h = cos(φ−δ), giving altitude $h=90^\circ-|\phi-\delta|$ when interpreted on the usual altitude branch. A source can be circumpolar or never rise depending on latitude and declination; those cases follow by checking the altitude extrema as cos H ranges from −1 to 1.
+
+Sidereal time tracks Earth’s orientation relative to the sky, whereas civil/solar time tracks the Sun and administrative conventions. A sidereal day is slightly shorter than a mean solar day because Earth also advances around the Sun. Precision conversion needs a date/time standard and Earth-orientation model; a fixed universal subtraction is not adequate for astrometry.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+Take latitude φ=30° and declination δ=20°. Calculate altitude at hour angles 0°, 60° and 180° using the same formula. A source may go below the horizon even though its catalogue coordinates have not changed. Label these as model calculations without atmospheric refraction.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+At latitude 30° and declination 20°, upper transit altitude is 90°−|30°−20°|=80°. Right ascension 6 h corresponds to 90°. A civil clock reading alone is not enough to know the local sidereal hour angle.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+Earth’s axial orientation and orbital motion produce seasons and slowly changing reference directions. AS1.2 separates those effects from a common distance-based misconception.
+
+</LessonSection>
+

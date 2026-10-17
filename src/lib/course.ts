@@ -29,6 +29,13 @@ export interface SectionMeta {
   text: string;
 }
 export interface Authored extends Lesson {
+  book_refs: string[];
+  verification?: {
+    status?: string;
+    reviewer?: string;
+    reviewedAt?: string;
+    note?: string;
+  };
   recap: string[];
   questions: Question[];
   review: { front: string; back: string; concept: string }[];
@@ -82,12 +89,18 @@ export function missingNeeds(lesson: Lesson, records: Records) {
       2
   )
     missing.push("any two Phase 6 units");
-  for (const id of lesson.requires)
-    if (
-      id.startsWith(lesson.unit + ".") &&
-      !["done", "skipped"].includes(records.lessons[id]?.status)
-    )
+  for (const id of lesson.requires) {
+    const dependency = course.lessons.find((l) => l.id === id);
+    if (!dependency) {
       missing.push(id);
+      continue;
+    }
+    if (dependency.unit !== lesson.unit && unit.needs.includes(dependency.unit))
+      continue;
+    if (records.units[dependency.unit]?.skippedWithCredit) continue;
+    if (!["done", "skipped"].includes(records.lessons[id]?.status))
+      missing.push(id);
+  }
   return missing;
 }
 export function nextLesson(records: Records) {

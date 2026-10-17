@@ -1,0 +1,203 @@
+---
+{
+  "id": "MB3.3",
+  "title": "Integration techniques",
+  "hook": "If differentiation gives a rate, what exactly does integrating that rate recover?",
+  "recap": [
+    "A definite integral is a limit of signed accumulation sums.",
+    "For continuous f, differentiating its accumulation recovers f.",
+    "Antiderivatives differ by a constant on an interval.",
+    "Substitution and integration by parts follow from the chain and product rules."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Can a signed integral be zero while total area is positive?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Positive and negative contributions can cancel.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "What freedom remains after finding an antiderivative?",
+      "options": [
+        "An additive constant",
+        "An arbitrary multiplicative factor"
+      ],
+      "answer": "An additive constant",
+      "explanation": "Differentiation removes an additive constant.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Why change limits under substitution?",
+      "options": [
+        "They refer to the new variable",
+        "Limits never matter"
+      ],
+      "answer": "They refer to the new variable",
+      "explanation": "Each endpoint must represent the same original point.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "Integral of x\u00b2 from 0 to 1?",
+      "options": null,
+      "answer": "0.3333333333333333",
+      "explanation": "Use x\u00b3/3 at the endpoints.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "Integral of 2x from 1 to 3?",
+      "options": null,
+      "answer": "8",
+      "explanation": "x\u00b2 evaluated at 3 and 1 gives 9\u22121.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "Which rule produces integration by parts?",
+      "options": [
+        "Product rule",
+        "Only a numerical pattern"
+      ],
+      "answer": "Product rule",
+      "explanation": "Integrate (uv)\u2032 = u\u2032v + uv\u2032 and rearrange.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a definite integral built from?",
+      "back": "A definite integral is a limit of signed accumulation sums.",
+      "concept": "mb3-3-foundation"
+    },
+    {
+      "front": "What does the fundamental theorem say about an accumulation function?",
+      "back": "For continuous f, differentiating its accumulation recovers f.",
+      "concept": "mb3-3-foundation"
+    },
+    {
+      "front": "Why is an antiderivative determined only up to a constant?",
+      "back": "Antiderivatives differ by a constant on an interval.",
+      "concept": "mb3-3-foundation"
+    },
+    {
+      "front": "Which differentiation rules justify substitution and integration by parts?",
+      "back": "Substitution and integration by parts follow from the chain and product rules.",
+      "concept": "mb3-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Spivak, Calculus \u2014 exact edition/section review pending",
+    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+If differentiation gives a rate, what exactly does integrating that rate recover? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Computing an area and recovering a trajectory once looked like different problems. The fundamental theorem of calculus connects them: local change and accumulated change are inverse operations under appropriate hypotheses. This connection turns many area problems into endpoint calculations.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+A thin strip contributes rate times a small interval. Summing strips adds signed contributions; refining a partition tests whether the sum approaches a stable value. Below an axis the contribution is negative, so a signed integral need not equal total geometric area.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+On a closed interval a continuous function is Riemann integrable. Define A(x) as the integral from a to x. The fundamental theorem states A′(x)=f(x) at interior points when f is continuous there. Indefinite integration asks for an antiderivative, with a free additive constant.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+Let $A(x)=\int_a^x f(t)\,dt$ with f continuous near x. For nonzero h,
+
+$$\frac{A(x+h)-A(x)}h=\frac1h\int_x^{x+h}f(t)\,dt.$$
+
+Subtract f(x). The absolute value of the difference is at most the largest $|f(t)-f(x)|$ between the endpoints. Continuity makes that bound tend to zero as h tends to zero, so $A'(x)=f(x)$.
+
+If F is any antiderivative, then $(F-A)'=0$. The mean value theorem makes F−A constant on the interval. Hence
+
+$$\int_a^b f(x)\,dx=F(b)-F(a).$$
+
+For substitution, the chain rule gives $(F(g(x)))'=f(g(x))g'(x)$. Applying the endpoint formula yields
+
+$$\int_a^b f(g(x))g'(x)\,dx=\int_{g(a)}^{g(b)}f(u)\,du,$$
+
+under the usual differentiability/continuity assumptions. Bounds must change with the variable; one cannot replace dx by du without the derivative factor.
+
+For integration by parts, start with $(uv)'=u'v+uv'$. Integrating and rearranging gives
+
+$$\int_a^b u v'\,dx=[uv]_a^b-\int_a^b u'v\,dx.$$
+
+As an example, take u=x and v′=eˣ. Then $\int xe^x dx=xe^x-e^x+C$. Differentiation checks the result exactly. Improper integrals require a further limit at singular or infinite endpoints; the theorem is not a licence to ignore divergence.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+Approximate the integral of x² from 0 to 1 using n equal-width rectangles with right endpoints. For n = 1, 2, and 4 compare the sums with 1/3. Then derive the general sum using the formula for the sum of squares; do not infer equality from a finite table.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+For ∫₀¹2x cos(x²) dx, set u = x² so du = 2x dx and bounds remain 0 to 1. The integral becomes ∫₀¹cos u du = sin 1. The angle is in radians. Differentiating sin(x²) returns the original integrand.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+Accumulated work, probability, mass, and orbital travel time all use integrals. MB3.4 asks how to select the correct quantity and bounds rather than just applying a technique.
+
+</LessonSection>
+

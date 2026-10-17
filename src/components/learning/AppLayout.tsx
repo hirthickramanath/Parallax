@@ -14,6 +14,7 @@ import {
 import { useAuth } from "../../hooks/useAuth";
 import { useLearning, useClock } from "../../hooks/useLearning";
 import { dateKey, streakStats } from "../../lib/learning-core";
+import { StudyReminder } from "./StudyReminder";
 const links = [
   ["/dashboard", "Dashboard", LayoutDashboard],
   ["/learn", "Learn", Map],
@@ -84,6 +85,7 @@ export function AppLayout() {
             </Link>
           </div>
         </header>
+        <StudyReminder />
         <Outlet />
         <footer className="app-footer">
           Draft lessons · Full theory · Real questions

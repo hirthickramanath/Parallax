@@ -1,0 +1,189 @@
+---
+{
+  "id": "MB3.4",
+  "title": "Applications: areas, extrema and rates",
+  "hook": "When does the biggest derivative fail to identify the biggest value?",
+  "recap": [
+    "Critical points are candidates, not automatically maxima or minima.",
+    "A continuous function on a closed bounded interval attains extrema.",
+    "Endpoints must be checked alongside interior critical points.",
+    "An integral must use the correct density and differential for the quantity sought."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Does f\u2032(c)=0 guarantee an extremum?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "x\u00b3 at zero is a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Which points must a global bounded-interval search include?",
+      "options": [
+        "Endpoints as well as interior candidates",
+        "Only stationary points"
+      ],
+      "answer": "Endpoints as well as interior candidates",
+      "explanation": "The largest value may occur at an endpoint.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "What units does \u222b x \u03bb(x) dx have if \u03bb is kg/m?",
+      "options": [
+        "kg m",
+        "kg"
+      ],
+      "answer": "kg m",
+      "explanation": "It is a first moment, not mass.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "For x\u00b2 on [\u22121,2], the maximum value is?",
+      "options": null,
+      "answer": "4",
+      "explanation": "Compare endpoints and the critical point zero.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "For V = 4\u03c0r\u00b3/3, r=1 m and dr/dt=0.5 m/s, dV/dt in m\u00b3/s?",
+      "options": null,
+      "answer": "6.283185307179586",
+      "explanation": "Use 4\u03c0r\u00b2 dr/dt.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "For x\u00b3\u22123x on [0,2], where is the minimum? Enter x.",
+      "options": null,
+      "answer": "1",
+      "explanation": "Check x=0,1,2; values are 0,\u22122,2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as specified"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why is f\u2032(c)=0 insufficient to declare an extremum?",
+      "back": "Critical points are candidates, not automatically maxima or minima.",
+      "concept": "mb3-4-foundation"
+    },
+    {
+      "front": "When are global extrema guaranteed on an interval?",
+      "back": "A continuous function on a closed bounded interval attains extrema.",
+      "concept": "mb3-4-foundation"
+    },
+    {
+      "front": "Why check endpoints when optimizing?",
+      "back": "Endpoints must be checked alongside interior critical points.",
+      "concept": "mb3-4-foundation"
+    },
+    {
+      "front": "How do you choose the correct integrand for mass or moment?",
+      "back": "An integral must use the correct density and differential for the quantity sought.",
+      "concept": "mb3-4-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Spivak, Calculus \u2014 exact edition/section review pending",
+    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+When does the biggest derivative fail to identify the biggest value? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Optimizing a design and accumulating a measured quantity both demand a model before any calculus. A familiar formula can still give the wrong answer if it optimizes the wrong variable, omits an endpoint, or integrates a density with the wrong units.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+A zero derivative means a locally flat tangent, not necessarily a turning point. A hilltop, a valley, and a flat inflection can all have zero slope. To find a global best value on a bounded interval, compare all viable candidates.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+For an interior differentiable local extremum, the derivative is zero (Fermat’s theorem). The converse is false. Nondifferentiable interior points can also be extrema. The extreme value theorem requires continuity and a compact domain for guaranteed attainment.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+Suppose f has a local maximum at interior c and is differentiable there. For small positive h, $[f(c+h)-f(c)]/h\le0$. For small negative h the numerator is still nonpositive but the denominator is negative, so the quotient is nonnegative. If the two-sided derivative exists, it must be both nonpositive and nonnegative. Thus $f'(c)=0$. Minima follow by applying the same reasoning to −f.
+
+The converse fails for $f(x)=x^3$: f′(0)=0 but the function increases through zero. The second derivative test follows from a local Taylor approximation: if f′(c)=0 and f″(c) is positive, a sufficiently small nonzero displacement raises f, yielding a local minimum; f″(c) is negative yields a maximum. If f″(c)=0, no conclusion follows from that test alone.
+
+On a closed interval, evaluate f at interior critical/nondifferentiable points and at both endpoints. For $f(x)=x^3-3x$ on [−2,2], f′=3x²−3, so interior candidates are ±1. Values at −2,−1,1,2 are −2,2,−2,2; the global extrema are attained more than once.
+
+For a related-rate problem, write the geometric constraint before differentiating. A sphere has $V=4\pi r^3/3$, so $\dot V=4\pi r^2\dot r$. This requires a sphere changing through spherical shapes.
+
+For accumulation, a nonuniform rod with linear density λ(x) has $M=\int_a^b\lambda(x)dx$. Its moment about the origin is $\int_a^b x\lambda(x)dx$, giving $x_{cm}=M^{-1}\int_a^b x\lambda(x)dx$ for M>0. Units distinguish mass from first moment. These formulas come from taking limits of sums of small segment masses.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+Use a table or graph of x³−3x on [−2,2]. Predict the extrema before calculating, then mark the endpoints and stationary points separately. Change the interval to [0,2] and explain why the set of candidates changes.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+A uniformly dense rod lies from x = 2 m to x = 6 m. M = λ(6−2), and its first moment is λ(6²−2²)/2. Divide to obtain x_cm = 4 m. The origin need not lie inside the object.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+In astrophysics, density profiles, luminosity integrals and equilibrium conditions all use this modelling step. MB3.5 uses rates to predict whole trajectories rather than single extrema.
+
+</LessonSection>
+
