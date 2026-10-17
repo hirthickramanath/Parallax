@@ -1,3 +1,7 @@
+import { compileSync } from "@mdx-js/mdx";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMath from "remark-math";
+import { remarkSafeContent } from "../src/lib/mdx-authoring.ts";
 import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
@@ -36,6 +40,71 @@ export function validateGraph(curriculum) {
     visit(l.id);
   }
 }
+export function validateAuthored(data, sections, stub) {
+  if (!data.id || data.id !== stub.id) throw Error("Authored ID mismatch");
+  for (const key of ["unit", "phase", "track"])
+    if (data[key] !== undefined && data[key] !== stub[key])
+      throw Error(`Conflicting ${key} in ${data.id}`);
+  const expected = [
+    "before",
+    "puzzle",
+    "story",
+    "intuition",
+    "concept",
+    "theory",
+    "interactive",
+    "worked",
+    "problems",
+    "check",
+    "connections",
+  ];
+  const actual = sections.map((section) => section.layer);
+  if (expected.some((layer, index) => actual[index] !== layer))
+    throw Error(`Incomplete or reordered template ${data.id}`);
+  if (
+    !Array.isArray(data.recap) ||
+    data.recap.length < 2 ||
+    !Array.isArray(data.review) ||
+    data.review.length < 1
+  )
+    throw Error(`Missing recap/review ${data.id}`);
+  if (!Array.isArray(data.questions))
+    throw Error(`Missing questions ${data.id}`);
+  const ids = new Set();
+  for (const q of data.questions) {
+    if (ids.has(q.id)) throw Error(`Duplicate question ${data.id}:${q.id}`);
+    ids.add(q.id);
+    if (q.type === "numeric" && !Number.isFinite(Number(q.answer)))
+      throw Error(`Invalid numeric answer ${data.id}:${q.id}`);
+    if (
+      q.type === "mcq" &&
+      (!q.options?.includes(q.answer) ||
+        new Set(q.options).size !== q.options.length)
+    )
+      throw Error(`Invalid options ${data.id}:${q.id}`);
+  }
+  const check = data.questions.filter((q) => !q.tier);
+  if (
+    check.length < 3 ||
+    check.length > 5 ||
+    check.filter((q) => q.conceptual).length < Math.ceil(check.length / 2)
+  )
+    throw Error(`Conceptual check balance ${data.id}`);
+  for (const tier of ["warmup", "core"])
+    if (!data.questions.some((q) => q.tier === tier))
+      throw Error(`Missing ${tier} ${data.id}`);
+  if (!Array.isArray(data.book_refs) || !data.book_refs.length)
+    throw Error(`Missing sources ${data.id}`);
+  if (data.status === "verified" || data.status === "published") {
+    if (
+      data.verification?.status !== "verified" ||
+      !data.verification?.reviewedAt ||
+      !data.verification?.reviewer ||
+      data.book_refs.some((ref) => /pending/i.test(ref))
+    )
+      throw Error(`Unreviewed publication ${data.id}`);
+  }
+}
 export function buildContent() {
   const curriculum = JSON.parse(
     fs.readFileSync("content/curriculum.json", "utf8"),
@@ -46,9 +115,14 @@ export function buildContent() {
     .readdirSync("content/lessons")
     .filter((f) => f.endsWith(".mdx"))) {
     const source = fs.readFileSync(path.join("content/lessons", file), "utf8");
+    compileSync(source, {
+      remarkPlugins: [remarkFrontmatter, remarkMath, remarkSafeContent],
+    });
     const header = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/.exec(source);
     if (!header) throw Error(`Missing lesson frontmatter ${file}`);
     const data = parse(header[1]);
+    if (path.basename(file, ".mdx") !== data.id || authored[data.id])
+      throw Error(`Duplicate or mismatched file ID ${file}`);
     const content = source.slice(header[0].length);
     const stub = curriculum.lessons.find((l) => l.id === data.id);
     if (!stub) throw Error(`Unknown authored id ${data.id}`);
@@ -73,20 +147,38 @@ export function buildContent() {
       section.fullOnly = fullIds.includes(section.id);
     if (new Set(sections.map((s) => s.id)).size !== sections.length)
       throw Error(`Duplicate section ${file}`);
+    validateAuthored(data, sections, stub);
     authored[data.id] = { ...stub, ...data, sections };
     stub.available = true;
     stub.hook = data.hook || stub.hook;
   }
+  curriculum.lessons = curriculum.lessons.map((l) =>
+    authored[l.id]
+      ? {
+          ...l,
+          title: authored[l.id].title,
+          requires: authored[l.id].requires,
+          status: authored[l.id].status,
+        }
+      : l,
+  );
+  validateGraph(curriculum);
   fs.mkdirSync("src/generated", { recursive: true });
   fs.mkdirSync("public/content", { recursive: true });
   fs.writeFileSync(
     "src/generated/course.json",
     JSON.stringify({ ...curriculum, authored }),
   );
+  for (const file of fs.readdirSync("public/content"))
+    if (
+      /^(?:[A-Z]{2}\d*|CB)\.\d+\.json$/.test(file) &&
+      !authored[file.slice(0, -5)]
+    )
+      fs.unlinkSync(path.join("public/content", file));
   for (const [id, lesson] of Object.entries(authored))
     fs.writeFileSync(`public/content/${id}.json`, JSON.stringify(lesson));
   console.log(
-    `Validated ${curriculum.lessons.length} lesson stubs; ${Object.keys(authored).length} authored drafts`,
+    `Validated ${curriculum.lessons.length} curriculum entries; ${Object.keys(authored).length} authored drafts`,
   );
 }
 if (process.argv[1]?.endsWith("/content.mjs")) buildContent();

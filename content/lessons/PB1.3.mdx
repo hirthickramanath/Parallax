@@ -1,0 +1,201 @@
+---
+{
+  "id": "PB1.3",
+  "title": "Rotation and rolling",
+  "hook": "Why can a rolling object have zero velocity at its contact point while its centre moves?",
+  "recap": [
+    "Rigid-body point velocities combine translation and rotation.",
+    "No-slip rolling on a stationary surface requires v_cm=R\u03c9.",
+    "The moment of inertia depends on mass distribution and axis.",
+    "Rolling kinetic energy contains both centre-of-mass and rotational terms."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Is the same material point always at contact during rolling?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The instantaneous contact point changes as the wheel turns.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Does v_cm=R\u03c9 hold for arbitrary slipping?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a no-slip constraint.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Which has larger I about its symmetry axis for equal M and R?",
+      "options": [
+        "Thin hoop",
+        "Uniform disk"
+      ],
+      "answer": "Thin hoop",
+      "explanation": "The hoop places all its mass at the largest radius.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "For a uniform disk with M=2 kg and R=1 m, I in kg m\u00b2?",
+      "options": null,
+      "answer": "1",
+      "explanation": "I=MR\u00b2/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "If R=0.5 m and \u03c9=4 rad/s, no-slip centre speed in m/s?",
+      "options": null,
+      "answer": "2",
+      "explanation": "v=R\u03c9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "Why check friction after deriving rolling acceleration?",
+      "options": [
+        "The assumed constraint may be impossible",
+        "Friction always dissipates all energy"
+      ],
+      "answer": "The assumed constraint may be impossible",
+      "explanation": "Static friction must be large enough to enforce no slip.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How are velocities of rigid-body points related?",
+      "back": "Rigid-body point velocities combine translation and rotation.",
+      "concept": "pb1-3-foundation"
+    },
+    {
+      "front": "What condition characterizes no-slip rolling on a fixed plane?",
+      "back": "No-slip rolling on a stationary surface requires v_cm=R\u03c9.",
+      "concept": "pb1-3-foundation"
+    },
+    {
+      "front": "Why do equal-mass objects have different rotational inertia?",
+      "back": "The moment of inertia depends on mass distribution and axis.",
+      "concept": "pb1-3-foundation"
+    },
+    {
+      "front": "What two contributions make up rolling kinetic energy?",
+      "back": "Rolling kinetic energy contains both centre-of-mass and rotational terms.",
+      "concept": "pb1-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics \u2014 edition/section review pending",
+    "OpenStax University Physics Volume 1 \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+Why can a rolling object have zero velocity at its contact point while its centre moves? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Wheels turn a local contact constraint into global motion. Treating a wheel only as a translating point loses the rotation, while treating it as rotating about a fixed centre loses the moving centre. Combining both descriptions resolves the apparent contradiction at contact.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+At the bottom of a rolling wheel, the rotational velocity relative to the centre opposes the centre’s translational velocity. Equal magnitudes cancel at that instant. That particular material point then moves away from contact; it is not permanently fixed to the ground.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+For a rigid body, v_P = v_cm + ω×r_P/cm. The rotational inertia about an axis is ∫r_perp² dm. For rolling without slip on a fixed plane, the tangential velocity of the contact point is zero. Static friction can enforce this constraint without dissipative work in the ideal fixed-surface model.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+The kinetic energy of rigid motion is the sum over particles:
+
+$$K=\frac12\sum_i m_i|\mathbf V+\boldsymbol\omega\times\mathbf r_i|^2.$$
+
+Choose the centre of mass so ∑m_i𝐫_i=0. The cross term vanishes. For rotation about a fixed direction this leaves
+
+$$K=\frac12MV_{cm}^2+\frac12I_{cm}\omega^2.$$
+
+At contact on a stationary plane, the tangential velocities cancel: V_cm−Rω=0, hence V_cm=Rω. A slipping object need not satisfy this equality.
+
+For a uniform thin disk, divide it into annuli: dm=2πσr dr. Then $I=\int_0^R r^2(2\pi\sigma r)dr=\pi\sigma R^4/2=MR^2/2$. A thin hoop has all its mass at radius R, so I=MR².
+
+For a body released from rest rolling down a vertical drop h without losses,
+
+$$Mgh=\frac12Mv^2+\frac12I\frac{v^2}{R^2},\qquad v^2=\frac{2gh}{1+I/(MR^2)}.$$
+
+A disk therefore has v²=4gh/3; a hoop has v²=gh. Shape matters through mass distribution, even though total mass cancels.
+
+One can also derive acceleration down an incline. With friction f up the slope, Mg sinα−f=Ma and fR=I(a/R). Eliminating f gives $a=g\sin\alpha/[1+I/(MR^2)]$. This solution must be checked against the maximum available static friction; otherwise the assumed no-slip motion is inconsistent.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+Compare an ideal disk and hoop released through the same height. Predict which arrives faster, compute v²/(gh), and then ask what happens if the surface cannot provide enough static friction. The pure rolling formula is not a model for sliding.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+For a uniform disk descending h=1 m at g=9.81 m/s², v=√(4gh/3)≈3.62 m/s. The corresponding hoop reaches √(gh)≈3.13 m/s. The disk has less rotational inertia relative to MR².
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+The inertia tensor generalizes a single scalar moment for three-dimensional motion. Gyroscopes and spacecraft attitude dynamics need that richer description.
+
+</LessonSection>
+

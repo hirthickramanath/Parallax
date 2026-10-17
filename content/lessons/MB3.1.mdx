@@ -1,0 +1,197 @@
+---
+{
+  "id": "MB3.1",
+  "title": "Limits and continuity",
+  "hook": "Can a function approach a value it never actually takes there?",
+  "recap": [
+    "A limit describes nearby values, not necessarily the value at the point.",
+    "A finite limit controls every sufficiently close nonzero displacement, not a few samples.",
+    "Continuity at a requires the limit to equal f(a).",
+    "Cancelling a factor is valid only where that factor is nonzero."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Can a limit exist if f(a) is undefined?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The punctured neighborhood excludes the point itself.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Does testing 1,000 nearby points prove a limit?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The quantified definition controls every sufficiently nearby input.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Continuity at a requires what?",
+      "options": [
+        "The limit equals f(a)",
+        "Only a smooth-looking picture"
+      ],
+      "answer": "The limit equals f(a)",
+      "explanation": "The point value must exist and match the limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "Limit of (x\u00b2\u22121)/(x\u22121) as x tends to 1?",
+      "options": null,
+      "answer": "2",
+      "explanation": "Factor for x \u2260 1, then take the limit.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "For f(x)=3x+2, choose \u03b4 for \u03b5=0.06.",
+      "options": null,
+      "answer": "0.02",
+      "explanation": "\u03b4 = \u03b5/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "Why is \u03b4 = min(1, \u03b5/(1+2|a|)) useful for x\u00b2?",
+      "options": [
+        "It bounds both factors in the error",
+        "It sets x equal to a"
+      ],
+      "answer": "It bounds both factors in the error",
+      "explanation": "One bound controls x+a; the other controls the requested error.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a limit tell you that f(a) does not?",
+      "back": "A limit describes nearby values, not necessarily the value at the point.",
+      "concept": "mb3-1-foundation"
+    },
+    {
+      "front": "What must an epsilon\u2013delta argument control?",
+      "back": "A finite limit controls every sufficiently close nonzero displacement, not a few samples.",
+      "concept": "mb3-1-foundation"
+    },
+    {
+      "front": "What extra condition makes a function continuous at a?",
+      "back": "Continuity at a requires the limit to equal f(a).",
+      "concept": "mb3-1-foundation"
+    },
+    {
+      "front": "Why must excluded points be tracked when cancelling factors?",
+      "back": "Cancelling a factor is valid only where that factor is nonzero.",
+      "concept": "mb3-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Spivak, Calculus \u2014 exact edition/section review pending",
+    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+Can a function approach a value it never actually takes there? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Rates and approximation create questions that ordinary substitution cannot settle. A difference quotient may be undefined at zero displacement while its nearby values approach a unique answer. Limits give that statement a precise meaning; continuity asks whether the point value agrees with it.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+Imagine measuring values closer and closer to a marked point while the exact point is hidden. A removable hole changes the point value but not the nearby pattern. A jump is different: approaching from opposite sides produces incompatible targets.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+For a function defined on a punctured neighborhood of a, lim f(x) = L means every requested positive output error can be met by restricting the nonzero input distance. Continuity additionally requires f(a) to exist and equal L. A plotted pattern suggests a limit but does not prove it.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+The finite-limit definition is: for every $\varepsilon>0$, there is $\delta>0$ such that $0<|x-a|<\delta$ implies $|f(x)-L|<\varepsilon$.
+
+For $f(x)=3x+2$, propose $L=3a+2$. The output error is $|3x+2-(3a+2)|=3|x-a|$. Choose $\delta=\varepsilon/3$; then the required implication follows. This proves the limit for every a, not just tested values.
+
+For a square, use factorization: $|x^2-a^2|=|x-a||x+a|$. First require $|x-a|<1$, so $|x+a|\le |x-a|+2|a|<1+2|a|$. Choose
+
+$$\delta=\min\left(1,\frac\varepsilon{1+2|a|}\right).$$
+
+Then the product is less than ε, proving $\lim_{x\to a}x^2=a^2$. The extra bound prevents the second factor from being uncontrolled.
+
+For $g(x)=(x^2-1)/(x-1)$ and $x\ne1$, factorization gives $g(x)=x+1$. Therefore its limit at 1 is 2. The original formula remains undefined at 1; defining $g(1)=2$ creates a continuous extension.
+
+Contrast $h(x)=|x|/x$ for nonzero x. On the right it is 1; on the left it is −1. If a two-sided limit L existed, both sides would have to converge to L, contradicting these unequal values. Thus no two-sided limit exists.
+
+Finally, limits are unique. If distinct L and M were limits, choose ε = |L−M|/3 and x close enough for both error bounds. The triangle inequality gives $|L-M|\le|L-f(x)|+|f(x)-M|<2|L-M|/3$, a contradiction.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+In your notebook, tabulate (x²−1)/(x−1) at x = 0.9, 0.99, 1.01, and 1.1. Record the nearby trend and separately mark x = 1 as undefined. Then choose a requested error ε = 0.001 and derive a sufficient input distance analytically. The table illustrates the claim; the error bound proves it.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+For f(x) = 3x + 2 near a = 4, the proposed limit is 14. To ensure output error below 0.03, take δ = 0.01. If 0 < |x−4| < 0.01, then |f(x)−14| = 3|x−4| < 0.03. The strict inequality matters.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+A derivative will be a limit of difference quotients. How can an expression undefined at zero displacement describe an instantaneous rate? MB3.2 answers this.
+
+</LessonSection>
+

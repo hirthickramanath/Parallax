@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { createEmptyCard, fsrs, type Card } from "ts-fsrs";
 import { useLearning } from "../hooks/useLearning";
 import { course } from "../lib/course";
 import { dateKey } from "../lib/learning-core";
 import { Rating, restoreCard, schedule } from "../lib/fsrs";
 import { QuestionCard } from "../components/learning/QuestionCard";
+import { ConceptMap } from "../components/learning/ConceptMap";
 import { Button } from "../components/ui/button";
 const concepts = Object.entries(course.authored).flatMap(([lessonId, l]) =>
   l.review.map((r, i) => ({ ...r, id: `${lessonId}-${i}`, lessonId })),
@@ -13,14 +14,21 @@ const concepts = Object.entries(course.authored).flatMap(([lessonId, l]) =>
 type Concept = (typeof concepts)[number];
 export function Revise() {
   const store = useLearning();
+  const [params] = useSearchParams();
+  const requested = params.get("concept");
   const [query, setQuery] = useState(""),
     [active, setActive] = useState<Concept | null>(null),
     [sessionId, setSessionId] = useState(""),
     [step, setStep] = useState(0),
     [revealed, setRevealed] = useState(false),
     [rated, setRated] = useState(false),
-    [score, setScore] = useState(0);
-  const filtered = concepts.filter((c) =>
+    [score, setScore] = useState(0),
+    [recallIndex, setRecallIndex] = useState(0),
+    [sessionCards, setSessionCards] = useState<Concept[]>([]),
+    [whyAnswered, setWhyAnswered] = useState(false),
+    [coreCorrect, setCoreCorrect] = useState<boolean | null>(null);
+  const catalog = [...new Map(concepts.map((c) => [c.concept, c])).values()];
+  const filtered = catalog.filter((c) =>
     `${c.concept} ${c.front}`.toLowerCase().includes(query.toLowerCase()),
   );
   function strength(id: string) {
@@ -38,38 +46,58 @@ export function Revise() {
       finishedAt: null,
       score: 0,
     });
+    setSessionCards(
+      concepts
+        .filter((card) => card.lessonId === c.lessonId)
+        .sort((a, b) => {
+          const am = a.concept === c.concept ? -1 : 0,
+            bm = b.concept === c.concept ? -1 : 0;
+          return am - bm || (strength(a.id) ?? -1) - (strength(b.id) ?? -1);
+        })
+        .slice(0, 5),
+    );
     setActive(c);
     setStep(0);
     setRevealed(false);
     setRated(false);
     setScore(0);
+    setRecallIndex(0);
+    setWhyAnswered(false);
+    setCoreCorrect(null);
   }
+  useEffect(() => {
+    if (requested) {
+      const found = catalog.find((c) => c.concept === requested);
+      if (found) start(found);
+    }
+  }, [requested]);
+  const recall = sessionCards[recallIndex] || active;
   function rate(rating: Rating) {
-    if (!active) return;
-    const previous = store.records.reviewCards[active.id] || {
+    if (!recall) return;
+    const previous = store.records.reviewCards[recall.id] || {
       type: "explain",
-      front: active.front,
-      back: active.back,
-      lessonId: active.lessonId,
-      conceptIds: [active.concept],
+      front: recall.front,
+      back: recall.back,
+      lessonId: recall.lessonId,
+      conceptIds: [recall.concept],
       fsrs: createEmptyCard<Card>(),
     };
     const result = schedule(previous.fsrs, rating, store.preferences.retention);
-    store.put("reviewCards", active.id, { ...previous, fsrs: result.card });
+    store.put("reviewCards", recall.id, { ...previous, fsrs: result.card });
     store.put("reviewLog", crypto.randomUUID(), {
-      cardId: active.id,
+      cardId: recall.id,
       rating: Rating[rating],
       state: previous.fsrs.state,
       due: result.card.due.toISOString(),
       reviewedAt: new Date().toISOString(),
       elapsed_days: result.log.elapsed_days,
     });
-    store.put("concepts", active.concept, {
+    store.put("concepts", recall.concept, {
       lastRevisedAt: Date.now(),
       memoryStrength: fsrs().get_retrievability(result.card, new Date(), false),
       weak: rating <= Rating.Hard,
     });
-    store.award(`review:${active.id}:${result.card.reps}`, 2, "review");
+    store.award(`review:${recall.id}:${result.card.reps}`, 2, "review");
     setRated(true);
   }
   function finish() {
@@ -78,7 +106,8 @@ export function Revise() {
     store.put("revisionSessions", sessionId, {
       ...previous,
       finishedAt: Date.now(),
-      score,
+      score: (score + (coreCorrect ? 1 : 0)) / 2,
+      conceptIds: [...new Set(sessionCards.map((c) => c.concept))],
     });
     store.award(
       `revision:${active.concept}:${dateKey(Date.now(), store.preferences.timezone)}`,
@@ -116,14 +145,18 @@ export function Revise() {
         {step === 1 && (
           <section className="review-card">
             <span className="pill">RETRIEVAL · ACTUAL FSRS REVIEW</span>
-            <h2>{active.front}</h2>
+            <p className="source-note">
+              Retrieval {recallIndex + 1} of {sessionCards.length} · target and
+              related concepts from this lesson
+            </p>
+            <h2>{recall?.front}</h2>
             {!revealed ? (
               <Button onClick={() => setRevealed(true)}>
                 Reveal after recalling
               </Button>
             ) : (
               <>
-                <p className="review-answer">{active.back}</p>
+                <p className="review-answer">{recall?.back}</p>
                 <div className="rating-buttons">
                   {[Rating.Again, Rating.Hard, Rating.Good, Rating.Easy].map(
                     (r) => (
@@ -141,8 +174,19 @@ export function Revise() {
               </>
             )}
             <p>Only this explicit recall rating updates the FSRS schedule.</p>
-            <Button disabled={!rated} onClick={() => setStep(2)}>
-              Check prerequisites
+            <Button
+              disabled={!rated}
+              onClick={() => {
+                if (recallIndex < sessionCards.length - 1) {
+                  setRecallIndex((i) => i + 1);
+                  setRevealed(false);
+                  setRated(false);
+                } else setStep(2);
+              }}
+            >
+              {recallIndex < sessionCards.length - 1
+                ? "Next retrieval"
+                : "Check prerequisites"}
             </Button>
           </section>
         )}
@@ -169,9 +213,14 @@ export function Revise() {
             <QuestionCard
               lessonId={active.lessonId}
               question={{ ...why, id: `revision-why-${sessionId}` }}
-              onResult={(_, correct) => setScore(correct ? 1 : 0)}
+              onResult={(_, correct) => {
+                setScore(correct ? 1 : 0);
+                setWhyAnswered(true);
+              }}
             />
-            <Button onClick={() => setStep(4)}>Try the transfer problem</Button>
+            <Button disabled={!whyAnswered} onClick={() => setStep(4)}>
+              Try the transfer problem
+            </Button>
           </>
         )}
         {step === 4 && (
@@ -179,8 +228,11 @@ export function Revise() {
             <QuestionCard
               lessonId={active.lessonId}
               question={{ ...problem, id: `revision-core-${sessionId}` }}
+              onResult={(_, correct) => setCoreCorrect(correct)}
             />
-            <Button onClick={finish}>Finish revision</Button>
+            <Button disabled={coreCorrect === null} onClick={finish}>
+              Finish revision
+            </Button>
           </>
         )}
         {step === 5 && (
@@ -232,30 +284,7 @@ export function Revise() {
           })}
       </div>
       {!filtered.length && <p>No matching authored concepts yet.</p>}
-      <section className="activity-panel">
-        <h2>How the ideas connect</h2>
-        <ul className="concept-links">
-          {concepts.map((c) => (
-            <li key={c.id}>
-              <Link to={`/lesson/${c.lessonId}`}>
-                {c.concept.replaceAll("-", " ")}
-              </Link>
-              <span>
-                {" "}
-                ← prerequisite lessons:{" "}
-                {course.authored[c.lessonId].requires.join(", ") ||
-                  "Bridge starting point"}
-              </span>
-            </li>
-          ))}
-        </ul>
-        <p className="source-note">
-          Connections use the actual lesson graph. Memory values are model
-          estimates; unreviewed concepts are labelled rather than assigned a
-          fabricated strength. More authored cards are needed for longer
-          3–5-card revision sessions.
-        </p>
-      </section>
+      <ConceptMap />
     </main>
   );
 }

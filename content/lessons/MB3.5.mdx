@@ -1,0 +1,195 @@
+---
+{
+  "id": "MB3.5",
+  "title": "Basic ordinary differential equations",
+  "hook": "Can a law for the rate determine the entire future?",
+  "recap": [
+    "A differential equation relates an unknown function to its derivatives.",
+    "Initial conditions select a member of a solution family.",
+    "Separation can lose equilibrium solutions if one divides by the unknown.",
+    "Existence and uniqueness require hypotheses; an equation alone does not guarantee them."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "What selects a particular trajectory from y\u2032=ky?",
+      "options": [
+        "An initial condition",
+        "Only the sign of k"
+      ],
+      "answer": "An initial condition",
+      "explanation": "The integration constant must be fixed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "What can division by y discard?",
+      "options": [
+        "Equilibrium y=0",
+        "All nonzero solutions"
+      ],
+      "answer": "Equilibrium y=0",
+      "explanation": "Check excluded cases separately.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Does every continuous F guarantee uniqueness?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Additional conditions such as local Lipschitz continuity are sufficient.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "For y\u2032=2y and y(0)=3, find y\u2032(0).",
+      "options": null,
+      "answer": "6",
+      "explanation": "Substitute the initial value into the rate law.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "For y\u2032+2y=6, what is the equilibrium?",
+      "options": null,
+      "answer": "3",
+      "explanation": "Set the time derivative to zero.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "Why can a coarse numerical trajectory differ from the exact one?",
+      "options": [
+        "Discretization error and stability limits",
+        "The exact equation changes when plotted"
+      ],
+      "answer": "Discretization error and stability limits",
+      "explanation": "Validate the solver independently of the physical model.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is an ordinary differential equation?",
+      "back": "A differential equation relates an unknown function to its derivatives.",
+      "concept": "mb3-5-foundation"
+    },
+    {
+      "front": "Why is an initial condition needed?",
+      "back": "Initial conditions select a member of a solution family.",
+      "concept": "mb3-5-foundation"
+    },
+    {
+      "front": "What can be lost by separating variables?",
+      "back": "Separation can lose equilibrium solutions if one divides by the unknown.",
+      "concept": "mb3-5-foundation"
+    },
+    {
+      "front": "Why must existence and uniqueness hypotheses be checked?",
+      "back": "Existence and uniqueness require hypotheses; an equation alone does not guarantee them.",
+      "concept": "mb3-5-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Spivak, Calculus \u2014 exact edition/section review pending",
+    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+Can a law for the rate determine the entire future? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Force laws, decay measurements and population changes often specify a rate rather than a finished curve. The mathematical task is to find a function whose derivative satisfies that relation and whose initial state matches the experiment.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+A rate law tells the slope at each allowed state. An initial condition chooses where the trajectory starts. Different starting points can follow the same rule without tracing the same curve.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+An initial-value problem combines y′ = F(t,y) with y(t₀)=y₀. For the basic local existence/uniqueness theorem, continuity of F supports existence and a local Lipschitz condition in y supports uniqueness. These hypotheses must be checked; there are equations with nonunique solutions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+Consider y′ = ky for constant k. For y≠0, separate variables: dy/y = k dt. Integration gives ln|y| = kt + C, hence $y = A e^{kt}$. The equilibrium y=0 must be restored because division by y excluded it. The single formula with A=0 includes it, and y(0)=y₀ gives $y=y_0e^{kt}$.
+
+For a linear equation y′+p(t)y=q(t), define $\mu(t)=e^{\int p(t)dt}$, so μ′=pμ. Multiplying gives
+
+$$(\mu y)'=\mu q,\qquad y=\frac{C+\int\mu q\,dt}{\mu}.$$
+
+The integrating factor is nonzero, so this division is allowed. Continuous p and q on an interval make the construction valid there.
+
+For y′+ay=b with a>0, the result is $y=b/a+(y_0-b/a)e^{-at}$. Substitution checks both the equation and initial condition; the solution tends to the equilibrium b/a.
+
+Uniqueness cannot be taken for granted. For y′=√|y| with y(0)=0, y(t)=0 is one forward solution. Another is y(t)=t²/4 for t≥0. More generally the solution may remain zero until any c≥0 and then follow (t−c)²/4. At the join the derivative is zero from both sides. The square-root function is not locally Lipschitz at zero, so the usual uniqueness theorem does not apply.
+
+An approximate numerical method such as Euler uses $y_{n+1}=y_n+\Delta t\, F(t_n,y_n)$. This discretization is not the differential equation itself. Its accuracy and stability depend on step size and the problem.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+For y′ = −y with y(0)=1, compute Euler steps with Δt = 1 and Δt = 0.5, then compare to $e^{-t}$. Explain why reaching zero after one coarse step is an error of the numerical method, not a feature of exponential decay.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+If a cooling model has T′ = −0.1(T−20) in °C per minute and T(0)=80°C, then $T(t)=20+60e^{-0.1t}$. At t=10 min, T≈42.1°C. The model assumes a fixed ambient temperature and a rate proportional to the temperature difference.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+Newtonian dynamics becomes a system of differential equations. Numerical orbit predictions require understanding both the model and the errors of the solver.
+
+</LessonSection>
+

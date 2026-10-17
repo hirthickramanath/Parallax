@@ -1,3 +1,4 @@
+import { readdirSync } from "node:fs";
 import { test, expect, type Page } from "@playwright/test";
 const apiKey = "AIzaSyBSSe8XOjx3dAb4h1Ert332830tKXwHf6M";
 async function signedIn(page: Page, uid = "test-learner") {
@@ -122,6 +123,7 @@ test("all workspace screens, apparatus and themes work at phone and desktop widt
       "/stats",
       "/settings",
       "/placement",
+      "/revision-plan",
     ]) {
       await page.goto(route);
       await expect(page.locator("main h1").first()).toBeVisible();
@@ -224,8 +226,18 @@ test("lesson prediction, equations, checks, notes, completion, recap and FSRS wo
     page.getByText("Your 30-second recap", { exact: false }),
   ).toBeVisible();
   await page.goto("/review");
-  await page.getByRole("button", { name: "Reveal answer" }).click();
-  await page.getByRole("button", { name: "Good", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Reveal answer" }),
+  ).toBeVisible();
+  for (
+    let i = 0;
+    i < 10 &&
+    (await page.getByRole("button", { name: "Reveal answer" }).count());
+    i++
+  ) {
+    await page.getByRole("button", { name: "Reveal answer" }).click();
+    await page.getByRole("button", { name: "Good", exact: true }).click();
+  }
   await expect(
     page.getByText("Session complete.", { exact: true }),
   ).toBeVisible();
@@ -233,8 +245,12 @@ test("lesson prediction, equations, checks, notes, completion, recap and FSRS wo
 test("all authored MDX drafts render their full theory and maths without parse failures", async ({
   page,
 }) => {
+  const runtimeErrors: string[] = [];
+  page.on("pageerror", (error) => runtimeErrors.push(error.message));
   await signedIn(page);
-  for (const id of ["MB3.2", "PB1.4", "AS1.3"]) {
+  for (const id of readdirSync("content/lessons")
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => f.slice(0, -4))) {
     await page.goto(`/lesson/${id}`);
     await page.getByLabel("Lesson section").selectOption("puzzle");
     await page
@@ -246,9 +262,8 @@ test("all authored MDX drafts render their full theory and maths without parse f
     await expect(page.locator(".lesson-prose .katex").first()).toBeVisible();
     expect(await page.locator(".katex-error").count()).toBe(0);
     await page.getByLabel("Lesson section").selectOption("interactive");
-    await expect(
-      page.locator(".virtual-lab, .lab-example").first(),
-    ).toBeVisible();
+    await expect(page.locator(".lesson-prose").first()).toBeVisible();
+    expect(runtimeErrors).toEqual([]);
   }
 });
 test("cached lesson survives an offline reload and saves local notes", async ({
@@ -295,8 +310,15 @@ test("bridge skip credit needs 80% and is stored in the agreed unit record", asy
 }) => {
   await signedIn(page);
   await page.goto("/placement?unit=PB1");
-  for (const [i, answer] of ["3", "9", "8", "20", "0"].entries()) {
-    await page.getByRole("spinbutton").fill(answer);
+  for (const [i, answer] of [
+    "3",
+    "9",
+    "Yes, velocity can be constant",
+    "Velocity direction",
+    "Their weights are equal",
+  ].entries()) {
+    if (i < 2) await page.getByRole("spinbutton").fill(answer);
+    else await page.getByLabel(answer, { exact: true }).check();
     await page
       .getByRole("button", { name: "Check answer", exact: true })
       .click();
@@ -346,11 +368,25 @@ test("focused revision schedules recall and records the completed session", asyn
   await page.getByRole("button", { name: "Try to recall it" }).click();
   await page.getByRole("button", { name: "Reveal after recalling" }).click();
   await page.getByRole("button", { name: "Good", exact: true }).click();
+  for (
+    let i = 0;
+    i < 5 &&
+    (await page.getByRole("button", { name: "Next retrieval" }).count());
+    i++
+  ) {
+    await page.getByRole("button", { name: "Next retrieval" }).click();
+    await page.getByRole("button", { name: "Reveal after recalling" }).click();
+    await page.getByRole("button", { name: "Good", exact: true }).click();
+  }
   await page.getByRole("button", { name: "Check prerequisites" }).click();
   await page.getByRole("button", { name: "Explain why" }).click();
   await page.locator(".question-card input[type=radio]").first().check();
   await page.getByRole("button", { name: "Check answer", exact: true }).click();
   await page.getByRole("button", { name: "Try the transfer problem" }).click();
+  if (await page.locator(".question-card input[type=radio]").count())
+    await page.locator(".question-card input[type=radio]").first().check();
+  else await page.locator(".question-card input[type=number]").fill("1");
+  await page.getByRole("button", { name: "Check answer", exact: true }).click();
   await page.getByRole("button", { name: "Finish revision" }).click();
   await expect(
     page.getByRole("heading", { name: "A clearer perspective." }),
@@ -365,5 +401,151 @@ test("focused revision schedules recall and records the completed session", asyn
       (session) => (session as { finishedAt: number }).finishedAt > 0,
     ),
   ).toBeTruthy();
-  expect(Object.keys(records.reviewLog).length).toBe(1);
+  expect(Object.keys(records.reviewLog).length).toBeGreaterThanOrEqual(3);
+  expect(Object.keys(records.reviewLog).length).toBeLessThanOrEqual(5);
+  expect(
+    new Set(
+      Object.values(records.reviewLog).map(
+        (log) => (log as { cardId: string }).cardId,
+      ),
+    ).size,
+  ).toBe(Object.keys(records.reviewLog).length);
+  await page.goto("/stats");
+  await expect(page.locator(".retention-curve")).toBeVisible();
+  expect(
+    await page.locator(".retention-curve path").last().getAttribute("d"),
+  ).not.toContain("NaN");
+});
+
+test("exam-date planning saves a real local schedule and opens its concept revision", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/revision-plan");
+  const target = new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 10);
+  await page.getByLabel("Exam date").fill(target);
+  await page.getByLabel("Units to revise").selectOption(["PB1"]);
+  await page.getByRole("button", { name: "Create revision schedule" }).click();
+  await expect(
+    page.locator(".revision-schedule article").first(),
+  ).toBeVisible();
+  await page.reload();
+  await expect(
+    page.locator(".revision-schedule article").first(),
+  ).toBeVisible();
+  await page
+    .getByRole("link", { name: "Open focused revision →" })
+    .first()
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Try to recall it" }),
+  ).toBeVisible();
+});
+test("resistor apparatus changes topology and keeps measurements tied to one load", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Circuit bench", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Parallel load", exact: true })
+    .click();
+  await expect(page.getByText("66.67 Ω", { exact: true })).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record synthetic meter reading" })
+    .click();
+  await expect(
+    page.getByRole("cell", { name: "90.00", exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("First resistance").focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByRole("table")).toHaveCount(0);
+});
+test("saved tutor messages restore per account even with live tutoring disabled", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.evaluate(() =>
+    localStorage.setItem(
+      "parallax-chat-v1:test-learner:PB1.1",
+      JSON.stringify({
+        messages: [
+          {
+            id: "saved-question",
+            lessonId: "PB1.1",
+            role: "user",
+            content: "Why does mass cancel?",
+            createdAt: 1,
+          },
+          {
+            id: "saved-reply",
+            lessonId: "PB1.1",
+            role: "assistant",
+            content: "Both force and inertia scale with mass in this model.",
+            createdAt: 2,
+          },
+        ],
+        pending: [],
+      }),
+    ),
+  );
+  await page.goto("/lesson/PB1.1");
+  await page
+    .getByRole("button", { name: "Ask about this section", exact: true })
+    .click();
+  await expect(
+    page.getByText("Why does mass cancel?", { exact: true }),
+  ).toBeVisible();
+  await page.reload();
+  await page
+    .getByRole("button", { name: "Ask about this section", exact: true })
+    .click();
+  await expect(
+    page.getByText("Both force and inertia scale with mass in this model.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Ask tutor", exact: true }),
+  ).toBeDisabled();
+});
+
+test("foreground study reminders are opt-in and dismiss for the day without requesting permission", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/settings");
+  await page.getByLabel("Reminder time", { exact: true }).fill("00:00");
+  await expect(page.locator(".study-reminder")).toHaveCount(0);
+  await page
+    .getByLabel("Enable a reminder while Parallax is open", { exact: true })
+    .check();
+  await expect(page.locator(".study-reminder")).toBeVisible();
+  await page
+    .getByRole("button", { name: "Dismiss today’s study reminder" })
+    .click();
+  await expect(page.locator(".study-reminder")).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator(".study-reminder")).toHaveCount(0);
+});
+
+test("weekly planning persists only authored unlocked lessons grouped by track", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/plan");
+  await page.getByRole("button", { name: "Build this week’s plan" }).click();
+  await expect(page.locator(".plan-list article")).toHaveCount(3);
+  const plan = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+        .records.plan.current,
+  );
+  const ids = Object.values(plan.items).flat();
+  expect(new Set(ids).size).toBe(ids.length);
+  expect(new Set(ids)).toEqual(new Set(["PB1.1", "MB3.1", "CB.1"]));
+  await page.reload();
+  await expect(page.locator(".plan-list article")).toHaveCount(3);
 });

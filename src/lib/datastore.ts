@@ -1,5 +1,8 @@
 import {
   doc,
+  query,
+  orderBy,
+  limitToLast,
   collection,
   getDocs,
   runTransaction,
@@ -10,12 +13,20 @@ import {
 import { app } from "./firebase";
 import { collections, emptyRecords, mergeDocument } from "./learning-core";
 import type { Collection, Records } from "../types/learning";
+import type { ChatMessage } from "../hooks/useConversation";
 const db = initializeFirestore(app, {
   localCache: persistentLocalCache({
     tabManager: persistentMultipleTabManager(),
   }),
 });
 export interface DataStore {
+  loadConversation(uid: string, id: string): Promise<ChatMessage[]>;
+  saveConversation(
+    uid: string,
+    id: string,
+    lessonId: string,
+    messages: ChatMessage[],
+  ): Promise<void>;
   load(uid: string): Promise<Records>;
   save(
     uid: string,
@@ -26,6 +37,30 @@ export interface DataStore {
   ): Promise<object>;
 }
 export const dataStore: DataStore = {
+  async loadConversation(uid, id) {
+    const result = await getDocs(
+      query(
+        collection(db, "users", uid, "chats", id, "messages"),
+        orderBy("createdAt"),
+        limitToLast(100),
+      ),
+    );
+    return result.docs.map((d) => ({ id: d.id, ...d.data() }) as ChatMessage);
+  },
+  async saveConversation(uid, id, lessonId, messages) {
+    if (!messages.length) return;
+    const root = doc(db, "users", uid, "chats", id);
+    await runTransaction(db, async (tx) => {
+      const parent = await tx.get(root);
+      if (!parent.exists())
+        tx.set(root, { lessonId, createdAt: messages[0].createdAt });
+      for (const { id: messageId, ...message } of messages)
+        tx.set(
+          doc(db, "users", uid, "chats", id, "messages", messageId),
+          message,
+        );
+    });
+  },
   async load(uid) {
     const records = emptyRecords();
     await Promise.all(

@@ -62,6 +62,12 @@ export interface Records {
 }
 export type Collection = keyof Records;
 export interface Preferences {
+  remindersEnabled?: boolean;
+  reminderTime?: string;
+  reminderDismissedDate?: string;
+  lastReminderDate?: string;
+  trackMix?: { physics: number; maths: number; astro: number; other: number };
+  examPlan?: { date: string; units: string[] };
   depth: "quick" | "full";
   dailyGoal: number;
   strictLocking: boolean;

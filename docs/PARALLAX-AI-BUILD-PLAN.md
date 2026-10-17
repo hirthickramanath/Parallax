@@ -119,3 +119,7 @@ Verify the first lesson, then build the retained bridge and foundational physics
 ## Experimental teaching amendment
 
 Apply `EXPERIMENTAL-TEACHING.md` to physics and maths: predict, investigate, conjecture, explain, derive/prove fully, stress-test, and transfer. This changes presentation, not the required theoretical depth or curriculum outcomes. Preserve the original layer order and Full/Quick semantics. The `/teaching-lab` previews are not completed curriculum lessons.
+
+## Applied follow-up status
+
+The chemistry expansion is now applied with retained IDs: 354 entries across 59 units. Fifteen lessons are authored drafts, not verified content. See FOLLOWUP-RELEASE.md for completed learning workflows, service blockers and the remaining 339 stubs. Do not mistake this implementation update for scientific review or a complete research-level course.

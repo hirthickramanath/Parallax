@@ -1,10 +1,12 @@
 # Integrated learning release
 
+**Historical first-release record.** Current counts, completed follow-up features and remaining blockers are in [FOLLOWUP-RELEASE.md](FOLLOWUP-RELEASE.md).
+
 ## What is implemented
 
 - An original interactive-course UI inspired by focused learning apps: responsive sidebar/bottom navigation, rounded cards, visible goals, progress, answer feedback, light/dark/system themes and reduced-motion support.
 - Auth-aware dashboard routing, real recap from the last studied authored lesson, resume bookmarks, prerequisite-aware recommendations, and honest empty states.
-- A retained v5 inventory of 56 units and 327 lesson entries after moving the full biology/psychology tracks to the companion plan. Existing IDs are preserved. The chemistry expansion is explicitly proposed in `content/chemistry-expansion.proposed.json`, not silently mixed into these totals.
+- A retained v5 inventory of 56 units and 327 lesson entries after moving the full biology/psychology tracks to the companion plan. Existing IDs are preserved. The chemistry expansion is explicitly proposed in `content/chemistry-expansion.json`, not silently mixed into these totals.
 - A build-time validator for duplicate IDs, missing prerequisites, cycles, later-phase dependencies and unit placement. PH18 additionally requires any two Phase 6 units at runtime, not all of them.
 - Four playable **draft** MDX lessons: PB1.1, PB1.4, MB3.2, AS1.3. Each includes story, intuition, theory, interactive, problems, checks and connections. Full theory uses staged blocks with an immediate full-view option. Selected orbital symbols have definitions.
 - Numeric/multiple-choice checks, saved attempts, readiness checks, prediction before reveal, Full/Quick, local notes, notebook-to-review-card creation and a finish screen. Completion and mastery are distinct.

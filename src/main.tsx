@@ -15,6 +15,9 @@ const AppLayout = lazy(() =>
     default: m.AppLayout,
   })),
 );
+const Author = lazy(() =>
+  import("./pages/Author").then((m) => ({ default: m.Author })),
+);
 const Dashboard = lazy(() =>
   import("./pages/Dashboard").then((m) => ({ default: m.Dashboard })),
 );
@@ -35,6 +38,9 @@ const Stats = lazy(() =>
 );
 const Settings = lazy(() =>
   import("./pages/Settings").then((m) => ({ default: m.Settings })),
+);
+const RevisionPlan = lazy(() =>
+  import("./pages/RevisionPlan").then((m) => ({ default: m.RevisionPlan })),
 );
 const WeeklyPlan = lazy(() =>
   import("./pages/WeeklyPlan").then((m) => ({ default: m.WeeklyPlan })),
@@ -101,8 +107,10 @@ function App() {
           <Route path="/review" element={<Review />} />
           <Route path="/revise" element={<Revise />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/author" element={<Author />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/plan" element={<WeeklyPlan />} />
+          <Route path="/revision-plan" element={<RevisionPlan />} />
           <Route path="/placement" element={<Placement />} />
           <Route path="/lesson/:id" element={<LessonPlayer />} />
           <Route path="/teaching-lab" element={<TeachingLab />} />

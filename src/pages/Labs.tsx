@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PendulumLab } from "../components/widgets/PendulumLab";
 import { OrbitExplorer } from "../components/widgets/OrbitExplorer";
+import { CircuitLab } from "../components/widgets/CircuitLab";
 export function Labs() {
   const [lab, setLab] = useState("pendulum");
   return (
@@ -22,15 +23,29 @@ export function Labs() {
         <button aria-pressed={lab === "orbit"} onClick={() => setLab("orbit")}>
           Orbit explorer
         </button>
+        <button
+          aria-pressed={lab === "circuit"}
+          onClick={() => setLab("circuit")}
+        >
+          Circuit bench
+        </button>
       </div>
-      {lab === "pendulum" ? <PendulumLab /> : <OrbitExplorer />}
+      {lab === "circuit" ? (
+        <CircuitLab />
+      ) : lab === "pendulum" ? (
+        <PendulumLab />
+      ) : (
+        <OrbitExplorer />
+      )}
       <div className="info-box">
         <h2>Take it into a lesson</h2>
         <p>
           Study the complete derivation, record your reasoning, and answer
           checks.
         </p>
-        <Link to={`/lesson/${lab === "pendulum" ? "PB1.4" : "AS1.3"}`}>
+        <Link
+          to={`/lesson/${lab === "circuit" ? "PB4.2" : lab === "pendulum" ? "PB1.4" : "AS1.3"}`}
+        >
           Open the connected lesson →
         </Link>
       </div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import tests from "../../content/placement.json";
+import conceptual from "../../content/placement-concepts.json";
+import type { Question } from "../lib/course";
 import { QuestionCard } from "../components/learning/QuestionCard";
 import { useLearning } from "../hooks/useLearning";
 import { Button } from "../components/ui/button";
@@ -11,14 +13,21 @@ export function Placement() {
 }
 function PlacementTest({ unit }: { unit: string | null }) {
   const selected = tests.filter((t) => !unit || t.unit === unit);
-  const questions = selected.flatMap((t) =>
-    t.questions.slice(0, unit ? 5 : 4).map(([prompt, answer], i) => ({
-      unit: t.unit,
+  const questions: (Question & { unitId: string })[] = selected.flatMap((t) => [
+    ...t.questions.slice(0, 2).map(([prompt, answer], i) => ({
+      unitId: t.unit,
       id: `${t.unit}-${i}`,
       prompt,
       answer,
+      type: "numeric" as const,
+      conceptual: false,
+      unit: "as stated in the question",
+      explanation: `Reference answer: ${answer}. Work through the units and governing relation before checking.`,
     })),
-  );
+    ...(conceptual.find((c) => c.unit === t.unit)?.questions || [])
+      .slice(0, unit ? 3 : 2)
+      .map((q) => ({ ...q, type: "mcq" as const, unitId: t.unit })),
+  ]);
   const [index, setIndex] = useState(0),
     [results, setResults] = useState<Record<string, boolean>>({}),
     [finished, setFinished] = useState(false);
@@ -54,8 +63,8 @@ function PlacementTest({ unit }: { unit: string | null }) {
       </h1>
       <p className="page-description">
         {unit
-          ? "Five representative numeric questions. At least 80% grants skip credit for this Bridge unit."
-          : "Forty short diagnostic questions across maths, physics, and chemistry. Results suggest Bridge units to revisit; separate skip tests grant credit."}{" "}
+          ? "Five conceptual and numeric questions. At least 80% grants skip credit for this Bridge unit."
+          : "Forty mixed diagnostic questions across maths, physics, and chemistry. Results suggest Bridge units to revisit; separate skip tests grant credit."}{" "}
         This draft is a screening tool, not a complete JEE-level placement
         assessment.
       </p>
@@ -66,7 +75,7 @@ function PlacementTest({ unit }: { unit: string | null }) {
             correct
           </h2>
           {selected.map((t) => {
-            const subset = questions.filter((q) => q.unit === t.unit);
+            const subset = questions.filter((q) => q.unitId === t.unit);
             const score =
               subset.filter((q) => results[q.id]).length / subset.length;
             return (
@@ -96,21 +105,12 @@ function PlacementTest({ unit }: { unit: string | null }) {
             max={questions.length}
           />
           <p>
-            {index + 1} of {questions.length} · {q.unit}
+            {index + 1} of {questions.length} · {q.unitId}
           </p>
           <QuestionCard
             key={q.id}
             lessonId="placement"
-            question={{
-              id: q.id,
-              prompt: q.prompt,
-              answer: q.answer,
-              type: "numeric",
-              conceptual: false,
-              tier: unit ? "skip-test" : "placement",
-              explanation: `Reference answer: ${q.answer}. Review the related Bridge topic if the result was unfamiliar.`,
-              unit: "as stated in the question",
-            }}
+            question={{ ...q, tier: unit ? "skip-test" : "placement" }}
             onResult={(id, correct) =>
               setResults((r) => ({ ...r, [id]: correct }))
             }

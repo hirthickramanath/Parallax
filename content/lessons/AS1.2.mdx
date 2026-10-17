@@ -1,0 +1,199 @@
+---
+{
+  "id": "AS1.2",
+  "title": "Seasons, precession and eclipses",
+  "hook": "If distance from the Sun caused seasons, why do the hemispheres have opposite summers?",
+  "recap": [
+    "Axial tilt changes illumination angle and day length through the year.",
+    "Orbital distance modifies flux but does not explain opposite hemispheric seasons.",
+    "Eclipses require near alignment with the orbital-node geometry.",
+    "Precession changes axis orientation slowly and requires a specified reference epoch."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Can Earth\u2013Sun distance alone explain opposite hemispheric summers?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Both hemispheres share the same global distance factor.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Is every new Moon a solar eclipse?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The Moon generally misses exact alignment because its orbit is inclined.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "What should be done if the sunrise equation gives |cos H\u2080|>1?",
+      "options": [
+        "Interpret polar day/night",
+        "Ignore the invalid value"
+      ],
+      "answer": "Interpret polar day/night",
+      "explanation": "No geometric horizon crossing exists in that model.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "Ideal equinox day length in hours, away from polar singular cases?",
+      "options": null,
+      "answer": "12",
+      "explanation": "\u03b4=0 gives H\u2080=\u03c0/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "For isotropic luminosity, doubling distance multiplies flux by what factor?",
+      "options": null,
+      "answer": "0.25",
+      "explanation": "Flux scales as r\u207b\u00b2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "What produces slow axial precession dynamically?",
+      "options": [
+        "Torque on a nonspherical spinning body",
+        "A change in civil time zone"
+      ],
+      "answer": "Torque on a nonspherical spinning body",
+      "explanation": "The detailed rate requires rotational dynamics.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What causes opposite hemispheric seasonal cycles?",
+      "back": "Axial tilt changes illumination angle and day length through the year.",
+      "concept": "as1-2-foundation"
+    },
+    {
+      "front": "Why is orbital distance alone insufficient to explain seasons?",
+      "back": "Orbital distance modifies flux but does not explain opposite hemispheric seasons.",
+      "concept": "as1-2-foundation"
+    },
+    {
+      "front": "Why is conjunction not sufficient for a solar eclipse?",
+      "back": "Eclipses require near alignment with the orbital-node geometry.",
+      "concept": "as1-2-foundation"
+    },
+    {
+      "front": "Why does precision pointing require an epoch for the axis orientation?",
+      "back": "Precession changes axis orientation slowly and requires a specified reference epoch.",
+      "concept": "as1-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll & Ostlie, An Introduction to Modern Astrophysics \u2014 edition/section review pending",
+    "OpenStax Astronomy \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+If distance from the Sun caused seasons, why do the hemispheres have opposite summers? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Calendars, navigation and eclipse observations force us to distinguish several motions: daily rotation, annual revolution, and slower changes in orientation. Explaining them with one vague idea of closeness obscures the different geometries and timescales.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+A tilted hemisphere faces the Sun more directly and for more hours during its summer. Its opposite hemisphere receives less direct illumination and shorter days at the same moment, even though both share almost the same Earth–Sun distance.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+The obliquity ε is the angle between Earth’s spin axis and its orbital normal. In a simplified circular-orbit model, solar declination varies with orbital longitude λ through sin δ = sin ε sin λ. Eclipse alignment additionally depends on the Moon’s inclined orbital plane and its nodes.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+A surface patch receiving parallel sunlight has projected collecting area A cos z, where z is the solar zenith angle. Its instantaneous incident power is $P=F A\cos z$ for the illuminated face. Thus local flux is F cos z, not merely the orbital flux F.
+
+For latitude φ and solar declination δ, the coordinate transformation gives
+
+$$\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta\cos H.$$
+
+At geometric sunrise/sunset, h=0, so
+
+$$\cos H_0=-\tan\phi\tan\delta.$$
+
+When a crossing exists, day length in solar-hour-angle units is $D=24H_0/\pi$ hours with H₀ in radians. If the right side lies outside [−1,1], interpret polar day/night rather than taking an impossible arccos. Refraction and the finite solar disk shift actual observed sunrise times.
+
+At an equinox δ≈0 in this model, H₀=π/2 and D=12 h. At northern summer δ>0, a positive northern latitude generally has H₀>π/2 and longer daylight; the southern latitude has the opposite trend.
+
+Orbital flux also scales as $F=L/(4\pi r^2)$ for an isotropic source. That shared distance factor cannot on its own produce opposite seasonal phases between the hemispheres.
+
+For eclipses, conjunction/opposition is necessary but not sufficient: the Moon must also be near a node so the three-dimensional alignment is close enough. Axial precession arises from torques on Earth’s nonspherical mass distribution; a full rate calculation requires rigid-body dynamics, not simply this geometric day-length model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+Compare φ = +45° and −45° at δ = +20°. Evaluate cos H₀ and the corresponding model day lengths. Then set δ=0 as a limiting check. Sketch why the same Earth–Sun distance does not erase this hemispheric difference.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+At φ=45° and δ=20°, cos H₀≈−0.364, so H₀≈1.943 rad and D≈14.84 h in the ideal horizon model. At −45° the complementary duration is about 9.16 h. At an equinox both are 12 h in this approximation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+Once the geometry of observing is clear, AS1.3 asks how gravity determines the orbital paths behind it. A coordinate system describes motion; a force law explains it.
+
+</LessonSection>
+

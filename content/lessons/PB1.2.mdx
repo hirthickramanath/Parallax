@@ -1,0 +1,201 @@
+---
+{
+  "id": "PB1.2",
+  "title": "Work, energy and momentum",
+  "hook": "Can two collisions conserve momentum but lose different amounts of kinetic energy?",
+  "recap": [
+    "Momentum changes through external impulse.",
+    "Work is the line integral of force along displacement.",
+    "For constant mass, net work equals the change in kinetic energy.",
+    "Momentum conservation does not by itself imply kinetic-energy conservation."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "Does zero external impulse imply kinetic-energy conservation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Internal dissipation can change kinetic energy while total momentum stays fixed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Can a perpendicular force change speed instantaneously?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Instantaneous power F\u00b7v is zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Where does kinetic energy lost in a sticking collision go?",
+      "options": [
+        "It can enter deformation and heat",
+        "It ceases to exist"
+      ],
+      "answer": "It can enter deformation and heat",
+      "explanation": "Total energy includes more than resolved mechanical motion.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "Momentum of 2 kg moving at 3 m/s, in kg m/s?",
+      "options": null,
+      "answer": "6",
+      "explanation": "p=mv.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "Work by a constant 5 N force parallel to a 2 m displacement, in joules?",
+      "options": null,
+      "answer": "10",
+      "explanation": "W=Fd for this parallel constant-force case.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "For 2 kg at 3 m/s sticking to 1 kg at rest, final speed in m/s?",
+      "options": null,
+      "answer": "2",
+      "explanation": "Conserve total momentum: 6/3 = 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as specified"
+    }
+  ],
+  "review": [
+    {
+      "front": "What changes a system\u2019s total momentum?",
+      "back": "Momentum changes through external impulse.",
+      "concept": "pb1-2-foundation"
+    },
+    {
+      "front": "How is work defined for a varying force and path?",
+      "back": "Work is the line integral of force along displacement.",
+      "concept": "pb1-2-foundation"
+    },
+    {
+      "front": "What does net work equal for constant mass?",
+      "back": "For constant mass, net work equals the change in kinetic energy.",
+      "concept": "pb1-2-foundation"
+    },
+    {
+      "front": "Why can momentum conservation coexist with kinetic-energy loss?",
+      "back": "Momentum conservation does not by itself imply kinetic-energy conservation.",
+      "concept": "pb1-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics \u2014 edition/section review pending",
+    "OpenStax University Physics Volume 1 \u2014 chapter reference review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+Can two collisions conserve momentum but lose different amounts of kinetic energy? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Collisions and machines expose two distinct accounting systems. Momentum tracks directed motion through impulse; energy tracks transfers through work and other mechanisms. Separating them explains why sticking objects can conserve momentum while losing mechanical kinetic energy.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+A force acting for longer can produce more impulse, while a force acting through a larger displacement can do more work. A perpendicular force can bend a trajectory without changing speed because its instantaneous power is zero.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+For constant mass p=mv and F_ext=dp/dt. Work is ∫F·dr, not simply force times distance for arbitrary directions. Conservative forces permit a potential energy; dissipative processes can move energy out of the resolved mechanical variables without destroying total energy.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+Integrate $d\mathbf p/dt=\mathbf F_{ext}$ from t₁ to t₂:
+
+$$\Delta\mathbf p=\int_{t_1}^{t_2}\mathbf F_{ext}\,dt.$$
+
+For a collection of particles, internal forces that obey equal-and-opposite action along the interaction cancel in the total momentum balance. Zero net external impulse therefore preserves total momentum.
+
+For constant mass, dot Newton’s law with velocity: $\mathbf F\cdot\mathbf v=m\dot{\mathbf v}\cdot\mathbf v=d(mv^2/2)/dt$. Integrating in time and using d𝐫=𝐯dt gives
+
+$$W_{net}=\int\mathbf F\cdot d\mathbf r=K_2-K_1.$$
+
+A force is conservative on the considered domain when its work can be represented by −ΔU independently of path. Then W_cons = −ΔU. Separating nonconservative work yields Δ(K+U)=W_noncons. For inverse-square gravity F_r=−GMm/r², solving F_r=−dU/dr with U(∞)=0 gives U=−GMm/r.
+
+For two bodies that stick in one dimension with negligible external impulse,
+
+$$v_f=\frac{m_1v_1+m_2v_2}{m_1+m_2}.$$
+
+Subtract the final kinetic energy from the initial value and simplify:
+
+$$K_i-K_f=\frac12\frac{m_1m_2}{m_1+m_2}(v_1-v_2)^2\ge0.$$
+
+The missing resolved kinetic energy can appear as deformation, thermal energy and sound. Equality occurs for equal initial velocities, not for every momentum-conserving collision.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+Create a collision table for equal masses with velocities (1,0), (1,−1), and (2,1) in m/s. Calculate total momentum and kinetic energy before and after sticking. Compare the energy loss with the relative-speed-squared formula.
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+A 2 kg body at 3 m/s sticks to a stationary 1 kg body. The final speed is 2 m/s from momentum balance. Initial K=9 J, final K=6 J, so 3 J leaves the resolved kinetic energy. An isolated total system still conserves energy.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+Orbital mechanics uses both angular momentum and energy. Which tells you the orbit’s plane, and which tells you whether escape is possible?
+
+</LessonSection>
+

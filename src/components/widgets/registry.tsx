@@ -2,7 +2,9 @@ import { PendulumLab } from "./PendulumLab";
 import { OrbitExplorer } from "./OrbitExplorer";
 import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
+import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  circuit_lab: CircuitLab,
   pendulum_lab: PendulumLab,
   orbit_explorer: OrbitExplorer,
   falling_bodies: FallingBodies,

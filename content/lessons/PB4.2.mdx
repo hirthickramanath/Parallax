@@ -1,0 +1,199 @@
+---
+{
+  "id": "PB4.2",
+  "title": "Current electricity",
+  "hook": "Does putting a second resistor in parallel always reduce the supply current?",
+  "recap": [
+    "Current is charge flow rate, while voltage measures energy transfer per charge.",
+    "Ohm\u2019s law describes an ohmic element under specified conditions.",
+    "Series elements share current; parallel branches share voltage.",
+    "Ideal meters do not disturb a circuit, but real meters do."
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "For an ideal fixed-voltage supply, adding a positive parallel resistor does what?",
+      "options": [
+        "Increases total current",
+        "Decreases total current"
+      ],
+      "answer": "Increases total current",
+      "explanation": "It creates another current path and reduces equivalent resistance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q2",
+      "prompt": "Does every component obey one constant V/I ratio?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Ohmic behaviour is a model with an operating range.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q3",
+      "prompt": "Why can an actual voltmeter change a reading?",
+      "options": [
+        "It draws current and loads the circuit",
+        "It removes charge permanently"
+      ],
+      "answer": "It draws current and loads the circuit",
+      "explanation": "Its finite input resistance changes the network.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "q4",
+      "prompt": "Current through 300 \u03a9 at 6 V, in amperes?",
+      "options": null,
+      "answer": "0.02",
+      "explanation": "I=V/R.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified"
+    },
+    {
+      "id": "q5",
+      "prompt": "Equivalent resistance of two 100 \u03a9 resistors in parallel, in ohms?",
+      "options": null,
+      "answer": "50",
+      "explanation": "Reciprocals add.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as specified"
+    },
+    {
+      "id": "q6",
+      "prompt": "At fixed voltage, doubling a resistor changes its dissipated power by what factor?",
+      "options": null,
+      "answer": "0.5",
+      "explanation": "P=V\u00b2/R under fixed voltage.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as specified"
+    }
+  ],
+  "review": [
+    {
+      "front": "How are current and voltage physically different?",
+      "back": "Current is charge flow rate, while voltage measures energy transfer per charge.",
+      "concept": "pb4-2-foundation"
+    },
+    {
+      "front": "When is a fixed-resistance Ohm law appropriate?",
+      "back": "Ohm\u2019s law describes an ohmic element under specified conditions.",
+      "concept": "pb4-2-foundation"
+    },
+    {
+      "front": "What is shared by series elements versus parallel branches?",
+      "back": "Series elements share current; parallel branches share voltage.",
+      "concept": "pb4-2-foundation"
+    },
+    {
+      "front": "How do real ammeters and voltmeters disturb a circuit?",
+      "back": "Ideal meters do not disturb a circuit, but real meters do.",
+      "concept": "pb4-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics Volume 2 \u2014 circuit chapter review pending",
+    "An introductory electricity text \u2014 edition/section review pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Draft derivations checked against internal consistency and automated numeric examples; bibliographic edition/section and independent scientific review remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to the puzzle" layer="puzzle">
+
+Does putting a second resistor in parallel always reduce the supply current? State your reasoning before continuing; a wrong prediction is a useful starting point.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this question mattered" layer="story">
+
+Electrical measurements compare what flows through a component with the potential difference across it. The power of a circuit law comes from choosing clear definitions and testing when a material behaves linearly, not treating every component as a fixed resistor.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the mental picture" layer="intuition">
+
+A series element offers another obstacle along the same current path. A parallel branch opens an additional path at the same endpoint voltage. With an ideal fixed-voltage source, that additional path increases total current even though no charge is consumed at a resistor.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the idea precisely" layer="concept">
+
+Conventional current is positive-charge flow direction: I = dQ/dt. In quasistatic steady circuits, charge conservation gives equal incoming and outgoing current at a node. An ohmic resistor at fixed conditions has V = IR. A diode, lamp or heating resistor need not have one constant resistance over an arbitrary operating range.
+
+</LessonSection>
+
+<LessonSection id="theory" title="The complete argument" layer="theory" fullOnly>
+
+For a wire of area A with mobile-carrier density n and signed drift speed v_d along a chosen direction, the magnitude of current is I = n|q|A|v_d|. Current density is J = I/A for a uniform flow.
+
+In a simple relaxation-time model, a carrier’s average drift velocity responds to the field through $\mathbf v_d=(q\tau/m)\mathbf E$. Multiplying by carrier charge density yields
+
+$$\mathbf J=\frac{nq^2\tau}{m}\mathbf E=\sigma\mathbf E.$$
+
+This model assumes a fixed response regime; it is not a universal microscopic description of every conductor. For a uniform wire of length L and area A, V = EL and I = JA, hence
+
+$$R=\frac VI=\frac L{\sigma A}=\rho\frac LA.$$
+
+For two series resistors, the same steady current crosses each. Potential drops add: V = IR₁+IR₂, so R_eq = R₁+R₂. For parallel branches, endpoint voltage is shared and currents add:
+
+$$I=\frac V{R_1}+\frac V{R_2},\qquad \frac1{R_{eq}}=\frac1{R_1}+\frac1{R_2}.$$
+
+For positive finite R₁ and R₂, adding a parallel branch decreases equivalent resistance and increases total current from an ideal fixed-voltage source.
+
+Power follows from energy per charge times charge per time: P = VI. With an ohmic resistor, substitute V=IR to obtain P=I²R=V²/R. The formulas refer to different controlled quantities; doubling resistance at fixed current increases power, while doubling it at fixed voltage decreases power.
+
+An ideal voltmeter has infinite input resistance and is connected across a component. An ideal ammeter has zero resistance and is connected in series. Real instrument resistances alter the circuit, so loading must be included when precision matters.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="circuit_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
+
+At 6 V, resistors 100 Ω and 200 Ω in series give R_eq = 300 Ω and I = 0.020 A. The drops are 2 V and 4 V, summing to 6 V. In parallel, R_eq = 66.7 Ω, total I = 0.090 A, and branch currents are 0.060 A and 0.030 A. The total power is 0.54 W in the parallel case.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up, Core, and beyond" layer="problems" fullOnly>
+
+Solve the tagged Warm-up and Core questions below. Then change one assumption in the worked example, state the new model, and derive what changes. Keep units and a limiting-case check in your notebook.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain, then calculate" layer="check">
+
+Most checks ask why a conclusion holds. Numeric responses use the stated units and a 2% relative tolerance. An accurate number without a valid model is not the full explanation.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The next question" layer="connections">
+
+Astronomical detectors turn tiny signals into electrical measurements. What happens when an instrument’s input resistance is comparable to the source resistance?
+
+</LessonSection>
+
