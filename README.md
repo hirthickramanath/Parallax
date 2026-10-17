@@ -82,3 +82,5 @@ AI implementation briefs are in `docs/PARALLAX-AI-BUILD-PLAN.md`, `docs/EXCLUDED
 After signing in, open the dashboard → **Try the teaching lab**, or `/teaching-lab`. Predict first, then use the accessible controls and reveal the full derivation. Physics compares falling masses with/without linear drag; maths explores secant slopes and proves the derivative of x². These draft previews award no course credit or saved progress. `docs/EXPERIMENTAL-TEACHING.md` gives the authoring requirements, including full proofs, assumptions, counterexamples, and explicit model limits.
 
 Run `npm run test:experiments` on Node 22.18+ or Node 24 to check vacuum trajectories, the drag model and its vacuum limit, secant algebra, and invalid inputs. The physics and maths examples have also been exercised in Chromium with a mocked restored session; this does not replace real sign-in verification.
+
+The dependency overrides keep Firebase's Node-side `@grpc/grpc-js` dependency on a patched 1.x release. This addresses its high-severity audit findings without downgrading Firebase. The previously documented React Router v6 moderate findings remain.
