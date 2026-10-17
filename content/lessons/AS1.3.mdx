@@ -1,0 +1,199 @@
+---
+{
+  "id": "AS1.3",
+  "title": "Orbits and orbital elements",
+  "hook": "To catch a spacecraft ahead, should you speed up or slow down?",
+  "recap": [
+    "Inverse-square attraction and conserved angular momentum lead to conic orbits.",
+    "Specific energy selects bound, parabolic or hyperbolic motion.",
+    "A lower circular orbit has a shorter period; rendezvous requires a transfer plan."
+  ],
+  "questions": [
+    {
+      "id": "shape",
+      "prompt": "Which central-force feature is essential to the conic derivation?",
+      "options": [
+        "Inverse-square attraction",
+        "Constant downward gravity"
+      ],
+      "answer": "Inverse-square attraction",
+      "explanation": "The Binet equation has constant forcing for \u2212\u03bc/r\u00b2.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "mass",
+      "prompt": "Why is angular momentum conserved?",
+      "options": [
+        "The central force has zero torque",
+        "Speed is constant everywhere"
+      ],
+      "answer": "The central force has zero torque",
+      "explanation": "r \u00d7 F = 0 for a central force.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "escape",
+      "prompt": "At exactly zero specific energy, the ideal nondegenerate orbit is?",
+      "options": [
+        "Ellipse",
+        "Parabola",
+        "Hyperbola"
+      ],
+      "answer": "Parabola",
+      "explanation": "e = 1 when \u03b5 = 0 and h \u2260 0.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "speed",
+      "prompt": "Circular speed at \u03bc = 1 and r = 1?",
+      "options": null,
+      "answer": "1",
+      "explanation": "v_c = \u221a(\u03bc/r).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "normalized"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Escape speed at \u03bc = r = 1?",
+      "options": null,
+      "answer": "1.41421356",
+      "explanation": "v_esc = \u221a2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "normalized"
+    },
+    {
+      "id": "core",
+      "prompt": "Why does a lower circular orbit have a shorter period?",
+      "options": [
+        "T scales with a^(3/2)",
+        "All orbits have equal period"
+      ],
+      "answer": "T scales with a^(3/2)",
+      "explanation": "Kepler\u2019s third law gives T\u00b2 = 4\u03c0\u00b2a\u00b3/\u03bc.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why is specific angular momentum conserved in a central force?",
+      "back": "The force is parallel to the radius, giving zero torque.",
+      "concept": "orbital-angular-momentum"
+    },
+    {
+      "front": "What sets the conic type for a two-body orbit?",
+      "back": "Specific energy: negative for an ellipse, zero for a parabola, positive for a hyperbola (nondegenerate h \u2260 0).",
+      "concept": "orbital-energy"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics (edition and section review pending)",
+    "Carroll & Ostlie, An Introduction to Modern Astrophysics (edition and section review pending)"
+  ]
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="The chase that starts with braking" layer="puzzle">
+
+A spacecraft is ahead in the same circular orbit. Firing backward can place you on a lower transfer orbit that gains orbital phase. Does this mean “always brake to catch up”? Predict, then inspect the assumptions: phasing, collision avoidance and a later burn all matter.
+
+</LessonSection>
+
+<LessonSection id="story" title="From observed patterns to dynamics" layer="story">
+
+Kepler described regularities of planetary motion; Newtonian gravitation provides a dynamical account in an ideal two-body setting. We use the modern derivation rather than claiming to reproduce either scientist’s historical reasoning. Detailed historical references await verification.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Falling sideways" layer="intuition">
+
+A circular orbit balances continually changing velocity direction with inward acceleration. A brief tangential burn changes energy and angular momentum. The new trajectory is not generally a new circle at the same radius.
+
+</LessonSection>
+
+<LessonSection id="concept" title="What the elements describe" layer="concept">
+
+For an ideal two-body relative orbit let μ = G(M + m). Shape and size use eccentricity e and semimajor axis a; orientation uses inclination, longitude of ascending node and argument of periapsis; phase can be described by true anomaly or time of periapsis passage. Circular/equatorial cases make some angles undefined, so nonsingular alternatives are needed. The explorer is planar.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive the conic from a central force" layer="theory" fullOnly>
+
+<Symbol name="μ" definition="Gravitational parameter G(M + m), with SI units m³/s²." /> and <Symbol name="h" definition="Specific angular momentum, with SI units m²/s; conserved for a central force." /> are used below.
+
+Work in the orbital plane with specific angular momentum $h=r^2\dot\phi$. Central force gives zero torque, so h is constant. Assume h ≠ 0; radial collision orbits need separate treatment. Radial acceleration obeys
+
+$$\ddot r-r\dot\phi^2=-\frac\mu{r^2}.$$
+
+Set $u=1/r$. Since $\dot\phi=hu^2$, chain differentiation gives $\dot r=-hu'$ and $\ddot r=-h^2u^2u''$, where primes denote differentiation with respect to φ. Substitute into the radial equation and divide by $-h^2u^2$:
+
+$$u''+u=\frac\mu{h^2}.$$
+
+The constant particular solution plus the homogeneous sinusoid gives
+
+$$u=\frac\mu{h^2}[1+e\cos(\phi-\omega)],\qquad r=\frac p{1+e\cos\nu},\quad p=\frac{h^2}\mu.$$
+
+Here ν = φ − ω measures angle from periapsis and e ≥ 0 sets the shape. Specific energy is
+
+$$\epsilon=\frac12(\dot r^2+r^2\dot\phi^2)-\frac\mu r.$$
+
+Use $\dot r=(\mu e/h)\sin\nu$ and $r\dot\phi=(\mu/h)(1+e\cos\nu)$. Squaring and adding, then subtracting μ/r, cancels the cosine terms:
+
+$$\epsilon=\frac{\mu^2}{2h^2}(e^2-1),\qquad e^2=1+\frac{2\epsilon h^2}{\mu^2}.$$
+
+Thus ε < 0 gives an ellipse (e < 1), ε = 0 a parabola, and ε > 0 a hyperbola. For the circular special case e = 0. For nonparabolic orbits define $a=-\mu/(2\epsilon)$ and obtain the vis-viva equation
+
+$$v^2=\mu\left(\frac2r-\frac1a\right).$$
+
+For a bound ellipse, $h^2=\mu a(1-e^2)$ and its area is $\pi a^2\sqrt{1-e^2}$. Areal velocity is h/2, hence
+
+$$T=\frac{2\pi a^2\sqrt{1-e^2}}h=2\pi\sqrt{\frac{a^3}\mu}.$$
+
+This two-body result neglects drag, additional bodies, finite-size perturbations and relativistic corrections.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Launch an orbit" layer="interactive">
+
+<Widget name="orbit_explorer" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="Two speeds at the same radius" layer="worked" fullOnly>
+
+Set μ = 1 and r = 1 in normalized units. A circular launch needs v = 1, ε = −1/2, a = 1, e = 0. A tangential launch at √2 has ε = 0 and e = 1: the parabolic boundary. A faster launch has positive energy and is unbound. These are normalized examples, not spacecraft mission parameters.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Energy, shape and period" layer="problems" fullOnly>
+
+Answer Warm-up and Core below. Go further: derive the velocity change for a two-impulse Hohmann transfer from the vis-viva equation. State why phasing and transfer time matter for rendezvous.
+
+</LessonSection>
+
+<LessonSection id="check" title="Can you explain the orbit?" layer="check">
+
+At least half these checks concern assumptions or physical reasoning. Numeric answers use normalized units and a stated tolerance.
+
+</LessonSection>
+
+<LessonSection id="connections" title="The third body changes the question" layer="connections">
+
+The perfect conic is an ideal two-body result. Add a third gravitating body and a fixed ellipse generally stops being exact. AS1.4 asks what survives, and why special co-rotating points can exist.
+
+</LessonSection>
+

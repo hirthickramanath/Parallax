@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "parallax-tutor",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-17",
+  "vars": {
+    "SITE_ORIGIN": "https://parallax-science.pages.dev",
+    "FIREBASE_PROJECT_ID": "parallax-73",
+    "ENABLE_TUTOR": "false",
+    "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct",
+    "DAILY_LIMIT": "50"
+  },
+  "ai": {"binding": "AI"},
+  "durable_objects": {"bindings": [{"name": "COUNTERS", "class_name": "DailyCounter"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["DailyCounter"]}]
+}

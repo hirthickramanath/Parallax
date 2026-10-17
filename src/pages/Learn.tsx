@@ -1,3 +1,133 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../components/ui/button';
-export function Learn() { return <main id="main" className="placeholder"><p className="eyebrow">YOUR LEARNING JOURNEY</p><h1>A universe,<br/><em>one idea at a time.</em></h1><p>The course map is the next chapter of the build. It will connect astrophysics to the full mathematics and physics foundation, with chemistry and scientific computing where they support the journey.</p><div className="notice"><strong>Foundation preview</strong><p>You’re signed in. Lessons and the curriculum map are coming next; no lesson completion is being recorded yet.</p></div><Button variant="outline" asChild><Link to="/dashboard">Back to dashboard</Link></Button></main>; }
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { LockKeyhole, CheckCircle2, ArrowRight } from "lucide-react";
+import { course, phases, missingNeeds } from "../lib/course";
+import { useLearning } from "../hooks/useLearning";
+export function Learn() {
+  const store = useLearning();
+  const [phase, setPhase] = useState(0),
+    [search, setSearch] = useState("");
+  const units = course.units.filter(
+    (u) =>
+      (search ? true : u.phase === phase) &&
+      (!search ||
+        `${u.id} ${u.title} ${u.lessons.map((id) => course.lessons.find((l) => l.id === id)?.title).join(" ")}`
+          .toLowerCase()
+          .includes(search.toLowerCase())),
+  );
+  return (
+    <main id="main" className="workspace-page">
+      <p className="eyebrow">YOUR PATH TO THE UNIVERSE</p>
+      <h1>One idea builds the next.</h1>
+      <p className="page-description">
+        327 retained curriculum entries · 56 units · 4 playable drafts. Expanded
+        chemistry is still being mapped; the other entries are not authored
+        lessons.
+      </p>
+      <Link className="text-button" to="/placement">
+        Check your starting point — Bridge diagnostic →
+      </Link>
+      <input
+        className="search-input"
+        aria-label="Search curriculum"
+        placeholder="Search units, lessons, or IDs…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <div className="phase-tabs" role="group" aria-label="Course phases">
+        {phases.map((name, i) => (
+          <button
+            key={name}
+            aria-pressed={phase === i}
+            onClick={() => {
+              setPhase(i);
+              setSearch("");
+            }}
+          >
+            Phase {i}
+            <span>{name}</span>
+          </button>
+        ))}
+      </div>
+      <div className="unit-timeline">
+        {units.map((unit) => (
+          <section className="unit-chapter" key={unit.id}>
+            <div className="chapter-marker">{unit.phase}</div>
+            <details
+              open={!!search || unit.lessons.some((id) => course.authored[id])}
+            >
+              <summary>
+                <span className="pill">
+                  {unit.track} · {unit.id}
+                </span>
+                <h2>{unit.title}</h2>
+                <span>
+                  {unit.lessons.length} lessons
+                  {unit.needs.length ? " · Needs " + unit.needs.join(", ") : ""}
+                </span>
+              </summary>
+              {unit.phase === 0 && (
+                <Link
+                  className="skip-test-link"
+                  to={`/placement?unit=${unit.id}`}
+                >
+                  Take {unit.id} skip test →
+                </Link>
+              )}
+              <div className="lesson-cards">
+                {unit.lessons.map((id) => {
+                  const lesson = course.lessons.find((l) => l.id === id)!;
+                  const needs = missingNeeds(lesson, store.records);
+                  return (
+                    <article
+                      className={`course-lesson ${lesson.available ? "available" : ""}`}
+                      key={id}
+                    >
+                      <div>
+                        <span className="lesson-id">
+                          {id} · {lesson.level}
+                        </span>
+                        <h3>{lesson.title}</h3>
+                        <p>{lesson.hook}</p>
+                        <span className="lesson-status">
+                          {store.records.lessons[id]?.status === "done" ? (
+                            <>
+                              <CheckCircle2 size={14} /> Completed
+                            </>
+                          ) : lesson.available ? (
+                            "Playable draft"
+                          ) : (
+                            "Content in preparation"
+                          )}
+                        </span>
+                        {needs.length > 0 && (
+                          <small className="needs-label">
+                            <LockKeyhole size={12} /> Recommended first:{" "}
+                            {needs.join(", ")}
+                          </small>
+                        )}
+                      </div>
+                      {lesson.available ? (
+                        <Link
+                          className="lesson-start"
+                          to={`/lesson/${id}`}
+                          aria-label={`Open ${id}`}
+                        >
+                          {store.records.lessons[id] ? "Resume" : "Explore"}
+                          <ArrowRight size={17} />
+                        </Link>
+                      ) : (
+                        <span className="pill">Draft stub</span>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            </details>
+          </section>
+        ))}
+      </div>
+      {!units.length && <p>No matching curriculum entries.</p>}
+    </main>
+  );
+}

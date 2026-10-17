@@ -1,19 +1,209 @@
-import { ArrowRight, Orbit, BookOpen, FlaskConical, Sigma } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import { Button } from '../components/ui/button';
+import { Link } from "react-router-dom";
+import {
+  Flame,
+  ArrowRight,
+  Telescope,
+  FlaskConical,
+  BookOpen,
+  Target,
+} from "lucide-react";
+import { useAuth } from "../hooks/useAuth";
+import { useClock, useLearning } from "../hooks/useLearning";
+import { dateKey, streakStats } from "../lib/learning-core";
+import { course, nextLesson, missingNeeds } from "../lib/course";
+import { QuestionCard } from "../components/learning/QuestionCard";
+import { Button } from "../components/ui/button";
 export function Dashboard() {
-  const { user } = useAuth();
-  const name = user?.displayName?.trim().split(/\s+/)[0];
-  return <main id="main" className="dashboard">
-    <section className="dashboard-heading"><p className="eyebrow">YOUR OBSERVATORY</p><h1>{name ? `Welcome back, ${name}.` : 'Welcome to your observatory.'}</h1><p>A universe to understand. A foundation to build it on.</p></section>
-    <section className="dashboard-continue" aria-labelledby="continue-heading"><div><p className="eyebrow">CONTINUE LEARNING</p><h2 id="continue-heading">Your first chapter<br/>is ahead.</h2><p>The lesson library is being prepared. Once you begin, this is where you’ll find your last lesson, a short recap, and the next step.</p><Button asChild><Link to="/learn">View course preview <ArrowRight size={17}/></Link></Button></div><div className="recap-empty"><BookOpen size={25} aria-hidden="true"/><h3>A moment to reconnect.</h3><p>No previous lesson yet. Your recap will use the lesson’s stored key ideas, so you can pick up the thread before moving on.</p><span className="availability-label">Available when lessons launch</span></div></section>
-    <section className="dashboard-focus" aria-labelledby="focus-heading"><p className="eyebrow">ONE CONNECTED JOURNEY</p><h2 id="focus-heading">Astrophysics at the centre.</h2><p className="focus-intro">A fixed course built around understanding the universe—without choosing or dropping the foundations it needs.</p><div className="focus-grid">{[
-      { Icon: Orbit, title: 'Astrophysics', description: 'From orbital motion and starlight to galaxies, cosmology, and research.' },
-      { Icon: Sigma, title: 'Mathematics & physics', description: 'The full foundation: rigorous proofs, derivations, and the laws behind the observations.' },
-      { Icon: FlaskConical, title: 'Chemistry & scientific tools', description: 'Physical chemistry, chemical bonding, selected inorganic and organic chemistry, and the computing needed to investigate.' },
-    ].map(({ Icon, title, description }) => <article key={title}><Icon size={24} aria-hidden="true"/><h3>{title}</h3><p>{description}</p></article>)}</div></section>
-    <section className="dashboard-note"><p className="eyebrow">EXPERIMENTAL TEACHING / FULL THEORY</p><h2>Predict. Explore. Prove.</h2><p>Try falling bodies in physics and slopes in maths. Change the model, challenge your intuition, then work through the complete derivation.</p><Button variant="outline" asChild><Link to="/teaching-lab">Try the teaching lab <ArrowRight size={17}/></Link></Button></section>
-    <aside className="dashboard-note"><strong>Build status</strong><p>Sign-in is live. The curriculum map, lesson player, progress synchronization, and recap/resume are next. This dashboard does not record lesson completion or invent study history.</p></aside>
-  </main>;
+  const { user } = useAuth(),
+    store = useLearning();
+  const now = useClock(),
+    today = dateKey(now, store.preferences.timezone),
+    stats = streakStats(store.records.days, today),
+    xp = store.records.days[today]?.xp || 0;
+  const last = Object.entries(store.records.lessons)
+    .filter(([id, p]) => course.authored[id] && p.status !== "not_started")
+    .sort((a, b) => b[1].updatedAt - a[1].updatedAt)[0];
+  const resuming = last?.[1].status === "in_progress";
+  const lesson = resuming
+    ? course.authored[last[0]]
+    : nextLesson(store.records);
+  const recap = last ? course.authored[last[0]].recap : [];
+  const done = Object.values(store.records.lessons).filter(
+    (p) => p.status === "done",
+  ).length;
+  const dayIndex = Math.floor(Date.parse(today) / 86400000);
+  const puzzleSource = last
+    ? course.authored[last[0]]
+    : course.authored["PB1.1"];
+  const puzzlePool = puzzleSource.questions.filter(
+    (q) => !q.tier && q.conceptual === (dayIndex % 2 === 0),
+  );
+  const dailyQuestion =
+    puzzlePool[dayIndex % puzzlePool.length] || puzzleSource.questions[0];
+  const due = Object.values(store.records.reviewCards).filter(
+    (c) => new Date(c.fsrs.due).getTime() <= now,
+  ).length;
+  return (
+    <main id="main" className="workspace-page">
+      <div className="page-heading">
+        <div>
+          <p className="eyebrow">A LITTLE CURIOSITY, EVERY DAY</p>
+          <h1>
+            {user?.displayName
+              ? `Ready, ${user.displayName.split(" ")[0]}?`
+              : "Your universe awaits."}
+          </h1>
+          <p className="page-description">
+            Build the intuition. Keep the theory. Follow the evidence.
+          </p>
+        </div>
+        <span className="daily-date">
+          {new Intl.DateTimeFormat(undefined, {
+            weekday: "long",
+            month: "short",
+            day: "numeric",
+            timeZone: store.preferences.timezone,
+          }).format(now)}
+        </span>
+      </div>
+      <div className="dashboard-grid">
+        <section className="continue-card">
+          <div className="continue-copy">
+            <span className="pill">
+              {last ? "CONTINUE YOUR JOURNEY" : "START EXPLORING"} ·{" "}
+              {lesson?.id || "COURSE"}
+            </span>
+            <h2>{lesson?.title || "Every question opens a door."}</h2>
+            <p>{lesson?.hook || "Your next lesson is waiting."}</p>
+            {last && (
+              <details className="recap-card" open>
+                <summary>
+                  Your 30-second recap{last ? ` · ${last[0]}` : ""}
+                </summary>
+                <ul>
+                  {recap.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+                <p>
+                  Before you continue: can you explain one of these ideas
+                  without looking?
+                </p>
+              </details>
+            )}
+            {lesson && missingNeeds(lesson, store.records).length > 0 && (
+              <small>Soft-lock preview · prerequisites recommended.</small>
+            )}
+            <Button asChild>
+              <Link to={lesson ? `/lesson/${lesson.id}` : "/learn"}>
+                {resuming ? "Recap & resume" : "Start this lesson"}
+                <ArrowRight size={18} />
+              </Link>
+            </Button>
+          </div>
+          <div className="planet-emblem" aria-hidden="true">
+            <Telescope size={70} />
+            <span>LOOK CLOSER</span>
+          </div>
+        </section>
+        <section className="goal-card">
+          <div className="goal-heading">
+            <Flame />
+            <span>Keep your spark</span>
+          </div>
+          <strong className="streak-number">
+            {stats.current}
+            <span> day streak</span>
+          </strong>
+          <label htmlFor="daily-progress">
+            Daily goal{" "}
+            <span>
+              {xp}/{store.preferences.dailyGoal} XP
+            </span>
+          </label>
+          <progress
+            id="daily-progress"
+            max={store.preferences.dailyGoal}
+            value={Math.min(xp, store.preferences.dailyGoal)}
+          />
+          <p>
+            {xp >= store.preferences.dailyGoal
+              ? "Goal reached. A little progress goes a long way."
+              : "A day counts when you reach your goal. Every meaningful step helps."}
+          </p>
+          <Link to="/stats">Your activity →</Link>
+        </section>
+      </div>
+      <section className="stat-strip">
+        <div>
+          <Target />
+          <strong>{done}</strong>
+          <span>Lessons completed</span>
+        </div>
+        <div>
+          <Flame />
+          <strong>{stats.totalXp}</strong>
+          <span>Total XP</span>
+        </div>
+        <div>
+          <BookOpen />
+          <strong>{due}</strong>
+          <span>Cards due</span>
+        </div>
+      </section>
+      <div className="feature-tiles">
+        <Link to="/labs">
+          <span className="tile-icon">
+            <FlaskConical />
+          </span>
+          <span className="pill">HANDS-ON THINKING</span>
+          <h2>Your virtual lab bench</h2>
+          <p>
+            Set up a pendulum. Record synthetic measurements. Test the
+            assumptions behind the equation.
+          </p>
+          <strong>
+            Open the lab <ArrowRight size={16} />
+          </strong>
+        </Link>
+        <Link to="/learn">
+          <span className="tile-icon violet">
+            <Telescope />
+          </span>
+          <span className="pill">THE BIGGER PICTURE</span>
+          <h2>A path to astrophysics</h2>
+          <p>
+            Full maths and physics, connected to the chemistry and tools needed
+            to understand the universe.
+          </p>
+          <strong>
+            Explore the course <ArrowRight size={16} />
+          </strong>
+        </Link>
+      </div>
+      <section className="daily-puzzle">
+        <span className="pill">
+          PROBLEM OF THE DAY ·{" "}
+          {dailyQuestion.conceptual ? "CONCEPTUAL WHY" : "SHORT PROBLEM"}
+        </span>
+        <h2>A small question. A useful habit.</h2>
+        <p>
+          From {puzzleSource.title}. Conceptual and numeric days alternate; a
+          correct answer earns today’s one-time 5 XP.
+        </p>
+        <QuestionCard
+          key={today}
+          lessonId="daily"
+          question={{
+            ...dailyQuestion,
+            id: `${today}-${dailyQuestion.id}`,
+            tier: "daily",
+          }}
+          onResult={(_, correct) => {
+            if (correct) store.award(`potd:${today}`, 5, puzzleSource.track);
+          }}
+        />
+      </section>
+    </main>
+  );
 }

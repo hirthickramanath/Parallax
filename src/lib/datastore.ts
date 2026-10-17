@@ -1,13 +1,56 @@
-import { doc, getDoc, setDoc, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
-import { app } from './firebase';
-const db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) });
-import type { LessonProgress } from '../types/progress';
+import {
+  doc,
+  collection,
+  getDocs,
+  runTransaction,
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+} from "firebase/firestore";
+import { app } from "./firebase";
+import { collections, emptyRecords, mergeDocument } from "./learning-core";
+import type { Collection, Records } from "../types/learning";
+const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({
+    tabManager: persistentMultipleTabManager(),
+  }),
+});
 export interface DataStore {
-  getLesson(uid: string, lessonId: string): Promise<LessonProgress | null>;
-  saveLesson(uid: string, lessonId: string, progress: LessonProgress): Promise<void>;
+  load(uid: string): Promise<Records>;
+  save(
+    uid: string,
+    kind: Collection,
+    id: string,
+    value: object,
+    goal: number,
+  ): Promise<object>;
 }
-// Components depend on this interface so the remote backend can be replaced later.
 export const dataStore: DataStore = {
-  async getLesson(uid, lessonId) { const snapshot = await getDoc(doc(db, 'users', uid, 'lessons', lessonId)); return snapshot.exists() ? snapshot.data() as LessonProgress : null; },
-  async saveLesson(uid, lessonId, progress) { await setDoc(doc(db, 'users', uid, 'lessons', lessonId), progress); },
+  async load(uid) {
+    const records = emptyRecords();
+    await Promise.all(
+      collections.map(async (kind) => {
+        const result = await getDocs(collection(db, "users", uid, kind));
+        for (const document of result.docs)
+          (records[kind] as Record<string, unknown>)[document.id] =
+            document.data();
+      }),
+    );
+    return records;
+  },
+  async save(uid, kind, id, value, goal) {
+    const ref = doc(db, "users", uid, kind, id);
+    return runTransaction(db, async (tx) => {
+      const snap = await tx.get(ref);
+      let next: object = JSON.parse(JSON.stringify(value));
+      next = mergeDocument(
+        kind,
+        snap.exists() ? snap.data() : undefined,
+        next,
+        goal,
+      );
+      tx.set(ref, next);
+      return next;
+    });
+  },
 };

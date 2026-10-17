@@ -1,0 +1,173 @@
+---
+{
+  "id": "MB3.2",
+  "title": "Differentiation",
+  "hook": "When does an average rate become an instantaneous rate?",
+  "recap": [
+    "A derivative is a two-sided limit of difference quotients.",
+    "For x\u00b2 the secant slope is exactly 2a + h.",
+    "A plotted pattern is a conjecture; the quantified argument proves it."
+  ],
+  "questions": [
+    {
+      "id": "zero",
+      "prompt": "Why not substitute h = 0 into the difference quotient?",
+      "options": [
+        "It divides by zero",
+        "It changes a to zero"
+      ],
+      "answer": "It divides by zero",
+      "explanation": "The derivative is a limit through nonzero h.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "proof",
+      "prompt": "Does a very detailed plot prove a derivative exists?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Finite samples cannot establish the quantified limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "abs",
+      "prompt": "Is |x| differentiable at zero?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Left and right quotients approach different values.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "value",
+      "prompt": "Derivative of x\u00b2 at x = 3?",
+      "options": null,
+      "answer": "6",
+      "explanation": "The derivative is 2x.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "dimensionless"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Secant slope for a = 1 and h = 0.1?",
+      "options": null,
+      "answer": "2.1",
+      "explanation": "2a + h = 2.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "dimensionless"
+    },
+    {
+      "id": "core",
+      "prompt": "To make the slope error less than \u03b5, which \u03b4 suffices?",
+      "options": [
+        "\u03b4 = \u03b5",
+        "\u03b4 = 0"
+      ],
+      "answer": "\u03b4 = \u03b5",
+      "explanation": "The error is |h|, so 0 < |h| < \u03b5 guarantees the desired bound.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why does h \u2260 0 matter in a derivative proof?",
+      "back": "The difference quotient divides by h; the limit approaches zero through nonzero values.",
+      "concept": "derivative-limit"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics (edition and section review pending)",
+    "Spivak, Calculus (edition and section review pending)"
+  ]
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+You should be comfortable with units, algebra, and the meaning of a rate of change. Prerequisite links appear above; this draft allows a soft-lock override.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="A slope that keeps changing" layer="puzzle">
+
+A secant between two points gives an average rate. If the points are extremely close, is that rate exactly the derivative?
+
+</LessonSection>
+
+<LessonSection id="story" title="From motion to local change" layer="story">
+
+The need to describe instantaneous motion motivated methods of calculus. The rigorous language of limits makes the claim precise without relying on an indivisible time interval. Detailed historical attribution remains under review.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Zoom, but do not confuse the picture with proof" layer="intuition">
+
+A differentiable graph is locally approximated by a straight line. Zooming suggests this structure; proving it requires controlling the error for every sufficiently small displacement.
+
+</LessonSection>
+
+<LessonSection id="concept" title="The derivative and its domain" layer="concept">
+
+For a real-valued function defined near a, the derivative is $\lim_{h\to0}[f(a+h)-f(a)]/h$, if this finite two-sided limit exists. Nonzero h is required in the quotient. Continuity alone does not guarantee differentiability.
+
+</LessonSection>
+
+<LessonSection id="theory" title="A complete proof for a square" layer="theory" fullOnly>
+
+For $f(x)=x^2$ and $h\ne0$,
+
+$$\frac{f(a+h)-f(a)}h=\frac{a^2+2ah+h^2-a^2}h=2a+h.$$
+
+Each equality is exact. The difference between this quotient and the proposed limit is $|h|$. Given any $\varepsilon>0$, choose $\delta=\varepsilon$. Then
+
+$$0<|h|<\delta\quad\Longrightarrow\quad\left|\frac{f(a+h)-f(a)}h-2a\right|=|h|<\varepsilon.$$
+
+This is precisely the definition of a two-sided limit; it holds for every real a. Thus $f'(a)=2a$.
+
+For comparison, at zero the quotient for $|x|$ equals $|h|/h$, which is 1 on the positive side and −1 on the negative side. The two-sided limit fails, although the function is continuous. A finite set of positive-h samples would miss that obstruction.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Construct a secant" layer="interactive">
+
+<Widget name="secant_explorer" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="Position and velocity" layer="worked" fullOnly>
+
+If $s(t)=ct^2$ with c in m/s², then $s\prime(t)=2ct$ in m/s. At c = 2 m/s² and t = 3 s, velocity is 12 m/s. This parameter c is half the constant acceleration.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Build and test the argument" layer="problems" fullOnly>
+
+Complete Warm-up and Core below. Go further: use the difference quotient directly to prove the derivative of x³, showing why every remaining h-term tends to zero.
+
+</LessonSection>
+
+<LessonSection id="check" title="What did the experiment establish?" layer="check">
+
+Distinguish the observed trend from the proof that controls all sufficiently small positive and negative h.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From a tangent to dynamics" layer="connections">
+
+Instantaneous velocity is the derivative of position. Acceleration is the derivative of velocity. Those definitions turn Newton’s force law into a differential equation.
+
+</LessonSection>
+

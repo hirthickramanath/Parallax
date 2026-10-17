@@ -1,0 +1,42 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { PendulumLab } from "../components/widgets/PendulumLab";
+import { OrbitExplorer } from "../components/widgets/OrbitExplorer";
+export function Labs() {
+  const [lab, setLab] = useState("pendulum");
+  return (
+    <main id="main" className="workspace-page">
+      <p className="eyebrow">APPARATUS → OBSERVATION → THEORY</p>
+      <h1>Your virtual lab bench.</h1>
+      <p className="page-description">
+        See how an experiment works. Control the apparatus, collect explicitly
+        synthetic readings, then investigate the theory and its limitations.
+      </p>
+      <div className="lab-subjects">
+        <button
+          aria-pressed={lab === "pendulum"}
+          onClick={() => setLab("pendulum")}
+        >
+          Pendulum & gravity
+        </button>
+        <button aria-pressed={lab === "orbit"} onClick={() => setLab("orbit")}>
+          Orbit explorer
+        </button>
+      </div>
+      {lab === "pendulum" ? <PendulumLab /> : <OrbitExplorer />}
+      <div className="info-box">
+        <h2>Take it into a lesson</h2>
+        <p>
+          Study the complete derivation, record your reasoning, and answer
+          checks.
+        </p>
+        <Link to={`/lesson/${lab === "pendulum" ? "PB1.4" : "AS1.3"}`}>
+          Open the connected lesson →
+        </Link>
+      </div>
+      <Link to="/teaching-lab" className="text-button">
+        Earlier intuition experiments →
+      </Link>
+    </main>
+  );
+}
