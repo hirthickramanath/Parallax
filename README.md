@@ -4,7 +4,7 @@ A science course website built around puzzles, discovery stories, and rigorous t
 
 ## Current stage
 
-The foundation includes React 18, strict TypeScript, React Router v6, Tailwind, a shadcn-style Button, light/dark/system themes, an original orbit illustration, a landing page, a course placeholder, and a not-found page. Authentication, lesson content, the curriculum map, saved progress, and the tutor are not implemented yet. No AI key is needed for this stage.
+The foundation includes React 18, strict TypeScript, React Router v6, Tailwind, a shadcn-style Button, light/dark/system themes, an original orbit illustration, a landing page, a course placeholder, and a not-found page. Google and email-link authentication are implemented. Lesson content, the curriculum map, saved lesson progress, and the tutor are not implemented yet. No AI key is needed for this stage.
 
 ## Run the website
 
@@ -52,3 +52,19 @@ We are using free plans. Do not enable billing or enter card details. Current pr
 ## Dependency audit
 
 The initial audit reports two moderate findings associated with the requested React Router v6. Its suggested fix upgrades to v7, so this foundation retains v6 pending a stack decision. The application uses fixed internal links and no server-side rendering; avoid adding untrusted navigation targets. Tailwind uses v4 and its supported PostCSS integration to avoid older build-dependency advisories.
+
+## Authentication stage
+
+Google and email-link authentication are implemented. `/learn` requires a session; the landing page and `/login` are public. The public Firebase project identifiers supplied for Parallax are defaults, so the deployed app works without additional build settings. `VITE_FIREBASE_*` variables can override them. Analytics is not enabled.
+
+Before testing on the deployed website:
+
+1. Open https://console.firebase.google.com/project/parallax-73/authentication/providers and enable Google and Email/Password → Email link.
+2. Open Authentication → Settings → Authorized domains and add `parallax-science.pages.dev`. Add `localhost` separately only if testing locally. Preview deployment domains need separate authorization; use the production website for the first sign-in test.
+3. Open https://console.firebase.google.com/project/parallax-73/firestore → Rules. Replace the rules editor contents with `firestore.rules` from this repository and click **Publish**. These rules allow a signed-in user to access only their own `/users/{uid}/...` documents and deny everything else. They are not published by a Pages deployment.
+4. After merging and deploying, open `/learn` while signed out: it should redirect to `/login`. Try Google sign-in, confirm the header shows your name, reload, then sign out.
+5. Try an email link. Check spam if it does not arrive. Open it in the same browser to finish automatically, or enter the same email address when opening it elsewhere. Used or expired links require a new request. Spark has limited sign-in email quotas; use Google if the allowance is exhausted.
+
+The Firestore client enables persistent offline caching across tabs. This can retain user data on the device; prefer a personal device. A typed `DataStore` adapter for the specified lesson documents is present, but lesson progress UI and its local-first sync layer are not implemented yet. Profile document paths remain unresolved and no alternative schema has been silently introduced.
+
+Production Google/email sign-in and deployed Firestore permissions need real-account verification after deployment; local browser checks alone do not establish these work.
