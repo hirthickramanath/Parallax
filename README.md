@@ -76,3 +76,11 @@ Signed-in visitors to `/` now go to `/dashboard` after session restoration. Norm
 The dashboard currently shows an honest no-lesson-history state. Real recaps, recommendations, resume links, and progress synchronization wait for stored lesson content and the lesson player. There is no fabricated study activity. The landing page now emphasizes astrophysics, full maths/physics, supporting chemistry, and scientific computing. Revised curriculum totals are not yet finalized.
 
 AI implementation briefs are in `docs/PARALLAX-AI-BUILD-PLAN.md`, `docs/EXCLUDED-SUBJECTS-AI-BUILD-PLAN.md`, and `docs/ENGINEERING-TECH-AI-BUILD-PLAN.md`. The companion sites are plans only; no extra subjects, databases, or sites have been created.
+
+## Experimental teaching preview
+
+After signing in, open the dashboard → **Try the teaching lab**, or `/teaching-lab`. Predict first, then use the accessible controls and reveal the full derivation. Physics compares falling masses with/without linear drag; maths explores secant slopes and proves the derivative of x². These draft previews award no course credit or saved progress. `docs/EXPERIMENTAL-TEACHING.md` gives the authoring requirements, including full proofs, assumptions, counterexamples, and explicit model limits.
+
+Run `npm run test:experiments` on Node 22.18+ or Node 24 to check vacuum trajectories, the drag model and its vacuum limit, secant algebra, and invalid inputs. The physics and maths examples have also been exercised in Chromium with a mocked restored session; this does not replace real sign-in verification.
+
+The dependency overrides keep Firebase's Node-side `@grpc/grpc-js` dependency on a patched 1.x release. This addresses its high-severity audit findings without downgrading Firebase. The previously documented React Router v6 moderate findings remain.

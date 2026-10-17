@@ -13,6 +13,7 @@ export function Dashboard() {
       { Icon: Sigma, title: 'Mathematics & physics', description: 'The full foundation: rigorous proofs, derivations, and the laws behind the observations.' },
       { Icon: FlaskConical, title: 'Chemistry & scientific tools', description: 'Physical chemistry, chemical bonding, selected inorganic and organic chemistry, and the computing needed to investigate.' },
     ].map(({ Icon, title, description }) => <article key={title}><Icon size={24} aria-hidden="true"/><h3>{title}</h3><p>{description}</p></article>)}</div></section>
+    <section className="dashboard-note"><p className="eyebrow">EXPERIMENTAL TEACHING / FULL THEORY</p><h2>Predict. Explore. Prove.</h2><p>Try falling bodies in physics and slopes in maths. Change the model, challenge your intuition, then work through the complete derivation.</p><Button variant="outline" asChild><Link to="/teaching-lab">Try the teaching lab <ArrowRight size={17}/></Link></Button></section>
     <aside className="dashboard-note"><strong>Build status</strong><p>Sign-in is live. The curriculum map, lesson player, progress synchronization, and recap/resume are next. This dashboard does not record lesson completion or invent study history.</p></aside>
   </main>;
 }
