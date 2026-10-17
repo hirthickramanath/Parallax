@@ -68,3 +68,11 @@ Before testing on the deployed website:
 The Firestore client enables persistent offline caching across tabs. This can retain user data on the device; prefer a personal device. A typed `DataStore` adapter for the specified lesson documents is present, but lesson progress UI and its local-first sync layer are not implemented yet. Profile document paths remain unresolved and no alternative schema has been silently introduced.
 
 Production Google/email sign-in and deployed Firestore permissions need real-account verification after deployment; local browser checks alone do not establish these work.
+
+## Dashboard and revised course direction
+
+Signed-in visitors to `/` now go to `/dashboard` after session restoration. Normal sign-in opens the dashboard; deliberate `/learn` deep links retain their destination. Signed-out visitors see the landing page and protected routes lead to login. There is no subject selector.
+
+The dashboard currently shows an honest no-lesson-history state. Real recaps, recommendations, resume links, and progress synchronization wait for stored lesson content and the lesson player. There is no fabricated study activity. The landing page now emphasizes astrophysics, full maths/physics, supporting chemistry, and scientific computing. Revised curriculum totals are not yet finalized.
+
+AI implementation briefs are in `docs/PARALLAX-AI-BUILD-PLAN.md`, `docs/EXCLUDED-SUBJECTS-AI-BUILD-PLAN.md`, and `docs/ENGINEERING-TECH-AI-BUILD-PLAN.md`. The companion sites are plans only; no extra subjects, databases, or sites have been created.

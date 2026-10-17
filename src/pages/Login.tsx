@@ -13,7 +13,7 @@ export function Login() {
   const attemptedLink = useRef(false);
   const from: unknown = (location.state as { from?: unknown } | null)?.from;
   // Only accept known internal destinations; never navigate to a user-provided URL.
-  const destination = from === '/learn' ? from : '/learn';
+  const destination = from === '/learn' ? from : '/dashboard';
   async function finishLink(address: string) {
     setBusy(true); setError('');
     try { await signInWithEmailLink(auth, address, window.location.href); try { localStorage.removeItem(EMAIL_KEY); } catch { /* Email confirmation also works without local storage. */ } window.history.replaceState(null, '', '/login'); setEmailLink(false); }
