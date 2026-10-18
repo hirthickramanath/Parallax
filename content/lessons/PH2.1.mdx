@@ -1,0 +1,188 @@
+---
+{
+  "id": "PH2.1",
+  "title": "Lagrangian mechanics",
+  "hook": "Why can changing coordinates simplify motion without changing the physics?",
+  "recap": [
+    "T−V under the stated assumptions.",
+    "The derivative of L with respect to its generalized velocity.",
+    "They express the constraints and symmetries more directly.",
+    "They can change momenta and boundary terms without changing the interior motion."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does stationary action always mean a global action minimum?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Stationary paths can be saddles.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is every generalized momentum simply m times that coordinate speed?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It depends on the kinetic expression and coordinate units.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can every dissipative force be represented by the same quadratic Rayleigh function?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "That construction models a specific class of forces.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Small-angle pendulum angular frequency squared for g=10 and ℓ=2?",
+      "answer": "5",
+      "explanation": "ω²=g/ℓ.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Polar angular momentum for m=2, r=3 and θ̇=4?",
+      "answer": "72",
+      "explanation": "mr²θ̇=2×9×4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What should a coordinate change preserve?",
+      "answer": "The physical admissible configurations and equations under consistent transformation",
+      "options": [
+        "The physical admissible configurations and equations under consistent transformation",
+        "Every individual numerical momentum component"
+      ],
+      "explanation": "Coordinate components can change while the physical predictions remain consistent.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the conservative mechanical Lagrangian?",
+      "back": "T−V under the stated assumptions.",
+      "concept": "ph2-1-theory"
+    },
+    {
+      "front": "What is a generalized momentum?",
+      "back": "The derivative of L with respect to its generalized velocity.",
+      "concept": "ph2-1-theory"
+    },
+    {
+      "front": "Why use adapted coordinates?",
+      "back": "They express the constraints and symmetries more directly.",
+      "concept": "ph2-1-theory"
+    },
+    {
+      "front": "Why retain total-derivative effects in canonical quantities?",
+      "back": "They can change momenta and boundary terms without changing the interior motion.",
+      "concept": "ph2-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can changing coordinates simplify motion without changing the physics? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Lagrangian mechanics organizes constrained dynamics through energy and virtual variations. Its power comes from choosing coordinates adapted to the problem, while still accounting for the actual constraint and force assumptions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Instead of resolving every Cartesian force component, describe the allowed configurations and ask which path makes the action stationary.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a regular conservative mechanical system, L=T−V in generalized coordinates and stationary fixed-endpoint action gives the Euler–Lagrange equations. Velocity-dependent potentials or nonconservative forces require appropriate extensions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For coordinates qi, the action is S=∫L(q,q̇,t)dt. Endpoint-zero variations give $d(\partial L/\partial\dot q_i)/dt-\partial L/\partial q_i=0$. This is stationarity, not a universal minimum principle. The chosen coordinates must describe the admitted configurations without imposing false independence at a coordinate singularity.
+
+For a particle in a central plane potential, T=m(ṙ²+r²θ̇²)/2 and L=T−V(r). The angular equation gives d(mr²θ̇)/dt=0. The radial equation gives mr̈=mrθ̇²−V′(r). The outward-looking angular term arises from coordinate geometry and angular motion, not a new central repulsive interaction.
+
+Canonical momenta are $p_i=\partial L/\partial\dot q_i$. They need not equal Cartesian mass times coordinate speed. In the polar example pθ=mr²θ̇ is angular momentum, while pr=mṙ is radial momentum. Dimensions follow the coordinate definition.
+
+Generalized nonconservative forces can be included as d(Lq̇)/dt−Lq=Qi under the appropriate virtual-work formulation. A Rayleigh dissipation function quadratic in velocities models certain linear drag forces through Qi=−∂R/∂q̇i; it is not a universal recipe for every dissipative process.
+
+Adding dF(q,t)/dt to L leaves the fixed-endpoint interior equations unchanged but shifts canonical momenta by ∂F/∂q. Derive observables from the complete formulation rather than identifying one gauge-dependent canonical expression with a measured mechanical quantity in every setting.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Derive the pendulum equation in both angle and Cartesian-with-constraint descriptions, then compare with the existing pendulum bench. Keep small-angle approximation and coordinate range explicit. Check that the predicted frequency has inverse-time units.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a small-angle pendulum with mass m and length ℓ, L≈mℓ²θ̇²/2−mgℓθ²/2 up to a constant. Euler–Lagrange gives θ̈+(g/ℓ)θ=0. For g=10 and ℓ=2, angular frequency squared is 5; mass cancels under the ideal assumptions.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

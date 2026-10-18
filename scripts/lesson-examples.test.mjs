@@ -226,3 +226,37 @@ test("electrostatic, magnetic and organic examples match their stated formulas a
   check("CH6.8", "numeric", 6 / 2);
   check("CH6.8", "warmup", 1 / 2);
 });
+test("physical chemistry and analytical mechanics numerical examples follow their assumptions", () => {
+  const chemistry = [
+    [Math.log(2), 4],
+    [0.25 * 80 + 0.75 * 20, 4 / 7],
+    [(0.1 * 2) / 10, Math.log(2) / 0.2],
+    [0.1, 0.5],
+    [0.25, 0.5],
+    [3 / 4, 0.5],
+    [0.2 * 1.5, 0.8 * 5],
+    [5 * 0.2, 2 * 5 * 0.2],
+    [1 - 0.025 * 2, 0.95],
+    [(3 * 4) / 2, 6 / 2],
+    [2 * 2 * 3, -2 * -4],
+    [2 - 0.5, 0.5],
+    [1 / (3 + 1), 3 / (3 + 1)],
+  ];
+  const mechanics = [
+    [10 / 2, 2 * 3 ** 2 * 4],
+    [2 * 3, 2],
+    [2 * 3 ** 2 * 4, 72 / (2 * 6 ** 2)],
+    [4 ** 2 / (2 * 2) + 3 ** 2 / 2, 4 / 2],
+    [2 / 2, 2 * 2],
+    [6 / 3, 3],
+    [(1 + 2 * 1) / 1, 0.5 * (0.2 ** 2 + 0.2 ** 2)],
+  ];
+  for (const [unit, values] of [
+    ["CH1", chemistry],
+    ["PH2", mechanics],
+  ])
+    values.forEach(([numeric, warmup], i) => {
+      check(`${unit}.${i + 1}`, "numeric", numeric);
+      check(`${unit}.${i + 1}`, "warmup", warmup);
+    });
+});

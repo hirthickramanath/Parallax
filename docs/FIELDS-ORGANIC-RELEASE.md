@@ -1,6 +1,6 @@
 # Electromagnetism and organic-foundation batches
 
-This is the current authoring release. `COURSE-STATUS.md` is generated from the actual curriculum and MDX files; older release documents preserve historical counts.
+This is a historical authoring release. See [the current release](PHYSICAL-CHEMISTRY-MECHANICS-RELEASE.md). `COURSE-STATUS.md` is generated from the actual curriculum and MDX files; older release documents preserve historical counts.
 
 ## Added lessons
 

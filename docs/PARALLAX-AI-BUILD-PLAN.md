@@ -143,3 +143,8 @@ Five further units (MA4, PH11, AS2, MA8 and MA9) add 27 drafts. Current totals: 
 ## Fields and organic-foundation implementation update
 
 PH4 and CH6 now have sixteen original lesson drafts, bringing current totals to 122 authored drafts, 493 recall cards and 232 missing lesson bodies. No independent verification is implied. The eighth lab bench compares uniform solid-sphere and conducting-shell electrostatics, including the ideal charged-sheet discontinuity. Current status and model limits are in `FIELDS-ORGANIC-RELEASE.md`; the generated `COURSE-STATUS.md` preserves the exact missing IDs.
+
+
+## Physical chemistry and analytical mechanics milestone
+
+Authored CH1.1–CH1.13 and PH2.1–PH2.7 as drafts, bringing coverage to 142/354 lessons and 573 retrieval cards. Added a coupled-oscillator apparatus with normal-mode releases and an energy balance. See [release details](PHYSICAL-CHEMISTRY-MECHANICS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 212 lesson bodies and independent source/scientific review remain. Live tutor eligibility/provider setup and live rules verification remain external prerequisites.

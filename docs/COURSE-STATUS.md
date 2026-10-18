@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **122**.
-- Authored recall cards: **493**.
-- Missing lesson bodies: **232**.
+- Playable authored drafts: **142**.
+- Authored recall cards: **573**.
+- Missing lesson bodies: **212**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -37,7 +37,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 0 | PB4 | Electricity and magnetism | 4 / 4 | None |
 | 0 | PB5 | Modern physics | 3 / 3 | None |
 | 1 | PH1 | Classical mechanics I: Newtonian | 6 / 6 | None |
-| 3 | PH2 | Analytical mechanics | 0 / 7 | PH2.1, PH2.2, PH2.3, PH2.4, PH2.5, PH2.6, PH2.7 |
+| 3 | PH2 | Analytical mechanics | 7 / 7 | None |
 | 4 | PH3 | Nonlinear dynamics and continuum mechanics | 0 / 4 | PH3.1, PH3.2, PH3.3, PH3.4 |
 | 2 | PH4 | Electrostatics and magnetostatics | 8 / 8 | None |
 | 3 | PH5 | Electrodynamics | 0 / 8 | PH5.1, PH5.2, PH5.3, PH5.4, PH5.5, PH5.6, PH5.7, PH5.8 |
@@ -55,7 +55,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 5 | PH17 | Experimental and computational physics | 0 / 5 | PH17.1, PH17.2, PH17.3, PH17.4, PH17.5 |
 | 8 | PH18 | Research readiness | 0 / 4 | PH18.1, PH18.2, PH18.3, PH18.4 |
 | 0 | CB | Bridge | 5 / 5 | None |
-| 4 | CH1 | Physical chemistry | 0 / 13 | CH1.1, CH1.2, CH1.3, CH1.4, CH1.5, CH1.6, CH1.7, CH1.8, CH1.9, CH1.10, CH1.11, CH1.12, CH1.13 |
+| 4 | CH1 | Physical chemistry | 13 / 13 | None |
 | 4 | CH2 | Quantum chemistry and spectroscopy | 0 / 6 | CH2.1, CH2.2, CH2.3, CH2.4, CH2.5, CH2.6 |
 | 6 | CH3 | Research and astrochemistry | 0 / 5 | CH3.1, CH3.2, CH3.3, CH3.4, CH3.5 |
 | 1 | CP1 | Core scientific computing | 6 / 6 | None |

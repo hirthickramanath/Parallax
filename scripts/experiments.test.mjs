@@ -188,3 +188,35 @@ test("sphere potential gradients, signed charge and Gauss fields are consistent 
   ])
     assert.throws(() => sphericalField(...args), RangeError);
 });
+
+import { coupledOscillator } from "../src/lib/coupled-oscillator.ts";
+test("coupled normal modes conserve energy and reproduce independent and pure-mode releases", () => {
+  for (const m of [0.5, 1, 3])
+    for (const k of [1, 4])
+      for (const c of [0, 1, 4])
+        for (const b of [-0.2, 0, 0.2]) {
+          const initial = coupledOscillator(m, k, c, 0, 0.2, b);
+          near(initial.x1, 0.2);
+          near(initial.x2, b);
+          near(initial.v1, 0);
+          near(initial.plus ** 2, k / m);
+          near(initial.minus ** 2, (k + 2 * c) / m);
+          for (const t of [0.1, 2, 9, 20]) {
+            const s = coupledOscillator(m, k, c, t, 0.2, b);
+            near(s.energy, initial.energy);
+            if (b === 0.2) near(s.x1, s.x2);
+            if (b === -0.2) near(s.x1, -s.x2);
+            if (c === 0 && b === 0) near(s.x2, 0);
+          }
+        }
+});
+test("coupled oscillator rejects nonphysical or nonfinite inputs", () => {
+  for (const args of [
+    [0, 1, 1, 0, 0.2, 0],
+    [1, 0, 1, 0, 0.2, 0],
+    [1, 1, -1, 0, 0.2, 0],
+    [1, 1, 1, -1, 0.2, 0],
+    [1, 1, 1, 0, NaN, 0],
+  ])
+    assert.throws(() => coupledOscillator(...args), RangeError);
+});

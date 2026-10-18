@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.13",
+  "title": "Photochemistry and elementary reaction dynamics",
+  "hook": "Why can one absorbed photon lead to fewer than one—or more than one—counted product?",
+  "recap": [
+    "Frequency or inverse wavelength.",
+    "One channel rate divided by total competing rate.",
+    "The counted event, absorbed-photon denominator and conditions.",
+    "Intensity and environment can change pathways and the relevant kinetics."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are incident and absorbed photons identical denominators for quantum yield?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Only part of the incident radiation may be absorbed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a product quantum yield above one necessarily violate energy conservation?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A chain can use chemical reactant energy after initiation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does photon energy alone determine a reaction’s product fraction?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Competing excited-state pathways matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Lifetime for independent first-order channels k₁=3 and k₂=1?",
+      "answer": "0.25",
+      "explanation": "1/(3+1)=0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Branching fraction into channel 1 for those rates?",
+      "answer": "0.75",
+      "explanation": "3/(3+1)=0.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why integrate over the irradiation spectrum?",
+      "answer": "Absorption and yields can depend on wavelength",
+      "options": [
+        "Absorption and yields can depend on wavelength",
+        "One photon energy describes every broadband source"
+      ],
+      "explanation": "Local spectral flux and state-dependent response determine the rate.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does photon energy depend on?",
+      "back": "Frequency or inverse wavelength.",
+      "concept": "ch1-13-theory"
+    },
+    {
+      "front": "What fixes a simple branching fraction?",
+      "back": "One channel rate divided by total competing rate.",
+      "concept": "ch1-13-theory"
+    },
+    {
+      "front": "What must a quantum-yield report specify?",
+      "back": "The counted event, absorbed-photon denominator and conditions.",
+      "concept": "ch1-13-theory"
+    },
+    {
+      "front": "Why compare laboratory and astronomical flux regimes?",
+      "back": "Intensity and environment can change pathways and the relevant kinetics.",
+      "concept": "ch1-13-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can one absorbed photon lead to fewer than one—or more than one—counted product? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Photochemistry follows excited-state dynamics and competing pathways after absorption. Photon energy makes a pathway possible, while branching and quantum yield determine what the exposure produces.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Absorption starts a race among relaxation, emission, transfer, dissociation and reaction. Not every excitation reaches the chosen product channel.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A quantum yield is the number of a specified counted events divided by absorbed photons under a declared measurement convention. Absorbed and incident photons are different denominators.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Photon energy is $E=h\nu=hc/\lambda$. Absorbing a suitable photon populates an excited state or continuum according to the transition strength and spectrum. The subsequent path depends on the electronic states, environment and internal-energy redistribution, not just the photon energy compared with one bond-energy number.
+
+For a simple excited population with independent first-order decay channels ki, total lifetime is $\tau=1/\sum_i k_i$ and channel branching fraction is ki/∑kj. This model assumes a single relevant population and constant rates; multistate transfer or nonexponential dynamics requires a fuller kinetic network.
+
+A product quantum yield can be below one because competing decay removes excitations. It can exceed one when a photon initiates a chain generating multiple counted products, depending on the definition. That does not violate energy conservation: chemical energy and reactant consumption supply additional energy. A yield above one is not a universal claim of multiple fluorescence photons per one excitation in a passive simple two-level model.
+
+Photochemical reaction rates integrate spectral photon flux, absorption cross section and channel yield over wavelength under the appropriate geometry. Attenuation and self-shielding alter the local field. A single monochromatic yield cannot always predict broadband irradiation, and a laboratory flux can drive chemistry outside a low-intensity astronomical regime.
+
+Gas-phase reaction dynamics may include collision energy, orientation and radiative stabilization; ice or surface environments can accept excess energy differently. Track whether a reported abundance change is formation, destruction, desorption or a redistribution of existing species before attributing it to a unique reaction.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic competing-channel population model, change one rate and compare lifetime with product fraction. Keep incident flux, absorbed photons and counted products in separate table columns. Then state which assumptions would fail for a chain or a multistate system.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For two simple excited-state channels k₁=3 and k₂=1 in inverse-time units, lifetime is 0.25 time units and fraction entering channel 1 is 0.75. If 100 photons are absorbed and each channel-1 event makes one product with no chain, the expected product count is 75.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

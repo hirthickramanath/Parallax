@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.6",
+  "title": "Surfaces and catalysis",
+  "hook": "Why can a catalyst speed a reaction without changing its equilibrium constant?",
+  "recap": [
+    "Occupied fraction of the modeled surface sites.",
+    "Independent identical sites with the stated single-occupancy balance.",
+    "Different species contend for available sites.",
+    "Small discrete populations can invalidate smooth mean-coverage equations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a catalyst change the equilibrium constant of the same net reaction at fixed temperature?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It changes pathways and rates, not endpoint thermodynamics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is Langmuir coverage linear at every pressure?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Finite site occupancy produces saturation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a named surface-mechanism family determine every rate law uniquely?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Site balance and elementary steps still need specifying.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Langmuir coverage when Kp=3?",
+      "answer": "0.75",
+      "explanation": "3/(1+3)=0.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Coverage when Kp=1?",
+      "answer": "0.5",
+      "explanation": "1/(1+1)=0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can very strong adsorption reduce turnover?",
+      "answer": "It can block sites or make product removal slow",
+      "options": [
+        "It can block sites or make product removal slow",
+        "Any stronger binding must improve every step"
+      ],
+      "explanation": "Binding and release are competing requirements in the cycle.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does coverage measure?",
+      "back": "Occupied fraction of the modeled surface sites.",
+      "concept": "ch1-6-theory"
+    },
+    {
+      "front": "What assumptions define the ideal Langmuir model?",
+      "back": "Independent identical sites with the stated single-occupancy balance.",
+      "concept": "ch1-6-theory"
+    },
+    {
+      "front": "What is competitive adsorption?",
+      "back": "Different species contend for available sites.",
+      "concept": "ch1-6-theory"
+    },
+    {
+      "front": "Why might sparse grain chemistry need a stochastic model?",
+      "back": "Small discrete populations can invalidate smooth mean-coverage equations.",
+      "concept": "ch1-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a catalyst speed a reaction without changing its equilibrium constant? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Surface chemistry combines adsorption, site availability and reaction dynamics. Catalysts offer pathways with different barriers while the same overall thermodynamic endpoints retain their equilibrium relation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A surface has a finite number of sites. Binding reactants helps only if sites remain accessible and products can leave.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Adsorption coverage θ is the fraction of sites occupied in a specified model. Catalysis changes kinetics through a pathway while preserving the equilibrium free-energy difference for the same net reaction.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an ideal single-species Langmuir model, adsorption and desorption rates are proportional to p(1−θ) and θ. Balancing them gives $\theta=Kp/(1+Kp)$ when K uses reciprocal-pressure units in that convention. A thermodynamic equilibrium constant instead uses a dimensionless pressure ratio; the definition must be stated before comparing numerical K values.
+
+The model assumes identical independent sites, one occupancy per site and no lateral interactions. At low Kp, θ≈Kp; at high Kp, θ approaches 1. Heterogeneous binding energies, multisite adsorption and interacting adsorbates can produce other isotherms.
+
+A Langmuir–Hinshelwood pathway reacts adsorbed species; an Eley–Rideal description involves an incident species reacting with an adsorbate. Those labels alone do not fix a unique rate law. Competitive adsorption and site balance determine concentration dependence, and excessive binding can inhibit turnover by blocking sites or slowing product release.
+
+A catalyst lowers an effective kinetic barrier by changing the mechanism, not the standard overall reaction Gibbs energy. Forward and reverse pathways remain consistent with the same equilibrium constant at fixed conditions. Comparing an apparent one-way rate under flow with an equilibrium constant confuses a driven reactor with equilibrium.
+
+On interstellar grains, surface temperature, diffusion, stochastic low occupancy and irradiation can invalidate a continuum mean-coverage treatment. Rate-equation, stochastic or microscopic models should be chosen according to the number of particles and timescales. An ideal isotherm fit alone does not establish the unique surface mechanism.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot coverage against the dimensionless product Kp for an ideal surface and compare low-pressure linear and saturation limits. Add a competing adsorbate in a separate hypothetical site-balance model and identify which single-species assumptions have changed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a declared Langmuir convention with Kp=3, coverage is 3/4=0.75. At Kp=1 it is 0.5. Doubling pressure from Kp=3 to 6 raises coverage to 6/7, not to 1.5; saturation prevents linear scaling.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

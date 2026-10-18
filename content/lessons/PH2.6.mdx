@@ -1,0 +1,188 @@
+---
+{
+  "id": "PH2.6",
+  "title": "Hamilton-Jacobi theory and action-angle variables",
+  "hook": "Why can a partial differential equation describe whole families of classical trajectories?",
+  "recap": [
+    "Sₜ+H(q,Sq,t)=0.",
+    "p=∂S/∂q.",
+    "J=(1/2π)∮p dq.",
+    "Angles evolve while actions remain constant."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every Hamiltonian system possess global action–angle coordinates?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Integrability and regularity conditions are required.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every one-function HJ solution encode all trajectories?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A complete family needs enough independent constants.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is the 1/(2π) action convention irrelevant to its paired frequency formula?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The canonical angle and derivative convention must match.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Oscillator action for E=6 and ω=3 with J=(1/2π)∮p dq?",
+      "answer": "2",
+      "explanation": "J=E/ω.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Angle frequency for H=3J under that convention?",
+      "answer": "3",
+      "explanation": "θ̇=∂H/∂J.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why inspect turning points and separatrices?",
+      "answer": "They can make local branches or periodic coordinates singular",
+      "options": [
+        "They can make local branches or periodic coordinates singular",
+        "Every energy level has the same finite period"
+      ],
+      "explanation": "The coordinate construction has a physical and geometric domain.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the Hamilton–Jacobi equation?",
+      "back": "Sₜ+H(q,Sq,t)=0.",
+      "concept": "ph2-6-theory"
+    },
+    {
+      "front": "How is momentum recovered from S?",
+      "back": "p=∂S/∂q.",
+      "concept": "ph2-6-theory"
+    },
+    {
+      "front": "What is the periodic action convention here?",
+      "back": "J=(1/2π)∮p dq.",
+      "concept": "ph2-6-theory"
+    },
+    {
+      "front": "What advances in an integrable action–angle model?",
+      "back": "Angles evolve while actions remain constant.",
+      "concept": "ph2-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a partial differential equation describe whole families of classical trajectories? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Hamilton–Jacobi theory trades trajectory equations for an action function. Action–angle coordinates simplify suitable integrable bound motion but do not apply globally to every Hamiltonian system.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+An action surface supplies momentum through its spatial slope. Its constants label trajectories; suitable periodic motion can be encoded by actions that remain fixed and angles that advance.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Hamilton’s principal function S(q,t) satisfies ∂S/∂t+H(q,∂S/∂q,t)=0 in the appropriate local smooth setting. A complete integral contains enough independent constants to reconstruct the motion.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A time-dependent canonical construction can seek a transformed Hamiltonian zero, leaving constants as new momenta. Its generating equation is $\partial_tS+H(q,\partial_qS,t)=0$. Recover old momenta from p=∂qS; derivatives with respect to the integration constants supply the corresponding new coordinates. One isolated solution S without enough independent parameters need not recover every trajectory.
+
+For autonomous H, separation S=W(q)−Et yields H(q,∂qW)=E. In one dimension p(q;E) from the energy equation can be integrated to obtain W on a selected branch. Turning points and multiple trajectories can require different local branches; a single-valued classical function is not guaranteed everywhere.
+
+For a periodic degree of freedom, define action $J=(2\pi)^{-1}\oint p\,dq$. In suitable action–angle coordinates the integrable Hamiltonian is H(J), with J̇=0 and θ̇=∂H/∂J. Angles are periodic coordinates; actions have angular-momentum dimensions. Some conventions omit 1/(2π), which changes the paired frequency relation.
+
+For a harmonic oscillator H=p²/(2m)+mω²q²/2, the phase ellipse area is 2πE/ω, so J=E/ω and H=ωJ. The angle advances at ω under this convention. Near a separatrix the period can diverge, making simple global action–angle descriptions singular.
+
+Several degrees of freedom need enough independent commuting integrals and the applicable regular compact invariant structure for the standard integrable-torus construction. Generic coupled or chaotic motion does not automatically admit a global set of conserved actions. Adiabatic invariance is an approximation with timescale and separatrix restrictions, not a blanket conservation law for any slowly described parameter change.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the oscillator phase-ellipse area from its two intercepts and recover J. Compare numerical area estimates with E/ω. Then sketch a pendulum separatrix and explain why periodic-orbit coordinates need care near that boundary.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a harmonic oscillator with E=6 and ω=3 in compatible units, J=2. With the chosen 1/(2π) convention, ∂H/∂J=3 gives the angular frequency. Doubling E at unchanged ω doubles the action.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

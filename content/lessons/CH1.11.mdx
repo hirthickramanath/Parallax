@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.11",
+  "title": "Transport: diffusion, viscosity and thermal conduction",
+  "hook": "Why does a concentration gradient produce a flux but not necessarily a constant one?",
+  "recap": [
+    "A flux proportional to a concentration gradient in the chosen regime.",
+    "Material conservation with initial and boundary conditions.",
+    "A flux coefficient versus a propagation/spreading coefficient with different units.",
+    "They control conservation, loss and the measured profile."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May a spatially varying D always be moved outside ∇·(D∇c)?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its gradients can contribute to evolution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does rms displacement equal each particle’s deterministic travel distance?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It summarizes an ensemble distribution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are no-flux and zero-concentration boundary conditions identical?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They constrain different quantities.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "One-dimensional mean-square displacement for D=2 and t=3?",
+      "answer": "12",
+      "explanation": "2Dt=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Flux for D=2 and dc/dx=−4?",
+      "answer": "8",
+      "explanation": "J=−D dc/dx=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why combine a constitutive law with conservation?",
+      "answer": "The flux response and its accumulation determine different parts of evolution",
+      "options": [
+        "The flux response and its accumulation determine different parts of evolution",
+        "A gradient law alone fixes every boundary and initial condition"
+      ],
+      "explanation": "A PDE also needs conservation and problem data.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Fick’s law specify?",
+      "back": "A flux proportional to a concentration gradient in the chosen regime.",
+      "concept": "ch1-11-theory"
+    },
+    {
+      "front": "What closes the diffusion evolution equation?",
+      "back": "Material conservation with initial and boundary conditions.",
+      "concept": "ch1-11-theory"
+    },
+    {
+      "front": "How do conductivity and diffusivity differ?",
+      "back": "A flux coefficient versus a propagation/spreading coefficient with different units.",
+      "concept": "ch1-11-theory"
+    },
+    {
+      "front": "Why keep transport boundaries explicit?",
+      "back": "They control conservation, loss and the measured profile.",
+      "concept": "ch1-11-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a concentration gradient produce a flux but not necessarily a constant one? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Transport connects local gradients with material and energy flow. Constitutive laws and conservation equations are separate ingredients; one without the other does not determine evolution.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A gradient supplies a local imbalance, while conservation tracks whether the resulting inflow and outflow accumulate material.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Fick, Fourier and Newtonian-viscosity laws are linear constitutive models in their stated regimes. Their transport coefficients depend on material and conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For simple isotropic diffusion, molar flux is $J=-D\nabla c$. Conservation with no reaction gives ∂c/∂t=−∇·J. Constant D then yields $\partial_tc=D\nabla^2c$. Spatially varying D must remain inside the divergence. Advection and reaction add terms; the diffusion equation is not a complete model of every moving mixture.
+
+In one-dimensional free diffusion, an initially localized distribution develops mean-square displacement 2Dt under the ideal Brownian model. In d Cartesian dimensions it is 2dDt. This scaling refers to ensemble displacements, not a deterministic distance every particle travels. Boundaries and anomalous transport change the long-time behavior.
+
+Fourier's law is heat flux q=−k∇T with thermal conductivity k. Constant coefficients and energy conservation give a heat equation involving thermal diffusivity k/(ρcp) in a suitable simple setting. Thermal conductivity and diffusivity have different units and meanings.
+
+For a Newtonian fluid in simple shear, stress is proportional to the velocity gradient with viscosity η. In general the tensor relation and incompressibility assumptions must be stated. Viscosity transports momentum rather than being a universal force opposing every motion at a fixed value.
+
+Boundary conditions set concentrations, temperatures or fluxes and are essential for a solved transport problem. A no-flux boundary is not a zero-concentration boundary. Diffusion coefficients inferred from a finite experiment can be confounded with geometry, adsorption or reaction unless those processes are modeled.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Solve or simulate diffusion with reflecting and absorbing endpoints using the same initial profile. Track total material to distinguish no-flux conservation from absorbing loss. Compare a local flux calculation with the separate time-evolution equation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For constant one-dimensional D=2 and time t=3 in matched length/time units, ideal mean-square displacement is 2Dt=12 and rms displacement is √12. If a steady gradient is dc/dx=−4, the local Fick flux is +8 in the corresponding flux units.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

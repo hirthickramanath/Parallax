@@ -779,3 +779,41 @@ test("spherical apparatus distinguishes volume charge, conductor interior and an
   await page.getByRole("link", { name: "Open the connected lesson →" }).click();
   await expect(page).toHaveURL(/lesson\/PH4.1/);
 });
+
+test("coupled oscillator bench exposes normal modes, conserved energy and traceable readings on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Coupled oscillators", exact: true })
+    .click();
+  await page.getByRole("button", { name: "In phase", exact: true }).click();
+  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
+  await page.getByLabel("Time (s)", { exact: true }).fill("7");
+  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
+  await page
+    .getByRole("button", { name: "Opposite phase", exact: true })
+    .click();
+  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.1200");
+  await page.getByRole("button", { name: "Record oscillator reading" }).click();
+  await expect(
+    page
+      .getByRole("list", { name: "Oscillator readings" })
+      .getByRole("listitem"),
+  ).toHaveCount(1);
+  await page
+    .getByRole("button", { name: "One mass released", exact: true })
+    .click();
+  await page.getByLabel("Coupling stiffness (N/m)", { exact: true }).fill("0");
+  await page.getByLabel("Time (s)", { exact: true }).fill("7");
+  await expect(page.getByText(/x₂ = 0.0000 m/)).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/lesson\/PH2.7/);
+});

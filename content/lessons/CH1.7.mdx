@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.7",
+  "title": "Nonideal mixtures, activity and fugacity",
+  "hook": "Why does concentration stop being a complete measure of thermodynamic activity?",
+  "recap": [
+    "Deviation from the chosen ideal/reference composition relation.",
+    "The ratio f/p in the specified pure-gas convention.",
+    "They can link component activities consistently.",
+    "Its standard-state and activity definitions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can coefficients from concentration and mole-fraction standards be mixed without conversion?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their numerical definitions differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is fugacity always exactly equal to pressure?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Equality is the ideal-limit relation under the stated convention.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can arbitrary independently fitted activity curves always satisfy Gibbs–Duhem?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Thermodynamic consistency links them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Activity for x=0.2 and γ=1.5 in the stated convention?",
+      "answer": "0.3",
+      "explanation": "a=γx.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Fugacity in bar for φ=0.8 and p=5 bar?",
+      "answer": "4",
+      "explanation": "f=φp.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state a standard pressure in μ=μ°+RT ln(f/p°)?",
+      "answer": "It makes the ratio dimensionless and defines the reference",
+      "options": [
+        "It makes the ratio dimensionless and defines the reference",
+        "A pressure unit can be silently ignored inside a logarithm"
+      ],
+      "explanation": "Changing conventions requires a consistent change of μ°.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does an activity coefficient encode?",
+      "back": "Deviation from the chosen ideal/reference composition relation.",
+      "concept": "ch1-7-theory"
+    },
+    {
+      "front": "What is a fugacity coefficient?",
+      "back": "The ratio f/p in the specified pure-gas convention.",
+      "concept": "ch1-7-theory"
+    },
+    {
+      "front": "Why use excess Gibbs-energy models?",
+      "back": "They can link component activities consistently.",
+      "concept": "ch1-7-theory"
+    },
+    {
+      "front": "What must accompany an equilibrium constant?",
+      "back": "Its standard-state and activity definitions.",
+      "concept": "ch1-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does concentration stop being a complete measure of thermodynamic activity? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Nonideal mixtures retain the chemical-potential framework while replacing naive concentration rules with calibrated activity and fugacity models. Conventions matter especially when combining datasets.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Interactions change the free-energy effect of adding a component. Activity packages that effect into the logarithm relative to a chosen reference.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An activity coefficient relates a chosen composition scale to dimensionless activity. Fugacity plays an analogous role for gas chemical potential relative to a pressure standard.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a liquid mole-fraction convention, $a_i=\gamma_i x_i$ with a specified reference state. A concentration convention instead uses γi ci/c°. Coefficients from these conventions are not interchangeable numbers. Ideal behavior is a statement about the selected standard and limit, not a universal claim that every γ equals one everywhere.
+
+For a gas, write $\mu=\mu^\circ+RT\ln(f/p^\circ)$ and f=φp for a pure component under the declared convention. The fugacity coefficient φ tends to one in the appropriate ideal-gas limit. For mixtures, partial fugacity includes composition and interactions; replacing it by yi p can fail at high pressure.
+
+At fixed temperature for a pure gas, dμ=Vm dp. Comparing with the ideal reference gives $\ln\phi=\int_0^p[Z(p')-1]dp'/p'$ when the low-pressure limit and equation-of-state integration apply. Here Z=pVm/(RT). A model must approach the correct ideal limit for this reference integration to be well behaved.
+
+Gibbs–Duhem links activity-coefficient variations across composition. Fitting each component independently without thermodynamic consistency can predict mutually incompatible chemical potentials. Excess Gibbs-energy models provide one way to build linked coefficients, but their parameters and validity range still require data.
+
+Phase and reaction equilibrium use activities or fugacities consistently on both sides. A numerical K changes with a changed standard-state definition even when the underlying physical equilibrium does not. Always report reference pressure, composition scale, temperature and the model used to infer nonideality.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare an ideal calculation with a supplied synthetic activity-coefficient table, keeping its composition convention fixed. Recompute a reaction quotient and record which inferred parameter changes arise from physics versus merely a changed reference definition.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a stated mole-fraction convention with x=0.2 and γ=1.5, activity is 0.3. For a pure gas with φ=0.8 and p=5 bar, fugacity is 4 bar; its dimensionless logarithm input is f/p° using the chosen reference pressure.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

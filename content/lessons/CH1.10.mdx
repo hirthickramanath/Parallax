@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.10",
+  "title": "Ionic solutions and conductivity",
+  "hook": "Why can adding more ions increase conductivity while reducing molar conductivity?",
+  "recap": [
+    "The proportionality between current density and field in the declared regime.",
+    "The matching electrolyte molar concentration.",
+    "Concentration and electrical-potential gradients, with flow if included.",
+    "Geometry converts measured conductance into a bulk material estimate."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are conductance and conductivity the same geometry-independent quantity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Conductance also depends on cell dimensions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does bulk electroneutrality forbid interfacial double layers?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is a scale-dependent approximation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can mobility definitions be mixed without charge-factor changes?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Mechanical and electrical mobility have different conventions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Conductivity for G=3, ℓ=4 and A=2 in matched units?",
+      "answer": "6",
+      "explanation": "κ=Gℓ/A.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Molar conductivity for κ=6 and concentration c=2 in matching units?",
+      "answer": "3",
+      "explanation": "Λm=κ/c.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why does an independent-ion estimate need a regime check?",
+      "answer": "Correlations, concentration and interface effects can change transport",
+      "options": [
+        "Correlations, concentration and interface effects can change transport",
+        "Every electrolyte is an ideal noninteracting gas"
+      ],
+      "explanation": "The Nernst–Einstein relation is a model, not a universal exact law for all mixtures.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is conductivity?",
+      "back": "The proportionality between current density and field in the declared regime.",
+      "concept": "ch1-10-theory"
+    },
+    {
+      "front": "What does molar conductivity divide by?",
+      "back": "The matching electrolyte molar concentration.",
+      "concept": "ch1-10-theory"
+    },
+    {
+      "front": "What drives Nernst–Planck flux?",
+      "back": "Concentration and electrical-potential gradients, with flow if included.",
+      "concept": "ch1-10-theory"
+    },
+    {
+      "front": "Why calibrate the cell constant?",
+      "back": "Geometry converts measured conductance into a bulk material estimate.",
+      "concept": "ch1-10-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can adding more ions increase conductivity while reducing molar conductivity? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Ionic transport depends on both carrier amount and mobility. Interactions can reduce per-mole transport even as the total number of carriers rises.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+More carriers can move more charge overall, but each carrier’s drift can be hindered by the surrounding ionic environment.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Conductivity relates current density to electric field in a specified linear isotropic regime. Molar conductivity divides that conductivity by the stated electrolyte concentration.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If bᵢ is the mechanical mobility defined by drift velocity per force on a particle, an ideal independent-ion expression is $\kappa=\sum_i n_i(z_ie)^2b_i$. With the Einstein relation bᵢ=Di/(kBT), it becomes a Nernst–Einstein estimate. If instead electrical mobility is defined as speed per field, the formula has a different charge factor; conventions must not be mixed.
+
+Molar conductivity is Λm=κ/c for c in the matching molar concentration units. For strong electrolytes at low concentration, interactions cause systematic departures from independent infinite-dilution behavior. Weak-electrolyte dissociation changes carrier count as concentration varies. Conductivity therefore is not a direct universal count of fully independent ions.
+
+Charge number, concentration gradients and electric fields combine in a dilute Nernst–Planck flux model. An ideal one-species form without flow is $J_i=-D_i\nabla c_i-(D_iz_iF/RT)c_i\nabla\phi$ for molar concentration and flux. Convective transport adds another term. The ideal dilute model requires modification in concentrated or correlated electrolytes.
+
+Electroneutrality is often an excellent bulk approximation on scales much larger than screening lengths, but interfaces and double layers can carry local charge density. Imposing neutrality pointwise at every microscopic scale would erase the very field structure needed to describe such interfaces.
+
+A conductivity cell measures conductance through geometry: G=κA/ℓ for a uniform simple cell, so cell calibration matters. Electrode polarization, alternating-frequency response and temperature drift can bias an inferred bulk conductivity. Report concentration scale, units, geometry and temperature rather than comparing raw conductance values as material constants.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use synthetic conductance values with a stated cell constant and recover conductivity before comparing concentrations. Contrast a bulk electroneutral approximation with a separately drawn charged interfacial layer, keeping their spatial scales explicit.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a uniform cell with area A=2 and length ℓ=4 in matched geometric units, measured conductance G=3 implies conductivity κ=Gℓ/A=6. If concentration is 2 in the corresponding molar units, Λm=3.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

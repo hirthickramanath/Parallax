@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.12",
+  "title": "Electrode kinetics and electrochemical measurements",
+  "hook": "Why can an electrode current depend on transport even when its reaction is intrinsically fast?",
+  "recap": [
+    "Potential relative to the relevant equilibrium reference under the chosen convention.",
+    "Exchange current, transfer coefficients, temperature and transferred charge.",
+    "Finite reactant transport to the interface.",
+    "Only the latter directly tracks net redox conversion in the stated model."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every measured current represent net chemical conversion?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Double-layer charging can contribute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can transport limitation mask fast charge transfer?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Reactant supply can become the bottleneck.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does one straight Tafel region uniquely prove a mechanism?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Effective kinetics and losses can mimic simple trends.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Normalized current for j₀=1 and exponential contributions 2 and 0.5?",
+      "answer": "1.5",
+      "explanation": "Subtract the cathodic contribution from the anodic one.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Limiting-current factor when film thickness δ doubles with other terms fixed?",
+      "answer": "0.5",
+      "explanation": "The simple film result is proportional to 1/δ.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why correct or model uncompensated resistance?",
+      "answer": "A measured voltage difference need not equal interfacial overpotential",
+      "options": [
+        "A measured voltage difference need not equal interfacial overpotential",
+        "All applied voltage acts only on the electron-transfer barrier"
+      ],
+      "explanation": "Circuit and solution losses share the measured voltage.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is overpotential?",
+      "back": "Potential relative to the relevant equilibrium reference under the chosen convention.",
+      "concept": "ch1-12-theory"
+    },
+    {
+      "front": "What sets the near-equilibrium Butler–Volmer slope?",
+      "back": "Exchange current, transfer coefficients, temperature and transferred charge.",
+      "concept": "ch1-12-theory"
+    },
+    {
+      "front": "What can create a limiting current?",
+      "back": "Finite reactant transport to the interface.",
+      "concept": "ch1-12-theory"
+    },
+    {
+      "front": "Why distinguish charging and Faradaic currents?",
+      "back": "Only the latter directly tracks net redox conversion in the stated model.",
+      "concept": "ch1-12-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an electrode current depend on transport even when its reaction is intrinsically fast? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Electrode measurements combine interfacial electron transfer with solution transport and circuit response. An apparent rate can be limited by a different step from the one a simple fit assumes.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Reactants must arrive at the interface and electrons must cross it. Speeding one part does not remove a bottleneck in the other.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Overpotential is electrode potential relative to the relevant equilibrium value under a declared convention. Current–overpotential models require reaction, area, reference and transport definitions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A common charge-transfer model is Butler–Volmer, $j=j_0[\exp(\alpha_anF\eta/RT)-\exp(-\alpha_cnF\eta/RT)]$, with the sign convention stated and suitable kinetic assumptions. In a simple elementary description the transfer coefficients can sum to one; more complex effective kinetics needs care before imposing that relation.
+
+Near η=0, linearization gives $j\approx j_0(\alpha_a+\alpha_c)nF\eta/(RT)$. At a sufficiently large one-direction overpotential where one exponential dominates and transport remains negligible, a Tafel relation links ln|j| to η. A straight segment alone does not prove one unique elementary mechanism.
+
+If reactant transport limits supply, a diffusion-limited current can arise. In a simple steady planar film model, $j_{\rm lim}=nFDc_{\rm bulk}/\delta$ when surface concentration approaches zero. The film thickness δ is a model parameter reflecting hydrodynamics and geometry, not a universal molecular length.
+
+Measured cell voltage includes uncompensated ohmic drop and may include reference offsets or junction potentials. Current can also charge the double layer without net Faradaic conversion. In a potential sweep, transient charging, diffusion and kinetic response all contribute, so peak shape is not a direct equilibrium spectrum.
+
+A useful experiment or synthetic model separates electrode area, mass transport, scan rate, temperature and reference electrode. Compare currents under changed transport conditions before assigning a limiting plateau to an intrinsic electron-transfer barrier. Fit only over a regime consistent with the assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the full normalized Butler–Volmer relation and its near-equilibrium and one-exponential approximations. Add a separately specified transport ceiling and identify where a Tafel fit would become misleading. Label current density and electrode area distinctly.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In a normalized Butler–Volmer example with j₀=1, αa=αc=1/2 and nFη/(RT)=2 ln2, current is exp(ln2)−exp(−ln2)=2−0.5=1.5. The cathodic term is not negligible at that value.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

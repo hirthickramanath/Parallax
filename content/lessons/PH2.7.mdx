@@ -1,0 +1,191 @@
+---
+{
+  "id": "PH2.7",
+  "title": "Small oscillations and normal modes",
+  "hook": "Why can two coupled masses move at one clean frequency only for special initial patterns?",
+  "recap": [
+    "Ku=ω²Mu.",
+    "√(k/m) and √((k+2kc)/m).",
+    "Both symmetric and antisymmetric modes in the generic coupled case.",
+    "Conservation of kinetic plus both wall and coupling spring energies."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must distinct normal modes be orthogonal in the plain coordinate dot product for arbitrary M?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The natural orthogonality uses the mass-weighted product.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does in-phase equal displacement stretch the coupling spring in the symmetric model?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The coupling extension x₂−x₁ is zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does an arbitrary initial displacement excite only one normal mode?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It generally contains multiple modal components.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Squared opposite-phase angular frequency for m=1,k=1,kc=1?",
+      "answer": "3",
+      "explanation": "(k+2kc)/m=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Energy for x₁=x₂=0.2, zero velocities and k=1?",
+      "answer": "0.04",
+      "explanation": "Two wall springs contribute a total k×0.2².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why mass-weight the eigenproblem?",
+      "answer": "It reveals a symmetric operator with the correct modal inner product",
+      "options": [
+        "It reveals a symmetric operator with the correct modal inner product",
+        "Every coordinate has dimensionless unit mass automatically"
+      ],
+      "explanation": "The kinetic form determines the relevant geometry.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the generalized mode equation?",
+      "back": "Ku=ω²Mu.",
+      "concept": "ph2-7-theory"
+    },
+    {
+      "front": "What are the symmetric two-mass frequencies?",
+      "back": "√(k/m) and √((k+2kc)/m).",
+      "concept": "ph2-7-theory"
+    },
+    {
+      "front": "What does one-mass release excite?",
+      "back": "Both symmetric and antisymmetric modes in the generic coupled case.",
+      "concept": "ph2-7-theory"
+    },
+    {
+      "front": "What validates the ideal bench energetics?",
+      "back": "Conservation of kinetic plus both wall and coupling spring energies.",
+      "concept": "ph2-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two coupled masses move at one clean frequency only for special initial patterns? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Normal modes diagonalize the linearized motion near a stable equilibrium. General initial conditions superpose modes, producing mixed patterns and beat-like energy exchange without dissipation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Choose combinations of coordinates that stretch the springs independently. In-phase and opposite-phase displacements are natural patterns for a symmetric two-mass system.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a stable small-oscillation model, quadratic kinetic and potential forms give Mq̈+Kq=0 with positive-definite mass matrix. Normal frequencies solve Ku=ω²Mu.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Expand the potential around an equilibrium q₀ with zero first derivative. To quadratic order, V≈V₀+ξᵀKξ/2, where K is the symmetric Hessian. The corresponding kinetic form is ξ̇ᵀMξ̇/2 under the usual equilibrium small-motion assumptions. Stability requires the relevant potential form to be nonnegative; zero modes need separate interpretation.
+
+Seeking ξ=u cosωt gives the generalized eigenproblem $Ku=\omega^2Mu$. For positive-definite M, mass-weighting converts it into a symmetric eigenproblem for M⁻¹ᐟ²KM⁻¹ᐟ². Distinct modes are orthogonal in the M-weighted inner product, not necessarily in the naive coordinate dot product.
+
+For two identical masses m connected to walls by springs k and to one another by spring kc, $K=\begin{pmatrix}k+k_c&-k_c\\-k_c&k+k_c\end{pmatrix}$. Symmetric and antisymmetric coordinates q±=(x₁±x₂)/√2 have frequencies $\omega_+=\sqrt{k/m}$ and $\omega_-=\sqrt{(k+2k_c)/m}$. In-phase motion does not stretch the coupling spring; opposite-phase motion does.
+
+For zero initial velocities, each normal coordinate evolves as q±(t)=q±(0)cos(ω±t). Recombining gives the two mass displacements. A one-mass release excites both modes. The resulting envelopes need not be a single oscillator frequency, and the elementary close-frequency beat description is only appropriate when the two frequencies are sufficiently close.
+
+Conserved energy is m(v₁²+v₂²)/2+k(x₁²+x₂²)/2+kc(x₂−x₁)²/2 in this ideal model. Real damping, large-amplitude nonlinear springs and unequal masses require extensions. The mode decomposition is an approximation to the actual system when derived from a small-displacement expansion.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the coupled-oscillator bench to choose in-phase, opposite-phase and one-mass initial conditions. Scrub time, compare mode frequencies and monitor kinetic plus spring energy. Test kc=0 as a decoupled limit and keep all reported readings explicitly synthetic.
+
+
+<Widget name="coupled_oscillator_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For m=1,k=1,kc=1, the two angular frequencies are 1 and √3. Starting x₁=x₂=0.2 with zero velocities excites only the in-phase mode and energy is k×0.2²=0.04. Starting x₁=0.2,x₂=−0.2 gives energy 0.12 and only the opposite mode.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

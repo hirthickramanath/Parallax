@@ -1,0 +1,188 @@
+---
+{
+  "id": "PH2.3",
+  "title": "Symmetries and Noether's theorem",
+  "hook": "Which symmetry keeps a quantity constant when the equations are written in awkward coordinates?",
+  "recap": [
+    "L has no explicit dependence on it.",
+    "−∂L/∂t under the stated regular setting.",
+    "External supports, fields and other agents exchanging the quantity.",
+    "It tests the symmetry interpretation and sign convention against the equations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a cyclic coordinate have to be absent together with its velocity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its velocity can still appear in L.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is H always T+V for every coordinate and Lagrangian choice?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "That identification needs additional assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a subsystem inherit a symmetry broken by a fixed external apparatus?",
+      "options": [
+        "Always",
+        "Not generally"
+      ],
+      "answer": "Not generally",
+      "explanation": "The omitted apparatus can exchange the corresponding quantity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Conserved pθ for m=2, r=3 and θ̇=4?",
+      "answer": "72",
+      "explanation": "mr²θ̇=72.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "θ̇ when r=6 with the same m=2 and pθ=72?",
+      "answer": "1",
+      "explanation": "72/(2×36)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why retain a total-derivative boundary term in Noether’s formula?",
+      "answer": "It can change the canonical expression for the conserved charge",
+      "options": [
+        "It can change the canonical expression for the conserved charge",
+        "Every action symmetry must leave L exactly identical"
+      ],
+      "explanation": "Invariance up to a boundary term is allowed but must be accounted for.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a coordinate cyclic?",
+      "back": "L has no explicit dependence on it.",
+      "concept": "ph2-3-theory"
+    },
+    {
+      "front": "What is dH/dt along a solution?",
+      "back": "−∂L/∂t under the stated regular setting.",
+      "concept": "ph2-3-theory"
+    },
+    {
+      "front": "What must be included when assessing system conservation?",
+      "back": "External supports, fields and other agents exchanging the quantity.",
+      "concept": "ph2-3-theory"
+    },
+    {
+      "front": "Why verify a charge directly?",
+      "back": "It tests the symmetry interpretation and sign convention against the equations.",
+      "concept": "ph2-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Which symmetry keeps a quantity constant when the equations are written in awkward coordinates? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Conservation laws arise from continuous action symmetries and can survive nonobvious coordinate descriptions. The mechanical and canonical meaning of a charge depends on the full Lagrangian and its boundary terms.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A symmetry is a direction in path space along which the action changes only by an allowed endpoint contribution. Its conserved charge can be recognized in different coordinates.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a time-dependent point symmetry with infinitesimal parameters τ and η and boundary term B, the on-solution Noether charge is J=p·η−Hτ−B under the chosen convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a cyclic coordinate qj with no explicit appearance in L, Euler–Lagrange gives $d p_j/dt=0$. This elementary case is a coordinate-translation variational symmetry. A coordinate can be cyclic while its generalized velocity still appears in L; removing both would describe a different problem.
+
+For no explicit time dependence, define $H=\sum_i p_i\dot q_i-L$. Differentiating along a solution gives dH/dt=−∂L/∂t, so H is conserved in the autonomous case. Identifying H with T+V uses additional assumptions, such as ordinary quadratic velocity kinetic energy and suitable time-independent coordinates.
+
+For a rotationally invariant point-particle system, an infinitesimal rotation η=a×r gives J=a·(r×p), implying angular-momentum conservation. A fixed external field or support can break that symmetry for the subsystem even if the complete apparatus conserves total momentum including omitted degrees of freedom.
+
+If the Lagrangian changes by a total derivative, retain B in the charge. A change of L by a total derivative shifts canonical definitions consistently and should not create a new physical nonconservation. Symmetry of the differential equations alone is not automatically the variational symmetry required by this theorem.
+
+A useful derivation checks the transformation of Ldt, writes the resulting charge and differentiates it using the actual equations. Discrete parity or time-reversal symmetry does not yield the same one-parameter infinitesimal charge through this simple theorem, though those symmetries have other physical consequences.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Find cyclic coordinates and compute charges for a free particle, central force and explicitly time-dependent potential. Compare the conserved charge across coordinate changes and check which external agents were included in the modeled system.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For L=m(ṙ²+r²θ̇²)/2−V(r), θ is cyclic and pθ=mr²θ̇ is conserved. With m=2, r=3 and θ̇=4 initially, pθ=72. If r later becomes 6 under a permitted central-force motion, θ̇ must be 1 to keep that angular momentum.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,188 @@
+---
+{
+  "id": "PH2.4",
+  "title": "Hamiltonian mechanics and phase space",
+  "hook": "Why is a momentum coordinate not simply an extra independent velocity?",
+  "recap": [
+    "q̇=Hₚ and ṗ=−Hq.",
+    "Canonical positions and their conjugate momenta.",
+    "Canonical phase-space volume for the stated Hamiltonian flow.",
+    "When it has no explicit time dependence under the chosen formulation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can a singular velocity Hessian always be inverted in the ordinary Legendre construction?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A constrained formulation may be needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is canonical momentum always mechanical mv in a magnetic field?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The vector-potential contribution changes it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does phase-space volume preservation guarantee every position projection preserves area?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Projection can discard phase-space dimensions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "H for m=2, V=q²/2, q=3 and p=4?",
+      "answer": "8.5",
+      "explanation": "p²/(2m)+q²/2=4+4.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "q̇ for p=4 and m=2 in that model?",
+      "answer": "2",
+      "explanation": "q̇=∂H/∂p=p/m.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is required before substituting velocities into H(q,p,t)?",
+      "answer": "An invertible momentum–velocity relation in the regular construction",
+      "options": [
+        "An invertible momentum–velocity relation in the regular construction",
+        "Only adding p as a new symbol"
+      ],
+      "explanation": "The Legendre map must actually solve for the velocities.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are Hamilton’s equations?",
+      "back": "q̇=Hₚ and ṗ=−Hq.",
+      "concept": "ph2-4-theory"
+    },
+    {
+      "front": "What is phase space here?",
+      "back": "Canonical positions and their conjugate momenta.",
+      "concept": "ph2-4-theory"
+    },
+    {
+      "front": "What does Liouville preserve?",
+      "back": "Canonical phase-space volume for the stated Hamiltonian flow.",
+      "concept": "ph2-4-theory"
+    },
+    {
+      "front": "When is the ordinary Hamiltonian conserved?",
+      "back": "When it has no explicit time dependence under the chosen formulation.",
+      "concept": "ph2-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is a momentum coordinate not simply an extra independent velocity? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Hamiltonian mechanics trades velocities for momenta through a Legendre transformation. The transformation requires regularity, and phase-space coordinates come with a geometric structure beyond a list of numbers.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+For a regular kinetic model, momenta encode the velocities invertibly. The Hamiltonian reorganizes the same equations into paired first-order evolution equations.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+When the velocity Hessian of L is invertible, define p=∂L/∂q̇ and solve for q̇(q,p,t). The Hamiltonian is H=p·q̇−L after that substitution.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Differentiate H using the defining momentum relation. The q̇ differentials cancel, leaving $dH=\sum_i\dot q_i\,dp_i-\sum_i L_{q_i}\,dq_i-L_tdt$. Euler–Lagrange therefore gives Hamilton’s equations $\dot q_i=\partial H/\partial p_i$ and $\dot p_i=-\partial H/\partial q_i$. Explicit time dependence supplies ∂H/∂t=−∂L/∂t at corresponding variables.
+
+For L=mq̇²/2−V(q), p=mq̇ and H=p²/(2m)+V. For a charged particle with L=mv²/2+qA·v−qφ, canonical momentum is p=mv+qA, and H=|p−qA|²/(2m)+qφ in this nonrelativistic model. Canonical and mechanical momenta must not be interchanged without the vector-potential term.
+
+For smooth canonical Hamiltonian flow, phase-space divergence is ∑(∂²H/∂qi∂pi−∂²H/∂pi∂qi)=0. This yields Liouville volume preservation under the stated hypotheses. It does not mean every projected position-space area is conserved, nor that dissipative dynamics can be made Hamiltonian by simply renaming drag as a potential.
+
+Energy conservation requires absence of explicit time dependence in H. A time-dependent canonical coordinate transformation can change the Hamiltonian by the appropriate generating term, so one must distinguish the conserved physical quantity from an arbitrary transformed expression.
+
+If the velocity Hessian is singular, the naive Legendre inversion fails. Constraints, gauge redundancy and a constrained Hamiltonian formulation may then be required. A zero determinant is a structural warning, not a license to divide by it numerically.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute trajectories for the harmonic oscillator in (q,p), compare with (q,q̇) and monitor energy. Check area preservation for the exact flow and distinguish numerical integrator artifacts. Identify the Hessian before attempting a Legendre transform.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For m=2, V=q²/2 and state q=3,p=4, H=16/4+9/2=8.5. Hamilton’s equations give q̇=p/m=2 and ṗ=−q=−3. Direct differentiation of H along this motion gives zero.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

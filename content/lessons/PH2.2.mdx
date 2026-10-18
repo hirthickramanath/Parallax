@@ -1,0 +1,188 @@
+---
+{
+  "id": "PH2.2",
+  "title": "Constraints and generalised coordinates",
+  "hook": "Why does a constraint reaction sometimes disappear from the equations without becoming zero?",
+  "recap": [
+    "A relation involving coordinates and possibly time.",
+    "Constraint reactions vanish when contracted with admitted virtual displacements.",
+    "Moving constraints can transfer energy while satisfying the virtual-work condition.",
+    "At dependent or singular constraint configurations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does eliminating a constraint force imply it is physically zero?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It may do no work along the allowed virtual directions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is every velocity constraint holonomic?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Some are nonintegrable position restrictions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must an ideal moving constraint preserve the particle’s mechanical energy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A moving support can exchange energy.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Gradient x-component of g=x²+y²−R² at x=3?",
+      "answer": "6",
+      "explanation": "∂g/∂x=2x.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Multiplier factor needed after replacing g by g/2 for the same reaction?",
+      "answer": "2",
+      "explanation": "The gradient halves, so the multiplier doubles.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why not interpret λ alone as a universal force?",
+      "answer": "Its value depends on the constraint normalization",
+      "options": [
+        "Its value depends on the constraint normalization",
+        "All constraints have dimensionless identical gradients"
+      ],
+      "explanation": "The physical reaction is λ times the specified constraint gradient.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a holonomic constraint?",
+      "back": "A relation involving coordinates and possibly time.",
+      "concept": "ph2-2-theory"
+    },
+    {
+      "front": "What is ideal virtual work?",
+      "back": "Constraint reactions vanish when contracted with admitted virtual displacements.",
+      "concept": "ph2-2-theory"
+    },
+    {
+      "front": "Why distinguish virtual from actual displacement?",
+      "back": "Moving constraints can transfer energy while satisfying the virtual-work condition.",
+      "concept": "ph2-2-theory"
+    },
+    {
+      "front": "When can local coordinate reduction fail?",
+      "back": "At dependent or singular constraint configurations.",
+      "concept": "ph2-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a constraint reaction sometimes disappear from the equations without becoming zero? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Generalized coordinates and ideal virtual work can eliminate unknown reaction forces. Eliminating them is a mathematical consequence of the allowed variation space, not proof that the support or tension vanished.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Allowed virtual displacements lie tangent to the constraint. An ideal normal reaction can do no virtual work along them while still supplying a large physical force.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A holonomic constraint is a relation among coordinates and possibly time. Ideal constraint reactions do zero virtual work for admitted virtual displacements under the stated mechanical principle.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For constraints gα(q,t)=0 with independent coordinate gradients, local coordinate reduction can describe the constraint manifold with fewer independent variables. Dependence or singular points can break that local parameterization. A time-dependent holonomic constraint is rheonomous; a time-independent one is scleronomous.
+
+In a Cartesian constrained problem, Lagrange multipliers can retain reaction forces. For ideal holonomic constraints, a consistent equation is $d(L_{\dot q_i})/dt-L_{q_i}=\sum_\alpha\lambda_\alpha\partial g_\alpha/\partial q_i$ with the convention chosen for the multipliers. Solve these equations together with gα=0; multiplier dimensions depend on constraint normalization.
+
+For a particle constrained to a sphere, a multiplier force normal to the sphere supplies the needed radial acceleration. Replacing g by twice g changes the multiplier but not the physical reaction when the full product λ∇g is transformed consistently. The multiplier value alone is not a coordinate-independent force magnitude.
+
+A velocity relation a(q,t)·q̇+b(q,t)=0 is not automatically an integrable position constraint. Rolling without slipping is a common source of nonholonomic restrictions. Directly treating every such relation as a variational holonomic constraint can lead to equations different from physical d'Alembert dynamics.
+
+A moving ideal constraint can transfer energy even when its reaction does no virtual work in the relevant instantaneous variation class. Virtual displacements are not identical to the actual time displacement of a moving support. State the support motion and energy exchange before invoking conservation of the unconstrained mechanical energy.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare a fixed and a vertically driven pendulum support. Identify allowed virtual displacements and the actual support motion separately. Normalize a simple constraint two different ways and check that the reaction vector, not its bare multiplier, agrees.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A particle on a circle of radius R with g=x²+y²−R² has reaction λ(2x,2y) in the stated convention. Replacing g by g/2 gives gradient (x,y), so the numerical multiplier doubles for the same force. The geometry and physical trajectory do not change.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
