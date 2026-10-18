@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.5",
+  "title": "Convection and mixing-length theory",
+  "hook": "When does a displaced stellar parcel keep rising instead of returning?",
+  "recap": [
+    "The actual and adiabatic logarithmic gradients.",
+    "A suitable composition gradient, among other effects.",
+    "A closure travel scale αH_p.",
+    "Nonlocal mixing, rotation, fields and diffusive instabilities."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does Schwarzschild include arbitrary composition stratification automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A composition-sensitive criterion is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is the mixing-length parameter universally fixed by first principles in this closure?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is model/calibration dependent.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can efficient convection transport energy with a nearly adiabatic gradient?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "A small superadiabatic excess can sustain a large flux.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Gradient excess for ∇=.5 and ∇_ad=.4?",
+      "answer": "0.1",
+      "explanation": ".5−.4=.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Mixing length for α=2,H_p=3?",
+      "answer": "6",
+      "explanation": "ℓ=αH_p=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does Schwarzschild include arbitrary composition stratification automatically?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "A composition-sensitive criterion is needed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What compares parcel and environment cooling?",
+      "back": "The actual and adiabatic logarithmic gradients.",
+      "concept": "as3-5-theory"
+    },
+    {
+      "front": "What can stabilize against buoyancy?",
+      "back": "A suitable composition gradient, among other effects.",
+      "concept": "as3-5-theory"
+    },
+    {
+      "front": "What is mixing length?",
+      "back": "A closure travel scale αH_p.",
+      "concept": "as3-5-theory"
+    },
+    {
+      "front": "What can local stability criteria miss?",
+      "back": "Nonlocal mixing, rotation, fields and diffusive instabilities.",
+      "concept": "as3-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+When does a displaced stellar parcel keep rising instead of returning? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Buoyancy stability links thermodynamic gradients and composition, while mixing-length theory is a closure rather than a resolved calculation of turbulence.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The Schwarzschild criterion compares the actual logarithmic temperature-pressure gradient with the adiabatic parcel gradient in a chemically homogeneous layer.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Define $\nabla=d\ln T/d\ln p$. A small parcel displaced rapidly compared with heat exchange approximately follows ∇_ad. At the new pressure, its temperature and density relative to the surroundings determine buoyancy. For the ordinary homogeneous stellar setting, ∇>∇_ad is unstable; radiative transport alone would then demand a gradient that convection can modify.
+
+Composition affects density at fixed pressure and temperature. A mean-molecular-weight gradient enters the Ledoux criterion through EOS derivatives. Using Schwarzschild while ignoring a stabilizing composition gradient can misclassify a layer. Rotation, magnetic fields and finite thermal/compositional diffusion introduce additional modes and qualifications.
+
+Mixing-length theory assumes a characteristic travel length ℓ=αH_p with pressure scale height H_p=−dr/dlnp. It estimates parcel contrasts, speeds and convective flux under a closure model. The dimensionless α is calibrated within a chosen stellar-model framework; it is not a universal directly measured path length for every star and evolutionary phase.
+
+Real convection is three-dimensional, time dependent and coupled to radiation. Overshoot and entrainment can mix material beyond a local stability boundary, while an efficient convective interior can remain close to adiabatic without requiring zero convective flux. Surface superadiabatic layers are especially sensitive to the closure.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare parcel and environment temperature-pressure paths on a log plot. Add a stated composition gradient and explain why the homogeneous rule is insufficient. Vary α in a model sensitivity exercise and report it as a model assumption.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a homogeneous layer has ∇=.5 and ∇_ad=.4, the excess .1 indicates instability in the elementary Schwarzschild comparison. For α=2 and H_p=3 in length units, the model mixing length is 6; this is a closure parameter, not a resolved eddy trajectory.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

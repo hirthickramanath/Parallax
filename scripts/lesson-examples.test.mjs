@@ -365,3 +365,51 @@ test("introductory quantum examples retain amplitudes, measures and state counts
     check(id, "warmup", w);
   }
 });
+test("bonding examples preserve electron accounting, weights and model conventions", () => {
+  const rows = [
+    ["CH4.1", 5 - 8 / 2, 6 - 6 - 2 / 2],
+    ["CH4.2", 1 + 3, -1 / 3],
+    ["CH4.3", (8 - 4) / 2, (8 - 3) / 2],
+    ["CH4.4", 2 * 1, 3 + 1],
+    ["CH4.5", 2 ** -6, 4 * (1 - 1)],
+    ["CH4.6", 1 / 4, 3 * 1 * 2],
+    ["CH4.7", 6 * -0.4, 4 * -0.4 + 2 * 0.6],
+    ["CH4.8", Math.sqrt(8 / 2), 1 / Math.sqrt(4)],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("continuum and optical examples retain strain, flow and spectral conventions", () => {
+  const rows = [
+    ["PH3.1", Math.log(4) / 2, 4],
+    ["PH3.2", 0.2 / 2, 2 * 3 * 0.1],
+    ["PH3.3", (2 * 3 * 4) / 6, 8],
+    ["PH3.4", Math.sqrt(4 * 9), 8 ** (-5 / 3)],
+    ["PH6.1", (2 + 1) / 1, 2 + 2],
+    ["PH6.2", 4, 0.01 / 1],
+    ["PH6.3", (8 - 2) / (8 + 2), 0.6],
+    ["PH6.4", Math.cos(Math.PI / 3) ** 2, 1 / (4 * 0.1)],
+    ["PH6.5", Math.log(4) / 2, 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("stellar structure examples preserve gravothermal and transport assumptions", () => {
+  const rows = [
+    ["AS3.1", 20 / 2, 10 - 20],
+    ["AS3.2", (6 * 4) / 2, (3 * 2 ** 4) / 3],
+    ["AS3.3", (4 ** 2 * 2) / 2, 2 ** 4],
+    ["AS3.4", 1 / 4, 2 ** 2 / 0.25],
+    ["AS3.5", 0.5 - 0.4, 2 * 3],
+    ["AS3.6", 1, 2 * 3 ** 2],
+    ["AS3.7", 2 ** 4, 2 ** 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

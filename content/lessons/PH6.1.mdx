@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH6.1",
+  "title": "Wave equation and dispersion",
+  "hook": "Why can a pulse change shape even when each frequency obeys a simple wave equation?",
+  "recap": [
+    "Frequency-dependent phase evolution across modes.",
+    "dω/dk.",
+    "Leading packet dispersion.",
+    "Different branches can have different propagation and polarization."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does nonlinear ω(k) generally preserve packet shape?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different spectral components accumulate different phases.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is numerical dispersion identical to material dispersion?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It can arise from the discrete scheme.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does group velocity require a meaningful envelope regime?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Strong distortion can invalidate that interpretation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Phase speed at k=1 for ω=2k+k²?",
+      "answer": "3",
+      "explanation": "ω/k=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Group speed at the same k?",
+      "answer": "4",
+      "explanation": "dω/dk=2+2k=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does nonlinear ω(k) generally preserve packet shape?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Different spectral components accumulate different phases.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is dispersion?",
+      "back": "Frequency-dependent phase evolution across modes.",
+      "concept": "ph6-1-theory"
+    },
+    {
+      "front": "What derivative gives leading envelope speed?",
+      "back": "dω/dk.",
+      "concept": "ph6-1-theory"
+    },
+    {
+      "front": "What does ω″ control locally?",
+      "back": "Leading packet dispersion.",
+      "concept": "ph6-1-theory"
+    },
+    {
+      "front": "Why specify the wave branch?",
+      "back": "Different branches can have different propagation and polarization.",
+      "concept": "ph6-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Hecht, Optics — edition and exact section verification pending",
+    "Goodman, Introduction to Fourier Optics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a pulse change shape even when each frequency obeys a simple wave equation? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Dispersion separates carrier phase, envelope motion and distortion, supporting later radiation and plasma applications.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A dispersion relation ω(k) links frequency and wavenumber for a chosen wave branch. A packet superposes modes with a distribution of k.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For the homogeneous nondispersive equation $u_{tt}=c^2u_{xx}$, Fourier components satisfy ω²=c²k². A single-direction packet can translate without distortion in this ideal one-dimensional model because ω is linear in k on that branch. Boundary reflections and multidimensional geometry can still change a local signal.
+
+Expand ω(k) near carrier k₀: ω≈ω₀+ω′₀δk+ω″₀δk²/2. The first derivative gives a narrowband envelope speed and the second produces dispersion at leading order. Neglecting the quadratic term requires a propagation distance/time and bandwidth for which its phase remains small.
+
+Phase velocity is ω/k; group velocity is dω/dk when the envelope approximation applies. Neither alone is a universal definition of a causal signal front in an absorbing or strongly distorted medium. Complex k or ω introduces attenuation/growth and requires a sign convention and stability analysis.
+
+A medium can have multiple branches, anisotropy and polarization-dependent propagation. An effective wave equation must be derived from its constitutive regime. Finite-difference numerical dispersion is a separate source of phase error, so a distorted computed pulse does not automatically demonstrate physical material dispersion.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct a narrow synthetic Gaussian k-spectrum and propagate it with a linear and a curved dispersion relation. Compare envelope centre and width at matched times. Repeat with smaller spectral width to test the Taylor approximation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For ω=2k+k² and k₀=1 in normalized units, phase velocity is 3 and group velocity is 4. The curvature is 2, so a finite-bandwidth packet generally disperses. Quoting one of these speeds without specifying the measured feature is ambiguous.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

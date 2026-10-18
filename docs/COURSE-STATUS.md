@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **191**.
-- Authored recall cards: **769**.
-- Missing lesson bodies: **163**.
+- Playable authored drafts: **215**.
+- Authored recall cards: **865**.
+- Missing lesson bodies: **139**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -38,10 +38,10 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 0 | PB5 | Modern physics | 3 / 3 | None |
 | 1 | PH1 | Classical mechanics I: Newtonian | 6 / 6 | None |
 | 3 | PH2 | Analytical mechanics | 7 / 7 | None |
-| 4 | PH3 | Nonlinear dynamics and continuum mechanics | 0 / 4 | PH3.1, PH3.2, PH3.3, PH3.4 |
+| 4 | PH3 | Nonlinear dynamics and continuum mechanics | 4 / 4 | None |
 | 2 | PH4 | Electrostatics and magnetostatics | 8 / 8 | None |
 | 3 | PH5 | Electrodynamics | 8 / 8 | None |
-| 4 | PH6 | Waves and optics | 0 / 5 | PH6.1, PH6.2, PH6.3, PH6.4, PH6.5 |
+| 4 | PH6 | Waves and optics | 5 / 5 | None |
 | 3 | PH7 | Thermodynamics and statistical mechanics | 10 / 10 | None |
 | 3 | PH8 | Quantum mechanics I | 8 / 8 | None |
 | 5 | PH9 | Quantum mechanics II | 0 / 8 | PH9.1, PH9.2, PH9.3, PH9.4, PH9.5, PH9.6, PH9.7, PH9.8 |
@@ -62,7 +62,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 3 | CP2 | Applied computing | 5 / 5 | None |
 | 2 | AS1 | Sky and orbits | 5 / 5 | None |
 | 2 | AS2 | Radiation and telescopes | 7 / 7 | None |
-| 4 | AS3 | Stellar structure | 0 / 7 | AS3.1, AS3.2, AS3.3, AS3.4, AS3.5, AS3.6, AS3.7 |
+| 4 | AS3 | Stellar structure | 7 / 7 | None |
 | 5 | AS4 | Stellar evolution and remnants | 0 / 7 | AS4.1, AS4.2, AS4.3, AS4.4, AS4.5, AS4.6, AS4.7 |
 | 7 | AS5 | Compact objects and high-energy astrophysics | 0 / 6 | AS5.1, AS5.2, AS5.3, AS5.4, AS5.5, AS5.6 |
 | 5 | AS6 | Interstellar medium and plasma astrophysics | 0 / 5 | AS6.1, AS6.2, AS6.3, AS6.4, AS6.5 |
@@ -70,7 +70,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 4 | AS8 | Galaxies and galactic dynamics | 0 / 7 | AS8.1, AS8.2, AS8.3, AS8.4, AS8.5, AS8.6, AS8.7 |
 | 7 | AS9 | Cosmology | 0 / 8 | AS9.1, AS9.2, AS9.3, AS9.4, AS9.5, AS9.6, AS9.7, AS9.8 |
 | 8 | AS10 | Astrophysics research skills | 0 / 4 | AS10.1, AS10.2, AS10.3, AS10.4 |
-| 4 | CH4 | Chemical bonding and molecular structure | 0 / 8 | CH4.1, CH4.2, CH4.3, CH4.4, CH4.5, CH4.6, CH4.7, CH4.8 |
+| 4 | CH4 | Chemical bonding and molecular structure | 8 / 8 | None |
 | 5 | CH5 | Selected inorganic and block chemistry | 0 / 4 | CH5.1, CH5.2, CH5.3, CH5.4 |
 | 1 | CH6 | Organic foundations for astrochemistry | 8 / 8 | None |
 

@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.6",
+  "title": "Structure equations and polytropes",
+  "hook": "Why are four coupled structure equations needed instead of one gravity equation?",
+  "recap": [
+    "Mass, momentum, energy and transport with closures.",
+    "Enclosed mass and luminosity vanish at the centre.",
+    "A dimensionless polytropic structure under stated scalings.",
+    "Interior integration alone need not satisfy a physical surface."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does hydrostatic balance alone determine temperature and luminosity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "EOS, energy and transport closures are needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can the singular-looking central equation be stepped by naive division at ξ=0?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A regular series or equivalent treatment is required.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is one polytropic index an exact description of every stellar layer?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Real closures vary with state and composition.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Polytropic n if pressure exponent is 2?",
+      "answer": "1",
+      "explanation": "1+1/n=2 gives n=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Pressure for K=2,ρ=3 with exponent 2?",
+      "answer": "18",
+      "explanation": "2×3²=18.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does hydrostatic balance alone determine temperature and luminosity?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "EOS, energy and transport closures are needed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What balances a stellar model?",
+      "back": "Mass, momentum, energy and transport with closures.",
+      "concept": "as3-6-theory"
+    },
+    {
+      "front": "What are regular central conditions?",
+      "back": "Enclosed mass and luminosity vanish at the centre.",
+      "concept": "as3-6-theory"
+    },
+    {
+      "front": "What is a Lane–Emden solution?",
+      "back": "A dimensionless polytropic structure under stated scalings.",
+      "concept": "as3-6-theory"
+    },
+    {
+      "front": "Why check boundary matching?",
+      "back": "Interior integration alone need not satisfy a physical surface.",
+      "concept": "as3-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why are four coupled structure equations needed instead of one gravity equation? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+A stellar model must satisfy mass, force, energy and transport simultaneously with compatible central and surface conditions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A one-dimensional quasi-static stellar model evolves enclosed mass, pressure, luminosity and temperature, with EOS, opacity, energy generation and composition closures.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The spherical equations include dm/dr=4πr²ρ, dp/dr=−Gmρ/r² and $dL/dr=4\pi r^2\rho\epsilon_{net}$ when the local net energy term includes the appropriate heating, losses and gravothermal contribution for the evolution model. A transport law supplies dT/dr or its logarithmic gradient.
+
+At the centre m and L vanish for a regular nonsingular model, while near-surface conditions match an atmosphere or a stated simplified boundary. Central densities/temperatures are not arbitrary independent guesses that guarantee a valid surface. Shooting, relaxation and mass-coordinate methods solve a coupled boundary-value problem with numerical conditioning and convergence checks.
+
+For a polytropic approximation $p=K\rho^{1+1/n}$, a suitable radial/density scaling yields the Lane–Emden equation (ξ²θ′)′/ξ²=−θⁿ with θ(0)=1 and θ′(0)=0. The physical density is ρ_cθⁿ where the model remains valid. A polytropic index is not automatically the same as every adiabatic exponent of a realistic stratified star.
+
+Dimensionless solutions must be scaled back using K,ρ_c,G and the chosen index. Surface zeros and finite-mass/radius behaviour depend on n. Composition gradients, ionization and changing transport can make a single polytrope only a qualitative approximation. Hydrostatic convergence alone does not verify an evolutionary track or observed stellar parameters.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Integrate a regular Lane–Emden model starting from a central series rather than dividing by ξ=0 numerically. Compare refinements and record the first surface zero when it exists. Keep dimensionless output separate from physical mass/radius scaling.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For p=Kρ², the exponent 1+1/n=2 gives n=1. At ρ=3 and K=2, pressure is 18. The pressure law supplies an EOS-like closure for the polytropic model but does not independently specify its luminosity or nuclear network.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

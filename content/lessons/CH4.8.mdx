@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH4.8",
+  "title": "Bonding evidence from spectroscopy and computation",
+  "hook": "Can a good match to one spectrum prove a unique bonding picture?",
+  "recap": [
+    "Force constant and reduced mass.",
+    "Method, basis, electronic state, geometry and convergence details.",
+    "Reusing the fit target is not independent evidence.",
+    "Provenance, calibration, units and uncertainty."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does one matched peak prove a unique bonding model?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different models or parameter choices can share an observable.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can isotopic mass shift vibration without changing leading electronic bonding?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The reduced mass enters the frequency.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does basis convergence alone guarantee physical accuracy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The Hamiltonian/method/state assumptions can still be wrong.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Angular frequency for k=8,μ=2?",
+      "answer": "2",
+      "explanation": "√(8/2)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Frequency ratio after quadrupling reduced mass at fixed k?",
+      "answer": "0.5",
+      "explanation": "ω scales as μ⁻¹ᐟ².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does one matched peak prove a unique bonding model?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Different models or parameter choices can share an observable.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What determines harmonic vibration?",
+      "back": "Force constant and reduced mass.",
+      "concept": "ch4-8-theory"
+    },
+    {
+      "front": "What must a computational prediction record?",
+      "back": "Method, basis, electronic state, geometry and convergence details.",
+      "concept": "ch4-8-theory"
+    },
+    {
+      "front": "Why separate fitting and validation data?",
+      "back": "Reusing the fit target is not independent evidence.",
+      "concept": "ch4-8-theory"
+    },
+    {
+      "front": "What makes an observational comparison reviewable?",
+      "back": "Provenance, calibration, units and uncertainty.",
+      "concept": "ch4-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and de Paula, Physical Chemistry — edition and exact section verification pending",
+    "Housecroft and Sharpe, Inorganic Chemistry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a good match to one spectrum prove a unique bonding picture? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Bonding models are constrained by multiple observables and uncertainty; calculations depend on method, basis and comparison conditions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Spectroscopic and computational evidence tests predictions of an electronic-structure model. Agreement with one observable is support under stated assumptions, not universal identification of the wavefunction.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a harmonic diatomic approximation, $\omega=\sqrt{k/\mu}$ and vibrational frequency depends on both force constant and reduced mass. A bond-length trend or frequency shift alone need not isolate bond order because environment, coupling and anharmonicity can also change the observable. IR intensity requires a changing dipole; Raman intensity involves polarizability response.
+
+Rotational spectra constrain moments of inertia and geometry, while electronic and photoelectron spectra probe excitation or ionization energies with selection and relaxation effects. Isotopic substitution changes masses while mostly retaining the electronic potential at leading Born–Oppenheimer order, making it a useful model test. Nondetection can reflect sensitivity and selection rules rather than absence of a species.
+
+A computational result must specify electronic method, basis, charge, spin state, geometry, convergence and environment. Hartree–Fock, density-functional and correlated wavefunction approximations treat exchange/correlation differently. A larger basis does not automatically fix a poor functional or wrong electronic state. Numerical convergence and physical-model accuracy are separate.
+
+Compare predicted and measured quantities with units, calibration and uncertainties. Use more than one independent diagnostic and preserve provenance for any actual data. Fitting parameters to a spectrum and then using that same spectrum as independent validation overstates evidence. This lesson provides model calculations, not a new experimental detection or a benchmarked quantum-chemistry dataset.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use an explicitly synthetic set of isotopic masses and frequencies to fit the harmonic mass scaling. Then add a stated measurement uncertainty and examine residuals. If importing real spectra later, retain source, resolution, calibration and the distinction between fitted and validation observations.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If force constant stays fixed and reduced mass quadruples, harmonic angular frequency halves. With k=8 and μ=2 in consistent units, ω=√4=2. An observed shift can therefore reflect isotopic mass without requiring the bond force constant to change.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

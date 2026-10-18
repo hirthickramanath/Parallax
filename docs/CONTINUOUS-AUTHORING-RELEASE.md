@@ -15,3 +15,9 @@ No cloud schema or billing dependency changed. Live Firebase/rules verification 
 CP2.1–CP2.5, PH5.1–PH5.8 and PH8.1–PH8.8 add 21 drafts covering computational verification, sampling/data/ML/reproducibility, Maxwell dynamics/radiation, and the introductory quantum framework. Coverage is 191/354 bodies, 769 recall cards, 163 missing. Source references remain review leads. No live catalogue data or provider access is claimed.
 
 The production build and all 68 model/grading/example tests passed. Targeted production-player sweeps passed for all three new units, including every theory and investigation. A rejected raw tensor expression was moved inside TeX before the successful build; an added proper-motion equation satisfies the existing mathematics-rendering check. Earlier failed runs are not counted as passes.
+
+## Bonding, continuum mechanics, optics and stellar structure
+
+CH4.1–CH4.8, PH3.1–PH3.4, PH6.1–PH6.5 and AS3.1–AS3.7 add 24 drafts. Coverage is 215/354 bodies, 865 recall cards, 139 missing. Models distinguish formal charge from electron density, conductivity from conductance, physical from numerical dispersion, and stellar hydrostatic from thermal equilibrium.
+
+The production build, all 71 model/grading/example tests and targeted production-player sweeps for all four units passed. The full suite at the preceding 191-body state passed all 54 cases. A missing typeset crystal-field equation was corrected before the passing bonding sweep. References and science remain independently unverified drafts.
