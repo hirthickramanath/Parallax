@@ -1,6 +1,6 @@
 # Fourier methods and PDE batch
 
-This is the current authoring release. The generated [course ledger](COURSE-STATUS.md) records actual coverage.
+This is a historical authoring release. See [the current release](COMPLEX-ANALYSIS-RELEASE.md). The generated [course ledger](COURSE-STATUS.md) records actual coverage.
 
 ## New content
 

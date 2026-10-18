@@ -275,3 +275,17 @@ test("Fourier and PDE draft examples retain normalization, rate and boundary con
     check(id, "warmup", warmup);
   }
 });
+test("complex-analysis examples preserve residues, orientation and branch choices", () => {
+  const rows = [
+    ["MA6.1", 2 * 1, 2 * 3],
+    ["MA6.2", 2 / 2, -1],
+    ["MA6.3", 1 / 2, 3],
+    ["MA6.4", 1 + -1, 3],
+    ["MA6.5", (2 - 1) / (2 + 1), 2 ** 2 + 2 ** 2],
+    ["MA6.6", Math.cos(Math.PI), (2 * Math.PI) / Math.PI],
+  ];
+  for (const [id, numeric, warmup] of rows) {
+    check(id, "numeric", numeric);
+    check(id, "warmup", warmup);
+  }
+});

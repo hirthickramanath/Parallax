@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA6.5",
+  "title": "Conformal maps",
+  "hook": "Why does a holomorphic map preserve tiny angles but sometimes fold a whole domain?",
+  "recap": [
+    "A uniform scale and rotation.",
+    "|f′|².",
+    "The unit disk.",
+    "Normal derivatives and boundary metric factors transform."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does nonzero derivative everywhere on a domain guarantee global injectivity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Local inverse information does not rule out separate points sharing an image.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is z² locally conformal at zero?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its derivative vanishes there.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does conformal pullback preserve an arbitrary Poisson source without scaling?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The Laplacian transforms with |f′|².",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Real part of (z−i)/(z+i) at z=2i?",
+      "answer": "0.3333333333333333",
+      "explanation": "The ratio is i/(3i)=1/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Infinitesimal area scale |f′|² for f=z² at z=1+i?",
+      "answer": "8",
+      "explanation": "|2+2i|²=4+4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What extra check is needed for a global conformal equivalence?",
+      "answer": "Injectivity and the target domain, not just nonzero local derivative",
+      "options": [
+        "Injectivity and the target domain, not just nonzero local derivative",
+        "Only a nonzero derivative at one point"
+      ],
+      "explanation": "A local angle-preserving map can overlap globally.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What local map does a nonzero complex derivative represent?",
+      "back": "A uniform scale and rotation.",
+      "concept": "ma6-5-theory"
+    },
+    {
+      "front": "What is its real Jacobian determinant?",
+      "back": "|f′|².",
+      "concept": "ma6-5-theory"
+    },
+    {
+      "front": "What does the Cayley map send the upper half-plane to?",
+      "back": "The unit disk.",
+      "concept": "ma6-5-theory"
+    },
+    {
+      "front": "Why do Neumann data need care under conformal mapping?",
+      "back": "Normal derivatives and boundary metric factors transform.",
+      "concept": "ma6-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Stein and Shakarchi, Complex Analysis — exact section verification pending",
+    "Ahlfors, Complex Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a holomorphic map preserve tiny angles but sometimes fold a whole domain? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Conformal maps simplify two-dimensional boundary problems. Local angle preservation must be separated from global invertibility and the transformation of physical quantities.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A nonzero complex derivative acts locally as a rotation and uniform scale. Globally, separate points can still be sent to the same location.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A holomorphic map with nonzero derivative is locally conformal and orientation preserving. A global conformal equivalence additionally requires a one-to-one holomorphic map onto its target with a holomorphic inverse.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A holomorphic map near z₀ satisfies $f(z_0+h)=f(z_0)+f'(z_0)h+o(|h|)$. When f′(z₀)≠0, multiplication by that derivative rotates and scales all tangent vectors equally, preserving oriented angles. The real Jacobian determinant is |f′|². At a critical point where f′=0, this first-order argument fails; z² doubles angular sectors at zero rather than being locally conformal there.
+
+For z², the derivative is nonzero away from zero, but z and −z share an image. Thus local conformality on the punctured plane does not make the map globally injective. Choosing an appropriate smaller domain can remove this overlap. The inverse-function theorem supplies a local analytic inverse at a noncritical point; it does not prove a single inverse exists over an arbitrary larger domain.
+
+A Möbius map $w=(az+b)/(cz+d)$ requires ad−bc≠0. Its derivative is (ad−bc)/(cz+d)² at finite points away from its pole, and it is an automorphism of the Riemann sphere. It sends generalized circles, meaning circles or lines, to generalized circles. The point at infinity belongs to this spherical description, not to every ordinary plane chart.
+
+The Cayley map $w=(z-i)/(z+i)$ sends the upper half-plane to the unit disk: if Im z>0, then |z−i|&lt;|z+i|, so |w|&lt;1. Its inverse is z=i(1+w)/(1−w). The real axis maps to the unit circle away from the exceptional chart points. Boundary correspondence and interior mapping should be checked separately rather than inferred from three sampled points alone.
+
+If U is harmonic in the w-plane and w=f(z) is holomorphic, the chain rule gives $\Delta_z(U\circ f)=|f'(z)|^2(\Delta_wU)\circ f$ with sufficient smoothness. Harmonicity is preserved, while a Poisson source transforms with a scale factor and is not generally unchanged. Normal derivatives, fluxes and lengths also transform. Dirichlet values pull back directly; Neumann data require metric scaling. Riemann mapping applies to a nonempty simply connected proper plane domain, but does not automatically provide an elementary formula or arbitrary smooth boundary extension.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot a rectangular grid under z², restricting first to a small patch away from zero and then comparing patches centred at z and −z. Measure tangent angles and identify overlapping images. For the Cayley map, test several upper-half-plane points and algebraically prove the modulus inequality; numerical samples alone do not prove the domain map.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For the Cayley map at z=2i, w=(2i−i)/(2i+i)=1/3. Its real part is 1/3 and imaginary part zero. For z² at z=1+i, |f′|²=|2+2i|²=8, so infinitesimal area scales by 8 rather than by the length scale √8.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

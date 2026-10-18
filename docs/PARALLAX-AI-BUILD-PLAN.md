@@ -153,3 +153,8 @@ Authored CH1.1–CH1.13 and PH2.1–PH2.7 as drafts, bringing coverage to 142/35
 ## Fourier methods and PDE milestone
 
 Authored MA5.1–MA5.7 as drafts, bringing coverage to 149/354 lessons and 601 recall cards. Added a Fourier-mode heat/wave bench with exact mode evolution, fixed-axis traces, a squared-norm readout and conserved wave energy. See [release details](FOURIER-PDE-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 205 lesson bodies and independent scientific/source review remain, alongside the previously documented live rules and eligible tutor-provider prerequisites.
+
+
+## Complex analysis milestone
+
+Authored MA6.1–MA6.6 as drafts, bringing coverage to 155/354 lessons and 625 recall cards. Added a unit-circle branch explorer distinguishing principal values from continuation, with explicit cut exclusions. See [release details](COMPLEX-ANALYSIS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 199 lesson bodies and independent source/scientific review remain, alongside the documented live rules and eligible tutor-provider prerequisites.

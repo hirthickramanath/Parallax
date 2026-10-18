@@ -860,3 +860,52 @@ test("Fourier evolution bench distinguishes heat decay from conserved wave energ
   await page.getByRole("link", { name: "Open the connected lesson →" }).click();
   await expect(page).toHaveURL(/lesson\/MA5.4/);
 });
+
+test("complex branch explorer tracks monodromy and excludes its principal cut on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/lesson/MA6.6");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "The continued root changes sign around zero, while the principal value uses its branch convention.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("interactive");
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("1.000 + 0.000i");
+  await page.getByRole("button", { name: "180°", exact: true }).click();
+  await expect(
+    page.getByLabel("Principal square root", { exact: true }),
+  ).toHaveText("Undefined on the chosen cut");
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("0.000 + 1.000i");
+  await page.getByRole("button", { name: "360°", exact: true }).click();
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("-1.000 + 0.000i");
+  await expect(
+    page.getByLabel("Principal square root", { exact: true }),
+  ).toHaveText("1.000 + 0.000i");
+  await page.getByRole("button", { name: "720°", exact: true }).click();
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("1.000 + 0.000i");
+  await expect(
+    page.getByText(/Continued logarithm imaginary part: 4.000π/),
+  ).toBeVisible();
+  await page.getByLabel("Complex path angle").fill("270");
+  await expect(
+    page.getByLabel("Principal square root", { exact: true }),
+  ).toContainText("− 0.707i");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+});

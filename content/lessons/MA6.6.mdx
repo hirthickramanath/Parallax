@@ -1,0 +1,192 @@
+---
+{
+  "id": "MA6.6",
+  "title": "Branch cuts and analytic continuation",
+  "hook": "Why does continuing a square root around zero return the opposite sign?",
+  "recap": [
+    "A single-valued holomorphic choice on a stated domain.",
+    "A loop around zero has nonzero integral of dz/z.",
+    "Path dependence of analytic continuation around obstructions.",
+    "Agreement on a set accumulating at a point inside a connected holomorphic domain."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a chosen branch cut necessarily a physical singularity at every point on it?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Away from the branch point another local branch can be regular.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does one loop around zero return a continued square root to its initial sign?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It changes sign after one loop and returns after two.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does agreement only at isolated sample points establish analytic identity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The identity theorem needs an interior accumulation point in a connected domain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Final real square-root value after one positive loop from initial +1 at z=1?",
+      "answer": "-1",
+      "explanation": "Continuous argument increases by 2π, so the root gains eⁱπ.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "exact": true
+    },
+    {
+      "id": "warmup",
+      "prompt": "Imaginary logarithm increment after one positive loop divided by π?",
+      "answer": "2",
+      "explanation": "The increment is 2πi.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup",
+      "exact": true
+    },
+    {
+      "id": "core",
+      "prompt": "What must a branch-dependent physical calculation state?",
+      "answer": "Its branch domain and the model condition selecting that choice",
+      "options": [
+        "Its branch domain and the model condition selecting that choice",
+        "Only the library function name"
+      ],
+      "explanation": "Default conventions do not supply boundary or causality conditions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a logarithm branch require?",
+      "back": "A single-valued holomorphic choice on a stated domain.",
+      "concept": "ma6-6-theory"
+    },
+    {
+      "front": "Why is there no global logarithm on the punctured plane?",
+      "back": "A loop around zero has nonzero integral of dz/z.",
+      "concept": "ma6-6-theory"
+    },
+    {
+      "front": "What is monodromy?",
+      "back": "Path dependence of analytic continuation around obstructions.",
+      "concept": "ma6-6-theory"
+    },
+    {
+      "front": "What is the identity-theorem accumulation condition?",
+      "back": "Agreement on a set accumulating at a point inside a connected holomorphic domain.",
+      "concept": "ma6-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Stein and Shakarchi, Complex Analysis — exact section verification pending",
+    "Ahlfors, Complex Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does continuing a square root around zero return the opposite sign? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Multivalued formulas occur in waves, asymptotics and complex response. A branch is part of the mathematical definition, and a physical boundary or causality condition can select one.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A phase can increase continuously along a path even when a single principal angle jumps. A cut selects one sheet of a description; it does not remove the underlying winding phenomenon.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A branch of a multivalued expression is a single-valued holomorphic choice on a stated domain. Analytic continuation extends compatible holomorphic germs through overlapping open regions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For z=reⁱᶿ≠0, logarithm values are ln r+i(θ+2πk) for integer k. A holomorphic logarithm on a domain satisfies exp(Log z)=z and has derivative 1/z. A standard principal branch uses Arg z in (−π,π) and removes the nonpositive real axis. At a point on the excluded cut, that branch is not defined even though another local logarithm may exist there away from zero.
+
+A logarithm exists on a simply connected domain avoiding zero, and more generally the winding integral of dz/z must vanish for every closed curve in the domain. On the punctured plane the unit-circle integral is 2πi, so no global single-valued holomorphic logarithm exists. A chosen cut is a domain convention; moving it changes where that branch description fails, while the branch point at zero remains.
+
+Define a square-root branch through $\sqrt z=\exp[\tfrac12\operatorname{Log}z]$. Continuing once around zero increases a continuously tracked logarithm by 2πi and changes the square root by a factor eⁱπ=−1. After two loops the square root returns, but the logarithm has increased by 4πi. A principal-branch evaluation at each sampled point is not the same operation as continuously tracking a value along the entire path.
+
+The identity theorem says that two holomorphic functions on a connected domain agreeing on a set with an accumulation point inside the domain agree everywhere there. This gives uniqueness where compatible continuations overlap. Agreement only at isolated points or at an accumulation point outside the domain is insufficient. A Taylor series can stop at its convergence boundary while analytic continuation succeeds through another chain of overlapping disks; convergence of one series and existence of continuation are distinct.
+
+Path dependence of continuation around singularities is monodromy. Under the hypotheses of the monodromy theorem, continuation along all paths in a simply connected domain becomes single valued. One must establish the allowed paths and absence of obstructions rather than simply calling a formula analytic. In physical applications, branch cuts, outgoing-wave choices and causal prescriptions must follow the model; a software library’s default principal branch does not by itself establish the correct physical condition.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Trace a unit circle and compare two computations: principal arguments at each point, and a continuously unwrapped argument. Use each to construct a square root. Mark the principal jump at the negative real axis and the sign change of the continued root after one loop. Never connect values across a branch cut as if they formed one holomorphic chart.
+
+<Widget name="complex_branch_explorer" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Start at z=1 with a square-root value +1 and track z=eⁱᵗ continuously from t=0 to 2π. The root is eⁱᵗᐟ², so it ends at −1. After a second loop it returns to +1. The logarithm’s imaginary increment after one loop divided by π is 2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

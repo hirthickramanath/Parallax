@@ -1,3 +1,4 @@
+import { ComplexBranchExplorer } from "./ComplexBranchExplorer";
 import { PdeModesLab } from "./PdeModesLab";
 import { CoupledOscillatorLab } from "./CoupledOscillatorLab";
 import { SphericalFieldLab } from "./SphericalFieldLab";
@@ -11,6 +12,7 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  complex_branch_explorer: ComplexBranchExplorer,
   pde_modes_lab: PdeModesLab,
   coupled_oscillator_lab: CoupledOscillatorLab,
   spherical_field_lab: SphericalFieldLab,

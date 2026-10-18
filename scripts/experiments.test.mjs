@@ -285,3 +285,41 @@ test("PDE modes reject invalid controls and probes", () => {
   for (const x of [-1, Math.PI + 0.01, NaN])
     assert.throws(() => state.at(x), RangeError);
 });
+
+import { branchCircle } from "../src/lib/complex-branch.ts";
+test("continued and principal square roots square to the source but retain distinct path information", () => {
+  for (const degrees of [0, 45, 179, 180, 181, 270, 360, 450, 540, 630, 720]) {
+    const s = branchCircle(degrees);
+    for (const root of [s.continued, s.principal].filter(Boolean)) {
+      near(root.real ** 2 - root.imaginary ** 2, s.source.real);
+      near(2 * root.real * root.imaginary, s.source.imaginary);
+      near(root.real ** 2 + root.imaginary ** 2, 1);
+    }
+  }
+  near(branchCircle(360).continued.real, -1);
+  near(branchCircle(360).principal.real, 1);
+  near(branchCircle(720).continued.real, 1);
+  near(branchCircle(720).continuedAngle, 4 * Math.PI);
+});
+test("principal cut is excluded while the path continuation stays continuous across it", () => {
+  for (const cut of [180, 540]) {
+    const s = branchCircle(cut);
+    assert.equal(s.principal, null);
+    assert.equal(s.principalAngle, null);
+    assert.equal(s.onCut, true);
+    const before = branchCircle(cut - 0.001),
+      after = branchCircle(cut + 0.001);
+    assert.ok(
+      Math.hypot(
+        before.continued.real - after.continued.real,
+        before.continued.imaginary - after.continued.imaginary,
+      ) < 0.0001,
+    );
+    assert.ok(before.principal.imaginary > 0.99);
+    assert.ok(after.principal.imaginary < -0.99);
+  }
+});
+test("branch explorer rejects invalid path inputs", () => {
+  for (const angle of [-1, 721, NaN, Infinity])
+    assert.throws(() => branchCircle(angle), RangeError);
+});
