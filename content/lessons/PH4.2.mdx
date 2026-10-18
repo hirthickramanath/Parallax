@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH4.2",
+  "title": "Electric potential, Poisson and Laplace equations",
+  "hook": "Why does fixing a potential at one point not determine an entire electrostatic field?",
+  "recap": [
+    "∇²V=−ρ/ε₀.",
+    "The source-free equation ∇²V=0.",
+    "The potential throughout the admitted region for fixed sources and boundary values.",
+    "Normal derivatives do not determine an additive potential reference."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does adding a constant to potential change E?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A gradient removes the constant.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does one reference value replace all boundary data?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It fixes gauge, not all physical gradients.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can arbitrary Neumann data always match any total charge?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "An integrated compatibility condition must hold.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Electric field Eₓ for V=3x in consistent electrostatic units?",
+      "answer": "-3",
+      "explanation": "Eₓ=−dV/dx.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Potential at x=1 for the stated slab solution V=3x?",
+      "answer": "3",
+      "explanation": "Substitute x=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What supports trusting a constructed Dirichlet solution?",
+      "answer": "Uniqueness once the equation and full boundary data are satisfied",
+      "options": [
+        "Uniqueness once the equation and full boundary data are satisfied",
+        "Agreement at one sampled point"
+      ],
+      "explanation": "A local sample does not establish the boundary-value problem.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is Poisson’s vacuum potential equation?",
+      "back": "∇²V=−ρ/ε₀.",
+      "concept": "ph4-2-theory"
+    },
+    {
+      "front": "What is Laplace’s equation?",
+      "back": "The source-free equation ∇²V=0.",
+      "concept": "ph4-2-theory"
+    },
+    {
+      "front": "What does Dirichlet uniqueness fix?",
+      "back": "The potential throughout the admitted region for fixed sources and boundary values.",
+      "concept": "ph4-2-theory"
+    },
+    {
+      "front": "Why do Neumann solutions retain a constant?",
+      "back": "Normal derivatives do not determine an additive potential reference.",
+      "concept": "ph4-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does fixing a potential at one point not determine an entire electrostatic field? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Electrostatic potential reduces a curl-free vector field to a scalar, but source equations and boundary information are still needed. An arbitrary reference constant differs from missing physical boundary data.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Potential is an energy-per-charge landscape. Its slope determines the field, while charge determines its local curvature through Poisson’s equation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For an electrostatic field on a suitable domain, E=−∇V. In vacuum, Poisson’s equation is ∇²V=−ρ/ε₀ and its source-free version is Laplace’s equation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Because electrostatic circulation vanishes on admitted loops in a domain with a valid potential, $V(B)-V(A)=-\int_A^B E\cdot dl$. Adding a constant changes no field. Combining E=−∇V with Gauss’s differential law gives Poisson’s equation. It is not valid to ignore time-varying induction and still assume every electric field is globally a scalar gradient.
+
+In a source-free region, harmonic V satisfies ∇²V=0. On suitable bounded connected domains its maximum and minimum occur on the boundary unless V is constant, under the usual regularity conditions. One proof uses the mean-value property of harmonic functions: an interior strict extreme cannot equal the average of neighbouring values unless they all match.
+
+For two solutions with the same charge density and Dirichlet boundary potential, their difference u is harmonic and zero on the boundary. Green’s identity gives $\int|\nabla u|^2dV=\oint u\partial_nu\,dA-\int u\nabla^2u\,dV=0$. Hence u is constant, and its zero boundary value fixes that constant to zero. This uniqueness theorem explains why a solution satisfying all conditions is sufficient even if found by a clever construction.
+
+Neumann data specify the outward normal derivative and determine a solution only up to a constant when the compatibility condition holds. Integrating Poisson requires $\oint\partial_nV\,dA=-Q/\epsilon_0$. Boundary values inconsistent with total charge cannot be repaired by an arbitrary additive constant.
+
+For spherical symmetry, $\nabla^2V=r^{-2}d(r^2V')/dr$. Source-free solutions on a positive-r interval have V=A+B/r. Whether B is allowed at r=0 or A at infinity depends on the actual domain and conditions. A singular term excluded at the centre can still be correct outside a charged object.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Solve the slab with several endpoint pairs and compare constant gauge shifts with changes of potential difference. For a sphere, differentiate the potential supplied by the field bench away from interfaces and compare with its electric field.
+
+<Widget name="spherical_field_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a charge-free one-dimensional slab 0≤x≤2 with V(0)=0 and V(2)=6, Laplace gives V″=0, so V=3x and Eₓ=−3. Fixing V(0)=0 alone would leave the slope undetermined.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

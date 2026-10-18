@@ -1,5 +1,7 @@
 # ODE, relativity, radiation and inference batches
 
+**Historical milestone:** see [FIELDS-ORGANIC-RELEASE.md](FIELDS-ORGANIC-RELEASE.md) for the current authoring release and [COURSE-STATUS.md](COURSE-STATUS.md) for coverage.
+
 This is the current implementation release. The generated `COURSE-STATUS.md` lists exact coverage and every missing lesson ID; previous release documents retain historical counts.
 
 ## Added in this release

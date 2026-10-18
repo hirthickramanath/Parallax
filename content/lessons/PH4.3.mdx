@@ -1,0 +1,187 @@
+---
+{
+  "id": "PH4.3",
+  "title": "Boundary-value problems and images",
+  "hook": "How can a fictitious image charge give the correct physical field?",
+  "recap": [
+    "Outside the physical solution domain.",
+    "The conductor is held at zero potential.",
+    "A point charge’s own Coulomb field is singular and is not the induced interaction force.",
+    "It exposes inconsistent assembly factors and signs."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is an image charge a literal source inside the replaced conductor?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It represents the exterior boundary solution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are grounded and isolated-neutral boundary conditions identical?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They impose different potential or total-charge conditions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can image-pair potential energy be used without the induced-charge assembly factor?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The induced configuration changes during assembly.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Vertical force for k=1, q=2, a=1 above a grounded plane?",
+      "answer": "-1",
+      "explanation": "−kq²/(4a²)=−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Energy for the same configuration with zero at infinity?",
+      "answer": "-1",
+      "explanation": "−kq²/(4a)=−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why does the image construction solve the physical half-space problem?",
+      "answer": "It satisfies the field equation and full boundary conditions, so uniqueness applies",
+      "options": [
+        "It satisfies the field equation and full boundary conditions, so uniqueness applies",
+        "A conductor literally contains the image particle"
+      ],
+      "explanation": "The mathematical singularities remain outside the physical domain.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Where are image sources placed?",
+      "back": "Outside the physical solution domain.",
+      "concept": "ph4-3-theory"
+    },
+    {
+      "front": "What fixes grounded-plane potential?",
+      "back": "The conductor is held at zero potential.",
+      "concept": "ph4-3-theory"
+    },
+    {
+      "front": "Why is force computed without the real self-field?",
+      "back": "A point charge’s own Coulomb field is singular and is not the induced interaction force.",
+      "concept": "ph4-3-theory"
+    },
+    {
+      "front": "Why check force against an energy derivative?",
+      "back": "It exposes inconsistent assembly factors and signs.",
+      "concept": "ph4-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a fictitious image charge give the correct physical field? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Boundary-value methods replace difficult surface-charge distributions with mathematical constructions. Image charges are useful because uniqueness certifies a field in the physical domain, not because hidden charges actually exist inside a conductor.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A mirrored charge can enforce one simple boundary condition. Only the region outside the replaced conductor is the intended solution domain.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The method of images constructs a potential meeting the source equation and specified boundary data in a physical region. Fictitious sources lie outside that region.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Place a real charge q at z=a>0 above an infinite grounded conducting plane z=0. In z>0, combine its potential with an image −q at z=−a. At every plane point the distances to the two charges are equal, so V=0. The image has no singularity in the physical half-space. With appropriate decay at infinity, Dirichlet uniqueness proves this is the exterior solution.
+
+The force on the real charge is the field of the induced charge, represented by the image, excluding the real charge’s self-field. Its vertical component is $F_z=-q^2/(16\pi\epsilon_0a^2)=-kq^2/(4a^2)$. The image is 2a away and moves as a changes in the construction.
+
+The physical interaction energy is $U=-q^2/(16\pi\epsilon_0a)=-kq^2/(4a)$ with zero at infinity. It includes a factor 1/2 relative to q times the image potential at the charge. This follows either by integrating the force during assembly or by the induced-charge energy expression. Treating the image as an independent fixed physical charge gives a wrong assembly energy.
+
+For a grounded sphere of radius R and an external charge q at distance a>R from its centre, an image q′=−qR/a at radius R²/a along the same radial direction enforces zero sphere potential. A neutral isolated sphere requires a different total-charge condition, often supplied by an additional central image. Grounded and isolated boundaries are not interchangeable.
+
+Other boundary methods include separation of variables and numerical finite-difference or finite-element solutions. A numerical residual alone does not prove convergence to the intended continuum boundary problem; refine the mesh and check the actual boundary conditions and known limits. Images are special constructions, not a universal recipe for every conductor geometry.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw the plane and real/image positions, verify zero potential at several plane points, then prove the equality from the distance relation. Compute force and energy separately and check Fz=−dU/da. Mark the image region as mathematical rather than physically charged.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Use k=1, q=2 and a=1 for the grounded plane. Force is −1 in the vertical direction and energy is −1 in compatible units. Doubling a reduces the force magnitude to 1/4 and changes the energy to −1/2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

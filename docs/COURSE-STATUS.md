@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **106**.
-- Authored recall cards: **429**.
-- Missing lesson bodies: **248**.
+- Playable authored drafts: **122**.
+- Authored recall cards: **493**.
+- Missing lesson bodies: **232**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -39,7 +39,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 1 | PH1 | Classical mechanics I: Newtonian | 6 / 6 | None |
 | 3 | PH2 | Analytical mechanics | 0 / 7 | PH2.1, PH2.2, PH2.3, PH2.4, PH2.5, PH2.6, PH2.7 |
 | 4 | PH3 | Nonlinear dynamics and continuum mechanics | 0 / 4 | PH3.1, PH3.2, PH3.3, PH3.4 |
-| 2 | PH4 | Electrostatics and magnetostatics | 0 / 8 | PH4.1, PH4.2, PH4.3, PH4.4, PH4.5, PH4.6, PH4.7, PH4.8 |
+| 2 | PH4 | Electrostatics and magnetostatics | 8 / 8 | None |
 | 3 | PH5 | Electrodynamics | 0 / 8 | PH5.1, PH5.2, PH5.3, PH5.4, PH5.5, PH5.6, PH5.7, PH5.8 |
 | 4 | PH6 | Waves and optics | 0 / 5 | PH6.1, PH6.2, PH6.3, PH6.4, PH6.5 |
 | 3 | PH7 | Thermodynamics and statistical mechanics | 0 / 10 | PH7.1, PH7.2, PH7.3, PH7.4, PH7.5, PH7.6, PH7.7, PH7.8, PH7.9, PH7.10 |
@@ -72,7 +72,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 8 | AS10 | Astrophysics research skills | 0 / 4 | AS10.1, AS10.2, AS10.3, AS10.4 |
 | 4 | CH4 | Chemical bonding and molecular structure | 0 / 8 | CH4.1, CH4.2, CH4.3, CH4.4, CH4.5, CH4.6, CH4.7, CH4.8 |
 | 5 | CH5 | Selected inorganic and block chemistry | 0 / 4 | CH5.1, CH5.2, CH5.3, CH5.4 |
-| 1 | CH6 | Organic foundations for astrochemistry | 0 / 8 | CH6.1, CH6.2, CH6.3, CH6.4, CH6.5, CH6.6, CH6.7, CH6.8 |
+| 1 | CH6 | Organic foundations for astrochemistry | 8 / 8 | None |
 
 ## Remaining execution sequence
 

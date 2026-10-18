@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH4.1",
+  "title": "Coulomb's law and Gauss's law (integral and differential)",
+  "hook": "Why can zero electric flux through a surface coexist with a strong field on it?",
+  "recap": [
+    "Net outward electric flux to enclosed charge divided by ε₀.",
+    "∇·E=ρ/ε₀ with appropriate smooth or distributional interpretation.",
+    "Linearly with radius.",
+    "Their enclosed charge and interior field profiles differ."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does zero enclosed charge require zero field on the boundary?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Only the signed net flux is fixed at zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does choosing a spherical Gaussian surface create spherical source symmetry?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The source must supply the required symmetry.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is the field at a point charge defined by its own Coulomb formula?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The expression is singular at the source point.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Field at r=1 inside a uniform sphere with kQ=1 and R=2?",
+      "answer": "0.125",
+      "explanation": "kQr/R³=1/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Field at r=4 outside the same sphere?",
+      "answer": "0.0625",
+      "explanation": "kQ/r²=1/16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "When can Gauss’s law directly determine a field magnitude?",
+      "answer": "When source symmetry fixes direction and constancy on an appropriate surface",
+      "options": [
+        "When source symmetry fixes direction and constancy on an appropriate surface",
+        "Whenever any closed surface can be drawn"
+      ],
+      "explanation": "Flux alone is one integrated constraint.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Gauss’s law relate?",
+      "back": "Net outward electric flux to enclosed charge divided by ε₀.",
+      "concept": "ph4-1-theory"
+    },
+    {
+      "front": "What is the differential vacuum law?",
+      "back": "∇·E=ρ/ε₀ with appropriate smooth or distributional interpretation.",
+      "concept": "ph4-1-theory"
+    },
+    {
+      "front": "How does a uniform-sphere interior field vary?",
+      "back": "Linearly with radius.",
+      "concept": "ph4-1-theory"
+    },
+    {
+      "front": "Why distinguish shell and solid sphere?",
+      "back": "Their enclosed charge and interior field profiles differ.",
+      "concept": "ph4-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can zero electric flux through a surface coexist with a strong field on it? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Gauss’s law connects charge to net field flux. Its symmetry-based applications are powerful precisely because the law alone does not specify every local field value.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Field can enter one part of a closed surface and leave another. Only the signed net crossing counts the enclosed charge.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In vacuum electrostatics, electric field obeys Coulomb superposition, Gauss’s law and zero curl. Surface normals are outward and electric charge can have either sign.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A point charge q at r′ produces $E(r)=q(r-r')/[4\pi\epsilon_0|r-r'|^3]$ away from the source. Integrating against a charge density gives the continuum field where that integral exists. Self-fields of point charges require separate treatment; substituting r=r′ into the point formula is undefined.
+
+For a point inside a closed surface, the oriented solid angle of the surface is 4π. Coulomb flux therefore gives $\oint E\cdot dA=Q_{\rm enc}/\epsilon_0$. Charges outside contribute zero net flux but can give nonzero field everywhere on parts of the surface. For sufficiently smooth fields and densities, the divergence theorem converts this to $\nabla\cdot E=\rho/\epsilon_0$. A point source instead needs a distributional divergence, not a zero-source inference from the formula away from its singularity.
+
+Spherical symmetry makes E radial and its magnitude constant on a sphere. For a uniform solid sphere of radius R and total charge Q, enclosed charge at r&lt;R is Qr³/R³, giving $E_r=Qr/(4\pi\epsilon_0R^3)$. Outside, $E_r=Q/(4\pi\epsilon_0r^2)$. The field is continuous at R because no additional ideal surface-charge sheet was specified.
+
+For an infinite plane sheet with surface charge σ, a pillbox yields the normal-field jump σ/ε₀. Symmetry in identical vacuum on both sides gives magnitudes |σ|/(2ε₀) pointing away for positive charge. The infinite-sheet idealization has no natural zero of potential at infinity and differs from a finite disk at large distance.
+
+A chosen Gaussian surface simplifies a calculation only when actual source symmetry fixes enough of the field. Drawing a sphere around an arbitrary charge arrangement does not make its field spherically symmetric. Evaluate signed normal components and state the reference charge distribution before using a one-number field estimate.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the spherical-field bench to compare a uniformly charged solid sphere with a conducting shell at equal total charge and radius. Record signed radial field and enclosed charge at several radii. All readouts are ideal-model calculations, not voltmeter measurements.
+
+<Widget name="spherical_field_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Use normalized units kQ=1 and R=2 for a uniform charged sphere. At r=1, E=kQr/R³=1/8. At the boundary E=1/4, and at r=4 it is 1/16. The linear interior field differs from the zero field inside a conducting shell.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

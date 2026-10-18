@@ -738,3 +738,44 @@ test("radiation apparatus separates extinction, emission and radial Doppler inte
     .click();
   await expect(page).toHaveURL(/lesson\/AS2.4/);
 });
+
+test("spherical apparatus distinguishes volume charge, conductor interior and an undefined ideal sheet value", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Spherical field", exact: true })
+    .click();
+  await expect(page.getByText(/Radial field: 0.1250/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record spherical reading", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Conducting shell", exact: true })
+    .click();
+  await expect(page.getByText(/Radial field: 0.0000/)).toBeVisible();
+  await page.getByLabel("Field probe radius").fill("2");
+  await expect(
+    page.getByText(/field has no single assigned value/),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Record spherical reading", exact: true }),
+  ).toBeDisabled();
+  await page.getByLabel("Field probe radius").fill("4");
+  await expect(page.getByText(/Radial field: 0.0625/)).toBeVisible();
+  await page.getByLabel("Total sphere charge").fill("-1");
+  await expect(page.getByText(/Radial field: -0.0625/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record spherical reading", exact: true })
+    .click();
+  await expect(page.getByRole("table").getByRole("row")).toHaveCount(3);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/lesson\/PH4.1/);
+});

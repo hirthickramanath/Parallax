@@ -191,3 +191,38 @@ test("inference and variational examples agree with their normalizations, uncert
   check("MA9.3", "numeric", 2 * (3 * 4 - 0 * 0));
   check("MA9.3", "warmup", 3 * 2);
 });
+
+test("electrostatic, magnetic and organic examples match their stated formulas and counts", () => {
+  check("PH4.1", "numeric", 1 / 2 ** 3);
+  check("PH4.1", "warmup", 1 / 4 ** 2);
+  check("PH4.2", "numeric", -3);
+  check("PH4.2", "warmup", 3 * 1);
+  check("PH4.3", "numeric", -(2 ** 2) / (4 * 1 ** 2));
+  check("PH4.3", "warmup", -(2 ** 2) / (4 * 1));
+  check("PH4.4", "numeric", (2 * 3) / 2 ** 3);
+  check("PH4.4", "warmup", 1 / 2 ** 3);
+  check("PH4.5", "numeric", 6 / 2);
+  check("PH4.5", "warmup", (6 * 3) / 2);
+  check("PH4.6", "numeric", 6 / 6);
+  check("PH4.6", "warmup", 3);
+  check("PH4.7", "numeric", 3 / 2);
+  check("PH4.7", "warmup", 1 / 2);
+  check("PH4.8", "numeric", 2 - -2);
+  check("PH4.8", "warmup", 3 - 1);
+  check("CH6.1", "numeric", 10 ** (10 - 5));
+  check("CH6.1", "warmup", 1 / 100000);
+  check("CH6.2", "numeric", 2 ** 2);
+  check("CH6.2", "warmup", 2 + 1);
+  check("CH6.3", "numeric", -1 + 0);
+  check("CH6.3", "warmup", 2);
+  check("CH6.4", "numeric", 2 * 0.1 * 0.2);
+  check("CH6.4", "warmup", 2 * 2);
+  check("CH6.5", "numeric", (2 * 3 + 2 - 6) / 2);
+  check("CH6.5", "warmup", 2);
+  check("CH6.6", "numeric", 6);
+  check("CH6.6", "warmup", (6 - 2) / 4);
+  check("CH6.7", "numeric", -Math.log10(0.1));
+  check("CH6.7", "warmup", 1 / 2);
+  check("CH6.8", "numeric", 6 / 2);
+  check("CH6.8", "warmup", 1 / 2);
+});

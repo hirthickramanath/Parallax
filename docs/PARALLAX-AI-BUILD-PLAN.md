@@ -138,3 +138,8 @@ Four further units (MA1, PH1, MA2 and MA3) now have all thirty lesson bodies as 
 ## Radiation and inference implementation update
 
 Five further units (MA4, PH11, AS2, MA8 and MA9) add 27 drafts. Current totals: 106 authored drafts, 429 recall cards, 248 missing bodies and zero independently verified lessons. The seventh virtual bench covers emitting/extinguishing slabs and radial Doppler markers. `RADIATION-INFERENCE-RELEASE.md` describes model limits and checks; the generated `COURSE-STATUS.md` lists remaining IDs. All source and production-service verification boundaries remain explicit.
+
+
+## Fields and organic-foundation implementation update
+
+PH4 and CH6 now have sixteen original lesson drafts, bringing current totals to 122 authored drafts, 493 recall cards and 232 missing lesson bodies. No independent verification is implied. The eighth lab bench compares uniform solid-sphere and conducting-shell electrostatics, including the ideal charged-sheet discontinuity. Current status and model limits are in `FIELDS-ORGANIC-RELEASE.md`; the generated `COURSE-STATUS.md` preserves the exact missing IDs.

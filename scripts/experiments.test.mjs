@@ -138,3 +138,53 @@ test("radial Doppler shifts preserve reciprocal approach/recession factors and t
   ])
     assert.throws(() => radialShift(...args), RangeError);
 });
+
+import { sphericalField } from "../src/lib/spherical-field.ts";
+test("solid sphere and conducting shell share exterior fields but retain different interiors and surface limits", () => {
+  const solid = sphericalField(1, 2, 1, "solid"),
+    shell = sphericalField(1, 2, 1, "shell");
+  near(solid.field, 0.125);
+  near(solid.potential, 11 / 16);
+  near(solid.enclosed, 1 / 8);
+  near(shell.field, 0);
+  near(shell.potential, 0.5);
+  near(shell.enclosed, 0);
+  for (const model of ["solid", "shell"]) {
+    const out = sphericalField(4, 2, 1, model);
+    near(out.field, 1 / 16);
+    near(out.potential, 1 / 4);
+    const zero = sphericalField(0, 2, 1, model);
+    near(zero.field, 0);
+    assert.ok(Number.isFinite(zero.potential));
+  }
+  const boundary = sphericalField(2, 2, 1, "shell");
+  assert.equal(boundary.field, null);
+  assert.equal(boundary.enclosed, null);
+  near(boundary.innerField, 0);
+  near(boundary.outerField, 0.25);
+  near(boundary.potential, 0.5);
+  near(sphericalField(2, 2, 1, "solid").field, 0.25);
+  near(sphericalField(2, 2, 1, "solid").innerField, 0.25);
+  near(sphericalField(2, 2, 0, "shell").field, 0);
+});
+test("sphere potential gradients, signed charge and Gauss fields are consistent away from the sheet", () => {
+  for (const model of ["solid", "shell"])
+    for (const r of [0.4, 1, 3, 5])
+      for (const q of [-2, 0, 3]) {
+        const s = sphericalField(r, 2, q, model),
+          h = 1e-5;
+        const gradient =
+          (sphericalField(r + h, 2, q, model).potential -
+            sphericalField(r - h, 2, q, model).potential) /
+          (2 * h);
+        near(s.field, -gradient, 1e-8);
+        near(s.field, s.enclosed / (r * r));
+      }
+  for (const args of [
+    [-1, 2, 1, "solid"],
+    [1, 0, 1, "solid"],
+    [1, 2, NaN, "shell"],
+    [1, 2, 1, "unknown"],
+  ])
+    assert.throws(() => sphericalField(...args), RangeError);
+});
