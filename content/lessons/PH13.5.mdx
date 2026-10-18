@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH13.5",
+  "title": "Symmetries and conservation laws",
+  "hook": "When does a symmetry imply a conserved quantity, and when can that inference fail?",
+  "recap": [
+    "The fields satisfy the equations of motion.",
+    "Integrated charge changes through flux.",
+    "The state breaks a symmetry retained by the action.",
+    "A failure of a classical symmetry in the quantum description."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does local continuity prohibit boundary exchange?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It precisely accounts for flux.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do discrete symmetries generate ordinary Noether currents by the same argument?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The theorem uses continuous variations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a classical symmetry have a quantum anomaly?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The quantum theory can modify it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Final charge from 10 with outward flux 3 and no source?",
+      "answer": "7",
+      "explanation": "10−3=7.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Charge change for zero net flux and source?",
+      "answer": "0",
+      "explanation": "Continuity preserves the region total.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is an anomaly?",
+      "answer": "A failure of a classical symmetry in the quantum description.",
+      "options": [
+        "A failure of a classical symmetry in the quantum description.",
+        "The fields satisfy the equations of motion."
+      ],
+      "explanation": "A failure of a classical symmetry in the quantum description.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does on shell mean?",
+      "back": "The fields satisfy the equations of motion.",
+      "concept": "ph13-5-theory"
+    },
+    {
+      "front": "Why specify boundaries?",
+      "back": "Integrated charge changes through flux.",
+      "concept": "ph13-5-theory"
+    },
+    {
+      "front": "What differs in spontaneous breaking?",
+      "back": "The state breaks a symmetry retained by the action.",
+      "concept": "ph13-5-theory"
+    },
+    {
+      "front": "What is an anomaly?",
+      "back": "A failure of a classical symmetry in the quantum description.",
+      "concept": "ph13-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Krane, Introductory Nuclear Physics — edition and exact section verification pending",
+    "Griffiths, Introduction to Elementary Particles — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+When does a symmetry imply a conserved quantity, and when can that inference fail? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Noether statements need a dynamical action and boundary assumptions; quantum anomalies and explicit breaking can modify classical conservation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a continuous variational symmetry of an action, Noether’s theorem gives a conserved current on equations of motion under its hypotheses.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A continuous field variation with action invariant up to a boundary term yields a current satisfying $\partial_\mu j^\mu=0$ on shell. Its integral charge is conserved only when boundary flux and time-dependent domain effects are handled. Local conservation is not the claim that no charge can enter a chosen box.
+
+Time translations, spatial translations and rotations correspond to energy, momentum and angular momentum in the appropriate symmetric background. A time-dependent external driving field can break a subsystem’s time-translation invariance while the enlarged system has a different conservation balance.
+
+Discrete symmetries such as parity do not supply Noether currents by the same continuous-parameter argument. Selection rules depend on Hamiltonian and interaction operator symmetry. Spontaneous breaking differs from explicit breaking: the equations/action may retain symmetry while a state does not.
+
+A classical symmetry can fail as a quantum symmetry through an anomaly; gauge consistency imposes stringent anomaly conditions. Approximate symmetries give qualified near-conservation, not exact eternal constants. Specify level of description and boundary conditions before applying a conservation claim.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Derive a continuity balance for a supplied toy action and boundary region. Compare explicit time dependence with a closed enlarged model, and separate continuous from discrete symmetry claims.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a region with charge Q initially 10, outward integrated flux 3 and no internal source, final charge is 7. This local change is consistent with continuity. A zero boundary flux would instead keep Q fixed.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

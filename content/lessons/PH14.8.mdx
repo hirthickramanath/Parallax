@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH14.8",
+  "title": "Topological phases and the quantum Hall effect",
+  "hook": "Why can a bulk energy gap coexist with conducting boundary modes?",
+  "recap": [
+    "A specified gapped occupied-state bundle.",
+    "They define and stabilize some classifications.",
+    "The model, boundary and gap assumptions.",
+    "A single conducting edge or plateau does not establish every topological claim."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every edge state automatically topologically protected?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The invariant and protecting assumptions matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can a gap closure permit a change in band topology?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The occupied-state structure can change.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does one noninteracting integer model fully explain fractional Hall physics?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Interactions and topological order enter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal σ_xy/(e²/h) for C=2?",
+      "answer": "2",
+      "explanation": "It equals C.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "σ_xy for C=2 and e²/h=3 in supplied units?",
+      "answer": "6",
+      "explanation": "2×3=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why compare multiple observables?",
+      "answer": "A single conducting edge or plateau does not establish every topological claim.",
+      "options": [
+        "A single conducting edge or plateau does not establish every topological claim.",
+        "A specified gapped occupied-state bundle."
+      ],
+      "explanation": "A single conducting edge or plateau does not establish every topological claim.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a Chern invariant tied to?",
+      "back": "A specified gapped occupied-state bundle.",
+      "concept": "ph14-8-theory"
+    },
+    {
+      "front": "Why are protecting symmetries important?",
+      "back": "They define and stabilize some classifications.",
+      "concept": "ph14-8-theory"
+    },
+    {
+      "front": "What qualifies bulk-boundary correspondence?",
+      "back": "The model, boundary and gap assumptions.",
+      "concept": "ph14-8-theory"
+    },
+    {
+      "front": "Why compare multiple observables?",
+      "back": "A single conducting edge or plateau does not establish every topological claim.",
+      "concept": "ph14-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ashcroft and Mermin, Solid State Physics — edition and exact section verification pending",
+    "Kittel, Introduction to Solid State Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a bulk energy gap coexist with conducting boundary modes? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Topological phases use global wavefunction structure and protecting assumptions rather than only local density or ordinary symmetry breaking.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Band topology assigns invariant data to occupied states under specified gaps, symmetries and dimensionality; an invariant is not defined independently of those conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an ideal integer quantum Hall state, $\sigma_{xy}=C e^2/h$ with integer C in the applicable two-dimensional gapped setting. Longitudinal dissipation and finite-temperature/contact effects require experimental qualifications. A plateau is not obtained by inserting any arbitrary integer into every conductor.
+
+Berry curvature integrates to a Chern invariant on an appropriate closed Brillouin manifold for a well-defined occupied bundle. Gauge-dependent eigenvectors can be patched while the integral is invariant. A gap closure or a change in protecting symmetry can alter classification.
+
+Bulk-boundary correspondence predicts boundary phenomena under its hypotheses and boundary setting. Not every accidental edge band is topologically protected. Disorder and interactions can preserve some phases or require a classification beyond independent bands.
+
+Time-reversal-protected topological insulators use different invariants from a Chern Hall state. Fractional Hall phases involve interactions/topological order and cannot be fully explained by one noninteracting integer-band picture. Compare transport, boundaries and gap/symmetry evidence together.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute a supplied two-band model’s gap and Berry curvature with a gauge-consistent numerical method. Track the gap when varying parameters and distinguish a true invariant change from coarse-grid error.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For C=2, the ideal Hall conductivity in units e²/h is 2. If e²/h is supplied as 3 conductance units, the conductivity is 6. This is a model-unit calculation, not a measured plateau.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

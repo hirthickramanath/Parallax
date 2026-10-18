@@ -561,3 +561,26 @@ test("relativistic and AMO examples preserve algebra, scales and open system con
     check(id, "warmup", w);
   }
 });
+test("nuclear particle and condensed examples preserve conventions and response factors", () => {
+  const rows = [
+    ["PH13.1", 0.02 * 100, 8 ** (1 / 3)],
+    ["PH13.2", 0.2 * 50, 10 * 0.5 * 0.4],
+    ["PH13.3", 0.03 * 100, 100 * 0.8],
+    ["PH13.4", 0.5 + 1 / 6, -0.5 + 1 / 6],
+    ["PH13.5", 10 - 3, 0],
+    ["PH13.6", (12 - 8) / (12 + 8), 20],
+    ["PH13.7", 20 / (5 * 0.5), 20 / 5],
+    ["PH14.1", 1 / 2, 60],
+    ["PH14.2", 2, 3],
+    ["PH14.3", (3 * 2) / 2, 2],
+    ["PH14.4", 2 * 0.3, 0.25],
+    ["PH14.5", 2 * 3 + 1 * 2, 4 * 3 + 1 * 2],
+    ["PH14.6", 4, 0.5],
+    ["PH14.7", 6 / (2 * 1), 0.5],
+    ["PH14.8", 2, 2 * 3],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

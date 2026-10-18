@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH13.7",
+  "title": "Accelerators and detectors",
+  "hook": "Why do raw detector counts not immediately equal a cross section?",
+  "recap": [
+    "The exposure factor converting cross section to expected interactions.",
+    "Migration and detection probability between truth and reconstruction.",
+    "The measurement’s accepted phase space must be specified.",
+    "They answer different statistical questions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can efficiency be omitted from every count-to-cross-section conversion?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Observed events are only a subset.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is detector simulation identical to independent calibration?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It requires validation against observations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can naive unfolding amplify noise?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The inverse can be ill conditioned.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Cross section for N=20,L=5,efficiency=.5?",
+      "answer": "8",
+      "explanation": "20/(5×.5)=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Biased value if efficiency is incorrectly one?",
+      "answer": "4",
+      "explanation": "20/5=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why distinguish significance and precision?",
+      "answer": "They answer different statistical questions.",
+      "options": [
+        "They answer different statistical questions.",
+        "The exposure factor converting cross section to expected interactions."
+      ],
+      "explanation": "They answer different statistical questions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is integrated luminosity?",
+      "back": "The exposure factor converting cross section to expected interactions.",
+      "concept": "ph13-7-theory"
+    },
+    {
+      "front": "What does a response matrix include?",
+      "back": "Migration and detection probability between truth and reconstruction.",
+      "concept": "ph13-7-theory"
+    },
+    {
+      "front": "Why define a fiducial region?",
+      "back": "The measurement’s accepted phase space must be specified.",
+      "concept": "ph13-7-theory"
+    },
+    {
+      "front": "Why distinguish significance and precision?",
+      "back": "They answer different statistical questions.",
+      "concept": "ph13-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Krane, Introductory Nuclear Physics — edition and exact section verification pending",
+    "Griffiths, Introduction to Elementary Particles — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do raw detector counts not immediately equal a cross section? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Accelerator measurements combine luminosity, acceptance, backgrounds and reconstruction; a response matrix can mix the true physical distribution.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Expected signal counts are related to cross section through integrated luminosity and an efficiency/acceptance model over the specified phase space.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A one-bin relation is $N_{sig}=\mathcal L_{int}\sigma\epsilon$ when the definitions and response factor justify it. Background subtraction, branching fractions and fiducial restrictions must be matched. A count rate and integrated count use different luminosity units.
+
+Tracking, calorimetry, timing and particle identification probe different interactions. Momentum curvature needs a magnetic-field geometry and charge sign, while deposited calorimeter energy need not equal total energy for every particle. Calibration and material budgets affect response.
+
+A multi-bin response matrix maps truth to reconstructed distributions with inefficiency and migration. Naive inversion can amplify statistical noise; regularization introduces assumptions and needs closure/sensitivity tests. Simulated detector response is not automatically measured calibration.
+
+Statistical significance differs from parameter precision and discovery from exclusion. Trials, nuisance parameters and systematic covariance belong in inference. This lesson gives analysis principles, not operational accelerator construction or a claim of a new particle from synthetic events.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use a labelled synthetic two-bin response and test forward folding before unfolding. Retain signal/background definitions, calibration assumptions and fiducial region in the result.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With background-corrected N=20, integrated luminosity 5 and efficiency .5 in compatible units, σ=8. If efficiency were wrongly assumed one, the estimate would be 4, a factor-of-two bias.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

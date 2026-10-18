@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH13.3",
+  "title": "Nuclear reactions, fission and fusion",
+  "hook": "Why can an energetically allowed nuclear reaction still be extremely slow?",
+  "recap": [
+    "Rest-energy balance.",
+    "Flux/distribution and the relevant cross section.",
+    "Momentum conservation and recoil.",
+    "A generation-averaged neutron balance."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does positive Q guarantee a rapid reaction?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Barriers and matrix elements can suppress it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must lab thresholds respect momentum recoil?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Energy alone is insufficient.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is thermal rate simply one cross section value?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A relative-velocity average is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Q for mass difference .03 and c²=100?",
+      "answer": "3",
+      "explanation": ".03×100=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Expected next generation from 100 with k=.8?",
+      "answer": "80",
+      "explanation": "100×.8=80.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does the elementary k model summarize?",
+      "answer": "A generation-averaged neutron balance.",
+      "options": [
+        "A generation-averaged neutron balance.",
+        "Rest-energy balance."
+      ],
+      "explanation": "A generation-averaged neutron balance.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Q measure?",
+      "back": "Rest-energy balance.",
+      "concept": "ph13-3-theory"
+    },
+    {
+      "front": "What sets reaction rate?",
+      "back": "Flux/distribution and the relevant cross section.",
+      "concept": "ph13-3-theory"
+    },
+    {
+      "front": "Why can thresholds exceed |Q|?",
+      "back": "Momentum conservation and recoil.",
+      "concept": "ph13-3-theory"
+    },
+    {
+      "front": "What does the elementary k model summarize?",
+      "back": "A generation-averaged neutron balance.",
+      "concept": "ph13-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Krane, Introductory Nuclear Physics — edition and exact section verification pending",
+    "Griffiths, Introduction to Elementary Particles — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an energetically allowed nuclear reaction still be extremely slow? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Reaction energy, barriers, cross sections and incoming flux answer different questions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A reaction Q value is the consistent initial-minus-final rest-energy difference; a reaction rate also requires available states, cross section and incident distribution.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The energy release is $Q=(M_i-M_f)c^2$ with constituent conventions matched. Positive Q does not remove Coulomb barriers, angular-momentum constraints or weak-interaction bottlenecks. Endothermic threshold in a laboratory frame can exceed |Q| because momentum conservation requires final recoil.
+
+A cross section converts incident flux and target count into an expected reaction rate under a specified geometry. Thermal averages integrate σv over relative velocities; one resonant energy does not represent an entire thermal population.
+
+Fusion can release binding energy for suitable light-nucleus combinations, while fission can release energy from suitable heavy configurations. Products, prompt/delayed particles and neutron economy matter. A fission chain’s multiplication factor summarizes a modelled neutron balance, not every microscopic event.
+
+Safety, shielding and regulated experimental conditions are real requirements for actual nuclear work. This lesson stays with theoretical energy/rate bookkeeping and does not provide apparatus construction or operating procedures. Astrophysical rates require plasma/environment corrections and networks.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use a supplied nonoperational reaction dataset to compare Q values and cross-section shapes. Explain why a positive Q does not predict the rate. Keep theoretical branching arithmetic separate from any physical assembly.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If initial mass exceeds final by .03 in units c²=100, Q=3. In a supplied simple neutron-generation model k=.8, an initial expected population 100 gives 80 next generation; it is subcritical in that model.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

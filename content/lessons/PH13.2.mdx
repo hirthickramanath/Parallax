@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH13.2",
+  "title": "Radioactivity and decay",
+  "hook": "Why is activity not the same as the number of radioactive nuclei?",
+  "recap": [
+    "The expected decay rate.",
+    "The ensemble survival time to one half.",
+    "It changes the observed count response.",
+    "Coupled production and loss of species."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is mean lifetime equal to half-life?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They differ by ln2.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a detector count every decay automatically?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Branching and efficiency matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do daughters require source terms in a decay chain?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Parent decay can create them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Activity for λ=.2,N=50?",
+      "answer": "10",
+      "explanation": "λN=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Recorded rate with branch .5 and efficiency .4?",
+      "answer": "2",
+      "explanation": "10×.5×.4=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What distinguishes a chain?",
+      "answer": "Coupled production and loss of species.",
+      "options": [
+        "Coupled production and loss of species.",
+        "The expected decay rate."
+      ],
+      "explanation": "Coupled production and loss of species.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is activity?",
+      "back": "The expected decay rate.",
+      "concept": "ph13-2-theory"
+    },
+    {
+      "front": "What is a half-life?",
+      "back": "The ensemble survival time to one half.",
+      "concept": "ph13-2-theory"
+    },
+    {
+      "front": "Why model dead time?",
+      "back": "It changes the observed count response.",
+      "concept": "ph13-2-theory"
+    },
+    {
+      "front": "What distinguishes a chain?",
+      "back": "Coupled production and loss of species.",
+      "concept": "ph13-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Krane, Introductory Nuclear Physics — edition and exact section verification pending",
+    "Griffiths, Introduction to Elementary Particles — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is activity not the same as the number of radioactive nuclei? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Decay counts require rate, branching, exposure and detection efficiency before becoming an isotope inventory.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For an isolated species with constant decay probability per time, N(t)=N₀e⁻λt and activity is λN.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The rate equation $dN/dt=-\lambda N$ gives half-life ln2/λ and mean lifetime 1/λ. These are not equal. A stochastic nucleus does not wait exactly one half-life before decaying; the law describes an ensemble survival probability.
+
+A decay branch contributes a branching fraction to the relevant emitted signal. A detector records only a response-weighted subset, with background, dead time and energy/angular efficiencies. Activity in becquerels is inverse seconds, not directly a dose or biological-effect quantity.
+
+Decay chains require coupled source/sink equations. Secular/transient equilibrium regimes depend on relative half-lives and initial conditions. Summing separate single-exponential curves without daughter production can misrepresent a chain.
+
+Quantum short-time and long-tail qualifications exist, while exponential decay is an excellent model in many measured regimes. Uncertainty intervals for low counts require an appropriate count likelihood. Distinguish expected counts and one random realization.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate synthetic decay counts with declared Poisson/background assumptions and fit the rate over time. Include daughter production in a second model and compare with a single exponential.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For λ=.2 per time and N=50, activity is 10 per time. A branch fraction .5 and efficiency .4 give an expected recorded rate 2 if background/dead time are neglected.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

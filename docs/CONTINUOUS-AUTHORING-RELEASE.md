@@ -45,3 +45,7 @@ PH9.1–PH9.8 add perturbation, degenerate subspaces, transition rates, variatio
 ## Relativistic/open-system quantum theory and AMO
 
 PH10 and PH12 add 12 drafts. Coverage is 299/354 bodies, 1201 recall cards, 55 missing. Build, all 79 model/grading/example tests and both new unit player sweeps passed. Relativistic field interpretation, operator distributions, complete positivity, level conventions and cooling limitations are explicit. No laboratory apparatus or live experiment was run.
+
+## Nuclear, particle and condensed matter
+
+PH13 and PH14 add 15 drafts. Coverage is 314/354 bodies, 1261 recall cards, 40 missing. Build, all 80 model/grading/example tests and both new unit player sweeps passed. These are theoretical model/analysis lessons, not executed nuclear or device experiments. Source/scientific review remains pending.

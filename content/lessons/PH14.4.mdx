@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH14.4",
+  "title": "Band theory",
+  "hook": "Why do weak periodic potentials open gaps where free-electron energies cross?",
+  "recap": [
+    "Translation-equivalent crystal momenta.",
+    "The coupling between relevant states.",
+    "The measured excitations differ.",
+    "Correlations, disorder and additional symmetry/topology."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every DFT orbital gap identical to a measured optical gap?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Excitations and approximation effects differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can periodic coupling open an avoided-crossing gap?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It mixes compatible states.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does elementary filling classification include all strong correlation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Additional many-body physics can matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Gap for crossing coupling |V_G|=.3?",
+      "answer": "0.6",
+      "explanation": "2|V_G|=.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Normalized effective mass for E=2k²,ℏ=1?",
+      "answer": "0.25",
+      "explanation": "1/E″=1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What limits independent-band classification?",
+      "answer": "Correlations, disorder and additional symmetry/topology.",
+      "options": [
+        "Correlations, disorder and additional symmetry/topology.",
+        "Translation-equivalent crystal momenta."
+      ],
+      "explanation": "Correlations, disorder and additional symmetry/topology.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a Brillouin zone organize?",
+      "back": "Translation-equivalent crystal momenta.",
+      "concept": "ph14-4-theory"
+    },
+    {
+      "front": "What sets a simple crossing gap?",
+      "back": "The coupling between relevant states.",
+      "concept": "ph14-4-theory"
+    },
+    {
+      "front": "Why distinguish optical and quasiparticle gaps?",
+      "back": "The measured excitations differ.",
+      "concept": "ph14-4-theory"
+    },
+    {
+      "front": "What limits independent-band classification?",
+      "back": "Correlations, disorder and additional symmetry/topology.",
+      "concept": "ph14-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ashcroft and Mermin, Solid State Physics — edition and exact section verification pending",
+    "Kittel, Introduction to Solid State Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do weak periodic potentials open gaps where free-electron energies cross? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Bloch symmetry and coupling reorganize electronic levels, while band filling alone is insufficient in strongly correlated or disordered regimes.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Band theory solves a periodic electronic problem with states labelled by crystal momentum and band index, often in an independent-quasiparticle approximation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Near a Bragg-plane crossing, a periodic potential couples plane-wave components differing by a reciprocal vector. A two-state model with equal unperturbed energy and coupling V_G gives a gap $\Delta=2|V_G|$. This is a local model, not every gap’s universal microscopic derivation.
+
+Bloch states have periodic cell factors. Crystal wavevectors differing by a reciprocal lattice vector represent related translation phases, motivating a Brillouin-zone description. Physical observables need band character and occupations, not merely a folded curve.
+
+A filled band and a gap can be insulating in the elementary model, while partial filling can allow metal-like response. Mott physics, disorder localization and symmetry/topology can alter that inference. Effective quasiparticle energies also require interpretation when comparing with actual addition/removal spectra.
+
+Tight-binding and nearly-free approximations suit different limits. Basis convergence, exchange/correlation treatment and geometry affect calculated bands. A density-functional Kohn–Sham gap need not equal an exact optical or quasiparticle gap; excitons and measurement processes add physics.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Diagonalize a two-state avoided crossing and compare its gap with a broader band calculation. Keep eigenvalue, quasiparticle and optical gaps separately labelled.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For coupling |V_G|=.3 in a two-state crossing model, the gap is .6. A quadratic band E=2k² has curvature 4 and normalized effective mass .25 when ℏ=1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

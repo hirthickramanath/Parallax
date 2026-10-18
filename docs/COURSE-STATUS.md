@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **299**.
-- Authored recall cards: **1201**.
-- Missing lesson bodies: **55**.
+- Playable authored drafts: **314**.
+- Authored recall cards: **1261**.
+- Missing lesson bodies: **40**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -48,8 +48,8 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 6 | PH10 | Advanced and relativistic quantum mechanics | 6 / 6 | None |
 | 2 | PH11 | Special relativity | 4 / 4 | None |
 | 6 | PH12 | Atomic, molecular and optical physics | 6 / 6 | None |
-| 6 | PH13 | Nuclear and particle physics | 0 / 7 | PH13.1, PH13.2, PH13.3, PH13.4, PH13.5, PH13.6, PH13.7 |
-| 6 | PH14 | Condensed matter physics | 0 / 8 | PH14.1, PH14.2, PH14.3, PH14.4, PH14.5, PH14.6, PH14.7, PH14.8 |
+| 6 | PH13 | Nuclear and particle physics | 7 / 7 | None |
+| 6 | PH14 | Condensed matter physics | 8 / 8 | None |
 | 7 | PH15 | Quantum field theory and the Standard Model | 0 / 8 | PH15.1, PH15.2, PH15.3, PH15.4, PH15.5, PH15.6, PH15.7, PH15.8 |
 | 6 | PH16 | General relativity | 0 / 8 | PH16.1, PH16.2, PH16.3, PH16.4, PH16.5, PH16.6, PH16.7, PH16.8 |
 | 5 | PH17 | Experimental and computational physics | 0 / 5 | PH17.1, PH17.2, PH17.3, PH17.4, PH17.5 |
