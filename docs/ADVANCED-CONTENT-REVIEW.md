@@ -24,3 +24,18 @@ Validation for this revision: production build and content validation passed for
 The cloud environment currently has no injected server secrets or cloud admin identities. The Firestore emulator's official download host remains outside the enforced network allowlist, so its rules tests were not rerun. Live production rules, real-account synchronization, Cloudflare deployment and provider activation are not established by this revision.
 
 All 82 browser cases passed against the final production build, including the full 354-lesson rendering sweep and offline/account-isolation workflows. An earlier intermediate sweep was interrupted for the final content rebuild; a port-conflict startup attempt was resolved by stopping that sweep before the successful full rerun.
+
+
+## Field-theory and curvature follow-up
+
+Three more draft lessons have expanded derivations and graded Core transfers:
+
+| Lesson | Added material | Limits made explicit |
+| --- | --- | --- |
+| PH15.3 Scalar quantization | Periodic-box mode normalization, equal-time commutator, oscillator Hamiltonian and vacuum reference | Truncated delta kernels, boundary conventions, separate massless zero mode |
+| MA11.5 Curvature | Explicit sphere connection/component calculation and scalar-zero product counterexample | Coordinate versus invariant quantities, chart domain, dimensional assumptions |
+| PH15.6 Renormalization | Explicit regulated-integral matching subtraction, finite-cutoff correction and integrated toy beta law | Toy model versus physical amplitude, perturbative extrapolation, EFT coefficient assumptions |
+
+The numeric regression checks each new Core answer, exact matching-point independence at several cutoffs, approach to the subtracted limit and the derivative of the integrated running coupling. All nine expanded lessons remain drafts; exact source inspection and independent scientific review are still pending.
+
+Follow-up validation: production build/content validation passed for all 354 drafts; all 88 model/grading/example tests and all 82 browser cases passed against this build. Worker code/configuration was unchanged in this follow-up; the earlier local Worker results above are retained, not reported as a new live-provider check.

@@ -729,3 +729,20 @@ test("new Core transfers preserve degeneracy, gradient energy, tidal signs and c
     determinant;
   check("PH18.1", "review-core-transfer", quadratic);
 });
+
+test("field and curvature Core transfers distinguish conventions and integrated running", () => {
+  check("PH15.3", "review-core-transfer", 5 * (3 + 0.5));
+  check("MA11.5", "review-core-transfer", 2 ** 2 * Math.sin(Math.PI / 6) ** 2);
+  check("PH15.6", "review-core-transfer", 0.5 / (1 - 0.1 * 0.5 * 2));
+  const matched = (cutoff, q, q0) =>
+    Math.log(((cutoff + q) * q0) / (q * (cutoff + q0)));
+  for (const cutoff of [10, 100, 1000]) {
+    assert.equal(matched(cutoff, 1, 1), 0);
+    assert.ok(Math.abs(matched(cutoff, 2, 1) + Math.log(2)) < 1 / cutoff);
+  }
+  const g = (t) => 0.5 / (1 - 0.1 * 0.5 * t),
+    h = 1e-5;
+  assert.ok(
+    Math.abs((g(2 + h) - g(2 - h)) / (2 * h) - 0.1 * g(2) ** 2) < 1e-10,
+  );
+});

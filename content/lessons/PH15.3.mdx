@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "For one free oscillator of frequency 5 and occupation three, what is its total energy including its zero-point contribution?",
+      "answer": "17.5",
+      "explanation": "E=omega(n+1/2)=5 times 3.5; excitation energy alone would be 15.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "in the stated convention and units"
     }
   ],
   "review": [
@@ -153,6 +163,16 @@ Correlation functions describe amplitudes and fluctuations; a propagator is a di
 
 Local products and coincident correlations require regularization and renormalized definitions. Finite-volume and lattice cutoffs make computations controllable but introduce regulator dependence that must be assessed. The free construction is not a full solution of an interacting scalar theory.
 
+### Fix one normalization and derive its oscillator algebra
+
+For a real free field in a periodic spatial box of volume $V$, use discrete momenta and
+
+$$\phi(t,\mathbf x)=\sum_{\mathbf k}\frac{a_{\mathbf k}e^{-i\omega_kt+i\mathbf k\cdot\mathbf x}+a^\dagger_{\mathbf k}e^{i\omega_kt-i\mathbf k\cdot\mathbf x}}{\sqrt{2V\omega_k}},\qquad [a_{\mathbf k},a^\dagger_{\mathbf q}]=\delta_{\mathbf k\mathbf q}.$$
+
+Here $\omega_k=\sqrt{|\mathbf k|^2+m^2}$ and $\pi=\dot\phi$. Substituting both expansions into the equal-time commutator gives $iV^{-1}\sum_{\mathbf k}e^{i\mathbf k\cdot(\mathbf x-\mathbf y)}$, the periodic delta distribution. The two positive contributions each supply half the result. With a momentum cutoff it is a truncated delta kernel, not an exact point delta.
+
+Substitution into the quadratic Hamiltonian gives $H=\sum_{\mathbf k}\omega_k(a^\dagger_{\mathbf k}a_{\mathbf k}+1/2)$. Normal ordering replaces it by the excitation Hamiltonian. The expansion requires a positive mode frequency: a massless zero mode needs separate treatment rather than division by zero.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +185,17 @@ Quantize a finite set of scalar modes as oscillators and verify energy increment
 
 For m=3 and |k|=4, a free quantum has ω=5. Two quanta in that same free mode contribute excitation energy 10 above the chosen vacuum reference. Bose occupation allows this without treating them as labelled distinguishable particles.
 
+For one oscillator with frequency 5, a state with occupation three has total oscillator energy $5(3+1/2)=17.5$ and excitation energy 15. These are different reference conventions for the same level spacing. The vacuum term for this one oscillator is 2.5; summing it over an unbounded field spectrum is not a finite operation justified by this example.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Compute the commutator of a normal-ordered free Hamiltonian with a creation operator and obtain $[H,a^\dagger_{\mathbf k}]=\omega_k a^\dagger_{\mathbf k}$. Explain why this raises energy independently of the chosen vacuum constant.
+
+**Boundary test.** Replace the periodic box by fixed-end boundary conditions in one dimension. Which basis functions and allowed momenta change? The continuum delta cannot be inserted unchanged into a finite discrete normalization.
 
 </LessonSection>
 

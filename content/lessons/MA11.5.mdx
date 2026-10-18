@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "On a round sphere of radius 2, what is the lowered curvature component R(theta,phi,theta,phi) at theta=pi/6 in the stated convention?",
+      "answer": "1",
+      "explanation": "R squared times sin squared theta = 4 times 1/4 = 1; the sectional curvature is a different quantity.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "in the stated convention and units"
     }
   ],
   "review": [
@@ -153,6 +163,18 @@ For a round two-sphere of radius R, Gaussian curvature is 1/R² and scalar curva
 
 Curvature controls relative geodesic motion under an appropriately signed geodesic-deviation equation. One observer can choose locally inertial coordinates at a point, but cannot eliminate finite tidal effects over a region with nonzero curvature. Physical singularity diagnosis needs invariant/extendibility analysis, not merely one divergent chart component.
 
+### Compute a sphere component rather than infer curvature from a picture
+
+For $ds^2=R^2(d\theta^2+\sin^2\theta\,d\varphi^2)$ away from the polar chart singularities, the nonzero connection coefficients are $\Gamma^\theta_{\varphi\varphi}=-\sin\theta\cos\theta$ and $\Gamma^\varphi_{\theta\varphi}=\Gamma^\varphi_{\varphi\theta}=\cot\theta$. Substitution in the stated convention gives
+
+$$R^\theta{}_{\varphi\theta\varphi}=\partial_\theta(-\sin\theta\cos\theta)-(-\sin\theta\cos\theta)\cot\theta=\sin^2\theta.$$
+
+Lowering the first index and dividing by the metric area factor gives Gaussian curvature $K=R_{\theta\varphi\theta\varphi}/(g_{\theta\theta}g_{\varphi\varphi})=1/R^2$. Contraction gives scalar curvature $2/R^2$. A mixed coordinate component can therefore be independent of radius while the invariant sectional curvature is not.
+
+### A vanishing contraction can conceal curvature
+
+Take the product of a two-sphere of curvature $+1/R^2$ and a hyperbolic plane of curvature $-1/R^2$, with the product Riemannian metric. Their scalar curvatures add to zero, but planes tangent to either factor still have nonzero sectional curvature. The four-dimensional product is not flat. In two dimensions alone the scalar determines the full Riemann tensor; dimensional assumptions change this conclusion.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +187,17 @@ Compute curvature for the polar plane and round sphere using the same convention
 
 For a round sphere radius 2, Gaussian curvature is 1/4 and scalar curvature is 1/2. Doubling radius reduces both by four. A zero scalar in another manifold would not by itself certify zero Riemann curvature.
 
+At radius 2 and $\theta=\pi/2$, the mixed component above is 1, the lowered component is 4 and the metric area factor is 16. Thus $K=4/16=1/4$. Comparing the component 1 directly to curvature in inverse-length-squared units would miss the metric conversion.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Calculate the same sectional curvature at $\theta=\pi/6$. The mixed component becomes $1/4$ and the area factor becomes 4 at radius 2, while the lowered component becomes 1; the invariant remains $1/4$.
+
+**Counterexample.** Explain why nonzero polar-plane Christoffel coefficients do not imply curvature, and why zero scalar curvature in the product example does not imply flatness. State which contraction has discarded information.
 
 </LessonSection>
 
