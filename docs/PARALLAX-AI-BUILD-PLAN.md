@@ -168,3 +168,8 @@ Authored MA7.1–MA7.5 as drafts, bringing coverage to 160/354 lessons and 645 r
 ## Continuous authoring through quantum foundations
 
 PH7, CP2, PH5 and PH8 now have draft lesson bodies. Coverage is 191/354, with 769 recall cards and 163 missing bodies. See [continuous release](CONTINUOUS-AUTHORING-RELEASE.md). Independent source/scientific review and the documented live-service prerequisites remain. Continue subsequent batches without awaiting another command.
+
+
+## Complete body-coverage milestone
+
+All 354 curriculum entries across 59 units now have draft bodies, totaling 1421 recall cards; no lesson body is missing. This is draft coverage, not exhaustive textbook depth or independent scientific certification. See [continuous authoring release](CONTINUOUS-AUTHORING-RELEASE.md), [course ledger](COURSE-STATUS.md) and [pending review/live checks](PENDING-REVIEW-AND-LIVE-CHECKS.md). No draft has been upgraded to verified/published. Source review, live owner-session verification and eligible tutor configuration remain uncompleted prerequisites; no new cloud schema was introduced.

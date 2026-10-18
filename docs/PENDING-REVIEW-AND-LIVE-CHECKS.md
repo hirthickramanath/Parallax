@@ -1,0 +1,33 @@
+# Pending review and live checks
+
+All 354 curriculum entries have draft MDX bodies and 1421 retrieval cards. This completes body coverage, not independent verification or exhaustive textbook-level treatment. Advanced lessons are concise draft introductions; some need deeper derivations, harder exercises and additional investigations before a publication-quality claim is appropriate.
+
+## Scientific and editorial review
+
+- Review every draft’s hypotheses, proofs/derivations, units, limiting cases, worked answers and distractors. Automated answer arithmetic and error-free rendering are necessary checks, not a substitute for this review.
+- Verify exact source editions/sections and inspect actual source material. Current book references are explicitly review leads; no quotations or precise source verification should be invented.
+- Expand treatments where the existing draft is too brief for its stated goals, particularly advanced field theory, geometry, many-body theory and research methods. Include counterexamples and appropriately challenging Core work.
+- Add named reviewer/date and verified sources using the existing publication contract before changing draft status. Currently zero lessons are independently verified/published.
+- Real research reproductions, capstones and physical experiments have not been executed merely because a lesson describes their methods. Preserve that distinction and provide real data provenance when such work is performed.
+
+## Live Firebase verification
+
+The browser suite uses synthetic authentication and blocked/mocked cloud requests. It does not prove production Firestore rules were published or that cross-device synchronization works under an owner session.
+
+Verify the repository rules against the actual deployed database, then test sign-in, permitted owner reads/writes and denied cross-account access with separate real accounts/devices. Check offline changes reconnect without crossing account boundaries. Use the existing database paths; no new profile schema was introduced by the authoring batches.
+
+The Firebase browser configuration is intentionally public and was previously restricted by the user. A GitHub alert closure is not independent proof of all live rules/API configuration.
+
+## Tutor and reminders
+
+The authenticated tutor interface/Worker remains disabled pending an eligible provider/account and securely configured server-side credentials, quotas and live verification. Do not bypass provider age/account restrictions or place secret provider keys in browser code, commits or chat.
+
+Current reminders are opt-in foreground reminders. Background push is a separate uncompleted design requiring service, permission and delivery considerations. Additional profile/cloud paths likewise remain a separate design decision.
+
+## Deployment and regression checks
+
+Validated code is pushed to `codex/complete-foundation-course`. It is not automatically production until the configured production branch is updated and Cloudflare successfully deploys it. This work does not assert that a merge or production deployment was performed.
+
+After material edits, run content validation/production build, model/grading/example tests and the full browser suite. Retain passed, failed and unrun results distinctly. Worker/rules/live-provider checks should be rerun when those components or their configuration change; an unrun live check must not be reported as passed.
+
+The excluded-subjects and separate engineering/technology plans remain in their existing Markdown documents. They were not silently added as new selectable domains to this astrophysics-focused app.

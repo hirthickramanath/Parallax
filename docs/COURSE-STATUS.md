@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **330**.
-- Authored recall cards: **1325**.
-- Missing lesson bodies: **24**.
+- Playable authored drafts: **354**.
+- Authored recall cards: **1421**.
+- Missing lesson bodies: **0**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -52,12 +52,12 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 6 | PH14 | Condensed matter physics | 8 / 8 | None |
 | 7 | PH15 | Quantum field theory and the Standard Model | 8 / 8 | None |
 | 6 | PH16 | General relativity | 8 / 8 | None |
-| 5 | PH17 | Experimental and computational physics | 0 / 5 | PH17.1, PH17.2, PH17.3, PH17.4, PH17.5 |
-| 8 | PH18 | Research readiness | 0 / 4 | PH18.1, PH18.2, PH18.3, PH18.4 |
+| 5 | PH17 | Experimental and computational physics | 5 / 5 | None |
+| 8 | PH18 | Research readiness | 4 / 4 | None |
 | 0 | CB | Bridge | 5 / 5 | None |
 | 4 | CH1 | Physical chemistry | 13 / 13 | None |
-| 4 | CH2 | Quantum chemistry and spectroscopy | 0 / 6 | CH2.1, CH2.2, CH2.3, CH2.4, CH2.5, CH2.6 |
-| 6 | CH3 | Research and astrochemistry | 0 / 5 | CH3.1, CH3.2, CH3.3, CH3.4, CH3.5 |
+| 4 | CH2 | Quantum chemistry and spectroscopy | 6 / 6 | None |
+| 6 | CH3 | Research and astrochemistry | 5 / 5 | None |
 | 1 | CP1 | Core scientific computing | 6 / 6 | None |
 | 3 | CP2 | Applied computing | 5 / 5 | None |
 | 2 | AS1 | Sky and orbits | 5 / 5 | None |
@@ -71,14 +71,14 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 7 | AS9 | Cosmology | 8 / 8 | None |
 | 8 | AS10 | Astrophysics research skills | 4 / 4 | None |
 | 4 | CH4 | Chemical bonding and molecular structure | 8 / 8 | None |
-| 5 | CH5 | Selected inorganic and block chemistry | 0 / 4 | CH5.1, CH5.2, CH5.3, CH5.4 |
+| 5 | CH5 | Selected inorganic and block chemistry | 4 / 4 | None |
 | 1 | CH6 | Organic foundations for astrochemistry | 8 / 8 | None |
 
 ## Remaining execution sequence
 
-1. Finish the earliest unlocked mathematics, mechanics and scientific-computing units before relying on their later applications.
-2. Author every missing ID above as original MDX, preserving IDs and prerequisite graph. Include assumptions, derivations, limitations, worked examples, conceptual checks, exercises and genuine recall prompts.
-3. Add apparatus or data investigations where educationally relevant. Keep computed, synthetic and externally measured data explicitly distinct; record dataset provenance before claiming real observations.
-4. Verify exact source editions/sections and independently review science before changing draft status.
-5. Run content validation, the production build, model tests and the authored-lesson browser sweep. Update this ledger and push reviewed changes.
-6. Complete owner-session Firebase rules and cross-device checks, then configure an eligible tutor provider. Background push and new cloud profile paths remain separate unresolved designs.
+1. Independently review all authored drafts for scientific correctness, pedagogical depth and exact source editions/sections. Coverage counts do not certify textbook-level completeness.
+2. Expand derivations, exercises and apparatus/data investigations where the draft treatment is insufficient. Preserve curriculum IDs and clearly label synthetic versus measured evidence.
+3. Record named reviewer/date and verified sources before upgrading any lesson from draft status. Automated checks are not independent scientific review.
+4. Run the production build, model/example tests and full authored-lesson browser sweep after material changes; regenerate this ledger and push validated batches.
+5. Complete owner-session Firebase rules, cross-account and cross-device checks. Configure the disabled tutor only with an eligible provider/account and secure server-side credentials.
+6. Background push and additional cloud profile paths remain separate unresolved designs; current foreground reminders and existing schema must not be described as those features.

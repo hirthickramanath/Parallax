@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH2.2",
+  "title": "Born-Oppenheimer approximation and potential energy surfaces",
+  "hook": "Why can nuclei move on one electronic surface in some reactions but not others?",
+  "recap": [
+    "Electronic energy under a clamped-geometry convention plus consistent nuclear terms.",
+    "Specified electronic–nuclear derivative couplings.",
+    "The appropriate vibrational Hessian spectrum.",
+    "Dynamics, states and transmission/prefactors also enter."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a large nuclear mass guarantee one-surface validity at all degeneracies?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Derivative couplings can become important.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a negative Hessian mode indicate a stable minimum?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is an unstable direction.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can zero-point motion matter beyond the optimized geometry?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Nuclei occupy quantum states on the surface.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Harmonic ω for k=8,μ=2?",
+      "answer": "2",
+      "explanation": "√(8/2)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Harmonic energy cost for k=8,x=.5?",
+      "answer": "1",
+      "explanation": "8×.25/2=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why is a barrier not a full rate?",
+      "answer": "Dynamics, states and transmission/prefactors also enter.",
+      "options": [
+        "Dynamics, states and transmission/prefactors also enter.",
+        "Electronic energy under a clamped-geometry convention plus consistent nuclear terms."
+      ],
+      "explanation": "Dynamics, states and transmission/prefactors also enter.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a PES?",
+      "back": "Electronic energy under a clamped-geometry convention plus consistent nuclear terms.",
+      "concept": "ch2-2-theory"
+    },
+    {
+      "front": "What is neglected in simple BO separation?",
+      "back": "Specified electronic–nuclear derivative couplings.",
+      "concept": "ch2-2-theory"
+    },
+    {
+      "front": "What tests local minimum stability?",
+      "back": "The appropriate vibrational Hessian spectrum.",
+      "concept": "ch2-2-theory"
+    },
+    {
+      "front": "Why is a barrier not a full rate?",
+      "back": "Dynamics, states and transmission/prefactors also enter.",
+      "concept": "ch2-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and Friedman, Molecular Quantum Mechanics — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can nuclei move on one electronic surface in some reactions but not others? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Born–Oppenheimer separation uses scale structure, and potential-energy surfaces require nonadiabatic qualifications near close electronic states.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A potential-energy surface gives a clamped-nuclei electronic energy plus the corresponding nuclear interaction convention as a function of nuclear geometry.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The molecular Hamiltonian can be expanded in electronic states parameterized by nuclear positions. Neglecting specified derivative couplings yields the familiar single-surface nuclear equation. The electron/nucleus mass separation motivates the approximation but does not ensure it at every crossing or degeneracy.
+
+Near an equilibrium geometry, $V\approx V_0+\tfrac12\Delta R^TK\Delta R$. Mass weighting of the Hessian gives normal-mode frequencies after removing the appropriate translations/rotations. A stationary point with a negative mode is not a stable minimum.
+
+At conical intersections or strong nonadiabatic coupling, one surface can be inadequate. Adiabatic versus diabatic representations distribute couplings differently; they are not arbitrary different molecules. Reaction paths also need an initial state, environment and dynamics, not merely a saddle-point height.
+
+Zero-point motion, tunnelling and finite-temperature ensembles change nuclear behaviour relative to one optimized geometry. A computed electronic barrier and an observed reaction rate need not be related by a bare classical Boltzmann factor without prefactors, recrossing and state information.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare a local Hessian minimum with a saddle and inspect an avoided/intersecting electronic-surface toy model. State which nuclear couplings are retained before simulating a reaction.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a one-mode harmonic expansion with k=8 and reduced mass 2, angular frequency is 2. A displacement .5 costs kx²/2=1 in energy units. These local values do not define a full dissociation surface.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

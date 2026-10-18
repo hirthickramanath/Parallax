@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH17.1",
+  "title": "Measurement, uncertainty and lab technique",
+  "hook": "Why does repeating a measurement not necessarily remove its largest error?",
+  "recap": [
+    "Repeat consistency versus closeness under calibration/model evidence.",
+    "It persists across repeats.",
+    "They can expose model/setting-dependent bias.",
+    "They are model outputs rather than observations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does repeating remove a fixed common calibration offset automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The errors are correlated.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must covariance enter derived-quantity uncertainty?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Inputs can share errors.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a long display of digits prove accuracy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Uncertainty and calibration determine meaningful precision.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Mean standard error for scatter 2 and N=16?",
+      "answer": "0.5",
+      "explanation": "2/√16=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Combined uncertainty of independent .5 and .3?",
+      "answer": "0.5830951894845301",
+      "explanation": "√(.5²+.3²).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why label simulated readings?",
+      "answer": "They are model outputs rather than observations.",
+      "options": [
+        "They are model outputs rather than observations.",
+        "Repeat consistency versus closeness under calibration/model evidence."
+      ],
+      "explanation": "They are model outputs rather than observations.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What distinguishes precision and accuracy?",
+      "back": "Repeat consistency versus closeness under calibration/model evidence.",
+      "concept": "ph17-1-theory"
+    },
+    {
+      "front": "What does a shared systematic error do?",
+      "back": "It persists across repeats.",
+      "concept": "ph17-1-theory"
+    },
+    {
+      "front": "Why inspect residuals?",
+      "back": "They can expose model/setting-dependent bias.",
+      "concept": "ph17-1-theory"
+    },
+    {
+      "front": "Why label simulated readings?",
+      "back": "They are model outputs rather than observations.",
+      "concept": "ph17-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending",
+    "Newman, Computational Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does repeating a measurement not necessarily remove its largest error? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Experiments connect apparatus calibration, repeatability and model uncertainty; precision of repeated readings is not equivalent to accuracy.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A measurement result includes a quantity definition, unit, method, estimate and uncertainty model with calibration/provenance.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For independent equal-variance repeats, the mean standard error scales as $\sigma_{\bar x}=\sigma/\sqrt N$. A common calibration offset is correlated and does not fall by that rule. Distinguish repeatability scatter, resolution, drift and systematic model error.
+
+For a derived f(x), first-order covariance propagation is Var(f)≈∇fᵀC∇f under a sufficiently linear local approximation. Correlated inputs can increase or reduce uncertainty. Nonlinearity, bounds and asymmetric distributions may require direct likelihood or Monte Carlo propagation.
+
+A pendulum experiment measures length from pivot to the appropriate mass centre and times a stated number of small-amplitude cycles. Gate alignment, reaction delay, finite amplitude, air drag and pivot effects can bias a simple T=2π√(L/g) model. Observing apparatus and recording controls is part of the evidence, not decoration.
+
+Use calibration/check standards, repeats across settings and residual analysis before inferring a parameter. Report significant digits according to uncertainty, not every displayed calculator digit. Synthetic bench readings verify a model workflow but do not establish a new physical measurement of local g.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the pendulum bench to inspect release, timing and measurement roles. Design a real low-risk measurement protocol separately and label simulated readings. Compare repeated timing scatter with a deliberately shared length offset.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If independent repeat scatter is 2 and N=16, mean standard error is .5. An additional shared calibration uncertainty .3 would not be divided by four again; if independent of the mean error its combined standard uncertainty is √(.25+.09).
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

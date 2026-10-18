@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH17.4",
+  "title": "Molecular dynamics and simulation",
+  "hook": "Why can a simulation conserve energy poorly even when its force formula is correct?",
+  "recap": [
+    "The negative potential gradient.",
+    "Discontinuities and long-range omission can bias dynamics.",
+    "Initial transients from intended ensemble sampling.",
+    "The potential model limits physical interpretation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a correct force expression eliminate all integration error?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Finite steps and boundaries matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can a thermostat alter measured dynamical correlations?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Its coupling changes trajectories.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a force-field simulation automatically first-principles quantum chemistry?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its physical approximation is different.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Acceleration for force 2,mass 4?",
+      "answer": "0.5",
+      "explanation": "F/m=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Verlet v from v0=1,aold=anew=.5,dt=2?",
+      "answer": "2",
+      "explanation": "1+(.5+.5)×2/2=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why retain force-field provenance?",
+      "answer": "The potential model limits physical interpretation.",
+      "options": [
+        "The potential model limits physical interpretation.",
+        "The negative potential gradient."
+      ],
+      "explanation": "The potential model limits physical interpretation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What determines conservative force?",
+      "back": "The negative potential gradient.",
+      "concept": "ph17-4-theory"
+    },
+    {
+      "front": "Why check cutoffs?",
+      "back": "Discontinuities and long-range omission can bias dynamics.",
+      "concept": "ph17-4-theory"
+    },
+    {
+      "front": "What does equilibration separate?",
+      "back": "Initial transients from intended ensemble sampling.",
+      "concept": "ph17-4-theory"
+    },
+    {
+      "front": "Why retain force-field provenance?",
+      "back": "The potential model limits physical interpretation.",
+      "concept": "ph17-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending",
+    "Newman, Computational Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a simulation conserve energy poorly even when its force formula is correct? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Molecular dynamics couples a physical potential to a finite-step integrator, boundaries and ensemble controls.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Classical molecular dynamics evolves particle positions and momenta under a specified force/potential model; numerical and statistical assumptions define what observables mean.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For conservative dynamics, $m_i\ddot r_i=-\nabla_iU$. Pair symmetry can enforce internal momentum balance. A correct force routine still needs a stable, converged time step and consistent units/masses. Discontinuous cutoffs can create energy errors.
+
+Velocity Verlet updates position using old acceleration and velocity with both old/new accelerations. It is a symplectic/time-reversible scheme for the admitted separable Hamiltonian setting, not an exact finite-step solution. A bounded energy oscillation and a systematic drift require different diagnostics.
+
+Periodic boundaries, minimum-image assumptions and neighbour lists require a compatible cutoff and cell geometry. Long-range forces need appropriate methods rather than an arbitrary short truncation. Initial states and equilibration affect averages.
+
+Thermostats/barostats change dynamics/ensembles and require their own sampling justification. Naively rescaling velocities can distort correlations. Statistical errors need autocorrelation analysis, and force-field error remains even after numerical convergence. Do not call a classical force-field trajectory a first-principles quantum result.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Test a harmonic or constant-force control before a many-particle model. Compare decreasing time steps, momentum and energy budgets, then separate thermostat effects from conservative-integrator error.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For force 2 and mass 4, acceleration is .5. With v₀=1, equal old/new accelerations .5 and time step 2, Verlet’s velocity update gives 2. This constant-force control does not establish accuracy for a stiff molecular potential.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

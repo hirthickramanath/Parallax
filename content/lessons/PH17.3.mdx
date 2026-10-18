@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH17.3",
+  "title": "Monte Carlo methods",
+  "hook": "Why should Monte Carlo uncertainty be tested instead of reported from one lucky run?",
+  "recap": [
+    "A proposal/weight combination matching the target integral.",
+    "They can dominate variance and reduce effective information.",
+    "Exact controls and repeated uncertainty behaviour.",
+    "To reproduce stochastic runs, with other environment controls."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does increasing N fix missing-support bias automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The estimator targets the wrong measure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is one realized error guaranteed to halve when N quadruples?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The scaling concerns standard uncertainty under assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are stochastic and model errors distinct?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Sampling more does not fix incorrect physics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "π estimate for Nin=785,N=1000?",
+      "answer": "3.14",
+      "explanation": "4×785/1000=3.14.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Standard-error ratio for four times independent N?",
+      "answer": "0.5",
+      "explanation": "N⁻¹ᐟ² gives one half.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why record seeds?",
+      "answer": "To reproduce stochastic runs, with other environment controls.",
+      "options": [
+        "To reproduce stochastic runs, with other environment controls.",
+        "A proposal/weight combination matching the target integral."
+      ],
+      "explanation": "To reproduce stochastic runs, with other environment controls.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines an unbiased sampling measure?",
+      "back": "A proposal/weight combination matching the target integral.",
+      "concept": "ph17-3-theory"
+    },
+    {
+      "front": "Why inspect heavy weights?",
+      "back": "They can dominate variance and reduce effective information.",
+      "concept": "ph17-3-theory"
+    },
+    {
+      "front": "What tests an estimator?",
+      "back": "Exact controls and repeated uncertainty behaviour.",
+      "concept": "ph17-3-theory"
+    },
+    {
+      "front": "Why record seeds?",
+      "back": "To reproduce stochastic runs, with other environment controls.",
+      "concept": "ph17-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending",
+    "Newman, Computational Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why should Monte Carlo uncertainty be tested instead of reported from one lucky run? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Physics simulations require estimator design, sample dependence and conservation/normalization checks.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Monte Carlo integration estimates an expectation with a specified sampling measure; uncertainty depends on variance and independence/mixing conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For uniform points in a square enclosing a unit-radius quadrant, an area ratio estimates $\pi\approx4N_{in}/N$. The estimate is random and finite-sample error is not exactly zero when rounded near 3.14. A binomial model gives one uncertainty route under independent uniform sampling.
+
+Importance sampling rewrites an integral using weights relative to a proposal with support wherever the target integrand contributes. Missing support creates bias that more samples do not fix. Heavy weights can inflate variance, so effective weight diagnostics matter.
+
+Markov-chain samples can be correlated and need effective-sample-size/mixing checks. Reproducible seeds and multiple runs help diagnose failures but do not prove every mode was explored. A rejection must be handled consistently with the algorithm’s estimator.
+
+Validate on exact integrals or known distributions before a complex physical application. Check dimensions, normalization and any conserved quantities. A simulation’s stochastic noise is distinct from discretization and physical-model uncertainty.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Run a labelled synthetic area estimator with multiple seeds and compare interval coverage. Deliberately use a biased proposal without weights to expose an error that increased N cannot repair.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If 785 of 1000 independent uniform points fall inside the quadrant, π estimate is 3.14. Under an admitted finite-variance independent scaling, quadrupling sample count halves the standard error, not the guaranteed realized absolute error.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

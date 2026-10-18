@@ -608,3 +608,43 @@ test("field theory and relativity examples retain conventions and approximation 
     check(id, "warmup", w);
   }
 });
+test("supporting chemistry examples preserve electronic, isotope and network assumptions", () => {
+  const rows = [
+    ["CH2.1", (2 - 1) / (1 + 0), (2 + 1) / (1 - 0)],
+    ["CH2.2", Math.sqrt(8 / 2), (8 * 0.5 ** 2) / 2],
+    ["CH2.3", -10 - -12, -11 - -12],
+    ["CH2.4", 2 * (6 - 2), 0.5],
+    ["CH2.5", 0.3 ** 2, 3 / (3 + 1)],
+    ["CH2.6", 3 * 2, (2 / 1e6) * 1e6],
+    ["CH3.1", 6 / 2, 1 / 2],
+    ["CH3.2", 0.5 * 2 * 3, 10 - 9],
+    ["CH3.3", 0.01 / 100, 0.01 / 100],
+    ["CH3.4", Math.exp(-Math.log(10)), 5],
+    ["CH3.5", -6 - -8, Math.sqrt(0.3 ** 2 + 0.4 ** 2)],
+    ["CH5.1", -7 - -10, 8 - 1],
+    ["CH5.2", 8 - 2, 8 - 3],
+    ["CH5.3", 2 * 3 + 1, 2 * (2 * 3 + 1)],
+    ["CH5.4", 4 - 2 * 2, 4 - 4 * 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("experimental and research examples preserve uncertainties and provenance distinctions", () => {
+  const rows = [
+    ["PH17.1", 2 / Math.sqrt(16), Math.sqrt(0.5 ** 2 + 0.3 ** 2)],
+    ["PH17.2", 4.096 / 2 ** 12, 2 * 100],
+    ["PH17.3", (4 * 785) / 1000, 0.5],
+    ["PH17.4", 2 / 4, 1 + ((0.5 + 0.5) * 2) / 2],
+    ["PH17.5", Math.PI ** 2, 0.02],
+    ["PH18.1", (12 - 10) / 2, 12 - 10],
+    ["PH18.2", (2 * 3 ** 2) / 2, 4],
+    ["PH18.3", 1 ** 2 + 2 ** 2, 2],
+    ["PH18.4", 12 / 3, 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

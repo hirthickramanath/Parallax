@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH3.5",
+  "title": "Computational chemistry mini-project",
+  "hook": "How do you turn a computational chemistry result into a reproducible, falsifiable mini-project?",
+  "recap": [
+    "One clearly defined species/state/observable and validation scope.",
+    "Theory, basis, conditions and software/input versions.",
+    "Convergence does not guarantee physical accuracy.",
+    "Differences, assumptions, uncertainty and unresolved causes."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May different energy references be subtracted without checking?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The comparison needs a common convention.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a smooth fitted curve prove every input point converged?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "State switches and numerical errors can be hidden.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should unavailable independent evidence remain an explicit limitation?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "It cannot be invented.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "ΔE for E_B=−6,E_A=−8?",
+      "answer": "2",
+      "explanation": "−6−(−8)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Independent uncertainty from .3 and .4?",
+      "answer": "0.5",
+      "explanation": "√(.09+.16)=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What belongs in a discrepancy analysis?",
+      "answer": "Differences, assumptions, uncertainty and unresolved causes.",
+      "options": [
+        "Differences, assumptions, uncertainty and unresolved causes.",
+        "One clearly defined species/state/observable and validation scope."
+      ],
+      "explanation": "Differences, assumptions, uncertainty and unresolved causes.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a computational target bounded?",
+      "back": "One clearly defined species/state/observable and validation scope.",
+      "concept": "ch3-5-theory"
+    },
+    {
+      "front": "What must a method record?",
+      "back": "Theory, basis, conditions and software/input versions.",
+      "concept": "ch3-5-theory"
+    },
+    {
+      "front": "Why separate numeric and model errors?",
+      "back": "Convergence does not guarantee physical accuracy.",
+      "concept": "ch3-5-theory"
+    },
+    {
+      "front": "What belongs in a discrepancy analysis?",
+      "back": "Differences, assumptions, uncertainty and unresolved causes.",
+      "concept": "ch3-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Tielens, The Physics and Chemistry of the Interstellar Medium — edition and exact section verification pending",
+    "Herbst and van Dishoeck review literature — exact article/section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How do you turn a computational chemistry result into a reproducible, falsifiable mini-project? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+A bounded question, benchmark and uncertainty plan matter more than producing a large unverified table of energies.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A computational mini-project defines species/state, geometry, method, basis, target observables, convergence and independent comparison before drawing conclusions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Choose one target such as a diatomic equilibrium curve or isotope frequency ratio. Record charge, spin and Hamiltonian/functional assumptions. If an energy difference is $\Delta E=E_B-E_A$, both energies must share a consistent reference and units.
+
+Scan or optimize geometry with convergence checks and avoid mixing electronic states between points. Verify small known cases and test basis/grid dependence separately from algorithm residual. A smooth fit can hide a state switch or unconverged point.
+
+Compare with a benchmark not used to tune the calculation, including uncertainty and condition differences. A harmonic frequency and a measured anharmonic band centre are different quantities. If no independent data are available, state that limitation rather than inventing an experiment.
+
+Deliver source code/configuration, input/output provenance, plots with units and a concise discrepancy analysis. Protect credentials and irrelevant private files. A completed tutorial calculation is not independent scientific certification, and this lesson provides a rubric rather than claiming a real project was executed.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Write a bounded project specification and reproduce the worked uncertainty calculation. Execute a real chemistry package only after documenting the installed method/version and input; do not substitute a synthetic curve while calling it a computed quantum result.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If E_A=−8 and E_B=−6 in the same energy convention, ΔE=2. If independent reported numeric uncertainties are .3 and .4, the difference uncertainty is .5; correlation would change that combination.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH2.1",
+  "title": "Molecular orbital theory and LCAO",
+  "hook": "Why does orbital overlap change the eigenvalue problem rather than just the drawing?",
+  "recap": [
+    "The basis overlap matrix.",
+    "c†Sc=1.",
+    "An independent positive-definite overlap space.",
+    "Coefficients, convergence and conditioning depend on them."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can nonorthogonal overlap always be ignored?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It changes the metric and eigenproblem.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do near-linear basis dependencies affect numerical conditioning?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Small overlap eigenvalues amplify error.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a coefficient-based atomic population uniquely observable?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its partition depends on the basis/convention.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Lower energy for a=2,b=−1,s=0?",
+      "answer": "1",
+      "explanation": "(a+b)/(1+s)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Upper energy for those values?",
+      "answer": "3",
+      "explanation": "(a−b)/(1−s)=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why report basis details?",
+      "answer": "Coefficients, convergence and conditioning depend on them.",
+      "options": [
+        "Coefficients, convergence and conditioning depend on them.",
+        "The basis overlap matrix."
+      ],
+      "explanation": "Coefficients, convergence and conditioning depend on them.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is S?",
+      "back": "The basis overlap matrix.",
+      "concept": "ch2-1-theory"
+    },
+    {
+      "front": "How is a coefficient vector normalized?",
+      "back": "c†Sc=1.",
+      "concept": "ch2-1-theory"
+    },
+    {
+      "front": "What can orthogonalization require?",
+      "back": "An independent positive-definite overlap space.",
+      "concept": "ch2-1-theory"
+    },
+    {
+      "front": "Why report basis details?",
+      "back": "Coefficients, convergence and conditioning depend on them.",
+      "concept": "ch2-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and Friedman, Molecular Quantum Mechanics — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does orbital overlap change the eigenvalue problem rather than just the drawing? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+LCAO methods use a finite basis with a metric; normalization and basis convergence are essential parts of a molecular-orbital calculation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In a nonorthogonal basis, orbital coefficients solve Hc=ESc with overlap matrix S and normalization c†Sc=1.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The variational orbital equation is $H\mathbf c=ES\mathbf c$. If S is positive definite on the independent basis, a suitable orthogonalization transforms it to an ordinary Hermitian problem. Linear dependencies or tiny overlap eigenvalues cause numerical conditioning issues rather than new physical states.
+
+For two equivalent functions with diagonal energy a, off-diagonal b and overlap s, symmetric/antisymmetric energies are (a+b)/(1+s) and (a−b)/(1−s) in the simple normalized real model. Ignoring overlap changes both the normalization and energy prediction.
+
+Orbital occupations and a many-electron energy functional are further steps; a one-electron two-centre matrix is not the exact electronic energy of every molecule. Nuclear repulsion, electron interaction, exchange and correlation require their specified treatment.
+
+Basis enlargement can improve a well-defined variational space but does not repair an incorrect Hamiltonian or state. Record symmetry, charge, spin, geometry and convergence before interpreting coefficients as chemical evidence. Population/charge partitions depend on conventions and are not uniquely observed atomic electron counts.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Solve the two-function generalized eigenproblem over several overlap values inside the positive-definite regime. Check c†Sc and compare with an intentionally wrong ordinary diagonalization.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With a=2,b=−1,s=0, the symmetric/antisymmetric energies are 1 and 3. The symmetric coefficients have equal magnitudes 1/√2. If s is nonzero, using those same coefficients without renormalizing is wrong.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -53,3 +53,9 @@ PH13 and PH14 add 15 drafts. Coverage is 314/354 bodies, 1261 recall cards, 40 m
 ## Field theory and relativity
 
 PH15 and PH16 add 16 drafts. Coverage is 330/354 bodies, 1325 recall cards, 24 missing. Build, all 81 model/grading/example tests and both new unit player sweeps passed. Gauge, metric, EFT and semiclassical assumptions are stated; frontiers are not presented as experimentally settled. No numerical-relativity simulation was claimed to have been executed.
+
+## Full draft body coverage
+
+CH2, CH3, CH5, PH17 and PH18 add the final 24 bodies. All **354 entries across 59 units** now have draft lessons and **1421 recall cards**. **Zero bodies are missing; zero lessons are independently verified/published.** The production build, all 83 model/grading/example tests and a full 81-case browser run passed at this coverage checkpoint.
+
+The generated ledger now switches from missing-body execution to review/depth/live-verification work when coverage is complete. The separate [pending-work report](PENDING-REVIEW-AND-LIVE-CHECKS.md) lists those limits. Advanced treatments remain concise introductions that may require expansion; filled IDs do not certify exhaustive theory, a completed real experiment or a reproduced published result.
