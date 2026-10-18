@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { test, expect, type Page } from "@playwright/test";
 const apiKey = "AIzaSyBSSe8XOjx3dAb4h1Ert332830tKXwHf6M";
 async function signedIn(page: Page, uid = "test-learner") {
@@ -973,4 +973,58 @@ test("Legendre explorer distinguishes polynomial and spherical normalization on 
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
+});
+
+test("cached lesson JSON refreshes online after a release and keeps the refreshed content offline", async ({
+  page,
+  context,
+}) => {
+  await signedIn(page);
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const path = "dist/content/PB1.1.json";
+  const original = readFileSync(path, "utf8");
+  try {
+    await page.evaluate(async () => {
+      await fetch("/content/PB1.1.json").then((response) => response.json());
+    });
+    await expect
+      .poll(() =>
+        page.evaluate(async () =>
+          Boolean(await caches.match("/content/PB1.1.json")),
+        ),
+      )
+      .toBeTruthy();
+    writeFileSync(
+      path,
+      JSON.stringify({ ...JSON.parse(original), releaseProbe: "fresh-lesson" }),
+    );
+    const revision = await page.evaluate(
+      async () =>
+        (await fetch("/content/PB1.1.json").then((response) => response.json()))
+          .releaseProbe,
+    );
+    expect(revision).toBe("fresh-lesson");
+    await expect
+      .poll(() =>
+        page.evaluate(
+          async () =>
+            (await (await caches.match("/content/PB1.1.json"))?.json())
+              ?.releaseProbe,
+        ),
+      )
+      .toBe("fresh-lesson");
+    await context.setOffline(true);
+    const offlineRevision = await page.evaluate(
+      async () =>
+        (await fetch("/content/PB1.1.json").then((response) => response.json()))
+          .releaseProbe,
+    );
+    expect(offlineRevision).toBe("fresh-lesson");
+  } finally {
+    await context.setOffline(false);
+    writeFileSync(path, original);
+  }
 });

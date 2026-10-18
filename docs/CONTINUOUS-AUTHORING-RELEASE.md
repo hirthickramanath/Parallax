@@ -59,3 +59,13 @@ PH15 and PH16 add 16 drafts. Coverage is 330/354 bodies, 1325 recall cards, 24 m
 CH2, CH3, CH5, PH17 and PH18 add the final 24 bodies. All **354 entries across 59 units** now have draft lessons and **1421 recall cards**. **Zero bodies are missing; zero lessons are independently verified/published.** The production build, all 83 model/grading/example tests and a full 81-case browser run passed at this coverage checkpoint.
 
 The generated ledger now switches from missing-body execution to review/depth/live-verification work when coverage is complete. The separate [pending-work report](PENDING-REVIEW-AND-LIVE-CHECKS.md) lists those limits. Advanced treatments remain concise introductions that may require expansion; filled IDs do not certify exhaustive theory, a completed real experiment or a reproduced published result.
+
+## Release freshness and final validation
+
+Lesson JSON keeps a stable URL across deployments, so its service-worker policy is now network-first with a saved public-content fallback offline. Content-hashed build assets remain cache-first. Existing visited caches are retained. Missing offline pages/lessons receive explicit unavailable responses instead of an undefined fetch response.
+
+A browser regression caches a lesson, changes the local preview’s served JSON to emulate a new release, verifies that the online request gets the update, then goes offline and verifies the refreshed copy is retained. The test restores the generated preview artifact in a finally block. The existing offline-notebook test also passes.
+
+Final validation: production build passed; all **83 model/grading/example tests** passed; the complete **82-case browser suite** passed, including theory/investigation rendering for every one of the 354 authored lessons and the mobile/offline/account workflows. MCQ keys/options were checked for consistency, and staged whitespace checks passed. Browser authentication/cloud responses are fixtures, so these results do not certify live Firebase rules or a configured tutor.
+
+All chapter body authoring is complete as a draft pass. Independent scientific/source review, additional depth and exercises where needed, actual capstone/experiment execution, live-service verification and production merge/deployment are not claimed complete. See the pending-work report before describing the course as scientifically verified or publication-ready.

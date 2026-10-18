@@ -28,6 +28,8 @@ Current reminders are opt-in foreground reminders. Background push is a separate
 
 Validated code is pushed to `codex/complete-foundation-course`. It is not automatically production until the configured production branch is updated and Cloudflare successfully deploys it. This work does not assert that a merge or production deployment was performed.
 
+At the completed draft checkpoint, the production build, all 83 model/grading/example tests and all 82 browser cases passed. Lesson content refreshes online with a saved-copy offline fallback; this is covered by a deployment-refresh regression.
+
 After material edits, run content validation/production build, model/grading/example tests and the full browser suite. Retain passed, failed and unrun results distinctly. Worker/rules/live-provider checks should be rerun when those components or their configuration change; an unrun live check must not be reported as passed.
 
 The excluded-subjects and separate engineering/technology plans remain in their existing Markdown documents. They were not silently added as new selectable domains to this astrophysics-focused app.
