@@ -1,0 +1,186 @@
+---
+{
+  "id": "CP2.2",
+  "title": "Monte Carlo and MCMC",
+  "hook": "Why can a million correlated samples contain less information than ten thousand independent ones?",
+  "recap": [
+    "N⁻¹ᐟ² when finite-variance assumptions apply.",
+    "A common normalization constant.",
+    "Autocorrelation reduces independent information.",
+    "Sensitivity to starts and signs of poor exploration, without claiming proof of complete mixing."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does target invariance alone guarantee rapid mixing?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A chain can remain trapped for a long time.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Should rejected MCMC states remain in the recorded chain?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Removing repeats changes its time-weighted distribution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a nonsymmetric proposal need a proposal-density ratio?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The Hastings factor corrects directional proposal bias.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Approximate effective sample size for N=1000 and τ=5?",
+      "answer": "200",
+      "explanation": "N/τ=200.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Symmetric-proposal acceptance for target ratio .2?",
+      "answer": "0.2",
+      "explanation": "min(1,.2)=.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does target invariance alone guarantee rapid mixing?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "A chain can remain trapped for a long time.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is independent Monte Carlo standard-error scaling?",
+      "back": "N⁻¹ᐟ² when finite-variance assumptions apply.",
+      "concept": "cp2-2-theory"
+    },
+    {
+      "front": "What cancels in a Metropolis target ratio?",
+      "back": "A common normalization constant.",
+      "concept": "cp2-2-theory"
+    },
+    {
+      "front": "Why can ESS be much smaller than N?",
+      "back": "Autocorrelation reduces independent information.",
+      "concept": "cp2-2-theory"
+    },
+    {
+      "front": "What should multiple chains test?",
+      "back": "Sensitivity to starts and signs of poor exploration, without claiming proof of complete mixing.",
+      "concept": "cp2-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Newman, Computational Physics — edition and exact section verification pending",
+    "Official NumPy, Astropy, astroquery and scikit-learn documentation — version and exact page verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a million correlated samples contain less information than ten thousand independent ones? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Monte Carlo estimates need uncertainty and mixing diagnostics, especially when posterior distributions have distant modes or narrow degeneracies.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Independent Monte Carlo estimates expectations by sample averages. Markov chain Monte Carlo constructs a chain with a target invariant distribution; invariance alone does not guarantee rapid convergence.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For independent samples X_i with finite variance σ², the mean estimator has variance σ²/N. This produces the familiar N⁻¹ᐟ² standard-error scaling, not a deterministic error bound for every realization. Infinite-variance tails and biased sampling can invalidate that simple uncertainty estimate.
+
+For a symmetric proposal q(y|x)=q(x|y), Metropolis acceptance is $\alpha=\min(1,\pi(y)/\pi(x))$. A nonsymmetric proposal needs the Hastings factor q(x|y)/q(y|x). Work with log densities and compare log acceptance to log of a uniform variate to avoid overflow. A normalization constant common to numerator and denominator cancels, but support restrictions do not.
+
+Detailed balance is a sufficient route to invariance for the stated kernel. Irreducibility, aperiodicity and other convergence conditions still matter. Rejections keep the current state as a chain sample; discarding all repeated states changes the sampling measure. Warm-up or adaptation must be distinguished from the retained stationary sampling scheme.
+
+For a stationary correlated chain, the integrated autocorrelation time τ=1+2∑ρ_k gives effective sample size roughly N/τ when the sum and variance assumptions hold. Multiple dispersed chains, trace plots, rank-based convergence diagnostics and effective sample sizes expose some failures but cannot prove every hidden mode was found. Report priors, likelihood, proposal, seeds and uncertainty; synthetic inference exercises are not observational discovery.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Sample a one-dimensional normal target, then a separated mixture. Compare short-step and long-step proposals using traces, rejection rates and effective sample sizes. Retain rejected states, run dispersed starts and label all targets/samples synthetic.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If an approximately stationary chain has N=1000 and τ=5, its effective sample size is about 200. A symmetric proposal with target ratio π(y)/π(x)=.2 is accepted with probability .2. Calling all 1000 draws independent would understate uncertainty.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

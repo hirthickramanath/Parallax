@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **170**.
-- Authored recall cards: **685**.
-- Missing lesson bodies: **184**.
+- Playable authored drafts: **191**.
+- Authored recall cards: **769**.
+- Missing lesson bodies: **163**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -40,10 +40,10 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 3 | PH2 | Analytical mechanics | 7 / 7 | None |
 | 4 | PH3 | Nonlinear dynamics and continuum mechanics | 0 / 4 | PH3.1, PH3.2, PH3.3, PH3.4 |
 | 2 | PH4 | Electrostatics and magnetostatics | 8 / 8 | None |
-| 3 | PH5 | Electrodynamics | 0 / 8 | PH5.1, PH5.2, PH5.3, PH5.4, PH5.5, PH5.6, PH5.7, PH5.8 |
+| 3 | PH5 | Electrodynamics | 8 / 8 | None |
 | 4 | PH6 | Waves and optics | 0 / 5 | PH6.1, PH6.2, PH6.3, PH6.4, PH6.5 |
 | 3 | PH7 | Thermodynamics and statistical mechanics | 10 / 10 | None |
-| 3 | PH8 | Quantum mechanics I | 0 / 8 | PH8.1, PH8.2, PH8.3, PH8.4, PH8.5, PH8.6, PH8.7, PH8.8 |
+| 3 | PH8 | Quantum mechanics I | 8 / 8 | None |
 | 5 | PH9 | Quantum mechanics II | 0 / 8 | PH9.1, PH9.2, PH9.3, PH9.4, PH9.5, PH9.6, PH9.7, PH9.8 |
 | 6 | PH10 | Advanced and relativistic quantum mechanics | 0 / 6 | PH10.1, PH10.2, PH10.3, PH10.4, PH10.5, PH10.6 |
 | 2 | PH11 | Special relativity | 4 / 4 | None |
@@ -59,7 +59,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 4 | CH2 | Quantum chemistry and spectroscopy | 0 / 6 | CH2.1, CH2.2, CH2.3, CH2.4, CH2.5, CH2.6 |
 | 6 | CH3 | Research and astrochemistry | 0 / 5 | CH3.1, CH3.2, CH3.3, CH3.4, CH3.5 |
 | 1 | CP1 | Core scientific computing | 6 / 6 | None |
-| 3 | CP2 | Applied computing | 0 / 5 | CP2.1, CP2.2, CP2.3, CP2.4, CP2.5 |
+| 3 | CP2 | Applied computing | 5 / 5 | None |
 | 2 | AS1 | Sky and orbits | 5 / 5 | None |
 | 2 | AS2 | Radiation and telescopes | 7 / 7 | None |
 | 4 | AS3 | Stellar structure | 0 / 7 | AS3.1, AS3.2, AS3.3, AS3.4, AS3.5, AS3.6, AS3.7 |

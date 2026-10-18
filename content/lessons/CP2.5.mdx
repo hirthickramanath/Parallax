@@ -1,0 +1,186 @@
+---
+{
+  "id": "CP2.5",
+  "title": "Git, reproducibility and high-performance computing basics",
+  "hook": "Why can code that runs twice still fail to reproduce a scientific result?",
+  "recap": [
+    "Checked inputs, parameters, environment and execution metadata.",
+    "Floating-point addition is not associative.",
+    "The total workload stays fixed as resources increase.",
+    "Secret credential values and unrelated private data."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a Git commit automatically capture every external dataset?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Untracked and remote inputs need separate provenance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a random seed guarantee bitwise identity across every parallel platform?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Libraries, arithmetic and scheduling can differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should parallel speedup claims include the workload and scaling definition?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Fixed-work and growing-work comparisons answer different questions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal Amdahl speedup with p=.8 and N=4?",
+      "answer": "2.5",
+      "explanation": "1/(.2+.2)=2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Infinite-processor ideal speedup bound for the same p?",
+      "answer": "5",
+      "explanation": "1/(1−.8)=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does a Git commit automatically capture every external dataset?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Untracked and remote inputs need separate provenance.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What should accompany a code revision?",
+      "back": "Checked inputs, parameters, environment and execution metadata.",
+      "concept": "cp2-5-theory"
+    },
+    {
+      "front": "Why can reduction order affect results?",
+      "back": "Floating-point addition is not associative.",
+      "concept": "cp2-5-theory"
+    },
+    {
+      "front": "What distinguishes strong scaling?",
+      "back": "The total workload stays fixed as resources increase.",
+      "concept": "cp2-5-theory"
+    },
+    {
+      "front": "What belongs outside versioned provenance?",
+      "back": "Secret credential values and unrelated private data.",
+      "concept": "cp2-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Newman, Computational Physics — edition and exact section verification pending",
+    "Official NumPy, Astropy, astroquery and scikit-learn documentation — version and exact page verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can code that runs twice still fail to reproduce a scientific result? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Versioned code, immutable inputs and environment records make results reviewable. Parallel execution introduces additional costs and nondeterminism that a successful run does not expose.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Reproducibility requires enough recorded code, data, parameters, environment and execution provenance to regenerate a specified result within declared numerical tolerances.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A Git commit identifies tracked source history, not all untracked data, environment variables or external service responses. Record the code revision alongside input checksums, configuration and dependency versions. Keep credentials out of commits and parameter archives. A seed helps reproduce a particular pseudo-random stream but does not control every library, hardware or parallel scheduling difference.
+
+Separate source inputs, derived artifacts and final figures. A scripted pipeline should express dependencies and fail clearly when a required input is missing or a checksum changes. Preserve meaningful logs and units. A notebook with hidden out-of-order state is not equivalent to a clean top-to-bottom execution; restart and execute from a fresh kernel when validating it.
+
+Measure before parallelizing. Amdahl’s law for an idealized workload with parallel fraction p is $S(N)=1/[(1-p)+p/N]$, ignoring communication and scheduling overhead. Actual performance can be limited by memory bandwidth, input/output, load imbalance and synchronization. Scaling a problem size with processor count is a different experiment from strong scaling a fixed workload.
+
+Floating-point addition is not associative, so a parallel reduction order can change low bits. State whether the requirement is bitwise identity or agreement within a justified physical/numerical tolerance. Checkpoint long computations with validated restart data and track resource use. HPC job scripts, containers and compiler flags are provenance artifacts, not proof of scientific correctness or a reason to disable signature/TLS verification.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Create a local reproducibility manifest for a synthetic calculation: revision, input checksum, parameters, seed, dependencies and tolerance. Re-run from a clean process and compare numeric outputs. Profile one bottleneck before proposing parallel execution; do not place API keys or personal files into the manifest.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With parallel fraction p=.8 and N=4, ideal speedup is 1/(.2+.8/4)=2.5. As N tends to infinity the upper bound is 1/.2=5 before overhead. A four-core run cannot achieve a factor of four under this serial fraction even in the ideal model.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

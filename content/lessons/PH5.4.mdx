@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH5.4",
+  "title": "Reflection, refraction and waveguides",
+  "hook": "Why does a waveguide block low frequencies even when its walls conduct perfectly?",
+  "recap": [
+    "Tangential phase matching at the interface.",
+    "Transverse eigenvalues and boundary conditions.",
+    "Longitudinal evanescence.",
+    "Energy flux depends on impedance as well as amplitude."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is power transmission always |t|² for electric amplitude t?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "An impedance factor is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an evanescent field necessarily vanish everywhere beyond an interface?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It decays rather than being identically zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can hollow-guide geometry impose a low-frequency cutoff?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Transverse boundary modes set k_c.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Reflectance for normal incidence Z₁=1,Z₂=3?",
+      "answer": "0.25",
+      "explanation": "r=.5, so R=.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Power transmission for that lossless setup?",
+      "answer": "0.75",
+      "explanation": "(1/3)×1.5²=.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Is power transmission always |t|² for electric amplitude t?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "An impedance factor is needed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What fixes Snell refraction?",
+      "back": "Tangential phase matching at the interface.",
+      "concept": "ph5-4-theory"
+    },
+    {
+      "front": "What determines guide cutoff?",
+      "back": "Transverse eigenvalues and boundary conditions.",
+      "concept": "ph5-4-theory"
+    },
+    {
+      "front": "What occurs below cutoff in the ideal uniform guide?",
+      "back": "Longitudinal evanescence.",
+      "concept": "ph5-4-theory"
+    },
+    {
+      "front": "Why distinguish amplitude and power coefficients?",
+      "back": "Energy flux depends on impedance as well as amplitude.",
+      "concept": "ph5-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending",
+    "Jackson, Classical Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a waveguide block low frequencies even when its walls conduct perfectly? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Interfaces and bounded geometry select transmitted amplitudes and allowed modes. Boundary conditions can create a cutoff absent from a free-space plane wave.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Reflection/refraction follow electromagnetic interface conditions. In a uniform guide, transverse mode structure determines the longitudinal propagation constant.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+At a charge/current-free interface the appropriate tangential E,H components are continuous. At normal incidence between lossless media with real impedances Z₁,Z₂, electric amplitude reflection is $r=(Z_2-Z_1)/(Z_2+Z_1)$ and transmission is t=1+r. Power reflection is |r|², while power transmission includes an impedance factor and is not simply |t|² in unequal media.
+
+For isotropic nondispersive positive-index media, phase matching along the interface gives n₁sinθ₁=n₂sinθ₂. The polarization-resolved Fresnel coefficients follow the same boundary equations. Total internal reflection from higher to lower index produces an evanescent transmitted field, not a declaration of zero field on the second side. Lossy or anisotropic interfaces require more general analysis.
+
+A simple perfectly conducting rectangular guide has allowed transverse wavenumbers set by its dimensions and TE/TM boundary conditions. For a mode with transverse k_c, $k_z^2=(\omega/c)^2-k_c^2$. Below ω_c=ck_c the longitudinal dependence is evanescent. A hollow simply connected ideal guide has no ordinary TEM mode; a two-conductor transmission structure can support one.
+
+Above cutoff, the modal phase and group velocities differ, with their product c² for this ideal vacuum-guide dispersion. Energy flow remains compatible with causality. Wall loss, finite conductivity, bends and mode conversion modify the ideal model. A boundary-generated cutoff should not be confused with a material absorption resonance.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate amplitude and power coefficients separately for several impedance ratios. Verify R+T=1 for the stated lossless setup. For a guide, plot k_z versus ω around a supplied cutoff and identify propagating versus evanescent regimes without drawing an imaginary k_z as an ordinary real oscillation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At normal incidence with Z₁=1 and Z₂=3, r=.5 and reflectance is .25. The transmitted electric amplitude is 1.5, but transmitted power fraction is (Z₁/Z₂)t²=.75. The sum is one, confirming conservation rather than falsely reporting 2.25 transmission.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

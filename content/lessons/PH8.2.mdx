@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.2",
+  "title": "Schrodinger equation and 1D problems",
+  "hook": "Why can a particle have a nonzero ground energy even when the potential inside a box is zero?",
+  "recap": [
+    "The differential equation and boundary/domain conditions.",
+    "j=(ℏ/m)Im(ψ*ψ′).",
+    "The wavefunction derivative has a specified jump.",
+    "Finite-barrier solutions match across classically forbidden regions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every energy superposition have stationary density?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different energies can create time-dependent cross terms.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are transmission probabilities always amplitude squares without velocity factors?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They are ratios of probability currents.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a constant nonzero wavefunction satisfy both zero endpoints of an infinite well?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It violates Dirichlet boundary values.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Gap E₂−E₁ when the infinite-well energy scale is 1?",
+      "answer": "3",
+      "explanation": "4−1=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Energy ratio after doubling well length at fixed mass?",
+      "answer": "0.25",
+      "explanation": "E scales as L⁻².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does every energy superposition have stationary density?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Different energies can create time-dependent cross terms.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What selects well energies?",
+      "back": "The differential equation and boundary/domain conditions.",
+      "concept": "ph8-2-theory"
+    },
+    {
+      "front": "What is the probability-current formula?",
+      "back": "j=(ℏ/m)Im(ψ*ψ′).",
+      "concept": "ph8-2-theory"
+    },
+    {
+      "front": "What changes at a delta potential?",
+      "back": "The wavefunction derivative has a specified jump.",
+      "concept": "ph8-2-theory"
+    },
+    {
+      "front": "Why can tunnelling occur?",
+      "back": "Finite-barrier solutions match across classically forbidden regions.",
+      "concept": "ph8-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a particle have a nonzero ground energy even when the potential inside a box is zero? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Boundary conditions and normalizability select quantum energies, while tunnelling separates probability transmission from classical barrier crossing.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The one-dimensional nonrelativistic equation is iℏ∂ₜψ=[−ℏ²∂ₓ²/(2m)+V]ψ for a specified Hamiltonian domain and potential.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A stationary state ψ(x,t)=φ(x)e⁻ⁱᴱᵗᐟℏ satisfies $-\hbar^2\phi''/(2m)+V\phi=E\phi$. Separation does not mean every time-dependent state is stationary: superpositions of distinct energies have evolving relative phases. Normalize bound states; scattering states require a flux or generalized-state normalization convention.
+
+For an infinite well on 0&lt;x&lt;L, zero endpoint values give φₙ=√(2/L)sin(nπx/L) and $E_n=n^2\pi^2\hbar^2/(2mL^2)$, n≥1. A constant zero-energy function fails the Dirichlet boundaries unless it is identically zero. Finite wells instead require matching to decaying exterior solutions and can support only finitely many bound states.
+
+For a finite nonsingular potential step, ψ and ψ′ are continuous when the mass is constant and no delta term is present. A delta potential causes a derivative jump derived by integrating the equation. The probability current is j=(ℏ/m)Im(ψ*ψ′), and the Schrödinger equation implies continuity ∂ₜ|ψ|²+∂ₓj=0 for a real local potential.
+
+In a region E&lt;V, stationary solutions can be exponential. A finite barrier can transmit nonzero probability current through matching across both interfaces; a decaying amplitude alone is not automatically a nonzero transmitted current. Reflection and transmission probabilities use current ratios, not always raw amplitude squares. Hermitian boundary conditions and the full domain are essential for probability conservation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the first three exact well eigenfunctions and check normalization, endpoints and node counts. For a finite step calculate current ratios on both sides and verify R+T=1 in the stated conservative regime. Label exponential barrier profiles separately from propagating flux.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In units π²ℏ²/(2mL²)=1, the first two infinite-well energies are 1 and 4, so the gap is 3. Doubling L at fixed m reduces every energy by a factor of four. The zero-point result is a boundary eigenvalue fact, not an extra constant potential inserted into the well.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

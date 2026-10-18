@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH5.5",
+  "title": "Potentials, gauge freedom and retarded potentials",
+  "hook": "How can two different potentials describe exactly the same fields?",
+  "recap": [
+    "Redundant potential descriptions of the same fields.",
+    "Source-observer distance divided by propagation speed.",
+    "Individual potential terms are gauge dependent and their full field contributions cancel appropriately.",
+    "The dependence of the retarded source time."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do gauge-related potentials give different E and B?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The gradient/time-derivative terms cancel.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does choosing Lorenz gauge remove all possible residual gauge freedom automatically?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Homogeneous gauge functions can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must initial free fields sometimes supplement retarded source integrals?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The source particular solution alone need not match initial conditions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Retarded source time for t=10,R=6,c=2?",
+      "answer": "7",
+      "explanation": "t−R/c=7.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Propagation delay R/c for that setup?",
+      "answer": "3",
+      "explanation": "6/2=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Do gauge-related potentials give different E and B?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The gradient/time-derivative terms cancel.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is gauge freedom?",
+      "back": "Redundant potential descriptions of the same fields.",
+      "concept": "ph5-5-theory"
+    },
+    {
+      "front": "What determines the retarded time?",
+      "back": "Source-observer distance divided by propagation speed.",
+      "concept": "ph5-5-theory"
+    },
+    {
+      "front": "Why can Coulomb-gauge terms look instantaneous?",
+      "back": "Individual potential terms are gauge dependent and their full field contributions cancel appropriately.",
+      "concept": "ph5-5-theory"
+    },
+    {
+      "front": "What must be included when differentiating retarded potentials?",
+      "back": "The dependence of the retarded source time.",
+      "concept": "ph5-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending",
+    "Jackson, Classical Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can two different potentials describe exactly the same fields? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Gauge freedom removes redundant descriptions while retardation encodes the causal response selected by initial and radiation conditions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Define B=∇×A and E=−∇φ−∂ₜA. Gauge transformations A→A+∇χ, φ→φ−∂ₜχ leave these fields unchanged for sufficiently regular χ.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The potential representation satisfies ∇·B=0 and Faraday’s law identically in an appropriate local or topologically admissible domain. Global vector potentials can require patches when topology is nontrivial; writing one expression locally is not a proof of a single global chart.
+
+In Lorenz gauge, $\nabla\cdot\mathbf A+c^{-2}\partial_t\phi=0$, Maxwell equations reduce to wave equations for φ and A with charge/current sources. Charge continuity is required for consistency. Gauge freedom persists in residual functions solving the homogeneous wave equation; fixing a gauge is not itself a measurement of a new physical field.
+
+For localized sources in vacuum and retarded boundary conditions, $\phi(\mathbf r,t)=(4\pi\epsilon_0)^{-1}\int \rho(\mathbf r',t-R/c)/R\,d^3r'$ with R=|r−r′|, and A has μ₀/(4π) times the analogous current integral. Derivatives act on both the geometry and retarded time when obtaining fields. A homogeneous free-field solution must be included when imposed by initial conditions.
+
+Coulomb gauge can feature an instantaneous-looking scalar potential, while the complete electric field remains causal after the vector-potential contribution is included. Potentials individually depend on gauge, but suitable phase/flux combinations can have observable significance in quantum theory. Do not infer a faster-than-light force from an isolated gauge-dependent term.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+For a prescribed smooth localized source, evaluate the source at retarded times before computing the potential. Compare two observer separations. Separately verify the gauge cancellation symbolically for a smooth trial χ; do not treat a gauge-dependent potential plot as an independent field measurement.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At a source-observer separation R=6 and wave speed c=2, the retarded time for observation t=10 is 10−6/2=7. Adding a spatial gradient to A and subtracting the corresponding time derivative from φ leaves the fields unchanged; the signal delay is determined by the chosen retarded solution.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

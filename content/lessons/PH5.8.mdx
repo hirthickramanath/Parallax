@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH5.8",
+  "title": "Dispersion, plasmas and radiation reaction",
+  "hook": "Why can a plasma reflect a low-frequency wave without behaving like an ordinary solid mirror?",
+  "recap": [
+    "Density, electron charge/mass and vacuum permittivity.",
+    "The ideal bulk mode is evanescent.",
+    "Causal response with the required analytic assumptions.",
+    "Point-charge equations and truncations have unphysical branches and limited validity."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does superluminal phase speed imply superluminal information?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Phase and causal propagation are distinct.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a cold-fluid model fully describe Landau damping?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It needs kinetic velocity-distribution physics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are all mathematical self-force runaway solutions acceptable physical trajectories?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The approximation and admissible conditions must be controlled.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "k for ω=5,ω_p=3,c=2?",
+      "answer": "2",
+      "explanation": "√(25−9)/2=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Group speed c²k/ω for that wave?",
+      "answer": "1.6",
+      "explanation": "4×2/5=1.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does superluminal phase speed imply superluminal information?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Phase and causal propagation are distinct.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets cold electron plasma frequency?",
+      "back": "Density, electron charge/mass and vacuum permittivity.",
+      "concept": "ph5-8-theory"
+    },
+    {
+      "front": "What happens below the transverse cold-plasma cutoff?",
+      "back": "The ideal bulk mode is evanescent.",
+      "concept": "ph5-8-theory"
+    },
+    {
+      "front": "What enforces susceptibility dispersion constraints?",
+      "back": "Causal response with the required analytic assumptions.",
+      "concept": "ph5-8-theory"
+    },
+    {
+      "front": "Why qualify classical radiation reaction?",
+      "back": "Point-charge equations and truncations have unphysical branches and limited validity.",
+      "concept": "ph5-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending",
+    "Jackson, Classical Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a plasma reflect a low-frequency wave without behaving like an ordinary solid mirror? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Collective charge response creates dispersion and cutoff; energy loss and point-charge self-force require separate, qualified models.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A cold unmagnetized collisionless electron plasma with a fixed neutralizing ion background has ε_r(ω)=1−ω_p²/ω², where ω_p²=n_e e²/(ε₀m_e).
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Linearize m_e dv/dt=−eE and J=−n_e e v for a harmonic e⁻ⁱωᵗ perturbation, neglecting pressure and collisions. Combining this current with Maxwell’s equations gives $\omega^2=\omega_p^2+c^2k^2$ for transverse waves. Below ω_p the ideal bulk wavenumber is imaginary; above it the phase velocity exceeds c while group velocity is below c for this dispersion. This does not enable superluminal information.
+
+Electron thermal motion, collisions, density gradients and a background magnetic field change the dielectric response. Longitudinal plasma oscillations and transverse waves are different branches. Landau damping is a kinetic resonant effect, not simply binary collisional friction; a cold-fluid formula cannot represent its full dependence on the velocity distribution.
+
+Causal linear response links real and imaginary parts of frequency-dependent susceptibility through appropriately subtracted dispersion relations under their analyticity/decay assumptions. An arbitrary independently drawn refractive-index and absorption curve may violate causality or passivity. An index alone must specify its complex and frequency conventions.
+
+For a classical point charge, radiation reaction introduces self-force subtleties. The Abraham–Lorentz equation contains a higher time derivative and admits unphysical runaway/preacceleration solutions outside naive interpretation. Order-reduced approximations such as Landau–Lifshitz are used only in an appropriate weak-reaction regime. Do not solve a truncated self-force equation and call every mathematical branch a physical particle trajectory. Strong fields, quantum emission and finite-size effects require further theory.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the cold-plasma dispersion above cutoff and mark the evanescent range separately. Compute phase/group speeds and verify their product c² in this model. State what collisions, thermal distributions and magnetization would change before applying the curve to an actual astrophysical plasma.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For ω_p=3 and c=2, a wave with ω=5 has k=√(25−9)/2=2. Its phase velocity is 5/2=2.5, larger than c=2, while group velocity c²k/ω=8/5=1.6. The comparison explicitly separates phase and packet speeds.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

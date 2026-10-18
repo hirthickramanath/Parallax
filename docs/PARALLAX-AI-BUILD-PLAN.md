@@ -163,3 +163,8 @@ Authored MA6.1–MA6.6 as drafts, bringing coverage to 155/354 lessons and 625 r
 ## Special functions and asymptotic methods milestone
 
 Authored MA7.1–MA7.5 as drafts, bringing coverage to 160/354 lessons and 645 recall cards. Added a Legendre/zonal-harmonic angular-profile explorer with explicit interval/sphere normalization. See [release details](SPECIAL-FUNCTIONS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 194 lesson bodies and independent scientific/source review remain, alongside the documented live rules and eligible tutor-provider prerequisites.
+
+
+## Continuous authoring through quantum foundations
+
+PH7, CP2, PH5 and PH8 now have draft lesson bodies. Coverage is 191/354, with 769 recall cards and 163 missing bodies. See [continuous release](CONTINUOUS-AUTHORING-RELEASE.md). Independent source/scientific review and the documented live-service prerequisites remain. Continue subsequent batches without awaiting another command.

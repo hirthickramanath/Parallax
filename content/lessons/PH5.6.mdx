@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH5.6",
+  "title": "Radiation from accelerating charges",
+  "hook": "Why does an accelerating charge radiate while a uniformly moving charge need not?",
+  "recap": [
+    "Amplitude proportional to 1/R.",
+    "sin²θ relative to acceleration for the elementary charge case.",
+    "The second time derivative of the dipole moment.",
+    "Fields interfere before energy flux is formed."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every field varying at a fixed observer prove acceleration radiation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A uniformly moving Coulomb field can vary locally.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can coherent-source powers always be added without field interference?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Cross terms depend on relative phases.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the leading dipole approximation require a small source relative to wavelength?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "It is a long-wavelength multipole approximation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Larmor power ratio after doubling acceleration?",
+      "answer": "4",
+      "explanation": "Power scales as a².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Dipole power ratio after doubling frequency at fixed amplitude?",
+      "answer": "16",
+      "explanation": "The leading power scales as ω⁴.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does every field varying at a fixed observer prove acceleration radiation?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "A uniformly moving Coulomb field can vary locally.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What field falloff characterizes far radiation?",
+      "back": "Amplitude proportional to 1/R.",
+      "concept": "ph5-6-theory"
+    },
+    {
+      "front": "What is the nonrelativistic angular pattern?",
+      "back": "sin²θ relative to acceleration for the elementary charge case.",
+      "concept": "ph5-6-theory"
+    },
+    {
+      "front": "What determines electric-dipole radiation?",
+      "back": "The second time derivative of the dipole moment.",
+      "concept": "ph5-6-theory"
+    },
+    {
+      "front": "Why may many-charge radiation not equal summed individual powers?",
+      "back": "Fields interfere before energy flux is formed.",
+      "concept": "ph5-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending",
+    "Jackson, Classical Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an accelerating charge radiate while a uniformly moving charge need not? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Radiation is identified by far-field energy flux, not merely by the presence of time-dependent fields near an observer.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The radiation zone contains field terms falling as 1/R whose integrated outward energy flux remains finite as the observation sphere grows; near-zone terms decay faster.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Retarded fields of a localized time-varying source contain near, induction and radiation contributions. A 1/R radiation amplitude produces an energy flux density of order 1/R², which can integrate over an area proportional to R² to a finite outgoing power. Faster-decaying Coulomb-like terms do not alone yield that same asymptotic power.
+
+For a nonrelativistic point charge with acceleration magnitude a, the Larmor result is $P=q^2a^2/(6\pi\epsilon_0c^3)$ in SI. Its dipole angular dependence is proportional to sin²θ relative to the acceleration direction in the instantaneous nonrelativistic approximation. Uniform straight motion has no such acceleration radiation in an inertial frame, although fields can still vary at a fixed observer as the charge passes.
+
+For a localized source much smaller than a wavelength, electric-dipole radiation is governed by the second time derivative of p(t)=∫rρ dV. A monochromatic dipole’s time-averaged power scales as ω⁴ times dipole amplitude squared, with peak/RMS conventions stated. Magnetic dipole and electric quadrupole terms become necessary when leading dipole radiation vanishes or higher multipoles matter.
+
+Relativistic radiation is beamed and requires the appropriate relativistic formula and retarded geometry. A bound charge inside matter also couples to material response, and a collection of charges can interfere coherently or incoherently. Adding individual powers is not always equivalent to adding fields and then forming the flux. The point-charge radiation model has short-distance and self-force limitations.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare the sin²θ angular pattern with equal-solid-angle bins rather than equal θ widths. Calculate relative Larmor powers for scaled accelerations and separate far-field scaling from a near-field Coulomb diagram. Keep any animation explicitly synthetic and within its velocity approximation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If q and c are fixed and acceleration doubles within the nonrelativistic Larmor regime, radiated power increases by four. For a fixed electric-dipole amplitude, doubling frequency increases leading dipole power by sixteen while the small-source-to-wavelength assumption must still hold.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

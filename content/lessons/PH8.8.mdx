@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.8",
+  "title": "Time evolution (Schrodinger and Heisenberg pictures)",
+  "hook": "How can the state evolve in one description while observables evolve in another?",
+  "recap": [
+    "A_H=U†A_SU.",
+    "Unitary evolution.",
+    "The transformed partial time derivative of the operator.",
+    "Replacing a nonlinear force expectation by the force at the mean position."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do Schrödinger and Heisenberg pictures predict different measurement probabilities?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They are equivalent redistributions of time dependence.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "May time ordering always be omitted for H(t)?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Hamiltonians at distinct times can fail to commute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is ⟨V′(x)⟩ always equal to V′(⟨x⟩)?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Nonlinear forces depend on state fluctuations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "⟨σ_x⟩ at ωt=π for the stated initial x-up state?",
+      "answer": "-1",
+      "explanation": "cosπ=−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "⟨σ_x⟩ at ωt=π/2?",
+      "answer": "0",
+      "explanation": "cos(π/2)=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Do Schrödinger and Heisenberg pictures predict different measurement probabilities?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "They are equivalent redistributions of time dependence.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How do Heisenberg observables transform?",
+      "back": "A_H=U†A_SU.",
+      "concept": "ph8-8-theory"
+    },
+    {
+      "front": "What preserves a closed-system state norm?",
+      "back": "Unitary evolution.",
+      "concept": "ph8-8-theory"
+    },
+    {
+      "front": "What is the explicit-time term in Heisenberg evolution?",
+      "back": "The transformed partial time derivative of the operator.",
+      "concept": "ph8-8-theory"
+    },
+    {
+      "front": "What does Ehrenfest not generally justify?",
+      "back": "Replacing a nonlinear force expectation by the force at the mean position.",
+      "concept": "ph8-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can the state evolve in one description while observables evolve in another? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Schrödinger and Heisenberg pictures redistribute time dependence without changing physical probabilities.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a time-independent self-adjoint Hamiltonian, U(t)=exp(−iHt/ℏ). Schrödinger states evolve with U; Heisenberg observables evolve as U†AU.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Unitarity preserves norms and transition probabilities. In the Schrödinger picture |ψ(t)⟩=U(t)|ψ(0)⟩ with fixed operators unless they have explicit time dependence. In the Heisenberg picture $A_H(t)=U^\dagger(t)A_S(t)U(t)$ and the reference state stays fixed. Substitution proves that expectation values in the two pictures agree.
+
+Differentiation gives $dA_H/dt=(i/\hbar)[H_H,A_H]+(\partial A_S/\partial t)_H$. For a time-independent operator commuting with H, expectation is conserved under the stated domain assumptions. An explicitly time-dependent operator requires the extra derivative term even if a commutator happens to vanish.
+
+For a time-dependent Hamiltonian, a simple exponential of the time integral works only when the relevant Hamiltonians commute at different times. Generally the propagator is time ordered and can be approximated by controlled short-time products. The interaction picture separates a chosen solvable part from the perturbation; the split is a calculation choice, not a new physical theory.
+
+For a wave packet in a smooth potential, Ehrenfest gives d⟨x⟩/dt=⟨p⟩/m and d⟨p⟩/dt=−⟨V′(x)⟩ when valid. Replacing ⟨V′⟩ by V′(⟨x⟩) is exact for the corresponding linear force but not for every potential. Closed-system unitary evolution does not itself model every open-system dissipative state; reduced dynamics can require a density matrix and a justified environment model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate one spin-precession expectation in both pictures and compare at a time grid. For two noncommuting Hamiltonian pulses, reverse their order and show the final probabilities can differ. Keep a time-ordered product distinct from a scalar exponential of the summed generators.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For H=ℏωσ_z/2, an initial x-up spin has ⟨σ_x(t)⟩=cosωt. At ωt=π its value is −1 and at π/2 it is zero. The Schrödinger spinor calculation and the rotating Heisenberg operator give the same expectations.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

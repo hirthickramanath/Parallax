@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.6",
+  "title": "Hydrogen atom",
+  "hook": "Why do many distinct hydrogen wavefunctions share one leading energy?",
+  "recap": [
+    "Both nucleus and electron participate in relative motion.",
+    "Regularity, normalizability and the radial equation.",
+    "A quantum spatial state, not a classical trajectory.",
+    "Relativistic, spin, nuclear and radiative effects."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does |R(r)|² alone give probability per radial interval dr?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The shell measure contains r².",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is spin included in the spatial degeneracy n²?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is an additional degree of freedom.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does ideal hydrogen leading energy depend only on n?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The ideal Coulomb model has the stated degeneracy.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Transition energy 2→1 divided by E₀ for E_n=−E₀/n²?",
+      "answer": "0.75",
+      "explanation": "−1/4−(−1)=3/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Spin-free spatial degeneracy for n=3?",
+      "answer": "9",
+      "explanation": "1+3+5=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does |R(r)|² alone give probability per radial interval dr?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The shell measure contains r².",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why use reduced mass?",
+      "back": "Both nucleus and electron participate in relative motion.",
+      "concept": "ph8-6-theory"
+    },
+    {
+      "front": "What selects bound Coulomb energies?",
+      "back": "Regularity, normalizability and the radial equation.",
+      "concept": "ph8-6-theory"
+    },
+    {
+      "front": "What is an orbital?",
+      "back": "A quantum spatial state, not a classical trajectory.",
+      "concept": "ph8-6-theory"
+    },
+    {
+      "front": "What breaks the simplest hydrogen degeneracies?",
+      "back": "Relativistic, spin, nuclear and radiative effects.",
+      "concept": "ph8-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do many distinct hydrogen wavefunctions share one leading energy? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+The Coulomb problem links radial boundary conditions, angular modes and spectral lines, while real atomic refinements break ideal degeneracies.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The nonrelativistic hydrogenic model uses reduced electron–nucleus mass μ and central potential −Ze²/(4πε₀r), neglecting spin-dependent, relativistic and radiative corrections.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Separate ψ=R(r)Yℓᵐ(θ,φ) and define u=rR. The radial equation is $-\hbar^2u''/(2\mu)+[\hbar^2\ell(\ell+1)/(2\mu r^2)-Ze^2/(4\pi\epsilon_0r)]u=Eu$. Its domain and normalization at zero/infinity are essential; the centrifugal term is an effective radial contribution rather than a new force inserted by hand.
+
+For bound states, regularity and decay select terminating associated-Laguerre solutions with $E_n=-\mu Z^2e^4/[2(4\pi\epsilon_0)^2\hbar^2n^2]$. Labels obey n≥1, 0≤ℓ≤n−1 and −ℓ≤m≤ℓ. The spin-free spatial degeneracy is ∑(2ℓ+1)=n². A separate spin factor is not already included in that count.
+
+The normalized wavefunction supplies a three-dimensional density. A radial shell probability uses r²|R|²dr after normalized angular integration; |R|² alone is not a radial probability density per unit r. An orbital is not a classical path with a hidden definite radius. Expectation, most-probable radius and turning radius need not coincide.
+
+Emission or absorption transfers an energy difference hν, with selection rules depending on the coupling operator. Leading electric-dipole orbital rules include Δℓ=±1 and appropriate m changes, but parity, spin and state mixing matter in fuller models. Fine structure, nuclear motion, hyperfine interactions and QED corrections change the simple n-only spectrum; multielectron screening cannot be captured by merely reusing every hydrogen degeneracy.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the ground-state radial shell density and compare it with the three-dimensional density along a line. Normalize using the correct measure. Calculate several line-energy differences and label the nonrelativistic model; do not present them as precision laboratory wavelengths without the relevant corrections.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Using E_n=−E₀/n², the photon energy for n=2 to n=1 is 3E₀/4. For n=3, the spin-free spatial state count is 1+3+5=9. The count includes distinct angular states, not nine different leading energies.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

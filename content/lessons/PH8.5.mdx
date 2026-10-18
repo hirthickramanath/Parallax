@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.5",
+  "title": "Angular momentum and spin",
+  "hook": "Why does angular momentum magnitude differ from its largest measured component?",
+  "recap": [
+    "One unit in m.",
+    "|j₁−j₂| through j₁+j₂ in unit steps.",
+    "Spherical harmonics.",
+    "It is an intrinsic quantum rotation degree of freedom with different representation properties."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must the magnitude equal the largest component jℏ?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The magnitude is √(j(j+1))ℏ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can intrinsic spin be half integer?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Its rotation representation differs from scalar orbital wavefunctions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do coupled and uncoupled bases have equal total dimension?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "They are bases of the same tensor-product space.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "J²/ℏ² for j=1?",
+      "answer": "2",
+      "explanation": "j(j+1)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of states from two spin-half degrees of freedom?",
+      "answer": "4",
+      "explanation": "2×2=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Must the magnitude equal the largest component jℏ?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The magnitude is √(j(j+1))ℏ.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are angular momentum ladder steps?",
+      "back": "One unit in m.",
+      "concept": "ph8-5-theory"
+    },
+    {
+      "front": "What is allowed total j from j₁,j₂?",
+      "back": "|j₁−j₂| through j₁+j₂ in unit steps.",
+      "concept": "ph8-5-theory"
+    },
+    {
+      "front": "What functions represent scalar orbital angular modes?",
+      "back": "Spherical harmonics.",
+      "concept": "ph8-5-theory"
+    },
+    {
+      "front": "Why is spin not a classical spinning ball?",
+      "back": "It is an intrinsic quantum rotation degree of freedom with different representation properties.",
+      "concept": "ph8-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does angular momentum magnitude differ from its largest measured component? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Rotation algebra gives orbital and spin spectra without identifying spin as a tiny classical spinning sphere.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Angular momentum operators obey [J_i,J_j]=iℏε_ijkJ_k. Joint eigenstates of J² and J_z have labels j,m and eigenvalues ℏ²j(j+1),ℏm.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Define J±=J_x±iJ_y. Commutators give [J_z,J±]=±ℏJ± and [J²,J±]=0. Norm positivity yields ladder factors $\hbar\sqrt{j(j+1)-m(m\pm1)}$. Highest and lowest states terminate the ladder, so m runs from −j to j in unit steps and 2j is a nonnegative integer.
+
+For orbital L=r×p acting on single-valued scalar spatial wavefunctions, ℓ is a nonnegative integer and the angular functions are spherical harmonics. Intrinsic spin can have half-integer j; it is an independent quantum rotational degree of freedom rather than a literal rigid-body surface speed. The magnitude √(j(j+1))ℏ exceeds the largest component jℏ except for j=0.
+
+Adding two angular momenta produces total J=J₁+J₂ with allowed j from |j₁−j₂| to j₁+j₂ in unit steps. Product and coupled bases are connected by Clebsch–Gordan coefficients. State counts must agree: summing 2j+1 over the coupled sectors equals (2j₁+1)(2j₂+1). A selection rule is a matrix-element statement with an interaction symmetry, not only a table of allowed labels.
+
+For spin half, J_i=ℏσ_i/2 with Pauli matrices. Different components do not have simultaneous sharp values in a general state. Rotation operators include exp(−iθn·J/ℏ), and spinors change sign under a 2π rotation while projective probabilities remain unchanged. Relative phases in composite processes still matter.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Enumerate m labels for j=0,1/2,1 and compare component maxima with J². Construct the two-spin singlet and triplet basis and check orthogonality. Keep orbital and intrinsic-spin interpretations distinct.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For j=1, J²/ℏ²=2 and there are three m values. Combining two spin-half systems gives a j=1 triplet and j=0 singlet, with 3+1=4 states, matching the two-by-two product space.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

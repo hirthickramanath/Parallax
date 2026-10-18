@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH5.3",
+  "title": "EM waves in vacuum and matter",
+  "hook": "Why can a wave’s phase move faster than its information?",
+  "recap": [
+    "Two transverse degrees of freedom.",
+    "ω/k.",
+    "For a suitable narrowband weakly distorted packet.",
+    "Time, propagation and branch conventions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a phase velocity above c establish faster-than-light information?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Phase motion is not a causal front.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must an attenuating complex-k solution use a physically consistent branch?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The sign and propagation convention determine growth versus decay.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are absorption and scattering identical?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They transfer energy and redirect radiation differently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Normalized phase speed for ε=4,μ=1?",
+      "answer": "0.5",
+      "explanation": "1/√(εμ)=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Normalized impedance for the same medium?",
+      "answer": "0.5",
+      "explanation": "√(μ/ε)=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does a phase velocity above c establish faster-than-light information?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Phase motion is not a causal front.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are vacuum radiation polarizations?",
+      "back": "Two transverse degrees of freedom.",
+      "concept": "ph5-3-theory"
+    },
+    {
+      "front": "What is phase velocity?",
+      "back": "ω/k.",
+      "concept": "ph5-3-theory"
+    },
+    {
+      "front": "When is group velocity a packet-speed approximation?",
+      "back": "For a suitable narrowband weakly distorted packet.",
+      "concept": "ph5-3-theory"
+    },
+    {
+      "front": "What must accompany complex wave amplitudes?",
+      "back": "Time, propagation and branch conventions.",
+      "concept": "ph5-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending",
+    "Jackson, Classical Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a wave’s phase move faster than its information? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Electromagnetic propagation in matter requires constitutive and frequency conventions before interpreting speed or attenuation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A monochromatic plane wave uses a declared complex convention; take physical fields as real parts of E₀exp[i(k·r−ωt)]. Linear homogeneous media can have frequency-dependent ε and μ.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In source-free vacuum, taking a curl of Faraday and using ∇·E=0 gives $\nabla^2\mathbf E-c^{-2}\partial_t^2\mathbf E=0$. A plane wave has k·E=0 and B=(k×E)/ω, so ω=ck. Longitudinal electrostatic fields are not an extra transverse vacuum radiation polarization.
+
+For a homogeneous isotropic nondissipative medium with constant positive ε,μ, k²=εμω² and impedance Z=√(μ/ε). Phase velocity is ω/k. In a dispersive medium group velocity dω/dk describes a narrow packet only under suitable weak-distortion assumptions. Front propagation and causal information are more restrictive notions, so a phase/group speed by itself cannot establish superluminal signalling.
+
+With conductivity σ and e⁻ⁱωᵗ time convention, an effective permittivity is ε+iσ/ω for the elementary local Ohmic model. A physical attenuating branch has the appropriate positive spatial decay for the propagation direction. In a good conductor, skin depth is approximately √(2/(μσω)) when the good-conductor assumptions hold. Frequency dependence, anisotropy and nonlocal response can invalidate that simple formula.
+
+Polarization specifies relative component amplitudes and phases: equal orthogonal amplitudes with quadrature phase give circular polarization under a stated viewing convention. Linear superposition is a property of the linear medium model. Absorption and scattering are different mechanisms of beam attenuation; an extinction coefficient alone need not identify which energy-transfer process occurred.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare two orthogonal sinusoidal field components at relative phases 0, π/2 and π. Track their endpoint to identify polarization. For a dispersive packet, separate carrier phase motion from envelope motion and state the bandwidth assumptions; do not infer a signal speed from a single monochromatic curve.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a nondispersive medium with ε=4,μ=1 in normalized vacuum units, phase speed is 1/√4=.5 and impedance is √(1/4)=.5. These equal numbers arise from this parameter choice; impedance and speed have different physical dimensions in SI.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

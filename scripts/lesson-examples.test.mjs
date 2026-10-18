@@ -320,3 +320,48 @@ test("thermal examples preserve energy, multiplicity and occupation conventions"
     check(id, "warmup", w);
   }
 });
+test("computing examples preserve stability, sampling and validation definitions", () => {
+  const rows = [
+    ["CP2.1", 0.01 / 0.2 ** 2, 0.01 / 0.1 ** 2],
+    ["CP2.2", 1000 / 5, 0.2],
+    ["CP2.3", 0.2 * 10, 1 / 0.05],
+    ["CP2.4", (1 + 4) / 2, 95 / 100],
+    ["CP2.5", 1 / (0.2 + 0.8 / 4), 1 / 0.2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("electrodynamic examples preserve flux signs, power and dispersion conventions", () => {
+  const rows = [
+    ["PH5.1", -3, 4],
+    ["PH5.2", 6 / 2, (2 * 6) / 2],
+    ["PH5.3", 1 / Math.sqrt(4), Math.sqrt(1 / 4)],
+    ["PH5.4", ((3 - 1) / (3 + 1)) ** 2, (1 / 3) * 1.5 ** 2],
+    ["PH5.5", 10 - 6 / 2, 6 / 2],
+    ["PH5.6", 2 ** 2, 2 ** 4],
+    ["PH5.7", 3 ** 2 - 2 ** 2, 0],
+    ["PH5.8", Math.sqrt(25 - 9) / 2, (4 * 2) / 5],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("introductory quantum examples retain amplitudes, measures and state counts", () => {
+  const rows = [
+    ["PH8.1", (1 + 1) ** 2, 6 / 3],
+    ["PH8.2", 4 - 1, 1 / 2 ** 2],
+    ["PH8.3", 2 * 0.25, 4 * 0.25 - 0.5 ** 2],
+    ["PH8.4", 2 * (3 + 0.5), Math.sqrt(4)],
+    ["PH8.5", 1 * (1 + 1), 2 * 2],
+    ["PH8.6", 1 - 1 / 4, 1 + 3 + 5],
+    ["PH8.7", (1 + Math.cos(Math.PI / 3)) / 2, (1 - Math.cos(Math.PI / 3)) / 2],
+    ["PH8.8", Math.cos(Math.PI), Math.cos(Math.PI / 2)],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
