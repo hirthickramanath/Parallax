@@ -29,6 +29,23 @@ async function signedIn(page: Page, uid = "test-learner") {
       }),
     }),
   );
+  // A navigation handled by an existing service worker can bypass page.route.
+  // Remove that registration before entering the inert fixture, then verify it.
+  // The app registers its worker again on normal startup; offline tests retain it.
+  const originPage = page
+    .context()
+    .pages()
+    .find((candidate) => candidate.url().startsWith("http://127.0.0.1:4183/"));
+  if (originPage) {
+    await originPage.evaluate(async () => {
+      if ("serviceWorker" in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(
+          registrations.map((registration) => registration.unregister()),
+        );
+      }
+    });
+  }
   // Seed the fake session without a running Firebase instance that could overwrite it.
   await page.route("**/__fixture-auth", (route) =>
     route.fulfill({
@@ -37,6 +54,7 @@ async function signedIn(page: Page, uid = "test-learner") {
     }),
   );
   await page.goto("/__fixture-auth");
+  await expect(page).toHaveTitle("Auth fixture");
   await page.evaluate(
     async ({ apiKey, uid }) => {
       const token = [
@@ -903,6 +921,53 @@ test("complex branch explorer tracks monodromy and excludes its principal cut on
   await expect(
     page.getByLabel("Principal square root", { exact: true }),
   ).toContainText("− 0.707i");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+});
+
+test("Legendre explorer distinguishes polynomial and spherical normalization on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/lesson/MA7.2");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "Regularity and global joining conditions select discrete angular modes.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("interactive");
+  await expect(
+    page.getByLabel("Selected Legendre value", { exact: true }),
+  ).toHaveText("-0.500000");
+  await expect(
+    page.getByLabel("Legendre squared norm", { exact: true }),
+  ).toHaveText("0.400000");
+  expect(
+    Number(
+      await page
+        .getByLabel("Selected zonal harmonic", { exact: true })
+        .textContent(),
+    ),
+  ).toBeCloseTo(-0.5 * Math.sqrt(5 / (4 * Math.PI)), 5);
+  await page.getByLabel("Legendre probe", { exact: true }).fill("1");
+  await expect(
+    page.getByLabel("Selected Legendre value", { exact: true }),
+  ).toHaveText("1.000000");
+  await page.getByLabel("Legendre degree", { exact: true }).fill("3");
+  await page.getByLabel("Legendre probe", { exact: true }).fill("-1");
+  await expect(
+    page.getByLabel("Selected Legendre value", { exact: true }),
+  ).toHaveText("-1.000000");
+  await expect(
+    page.getByLabel("Legendre squared norm", { exact: true }),
+  ).toHaveText("0.285714");
+  await expect(page.getByRole("table").getByRole("row")).toHaveCount(8);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

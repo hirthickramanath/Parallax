@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA7.2",
+  "title": "Legendre polynomials and spherical harmonics",
+  "hook": "Why do spherical angular patterns come in discrete families?",
+  "recap": [
+    "∫₋₁¹Pℓ²dx=2/(2ℓ+1).",
+    "−ℓ(ℓ+1) for Yℓᵐ.",
+    "The phase convention, including the Condon–Shortley choice if used.",
+    "Masks, weights, noise and beam response alter the ideal full-sphere observation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are standard Pℓ polynomials unit normalized on [−1,1]?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their squared norm is 2/(2ℓ+1).",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "What measure defines spherical-harmonic orthogonality?",
+      "options": [
+        "sinθ dθ dφ",
+        "dθ dφ without a weight"
+      ],
+      "answer": "sinθ dθ dφ",
+      "explanation": "The spherical area element contains sinθ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a sky mask preserve the full-sphere orthogonality calculation automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The observed domain and weighting change the inner products.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Value of P₂(0)?",
+      "answer": "-0.5",
+      "explanation": "P₂=(3x²−1)/2 gives −1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of independent orders for degree ℓ=2?",
+      "answer": "5",
+      "explanation": "There are 2ℓ+1=5 values of m.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What selects regular discrete spherical angular modes?",
+      "answer": "The differential equation together with global regularity and periodicity",
+      "options": [
+        "The differential equation together with global regularity and periodicity",
+        "Only a convenient plotting interval"
+      ],
+      "explanation": "Boundary and joining requirements restrict the separated solutions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the Legendre squared norm?",
+      "back": "∫₋₁¹Pℓ²dx=2/(2ℓ+1).",
+      "concept": "ma7-2-theory"
+    },
+    {
+      "front": "What is the sphere-Laplacian eigenvalue?",
+      "back": "−ℓ(ℓ+1) for Yℓᵐ.",
+      "concept": "ma7-2-theory"
+    },
+    {
+      "front": "What must be stated for associated Legendre signs?",
+      "back": "The phase convention, including the Condon–Shortley choice if used.",
+      "concept": "ma7-2-theory"
+    },
+    {
+      "front": "Why can measured spherical coefficients mix?",
+      "back": "Masks, weights, noise and beam response alter the ideal full-sphere observation.",
+      "concept": "ma7-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NIST Digital Library of Mathematical Functions — exact section mapping and independent verification pending",
+    "Bender and Orszag, Advanced Mathematical Methods for Scientists and Engineers — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do spherical angular patterns come in discrete families? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Angular separation organizes gravitational multipoles, sky maps and quantum angular modes. Regularity, periodicity and a normalization convention fix the basis.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+An angular pattern must join consistently after one full turn and stay regular at the poles. These requirements eliminate many formal solutions of the separated equations.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Legendre polynomials Pℓ solve the regular axisymmetric angular equation on [−1,1], with integer degree ℓ≥0 and Pℓ(1)=1. Spherical harmonics Yℓᵐ are normalized angular eigenfunctions of the sphere Laplacian.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Separating Laplace’s equation in spherical coordinates gives, for an axisymmetric angular factor with x=cosθ, $\frac d{dx}[(1-x^2)P']+\ell(\ell+1)P=0$. Regular endpoint solutions on the full sphere select nonnegative integer ℓ. Rodrigues’ formula is $P_\ell(x)=(2^\ell\ell!)^{-1}\frac{d^\ell}{dx^\ell}(x^2-1)^\ell$. It gives P₀=1, P₁=x and P₂=(3x²−1)/2.
+
+The self-adjoint form yields orthogonality: multiply the equations for distinct degrees by the opposite solution, subtract and integrate. The endpoint term vanishes for the regular polynomial solutions, leaving $(\ell(\ell+1)-j(j+1))\int_{-1}^{1}P_\ell P_jdx=0$. Their squared norm is 2/(2ℓ+1). This argument needs endpoint conditions; arbitrary singular solutions do not inherit it automatically.
+
+For integer m≥0 use the Condon–Shortley convention $P_\ell^m(x)=(-1)^m(1-x^2)^{m/2}d^mP_\ell/dx^m$, with m≤ℓ. The standard complex harmonic is $Y_\ell^m=\sqrt{\frac{2\ell+1}{4\pi}\frac{(\ell-m)!}{(\ell+m)!}}P_\ell^m(\cos\theta)e^{im\phi}$. Negative orders satisfy Yℓ⁻ᵐ=(−1)ᵐconj(Yℓᵐ) in this convention. Other phase conventions exist, so compare definitions before comparing signs.
+
+On the unit sphere, $\Delta_{S^2}Y_\ell^m=-\ell(\ell+1)Y_\ell^m$. The surface measure is dΩ=sinθ dθ dφ, and the harmonics are orthonormal in that measure. There are 2ℓ+1 independent orders for each degree. For a real field the complex coefficients obey the corresponding conjugacy relation; a real-harmonic basis is an equivalent alternative with its own definitions.
+
+Outside a bounded source in a source-free region, separated multipoles combine angular harmonics with radial factors rℓ and r⁻ˡ⁻¹. Boundary conditions and decay determine which radial branches are allowed. A truncated angular expansion is not a claim that unresolved small-scale structure is absent. Sky masks, uneven noise and a telescope beam can mix observed modes, so mathematical orthogonality on the full sphere does not guarantee uncorrelated measured coefficients.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare P₀ through P₆ on a fixed [−1,1] plot. Compute pairwise weighted sums approximating their ordinary interval inner products, then refine the grid. For zonal harmonics replace x by cosθ and include sinθ in θ quadrature; show why an unweighted θ average is the wrong spherical measure.
+
+<Widget name="legendre_explorer" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At x=0, P₂(0)=−1/2. Its squared norm is 2/(2·2+1)=2/5, so P₂ is orthogonal but not unit normalized on [−1,1]. Degree ℓ=2 has five spherical harmonic orders m=−2,−1,0,1,2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

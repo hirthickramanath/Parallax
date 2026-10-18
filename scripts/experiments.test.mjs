@@ -323,3 +323,66 @@ test("branch explorer rejects invalid path inputs", () => {
   for (const angle of [-1, 721, NaN, Infinity])
     assert.throws(() => branchCircle(angle), RangeError);
 });
+
+import { legendre, zonalHarmonic } from "../src/lib/legendre.ts";
+test("Legendre recurrence agrees with explicit polynomials, endpoint normalization and parity", () => {
+  for (const x of [-1, -0.7, 0, 0.3, 1]) {
+    near(legendre(0, x), 1);
+    near(legendre(1, x), x);
+    near(legendre(2, x), (3 * x * x - 1) / 2);
+    near(legendre(3, x), (5 * x ** 3 - 3 * x) / 2);
+    near(legendre(4, x), (35 * x ** 4 - 30 * x * x + 3) / 8);
+    for (let n = 0; n <= 8; n++)
+      near(legendre(n, -x), (-1) ** n * legendre(n, x));
+  }
+  for (let n = 0; n <= 8; n++) {
+    near(legendre(n, 1), 1);
+    near(legendre(n, -1), (-1) ** n);
+  }
+});
+test("Legendre functions obey their angular ODE away from singular endpoints", () => {
+  const h = 1e-4;
+  for (let n = 0; n <= 6; n++)
+    for (const x of [-0.8, 0.1, 0.7]) {
+      const p = legendre(n, x),
+        before = legendre(n, x - h),
+        after = legendre(n, x + h);
+      const first = (after - before) / (2 * h),
+        second = (after - 2 * p + before) / (h * h);
+      near((1 - x * x) * second - 2 * x * first + n * (n + 1) * p, 0, 1e-4);
+    }
+});
+test("spatial quadrature confirms Legendre norms, cross-degree orthogonality and spherical zonal normalization", () => {
+  const integrate = (f) => {
+    const count = 4096,
+      h = 2 / count;
+    let sum = f(-1) + f(1);
+    for (let i = 1; i < count; i++) sum += (i % 2 ? 4 : 2) * f(-1 + i * h);
+    return (sum * h) / 3;
+  };
+  for (let n = 0; n <= 7; n++) {
+    near(
+      integrate((x) => legendre(n, x) ** 2),
+      2 / (2 * n + 1),
+      3e-7,
+    );
+    near(
+      integrate((x) => legendre(n, x) * legendre(n + 1, x)),
+      0,
+      3e-7,
+    );
+    near(2 * Math.PI * integrate((x) => zonalHarmonic(n, x) ** 2), 1, 3e-7);
+  }
+});
+test("Legendre explorer rejects invalid degrees and probes", () => {
+  for (const [n, x] of [
+    [-1, 0],
+    [9, 0],
+    [1.5, 0],
+    [2, NaN],
+    [2, 1.1],
+  ]) {
+    assert.throws(() => legendre(n, x), RangeError);
+    assert.throws(() => zonalHarmonic(n, x), RangeError);
+  }
+});

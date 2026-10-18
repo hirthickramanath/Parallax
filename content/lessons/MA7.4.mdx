@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA7.4",
+  "title": "Hermite and Laguerre polynomials",
+  "hook": "Why do different polynomial weights appear in oscillator and radial problems?",
+  "recap": [
+    "e⁻ˣ² on the full real line.",
+    "α>−1 for the stated positive-half-line weight.",
+    "2x.",
+    "The eigen-equation plus regularity and normalizability restrict the solutions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are physicists’ and probabilists’ Hermite coefficients identical?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They use different coordinate and normalization conventions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can the Laguerre orthogonality weight be dropped without changing its norm statement?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The weight defines the relevant inner product.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do R(r) and u(r)=rR(r) use the same radial integration measure?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "R uses r²dr while u uses dr.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Value of physicists’ H₂(0)?",
+      "answer": "-2",
+      "explanation": "H₂=4x²−2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value of L₁^(2)(1)?",
+      "answer": "2",
+      "explanation": "L₁^(α)=α+1−x gives 3−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must a physical interpretation of an oscillator polynomial include?",
+      "answer": "Its envelope, normalization, coordinate scale and Hamiltonian",
+      "options": [
+        "Its envelope, normalization, coordinate scale and Hamiltonian",
+        "Only the polynomial degree"
+      ],
+      "explanation": "The polynomial alone is not a normalized physical state.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What weight belongs to physicists’ Hermite orthogonality?",
+      "back": "e⁻ˣ² on the full real line.",
+      "concept": "ma7-4-theory"
+    },
+    {
+      "front": "What is the Laguerre parameter integrability condition?",
+      "back": "α>−1 for the stated positive-half-line weight.",
+      "concept": "ma7-4-theory"
+    },
+    {
+      "front": "What is H₁ in the physicists’ convention?",
+      "back": "2x.",
+      "concept": "ma7-4-theory"
+    },
+    {
+      "front": "Why do discrete oscillator modes arise?",
+      "back": "The eigen-equation plus regularity and normalizability restrict the solutions.",
+      "concept": "ma7-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NIST Digital Library of Mathematical Functions — exact section mapping and independent verification pending",
+    "Bender and Orszag, Advanced Mathematical Methods for Scientists and Engineers — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do different polynomial weights appear in oscillator and radial problems? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Hermite and Laguerre families solve specific self-adjoint problems. Confusing conventions or integration weights gives wrong normalizations even when a polynomial looks familiar.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A polynomial is only part of a mode. A decaying envelope and the geometry supply its weight, and square-integrability selects the admissible family.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use physicists’ Hermite polynomials Hₙ and generalized Laguerre polynomials Lₙ^(α), n≥0. Their orthogonality measures are e⁻ˣ²dx on the line and xᵅe⁻ˣdx on the positive half-line, respectively, with α>−1 for the latter.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Physicists’ Hermite polynomials satisfy $H_n''-2xH_n'+2nH_n=0$ and Rodrigues’ formula $H_n=(-1)^ne^{x^2}d^n(e^{-x^2})/dx^n$. Thus H₀=1, H₁=2x and H₂=4x²−2. The probabilists’ convention Heₙ has different scaling: Hₙ(x)=2ⁿᐟ²Heₙ(√2x). Naming a family without the convention can therefore change both coefficients and norms.
+
+Repeated integration by parts, with Gaussian boundary terms vanishing, gives $\int_{-\infty}^{\infty}e^{-x^2}H_nH_mdx=\sqrt\pi\,2^nn!\,\delta_{nm}$. The normalized oscillator functions are Hₙ(x)e⁻ˣ²ᐟ² divided by π¹ᐟ⁴√(2ⁿn!). For the dimensionless Hamiltonian (−d²/dx²+x²)/2, substitution produces eigenvalues n+1/2. A physical oscillator adds its length and energy scales; x is not automatically a displacement measured in metres.
+
+Generalized Laguerre polynomials satisfy $xy''+(\alpha+1-x)y'+ny=0$ and $L_n^{(\alpha)}=x^{-\alpha}e^x(n!)^{-1}d^n[e^{-x}x^{n+\alpha}]/dx^n$. In particular L₀^(α)=1 and L₁^(α)=α+1−x. For α>−1 their norm is Γ(n+α+1)/n! in the weight xᵅe⁻ˣ. The parameter α is fixed when comparing this orthogonal family.
+
+For the three-dimensional Coulomb radial problem, separating angular modes and imposing regularity/normalizability leads to an exponential envelope times an associated Laguerre polynomial with scaled radial variable. The physical radial norm involves r²dr for R(r), or dr for the reduced function u=rR. These two radial functions are not interchangeable. Detailed energy quantization also requires the physical Hamiltonian and boundary assumptions, not only recognizing a polynomial.
+
+Termination of an otherwise growing series and decay at infinity explain discrete solutions in the appropriate eigenproblem. Generic solutions of the underlying differential equation need not be normalizable polynomials times the chosen envelope. Near singular endpoints, the admissible domain of the operator must be stated. Orthogonality is a weighted integral statement, not a claim that two plotted functions never cross or never share the same value.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot H₀,H₁,H₂ both alone and multiplied by their Gaussian envelope. Numerically compare weighted polynomial inner products with unweighted ones. Repeat with L₀^(2), L₁^(2) and the weight x²e⁻ˣ, checking the endpoint and tail truncation. State the dimensionless coordinate before relating the plot to a physical oscillator.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In the physicists’ convention H₂(0)=−2. For generalized Laguerre with α=2, L₁^(2)(x)=3−x, so its value at x=1 is 2. Its squared weighted norm is Γ(4)/1!=6, not 1, until explicitly normalized.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

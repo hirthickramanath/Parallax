@@ -289,3 +289,16 @@ test("complex-analysis examples preserve residues, orientation and branch choice
     check(id, "warmup", warmup);
   }
 });
+test("special function examples preserve indexing, weights and asymptotic scales", () => {
+  const examples = [
+    ["MA7.1", 1 * 2 * 3 * 4, (1 * 2) / (1 * 2 * 3 * 4)],
+    ["MA7.2", (3 * 0 ** 2 - 1) / 2, 2 * 2 + 1],
+    ["MA7.3", (3 * 2.4) / 2, 1],
+    ["MA7.4", 4 * 0 ** 2 - 2, 2 + 1 - 1],
+    ["MA7.5", Math.sqrt(Math.PI / 4) / Math.sqrt(Math.PI), 16 ** (-1 / 4)],
+  ];
+  for (const [id, numeric, warmup] of examples) {
+    check(id, "numeric", numeric);
+    check(id, "warmup", warmup);
+  }
+});

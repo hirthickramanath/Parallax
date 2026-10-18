@@ -158,3 +158,8 @@ Authored MA5.1–MA5.7 as drafts, bringing coverage to 149/354 lessons and 601 r
 ## Complex analysis milestone
 
 Authored MA6.1–MA6.6 as drafts, bringing coverage to 155/354 lessons and 625 recall cards. Added a unit-circle branch explorer distinguishing principal values from continuation, with explicit cut exclusions. See [release details](COMPLEX-ANALYSIS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 199 lesson bodies and independent source/scientific review remain, alongside the documented live rules and eligible tutor-provider prerequisites.
+
+
+## Special functions and asymptotic methods milestone
+
+Authored MA7.1–MA7.5 as drafts, bringing coverage to 160/354 lessons and 645 recall cards. Added a Legendre/zonal-harmonic angular-profile explorer with explicit interval/sphere normalization. See [release details](SPECIAL-FUNCTIONS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 194 lesson bodies and independent scientific/source review remain, alongside the documented live rules and eligible tutor-provider prerequisites.

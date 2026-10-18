@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA7.3",
+  "title": "Bessel functions",
+  "hook": "Why do circular drum frequencies fail to follow an integer harmonic sequence?",
+  "recap": [
+    "Jₘ together with regularity at the origin.",
+    "Zeros of Jₘ at the outer radius.",
+    "For large positive x with fixed order, subject to asymptotic qualifications.",
+    "They solve the sign-changed radial equation and have exponential large-argument behaviour."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May a singular Yₘ solution be retained automatically at the centre of a regular full disk?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Regularity at the included origin excludes that singular branch.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are circular Dirichlet membrane frequencies generally integer multiples of the lowest one?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Bessel zeros determine the spectrum.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "What radial weight appears in disk-mode orthogonality?",
+      "options": [
+        "1 with no radial factor",
+        "r"
+      ],
+      "answer": "r",
+      "explanation": "The polar area element and radial operator supply r.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Angular frequency for supplied rounded zero 2.4, radius 2 and wave speed 3?",
+      "answer": "3.6",
+      "explanation": "ω=cj/a=3×2.4/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value of J₀(0)?",
+      "answer": "1",
+      "explanation": "Only the constant series term survives.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What changes when the circular boundary becomes a zero-normal-derivative boundary?",
+      "answer": "The spectral condition uses derivative zeros and possible zero modes",
+      "options": [
+        "The spectral condition uses derivative zeros and possible zero modes",
+        "Nothing; the same zeros always apply"
+      ],
+      "explanation": "Different boundary data select different eigenvalues.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What selects regular disk radial modes?",
+      "back": "Jₘ together with regularity at the origin.",
+      "concept": "ma7-3-theory"
+    },
+    {
+      "front": "What selects fixed-edge radial wavenumbers?",
+      "back": "Zeros of Jₘ at the outer radius.",
+      "concept": "ma7-3-theory"
+    },
+    {
+      "front": "When is the quoted oscillatory large-x form valid?",
+      "back": "For large positive x with fixed order, subject to asymptotic qualifications.",
+      "concept": "ma7-3-theory"
+    },
+    {
+      "front": "How do modified Bessel functions differ?",
+      "back": "They solve the sign-changed radial equation and have exponential large-argument behaviour.",
+      "concept": "ma7-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NIST Digital Library of Mathematical Functions — exact section mapping and independent verification pending",
+    "Bender and Orszag, Advanced Mathematical Methods for Scientists and Engineers — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do circular drum frequencies fail to follow an integer harmonic sequence? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Cylindrical separation produces Bessel functions in waves, diffraction and transport. Radial regularity and the outer boundary jointly select the spectrum.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Radial geometry changes the balance between curvature and amplitude. Regular oscillations near the centre are not simply a sine wave shifted along a straight line.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Bessel’s equation is x²y″+xy′+(x²−ν²)y=0. The first-kind solution Jν is selected by its small-argument behaviour; a second independent solution is needed on a general annular domain.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For integer n≥0 the first-kind series is $J_n(x)=\sum_{j=0}^{\infty}\frac{(-1)^j}{j!(j+n)!}(x/2)^{2j+n}$. It converges for all finite x and gives J₀(0)=1 and Jₙ(0)=0 for n>0. Substitution into the differential equation supplies the recurrence of coefficients. For noninteger order the gamma function replaces the factorial and branch behaviour of xν must be declared in a complex domain.
+
+The other standard solution Yν is singular at the origin for nonnegative integer order, so a regular field on a full disk excludes it. On an annulus that exclusion need not apply because the origin is outside the domain. The polar Laplacian contains a radial first-derivative term: separation with angular order m gives $r^2R''+rR'+(k^2r^2-m^2)R=0$, hence regular disk modes Jₘ(kr).
+
+For a fixed circular boundary r=a, Jₘ(ka)=0 selects k=jₘ,ₙ/a, where jₘ,ₙ is a positive zero. A uniform membrane has ω=ck, so zeros rather than consecutive integers set its frequencies. A zero normal derivative instead selects derivative zeros, with special handling of any constant mode. Mixing fixed and free boundary spectra changes the physical problem.
+
+For distinct Dirichlet radial modes of the same angular order, Sturm–Liouville orthogonality uses weight r: $\int_0^a rJ_m(j_{m,n}r/a)J_m(j_{m,p}r/a)dr=0$ for n≠p. Their squared norm is a²Jₘ₊₁(jₘ,ₙ)²/2. The weight comes from the polar area element and self-adjoint radial operator; it is not an optional plotting factor.
+
+For large positive real x at fixed ν, $J_\nu(x)\sim\sqrt{2/(\pi x)}\cos(x-\nu\pi/2-\pi/4)$ at leading order. This fixed-order approximation is not uniform when ν grows with x or near relevant transition regions. Replacing k² by a negative separation parameter gives modified Bessel functions Iν and Kν, with exponential rather than oscillatory large-positive-argument behaviour. Spherical Bessel functions involve an additional radial geometry transformation and are not identical to Jℓ.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the power series to calculate J₀ at small arguments and check J₀(0)=1. Locate its first zero by a bracketed root search with convergence checks rather than assuming a sine zero. For a disk mode, compare quadrature with and without the r weight and explain the correct inner product. Treat any membrane drawing as an idealized uniform model.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a chosen positive J₀ zero is supplied as j=2.4 for an approximate apparatus calculation, a=2 and c=3 give k=j/a=1.2 and ω=ck=3.6. The value 2.4 is explicitly a rounded supplied zero, not a claim of the exact first root. Doubling the radius at fixed tension/density halves the frequency.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
