@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS6.5",
+  "title": "Magnetic fields and dynamos",
+  "hook": "Can stretching a field amplify it without creating magnetic flux from nowhere?",
+  "recap": [
+    "Field evolution in a prescribed flow without Lorentz feedback.",
+    "Velocity gradients along the field.",
+    "Averaging, scales and correlations determine their validity.",
+    "Electron density and signed line-of-sight magnetic field along the path."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does kinematic growth alone predict nonlinear saturation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It neglects magnetic feedback on the flow.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can field stretching amplify energy without a mechanical energy source?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The energy comes from flow or forcing.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do all magnetic observables weight the same field component?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Line-of-sight and polarization probes differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Amplitude factor after one unit with g=ln2?",
+      "answer": "2",
+      "explanation": "e^(ln2)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Magnetic-energy factor for doubled field amplitude?",
+      "answer": "4",
+      "explanation": "Energy density scales as B².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does kinematic growth alone predict nonlinear saturation?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "It neglects magnetic feedback on the flow.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a kinematic dynamo calculation?",
+      "back": "Field evolution in a prescribed flow without Lorentz feedback.",
+      "concept": "as6-5-theory"
+    },
+    {
+      "front": "What can stretch a field?",
+      "back": "Velocity gradients along the field.",
+      "concept": "as6-5-theory"
+    },
+    {
+      "front": "Why qualify mean-field closures?",
+      "back": "Averaging, scales and correlations determine their validity.",
+      "concept": "as6-5-theory"
+    },
+    {
+      "front": "What weights Faraday rotation?",
+      "back": "Electron density and signed line-of-sight magnetic field along the path.",
+      "concept": "as6-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Draine, Physics of the Interstellar and Intergalactic Medium — edition and exact section verification pending",
+    "Kulsrud, Plasma Physics for Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can stretching a field amplify it without creating magnetic flux from nowhere? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Dynamo theory couples flow geometry, diffusion and nonlinear feedback; a kinematic growth result does not specify a saturated galactic field.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A dynamo is sustained magnetic-field amplification through conducting-fluid motion under a model that includes transport and feedback conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The induction equation contains advection/stretching and magnetic diffusion. In an incompressible ideal limit the material field evolution includes $(\mathbf B\cdot\nabla)\mathbf v$, showing how velocity gradients can stretch and amplify field strength while respecting ∇·B=0. Amplification does not mean magnetic monopoles or arbitrary net flux creation.
+
+A kinematic calculation prescribes the flow and neglects Lorentz-force backreaction. It can estimate growth rates and mode structures but cannot determine final saturation once magnetic stresses alter the fluid. Energy growth must be supplied by flow/forcing rather than appearing without an energy source.
+
+Mean-field models split fields into averages and fluctuations; their electromotive-force closure can involve α and turbulent-diffusion effects under scale/separation assumptions. Averaging definition, helicity, boundaries and shear matter. Anti-dynamo constraints show that not every simple flow geometry sustains growth.
+
+Faraday rotation probes a signed electron-density-weighted line-of-sight field integral, while synchrotron polarization and dust polarization have different weights and directional ambiguities. Combining observables needs transport, electron and foreground models. A field-strength estimate is conditional inference, not a direct three-dimensional field map from one line of sight.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare an imposed stretching flow with a purely diffusive decay model, recording boundary and divergence constraints. Plot amplitude and magnetic-energy growth separately. Explain which feedback is missing before extrapolating a kinematic exponential indefinitely.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a toy kinematic field B=B₀eᵍᵗ, growth rate g=ln2 per time unit doubles amplitude after one unit and quadruples magnetic energy density. This exponential is not a saturation model. A rotation-measure sign can reverse when the weighted line-of-sight field reverses.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

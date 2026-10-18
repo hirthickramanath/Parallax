@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS5.5",
+  "title": "Gravitational-wave astronomy",
+  "hook": "How can a passing gravitational wave be detected without assigning it a local Newtonian force?",
+  "recap": [
+    "A geometry-dependent strain response through light measurements.",
+    "Chirp mass.",
+    "Timing and response improve localization and consistency.",
+    "The model regime, noise, calibration and parameter degeneracies."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does strain have units of length?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is dimensionless.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does chirp mass alone determine both component masses?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Mass ratio remains additional information.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must detector noise and calibration enter inference?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "They determine significance and parameter uncertainty.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Aligned ΔL scale for h=1e−6,L=4?",
+      "answer": "4e-06",
+      "explanation": "hL=4e−6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Displacement-scale ratio after doubling L at fixed strain?",
+      "answer": "2",
+      "explanation": "It is proportional to arm length.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does strain have units of length?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "It is dimensionless.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does an interferometer constrain?",
+      "back": "A geometry-dependent strain response through light measurements.",
+      "concept": "as5-5-theory"
+    },
+    {
+      "front": "What organizes leading binary chirp evolution?",
+      "back": "Chirp mass.",
+      "concept": "as5-5-theory"
+    },
+    {
+      "front": "Why use a detector network?",
+      "back": "Timing and response improve localization and consistency.",
+      "concept": "as5-5-theory"
+    },
+    {
+      "front": "What qualifies a waveform inference?",
+      "back": "The model regime, noise, calibration and parameter degeneracies.",
+      "concept": "as5-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a passing gravitational wave be detected without assigning it a local Newtonian force? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Interferometers measure differential tidal strain and infer source parameters through relativistic waveform and detector-response models.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Gravitational-wave strain is a dimensionless relative deformation in the appropriate weak-wave detector description; the measured signal includes antenna response, noise and calibration.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A weak long-wavelength detector estimate is $\Delta L\sim hL$ for a suitably aligned arm, with tensor polarization and geometry setting the exact response. General-relativistic waves are not ordinary pressure waves in a material medium. Gauge coordinates and observable light-travel/differential measurements must be distinguished.
+
+For a slowly evolving leading-order circular compact binary, the chirp mass is $\mathcal M=(m_1m_2)^{3/5}/(m_1+m_2)^{1/5}$. It strongly controls the leading frequency evolution. Mass ratio, spins, eccentricity, distance and orientation add structure and degeneracy; a chirp mass alone does not identify both individual masses.
+
+Matched filtering compares calibrated strain against a waveform family using a noise-weighted inner product. A high match is conditional on signal/noise and model assumptions, not a guarantee of a unique astrophysical interpretation. Nonstationary glitches, trials factors and calibration uncertainty require statistical treatment.
+
+A detector network constrains sky location, polarization and consistency through time delays and response patterns. Distance inference is correlated with inclination and redshift/cosmology. Coalescence-waveform models must cover the regime being used; a Newtonian inspiral formula is not a full merger/ringdown solution. Keep public event data distinct from synthetic tutorial signals.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate a labelled synthetic chirp and add a declared noise model. Compare a time-domain amplitude plot with a noise-weighted detection statistic, then vary orientation to expose distance degeneracy. Do not report a tutorial match as a new event.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For h=10⁻⁶ and arm length 4 in consistent units, the simple aligned displacement scale is 4×10⁻⁶. This deliberately exaggerated synthetic strain is not a detector sensitivity claim. Doubling the arm length doubles that scale at fixed h.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

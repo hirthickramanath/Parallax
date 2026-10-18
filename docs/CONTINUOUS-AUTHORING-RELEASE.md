@@ -25,3 +25,7 @@ The production build, all 71 model/grading/example tests and targeted production
 ## Stellar evolution
 
 AS4.1–AS4.7 add collapse/star formation, main-sequence inference, giant evolution, pulsations, supernovae, remnants and interacting binaries. Coverage is 222/354 bodies, 893 recall cards, 132 missing. Build, all 72 model/grading/example tests and the seven-lesson AS4 production-player sweep passed. Stellar ratios and classifications are explicitly model-dependent, and all source/scientific review remains pending.
+
+## High-energy sources and interstellar matter
+
+AS5.1–AS5.6 and AS6.1–AS6.5 add 11 drafts on accretion, jets, transients, particles, messengers, interstellar phases, nebulae, MHD, shocks and dynamos. Coverage is 233/354 bodies, 937 recall cards, 121 missing. Build, all 73 model/grading/example tests and both new unit player sweeps passed. No actual new event, catalogue, observation or source detection is claimed.

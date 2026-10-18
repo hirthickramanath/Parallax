@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS5.6",
+  "title": "Neutrinos and multi-messenger events",
+  "hook": "Why does seeing two messengers near the same time not automatically prove a common source?",
+  "recap": [
+    "Energy/direction-dependent detection response in the stated convention.",
+    "It changes both source coverage and accidental background.",
+    "Emission-time, propagation and measurement assumptions.",
+    "They constrain models through sensitivity and selection."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a nearby arrival time alone prove common origin?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Background and source/detector models are needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a nondetection prove zero emitted flux?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Sensitivity and geometry matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can correlated messenger summaries always be multiplied as independent?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Shared information can be double counted.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Expected events for flux 2,area 3,time 4?",
+      "answer": "24",
+      "explanation": "2×3×4=24.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Expected background for rate .1 and duration 2?",
+      "answer": "0.2",
+      "explanation": ".1×2=.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does a nearby arrival time alone prove common origin?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Background and source/detector models are needed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does effective area encode?",
+      "back": "Energy/direction-dependent detection response in the stated convention.",
+      "concept": "as5-6-theory"
+    },
+    {
+      "front": "Why specify a search window?",
+      "back": "It changes both source coverage and accidental background.",
+      "concept": "as5-6-theory"
+    },
+    {
+      "front": "What qualifies speed-delay inference?",
+      "back": "Emission-time, propagation and measurement assumptions.",
+      "concept": "as5-6-theory"
+    },
+    {
+      "front": "Why include nondetections?",
+      "back": "They constrain models through sensitivity and selection.",
+      "concept": "as5-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does seeing two messengers near the same time not automatically prove a common source? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Multimessenger inference combines positions, timing, spectra and selection rather than multiplying unsupported association claims.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A multimessenger association is a joint inference about astrophysical origin conditioned on detector responses, backgrounds, time windows and source models.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Neutrinos interact weakly and can escape dense environments, but interaction probability and detector effective area depend on energy and flavour. Oscillation changes flavour composition during propagation; a detector does not directly count every emitted neutrino. Expected events require an integral such as $N=\int\Phi(E)A_{eff}(E)\,dE\,dt$ with a consistent flux convention.
+
+A temporal coincidence must be compared with the background rate and chosen search window. A wider window includes more possible delayed-source models but also more accidental coincidences. Angular localization regions and catalogue completeness alter association probabilities.
+
+A common event may produce different emission and propagation delays for photons, neutrinos and gravitational waves. Interpreting a delay as a fundamental speed difference requires a source-time model, distance and uncertainty treatment. Absence of one messenger can reflect sensitivity or beaming, not proof that it was never produced.
+
+Joint likelihoods require conditional dependencies and shared nuisance parameters to be handled rather than multiplying correlated summaries as if independent. Trials, selection, nondetections and calibration matter. Synthetic examples demonstrate a method; actual event claims require validated data and community-quality review.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic association calculation with explicit angular and temporal windows, then enlarge the window and recompute background expectations. Separate expected counts, Poisson tail probabilities and posterior source association.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a constant supplied flux 2 per area per time, effective area 3 and exposure 4 in compatible units, the expected count is 24 in the simplest one-bin model. For a background rate .1 per time and window length 2, expected background count is .2; it is not itself a false-association probability without a count model.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

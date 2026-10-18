@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS5.2",
+  "title": "Jets and relativistic beaming",
+  "hook": "Why can an approaching jet appear much brighter than an identical receding one?",
+  "recap": [
+    "The frequency/time transformation factor for the stated emitter geometry.",
+    "Light-travel times shorten the observed interval.",
+    "Orientation-dependent boosting and selection.",
+    "Particles, fields, radiation and geometry."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does apparent superluminal motion require material faster than c?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Arrival-time geometry can produce it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is every measured moving brightness feature guaranteed to trace bulk fluid speed?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Pattern motion can differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do beaming exponents depend on the observable/source geometry?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Intensity, blob flux and continuous jets transform differently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "δ for β=.6,γ=1.25 and θ=0?",
+      "answer": "2",
+      "explanation": "1/(1.25×.4)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Observed frequency for rest value 3 and δ=2, without cosmological redshift?",
+      "answer": "6",
+      "explanation": "δν′=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does apparent superluminal motion require material faster than c?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Arrival-time geometry can produce it.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is Doppler factor?",
+      "back": "The frequency/time transformation factor for the stated emitter geometry.",
+      "concept": "as5-2-theory"
+    },
+    {
+      "front": "Why can β_app exceed one?",
+      "back": "Light-travel times shorten the observed interval.",
+      "concept": "as5-2-theory"
+    },
+    {
+      "front": "What biases jet samples?",
+      "back": "Orientation-dependent boosting and selection.",
+      "concept": "as5-2-theory"
+    },
+    {
+      "front": "What must a jet emission model specify?",
+      "back": "Particles, fields, radiation and geometry.",
+      "concept": "as5-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an approaching jet appear much brighter than an identical receding one? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Relativistic propagation changes frequency, arrival time and beaming, while apparent superluminal motion is a geometric timing effect.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a moving emitter, Doppler factor δ=[γ(1−βcosθ)]⁻¹ with θ between velocity and observer direction in the stated source-frame geometry.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The observed frequency scales with δ before any cosmological redshift factor. Lorentz invariance of Iν/ν³ gives $I_\nu=\delta^3I'_{\nu'}$ at ν=δν′ for a local ray transformation. Flux beaming exponents depend on spectral slope and whether the model is a moving blob or a continuous jet; one exponent cannot be applied to every observable.
+
+Light-travel-time geometry gives $\beta_{app}=\beta\sin\theta/(1-\beta\cos\theta)$ for an approaching moving feature. It can exceed one without material or information exceeding c. The measured pattern speed may differ from the fluid bulk speed.
+
+Jet launching/collimation involves angular momentum, magnetic stress and an accretion/compact-object environment. A narrow outflow is not by itself proof of one unique magnetic extraction mechanism. Synchrotron, inverse-Compton and thermal components require particle/field and radiative-transfer models.
+
+Orientation selection strongly biases flux-limited jet samples. Variability time constraints depend on Doppler factor, emitting geometry and redshift; they are not universal direct source-radius measurements. Compare approaching/receding sides with obscuration and environment as additional possibilities rather than attributing every asymmetry solely to beaming.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot Doppler factor versus angle at fixed subluminal speed. Separately calculate apparent transverse motion and identify the light-travel-time denominator. Keep pattern and bulk velocities distinct in any data interpretation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For β=.6, γ=1.25 and θ=0, δ=1/[1.25(.4)]=2. At θ=90°, δ=.8. A local frequency of 3 is therefore observed at 6 in the approaching axial example before cosmological redshift.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

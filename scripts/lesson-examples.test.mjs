@@ -428,3 +428,22 @@ test("stellar evolution examples preserve collapse, lifetime and orbital scaling
     check(id, "warmup", w);
   }
 });
+test("high energy and interstellar examples preserve transport and geometry", () => {
+  const rows = [
+    ["AS5.1", (12 * 2) / (2 * 3), 2],
+    ["AS5.2", 1 / (1.25 * (1 - 0.6)), 2 * 3],
+    ["AS5.3", 0.1 * 2 * 10, 100 * 0.02],
+    ["AS5.4", 2 ** 3, 0.5 ** 3],
+    ["AS5.5", 1e-6 * 4, 2],
+    ["AS5.6", 2 * 3 * 4, 0.1 * 2],
+    ["AS6.1", 10 * 100, 10 / 1],
+    ["AS6.2", 8 ** (1 / 3), 1 / 0.2],
+    ["AS6.3", 6 / Math.sqrt(4), 2 * 5],
+    ["AS6.4", 2 * 4, 32 ** (2 / 5)],
+    ["AS6.5", Math.exp(Math.log(2)), 2 ** 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

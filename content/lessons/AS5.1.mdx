@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS5.1",
+  "title": "Accretion discs",
+  "hook": "Why can falling gas release energy far from the surface it eventually reaches?",
+  "recap": [
+    "Angular-momentum transport.",
+    "The fraction of rest-mass inflow power emitted as the specified luminosity.",
+    "Advection, thickness, winds and changed cooling/opacity.",
+    "Opacity, geometry and flow conditions enter the force balance."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can a conservative torque-free circular particle drift through circular Kepler orbits indefinitely?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Angular momentum must change.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is η universally fixed at .1 for every accretor?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Geometry, spin and energy transport affect it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a thin-disc flux formula require an inner-boundary assumption?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The torque condition changes the profile.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal disc luminosity for GM=12,dotM=2,r_in=3?",
+      "answer": "4",
+      "explanation": "GMdotM/(2r_in)=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Luminosity ratio after doubling dotM in the same admitted model?",
+      "answer": "2",
+      "explanation": "The estimate is linear in dotM.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Can a conservative torque-free circular particle drift through circular Kepler orbits indefinitely?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Angular momentum must change.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What permits inward disc drift?",
+      "back": "Angular-momentum transport.",
+      "concept": "as5-1-theory"
+    },
+    {
+      "front": "What does radiative efficiency mean?",
+      "back": "The fraction of rest-mass inflow power emitted as the specified luminosity.",
+      "concept": "as5-1-theory"
+    },
+    {
+      "front": "What can break the thin-disc approximation?",
+      "back": "Advection, thickness, winds and changed cooling/opacity.",
+      "concept": "as5-1-theory"
+    },
+    {
+      "front": "Why qualify Eddington limits?",
+      "back": "Opacity, geometry and flow conditions enter the force balance.",
+      "concept": "as5-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can falling gas release energy far from the surface it eventually reaches? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Accretion converts binding energy through angular-momentum transport, dissipation and radiation. Disc approximations must distinguish geometrically thin, thick and advective regimes.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A circular Newtonian Kepler orbit has specific energy −GM/(2r) and angular speed √(GM/r³). A disc must transport angular momentum for material to drift inward.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Moving between circular orbits releases binding energy as angular momentum is redistributed. A test particle cannot simply spiral inward on unchanged conservative Kepler orbits without a torque. Turbulent/magnetic stress, not ordinary molecular viscosity alone, often supplies the effective transport.
+
+A radiatively efficient steady thin-disc approximation gives $F(r)=3GM\dot M[1-\sqrt{r_{in}/r}]/(8\pi r^3)$ per face for the standard zero-inner-torque Newtonian boundary. The bracket and normalization depend on that boundary condition. Local blackbody emission is an additional spectral approximation, not a consequence of angular-momentum conservation alone.
+
+Integrated luminosity is of order GMdotM/(2r_in) for this model. Writing L=ηdotM c² defines an efficiency whose value depends on potential, inner boundary, spin and energy carried away. It is not universally ten percent or the same for a material surface and a black hole.
+
+At high or low accretion rates, advection, outflows, opacity and cooling can invalidate the thin radiatively efficient picture. The Eddington luminosity follows a gravity/radiation-force balance with a specified opacity and geometry, not an absolute ban on every anisotropic or transient super-Eddington flow. Timing and spectra require a model of emission and propagation beyond one luminosity estimate.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the stated flux profile including its inner-boundary factor and integrate both disc faces numerically. Compare with the analytic luminosity. State the transport/inner-boundary assumptions and label spectra computed from it synthetic.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In normalized Newtonian units GM=12,dotM=2 and r_in=3, the ideal zero-torque disc luminosity is 4. Doubling dotM doubles this estimate only if the same steady efficient regime remains valid.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
