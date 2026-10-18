@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **263**.
-- Authored recall cards: **1057**.
-- Missing lesson bodies: **91**.
+- Playable authored drafts: **279**.
+- Authored recall cards: **1121**.
+- Missing lesson bodies: **75**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -28,9 +28,9 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 2 | MA8 | Probability and statistics | 7 / 7 | None |
 | 2 | MA9 | Calculus of variations | 3 / 3 | None |
 | 5 | MA10 | Abstract algebra and group theory | 6 / 6 | None |
-| 5 | MA11 | Tensors and differential geometry | 0 / 7 | MA11.1, MA11.2, MA11.3, MA11.4, MA11.5, MA11.6, MA11.7 |
-| 5 | MA12 | Topology and functional analysis | 0 / 5 | MA12.1, MA12.2, MA12.3, MA12.4, MA12.5 |
-| 6 | MA13 | Research-level mathematics for physics | 0 / 4 | MA13.1, MA13.2, MA13.3, MA13.4 |
+| 5 | MA11 | Tensors and differential geometry | 7 / 7 | None |
+| 5 | MA12 | Topology and functional analysis | 5 / 5 | None |
+| 6 | MA13 | Research-level mathematics for physics | 4 / 4 | None |
 | 0 | PB1 | Mechanics | 4 / 4 | None |
 | 0 | PB2 | Fluids and heat | 3 / 3 | None |
 | 0 | PB3 | Waves and optics | 3 / 3 | None |

@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA12.4",
+  "title": "Distributions and the Dirac delta",
+  "hook": "Why is a delta distribution not an infinitely tall ordinary function?",
+  "recap": [
+    "Evaluates a test function at its support point.",
+    "By transferring the derivative with a minus sign to the test function.",
+    "A distribution times a smooth function.",
+    "Delta in a specified weak/distributional sense."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is δ² automatically defined in ordinary distribution theory?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Products of singular distributions need extra structure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does delta scaling use |a|?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The integration Jacobian has an absolute value.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does weak convergence require uniform convergence of kernels?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It concerns actions on test functions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Integral of δ(2x)φ(x) when φ(0)=3?",
+      "answer": "1.5",
+      "explanation": "φ(0)/2=1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Coefficient of δ in the second weak derivative of |x|?",
+      "answer": "2",
+      "explanation": "The first derivative jumps from −1 to +1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What do narrow normalized kernels approach?",
+      "answer": "Delta in a specified weak/distributional sense.",
+      "options": [
+        "Delta in a specified weak/distributional sense.",
+        "Evaluates a test function at its support point."
+      ],
+      "explanation": "Delta in a specified weak/distributional sense.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does delta do?",
+      "back": "Evaluates a test function at its support point.",
+      "concept": "ma12-4-theory"
+    },
+    {
+      "front": "How is a weak derivative defined?",
+      "back": "By transferring the derivative with a minus sign to the test function.",
+      "concept": "ma12-4-theory"
+    },
+    {
+      "front": "What products are straightforward?",
+      "back": "A distribution times a smooth function.",
+      "concept": "ma12-4-theory"
+    },
+    {
+      "front": "What do narrow normalized kernels approach?",
+      "back": "Delta in a specified weak/distributional sense.",
+      "concept": "ma12-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kreyszig, Introductory Functional Analysis with Applications — edition and exact section verification pending",
+    "Lee, Introduction to Topological Manifolds — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is a delta distribution not an infinitely tall ordinary function? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Distributions formalize impulse sources and weak derivatives without treating undefined point values as arithmetic objects.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A distribution is a continuous linear functional on a stated test-function space. The delta at a acts by δ_a[φ]=φ(a).
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A regular distribution integrates a locally integrable function against a smooth compactly supported test function. Delta is not represented by an ordinary locally integrable point spike. It can be approximated by normalized narrow kernels in a weak limit, but that does not assign a finite or infinite pointwise value suitable for multiplication.
+
+Distributional differentiation is defined by $T'[\phi]=-T[\phi']$, generalizing integration by parts without boundary terms for compact support. The derivative of a step is a delta in the corresponding whole-line convention, and the second derivative of |x| is 2δ.
+
+For nonzero real a, the scaling rule is $\delta(ax)=\delta(x)/|a|$ under change of variables. Multiplication by a smooth function is well defined through test-function multiplication; arbitrary products of singular distributions are not generally defined. Writing δ² without a regularization/renormalized framework is not ordinary distribution algebra.
+
+Green functions and weak PDE solutions use distributions to encode point sources and discontinuities. Boundary sources require their own domain and trace conventions. Weak convergence is convergence of actions on all test functions in the stated space, not uniform or pointwise convergence of the approximating kernel.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Integrate normalized Gaussian delta approximations against a smooth test function while reducing their width. Compare the functional limit with the diverging peak height and explain why those are different questions.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The whole-line integral of δ(2x) times a test function with φ(0)=3 is 3/2. The factor is absolute: δ(−2x) gives the same result. For |x|, the first derivative jumps by two, producing 2δ in its second weak derivative.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

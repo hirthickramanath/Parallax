@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA12.3",
+  "title": "Bounded and unbounded operators",
+  "hook": "Why is an operator’s domain part of the operator rather than a footnote?",
+  "recap": [
+    "The vectors on which its action and required regularity are defined.",
+    "Equality with the adjoint including domain.",
+    "They define closed/closable operator behaviour.",
+    "Both operator products need a suitable common domain."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are all infinite-dimensional linear operators bounded?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Differential operators provide counterexamples.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a symmetric operator automatically self-adjoint on any domain?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Adjoint-domain equality is extra.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can changing boundary conditions change the operator realization?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The domain is part of the operator.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Derivative norm ratio for normalized periodic modes n=10 and n=2?",
+      "answer": "5",
+      "explanation": "10/2=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Derivative norm for normalized n=10 mode?",
+      "answer": "10",
+      "explanation": "Its multiplier magnitude is ten.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify commutators?",
+      "answer": "Both operator products need a suitable common domain.",
+      "options": [
+        "Both operator products need a suitable common domain.",
+        "The vectors on which its action and required regularity are defined."
+      ],
+      "explanation": "Both operator products need a suitable common domain.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is an operator domain?",
+      "back": "The vectors on which its action and required regularity are defined.",
+      "concept": "ma12-3-theory"
+    },
+    {
+      "front": "What distinguishes self-adjointness?",
+      "back": "Equality with the adjoint including domain.",
+      "concept": "ma12-3-theory"
+    },
+    {
+      "front": "Why are graph limits relevant?",
+      "back": "They define closed/closable operator behaviour.",
+      "concept": "ma12-3-theory"
+    },
+    {
+      "front": "Why qualify commutators?",
+      "back": "Both operator products need a suitable common domain.",
+      "concept": "ma12-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kreyszig, Introductory Functional Analysis with Applications — edition and exact section verification pending",
+    "Lee, Introduction to Topological Manifolds — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is an operator’s domain part of the operator rather than a footnote? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Infinite-dimensional observables can be unbounded; Hermiticity and self-adjointness need more than a symmetric-looking differential formula.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A bounded linear operator satisfies ||Ax||≤C||x|| on its whole normed domain with finite C. An unbounded operator requires an explicitly specified domain.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The operator norm is $\|A\|=\sup_{\|x\|=1}\|Ax\|$ when finite. In finite-dimensional normed spaces every linear operator is bounded, but this does not extend to all differential operators on infinite-dimensional function spaces.
+
+On periodic smooth waves eⁱⁿˣ normalized in L², the derivative has norm growing as |n|, so it is unbounded in the L² norm. It can still be a meaningful densely defined operator on a Sobolev-type domain. Convergence of vectors alone need not imply convergence of their images.
+
+A symmetric operator agrees with its adjoint pairing on its stated domain; self-adjointness additionally requires equality of domains and the adjoint operator. Boundary conditions enter integration by parts and can select different self-adjoint realizations of the same formal differential expression. A formal matrix of coefficients is insufficient in this setting.
+
+Closedness and closability control limits of graph pairs (x,Ax). Quantum unitary-evolution theorems require self-adjoint generators under their hypotheses, not just an informally real energy expression. Commutators and uncertainty inequalities also need a common domain where the required products exist.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate the boundary term for a momentum-like derivative on an interval under periodic and zero-value choices. State the domain before comparing symmetry, adjointness and possible unitary evolution.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For normalized periodic mode eⁱⁿˣ, differentiation multiplies norm by |n|. Modes n=2 and n=10 have derivative norm ratio five while both original norms are one, excluding a uniform derivative bound on all such modes in L².
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

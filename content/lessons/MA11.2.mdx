@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA11.2",
+  "title": "Manifolds and coordinates",
+  "hook": "Why can a sphere be smooth even where longitude coordinates fail?",
+  "recap": [
+    "A compatible collection of local charts.",
+    "A directional-derivative object on smooth functions.",
+    "Tangent spaces at corresponding points.",
+    "Coordinate failure can mimic a divergent component."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a smooth manifold require one global chart?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Compatible local charts suffice.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a coordinate singularity always mean physical curvature diverges?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The chart itself can fail.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a metric automatically fixed by a smooth atlas?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is additional geometric data.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Jacobian for x′=3x?",
+      "answer": "3",
+      "explanation": "The derivative is three.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Inverse Jacobian for that transition?",
+      "answer": "0.3333333333333333",
+      "explanation": "dx/dx′=1/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why diagnose singularities invariantly?",
+      "answer": "Coordinate failure can mimic a divergent component.",
+      "options": [
+        "Coordinate failure can mimic a divergent component.",
+        "A compatible collection of local charts."
+      ],
+      "explanation": "Coordinate failure can mimic a divergent component.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is an atlas?",
+      "back": "A compatible collection of local charts.",
+      "concept": "ma11-2-theory"
+    },
+    {
+      "front": "What is a tangent vector intrinsically?",
+      "back": "A directional-derivative object on smooth functions.",
+      "concept": "ma11-2-theory"
+    },
+    {
+      "front": "What does a map derivative connect?",
+      "back": "Tangent spaces at corresponding points.",
+      "concept": "ma11-2-theory"
+    },
+    {
+      "front": "Why diagnose singularities invariantly?",
+      "back": "Coordinate failure can mimic a divergent component.",
+      "concept": "ma11-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Lee, Introduction to Smooth Manifolds — edition and exact section verification pending",
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a sphere be smooth even where longitude coordinates fail? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Manifolds use compatible local charts; a coordinate singularity is not automatically a geometric singularity.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A smooth n-manifold is locally modeled by open subsets of Rⁿ with smooth compatible transition maps, together with the standard topological conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A transition $x\prime=f(x)$ has $\det Df\ne0$ on its overlap. A chart assigns local coordinates on an open piece of the space. Overlap maps must be smooth invertible maps with smooth inverses for a smooth atlas. A global coordinate system is not required, and some manifolds cannot be covered by one chart. Sphere poles show the limitations of familiar longitude/latitude coordinates.
+
+A tangent vector can be defined through directional derivatives on smooth functions, not as an arrow embedded in an arbitrary surrounding Euclidean space. Its chart components change by a Jacobian. The derivative of a smooth map is a linear map between tangent spaces, expressed locally by that Jacobian.
+
+A differential form or metric is additional structure on the manifold, not already provided by coordinates alone. Smooth topology, distance and curvature answer different questions. Two different metrics can live on the same smooth manifold.
+
+The rank of a map controls local regularity through inverse/implicit-function theorems under their hypotheses. A vanishing coordinate determinant can indicate a bad chart rather than a physical divergence. To diagnose a true singularity, seek coordinate-independent structure and the relevant extendibility/geodesic information rather than relying on one plotted component.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Cover a sphere with two stereographic charts and identify which point each omits. Verify transition smoothness on their overlap. Keep a chart diagram separate from a claim that the sphere is globally one Euclidean coordinate plane.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The chart rescaling x′=3x on an interval has Jacobian 3 and inverse Jacobian 1/3. It is a smooth valid transition on its stated domain. A longitude coordinate at a pole lacks such a nonsingular chart relation there, while the sphere remains smooth.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

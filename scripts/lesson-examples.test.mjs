@@ -501,3 +501,27 @@ test("group theory examples preserve kernels, dimensions and invariant norms", (
     check(id, "warmup", w);
   }
 });
+test("geometry and functional examples retain domains, weights and conventions", () => {
+  const rows = [
+    ["MA11.1", 2, 0.5],
+    ["MA11.2", 3, 1 / 3],
+    ["MA11.3", -2, 0.5],
+    ["MA11.4", 5, 25],
+    ["MA11.5", 1 / 4, 2 / 4],
+    ["MA11.6", 1, -1],
+    ["MA11.7", 1, 0],
+    ["MA12.1", 0.1 - 0.05, 0],
+    ["MA12.2", 4, 25],
+    ["MA12.3", 10 / 2, 10],
+    ["MA12.4", 3 / 2, 2],
+    ["MA12.5", 2 * 0.6 + 5 * 0.4, 0.4],
+    ["MA13.1", 3, 1],
+    ["MA13.2", 3 - 2 ** 2 / 2, 2 ** 2 / 2],
+    ["MA13.3", 2 ** 3, 1 / 2],
+    ["MA13.4", -0.5, 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

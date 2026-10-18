@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA13.4",
+  "title": "Topology in physics (Berry phase, topological invariants)",
+  "hook": "How can a phase acquired around a loop survive local changes of state convention?",
+  "recap": [
+    "The gauge-invariant local curvature of the phase connection.",
+    "Parameter-space transport versus time-integrated energy phase.",
+    "A suitable gap, smoothness and slow variation.",
+    "One eigenvector phase convention may not cover the whole parameter space."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a local Berry connection gauge invariant?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It shifts by an exact phase derivative.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an arbitrary open-surface curvature integral have to be an integer multiple of 2π?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Global closed-bundle conditions are required.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a gap closure change a topological classification?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The protecting adiabatic structure can fail.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "γ/π for γ=−Ω/2 and Ω=π?",
+      "answer": "-0.5",
+      "explanation": "It is −1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Chern number for valid closed curvature flux 4π?",
+      "answer": "2",
+      "explanation": "4π/(2π)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why use global patches?",
+      "answer": "One eigenvector phase convention may not cover the whole parameter space.",
+      "options": [
+        "One eigenvector phase convention may not cover the whole parameter space.",
+        "The gauge-invariant local curvature of the phase connection."
+      ],
+      "explanation": "One eigenvector phase convention may not cover the whole parameter space.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is Berry curvature?",
+      "back": "The gauge-invariant local curvature of the phase connection.",
+      "concept": "ma13-4-theory"
+    },
+    {
+      "front": "What distinguishes geometric and dynamic phase?",
+      "back": "Parameter-space transport versus time-integrated energy phase.",
+      "concept": "ma13-4-theory"
+    },
+    {
+      "front": "What protects an adiabatic eigenstate description?",
+      "back": "A suitable gap, smoothness and slow variation.",
+      "concept": "ma13-4-theory"
+    },
+    {
+      "front": "Why use global patches?",
+      "back": "One eigenvector phase convention may not cover the whole parameter space.",
+      "concept": "ma13-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strogatz, Nonlinear Dynamics and Chaos — edition and exact section verification pending",
+    "Gardiner, Stochastic Methods — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a phase acquired around a loop survive local changes of state convention? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Berry geometry distinguishes gauge-dependent local connections from closed-path phases and integer topological data under gap and regularity assumptions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a smooth normalized nondegenerate eigenstate family, Berry connection can be defined as A=i⟨u|du⟩, with curvature F=dA on a local parameter patch.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Under |u⟩→eⁱχ|u⟩, this convention gives A→A−dχ, so local connection values depend on phase choice. Curvature is unchanged. A closed-loop Berry phase $\gamma=\oint A$ is defined modulo 2π with the corresponding endpoint/patch accounting.
+
+Adiabatic transport requires a gap and sufficiently slow parameter change in the applicable theorem, not merely a visually smooth path. Degeneracy can require a nonabelian subspace connection. Dynamic and geometric phases must be separated before comparing interference.
+
+For a suitable complex line bundle over a closed oriented two-dimensional parameter manifold, the first Chern number is $C=(2\pi)^{-1}\int F$ with the chosen normalization. Integer quantization depends on global patch consistency and assumptions. Integrating an arbitrary open patch does not automatically give an integer.
+
+For a spin-half eigenstate following a closed direction loop, the geometric phase is proportional to half the enclosed solid angle with sign tied to the branch/state convention. Topological robustness needs the protecting gap/symmetry conditions; a disorder or interaction change that closes the relevant gap can change classification. This introduction does not claim every phase factor is a topological invariant.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare local eigenvector phase choices around a parameter loop and keep overlap/end-point corrections. Check that the computed closed phase is unchanged modulo 2π. State where the spectral gap and smoothness assumptions fail.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For the convention where the tracked spin-up state has γ=−Ω/2, a loop of solid angle Ω=π gives γ/π=−.5. A supplied curvature flux 4π on a valid closed line-bundle base gives C=2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

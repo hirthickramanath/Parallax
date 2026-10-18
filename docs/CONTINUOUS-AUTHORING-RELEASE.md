@@ -33,3 +33,7 @@ AS5.1–AS5.6 and AS6.1–AS6.5 add 11 drafts on accretion, jets, transients, pa
 ## Planetary, galactic, cosmological and symmetry foundations
 
 AS7, AS8, AS9, AS10 and MA10 add 30 drafts. Coverage is 263/354 bodies, 1057 recall cards, 91 missing. The production build, all 76 model/grading/example tests and a full 66-case browser run passed. All 263 authored lessons rendered theory/investigation successfully. Core prompts in the 103 drafts added during this continuous run now test a distinct additional theorem/assumption rather than repeating an introductory check. A galaxy mass inequality was repaired inside TeX before the successful sweep. Hypothetical cosmological values are not presented as current measured tensions.
+
+## Geometry, analysis and research mathematics
+
+MA11, MA12 and MA13 add 16 drafts on tensors/manifolds/connections, curvature/forms/bundles, topology and operator domains, distributions/spectral theory, stochastic calculus, RG and Berry geometry. Coverage is 279/354 bodies, 1121 recall cards, 75 missing. Build, all 77 model/grading/example tests and all three new-unit production-player sweeps passed. Coordinate, metric, stochastic and gauge conventions are explicit; these are draft introductions rather than a claim of independent theorem/source verification.

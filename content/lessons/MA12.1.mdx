@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA12.1",
+  "title": "Metric and topological spaces",
+  "hook": "Why can a sequence get arbitrarily close to a missing point without converging in its space?",
+  "recap": [
+    "Every Cauchy sequence converges in the space.",
+    "Every open cover has a finite subcover.",
+    "Closedness and included limit points depend on it.",
+    "Global continuation or primitive constructions under relevant hypotheses."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every Cauchy sequence convergent in every metric space?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Completeness is an additional property.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does closed and bounded imply compact in every normed space?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The Euclidean theorem does not transfer universally.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are connected and simply connected synonymous?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The latter also constrains loops.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Distance between 1/10 and 1/20 in the usual metric?",
+      "answer": "0.05",
+      "explanation": "|.1−.05|=.05.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Limit of 1/n in the real completion?",
+      "answer": "0",
+      "explanation": "It approaches zero.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What can a topological hole obstruct?",
+      "answer": "Global continuation or primitive constructions under relevant hypotheses.",
+      "options": [
+        "Global continuation or primitive constructions under relevant hypotheses.",
+        "Every Cauchy sequence converges in the space."
+      ],
+      "explanation": "Global continuation or primitive constructions under relevant hypotheses.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines completeness?",
+      "back": "Every Cauchy sequence converges in the space.",
+      "concept": "ma12-1-theory"
+    },
+    {
+      "front": "What defines compactness?",
+      "back": "Every open cover has a finite subcover.",
+      "concept": "ma12-1-theory"
+    },
+    {
+      "front": "Why state ambient space?",
+      "back": "Closedness and included limit points depend on it.",
+      "concept": "ma12-1-theory"
+    },
+    {
+      "front": "What can a topological hole obstruct?",
+      "back": "Global continuation or primitive constructions under relevant hypotheses.",
+      "concept": "ma12-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kreyszig, Introductory Functional Analysis with Applications — edition and exact section verification pending",
+    "Lee, Introduction to Topological Manifolds — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a sequence get arbitrarily close to a missing point without converging in its space? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Topology separates local continuity from distance, completeness and compactness, which support later operator and geometry arguments.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A metric defines distances and an induced topology; a topology specifies open sets without necessarily choosing one distance function.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A metric satisfies nonnegativity, identity of indiscernibles, symmetry and the triangle inequality $d(x,z)\le d(x,y)+d(y,z)$. Its open balls generate open sets. A sequence converges when eventually inside every neighbourhood of its limit; a metric Cauchy sequence instead controls pairwise late distances.
+
+Completeness means every Cauchy sequence converges within the space. The interval (0,1) with the usual metric is not complete because 1/n for n≥2 tends toward a missing endpoint. Completeness depends on the metric, while topological equivalence alone need not preserve it for a specific distance choice.
+
+Compactness is the finite-subcover property. In Euclidean Rⁿ, Heine–Borel identifies compact sets with closed bounded sets, but that equivalence is not universal in arbitrary metric or infinite-dimensional spaces. A continuous real function on a compact domain attains extrema.
+
+Connectedness, path connectedness and simple connectedness are different properties. A hole can obstruct global primitives without preventing ordinary connectedness. Physical spaces also need a specified topology and admissible boundary conditions; drawing one coordinate patch does not settle their global structure.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare sequences in an open interval, closed interval and rational-number subspace. State which metric/topology is used, then test the exact completeness/compactness definition rather than relying on a picture.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The sequence 1/n in (0,1) is Cauchy but has no limit inside that interval. In the completion [0,1], its limit is zero. The distance between terms 1/10 and 1/20 is .05.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

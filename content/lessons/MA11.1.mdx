@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA11.1",
+  "title": "Tensors and index notation",
+  "hook": "Why can vector components change while the vector itself stays the same?",
+  "recap": [
+    "A dual pairing that removes one upper/lower index pair.",
+    "A nondegenerate geometric bilinear form and index identification.",
+    "Coordinate transformation laws must agree.",
+    "Basis variation contributes connection terms."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do vector and covector components use the same arbitrary-coordinate Jacobian?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They use mutually inverse transformations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must free indices match across a tensor equation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "They define the component type being equated.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is index lowering always numerically unchanged?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It uses the metric.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Transformed vector component for v=1,x′=2x?",
+      "answer": "2",
+      "explanation": "The Jacobian is two.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Transformed covector component for α=1 in that change?",
+      "answer": "0.5",
+      "explanation": "The inverse Jacobian is one half.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why is an arbitrary component derivative insufficient?",
+      "answer": "Basis variation contributes connection terms.",
+      "options": [
+        "Basis variation contributes connection terms.",
+        "A dual pairing that removes one upper/lower index pair."
+      ],
+      "explanation": "Basis variation contributes connection terms.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is contraction?",
+      "back": "A dual pairing that removes one upper/lower index pair.",
+      "concept": "ma11-1-theory"
+    },
+    {
+      "front": "What does a metric supply?",
+      "back": "A nondegenerate geometric bilinear form and index identification.",
+      "concept": "ma11-1-theory"
+    },
+    {
+      "front": "Why match index types?",
+      "back": "Coordinate transformation laws must agree.",
+      "concept": "ma11-1-theory"
+    },
+    {
+      "front": "Why is an arbitrary component derivative insufficient?",
+      "back": "Basis variation contributes connection terms.",
+      "concept": "ma11-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Lee, Introduction to Smooth Manifolds — edition and exact section verification pending",
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can vector components change while the vector itself stays the same? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Tensor notation separates coordinate descriptions from geometric quantities and prevents invalid component-wise manipulations.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A tensor is a multilinear geometric object with a specified transformation law; upper and lower component indices encode tangent and dual transformations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Under a smooth invertible coordinate change, $v'^i=(\partial x'^i/\partial x^j)v^j$, while a covector transforms with the inverse Jacobian. A gradient of a scalar is naturally a covector. Treating both component types as identical Euclidean arrays in arbitrary coordinates loses the distinction.
+
+A repeated upper/lower index denotes contraction in the Einstein convention; free indices must match across an equation. Dummy indices can be renamed consistently but cannot collide with an existing free index. A scalar contraction such as α_i v^i is invariant because Jacobian and inverse factors cancel.
+
+A nondegenerate metric identifies vectors and covectors through v_i=g_ijv^j, but lowering an index is not generally a cosmetic notation change. In curvilinear coordinates or spacetime, metric components and signature affect the result. Tensor products, contractions and addition of matching types preserve tensor character.
+
+An arbitrary table of numbers or a partial derivative of tensor components does not automatically transform as a tensor. The connection supplies correction terms for differentiation. Checking one coordinate system cannot establish a proposed tensor law; derive the transformation or give a coordinate-free definition.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Perform a two-dimensional linear coordinate change on a vector, covector and metric. Verify a contraction and squared norm, then deliberately use the wrong Jacobian for the covector to locate the failure.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In one dimension with x′=2x, vector component v=1 transforms to v′=2 and covector component α=1 transforms to α′=.5. Their contraction remains one. Multiplying both components by two would falsely change that scalar.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

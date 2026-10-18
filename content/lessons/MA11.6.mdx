@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA11.6",
+  "title": "Differential forms",
+  "hook": "Why does an orientation change reverse a flux integral without changing the physical field?",
+  "recap": [
+    "Every exact form is closed.",
+    "An antisymmetric covariant k-tensor suitable for oriented integration.",
+    "The generalized Stokes theorem.",
+    "Global topology."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every closed form globally exact on every domain?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Topology can obstruct a primitive.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the Hodge star need a metric?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It uses metric and orientation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can boundary orientation be picked independently in Stokes without a sign change?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is induced consistently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Integral of d(x dy) over the oriented unit square?",
+      "answer": "1",
+      "explanation": "It is the unit area integral.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Same integral after reversing orientation?",
+      "answer": "-1",
+      "explanation": "Orientation reverses the sign.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What can obstruct exactness?",
+      "answer": "Global topology.",
+      "options": [
+        "Global topology.",
+        "Every exact form is closed."
+      ],
+      "explanation": "Global topology.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does d²=0 imply?",
+      "back": "Every exact form is closed.",
+      "concept": "ma11-6-theory"
+    },
+    {
+      "front": "What is a k-form?",
+      "back": "An antisymmetric covariant k-tensor suitable for oriented integration.",
+      "concept": "ma11-6-theory"
+    },
+    {
+      "front": "What unifies circulation and flux theorems?",
+      "back": "The generalized Stokes theorem.",
+      "concept": "ma11-6-theory"
+    },
+    {
+      "front": "What can obstruct exactness?",
+      "back": "Global topology.",
+      "concept": "ma11-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Lee, Introduction to Smooth Manifolds — edition and exact section verification pending",
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an orientation change reverse a flux integral without changing the physical field? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Differential forms organize oriented integration and unify gradient/curl/divergence identities on manifolds.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A differential k-form is an antisymmetric covariant k-tensor field; its pullback and integral use orientation and dimension-appropriate domains.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The wedge product antisymmetrizes combinations: dx∧dy=−dy∧dx and dx∧dx=0. Exterior differentiation raises degree by one and satisfies $d^2=0$. For a scalar f, df is its covector differential. Coordinate expressions must keep antisymmetry factors consistent.
+
+Stokes’ theorem is $\int_M d\omega=\int_{\partial M}\omega$ for a suitably oriented smooth region/form with the appropriate support/regularity assumptions. The boundary orientation is induced by the region, not chosen independently to force a sign. Familiar curl circulation and divergence flux laws are metric/vector-calculus realizations.
+
+Closed means dω=0; exact means ω=dη. Exact forms are closed, but closed forms need not be globally exact on a domain with nontrivial topology. A local Poincaré lemma does not remove a puncture or establish a global primitive.
+
+A Hodge star requires a metric and orientation and depends on signature. Maxwell equations can be expressed using a field-strength two-form and its dual with source conventions, but metric-free d identities and metric-dependent duality are distinct. Differential forms simplify bookkeeping without eliminating boundary, gauge or topology assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute both sides of Stokes for the square and then for a punctured domain with a closed nonexact one-form. Explain which local derivative test fails to detect the global hole.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For ω=x dy on a unit square oriented by dx∧dy, dω=dx∧dy and the boundary integral is 1. Reversing orientation gives −1. The values follow the induced counterclockwise versus clockwise boundary choice.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

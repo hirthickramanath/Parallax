@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA12.5",
+  "title": "Spectral theory of operators",
+  "hook": "Why can an observable have a continuous spectrum without normalizable eigenvectors at every value?",
+  "recap": [
+    "A projection-valued spectral measure for self-adjoint operators.",
+    "It is generalized rather than ordinary unit L² normalization.",
+    "Domain, boundaries and operator/interaction structure.",
+    "The functional-calculus domain condition."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must every continuous-spectrum value have a normalizable eigenvector?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Generalized eigenstates may be needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every self-adjoint operator have only discrete eigenvalues?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Continuous spectral components can occur.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must continuum spectral numerics be checked under refinement?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Truncation can create artifacts.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Expectation for eigenvalues 2,5 with probabilities .6,.4?",
+      "answer": "3.2",
+      "explanation": "2×.6+5×.4=3.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Probability of eigenvalue in [4,6]?",
+      "answer": "0.4",
+      "explanation": "Only the 5 state contributes.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What restricts f(A) for an unbounded f?",
+      "answer": "The functional-calculus domain condition.",
+      "options": [
+        "The functional-calculus domain condition.",
+        "A projection-valued spectral measure for self-adjoint operators."
+      ],
+      "explanation": "The functional-calculus domain condition.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What generalizes diagonalization?",
+      "back": "A projection-valued spectral measure for self-adjoint operators.",
+      "concept": "ma12-5-theory"
+    },
+    {
+      "front": "Why qualify plane-wave normalization?",
+      "back": "It is generalized rather than ordinary unit L² normalization.",
+      "concept": "ma12-5-theory"
+    },
+    {
+      "front": "What changes spectrum type?",
+      "back": "Domain, boundaries and operator/interaction structure.",
+      "concept": "ma12-5-theory"
+    },
+    {
+      "front": "What restricts f(A) for an unbounded f?",
+      "back": "The functional-calculus domain condition.",
+      "concept": "ma12-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kreyszig, Introductory Functional Analysis with Applications — edition and exact section verification pending",
+    "Lee, Introduction to Topological Manifolds — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an observable have a continuous spectrum without normalizable eigenvectors at every value? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Spectral theory generalizes finite matrix diagonalization while retaining domains and generalized-state qualifications.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The spectrum consists of values where A−λI lacks the required bounded everywhere-defined inverse on the stated space; point and continuous spectral behaviour must be distinguished.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a finite Hermitian matrix, an orthonormal eigenbasis diagonalizes A and functions f(A) act on its real eigenvalues. In infinite-dimensional settings, a self-adjoint operator has a projection-valued spectral measure and $A=\int\lambda\,dP(\lambda)$ with an appropriate domain condition.
+
+A continuous-spectrum label need not correspond to an ordinary Hilbert-space eigenvector. Plane waves in full-line free-particle descriptions use generalized normalization, whereas normalizable packets are superpositions in the physical Hilbert space. One must not insert a Dirac-normalized wave as if its L² norm were one.
+
+Compact self-adjoint operators have a discrete nonzero eigenvalue structure with possible accumulation at zero under the theorem’s hypotheses. General self-adjoint operators need not be compact or have a purely discrete spectrum. Boundary conditions, domain size and confining potentials change spectral type.
+
+The functional calculus defines projectors, evolution and measurement probabilities, but unbounded functions of A restrict domains. Approximate numerical matrix eigenvalues are a discretization result, not automatically a proof of the continuum spectrum; check refinement, boundary truncation and possible spectral artifacts.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Diagonalize a finite Hermitian matrix and compare projector probabilities before a basis change. Then enlarge a truncated free-particle box and study how dense eigenvalues approach a continuum description without claiming each finite box already has continuous spectrum.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For diag(2,5) and normalized weights .6,.4 in its eigenbasis, expectation is 3.2. The probability of the spectral set [4,6] is .4. These are finite-matrix examples, not a claim of a continuous-space discretization theorem.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

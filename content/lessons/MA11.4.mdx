@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA11.4",
+  "title": "Geodesics",
+  "hook": "Why can a freely moving path have curved coordinate equations even in flat space?",
+  "recap": [
+    "Parallel transport of its own tangent.",
+    "A tangent-proportional equation term.",
+    "Geometry, signature and global/conjugate-point structure.",
+    "Coordinates can accelerate while local nongravitational force vanishes."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must every geodesic be globally shortest?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Local stationarity/minimality has limitations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does arbitrary reparametrization preserve the affine equation unchanged?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A nonaffine tangent term can appear.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is timelike proper time an ordinary Euclidean spatial distance?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Lorentzian geometry has different norm properties.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Length of the segment (0,0)→(3,4) in Euclidean metric?",
+      "answer": "5",
+      "explanation": "√(9+16)=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Squared affine speed for x=3λ,y=4λ?",
+      "answer": "25",
+      "explanation": "3²+4²=25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What distinguishes coordinate acceleration and force?",
+      "answer": "Coordinates can accelerate while local nongravitational force vanishes.",
+      "options": [
+        "Coordinates can accelerate while local nongravitational force vanishes.",
+        "Parallel transport of its own tangent."
+      ],
+      "explanation": "Coordinates can accelerate while local nongravitational force vanishes.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the affine geodesic condition?",
+      "back": "Parallel transport of its own tangent.",
+      "concept": "ma11-4-theory"
+    },
+    {
+      "front": "What changes under nonaffine parameters?",
+      "back": "A tangent-proportional equation term.",
+      "concept": "ma11-4-theory"
+    },
+    {
+      "front": "What limits shortest-path language?",
+      "back": "Geometry, signature and global/conjugate-point structure.",
+      "concept": "ma11-4-theory"
+    },
+    {
+      "front": "What distinguishes coordinate acceleration and force?",
+      "back": "Coordinates can accelerate while local nongravitational force vanishes.",
+      "concept": "ma11-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Lee, Introduction to Smooth Manifolds — edition and exact section verification pending",
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a freely moving path have curved coordinate equations even in flat space? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Geodesics depend on geometry and parametrization, not on whether a coordinate plot looks straight.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An affinely parametrized geodesic parallel-transports its tangent along itself: ∇_u u=0.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In coordinates the affine equation is $\ddot x^\mu+\Gamma^\mu_{\alpha\beta}\dot x^\alpha\dot x^\beta=0$. A general nonaffine reparametrization introduces a tangent-proportional term; omitting that distinction can make a correct path look like a failed geodesic.
+
+For a Riemannian metric, stationary length/energy paths give the geodesic equation under the corresponding endpoint and parameter assumptions. They minimize length only locally before relevant conjugate/cut points, not necessarily globally. On a sphere multiple geodesics can connect special pairs of points.
+
+In Lorentzian spacetime, freely falling test particles follow timelike geodesics and geometric-optics rays follow null geodesics under the theory’s assumptions. Proper time can be locally maximal for timelike geodesics in a suitable neighbourhood; calling it an ordinary shortest spatial route is wrong. Null proper time is zero and needs an appropriate affine formulation.
+
+External forces, pressure and self-force effects can move matter away from test geodesics. A connection-dependent coordinate acceleration can be nonzero without a locally measured nongravitational force. Global paths also depend on topology and boundary/initial data, not just one local differential equation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Integrate a straight line in Cartesian and polar coordinates and compare the same endpoints/metric length. Separately test an affine versus nonlinear parameter change and identify the extra tangent term.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In Euclidean Cartesian coordinates x=3λ,y=4λ for 0≤λ≤1 is a constant-speed affine geodesic of length 5. Its speed squared is 25. Expressing that same path relative to another origin in polar coordinates changes the component equations without changing its geometric length.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
