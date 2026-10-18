@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA2.3",
+  "title": "Extrema and Lagrange multipliers",
+  "hook": "Why does setting every partial derivative to zero fail for a constrained maximum?",
+  "recap": [
+    "It is tangent to the regular constraint surface.",
+    "The objective gradient lies in the span of constraint gradients.",
+    "An extreme may occur where an interior stationarity equation does not apply.",
+    "Continuity on a nonempty compact feasible set."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a Lagrange-multiplier equation alone prove a maximum?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a stationarity condition requiring classification.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must singular constraints satisfy the ordinary multiplier condition?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A constraint qualification is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a semidefinite Hessian settle every extremum type?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Higher-order terms may decide the result.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Maximum of xy for nonnegative x,y with x+y=10?",
+      "answer": "25",
+      "explanation": "The product is maximized at x=y=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Stationary x for 10x−x²?",
+      "answer": "5",
+      "explanation": "10−2x=0 gives 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must accompany the multiplier equations?",
+      "answer": "The original constraints and classification of all relevant candidates",
+      "options": [
+        "The original constraints and classification of all relevant candidates",
+        "Only one convenient algebraic solution"
+      ],
+      "explanation": "Feasibility and boundary or global comparisons remain necessary.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a constrained direction admissible locally?",
+      "back": "It is tangent to the regular constraint surface.",
+      "concept": "ma2-3-theory"
+    },
+    {
+      "front": "What is the geometric multiplier condition?",
+      "back": "The objective gradient lies in the span of constraint gradients.",
+      "concept": "ma2-3-theory"
+    },
+    {
+      "front": "Why inspect boundaries?",
+      "back": "An extreme may occur where an interior stationarity equation does not apply.",
+      "concept": "ma2-3-theory"
+    },
+    {
+      "front": "What guarantees existence of a global extreme?",
+      "back": "Continuity on a nonempty compact feasible set.",
+      "concept": "ma2-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does setting every partial derivative to zero fail for a constrained maximum? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Physical parameters are often linked by conservation laws. Optimization must search only allowed changes; a direction that increases the objective may be forbidden by a constraint.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+At a regular constrained optimum the objective cannot rise along any tangent direction. Its gradient must therefore point normal to the constraint surface.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a smooth equality constraint g(x)=c with nonzero gradient, a differentiable local constrained extremum satisfies ∇f=λ∇g. The condition is necessary, not sufficient.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+At an unconstrained interior extremum of a differentiable scalar function, all directional derivatives vanish, hence ∇f=0. With a twice differentiable function, a positive-definite Hessian gives a strict local minimum and a negative-definite one a strict local maximum. An indefinite Hessian gives a saddle. Semidefinite cases need higher-order or other analysis: x⁴ and −x⁴ both have zero second derivative at zero but opposite extremum types.
+
+For a regular constraint g=c, local tangent vectors v satisfy ∇g·v=0. Stationarity requires ∇f·v=0 for each such v, so $\nabla f=\lambda\nabla g$ for some scalar λ. With several constraints whose gradients are independent, ∇f is a linear combination of their gradients. Independence is a constraint qualification; at a singular point the ordinary multiplier conclusion may fail.
+
+Solve the stationarity equations together with the original constraints, then classify or compare all admissible candidates. A compact feasible set with a continuous objective guarantees existence of a global extreme, but the multiplier equations alone do not prove the found candidate is global. Boundary pieces need their own checks when the constraints include inequalities or an interval domain.
+
+For f(x,y)=x+y on the unit circle, equations (1,1)=λ(2x,2y) give x=y and x²+y²=1. The two candidates are ±(1/√2,1/√2), giving ±√2. Compactness establishes attainment and comparison identifies the global extremes.
+
+At the singular equality g(x)=x²=0, the only feasible point is x=0. The objective f(x)=x has an extremum on that singleton, yet f′=1 cannot equal λg′=0. This is a direct warning against using multiplier equations without regularity. Inequality constraints lead to sign and complementarity conditions in the Karush–Kuhn–Tucker framework; those require additional hypotheses beyond this equality lesson.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot a constraint curve and objective contours. Move only along the allowed curve before comparing with free gradient steps. Test both the unit-circle example and the singular singleton constraint, recording which regularity hypothesis succeeds or fails.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Maximize xy on x+y=10 with x,y≥0. Substitute y=10−x to get 10x−x² on [0,10]. Its derivative vanishes at x=5; the value is 25 and both boundary endpoints give zero. The negative second derivative and endpoint checks establish the global maximum.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

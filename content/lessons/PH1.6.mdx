@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH1.6",
+  "title": "Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes)",
+  "hook": "Why can a spinning body’s angular momentum point away from its spin axis?",
+  "recap": [
+    "L=Iω about the specified point.",
+    "They diagonalize the symmetric inertia tensor.",
+    "Inertial angular momentum and rotational kinetic energy.",
+    "In a spin-dominated slow-precession regime, not arbitrary transient motion."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is L always parallel to ω for a rigid body?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "An anisotropic inertia tensor changes component weights.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can torque-free angular velocity components change in body axes?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Conserved inertial L need not have fixed body components.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Which distinct-principal-moment torque-free spin is linearly unstable?",
+      "options": [
+        "Always the largest-moment axis",
+        "The intermediate-moment axis"
+      ],
+      "answer": "The intermediate-moment axis",
+      "explanation": "The perturbation coefficient is positive for the intermediate axis.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Rotational energy in J for I=diag(2,3,4) and ω=(1,1,0)?",
+      "answer": "2.5",
+      "explanation": "K=ω·Iω/2=(2+3)/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "For rotation purely about a principal axis with I=4 kg m² and angular speed 3 rad/s, angular-momentum magnitude?",
+      "answer": "12",
+      "explanation": "L=Iω=12 kg m²/s.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why do Euler equations retain cross terms in principal axes?",
+      "answer": "The body axes rotate relative to conserved inertial directions",
+      "options": [
+        "The body axes rotate relative to conserved inertial directions",
+        "A diagonal tensor makes angular momentum zero"
+      ],
+      "explanation": "The rotating-basis derivative contributes ω×L.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How does the inertia tensor connect ω and L?",
+      "back": "L=Iω about the specified point.",
+      "concept": "ph1-6-theory"
+    },
+    {
+      "front": "What makes principal axes useful?",
+      "back": "They diagonalize the symmetric inertia tensor.",
+      "concept": "ph1-6-theory"
+    },
+    {
+      "front": "What is conserved in torque-free rigid rotation?",
+      "back": "Inertial angular momentum and rotational kinetic energy.",
+      "concept": "ph1-6-theory"
+    },
+    {
+      "front": "When is simple top precession rate appropriate?",
+      "back": "In a spin-dominated slow-precession regime, not arbitrary transient motion.",
+      "concept": "ph1-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "OpenStax University Physics, Volume 1 — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a spinning body’s angular momentum point away from its spin axis? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+General rigid-body dynamics requires an inertia tensor rather than one scalar. It explains why tumbling spacecraft and rotating asymmetric bodies behave differently from a wheel about a fixed principal axis.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A mass element contributes according to its perpendicular displacement from the rotation. For an asymmetric body, these weighted contributions can tilt the total angular momentum away from angular velocity.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+About the centre of mass, a rigid body has L=Iω with inertia tensor I. Principal axes diagonalize this real symmetric tensor; the principal moments are its eigenvalues.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For body-fixed coordinates ρi, the inertia tensor has components $I_{ab}=\sum_i m_i(\rho_i^2\delta_{ab}-\rho_{ia}\rho_{ib})$. Substituting the rigid velocity ω×ρ into angular momentum gives L=Iω. Rotational kinetic energy is $K_{\rm rot}=\omega\cdot I\omega/2$. Symmetry makes the tensor diagonalizable by orthonormal principal axes. Only rotation about a principal axis generally makes L parallel to ω.
+
+About the centre of mass, inertial torque satisfies τ=(dL/dt)I. In body axes, the rotating derivative adds Ω×L. With fixed principal moments I1,I2,I3 and body angular velocity components ωi, Euler's first equation is $I_1\dot\omega_1+(I_3-I_2)\omega_2\omega_3=\tau_1$, with cyclic companions. Dropping the cross terms is valid only in a special motion or symmetry, not because the tensor is diagonal.
+
+For torque-free rotation, both inertial L and rotational energy are conserved, while ω and the body-axis components of L can vary. Linearize near rotation about axis 3: $\dot\omega_1=(I_2-I_3)\Omega\omega_2/I_1$ and $\dot\omega_2=(I_3-I_1)\Omega\omega_1/I_2$. Thus $\ddot\omega_1=\Omega^2(I_2-I_3)(I_3-I_1)\omega_1/(I_1I_2)$. Distinct principal moments give oscillatory perturbations for maximum- or minimum-moment rotation and growing perturbations for the intermediate axis. Degenerate moments need a separate interpretation.
+
+For a rapidly spinning symmetric top with an approximately steady tilt and spin-dominated L≈I3ωs, balancing the slowly rotating angular-momentum vector gives precession rate approximately $\Omega_p=Mgr/(I_3\omega_s)$. This is a slow-precession approximation, not an exact formula for every launch condition; nutation and transient motion can occur.
+
+An inertia tensor depends on reference point and axis convention. The parallel-axis theorem adds $M[(d\cdot d)\mathbf1-dd^T]$ when shifting from the centre of mass by vector d. Material deformation or fuel redistribution changes I and takes the system outside a fixed-rigid-body model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use an asymmetrical model or a safe soft object to discuss principal axes, then calculate torque-free linearized perturbation signs for moments (2,3,4). Compare rotations about each axis. Physical toss demonstrations should use soft low-energy objects with clear space; no high-speed improvised rotor is needed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For principal moments (2,3,4) kg m² and ω=(1,1,0) rad/s, L=(2,3,0) kg m²/s, not parallel to ω. Rotational energy is (2+3)/2=2.5 J. Torque-free rotation about the moment-3 axis is the unstable intermediate case, not the most massive-looking geometric direction by inspection.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

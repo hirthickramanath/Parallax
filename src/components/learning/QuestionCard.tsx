@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2, CircleX } from "lucide-react";
 import type { Question } from "../../lib/course";
-import { withinTolerance } from "../../lib/learning-core";
+import { gradeNumeric } from "../../lib/learning-core";
 import { useLearning } from "../../hooks/useLearning";
 import { Button } from "../ui/button";
 export function QuestionCard({
@@ -20,7 +20,7 @@ export function QuestionCard({
     e.preventDefault();
     const correct =
       question.type === "numeric"
-        ? withinTolerance(Number(response), Number(question.answer))
+        ? gradeNumeric(response, Number(question.answer), question.exact)
         : response === question.answer;
     setResult(correct);
     const id = crypto.randomUUID();
@@ -78,8 +78,9 @@ export function QuestionCard({
             }}
           />
           <small>
-            Accepted within 2% relative tolerance (absolute tolerance 10⁻⁶ near
-            zero).
+            {question.exact
+              ? "Exact numeric value required."
+              : "Accepted within 2% relative tolerance (absolute tolerance 10⁻⁶ near zero)."}
           </small>
         </label>
       )}

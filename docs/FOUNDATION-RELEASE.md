@@ -1,5 +1,7 @@
 # Foundation course and laboratory release
 
+**Historical milestone:** current authoring counts are in [BATCH-RELEASE.md](BATCH-RELEASE.md) and [COURSE-STATUS.md](COURSE-STATUS.md).
+
 This is the current release status. Earlier integrated/follow-up release documents retain historical counts. The machine-generated [course ledger](COURSE-STATUS.md) is the current inventory, including every remaining missing ID.
 
 ## Implemented

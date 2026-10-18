@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH1.1",
+  "title": "Newtonian mechanics with calculus (drag, variable mass)",
+  "hook": "Why is differentiating mv for a leaking rocket not the whole force balance?",
+  "recap": [
+    "Specify the system boundary and momentum crossing it.",
+    "mg/c with the stated downward convention.",
+    "Exhaust-speed magnitude times ln(initial mass/final mass).",
+    "Initial conditions, terminal behaviour and the vacuum limit."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can an open rocket subsystem use force=d(mv)/dt without a momentum-flux term?",
+      "options": [
+        "Always",
+        "Not generally"
+      ],
+      "answer": "Not generally",
+      "explanation": "Exhaust carries momentum across the boundary.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does terminal speed mean gravity vanished?",
+      "options": [
+        "No; drag balances it",
+        "Yes"
+      ],
+      "answer": "No; drag balances it",
+      "explanation": "Zero acceleration means the net force vanishes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the ideal rocket logarithm have dimensional units inside it?",
+      "options": [
+        "Yes",
+        "No; it uses a mass ratio"
+      ],
+      "answer": "No; it uses a mass ratio",
+      "explanation": "A logarithm takes a dimensionless argument.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Terminal speed in m/s for m=2 kg, c=1 kg/s and g=10 m/s²?",
+      "answer": "20",
+      "explanation": "mg/c=20 m/s.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Drag timescale in seconds for m=6 kg and c=3 kg/s?",
+      "answer": "2",
+      "explanation": "τ=m/c=2 s.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why does backward exhaust accelerate the rocket forward?",
+      "answer": "The rocket-plus-exhaust momentum balance includes the outgoing momentum",
+      "options": [
+        "The rocket-plus-exhaust momentum balance includes the outgoing momentum",
+        "The expelled mass disappears without carrying momentum"
+      ],
+      "explanation": "Momentum exchange accounts for the acceleration.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the first modeling decision for variable-mass motion?",
+      "back": "Specify the system boundary and momentum crossing it.",
+      "concept": "ph1-1-theory"
+    },
+    {
+      "front": "What is the linear-drag terminal speed?",
+      "back": "mg/c with the stated downward convention.",
+      "concept": "ph1-1-theory"
+    },
+    {
+      "front": "What gives the classical ideal rocket velocity gain?",
+      "back": "Exhaust-speed magnitude times ln(initial mass/final mass).",
+      "concept": "ph1-1-theory"
+    },
+    {
+      "front": "Which checks validate the drag expression?",
+      "back": "Initial conditions, terminal behaviour and the vacuum limit.",
+      "concept": "ph1-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "OpenStax University Physics, Volume 1 — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is differentiating mv for a leaking rocket not the whole force balance? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Newtonian models become subtle when forces depend on velocity or a chosen system exchanges mass. A valid equation begins by defining the system boundary and reference frame, rather than applying a memorized derivative to an open subsystem.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A drag force responds to motion through a medium. A rocket changes its momentum partly by pushing exhaust away; the expelled material carries momentum across the chosen rocket boundary.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a fixed collection of particles in an inertial frame, the external force equals the time derivative of total momentum. An open system additionally requires momentum flux across its boundary.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For constant mass m falling downward through a stationary medium with linear drag coefficient c>0, choose downward v positive. The equation is $m\dot v=mg-cv$. With τ=m/c and terminal speed $v_t=mg/c$, the solution is $v(t)=v_t+(v_0-v_t)e^{-t/\tau}$. Integrating gives $y(t)-y_0=v_tt+(v_0-v_t)\tau(1-e^{-t/\tau})$. Initial conditions and the c→0 limit recover the appropriate vacuum motion. The formula assumes constant g, mass and linear drag; a quadratic law needs a different solution.
+
+For an ideal one-dimensional rocket, let m decrease and let expelled material have velocity u relative to the rocket. Comparing momentum of the rocket plus the just-expelled material over dt gives $m\dot v=F_{\rm ext}+u\dot m$ to first order. Since backward exhaust has u&lt;0 and mass loss has ṁ&lt;0, the thrust term is positive. Differentiating only the rocket's mv without accounting for outgoing material would assign the wrong flux.
+
+With negligible external force and constant exhaust-speed magnitude ve=−u, integrate $dv=-v_e\,dm/m$ to obtain $v-v_0=v_e\ln(m_0/m)$. This logarithm compares two positive masses and is dimensionless. The equation assumes a classical nonrelativistic exhaust model, instantaneous relative exhaust speed and no pressure-thrust correction. Gravity and aerodynamic losses add trajectory-dependent terms.
+
+Energy accounting must include the exhaust and the propulsion energy source. Conservation of momentum does not imply the rocket's kinetic energy is constant or that chemical energy converts entirely into vehicle kinetic energy. An open subsystem is not closed merely because its external aerodynamic force is zero.
+
+For numerical work, test initial position and speed, terminal behaviour and the vacuum limit of the drag solution. Very small c can cause cancellation in 1−exp(−t/τ); a stable exponential-difference function or a series expansion can be needed even when the analytic expression is correct.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the falling-body drag demonstration as a comparison with the analytic solution, holding gravity and medium model fixed. Plot speed against t/τ and check terminal behaviour. For a rocket, calculate momentum of both rocket and one exhaust parcel before and after a short interval; never describe the vehicle alone as a closed system.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For m=2 kg, c=1 kg/s and g=10 m/s², τ=2 s and terminal speed is 20 m/s. Starting from rest gives v(2)=20(1−e⁻¹)≈12.64 m/s. For an ideal rocket with ve=1000 m/s and mass ratio 2, the vacuum velocity gain is 1000 ln2≈693.15 m/s.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

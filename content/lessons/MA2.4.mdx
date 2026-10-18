@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA2.4",
+  "title": "Multiple integrals and Jacobians",
+  "hook": "Why does a tiny polar-coordinate cell have area r dr dθ rather than dr dθ?",
+  "recap": [
+    "Local oriented volume scaling of a coordinate map.",
+    "r dr dθ.",
+    "r² sinθ dr dθ dφ.",
+    "Signed integrability and nonnegative integration support different conclusions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a coordinate change preserve area without a scale factor?",
+      "options": [
+        "Always",
+        "Not generally"
+      ],
+      "answer": "Not generally",
+      "explanation": "The derivative determinant records local distortion.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Should ordinary volume use a signed determinant without absolute value?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Volume is nonnegative; orientation is handled separately.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May every signed improper double integral have its integration order exchanged?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Appropriate integrability hypotheses are needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Polar Jacobian magnitude at radius r=3?",
+      "answer": "3",
+      "explanation": "The polar determinant is r for nonnegative radius.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Jacobian magnitude for x=2u and y=3v?",
+      "answer": "6",
+      "explanation": "The diagonal derivative determinant is 2×3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why specify angular ranges and coverage?",
+      "answer": "A coordinate map can cover the physical region multiple times",
+      "options": [
+        "A coordinate map can cover the physical region multiple times",
+        "The Jacobian alone fixes all counting automatically"
+      ],
+      "explanation": "Domain and multiplicity are separate parts of the transformation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a Jacobian determinant measure?",
+      "back": "Local oriented volume scaling of a coordinate map.",
+      "concept": "ma2-4-theory"
+    },
+    {
+      "front": "What is the polar area element?",
+      "back": "r dr dθ.",
+      "concept": "ma2-4-theory"
+    },
+    {
+      "front": "What is the stated-convention spherical volume element?",
+      "back": "r² sinθ dr dθ dφ.",
+      "concept": "ma2-4-theory"
+    },
+    {
+      "front": "Why distinguish Fubini and Tonelli hypotheses?",
+      "back": "Signed integrability and nonnegative integration support different conclusions.",
+      "concept": "ma2-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a tiny polar-coordinate cell have area r dr dθ rather than dr dθ? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Changing variables can simplify a physical integral, but new coordinate increments do not automatically represent the same area or volume. A Jacobian records the local distortion.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A small coordinate rectangle maps approximately into a parallelogram. The determinant of the derivative gives its signed area scale; ordinary area uses the magnitude.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a suitably regular one-to-one coordinate transformation, a multiple integral changes variables with the absolute determinant of its Jacobian. Domain and coverage are part of the theorem.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a smooth planar map (u,v)↦(x,y), linearize the displacement using its two derivative columns. The infinitesimal area scale is $|\partial(x,y)/\partial(u,v)|$. In 3D, the determinant scales oriented volume. To use the usual change-of-variables formula, require an invertible transformation on the relevant interior, handle exceptional boundaries appropriately, and avoid counting a region repeatedly.
+
+For polar coordinates x=r cosθ and y=r sinθ, the determinant is r. With r≥0, $dx\,dy=r\,dr\,d\theta$. The origin has a coordinate singularity and angular endpoints repeat a boundary ray; these measure-zero features can be handled by the standard integration setup, not by claiming global bijectivity everywhere.
+
+For spherical coordinates with polar angle θ from +z and azimuth φ, the volume element is $r^2\sin\theta\,dr\,d\theta\,d\phi$. Geographic latitude uses a different trigonometric factor. The angular range must cover the sphere once: 0≤θ≤π and a 2π azimuth interval, with the usual boundary identifications.
+
+For a continuous integrand on a rectangle, repeated integrals agree with the double integral. More general Fubini conclusions require integrability hypotheses. For a signed improper integrand, convergence of selected iterated integrals alone does not always permit exchanging their order. For a nonnegative measurable integrand, Tonelli allows iterated integrals even if the result is infinite, in the broader measure-theoretic setting.
+
+For density ρ, total mass is ∫ρ dV and a centre coordinate is ∫xρ dV divided by total mass when defined and nonzero. A coordinate substitution changes the density integrand together with the volume element; dropping the Jacobian changes the modeled mass. Units provide a first check but do not detect every missing dimensionless geometric factor.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw cells with the same dr and dθ near two radii. Compare their approximate areas before integrating the disk. Use a numerical polar grid with area weights and verify refinement against π; label the grid values as computed, not acquired physical measurements.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The unit disk area in polar coordinates is ∫₀²π∫₀¹ r dr dθ=π. Omitting r would give 2π, showing that correct domain bounds alone do not repair a wrong area element. The unit ball volume similarly integrates r² sinθ to 4π/3.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

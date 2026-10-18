@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA2.6",
+  "title": "Surface integrals",
+  "hook": "Why can a surface intercept no flux from a nonzero field?",
+  "recap": [
+    "The parameter-tangent cross product times parameter area.",
+    "(−gₓ,−gᵧ,1) dx dy.",
+    "Outward.",
+    "Only flux depends on the normal projection and orientation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can nonzero field yield zero flux through a patch?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "A tangent field has zero normal component.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does reversing orientation change scalar surface area?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Area uses magnitude, while flux is signed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is every field flux a physical particle flow rate?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The field units and interpretation determine meaning.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Upward flux of F=(0,0,3) through a horizontal unit square?",
+      "answer": "3",
+      "explanation": "The normal dot product is 3 over area 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Downward flux through the same square?",
+      "answer": "-3",
+      "explanation": "Reversing the normal reverses the sign.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why not normalize the parameter cross product and then forget its magnitude?",
+      "answer": "Its magnitude supplies the local area scale",
+      "options": [
+        "Its magnitude supplies the local area scale",
+        "The cross product is always a unit vector"
+      ],
+      "explanation": "Parameter increments are not generally physical area increments.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the oriented surface element?",
+      "back": "The parameter-tangent cross product times parameter area.",
+      "concept": "ma2-6-theory"
+    },
+    {
+      "front": "What is the upward vector area for z=g(x,y)?",
+      "back": "(−gₓ,−gᵧ,1) dx dy.",
+      "concept": "ma2-6-theory"
+    },
+    {
+      "front": "What is the usual closed-surface orientation?",
+      "back": "Outward.",
+      "concept": "ma2-6-theory"
+    },
+    {
+      "front": "Why keep scalar area and vector flux distinct?",
+      "back": "Only flux depends on the normal projection and orientation.",
+      "concept": "ma2-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a surface intercept no flux from a nonzero field? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Flux measures how much of a vector field crosses an oriented surface. A field tangent to the surface contributes nothing even if its magnitude is large.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A patch has both an area and a chosen normal. The dot product with that area vector selects the crossing component.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For an oriented smooth parameterized surface r(u,v), vector flux is ∫∫F(r)·(rᵤ×rᵥ)du dv. Scalar surface area integrals use the cross-product magnitude.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The parameter tangents rᵤ and rᵥ span an infinitesimal parallelogram. Its area vector is $(r_u\times r_v)du\,dv$, assuming a regular parameterization where the cross product is nonzero. Swapping parameter order reverses orientation; it does not change scalar surface area.
+
+For a graph z=g(x,y) with upward orientation, the area vector is $(-g_x,-g_y,1)dx\,dy$. The scalar area element is $\sqrt{1+g_x^2+g_y^2}\,dx\,dy$. Replacing one with the other confuses signed flux and area. A unit normal times scalar area gives the same vector area as the cross-product expression.
+
+A closed surface is conventionally oriented outward for flux theorems. Piecewise smooth surfaces can be handled patch by patch with consistent orientation, including boundaries and exceptional parameter points. Some abstract surfaces, such as a Möbius strip, do not admit a continuous global normal, so a standard globally oriented flux integral needs care.
+
+For a sphere of radius R centered at the origin, the outward unit normal is r/R. For F=r, F·n=R, so total flux is 4πR³. This scales as a volume, consistent with divergence 3. For a constant field, the total signed flux through the closed sphere is zero, although each hemisphere can have a nonzero contribution.
+
+A flux value has units field times area; physical interpretations differ. A velocity field gives volume flow only with the appropriate geometry, while mass flow uses density times velocity. An electric field gives electric flux, not a count of particles physically crossing the surface. State the field and its meaning before calling every flux a transport rate.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw a unit square tilted at several angles in a constant field and compute flux from F·n times area. Compare with a parameterized graph using its unnormalized area vector. Label orientation and distinguish a physical flow field from a non-transport field.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For constant F=(0,0,3) through a horizontal unit square, upward flux is 3 and downward flux −3. Through a vertical unit square with normal along x, flux is zero. All three surfaces have the same area but different normal projections.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

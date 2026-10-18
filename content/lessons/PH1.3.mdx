@@ -1,0 +1,193 @@
+---
+{
+  "id": "PH1.3",
+  "title": "Central forces and orbits",
+  "hook": "Why can one conserved angular momentum reduce a spatial orbit to a planar problem?",
+  "recap": [
+    "A fixed nonzero angular-momentum vector normal to the motion.",
+    "U(r)+L²/(2μr²).",
+    "Specific angular momentum squared divided by G times total mass.",
+    "Zero specific orbital energy."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a central force guarantee zero torque about its centre?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Its force is parallel to the position vector.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the area law alone prove an inverse-square force?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Any central force preserves angular momentum and area rate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is the effective angular barrier an additional physical interaction?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It comes from reducing the angular motion.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Circular speed for k=1 and radius 4 in consistent units?",
+      "answer": "0.5",
+      "explanation": "v=√(k/r)=0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Specific angular momentum for circular radius 4 and speed 0.5?",
+      "answer": "2",
+      "explanation": "ℓ=rv=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What identifies radial stability of a circular orbit at fixed angular momentum?",
+      "answer": "A local minimum of the effective potential",
+      "options": [
+        "A local minimum of the effective potential",
+        "Any stationary point regardless of curvature"
+      ],
+      "explanation": "A maximum can instead be unstable.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a central orbit planar?",
+      "back": "A fixed nonzero angular-momentum vector normal to the motion.",
+      "concept": "ph1-3-theory"
+    },
+    {
+      "front": "What is the effective potential?",
+      "back": "U(r)+L²/(2μr²).",
+      "concept": "ph1-3-theory"
+    },
+    {
+      "front": "What is the inverse-square conic parameter p?",
+      "back": "Specific angular momentum squared divided by G times total mass.",
+      "concept": "ph1-3-theory"
+    },
+    {
+      "front": "What is the escape-energy boundary in the ideal gravitational model?",
+      "back": "Zero specific orbital energy.",
+      "concept": "ph1-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "OpenStax University Physics, Volume 1 — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can one conserved angular momentum reduce a spatial orbit to a planar problem? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Central-force dynamics connects conservation laws to conic orbits and stability. It also shows which Keplerian conclusions fail when the force differs from inverse square.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A central force exerts no torque about its centre. The position and velocity stay in a plane perpendicular to the fixed angular-momentum vector when that vector is nonzero.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For two-body relative motion in a central potential, use reduced mass μ and conserved angular momentum L. The radial coordinate moves in an effective potential combining physical attraction and an angular-momentum barrier.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a central force $\mathbf F=F(r)\hat r$, torque r×F is zero, so L=r×μv is constant. For L≠0, motion lies in the plane perpendicular to L and $L=\mu r^2\dot\theta$. For L=0, the planar-angle reduction is singular; radial motion must be treated separately. Equal areas in equal times follow from constant r²θ̇ and require a central force, not specifically an inverse-square force.
+
+For a time-independent central potential U(r), energy is
+
+$$E=\frac{\mu\dot r^2}{2}+U_{\rm eff}(r),\qquad U_{\rm eff}=U(r)+\frac{L^2}{2\mu r^2}.$$
+
+A circular orbit occurs at a stationary effective potential. A local minimum is radially stable for fixed L; a maximum is unstable. The angular barrier is not a new physical repulsive interaction—it results from eliminating angular motion using its conserved momentum.
+
+For inverse-square gravitational relative motion, let $k=G(M+m)$ and specific angular momentum $\ell=r^2\dot\theta$. With u=1/r, the radial equation gives $u''+u=k/\ell^2$, where primes denote θ derivatives. Thus $r=p/[1+e\cos(\theta-\theta_0)]$ with p=ℓ²/k. The orbit is a conic on its allowed radial domain.
+
+Specific energy ε=v²/2−k/r satisfies $e^2=1+2\varepsilon\ell^2/k^2$. Negative energy gives a bound ellipse for a noncollisional nonzero-angular-momentum orbit; zero energy gives the parabolic escape boundary; positive energy a hyperbola. For an ellipse ε=−k/(2a) and $T^2=4\pi^2a^3/k$. The circular case has e=0 and is a special ellipse.
+
+Perturbing the force law can preserve planarity and area rate while changing closedness of the orbit. Extra bodies, dissipation or time dependence can break the simplified conserved quantities. Do not assign a two-body eccentricity a constant physical meaning in a strongly perturbed trajectory without defining an osculating approximation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the orbit explorer to compare negative, zero and positive energy states while keeping the model two-body. Compute energy and angular momentum from the initial state rather than judging shape from a truncated drawing. Separately sketch an effective potential and identify radial turning points from E=Ueff.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In units with k=1, choose a circular orbit of radius r=4. Circular speed is √(k/r)=0.5, specific angular momentum is r v=2 and specific energy is −1/(2r)=−0.125. Substitution gives e²=1+2(−0.125)×4=0.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

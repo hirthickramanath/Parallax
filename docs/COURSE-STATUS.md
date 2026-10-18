@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **49**.
-- Authored recall cards: **201**.
-- Missing lesson bodies: **305**.
+- Playable authored drafts: **79**.
+- Authored recall cards: **321**.
+- Missing lesson bodies: **275**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -18,9 +18,9 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 0 | MB2 | Trigonometry and coordinate geometry | 3 / 3 | None |
 | 0 | MB3 | Calculus revisited | 5 / 5 | None |
 | 0 | MB4 | Matrices, vectors and probability | 4 / 4 | None |
-| 1 | MA1 | Real analysis | 0 / 8 | MA1.1, MA1.2, MA1.3, MA1.4, MA1.5, MA1.6, MA1.7, MA1.8 |
-| 1 | MA2 | Multivariable and vector calculus | 0 / 8 | MA2.1, MA2.2, MA2.3, MA2.4, MA2.5, MA2.6, MA2.7, MA2.8 |
-| 1 | MA3 | Linear algebra | 0 / 8 | MA3.1, MA3.2, MA3.3, MA3.4, MA3.5, MA3.6, MA3.7, MA3.8 |
+| 1 | MA1 | Real analysis | 8 / 8 | None |
+| 1 | MA2 | Multivariable and vector calculus | 8 / 8 | None |
+| 1 | MA3 | Linear algebra | 8 / 8 | None |
 | 2 | MA4 | Ordinary differential equations | 0 / 6 | MA4.1, MA4.2, MA4.3, MA4.4, MA4.5, MA4.6 |
 | 3 | MA5 | PDEs and Fourier methods | 0 / 7 | MA5.1, MA5.2, MA5.3, MA5.4, MA5.5, MA5.6, MA5.7 |
 | 3 | MA6 | Complex analysis | 0 / 6 | MA6.1, MA6.2, MA6.3, MA6.4, MA6.5, MA6.6 |
@@ -36,7 +36,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 0 | PB3 | Waves and optics | 3 / 3 | None |
 | 0 | PB4 | Electricity and magnetism | 4 / 4 | None |
 | 0 | PB5 | Modern physics | 3 / 3 | None |
-| 1 | PH1 | Classical mechanics I: Newtonian | 0 / 6 | PH1.1, PH1.2, PH1.3, PH1.4, PH1.5, PH1.6 |
+| 1 | PH1 | Classical mechanics I: Newtonian | 6 / 6 | None |
 | 3 | PH2 | Analytical mechanics | 0 / 7 | PH2.1, PH2.2, PH2.3, PH2.4, PH2.5, PH2.6, PH2.7 |
 | 4 | PH3 | Nonlinear dynamics and continuum mechanics | 0 / 4 | PH3.1, PH3.2, PH3.3, PH3.4 |
 | 2 | PH4 | Electrostatics and magnetostatics | 0 / 8 | PH4.1, PH4.2, PH4.3, PH4.4, PH4.5, PH4.6, PH4.7, PH4.8 |

@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA1.8",
+  "title": "Uniform convergence",
+  "hook": "Can continuous functions converge to a discontinuous limit?",
+  "recap": [
+    "One tail threshold controls every input simultaneously.",
+    "Two uniform approximation bounds surround continuity of one fixed approximant.",
+    "For example uniform derivative convergence plus convergence at one base point under the stated smoothness assumptions.",
+    "The same functions can converge uniformly on a restricted domain but not the original one."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can a pointwise limit of continuous functions be discontinuous?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "xⁿ on [0,1] is an example.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does uniform function convergence alone justify passing derivatives to the limit?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "sin(nx)/n converges uniformly but its derivative at zero stays 1.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the finite-interval integral bound automatically apply on an infinite domain?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The interval-length factor is no longer finite.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Supremum error of x¹⁰ relative to zero on [0,1/2]?",
+      "answer": "0.0009765625",
+      "explanation": "It is (1/2)¹⁰=1/1024.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Derivative at zero of sin(nx)/n for positive integer n?",
+      "answer": "1",
+      "explanation": "Differentiating gives cos(nx), which is 1 at zero.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What makes the M-test uniform?",
+      "answer": "One summable majorant bounds each term at every domain point",
+      "options": [
+        "One summable majorant bounds each term at every domain point",
+        "Convergence at one selected input"
+      ],
+      "explanation": "The tail estimate is independent of location.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does uniform convergence require?",
+      "back": "One tail threshold controls every input simultaneously.",
+      "concept": "ma1-8-theory"
+    },
+    {
+      "front": "Why does uniform convergence preserve continuity?",
+      "back": "Two uniform approximation bounds surround continuity of one fixed approximant.",
+      "concept": "ma1-8-theory"
+    },
+    {
+      "front": "What extra control supports exchanging derivatives?",
+      "back": "For example uniform derivative convergence plus convergence at one base point under the stated smoothness assumptions.",
+      "concept": "ma1-8-theory"
+    },
+    {
+      "front": "Why state the domain in a convergence claim?",
+      "back": "The same functions can converge uniformly on a restricted domain but not the original one.",
+      "concept": "ma1-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can continuous functions converge to a discontinuous limit? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Interchanging approximation with differentiation, integration or limits is a major source of errors in mathematical physics. Pointwise convergence permits location-dependent error control; uniform convergence makes the control simultaneous.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Pointwise convergence lets each input wait its own amount of time. Uniform convergence requires one threshold to work everywhere in the domain.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Functions fₙ converge uniformly to f on D if for every ε>0 there is N such that n≥N implies |fₙ(x)−f(x)|&lt;ε for all x in D. Equivalently, the supremum error tends to zero when that supremum is finite.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+On [0,1], $f_n(x)=x^n$ converges pointwise to 0 for x&lt;1 and to 1 at x=1. Each fₙ is continuous, but the limit is not. For each n, points sufficiently near 1 keep xⁿ arbitrarily close to 1 while the limit there is zero, so the supremum error is 1. The convergence is not uniform. On [0,a] for any fixed 0≤a&lt;1, the error is at most aⁿ, giving uniform convergence.
+
+Uniform limits preserve continuity: to bound |f(x)−f(a)|, insert fₙ(x) and fₙ(a). Choose one sufficiently late n to make both approximation errors below ε/3 everywhere, then use continuity of that fixed fₙ to control its middle difference. Pointwise convergence alone cannot select the same n for nearby x.
+
+If integrable fₙ converge uniformly on a finite interval to f, then f is integrable and $|\int f_n-\int f|\le(b-a)\sup|f_n-f|\to0$. On unbounded domains the finite-length bound disappears and extra control is needed. Narrow spikes show pointwise convergence can fail to preserve an integral.
+
+Uniform function convergence alone does not preserve derivatives. For $f_n(x)=\sin(nx)/n$, the functions converge uniformly to zero, while fₙ′(0)=1 for every n, not the derivative zero of the limit. A standard sufficient derivative theorem requires continuously differentiable fₙ on a closed finite interval, uniform convergence of their derivatives, and convergence of fₙ at one point. Integrating the derivative limit then establishes convergence of the functions to a differentiable limit with that derivative.
+
+For a function series, the Weierstrass M-test uses |gₙ(x)|≤Mₙ uniformly and ∑Mₙ&lt;∞. The uniform tail bound makes the partial sums uniformly Cauchy. A geometric bound can therefore justify termwise integration on a finite interval; termwise differentiation still needs control of the derivative series. Always name the theorem and its domain before exchanging operations.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot xⁿ for increasing n near x=1, using finer x resolution as n grows. Explain why a fixed plotting grid can hide the nonuniform boundary layer. Compare the shrinking sine example and calculate derivatives at zero analytically rather than trusting a visual slope.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For fₙ(x)=xⁿ on [0,1/2], sup error is 2⁻ⁿ. At n=10 it is 1/1024, below 0.001. On [0,1], the pointwise limit differs at 1 and the supremum error stays 1. Restricting the domain changes the convergence mode.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

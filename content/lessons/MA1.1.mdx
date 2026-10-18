@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA1.1",
+  "title": "Logic, sets and proof techniques",
+  "hook": "Why is “every observation has some explanation” weaker than “one explanation fits every observation”?",
+  "recap": [
+    "Provide an existentially quantified counterclaim.",
+    "The chosen y may depend on that x.",
+    "A preimage is a set construction available without injectivity.",
+    "Containment in both directions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is an implication equivalent to its converse?",
+      "options": [
+        "Always",
+        "Not generally"
+      ],
+      "answer": "Not generally",
+      "explanation": "Only its contrapositive is automatically equivalent.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can a preimage be defined without an inverse function?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Preimages are sets of admitted inputs meeting a condition.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May quantifiers generally be exchanged without changing meaning?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their order determines allowed dependencies.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "For f(x)=x² on real numbers, how many elements are in the preimage of the singleton set containing 4?",
+      "answer": "2",
+      "explanation": "The preimage consists of −2 and 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "exact": true
+    },
+    {
+      "id": "warmup",
+      "prompt": "How many directions must be established to prove a biconditional?",
+      "answer": "2",
+      "explanation": "Both implications are needed.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup",
+      "exact": true
+    },
+    {
+      "id": "core",
+      "prompt": "Which proof establishes equality of sets?",
+      "answer": "Show every element of each belongs to the other",
+      "options": [
+        "Show every element of each belongs to the other",
+        "Show only that they share one example"
+      ],
+      "explanation": "Mutual containment proves equality; a shared element does not.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How do you negate a universal statement?",
+      "back": "Provide an existentially quantified counterclaim.",
+      "concept": "ma1-1-theory"
+    },
+    {
+      "front": "What may depend on x in “for every x there exists y”?",
+      "back": "The chosen y may depend on that x.",
+      "concept": "ma1-1-theory"
+    },
+    {
+      "front": "What distinguishes a preimage from an inverse function?",
+      "back": "A preimage is a set construction available without injectivity.",
+      "concept": "ma1-1-theory"
+    },
+    {
+      "front": "What proves equality of two sets?",
+      "back": "Containment in both directions.",
+      "concept": "ma1-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is “every observation has some explanation” weaker than “one explanation fits every observation”? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Rigorous analysis starts by distinguishing the logical structure of claims. A limit proof and a scientific model comparison can look similar in prose yet differ because the order of “for every” and “there exists” changes what may depend on what.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Think of a game: one person chooses an input and the other must respond. A response chosen after seeing the input has more freedom than one fixed in advance.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A proposition has a truth value. Quantifiers specify a domain and either all its elements or the existence of at least one. A function is a relation assigning exactly one output to every admitted input.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+An implication $P\Rightarrow Q$ is false precisely when P is true and Q false. Its contrapositive $\neg Q\Rightarrow\neg P$ is logically equivalent; its converse is not. To establish a biconditional, prove both directions. Negating a quantified statement swaps quantifiers and negates the inner claim: $\neg(\forall x\in D\;P(x))$ means $\exists x\in D\;\neg P(x)$.
+
+The statements $\forall x\in\mathbb R\;\exists y\in\mathbb R\;(y>x)$ and $\exists y\in\mathbb R\;\forall x\in\mathbb R\;(y>x)$ differ. The first is true using y=x+1; the second is false by choosing x=y+1. Declare dependencies rather than treating quantifiers as movable decorations.
+
+For sets A and B, A is contained in B if every element of A lies in B. Equality follows from mutual containment. De Morgan's law $(A\cup B)^c=A^c\cap B^c$ follows by testing one arbitrary element: it lies in neither A nor B exactly when it lies in both complements. Complements require a specified ambient set.
+
+For a function f:D→E, an inverse on f(D) exists if f is injective. A preimage $f^{-1}(S)=\{x\in D:f(x)\in S\}$ is defined for any subset S of E, even if f has no inverse function. Preimages preserve unions, intersections and complements relative to the admitted domains. Images need not preserve intersections: for f(x)=x², images of the disjoint singleton sets containing −1 and 1 both contain 1.
+
+A direct proof begins with an arbitrary element satisfying the hypotheses. A contradiction proof adds the negation of the desired conclusion and derives an impossibility. An existence proof must construct an admissible example or supply a valid theorem guaranteeing one. In analysis, hypotheses such as nonemptiness, boundedness and positive denominators often do real work; omit none silently.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Write the negation of “for every positive ε there is an N such that every n≥N satisfies the error bound.” Track which witness can depend on which previous choice. Construct a finite-set map and test image versus preimage intersection rules. Finite tests illustrate the claims; the membership proof establishes the general rule.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+To prove the preimage of A∩B equals the intersection of their preimages, take arbitrary x in the function domain. The statement f(x)∈A∩B is equivalent to both f(x)∈A and f(x)∈B. These are exactly the two preimage membership conditions. This establishes both containments at once without assuming f is one-to-one.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

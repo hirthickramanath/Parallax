@@ -1,0 +1,192 @@
+---
+{
+  "id": "MA2.8",
+  "title": "Div, grad, curl in curvilinear coordinates",
+  "hook": "Why does radial flow change when its component stays constant?",
+  "recap": [
+    "Physical lengths corresponding to coordinate increments.",
+    "It measures net flux per local volume.",
+    "r⁻² d(r²Aᵣ)/dr for r>0.",
+    "Vector basis directions can vary with position."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can fixed-component Cartesian formulas be copied unchanged into spherical unit components?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Scale factors and basis variation matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does zero divergence for r>0 settle an excluded singular origin?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A point source can remain outside the ordinary formula domain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is every coordinate singularity a physical field singularity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A smooth field may have ambiguous coordinate components at a pole.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Divergence of A=r eᵣ at r>0 in three dimensions?",
+      "answer": "3",
+      "explanation": "r⁻² d(r³)/dr=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Cylindrical volume factor h₁h₂h₃ at s=4?",
+      "answer": "4",
+      "explanation": "The scale factors multiply to s.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What field components do the displayed vector formulas use?",
+      "answer": "Components along local orthonormal unit vectors",
+      "options": [
+        "Components along local orthonormal unit vectors",
+        "Arbitrary coordinate-basis components with no conversion"
+      ],
+      "explanation": "The chosen component convention is part of the formula.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What do orthogonal scale factors describe?",
+      "back": "Physical lengths corresponding to coordinate increments.",
+      "concept": "ma2-8-theory"
+    },
+    {
+      "front": "Why does divergence include area variation?",
+      "back": "It measures net flux per local volume.",
+      "concept": "ma2-8-theory"
+    },
+    {
+      "front": "What is the spherical radial divergence formula?",
+      "back": "r⁻² d(r²Aᵣ)/dr for r>0.",
+      "concept": "ma2-8-theory"
+    },
+    {
+      "front": "Why distinguish scalar and vector Laplacians?",
+      "back": "Vector basis directions can vary with position.",
+      "concept": "ma2-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does radial flow change when its component stays constant? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Curvilinear coordinates simplify spherical and cylindrical physics, but their basis vectors and volume cells vary with position. Copying Cartesian derivative formulas omits that geometry.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A sphere gets larger with radius. Even the same radial vector magnitude crosses more area at a larger radius, changing the local flux balance.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In orthogonal coordinates qᵢ with scale factors hᵢ, a displacement is the sum of hᵢdqᵢ along local unit vectors. Differential operators must account for those scale factors and changing bases.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For orthogonal coordinates, $ds^2=\sum_i h_i^2dq_i^2$ and $dV=h_1h_2h_3\,dq_1dq_2dq_3$. For scalar f, $\nabla f=\sum_i e_i(\partial f/\partial q_i)/h_i$. These eᵢ are local unit vectors, not generally fixed Cartesian vectors.
+
+For a vector field with physical unit-basis components Aᵢ, flux through a small coordinate cell gives
+
+$$\nabla\cdot A=\frac{1}{h_1h_2h_3}\sum_i\frac{\partial}{\partial q_i}\left(\frac{h_1h_2h_3}{h_i}A_i\right).$$
+
+In cylindrical coordinates (s,φ,z), scale factors are (1,s,1), so divergence is $s^{-1}\partial_s(sA_s)+s^{-1}\partial_\phi A_\phi+\partial_zA_z$. In spherical coordinates (r,θ,φ), using θ from +z, scale factors are (1,r,r sinθ). A purely radial field then has divergence $r^{-2}d(r^2A_r)/dr$.
+
+The scalar Laplacian is divergence of gradient, giving $\nabla^2f=(h_1h_2h_3)^{-1}\sum_i\partial_{q_i}[(h_1h_2h_3/h_i^2)\partial_{q_i}f]$. For radial spherical f this is $r^{-2}d(r^2f')/dr$. The radial component of a vector Laplacian is not generally the scalar radial Laplacian applied to that component; the basis directions also vary.
+
+Curl can be derived from circulation around small coordinate loops. For cyclic (i,j,k) in a right-handed orthogonal system, $(\nabla\times A)_i=[\partial_{q_j}(h_kA_k)-\partial_{q_k}(h_jA_j)]/(h_jh_k)$. State whether components are in a unit basis or coordinate basis before using such a formula.
+
+Coordinate axes and poles can be singular even when the physical field is regular. Conversely, an inverse-square field has a physical singularity at the origin that cannot be removed by renaming coordinates. Operator expressions valid at positive r do not establish what happens distributionally at r=0.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare fluxes through concentric spherical shells for radial components 1, r and 1/r². Derive each shell-area factor before differentiating. Check the r eᵣ case in Cartesian coordinates as A=(x,y,z), showing that physical divergence is coordinate independent.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For A=r eᵣ in spherical coordinates with r>0, divergence is r⁻² d(r³)/dr=3. For A=eᵣ/r² it is zero away from the origin, consistent with constant flux through concentric spheres but not with absence of a source at the excluded origin.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

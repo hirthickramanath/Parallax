@@ -1,0 +1,191 @@
+---
+{
+  "id": "PH1.2",
+  "title": "Non-inertial frames and Coriolis force",
+  "hook": "Why does a freely moving object appear to turn on a rotating platform?",
+  "recap": [
+    "The rotating derivative plus Ω×A equals the inertial derivative.",
+    "−2Ω×v relative to the rotating frame.",
+    "It is the effective equilibrium gravity measured by the local observer.",
+    "Frame or potential time dependence must be accounted for."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is centrifugal force the inward physical centripetal force?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Centrifugal is an outward rotating-frame term.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does Coriolis do instantaneous work relative to rotating velocity?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is perpendicular to that velocity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "When is the Euler term zero?",
+      "options": [
+        "Whenever the particle is at rest in rotating axes",
+        "When angular velocity is constant"
+      ],
+      "answer": "When angular velocity is constant",
+      "explanation": "It depends on the frame angular acceleration.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Coriolis acceleration magnitude in m/s² for perpendicular Ω=2 rad/s and v=3 m/s?",
+      "answer": "12",
+      "explanation": "The magnitude is 2Ωv.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Centrifugal acceleration in m/s² at radius 2 m for constant Ω=3 rad/s?",
+      "answer": "18",
+      "explanation": "Ω²r=9×2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is a reliable way to determine inertial-term signs?",
+      "answer": "Derive the acceleration transformation and move terms across the equation",
+      "options": [
+        "Derive the acceleration transformation and move terms across the equation",
+        "Guess from the word centrifugal"
+      ],
+      "explanation": "A declared frame and cross-product convention fixes signs.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What derivative rule connects rotating and inertial components?",
+      "back": "The rotating derivative plus Ω×A equals the inertial derivative.",
+      "concept": "ph1-2-theory"
+    },
+    {
+      "front": "What determines Coriolis acceleration?",
+      "back": "−2Ω×v relative to the rotating frame.",
+      "concept": "ph1-2-theory"
+    },
+    {
+      "front": "Why may local Earth gravity already include centrifugal effects?",
+      "back": "It is the effective equilibrium gravity measured by the local observer.",
+      "concept": "ph1-2-theory"
+    },
+    {
+      "front": "What limits a rotating effective-energy argument?",
+      "back": "Frame or potential time dependence must be accounted for.",
+      "concept": "ph1-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "OpenStax University Physics, Volume 1 — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a freely moving object appear to turn on a rotating platform? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Earth-bound observations and co-rotating orbital descriptions use accelerating coordinates. Apparent forces encode the changing frame; they are not new interactions that replace the original physical forces.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A rotating observer changes the basis arrows while watching the particle. Even if the inertial motion is straight, components relative to those arrows can curve.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For an origin accelerating at a₀ and axes rotating with Ω, the rotating-frame equation includes translational, Coriolis, centrifugal and Euler inertial terms.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a vector A expressed in rotating axes, the inertial derivative obeys $(d\mathbf A/dt)_I=(d\mathbf A/dt)_R+\boldsymbol\Omega\times\mathbf A$. This follows because each rotating basis vector changes at rate Ω crossed with itself. Apply the rule twice to position relative to the moving origin to obtain
+
+$$\mathbf a_I=\mathbf a_0+\mathbf a_R+2\boldsymbol\Omega\times\mathbf v_R+\dot{\boldsymbol\Omega}\times\mathbf r+\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r).$$
+
+Moving the extra terms to the force side gives fictitious forces −ma₀, $-2m\Omega\times v_R$, $-m\dot\Omega\times r$ and $-m\Omega\times(\Omega\times r)$. Their signs follow from the transformation rather than a memorized direction. The last term points away from the rotation axis; it is not the inward physical force needed to keep an object stationary on a spinning platform.
+
+The Coriolis term is perpendicular to vR, so its instantaneous power in the rotating frame is zero. It changes direction without directly changing rotating-frame speed. It vanishes for vR parallel to Ω, not for every radial motion in an arbitrary geometry. The Euler term vanishes only when Ω is constant as an inertial vector.
+
+For constant Ω the centrifugal force derives from effective potential $U_{\rm cf}=-m|\Omega\times r|^2/2$. Combined with suitable time-independent physical potentials and a stationary origin, an effective rotating energy can be useful. Time-dependent frames require explicit care; inertial and rotating energies are different quantities.
+
+On Earth, local gravity already incorporates the equilibrium centrifugal contribution used by the observer. Adding it again double-counts that effect. Real atmospheric and oceanic motion also includes pressure gradients, friction and geometry; Coriolis alone is not a full weather model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Sketch a straight inertial path across a rotating disk and draw the disk axes at several times. Compute the same positions in the rotating axes. Identify whether an apparent acceleration depends on velocity, position or changing rotation, and do not fit all three with one fictitious-force label.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With Ω along +z and a rotating-frame velocity along +x, Ω×v points +y. The Coriolis acceleration is therefore along −y. If |Ω|=2 rad/s and v=3 m/s, its magnitude is 12 m/s² for perpendicular vectors.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

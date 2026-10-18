@@ -252,28 +252,42 @@ test("lesson prediction, equations, checks, notes, completion, recap and FSRS wo
     page.getByText("Session complete.", { exact: true }),
   ).toBeVisible();
 });
-test("all authored MDX drafts render their full theory and maths without parse failures", async ({
-  page,
-}) => {
-  const runtimeErrors: string[] = [];
-  page.on("pageerror", (error) => runtimeErrors.push(error.message));
-  await signedIn(page);
-  for (const id of readdirSync("content/lessons")
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.slice(0, -4))) {
-    await page.goto(`/lesson/${id}`);
-    await page.getByLabel("Lesson section").selectOption("puzzle");
-    await page
-      .getByLabel("Your prediction", { exact: true })
-      .fill("I will test the assumptions before accepting the result.");
-    await page.getByRole("button", { name: "Commit and investigate" }).click();
-    await page.getByLabel("Lesson section").selectOption("theory");
-    await page.getByRole("button", { name: "Show full theory" }).click();
-    await expect(page.locator(".lesson-prose .katex").first()).toBeVisible();
-    expect(await page.locator(".katex-error").count()).toBe(0);
-    await page.getByLabel("Lesson section").selectOption("interactive");
-    await expect(page.locator(".lesson-prose").first()).toBeVisible();
-    expect(runtimeErrors).toEqual([]);
+const authoredByUnit: Record<string, string[]> = {};
+for (const file of readdirSync("content/lessons").filter((f) =>
+  f.endsWith(".mdx"),
+)) {
+  const id = file.slice(0, -4);
+  (authoredByUnit[id.split(".")[0]] ||= []).push(id);
+}
+test.describe("all authored MDX drafts render their full theory and maths", () => {
+  for (const [unit, ids] of Object.entries(authoredByUnit)) {
+    test(`${unit} has no parse, runtime or KaTeX failures`, async ({
+      page,
+    }) => {
+      const runtimeErrors: string[] = [];
+      page.on("pageerror", (error) => runtimeErrors.push(error.message));
+      await signedIn(page);
+      for (const id of ids)
+        await test.step(id, async () => {
+          await page.goto(`/lesson/${id}`);
+          await page.getByLabel("Lesson section").selectOption("puzzle");
+          await page
+            .getByLabel("Your prediction", { exact: true })
+            .fill("I will test the assumptions before accepting the result.");
+          await page
+            .getByRole("button", { name: "Commit and investigate" })
+            .click();
+          await page.getByLabel("Lesson section").selectOption("theory");
+          await page.getByRole("button", { name: "Show full theory" }).click();
+          await expect(
+            page.locator(".lesson-prose .katex").first(),
+          ).toBeVisible();
+          expect(await page.locator(".katex-error").count()).toBe(0);
+          await page.getByLabel("Lesson section").selectOption("interactive");
+          await expect(page.locator(".lesson-prose").first()).toBeVisible();
+          expect(runtimeErrors).toEqual([]);
+        });
+    });
   }
 });
 test("cached lesson survives an offline reload and saves local notes", async ({
@@ -647,4 +661,28 @@ test("foundation projects expose methods, rubrics and existing lesson notebooks 
     .getByRole("link", { name: "Lesson PB2.2 and its notebook →" })
     .click();
   await expect(page).toHaveURL(/lesson\/PB2.2/);
+});
+
+test("real-analysis exact index answer rejects a nearby integer before accepting the derived threshold", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA1.3");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "The threshold must satisfy a strict inequality for every later term.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("problems");
+  const question = page
+    .locator(".question-card")
+    .filter({ has: page.getByRole("heading", { name: /floor\(1\/ε\)/ }) });
+  await question.getByRole("spinbutton").fill("100");
+  await question.getByRole("button", { name: "Check answer" }).click();
+  await expect(question.getByRole("status")).toContainText("Not quite");
+  await question.getByRole("spinbutton").fill("101");
+  await question.getByRole("button", { name: "Check answer" }).click();
+  await expect(question.getByRole("status")).toContainText("That’s right");
 });

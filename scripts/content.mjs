@@ -74,6 +74,11 @@ export function validateAuthored(data, sections, stub) {
   for (const q of data.questions) {
     if (ids.has(q.id)) throw Error(`Duplicate question ${data.id}:${q.id}`);
     ids.add(q.id);
+    if (
+      q.exact !== undefined &&
+      (typeof q.exact !== "boolean" || q.type !== "numeric")
+    )
+      throw Error(`Invalid exact grading flag ${data.id}:${q.id}`);
     if (q.type === "numeric" && !Number.isFinite(Number(q.answer)))
       throw Error(`Invalid numeric answer ${data.id}:${q.id}`);
     if (

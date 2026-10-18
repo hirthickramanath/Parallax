@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA1.4",
+  "title": "Series and convergence tests",
+  "hook": "Why can rearranging some convergent sums change their answer?",
+  "recap": [
+    "Convergent series must have terms tending to zero.",
+    "For p>1.",
+    "The magnitude of the next omitted term.",
+    "Convergence and invariance under reordering."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does aₙ→0 alone prove ∑aₙ converges?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The harmonic series is a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "What does a ratio-test limit of 1 imply?",
+      "options": [
+        "The test is inconclusive",
+        "The series must diverge"
+      ],
+      "answer": "The test is inconclusive",
+      "explanation": "Different convergence behaviours share that limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is an absolutely convergent series invariant under rearrangement?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Absolute tails control the effect of reordering.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "For alternating terms bₙ=1/n, what bound denominator occurs after N=99 terms?",
+      "answer": "100",
+      "explanation": "The next omitted term is 1/100.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "exact": true
+    },
+    {
+      "id": "warmup",
+      "prompt": "Sum of the geometric series 1+1/3+1/9+...?",
+      "answer": "1.5",
+      "explanation": "1/(1−1/3)=3/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can conditional rearrangement alter a sum?",
+      "answer": "Cancellation depends on the order when absolute tails are not summable",
+      "options": [
+        "Cancellation depends on the order when absolute tails are not summable",
+        "Finite addition stops being commutative"
+      ],
+      "explanation": "The finite operation remains commutative; the limiting process changes.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the necessary term test?",
+      "back": "Convergent series must have terms tending to zero.",
+      "concept": "ma1-4-theory"
+    },
+    {
+      "front": "When does a positive p-series converge?",
+      "back": "For p>1.",
+      "concept": "ma1-4-theory"
+    },
+    {
+      "front": "What bounds an alternating-series remainder under its hypotheses?",
+      "back": "The magnitude of the next omitted term.",
+      "concept": "ma1-4-theory"
+    },
+    {
+      "front": "What does absolute convergence protect?",
+      "back": "Convergence and invariance under reordering.",
+      "concept": "ma1-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can rearranging some convergent sums change their answer? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Series represent accumulated contributions in approximations and perturbation calculations. Finite-sum algebra cannot automatically be applied to infinitely many terms: convergence and summation order are part of the statement.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Follow partial sums. Absolute convergence controls the total size of contributions; conditional convergence relies on cancellation whose order matters.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A series ∑aₙ converges if its partial sums converge. Absolute convergence means ∑|aₙ| converges; conditional convergence means convergence without absolute convergence.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Convergence forces aₙ→0 because aₙ is the difference between consecutive partial sums. The converse fails for the harmonic series. Grouping terms from $2^{k-1}+1$ through $2^k$ yields at least 1/2 per group, so the partial sums are unbounded.
+
+For nonnegative decreasing f, compare rectangles with $\int f(x)\,dx$. This proves the p-series ∑1/nᵖ converges exactly when p>1. Direct comparison bounds positive partial sums by a convergent series; limit comparison applies when the term ratio tends to a finite positive constant. If signs vary, apply a valid absolute test or analyze cancellation separately.
+
+For nonzero terms with a ratio limit $\lim|a_{n+1}/a_n|=r$, convergence is absolute when r&lt;1 and the terms fail to approach zero when r>1. At r=1 the test is inconclusive: both ∑1/n and ∑1/n² have that ratio limit. The root test has the analogous threshold using limsup |aₙ|^(1/n). An inconclusive test is not evidence of divergence.
+
+If bₙ decreases to zero, the alternating series ∑(−1)ⁿ⁻¹bₙ converges and the remainder after N terms has magnitude at most bN₊₁. Pairing and interleaving the even and odd partial sums proves that they approach the same boundary. Monotonicity and vanishing terms are substantive conditions, not optional labels.
+
+Absolute convergence implies convergence through a Cauchy tail bound: the magnitude of any signed tail is no larger than its absolute tail sum. It also permits rearrangement without changing the sum. A real conditionally convergent series has divergent positive and negative subseries; suitable reorderings can produce different sums or divergence. This statement concerns a new order of infinitely many terms, not a violation of finite addition.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute partial sums for geometric, harmonic, inverse-square and alternating-harmonic series. Record which theorem applies and its hypotheses. For the alternating case plot the even and odd bounds. Do not infer convergence merely because finite plot values look flat.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The alternating harmonic series is conditionally convergent: the alternating test applies, while its absolute series is harmonic. After N terms its error is at most 1/(N+1). Taking N=100 bounds the absolute error by 1/101, independently of a graph of the running total.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

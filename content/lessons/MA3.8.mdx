@@ -1,0 +1,193 @@
+---
+{
+  "id": "MA3.8",
+  "title": "Jordan form and matrix exponentials",
+  "hook": "Why can a system with one repeated eigenvalue produce a polynomial times an exponential?",
+  "recap": [
+    "A vector annihilated by a suitable power of A−λI.",
+    "Nilpotent couplings within Jordan blocks.",
+    "e^{tA}x₀.",
+    "Jordan structure as well as eigenvalue real parts."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a zero eigenvalue force every solution component to remain constant?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A nontrivial Jordan block can generate polynomial growth.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the matrix exponential require diagonalizability?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its power series is defined for every finite square matrix.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May exp of an integral replace a time-dependent evolution without commutation checks?",
+      "options": [
+        "Always",
+        "Not generally"
+      ],
+      "answer": "Not generally",
+      "explanation": "Matrices at different times can fail to commute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "First component at t=3 for x′=[[0,1],[0,0]]x and x(0)=(0,1)?",
+      "answer": "3",
+      "explanation": "The solution is (t,1).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Nilpotency index of the nonzero matrix [[0,1],[0,0]]?",
+      "answer": "2",
+      "explanation": "Its square is zero, but the matrix itself is not.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why avoid exact Jordan classification from noisy decimal inputs?",
+      "answer": "Small perturbations can change the block structure",
+      "options": [
+        "Small perturbations can change the block structure",
+        "The matrix exponential is mathematically undefined there"
+      ],
+      "explanation": "The classification is sensitive even though the exponential remains defined.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a generalized eigenvector?",
+      "back": "A vector annihilated by a suitable power of A−λI.",
+      "concept": "ma3-8-theory"
+    },
+    {
+      "front": "What produces polynomial exponential factors?",
+      "back": "Nilpotent couplings within Jordan blocks.",
+      "concept": "ma3-8-theory"
+    },
+    {
+      "front": "What solves a constant-coefficient linear initial-value system?",
+      "back": "e^{tA}x₀.",
+      "concept": "ma3-8-theory"
+    },
+    {
+      "front": "What determines borderline linear stability?",
+      "back": "Jordan structure as well as eigenvalue real parts.",
+      "concept": "ma3-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a system with one repeated eigenvalue produce a polynomial times an exponential? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Defective linear dynamics cannot always be decoupled into independent exponentials. Generalized eigenvectors organize the remaining coupling, and the matrix exponential still solves the system without a diagonalization assumption.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A Jordan block is an eigenvalue plus a chain that shifts information between coordinates. Repeated shifts eventually vanish, producing a finite polynomial factor in the exponential.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Over the complex numbers, every finite square matrix is similar to a Jordan form. A block is λI+N with nilpotent N. The matrix exponential is the convergent power series ∑Aᵏtᵏ/k!.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A generalized eigenvector of rank k is annihilated by (A−λI)ᵏ. Jordan chains satisfy $(A-\lambda I)v_1=0$ and $(A-\lambda I)v_{j+1}=v_j$. A complete set of such chains yields a basis in which the operator has Jordan blocks. Ordinary eigenvectors supply only the first member of each chain.
+
+For one block J=λI+N of size s, Nˢ=0 and λI commutes with N. Hence
+
+$$e^{tJ}=e^{\lambda t}\sum_{k=0}^{s-1}\frac{t^kN^k}{k!}.$$
+
+For A=SJS⁻¹, $e^{tA}=S e^{tJ}S^{-1}$. The power-series definition is valid even if Jordan form is not computed, and differentiating the series gives $d(e^{tA})/dt=Ae^{tA}$. The solution of x′=Ax with x(0)=x₀ is $e^{tA}x_0$.
+
+For J=[[λ,1],[0,λ]], the exponential is $e^{\lambda t}\begin{pmatrix}1&t\\0&1\end{pmatrix}$. If λ=0, some states grow linearly even though all eigenvalues have zero real part. If every eigenvalue has strictly negative real part, finite polynomial factors are eventually dominated by exponential decay; boundary cases with zero real part depend on block structure.
+
+Time-dependent matrices require caution. Writing exp(∫A(t)dt) as a fundamental solution generally needs commutation conditions. Matrix products do not commute by default, so the constant-coefficient derivation cannot be transferred unchanged to a changing operator.
+
+Jordan form is useful for exact classification but can be numerically unstable near defective matrices: arbitrarily small perturbations can split eigenvalues and alter the block structure. Practical matrix-exponential algorithms use stable factorizations and scaling strategies, such as Schur-based or Padé scaling-and-squaring methods, rather than inferring an exact Jordan structure from noisy decimal data.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the nilpotent two-by-two exponential directly from its power series and differentiate the resulting solution. Compare with a slightly perturbed matrix and observe that its exact Jordan type can change while the finite-time solution varies continuously.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For A=[[0,1],[0,0]], A²=0 and $e^{tA}=I+tA$. With initial state (0,1), the solution is (t,1). At t=3 it is (3,1), satisfying x₁′=x₂ and x₂′=0. The zero eigenvalues do not imply every solution is constant.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,195 @@
+---
+{
+  "id": "PH1.4",
+  "title": "Scattering (Rutherford)",
+  "hook": "How can the distribution of scattering angles reveal a force too small to see directly?",
+  "recap": [
+    "Offset of an incoming asymptotic trajectory from the force centre.",
+    "Differential cross section scales as E⁻².",
+    "The annulus-to-solid-angle Jacobian.",
+    "Screening, multiple scattering and acceptance limit the unscreened ideal model."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the Rutherford formula automatically use the laboratory angle for any target mass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is simplest in relative centre-of-mass coordinates.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an exact outgoing angle have a finite discrete probability in the continuous model?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The cross section is a density integrated over acceptance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the ideal point-Coulomb prediction remain finite at zero angle?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It diverges forward; screening and experimental geometry matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Impact parameter for κ=2, E=1 and θ=90 degrees in consistent units?",
+      "answer": "1",
+      "explanation": "b=(κ/2E)cot45°=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Head-on closest approach for κ=6 and E=3?",
+      "answer": "2",
+      "explanation": "rmin=κ/E=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why does the cross-section derivation include a sine factor?",
+      "answer": "It converts the scattering-angle interval into a solid-angle annulus",
+      "options": [
+        "It converts the scattering-angle interval into a solid-angle annulus",
+        "It assumes every angle bin has equal solid angle"
+      ],
+      "explanation": "dΩ=2π sinθ dθ.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does impact parameter label?",
+      "back": "Offset of an incoming asymptotic trajectory from the force centre.",
+      "concept": "ph1-4-theory"
+    },
+    {
+      "front": "What is the energy scaling at fixed Rutherford angle?",
+      "back": "Differential cross section scales as E⁻².",
+      "concept": "ph1-4-theory"
+    },
+    {
+      "front": "What connects incident geometry to angular cross section?",
+      "back": "The annulus-to-solid-angle Jacobian.",
+      "concept": "ph1-4-theory"
+    },
+    {
+      "front": "Why must small-angle data be interpreted carefully?",
+      "back": "Screening, multiple scattering and acceptance limit the unscreened ideal model.",
+      "concept": "ph1-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "OpenStax University Physics, Volume 1 — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can the distribution of scattering angles reveal a force too small to see directly? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Rutherford scattering links measured trajectories to an inverse-square interaction. The inference depends on an incident-beam distribution, collision geometry and approximations about the target, not only one bent path.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+The impact parameter labels how far an incoming straight asymptote misses the centre. More central approaches experience stronger deflection; a ring of incident paths maps into a ring of outgoing directions.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For repulsive potential κ/r with κ>0, classical elastic two-body scattering can be reduced to relative motion with reduced mass and centre-of-mass energy E. Scattering angle θ refers to that relative problem.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Let the relative incident speed be v∞ and reduced mass μ, so E=μv∞²/2 and angular momentum L=μv∞b. The repulsive hyperbolic orbit gives
+
+$$b=\frac{\kappa}{2E}\cot(\theta/2).$$
+
+The formula uses centre-of-mass relative scattering. For a very heavy target this approximates the laboratory projectile angle; a finite target mass requires an angle transformation. Head-on b=0 gives θ=π. At large b the deflection becomes small.
+
+For an azimuthally symmetric beam, trajectories in the incident annulus b to b+db contribute area $d\sigma=2\pi b|db|$. The outgoing solid-angle annulus is $d\Omega=2\pi\sin\theta\,d\theta$. Dividing yields $d\sigma/d\Omega=(b/\sin\theta)|db/d\theta|$. Substituting b(θ) produces
+
+$$\frac{d\sigma}{d\Omega}=\left(\frac{\kappa}{4E}\right)^2\csc^4(\theta/2).$$
+
+Dimensions are area per solid angle, with solid angle dimensionless in SI. The result is an angular probability-density scale after beam flux and target number are supplied, not the probability at an exact mathematical angle.
+
+For a head-on repulsive encounter, all relative kinetic energy converts temporarily into potential energy at closest approach, giving rmin=κ/E. At nonzero impact parameter the angular kinetic term also contributes at the radial turning point; using κ/E there underestimates that distance.
+
+The ideal unscreened Coulomb cross section diverges in the forward limit. Atomic screening, finite experimental acceptance and multiple scattering limit direct application there. Finite nuclear size, nuclear interactions and relativistic or quantum effects can alter the classical point-charge prediction. An approximately heavy stationary target and a thin foil suppress some complications, but these assumptions must be checked rather than inferred from the name of the experiment.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw a set of synthetic impact parameters and compute their predicted angles. Bin incident annuli and compare with equal-solid-angle rather than equal-angle bins. Record the centre-of-mass and laboratory assumptions explicitly; this is a calculated scattering experiment, not an instruction to use radioactive sources.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For κ=2 and relative E=1 in consistent units, κ/(2E)=1. A 90° scattering angle has cot45°=1, so b=1. A head-on encounter at this energy reaches rmin=2. Doubling E at fixed angle halves b and reduces the differential cross section by a factor of four.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

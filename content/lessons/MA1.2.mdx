@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA1.2",
+  "title": "Real numbers and completeness",
+  "hook": "What fills the gap left when rational approximations approach √2?",
+  "recap": [
+    "Every positive distance below the supremum contains a set element above that lower boundary.",
+    "Dense rational approximations can approach a value absent from the rationals.",
+    "Monotonicity and a bound in the direction of motion.",
+    "A limiting boundary point must remain in every interval."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must a supremum belong to its set?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Only a maximum must be attained.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every increasing real sequence converge to a finite real number?",
+      "options": [
+        "No; it also needs an upper bound",
+        "Yes"
+      ],
+      "answer": "No; it also needs an upper bound",
+      "explanation": "The positive integers are an increasing unbounded counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do all nested nonempty open intervals share a point?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "For example (0,1/n) have empty intersection.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "What is the supremum of the open real interval (−2,5)?",
+      "answer": "5",
+      "explanation": "Every point is below 5 and points approach 5 arbitrarily closely.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Length of the interval [1,2] after four equal bisections?",
+      "answer": "0.0625",
+      "explanation": "The initial length 1 is divided by 2⁴.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Which step uses completeness in monotone convergence?",
+      "answer": "Taking a real supremum of the bounded nonempty range",
+      "options": [
+        "Taking a real supremum of the bounded nonempty range",
+        "Computing one numerical sample"
+      ],
+      "explanation": "The existence of that real boundary is the substantive axiom.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the supremum approximation property?",
+      "back": "Every positive distance below the supremum contains a set element above that lower boundary.",
+      "concept": "ma1-2-theory"
+    },
+    {
+      "front": "Why is rational density not completeness?",
+      "back": "Dense rational approximations can approach a value absent from the rationals.",
+      "concept": "ma1-2-theory"
+    },
+    {
+      "front": "What guarantees convergence of a monotone real sequence?",
+      "back": "Monotonicity and a bound in the direction of motion.",
+      "concept": "ma1-2-theory"
+    },
+    {
+      "front": "Why do nested-interval theorems require closedness?",
+      "back": "A limiting boundary point must remain in every interval.",
+      "concept": "ma1-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+What fills the gap left when rational approximations approach √2? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Calculus needs limits that actually belong to its number system. Rational arithmetic is dense but incomplete: it can approach a missing value indefinitely. Completeness is an axiom about the real line that closes this gap.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A supremum is the tightest ceiling above a set. It need not be a point in that set, but any lower proposed ceiling must fail.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A nonempty real set bounded above has a least upper bound in the real numbers. This least-upper-bound property is the completeness axiom used here.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A number u is an upper bound of S if s≤u for every s in S. Its supremum α is an upper bound with the property that for every ε>0 there exists s in S with $\alpha-\varepsilon<s\le\alpha$. If this failed, α−ε would be a smaller upper bound. A maximum additionally belongs to S; a supremum need not. The interval (0,1) has supremum 1 and no maximum.
+
+Completeness implies the Archimedean property. If positive integers were bounded above, let α be their supremum. There would be an integer n>α−1, hence n+1>α, contradicting the bound. Consequently for every ε>0 there exists an integer n with 1/n&lt;ε. The property is about arbitrarily large finite integers, not an integer called infinity.
+
+To see why rationals are not complete, consider positive rationals q with q²&lt;2. They are nonempty and bounded above, but have no rational least upper bound. A rational number squaring to 2 would be impossible by the lowest-terms parity proof. More constructively, if a proposed rational boundary squared below 2, a sufficiently small positive rational increment would remain below 2; if above 2, a sufficiently small rational decrement would remain above it. Neither is the least upper bound in the rational system.
+
+A key consequence is monotone convergence: if a real sequence increases and is bounded above, take α as the supremum of its range. Given ε>0, choose some term aN>α−ε. For n≥N, monotonicity gives $\alpha-\varepsilon<a_N\le a_n\le\alpha$, proving convergence to α. Without boundedness it can diverge; without completeness the boundary may be missing.
+
+Nested nonempty closed bounded intervals with lengths tending to zero have one common real point. The endpoints form monotone bounded sequences, whose limits coincide. Closedness keeps the limits inside each interval. Open intervals, or closed unbounded sets, do not support the same conclusion without further hypotheses.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct rational decimal intervals bracketing √2 by bisection of [1,2]. Record endpoint squares and interval lengths. The finite table gives error bounds for approximations; completeness plus nested closed intervals supplies existence of the limiting real number.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For $S=\{1-1/n:n\in\mathbb N,\ n\ge1\}$, every term is below 1. Given ε>0 choose n>1/ε, making 1−1/n>1−ε. Therefore sup S=1, but 1 is not attained. The same estimate proves convergence of the increasing sequence.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

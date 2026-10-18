@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA2.5",
+  "title": "Line integrals",
+  "hook": "Why can the same two endpoints give different amounts of work?",
+  "recap": [
+    "A field, an oriented curve and its tangent displacement.",
+    "Path-independent integral equal to endpoint potential difference.",
+    "Zero curl locally does not remove global topological obstruction.",
+    "Conservative force is −∇U, so field work is −ΔU."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does reversing path orientation reverse vector work?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The tangent direction reverses.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a scalar arc-length integral reverse sign with orientation?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Arc length uses the tangent magnitude.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does zero curl on a punctured domain automatically give a global potential?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Topology and excluded singularities matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Work for F=∇(x²+y²) from (0,0) to (1,2)?",
+      "answer": "5",
+      "explanation": "Potential difference is 1+4−0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Potential change for φ=x²+y² from (1,0) to (2,0)?",
+      "answer": "3",
+      "explanation": "4−1=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What makes endpoint work possible?",
+      "answer": "A valid single-valued potential on a domain containing the paths",
+      "options": [
+        "A valid single-valued potential on a domain containing the paths",
+        "Only two measured endpoint field values"
+      ],
+      "explanation": "Integrating a gradient uses potential differences, not just endpoint force samples.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What specifies a vector line integral?",
+      "back": "A field, an oriented curve and its tangent displacement.",
+      "concept": "ma2-5-theory"
+    },
+    {
+      "front": "What does a gradient field guarantee along admitted paths?",
+      "back": "Path-independent integral equal to endpoint potential difference.",
+      "concept": "ma2-5-theory"
+    },
+    {
+      "front": "Why does the punctured-plane counterexample matter?",
+      "back": "Zero curl locally does not remove global topological obstruction.",
+      "concept": "ma2-5-theory"
+    },
+    {
+      "front": "What is the mechanical potential-energy sign convention?",
+      "back": "Conservative force is −∇U, so field work is −ΔU.",
+      "concept": "ma2-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can the same two endpoints give different amounts of work? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Line integrals connect a field with an actual path. Conservative fields permit endpoint energy bookkeeping; other fields retain information about how the path was traversed.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+At each point, only the field component along the displacement contributes to work. Adding the local contributions requires both the field and a parameterized curve.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a smooth oriented curve r(t), the vector line integral of F is ∫F(r(t))·r′(t)dt. A scalar arc-length integral uses |r′(t)| instead.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a piecewise smooth curve with increasing parameter t, work is $\int_C F\cdot dr=\int_a^b F(r(t))\cdot r'(t)\,dt$. A smooth orientation-preserving reparameterization gives the same integral by one-variable substitution. Reversing orientation reverses a vector line integral. The scalar integral ∫f ds is orientation independent because ds uses speed magnitude.
+
+If F=∇φ and φ is continuously differentiable on a domain containing the curve, the chain rule gives $\int_C F\cdot dr=\phi(B)-\phi(A)$. For an electrostatic convention F=−∇U, work is the negative potential-energy change. Every closed-loop integral then vanishes, and work between fixed endpoints is path independent.
+
+For a continuously differentiable field on a suitable open simply connected domain, vanishing curl is sufficient for a potential under the standard theorem. The domain restriction matters. On the punctured plane, $F=(-y/(x^2+y^2),x/(x^2+y^2))$ has zero scalar curl away from the origin, but circulation around a unit circle is 2π. A single-valued angular potential cannot be defined globally there.
+
+For a straight radial path in that punctured-plane field, the tangent is radial and F tangential, yielding zero local dot product. This does not contradict the nonzero circular integral, because the paths and endpoints or winding differ. A singularity excluded from the domain cannot silently be crossed to apply a theorem.
+
+Existence of a potential on a connected domain determines it up to one additive constant. Disconnected components can have independent constants. A measured near-zero circulation along one loop does not prove a field is conservative everywhere; the mathematical theorem and the observational inference have different obligations.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute work along a straight segment and a broken-line route between fixed endpoints for both a gradient field and a rotational field. Draw the orientation arrows. For the punctured-plane example mark the excluded origin before deciding whether the curl theorem applies.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For F=(2x,2y)=∇(x²+y²), work from (0,0) to (1,2) is 5 along every admitted piecewise smooth path. For F=(−y,x), the counterclockwise unit-circle parameterization gives F·r′=1, so circulation is 2π.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

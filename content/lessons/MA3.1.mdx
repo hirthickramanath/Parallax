@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA3.1",
+  "title": "Vector spaces and subspaces",
+  "hook": "Can a set of functions be a vector space even though its elements are not arrows?",
+  "recap": [
+    "Independence and spanning.",
+    "Allowed coefficients and dimension depend on it.",
+    "A subspace sum with unique decomposition, equivalently trivial intersection for two summands.",
+    "A linear subspace contains zero and is closed under linear combinations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must a subspace contain zero?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Closure under zero scalar multiplication produces it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is the union of two subspaces always a subspace?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A sum of vectors from different pieces can leave the union.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a basis give unique coordinates?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Spanning gives existence and independence gives uniqueness.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Dimension of real polynomials of degree at most 3?",
+      "answer": "4",
+      "explanation": "The basis 1,x,x²,x³ has four elements.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Dimension of the homogeneous plane x+y+z=0 in R³?",
+      "answer": "2",
+      "explanation": "One independent linear equation removes one degree of freedom.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why is the set of polynomials of degree exactly n not generally a subspace?",
+      "answer": "Leading terms can cancel and zero is excluded",
+      "options": [
+        "Leading terms can cancel and zero is excluded",
+        "It has too many points to form a space"
+      ],
+      "explanation": "Closure and the zero requirement fail.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What establishes a basis?",
+      "back": "Independence and spanning.",
+      "concept": "ma3-1-theory"
+    },
+    {
+      "front": "Why specify a scalar field?",
+      "back": "Allowed coefficients and dimension depend on it.",
+      "concept": "ma3-1-theory"
+    },
+    {
+      "front": "What is a direct sum?",
+      "back": "A subspace sum with unique decomposition, equivalently trivial intersection for two summands.",
+      "concept": "ma3-1-theory"
+    },
+    {
+      "front": "What distinguishes affine and linear subspaces?",
+      "back": "A linear subspace contains zero and is closed under linear combinations.",
+      "concept": "ma3-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a set of functions be a vector space even though its elements are not arrows? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Linear algebra organizes objects by their operations, not by their appearance. Functions, polynomial coefficients, quantum states and numerical signals can share the same structural rules.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A vector space is a setting where weighted addition is consistent. A basis supplies independent building blocks, and coordinates describe an object relative to those chosen blocks.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A vector space over a specified field has vector addition and scalar multiplication obeying the vector-space axioms. A subspace inherits these operations and is closed under them.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A subset W of a vector space V is a subspace exactly when it is nonempty and closed under every linear combination αu+βv of its members. This ensures zero and additive inverses are present. The plane x+y+z=0 in R³ is a subspace; x+y+z=1 is an affine plane, not a subspace, because it excludes zero.
+
+The span of a collection is the set of its finite linear combinations and is the smallest subspace containing it. A finite collection is independent if a zero linear combination forces every coefficient to be zero. A basis is independent and spans. Independence gives uniqueness of coordinates; spanning gives their existence.
+
+The exchange principle says an independent list can replace members of a spanning list without losing spanning. Repeated replacement shows every independent list in a space spanned by n vectors has length at most n. Consequently finite bases have the same size, called dimension. This is a theorem, not a property inferred by looking at arrows in R³.
+
+Polynomials of degree at most n form a space of dimension n+1, with basis 1,x,...,xⁿ. Polynomials of degree exactly n do not form a subspace: leading coefficients can cancel. Continuous real functions on [0,1] form an infinite-dimensional vector space since arbitrarily long lists of monomials are independent.
+
+A sum U+W is a subspace, while a union U∪W need not be: vectors drawn from different pieces may add outside the union. For finite-dimensional subspaces, $\dim(U+W)=\dim U+\dim W-\dim(U\cap W)$. A direct sum has trivial intersection and unique decomposition. Always specify the scalar field: a complex vector space can have a different dimension when regarded over the reals.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Test closure for homogeneous planes, shifted planes, fixed-degree polynomials and two intersecting lines. For each accepted space, give a basis and prove both independence and spanning. A few randomly sampled successful sums do not prove closure for all scalars.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The vectors (1,−1,0) and (0,1,−1) are independent and span x+y+z=0. For (a,b,c) with a+b+c=0, choosing coefficients a and −c gives (a,−a−c,c)=(a,b,c). Thus the subspace has dimension 2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA1.3",
+  "title": "Sequences and limits",
+  "hook": "How can a sequence get arbitrarily close to a value without ever reaching it?",
+  "recap": [
+    "Every term after one threshold satisfies the tolerance.",
+    "Two tail terms are each close to the same limit.",
+    "Find two with different limiting values.",
+    "Completeness of the real numbers."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does one subsequence approaching L prove the whole sequence approaches L?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Other subsequences can approach other values.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is every convergent real sequence bounded?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The tail is controlled and the prefix is finite.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "When using a quotient limit, may the denominator limit be zero without further work?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The standard quotient law requires a nonzero limiting denominator.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Limit of (−1)ⁿ/n as n tends to infinity?",
+      "answer": "0",
+      "explanation": "Its magnitude is 1/n, which tends to zero.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "For aₙ=1/n, what integer N obtained by floor(1/ε)+1 works for ε=0.01?",
+      "answer": "101",
+      "explanation": "N=101 ensures 1/N<0.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup",
+      "exact": true
+    },
+    {
+      "id": "core",
+      "prompt": "What does Bolzano–Weierstrass guarantee for a bounded real sequence?",
+      "answer": "At least one convergent subsequence",
+      "options": [
+        "At least one convergent subsequence",
+        "Convergence of every term to the same limit"
+      ],
+      "explanation": "Boundedness alone permits oscillation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does the tail requirement in convergence mean?",
+      "back": "Every term after one threshold satisfies the tolerance.",
+      "concept": "ma1-3-theory"
+    },
+    {
+      "front": "Why is a convergent sequence Cauchy?",
+      "back": "Two tail terms are each close to the same limit.",
+      "concept": "ma1-3-theory"
+    },
+    {
+      "front": "How can subsequences disprove convergence?",
+      "back": "Find two with different limiting values.",
+      "concept": "ma1-3-theory"
+    },
+    {
+      "front": "Which property turns real Cauchy sequences into convergent sequences?",
+      "back": "Completeness of the real numbers.",
+      "concept": "ma1-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a sequence get arbitrarily close to a value without ever reaching it? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Sequences formalize repeated approximation. A simulated trajectory at shrinking step sizes and a sequence of measurements both require distinguishing a proposed limit from finite evidence about it.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A limit controls the whole tail, not just occasional terms. Once a threshold index is crossed, every later term must stay inside any chosen tolerance.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A real sequence aₙ converges to L if for every ε>0 there exists N such that n≥N implies |aₙ−L|&lt;ε. N may depend on ε, but not on the later n.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For $a_n=1/n$, choose an integer N>1/ε. Then n≥N gives 0&lt;1/n≤1/N&lt;ε. The bound must cover every later term; finding one close term does not prove convergence.
+
+Limits are unique. If L and M were distinct limits, choose ε=|L−M|/3 and a tail where both bounds hold. The triangle inequality gives $|L-M|\le|L-a_n|+|a_n-M|<2|L-M|/3$, a contradiction. A convergent sequence is bounded: its tail lies within distance 1 of L, and its finitely many earlier terms have a finite maximum magnitude.
+
+If aₙ→a and bₙ→b, sums and products converge to the corresponding values. For products write $a_nb_n-ab=a_n(b_n-b)+b(a_n-a)$ and use boundedness of aₙ to control the first factor. Quotients require b≠0; then the denominator stays away from zero eventually. A limit law without this condition can fail.
+
+A subsequence selects strictly increasing indices. Every subsequence of a convergent sequence has the same limit. Conversely, different subsequential limits prove nonconvergence. Bolzano–Weierstrass says every bounded real sequence has a convergent subsequence, not necessarily that the full sequence converges. A bisection proof repeatedly selects a closed half-interval containing infinitely many terms, then uses completeness and increasing indices.
+
+A sequence is Cauchy if its tail terms become uniformly close to one another. Convergence implies Cauchy by the triangle inequality. In the real numbers the converse follows from completeness; it need not hold in the rationals. “Infinite terms close together” is insufficient unless the bound covers all sufficiently late pairs.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot both alternating sequences for several finite ranges and mark tolerance bands about zero. Write an explicit N(ε) for the shrinking sequence. Then exhibit arbitrarily late odd/even pairs violating a fixed Cauchy tolerance for the nonshrinking one.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For aₙ=(−1)ⁿ, even-index terms equal 1 and odd-index terms equal −1. These subsequences have different limits, so the full bounded sequence does not converge. For aₙ=(−1)ⁿ/n, the bound |aₙ|≤1/n proves convergence to zero despite alternating signs.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

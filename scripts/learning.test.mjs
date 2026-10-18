@@ -6,6 +6,7 @@ import {
   streakStats,
   dateKey,
   withinTolerance,
+  gradeNumeric,
 } from "../src/lib/learning-core.ts";
 import { validateGraph } from "./content.mjs";
 import {
@@ -260,6 +261,12 @@ test("authored-content checks reject bad answer keys and unreviewed publication"
       validateAuthored({ ...data, status: "published" }, layers, { id: "X.1" }),
     /Unreviewed/,
   );
+  const invalidExact = structuredClone(data);
+  invalidExact.questions[0].exact = true;
+  assert.throws(
+    () => validateAuthored(invalidExact, layers, { id: "X.1" }),
+    /Invalid exact/,
+  );
   const wrong = structuredClone(data);
   wrong.questions[0].answer = "missing";
   assert.throws(
@@ -330,4 +337,14 @@ test("every Bridge foundation entry has authored theory, checks and retrieval ma
     );
     assert.match(source, /layer="theory"/, lesson.id);
   }
+});
+
+test("exact numerical grading does not accept nearby integer answers under the approximate default", () => {
+  assert.equal(gradeNumeric("100", 101, true), false);
+  assert.equal(gradeNumeric("101", 101, true), true);
+  assert.equal(gradeNumeric("101.0", 101, true), true);
+  assert.equal(gradeNumeric("100", 101), true);
+  for (const response of ["", " ", "NaN", "Infinity"])
+    assert.equal(gradeNumeric(response, 0, true), false);
+  assert.equal(gradeNumeric("0", 0, true), true);
 });

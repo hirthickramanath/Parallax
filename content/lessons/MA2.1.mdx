@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA2.1",
+  "title": "Partial derivatives and chain rule",
+  "hook": "Can every partial derivative exist while the function is not continuous?",
+  "recap": [
+    "A linear first-order approximation with a remainder small relative to displacement.",
+    "First partials exist nearby and are continuous at the point.",
+    "Multiply the outer Jacobian at the intermediate point by the inner Jacobian.",
+    "When the scalar field is totally differentiable at the point."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do existing coordinate partials alone prove continuity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The rational two-variable counterexample fails along a diagonal.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "What kind of object is the total derivative?",
+      "options": [
+        "A linear map",
+        "An arbitrary direction-dependent rule"
+      ],
+      "answer": "A linear map",
+      "explanation": "Linearity is part of the local approximation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the chain-rule matrix order matter?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Maps compose in a specified order and dimensions must agree.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Derivative of f(t,t²)=t⁴ at t=2?",
+      "answer": "32",
+      "explanation": "4t³=32.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Partial derivative with respect to x of x²y at (2,3)?",
+      "answer": "12",
+      "explanation": "2xy=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why is total differentiability stronger than axis tests?",
+      "answer": "It controls the normalized remainder for all small displacements",
+      "options": [
+        "It controls the normalized remainder for all small displacements",
+        "It only requires more plotted points on the axes"
+      ],
+      "explanation": "A neighbourhood condition cannot be inferred from finitely many directions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a total derivative?",
+      "back": "A linear first-order approximation with a remainder small relative to displacement.",
+      "concept": "ma2-1-theory"
+    },
+    {
+      "front": "What is a useful sufficient differentiability condition?",
+      "back": "First partials exist nearby and are continuous at the point.",
+      "concept": "ma2-1-theory"
+    },
+    {
+      "front": "What is the multivariable chain rule?",
+      "back": "Multiply the outer Jacobian at the intermediate point by the inner Jacobian.",
+      "concept": "ma2-1-theory"
+    },
+    {
+      "front": "When does a directional derivative equal gradient dot direction?",
+      "back": "When the scalar field is totally differentiable at the point.",
+      "concept": "ma2-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can every partial derivative exist while the function is not continuous? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Multivariable models depend on simultaneous changes of several inputs. Testing one coordinate direction at a time cannot establish that every nearby direction behaves consistently.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A partial derivative samples one line. Total differentiability requires one linear approximation that controls errors from every direction together.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+At a point a, differentiability means f(a+h)=f(a)+Df(a)h+r(h), where the remainder divided by the norm of h tends to zero. The derivative is a linear map.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The partial derivative with respect to coordinate j is the directional limit along the corresponding basis vector. If a total derivative exists, these partials are its matrix columns. The converse is false: define f(x,y)=xy/(x²+y²) away from the origin and f(0,0)=0. Along either coordinate axis the value is zero and both partials at zero are zero. Along y=x the value is 1/2, so f is not even continuous there.
+
+A sufficient theorem says that if all first partial derivatives exist in a neighbourhood of a and are continuous at a, then f is differentiable at a. To see the mechanism, telescope the increment by changing one coordinate at a time and use a one-variable mean value estimate on each segment. Continuity of the partials makes their coefficients approach one common linear map. These are sufficient conditions, not necessary conditions for every differentiable example.
+
+For differentiable maps g from Rⁿ to Rᵐ and f from Rᵐ to Rᵖ, the chain rule is $D(f\circ g)(a)=Df(g(a))Dg(a)$. Substituting both linear approximations gives the product, while their remainders remain small relative to the original displacement. Matrix order follows the order of the maps; incompatible dimensions reveal an invalid composition.
+
+A directional derivative along v, when total differentiability holds, is Df(a)v. Without total differentiability even the existence of every directional derivative need not produce one linear dependence on v. For example f(x,y)=x³/(x²+y²) with value zero at the origin has directional values v₁³/(v₁²+v₂²), not a linear function of v.
+
+For a scalar field sampled along a differentiable trajectory r(t), $df(r(t))/dt=\nabla f\cdot\dot r$ when f is differentiable. This separates the spatial model from the path that probes it. Merely collecting coordinate partials without checking the model regularity is not a proof that the chain rule applies.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare the counterexample along axes, y=x and y=2x. Then compute a smooth polynomial on a small grid and compare its actual change with the Jacobian prediction. Finite samples illustrate but cannot replace the limit statement over all displacements.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For f(x,y)=x²y and trajectory (x,y)=(t,t²), composition is t⁴ and its derivative is 4t³. The gradient is (2xy,x²); dotting with (1,2t) gives 2t³+2t³=4t³, confirming the chain rule.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

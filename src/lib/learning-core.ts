@@ -120,6 +120,19 @@ export function withinTolerance(
       Math.max(Math.abs(expected) * relative, absolute)
   );
 }
+/** Exact grading for discrete answers; approximate grading retains the course defaults. */
+export function gradeNumeric(
+  response: string,
+  expected: number,
+  exact = false,
+) {
+  if (!response.trim() || !Number.isFinite(expected)) return false;
+  const value = Number(response);
+  return (
+    Number.isFinite(value) &&
+    (exact ? value === expected : withinTolerance(value, expected))
+  );
+}
 /** Merge append-only activity and preserve completed work; other records use explicit clocks. */
 export function mergeDocument(
   kind: string,

@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA3.4",
+  "title": "Eigenvalues and diagonalisation",
+  "hook": "Why can a matrix have repeated eigenvalues but too few eigenvectors to diagonalize?",
+  "recap": [
+    "Dimension of the eigenspace.",
+    "Multiplicity as a characteristic-polynomial root.",
+    "Eigenvalues and eigenbases available over reals and complexes can differ.",
+    "Defective Jordan structure and transient amplification in a poorly conditioned eigenbasis."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a repeated eigenvalue always prevent diagonalization?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The identity is a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a repeated eigenvalue always provide enough independent eigenvectors?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A Jordan shear can have only one eigenvector direction.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must the zero vector be counted as an eigenvector?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Eigenvectors are explicitly nonzero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Upper-right entry of [[1,1],[0,1]] raised to the fourth power?",
+      "answer": "4",
+      "explanation": "Jⁿ=I+nN for N²=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "First diagonal entry of diag(2,3) raised to the fourth power?",
+      "answer": "16",
+      "explanation": "It is 2⁴.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is required for diagonalization?",
+      "answer": "A full independent eigenvector basis in the chosen field",
+      "options": [
+        "A full independent eigenvector basis in the chosen field",
+        "Only finding roots of the characteristic polynomial"
+      ],
+      "explanation": "The eigenspace dimensions must supply the whole space.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is geometric multiplicity?",
+      "back": "Dimension of the eigenspace.",
+      "concept": "ma3-4-theory"
+    },
+    {
+      "front": "What is algebraic multiplicity?",
+      "back": "Multiplicity as a characteristic-polynomial root.",
+      "concept": "ma3-4-theory"
+    },
+    {
+      "front": "Why specify the scalar field?",
+      "back": "Eigenvalues and eigenbases available over reals and complexes can differ.",
+      "concept": "ma3-4-theory"
+    },
+    {
+      "front": "What can eigenvalues alone miss?",
+      "back": "Defective Jordan structure and transient amplification in a poorly conditioned eigenbasis.",
+      "concept": "ma3-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a matrix have repeated eigenvalues but too few eigenvectors to diagonalize? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Eigenvectors identify directions preserved by a linear transformation. Their existence does not guarantee every state is a sum of independent eigenvectors; that distinction controls decoupling of coupled systems.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A diagonal representation lets each basis direction scale separately. Repeated roots of a polynomial do not automatically provide separate geometric directions.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An eigenvector is a nonzero vector v with Av=λv. A matrix is diagonalizable over a specified field when it has a full basis of eigenvectors over that field.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Eigenvalues solve $\det(A-\lambda I)=0$. For each eigenvalue, the eigenspace is the kernel of A−λI. Its dimension is the geometric multiplicity, no larger than its algebraic multiplicity as a characteristic-polynomial root. The zero vector belongs to the eigenspace but is not called an eigenvector.
+
+Eigenvectors with distinct eigenvalues are independent. One proof assumes a shortest nontrivial dependence and applies A−λI for one selected eigenvalue, eliminating that term and contradicting minimality. Thus an n×n matrix with n distinct eigenvalues is diagonalizable over a field containing them. Distinct eigenvalues are sufficient, not necessary: the identity is already diagonal despite all eigenvalues being equal.
+
+For a diagonalizing basis S, $A=SDS^{-1}$. Powers and analytic functions then act on D entrywise, so Aⁿ=SDⁿS⁻¹ and $e^{tA}=S e^{tD}S^{-1}$. The quality of numerical eigencoordinates depends on S: a badly conditioned eigenbasis can amplify errors even when exact diagonalization exists.
+
+The matrix J=[[1,1],[0,1]] has characteristic root 1 twice, but (J−I)v=0 forces the second component zero, leaving only one independent eigenvector. It is not diagonalizable. Its powers include an off-diagonal n term because J=I+N and N²=0, giving Jⁿ=I+nN.
+
+The scalar field matters: a real planar quarter-turn has no real eigenvector but has complex eigenvalues ±i. A complex eigenbasis can simplify real dynamics, with conjugate pairing used to recover real solutions. Do not infer instability merely from a nonreal eigenvalue; for continuous-time linear systems real parts, Jordan structure and the time convention determine growth.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute eigenspaces for an identity, a diagonal matrix, a shear and a quarter-turn over both real and complex scalars. Check whether proposed eigenvectors form an invertible basis. Compare powers directly before using a diagonalization shortcut.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For A=diag(2,3), A⁴=diag(16,81). For J=[[1,1],[0,1]], J⁴=[[1,4],[0,1]], although both eigenvalues are 1. The off-diagonal growth shows what eigenvalues alone miss in a defective matrix.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+
