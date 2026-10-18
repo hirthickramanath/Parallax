@@ -525,3 +525,19 @@ test("geometry and functional examples retain domains, weights and conventions",
     check(id, "warmup", w);
   }
 });
+test("advanced quantum examples preserve gaps, domains, symmetry and probabilities", () => {
+  const rows = [
+    ["PH9.1", 1 / (2 - 5), 1 / (5 - 2)],
+    ["PH9.2", 2 - 1, 2 + 1],
+    ["PH9.3", 2 * 3, 2 ** 2],
+    ["PH9.4", 0.4 + 3 * 0.6, 1],
+    ["PH9.5", 4, 3],
+    ["PH9.6", 4 * 4, 4],
+    ["PH9.7", 0.75 ** 2 + 0.25 ** 2, 0.5 ** 2 + 0.5 ** 2],
+    ["PH9.8", 2 * Math.sqrt(2), Math.sqrt(2)],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

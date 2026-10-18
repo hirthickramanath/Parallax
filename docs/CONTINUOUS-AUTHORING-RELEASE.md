@@ -37,3 +37,7 @@ AS7, AS8, AS9, AS10 and MA10 add 30 drafts. Coverage is 263/354 bodies, 1057 rec
 ## Geometry, analysis and research mathematics
 
 MA11, MA12 and MA13 add 16 drafts on tensors/manifolds/connections, curvature/forms/bundles, topology and operator domains, distributions/spectral theory, stochastic calculus, RG and Berry geometry. Coverage is 279/354 bodies, 1121 recall cards, 75 missing. Build, all 77 model/grading/example tests and all three new-unit production-player sweeps passed. Coordinate, metric, stochastic and gauge conventions are explicit; these are draft introductions rather than a claim of independent theorem/source verification.
+
+## Quantum mechanics II
+
+PH9.1–PH9.8 add perturbation, degenerate subspaces, transition rates, variational/WKB, identical particles, scattering, decoherence and Bell/information drafts. Coverage is 287/354 bodies, 1153 recall cards, 67 missing. Build, all 78 model/grading/example tests and the PH9 production-player sweep passed. Operator domains, normalization, approximation windows and no-signalling qualifications are explicit.

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH9.2",
+  "title": "Degenerate perturbation theory and fine structure",
+  "hook": "Why can choosing the wrong basis inside a degenerate eigenspace hide a first-order splitting?",
+  "recap": [
+    "The perturbation restricted to the degenerate subspace.",
+    "Symmetry may forbid its splitting.",
+    "The consistent physical terms at the chosen order.",
+    "They determine the appropriate coupled basis and perturbative hierarchy."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are arbitrary projected diagonal entries always the splitting eigenvalues?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The full subspace matrix must be diagonalized.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a basis change alter the physical projected eigenvalues?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Similarity preserves them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is one fine-structure correction automatically the complete effect?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Terms of the relevant order must be combined.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Lower shift eigenvalue for [[2,1],[1,2]]?",
+      "answer": "1",
+      "explanation": "2−1=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Upper shift eigenvalue?",
+      "answer": "3",
+      "explanation": "2+1=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why compare energy scales?",
+      "answer": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "options": [
+        "They determine the appropriate coupled basis and perturbative hierarchy.",
+        "The perturbation restricted to the degenerate subspace."
+      ],
+      "explanation": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is diagonalized first?",
+      "back": "The perturbation restricted to the degenerate subspace.",
+      "concept": "ph9-2-theory"
+    },
+    {
+      "front": "Why distinguish protected degeneracy?",
+      "back": "Symmetry may forbid its splitting.",
+      "concept": "ph9-2-theory"
+    },
+    {
+      "front": "What must a fine-structure expansion retain?",
+      "back": "The consistent physical terms at the chosen order.",
+      "concept": "ph9-2-theory"
+    },
+    {
+      "front": "Why compare energy scales?",
+      "back": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "concept": "ph9-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can choosing the wrong basis inside a degenerate eigenspace hide a first-order splitting? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Degenerate perturbation selects symmetry-adapted combinations; fine structure combines several physical corrections consistently.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Within a degenerate unperturbed eigenspace, first-order shifts are eigenvalues of the perturbation projected into that subspace.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Let P project onto the degenerate eigenspace. Solve $PVP|a\rangle=\epsilon_a|a\rangle$ there before using gap denominators for outside states. Arbitrary basis diagonals alone are not invariant predictions of the splitting. Remaining degeneracies may require higher-order or symmetry analysis.
+
+A two-state matrix with equal diagonal a and off-diagonal b has eigenvectors proportional to symmetric/antisymmetric combinations and shifts a±|b| for the Hermitian real-coupling example. The basis rotation changes states while the eigenvalues are invariant.
+
+Hydrogen fine structure includes relativistic kinetic, spin-orbit and Darwin-type contributions in an appropriate expansion. Counting only one term while calling the result the complete fine structure is inconsistent. Spin, angular coupling, reduced mass and domain qualifications belong to the model.
+
+External electric/magnetic fields and hyperfine interactions select further bases/scales. Compare correction sizes before combining incompatible perturbative hierarchies. A degeneracy protected by symmetry differs from an accidental equality broken by a chosen perturbation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Rotate the basis inside a two-dimensional degenerate subspace and verify the same eigenvalues. Compare a diagonal entry before/after rotation to see why it is not an invariant energy prediction.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For the projected perturbation matrix [[2,1],[1,2]], first-order shifts are 1 and 3. Merely reading both diagonal entries as 2 would miss the splitting. The shift sum remains 4, the trace.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

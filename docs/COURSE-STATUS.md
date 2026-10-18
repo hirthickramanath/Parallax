@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **279**.
-- Authored recall cards: **1121**.
-- Missing lesson bodies: **75**.
+- Playable authored drafts: **287**.
+- Authored recall cards: **1153**.
+- Missing lesson bodies: **67**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -44,7 +44,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 4 | PH6 | Waves and optics | 5 / 5 | None |
 | 3 | PH7 | Thermodynamics and statistical mechanics | 10 / 10 | None |
 | 3 | PH8 | Quantum mechanics I | 8 / 8 | None |
-| 5 | PH9 | Quantum mechanics II | 0 / 8 | PH9.1, PH9.2, PH9.3, PH9.4, PH9.5, PH9.6, PH9.7, PH9.8 |
+| 5 | PH9 | Quantum mechanics II | 8 / 8 | None |
 | 6 | PH10 | Advanced and relativistic quantum mechanics | 0 / 6 | PH10.1, PH10.2, PH10.3, PH10.4, PH10.5, PH10.6 |
 | 2 | PH11 | Special relativity | 4 / 4 | None |
 | 6 | PH12 | Atomic, molecular and optical physics | 0 / 6 | PH12.1, PH12.2, PH12.3, PH12.4, PH12.5, PH12.6 |
