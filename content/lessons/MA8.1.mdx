@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA8.1",
+  "title": "Probability axioms and random variables",
+  "hook": "Why is a probability density allowed to exceed one?",
+  "recap": [
+    "A measurable map from outcomes to numerical values.",
+    "Probability that X≤x.",
+    "Density must be integrated over an event and carries inverse-variable units.",
+    "Through covariance terms."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must a probability density be at most one?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Only its integral over an event must lie between zero and one.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does expectation linearity require independence?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Integrability suffices for sums.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can elementary event division condition on an event of probability zero?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The denominator would be zero; another conditional construction is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Uniform density height on [0,0.2]?",
+      "answer": "5",
+      "explanation": "Height is 1/0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Probability of [0.05,0.10] for that uniform variable?",
+      "answer": "0.25",
+      "explanation": "Interval length 0.05 times density 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does the second term in total variance represent?",
+      "answer": "Variation of conditional means across groups",
+      "options": [
+        "Variation of conditional means across groups",
+        "An optional correction that is always zero"
+      ],
+      "explanation": "Mixing different group means adds uncertainty.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a random variable formally?",
+      "back": "A measurable map from outcomes to numerical values.",
+      "concept": "ma8-1-theory"
+    },
+    {
+      "front": "What does a CDF assign to x?",
+      "back": "Probability that X≤x.",
+      "concept": "ma8-1-theory"
+    },
+    {
+      "front": "What changes between density and probability?",
+      "back": "Density must be integrated over an event and carries inverse-variable units.",
+      "concept": "ma8-1-theory"
+    },
+    {
+      "front": "How does dependence enter a sum variance?",
+      "back": "Through covariance terms.",
+      "concept": "ma8-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Wasserman, All of Statistics — exact section and edition verification pending",
+    "Robert and Casella, Monte Carlo Statistical Methods — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is a probability density allowed to exceed one? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Probability models underlie photon counts, measurement noise and astronomical population inference. A density is not a probability at a point; confusing them creates wrong units and wrong likelihood arguments.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Probability is area under a density curve. A narrow distribution can have a tall curve while retaining total area one.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A probability space assigns nonnegative countably additive weights to admitted events with total weight one. A random variable is a measurable map from outcomes to numerical values.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For disjoint events A₁,A₂,..., countable additivity gives $P(\bigcup_nA_n)=\sum_nP(A_n)$. Complements and the union formula follow from this axiom. The event collection must support the operations used; not every arbitrary subset in every mathematical construction is automatically assigned a probability.
+
+A real random variable X induces a cumulative distribution $F_X(x)=P(X\le x)$, which is nondecreasing, right-continuous and tends to zero and one at the two infinite ends. A distribution can be discrete, continuous, mixed or neither purely of those two forms. A density f, when present, gives interval probabilities by integration. It has inverse-X units and can exceed one.
+
+For a nonnegative or integrable variable, expectation is the probability-weighted integral. In a discrete case E[X]=∑xp(x); with a density E[X]=∫xf(x)dx. Linearity holds for integrable variables without independence. Independence becomes relevant for products and covariance: $\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)$ when finite.
+
+Conditional probability P(A|B)=P(A∩B)/P(B) requires P(B)>0. Conditioning a continuous variable on an exact point cannot be done by dividing two zero event probabilities; densities or regular conditional distributions provide the appropriate framework. Conditional expectation is a random variable determined by the conditioning information, not merely an informal updated guess.
+
+The law of total expectation averages conditional means. The law of total variance splits $\operatorname{Var}(X)=E[\operatorname{Var}(X|Y)]+\operatorname{Var}(E[X|Y])$ when finite. The first part is average within-group variation, while the second is variation between group means. Ignoring the second can understate uncertainty in a mixed source population.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw equal-area densities with several interval widths and compare heights. Build two groups with different conditional means, then compute total variance directly and by its two terms. Keep normalized probabilities distinct from likelihood values for observed data.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A uniform density on [0,0.2] is 5 in inverse units. Its total probability is 5×0.2=1, and the probability of [0.05,0.10] is 5×0.05=0.25. The height 5 is not a probability of an exact point.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

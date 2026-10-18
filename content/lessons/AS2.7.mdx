@@ -1,0 +1,189 @@
+---
+{
+  "id": "AS2.7",
+  "title": "Multi-messenger astronomy",
+  "hook": "What makes signals in different instruments evidence for the same astrophysical event?",
+  "recap": [
+    "A justified likelihood ratio.",
+    "Background rates, search windows, localization and trial selection.",
+    "An unseen signal may have been below the instrument threshold or outside coverage.",
+    "Complementary constraints with explicitly modeled uncertainties and alternatives."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a timing coincidence alone prove a shared source?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Background rates, localization and emission physics also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an arrival-time difference directly equal a propagation-speed effect?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Intrinsic emission delays can contribute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can joint detections be treated as an unbiased population without selection modeling?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Instrument sensitivities and overlap selection shape the sample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Posterior odds ratio for prior odds 0.01 and likelihood ratio 1000?",
+      "answer": "10",
+      "explanation": "Multiply prior odds by the likelihood ratio.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Posterior probability for odds 10:1?",
+      "answer": "0.9090909090909091",
+      "explanation": "Probability equals odds/(1+odds).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can multiplying posterior maps be problematic?",
+      "answer": "Their common priors may be counted more than once",
+      "options": [
+        "Their common priors may be counted more than once",
+        "All probability maps are automatically independent likelihoods"
+      ],
+      "explanation": "Likelihood and prior conventions must be reconciled.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What updates prior odds?",
+      "back": "A justified likelihood ratio.",
+      "concept": "as2-7-theory"
+    },
+    {
+      "front": "What affects false-coincidence rates?",
+      "back": "Background rates, search windows, localization and trial selection.",
+      "concept": "as2-7-theory"
+    },
+    {
+      "front": "Why does nondetection need a sensitivity model?",
+      "back": "An unseen signal may have been below the instrument threshold or outside coverage.",
+      "concept": "as2-7-theory"
+    },
+    {
+      "front": "What is the main value of joint messengers?",
+      "back": "Complementary constraints with explicitly modeled uncertainties and alternatives.",
+      "concept": "as2-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+What makes signals in different instruments evidence for the same astrophysical event? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Multi-messenger astronomy combines electromagnetic observations with gravitational waves, neutrinos or other particles. Association is an inference problem involving timing, location, event rates and selection, not merely a memorable coincidence.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Each instrument supplies an uncertain patch of information. An association becomes stronger when their overlaps are unlikely under a carefully defined background model.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A multi-messenger association compares a common-source hypothesis with alternatives using joint data, detector responses and selection effects. Messengers can be emitted at different stages and arrive with different delays.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For hypotheses H and B, posterior odds equal prior odds times the likelihood ratio $P(D|H)/P(D|B)$. Conditional independence can permit a product of messenger likelihoods given source parameters, but those parameters must be integrated or jointly inferred. Multiplying separately normalized posterior maps without accounting for priors can double-count prior information.
+
+A timing window is justified by emission physics, propagation and instrumental timing uncertainty. A nonzero arrival delay does not by itself measure a propagation-speed difference because intrinsic emission times can differ. For a small speed difference over known distance d, an approximate propagation delay scales as d times the inverse-speed difference, but cosmological propagation requires the corresponding model.
+
+Localization regions are probability distributions, not guaranteed hard-edged boxes. Joint localization should combine compatible likelihood and prior information and account for coordinate, time and calibration conventions. False-coincidence rates depend on background event rates, search windows and the number of trials or follow-ups considered.
+
+Selection effects alter the observed population. A sample detected by two instruments need not represent every event detected by either instrument, let alone the underlying source population. Nondetection can constrain a source model only after exposure, sensitivity, viewing geometry and expected emission are specified.
+
+Gravitational waves constrain dynamical masses, orientations and distances through a waveform model; photons can constrain environment, host redshift and emission processes; neutrinos can probe particle acceleration or dense-core processes. None automatically supplies a complete mechanism alone. A joint interpretation should report model dependence, calibration errors, data provenance and alternative associations rather than converting temporal proximity into certainty.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Create synthetic event lists with known background rates and explicitly chosen time windows. Count accidental matches as the window widens. Then add a simulated common-source population and compare recovery with false association, keeping the generated truth separate from the inferred probabilities.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If prior odds for a common source are 1:100 and a justified joint likelihood ratio is 1000, posterior odds become 10:1, giving probability 10/11≈0.909 under this two-hypothesis model. This calculation is illustrative and does not certify any real event association.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

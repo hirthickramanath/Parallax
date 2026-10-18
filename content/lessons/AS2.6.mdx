@@ -1,0 +1,189 @@
+---
+{
+  "id": "AS2.6",
+  "title": "Photometry and spectroscopy",
+  "hook": "Why is subtracting a background not the same as removing its noise?",
+  "recap": [
+    "Source-aperture variance plus the scaled background-estimate variance.",
+    "Approximately 1.086 times fractional flux uncertainty.",
+    "Wavelength divided by a declared resolution width.",
+    "It makes the measurement reproducible and its systematics assessable."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does mean background subtraction remove photon noise already present?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The fluctuating arrivals remain in the data uncertainty.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are resolving power and absolute wavelength accuracy identical?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Resolution describes a width scale; accuracy concerns calibration bias.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a negative net flux be assigned an ordinary real logarithmic magnitude?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A likelihood or upper-limit treatment is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Net counts for C=1000, n=10 and b=20?",
+      "answer": "800",
+      "explanation": "1000−10×20=800.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Resolving power at λ=500 nm with Δλ=0.1 nm?",
+      "answer": "5000",
+      "explanation": "R=500/0.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why retain continuum-placement uncertainty in equivalent width?",
+      "answer": "The normalization directly affects the line integral",
+      "options": [
+        "The normalization directly affects the line integral",
+        "Only the central line pixel matters"
+      ],
+      "explanation": "The continuum enters every normalized spectral sample.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What variance remains after independent background subtraction?",
+      "back": "Source-aperture variance plus the scaled background-estimate variance.",
+      "concept": "as2-6-theory"
+    },
+    {
+      "front": "What is small-error magnitude uncertainty?",
+      "back": "Approximately 1.086 times fractional flux uncertainty.",
+      "concept": "as2-6-theory"
+    },
+    {
+      "front": "What is resolving power?",
+      "back": "Wavelength divided by a declared resolution width.",
+      "concept": "as2-6-theory"
+    },
+    {
+      "front": "Why preserve calibration provenance?",
+      "back": "It makes the measurement reproducible and its systematics assessable.",
+      "concept": "as2-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is subtracting a background not the same as removing its noise? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Photometry estimates brightness in a defined band and aperture; spectroscopy estimates a wavelength-dependent signal through a calibrated instrument response. Both require propagating uncertainty through calibration and subtraction.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Background subtraction removes an estimated mean contribution. The random arrivals that produced the source-region background and the uncertainty of its estimate remain in the result.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A calibrated measurement specifies raw counts, bias/dark treatment, response correction, extraction geometry, wavelength or band calibration, and an uncertainty model.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For aperture photometry, let C be source-aperture counts over n pixels and b a background estimate per pixel from a separate region. Net counts are S=C−nb. If C and b are independent, $\operatorname{Var}(S)=\operatorname{Var}(C)+n^2\operatorname{Var}(b)$. If b is the average of m independent equal-noise background pixels, its variance is that single-pixel variance divided by m. Shared calibration or resampling can introduce covariance that this formula omits.
+
+For small fractional flux uncertainty, differentiating m=−2.5log10F+constant gives $\sigma_m\approx(2.5/\ln10)\sigma_F/F\approx1.086\sigma_F/F$. At low or negative net flux a symmetric magnitude error is not appropriate; model flux likelihoods and nondetections rather than taking the logarithm of a nonpositive result.
+
+Spectral resolving power is R=λ/Δλ under a declared width convention. It is distinct from wavelength accuracy and from the statistical precision of a centroid. A high-signal line centroid can be localized more precisely than one resolution element under a valid model, while blending or calibration biases can dominate.
+
+A spectroscopic extraction needs wavelength calibration, sky subtraction, detector corrections and instrumental line-spread-function treatment. Flux calibration and atmospheric corrections add their own uncertainty. Equivalent width $W_\lambda=\int(1-F_\lambda/F_c)d\lambda$ is positive for absorption under this convention and depends on continuum placement.
+
+Compare observations through a forward model of the actual response rather than assigning every pixel a perfect monochromatic flux. Resampling can correlate errors. A reproducible result retains raw data or provenance, masks, calibration versions, extraction settings and units; a smooth-looking corrected spectrum is not evidence that these uncertainties vanished.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic source-plus-sky aperture and a separate sky region. Subtract the mean and propagate both variances. In a synthetic spectrum compare changing resolution with adding a wavelength-calibration offset: one broadens a line, while the other shifts its location.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If an aperture has C=1000 counts over n=10 pixels and background estimate b=20 counts per pixel, net signal is 800. If Var(C)=1000 and Var(b)=4 with independent quantities, net variance is 1000+100×4=1400, not merely 800.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

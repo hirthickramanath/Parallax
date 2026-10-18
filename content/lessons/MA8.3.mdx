@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA8.3",
+  "title": "Markov chains and Poisson processes",
+  "hook": "Can a chain have a stationary distribution while its individual-step distribution keeps oscillating?",
+  "recap": [
+    "Fixed next-state probabilities with nonnegative rows summing to one.",
+    "A reversible stationary distribution when normalized.",
+    "Independent exponential waits with mean 1/λ.",
+    "It can make recorded arrivals dependent and non-Poisson."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a unique stationary vector alone guarantee point-start convergence for a finite irreducible chain?",
+      "options": [
+        "Yes",
+        "No; periodicity can prevent it"
+      ],
+      "answer": "No; periodicity can prevent it",
+      "explanation": "Aperiodicity is needed for the stated convergence theorem.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is detailed balance necessary for every stationary chain?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Nonreversible chains can be stationary.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do Poisson one-time marginals alone prove independent increments?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Joint temporal structure is additional information.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Expected Poisson count at rate 3/s for 2 s?",
+      "answer": "6",
+      "explanation": "λt=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Mean waiting time in seconds at rate 4/s?",
+      "answer": "0.25",
+      "explanation": "The mean is 1/λ.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What distinguishes stationarity from convergence?",
+      "answer": "One is invariance of a distribution; the other is approach from an initial distribution",
+      "options": [
+        "One is invariance of a distribution; the other is approach from an initial distribution",
+        "They are identical terms"
+      ],
+      "explanation": "A periodic chain separates the two notions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a homogeneous transition matrix?",
+      "back": "Fixed next-state probabilities with nonnegative rows summing to one.",
+      "concept": "ma8-3-theory"
+    },
+    {
+      "front": "What does detailed balance provide?",
+      "back": "A reversible stationary distribution when normalized.",
+      "concept": "ma8-3-theory"
+    },
+    {
+      "front": "What waiting-time law accompanies a homogeneous Poisson process?",
+      "back": "Independent exponential waits with mean 1/λ.",
+      "concept": "ma8-3-theory"
+    },
+    {
+      "front": "Why model detector dead time?",
+      "back": "It can make recorded arrivals dependent and non-Poisson.",
+      "concept": "ma8-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Wasserman, All of Statistics — exact section and edition verification pending",
+    "Robert and Casella, Monte Carlo Statistical Methods — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a chain have a stationary distribution while its individual-step distribution keeps oscillating? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Markov models describe transitions between states, while Poisson processes describe continuous-time arrival counts. Similar-looking distributions can hide very different dependence and convergence properties.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Stationarity means an entire distribution is unchanged by one transition. Convergence asks whether an arbitrary starting distribution actually approaches it.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A discrete-time Markov chain has next-state probabilities determined by its current state under the model. A homogeneous transition matrix P has nonnegative rows summing to one.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a row probability vector π, one step gives πP. A stationary distribution satisfies $\pi P=\pi$. A finite irreducible chain has a unique stationary distribution, but convergence from every initial state additionally requires aperiodicity in the standard finite-chain theorem. The two-state deterministic alternation P=[[0,1],[1,0]] has stationary distribution (1/2,1/2), yet a point start alternates forever.
+
+Detailed balance πᵢPᵢⱼ=πⱼPⱼᵢ implies stationarity by summing over i. It is a sufficient reversible construction, not a necessary condition for every stationary chain. Absorbing or reducible chains can have multiple stationary distributions and start-dependent long-time behaviour.
+
+A homogeneous Poisson process with rate λ has independent stationary increments and $N(t+s)-N(t)\sim\operatorname{Poisson}(\lambda s)$. Thus E[N(t)]=Var[N(t)]=λt. Specifying those one-time marginals alone is insufficient to establish independent increments; dependence across time is part of the process definition.
+
+The waiting time to the first event satisfies P(T>t)=P(N(t)=0)=e⁻λt, so it is exponential with mean 1/λ and a memoryless survival property. Successive waiting times are iid exponentials in the homogeneous Poisson model. A time-varying rate leads to an integrated intensity and generally nonstationary increments.
+
+Real photon or event streams can include dead time, bunching, changing source intensity or instrumental triggers. These effects can violate a simple Poisson process even if a limited histogram looks plausible. State whether transitions, waiting times or aggregate counts were observed and test the corresponding dependence assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute successive distributions for a two-state alternating chain and for a chain with positive self-transition probabilities. Simulate Poisson arrival times from exponential waits and compare interval counts, while marking all values as synthetic. Add dead time and identify the broken assumptions.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For rate λ=3 events/s over 2 s, the expected count and variance are both 6. The mean waiting time is 1/3 s, not 1/6 s. Separately, a deterministic alternating chain illustrates why having the stationary vector (1/2,1/2) does not imply point-start convergence.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

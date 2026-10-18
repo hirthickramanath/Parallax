@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA4.2",
+  "title": "Linear ODEs and Green's functions",
+  "hook": "Why can an impulse response predict the response to an arbitrary forcing?",
+  "recap": [
+    "Testing independence and constructing variation of parameters.",
+    "The required first-derivative jump across the source point.",
+    "For a time-translation-invariant operator with compatible conditions.",
+    "Add the appropriate homogeneous solution."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does arbitrary nonlinear dynamics obey impulse-response superposition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Linearity is essential.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every Green function depend only on t−s?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "That simplification requires time-translation invariance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a retarded Green function nonzero before its impulse?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Retarded conditions encode causality.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Coefficient multiplying 1−cos2t in the zero-data solution of y″+4y=1?",
+      "answer": "0.25",
+      "explanation": "It is 1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Natural angular frequency for y″+9y=0?",
+      "answer": "3",
+      "explanation": "ω₀²=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What fixes which Green function is appropriate?",
+      "answer": "The operator together with initial or boundary conditions",
+      "options": [
+        "The operator together with initial or boundary conditions",
+        "Only the differential equation name"
+      ],
+      "explanation": "Different conditions select different inverse kernels.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the Wronskian used for?",
+      "back": "Testing independence and constructing variation of parameters.",
+      "concept": "ma4-2-theory"
+    },
+    {
+      "front": "What produces the delta in a second-order Green function?",
+      "back": "The required first-derivative jump across the source point.",
+      "concept": "ma4-2-theory"
+    },
+    {
+      "front": "When does the kernel become a convolution kernel?",
+      "back": "For a time-translation-invariant operator with compatible conditions.",
+      "concept": "ma4-2-theory"
+    },
+    {
+      "front": "How are nonzero initial conditions included?",
+      "back": "Add the appropriate homogeneous solution.",
+      "concept": "ma4-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an impulse response predict the response to an arbitrary forcing? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Linear ODEs admit superposition, allowing a general input to be decomposed into simpler contributions. Boundary conditions and causality determine which Green function performs the reconstruction.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A small pulse launches a response. Adding delayed, weighted copies builds the response to an extended signal when the system is linear.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a linear differential operator L with specified initial or boundary conditions, a Green function solves LₜG(t,s)=δ(t−s) with the associated homogeneous conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a second-order equation $y''+p(t)y'+q(t)y=f(t)$ with continuous coefficients, two independent homogeneous solutions span the homogeneous solution space. Their Wronskian W=y₁y₂′−y₁′y₂ is nonzero on an interval when independence holds; Abel's identity W′=−pW explains why a nonzero W cannot vanish at an isolated interior point under these assumptions.
+
+Variation of parameters seeks a particular solution u₁y₁+u₂y₂ and imposes u₁′y₁+u₂′y₂=0 to remove redundant freedom. Solving the resulting two-by-two system yields $u_1'=-y_2f/W$ and $u_2'=y_1f/W$. The integration constants contribute homogeneous terms and are fixed with the actual conditions.
+
+For $y''+\omega_0^2y=f(t)$ with zero initial displacement and velocity at t=0, the retarded Green function is $G(t,s)=H(t-s)\sin[\omega_0(t-s)]/\omega_0$. It vanishes before the impulse and has a unit jump in its first t derivative at t=s. That jump produces the delta forcing. Then $y(t)=\int_0^tG(t,s)f(s)ds$; nonzero initial data adds a homogeneous solution.
+
+For a general leading coefficient a(t), the derivative jump is 1/a(s), not universally 1. For boundary-value problems, the Green function may be noncausal because endpoint conditions differ from initial data. At resonant boundary eigenvalues an inverse can fail to exist or need compatibility conditions; a formal integral does not bypass that obstruction.
+
+Time-translation invariance makes a Green kernel depend on t−s, giving convolution. A time-varying linear system can still have a two-time Green function but not a stationary convolution. Nonlinear equations generally do not obey this superposition rule. Distributional impulses describe an ideal limit of short forcing, not an infinite measured force applied for a finite duration.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the step response in the worked example and approximate it by adding a finite set of narrow pulse responses. Refine the pulse discretization and compare the residual and initial conditions. Keep boundary-value Green functions distinct from causal initial-value responses.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For y″+4y=1 with zero initial conditions, integrate sin[2(t−s)]/2 from s=0 to t. The result is y=(1−cos2t)/4. Its value and first derivative vanish at zero, and y″+4y=cos2t+(1−cos2t)=1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,189 @@
+---
+{
+  "id": "AS2.1",
+  "title": "Flux, luminosity and magnitudes",
+  "hook": "Can a dim star be more luminous than a bright one?",
+  "recap": [
+    "Emitted power versus received power per area.",
+    "m−M=5log10(d/10 pc)+A.",
+    "Fλ=(c/λ²)Fν with consistent wavelength units.",
+    "The inverse is nonlinear and measurement uncertainty can include zero or negative estimates."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does apparent brightness alone determine luminosity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Distance, anisotropy and extinction also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does increasing apparent magnitude mean increasing flux?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Magnitude is a negative logarithmic flux scale.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can Fλ and Fν be compared numerically without their unit Jacobian?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They are densities with respect to different spectral variables.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Apparent magnitude for M=5, d=100 pc and zero extinction?",
+      "answer": "10",
+      "explanation": "The distance modulus is 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Flux ratio after doubling distance for the same isotropic source?",
+      "answer": "0.25",
+      "explanation": "Inverse-square dilution gives 1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why specify a magnitude band and zero point?",
+      "answer": "Different responses and reference conventions define different measurements",
+      "options": [
+        "Different responses and reference conventions define different measurements",
+        "All magnitude systems measure exactly the same integrated flux"
+      ],
+      "explanation": "A magnitude number alone does not specify the spectral measurement.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What distinguishes luminosity and flux?",
+      "back": "Emitted power versus received power per area.",
+      "concept": "as2-1-theory"
+    },
+    {
+      "front": "What is the local distance modulus?",
+      "back": "m−M=5log10(d/10 pc)+A.",
+      "concept": "as2-1-theory"
+    },
+    {
+      "front": "How do spectral densities convert?",
+      "back": "Fλ=(c/λ²)Fν with consistent wavelength units.",
+      "concept": "as2-1-theory"
+    },
+    {
+      "front": "Why is noisy-parallax inversion an inference problem?",
+      "back": "The inverse is nonlinear and measurement uncertainty can include zero or negative estimates.",
+      "concept": "as2-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a dim star be more luminous than a bright one? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Brightness at a detector is not intrinsic energy output. Astronomical distance estimates and stellar comparisons require separating luminosity, geometric dilution, extinction and the measured wavelength band.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+The same emitted power spreads over a larger sphere farther away. A detector samples only part of that sphere and usually only part of the spectrum.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Luminosity is emitted power. Flux is received power per collecting area; spectral flux density is additionally per frequency or wavelength interval.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an isotropic steady source in a transparent local Euclidean setting, conservation over a sphere gives $F=L/(4\pi d^2)$. This is not a universal law for anisotropic beams or absorbed light. Cosmological luminosity distance is defined so the same bolometric form holds, but it is not simply a static geometric separation and includes propagation effects.
+
+For a shared band and zero-point system, apparent magnitudes satisfy $m_2-m_1=-2.5\log_{10}(F_2/F_1)$. A larger magnitude is fainter. Five magnitude units correspond to a factor 100 in flux. Absolute magnitude M is the apparent magnitude a source would have at 10 pc in the stated band under the defined extinction convention.
+
+For a local inverse-square model with band extinction A, $m-M=5\log_{10}(d/10\,\mathrm{pc})+A$. The logarithm takes the dimensionless distance ratio. Setting A=0 without evidence can make an extinction-affected object appear farther away. A bolometric correction relates a specific band magnitude to a bolometric convention; it is not a universal constant for all temperatures.
+
+Spectral densities transform with their interval: $F_\lambda\,d\lambda=F_\nu\,|d\nu|$ and $F_\lambda=(c/\lambda^2)F_\nu$ at corresponding wavelength and frequency. Flux values per nanometre and per metre differ numerically by a unit conversion. Integrating the appropriate density over a passband, including response, gives a band measurement rather than simply reading one central wavelength.
+
+A parallax p in arcseconds gives d in parsecs as 1/p for a positive geometric parallax in the ideal relation. Inverting a noisy or negative measured parallax requires an inference model and uncertainty treatment, not discarding awkward data. Luminosity uncertainty inherits distance uncertainty quadratically in the simple flux model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Create a synthetic table of sources with independently chosen luminosities and distances. Rank by received flux, then by luminosity, and compare. Add a known extinction to one and recompute the distance modulus. Label every value as synthetic rather than a real stellar catalogue.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A source with M=5 at d=100 pc and no extinction has m=5+5log10(10)=10. Another source may appear brighter because it is closer despite having smaller luminosity. If the same source is moved twice as far away, its flux becomes one quarter.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

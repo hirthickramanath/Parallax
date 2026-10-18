@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA9.2",
+  "title": "Constraints and Lagrange multipliers in functionals",
+  "hook": "Why must a constrained variation preserve the constraint to first order?",
+  "recap": [
+    "A global integral quantity.",
+    "The original constraint at each location or time.",
+    "Singular first variations can invalidate the simple multiplier conclusion.",
+    "Different admissible variations can lead to different equations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is the isoperimetric multiplier generally a function of time for one regular scalar integral constraint?",
+      "options": [
+        "Yes, always",
+        "No; it is a constant"
+      ],
+      "answer": "No; it is a constant",
+      "explanation": "A single global equality uses one multiplier in this formulation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a pointwise constraint generally need a multiplier function?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It imposes a condition at each time.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can every velocity constraint be treated as a holonomic variational constraint without changing physics?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Nonholonomic d’Alembert and vakonomic constructions can differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Multiplier λ in the stated constrained integral example?",
+      "answer": "-12",
+      "explanation": "The integral condition gives −λ/12=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value q(0.5) for q=6t(1−t)?",
+      "answer": "1.5",
+      "explanation": "6×0.5×0.5=1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why reject the unconstrained zero path in the example?",
+      "answer": "It violates the required integral even though its kinetic functional is smaller",
+      "options": [
+        "It violates the required integral even though its kinetic functional is smaller",
+        "Every zero path has an undefined action"
+      ],
+      "explanation": "The feasible set defines what counts as a competitor.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does an isoperimetric constraint restrict?",
+      "back": "A global integral quantity.",
+      "concept": "ma9-2-theory"
+    },
+    {
+      "front": "What does varying a pointwise multiplier enforce?",
+      "back": "The original constraint at each location or time.",
+      "concept": "ma9-2-theory"
+    },
+    {
+      "front": "Why state a constraint qualification?",
+      "back": "Singular first variations can invalidate the simple multiplier conclusion.",
+      "concept": "ma9-2-theory"
+    },
+    {
+      "front": "Why distinguish nonholonomic principles?",
+      "back": "Different admissible variations can lead to different equations.",
+      "concept": "ma9-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Gelfand and Fomin, Calculus of Variations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why must a constrained variation preserve the constraint to first order? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Functional constraints include fixed total integrals and pointwise geometric restrictions. Their multipliers have different mathematical roles, and unconstrained variations can otherwise derive the wrong equation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A global integral condition restricts one total number. A pointwise condition restricts every location on the path, requiring a multiplier function rather than generally one constant.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a regular isoperimetric constraint ∫G(t,q,q′)dt=C, a stationary constrained path can satisfy the Euler–Lagrange equation for L+λG with a constant multiplier λ under the standard qualification.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Let δS and δC be the first-variation linear functionals at a candidate. When δC is nonzero as a functional and the constrained stationarity condition holds, a multiplier combines them into δS+λδC=0 for every admitted endpoint-zero variation. This gives the Euler–Lagrange equation for L+λG together with the original integral constraint. The regularity qualification rules out singular cases where the constraint gradient vanishes.
+
+For a pointwise holonomic restriction g(t,q)=0, use an augmented integrand $\widetilde L=L+\lambda(t)g(t,q)$ under the ordinary variational formulation. Varying λ gives the original constraint at every time; varying q gives the corresponding multiplier-force term. The multiplier is not a free parameter to choose after solving the motion; it is determined jointly with the trajectory and constraints.
+
+For a length-constrained curve, using arc length as a functional may require handling its differentiability and endpoint data carefully. A constrained extremum still needs classification after its stationarity equation is found. Equality constraints differ from inequality obstacles, where active sets and complementarity can enter.
+
+Velocity-dependent nonholonomic constraints are especially delicate. Imposing them directly inside a variational principle can produce vakonomic equations that differ from physical d'Alembert nonholonomic dynamics. One must specify the physical principle and the allowed virtual displacements, rather than assuming every constraint belongs in the same multiplier recipe.
+
+A change to generalized coordinates can sometimes solve regular holonomic constraints explicitly, reducing the variational dimension. Coordinate singularities or dependent constraints can invalidate a local elimination. Check both the original constraint and admissible variation class after any reduction.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the constrained parabola and verify both endpoints and its integral. Compare with the unconstrained zero path, which has lower kinetic functional but violates the integral constraint. Distinguish a global integral multiplier from a time-dependent pointwise multiplier.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For stationary ∫₀¹q′²/2 dt with q(0)=q(1)=0 and ∫₀¹q dt=1, use L=q′²/2+λq. Euler–Lagrange gives q″=λ. Endpoint conditions yield q=λ(t²−t)/2. Its integral is −λ/12, so λ=−12 and q=6t(1−t). The integral is indeed 1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

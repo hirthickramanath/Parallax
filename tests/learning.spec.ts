@@ -686,3 +686,55 @@ test("real-analysis exact index answer rejects a nearby integer before accepting
   await question.getByRole("button", { name: "Check answer" }).click();
   await expect(question.getByRole("status")).toContainText("That’s right");
 });
+
+test("radiation apparatus separates extinction, emission and radial Doppler interpretations", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Radiation bench", exact: true })
+    .click();
+  await expect(page.getByText(/Output: 6.000/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record slab reading", exact: true })
+    .click();
+  await page.getByLabel("Slab source function").fill("20");
+  await expect(page.getByText(/Output: 15.000/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record slab reading", exact: true })
+    .click();
+  await expect(page.getByRole("table").getByRole("row")).toHaveCount(3);
+  await page.getByLabel("Slab optical depth").fill("");
+  await expect(page.getByRole("alert")).toHaveText(
+    "Enter a finite optical depth from 0 to 10.",
+  );
+  await page.getByLabel("Slab optical depth").fill("0");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await expect(page.getByText(/Output: 10.000/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Doppler markers", exact: true })
+    .click();
+  await expect(page.getByText(/Observed wavelength: 1000.00 nm/)).toBeVisible();
+  await page.getByLabel("Radial speed beta").fill("0");
+  await expect(page.getByText(/Observed wavelength: 500.00 nm/)).toBeVisible();
+  await page.getByLabel("Radial speed beta").fill("-0.6");
+  await expect(page.getByText(/Observed wavelength: 250.00 nm/)).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await expect(
+    page.getByRole("link", { name: "Open the connected lesson →" }),
+  ).toHaveAttribute("href", "/lesson/AS2.3");
+  await page
+    .getByRole("link", { name: "Study Doppler shift and redshift →" })
+    .click();
+  await expect(page).toHaveURL(/lesson\/AS2.4/);
+});

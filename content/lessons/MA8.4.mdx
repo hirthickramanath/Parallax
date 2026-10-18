@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA8.4",
+  "title": "Estimation and hypothesis testing",
+  "hook": "Why is a p-value not the probability that a hypothesis is true?",
+  "recap": [
+    "Variance plus squared bias.",
+    "Repeated datasets under the stated parameter and model.",
+    "Probability of rejection under a specified alternative.",
+    "A small tail probability does not describe physical importance or magnitude."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a p-value the posterior probability of the null?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a sampling-tail probability under the null procedure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does unbiasedness alone minimize MSE?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Variance also contributes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a nonsignificant result prove no effect?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Low power or model limitations can prevent rejection.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "MSE for estimator variance 4 and bias 3?",
+      "answer": "13",
+      "explanation": "MSE=4+3².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "95% Gaussian half-width for σ=2, n=100 and critical value 1.96?",
+      "answer": "0.392",
+      "explanation": "1.96×2/√100.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can selecting the smallest p-value among many searches be misleading?",
+      "answer": "The whole selection procedure changes the false-positive rate",
+      "options": [
+        "The whole selection procedure changes the false-positive rate",
+        "Every individual tail probability automatically corrects all searches"
+      ],
+      "explanation": "Multiplicity and stopping rules must be accounted for.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How does MSE decompose?",
+      "back": "Variance plus squared bias.",
+      "concept": "ma8-4-theory"
+    },
+    {
+      "front": "What does frequentist interval coverage refer to?",
+      "back": "Repeated datasets under the stated parameter and model.",
+      "concept": "ma8-4-theory"
+    },
+    {
+      "front": "What is statistical power?",
+      "back": "Probability of rejection under a specified alternative.",
+      "concept": "ma8-4-theory"
+    },
+    {
+      "front": "Why report effect size as well as significance?",
+      "back": "A small tail probability does not describe physical importance or magnitude.",
+      "concept": "ma8-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Wasserman, All of Statistics — exact section and edition verification pending",
+    "Robert and Casella, Monte Carlo Statistical Methods — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is a p-value not the probability that a hypothesis is true? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Estimation and testing require distinguishing unknown parameters from random data. Frequentist error rates describe repeated procedures under a model, not automatic posterior probabilities for one claim.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A confidence procedure is a machine that builds an interval from random data. Its coverage is a statement about the machine across repeated datasets, with the parameter held fixed.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An estimator is a function of data. Bias compares its mean with the parameter; a confidence interval has a specified repeated-sampling coverage under its model.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For estimator T of θ, bias is Eθ[T]−θ and mean squared error decomposes as $E_\theta[(T-\theta)^2]=\operatorname{Var}_\theta(T)+\operatorname{Bias}_\theta(T)^2$. An unbiased estimator can have larger MSE than a slightly biased one. Maximum likelihood maximizes the data likelihood over the parameter domain, but does not automatically guarantee unbiasedness or calibrated intervals in finite samples.
+
+For iid Gaussian observations with known σ, a two-sided interval for μ is $\bar x\pm z_{1-\alpha/2}\sigma/\sqrt n$. Its nominal coverage follows from the sampling distribution of the standardized mean. Replacing known σ by a sample estimate changes the pivot; under normal assumptions a Student-t construction accounts for that uncertainty. Model misspecification or dependence can invalidate either simple formula.
+
+A p-value is the probability, under the specified null and test construction, of a result at least as extreme as the observed test statistic. It is not P(null|data), not the probability that the result occurred by chance in a model-free sense, and not the size of the effect. A composite null may need nuisance-parameter handling.
+
+Type-I error rejects a true null and type-II error fails to reject a specified alternative. Power depends on that alternative, sample size and test rule. A large p-value does not prove the null; low power can hide substantial effects. Searching many outcomes or stopping selectively changes the sampling procedure and can inflate false-positive rates without correction.
+
+Report effect sizes, uncertainty, model assumptions and search choices. A detection threshold alone is not a calibrated physical measurement. Coverage simulations can test an implementation under declared synthetic models, but they do not prove that the real data-generating mechanism matches those models.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate repeated Gaussian datasets with a fixed known mean and record interval coverage. Then change the distribution or add correlations to test robustness. Separate the simulated coverage result from a claim that the real observational errors are Gaussian.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For known σ=2, n=100 and a 95% Gaussian critical value 1.96, the half-width is 1.96×2/10=0.392. If an estimator has variance 4 and bias 3, its MSE is 4+9=13, showing why bias alone is not the whole error criterion.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,3 +1,4 @@
+import { RadiationLab } from "./RadiationLab";
 import { GasLab } from "./GasLab";
 import { WaveLab } from "./WaveLab";
 import { DoubleSlitLab } from "./DoubleSlitLab";
@@ -7,6 +8,7 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  radiation_lab: RadiationLab,
   gas_lab: GasLab,
   wave_lab: WaveLab,
   double_slit_lab: DoubleSlitLab,

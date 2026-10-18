@@ -133,3 +133,8 @@ The implemented course now has 49 authored drafts and 201 recall cards, includin
 ## Checked batch authoring update
 
 Four further units (MA1, PH1, MA2 and MA3) now have all thirty lesson bodies as drafts. Current totals are 79 authored drafts, 321 recall cards and 275 missing bodies; no independent verification is implied. `BATCH-RELEASE.md` describes the current batch and exact-number grading correction. `COURSE-STATUS.md` remains the authoritative generated coverage list.
+
+
+## Radiation and inference implementation update
+
+Five further units (MA4, PH11, AS2, MA8 and MA9) add 27 drafts. Current totals: 106 authored drafts, 429 recall cards, 248 missing bodies and zero independently verified lessons. The seventh virtual bench covers emitting/extinguishing slabs and radial Doppler markers. `RADIATION-INFERENCE-RELEASE.md` describes model limits and checks; the generated `COURSE-STATUS.md` lists remaining IDs. All source and production-service verification boundaries remain explicit.

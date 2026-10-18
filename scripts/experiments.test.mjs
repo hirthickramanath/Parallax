@@ -102,3 +102,39 @@ test("double slit has symmetric fringes, unit central maximum and analytic first
   near(doubleSlit(wavelength, 2 * d, L, 0).fringeM, 0.001);
   assert.throws(() => doubleSlit(0, d, L, 0), RangeError);
 });
+
+import { slabTransfer, radialShift } from "../src/lib/radiation.ts";
+test("radiation slab matches half-transmission, thin and thick limits with separate source contribution", () => {
+  const r = slabTransfer(10, 2, Math.log(2));
+  near(r.transmission, 0.5);
+  near(r.transmitted, 5);
+  near(r.emitted, 1);
+  near(r.output, 6);
+  near(slabTransfer(10, 20, Math.log(2)).output, 15);
+  near(slabTransfer(10, 2, 0).output, 10);
+  near(slabTransfer(10, 2, 100).output, 2);
+  for (const tau of [0, 1e-12, 0.1, 1, 10])
+    near(slabTransfer(7, 7, tau).output, 7);
+  near(slabTransfer(0, 2, 1e-12).emitted, 2e-12, 1e-15);
+  for (const args of [
+    [-1, 2, 1],
+    [1, -2, 1],
+    [1, 2, -1],
+    [1, 2, Infinity],
+  ])
+    assert.throws(() => slabTransfer(...args), RangeError);
+});
+test("radial Doppler shifts preserve reciprocal approach/recession factors and the zero-speed limit", () => {
+  near(radialShift(500, 0.6).observedNm, 1000);
+  near(radialShift(500, 0.6).redshift, 1);
+  near(radialShift(500, 0).observedNm, 500);
+  for (const beta of [0.1, 0.4, 0.8])
+    near(radialShift(500, beta).factor * radialShift(500, -beta).factor, 1);
+  for (const args of [
+    [0, 0],
+    [500, 1],
+    [500, -1],
+    [500, NaN],
+  ])
+    assert.throws(() => radialShift(...args), RangeError);
+});

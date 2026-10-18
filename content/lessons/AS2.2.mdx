@@ -1,0 +1,189 @@
+---
+{
+  "id": "AS2.2",
+  "title": "Blackbody radiation and spectral lines",
+  "hook": "Why do frequency and wavelength plots put the peak of one blackbody at different locations?",
+  "recap": [
+    "Directional radiative power per projected area, solid angle and spectral interval.",
+    "Blackbody surface flux and the fourth power of temperature.",
+    "Densities change by a frequency–wavelength Jacobian.",
+    "The difference between the relevant quantum-state energies."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does c divided by the Bν peak necessarily give the Bλ peak wavelength?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The spectral-density Jacobian shifts the peak.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an element always show every possible spectral line?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Population, opacity and illumination control observability.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is Rayleigh–Jeans valid at every frequency?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It assumes hν much smaller than kT.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Surface-flux factor when a blackbody temperature doubles?",
+      "answer": "16",
+      "explanation": "F scales as T⁴.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Wavelength peak in nm using b=2.9×10⁻³ m K and T=5800 K?",
+      "answer": "500",
+      "explanation": "b/T=5×10⁻⁷ m=500 nm.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can a fitted colour temperature differ from a local gas temperature?",
+      "answer": "Emission and transport need not follow one equilibrium blackbody",
+      "options": [
+        "Emission and transport need not follow one equilibrium blackbody",
+        "Every smooth spectrum is exactly Planckian"
+      ],
+      "explanation": "Model assumptions determine the physical interpretation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is specific intensity?",
+      "back": "Directional radiative power per projected area, solid angle and spectral interval.",
+      "concept": "as2-2-theory"
+    },
+    {
+      "front": "What does Stefan–Boltzmann relate?",
+      "back": "Blackbody surface flux and the fourth power of temperature.",
+      "concept": "as2-2-theory"
+    },
+    {
+      "front": "Why do spectral peaks depend on variable?",
+      "back": "Densities change by a frequency–wavelength Jacobian.",
+      "concept": "as2-2-theory"
+    },
+    {
+      "front": "What sets a transition photon energy?",
+      "back": "The difference between the relevant quantum-state energies.",
+      "concept": "as2-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do frequency and wavelength plots put the peak of one blackbody at different locations? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Continuum shapes and spectral lines constrain temperature, composition and motions. A plotted density depends on its horizontal variable; its peak is not invariant under changing that variable.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A spectrum reports energy per interval. Equal frequency bins and equal wavelength bins cover different portions of the same radiation, so their heights need a Jacobian.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A blackbody is an ideal equilibrium absorber and emitter with Planck specific intensity Bν or Bλ. A line transition involves an energy difference and additional populations and transport physics.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Planck's frequency form is $B_\nu(T)=2h\nu^3/[c^2(\exp(h\nu/kT)-1)]$. Converting the density gives $B_\lambda(T)=2hc^2/[\lambda^5(\exp(hc/(\lambda kT))-1)]$. These are specific intensities per solid angle per spectral interval. Multiplying by π gives the outward spectral flux from an isotropic blackbody surface hemisphere; it is not the total source luminosity.
+
+Integration yields surface flux F=σT⁴. A spherical blackbody of radius R has L=4πR²σT⁴. The wavelength-density peak obeys λmaxT≈2.898×10⁻³ m K. The frequency-density peak does not map to that same λ by c/νmax, because the density Jacobian shifts the maximum. Always identify which spectral quantity is plotted.
+
+At hν≪kT, expanding the exponential gives the Rayleigh–Jeans limit $B_\nu\approx2\nu^2kT/c^2$. At hν≫kT, the Wien exponential tail dominates. Extending the low-frequency approximation over all frequencies produces a divergent energy integral; each approximation has a regime.
+
+For a transition with energy gap ΔE, photon frequency is ΔE/h. Whether it appears in emission or absorption depends on level populations, illumination, opacity and source function, not only the presence of an element. Line strengths depend on oscillator strengths, excitation and ionization conditions. Missing lines do not by themselves prove an element is absent.
+
+Thermal motion broadens lines through a line-of-sight velocity distribution; natural, pressure, rotational, turbulent and instrumental effects can contribute. A blackbody fit to a nonthermal source can be physically misleading even if a short wavelength range looks smooth. An inferred colour temperature need not equal every local gas or effective temperature.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot Bλ and Bν for one temperature using consistent conversions and compare their integrated powers. Mark their different maxima. Generate a synthetic continuum with one absorption feature and identify which parameters are constrained by shape, depth and width versus which remain degenerate.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For T=5800 K, the wavelength peak estimate is 2.898×10⁻³/5800≈5.00×10⁻⁷ m, about 500 nm. Doubling temperature multiplies bolometric surface flux by 16 and halves the Bλ peak wavelength, but changes each spectral point according to the full Planck function.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

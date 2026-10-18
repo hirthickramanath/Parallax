@@ -122,3 +122,72 @@ test("multivariable and linear-algebra quiz values agree with coordinate and mat
   check("MA3.8", "numeric", 3 * N[0][1]);
   check("MA3.8", "warmup", 2);
 });
+
+test("ODE, relativity and radiation examples retain their stated arithmetic and invariants", () => {
+  check("MA4.1", "numeric", 4 / 2);
+  check("MA4.1", "warmup", 1 / 1);
+  check("MA4.2", "numeric", 1 / 4);
+  check("MA4.2", "warmup", Math.sqrt(9));
+  check("MA4.3", "numeric", Math.sqrt(4));
+  check("MA4.3", "warmup", 2);
+  check("MA4.4", "numeric", 1 / Math.sqrt(1 + 2 * 4));
+  check("MA4.4", "warmup", Math.sqrt(4));
+  for (const r of [answer("MA4.5", "numeric"), answer("MA4.5", "warmup")])
+    assert.equal(r * (r - 1) - 2, 0);
+  check("MA4.6", "numeric", ((2 * Math.PI) / Math.PI) ** 2);
+  check("MA4.6", "warmup", 1);
+  const beta = 0.6,
+    gamma = 1 / Math.sqrt(1 - beta * beta);
+  check("PH11.1", "numeric", gamma);
+  check("PH11.1", "warmup", 10 / gamma);
+  check("PH11.2", "numeric", gamma - 1);
+  check("PH11.2", "warmup", gamma * beta);
+  assert.ok(Math.abs(gamma ** 2 - (gamma * beta) ** 2 - 1) < 1e-12);
+  const total = (4 ** 2 - 1 ** 2 - 1 ** 2) / 2;
+  check("PH11.3", "numeric", total);
+  check("PH11.3", "warmup", total - 1);
+  check("PH11.4", "numeric", gamma * (1 - beta));
+  check("PH11.4", "warmup", gamma - 1);
+  check("AS2.1", "numeric", 5 + 5 * Math.log10(100 / 10));
+  check("AS2.1", "warmup", 1 / 2 ** 2);
+  check("AS2.2", "numeric", 2 ** 4);
+  check("AS2.2", "warmup", (2.9e-3 / 5800) * 1e9);
+  check(
+    "AS2.3",
+    "numeric",
+    10 * Math.exp(-Math.log(2)) + 2 * (1 - Math.exp(-Math.log(2))),
+  );
+  check("AS2.3", "warmup", 10 / 2 + 20 / 2);
+  check("AS2.4", "numeric", 600 / 500 - 1);
+  check("AS2.4", "warmup", 2);
+  check("AS2.5", "numeric", 100 / Math.sqrt(100));
+  check("AS2.5", "warmup", 2 ** 2);
+  check("AS2.6", "numeric", 1000 - 10 * 20);
+  check("AS2.6", "warmup", 500 / 0.1);
+  check("AS2.7", "numeric", 0.01 * 1000);
+  check("AS2.7", "warmup", 10 / (1 + 10));
+});
+
+test("inference and variational examples agree with their normalizations, uncertainties and constraints", () => {
+  check("MA8.1", "numeric", 1 / 0.2);
+  check("MA8.1", "warmup", (0.1 - 0.05) / 0.2);
+  check("MA8.2", "numeric", 2 / Math.sqrt(100));
+  check("MA8.2", "warmup", 4 / (100 * 1 ** 2));
+  check("MA8.3", "numeric", 3 * 2);
+  check("MA8.3", "warmup", 1 / 4);
+  check("MA8.4", "numeric", 4 + 3 ** 2);
+  check("MA8.4", "warmup", (1.96 * 2) / Math.sqrt(100));
+  check("MA8.5", "numeric", 1 + 3);
+  check("MA8.5", "warmup", (1 + 3) / (1 + 1 + 3 + 1));
+  check("MA8.6", "numeric", Math.min(1, 0.25));
+  check("MA8.6", "warmup", 1000 / 5);
+  check("MA8.7", "numeric", Math.sqrt(3 ** 2 * 0.1 ** 2 + 2 ** 2 * 0.2 ** 2));
+  check("MA8.7", "warmup", 2 * 3);
+  check("MA9.1", "numeric", 0.5 * 2 ** 2);
+  check("MA9.1", "warmup", (3 - 0) / (1 - 0));
+  const lambda = answer("MA9.2", "numeric");
+  assert.ok(Math.abs(-lambda / 12 - 1) < 1e-12);
+  check("MA9.2", "warmup", 6 * 0.5 * (1 - 0.5));
+  check("MA9.3", "numeric", 2 * (3 * 4 - 0 * 0));
+  check("MA9.3", "warmup", 3 * 2);
+});

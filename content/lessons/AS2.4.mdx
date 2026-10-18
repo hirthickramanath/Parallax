@@ -1,0 +1,191 @@
+---
+{
+  "id": "AS2.4",
+  "title": "Doppler shift and redshift",
+  "hook": "Does every observed redshift measure one ordinary recession speed?",
+  "recap": [
+    "Observed/rest wavelength ratio minus one.",
+    "z≈v/c when the stated approximation applies.",
+    "Ratio of scale factor at observation to emission.",
+    "Different width measures have different numerical conversions and uncertainties."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does any redshift directly equal v/c at all values?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The relation depends on regime and physical model.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must exact independent shift factors combine by simple addition of z?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Their 1+z factors multiply under appropriate composition.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does one ambiguous line guarantee the correct rest identification?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Multiple consistent features and calibration checks are needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Redshift of a 500 nm rest line observed at 600 nm?",
+      "answer": "0.2",
+      "explanation": "600/500−1=0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value of 1+z when wavelength doubles?",
+      "answer": "2",
+      "explanation": "It is the observed/rest wavelength ratio.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why keep cosmological and radial SR interpretations separate?",
+      "answer": "They describe different spacetime and propagation models",
+      "options": [
+        "They describe different spacetime and propagation models",
+        "The measured wavelength ratio changes definition"
+      ],
+      "explanation": "The definition is common; the inferred cause and distance relation differ.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How is redshift defined?",
+      "back": "Observed/rest wavelength ratio minus one.",
+      "concept": "as2-4-theory"
+    },
+    {
+      "front": "What is the low-speed radial relation?",
+      "back": "z≈v/c when the stated approximation applies.",
+      "concept": "as2-4-theory"
+    },
+    {
+      "front": "What does cosmological 1+z measure in the simple expansion model?",
+      "back": "Ratio of scale factor at observation to emission.",
+      "concept": "as2-4-theory"
+    },
+    {
+      "front": "Why specify a line-width convention?",
+      "back": "Different width measures have different numerical conversions and uncertainties.",
+      "concept": "as2-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Does every observed redshift measure one ordinary recession speed? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Spectral shifts compare an observed feature with a modeled rest wavelength. Relative motion, gravity and cosmic expansion can each contribute, and the same z symbol does not make their interpretations identical.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A shifted line is a comparison of wavelength scales. Turning that ratio into a speed requires a physical model for emitter, observer and propagation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Redshift is z=(λobs−λrest)/λrest, so 1+z=λobs/λrest=νrest/νobs for corresponding photons.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For inertial source/observer radial recession in special relativity, $1+z=\sqrt{(1+\beta)/(1-\beta)}$ with β=v/c positive for recession. Solving gives $\beta=[(1+z)^2-1]/[(1+z)^2+1]$. At |β|≪1, z≈β. Large-redshift speeds must not be inferred from the small-velocity approximation without its assumptions.
+
+Transverse motion and angle require the full photon four-momentum transformation, not the radial expression. In a static weak gravitational field, the leading redshift for light climbing from emitter potential Φe to observer Φo is $z\approx(\Phi_o-\Phi_e)/c^2$ when the difference is small and kinematic effects are separately controlled.
+
+In a homogeneous expanding-universe model, $1+z=a(t_{\rm obs})/a(t_{\rm emit})$. Converting that to distance needs an expansion history, and interpreting it as one global special-relativistic velocity is not generally valid. Peculiar motion and local gravitational shifts can be superposed only with a consistent propagation model; exact shift factors multiply rather than all z values simply adding.
+
+Line identification precedes numerical redshift. Several transitions with one common wavelength factor are more convincing than one ambiguous feature. Calibration drift, air/vacuum wavelength conventions, observer motion and blending can bias a claimed shift. A continuum maximum does not supply a unique rest wavelength without a model.
+
+For small line-of-sight velocity dispersion, a width scale satisfies Δλ/λ≈Δv/c, but one must distinguish standard deviation, full width at half maximum and instrumental resolution. A cosmological redshift of the whole spectrum is not the same observable as internal line broadening. A reliable inference reports both the model and the statistical/systematic uncertainties.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Select Doppler markers on the radiation bench to mark a known synthetic rest line and shift it with a chosen radial β. Recover z and invert the exact relation. Then explain why an identical line ratio in a galaxy need not justify assigning that same global SR speed to cosmological expansion.
+
+<Widget name="radiation_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A line with rest wavelength 500 nm observed at 600 nm has z=0.2. If interpreted as pure radial special-relativistic recession, β=(1.2²−1)/(1.2²+1)=0.44/2.44≈0.18033. The approximation v=0.2c would already differ appreciably.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

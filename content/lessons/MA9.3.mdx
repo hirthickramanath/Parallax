@@ -1,0 +1,192 @@
+---
+{
+  "id": "MA9.3",
+  "title": "Noether's theorem (mathematical form)",
+  "hook": "Why does a symmetry of an action produce a conserved quantity rather than only a repeated shape?",
+  "recap": [
+    "J=p·η−Hτ−B.",
+    "A continuous coordinate translation leaving the action invariant up to the stated boundary rule.",
+    "No explicit-time action dependence under the relevant transformation.",
+    "An action may be invariant up to a total derivative rather than exactly invariant in its integrand."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every symmetry of the equations automatically meet the stated variational-symmetry condition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The action transformation and boundary term must be checked.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a discrete symmetry supply the same infinitesimal Noether charge by this theorem?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The construction uses a continuous transformation parameter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can changing a charge’s overall sign change whether it is conserved?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its time derivative still vanishes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Angular momentum m(xy′−yx′) for m=2, x=3, y=0, x′=0, y′=4?",
+      "answer": "24",
+      "explanation": "2×(3×4−0)=24.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Canonical momentum p for L=mq′²/2 with m=3 and q′=2?",
+      "answer": "6",
+      "explanation": "p=∂L/∂q′=mq′.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must be verified before claiming a Noether conservation law?",
+      "answer": "The action symmetry including any total-derivative boundary term",
+      "options": [
+        "The action symmetry including any total-derivative boundary term",
+        "Only a symmetric-looking plot"
+      ],
+      "explanation": "The theorem has a variational, on-solution hypothesis.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the stated Noether charge?",
+      "back": "J=p·η−Hτ−B.",
+      "concept": "ma9-3-theory"
+    },
+    {
+      "front": "What symmetry gives coordinate momentum conservation?",
+      "back": "A continuous coordinate translation leaving the action invariant up to the stated boundary rule.",
+      "concept": "ma9-3-theory"
+    },
+    {
+      "front": "What gives time-translation conservation?",
+      "back": "No explicit-time action dependence under the relevant transformation.",
+      "concept": "ma9-3-theory"
+    },
+    {
+      "front": "Why include B?",
+      "back": "An action may be invariant up to a total derivative rather than exactly invariant in its integrand.",
+      "concept": "ma9-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Gelfand and Fomin, Calculus of Variations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a symmetry of an action produce a conserved quantity rather than only a repeated shape? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Noether’s theorem connects continuous variational symmetries with conservation laws. It depends on the action, boundary term and equations of motion, not merely on a visually symmetric diagram.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A continuous transformation shifts a path into a neighbouring one. If the action change is only a boundary contribution, its first variation can be expressed as a conserved current along a stationary path.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For first-order L(t,q,q′), consider an infinitesimal point transformation δt=ετ and δq=εη. Allow the action density to change by a total derivative ε dB/dt.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Define canonical momentum p=Lq′ and H=p·q′−L. The induced variation at fixed coordinate time is $\xi=\eta-q'\tau$. Integration by parts of the action variation separates the Euler–Lagrange residual and a boundary expression. If the transformation is a variational symmetry up to total derivative B, then on a solution
+
+$$J=p\cdot\eta-H\tau-B$$
+
+satisfies dJ/dt=0. The formula requires the stated transformation convention; changing active/passive signs changes the displayed charge by a corresponding sign. A conserved quantity multiplied by −1 is the same conservation statement.
+
+For a translation of coordinate qj with τ=0, ηj=1 and B=0, invariance gives conservation of pj. For time translation with τ=1, η=0 and no explicit time dependence, J=−H, giving energy conservation in that variational description. The absence of explicit time in L should be checked in the chosen coordinates; a time-dependent transformation can alter the apparent Hamiltonian.
+
+For a rotationally invariant particle Lagrangian, η=a×q with constant infinitesimal axis a yields J=p·(a×q)=a·(q×p). Since the axis is arbitrary, angular momentum is conserved. Translational invariance likewise concerns the full interacting system and its boundaries, not an open subsystem exchanging momentum with omitted degrees of freedom.
+
+A symmetry of the differential equations need not be a symmetry of the action, and the simple Noether charge does not follow automatically in that case. Gauge symmetries and field theories introduce further identities and local-current structure beyond this finite-coordinate statement. Discrete symmetries do not generate the same infinitesimal conservation law through this theorem.
+
+The converse question—whether a proposed conserved quantity arises from a variational symmetry—requires the appropriate mathematical setting. In applications, verify the change of Ldt and its boundary term explicitly, then differentiate the proposed charge using the equations of motion as an independent check.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Derive the charges for a free-particle translation, time translation and planar rotation with the same sign convention. Then add an explicit time-dependent potential and identify which action symmetry is broken. Keep system boundaries and total-derivative terms visible.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For L=m(x′²+y′²)/2−V(x²+y²), a planar infinitesimal rotation has η=(−y,x). The charge is p·η=m(xy′−yx′), the z angular momentum. Direct differentiation gives m(xy″−yx″); a central gradient force makes this zero.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA8.7",
+  "title": "Error analysis and fitting",
+  "hook": "Why can a very precise fit still be wrong?",
+  "recap": [
+    "Σy≈JΣxJᵀ.",
+    "The residual quadratic form rᵀΣ⁻¹r.",
+    "Weakly identified or degenerate parameter directions amplify uncertainty.",
+    "They arise from different sources and do not shrink by the same mechanism."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does repeating measurements remove a common calibration bias automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The same offset persists in the average.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can parameter-dependent covariance drop its log-determinant term from the likelihood?",
+      "options": [
+        "Not generally",
+        "Always"
+      ],
+      "answer": "Not generally",
+      "explanation": "It is no longer constant in the parameters.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does reduced chi-square near one prove the physical model?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It depends on error assumptions and can miss model failures.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Propagated standard uncertainty of ab for a=2, σa=0.1, b=3, σb=0.2, independent?",
+      "answer": "0.5",
+      "explanation": "Variance is 9×0.01+4×0.04=0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Product value ab for the same inputs?",
+      "answer": "6",
+      "explanation": "2×3=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why inspect correlated residuals?",
+      "answer": "They can reveal unmodeled dependence or systematic structure",
+      "options": [
+        "They can reveal unmodeled dependence or systematic structure",
+        "A low residual sum guarantees independent errors"
+      ],
+      "explanation": "Residual patterns test assumptions beyond the scalar fit objective.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is first-order covariance propagation?",
+      "back": "Σy≈JΣxJᵀ.",
+      "concept": "ma8-7-theory"
+    },
+    {
+      "front": "What metric corresponds to a known Gaussian covariance?",
+      "back": "The residual quadratic form rᵀΣ⁻¹r.",
+      "concept": "ma8-7-theory"
+    },
+    {
+      "front": "Why can a fit covariance become large?",
+      "back": "Weakly identified or degenerate parameter directions amplify uncertainty.",
+      "concept": "ma8-7-theory"
+    },
+    {
+      "front": "Why distinguish Monte Carlo, sampling and systematic errors?",
+      "back": "They arise from different sources and do not shrink by the same mechanism.",
+      "concept": "ma8-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Wasserman, All of Statistics — exact section and edition verification pending",
+    "Robert and Casella, Monte Carlo Statistical Methods — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a very precise fit still be wrong? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Error analysis separates random spread, calibration offsets and model discrepancy. Fitting a curve is an inference problem whose assumptions determine both the reported parameters and their uncertainty.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A best-fit curve is the closest allowed model according to a chosen residual metric. It can be consistently displaced from reality if the metric or the model misses a systematic effect.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a differentiable map y=f(x), first-order covariance propagation is JΣxJᵀ, where J is the Jacobian. Least squares minimizes a specified weighted quadratic residual under an adopted data model.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For small perturbations δx, use δy≈Jδx. Taking covariances yields $\Sigma_y\approx J\Sigma_xJ^T$. Correlated inputs contribute off-diagonal terms. The approximation can fail for large uncertainty, strong nonlinearity, boundaries or multimodal distributions; direct propagation or a full likelihood may be required.
+
+For observations y and model f(θ), Gaussian errors with known positive-definite covariance Σ give negative log likelihood, up to constants, $\tfrac12r^T\Sigma^{-1}r$ where r=y−f(θ). Independent unequal errors yield the usual weighted sum ∑ri²/σi². If covariance depends on parameters, its log-determinant term is not a disposable constant.
+
+For a locally linear identifiable model with fixed covariance, a common parameter covariance approximation is $(J^T\Sigma^{-1}J)^{-1}$ when the matrix is invertible and the likelihood assumptions hold. Near degeneracy produces large or correlated uncertainties. An apparently small residual does not establish a unique parameter vector.
+
+Residual plots should examine structure against time, wavelength, predictors and fitted value. A reduced chi-square near one is meaningful only under the error model and appropriate effective degrees of freedom; it does not independently prove correct physics. Outlier clipping after seeing residuals changes the procedure and may bias an inference unless modeled or assessed.
+
+For y=ab with independent small uncertainties, fractional variances add. If a and b share a calibration, covariance can reinforce or cancel their errors depending on the derived quantity. A common additive bias does not shrink as 1/√n when measurements are repeated. Report calibration, model and sampling contributions rather than compressing all uncertainty into one unexplained error bar.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate synthetic linear data with a known offset and correlated noise. Fit under both correct and deliberately wrong covariance models, compare coverage and residual structure, and retain the generating truth separately. A simulated success validates only the declared synthetic setup.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For independent a=2±0.1 and b=3±0.2 with small standard uncertainties, y=ab=6. Its propagated variance is b²σa²+a²σb²=9×0.01+4×0.04=0.25, giving standard uncertainty 0.5. Correlation would add 2ab Cov(a,b).
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

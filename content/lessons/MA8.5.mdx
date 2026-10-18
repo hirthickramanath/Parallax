@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA8.5",
+  "title": "Bayesian inference",
+  "hook": "Why can the same likelihood lead to different posterior conclusions?",
+  "recap": [
+    "The model evidence, integrating likelihood times prior.",
+    "Add successes and failures to its two shape parameters.",
+    "An interval containing specified posterior probability under the adopted model.",
+    "Parameter uncertainty as well as the new-data model."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must the likelihood normalize to one over parameters?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a data probability or density viewed as a function of parameters.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a uniform prior unchanged under every nonlinear parameter transformation?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A Jacobian changes the density.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a narrow posterior guarantee the model is physically correct?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Misspecified likelihoods can exclude important effects.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Posterior Beta first parameter for prior Beta(1,1) and 3 successes?",
+      "answer": "4",
+      "explanation": "Add the successes to the first prior parameter.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Posterior mean for prior Beta(1,1), 3 successes and 1 failure?",
+      "answer": "0.6666666666666666",
+      "explanation": "(1+3)/(1+1+3+1)=4/6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why perform prior-sensitivity checks?",
+      "answer": "Prior assumptions can materially affect inference and evidence",
+      "options": [
+        "Prior assumptions can materially affect inference and evidence",
+        "Normalization removes all prior dependence"
+      ],
+      "explanation": "The posterior is explicitly a product with the prior.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What normalizes the posterior?",
+      "back": "The model evidence, integrating likelihood times prior.",
+      "concept": "ma8-5-theory"
+    },
+    {
+      "front": "How does a Beta prior update for Bernoulli data?",
+      "back": "Add successes and failures to its two shape parameters.",
+      "concept": "ma8-5-theory"
+    },
+    {
+      "front": "What is a credible interval?",
+      "back": "An interval containing specified posterior probability under the adopted model.",
+      "concept": "ma8-5-theory"
+    },
+    {
+      "front": "What does posterior prediction integrate over?",
+      "back": "Parameter uncertainty as well as the new-data model.",
+      "concept": "ma8-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Wasserman, All of Statistics — exact section and edition verification pending",
+    "Robert and Casella, Monte Carlo Statistical Methods — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can the same likelihood lead to different posterior conclusions? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Bayesian inference combines a data model with prior information and explicit parameter definitions. Posterior calculations are not independent of assumptions just because they are normalized probabilities.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A prior assigns starting weight. The likelihood reweights it according to how each parameter value predicts the data; normalization turns that product into a distribution.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For parameter θ, data D and model M, posterior density is proportional to likelihood times prior, with evidence obtained by integrating that product over the parameter domain.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Bayes' rule gives $p(\theta|D,M)=p(D|\theta,M)p(\theta|M)/p(D|M)$ with $p(D|M)=\int p(D|\theta,M)p(\theta|M)d\theta$. Likelihood is a function of θ for fixed data and need not integrate to one over θ. Its numerical density units depend on the data convention; posterior parameter density has parameter-space units.
+
+For Bernoulli observations with s successes and f failures, a Beta(a,b) prior yields a Beta(a+s,b+f) posterior. Posterior mean is (a+s)/(a+b+s+f). This conjugate example shows how finite prior information affects a small sample while repeated independent data can dominate in appropriate identifiable models.
+
+A credible interval contains specified posterior probability under the adopted prior and likelihood. It is not automatically a frequentist confidence interval with the same repeated-sampling coverage. Prior sensitivity, predictive checks and identifiability should be investigated rather than treating one interval as assumption-free.
+
+Under a one-to-one parameter transformation φ=g(θ), density changes by a Jacobian. A prior uniform in θ is generally not uniform in φ. Improper priors can sometimes yield proper parameter posteriors, but model-evidence calculations need particularly careful normalization; arbitrary prior constants do not cancel safely in every model comparison.
+
+Posterior predictive distributions average predictions over parameter uncertainty: $p(D_{\rm new}|D)=\int p(D_{\rm new}|\theta)p(\theta|D)d\theta$ under the specified model. They can reveal failures of fit, but using the same data twice for selection and checking needs interpretation. A highly concentrated posterior can be confidently wrong if the likelihood excludes important systematics.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare posterior curves for several Beta priors on one small Bernoulli dataset. Transform to odds and include the density Jacobian. Generate posterior predictive counts and distinguish parameter uncertainty from new-observation randomness.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With a uniform Beta(1,1) prior and 3 successes plus 1 failure, the posterior is Beta(4,2), whose mean is 4/6=2/3. The maximum-likelihood success fraction is 3/4. They differ because the posterior includes the stated prior information.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+
