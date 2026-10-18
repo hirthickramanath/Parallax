@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS9.8",
+  "title": "Observational cosmology and tensions (H0, S8)",
+  "hook": "How should a reported H₀ or S₈ disagreement be evaluated before calling it new physics?",
+  "recap": [
+    "Specified estimates, models and covariance.",
+    "Difference divided by its correctly computed standard deviation.",
+    "Releases and analysis assumptions change.",
+    "Joint consistency, not only improvement of one selected discrepancy."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can correlated estimates be compared with an independent-error denominator unchanged?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Covariance changes the difference variance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is an early-model H₀ posterior model free?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It depends on early-universe assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must live scientific-status claims be tied to dated sources?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Data and analyses evolve.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Independent z for 70±2 versus 74±2?",
+      "answer": "1.4142135623730951",
+      "explanation": "4/√(4+4)=√2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "S₈ for σ₈=.8,Ω_m=.3?",
+      "answer": "0.8",
+      "explanation": ".8√(.3/.3)=.8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must a proposed new model satisfy?",
+      "answer": "Joint consistency, not only improvement of one selected discrepancy.",
+      "options": [
+        "Joint consistency, not only improvement of one selected discrepancy.",
+        "Specified estimates, models and covariance."
+      ],
+      "explanation": "Joint consistency, not only improvement of one selected discrepancy.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a tension comparison?",
+      "back": "Specified estimates, models and covariance.",
+      "concept": "as9-8-theory"
+    },
+    {
+      "front": "What is a simple scalar Gaussian diagnostic?",
+      "back": "Difference divided by its correctly computed standard deviation.",
+      "concept": "as9-8-theory"
+    },
+    {
+      "front": "Why avoid undated current significance claims?",
+      "back": "Releases and analysis assumptions change.",
+      "concept": "as9-8-theory"
+    },
+    {
+      "front": "What must a proposed new model satisfy?",
+      "back": "Joint consistency, not only improvement of one selected discrepancy.",
+      "concept": "as9-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ryden, Introduction to Cosmology — edition and exact section verification pending",
+    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How should a reported H₀ or S₈ disagreement be evaluated before calling it new physics? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Cosmological tensions compare conditional estimates with covariance, calibration and model dependence. Current-status claims require dated literature rather than invented precision.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A tension is a quantitative discrepancy between specified statistical inferences; its significance depends on model, shared data, distributions and uncertainty treatment.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For two independent approximately Gaussian scalar estimates, a simple diagnostic is $z=|x_1-x_2|/\sqrt{\sigma_1^2+\sigma_2^2}$. Shared covariance changes the difference variance to σ₁²+σ₂²−2Cov. Non-Gaussian or multiparameter posteriors require more appropriate comparisons.
+
+H₀ estimates from a distance ladder and from an early-universe model are conditional on different calibration chains and assumptions. An early-universe posterior is not a direct model-free local expansion measurement. Choice of dataset/release, nuisance parameters and sample selection affects comparisons.
+
+A common late-structure combination is $S_8=\sigma_8\sqrt{\Omega_m/0.3}$, but its constraining direction is survey/model dependent. Lensing shape calibration, photometric redshifts, intrinsic alignments and nonlinear matter modelling contribute systematics; shared large-scale modes can correlate probes.
+
+Testing a proposed resolution requires joint consistency with other observables and a justified model-complexity comparison. Look-elsewhere effects and retrospective dataset selection can inflate surprise. Record paper versions, releases and dates when describing a live scientific status. The numbers below are hypothetical and do not claim the current observed significance of any tension.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Reproduce a supplied hypothetical difference calculation, then add positive and negative covariance to see how it changes. For a real literature comparison retain dated releases and model/prior definitions before quoting a tension.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Two independent hypothetical estimates 70±2 and 74±2 differ by z=4/√8=√2, not two standard deviations. For σ₈=.8 and Ω_m=.3, S₈=.8. Correlated data would require a covariance-aware calculation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

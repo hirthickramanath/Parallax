@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.1",
+  "title": "Origins of quantum theory and wave mechanics",
+  "hook": "Why does a diffraction pattern build up even when particles arrive one at a time?",
+  "recap": [
+    "Probability amplitudes in a chosen representation.",
+    "Their amplitudes combine with relative phase.",
+    "h/p for the stated momentum description.",
+    "Observable definitions, state variances and operator-domain assumptions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is |ψ(x)|² itself a point probability in a continuous coordinate?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a density integrated over a region.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can relative phase change interference?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Cross terms depend on relative phase.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a global phase alter all position probabilities?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its unit modulus cancels in |ψ|².",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Unnormalized coherent intensity for amplitudes 1 and 1?",
+      "answer": "4",
+      "explanation": "|1+1|²=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Wavelength for h=6 and p=3?",
+      "answer": "2",
+      "explanation": "λ=h/p=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What qualifies uncertainty statements?",
+      "answer": "Observable definitions, state variances and operator-domain assumptions.",
+      "options": [
+        "Observable definitions, state variances and operator-domain assumptions.",
+        "Probability amplitudes in a chosen representation."
+      ],
+      "explanation": "Observable definitions, state variances and operator-domain assumptions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a wavefunction provide?",
+      "back": "Probability amplitudes in a chosen representation.",
+      "concept": "ph8-1-theory"
+    },
+    {
+      "front": "What distinguishes coherent alternatives?",
+      "back": "Their amplitudes combine with relative phase.",
+      "concept": "ph8-1-theory"
+    },
+    {
+      "front": "What is de Broglie wavelength?",
+      "back": "h/p for the stated momentum description.",
+      "concept": "ph8-1-theory"
+    },
+    {
+      "front": "What qualifies uncertainty statements?",
+      "back": "Observable definitions, state variances and operator-domain assumptions.",
+      "concept": "ph8-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a diffraction pattern build up even when particles arrive one at a time? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Quantum theory connects discrete detections with continuous probability amplitudes. Historical models are evidence-guided approximations, not interchangeable modern postulates.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A wavefunction is a probability amplitude; in a position representation its squared modulus gives a probability density when normalized with the appropriate measure.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a one-particle nonrelativistic position state, $\int|\psi(x)|^2dx=1$ and a region probability is its density integral. The value |ψ(x)|² is a density, not the probability of a mathematical point in a continuous coordinate. A global phase changes no probabilities, while relative phases affect interference.
+
+Photons carry energy hν and momentum h/λ in vacuum. Matter waves have de Broglie wavelength λ=h/p in the elementary momentum eigenstate description. These relations explain why energy transfer and spatial interference cannot be modeled by one naive classical particle trajectory. A normalizable localized packet contains a momentum range rather than one exact wavelength.
+
+For two coherent alternatives, probability is |ψ₁+ψ₂|² and contains a cross term. If which-alternative information becomes encoded in distinguishable environmental states, the reduced interference term is suppressed by their overlap. A one-particle detection is localized, but repeated outcomes sample the predicted distribution; the amplitude need not be a literal mechanical fluid passing through a detector.
+
+Fourier structure yields $\Delta x\Delta p\ge\hbar/2$ for states with the required variances and domain conditions. This is not solely a claim of clumsy measurement or a universal energy-time operator formula. The elementary Schrödinger framework has nonrelativistic and fixed-particle-number limits; relativistic creation and annihilation require a broader theory. Interpretational proposals should be distinguished from the operational probabilities being tested.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the double-slit bench to compare coherent pattern predictions with a labelled synthetic sequence of detections. Separate normalized probabilities from arbitrary plotted intensity. State what physical interaction supplies which-path information before claiming an interference loss.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Two alternatives with equal real amplitudes 1 and 1 have unnormalized intensity 4 when added coherently, compared with 2 if their intensities are added incoherently. These local amplitudes are illustrative contributions, not a normalized two-point probability distribution. For h=6 and p=3 in consistent units, λ=2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

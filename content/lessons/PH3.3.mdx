@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH3.3",
+  "title": "Fluid dynamics (Euler and Navier-Stokes)",
+  "hook": "Why does an incompressible fluid still have a spatially varying pressure?",
+  "recap": [
+    "∂ₜ+v·∇ along a fluid parcel.",
+    "∇·v=0 under the stated model.",
+    "The modeled viscous stresses.",
+    "Inertial and viscous effects at specified scales."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does incompressibility force uniform pressure?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Pressure can enforce balance and constraints.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is Bernoulli universally constant across every dissipative flow?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its derivation has restrictive assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does one Reynolds number alone determine all transition behaviour?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Geometry and disturbances also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Re for ρ=2,U=3,L=4,η=6?",
+      "answer": "4",
+      "explanation": "2×3×4/6=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Re after doubling L with other parameters fixed?",
+      "answer": "8",
+      "explanation": "Re is proportional to L.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does Re compare?",
+      "answer": "Inertial and viscous effects at specified scales.",
+      "options": [
+        "Inertial and viscous effects at specified scales.",
+        "∂ₜ+v·∇ along a fluid parcel."
+      ],
+      "explanation": "Inertial and viscous effects at specified scales.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the material derivative?",
+      "back": "∂ₜ+v·∇ along a fluid parcel.",
+      "concept": "ph3-3-theory"
+    },
+    {
+      "front": "What does constant-density incompressibility imply?",
+      "back": "∇·v=0 under the stated model.",
+      "concept": "ph3-3-theory"
+    },
+    {
+      "front": "What distinguishes Euler and viscous Navier–Stokes?",
+      "back": "The modeled viscous stresses.",
+      "concept": "ph3-3-theory"
+    },
+    {
+      "front": "What does Re compare?",
+      "back": "Inertial and viscous effects at specified scales.",
+      "concept": "ph3-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Acheson, Elementary Fluid Dynamics — edition and exact section verification pending",
+    "Strogatz, Nonlinear Dynamics and Chaos — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an incompressible fluid still have a spatially varying pressure? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Fluid equations combine conservation with constitutive assumptions; pressure enforces constraints and transmits forces rather than measuring density alone.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The material derivative D/Dt=∂ₜ+v·∇ follows a fluid parcel. Mass conservation and momentum balance require a stated stress and equation of state.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Mass balance is $\partial_t\rho+\nabla\cdot(\rho\mathbf v)=0$. Constant material density gives ∇·v=0 in the corresponding incompressible model. This does not require pressure to be constant; pressure adjusts to maintain the velocity constraint with boundaries and forcing.
+
+For an incompressible Newtonian fluid of constant viscosity, $\rho D\mathbf v/Dt=-\nabla p+\eta\nabla^2\mathbf v+\rho\mathbf b$. Euler flow omits viscosity only when the intended regime justifies it. A compressible viscous model also needs bulk/shear stresses, energy evolution and a constitutive closure.
+
+Bernoulli’s quantity p/ρ+v²/2+gz is constant along a streamline for steady inviscid barotropic flow with conservative forcing under the appropriate assumptions. It is not universally constant across all streamlines of a rotational flow or across a dissipative shock. No-slip walls create viscous boundary layers even when bulk Reynolds number is large.
+
+Nondimensionalization yields Reynolds number Re=ρUL/η. It compares inertial and viscous terms at the chosen scales, not a universal transition temperature or a proof of turbulence. Geometry, disturbances and boundary conditions affect transition. A numerical solution must also respect mass balance and boundary fluxes; a plausible arrow plot is not validation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Check a simple divergence-free velocity field and a deliberately compressing one by calculating divergence. Compare scales in Re before invoking a flow regime. Use Bernoulli only after listing which of its assumptions the apparatus satisfies.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For ρ=2,U=3,L=4 and η=6, Re=4. If all other parameters stay fixed and length doubles, Re becomes 8. An incompressible hydrostatic fluid can have dp/dz=−ρg even while density is constant.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

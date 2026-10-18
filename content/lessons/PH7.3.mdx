@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.3",
+  "title": "Microcanonical ensemble and entropy",
+  "hook": "Why does an equilibrium macrostate dominate even though each accessible microstate is treated equally?",
+  "recap": [
+    "Energy, volume and particle number with a stated accessible shell.",
+    "1/T=(∂S/∂E) at fixed V,N.",
+    "They contain far more equally weighted accessible microstates.",
+    "The state measure and energy-shell or counting definition."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do equal microstate probabilities imply equal macrostate probabilities?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Macrostates contain different numbers of microstates.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a stationary entropy allocation automatically prove a stable maximum?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The curvature and constraints must be checked.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does writing S=k_B lnΩ prove rapid dynamical equilibration?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Relaxation and accessible trajectories need separate dynamics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Number of four-site configurations with exactly two excitations?",
+      "answer": "6",
+      "explanation": "C(4,2)=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ratio of that count to the one-excitation count?",
+      "answer": "1.5",
+      "explanation": "6/4=1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does the entropy convention need to specify?",
+      "answer": "The state measure and energy-shell or counting definition.",
+      "options": [
+        "The state measure and energy-shell or counting definition.",
+        "Energy, volume and particle number with a stated accessible shell."
+      ],
+      "explanation": "The state measure and energy-shell or counting definition.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does the microcanonical ensemble hold fixed?",
+      "back": "Energy, volume and particle number with a stated accessible shell.",
+      "concept": "ph7-3-theory"
+    },
+    {
+      "front": "How is temperature defined microcanonically?",
+      "back": "1/T=(∂S/∂E) at fixed V,N.",
+      "concept": "ph7-3-theory"
+    },
+    {
+      "front": "Why are high-multiplicity macrostates typical?",
+      "back": "They contain far more equally weighted accessible microstates.",
+      "concept": "ph7-3-theory"
+    },
+    {
+      "front": "What does the entropy convention need to specify?",
+      "back": "The state measure and energy-shell or counting definition.",
+      "concept": "ph7-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an equilibrium macrostate dominate even though each accessible microstate is treated equally? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Microcanonical counting connects entropy with multiplicity and distinguishes statistical typicality from a deterministic prohibition on fluctuations.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The microcanonical ensemble describes an isolated system with fixed energy, volume and particle number; a declared narrow energy shell specifies the accessible states.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Let Ω count quantum states in the chosen energy shell. Boltzmann entropy is $S=k_B\ln\Omega$. Continuous classical phase space requires a dimensionless measure, conventionally including h^(3N) and N! for identical classical particles. The shell width and whether one uses a density or cumulative count must be stated; finite-system entropy conventions can differ.
+
+For weakly coupled subsystems A and B with fixed total energy E, the count at allocation E_A is proportional to Ω_A(E_A)Ω_B(E−E_A). Its logarithmic derivative vanishes at an interior most-probable allocation when $\partial S_A/\partial E_A=\partial S_B/\partial E_B$. Defining 1/T=(∂S/∂E)_(V,N) gives equal equilibrium temperatures. The second derivative determines whether this stationary allocation is stable.
+
+Macrostates with vastly larger multiplicity are overwhelmingly more probable when the equal-accessible-state postulate and relevant equilibration assumptions apply. This does not prove every trajectory explores every state on an experimentally accessible time. Ergodicity, mixing, conserved quantities and metastable barriers are dynamical questions, not consequences of writing a logarithm.
+
+For independent distinguishable two-state sites, a macrostate with n excited sites has count C(N,n). The entropy of that macrostate uses this binomial count, while the total ensemble count includes all allowed macrostates. Small systems fluctuate visibly. Negative microcanonical heat capacities can occur in nonadditive systems such as some gravitating systems; canonical fluctuation positivity cannot simply rule those states out without matching ensembles and constraints.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Enumerate all 16 configurations of four two-state sites and group them by excitation count. Compare counts with binomial coefficients and distinguish a fixed-energy shell from the full configuration set. Then increase N using exact integer counts and study where the entropy is largest.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For four distinguishable two-state sites with exactly two excitations, Ω=C(4,2)=6 and S/k_B=ln6. With exactly one excitation Ω=4. The ratio of multiplicities is 6/4=1.5; equal site microstate weights do not imply equal macrostate probabilities.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

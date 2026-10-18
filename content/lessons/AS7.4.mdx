@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS7.4",
+  "title": "Exoplanet detection",
+  "hook": "Why do transits and radial velocities constrain different combinations of planetary properties?",
+  "recap": [
+    "A radius ratio squared.",
+    "Mass trades against sin i.",
+    "To estimate a pipeline’s detection completeness.",
+    "Blends, activity and alternative astrophysical/instrumental explanations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does transit depth alone yield an absolute planet radius?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The host-star scale and transit model matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does radial velocity alone usually remove sin i degeneracy?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It measures projected orbital motion.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are detected planets an unbiased occurrence sample?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Geometry and survey completeness select them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Approximate depth for Rp/Rstar=.1?",
+      "answer": "0.01",
+      "explanation": ".1²=.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Approximate circular transit probability for Rstar/a=.2?",
+      "answer": "0.2",
+      "explanation": "Neglecting Rp it is Rstar/a.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must false-positive validation consider?",
+      "answer": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "options": [
+        "Blends, activity and alternative astrophysical/instrumental explanations.",
+        "A radius ratio squared."
+      ],
+      "explanation": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does depth mainly constrain in the ideal case?",
+      "back": "A radius ratio squared.",
+      "concept": "as7-4-theory"
+    },
+    {
+      "front": "What is an RV inclination degeneracy?",
+      "back": "Mass trades against sin i.",
+      "concept": "as7-4-theory"
+    },
+    {
+      "front": "Why inject/recover signals?",
+      "back": "To estimate a pipeline’s detection completeness.",
+      "concept": "as7-4-theory"
+    },
+    {
+      "front": "What must false-positive validation consider?",
+      "back": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "concept": "as7-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "de Pater and Lissauer, Planetary Sciences — edition and exact section verification pending",
+    "Perryman, The Exoplanet Handbook — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do transits and radial velocities constrain different combinations of planetary properties? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Exoplanet detection methods have geometry and selection biases; combining measurements can reduce but not erase inference degeneracies.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A transit measures a modelled loss of stellar flux, while radial velocities measure a line-of-sight stellar motion signal with instrument and stellar-activity contributions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a small opaque planet on a non-grazing chord of a uniform-brightness star, depth is approximately $\delta=(R_p/R_*)^2$. Limb darkening, dilution, grazing geometry and stellar heterogeneity alter the relation. Detection does not directly supply an absolute radius without a stellar radius model.
+
+For a nearly circular orbit, radial-velocity amplitude depends on M_p sin i relative to stellar mass and orbital period; eccentricity adds a factor and waveform changes. Without inclination a minimum-mass-like constraint is obtained in the small-companion approximation, not a unique planet mass.
+
+Transit probability scales roughly with (R_*+R_p)/a for the simple circular isotropic-orientation case. Short-period large planets are easier to find in many transit surveys. Observation windows, noise and pipeline completeness must enter population inference; detected counts are not the underlying occurrence distribution.
+
+Astrometry, microlensing, direct imaging and timing probe other parameter regimes with their own selection and host constraints. False positives, activity and blends require validation. Combining transit and velocity can constrain density, but correlated stellar/instrument uncertainties and orbital assumptions remain.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate a synthetic transit with declared limb-darkening and dilution assumptions. Compare a small radius change with a background-flux change. Keep geometric probability separate from recovery efficiency in a population calculation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For R_p/R_*=.1, the uniform-star approximate depth is .01. With R_*/a=.2 and negligible planet radius, the circular geometric probability is about .2. Neither number includes the survey’s detection completeness.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

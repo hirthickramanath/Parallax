@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.2",
+  "title": "Equations of state (ideal, degenerate, radiation)",
+  "hook": "Why can two stellar regions at the same density respond very differently to heating?",
+  "recap": [
+    "Composition and ionization particle counts.",
+    "aT⁴/3.",
+    "The particle dispersion regime.",
+    "Pressure, energy and the required thermodynamic derivatives."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is μ always the same through an ionization zone?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The number of free particles changes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does degenerate electron pressure necessarily depend strongly on temperature in the cold limit?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "State filling can dominate its leading pressure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May pressure and internal energy be chosen independently without consistency checks?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Thermodynamic derivatives relate them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Normalized ideal-gas pressure for ρ=6,T=4,μ=2?",
+      "answer": "12",
+      "explanation": "ρT/μ=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Radiation pressure for a=3,T=2?",
+      "answer": "16",
+      "explanation": "aT⁴/3=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What should an EOS provide consistently?",
+      "answer": "Pressure, energy and the required thermodynamic derivatives.",
+      "options": [
+        "Pressure, energy and the required thermodynamic derivatives.",
+        "Composition and ionization particle counts."
+      ],
+      "explanation": "Pressure, energy and the required thermodynamic derivatives.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What determines mean molecular weight?",
+      "back": "Composition and ionization particle counts.",
+      "concept": "as3-2-theory"
+    },
+    {
+      "front": "What is isotropic radiation pressure?",
+      "back": "aT⁴/3.",
+      "concept": "as3-2-theory"
+    },
+    {
+      "front": "What changes degenerate-gas density exponent?",
+      "back": "The particle dispersion regime.",
+      "concept": "as3-2-theory"
+    },
+    {
+      "front": "What should an EOS provide consistently?",
+      "back": "Pressure, energy and the required thermodynamic derivatives.",
+      "concept": "as3-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two stellar regions at the same density respond very differently to heating? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+The equation of state connects pressure, temperature and composition, and selects how a stellar core reacts to compression.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An equation of state supplies pressure and internal energy from density, temperature and composition in a stated thermodynamic regime.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a fully ionized nondegenerate ideal gas, $p_g=\rho k_BT/(\mu m_u)$, where μ counts particles per mass including ions and electrons. In ionization zones μ and internal-energy storage depend on temperature and density, so a fixed fully ionized value is not universal.
+
+Equilibrium radiation contributes $p_r=aT^4/3$. Gas and radiation can be added in local thermodynamic equilibrium when their coupling and constitutive assumptions justify it. Radiation pressure scales with temperature differently from gas pressure and can alter stability and transport.
+
+A cold ideal degenerate electron gas has pressure proportional to (ρ/μ_e)⁵ᐟ³ in the nonrelativistic regime and to (ρ/μ_e)⁴ᐟ³ in the ultrarelativistic regime. Electron number per mass sets μ_e. These are different limits of Fermi statistics, not interchangeable polytropic choices for arbitrary density or finite temperature.
+
+Coulomb corrections, partial degeneracy, electron–positron pairs, magnetic fields and nuclear interactions can matter in extreme regimes. Pressure derivatives and adiabatic exponents must come from the same thermodynamically consistent model as internal energy. A guessed interpolation can violate stability or thermodynamic identities even if its pressure curve looks smooth.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare log pressure versus log density for fixed-temperature ideal gas and the two cold degeneracy limits, labelling their separate regimes. Include composition factors and identify where finite-temperature corrections must be assessed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In normalized units k_B/m_u=1, ρ=6,T=4 and μ=2 give gas pressure 12. If a=3 at T=2, radiation pressure is aT⁴/3=16. These are separate example states, not one combined pressure at inconsistent temperatures.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,188 @@
+---
+{
+  "id": "PH2.5",
+  "title": "Canonical transformations and Poisson brackets",
+  "hook": "Why does an invertible coordinate change not automatically preserve Hamilton’s equations?",
+  "recap": [
+    "df/dt={f,H}+∂f/∂t.",
+    "{Qᵢ,Qⱼ}=0, {Pᵢ,Pⱼ}=0, {Qᵢ,Pⱼ}=δᵢⱼ.",
+    "A canonical position–momentum transformation.",
+    "The full symplectic structure, not only volume."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every invertible coordinate map canonical?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It must preserve the symplectic brackets.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does unit determinant alone establish symplecticity in arbitrary higher dimensions?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is weaker than the full symplectic condition.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can explicit time dependence add a term to the transformed Hamiltonian?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The generating function contributes its time derivative.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Poisson bracket {2q,p/2} in one canonical degree of freedom?",
+      "answer": "1",
+      "explanation": "The derivative factors multiply to one.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Poisson bracket {2q,2p}?",
+      "answer": "4",
+      "explanation": "The derivative factors multiply to four.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state the generating-function type?",
+      "answer": "Its independent variables determine the derivative rules and signs",
+      "options": [
+        "Its independent variables determine the derivative rules and signs",
+        "Every type uses the same variables and signs"
+      ],
+      "explanation": "A type mismatch changes the canonical construction.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the evolution bracket formula?",
+      "back": "df/dt={f,H}+∂f/∂t.",
+      "concept": "ph2-5-theory"
+    },
+    {
+      "front": "What are the fundamental new-coordinate brackets?",
+      "back": "{Qᵢ,Qⱼ}=0, {Pᵢ,Pⱼ}=0, {Qᵢ,Pⱼ}=δᵢⱼ.",
+      "concept": "ph2-5-theory"
+    },
+    {
+      "front": "What is reciprocal scaling an example of?",
+      "back": "A canonical position–momentum transformation.",
+      "concept": "ph2-5-theory"
+    },
+    {
+      "front": "What must a higher-dimensional canonical check preserve?",
+      "back": "The full symplectic structure, not only volume.",
+      "concept": "ph2-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "Goldstein, Poole and Safko, Classical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an invertible coordinate change not automatically preserve Hamilton’s equations? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Canonical transformations preserve the symplectic structure underlying Hamiltonian dynamics. Ordinary invertibility is insufficient; the position–momentum pairing must remain compatible.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A coordinate map can stretch q and p while preserving their paired area, or can distort that structure. Only the first kind is canonical under the appropriate condition.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The canonical Poisson bracket is $\{f,g\}=\sum_i(f_{q_i}g_{p_i}-f_{p_i}g_{q_i})$. A canonical transformation preserves the fundamental brackets of the new coordinates and momenta.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a smooth observable f, Hamilton’s equations imply $df/dt=\{f,H\}+\partial f/\partial t$. With no explicit time dependence, a vanishing bracket with H is the conservation condition. Brackets are antisymmetric, obey the product rule and satisfy the Jacobi identity, making them more structured than an arbitrary derivative notation.
+
+New coordinates Q,P are canonical when their fundamental brackets satisfy $\{Q_i,Q_j\}=0$, $\{P_i,P_j\}=0$ and $\{Q_i,P_j\}=\delta_{ij}$ in the old variables under the appropriate local nonsingularity assumptions. In one dimension Q=aq,P=p/a for nonzero constant a is canonical; Q=aq,P=ap generally is not unless a²=1.
+
+A type-2 generating function F₂(q,P,t) gives p=∂F₂/∂q and Q=∂F₂/∂P, with transformed Hamiltonian K=H+∂F₂/∂t after the coordinate substitution. Different generating-function types use different independent variables and signs; copying one type’s rule into another creates errors.
+
+For angular momentum, Poisson brackets encode its role as a rotation generator, with $\{L_i,L_j\}=\epsilon_{ijk}L_k$ under the standard Cartesian convention. A conserved generator corresponds to a continuous canonical symmetry when its bracket with H vanishes and time dependence is handled consistently.
+
+Global topology and coordinate singularities can prevent one generating function from covering an entire phase space. A local canonical chart remains useful without claiming it is a universal global parameterization. Numerical transformations should be tested against brackets or the symplectic matrix condition, not only against invertibility.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute brackets for scaled, rotated and deliberately noncanonical coordinate maps. Use F₂=a qP to recover the reciprocal momentum scale. Verify both the transformed Hamiltonian and the canonical condition before comparing trajectories.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Choose Q=2q and P=p/2. The bracket $\{Q,P\}=2\times1/2=1$, and the coordinate Jacobian has determinant 1. By contrast Q=2q,P=2p gives bracket 4. In higher dimensions unit total determinant alone is not sufficient to establish symplecticity.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

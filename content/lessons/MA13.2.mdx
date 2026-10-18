@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA13.2",
+  "title": "Stochastic differential equations and Fokker-Planck",
+  "hook": "Why does changing stochastic calculus convention change the displayed drift?",
+  "recap": [
+    "Half the noise variance times the second spatial derivative.",
+    "The stochastic integration convention and conditions.",
+    "Absorbing/reflecting or other specified boundary conditions.",
+    "Finite-step error can change distribution or positivity."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a Wiener path an ordinary differentiable forcing curve?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its quadratic variation changes calculus.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can state-dependent diffusion be pulled outside every spatial derivative?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its variation contributes to probability evolution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can arithmetic and logarithmic growth differ?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Noise changes their relationship.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Itô logarithmic drift for α=3,σ=2?",
+      "answer": "1",
+      "explanation": "α−σ²/2=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Diffusion coefficient for additive noise amplitude b=2?",
+      "answer": "2",
+      "explanation": "b²/2=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why compare discretizations?",
+      "answer": "Finite-step error can change distribution or positivity.",
+      "options": [
+        "Finite-step error can change distribution or positivity.",
+        "Half the noise variance times the second spatial derivative."
+      ],
+      "explanation": "Finite-step error can change distribution or positivity.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What extra term appears in Itô’s formula?",
+      "back": "Half the noise variance times the second spatial derivative.",
+      "concept": "ma13-2-theory"
+    },
+    {
+      "front": "What must define the SDE interpretation?",
+      "back": "The stochastic integration convention and conditions.",
+      "concept": "ma13-2-theory"
+    },
+    {
+      "front": "What controls probability boundary behaviour?",
+      "back": "Absorbing/reflecting or other specified boundary conditions.",
+      "concept": "ma13-2-theory"
+    },
+    {
+      "front": "Why compare discretizations?",
+      "back": "Finite-step error can change distribution or positivity.",
+      "concept": "ma13-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strogatz, Nonlinear Dynamics and Chaos — edition and exact section verification pending",
+    "Gardiner, Stochastic Methods — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does changing stochastic calculus convention change the displayed drift? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Noise with state-dependent amplitude needs an integration convention; the physical interpretation and probability evolution must use it consistently.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An Itô stochastic differential equation dX=a(X,t)dt+b(X,t)dW uses quadratic variation (dW)²=dt in its differential calculus.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Itô’s formula gives $df=(f_t+af_x+b^2f_{xx}/2)dt+bf_xdW$. The second-derivative term comes from quadratic variation, not an ordinary differentiable trajectory. A Wiener path is almost surely not classically differentiable.
+
+For appropriate coefficients and boundary conditions, the density obeys $\partial_t p=-\partial_x(ap)+\tfrac12\partial_x^2(b^2p)$. State-dependent diffusion stays inside the derivative. Absorbing/reflecting boundaries and existence/uniqueness conditions are part of the stochastic model.
+
+In one dimension a Stratonovich drift converts to Itô drift by adding b b′/2 when regularity permits. The convention must match the physical limiting procedure and data model. Writing the same symbols without declaring convention can describe different processes.
+
+For geometric Brownian motion dX=αXdt+σXdW, Itô’s formula yields dlnX=(α−σ²/2)dt+σdW for positive X. Mean growth, typical logarithmic growth and sample extrema are different. Euler–Maruyama has convergence regimes and can violate positivity at finite steps for this process; an exact log update is available here.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Simulate a labelled geometric Brownian model with exact log updates and compare with decreasing-step Euler–Maruyama. Check positivity, ensemble mean and log mean separately. State Itô/Stratonovich convention in every reported equation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With α=3 and σ=2, logarithmic drift is 3−4/2=1. For additive noise b=2, free diffusion coefficient in the standard Fokker–Planck form is b²/2=2. The noise amplitude and diffusion coefficient are not interchangeable.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

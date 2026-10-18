@@ -1,0 +1,191 @@
+---
+{
+  "id": "PH4.4",
+  "title": "Multipole expansion",
+  "hook": "Why can a neutral object still produce an electric field far away?",
+  "recap": [
+    "Observation radius larger than the localized source size.",
+    "Total charge.",
+    "As r⁻², with its field of order r⁻³.",
+    "Creating the induced polarization contributes to assembly work."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does total charge zero imply zero exterior field?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Higher moments can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a dipole approximation exact at every distance?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is an exterior far-field approximation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is dipole moment origin-independent for any nonzero net charge?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It changes by minus total charge times the origin shift.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Leading axial dipole field for k=1, p=3, r=2?",
+      "answer": "0.75",
+      "explanation": "2kp/r³=6/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Field ratio after doubling distance in a leading dipole field?",
+      "answer": "0.125",
+      "explanation": "The leading field scales as r⁻³.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why define a quadrupole convention explicitly?",
+      "answer": "Different normalizations assign different numerical factors to the same potential",
+      "options": [
+        "Different normalizations assign different numerical factors to the same potential",
+        "All conventions have identical tensor entries"
+      ],
+      "explanation": "The potential and moment definition must be used consistently.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets the multipole expansion regime?",
+      "back": "Observation radius larger than the localized source size.",
+      "concept": "ph4-4-theory"
+    },
+    {
+      "front": "What does the monopole term encode?",
+      "back": "Total charge.",
+      "concept": "ph4-4-theory"
+    },
+    {
+      "front": "How does a dipole potential scale?",
+      "back": "As r⁻², with its field of order r⁻³.",
+      "concept": "ph4-4-theory"
+    },
+    {
+      "front": "Why distinguish permanent and induced dipole energy?",
+      "back": "Creating the induced polarization contributes to assembly work.",
+      "concept": "ph4-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a neutral object still produce an electric field far away? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Multipole expansions separate the effects of total charge, dipole arrangement and finer structure. They approximate a localized source at distances larger than its size, not everywhere in space.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+From far away, coarse charge moments matter before fine details. Canceling total charge removes only the first term, not every spatial imbalance.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a localized charge distribution, the exterior potential can be expanded in inverse observation distance. Moments depend on origin according to their order and lower moments.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For observation r outside a source region with |r′|&lt;|r|, expand the Coulomb kernel in powers of source size divided by observation radius. The leading terms are
+
+$$V(r)=\frac{1}{4\pi\epsilon_0}\left[\frac Qr+\frac{p\cdot\hat r}{r^2}+\frac{1}{2r^3}\sum_{ij}Q_{ij}\hat r_i\hat r_j+\cdots\right].$$
+
+Here Q=∫ρdV, p=∫r′ρdV and one common traceless quadrupole convention is $Q_{ij}=\int\rho(3x_i'x_j'-r'^2\delta_{ij})dV'$. Other quadrupole conventions move factors, so definitions must accompany formulas.
+
+For a neutral pair ±q separated by vector d from negative to positive, p=qd. The far-field potential is kp cosθ/r², and differentiating gives a field of order r⁻³. On the dipole axis E=2kp/r³ along the appropriate axial direction, while the equatorial field points opposite p with magnitude kp/r³. These are far-field formulas, not exact near either point charge.
+
+A shift of origin by a changes dipole moment to p′=p−Qa. Thus p is origin-independent for a neutral localized distribution, but not when total charge is nonzero. A quadrupole also mixes with lower moments under translation. Moment labels describe a chosen expansion, not an arbitrary coordinate-free decomposition at every order.
+
+For a dipole in a slowly varying external field, U≈−p·E and torque τ≈p×E. A permanent dipole and an induced dipole have different energy bookkeeping: polarizing an induced dipole usually introduces the familiar half factor in the linear response energy. State whether p is fixed or produced by the applied field.
+
+Truncation error is controlled by the source/observation size ratio under suitable bounded-source assumptions. Symmetry can force some moments to vanish; a missing monopole does not imply a missing dipole. At comparable distances, sum the actual charge distribution or retain more terms rather than extending the leading asymptotic term beyond its regime.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the exact two-charge potential and compare with its dipole approximation along several angles while increasing r/d. Plot relative errors away from nodes where the leading potential vanishes, and report absolute errors near such cancellation directions.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a neutral far-field dipole with k=1 and p=3, the axial field magnitude at r=2 is 2×3/8=0.75, provided r is much larger than its physical charge separation. Doubling r reduces that leading field by a factor of eight.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

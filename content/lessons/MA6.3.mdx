@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA6.3",
+  "title": "Residues and real integrals",
+  "hook": "When can closing a real integral with a large arc change nothing?",
+  "recap": [
+    "The coefficient of (z−a)⁻¹.",
+    "The contour orientation and residue-theorem sign.",
+    "Bound arc length times the maximum integrand by a quantity tending to zero.",
+    "It uses a specified paired limiting procedure rather than separate improper limits."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May the large arc be dropped without an estimate?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its contribution need not vanish.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a principal value always the same as an ordinary improper integral?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Symmetric cancellation can exist when the separate one-sided integrals diverge.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "For k>0, where does eⁱᵏᶻ decay?",
+      "options": [
+        "In the lower half-plane",
+        "In the upper half-plane"
+      ],
+      "answer": "In the upper half-plane",
+      "explanation": "Its magnitude is exp(−k Im z).",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Integral of 1/(x²+4) over the real line, divided by π?",
+      "answer": "0.5",
+      "explanation": "The formula π/a with a=2 gives π/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Residue of 3/(z−2) at z=2?",
+      "answer": "3",
+      "explanation": "The coefficient of (z−2)⁻¹ is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is required if a pole lies on the integration path?",
+      "answer": "A stated indentation or limiting prescription and its justification",
+      "options": [
+        "A stated indentation or limiting prescription and its justification",
+        "Ignoring the pole because it is only one point"
+      ],
+      "explanation": "A divergent neighbourhood is not removed by deleting a point value.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What local coefficient is a residue?",
+      "back": "The coefficient of (z−a)⁻¹.",
+      "concept": "ma6-3-theory"
+    },
+    {
+      "front": "What does a clockwise closure change?",
+      "back": "The contour orientation and residue-theorem sign.",
+      "concept": "ma6-3-theory"
+    },
+    {
+      "front": "How can one justify dropping the rational example’s large arc?",
+      "back": "Bound arc length times the maximum integrand by a quantity tending to zero.",
+      "concept": "ma6-3-theory"
+    },
+    {
+      "front": "What distinguishes a principal value?",
+      "back": "It uses a specified paired limiting procedure rather than separate improper limits.",
+      "concept": "ma6-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Stein and Shakarchi, Complex Analysis — exact section verification pending",
+    "Ahlfors, Complex Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+When can closing a real integral with a large arc change nothing? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Residues can evaluate response integrals and spectral transforms efficiently, but only after contour orientation, pole location and the added arc have been controlled.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A contour sum isolates the local 1/(z−a) contribution of each enclosed pole. The rest of a real-integral calculation is proving that the contour represents the intended real quantity.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The residue at an isolated singularity is the coefficient of (z−a)⁻¹ in its Laurent expansion. For an admissible positively oriented contour, residues contribute with their winding numbers.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a meromorphic function with finitely many enclosed poles and none on an admissible closed contour, $\oint_\gamma f(z)dz=2\pi i\sum_a\operatorname{Ind}(\gamma,a)\operatorname{Res}(f,a)$. A simple positive boundary gives winding number one for interior poles. A contour containing holes or repeated traversals needs its actual indices; the integral is not always a count of geometrically visible poles.
+
+At a simple pole, $\operatorname{Res}(f,a)=\lim_{z\to a}(z-a)f(z)$. For a pole of order m, it equals the (m−1)st derivative of (z−a)ᵐf(z) at a divided by (m−1)!. If f=g/h with a simple zero of h and g holomorphic, the residue is g(a)/h′(a). A vanishing numerator may cancel the apparent pole, so check the actual singularity first.
+
+For a>0, close 1/(z²+a²) along an upper semicircle. The only enclosed pole is ia and its residue is 1/(2ia). On a radius-R arc, the integrand is bounded by 1/(R²−a²), and the arc length is πR; hence its contribution tends to zero. Therefore $\int_{-\infty}^{\infty}dx/(x^2+a^2)=\pi/a$. The real integral converges absolutely, so its value agrees with the symmetric limit used by the contour.
+
+An exponential eⁱᵏᶻ decays in the upper half-plane for k>0 and in the lower half-plane for k&lt;0. This choice controls which closure can work, but decay estimates still need proof for the remaining factors. Closing downward gives clockwise orientation for the usual real-axis traversal and therefore a minus sign. A named arc lemma cannot replace checking its hypotheses.
+
+A pole on the real axis requires a declared indentation or principal-value prescription. A Cauchy principal value can exist even when the ordinary improper integral fails; it is not interchangeable with that integral. Branch points require branch cuts and branch-contour accounting. Before interpreting any result physically, distinguish a mathematical prescription from a causal or radiation condition supplied by the model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute a real-axis truncated integral of 1/(x²+a²) together with its upper semicircle contribution for growing radii. Compare their complex sum with 2πi times the residue. Then try 1/x near zero and report the two one-sided improper integrals separately from a symmetric principal value.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Take a=2. The upper pole is 2i, its residue is 1/(4i), and multiplying by 2πi gives π/2. Thus the real integral divided by π equals 1/2. Doubling a from 1 to 2 halves the area, also consistent with substituting x=at.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

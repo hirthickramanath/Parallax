@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA4.3",
+  "title": "Systems and phase plane",
+  "hook": "Why do trajectories of a well-posed autonomous system not cross at the same state?",
+  "recap": [
+    "All components of F vanish.",
+    "A zero of one component of the vector field.",
+    "A shared state would give the same local solution up to time shift.",
+    "Usually explicit timing information along the curve."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is position alone always enough state for a second-order equation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Velocity supplies independent initial data.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is every point on one nullcline an equilibrium?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Every component derivative must vanish.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can crossing in a projected plot prove uniqueness failure?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Hidden state coordinates or forcing time can differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Maximum speed magnitude for y″+4y=0 with y(0)=1 and y′(0)=0?",
+      "answer": "2",
+      "explanation": "At y=0, v²=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of first-order state variables in a scalar second-order initial-value equation?",
+      "answer": "2",
+      "explanation": "Position and velocity provide the two components.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why test step refinement for an apparently spiralling conservative orbit?",
+      "answer": "The spiral may be numerical energy drift",
+      "options": [
+        "The spiral may be numerical energy drift",
+        "Every spiral automatically proves a physical drag force"
+      ],
+      "explanation": "Discretization can change the qualitative portrait.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines an autonomous equilibrium?",
+      "back": "All components of F vanish.",
+      "concept": "ma4-3-theory"
+    },
+    {
+      "front": "What does a nullcline identify?",
+      "back": "A zero of one component of the vector field.",
+      "concept": "ma4-3-theory"
+    },
+    {
+      "front": "Why can unique autonomous trajectories not cross in full state space?",
+      "back": "A shared state would give the same local solution up to time shift.",
+      "concept": "ma4-3-theory"
+    },
+    {
+      "front": "What does a phase portrait omit?",
+      "back": "Usually explicit timing information along the curve.",
+      "concept": "ma4-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do trajectories of a well-posed autonomous system not cross at the same state? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Coupled ODEs describe oscillators, chemical populations and orbital dynamics. A phase portrait records states, not simply positions, and helps separate geometry from the time history along a curve.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A state includes every variable needed to predict the next local change. Two different velocities at one position are different phase-space points.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An autonomous first-order system x′=F(x) assigns a tangent vector to each state. An equilibrium is a zero of F; a trajectory is an integral curve with its time orientation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A second-order scalar equation becomes a two-component first-order system by defining v=y′. For y″+ω²y=0, the system is y′=v and v′=−ω²y. Position alone is not a complete state. The conserved quantity $(v^2+\omega^2y^2)/2$ makes nonzero trajectories ellipses in this coordinate plane; their aspect ratio depends on the axis units.
+
+For a constant matrix A, x′=Ax has solution $x(t)=e^{tA}x_0$. Real eigenvalues with negative signs give decay along associated eigenvectors; opposite signs yield a saddle. A complex conjugate pair α±iβ gives rotation with exponential envelope eᵅᵗ when a real plane representation applies. Repeated eigenvalues require the Jordan structure already introduced in linear algebra.
+
+For nonlinear autonomous systems with local uniqueness, two trajectories meeting the same state at a given time must coincide after a time shift as long as both solutions exist. Drawn crossing in a projection can occur when omitted coordinates differ. Nonautonomous systems can cross in the original state plot at different times because the forcing time supplies additional state information.
+
+In two dimensions, nullclines F₁=0 and F₂=0 identify where one component stops changing. Their intersections are equilibrium candidates; elsewhere one nullcline only makes the flow tangent to a coordinate direction. Nullclines are not generally trajectories, and a zero of one derivative need not be an equilibrium.
+
+Phase-plane sketches should show arrows, axes, equilibrium classifications and any conserved or monotone function. Numerical step errors can create false spirals in a true centre. To infer physical damping from a plot, compare an analytic invariant or step-refined solution rather than interpreting a numerical artifact as a new force.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw nullclines and vector arrows for the oscillator and for x′=x,y′=−y. Integrate with several step sizes and monitor the oscillator energy. Compare a genuine saddle with a numerical spiral caused by a low-order method.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For y′=v and v′=−4y, initial state (1,0) has v²+4y²=4. At y=0 it reaches v=±2, and the time direction follows the vector field. A plot of position versus time is not the same object as this closed phase ellipse.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

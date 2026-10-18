@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA11.5",
+  "title": "Curvature and the Riemann tensor",
+  "hook": "How can a small closed transport loop reveal geometry that no coordinate choice removes?",
+  "recap": [
+    "Noncommutation of covariant transport/derivatives locally.",
+    "A contraction of the Riemann tensor.",
+    "They are chart-dependent and can be nonzero in flat space.",
+    "Curvature through geodesic deviation with a stated convention."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does zero scalar curvature alone always imply flatness?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Other tensor components can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can local coordinates remove all tidal curvature in an open region automatically?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Nonzero curvature is invariant.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must curvature sign conventions be compared?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Definitions can differ by an overall sign.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Gaussian curvature of a round radius-2 sphere?",
+      "answer": "0.25",
+      "explanation": "1/R²=1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Scalar curvature of that two-sphere?",
+      "answer": "0.5",
+      "explanation": "2/R²=1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What encodes tidal separation?",
+      "answer": "Curvature through geodesic deviation with a stated convention.",
+      "options": [
+        "Curvature through geodesic deviation with a stated convention.",
+        "Noncommutation of covariant transport/derivatives locally."
+      ],
+      "explanation": "Curvature through geodesic deviation with a stated convention.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Riemann curvature measure?",
+      "back": "Noncommutation of covariant transport/derivatives locally.",
+      "concept": "ma11-5-theory"
+    },
+    {
+      "front": "What is Ricci curvature?",
+      "back": "A contraction of the Riemann tensor.",
+      "concept": "ma11-5-theory"
+    },
+    {
+      "front": "Why are Christoffel values insufficient?",
+      "back": "They are chart-dependent and can be nonzero in flat space.",
+      "concept": "ma11-5-theory"
+    },
+    {
+      "front": "What encodes tidal separation?",
+      "back": "Curvature through geodesic deviation with a stated convention.",
+      "concept": "ma11-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Lee, Introduction to Smooth Manifolds — edition and exact section verification pending",
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a small closed transport loop reveal geometry that no coordinate choice removes? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Curvature measures failure of derivatives/transport to commute and underlies tidal gravity rather than merely nonzero coordinate connection.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use R^ρ_(σμν)=∂_μΓ^ρ_(νσ)−∂_νΓ^ρ_(μσ)+Γ^ρ_(μλ)Γ^λ_(νσ)−Γ^ρ_(νλ)Γ^λ_(μσ) as the stated curvature-sign convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a torsion-free connection and a vector, $[\nabla_\mu,\nabla_\nu]v^\rho=R^\rho{}_{\sigma\mu\nu}v^\sigma$ in the stated convention. Parallel transport around an infinitesimal loop differs from identity by curvature times area to leading order. Finite-loop holonomy can also reflect topology, so local and global conclusions must be separated.
+
+For a Levi–Civita connection, the fully lowered Riemann tensor has antisymmetries, pair interchange symmetry and Bianchi identities. Ricci contraction and scalar curvature are selected contractions, not the complete tensor in every dimension. Vanishing scalar curvature alone does not prove the whole geometry flat.
+
+For a round two-sphere of radius R, Gaussian curvature is 1/R² and scalar curvature is $\mathcal R=2/R^2$. Flat polar coordinates instead have zero curvature even though their Christoffel coefficients are nonzero. Dimensional and sign conventions matter when comparing references.
+
+Curvature controls relative geodesic motion under an appropriately signed geodesic-deviation equation. One observer can choose locally inertial coordinates at a point, but cannot eliminate finite tidal effects over a region with nonzero curvature. Physical singularity diagnosis needs invariant/extendibility analysis, not merely one divergent chart component.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute curvature for the polar plane and round sphere using the same convention. Compare the invariant results and transport a tangent around a small loop, retaining the loop-area and finite-size qualifications.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a round sphere radius 2, Gaussian curvature is 1/4 and scalar curvature is 1/2. Doubling radius reduces both by four. A zero scalar in another manifold would not by itself certify zero Riemann curvature.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

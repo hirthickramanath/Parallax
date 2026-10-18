@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.7",
+  "title": "Spin-1/2 systems and Stern-Gerlach",
+  "hook": "Why does filtering spin along one direction change a later measurement along another?",
+  "recap": [
+    "(1±r·n)/2.",
+    "r=0.",
+    "Retains and prepares the subensemble conditioned on an outcome.",
+    "It is unitary rotation rather than outcome-conditioned measurement."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a uniform magnetic field alone perform Stern–Gerlach spatial filtering?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A gradient is needed for the elementary separation model.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do pure Bloch states have unit vector length?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Mixed states lie inside the sphere.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are conditional and joint sequence probabilities identical?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Joint probabilities include the preparation/filter probability.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Up probability for z-up measured at 60° to z?",
+      "answer": "0.75",
+      "explanation": "(1+.5)/2=.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Complementary down probability?",
+      "answer": "0.25",
+      "explanation": "1−.75=.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "How does uniform-field precession differ from filtering?",
+      "answer": "It is unitary rotation rather than outcome-conditioned measurement.",
+      "options": [
+        "It is unitary rotation rather than outcome-conditioned measurement.",
+        "(1±r·n)/2."
+      ],
+      "explanation": "It is unitary rotation rather than outcome-conditioned measurement.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a spin-half measurement probability?",
+      "back": "(1±r·n)/2.",
+      "concept": "ph8-7-theory"
+    },
+    {
+      "front": "What is the maximally mixed Bloch vector?",
+      "back": "r=0.",
+      "concept": "ph8-7-theory"
+    },
+    {
+      "front": "What does postselection do?",
+      "back": "Retains and prepares the subensemble conditioned on an outcome.",
+      "concept": "ph8-7-theory"
+    },
+    {
+      "front": "How does uniform-field precession differ from filtering?",
+      "back": "It is unitary rotation rather than outcome-conditioned measurement.",
+      "concept": "ph8-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does filtering spin along one direction change a later measurement along another? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Spin-half devices make state preparation, incompatible measurements and conditional probabilities concrete.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A pure spin-half state can be represented by a unit Bloch vector r; measurement along unit axis n has probabilities (1±r·n)/2.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The density matrix is $\rho=(I+\mathbf r\cdot\boldsymbol\sigma)/2$, with |r|≤1; pure states have |r|=1. The projector for spin up along n is (I+n·σ)/2, giving p_up=(1+r·n)/2. The minus outcome has the complementary probability. A maximally mixed state has r=0 and gives one half along every direction.
+
+A Stern–Gerlach field gradient couples a magnetic moment to spatial motion, separating measurement outcomes under the apparatus approximations. It is not simply a uniform field rotating an already separated pair of classical orientations. A selected output prepares a conditional state; discarding the outcome produces a different ensemble description.
+
+Prepare z-up, measure x and select x-up, then measure z. The first x probability is one half and the final z-up probability is one half conditional on the x selection. Without conditioning, probabilities must sum over both x branches with their weights. The intervening measurement destroys the original z certainty in the ideal projective model.
+
+A uniform magnetic field generates unitary precession rather than spatial filtering. For H=ℏωσ_z/2, the Bloch vector rotates around z with the appropriate sign convention; measurement and rotation are different operations. Experimental imperfections, finite gradients, decoherence and detector efficiency require extensions before interpreting real beam counts.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute ideal sequences with and without postselection and draw a probability tree. Keep conditional and joint probabilities separate. Compare a unitary field rotation with a projective filter rather than representing both by the same state-update rule.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For an initial z-up state and a measurement axis at 60° to z, p_up=(1+cos60°)/2=.75. The down probability is .25. For a perpendicular axis both are .5; no single hidden classical vector projection replaces these discrete outcomes.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

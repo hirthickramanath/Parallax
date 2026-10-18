@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH9.5",
+  "title": "Identical particles and helium",
+  "hook": "Why does exchanging identical particles change allowed wavefunctions but not create a new labelled species?",
+  "recap": [
+    "Antisymmetry of the full state.",
+    "The singlet.",
+    "Exchange and correlation have different treatments.",
+    "Spin-dependent couplings such as spin–orbit interaction."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does Pauli exclusion concern the complete one-particle state?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Spin and spatial labels both enter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is exchange a separate classical repulsive force?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It follows from state antisymmetry.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does Hartree–Fock include every electronic correlation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Correlation beyond one determinant can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Total two-spin-half spin-space dimension?",
+      "answer": "4",
+      "explanation": "2×2=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Triplet dimension?",
+      "answer": "3",
+      "explanation": "Its three m states span the symmetric sector.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What can make pure spin labels approximate?",
+      "answer": "Spin-dependent couplings such as spin–orbit interaction.",
+      "options": [
+        "Spin-dependent couplings such as spin–orbit interaction.",
+        "Antisymmetry of the full state."
+      ],
+      "explanation": "Spin-dependent couplings such as spin–orbit interaction.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What exchange sign do fermions require?",
+      "back": "Antisymmetry of the full state.",
+      "concept": "ph9-5-theory"
+    },
+    {
+      "front": "What spin state is antisymmetric for two spin halves?",
+      "back": "The singlet.",
+      "concept": "ph9-5-theory"
+    },
+    {
+      "front": "Why use reduced/orbital approximations carefully?",
+      "back": "Exchange and correlation have different treatments.",
+      "concept": "ph9-5-theory"
+    },
+    {
+      "front": "What can make pure spin labels approximate?",
+      "back": "Spin-dependent couplings such as spin–orbit interaction.",
+      "concept": "ph9-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does exchanging identical particles change allowed wavefunctions but not create a new labelled species? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Exchange symmetry applies to the complete state, coupling spatial and spin factors in multielectron atoms.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Identical fermion states are antisymmetric under particle exchange and boson states symmetric in the usual three-dimensional setting.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For two fermions, antisymmetrizing one-particle states gives $[\phi_a(1)\phi_b(2)-\phi_b(1)\phi_a(2)]/\sqrt2$ when the states are orthonormal. If a and b are the same complete state the expression vanishes. The complete spin-space labels matter, not only a spatial drawing.
+
+Two spin-half states form a symmetric triplet and antisymmetric singlet. To make the total electronic state antisymmetric, a symmetric spatial factor pairs with the singlet and an antisymmetric spatial factor with triplet spin in the simple product construction.
+
+For helium, nuclear attraction and electron–electron repulsion require a correlated two-electron problem. Independent-orbital/Hartree–Fock approximations capture some exchange and screening but do not include all electron correlation. Exchange integrals arise from antisymmetry, not a new classical force law added by hand.
+
+Spin–orbit coupling and additional interactions can make separate spin/spatial labels approximate. State counting and energies must use consistent symmetry and Hamiltonian assumptions. Do not identify distinguishable labels used in calculations with physically distinguishable identical electrons.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct and normalize singlet/triplet states and apply the exchange operator. Pair with symmetric/antisymmetric spatial examples and verify the total fermionic sign.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Two spin-half electrons have four spin basis states, decomposing into a triplet of three and singlet of one. Two identical fermions in the same complete one-particle state have zero allowed antisymmetric amplitude.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

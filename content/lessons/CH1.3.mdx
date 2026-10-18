@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.3",
+  "title": "Chemical kinetics and mechanisms",
+  "hook": "Why can an observed first-order decay hide several elementary reactions?",
+  "recap": [
+    "A step-specific concentration dependence under its model assumptions.",
+    "A justified fast relaxation of the intermediate after transients.",
+    "Rapid reversible equilibration relative to the subsequent slow process.",
+    "Regime, prefactor, mechanism or transport changes."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does overall reaction order uniquely identify a mechanism?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different elementary networks can give the same effective order.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a steady-state intermediate automatically at thermodynamic equilibrium?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Formation and removal can balance while flux continues.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is activation energy the same as reaction enthalpy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Barrier and endpoint energy change are different quantities.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Approximate steady intermediate for k₁=0.1, k₂=10 and [A]=2?",
+      "answer": "0.02",
+      "explanation": "k₁[A]/k₂=0.02.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "First-order half-life for k=0.2 s⁻¹ using ln2=0.69314718056?",
+      "answer": "3.4657359028",
+      "explanation": "Divide ln2 by 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why compare different initial conditions in mechanism inference?",
+      "answer": "They can expose parameter degeneracies hidden by one trace",
+      "options": [
+        "They can expose parameter degeneracies hidden by one trace",
+        "A single perfect curve fit proves every elementary step"
+      ],
+      "explanation": "One observational trajectory may not identify the network.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines an elementary mass-action hypothesis?",
+      "back": "A step-specific concentration dependence under its model assumptions.",
+      "concept": "ch1-3-theory"
+    },
+    {
+      "front": "What supports a steady-state reduction?",
+      "back": "A justified fast relaxation of the intermediate after transients.",
+      "concept": "ch1-3-theory"
+    },
+    {
+      "front": "What supports pre-equilibrium?",
+      "back": "Rapid reversible equilibration relative to the subsequent slow process.",
+      "concept": "ch1-3-theory"
+    },
+    {
+      "front": "What can Arrhenius curvature indicate?",
+      "back": "Regime, prefactor, mechanism or transport changes.",
+      "concept": "ch1-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an observed first-order decay hide several elementary reactions? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Kinetic laws describe data in a regime; mechanisms propose the elementary routes that produce them. An effective order does not uniquely reconstruct every microscopic step.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A short-lived intermediate can be formed and consumed so quickly that only a simpler net time dependence is visible.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Reaction rate is defined using a specified species change and stoichiometric normalization. Elementary-step rate laws and overall observed rate laws are different claims.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For A→products with first-order disappearance, $-d[A]/dt=k[A]$ gives [A]=[A]₀e⁻ᵏᵗ. For bimolecular A+B disappearance, a simple elementary mass-action model gives k[A][B]. Stoichiometric rate normalization matters: a 2A→product event can give a factor of two between event rate and A disappearance.
+
+For a sequence A→I→P with rates k₁ and k₂, the exact linear equations determine a transient intermediate. If I relaxes quickly and its buildup transient is unimportant, d[I]/dt≈0 gives [I]≈k₁[A]/k₂. This quasi-steady-state approximation requires a timescale and concentration argument; it is not identical to equilibrium.
+
+For reversible A+B⇌I followed by I→P, a fast pre-equilibrium approximation relates [I] to an equilibrium ratio before the slow product step. Steady-state and pre-equilibrium assumptions can yield different rate expressions, and both can fail outside their intended parameter regime.
+
+Temperature-dependent rates often fit $k=Ae^{-E_a/(RT)}$ over a limited range. An Arrhenius plot slope estimates an effective activation energy if the prefactor and mechanism do not change materially. The activation energy is not the reaction enthalpy. Curvature may indicate changing mechanisms, transport limitation or other effects rather than bad plotting alone.
+
+A kinetic fit should compare concentration profiles, reaction orders and residuals across several initial conditions. Identifiability can be weak: different mechanisms or parameter combinations can produce almost indistinguishable observed curves. An accurate fit of one trace is insufficient to prove a unique mechanism.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute synthetic A→I→P profiles with widely separated and similar rate constants. Compare exact dynamics with the steady-state estimate and identify the initial interval it misses. Fit more than one initial condition before claiming parameter uniqueness.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For k=0.2 s⁻¹, first-order half-life is ln2/0.2≈3.4657 s. In a fast-intermediate model with k₁=0.1 s⁻¹, k₂=10 s⁻¹ and [A]=2, the steady-state estimate is [I]≈0.02 in the same concentration units, after the initial fast transient.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

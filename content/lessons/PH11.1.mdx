@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH11.1",
+  "title": "Spacetime and Lorentz transformations",
+  "hook": "How can two observers disagree about simultaneity without disagreeing about an event?",
+  "recap": [
+    "Spacetime signature (+,−,−,−).",
+    "Time accumulated along a timelike clock worldline.",
+    "Distant events simultaneous in one inertial frame need not be simultaneous in another.",
+    "Vacuum light speed c."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are simultaneity and simultaneous photon arrival identical?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Signal travel time and event coordinates are different.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a Lorentz boost preserve the Minkowski interval?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It mixes time and space while preserving the stated quadratic form.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a spacelike event ordering differ between inertial frames?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "It does not represent a reversible causal influence.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Lorentz factor at v=0.6c?",
+      "answer": "1.25",
+      "explanation": "γ=1/√(1−0.36)=1.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Observed length in metres of a 10 m proper-length rod moving along its length at 0.6c?",
+      "answer": "8",
+      "explanation": "L=10/1.25=8 m.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is essential in a moving-rod length comparison?",
+      "answer": "Endpoint events simultaneous in the measuring frame",
+      "options": [
+        "Endpoint events simultaneous in the measuring frame",
+        "Using any two endpoint events regardless of time"
+      ],
+      "explanation": "Length contraction includes a simultaneity condition.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sign convention is used here?",
+      "back": "Spacetime signature (+,−,−,−).",
+      "concept": "ph11-1-theory"
+    },
+    {
+      "front": "What is proper time?",
+      "back": "Time accumulated along a timelike clock worldline.",
+      "concept": "ph11-1-theory"
+    },
+    {
+      "front": "What is relativity of simultaneity?",
+      "back": "Distant events simultaneous in one inertial frame need not be simultaneous in another.",
+      "concept": "ph11-1-theory"
+    },
+    {
+      "front": "What does velocity addition preserve for light?",
+      "back": "Vacuum light speed c.",
+      "concept": "ph11-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor and Wheeler, Spacetime Physics — edition and exact section verification pending",
+    "Rindler, Introduction to Special Relativity — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can two observers disagree about simultaneity without disagreeing about an event? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Special relativity reconciles inertial-frame symmetry with invariant vacuum light speed. It replaces a universal simultaneous time slice with a spacetime description of events and causal relationships.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Observers use different space-and-time grids on the same events. A Lorentz transformation changes the coordinates while preserving a spacetime interval, rather than adding an ordinary spatial rotation to an absolute clock.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use inertial frames S and S′ with coincident origins at zero and S′ moving at speed v along +x. Adopt metric signature (+,−,−,−) and coordinates (ct,x,y,z).
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For |v|&lt;c, define β=v/c and $\gamma=(1-\beta^2)^{-1/2}$. The standard boost is $ct'=\gamma(ct-\beta x)$, $x'=\gamma(x-\beta ct)$, y′=y, z′=z. Direct substitution preserves $c^2\Delta t^2-\Delta x^2-\Delta y^2-\Delta z^2$. The inverse uses −v; neither frame is singled out as an absolute rest frame.
+
+Two events simultaneous in S with separation Δx have $\Delta t'=-\gamma v\Delta x/c^2$. Their time ordering can differ when the separation is spacelike. Timelike-separated events preserve causal ordering under proper orthochronous boosts. A coordinate simultaneity convention should not be confused with seeing distant events at the same photon-arrival time.
+
+For two ticks on one clock, its rest-frame spatial separation is zero and its proper time satisfies $d\tau=dt/\gamma$ along an inertial segment. Thus a moving clock accumulates less proper time between the appropriate compared events. Longitudinal length contraction L=L₀/γ compares endpoints simultaneous in the observing frame, while proper length L₀ uses simultaneous endpoints in the object's rest frame. Mixing simultaneity conditions produces false contradictions.
+
+Differentiate the boost to obtain parallel velocity addition $u_x'=(u_x-v)/(1-u_xv/c^2)$. Transverse components also change through the time denominator. For light with ux=c, the transformed speed remains c. Massive inertial relative motion stays below c for finite subluminal inputs; a Newtonian sum is only the small-speed limit.
+
+For an accelerated journey in flat spacetime, integrate proper time along each worldline. The reunion-clock comparison is not resolved by asserting one globally inertial frame for both paths. Acceleration can distinguish the histories, while the accumulated proper-time difference is a geometric path calculation. These statements exclude gravitational curvature, which requires general relativity.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw two event pairs: ticks at one clock and endpoint measurements of a rod. Apply the Lorentz formulas to both coordinates of each event and verify the interval. Label the simultaneous frame for a length measurement rather than transforming only an isolated distance.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At v=0.6c, γ=1.25. A 10 m rod aligned with the x-axis and at rest in S′ has length 8 m in S when its endpoints are recorded simultaneously in S. A clock comoving with S′ accumulates 8 s of proper time during a 10 s S-frame interval along its path.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

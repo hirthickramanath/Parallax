@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH4.5",
+  "title": "Conductors and capacitance",
+  "hook": "Why can a hollow conductor hide an external field without erasing its own charge?",
+  "recap": [
+    "Its mobile charges have rearranged until the bulk electrostatic field vanishes.",
+    "4πε₀R in vacuum relative to infinity.",
+    "Q²/(2C)=CV²/2.",
+    "Fixed voltage and fixed charge involve different energy exchanges."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does E=0 in equilibrium imply the conductor carries no net charge?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Excess charge can reside on its surface.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a cavity containing a point charge obey the same zero-field argument as an empty cavity?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Internal charge changes Poisson sources and induced surface charge.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can capacitor field energy alone describe every fixed-voltage mechanical process?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The voltage source exchanges work and charge.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Potential of an isolated sphere for k=1, Q=6 and R=2?",
+      "answer": "3",
+      "explanation": "V=kQ/R=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Stored energy for Q=6 and V=3 in a linear isolated capacitor?",
+      "answer": "9",
+      "explanation": "U=QV/2=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What ensures zero field in an empty enclosed electrostatic cavity?",
+      "answer": "Constant boundary potential and the source-free uniqueness theorem",
+      "options": [
+        "Constant boundary potential and the source-free uniqueness theorem",
+        "A universal claim that all cavities always have zero field"
+      ],
+      "explanation": "Internal charges or nonideal/time-dependent conditions change the problem.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a conductor equipotential at equilibrium?",
+      "back": "Its mobile charges have rearranged until the bulk electrostatic field vanishes.",
+      "concept": "ph4-5-theory"
+    },
+    {
+      "front": "What is isolated-sphere capacitance?",
+      "back": "4πε₀R in vacuum relative to infinity.",
+      "concept": "ph4-5-theory"
+    },
+    {
+      "front": "What energy belongs to a linear capacitor?",
+      "back": "Q²/(2C)=CV²/2.",
+      "concept": "ph4-5-theory"
+    },
+    {
+      "front": "Why state source constraints during a geometry change?",
+      "back": "Fixed voltage and fixed charge involve different energy exchanges.",
+      "concept": "ph4-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a hollow conductor hide an external field without erasing its own charge? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Conductors rearrange mobile charge until electrostatic equilibrium is reached. Capacitance describes how geometry and materials connect potential differences with stored charge, not an intrinsic amount of charge a component must contain.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A conductor is an equipotential volume at equilibrium. Surface charges adjust to enforce that condition, and empty cavities can acquire their own boundary-value solution.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An ideal conductor at electrostatic equilibrium has E=0 in its bulk and constant potential on each connected piece. Capacitance relates a specified charge arrangement to its potential difference.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If a static internal electric field remained in a perfect conductor, mobile charge would continue to move. Equilibrium therefore requires zero bulk field. A small pillbox crossing its vacuum surface gives the outward normal field just outside as σ/ε₀, while the tangential electrostatic field is zero. This is an equilibrium idealization, not the resistive electric field within a current-carrying wire.
+
+An empty enclosed cavity has constant boundary potential. By Laplace uniqueness its interior potential is the same constant and its field is zero, assuming no internal charges and a complete ideal conducting boundary. Charges inserted into a cavity induce an inner-surface charge and change that conclusion. Holes, time-dependent fields and finite conductivity need further treatment.
+
+For an isolated conducting sphere of radius R in vacuum with reference V∞=0, V=kQ/R and $C=Q/V=4\pi\epsilon_0R$. For concentric spherical conductors with radii a&lt;b carrying ±Q, integrating the gap field gives $C=4\pi\epsilon_0ab/(b-a)$. A single conductor’s capacitance relative to infinity differs from the two-conductor capacitance of a device.
+
+For a linear fixed capacitor, assembly energy is $U=\int_0^Qq/C\,dq=Q^2/(2C)=CV^2/2$. Field-energy integration ε₀∫E²dV/2 gives the same isolated-system result. With an attached voltage source, work and charge exchanged with that source matter when geometry changes; minimizing capacitor field energy alone can predict a wrong mechanical force.
+
+Capacitors in series share equal-magnitude intermediate-node charges under the standard initially uncharged isolated-node setup, while parallel capacitors share voltage. Precharged floating nodes and stray capacitance can require additional charge-balance equations. A diagrammatic rule is not a substitute for the actual conductor and source constraints.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare the conducting-shell and uniform-solid-sphere bench at equal radius and charge, paying attention to the discontinuous normal field at the shell. Compute the conductor energy at fixed charge and at fixed voltage, explicitly including any voltage source before discussing work.
+
+<Widget name="spherical_field_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In normalized units k=1, an isolated sphere with R=2 and Q=6 has V=3 and C=2. Its stored energy is QV/2=9. Doubling R at fixed charge halves potential and field energy while doubling capacitance.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

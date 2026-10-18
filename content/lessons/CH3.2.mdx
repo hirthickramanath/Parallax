@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH3.2",
+  "title": "Gas-phase and grain-surface reaction networks",
+  "hook": "Why can dust surfaces matter when they occupy little of a cloud’s volume?",
+  "recap": [
+    "Adsorption, surface reactions and desorption.",
+    "Widely separated reaction time scales.",
+    "Small populations can invalidate mean-field rates.",
+    "Element/charge conservation and specified sinks/sources."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does small grain volume imply negligible reactive area automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Surface area and rates determine its effect.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can deterministic mean-product rates fail at rare occupancy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Correlations and discreteness matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should an unexplained elemental deficit be ignored if curves look smooth?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Conservation is a key check.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Rate for k=.5,nA=2,nB=3?",
+      "answer": "3",
+      "explanation": ".5×2×3=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Unexplained closed-network deficit from 10 to 9?",
+      "answer": "1",
+      "explanation": "10−9=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What should every network track?",
+      "answer": "Element/charge conservation and specified sinks/sources.",
+      "options": [
+        "Element/charge conservation and specified sinks/sources.",
+        "Adsorption, surface reactions and desorption."
+      ],
+      "explanation": "Element/charge conservation and specified sinks/sources.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What couples gas and grains?",
+      "back": "Adsorption, surface reactions and desorption.",
+      "concept": "ch3-2-theory"
+    },
+    {
+      "front": "What makes a network stiff?",
+      "back": "Widely separated reaction time scales.",
+      "concept": "ch3-2-theory"
+    },
+    {
+      "front": "Why use stochastic surface methods?",
+      "back": "Small populations can invalidate mean-field rates.",
+      "concept": "ch3-2-theory"
+    },
+    {
+      "front": "What should every network track?",
+      "back": "Element/charge conservation and specified sinks/sources.",
+      "concept": "ch3-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Tielens, The Physics and Chemistry of the Interstellar Medium — edition and exact section verification pending",
+    "Herbst and van Dishoeck review literature — exact article/section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can dust surfaces matter when they occupy little of a cloud’s volume? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Surface area, adsorption and rare-event statistics can control molecule formation even when a bulk gas-rate picture looks simpler.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A gas–grain network couples gas reactions, adsorption, surface motion/reaction and desorption with species conservation and stated rate/statistical approximations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a gas reaction A+B with a rate coefficient k, loss includes $k n_A n_B$ for distinct reactants. Identical pair counting and branching must be handled consistently. A stiff network can have fast transients and slow abundance evolution, requiring stable integrators and conservation checks.
+
+Adsorption depends on collision flux, grain area and sticking; surface diffusion and binding determine encounters/desorption. Thermal, photon and cosmic-ray processes can release species. One dust temperature or grain size need not describe a full population.
+
+When expected surface occupation per grain is below one, a deterministic product of average populations can fail to represent correlated rare events. Master-equation or stochastic methods may be needed. A rate coefficient inferred in one surface regime is not universally transferable.
+
+Track elemental/charge budgets and uncertainty in poorly known reactions. Negative computed densities or mass drift can signal a solver/problem-definition error. A chemically plausible final abundance is not sufficient proof of a correct network history.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Integrate a small reversible synthetic network and monitor conserved elemental totals. Then compare deterministic and stochastic surface models in a rare-occupation toy case.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For distinct reactants n_A=2,n_B=3,k=.5, reaction rate is 3 per volume per time. If one conserved-element total is initially 10 and the closed network later gives 9, the missing one must be explained by a sink or numerical/accounting error.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

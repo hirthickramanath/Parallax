@@ -1,0 +1,186 @@
+---
+{
+  "id": "CP2.1",
+  "title": "PDE solvers (finite differences)",
+  "hook": "Why can reducing the time step rescue a simulated heat flow while refining space can destabilize it?",
+  "recap": [
+    "The discrete equation approaches the PDE under the stated refinement and smoothness assumptions.",
+    "DΔt/Δx²≤1/2 for the stated stencil.",
+    "Convergence against a verified reference or exact solution.",
+    "To preserve the intended time-level stencil."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a small algebraic solver residual prove small continuum error?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Discretization and boundary errors remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can an unconditionally stable method still be inaccurate?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Stability does not bound truncation error at large steps.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should explicit updates read only the old time level?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "In-place mixing changes the scheme.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "r for D=1, Δx=.2, Δt=.01?",
+      "answer": "0.25",
+      "explanation": ".01/.04=.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "New r if Δx halves with Δt fixed?",
+      "answer": "1",
+      "explanation": "r increases by a factor of four.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why keep old and new arrays separate?",
+      "answer": "To preserve the intended time-level stencil.",
+      "options": [
+        "To preserve the intended time-level stencil.",
+        "The discrete equation approaches the PDE under the stated refinement and smoothness assumptions."
+      ],
+      "explanation": "To preserve the intended time-level stencil.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is consistency?",
+      "back": "The discrete equation approaches the PDE under the stated refinement and smoothness assumptions.",
+      "concept": "cp2-1-theory"
+    },
+    {
+      "front": "What is explicit 1D heat stability?",
+      "back": "DΔt/Δx²≤1/2 for the stated stencil.",
+      "concept": "cp2-1-theory"
+    },
+    {
+      "front": "What tests continuum accuracy?",
+      "back": "Convergence against a verified reference or exact solution.",
+      "concept": "cp2-1-theory"
+    },
+    {
+      "front": "Why keep old and new arrays separate?",
+      "back": "To preserve the intended time-level stencil.",
+      "concept": "cp2-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Newman, Computational Physics — edition and exact section verification pending",
+    "Official NumPy, Astropy, astroquery and scikit-learn documentation — version and exact page verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can reducing the time step rescue a simulated heat flow while refining space can destabilize it? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+PDE calculations must distinguish continuum physics, discretization error, numerical stability and boundary choices before interpreting a simulation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A finite-difference method replaces derivatives by grid stencils. Consistency, stability and convergence are distinct properties of a stated scheme and problem.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For uₜ=D uₓₓ on a uniform one-dimensional grid, forward Euler and a centred second difference give $u_j^{n+1}=u_j^n+r(u_{j+1}^n-2u_j^n+u_{j-1}^n)$ with r=DΔt/Δx². Taylor expansion gives first-order time and second-order space consistency for smooth solutions. Holding Δt fixed while halving Δx multiplies r by four.
+
+A Fourier mode has amplification G=1−4r sin²(θ/2); requiring |G|≤1 for every grid mode yields 0≤r≤1/2 for this problem. This is not the stability bound for every PDE or every grid. A centred explicit wave scheme instead has its Courant ratio cΔt/Δx. Boundary closures and multidimensional stencils can change the constraint.
+
+Backward Euler solves a linear system at each step and is unconditionally stable for the standard linear diffusion model, but that does not make arbitrarily large steps accurate. Crank–Nicolson is second order in time yet can retain oscillatory high-frequency transients. Solve residuals, matrix conditioning, boundary enforcement and time-step error must all be monitored.
+
+Use an exact mode u=sin(πx/L)exp[−D(π/L)²t] for verification. Refine grids with a consistent time-step strategy and compute an explicit norm of the error at the same physical time. A small solver residual measures the discrete equation, not its agreement with the continuum. Conservation tests apply only to boundary conditions where the corresponding quantity should be conserved. Label the Fourier-mode bench’s analytic curves separately from an actual finite-difference calculation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Implement the stated stencil with separate old/new arrays so updates do not accidentally mix time levels. Compare the exact sine-mode decay on three grids. Report boundary condition, Δx, Δt, final time and error norm; deliberately test an unstable ratio only as a labelled numerical failure.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With D=1, Δx=.2 and Δt=.01, r=.25. Halving Δx without changing Δt gives r=1 and violates the explicit diffusion bound. Reducing Δt by four restores r=.25. This corrects stability but still requires convergence checks for accuracy.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

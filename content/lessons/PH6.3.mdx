@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH6.3",
+  "title": "Fourier optics and coherence",
+  "hook": "Why can two sources have identical spectra yet different interference visibility?",
+  "recap": [
+    "A normalized field correlation with specified averaging.",
+    "A convention-dependent Fourier relation.",
+    "The transmitted spatial-frequency content.",
+    "Noise and near-zero transfer make inversion unstable."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are coherent and incoherent imaging both convolutions of object intensity with the same kernel?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Coherent imaging combines field amplitudes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can spatial coherence depend on source size?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Propagation and source extent affect correlations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does naive inversion of tiny transfer values amplify noise?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The inverse is ill conditioned.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Visibility for I_max=8,I_min=2?",
+      "answer": "0.6",
+      "explanation": "(8−2)/(8+2)=.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Equal-beam visibility for |γ|=.6?",
+      "answer": "0.6",
+      "explanation": "It equals the coherence magnitude in this setup.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why regularize deconvolution?",
+      "answer": "Noise and near-zero transfer make inversion unstable.",
+      "options": [
+        "Noise and near-zero transfer make inversion unstable.",
+        "A normalized field correlation with specified averaging."
+      ],
+      "explanation": "Noise and near-zero transfer make inversion unstable.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is first-order coherence?",
+      "back": "A normalized field correlation with specified averaging.",
+      "concept": "ph6-3-theory"
+    },
+    {
+      "front": "What connects stationary spectrum and autocorrelation?",
+      "back": "A convention-dependent Fourier relation.",
+      "concept": "ph6-3-theory"
+    },
+    {
+      "front": "What does a finite pupil constrain?",
+      "back": "The transmitted spatial-frequency content.",
+      "concept": "ph6-3-theory"
+    },
+    {
+      "front": "Why regularize deconvolution?",
+      "back": "Noise and near-zero transfer make inversion unstable.",
+      "concept": "ph6-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Hecht, Optics — edition and exact section verification pending",
+    "Goodman, Introduction to Fourier Optics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two sources have identical spectra yet different interference visibility? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Fourier optics separates field propagation, coherence and instrument response; intensity-only reasoning can lose phase and correlation information.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+First-order mutual coherence is a correlation of complex fields; a normalized degree of coherence includes intensity normalization and an averaging convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For stationary fields, $\Gamma_{12}(\tau)=\langle E_1^*(t)E_2(t+\tau)\rangle$ and γ₁₂=Γ₁₂/√(I₁I₂). Equal-intensity two-beam visibility is |γ₁₂| in the stated scalar measurement. Temporal stationarity and the averaging process must be specified before using this relation.
+
+Under appropriate stationarity/integrability conventions, the spectrum and temporal autocorrelation form a Fourier-transform pair. Narrow bandwidth often gives a long coherence time, but spectral shape controls the precise envelope and constants. Spatial coherence depends on source extent and propagation, not only temporal bandwidth.
+
+An ideal thin lens maps a suitable field to a scaled Fourier transform at its focal plane under paraxial coherent assumptions. A finite pupil multiplies spatial-frequency content and determines the coherent point-spread amplitude. In incoherent imaging the intensity point-spread function convolves object intensity; coherent imaging instead acts on amplitudes before squaring.
+
+The modulation transfer function describes contrast response for the stated linear intensity model. A pixel samples an already filtered field/intensity, so aliasing and optical blur are different processes. Phase retrieval and deconvolution need constraints and noise handling; dividing by tiny transfer values can amplify error rather than restore absent information.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate visibility from a labelled synthetic interferogram, then compare coherent-amplitude and incoherent-intensity image convolution for the same pupil. Track the normalization and do not assume that narrowing a spectrum also makes an extended source spatially coherent.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For equal beams with |γ|=.6, ideal fringe visibility is .6. If maximum and minimum intensities are 8 and 2, measured visibility is (8−2)/(8+2)=.6. Agreement does not separately identify the physical cause of partial coherence.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

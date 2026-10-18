@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH6.2",
+  "title": "Interference and diffraction",
+  "hook": "Why does making an aperture narrower broaden its far-field pattern?",
+  "recap": [
+    "Complex amplitudes before taking squared magnitude.",
+    "The Fourier width relation of finite aperture extent.",
+    "Retained near-field quadratic phase.",
+    "Object, noise, aperture and detection assumptions matter."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does fringe visibility depend only on coherence?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Unequal intensities can also reduce it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is the sinc value at zero undefined physically?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its removable limit is one.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does Fraunhofer theory apply at every observation distance?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Near-field phase terms may matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "In-phase intensity for two coherent unit-intensity contributions?",
+      "answer": "4",
+      "explanation": "(1+1)²=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "sinθ of first slit minimum for λ=.01,a=1?",
+      "answer": "0.01",
+      "explanation": "λ/a=.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify resolution criteria?",
+      "answer": "Object, noise, aperture and detection assumptions matter.",
+      "options": [
+        "Object, noise, aperture and detection assumptions matter.",
+        "Complex amplitudes before taking squared magnitude."
+      ],
+      "explanation": "Object, noise, aperture and detection assumptions matter.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What combines in interference?",
+      "back": "Complex amplitudes before taking squared magnitude.",
+      "concept": "ph6-2-theory"
+    },
+    {
+      "front": "What broadens a narrow slit pattern?",
+      "back": "The Fourier width relation of finite aperture extent.",
+      "concept": "ph6-2-theory"
+    },
+    {
+      "front": "What distinguishes Fresnel diffraction?",
+      "back": "Retained near-field quadratic phase.",
+      "concept": "ph6-2-theory"
+    },
+    {
+      "front": "Why qualify resolution criteria?",
+      "back": "Object, noise, aperture and detection assumptions matter.",
+      "concept": "ph6-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Hecht, Optics — edition and exact section verification pending",
+    "Goodman, Introduction to Fourier Optics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does making an aperture narrower broaden its far-field pattern? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Interference combines amplitudes and diffraction ties finite spatial extent to angular spread, with geometry and coherence explicit.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In scalar far-field diffraction, the angular amplitude is related to the aperture’s Fourier transform under paraxial/Fraunhofer assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For two coherent equal contributions, $I=I_1+I_2+2\sqrt{I_1I_2}\cos\delta$ in the elementary scalar model. Path difference and additional source/interface phases determine δ. Incoherent averaging suppresses the cross term; unequal intensities reduce fringe visibility even with perfect coherence.
+
+A uniformly illuminated slit of width a gives an amplitude proportional to sinc(ka sinθ/2), where sinc u=sin u/u and its value at zero is one. Intensity is its squared modulus. The first minima obey a sinθ=±λ, when geometrically accessible. The small-angle width approximation λ/a has an admitted angular regime.
+
+A circular aperture instead produces an Airy-type pattern involving J₁; the ideal first angular minimum is approximately 1.22λ/D for a small angle. A resolution criterion is a chosen detectability convention for a stated object/noise model, not a hard universal impossibility boundary.
+
+Near-field Fresnel diffraction retains quadratic phase terms neglected in a far-field approximation. Polarization, vector fields, finite bandwidth and aperture structure can matter. A plotted intensity must be normalized if interpreted probabilistically, and pixel size plus detector response can limit an actual measurement.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the slit bench to vary aperture and separation independently. Identify the single-slit envelope versus two-source fringe spacing and test the far-field assumptions before interpreting the plotted angular axis.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For equal coherent intensities I₁=I₂=1, in-phase maximum is 4 and opposite-phase minimum is 0. If λ=.01 and a=1 in consistent units, the first single-slit minimum has sinθ=.01; narrowing a doubles that sine-angle scale if wavelength stays fixed.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

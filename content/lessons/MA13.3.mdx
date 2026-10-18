@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA13.3",
+  "title": "Renormalisation group mathematics",
+  "hook": "Why does relevance depend on the direction in which a renormalisation scale is changed?",
+  "recap": [
+    "A perturbation grows away from the fixed point.",
+    "The derivative of coupling flow at a fixed point.",
+    "Omitted operators can alter the inferred flow.",
+    "Observable predictions and parameter definitions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does y=0 settle marginal flow without nonlinear terms?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Higher-order terms can control it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are all original couplings automatically RG eigen-directions?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They can mix under linearization.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can scheme choices affect intermediate coupling values?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Matched observables rather than raw numbers are physical comparisons.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Scale multiplier b^y for b=2,y=3?",
+      "answer": "8",
+      "explanation": "2³=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "ν for thermal eigenvalue y_t=2 in the stated framework?",
+      "answer": "0.5",
+      "explanation": "ν=1/y_t.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What should remain scheme-consistent?",
+      "answer": "Observable predictions and parameter definitions.",
+      "options": [
+        "Observable predictions and parameter definitions.",
+        "A perturbation grows away from the fixed point."
+      ],
+      "explanation": "Observable predictions and parameter definitions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does relevant mean under coarse graining b>1?",
+      "back": "A perturbation grows away from the fixed point.",
+      "concept": "ma13-3-theory"
+    },
+    {
+      "front": "What is a stability matrix?",
+      "back": "The derivative of coupling flow at a fixed point.",
+      "concept": "ma13-3-theory"
+    },
+    {
+      "front": "Why qualify truncations?",
+      "back": "Omitted operators can alter the inferred flow.",
+      "concept": "ma13-3-theory"
+    },
+    {
+      "front": "What should remain scheme-consistent?",
+      "back": "Observable predictions and parameter definitions.",
+      "concept": "ma13-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strogatz, Nonlinear Dynamics and Chaos — edition and exact section verification pending",
+    "Gardiner, Stochastic Methods — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does relevance depend on the direction in which a renormalisation scale is changed? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+RG language becomes precise only after a scaling convention, coupling coordinates and fixed-point approximation are stated.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An RG transformation changes resolution and rescales a model, generating effective couplings. A fixed point is unchanged under that transformation within its admissible description.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Take coarse-graining factor b>1 and linearized eigen-coupling u. If $u'=b^yu$, y>0 is relevant, y&lt;0 irrelevant and y=0 marginal at this linear order. Reversing the flow parameter convention can reverse displayed beta-function signs without changing the underlying physical classification.
+
+Linearize a multi-coupling flow at a fixed point and find eigenvectors of its stability matrix. Individual original couplings need not already be scaling eigenfields. Nonlinear terms determine marginal behaviour and can generate couplings absent from a truncated ansatz.
+
+A relevant tuning direction gives a correlation-length scaling ξ∝|t|⁻ν with ν=1/y_t in the simple scaling framework. Corrections to scaling, dangerous irrelevant variables and finite-size effects require qualifications. A computed fixed point of a truncation is not automatically an exact fixed point of the full theory.
+
+RG applies to critical phenomena and quantum field theory with different physical scale interpretations. Regulators and renormalization schemes affect intermediate couplings; observable predictions must be compared with matched definitions. An asymptotic perturbative beta function requires a stated small-coupling/regime limit.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Iterate a supplied two-coupling map near a fixed point and compare eigen-directions with coordinate axes. Include a marginal example with a quadratic term and show why the linear exponent alone does not settle its flow.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For b=2,y=3, a small scaling amplitude multiplies by eight. For y_t=2, the elementary correlation-length exponent is ν=.5. The latter identification assumes the stated single thermal eigenfield scaling framework.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

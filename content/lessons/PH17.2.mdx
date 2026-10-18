@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH17.2",
+  "title": "Instrumentation and data acquisition",
+  "hook": "Why can a sampled waveform look convincing while representing the wrong frequency?",
+  "recap": [
+    "A suitable analog bandwidth/anti-alias design.",
+    "Clips information beyond the admitted range.",
+    "Sampling/timing errors affect inferred dynamics.",
+    "The processing path, not every physical calibration."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can digital filtering always undo prior aliasing uniquely?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different inputs can share the same samples.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does ADC bit depth alone determine real sensor accuracy?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Calibration, noise and nonlinearity matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should acquisition settings accompany raw data?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "They define the measurement response.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal ADC step for 4.096 V and 12 bits?",
+      "answer": "0.001",
+      "explanation": "4.096/4096=.001.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Twice a 100 Hz bandlimit in samples/s?",
+      "answer": "200",
+      "explanation": "The ideal rate must exceed this boundary.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does a synthetic input verify?",
+      "answer": "The processing path, not every physical calibration.",
+      "options": [
+        "The processing path, not every physical calibration.",
+        "A suitable analog bandwidth/anti-alias design."
+      ],
+      "explanation": "The processing path, not every physical calibration.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What prevents aliasing before sampling?",
+      "back": "A suitable analog bandwidth/anti-alias design.",
+      "concept": "ph17-2-theory"
+    },
+    {
+      "front": "What does converter saturation do?",
+      "back": "Clips information beyond the admitted range.",
+      "concept": "ph17-2-theory"
+    },
+    {
+      "front": "Why specify time references?",
+      "back": "Sampling/timing errors affect inferred dynamics.",
+      "concept": "ph17-2-theory"
+    },
+    {
+      "front": "What does a synthetic input verify?",
+      "back": "The processing path, not every physical calibration.",
+      "concept": "ph17-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending",
+    "Newman, Computational Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a sampled waveform look convincing while representing the wrong frequency? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Acquisition is an end-to-end measurement chain with bandwidth, sampling, quantization and calibration requirements.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A data-acquisition chain converts a physical response through a sensor, conditioning/filtering, digitization and a time/reference convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a genuinely bandlimited signal, sampling above twice its highest frequency is a core reconstruction requirement under the sampling theorem. Real sensors need anti-alias filtering before digitization; post-processing cannot uniquely recover frequencies already aliased. A short finite record also limits spectral discrimination.
+
+An ideal N-bit uniform converter over range V_FS has an approximate step $\Delta V=V_{FS}/2^N$ under the stated bin convention. Quantization noise formulas require assumptions about signal and error statistics. Saturation, nonlinearity, missing codes and reference drift can dominate that ideal step.
+
+Sensor impedance/loading, amplifier gain, grounding and instrument bandwidth alter what reaches the converter. A voltage probe belongs across the relevant element; current sensing uses a different circuit arrangement. Use only appropriately rated low-risk equipment in a real experiment; the app bench supplies a model, not authorization to handle hazardous circuits.
+
+Record timestamps, units, gain, filter, range and calibration with raw samples. A transformed plot without raw-data provenance is not a reproducible measurement. Synthetic test signals can verify software but cannot independently calibrate every physical sensor.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use a synthetic sine wave to demonstrate aliasing at two sample rates and record the original signal as known synthetic input. Separately draw the low-voltage circuit bench’s voltage/current measurement connections.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a 12-bit ideal converter over 4.096 V, the step is .001 V. A 100 Hz bandlimit needs a sampling rate above 200 samples/s under the ideal theorem, with practical guard/filter design still required.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

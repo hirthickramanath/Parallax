@@ -1,0 +1,187 @@
+---
+{
+  "id": "PH4.6",
+  "title": "Dielectrics and polarisation",
+  "hook": "Why does reducing an electric field with a dielectric not mean the free charge disappeared?",
+  "recap": [
+    "Dipole moment per unit volume.",
+    "ρb=−∇·P.",
+    "Free surface charge with a declared normal convention.",
+    "A voltage source exchanges charge and work."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does uniform polarization force every bound charge to vanish?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Surface bound charge can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is D sourced by total charge in its standard Gauss law?",
+      "options": [
+        "No; by free charge",
+        "Yes"
+      ],
+      "answer": "No; by free charge",
+      "explanation": "Bound charge is represented through polarization.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does dielectric insertion always leave capacitor charge fixed?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "An attached voltage source can supply additional free charge.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Final voltage for fixed Q=6 after capacitance rises to 6?",
+      "answer": "1",
+      "explanation": "V=Q/C.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Capacitance factor for a fully filled ideal capacitor with εr=3?",
+      "answer": "3",
+      "explanation": "Capacitance scales with permittivity.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state a constitutive assumption for D=εE?",
+      "answer": "Linearity, isotropy and material response are additional physical modeling",
+      "options": [
+        "Linearity, isotropy and material response are additional physical modeling",
+        "It holds identically in every material"
+      ],
+      "explanation": "D=ε₀E+P is the definition; scalar ε is a particular response model.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is polarization?",
+      "back": "Dipole moment per unit volume.",
+      "concept": "ph4-6-theory"
+    },
+    {
+      "front": "How is volume bound charge related to P?",
+      "back": "ρb=−∇·P.",
+      "concept": "ph4-6-theory"
+    },
+    {
+      "front": "What does the normal D jump measure?",
+      "back": "Free surface charge with a declared normal convention.",
+      "concept": "ph4-6-theory"
+    },
+    {
+      "front": "Why can fixed-voltage and fixed-charge energies differ?",
+      "back": "A voltage source exchanges charge and work.",
+      "concept": "ph4-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does reducing an electric field with a dielectric not mean the free charge disappeared? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Polarization separates free charge from bound charge in matter. Auxiliary fields can simplify equations, but their source conventions must remain explicit.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Molecular dipoles redistribute charge slightly. Their averaged bound charges partly alter the field produced by the externally supplied free charges.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Polarization P is dipole moment per volume. In a macroscopic electrostatic description, bound volume charge is −∇·P and D=ε₀E+P obeys ∇·D=ρfree.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a polarized body, bound volume charge is $\rho_b=-\nabla\cdot P$ and bound surface charge is $\sigma_b=P\cdot n$ at a boundary with exterior polarization zero. These follow by summing dipole contributions and converting the total divergence. Uniform P gives zero volume bound charge but can still give nonzero surface bound charge.
+
+For a linear homogeneous isotropic dielectric, P=ε₀χeE, giving $D=\epsilon E$ with ε=ε₀(1+χe). This is a constitutive approximation, not a universal identity for anisotropic, nonlinear, dispersive or strongly inhomogeneous matter. In an anisotropic medium, permittivity is generally a tensor.
+
+A pillbox at an interface gives $n\cdot(D_2-D_1)=\sigma_{\rm free}$, with n from medium 1 to 2. Electrostatic circulation gives continuity of tangential E in the absence of a singular non-electrostatic layer. Normal E can jump even when no free surface charge is present if permittivity changes. The ordinary total-charge Gauss law still holds for E.
+
+For a parallel-plate capacitor fully filled by a uniform dielectric with relative permittivity εr, capacitance increases by εr in the negligible-fringing model. If isolated charge is fixed, voltage and stored field energy decrease by 1/εr. If attached voltage is fixed, charge increases by εr and field energy increases; mechanical work must include the source exchange.
+
+For a reversible linear nondispersive medium under appropriate conditions, electrostatic energy density is E·D/2. Real dielectric losses, hysteresis and frequency dependence require additional material and energy accounting. A macroscopic constitutive law cannot be extrapolated to arbitrarily strong fields or down to a molecular point without checking its averaging assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw the free plate charge and bound dielectric surface charge separately. Compare isolated and voltage-clamped capacitor calculations, keeping total free charge and source work explicit. Use diagrams or computed examples; no high-voltage dielectric insertion experiment is needed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+An isolated capacitor initially has C=2, Q=6 and V=3 in compatible units. Filling with εr=3 gives C=6, the same Q=6 and V=1. Initial energy 9 becomes 3. For a fixed-voltage source instead, Q would rise rather than remain 6.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

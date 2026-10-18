@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH9.8",
+  "title": "Entanglement, Bell inequalities and quantum information",
+  "hook": "Why does a Bell-inequality violation test more than ordinary correlation?",
+  "recap": [
+    "A convex combination of product states across the chosen split.",
+    "A defined class of local hidden-variable correlation models.",
+    "Conditional subensembles need not equal unconditional remote statistics.",
+    "Perfect universal copying of an arbitrary unknown state."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does any ordinary correlation prove entanglement?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Separable mixtures can correlate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does entanglement enable controlled faster-than-light signalling?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Unconditional remote statistics obey no signalling.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does teleportation require classical communication?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Outcome information is part of the protocol.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal quantum CHSH maximum?",
+      "answer": "2.8284271247461903",
+      "explanation": "2√2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ratio to local bound 2?",
+      "answer": "1.4142135623730951",
+      "explanation": "It is √2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does no-cloning prohibit?",
+      "answer": "Perfect universal copying of an arbitrary unknown state.",
+      "options": [
+        "Perfect universal copying of an arbitrary unknown state.",
+        "A convex combination of product states across the chosen split."
+      ],
+      "explanation": "Perfect universal copying of an arbitrary unknown state.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a separable state?",
+      "back": "A convex combination of product states across the chosen split.",
+      "concept": "ph9-8-theory"
+    },
+    {
+      "front": "What does CHSH test?",
+      "back": "A defined class of local hidden-variable correlation models.",
+      "concept": "ph9-8-theory"
+    },
+    {
+      "front": "Why separate postselection?",
+      "back": "Conditional subensembles need not equal unconditional remote statistics.",
+      "concept": "ph9-8-theory"
+    },
+    {
+      "front": "What does no-cloning prohibit?",
+      "back": "Perfect universal copying of an arbitrary unknown state.",
+      "concept": "ph9-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a Bell-inequality violation test more than ordinary correlation? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Entanglement, locality and measurement assumptions must be separated from faster-than-light communication claims.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Entanglement is nonseparability across a specified subsystem split. Bell inequalities constrain correlations in defined local hidden-variable models with measurement-setting assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For product pure states, subsystem amplitudes factor; entangled states do not. Mixed separable states can still have classical correlations, so correlation alone is not entanglement. A subsystem split and allowed operations must be stated.
+
+The CHSH combination in a local model has $|S|\le2$ under its setting-independence/local-response assumptions. Quantum theory allows 2√2 for suitable states and measurements. Actual tests must address detection, locality, memory and statistics rather than declaring a violation from an uncalibrated sample.
+
+Entanglement does not permit controllable superluminal signalling: the unconditional remote reduced state is unchanged by a local trace-preserving operation. Conditioning on an outcome changes a subensemble description, but learning that outcome requires classical information.
+
+Quantum information protocols require precise resources: teleportation includes shared entanglement, local operations and classical communication; it is not transport of matter or an unknown state copied while the original is retained. No-cloning concerns arbitrary unknown states under linear quantum operations, not every special orthogonal-state copying task.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute correlations for a supplied entangled two-qubit state and four measurement axes. Separately verify the remote reduced state before/after a local unconditioned measurement, keeping postselected and unconditional statistics distinct.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The ideal quantum CHSH maximum is 2√2≈2.828, above the local bound 2. Their ratio is √2. This theoretical number is not a claim that a particular experimental dataset has closed all loopholes.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

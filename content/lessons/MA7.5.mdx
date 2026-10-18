@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA7.5",
+  "title": "Asymptotic methods (saddle point, WKB)",
+  "hook": "Why can adding more terms eventually make an approximation worse?",
+  "recap": [
+    "A nonzero negative second derivative at the dominant maximum.",
+    "Oscillatory cancellation and phase factors rather than only real exponential decay.",
+    "The assumed slow scale and q⁻¹ᐟ⁴ amplitude cease to be valid.",
+    "A finite, suitably chosen truncation can have a controlled small remainder in its regime."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must an asymptotic expansion converge when infinitely many terms are summed?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its definition controls finite truncation remainders in a limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can ordinary leading WKB be used unchanged at q=0?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The amplitude and scale separation break down at a turning point.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should separated stationary-point contributions be added with their complex phases?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Their interference can determine the total result.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Full-line Gaussian integral at λ=4 divided by √π?",
+      "answer": "0.5",
+      "explanation": "√(π/4)/√π=1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value of q⁻¹ᐟ⁴ for q=16?",
+      "answer": "0.5",
+      "explanation": "The positive fourth root of 16 is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must be checked before a saddle contributes to a complex contour approximation?",
+      "answer": "Admissible deformation, branches, endpoints and the relevant descent path",
+      "options": [
+        "Admissible deformation, branches, endpoints and the relevant descent path",
+        "Only that the saddle equation has an algebraic root"
+      ],
+      "explanation": "The original contour determines which saddles can contribute.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What local curvature does the ordinary interior Laplace formula require?",
+      "back": "A nonzero negative second derivative at the dominant maximum.",
+      "concept": "ma7-5-theory"
+    },
+    {
+      "front": "What distinguishes stationary phase from Laplace localization?",
+      "back": "Oscillatory cancellation and phase factors rather than only real exponential decay.",
+      "concept": "ma7-5-theory"
+    },
+    {
+      "front": "Why does WKB fail at a simple turning point?",
+      "back": "The assumed slow scale and q⁻¹ᐟ⁴ amplitude cease to be valid.",
+      "concept": "ma7-5-theory"
+    },
+    {
+      "front": "How can a divergent asymptotic series be useful?",
+      "back": "A finite, suitably chosen truncation can have a controlled small remainder in its regime.",
+      "concept": "ma7-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NIST Digital Library of Mathematical Functions — exact section mapping and independent verification pending",
+    "Bender and Orszag, Advanced Mathematical Methods for Scientists and Engineers — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can adding more terms eventually make an approximation worse? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Asymptotic methods estimate integrals and differential-equation solutions in regimes where exact expressions are unavailable or hard to interpret. Their validity depends on scale separation and on avoiding unhandled transition points.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+At a large parameter, only a narrow part of an integral may contribute appreciably. Near a turning point, however, the presumed local scale changes and a formerly small correction can dominate.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An asymptotic expansion has a remainder smaller than the last retained scale in a specified limit; it need not converge as an infinite series. Laplace, stationary-phase and WKB approximations use distinct hypotheses and conventions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an interior nondegenerate maximum x₀ of a smooth real φ with φ″(x₀)&lt;0, positive large λ localizes $\int a(x)e^{\lambda\phi(x)}dx$ near x₀ under suitable dominance and integrability assumptions. Expanding the exponent to quadratic order and scaling y=√λ(x−x₀) yields $I(\lambda)\sim a(x_0)e^{\lambda\phi(x_0)}\sqrt{2\pi/[\lambda|\phi''(x_0)|]}$ when a(x₀)≠0. Endpoint maxima, several comparable maxima, a vanishing amplitude or degenerate curvature require modified leading analysis.
+
+For an oscillatory real integral with an interior nondegenerate stationary point, cancellation away from the stationary point gives a leading contribution $a(x_0)e^{i\lambda\phi(x_0)}\sqrt{2\pi/[\lambda|\phi''(x_0)|]}e^{i\pi\operatorname{sgn}(\phi''(x_0))/4}$ under appropriate support/smoothness hypotheses. Endpoints can contribute separately. Multiple stationary points interfere; taking the absolute value of each contribution before summing destroys the phase information.
+
+Complex steepest descent deforms an admissible contour through contributing saddles so the exponential decays away from them along the chosen local directions. The deformation must respect singularities, branches and endpoint sectors. Not every algebraic saddle contributes to a given original contour. Stokes transitions concern changes in asymptotic contributions as parameters vary; an abrupt change in a chosen representation does not necessarily mean the exact function jumps.
+
+For $\varepsilon^2y''+q(x)y=0$ with smooth positive q away from zeros, a leading WKB pair is $q^{-1/4}\exp[\pm i\varepsilon^{-1}\int^x\sqrt q\,ds]$. Substitution fixes the phase derivative squared to q and the amplitude transport to q⁻¹ᐟ⁴. A useful smallness measure is ε|q′|/q³ᐟ²≪1, together with control of higher variations and the domain. For q&lt;0 the leading forms are exponential with |q|; a physical boundary condition chooses the combination.
+
+At a simple turning point q=0 the leading WKB amplitude diverges and the scale test fails. A local Airy-type analysis and justified matching replace that approximation. Boundary quantization and connection phases require the actual endpoint/turning-point configuration; there is no universal rule obtained by dropping the matching step. An asymptotic series can be divergent yet useful when truncated near its smallest term. Fix the parameter regime, compare successive truncations and use available remainder estimates rather than equating a formal expansion with a convergent exact answer.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare Gaussian localization at several λ after rescaling x by √λ. Add a quartic term in the exponent and compare a leading saddle estimate with converged numerical quadrature; isolate finite integration-window error. For WKB, contrast constant positive q with q=x near zero and identify precisely where the amplitude and slow-variation test fail.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For ∫ over the full real line exp(−λx²)dx, φ″(0)=−2 and a=1, so the leading formula gives √(π/λ), which is exact for this purely quadratic example. At λ=4, its value divided by √π is 1/2. For constant q=4, the leading oscillatory WKB amplitude factor q⁻¹ᐟ⁴ is 1/√2; there is no turning point.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

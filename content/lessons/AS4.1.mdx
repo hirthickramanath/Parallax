@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS4.1",
+  "title": "Star formation and the Jeans mass",
+  "hook": "Why does cooling help a gas cloud collapse instead of merely making it dimmer?",
+  "recap": [
+    "Their squared frequency is negative in the ideal model.",
+    "Thermodynamics, density, fields, dynamics and resolution.",
+    "Angular momentum prevents purely radial infall.",
+    "Geometry, surface terms and omitted stresses affect interpretation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a Jeans estimate alone include all magnetic and turbulent support?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The elementary model omits those effects.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can cooling reduce pressure resistance to collapse?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It changes the temperature and effective EOS.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is free-fall time exact for every structured cloud?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its elementary expression uses a pressureless uniform sphere.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Growth rate for ω²=−4 in the ideal linear mode?",
+      "answer": "2",
+      "explanation": "The magnitude is √4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Jeans mass ratio after quadrupling density at fixed sound speed?",
+      "answer": "0.5",
+      "explanation": "M_J∝ρ⁻¹ᐟ².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify virial parameters?",
+      "answer": "Geometry, surface terms and omitted stresses affect interpretation.",
+      "options": [
+        "Geometry, surface terms and omitted stresses affect interpretation.",
+        "Their squared frequency is negative in the ideal model."
+      ],
+      "explanation": "Geometry, surface terms and omitted stresses affect interpretation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What distinguishes unstable Jeans modes?",
+      "back": "Their squared frequency is negative in the ideal model.",
+      "concept": "as4-1-theory"
+    },
+    {
+      "front": "What changes fragmentation scales?",
+      "back": "Thermodynamics, density, fields, dynamics and resolution.",
+      "concept": "as4-1-theory"
+    },
+    {
+      "front": "Why can a disc form during collapse?",
+      "back": "Angular momentum prevents purely radial infall.",
+      "concept": "as4-1-theory"
+    },
+    {
+      "front": "Why qualify virial parameters?",
+      "back": "Geometry, surface terms and omitted stresses affect interpretation.",
+      "concept": "as4-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does cooling help a gas cloud collapse instead of merely making it dimmer? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Star formation balances gravity with pressure, magnetic fields, turbulence and radiation; a Jeans estimate is a model scale rather than a universal cloud verdict.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The elementary Jeans analysis linearizes a uniform static self-gravitating gas with a stated thermodynamic sound speed and idealized treatment of the background.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The linear density-wave relation is $\omega^2=c_s^2k^2-4\pi G\rho$. Modes with negative ω² grow in this ideal setup; the critical wavenumber is √(4πGρ)/c_s. The associated mass scale is proportional to c_s³/(G³ᐟ²ρ¹ᐟ²), with a numerical coefficient depending on the chosen length-to-mass definition.
+
+Cooling can reduce pressure support and change the effective equation of state as gas compresses. The free-fall time for a pressureless uniform sphere is √(3π/(32Gρ)). Real clouds are neither pressureless nor uniform, so this is a dynamical reference time rather than an exact prediction for every parcel.
+
+Angular momentum leads to discs, while magnetic stresses, turbulence and feedback alter collapse and fragmentation. A virial parameter compares terms under a geometry/velocity convention but does not independently prove boundedness or future star formation. External pressure and surface terms matter.
+
+Protostellar radiation, outflows and the onset of nuclear burning affect accretion. Fragmentation requires thermodynamics and scale resolution; unresolved numerical fragmentation can be an artifact. An observed cold cloud is not necessarily a single isolated Jeans sphere, and model-generated core populations are not direct measurements of a stellar initial-mass function.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the ideal dispersion relation and separate oscillatory and growing modes. Compare isothermal and heated compression assumptions. For a cloud simulation, record gravity, cooling, boundary conditions and spatial resolution before interpreting fragments.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In normalized dispersion units with c_s²k²=3 and 4πGρ=7, ω²=−4, giving an ideal exponential growth rate 2. At fixed sound speed, quadrupling density halves the Jeans mass scaling.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

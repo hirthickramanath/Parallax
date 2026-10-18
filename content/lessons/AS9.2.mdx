@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS9.2",
+  "title": "FLRW metric and Friedmann equations",
+  "hook": "Why can uniform matter still drive a changing cosmic scale factor?",
+  "recap": [
+    "ȧ/a.",
+    "3H²/(8πG).",
+    "Content/EOS, parameters and initial conditions.",
+    "Local bound dynamics differs from the homogeneous background."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does spatial flatness imply no gravity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Matter and expansion can exist on flat slices.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does pressure enter the relativistic acceleration equation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "ρ+3p/c² contributes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is c/H universally identical to every cosmic horizon?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different horizon definitions use different integrals.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Matter-density ratio after doubling a?",
+      "answer": "0.125",
+      "explanation": "a⁻³ gives 1/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Radiation-density ratio after doubling a?",
+      "answer": "0.0625",
+      "explanation": "a⁻⁴ gives 1/16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why not apply expansion blindly to a laboratory?",
+      "answer": "Local bound dynamics differs from the homogeneous background.",
+      "options": [
+        "Local bound dynamics differs from the homogeneous background.",
+        "ȧ/a."
+      ],
+      "explanation": "Local bound dynamics differs from the homogeneous background.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is H?",
+      "back": "ȧ/a.",
+      "concept": "as9-2-theory"
+    },
+    {
+      "front": "What is critical density?",
+      "back": "3H²/(8πG).",
+      "concept": "as9-2-theory"
+    },
+    {
+      "front": "What closes the background equations?",
+      "back": "Content/EOS, parameters and initial conditions.",
+      "concept": "as9-2-theory"
+    },
+    {
+      "front": "Why not apply expansion blindly to a laboratory?",
+      "back": "Local bound dynamics differs from the homogeneous background.",
+      "concept": "as9-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ryden, Introduction to Cosmology — edition and exact section verification pending",
+    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can uniform matter still drive a changing cosmic scale factor? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+FLRW symmetry simplifies general relativity to expansion equations, but homogeneity is a large-scale approximation rather than a claim of a featureless local universe.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+FLRW spacetime uses a scale factor a(t) for homogeneous isotropic spatial slices. H=ȧ/a describes expansion, not a force acting on every bound system.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For mass-equivalent density ρ and pressure p, one convention gives $H^2=8\pi G\rho/3-kc^2/a^2+\Lambda c^2/3$, where the normalization/units of k follow the chosen comoving coordinates. The acceleration equation contains ρ+3p/c². Thus pressure contributes gravitationally, not only through a Newtonian pressure gradient.
+
+Local energy conservation gives $\dot\rho+3H(\rho+p/c^2)=0$ for a separately conserved perfect fluid. For constant w=p/(ρc²), density scales as a⁻³⁽¹⁺ʷ⁾. Pressureless matter gives a⁻³, radiation a⁻⁴ and a cosmological constant remains fixed in this description.
+
+Critical density is 3H²/(8πG), and density parameters compare components with it at a specified epoch. Flatness is a spatial-curvature condition, not a declaration that gravity or expansion vanishes. The Hubble radius c/H is not automatically every definition of particle/event horizon.
+
+Bound structures can decouple from the simple background expansion; a local laboratory is not generally stretched by inserting H into every length equation. Perturbations, local dynamics and observational light-cone relations extend the background model. The equations require content, parameters and initial conditions before predicting a(t).
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Integrate a single-fluid flat toy model and check the conservation scaling before adding components. Keep coordinate distance, proper distance and Hubble radius separate. Label all chosen density parameters as model inputs.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If the scale factor doubles, separately conserved pressureless matter density falls to one eighth and radiation density to one sixteenth. These scalings assume no relevant energy exchange or equation-of-state transition over the interval.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH17.5",
+  "title": "Lab capstone design",
+  "hook": "What makes an experiment a test of a model rather than a demonstration selected to agree?",
+  "recap": [
+    "A prediction with a stated measurement and discrepancy criterion.",
+    "Controls and biases must be understandable.",
+    "Units, calibration, settings and provenance.",
+    "A labelled design/simulation with unperformed checks explicit."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does an agreeing demonstration automatically validate a model independently?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Calibration and selection can be circular.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "May synthetic readings be described as newly measured local g?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They are generated from a model.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a forced zero intercept hide an offset?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "It removes a diagnostic degree of freedom.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal g for T²/L slope 4?",
+      "answer": "9.869604401089358",
+      "explanation": "4π²/4=π².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Approximate relative g uncertainty from .02 relative slope uncertainty alone?",
+      "answer": "0.02",
+      "explanation": "For g∝1/slope the first-order magnitudes match.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What remains honest without equipment?",
+      "answer": "A labelled design/simulation with unperformed checks explicit.",
+      "options": [
+        "A labelled design/simulation with unperformed checks explicit.",
+        "A prediction with a stated measurement and discrepancy criterion."
+      ],
+      "explanation": "A labelled design/simulation with unperformed checks explicit.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a falsifiable lab target?",
+      "back": "A prediction with a stated measurement and discrepancy criterion.",
+      "concept": "ph17-5-theory"
+    },
+    {
+      "front": "Why show apparatus roles?",
+      "back": "Controls and biases must be understandable.",
+      "concept": "ph17-5-theory"
+    },
+    {
+      "front": "What belongs with raw data?",
+      "back": "Units, calibration, settings and provenance.",
+      "concept": "ph17-5-theory"
+    },
+    {
+      "front": "What remains honest without equipment?",
+      "back": "A labelled design/simulation with unperformed checks explicit.",
+      "concept": "ph17-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending",
+    "Newman, Computational Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+What makes an experiment a test of a model rather than a demonstration selected to agree? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+A capstone needs a falsifiable target, independent calibration, a protocol and a discrepancy plan.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A lab design specifies apparatus, controls, observations, analysis, uncertainty and a predeclared model comparison with scope and safety appropriate to the experiment.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For the ideal small-angle pendulum, $T^2=(4\pi^2/g)L$. A regression across lengths can test linearity and estimate a slope, while intercept and residual trends reveal offsets or model failure. Length and timing uncertainties must be included consistently; an ordinary least-squares fit may be inadequate when both axes are uncertain.
+
+Apparatus description should show pivot, bob, length reference, release and timing method, explaining what each controls. Repeatability tests do not replace calibration, and deliberately forcing the intercept to zero can hide a systematic offset.
+
+Use separate calibration and evaluation data when feasible. Record exclusions and parameter choices before inspecting a desired result. Synthetic lab readings are valid for software/model verification only if labelled; they cannot certify a new experimental value of g.
+
+The report includes raw data/provenance, unit-aware analysis, uncertainty, residuals, limitations and a reproducible method. If actual equipment or independent observations are unavailable, submit a design/simulation report with that limitation rather than claiming a performed experiment.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use a foundation project or the pendulum/circuit bench to prepare a full protocol. Keep apparatus controls and model assumptions explicit, and distinguish a simulation report from physical measurements.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a hypothetical valid T²-versus-L slope is 4 in compatible units, the ideal estimate is g=π²≈9.8696. A slope uncertainty of 2 percent gives about 2 percent relative uncertainty in g in the linear propagation limit, before other systematic/model errors.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

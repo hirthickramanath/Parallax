@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH11.4",
+  "title": "Acceleration, Thomas precession and relativistic optics",
+  "hook": "Why can successive boosts rotate a carried spatial frame?",
+  "recap": [
+    "Collinear Lorentz boosts add rapidities.",
+    "Proper acceleration is measured in the instantaneous rest frame.",
+    "The stated frame convention and cross-product order.",
+    "Iν/ν³."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do nonparallel boosts generally compose into a pure boost without rotation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A Thomas–Wigner rotation can result.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does constant proper acceleration mean constant laboratory coordinate acceleration?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The relation changes with γ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is transverse direction frame independent?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Aberration changes the photon angle between frames.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Frequency ratio ν′/ν for β=0.6 and a photon along +x?",
+      "answer": "0.5",
+      "explanation": "γ(1−β)=1.25×0.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Thomas precession magnitude divided by orbital angular frequency for γ=1.25 in circular motion?",
+      "answer": "0.25",
+      "explanation": "The ratio is γ−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why transform photon angle and frequency together?",
+      "answer": "Both come from its four-momentum transformation",
+      "options": [
+        "Both come from its four-momentum transformation",
+        "The angle stays invariant for every photon"
+      ],
+      "explanation": "Aberration and Doppler shift are linked.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is rapidity useful for?",
+      "back": "Collinear Lorentz boosts add rapidities.",
+      "concept": "ph11-4-theory"
+    },
+    {
+      "front": "What distinguishes proper from coordinate acceleration?",
+      "back": "Proper acceleration is measured in the instantaneous rest frame.",
+      "concept": "ph11-4-theory"
+    },
+    {
+      "front": "What fixes the Thomas-precession sign?",
+      "back": "The stated frame convention and cross-product order.",
+      "concept": "ph11-4-theory"
+    },
+    {
+      "front": "What intensity combination is Lorentz invariant along a ray?",
+      "back": "Iν/ν³.",
+      "concept": "ph11-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor and Wheeler, Spacetime Physics — edition and exact section verification pending",
+    "Rindler, Introduction to Special Relativity — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can successive boosts rotate a carried spatial frame? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Acceleration links a sequence of instantaneous inertial frames. Nonparallel Lorentz boosts do not compose into a pure boost, producing Thomas–Wigner rotation; photon directions and frequencies also transform together.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+An accelerated observer keeps changing velocity. Comparing local axes by different boost sequences reveals a rotation, even without treating it as an ordinary torque on a point particle.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Proper acceleration is the magnitude of the four-acceleration measured in the instantaneous rest frame. Relativistic optics uses the Lorentz transformation of a photon four-momentum.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For one-dimensional motion, rapidity η is defined by β=tanhη and γ=coshη. Collinear boosts add rapidities. Proper acceleration α satisfies $d\eta/d\tau=\alpha/c$. With constant α, initial rest and initial position zero, integration gives $ct=(c^2/\alpha)\sinh(\alpha\tau/c)$ and $x=(c^2/\alpha)[\cosh(\alpha\tau/c)-1]$. Lab coordinate acceleration is not constant; it decreases as speed approaches c.
+
+Using laboratory time, a standard Thomas precession angular velocity of a torque-free carried frame relative to the laboratory axes is $\Omega_T=\gamma^2(\mathbf a\times\mathbf v)/[(\gamma+1)c^2]$ under the stated frame convention. In uniform circular motion this opposes the orbital angular velocity and has magnitude (γ−1)ωorb. Quoting the opposite cross-product order without changing the frame convention reverses the sign incorrectly.
+
+For a photon making angle θ with +x in S, a boost with S′ moving +v along x gives $\nu'=\gamma\nu(1-\beta\cos\theta)$ and $\cos\theta'=(\cos\theta-\beta)/(1-\beta\cos\theta)$. Frequency shift and aberration are two parts of the same four-vector transformation. At θ=0, ν′/ν=√[(1−β)/(1+β)], appropriate to an observer moving along the light's propagation.
+
+A transverse direction must be defined in a particular frame: θ=π/2 in S gives ν′=γν, while a different source/observer geometry can yield a reciprocal factor. The phrase transverse Doppler effect without a frame and angle convention can therefore be misleading.
+
+Specific intensity transforms with the invariant Iν/ν³ along the same ray in flat-spacetime Lorentz transformations. Apparent beaming additionally changes solid angle and arrival-time mapping. Cosmological or gravitational redshift needs geometric propagation beyond a global inertial boost; constant proper acceleration in flat spacetime does not itself introduce spacetime curvature.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Apply photon energy and momentum boosts to directions θ=0, π/2 and π and check that transformed photon speed remains c. Compare constant proper acceleration with constant lab acceleration using the rapidity formulas. State the compared frame before assigning a red or blue shift.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At β=0.6, γ=1.25. For a photon traveling along +x, ν′/ν=1.25(1−0.6)=0.5. In uniform circular motion at that speed, the Thomas precession magnitude is 0.25 times the orbital angular frequency and its direction is opposite under the stated convention.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

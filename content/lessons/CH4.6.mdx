@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH4.6",
+  "title": "Metallic and solid-state bonding",
+  "hook": "Why can a crystal with many electrons still be an electrical insulator?",
+  "recap": [
+    "A plane-wave factor times a lattice-periodic function.",
+    "An effective missing-electron occupation near a filled band.",
+    "Band curvature with the stated tensor/coordinate convention.",
+    "Correlations and disorder can alter the independent-particle picture."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does electron delocalization alone prove metallic conduction?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Occupancy, gaps and interactions matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is effective mass always the bare rest mass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It describes band-curvature response.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does conductivity depend on scattering or mobility as well as carrier count?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Transport needs carrier dynamics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Effective mass for E=2k² with ℏ=1?",
+      "answer": "0.25",
+      "explanation": "m*=ℏ²/E″=1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Normalized neμ for n=3,e=1,μ=2?",
+      "answer": "6",
+      "explanation": "3×1×2=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify elementary band classification?",
+      "answer": "Correlations and disorder can alter the independent-particle picture.",
+      "options": [
+        "Correlations and disorder can alter the independent-particle picture.",
+        "A plane-wave factor times a lattice-periodic function."
+      ],
+      "explanation": "Correlations and disorder can alter the independent-particle picture.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a Bloch function?",
+      "back": "A plane-wave factor times a lattice-periodic function.",
+      "concept": "ch4-6-theory"
+    },
+    {
+      "front": "What is a hole?",
+      "back": "An effective missing-electron occupation near a filled band.",
+      "concept": "ch4-6-theory"
+    },
+    {
+      "front": "What sets local effective mass?",
+      "back": "Band curvature with the stated tensor/coordinate convention.",
+      "concept": "ch4-6-theory"
+    },
+    {
+      "front": "Why qualify elementary band classification?",
+      "back": "Correlations and disorder can alter the independent-particle picture.",
+      "concept": "ch4-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and de Paula, Physical Chemistry — edition and exact section verification pending",
+    "Housecroft and Sharpe, Inorganic Chemistry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a crystal with many electrons still be an electrical insulator? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Band formation, filling and scattering connect microscopic bonding to bulk transport without equating every delocalized state with a metal.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In a periodic single-particle potential, Bloch states have a plane-wave factor times a lattice-periodic function. Bands and gaps arise from the periodic electronic problem and occupancy.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A periodic lattice permits $\psi_{n\mathbf k}(\mathbf r)=e^{i\mathbf k\cdot\mathbf r}u_{n\mathbf k}(\mathbf r)$ in the ideal translation-symmetric description. Band index n and crystal wavevector label states; crystal momentum is not identical to an isolated particle’s mechanical momentum in every setting.
+
+A completely filled band separated by a gap can be insulating at zero temperature in the simple independent-electron model because nearby available states and a net response cannot be inferred from delocalization alone. Partially filled bands or overlapping bands commonly yield metallic behaviour, but correlation, disorder and topology can require a more sophisticated classification.
+
+Group velocity is (1/ℏ)∇_kE_n and local band curvature defines an effective mass tensor where a quadratic expansion is appropriate. Effective mass is a response parameter, not a literal change of bare electron rest mass. Holes describe missing occupations near filled bands and can act as positive-charge carriers in an effective model.
+
+At finite temperature, intrinsic semiconductor carrier populations depend exponentially on gap scales in a suitable nondegenerate regime, while dopants shift occupations and introduce states. Conductivity also requires mobilities and scattering, not only carrier number. Tight-binding, nearly-free-electron and density-functional models have distinct approximations; Mott insulation illustrates why filling alone is not universally sufficient.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare a filled isolated band and a partially filled band using a schematic occupation plot. State the independent-electron approximation. For a quadratic band vary curvature and compute effective mass; do not identify the schematic gap with a measured material without a source.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a quadratic one-dimensional band is E=αk² with α=2 in units ℏ=1, then curvature is 4 and effective mass is 1/4. A simple conductivity model σ=neμ with normalized n=3,e=1,μ=2 gives 6; the mobility cannot be inferred from band filling alone.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

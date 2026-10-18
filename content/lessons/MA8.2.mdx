@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA8.2",
+  "title": "Distributions and the central limit theorem",
+  "hook": "Why can a sample average look Gaussian when individual observations do not?",
+  "recap": [
+    "Concentration of an average around its mean under stated assumptions.",
+    "The limiting distribution of a standardized average.",
+    "Discrete, skewed and bounded distributions may have poorly approximated tails.",
+    "Independent identical finite-variance observations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the CLT say all original observations become Gaussian?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It concerns a standardized sum or mean.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the classical iid CLT apply unchanged to infinite-variance Cauchy data?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its finite-variance hypothesis fails.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is there one universal sufficient sample size for every Gaussian approximation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Tail behaviour and required accuracy matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Standard deviation of the mean for n=100 independent observations with σ=2?",
+      "answer": "0.2",
+      "explanation": "σ/√n=0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Chebyshev upper bound for |mean−μ|≥1 with n=100 and σ²=4?",
+      "answer": "0.04",
+      "explanation": "Variance of the mean divided by 1² is 4/100.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can correlated samples break the naive standard-error calculation?",
+      "answer": "Covariances contribute to the variance of the mean",
+      "options": [
+        "Covariances contribute to the variance of the mean",
+        "Correlation always improves information"
+      ],
+      "explanation": "The effective information differs from the raw sample count.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does the law of large numbers control?",
+      "back": "Concentration of an average around its mean under stated assumptions.",
+      "concept": "ma8-2-theory"
+    },
+    {
+      "front": "What does the CLT control?",
+      "back": "The limiting distribution of a standardized average.",
+      "concept": "ma8-2-theory"
+    },
+    {
+      "front": "Why are low-count approximations delicate?",
+      "back": "Discrete, skewed and bounded distributions may have poorly approximated tails.",
+      "concept": "ma8-2-theory"
+    },
+    {
+      "front": "What defines the familiar standard error σ/√n?",
+      "back": "Independent identical finite-variance observations.",
+      "concept": "ma8-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Wasserman, All of Statistics — exact section and edition verification pending",
+    "Robert and Casella, Monte Carlo Statistical Methods — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a sample average look Gaussian when individual observations do not? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Limit theorems explain averaging under explicit assumptions. They are not a license to fit every distribution with a Gaussian or to ignore rare tails and correlated samples.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A normalized sum balances many independent contributions. As the number grows, its characteristic shape can simplify even though the original observations retain their own distribution.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For independent identically distributed variables with finite mean μ and finite nonzero variance σ², the classical central limit theorem gives a standard-normal limit for √n times the centered sample mean divided by σ.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For iid finite-variance observations, $E[\bar X]=\mu$ and $\operatorname{Var}(\bar X)=\sigma^2/n$. Chebyshev's inequality gives $P(|\bar X-\mu|\ge\varepsilon)\le\sigma^2/(n\varepsilon^2)$, proving convergence in probability of the average. This law-of-large-numbers statement concerns concentration, not the Gaussian shape of standardized errors.
+
+The classical CLT states $\sqrt n(\bar X-\mu)/\sigma\Rightarrow N(0,1)$. A characteristic-function proof expands the centered single-observation characteristic function near zero to 1−σ²t²/2 plus a smaller remainder, then raises its t/√n version to the nth power. This is a proof outline; the regularity and convergence steps rely on the finite-second-moment theorem.
+
+A Gaussian observation model is not the same as a CLT approximation for an average. At small n, skewness and rare events can make tail probabilities inaccurate. With a finite third absolute moment, a Berry–Esseen bound controls the distribution-function approximation at order n⁻¹/² with a distribution-dependent coefficient. There is no universal magic sample size that fixes every population.
+
+Bernoulli sums are binomial under identical independent trials. Poisson limits arise for many rare trials with controlled total mean. Their Gaussian approximations need appropriate count sizes and can be poor at low counts or boundaries. A Cauchy distribution has no finite mean or variance; averaging iid Cauchy variables does not produce the familiar Gaussian concentration.
+
+Correlated time-series samples require covariance terms, not simply σ²/n. Infinite variance, changing populations or strong dependence require other limit theorems or direct models. Report whether the uncertainty formula describes observations, a sample mean or an inferred parameter; these are not interchangeable objects.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate explicitly simulated Bernoulli, exponential and heavy-tailed samples. Compare histograms of individual values and averages over repeated batches. Plot mean-error scaling and label when variance assumptions fail; do not interpret one finite simulated histogram as a proof of a limit theorem.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For n=100 independent observations with standard deviation 2, the sample-mean standard deviation is 2/√100=0.2. Chebyshev bounds probability of a deviation at least 1 by 4/(100×1)=0.04, regardless of the distribution shape under the finite-variance assumptions.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

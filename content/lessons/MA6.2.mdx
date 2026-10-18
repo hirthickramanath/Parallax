@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA6.2",
+  "title": "Contour integration and Cauchy's theorem",
+  "hook": "Why can an integral vanish around one loop but remain nonzero around a hole?",
+  "recap": [
+    "The integral definition through the parametrized path.",
+    "The enclosed excluded point obstructs the Cauchy zero-integral hypotheses.",
+    "n! divided by 2πi.",
+    "Every bounded entire function is constant."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is holomorphicity near only the contour enough for every closed integral to vanish?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A singularity can lie in the enclosed excluded region.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "What happens when the path orientation reverses?",
+      "options": [
+        "The integral changes sign",
+        "The integral is unchanged"
+      ],
+      "answer": "The integral changes sign",
+      "explanation": "The tangent increment changes direction.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can an entire bounded nonconstant function exist?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Cauchy estimates imply Liouville’s theorem.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Multiplier of 2πi in ∮z²/z³ dz around a positive unit circle?",
+      "answer": "1",
+      "explanation": "The integrand is 1/z on the contour.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "exact": true
+    },
+    {
+      "id": "warmup",
+      "prompt": "Same multiplier after reversing orientation?",
+      "answer": "-1",
+      "explanation": "Orientation reversal negates the integral.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup",
+      "exact": true
+    },
+    {
+      "id": "core",
+      "prompt": "What must a contour deformation preserve for a holomorphic integrand?",
+      "answer": "Admissibility within the nonsingular domain and relevant winding information",
+      "options": [
+        "Admissibility within the nonsingular domain and relevant winding information",
+        "Only the length of the contour"
+      ],
+      "explanation": "Length does not determine whether singularities were crossed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is contour orientation part of?",
+      "back": "The integral definition through the parametrized path.",
+      "concept": "ma6-2-theory"
+    },
+    {
+      "front": "Why does ∮dz/z around zero not vanish?",
+      "back": "The enclosed excluded point obstructs the Cauchy zero-integral hypotheses.",
+      "concept": "ma6-2-theory"
+    },
+    {
+      "front": "What factor appears in Cauchy’s nth derivative formula?",
+      "back": "n! divided by 2πi.",
+      "concept": "ma6-2-theory"
+    },
+    {
+      "front": "What does Liouville’s theorem say?",
+      "back": "Every bounded entire function is constant.",
+      "concept": "ma6-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Stein and Shakarchi, Complex Analysis — exact section verification pending",
+    "Ahlfors, Complex Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an integral vanish around one loop but remain nonzero around a hole? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Contour methods simplify forcing, field and spectral calculations, but the domain enclosed by a loop must be admissible before applying a zero-integral theorem.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A contour integral accumulates complex tangential increments. A smooth local rule can still have global circulation when the region has an excluded point.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a piecewise C¹ path γ, define ∫γ f(z)dz=∫f(γ(t))γ′(t)dt. Orientation and multiplicity belong to the path data.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Parametrization gives a direct computational definition: a positively oriented circle is z=z₀+Reⁱᵗ for 0≤t≤2π, with dz=iReⁱᵗdt. Reversing orientation changes the integral sign, and traversing twice doubles it. The estimate $|\int_\gamma f(z)dz|\le\operatorname{length}(\gamma)\max_\gamma|f|$ holds for a bounded continuous integrand on a finite-length path.
+
+A standard Cauchy theorem states that a holomorphic function on a simply connected open domain has zero integral around every closed piecewise smooth path in that domain. More general forms use null-homotopic or homologically admissible cycles. Holomorphicity only on a neighbourhood of the path is insufficient if excluded singularities lie inside it.
+
+For f(z)=1/z on the punctured plane, a unit-circle substitution gives $\oint dz/z=2\pi i$. The function is holomorphic on the punctured domain, but the circle cannot contract there. On a suitable slit domain, a single-valued logarithm supplies a primitive and closed integrals vanish. A holomorphic primitive implies path independence; on simply connected domains holomorphicity guarantees such a primitive.
+
+If f is holomorphic on a neighbourhood of the closure of a disk and z₀ is inside its positively oriented boundary, Cauchy’s formula is $f(z_0)=(2\pi i)^{-1}\oint f(z)/(z-z_0)\,dz$. Differentiating the kernel gives $f^{(n)}(z_0)=n!(2\pi i)^{-1}\oint f(z)/(z-z_0)^{n+1}\,dz$. The contour and interior analyticity assumptions matter, as does the factorial.
+
+Cauchy estimates give |f⁽ⁿ⁾(z₀)|≤n!M/Rⁿ on a radius-R circle where |f|≤M. In particular an entire bounded function is constant by letting R grow in the first-derivative estimate. The maximum modulus principle concerns holomorphic functions; an interior maximum of the real part alone is a related harmonic statement with its own formulation. Contour deformation must avoid crossing singularities and preserve the relevant winding data.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Parametrize a circle and numerically integrate z², 1/z and 1/(z−a) for a inside and outside the circle. Refine the quadrature and reverse orientation. Move a toward the contour and identify where the integral becomes singular rather than reporting a finite sampled sum as a valid contour theorem.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a positive circle around zero, ∮z²/z³ dz=∮dz/z=2πi. Equivalently Cauchy’s derivative formula for f=z² with n=2 gives 2πi·f″(0)/2!=2πi. The multiplier of 2πi is 1. Reversing the circle changes that multiplier to −1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

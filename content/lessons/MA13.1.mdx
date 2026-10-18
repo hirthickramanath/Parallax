@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA13.1",
+  "title": "Dynamical systems and chaos",
+  "hook": "Why does a local linear stability result not settle a system’s global behaviour?",
+  "recap": [
+    "No relevant linear eigenvalue has zero real part.",
+    "Stable and unstable directions coexist.",
+    "A parameter-driven qualitative change in dynamical structure.",
+    "Local evidence does not establish global behaviour."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do zero-real-part eigenvalues settle nonlinear stability by themselves?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Higher-order dynamics can dominate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are a Lyapunov function and a Lyapunov exponent identical?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "One is a monotonic stability tool; the other a growth rate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must planar-flow theorems be transferred unchanged to higher dimensions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their dimensional hypotheses matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Positive growth exponent for xdot=−2x,ydot=3y?",
+      "answer": "3",
+      "explanation": "The growing eigenvalue is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of growing directions in that example?",
+      "answer": "1",
+      "explanation": "Only the y direction grows.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why record precise claims?",
+      "answer": "Local evidence does not establish global behaviour.",
+      "options": [
+        "Local evidence does not establish global behaviour.",
+        "No relevant linear eigenvalue has zero real part."
+      ],
+      "explanation": "Local evidence does not establish global behaviour.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is hyperbolicity?",
+      "back": "No relevant linear eigenvalue has zero real part.",
+      "concept": "ma13-1-theory"
+    },
+    {
+      "front": "What makes an equilibrium a saddle?",
+      "back": "Stable and unstable directions coexist.",
+      "concept": "ma13-1-theory"
+    },
+    {
+      "front": "What is a bifurcation?",
+      "back": "A parameter-driven qualitative change in dynamical structure.",
+      "concept": "ma13-1-theory"
+    },
+    {
+      "front": "Why record precise claims?",
+      "back": "Local evidence does not establish global behaviour.",
+      "concept": "ma13-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strogatz, Nonlinear Dynamics and Chaos — edition and exact section verification pending",
+    "Gardiner, Stochastic Methods — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a local linear stability result not settle a system’s global behaviour? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Research-level dynamics uses invariant structures and carefully delimited theorems rather than identifying chaos from visual complexity.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A fixed point satisfies f(x*)=0. Linearization studies the Jacobian there; invariant sets, bifurcations and Lyapunov spectra extend the analysis under stated regularity.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For ẋ=f(x), perturbations near a fixed point satisfy $\delta\dot x=J\delta x$ at leading order. Eigenvalues with negative real parts give local asymptotic stability under the hyperbolic equilibrium theorem; positive real parts imply instability. Zero-real-part eigenvalues require nonlinear analysis rather than an automatic stable/unstable label.
+
+For a planar continuous-time autonomous smooth flow, Poincaré–Bendixson-type conclusions have boundedness and equilibrium qualifications and do not transfer to arbitrary dimension. Forced systems can be made autonomous by adding variables, changing the dimension relevant to such theorems.
+
+A Lyapunov exponent measures trajectory-wise infinitesimal growth with norm/time conventions. Lyapunov functions instead provide a scalar monotonicity stability argument; similar names do not make them the same object. Numerical finite-time exponents need tangent integration, rescaling and convergence checks.
+
+Bifurcation theory asks how qualitative invariant structure changes with parameters. A computed diagram can miss unstable branches or exhibit discretization artifacts. A reproducible dynamical claim records equations, parameters, initial states, integration controls and the precise local/global assertion being tested.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare eigenvalue-based local predictions with numerical trajectories near and far from a fixed point. Include a zero-eigenvalue example and show why higher-order terms are decisive there.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For linear system ẋ=−2x,ẏ=3y, the origin has one decaying and one growing direction and is a saddle. The positive exponent is 3 in the stated time units; a negative trace alone would not guarantee stability for an arbitrary matrix.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

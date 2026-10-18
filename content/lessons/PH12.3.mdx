@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH12.3",
+  "title": "Atoms in fields (Zeeman, Stark)",
+  "hook": "Why can a weak field split levels differently from a strong field?",
+  "recap": [
+    "Magnetic moment projection in the valid coupled basis.",
+    "Parity can remove the first-order dipole expectation.",
+    "External coupling competes with internal energy gaps.",
+    "Both level shifts and line/instrument conditions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can weak-field labels be extrapolated to arbitrarily strong fields unchanged?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Internal couplings can be overwhelmed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a parity eigenstate automatically have a nonzero first-order Stark shift?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its dipole expectation often vanishes absent degeneracy/symmetry breaking.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a line shift a difference of level shifts?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Both transition states contribute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Zeeman shift for μ_BB=2,g=2,m=.5?",
+      "answer": "2",
+      "explanation": "2×2×.5=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Separation of the ±.5 shifts in that example?",
+      "answer": "4",
+      "explanation": "2−(−2)=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must a measured transition include?",
+      "answer": "Both level shifts and line/instrument conditions.",
+      "options": [
+        "Both level shifts and line/instrument conditions.",
+        "Magnetic moment projection in the valid coupled basis."
+      ],
+      "explanation": "Both level shifts and line/instrument conditions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets a weak-field shift?",
+      "back": "Magnetic moment projection in the valid coupled basis.",
+      "concept": "ph12-3-theory"
+    },
+    {
+      "front": "Why can Stark response begin quadratically?",
+      "back": "Parity can remove the first-order dipole expectation.",
+      "concept": "ph12-3-theory"
+    },
+    {
+      "front": "What causes field-induced mixing?",
+      "back": "External coupling competes with internal energy gaps.",
+      "concept": "ph12-3-theory"
+    },
+    {
+      "front": "What must a measured transition include?",
+      "back": "Both level shifts and line/instrument conditions.",
+      "concept": "ph12-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Foot, Atomic Physics — edition and exact section verification pending",
+    "Townes and Schawlow, Microwave Spectroscopy — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a weak field split levels differently from a strong field? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+External fields compete with internal coupling; perturbative labels must follow the hierarchy of energy scales.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Zeeman and Stark effects are magnetic- and electric-field shifts under a stated atomic Hamiltonian and coupling regime.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In a weak magnetic field within a suitable LS-coupled level, $\Delta E=\mu_Bg_Jm_JB$. The Landé factor combines spin and orbital contributions with an adopted electron magnetic convention. Neglecting the small anomalous correction, an L=0,S=1/2,J=1/2 level has g≈2.
+
+When field coupling competes with fine/hyperfine structure, the weak-field coupled basis may fail. Paschen–Back-type regimes require a different diagonalization, not extrapolating the same linear weak-field labels indefinitely. Avoided crossings and mixing can change transition strengths.
+
+An electric dipole perturbation is −d·E. A nondegenerate parity eigenstate often has zero first-order permanent electric dipole expectation, giving a leading quadratic Stark response. Degeneracies or broken inversion symmetry can enable linear effects. The polarizability sign/value is state and convention dependent.
+
+Real spectra also include gradients, broadening and calibration. Identify whether B/E values are uniform and whether transition frequencies reflect differences of shifted states. A single-state energy shift is not automatically the full measured transition shift.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Diagonalize a small internal-plus-field Hamiltonian while increasing field strength and track state composition. Compare the result with weak-field slopes, marking where the approximation ceases to match.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With μ_BB=2,g=2,m=.5, a weak-field shift is 2. The m=−.5 partner shifts by −2, giving separation 4. These numbers assume the weak-field basis remains valid.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

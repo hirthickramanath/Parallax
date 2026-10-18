@@ -1,0 +1,186 @@
+---
+{
+  "id": "CP2.4",
+  "title": "Machine learning for science",
+  "hook": "How can a model score extremely well while learning the wrong scientific relationship?",
+  "recap": [
+    "To keep related observations from leaking across evaluation boundaries.",
+    "Inside each training split.",
+    "A change in the relevant data-generating distribution.",
+    "Transparent, appropriately validated simple baselines."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May preprocessing be fitted on all rows before cross-validation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Held-out information can leak into training.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does high classification accuracy prove good minority-class recall?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A majority-only classifier can score highly.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does feature importance establish a causal mechanism?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Predictive association is not causation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "MSE for truths [1,3] and predictions [2,1]?",
+      "answer": "2.5",
+      "explanation": "Squared residuals 1 and 4 average to 2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Accuracy of always-negative predictions with 95 negatives out of 100?",
+      "answer": "0.95",
+      "explanation": "95 correct predictions divided by 100.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What should a scientific model beat?",
+      "answer": "Transparent, appropriately validated simple baselines.",
+      "options": [
+        "Transparent, appropriately validated simple baselines.",
+        "To keep related observations from leaking across evaluation boundaries."
+      ],
+      "explanation": "Transparent, appropriately validated simple baselines.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why use grouped splits?",
+      "back": "To keep related observations from leaking across evaluation boundaries.",
+      "concept": "cp2-4-theory"
+    },
+    {
+      "front": "Where should preprocessing be fitted?",
+      "back": "Inside each training split.",
+      "concept": "cp2-4-theory"
+    },
+    {
+      "front": "What is domain shift?",
+      "back": "A change in the relevant data-generating distribution.",
+      "concept": "cp2-4-theory"
+    },
+    {
+      "front": "What should a scientific model beat?",
+      "back": "Transparent, appropriately validated simple baselines.",
+      "concept": "cp2-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Newman, Computational Physics — edition and exact section verification pending",
+    "Official NumPy, Astropy, astroquery and scikit-learn documentation — version and exact page verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a model score extremely well while learning the wrong scientific relationship? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Scientific machine learning must control leakage, selection and extrapolation before a predictive score supports any scientific interpretation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Supervised learning fits a mapping from features to labels using a specified loss and validation design. Generalization is evaluated on observations not used in fitting or model selection.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Separate training, validation and final test roles. Fit preprocessing, imputation and feature selection only on training data within each fold. Leakage occurs when label information or held-out distribution statistics enter training. Grouped observations from the same source, simulation run or instrument may need group-based splits; random row splitting can put near-duplicates on both sides.
+
+For a regression residual r=y−ŷ, mean squared error is $N^{-1}\sum r_i^2$. Its units are squared target units and sensitivity to outliers differs from absolute error. A metric must match the scientific task and uncertainty model. In an imbalanced classifier, high accuracy can result from predicting the majority class; inspect class-conditional performance and relevant false-positive costs.
+
+Regularization and model complexity affect bias and variance, but hyperparameters selected on a validation set make that set part of the selection process. A final untouched test or nested validation is needed for the corresponding unbiased assessment goal. Time evolution, survey selection and domain shifts can make even a properly held-out historical test unrepresentative of deployment.
+
+A calibrated predictive probability is not automatically a physical posterior over causal parameters. Distinguish measurement noise, model uncertainty and out-of-distribution ignorance. Compare simple baselines, inspect residuals against physical covariates and test conservation/symmetry constraints where justified. Feature importance or correlation does not establish causation. Keep synthetic training data labelled and document simulator mismatch before claiming performance on real observations.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic regression example with repeated measurements of the same source. Compare a random-row split with a source-group split and fit scaling separately inside each training fold. Explain any score difference as a validation-design result, not a newly discovered physical law.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For true values [1,3] and predictions [2,1], residuals are −1 and 2, so MSE=(1+4)/2=2.5. A binary dataset with 95 negatives and five positives gives .95 accuracy for an always-negative classifier, despite zero positive recall.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

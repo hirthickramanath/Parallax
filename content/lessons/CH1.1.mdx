@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.1",
+  "title": "Chemical thermodynamics and chemical potential",
+  "hook": "Why does a component move even when the total temperature and pressure stay fixed?",
+  "recap": [
+    "A component partial molar Gibbs derivative under specified constraints.",
+    "dG=ΔrG dξ at fixed T,p.",
+    "Its logarithm gives the standard-state-relative chemical potential divided by RT.",
+    "Component chemical potentials cannot vary independently at fixed T,p."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is chemical potential always the average G per mole?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a partial derivative for one component.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can chemical equilibrium alone determine how fast it is reached?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Rates require kinetic information.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May a dimensionful concentration be put directly inside ln without a standard-state ratio?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Activity is dimensionless.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Increase in μ/(RT) when activity changes from 1 to 2?",
+      "answer": "0.6931471805599453",
+      "explanation": "The change is ln2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Reaction quotient for ideal A⇌B with aB=0.8 and aA=0.2?",
+      "answer": "4",
+      "explanation": "Q=aB/aA=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What establishes transfer equilibrium between two phases?",
+      "answer": "Equality of the relevant component potentials under the stated constraints",
+      "options": [
+        "Equality of the relevant component potentials under the stated constraints",
+        "Equality of the total phase volumes"
+      ],
+      "explanation": "A permitted small transfer must have no first-order free-energy advantage.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is chemical potential?",
+      "back": "A component partial molar Gibbs derivative under specified constraints.",
+      "concept": "ch1-1-theory"
+    },
+    {
+      "front": "How does reaction extent change G?",
+      "back": "dG=ΔrG dξ at fixed T,p.",
+      "concept": "ch1-1-theory"
+    },
+    {
+      "front": "What defines activity thermodynamically?",
+      "back": "Its logarithm gives the standard-state-relative chemical potential divided by RT.",
+      "concept": "ch1-1-theory"
+    },
+    {
+      "front": "Why does Gibbs–Duhem matter?",
+      "back": "Component chemical potentials cannot vary independently at fixed T,p.",
+      "concept": "ch1-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a component move even when the total temperature and pressure stay fixed? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Chemical potential connects composition, diffusion and reaction equilibrium. Temperature and pressure alone do not determine the thermodynamic tendency when material can redistribute.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Think of chemical potential as the free-energy price of adding a small amount of one component while the stated other variables stay fixed.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a simple homogeneous phase, μᵢ is the partial derivative of Gibbs energy with respect to amount nᵢ at fixed temperature, pressure and other component amounts.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a simple compressible multicomponent system, $dG=-S\,dT+V\,dp+\sum_i\mu_i\,dn_i$. Thus μ has energy-per-mole units when n is molar amount. It is a partial molar quantity, not generally the average G divided by total amount. For an extensive homogeneous phase, Euler's relation gives G=∑niμi, and Gibbs–Duhem constrains the component potentials: at fixed T,p, ∑ni dμi=0.
+
+For a reaction extent ξ with dni=νi dξ, the fixed-T,p derivative is $\Delta_rG=\sum_i\nu_i\mu_i$. A permitted infinitesimal forward change lowers G when this is negative. At an unconstrained interior reaction equilibrium it is zero; boundaries, constrained reactions and nonequilibrium driving need separate treatment.
+
+Represent component chemical potential as $\mu_i=\mu_i^\circ+RT\ln a_i$, with dimensionless activity and a specified standard state. This produces ΔrG=ΔrG°+RT lnQ and K=exp(−ΔrG°/RT) at equilibrium. A standard chemical potential is not a universal zero, and its convention changes together with activity.
+
+Between two phases at common T,p that can exchange component i, a small transfer changes total G by (μi,2−μi,1)dn. Equilibrium therefore requires equality of the applicable chemical potentials. Charged species and external fields need electrochemical or other generalized potentials; plain μ alone does not encode all work terms.
+
+A low Gibbs energy does not imply rapid equilibration. Reaction barriers, interfaces and transport can prevent the system reaching the thermodynamic minimum on the observed timescale. Local thermodynamic equilibrium can supply state functions for small regions while the complete system still carries fluxes.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct a two-compartment activity table and compute chemical-potential differences using one shared standard state. Reverse the compartments and verify the sign change. Separate the equilibrium tendency from an assumed transport rate.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a component whose activity rises from 1 to 2 at fixed temperature and standard state, chemical potential rises by RT ln2. In units of RT the increase is ln2≈0.693147. Increasing concentration alone gives this result only if the associated activity model supports it.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

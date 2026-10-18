@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH18.3",
+  "title": "Designing a research project",
+  "hook": "How do you design a project whose result can be useful even if the main hypothesis fails?",
+  "recap": [
+    "A specific target, regime and observable.",
+    "It supplies a validated comparison before extensions.",
+    "They preserve useful progress if a dependency/hypothesis fails.",
+    "The tested regime, uncertainty and limitations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a null result automatically make a project useless?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It can constrain or diagnose a defined question.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can untested exploratory tuning be presented as independent confirmation?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Selection must be disclosed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should data/equipment access be established in the plan?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Missing inputs can block execution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "χ² for residuals 1,2 with unit independent variances?",
+      "answer": "5",
+      "explanation": "1²+2²=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of residual components in that example?",
+      "answer": "2",
+      "explanation": "There are two measurements.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What should a null result report?",
+      "answer": "The tested regime, uncertainty and limitations.",
+      "options": [
+        "The tested regime, uncertainty and limitations.",
+        "A specific target, regime and observable."
+      ],
+      "explanation": "The tested regime, uncertainty and limitations.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a question bounded?",
+      "back": "A specific target, regime and observable.",
+      "concept": "ph18-3-theory"
+    },
+    {
+      "front": "What is a baseline for?",
+      "back": "It supplies a validated comparison before extensions.",
+      "concept": "ph18-3-theory"
+    },
+    {
+      "front": "Why write fallback questions?",
+      "back": "They preserve useful progress if a dependency/hypothesis fails.",
+      "concept": "ph18-3-theory"
+    },
+    {
+      "front": "What should a null result report?",
+      "back": "The tested regime, uncertainty and limitations.",
+      "concept": "ph18-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Official arXiv and INSPIRE documentation — exact page/version verification pending",
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How do you design a project whose result can be useful even if the main hypothesis fails? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+A bounded question, baseline and risk plan make research progress reviewable instead of tying success to one hoped-for plot.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A project design specifies question, hypotheses, measurable targets, methods, resources, validation and decision criteria with uncertainty and provenance.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Define one target parameter or prediction and a baseline model. An observable likelihood, such as $\chi^2=(d-m)^TC^{-1}(d-m)$ under Gaussian covariance assumptions, links data to inference. A descriptive score without a data-generating interpretation may not test the intended hypothesis.
+
+Plan exact/synthetic controls, calibration and held-out checks before fitting the final target. Separate exploration from confirmatory claims. Compute/resource estimates and access to actual data/equipment are prerequisites, not details to invent after the result.
+
+A risk register lists missing rates, degeneracies, unavailable inputs and numerical limits with fallback questions. A null result can constrain a stated regime or expose a method failure; it need not be rebranded as a positive discovery.
+
+Deliverables include code/data manifests, a reproducible baseline, uncertainty and a discrepancy analysis. New cloud services, datasets or real experiments require their own authorization/access conditions. A lesson project proposal does not claim those external actions have already happened.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Write a project with one baseline, one extension and a stop/redirect criterion for a failed validation check. Include a useful fallback target that does not depend on a hoped-for positive signal.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For independent residuals [1,2] with unit variances, χ²=5. That number’s interpretation needs degrees of freedom, fitting/search design and the correct noise assumptions. A project should define those before treating it as a pass/fail threshold.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

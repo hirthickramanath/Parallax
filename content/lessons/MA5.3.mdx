@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA5.3",
+  "title": "Laplace transform",
+  "hook": "Why does a Laplace transform require a convergence region as well as a formula?",
+  "recap": [
+    "A sufficient right half-plane for Laplace convergence.",
+    "L[f′]=sF−f(0⁺).",
+    "An e⁻ᵃˢ factor when both onset and argument are shifted.",
+    "In an appropriate convergence half-plane to the right of relevant singularities."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can a rational transform formula be used as its defining integral outside the convergence region?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Analytic continuation and integral convergence are different claims.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does transforming y′ retain an initial-value term?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The integration-by-parts boundary term is −y(0⁺).",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is u(t−a)f(t) always the same delayed signal as u(t−a)f(t−a)?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The latter also shifts the function argument.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Y(1) for y(t)=3e⁻²ᵗ with unilateral Laplace convention?",
+      "answer": "1",
+      "explanation": "Y=3/(s+2), giving one at s=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Transform of f′ at s=3 if F(3)=2 and f(0⁺)=4?",
+      "answer": "2",
+      "explanation": "sF−f(0⁺)=6−4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "How should an inverse solution be checked?",
+      "answer": "Against the original equation, initial values and convergence assumptions",
+      "options": [
+        "Against the original equation, initial values and convergence assumptions",
+        "Only by simplifying its denominator"
+      ],
+      "explanation": "Algebra alone can miss initial terms and domain errors.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does exponential order provide?",
+      "back": "A sufficient right half-plane for Laplace convergence.",
+      "concept": "ma5-3-theory"
+    },
+    {
+      "front": "What is the derivative initial term?",
+      "back": "L[f′]=sF−f(0⁺).",
+      "concept": "ma5-3-theory"
+    },
+    {
+      "front": "What does a delayed causal input transform contribute?",
+      "back": "An e⁻ᵃˢ factor when both onset and argument are shifted.",
+      "concept": "ma5-3-theory"
+    },
+    {
+      "front": "Where is a Bromwich contour placed?",
+      "back": "In an appropriate convergence half-plane to the right of relevant singularities.",
+      "concept": "ma5-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strauss, Partial Differential Equations: An Introduction — edition and exact section verification pending",
+    "Stein and Shakarchi, Fourier Analysis: An Introduction — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a Laplace transform require a convergence region as well as a formula? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Causal response and initial-value problems are easier in a transform domain only when initial terms, inversion and the allowed half-plane are retained.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+The real part of the transform variable exponentially discounts the future. A growing signal needs a stronger discount before its integral exists.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The unilateral transform is F(s)=∫₀∞e⁻ˢᵗf(t)dt. Piecewise continuity and exponential order provide standard sufficient existence hypotheses in a right half-plane.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If f is piecewise continuous on bounded intervals and bounded by Meᵃᵗ eventually, its unilateral Laplace transform converges absolutely for Re s>a. This sufficient bound need not locate the sharp abscissa. The formula $\mathcal L[e^{at}](s)=1/(s-a)$ describes the defining integral only for Re s>a; algebraic continuation of the rational expression elsewhere is a different operation.
+
+Integration by parts gives $\mathcal L[f'](s)=sF(s)-f(0^+)$ under the required regularity and decay. A second derivative contributes s²F−sf(0⁺)−f′(0⁺). Dropping initial terms changes an initial-value problem into another problem. For an ordinary causal input, convolution on [0,t] transforms into a product, with sufficient integrability/exponential-order conditions for exchanging integrals.
+
+A delayed causal function u(t−a)f(t−a), a≥0, transforms to e⁻ᵃˢF(s). This is not the same as u(t−a)f(t). Derive the shift by substituting τ=t−a in the integral; the distinction matters for switching and delayed forcing. Treat impulses in a declared distribution convention rather than pretending they are bounded ordinary functions.
+
+For y′+by=g(t), y(0⁺)=y₀, transformation yields $Y(s)=[y_0+G(s)]/(s+b)$. Partial fractions invert simple rational cases. Repeated poles generate powers of time, and complex conjugate poles produce real oscillations when coefficients/data are real. Pole cancellation can remove an output mode, so a transfer-function plot alone does not establish every internal stability property.
+
+A Bromwich inversion contour lies in a convergence half-plane to the right of relevant singularities under the inversion theorem assumptions. Unilateral causality is built into the setup; a bilateral transform needs a region of convergence to distinguish different time supports. Analytic continuation can help inversion but does not redefine the original integral on a divergent domain. Inspect late-time growth and the original differential equation after inversion.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare direct integration and transformed solutions for a decaying exponential and a delayed step. Numerically truncate the Laplace integral at growing upper limits for s on either side of the convergence boundary. Record growth rather than reporting a finite cutoff result as convergence.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Solve y′+2y=0 with y(0)=3. Transformation gives (s+2)Y=3, so Y=3/(s+2) and y=3e⁻²ᵗ. At s=1, Y=1. Substitution checks both the differential equation and initial value; its unilateral integral converges for Re s>−2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

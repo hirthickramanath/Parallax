@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH15.2",
+  "title": "Classical fields and Noether currents",
+  "hook": "How does a field action generate both equations of motion and conservation currents?",
+  "recap": [
+    "Stationarity under admissible field variations.",
+    "A conserved current using the equations of motion.",
+    "It defines the time variable and constraint decomposition.",
+    "Redundancy does not represent independent physical states."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can boundary variation always be dropped without conditions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The variational problem must control it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is canonical momentum always just the field time derivative?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It depends on the Lagrangian and constraints.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can improved currents differ locally while retaining a controlled total charge?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Identically conserved additions can do that.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Canonical momentum for the stated scalar with phidot=3?",
+      "answer": "3",
+      "explanation": "π=φ̇.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Hamiltonian density for phidot=3,m=2,phi=1?",
+      "answer": "6.5",
+      "explanation": "(9+4)/2=6.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify gauge components?",
+      "answer": "Redundancy does not represent independent physical states.",
+      "options": [
+        "Redundancy does not represent independent physical states.",
+        "Stationarity under admissible field variations."
+      ],
+      "explanation": "Redundancy does not represent independent physical states.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What yields Euler–Lagrange equations?",
+      "back": "Stationarity under admissible field variations.",
+      "concept": "ph15-2-theory"
+    },
+    {
+      "front": "What is an on-shell current?",
+      "back": "A conserved current using the equations of motion.",
+      "concept": "ph15-2-theory"
+    },
+    {
+      "front": "Why specify slicing for canonical momentum?",
+      "back": "It defines the time variable and constraint decomposition.",
+      "concept": "ph15-2-theory"
+    },
+    {
+      "front": "Why qualify gauge components?",
+      "back": "Redundancy does not represent independent physical states.",
+      "concept": "ph15-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending",
+    "Schwartz, Quantum Field Theory and the Standard Model — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How does a field action generate both equations of motion and conservation currents? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Classical field variational structure supplies the starting point for quantization, with boundary and improvement conventions explicit.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An action S=∫L d⁴x is stationary under admissible field variations; derivatives and boundary terms determine the field equations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Vary a scalar and integrate derivative terms by parts. With suitable vanishing boundary variations, $\partial_\mu[\partial\mathcal L/\partial(\partial_\mu\phi)]-\partial\mathcal L/\partial\phi=0$. A boundary term cannot simply be discarded when its variation is not controlled.
+
+In c=ℏ=1 and signature (+−−−), a real free scalar has L=(∂φ)²/2−m²φ²/2, giving (□+m²)φ=0. Canonical momentum for a chosen time slicing is π=∂L/∂φ̇=φ̇ in this model, not a universal formula for every constrained field.
+
+Continuous variational symmetries yield Noether currents on shell. Translations supply an energy-momentum construction, but improvement terms and gauge constraints affect the convenient tensor form. Local currents can change by identically conserved terms without changing a suitably controlled total charge.
+
+Gauge redundancy requires constraints rather than treating every component as an independent physical degree of freedom. Explicit symmetry breaking and boundary forcing alter conservation. Quantization and anomalies are further steps; a classical identity is not automatically every quantum Ward identity.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Derive the free scalar equation with an explicit boundary term. Then compare a Noether charge with and without boundary flux, keeping the action and variation domain fixed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a homogeneous scalar with L=φ̇²/2−m²φ²/2, φ̇=3 gives canonical momentum 3. With m=2,φ=1, Hamiltonian density is 9/2+4/2=6.5.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

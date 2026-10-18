@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS6.3",
+  "title": "Magnetohydrodynamics basics",
+  "hook": "Why can magnetic fields travel with a plasma in one regime but reconnect in another?",
+  "recap": [
+    "E+v×B=0.",
+    "∇·B=0.",
+    "Curvature-dependent directional stress versus a scalar gradient contribution.",
+    "Nonideal terms, kinetic physics and regularity failures."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is flux freezing valid independently of ideal/smoothness assumptions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its theorem has model and regularity conditions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does magnetic pressure alone describe all magnetic force directions?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Field-line tension also matters.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does one-fluid MHD include all kinetic plasma resonances automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Those can require distribution-function physics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Alfvén speed for B=6,μ₀=1,ρ=4?",
+      "answer": "3",
+      "explanation": "6/√4=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Magnetic Reynolds number for U=2,L=5,η_m=1?",
+      "answer": "10",
+      "explanation": "UL/η_m=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What limits flux-freezing arguments?",
+      "answer": "Nonideal terms, kinetic physics and regularity failures.",
+      "options": [
+        "Nonideal terms, kinetic physics and regularity failures.",
+        "E+v×B=0."
+      ],
+      "explanation": "Nonideal terms, kinetic physics and regularity failures.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is ideal Ohm’s law?",
+      "back": "E+v×B=0.",
+      "concept": "as6-3-theory"
+    },
+    {
+      "front": "What is the magnetic divergence constraint?",
+      "back": "∇·B=0.",
+      "concept": "as6-3-theory"
+    },
+    {
+      "front": "What distinguishes tension from magnetic pressure?",
+      "back": "Curvature-dependent directional stress versus a scalar gradient contribution.",
+      "concept": "as6-3-theory"
+    },
+    {
+      "front": "What limits flux-freezing arguments?",
+      "back": "Nonideal terms, kinetic physics and regularity failures.",
+      "concept": "as6-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Draine, Physics of the Interstellar and Intergalactic Medium — edition and exact section verification pending",
+    "Kulsrud, Plasma Physics for Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can magnetic fields travel with a plasma in one regime but reconnect in another? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Magnetohydrodynamics is a scale-dependent continuum closure; flux freezing has assumptions rather than being an absolute identity of every plasma.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Ideal MHD combines fluid conservation with a magnetic field, using E+v×B=0 and neglecting specified kinetic and nonideal effects.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Combining ideal Ohm’s law with Faraday yields $\partial_t\mathbf B=\nabla\times(\mathbf v\times\mathbf B)$ with ∇·B=0. Smooth ideal flow supports a flux-freezing theorem for material surfaces. Resistivity, sharp structures and departures from the fluid model can break the conditions needed for that conclusion.
+
+Momentum includes J×B, which can be written as magnetic pressure and tension contributions under the divergence constraint. Magnetic pressure B²/(2μ₀) alone does not represent every force direction; bent field lines produce tension. An energy equation and EOS remain necessary closures.
+
+A uniform background supports Alfvén disturbances with $v_A=B/\sqrt{\mu_0\rho}$ along the appropriate field geometry. Compressible MHD also has fast and slow magnetosonic branches. One scalar magnetic speed cannot describe every propagation direction and mode.
+
+With magnetic diffusivity η_m, a resistive induction term appears and the magnetic Reynolds number UL/η_m compares advection and diffusion at chosen scales. Reconnection can concentrate in thin regions even when a large-scale number is high. Collisionless plasma, Hall terms, anisotropic pressure and kinetic resonances can require a model beyond one-fluid ideal MHD.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Linearize one transverse perturbation about a uniform field and identify its polarization. Compare magnetic pressure-only intuition with a bent-field tension example. Label ideal and resistive induction terms before discussing reconnection.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For B=6,μ₀=1 and ρ=4 in consistent units, Alfvén speed is 3. If U=2,L=5 and η_m=1, magnetic Reynolds number is 10. Neither number alone proves that every local region is flux frozen.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

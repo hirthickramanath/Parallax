@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH16.2",
+  "title": "Einstein field equations",
+  "hook": "Why must the gravitational source include stress as well as mass density?",
+  "recap": [
+    "The contracted Bianchi identity and matter dynamics.",
+    "Absence of matter does not remove all curvature.",
+    "Coordinate redundancy must be fixed for calculations.",
+    "Sources, compatible initial data and boundary/matching conditions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does T=0 imply all curvature is zero?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Vacuum tidal/wave curvature can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "May arbitrary initial data ignore gravitational constraints?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They must satisfy the constraint equations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do stresses contribute to the relativistic source?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "T includes more than rest-mass density.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Scalar R for κ=2,T=3,Λ=0 in the stated trace convention?",
+      "answer": "-6",
+      "explanation": "R=−κT.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Trace coefficient of R in four-dimensional Einstein tensor?",
+      "answer": "-1",
+      "explanation": "R−4R/2=−R.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What fixes a physical solution?",
+      "answer": "Sources, compatible initial data and boundary/matching conditions.",
+      "options": [
+        "Sources, compatible initial data and boundary/matching conditions.",
+        "The contracted Bianchi identity and matter dynamics."
+      ],
+      "explanation": "Sources, compatible initial data and boundary/matching conditions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What ensures compatible local stress balance?",
+      "back": "The contracted Bianchi identity and matter dynamics.",
+      "concept": "ph16-2-theory"
+    },
+    {
+      "front": "What distinguishes vacuum from flatness?",
+      "back": "Absence of matter does not remove all curvature.",
+      "concept": "ph16-2-theory"
+    },
+    {
+      "front": "Why choose gauge?",
+      "back": "Coordinate redundancy must be fixed for calculations.",
+      "concept": "ph16-2-theory"
+    },
+    {
+      "front": "What fixes a physical solution?",
+      "back": "Sources, compatible initial data and boundary/matching conditions.",
+      "concept": "ph16-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending",
+    "Wald, General Relativity — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why must the gravitational source include stress as well as mass density? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Einstein’s equation relates spacetime curvature to an energy-momentum tensor with conservation and constraint structure.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use G_μν+Λg_μν=(8πG/c⁴)T_μν with a stated curvature convention and stress-energy definition.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The Einstein tensor is $G_{\mu\nu}=R_{\mu\nu}-g_{\mu\nu}R/2$. Its divergence vanishes through the contracted Bianchi identity, so a compatible matter solution obeys covariant stress-energy balance. This is not ordinary partial-derivative conservation of matter energy alone in arbitrary coordinates.
+
+T contains energy density, momentum density, stresses and fluxes. In a weak static slow-motion limit, the appropriate metric perturbation recovers Poisson gravity with the usual assumptions. Setting every pressure term to zero is not valid for relativistic stars or cosmology.
+
+Einstein equations have diffeomorphism redundancy and constraint/evolution structure. A coordinate/gauge choice is needed in calculation, and initial data must satisfy constraints. Not every arbitrarily drawn spatial metric and velocity field is allowed.
+
+Vacuum means T=0 for the region, not necessarily zero curvature: gravitational waves and exterior tidal geometry can remain. A cosmological constant can be placed geometrically or modeled as an effective stress term with a consistent convention. Matching and boundary conditions choose a physical spacetime.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Check the trace algebra and the weak-field assumptions separately. Compare a vacuum curved exterior with flat space to identify why vanishing matter tensor does not force every Riemann component to vanish.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In four dimensions with Λ=0, taking the trace gives −R=κT where κ=8πG/c⁴. For normalized κ=2 and trace T=3, R=−6 in this sign convention.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

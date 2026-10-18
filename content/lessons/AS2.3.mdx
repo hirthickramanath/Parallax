@@ -1,0 +1,195 @@
+---
+{
+  "id": "AS2.3",
+  "title": "Radiative transfer (optical depth, source function)",
+  "hook": "Why can an opaque cloud appear bright instead of simply blocking the background?",
+  "recap": [
+    "Emissivity divided by extinction under the stated convention.",
+    "Iout=Iin e⁻τ+S(1−e⁻τ).",
+    "For the constant-source model, brightness approaches S.",
+    "Opacity and source function can vary strongly with frequency."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does optically thick always mean a dark observed ray?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The medium can emit strongly and approach its source function.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is optical depth dimensionless?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It integrates an inverse-length coefficient along distance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does LTE matter automatically make every scattering-inclusive source Planckian?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Scattering contributions depend on the radiation field.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Output for Iin=10, S=2 and τ=ln2?",
+      "answer": "6",
+      "explanation": "Transmission and source weights are each one half.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Output for Iin=10, S=20 and τ=ln2?",
+      "answer": "15",
+      "explanation": "10/2+20/2=15.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why separate transmitted and emitted contributions?",
+      "answer": "Both determine the observed brightness and can compensate",
+      "options": [
+        "Both determine the observed brightness and can compensate",
+        "Opacity removes every need to model emission"
+      ],
+      "explanation": "The same attenuation can yield a bright or dark feature.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the source function?",
+      "back": "Emissivity divided by extinction under the stated convention.",
+      "concept": "as2-3-theory"
+    },
+    {
+      "front": "What is the constant-source slab solution?",
+      "back": "Iout=Iin e⁻τ+S(1−e⁻τ).",
+      "concept": "as2-3-theory"
+    },
+    {
+      "front": "What survives at large optical depth?",
+      "back": "For the constant-source model, brightness approaches S.",
+      "concept": "as2-3-theory"
+    },
+    {
+      "front": "Why is one-band opacity insufficient to describe a cloud?",
+      "back": "Opacity and source function can vary strongly with frequency.",
+      "concept": "as2-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an opaque cloud appear bright instead of simply blocking the background? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Radiation traveling through matter is both removed from and added to a ray. Optical depth tracks attenuation, while the source function determines what the medium replaces it with.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A slab partly erases the incoming image and contributes its own brightness. At large optical depth a constant-source slab hides the background and approaches its own source function.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For nonnegative extinction coefficient αν and emissivity jν under a stated ray convention, transfer is dIν/ds=−ανIν+jν. Optical depth increases along the propagation direction as dτν=ανds.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For αν>0, define source function Sν=jν/αν. The transfer equation becomes $dI_\nu/d\tau_\nu=-I_\nu+S_\nu$. An integrating factor gives the formal solution
+
+$$I(\tau)=I(0)e^{-\tau}+\int_0^\tau S(t)e^{-(\tau-t)}dt.$$
+
+For a constant source function, $I_{\rm out}=I_{\rm in}e^{-\tau}+S(1-e^{-\tau})$. For pure absorption S=0 this reduces to exponential attenuation. The formula assumes the stated one-dimensional ray treatment and constant S for the simplified slab.
+
+If τ≪1, the first-order result is Iout≈Iin+(S−Iin)τ. A thin layer may brighten or dim the ray depending on its source function relative to the incident intensity. If τ≫1, the constant-source solution approaches S and loses memory of the background. “Optically thick” therefore does not mean black in every observing band.
+
+With mass extinction opacity κν, $\tau_\nu=\int\kappa_\nu\rho\,ds$, dimensionless. Opacity usually depends on frequency, composition and state, so one cloud can be thin in one band and thick in another. Extinction includes removal by scattering as well as absorption, while emissivity can include scattering into the ray.
+
+For true thermal absorption/emission in local thermodynamic equilibrium, the corresponding thermal source function is Bν(T). With scattering, the total source generally also depends on the angular radiation field; LTE matter alone does not make every total scattering source equal to Planck intensity. Population inversions can produce effective negative absorption and amplification, outside this nonnegative-extinction slab bench.
+
+A brightness measurement at one frequency can be degenerate between source function and optical depth. Multiple bands, line ratios, geometry or independent temperature information help break it. The slab formula does not by itself solve an atmosphere whose temperature, opacity and angular field vary with depth.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the radiation slab bench to hold optical depth fixed while changing the source function across the incoming brightness. Record incident, transmitted and emitted contributions separately. Then vary τ and test the thin and thick limits. These are synthetic transfer-model readings.
+
+<Widget name="radiation_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For incident intensity 10 and source function 2 in shared arbitrary units, τ=ln2 gives transmission 1/2 and Iout=10/2+2/2=6. Replacing S by 20 gives Iout=15: the same optical depth can produce brightening instead of dimming.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

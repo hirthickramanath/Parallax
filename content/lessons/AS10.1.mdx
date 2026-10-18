@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS10.1",
+  "title": "Reading arXiv and NASA ADS",
+  "hook": "How do you tell a paper’s measured result from the assumptions used to interpret it?",
+  "recap": [
+    "Exact source/version, evidence, assumptions and limitations.",
+    "Later corrections can change the applicable result.",
+    "The latter usually adds a model and other parameters.",
+    "Clearly state which checks remain unperformed."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every preprint automatically peer reviewed?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its publication status must be checked.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a citation count verify a method?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Evidence and assumptions require reading.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should unverified section/page references be labelled pending?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Precision must not be invented.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Luminosity ratio when distance changes 2→3 at fixed flux?",
+      "answer": "2.25",
+      "explanation": "(3/2)²=9/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of distinct roles among observed,calibrated,assumed inputs?",
+      "answer": "3",
+      "explanation": "The reading note separates three input roles.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is honest source status?",
+      "answer": "Clearly state which checks remain unperformed.",
+      "options": [
+        "Clearly state which checks remain unperformed.",
+        "Exact source/version, evidence, assumptions and limitations."
+      ],
+      "explanation": "Clearly state which checks remain unperformed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What should a reading note retain?",
+      "back": "Exact source/version, evidence, assumptions and limitations.",
+      "concept": "as10-1-theory"
+    },
+    {
+      "front": "Why inspect errata?",
+      "back": "Later corrections can change the applicable result.",
+      "concept": "as10-1-theory"
+    },
+    {
+      "front": "What distinguishes a flux from a mass inference?",
+      "back": "The latter usually adds a model and other parameters.",
+      "concept": "as10-1-theory"
+    },
+    {
+      "front": "What is honest source status?",
+      "back": "Clearly state which checks remain unperformed.",
+      "concept": "as10-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Official NASA ADS and arXiv documentation — exact page/version verification pending",
+    "Gelman et al., Bayesian Data Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How do you tell a paper’s measured result from the assumptions used to interpret it? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Literature review is a traceable evidence workflow, with preprint versions, peer review and retractions treated explicitly.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A research reading note records question, data, method, assumptions, result, uncertainty and unresolved limitations with an exact bibliographic/version identifier.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Start with the scientific claim, then identify the observations or simulations used to support it. A measured flux and an inferred mass belong to different stages. For example $L=4\pi D_L^2F$ already introduces a distance and propagation model. Separate direct outputs from downstream model-dependent quantities.
+
+NASA ADS supports bibliographic search and citation/context tracing; arXiv distributes versioned preprints. A preprint is not automatically peer reviewed, and a journal label is not a guarantee of correctness. Check version history, errata, associated code/data and any later methodological critique.
+
+Read equations with definitions and unit conventions, then inspect selection, likelihood, priors, calibration and validation design. A limitation named by the authors may determine whether the result applies to your target regime. Citation counts and abstract wording are not substitutes for reading the method.
+
+Maintain a claim-to-evidence table distinguishing replicated results from plausible proposals. Record exact versions and access dates for dynamic resources. Do not invent quotations, page numbers or source verification; a pending source check is preferable to a fabricated precise reference.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Choose a public paper only after recording its exact version. Extract one equation’s definitions and list which inputs are observed, calibrated or assumed. This lesson does not pretend an actual paper has already been independently replicated.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If an inferred luminosity uses distance D=2 and later D changes to 3 at the same measured flux, the luminosity ratio is 9/4. A literature note should record that sensitivity rather than calling luminosity a direct instrument count.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

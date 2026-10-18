@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS8.6",
+  "title": "Clusters and gravitational lensing",
+  "hook": "Why can lensing weigh a cluster without assuming every galaxy is in a circular orbit?",
+  "recap": [
+    "The gravitational deflection structure along the source geometry.",
+    "Intrinsic galaxy shapes are unknown individually.",
+    "A mass-sheet/source-rescaling ambiguity under stated conditions.",
+    "Their systematics and geometry can be correlated."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does lensing require luminous tracers on circular orbits?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It probes light propagation through gravity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is Einstein angle linear in point mass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It scales as √M at fixed geometry.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can source redshift uncertainty affect lensing mass inference?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Distance ratios enter the mapping.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "θ_E for θ_E²=4M and M=9?",
+      "answer": "6",
+      "explanation": "√36=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "θ_E ratio after quadrupling mass at fixed geometry?",
+      "answer": "2",
+      "explanation": "It scales as √M.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why combine cluster probes carefully?",
+      "answer": "Their systematics and geometry can be correlated.",
+      "options": [
+        "Their systematics and geometry can be correlated.",
+        "The gravitational deflection structure along the source geometry."
+      ],
+      "explanation": "Their systematics and geometry can be correlated.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is projected lensing sensitivity?",
+      "back": "The gravitational deflection structure along the source geometry.",
+      "concept": "as8-6-theory"
+    },
+    {
+      "front": "Why average weak-lensing shapes?",
+      "back": "Intrinsic galaxy shapes are unknown individually.",
+      "concept": "as8-6-theory"
+    },
+    {
+      "front": "What is a lensing degeneracy example?",
+      "back": "A mass-sheet/source-rescaling ambiguity under stated conditions.",
+      "concept": "as8-6-theory"
+    },
+    {
+      "front": "Why combine cluster probes carefully?",
+      "back": "Their systematics and geometry can be correlated.",
+      "concept": "as8-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Binney and Tremaine, Galactic Dynamics — edition and exact section verification pending",
+    "Mo, van den Bosch and White, Galaxy Formation and Evolution — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can lensing weigh a cluster without assuming every galaxy is in a circular orbit? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Light deflection responds to projected gravitating structure, while geometry and mass-sheet/source assumptions create their own degeneracies.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Gravitational lensing maps source angles to image angles through a deflection potential in an appropriate weak-field/thin-lens approximation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a point lens, $\theta_E^2=(4GM/c^2)D_{ls}/(D_lD_s)$ with angular-diameter distances in a consistent geometry. A physical deflection angle and observed image angle are not the same quantity. Alignment produces an Einstein-ring scale in the ideal symmetric model.
+
+Convergence and shear describe local magnification and distortion. Weak lensing infers ensemble shape changes rather than measuring one unlensed galaxy’s shape directly. Strong-lensing multiple images add constraints but require source identification and a mass model. Magnification, intrinsic shapes and selection all affect sample inference.
+
+Lensing is sensitive to total projected gravitating effects and is not limited to luminous matter. A single-plane mass-sheet degeneracy can preserve some image observables under simultaneous source rescaling. Redshift distributions, multiple source planes and other information can help constrain degeneracies.
+
+Clusters also provide X-ray gas and galaxy-dynamical probes. Hydrostatic X-ray mass estimates require thermal/pressure support assumptions and can be biased by turbulence or merger state. Combining independent probes helps but must account for correlated geometry, calibration and selection rather than treating every quoted mass as an independent direct measurement.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the point-lens angular equation with explicit distance units, then compare a shear field from an extended synthetic mass. Separate mass-model assumptions from tracer-equilibrium assumptions in a lensing/dynamics comparison.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If the supplied distance-and-constant factor makes θ_E²=4M, then M=9 gives θ_E=6 in the chosen angular units. Quadrupling M doubles θ_E, not quadruples it. This is a normalized point-lens example, not a cluster profile measurement.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

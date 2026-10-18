@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.3",
+  "title": "Nuclear reactions and energy generation",
+  "hook": "Why can a small temperature change greatly alter a star’s nuclear power?",
+  "recap": [
+    "A distribution average of cross section times relative speed.",
+    "Competition between thermal scarcity and barrier penetration.",
+    "They can remove reaction energy rather than heat the gas.",
+    "Pressure may not provide the same thermal expansion feedback."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is the identical-reactant pair factor needed?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Otherwise pairs are counted twice.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every nuclear Q value become local stellar heat?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Escaping particles can carry energy away.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is one temperature exponent valid for all reaction regimes?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Networks and cross sections change the dependence.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Identical-particle rate for n=4,⟨σv⟩=2?",
+      "answer": "16",
+      "explanation": "n²⟨σv⟩/2=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Power ratio after doubling T in an admitted T⁴ fit?",
+      "answer": "16",
+      "explanation": "2⁴=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can degeneracy change burning stability?",
+      "answer": "Pressure may not provide the same thermal expansion feedback.",
+      "options": [
+        "Pressure may not provide the same thermal expansion feedback.",
+        "A distribution average of cross section times relative speed."
+      ],
+      "explanation": "Pressure may not provide the same thermal expansion feedback.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a thermal reaction coefficient?",
+      "back": "A distribution average of cross section times relative speed.",
+      "concept": "as3-3-theory"
+    },
+    {
+      "front": "What creates the Gamow window?",
+      "back": "Competition between thermal scarcity and barrier penetration.",
+      "concept": "as3-3-theory"
+    },
+    {
+      "front": "Why track neutrinos?",
+      "back": "They can remove reaction energy rather than heat the gas.",
+      "concept": "as3-3-theory"
+    },
+    {
+      "front": "Why can degeneracy change burning stability?",
+      "back": "Pressure may not provide the same thermal expansion feedback.",
+      "concept": "as3-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a small temperature change greatly alter a star’s nuclear power? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Reaction rates combine microscopic cross sections, particle distributions and composition, while stellar feedback depends on whether expansion can regulate the temperature.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a thermal two-body reaction, the rate density is n₁n₂⟨σv⟩ with a factor 1/2 for identical reactants counted as unordered pairs.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For identical species the pair correction gives $r=n^2\langle\sigma v\rangle/2$; for distinct species it is n₁n₂⟨σv⟩. Multiplying by deposited energy per reaction gives local heating, after accounting for energy carried away by neutrinos or other escaping products. A nuclear Q value alone is not necessarily all local heat.
+
+Charged reactants must penetrate a Coulomb barrier. The product of the Maxwell thermal tail and tunnelling probability creates the Gamow-window concept in a nonresonant approximation. Resonances, screening and nonthermal distributions alter the simple estimate. Rates are temperature-dependent integrals over cross section, not one collision energy chosen arbitrarily.
+
+The proton–proton chain and CNO cycles both convert hydrogen toward helium through different reaction networks and bottlenecks. CNO abundances act catalytically in the elementary cycle but can evolve in broader networks. Helium burning includes the triple-alpha pathway, whose effective density dependence differs from a single two-body reaction.
+
+A local power-law ε∝ρT^ν summarizes a limited regime, not a universal exact exponent across stellar temperatures. Expansion/cooling can stabilize burning in a nondegenerate core; a degenerate region responds differently and can become thermally unstable. Reaction-network conservation, composition evolution, neutrino losses and transport must be coupled before predicting an evolutionary outcome.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute pair counts for identical versus distinct populations before evaluating rates. Compare two labelled local temperature-power approximations and mark their valid ranges. Use published-rate data only with recorded source/version; no new nuclear cross-section measurements are supplied here.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If identical reactants have n=4 and ⟨σv⟩=2 in consistent units, the rate density is 16. A local T⁴ fit predicts a factor 16 after doubling T only if both temperatures remain inside that fit regime.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

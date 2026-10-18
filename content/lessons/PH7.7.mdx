@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.7",
+  "title": "Blackbody radiation and Debye model",
+  "hook": "Why does a cavity spectrum stay finite where classical equipartition predicts an ultraviolet catastrophe?",
+  "recap": [
+    "Photon number is not a conserved constraint.",
+    "u/3.",
+    "The required total number of lattice modes.",
+    "Their Jacobian and integration measure."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are peaks of Bν and Bλ obtained by substituting ν=c/λ without a Jacobian?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Spectral densities transform with their integration measure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does Rayleigh–Jeans apply at arbitrarily high frequency?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its derivation requires hν≪k_BT.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a Debye continuum represent unlimited lattice modes?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its cutoff enforces a total 3N mode count.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Blackbody energy-density ratio after doubling temperature?",
+      "answer": "16",
+      "explanation": "The T⁴ law gives 16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Low-T three-dimensional Debye heat-capacity ratio after doubling T?",
+      "answer": "8",
+      "explanation": "The T³ law gives 8 while the regime remains valid.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What distinguishes per-frequency and per-wavelength spectra?",
+      "answer": "Their Jacobian and integration measure.",
+      "options": [
+        "Their Jacobian and integration measure.",
+        "Photon number is not a conserved constraint."
+      ],
+      "explanation": "Their Jacobian and integration measure.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why is photon μ zero in ordinary blackbody equilibrium?",
+      "back": "Photon number is not a conserved constraint.",
+      "concept": "ph7-7-theory"
+    },
+    {
+      "front": "What is isotropic photon pressure?",
+      "back": "u/3.",
+      "concept": "ph7-7-theory"
+    },
+    {
+      "front": "What fixes the Debye cutoff?",
+      "back": "The required total number of lattice modes.",
+      "concept": "ph7-7-theory"
+    },
+    {
+      "front": "What distinguishes per-frequency and per-wavelength spectra?",
+      "back": "Their Jacobian and integration measure.",
+      "concept": "ph7-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a cavity spectrum stay finite where classical equipartition predicts an ultraviolet catastrophe? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Blackbody photons and lattice phonons use bosonic mode counting, but have different dispersions, cutoffs and physical meanings.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Thermal photon modes have mean occupation 1/(eᵝʰᵛ−1) with zero equilibrium chemical potential when photon number is not conserved; the Debye model approximates acoustic phonons with a finite mode count.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Counting two transverse photon polarizations in a large cavity gives modes per volume per frequency 8πν²/c³. Multiplying by hν times the Bose occupation gives $u_\nu=8\pi h\nu^3/[c^3(e^{h\nu/k_BT}-1)]$. This is energy density per frequency, not specific intensity or flux. In isotropic equilibrium radiation, uν=4πBν/c and the one-sided blackbody surface flux is πBν.
+
+At hν≪k_BT the Rayleigh–Jeans limit is 8πk_BTν²/c³. Extending that limit to arbitrarily high frequency makes the integrated energy diverge and violates its own regime. At high frequency the exponential tail regularizes the integral. Substituting x=hν/(k_BT) shows total energy density aT⁴; isotropic radiation pressure is u/3. A wavelength density requires the Jacobian |dν/dλ|, so the peaks of Bν and Bλ do not transform by simply replacing ν=c/λ at the maximizer.
+
+The Debye approximation treats a solid’s low-frequency acoustic branches as a continuum with approximately linear dispersion and chooses a cutoff so there are 3N modes for N atoms. Its heat-capacity integral can be written $C_V=9Nk_B(T/\Theta_D)^3\int_0^{\Theta_D/T}x^4e^x/(e^x-1)^2dx$. Low T gives a T³ law in a three-dimensional bulk acoustic model; high T approaches 3Nk_B.
+
+Phonons are excitations of a material lattice and have sound speeds, branches and a finite validity range, unlike vacuum photons. Optical modes, anisotropy, electrons and defects contribute to real solids. The Debye T³ law is not a universal low-temperature law for every dimension or material. Zero-point mode energy does not directly contribute to the fixed-spectrum thermal heat capacity, although it can matter for other material properties.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the radiation bench to inspect its stated spectral convention, then calculate a Planck spectrum on a frequency grid with bin widths. Compare its low-frequency limit and integrate after changing temperature. For the Debye law, test ratios only while T remains well below the model Debye temperature.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Doubling the temperature of an ideal blackbody multiplies its integrated energy density by 2⁴=16. At fixed cavity volume the total thermal energy has the same ratio. In the low-temperature Debye regime, doubling T instead multiplies the lattice heat capacity by 2³=8, provided both temperatures remain in that regime.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

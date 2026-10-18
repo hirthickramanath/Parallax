@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.9",
+  "title": "Electrochemical potentials and the Nernst equation",
+  "hook": "Why can a cell voltage change when no new electrode material is introduced?",
+  "recap": [
+    "Chemical potential plus the stated electrical molar-charge contribution.",
+    "ΔrG=−nFE.",
+    "Temperature, transferred electron amount and activity quotient.",
+    "An individual electrode potential is a relative measurement."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does doubling reaction coefficients double the cell emf?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Electron amount and reaction Gibbs energy both double.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is loaded terminal voltage always the reversible emf?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Kinetic and resistive losses can contribute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does electrode identity alone determine voltage at every composition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Activities enter the chemical-potential balance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Nernst emf for E°=1, RT/F=0.025, n=1 and lnQ=2?",
+      "answer": "0.95",
+      "explanation": "1−0.025×2=0.95 V.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Emf after multiplying the entire stated reaction by two?",
+      "answer": "0.95",
+      "explanation": "The intensive emf is unchanged.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why specify reaction direction with E?",
+      "answer": "Reversing the reaction reverses the voltage sign",
+      "options": [
+        "Reversing the reaction reverses the voltage sign",
+        "Every voltage is a nonnegative magnitude"
+      ],
+      "explanation": "The energy/charge relation has an orientation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is electrochemical potential?",
+      "back": "Chemical potential plus the stated electrical molar-charge contribution.",
+      "concept": "ch1-9-theory"
+    },
+    {
+      "front": "How does reversible emf relate to Gibbs energy?",
+      "back": "ΔrG=−nFE.",
+      "concept": "ch1-9-theory"
+    },
+    {
+      "front": "What does the Nernst correction depend on?",
+      "back": "Temperature, transferred electron amount and activity quotient.",
+      "concept": "ch1-9-theory"
+    },
+    {
+      "front": "Why use a reference electrode?",
+      "back": "An individual electrode potential is a relative measurement.",
+      "concept": "ch1-9-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a cell voltage change when no new electrode material is introduced? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Electrode potentials depend on composition as well as chemical identity. Electrochemical potential combines material and electrical contributions to the reversible transfer of charged species.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A charged species responds to both its chemical environment and electric potential. Their contributions must be combined before judging equilibrium.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For molar charge number z, electrochemical potential is μ̃=μ+zFφ under the stated electrical-potential convention. Reversible cell emf is related to the reaction Gibbs energy.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a reaction transferring n moles of electrons per mole of reaction, $\Delta_rG=-nFE$ for reversible operation with a consistent reaction direction. Combining activities with ΔrG=ΔrG°+RT lnQ gives $E=E^\circ-(RT/nF)\ln Q$. Activities are dimensionless and n belongs to the balanced electron transfer, not an arbitrarily selected coefficient.
+
+Multiplying a balanced reaction by two doubles ΔrG and n but leaves E unchanged. Reversing the reaction reverses E and ΔrG. Standard electrode potentials are intensive reference quantities, not extensive energies to add without charge accounting.
+
+For a concentration cell with the same redox couple at different activities, the chemical-potential difference can produce emf even when the electrode materials match. Liquid junction potentials and nonideal solution activities can complicate a direct comparison with the simplest Nernst expression.
+
+An individual electrode potential is measured relative to a reference; a complete cell difference is the directly accessible quantity. A loaded terminal voltage differs from reversible open-circuit emf through resistance, activation and concentration effects. Equilibrium theory does not set the delivered current without kinetic and circuit information.
+
+The chemical potential of a single ion involves conventions and cannot always be isolated experimentally from its electrical environment in the same way as a neutral combination. Report reference electrode, reaction direction, activity model and temperature with an electrochemical potential or voltage.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute voltage for several dimensionless Q values using one balanced reaction, then reverse the reaction and check signs. Compare a declared open-circuit value with a hypothetical loaded value without calling their difference a changed equilibrium constant.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a synthetic cell at a temperature where RT/F is represented as 0.025 V, n=1 and Q=e², the Nernst correction is −0.050 V. If E°=1.00 V, reversible emf is 0.95 V under this model.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

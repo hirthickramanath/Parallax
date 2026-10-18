@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA5.7",
+  "title": "Green's functions for PDEs",
+  "hook": "Can a point-source solution reconstruct the response to an extended source?",
+  "recap": [
+    "A distributional unit-source response for a specified linear operator and conditions.",
+    "A source component outside the operator range cannot be inverted, and homogeneous solutions create ambiguity.",
+    "For appropriate self-adjoint operators and compatible conditions.",
+    "It includes time direction and vanishes before the source event."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a free-space kernel automatically satisfy a finite wall boundary condition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Boundary corrections depend on the chosen problem.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can a zero eigenvalue be inverted by dividing by it?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Compatibility and a constrained inverse are needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "For the operator −d²/dx², what is the first-derivative jump of its unit-source kernel?",
+      "options": [
+        "+1",
+        "−1"
+      ],
+      "answer": "−1",
+      "explanation": "Integrating −G″=δ fixes the negative jump.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Dirichlet Green kernel at x=ξ=.5 for interval length 1?",
+      "answer": "0.25",
+      "explanation": "min(x,ξ)[1−max(x,ξ)]=.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Right derivative minus left derivative when values are −.5 and .5?",
+      "answer": "-1",
+      "explanation": "−.5−.5=−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is needed besides a Green kernel for an inhomogeneous boundary problem?",
+      "answer": "The appropriate boundary or lifting contribution",
+      "options": [
+        "The appropriate boundary or lifting contribution",
+        "Nothing; every kernel imposes any boundary data"
+      ],
+      "explanation": "The homogeneous inverse alone cannot set arbitrary boundary values.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a Green kernel?",
+      "back": "A distributional unit-source response for a specified linear operator and conditions.",
+      "concept": "ma5-7-theory"
+    },
+    {
+      "front": "Why can a nullspace obstruct an inverse?",
+      "back": "A source component outside the operator range cannot be inverted, and homogeneous solutions create ambiguity.",
+      "concept": "ma5-7-theory"
+    },
+    {
+      "front": "When is reciprocity expected?",
+      "back": "For appropriate self-adjoint operators and compatible conditions.",
+      "concept": "ma5-7-theory"
+    },
+    {
+      "front": "How does a retarded kernel differ from a static inverse?",
+      "back": "It includes time direction and vanishes before the source event.",
+      "concept": "ma5-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strauss, Partial Differential Equations: An Introduction — edition and exact section verification pending",
+    "Stein and Shakarchi, Fourier Analysis: An Introduction — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a point-source solution reconstruct the response to an extended source? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Green functions connect diffusion, static potentials and forced waves. Operator signs, boundaries, causality and zero modes determine which kernel is appropriate.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Break a source into tiny weighted contributions, propagate each with the chosen point-source response and add them. The walls and time direction are part of that response.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Green kernel inverts a linear operator with specified conditions through LₓG(x,ξ)=δ(x−ξ), where an inverse exists or is defined on a constrained subspace.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a linear operator L, a source representation $u(x)=\int_\Omega G(x,\xi)f(\xi)d\xi$ solves Lu=f only when the kernel, function spaces and interchange of operations are justified and the boundary/initial conditions are appropriate. Nonhomogeneous boundary data generally add a separate boundary or lifting contribution. The delta is a distribution characterized by its action on test functions, not an ordinary finite-valued point spike.
+
+For L=−d²/dx² on 0&lt;x&lt;L with zero Dirichlet values, the Green function is $G(x,\xi)=\min(x,\xi)[L-\max(x,\xi)]/L$. It is continuous at x=ξ and piecewise linear. Integrating −G″=δ across the source gives G′(ξ⁺)−G′(ξ⁻)=−1. The derivative jump sign follows from the chosen operator sign. This kernel is symmetric and nonnegative.
+
+For a positive self-adjoint operator with a complete normalized eigenbasis and nonzero eigenvalues λₙ, a formal spectral inverse is $G(x,\xi)=\sum_n\phi_n(x)\overline{\phi_n(\xi)}/\lambda_n$. The series may need a weak or distributional interpretation rather than pointwise absolute convergence. A zero eigenvalue obstructs a full inverse: the source must be orthogonal to the nullspace, and a reference condition selects a solution on its complement. This is why a pure Neumann Laplacian requires compatibility and a constant-mode convention.
+
+In three-dimensional free space, $-\Delta[1/(4\pi|x-\xi|)]=\delta(x-\xi)$ in the distributional sense. Away from the source the Laplacian vanishes; integrating the normal derivative over a small sphere fixes the normalization and sign. This free-space kernel does not automatically satisfy conducting-wall or other finite-domain boundary data.
+
+A retarded evolution kernel vanishes before the source time. For diffusion it is the heat kernel for positive elapsed time; wave operators have causal propagation structures depending on dimension. A static inverse does not encode an initial velocity or a time direction. Reciprocity of a symmetric Green function requires self-adjoint structure and compatible boundary conditions; arbitrary advective, dissipative or non-self-adjoint operators need not have the same symmetry.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the interval Green kernel for several source positions. Estimate its derivative jump using points on each side, never by differentiating through the cusp as if smooth. Integrate against a constant source and compare the exact polynomial. Then change to Neumann boundaries and explain why simply reusing the same kernel fails.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For L=1 and x=ξ=1/2, the Dirichlet kernel is (1/2)(1−1/2)=1/4. At fixed ξ=1/2, the left derivative is 1/2 and the right derivative is −1/2, so the jump is −1. Integrating this kernel against f=2 recovers u=x(1−x), checking both source and boundary.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

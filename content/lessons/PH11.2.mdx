@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH11.2",
+  "title": "Four-vectors and relativistic dynamics",
+  "hook": "Why is momentum no longer simply mass times velocity at high speed?",
+  "recap": [
+    "E²=p²c²+m²c⁴.",
+    "Time derivative of three-momentum.",
+    "F·v.",
+    "Particles alone may exchange momentum with the field."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a photon with zero invariant mass have zero momentum?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "For a photon E=pc.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must a stable particle gain invariant mass when accelerated?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its energy and momentum can change while its invariant mass remains fixed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a collection of massless particles have positive total invariant mass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The norm of their summed four-momentum can be timelike.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Kinetic energy in units mc² at speed 0.6c?",
+      "answer": "0.25",
+      "explanation": "K/(mc²)=γ−1=0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Momentum in units mc at speed 0.6c?",
+      "answer": "0.75",
+      "explanation": "p/(mc)=γβ=1.25×0.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "How should a composite invariant mass be computed?",
+      "answer": "From the total energy and total momentum in one common frame",
+      "options": [
+        "From the total energy and total momentum in one common frame",
+        "By adding only individual rest masses regardless of motion"
+      ],
+      "explanation": "The invariant belongs to the combined four-momentum.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the energy–momentum relation?",
+      "back": "E²=p²c²+m²c⁴.",
+      "concept": "ph11-2-theory"
+    },
+    {
+      "front": "How is relativistic three-force defined?",
+      "back": "Time derivative of three-momentum.",
+      "concept": "ph11-2-theory"
+    },
+    {
+      "front": "What is instantaneous mechanical power?",
+      "back": "F·v.",
+      "concept": "ph11-2-theory"
+    },
+    {
+      "front": "Why include field momentum in an isolated system?",
+      "back": "Particles alone may exchange momentum with the field.",
+      "concept": "ph11-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor and Wheeler, Spacetime Physics — edition and exact section verification pending",
+    "Rindler, Introduction to Special Relativity — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is momentum no longer simply mass times velocity at high speed? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Relativistic dynamics combines energy and momentum into a four-vector. It preserves conservation laws across inertial frames and distinguishes invariant mass from frame-dependent kinetic energy.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Energy is the temporal partner of momentum. Their separate values change with frame, while a particular quadratic combination identifies the invariant mass of the system.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For invariant mass m and four-velocity U=dx/dτ, four-momentum is P=mU=(E/c,p). Massive particles have E=γmc² and p=γmv.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+With signature (+,−,−,−), $P\cdot P=(E/c)^2-|p|^2=m^2c^2$, giving $E^2=p^2c^2+m^2c^4$. At rest E₀=mc². Kinetic energy is $K=(\gamma-1)mc^2$, recovering mv²/2 when v≪c through the binomial expansion. Mass here remains invariant; the phrase relativistic mass is unnecessary for these formulas.
+
+For a photon, m=0 and E=pc with E=hν. Zero invariant mass does not mean zero energy or momentum. A collection of photons can have positive total invariant mass if their momenta do not all align: compute the norm of the total four-momentum, not a sum of individual rest masses.
+
+Three-force is $F=dp/dt$. For constant invariant mass, its power is $dE/dt=F\cdot v$. Parallel and transverse acceleration responses differ because differentiating γv couples acceleration direction to velocity. The four-force dP/dτ is orthogonal to U when m is constant, since differentiating U·U=c² gives U·dU/dτ=0.
+
+For an isolated interacting system, total four-momentum is conserved when all relevant particles and field contributions are included. Binding energy can reduce a composite invariant mass relative to the sum of separated constituent masses. Rest energy is not a guarantee that every energy transfer changes one particle's invariant mass; acceleration of a stable particle changes E and p while m stays fixed.
+
+A boost along x transforms energy and parallel momentum as $E'=\gamma(E-vp_x)$ and $p_x'=\gamma(p_x-vE/c^2)$. These relations support frame-independent conservation checks. Subtracting energies from one frame and momenta from another breaks the four-vector bookkeeping and can manufacture an apparent violation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute E/(mc²), p/(mc) and their invariant for several speeds. Compare K with the Newtonian approximation at small β. Then add four-momenta of two opposite equal-energy photons to see a massive composite despite each individual mass being zero.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a massive particle moving at 0.6c, γ=1.25. Energy is 1.25mc², kinetic energy 0.25mc² and momentum 0.75mc. The invariant check is 1.25²−0.75²=1 in units normalized by m and c.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

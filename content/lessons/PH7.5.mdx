@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.5",
+  "title": "Grand canonical ensemble",
+  "hook": "How can a subsystem have a well-defined average particle number without a fixed particle count?",
+  "recap": [
+    "Chemical potential μ.",
+    "Energy and particle number.",
+    "−k_BT lnΞ.",
+    "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must the average particle number be an integer?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It averages integer-valued observations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does Ω=−pV apply without extensivity qualifications?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Boundaries and nonadditive interactions can alter it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do allowed occupations enter the definition of Ξ?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The state sum depends on particle statistics and constraints.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Mean occupation of an empty-or-one state with fugacity-weight a=3?",
+      "answer": "0.75",
+      "explanation": "a/(1+a)=3/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Its number variance?",
+      "answer": "0.1875",
+      "explanation": "p(1−p)=3/16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "How does number response relate to fluctuations?",
+      "answer": "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
+      "options": [
+        "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
+        "Chemical potential μ."
+      ],
+      "explanation": "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is conjugate to particle number?",
+      "back": "Chemical potential μ.",
+      "concept": "ph7-5-theory"
+    },
+    {
+      "front": "What does the grand ensemble allow to fluctuate?",
+      "back": "Energy and particle number.",
+      "concept": "ph7-5-theory"
+    },
+    {
+      "front": "What is the grand potential?",
+      "back": "−k_BT lnΞ.",
+      "concept": "ph7-5-theory"
+    },
+    {
+      "front": "How does number response relate to fluctuations?",
+      "back": "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
+      "concept": "ph7-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a subsystem have a well-defined average particle number without a fixed particle count? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Particle exchange is essential for chemical equilibrium, radiation and dense matter. Chemical potential is the variable conjugate to particle number, not an extra mechanical force.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+At fixed T,V,μ the grand canonical weight is proportional to exp[−β(E−μN)] and the grand partition function sums over particle sectors and their states.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A large reservoir exchanging energy and particles has entropy expansion S_b(E_tot−E,N_tot−N)≈constant−E/T+μN/T. Therefore $\Xi=\sum_{N,i}\exp[-\beta(E_{i,N}-\mu N)]$ normalizes subsystem probabilities. State counting, species labels and particle statistics must be specified before evaluating the sum.
+
+The grand potential is $\mathcal\Omega=-k_BT\ln\Xi=U-TS-\mu\langle N\rangle$. For one species, dΩ=−S dT−p dV−N dμ in the thermodynamic setting, and N=k_BT ∂lnΞ/∂μ. At fixed T, $\operatorname{Var}(N)=k_BT(\partial\langle N\rangle/\partial\mu)_{T,V}$ for the corresponding fixed microscopic model. A susceptibility is therefore tied to exchange fluctuations.
+
+For a homogeneous extensive bulk system without significant boundary or nonadditive contributions, Ω=−pV. This equality is not universal for every finite trap or gravitating system. The average N can be noninteger although each observed count is integer. A finite reservoir or a strict global conservation constraint changes the subsystem fluctuation model.
+
+For one state that permits zero or one particle at energy ε, Ξ=1+z e⁻ᵝε with fugacity z=eᵝμ. Its occupation is a/(1+a), a=z e⁻ᵝε. Bosonic multiple occupation instead produces a geometric series with a convergence restriction. Choosing the allowed state space is what distinguishes these examples; one cannot swap their formulas while keeping the same counting assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Enumerate the empty/occupied state weights and sample synthetic occupation counts for different μ at fixed T. Compare sample means and variances with the exact formulas. Explain how fixing the total count of two coupled subsystems would correlate their fluctuations.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For an empty-or-one state with a=3, Ξ=4 and average occupation is 3/4. The number variance is p(1−p)=3/16. Repeating the measurement yields only 0 or 1, so a mean .75 is not a fractional particle in a single detection.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

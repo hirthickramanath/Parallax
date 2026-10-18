@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH10.4",
+  "title": "Second quantisation",
+  "hook": "Why can creation operators describe identical particles without assigning permanent particle labels?",
+  "recap": [
+    "Its occupation.",
+    "Fermions.",
+    "Fields are distributions and coincident products can be singular.",
+    "The basis functions and corresponding operators consistently."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can one fermion mode hold two identical fermions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Canonical anticommutation forbids it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a finite boson truncation preserve the exact commutator at its top boundary?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The truncated ladder changes that edge.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does Fock notation automatically solve interactions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The Hamiltonian still needs analysis.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Boson raising coefficient from n=3?",
+      "answer": "2",
+      "explanation": "√(3+1)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Dimension of two unconstrained fermion modes?",
+      "answer": "4",
+      "explanation": "Each has two occupations.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What do mode changes transform?",
+      "answer": "The basis functions and corresponding operators consistently.",
+      "options": [
+        "The basis functions and corresponding operators consistently.",
+        "Its occupation."
+      ],
+      "explanation": "The basis functions and corresponding operators consistently.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a mode number operator measure?",
+      "back": "Its occupation.",
+      "concept": "ph10-4-theory"
+    },
+    {
+      "front": "What statistics use anticommutators?",
+      "back": "Fermions.",
+      "concept": "ph10-4-theory"
+    },
+    {
+      "front": "Why qualify pointwise field products?",
+      "back": "Fields are distributions and coincident products can be singular.",
+      "concept": "ph10-4-theory"
+    },
+    {
+      "front": "What do mode changes transform?",
+      "back": "The basis functions and corresponding operators consistently.",
+      "concept": "ph10-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can creation operators describe identical particles without assigning permanent particle labels? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Occupation-number language organizes variable particle sectors and exchange statistics, but local fields remain operator-valued distributions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Fock space is a direct sum of appropriately symmetrized or antisymmetrized many-particle spaces; creation/annihilation operators change mode occupations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For boson modes, $[a_i,a_j^\dagger]=\delta_{ij}$ and same-type commutators vanish. Ladder normalization gives a†|n⟩=√(n+1)|n+1⟩. Fermion modes instead obey canonical anticommutators and allow occupations zero or one per complete mode.
+
+A free Hamiltonian can be written as a sum of mode energies times number operators, with vacuum-energy terms treated according to the model/regularization. Mode labels refer to a chosen one-particle basis; changing basis transforms operators rather than creating physically distinguishable particle identities.
+
+Field operators expand in mode functions and are generally distributions in spacetime. Products at the same point need a defined regularization/renormalized prescription. Replacing all operators by classical complex numbers loses commutation/statistical information except in controlled approximations.
+
+Second quantization is a representation framework, not automatically an interacting solution. Interactions couple occupation states and can change particle numbers when allowed by the theory and conserved charges. Fermion ordering signs must be tracked consistently in basis states and operator products.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct small truncated boson and exact fermion matrices, then check the appropriate algebra with explicit attention to boson truncation at its top state. Do not claim a finite truncated boson matrix obeys the infinite algebra everywhere.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A boson creation operator acting on |3⟩ gives coefficient 2. A fermion mode cannot be raised from occupancy one to two. Two independent fermion modes span four occupation states before imposing any additional total-number constraint.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

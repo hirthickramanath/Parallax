@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.5",
+  "title": "Statistical thermodynamics of molecules",
+  "hook": "Why does counting molecular states predict heat capacity?",
+  "recap": [
+    "The partition function.",
+    "Mean energy at fixed external parameters.",
+    "Different energy gaps become populated.",
+    "Free-energy differences require consistent energy and counting conventions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May a degeneracy factor be added again after every microstate was already enumerated?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "That would double-count states.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every molecular mode obey classical equipartition at low temperature?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Large quantum gaps suppress excitation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is the classical N! expression the complete quantum-gas theory at all densities?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Quantum statistics is required in other regimes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Excited fraction for equal-degeneracy levels with gap/kBT=ln3?",
+      "answer": "0.25",
+      "explanation": "1/(1+3)=1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Excited fraction with upper degeneracy 3, lower 1 and the same gap?",
+      "answer": "0.5",
+      "explanation": "The weighted upper contribution equals the lower contribution.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why specify an ensemble before differentiating Z?",
+      "answer": "External variables and probability assumptions determine the thermodynamic derivative",
+      "options": [
+        "External variables and probability assumptions determine the thermodynamic derivative",
+        "Every derivative of every partition function gives the same response"
+      ],
+      "explanation": "Fixed-volume and fixed-pressure quantities are not interchangeable.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What normalizes Boltzmann probabilities?",
+      "back": "The partition function.",
+      "concept": "ch1-5-theory"
+    },
+    {
+      "front": "What does −∂lnZ/∂β give in the canonical setting?",
+      "back": "Mean energy at fixed external parameters.",
+      "concept": "ch1-5-theory"
+    },
+    {
+      "front": "Why can heat capacity change with temperature?",
+      "back": "Different energy gaps become populated.",
+      "concept": "ch1-5-theory"
+    },
+    {
+      "front": "Why must state references match across reactions?",
+      "back": "Free-energy differences require consistent energy and counting conventions.",
+      "concept": "ch1-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does counting molecular states predict heat capacity? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Statistical thermodynamics connects microscopic levels with macroscopic averages. Different translational, rotational, vibrational and electronic spacings become thermally active at different temperatures.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Temperature weights accessible states rather than switching every possible motion on equally. The spacing between energy levels matters as much as the number of coordinates.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a canonical system at temperature T, the partition function is Z=∑gᵢexp(−βEᵢ), with β=1/(kBT), using consistently counted microstates or degeneracies.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Canonical probabilities are $p_i=g_i e^{-\beta E_i}/Z$ when level i groups gi degenerate states. Counting each microstate separately instead removes gi. The mean energy follows $U=-\partial\ln Z/\partial\beta$ at fixed external parameters, and Helmholtz free energy is F=−kBT lnZ. Differentiating gives heat capacities in the corresponding ensemble.
+
+For independent distinguishable subsystems the partition functions multiply. A dilute classical gas of N identical noninteracting particles uses Z≈qᴺ/N! under the Maxwell–Boltzmann approximation, with appropriate quantum-state counting. The factor is not a universal replacement for Bose or Fermi statistics at quantum degeneracy.
+
+Molecular q is often approximately factorized into translational, rotational, vibrational and electronic factors when couplings permit. A harmonic vibrational mode has spacing ℏω and partition factor $q_v=e^{-\beta\hbar\omega/2}/(1-e^{-\beta\hbar\omega})$. Zero-point energy contributes an energy offset; heat-capacity changes follow population of excited states rather than merely the existence of the mode.
+
+For a two-level system with energies 0 and ε and equal degeneracy, excited probability is 1/(1+eᵝᵋ). At low T it is suppressed; at high T it approaches 1/2. Unequal degeneracies change that limit. A high-temperature classical equipartition result needs energy spacings small compared with kBT and the right quadratic form.
+
+Energy-zero conventions shift free energies and partition functions consistently; reaction or phase comparisons must retain compatible references. A molecular spectrum can constrain level spacings, while predicting bulk thermodynamics also requires state counts, interactions and ensemble assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic level table and normalize its Boltzmann weights. Vary temperature and degeneracy independently, then compute mean energy and finite-difference heat capacity. State whether levels or individual microstates are being counted.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a two-level system with ε/(kBT)=ln3 and equal degeneracy, the excited-state probability is 1/(1+3)=0.25. If the upper level has degeneracy 3 and the lower 1 at the same gap, the excited probability instead becomes 3/3 divided by 1+3/3, or 0.5.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

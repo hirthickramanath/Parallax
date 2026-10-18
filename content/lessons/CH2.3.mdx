@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH2.3",
+  "title": "Hartree-Fock and density functional theory",
+  "hook": "Why can two electronic-structure calculations agree numerically yet share the same model error?",
+  "recap": [
+    "The allowed trial states over which energy is optimized.",
+    "The chosen exchange-correlation functional and numerical realization.",
+    "They define the electronic problem being solved.",
+    "Numerical stability versus independent adequacy of the physical prediction."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a small self-consistency residual prove physical accuracy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "State and model errors remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are all Kohn–Sham orbital differences exact optical excitations?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Excitations require additional interpretation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should benchmark selection be independent of model tuning?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Otherwise validation can be circular.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Trial excess for exact −12,trial −10?",
+      "answer": "2",
+      "explanation": "−10−(−12)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Excess after trial improves to −11?",
+      "answer": "1",
+      "explanation": "−11−(−12)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What distinguishes convergence and validation?",
+      "answer": "Numerical stability versus independent adequacy of the physical prediction.",
+      "options": [
+        "Numerical stability versus independent adequacy of the physical prediction.",
+        "The allowed trial states over which energy is optimized."
+      ],
+      "explanation": "Numerical stability versus independent adequacy of the physical prediction.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a restricted variational family?",
+      "back": "The allowed trial states over which energy is optimized.",
+      "concept": "ch2-3-theory"
+    },
+    {
+      "front": "What is practical DFT’s key approximation?",
+      "back": "The chosen exchange-correlation functional and numerical realization.",
+      "concept": "ch2-3-theory"
+    },
+    {
+      "front": "Why record charge/spin?",
+      "back": "They define the electronic problem being solved.",
+      "concept": "ch2-3-theory"
+    },
+    {
+      "front": "What distinguishes convergence and validation?",
+      "back": "Numerical stability versus independent adequacy of the physical prediction.",
+      "concept": "ch2-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and Friedman, Molecular Quantum Mechanics — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two electronic-structure calculations agree numerically yet share the same model error? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+HF and DFT have different formal variables and approximations; basis and iteration convergence are not independent scientific validation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Hartree–Fock uses a determinant variational family; density-functional theory expresses ground-state energy through density under the relevant existence/representability assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For HF, antisymmetry generates exchange while a single determinant omits correlation beyond its family. In an admissible same-Hamiltonian variational setting, $E_{trial}\ge E_0$. This bound does not transfer automatically to a different effective Hamiltonian or every approximate functional.
+
+Kohn–Sham DFT uses an auxiliary noninteracting construction with the target density when representability and formal assumptions permit. The practical exchange-correlation functional is approximated. Its orbitals are calculation objects and their individual energies are not generally all exact excitation energies.
+
+Self-consistency residual, basis convergence, numerical-grid convergence and functional/model adequacy are separate checks. Charge, spin state and geometry can select different solutions. A low residual in the wrong state is not a correct molecular prediction.
+
+Compare methods with benchmark quantities and uncertainties appropriate to the chemical regime. Strong correlation, dispersion, charge transfer and open-shell states can challenge approximations differently. Selecting a functional after seeing one target and then calling that target independent validation is circular.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Prepare a computational specification with geometry, charge, spin, method and basis. Compare independent convergence axes and retain a benchmark not used to choose the method.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For one model with exact energy −12 and trial energy −10, the trial excess is 2. If a larger trial space gives −11, the excess falls to 1; that example illustrates a variational comparison, not a blanket guarantee for every DFT result.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

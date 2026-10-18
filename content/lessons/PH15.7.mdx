@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH15.7",
+  "title": "Gauge theories and Yang-Mills",
+  "hook": "Why do nonabelian gauge fields interact with each other?",
+  "recap": [
+    "Noncommuting Lie-algebra generators.",
+    "Covariant derivative and curvature signs/factors match.",
+    "It describes an admitted high-scale weak-coupling regime.",
+    "Topology beyond the local algebra."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do abelian and nonabelian curvatures have identical nonlinear terms?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Commuting generators remove the abelian commutator term.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are gauge ghosts ordinarily detected asymptotic particles?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They belong to a quantization framework.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does weak-coupling QCD apply unchanged at every low scale?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Strong coupling needs other control.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "F component with derivative 2 and nonlinear contribution 3?",
+      "answer": "5",
+      "explanation": "2+3=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Nonlinear contribution after doubling g at fixed fields from value 3?",
+      "answer": "6",
+      "explanation": "It is linear in g in this comparison.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What can global gauge structure affect?",
+      "answer": "Topology beyond the local algebra.",
+      "options": [
+        "Topology beyond the local algebra.",
+        "Noncommuting Lie-algebra generators."
+      ],
+      "explanation": "Topology beyond the local algebra.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What creates gauge self-interaction?",
+      "back": "Noncommuting Lie-algebra generators.",
+      "concept": "ph15-7-theory"
+    },
+    {
+      "front": "Why fix a convention?",
+      "back": "Covariant derivative and curvature signs/factors match.",
+      "concept": "ph15-7-theory"
+    },
+    {
+      "front": "What qualifies asymptotic freedom?",
+      "back": "It describes an admitted high-scale weak-coupling regime.",
+      "concept": "ph15-7-theory"
+    },
+    {
+      "front": "What can global gauge structure affect?",
+      "back": "Topology beyond the local algebra.",
+      "concept": "ph15-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending",
+    "Schwartz, Quantum Field Theory and the Standard Model — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do nonabelian gauge fields interact with each other? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Matrix-valued gauge connections have noncommuting generators, creating field terms absent from elementary abelian electromagnetism.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Yang–Mills theory uses a Lie-algebra-valued connection with a curvature containing a commutator term and specified coupling conventions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In a component convention, $F^a_{\mu\nu}=\partial_\mu A^a_\nu-\partial_\nu A^a_\mu+gf^{abc}A^b_\mu A^c_\nu$. The nonlinear term reflects the generator algebra, not an arbitrary added classical nonlinearity. Signs/factors differ with the covariant-derivative convention.
+
+The action includes a gauge-invariant contraction of F with itself. Gauge fixing, constraints and ghosts in suitable quantization formalisms are calculation structures needed for a consistent redundant-variable treatment; they are not extra detected asymptotic matter particles.
+
+For QCD, colour confinement and strong low-energy behaviour require nonperturbative understanding, while asymptotic freedom supports weak-coupling calculations at sufficiently high scales. A running perturbative formula cannot be trusted unaltered into strong coupling.
+
+Representations and anomaly cancellation constrain consistent matter content. Local Lie algebra and global gauge-group structure need not encode identical topological data. Lattice and other methods add regulator/continuum-limit questions beyond an introductory diagram expansion.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Choose a small matrix Lie algebra and compute a commutator before forming curvature. Compare with an abelian case. Keep classical field nonlinearity, quantization constraints and observed particle content distinct.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a supplied component with derivative part 2 and commutator contribution 3, F component is 5 in the stated convention. If coupling g doubles while fields stay fixed in this arithmetic comparison, that nonlinear contribution doubles to 6.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

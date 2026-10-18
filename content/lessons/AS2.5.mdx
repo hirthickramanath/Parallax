@@ -1,0 +1,189 @@
+---
+{
+  "id": "AS2.5",
+  "title": "Telescopes and detectors",
+  "hook": "Why can a larger telescope collect more light without beating the atmosphere’s blur?",
+  "recap": [
+    "Approximately 1.22λ/D.",
+    "Pixel pitch divided by focal length.",
+    "As the square root of expected source counts.",
+    "They can remain as systematic or correlated errors beyond simple photon statistics."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does more magnification automatically improve physical resolution?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The point-spread function limits available structure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does flat-fielding eliminate all uncertainty?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Calibration frames also have noise and model limitations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is quantum efficiency identical to total optical throughput?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Other losses occur before photons reach the detector.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Source-only shot-noise SNR for 100 expected electrons?",
+      "answer": "10",
+      "explanation": "100/√100=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Collecting-area factor when telescope diameter doubles?",
+      "answer": "4",
+      "explanation": "Area is proportional to diameter squared.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why specify the extraction aperture in a noise budget?",
+      "answer": "It determines included source and background pixels",
+      "options": [
+        "It determines included source and background pixels",
+        "Background does not depend on pixel selection"
+      ],
+      "explanation": "Signal and several noise contributions depend on the extraction.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets the circular diffraction scale?",
+      "back": "Approximately 1.22λ/D.",
+      "concept": "as2-5-theory"
+    },
+    {
+      "front": "What sets small-angle pixel scale?",
+      "back": "Pixel pitch divided by focal length.",
+      "concept": "as2-5-theory"
+    },
+    {
+      "front": "How does source-shot-noise SNR scale with counts?",
+      "back": "As the square root of expected source counts.",
+      "concept": "as2-5-theory"
+    },
+    {
+      "front": "Why are calibration uncertainties relevant?",
+      "back": "They can remain as systematic or correlated errors beyond simple photon statistics.",
+      "concept": "as2-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — applicable section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a larger telescope collect more light without beating the atmosphere’s blur? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Telescope performance combines collecting area, angular resolution, optical quality and detector noise. Increasing magnification alone cannot create information absent from the recorded image.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Aperture controls photon collection and a diffraction scale. The atmosphere, optics and detector add separate filters and noise, so the narrowest ideal pattern is not the whole instrument.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a circular unobscured aperture the diffraction first-minimum scale is about 1.22λ/D. A detector records photoelectrons with quantum efficiency and additional noise sources.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For equal throughput and exposure, a point source supplies counts proportional to collecting area, πD²/4, and incident photon flux. A larger aperture can reduce the diffraction scale while increasing photons, but central obstruction, aberration, atmosphere and optical alignment alter the point-spread function. The Rayleigh scale is a conventional comparison criterion, not a universal hard inference limit.
+
+A focal length f maps a small field angle θ to image displacement approximately fθ. Detector pixel pitch p gives an angular pixel scale p/f in radians. Sampling too coarsely loses recoverable image structure; making pixels smaller cannot undo the physical point-spread function and changes per-pixel signal and read noise.
+
+In a simplified extracted-aperture count budget with known background, $\mathrm{SNR}=N_s/\sqrt{N_s+N_b+n_{\rm pix}dt+n_{\rm pix}r^2}$. Here source and background counts are Poisson means, d is dark electrons per pixel per second, t is exposure, and r is rms read noise per pixel for one read. Background-estimation uncertainty, correlated pixels, calibration error and source variability require additional terms.
+
+In source-shot-noise domination SNR≈√Ns and typically rises as √t. In background domination the aperture used for extraction and the seeing profile affect noise; simply multiplying D by a universal sensitivity exponent can be misleading. Saturation, nonlinearity and cosmic-ray contamination limit arbitrarily long single exposures.
+
+Bias, dark and flat-field calibrations address different effects. A flat normalizes relative response but its own noise and illumination pattern matter. Quantum efficiency converts incoming photons to detected electrons probabilistically; it is not identical to overall telescope throughput. Instrument performance should be expressed with an explicit source, band, extraction and detection criterion.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct a synthetic detector budget and vary source, background and read noise independently. Compare a diffraction scale with a supplied seeing width and pixel scale, labeling which dominates. Do not call generated count budgets actual camera characterization data.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For 100 source electrons and negligible background, dark current and read noise, expected SNR is √100=10. Doubling the exposure gives 200 expected electrons and SNR≈14.14, not 20. Doubling diameter at fixed conditions gives four times source counts, but its final SNR regime must still be specified.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

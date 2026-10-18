@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA6.1",
+  "title": "Analytic functions and Cauchy-Riemann",
+  "hook": "Why is complex differentiability much stronger than having two real derivatives?",
+  "recap": [
+    "All directions of complex increments.",
+    "uₓ=vᵧ and uᵧ=−vₓ.",
+    "Its real and imaginary increment quotients disagree.",
+    "Laplace’s equation; they are harmonic."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does smoothness as a real two-variable map guarantee holomorphicity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Conjugation is smooth but fails the complex derivative limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do Cauchy–Riemann equations at one point without sufficient regularity always prove differentiability?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Directional partial information alone need not control the full limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can topology prevent a global harmonic conjugate?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "A punctured domain can obstruct a single-valued angle.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Real part of the derivative of z² at z=1+2i?",
+      "answer": "2",
+      "explanation": "The derivative is 2z=2+4i.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value of uₓ for u=x²−y² at x=3,y=1?",
+      "answer": "6",
+      "explanation": "uₓ=2x=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What establishes holomorphicity rather than differentiability at one point?",
+      "answer": "Complex differentiability throughout an open neighbourhood",
+      "options": [
+        "Complex differentiability throughout an open neighbourhood",
+        "One successful directional quotient"
+      ],
+      "explanation": "Holomorphicity is an open-set property.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the complex derivative limit sensitive to?",
+      "back": "All directions of complex increments.",
+      "concept": "ma6-1-theory"
+    },
+    {
+      "front": "State the Cauchy–Riemann equations.",
+      "back": "uₓ=vᵧ and uᵧ=−vₓ.",
+      "concept": "ma6-1-theory"
+    },
+    {
+      "front": "Why is conjugation not holomorphic?",
+      "back": "Its real and imaginary increment quotients disagree.",
+      "concept": "ma6-1-theory"
+    },
+    {
+      "front": "What do holomorphic real and imaginary parts satisfy?",
+      "back": "Laplace’s equation; they are harmonic.",
+      "concept": "ma6-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Stein and Shakarchi, Complex Analysis — exact section verification pending",
+    "Ahlfors, Complex Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is complex differentiability much stronger than having two real derivatives? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Complex methods organize oscillations, response functions and potential fields. Their power comes from hypotheses stronger than ordinary smoothness on a plane.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A complex derivative must give one multiplier for tiny displacements in every direction. A general real-linear map can stretch different directions differently and need not be multiplication by one complex number.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For f=u+iv on an open subset of the complex plane, complex differentiability at z means the difference quotient has one limit as the complex increment tends to zero through every direction. Holomorphic means differentiable at every point of an open neighbourhood.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Approach the derivative along a real increment to obtain f′=uₓ+ivₓ, and along an imaginary increment to obtain f′=vᵧ−iuᵧ. Equality forces the Cauchy–Riemann equations $u_x=v_y$ and $u_y=-v_x$ when the corresponding partials exist. These are necessary at a differentiability point, but merely checking pointwise partial derivatives and these equations without sufficient differentiability assumptions does not prove the full limit.
+
+If u and v have continuous first partial derivatives near a point and satisfy the Cauchy–Riemann equations there, their real differentiability gives a linear approximation whose anti-complex-linear part vanishes. Thus f is complex differentiable at that point. Satisfying these conditions throughout an open set gives holomorphicity there. The sufficient C¹ condition is convenient rather than logically necessary for every characterization.
+
+For $f(z)=z^2$, u=x²−y² and v=2xy satisfy the equations everywhere and f′=2z. By contrast, conjugation f(z)=conj(z) has real-direction quotient 1 and imaginary-direction quotient −1. It is smooth as a real map but nowhere complex differentiable. For |z|², the quotient at zero tends to zero, so differentiability at a single point does not establish holomorphicity on a neighbourhood.
+
+A local power series converges holomorphically inside its radius, with termwise differentiation on compact subdisks. Conversely, a holomorphic function admits local power series; that converse uses Cauchy theory rather than only the elementary derivative definition. Complex analyticity therefore entails derivatives of all orders and much stronger local structure than real differentiability alone.
+
+With sufficient second-derivative regularity, differentiating Cauchy–Riemann gives $\Delta u=0$ and $\Delta v=0$. Thus real and imaginary parts are harmonic. A harmonic real function has a harmonic conjugate locally on a disk, but a global single-valued conjugate can fail on a domain with holes. For log|z| on the punctured plane, the would-be conjugate is an angle that cannot be chosen continuously around a full loop. Domain topology is part of the conclusion.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate difference quotients for z² and conjugation using small increments along the real axis, imaginary axis and diagonal. Compare all directions as the step shrinks. Then examine |z|² at zero and at a nonzero point; distinguish one-point differentiability from holomorphicity on an open region.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For z² at z=1+2i, f′=2+4i. The real part of the derivative is 2. Also uₓ=2x=2 and vᵧ=2x=2 there, while uᵧ=−2y=−4 and −vₓ=−2y=−4. These checks agree with the full polynomial derivative rather than replacing its definition.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

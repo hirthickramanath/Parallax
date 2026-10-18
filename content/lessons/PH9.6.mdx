@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH9.6",
+  "title": "Scattering theory",
+  "hook": "Why does a scattering amplitude need an angular measure before it becomes a total probability per area?",
+  "recap": [
+    "A complex asymptotic coefficient tied to flux normalization.",
+    "A potential Fourier component under its approximation.",
+    "Unitarity and channel physics.",
+    "Long-range behaviour changes asymptotic and convergence assumptions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is dσ/dΩ integrated over θ without the solid-angle weight?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The angular measure includes sinθ and azimuth.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is Born approximation exact for every potential?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its perturbative regime must hold.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can limited angular acceptance bias inferred total cross section?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The detector samples only part of the flux.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Total cross section divided by π for isotropic f=2?",
+      "answer": "16",
+      "explanation": "4×4π/π=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Differential cross section for that amplitude?",
+      "answer": "4",
+      "explanation": "|f|²=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify Coulomb examples?",
+      "answer": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "options": [
+        "Long-range behaviour changes asymptotic and convergence assumptions.",
+        "A complex asymptotic coefficient tied to flux normalization."
+      ],
+      "explanation": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a scattering amplitude?",
+      "back": "A complex asymptotic coefficient tied to flux normalization.",
+      "concept": "ph9-6-theory"
+    },
+    {
+      "front": "What does Born theory sample?",
+      "back": "A potential Fourier component under its approximation.",
+      "concept": "ph9-6-theory"
+    },
+    {
+      "front": "What constrains partial-wave amplitudes?",
+      "back": "Unitarity and channel physics.",
+      "concept": "ph9-6-theory"
+    },
+    {
+      "front": "Why qualify Coulomb examples?",
+      "back": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "concept": "ph9-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a scattering amplitude need an angular measure before it becomes a total probability per area? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Scattering connects asymptotic flux with interactions; normalization and long-range assumptions determine which formulas apply.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For short-range potential scattering, a stationary asymptotic state can be written as an incident plane wave plus f(θ,φ)eⁱᵏʳ/r under a stated normalization.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+With equal incident/outgoing channel speeds, $d\sigma/d\Omega=|f|^2$ follows from radial scattered current divided by incident flux. Different channels require speed factors. Total cross section integrates over solid angle, not merely polar angle without sinθ.
+
+The first Born amplitude is proportional to the Fourier transform of the potential, with coefficient −m/(2πℏ²) for a common plane-wave/asymptotic convention. Weakness/high-energy conditions and convergence must justify the approximation; it is not exact for arbitrary strong potentials.
+
+Partial waves encode phase shifts for central interactions. Unitarity constrains each elastic channel and links forward amplitude to total cross section through an optical-theorem convention. Absorption/inelastic channels change the elastic-only bookkeeping.
+
+Long-range Coulomb scattering does not satisfy every simple short-range asymptotic assumption; forward divergences require physical screening/angular acceptance or a different treatment. A finite detector covers limited angles and response, so observed counts require acceptance/luminosity corrections before quoting a total cross section.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Integrate a supplied angular amplitude with the correct measure and compare limited detector acceptance. Test a Born calculation against a weak-potential control before increasing coupling.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If f=2 isotropically in length units with equal speeds, differential cross section is 4 and total is 16π. Integrating 4 over polar angle alone would miss the full 4π solid-angle measure.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

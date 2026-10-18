@@ -1,0 +1,187 @@
+---
+{
+  "id": "PH4.8",
+  "title": "Vector potential and magnetic materials",
+  "hook": "Why can two different vector potentials describe the same magnetic field?",
+  "recap": [
+    "B=∇×A.",
+    "A→A+∇χ with the required regularity.",
+    "Volume curl of M and surface M×n.",
+    "Free current under the stated macroscopic convention."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does adding a smooth gradient to A change B?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Curl of a gradient vanishes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does uniform magnetization necessarily remove every bound current?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A surface bound current can remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can every magnetic material be described by one constant scalar μ?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Hysteresis, anisotropy and nonlinear response can matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Curl z-component of A=(−2y,2x,0)?",
+      "answer": "4",
+      "explanation": "2−(−2)=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value χm if a simple linear material has μ=3μ₀?",
+      "answer": "2",
+      "explanation": "μ/μ₀=1+χm.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why distinguish a gauge choice from a constitutive law?",
+      "answer": "One changes a representation; the other models physical material response",
+      "options": [
+        "One changes a representation; the other models physical material response",
+        "Both are arbitrary changes with no physical consequences"
+      ],
+      "explanation": "A material law has testable regime-dependent predictions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What relates A to B?",
+      "back": "B=∇×A.",
+      "concept": "ph4-8-theory"
+    },
+    {
+      "front": "What gauge change preserves B?",
+      "back": "A→A+∇χ with the required regularity.",
+      "concept": "ph4-8-theory"
+    },
+    {
+      "front": "How does magnetization create bound currents?",
+      "back": "Volume curl of M and surface M×n.",
+      "concept": "ph4-8-theory"
+    },
+    {
+      "front": "What sources H circulation in magnetostatics?",
+      "back": "Free current under the stated macroscopic convention.",
+      "concept": "ph4-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two different vector potentials describe the same magnetic field? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Vector potential encodes the divergence-free magnetic field, while magnetization separates free and material currents. Gauge choices and material models simplify calculations without changing observables.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+The curl of a gradient vanishes, so adding a gradient can change the potential arrows without changing B. Material dipole loops contribute extra currents that must be counted consistently.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A magnetic vector potential satisfies B=∇×A on a suitable domain. Magnetization M is magnetic dipole moment per volume, and H=B/μ₀−M in the standard macroscopic convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The identity ∇·(∇×A)=0 makes a vector potential compatible with the magnetic Gauss law. A transformation $A\mapsto A+\nabla\chi$ leaves B unchanged where χ is sufficiently smooth. Global topology and singularities can complicate a single potential representation; a local vector formula does not automatically settle every global domain.
+
+In magnetostatics, choosing Coulomb gauge ∇·A=0 converts ∇×B=μ₀J into $\nabla^2A=-\mu_0J$ under appropriate conditions. For a localized conserved current in unbounded vacuum, a corresponding solution is $A(r)=\mu_0\int J(r')/|r-r'|\,dV'/(4\pi)$ with suitable decay. Gauge choice does not add a new physical force.
+
+For uniform B=B₀ez, one convenient potential is A=(−B₀y/2,B₀x/2,0). Another is A=(0,B₀x,0). Their curls agree, and their difference is the gradient of B₀xy/2. A field prediction must depend on B or the appropriate gauge-invariant quantity, not an arbitrary value of A at one point.
+
+Magnetization contributes bound current $J_b=\nabla\times M$ and surface current $K_b=M\times n$ when the exterior magnetization is zero. Defining H gives ∇×H=Jfree in magnetostatics. A uniform M can produce no volume bound current but still a surface current, analogous to uniform electric polarization producing surface charge.
+
+For a linear isotropic simple response, M=χmH and B=μH with μ=μ₀(1+χm). Ferromagnetic hysteresis, saturation, anisotropy and frequency response violate a universal constant-μ picture. Magnetic energy and force in matter require specified constraints and material response; the vacuum B²/(2μ₀) formula cannot be blindly substituted as a complete energy model for every magnetic medium.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Differentiate both uniform-field potentials and check equal curls. Then compute volume and surface bound-current contributions for a uniformly magnetized cylinder. Keep the material constitutive assumption distinct from the exact definitions of B, H and M.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For B₀=4, A=(−2y,2x,0) has curl z component ∂(2x)/∂x−∂(−2y)/∂y=4. The alternative A=(0,4x,0) gives the same field. Their difference (2y,2x,0) is ∇(2xy).
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH14.3",
+  "title": "Free electron model",
+  "hook": "Why can electrons contribute little heat capacity while carrying substantial electrical current?",
+  "recap": [
+    "Density, state counting and dispersion.",
+    "Only near-Fermi states change occupation.",
+    "A phenomenological transport relaxation scale.",
+    "Bands, interactions, disorder and phases can change response."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every occupied electron have k_BT thermal energy by classical equipartition at low T?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Fermi statistics restrict excitations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does elementary Drude τ derive every scattering mechanism?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is a closure parameter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does k_F state counting depend on degeneracy/dimension?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The available state measure changes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Drude σ for n=3,e=1,τ=2,m=2?",
+      "answer": "3",
+      "explanation": "3×1×2/2=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ideal low-T electronic heat-capacity ratio after doubling T?",
+      "answer": "2",
+      "explanation": "C_e∝T.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify the free-electron model?",
+      "answer": "Bands, interactions, disorder and phases can change response.",
+      "options": [
+        "Bands, interactions, disorder and phases can change response.",
+        "Density, state counting and dispersion."
+      ],
+      "explanation": "Bands, interactions, disorder and phases can change response.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets Fermi energy?",
+      "back": "Density, state counting and dispersion.",
+      "concept": "ph14-3-theory"
+    },
+    {
+      "front": "Why is low-T electronic heat capacity small?",
+      "back": "Only near-Fermi states change occupation.",
+      "concept": "ph14-3-theory"
+    },
+    {
+      "front": "What does τ represent?",
+      "back": "A phenomenological transport relaxation scale.",
+      "concept": "ph14-3-theory"
+    },
+    {
+      "front": "Why qualify the free-electron model?",
+      "back": "Bands, interactions, disorder and phases can change response.",
+      "concept": "ph14-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ashcroft and Mermin, Solid State Physics — edition and exact section verification pending",
+    "Kittel, Introduction to Solid State Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can electrons contribute little heat capacity while carrying substantial electrical current? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Fermi occupation restricts thermally active states, while transport depends on response and scattering near the Fermi surface.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The free-electron model treats noninteracting fermions with a quadratic dispersion in a stated volume/boundary convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Counting momentum states gives $k_F=(3\pi^2n)^{1/3}$ for spin degeneracy two in a uniform three-dimensional gas. The Fermi energy is ℏ²k_F²/(2m). More general degeneracy g changes the count; the formula is not dimension independent.
+
+At T≪T_F, Pauli occupancy confines thermal excitations near the Fermi surface, giving a leading electronic heat capacity proportional to T in the ideal model. Equipartition over all electrons would overestimate it. Deep occupied states still contribute to total ground energy.
+
+A relaxation-time Drude-like conductivity is σ=ne²τ/m in the elementary approximation. It treats scattering phenomenologically and does not explain every microscopic resistance mechanism. Magnetotransport and optical response add frequency/field dependence.
+
+Band structure, interactions and disorder modify density of states and effective masses. A fitted relaxation time is not a proof of classical independent trajectories, and low-temperature phase transitions can invalidate the free-metal picture. Compare heat and transport observables within one consistent state-counting model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare Fermi occupation at two low temperatures and count the narrow thermally active shell. Separately vary the supplied relaxation time in the conductivity model and identify the missing scattering physics.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For normalized n=3,e=1,τ=2,m=2, Drude conductivity is 3. If temperature doubles within the same ideal low-T regime, the electronic heat capacity doubles, rather than staying at a classical constant per electron.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

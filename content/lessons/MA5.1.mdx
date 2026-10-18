@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA5.1",
+  "title": "Fourier series",
+  "hook": "Can infinitely many smooth waves represent a function with a jump?",
+  "recap": [
+    "Squared L² error within the retained trigonometric subspace.",
+    "The midpoint of the two one-sided limits.",
+    "The region of substantial error narrows.",
+    "An even or odd extension and its boundary behaviour."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does mean-square convergence alone imply pointwise convergence everywhere?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "L² ignores changes on sets of measure zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "For a piecewise smooth periodic function, what does its Fourier series approach at a jump?",
+      "options": [
+        "The midpoint of the one-sided limits",
+        "Always the assigned point value"
+      ],
+      "answer": "The midpoint of the one-sided limits",
+      "explanation": "The Dirichlet jump result uses the two one-sided limits.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the limiting Gibbs relative overshoot vanish just by retaining more modes?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its width shrinks while the relative overshoot persists for sharp partial sums.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Mean square of 3+2cos x−4sin2x over a full period?",
+      "answer": "19",
+      "explanation": "Orthogonality gives 9+4/2+16/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Constant coefficient a₀ for f=3+2cos x?",
+      "answer": "6",
+      "explanation": "The constant term is a₀/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must be justified before differentiating an infinite Fourier series?",
+      "answer": "Sufficient regularity and a valid termwise differentiation theorem",
+      "options": [
+        "Sufficient regularity and a valid termwise differentiation theorem",
+        "Only that each term is differentiable"
+      ],
+      "explanation": "Termwise smoothness alone does not control the differentiated limit.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a finite Fourier sum minimize?",
+      "back": "Squared L² error within the retained trigonometric subspace.",
+      "concept": "ma5-1-theory"
+    },
+    {
+      "front": "What is the jump-limit value under Dirichlet hypotheses?",
+      "back": "The midpoint of the two one-sided limits.",
+      "concept": "ma5-1-theory"
+    },
+    {
+      "front": "Why can Gibbs oscillations coexist with L² convergence?",
+      "back": "The region of substantial error narrows.",
+      "concept": "ma5-1-theory"
+    },
+    {
+      "front": "What does a half-range expansion choose?",
+      "back": "An even or odd extension and its boundary behaviour.",
+      "concept": "ma5-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strauss, Partial Differential Equations: An Introduction — edition and exact section verification pending",
+    "Stein and Shakarchi, Fourier Analysis: An Introduction — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can infinitely many smooth waves represent a function with a jump? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Fourier modes connect vibrating apparatus, heat flow and astronomical spectra. A series must be interpreted in a specified convergence sense before a plotted approximation becomes a physical claim.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Think of orthogonal coordinates for functions: each sine and cosine measures a different direction. Truncation keeps a finite set of directions; it does not erase an unresolved jump.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+On an interval of length 2π, Fourier coefficients are projections onto the trigonometric basis. Pointwise, uniform and mean-square convergence are different statements.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a real square-integrable function on [−π,π], define $a_n=\pi^{-1}\int_{-\pi}^{\pi}f(x)\cos(nx)\,dx$ and $b_n=\pi^{-1}\int_{-\pi}^{\pi}f(x)\sin(nx)\,dx$, with constant term a₀/2. Orthogonality makes a finite Fourier partial sum the least-squares projection onto its retained modes. Completeness of the trigonometric system gives convergence in L² for an L² function; this alone is not a theorem of pointwise convergence everywhere.
+
+For a periodic, piecewise smooth function with one-sided limits, the usual Dirichlet convergence theorem gives the midpoint of the two limits at a jump and the function value at a continuity point. Values assigned at isolated points do not affect coefficients or the L² equivalence class. A continuous periodic function need not have every stronger convergence property without additional hypotheses.
+
+For the odd square wave f(x)=1 on (0,π) and −1 on (−π,0), parity removes cosine terms and integration gives bₙ=4/(πn) for odd n and zero for even n. Thus $f(x)\sim\frac4\pi\sum_{j=0}^{\infty}\frac{\sin((2j+1)x)}{2j+1}$. At x=0 the series converges to zero. The periodic extension also jumps at the interval endpoints.
+
+Near a jump, ordinary partial sums exhibit Gibbs oscillations. Their spatial region shrinks with more modes while the limiting relative overshoot does not disappear. This does not contradict L² convergence. Fejér averaging changes the summation method and has better positivity/convergence properties; it is not the same finite reconstruction as an ordinary sharp spectral truncation.
+
+With this normalization, Parseval reads $\pi^{-1}\int_{-\pi}^{\pi}|f|^2dx=a_0^2/2+\sum_{n\ge1}(a_n^2+b_n^2)$ for real f. For complex functions use modulus-squared coefficients in the complex convention. Termwise differentiation requires additional regularity/convergence justification: differentiating an L² series formally is not automatically differentiating its limit. A half-range sine or cosine expansion chooses an odd or even extension, so boundary behaviour belongs to the chosen extension.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute odd square-wave partial sums with 1, 5 and 25 odd modes on a fine grid. Record the value at the jump, the local maximum near it and the integral of squared error. Refine the grid before comparing maxima. Then compare a sine expansion with a cosine expansion of the same half-interval data; explain which extensions differ.
+
+<Widget name="pde_modes_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For f(x)=3+2cos x−4sin2x, orthogonality gives a₀=6, a₁=2, b₂=−4 and all other positive-mode coefficients zero. The mean square (1/(2π))∫f²dx is 9+(4+16)/2=19. Parseval gives the same value; confusing a₀ with the constant term would double the mean.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

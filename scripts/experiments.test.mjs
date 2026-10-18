@@ -102,3 +102,287 @@ test("double slit has symmetric fringes, unit central maximum and analytic first
   near(doubleSlit(wavelength, 2 * d, L, 0).fringeM, 0.001);
   assert.throws(() => doubleSlit(0, d, L, 0), RangeError);
 });
+
+import { slabTransfer, radialShift } from "../src/lib/radiation.ts";
+test("radiation slab matches half-transmission, thin and thick limits with separate source contribution", () => {
+  const r = slabTransfer(10, 2, Math.log(2));
+  near(r.transmission, 0.5);
+  near(r.transmitted, 5);
+  near(r.emitted, 1);
+  near(r.output, 6);
+  near(slabTransfer(10, 20, Math.log(2)).output, 15);
+  near(slabTransfer(10, 2, 0).output, 10);
+  near(slabTransfer(10, 2, 100).output, 2);
+  for (const tau of [0, 1e-12, 0.1, 1, 10])
+    near(slabTransfer(7, 7, tau).output, 7);
+  near(slabTransfer(0, 2, 1e-12).emitted, 2e-12, 1e-15);
+  for (const args of [
+    [-1, 2, 1],
+    [1, -2, 1],
+    [1, 2, -1],
+    [1, 2, Infinity],
+  ])
+    assert.throws(() => slabTransfer(...args), RangeError);
+});
+test("radial Doppler shifts preserve reciprocal approach/recession factors and the zero-speed limit", () => {
+  near(radialShift(500, 0.6).observedNm, 1000);
+  near(radialShift(500, 0.6).redshift, 1);
+  near(radialShift(500, 0).observedNm, 500);
+  for (const beta of [0.1, 0.4, 0.8])
+    near(radialShift(500, beta).factor * radialShift(500, -beta).factor, 1);
+  for (const args of [
+    [0, 0],
+    [500, 1],
+    [500, -1],
+    [500, NaN],
+  ])
+    assert.throws(() => radialShift(...args), RangeError);
+});
+
+import { sphericalField } from "../src/lib/spherical-field.ts";
+test("solid sphere and conducting shell share exterior fields but retain different interiors and surface limits", () => {
+  const solid = sphericalField(1, 2, 1, "solid"),
+    shell = sphericalField(1, 2, 1, "shell");
+  near(solid.field, 0.125);
+  near(solid.potential, 11 / 16);
+  near(solid.enclosed, 1 / 8);
+  near(shell.field, 0);
+  near(shell.potential, 0.5);
+  near(shell.enclosed, 0);
+  for (const model of ["solid", "shell"]) {
+    const out = sphericalField(4, 2, 1, model);
+    near(out.field, 1 / 16);
+    near(out.potential, 1 / 4);
+    const zero = sphericalField(0, 2, 1, model);
+    near(zero.field, 0);
+    assert.ok(Number.isFinite(zero.potential));
+  }
+  const boundary = sphericalField(2, 2, 1, "shell");
+  assert.equal(boundary.field, null);
+  assert.equal(boundary.enclosed, null);
+  near(boundary.innerField, 0);
+  near(boundary.outerField, 0.25);
+  near(boundary.potential, 0.5);
+  near(sphericalField(2, 2, 1, "solid").field, 0.25);
+  near(sphericalField(2, 2, 1, "solid").innerField, 0.25);
+  near(sphericalField(2, 2, 0, "shell").field, 0);
+});
+test("sphere potential gradients, signed charge and Gauss fields are consistent away from the sheet", () => {
+  for (const model of ["solid", "shell"])
+    for (const r of [0.4, 1, 3, 5])
+      for (const q of [-2, 0, 3]) {
+        const s = sphericalField(r, 2, q, model),
+          h = 1e-5;
+        const gradient =
+          (sphericalField(r + h, 2, q, model).potential -
+            sphericalField(r - h, 2, q, model).potential) /
+          (2 * h);
+        near(s.field, -gradient, 1e-8);
+        near(s.field, s.enclosed / (r * r));
+      }
+  for (const args of [
+    [-1, 2, 1, "solid"],
+    [1, 0, 1, "solid"],
+    [1, 2, NaN, "shell"],
+    [1, 2, 1, "unknown"],
+  ])
+    assert.throws(() => sphericalField(...args), RangeError);
+});
+
+import { coupledOscillator } from "../src/lib/coupled-oscillator.ts";
+test("coupled normal modes conserve energy and reproduce independent and pure-mode releases", () => {
+  for (const m of [0.5, 1, 3])
+    for (const k of [1, 4])
+      for (const c of [0, 1, 4])
+        for (const b of [-0.2, 0, 0.2]) {
+          const initial = coupledOscillator(m, k, c, 0, 0.2, b);
+          near(initial.x1, 0.2);
+          near(initial.x2, b);
+          near(initial.v1, 0);
+          near(initial.plus ** 2, k / m);
+          near(initial.minus ** 2, (k + 2 * c) / m);
+          for (const t of [0.1, 2, 9, 20]) {
+            const s = coupledOscillator(m, k, c, t, 0.2, b);
+            near(s.energy, initial.energy);
+            if (b === 0.2) near(s.x1, s.x2);
+            if (b === -0.2) near(s.x1, -s.x2);
+            if (c === 0 && b === 0) near(s.x2, 0);
+          }
+        }
+});
+test("coupled oscillator rejects nonphysical or nonfinite inputs", () => {
+  for (const args of [
+    [0, 1, 1, 0, 0.2, 0],
+    [1, 0, 1, 0, 0.2, 0],
+    [1, 1, -1, 0, 0.2, 0],
+    [1, 1, 1, -1, 0.2, 0],
+    [1, 1, 1, 0, NaN, 0],
+  ])
+    assert.throws(() => coupledOscillator(...args), RangeError);
+});
+
+import { pdeModes } from "../src/lib/pde-modes.ts";
+test("PDE mode solutions satisfy initial data, fixed endpoints and heat/wave rate laws", () => {
+  for (const kind of ["heat", "wave"])
+    for (const c of [0.25, 1, 2]) {
+      const start = pdeModes(kind, c, 0, [1, 0.5, 0.25]);
+      near(
+        start.at(0.7),
+        Math.sin(0.7) + 0.5 * Math.sin(1.4) + 0.25 * Math.sin(2.1),
+      );
+      for (const t of [0, 0.1, 1, 5]) {
+        const model = pdeModes(kind, c, t, [1, 0.5, 0.25]);
+        near(model.at(0), 0);
+        near(model.at(Math.PI), 0);
+        for (const mode of model.modes)
+          near(mode.rate, c * (kind === "heat" ? mode.n ** 2 : mode.n));
+        if (kind === "heat") {
+          assert.ok(model.squaredNorm <= start.squaredNorm);
+          assert.equal(model.waveEnergy, null);
+        } else near(model.waveEnergy, start.waveEnergy);
+      }
+    }
+});
+test("finite-mode solutions satisfy their PDEs independently through numerical derivatives", () => {
+  const h = 1e-4,
+    x = 0.8,
+    t = 0.6,
+    c = 0.75,
+    a = [1, 0.5, 0.25];
+  for (const kind of ["heat", "wave"]) {
+    const mid = pdeModes(kind, c, t, a);
+    const xx = (mid.at(x + h) - 2 * mid.at(x) + mid.at(x - h)) / (h * h);
+    const before = pdeModes(kind, c, t - h, a).at(x),
+      after = pdeModes(kind, c, t + h, a).at(x);
+    if (kind === "heat") near((after - before) / (2 * h), c * xx, 1e-6);
+    else near((after - 2 * mid.at(x) + before) / (h * h), c * c * xx, 1e-6);
+  }
+});
+test("modal norm matches spatial quadrature and high heat modes decay faster", () => {
+  const state = pdeModes("wave", 1, 0.7, [1, 0.5, 0.25]);
+  const intervals = 1000,
+    dx = Math.PI / intervals;
+  let norm = 0;
+  for (let i = 1; i < intervals; i++) norm += state.at(i * dx) ** 2 * dx;
+  near(norm, state.squaredNorm);
+  const heat = pdeModes("heat", 1, Math.log(2), [1, 0, 1]);
+  near(heat.modes[0].value, 0.5);
+  near(heat.modes[2].value, 1 / 512);
+  const wave = pdeModes("wave", 1, Math.PI / 2, [1, 0, 0]);
+  near(wave.squaredNorm, 0);
+  near(wave.waveEnergy, Math.PI / 4);
+});
+test("PDE modes reject invalid controls and probes", () => {
+  for (const args of [
+    ["other", 1, 0, [1, 0, 0]],
+    ["heat", 0, 0, [1, 0, 0]],
+    ["heat", 1, -1, [1, 0, 0]],
+    ["wave", 1, 0, [1, 0]],
+    ["wave", 1, 0, [1, NaN, 0]],
+  ])
+    assert.throws(() => pdeModes(...args), RangeError);
+  const state = pdeModes("heat", 1, 0, [1, 0, 0]);
+  for (const x of [-1, Math.PI + 0.01, NaN])
+    assert.throws(() => state.at(x), RangeError);
+});
+
+import { branchCircle } from "../src/lib/complex-branch.ts";
+test("continued and principal square roots square to the source but retain distinct path information", () => {
+  for (const degrees of [0, 45, 179, 180, 181, 270, 360, 450, 540, 630, 720]) {
+    const s = branchCircle(degrees);
+    for (const root of [s.continued, s.principal].filter(Boolean)) {
+      near(root.real ** 2 - root.imaginary ** 2, s.source.real);
+      near(2 * root.real * root.imaginary, s.source.imaginary);
+      near(root.real ** 2 + root.imaginary ** 2, 1);
+    }
+  }
+  near(branchCircle(360).continued.real, -1);
+  near(branchCircle(360).principal.real, 1);
+  near(branchCircle(720).continued.real, 1);
+  near(branchCircle(720).continuedAngle, 4 * Math.PI);
+});
+test("principal cut is excluded while the path continuation stays continuous across it", () => {
+  for (const cut of [180, 540]) {
+    const s = branchCircle(cut);
+    assert.equal(s.principal, null);
+    assert.equal(s.principalAngle, null);
+    assert.equal(s.onCut, true);
+    const before = branchCircle(cut - 0.001),
+      after = branchCircle(cut + 0.001);
+    assert.ok(
+      Math.hypot(
+        before.continued.real - after.continued.real,
+        before.continued.imaginary - after.continued.imaginary,
+      ) < 0.0001,
+    );
+    assert.ok(before.principal.imaginary > 0.99);
+    assert.ok(after.principal.imaginary < -0.99);
+  }
+});
+test("branch explorer rejects invalid path inputs", () => {
+  for (const angle of [-1, 721, NaN, Infinity])
+    assert.throws(() => branchCircle(angle), RangeError);
+});
+
+import { legendre, zonalHarmonic } from "../src/lib/legendre.ts";
+test("Legendre recurrence agrees with explicit polynomials, endpoint normalization and parity", () => {
+  for (const x of [-1, -0.7, 0, 0.3, 1]) {
+    near(legendre(0, x), 1);
+    near(legendre(1, x), x);
+    near(legendre(2, x), (3 * x * x - 1) / 2);
+    near(legendre(3, x), (5 * x ** 3 - 3 * x) / 2);
+    near(legendre(4, x), (35 * x ** 4 - 30 * x * x + 3) / 8);
+    for (let n = 0; n <= 8; n++)
+      near(legendre(n, -x), (-1) ** n * legendre(n, x));
+  }
+  for (let n = 0; n <= 8; n++) {
+    near(legendre(n, 1), 1);
+    near(legendre(n, -1), (-1) ** n);
+  }
+});
+test("Legendre functions obey their angular ODE away from singular endpoints", () => {
+  const h = 1e-4;
+  for (let n = 0; n <= 6; n++)
+    for (const x of [-0.8, 0.1, 0.7]) {
+      const p = legendre(n, x),
+        before = legendre(n, x - h),
+        after = legendre(n, x + h);
+      const first = (after - before) / (2 * h),
+        second = (after - 2 * p + before) / (h * h);
+      near((1 - x * x) * second - 2 * x * first + n * (n + 1) * p, 0, 1e-4);
+    }
+});
+test("spatial quadrature confirms Legendre norms, cross-degree orthogonality and spherical zonal normalization", () => {
+  const integrate = (f) => {
+    const count = 4096,
+      h = 2 / count;
+    let sum = f(-1) + f(1);
+    for (let i = 1; i < count; i++) sum += (i % 2 ? 4 : 2) * f(-1 + i * h);
+    return (sum * h) / 3;
+  };
+  for (let n = 0; n <= 7; n++) {
+    near(
+      integrate((x) => legendre(n, x) ** 2),
+      2 / (2 * n + 1),
+      3e-7,
+    );
+    near(
+      integrate((x) => legendre(n, x) * legendre(n + 1, x)),
+      0,
+      3e-7,
+    );
+    near(2 * Math.PI * integrate((x) => zonalHarmonic(n, x) ** 2), 1, 3e-7);
+  }
+});
+test("Legendre explorer rejects invalid degrees and probes", () => {
+  for (const [n, x] of [
+    [-1, 0],
+    [9, 0],
+    [1.5, 0],
+    [2, NaN],
+    [2, 1.1],
+  ]) {
+    assert.throws(() => legendre(n, x), RangeError);
+    assert.throws(() => zonalHarmonic(n, x), RangeError);
+  }
+});

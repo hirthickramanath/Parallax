@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH10.2",
+  "title": "Dirac equation and spin",
+  "hook": "Why does a first-order relativistic equation require matrix-valued coefficients?",
+  "recap": [
+    "The Clifford anticommutation relations.",
+    "A consistent interacting description uses particle/antiparticle field sectors.",
+    "Pauli spin coupling plus controlled corrections.",
+    "Gamma algebra and coupling formulas depend on them."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are Dirac spinor components ordinary vector components?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They transform in a spinor representation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does free H² reproduce relativistic dispersion?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The anticommutation algebra cancels cross terms.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is g=2 universally exact for every composite particle?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Radiative and internal structure effects matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Positive free energy for m=3,p=4,c=1?",
+      "answer": "5",
+      "explanation": "√(9+16)=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ideal tree-level Dirac magnetic g factor?",
+      "answer": "2",
+      "explanation": "The elementary spin-half model gives two.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state metric/sign conventions?",
+      "answer": "Gamma algebra and coupling formulas depend on them.",
+      "options": [
+        "Gamma algebra and coupling formulas depend on them.",
+        "The Clifford anticommutation relations."
+      ],
+      "explanation": "Gamma algebra and coupling formulas depend on them.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What algebra linearizes the mass shell?",
+      "back": "The Clifford anticommutation relations.",
+      "concept": "ph10-2-theory"
+    },
+    {
+      "front": "Why qualify negative-energy interpretations?",
+      "back": "A consistent interacting description uses particle/antiparticle field sectors.",
+      "concept": "ph10-2-theory"
+    },
+    {
+      "front": "What emerges in the low-speed reduction?",
+      "back": "Pauli spin coupling plus controlled corrections.",
+      "concept": "ph10-2-theory"
+    },
+    {
+      "front": "Why state metric/sign conventions?",
+      "back": "Gamma algebra and coupling formulas depend on them.",
+      "concept": "ph10-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a first-order relativistic equation require matrix-valued coefficients? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Dirac algebra linearizes relativistic dispersion and naturally includes spinor structure, while antiparticle interpretation belongs to field theory.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The free Dirac Hamiltonian is H=cα·p+βmc² with matrices obeying anticommutation relations that make H²=p²c²+m²c⁴.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The requirements $\{\alpha_i,\alpha_j\}=2\delta_{ij}I$, $\{\alpha_i,\beta\}=0$ and β²=I can be written as a Clifford algebra. In covariant form, $[i\hbar c\gamma^\mu\partial_\mu-mc^2]\psi=0$ with $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}I$. Matrix dimension and transformation rules are part of the spinor representation.
+
+For a free momentum, energies have ±√(p²c²+m²c⁴) branches. The positive-density ψ†ψ and conserved current do not eliminate the need to interpret negative-energy/frequency sectors through a quantum field framework. A naive single-particle filled-sea story is not a full modern interacting theory.
+
+A controlled low-velocity expansion with electromagnetic coupling produces Pauli spin coupling and leading relativistic corrections, with the tree-level electron magnetic factor g=2 in the ideal model. Radiative corrections and composite particles change magnetic moments. Minimal coupling conventions and charge signs matter.
+
+Lorentz transformations act on spinor components differently from ordinary four-vectors. The equation is not a license to treat every classical spin vector as a spinor, and the nonrelativistic reduction requires separating large/small components within an admitted energy regime.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Choose explicit gamma matrices and verify anticommutators numerically. Square the free Hamiltonian and check its dispersion. Keep matrix identities separate from a physical many-particle interpretation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For m=3,p=4,c=1, free energies are ±5. The ideal tree-level spin-half g factor is 2; that value is a model prediction before radiative/structure corrections, not an exact universal magnetic factor for every particle.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

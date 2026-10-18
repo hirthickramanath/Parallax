@@ -1,0 +1,186 @@
+---
+{
+  "id": "CP2.3",
+  "title": "Astropy, astroquery and survey data",
+  "hook": "Why can a catalogue match be numerically close but astronomically wrong?",
+  "recap": [
+    "Frame, epoch and relevant motion/uncertainty information.",
+    "They encode different observational or processing states.",
+    "Release, exact query, retrieval metadata and retained checked inputs.",
+    "Nonlinear errors and selection affect distance inference."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does unit conversion automatically propagate calibration uncertainty?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Units and statistical uncertainty are separate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can coordinate epoch affect cross-matching?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Proper motion changes apparent direction.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is every remote query result automatically a complete sample?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Row limits and selection must be verified.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Angular shift in arcseconds for .2 arcsec/year over 10 years?",
+      "answer": "2",
+      "explanation": ".2×10=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Elementary distance in parsecs for positive parallax .05 arcseconds?",
+      "answer": "20",
+      "explanation": "1/.05=20, under the stated approximation.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify reciprocal-parallax distances?",
+      "answer": "Nonlinear errors and selection affect distance inference.",
+      "options": [
+        "Nonlinear errors and selection affect distance inference.",
+        "Frame, epoch and relevant motion/uncertainty information."
+      ],
+      "explanation": "Nonlinear errors and selection affect distance inference.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What metadata accompany sky coordinates?",
+      "back": "Frame, epoch and relevant motion/uncertainty information.",
+      "concept": "cp2-3-theory"
+    },
+    {
+      "front": "What distinguishes masked data and a nondetection?",
+      "back": "They encode different observational or processing states.",
+      "concept": "cp2-3-theory"
+    },
+    {
+      "front": "What makes a remote query reproducible?",
+      "back": "Release, exact query, retrieval metadata and retained checked inputs.",
+      "concept": "cp2-3-theory"
+    },
+    {
+      "front": "Why qualify reciprocal-parallax distances?",
+      "back": "Nonlinear errors and selection affect distance inference.",
+      "concept": "cp2-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Newman, Computational Physics — edition and exact section verification pending",
+    "Official NumPy, Astropy, astroquery and scikit-learn documentation — version and exact page verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a catalogue match be numerically close but astronomically wrong? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Astronomy software carries units, frames, epochs and quality flags. A table of plausible coordinates is not enough to establish a reproducible scientific sample.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Astropy supplies unit-aware quantities, coordinate/time transformations and scientific table/FITS tools; astroquery provides interfaces to external astronomical data services whose versions and policies must be recorded.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Attach units before combining physical quantities. A unit-aware distance divided by time can reject an incompatible operation rather than silently treating parsecs as metres. Unit conversion is not an uncertainty model: correlated calibration and measurement errors still require explicit propagation. Record whether a quantity is a flux density, integrated flux, magnitude or instrumental count.
+
+For a constant small-angle proper motion, $\Delta\theta=\mu\Delta t$ within that approximation. A coordinate needs a frame and often an epoch and proper-motion model. ICRS, Galactic and instrument coordinates are not interchangeable angle columns. Matching directions at different epochs can fail for high-proper-motion sources; crowded fields need a statistical association model, not only a nearest-neighbour radius. Angular separation and physical separation also require different information.
+
+FITS headers and tables can encode units, calibration and provenance, but missing or outdated metadata must be checked. Masked values, sentinel flags and nondetections are different states. A parallax inversion d=1/ϖ is a nonlinear inference with selection and uncertainty issues; negative noisy parallaxes are not simply negative physical distances to delete without a model.
+
+For remote queries save service, catalogue release, exact query, retrieval date, response metadata and a checksum of the retained result. Respect row limits, pagination and service terms; an incomplete query result can bias a sample. Cache immutable inputs for reproducibility and distinguish local synthetic fixtures from externally retrieved observations. No live survey data are bundled or claimed by this lesson.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Create a small explicitly synthetic table with units, masked values, frame and epoch metadata. Propagate a constant proper motion before matching two epochs. If later using a real catalogue, first write a provenance manifest and preserve the query response; do not substitute synthetic values while calling them downloaded observations.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A source moving .2 arcseconds per year shifts 2 arcseconds over ten years under a constant angular proper-motion approximation. A .5-arcsecond cross-match radius can therefore miss it if positions are compared at different epochs without propagation. For a well-measured positive parallax of .05 arcseconds, the elementary reciprocal estimate is 20 parsecs, subject to the inference qualifications.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

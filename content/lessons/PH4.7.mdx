@@ -1,0 +1,187 @@
+---
+{
+  "id": "PH4.7",
+  "title": "Biot-Savart and Ampere's law",
+  "hook": "Why can a magnetic field circulate around a wire without beginning on a magnetic charge?",
+  "recap": [
+    "The contributions of a specified steady current geometry.",
+    "μ₀ times enclosed steady current.",
+    "B∝I/s.",
+    "When changing electric/magnetic fields and propagation effects matter."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does zero magnetic closed-surface flux imply zero magnetic circulation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Flux and circulation measure different geometric properties.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can a circular integration path create wire symmetry for any source?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The current geometry must supply it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the stationary Ampère law alone cover a charging capacitor?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The displacement-current term is needed in the changing-field case.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Wire field for μ₀/(2π)=1, I=3 and s=2?",
+      "answer": "1.5",
+      "explanation": "B=I/s in the normalized units.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Field ratio when distance from the same infinite wire doubles?",
+      "answer": "0.5",
+      "explanation": "The field magnitude scales as inverse distance.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why include a return path or ideal boundary description for a steady current?",
+      "answer": "Charge conservation requires a consistent current distribution",
+      "options": [
+        "Charge conservation requires a consistent current distribution",
+        "Currents can end anywhere without accumulating charge"
+      ],
+      "explanation": "A divergence-free stationary current cannot simply terminate in empty space.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Biot–Savart integrate?",
+      "back": "The contributions of a specified steady current geometry.",
+      "concept": "ph4-7-theory"
+    },
+    {
+      "front": "What does magnetostatic Ampère circulation measure?",
+      "back": "μ₀ times enclosed steady current.",
+      "concept": "ph4-7-theory"
+    },
+    {
+      "front": "What is the ideal wire field dependence?",
+      "back": "B∝I/s.",
+      "concept": "ph4-7-theory"
+    },
+    {
+      "front": "When does the magnetostatic approximation need extension?",
+      "back": "When changing electric/magnetic fields and propagation effects matter.",
+      "concept": "ph4-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a magnetic field circulate around a wire without beginning on a magnetic charge? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Magnetostatics connects steady currents with magnetic circulation. Biot–Savart and Ampère methods share a regime of validity but offer different computational advantages.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A magnetic field forms circulating patterns around currents. Net closed-surface magnetic flux remains zero; circulation and outward flux are different integrals.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For stationary currents in vacuum, ∇×B=μ₀J and ∇·B=0. Biot–Savart reconstructs B from a steady localized current distribution under appropriate boundary conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a steady thin-wire current, $dB=\mu_0I\,dl'\times(r-r')/[4\pi|r-r'|^3]$. Integrating the actual wire geometry gives its field away from the idealized source. For an extended current density, replace I dl′ by J(r′)dV′. A steady conserved current must satisfy ∇·J=0, including return paths or a suitable ideal infinite geometry.
+
+Ampère's integral law is $\oint B\cdot dl=\mu_0I_{\rm enc}$ for the stationary vacuum case. Symmetry around an ideal infinite straight wire makes B tangential with constant magnitude on a centred circle, giving B=μ₀I/(2πs). Merely drawing a circular loop around arbitrary currents does not impose that symmetry.
+
+For a circular loop of radius R, contributions perpendicular to its axis cancel and Biot–Savart gives the axial field $B_z=\mu_0IR^2/[2(R^2+z^2)^{3/2}]$. At the centre this is μ₀I/(2R); far along the axis it has dipole scaling. The current sense sets the sign through the right-hand convention.
+
+A long ideal solenoid gives approximately B=μ₀nI inside and a much smaller exterior field away from ends, with n turns per length. Finite ends and winding geometry matter; the exterior is not exactly zero for every real coil. Fields in magnetic materials require an additional constitutive and bound-current description.
+
+Time-varying fields require Maxwell's displacement-current term and cannot generally be reduced to the stationary Ampère law. A charging capacitor is a classic warning: current through a wire and changing electric flux through a different spanning surface must be treated consistently. Use magnetostatic formulas only when the timescale and geometry support the approximation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Sketch a wire, current direction and oriented Amperian circle, then derive the field from circulation. Compare with a finite loop’s axial expression at the centre and at large z. Label all calculated values as synthetic field predictions.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In units with μ₀/(2π)=1, an infinite wire carrying I=3 at distance s=2 has field magnitude 1.5. Doubling s halves that field. This differs from the inverse-square magnitude of a point electric charge and the far-field inverse-cube dipole scale.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

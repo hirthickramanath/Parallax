@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA12.2",
+  "title": "Hilbert and Banach spaces",
+  "hook": "Why do infinite function expansions require a complete space rather than just a formula for length?",
+  "recap": [
+    "Norm completeness.",
+    "A complete inner-product norm.",
+    "For a complete orthonormal basis in the stated Hilbert space.",
+    "Their action and continuity spaces can differ."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every norm arise from an inner product?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Extra structure such as the parallelogram property is required.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do L² elements distinguish changes at one point of measure zero?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They are equivalence classes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does nearest-subspace projection need closedness for the general theorem?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The minimizer may otherwise be absent.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Residual norm after projecting (3,4) onto x-axis?",
+      "answer": "4",
+      "explanation": "The residual is (0,4).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Squared norm of (3,4)?",
+      "answer": "25",
+      "explanation": "9+16=25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why distinguish distributions from L² vectors?",
+      "answer": "Their action and continuity spaces can differ.",
+      "options": [
+        "Their action and continuity spaces can differ.",
+        "Norm completeness."
+      ],
+      "explanation": "Their action and continuity spaces can differ.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a Banach space?",
+      "back": "Norm completeness.",
+      "concept": "ma12-2-theory"
+    },
+    {
+      "front": "What adds Hilbert structure?",
+      "back": "A complete inner-product norm.",
+      "concept": "ma12-2-theory"
+    },
+    {
+      "front": "When does Parseval hold for the expansion?",
+      "back": "For a complete orthonormal basis in the stated Hilbert space.",
+      "concept": "ma12-2-theory"
+    },
+    {
+      "front": "Why distinguish distributions from L² vectors?",
+      "back": "Their action and continuity spaces can differ.",
+      "concept": "ma12-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kreyszig, Introductory Functional Analysis with Applications — edition and exact section verification pending",
+    "Lee, Introduction to Topological Manifolds — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do infinite function expansions require a complete space rather than just a formula for length? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Banach and Hilbert spaces provide limits, orthogonal projections and controlled expansions used by quantum theory and PDEs.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Banach space is complete in its norm. A Hilbert space is complete in a norm induced by an inner product, with a stated real/complex convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A norm obeys homogeneity and the triangle inequality, while an inner product additionally defines angles/orthogonality. With conjugation convention chosen consistently, $\|x\|^2=\langle x,x\rangle$. Not every norm comes from an inner product; the parallelogram identity characterizes this property in the standard setting.
+
+In L², functions differing on a set of measure zero represent the same element. Point evaluation is therefore not a generic well-defined bounded functional on bare L². Weighted spaces require an explicit measure, and changing weight changes orthogonality and completeness claims.
+
+For a closed linear subspace of a Hilbert space, the nearest-point projection exists uniquely and the error is orthogonal to the subspace. Closedness is essential; a dense proper subspace may approximate a vector arbitrarily well without containing a minimizer. Bessel’s inequality becomes Parseval equality for a complete orthonormal basis.
+
+The Riesz representation theorem identifies continuous linear functionals with an inner-product pairing in a Hilbert space under its convention. It does not say every algebraic functional or every distribution is an ordinary vector of the same L² space. Boundary traces and generalized eigenvectors need their own function-space framework.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Approximate a known square-integrable function using an orthonormal basis and compare partial-sum error norms. Separate pointwise plots from L² convergence and state whether the selected span is closed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Project x=(3,4) onto the x-axis in Euclidean R². The projection is (3,0), residual norm 4 and squared full norm 25. Orthogonal squared norms add as 9+16=25.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

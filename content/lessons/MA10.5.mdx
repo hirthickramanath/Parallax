@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA10.5",
+  "title": "Lie groups and Lie algebras (SO(3), SU(2))",
+  "hook": "Why do spin-half states require a different global rotation group from ordinary three-dimensional vectors?",
+  "recap": [
+    "The tangent generator structure with a bracket.",
+    "Factors of i change displayed commutators.",
+    "Its double-cover relation and topology.",
+    "Probabilities for one pure-state ray."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do isomorphic Lie algebras guarantee globally identical groups?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Topology and covering structure can differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does SU(2) double cover SO(3)?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Two spinor elements correspond to one spatial rotation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do finite rotations about different axes generally commute?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their commutator is nonzero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Trace of spin-half U at θ=2π?",
+      "answer": "-2",
+      "explanation": "U=−I₂.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Trace at θ=4π?",
+      "answer": "2",
+      "explanation": "U=I₂.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does a global phase not change alone?",
+      "answer": "Probabilities for one pure-state ray.",
+      "options": [
+        "Probabilities for one pure-state ray.",
+        "The tangent generator structure with a bracket."
+      ],
+      "explanation": "Probabilities for one pure-state ray.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a Lie algebra?",
+      "back": "The tangent generator structure with a bracket.",
+      "concept": "ma10-5-theory"
+    },
+    {
+      "front": "Why compare Hermitian and anti-Hermitian conventions carefully?",
+      "back": "Factors of i change displayed commutators.",
+      "concept": "ma10-5-theory"
+    },
+    {
+      "front": "What distinguishes SU(2) globally?",
+      "back": "Its double-cover relation and topology.",
+      "concept": "ma10-5-theory"
+    },
+    {
+      "front": "What does a global phase not change alone?",
+      "back": "Probabilities for one pure-state ray.",
+      "concept": "ma10-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Artin, Algebra — edition and exact section verification pending",
+    "Hall, Lie Groups, Lie Algebras, and Representations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do spin-half states require a different global rotation group from ordinary three-dimensional vectors? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Lie algebras describe local composition while topology distinguishes groups that share the same infinitesimal structure.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Lie group is a smooth group with smooth multiplication/inversion. Its Lie algebra describes tangent generators and their bracket at identity.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+SO(3) consists of real three-by-three rotation matrices with RᵀR=I and determinant one. SU(2) consists of complex two-by-two unitary matrices with determinant one. Their Lie algebras are locally isomorphic, but SU(2) double covers SO(3); local generator relations do not determine global topology.
+
+For angular momentum generators, $[J_i,J_j]=i\hbar\epsilon_{ijk}J_k$. Hermitian generators in physics and anti-Hermitian tangent matrices differ by factors of i and normalization. State a convention before comparing Lie-algebra structure constants.
+
+A spin-half rotation is U=exp(−iθn·σ/2). At θ=2π it becomes −I, while its associated spatial vector rotation is identity. The spinor returns after 4π. A global sign leaves a single pure-state ray unchanged, while relative phases in an interference/composite experiment require full state accounting.
+
+The exponential map provides local coordinates near identity under the appropriate theorem, but global surjectivity/injectivity differs among groups. Noncommuting rotations generate commutator effects at second order. A Lie-algebra approximation must retain an admitted small-angle regime.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute small rotations about x and y in both orders using Pauli and ordinary rotation matrices. Compare local commutators and the separate global 2π/4π behaviour.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At a full 2π rotation a spin-half matrix has trace −2. At 4π its trace is +2. The corresponding ordinary vector rotation is already identity at 2π.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS5.4",
+  "title": "Cosmic rays and particle acceleration",
+  "hook": "How can repeated crossings of a shock accelerate particles beyond one thermal energy scale?",
+  "recap": [
+    "Escape and losses.",
+    "Gyroradius sufficiently small relative to the relevant region scale.",
+    "Transport, interactions and instrument selection.",
+    "Its flow and scattering assumptions can fail."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does magnetic confinement alone prove efficient acceleration?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Losses, escape and gain rates also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are cumulative and differential power-law indices identical?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Differentiation changes the power.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do charged-particle arrival directions always point straight back to sources?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Magnetic fields deflect them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Energy multiplication after three cycles of factor 2?",
+      "answer": "8",
+      "explanation": "2³=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Retained fraction after three cycles of survival .5?",
+      "answer": "0.125",
+      "explanation": ".5³=1/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify the test-particle shock result?",
+      "answer": "Its flow and scattering assumptions can fail.",
+      "options": [
+        "Its flow and scattering assumptions can fail.",
+        "Escape and losses."
+      ],
+      "explanation": "Its flow and scattering assumptions can fail.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What competes with shock energy gain?",
+      "back": "Escape and losses.",
+      "concept": "as5-4-theory"
+    },
+    {
+      "front": "What is the elementary confinement requirement?",
+      "back": "Gyroradius sufficiently small relative to the relevant region scale.",
+      "concept": "as5-4-theory"
+    },
+    {
+      "front": "What changes an injected spectrum before detection?",
+      "back": "Transport, interactions and instrument selection.",
+      "concept": "as5-4-theory"
+    },
+    {
+      "front": "Why qualify the test-particle shock result?",
+      "back": "Its flow and scattering assumptions can fail.",
+      "concept": "as5-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can repeated crossings of a shock accelerate particles beyond one thermal energy scale? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Cosmic-ray acceleration combines energy gain, escape and transport; a power-law spectrum does not identify a source uniquely.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Cosmic rays are energetic particles whose measured spectrum reflects source injection plus propagation, losses and detection selection.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In an idealized first-order Fermi shock picture, scattering on either side can return particles across a velocity discontinuity. A cycle provides a fractional energy gain, while escape limits the number of cycles. If energy multiplies by g and survival by s per cycle, cumulative counts scale as $N(>E)\propto E^{\ln s/\ln g}$ in this simple steady multiplicative model.
+
+The familiar strong nonrelativistic test-particle shock predictions require assumptions about compression, isotropic scattering, steady geometry and negligible particle feedback. Nonlinear acceleration changes the flow and spectrum. Injection from the thermal population is a separate physical issue.
+
+A confinement argument requires a gyroradius not greatly exceeding an acceleration region scale; E, charge, field strength and geometry enter. This Hillas-type condition is necessary in a basic model, not sufficient for efficient acceleration. Loss and escape times must also permit the energy gain.
+
+Galactic magnetic fields scramble charged-particle arrival directions; composition and secondary-to-primary ratios constrain propagation. Photons and neutrinos can test hadronic scenarios but carry their own source/interaction ambiguities. Solar modulation, detector response and energy calibration matter when comparing measured spectra. No synthetic power law in this exercise is an actual cosmic-ray measurement.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct the explicit multiplicative survival toy model and compare cumulative with differential histograms using correct bin widths. Add a maximum energy from a supplied loss limit and distinguish that cutoff from the algebraic power law.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If each cycle doubles energy and retains half the particles, after three cycles energy is eight times larger and retained fraction is one eighth. The cumulative toy-model slope is −1; its differential spectrum has another power and should not be confused with it.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

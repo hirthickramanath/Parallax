@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.3",
+  "title": "Postulates and Dirac notation",
+  "hook": "Why can two different basis descriptions predict exactly the same measurement probabilities?",
+  "recap": [
+    "A positive trace-one density operator.",
+    "⟨ψ|P_a|ψ⟩.",
+    "The required operator products and variances must exist.",
+    "The physical ray is independent of its chosen basis coordinates."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does changing basis change the physical state by itself?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It changes coordinates when all operators transform consistently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a degenerate projective outcome select one unique vector automatically?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It generally selects a subspace.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a pure joint state have a mixed reduced state?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Entanglement produces mixed subsystem descriptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Expectation of eigenvalues 0,2 with probabilities .75,.25?",
+      "answer": "0.5",
+      "explanation": "0×.75+2×.25=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Variance for that observable?",
+      "answer": "0.75",
+      "explanation": "⟨A²⟩−⟨A⟩²=1−.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What distinguishes a state from a coordinate vector?",
+      "answer": "The physical ray is independent of its chosen basis coordinates.",
+      "options": [
+        "The physical ray is independent of its chosen basis coordinates.",
+        "A positive trace-one density operator."
+      ],
+      "explanation": "The physical ray is independent of its chosen basis coordinates.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What represents a mixed state?",
+      "back": "A positive trace-one density operator.",
+      "concept": "ph8-3-theory"
+    },
+    {
+      "front": "What is the Born projector probability?",
+      "back": "⟨ψ|P_a|ψ⟩.",
+      "concept": "ph8-3-theory"
+    },
+    {
+      "front": "Why do domains matter for uncertainty?",
+      "back": "The required operator products and variances must exist.",
+      "concept": "ph8-3-theory"
+    },
+    {
+      "front": "What distinguishes a state from a coordinate vector?",
+      "back": "The physical ray is independent of its chosen basis coordinates.",
+      "concept": "ph8-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two different basis descriptions predict exactly the same measurement probabilities? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Hilbert-space notation separates the physical state from its coordinates and makes compatibility and measurement rules explicit.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A normalized pure state is a ray in Hilbert space. Observables are self-adjoint operators with spectral probabilities; a basis changes the representation, not the state.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an orthonormal discrete basis |n⟩, write $|\psi\rangle=\sum_nc_n|n\rangle$ with ∑|cₙ|²=1. A projection-valued measurement with projectors P_a has probability ⟨ψ|P_a|ψ⟩. Degenerate outcomes project onto a subspace rather than automatically onto one uniquely chosen basis vector within it.
+
+Expectation is ⟨A⟩=⟨ψ|A|ψ⟩ and variance is ⟨A²⟩−⟨A⟩² when these quantities exist. For operators with appropriate domains, Robertson’s inequality is $\Delta A\Delta B\ge\tfrac12|\langle[A,B]\rangle|$. Commuting self-adjoint observables require suitable spectral/domain compatibility for unrestricted simultaneous-measurement statements in infinite dimensions.
+
+An ideal projective measurement has a state-update rule conditioned on its outcome. More general measurements use positive-operator-valued effects and need additional information to specify the state update. It is therefore insufficient to give outcome probabilities and assume a unique physical disturbance mechanism.
+
+Mixed states are described by a positive trace-one density operator ρ, with p(a)=Tr(ρP_a). A mixed state is not merely a different global phase of one pure state. A composite system can be entangled, and tracing over one factor produces a reduced mixed state even when the joint state is pure. No basis change alone removes genuine entanglement across a fixed subsystem division.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Represent a two-state vector in two orthonormal bases and transform the observable with the same unitary change. Verify invariant expectation values. Compare a coherent superposition and a diagonal mixture with the same original basis probabilities using a second measurement basis.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For |ψ⟩=√3/2|0⟩+1/2|1⟩, the basis probabilities are 3/4 and 1/4. If A has eigenvalues 0 and 2 in this basis, ⟨A⟩=.5 and ⟨A²⟩=1, so Var(A)=.75.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH14.7",
+  "title": "Superconductivity",
+  "hook": "Why is a superconductor more than a perfectly ordinary zero-resistance conductor?",
+  "recap": [
+    "Magnetic screening depth in the stated model.",
+    "Condensate phase consistency and charge 2e.",
+    "Vortex penetration between critical fields.",
+    "Different materials can require different pairing descriptions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is Meissner response identical to merely zero DC resistance?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its equilibrium magnetic behaviour adds information.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can type-II superconductors contain vortices?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "They exist in an appropriate field regime.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does BCS name settle every unconventional pairing mechanism?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its microscopic assumptions are not universal.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Conventional flux quantum for h=6,e=1?",
+      "answer": "3",
+      "explanation": "h/(2e)=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Flux scale ratio if the condensate charge doubles?",
+      "answer": "0.5",
+      "explanation": "h/q scales inversely with q.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify microscopic mechanisms?",
+      "answer": "Different materials can require different pairing descriptions.",
+      "options": [
+        "Different materials can require different pairing descriptions.",
+        "Magnetic screening depth in the stated model."
+      ],
+      "explanation": "Different materials can require different pairing descriptions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does penetration length describe?",
+      "back": "Magnetic screening depth in the stated model.",
+      "concept": "ph14-7-theory"
+    },
+    {
+      "front": "What sets conventional flux quantization?",
+      "back": "Condensate phase consistency and charge 2e.",
+      "concept": "ph14-7-theory"
+    },
+    {
+      "front": "What distinguishes type-II response?",
+      "back": "Vortex penetration between critical fields.",
+      "concept": "ph14-7-theory"
+    },
+    {
+      "front": "Why qualify microscopic mechanisms?",
+      "back": "Different materials can require different pairing descriptions.",
+      "concept": "ph14-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ashcroft and Mermin, Solid State Physics — edition and exact section verification pending",
+    "Kittel, Introduction to Solid State Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is a superconductor more than a perfectly ordinary zero-resistance conductor? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Superconducting phase stiffness, magnetic response and pairing require distinctions beyond a DC resistance measurement.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Superconductivity involves a coherent charged condensate description in applicable regimes, with characteristic electromagnetic response; microscopic mechanisms vary across materials.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The Meissner response expels weak magnetic field from the bulk under appropriate conditions, unlike merely preserving an arbitrary initial flux in an ideal conductor. A London penetration length describes exponential field screening in its model regime. Critical fields/currents limit the state.
+
+For a conventional paired charge 2e condensate, flux quantization scale is $\Phi_0=h/(2e)$ with the relevant multiply connected geometry and phase assumptions. Type-II systems admit vortices between critical fields; saying every superconductor excludes all magnetic field under all conditions is false.
+
+BCS theory describes pairing and a gap in an admitted weak-coupling framework, with quasiparticles and coherence factors. A pair does not have to be a small isolated molecule, and the microscopic pairing mechanism of unconventional materials is not universally settled by the word superconductivity.
+
+Josephson relations connect current and phase, and voltage to phase evolution, under junction conventions. Dissipation, quasiparticles, fluctuations and device environment matter. A zero-resistance observation and a full thermodynamic/magnetic characterization provide different evidence; this course claims no new material discovery.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare an ideal-conductor initial-flux thought experiment with equilibrium Meissner screening. Plot a labelled London profile and state where vortices or critical fields invalidate a simple full-expulsion picture.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With h=6 and e=1 in normalized units, the conventional flux quantum is 3. A single vortex carries that scale under the stated model. Doubling paired charge in a hypothetical formula h/q would halve the corresponding flux scale.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

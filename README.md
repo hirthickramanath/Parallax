@@ -19,9 +19,9 @@ If npm cannot find `package.json`, change to the repository folder. If a port is
 
 ## Current release
 
-The app includes Google/email-link sign-in, a dashboard, a 354-entry expanded course map, 79 **draft** MDX lessons, a section-based player, six virtual apparatus benches and ten foundation projects, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, multi-card concept revision, a visual prerequisite map, an exam-date revision schedule, mixed conceptual/numeric Bridge tests, balanced weekly planning, optional foreground reminders and settings. Unauthored lesson entries are clearly marked and cannot be played.
+The app includes Google/email-link sign-in, a dashboard, a 354-entry expanded course map, 354 **draft** MDX lessons, a section-based player, ten virtual apparatus benches and ten foundation projects, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, multi-card concept revision, a visual prerequisite map, an exam-date revision schedule, mixed conceptual/numeric Bridge tests, balanced weekly planning, optional foreground reminders and settings. Unauthored lesson entries are clearly marked and cannot be played.
 
-The tutor interface and authenticated Worker are implemented but disabled. This repository is not a complete authored or scientifically verified course. Current capability boundaries and remaining work are in [docs/BATCH-RELEASE.md](docs/BATCH-RELEASE.md) and the generated [course ledger](docs/COURSE-STATUS.md); the first integrated release and deployment instructions are recorded in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
+The tutor interface and authenticated Worker are implemented but disabled. All 354 curriculum entries have draft lesson bodies. Independent scientific/source review, pedagogical depth expansion and live-service verification remain incomplete. Current capability boundaries and remaining work are in [docs/CONTINUOUS-AUTHORING-RELEASE.md](docs/CONTINUOUS-AUTHORING-RELEASE.md) and the generated [course ledger](docs/COURSE-STATUS.md); the first integrated release and deployment instructions are recorded in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
 
 ## Verification
 
@@ -51,7 +51,7 @@ An old “Workers Builds: parallax” connection may refer to a deleted Worker. 
 
 `.env.example` lists optional public Firebase overrides. The supplied public Firebase project identifiers work as defaults; they are not secret database authorization. Never put an AI key or service-account credential in source or a `VITE_` variable. All such Vite variables enter the browser bundle. Private environment files are ignored; verify with `git check-ignore .env.local`.
 
-Preferences stay local per account because no concrete cloud profile path has been approved. Progress uses existing user-scoped collections with local pending writes. Export it in Settings. On a shared device, cached data remains in site storage after sign-out; clear site data using your browser when finished. See the release guide for conflict-resolution and offline-cache limits.
+Preferences stay local per account because no concrete cloud profile path has been approved. Progress uses existing user-scoped collections with local pending writes. Export it in Settings. On a shared device, cached data remains in site storage after sign-out; clear site data using your browser when finished. Visited lesson JSON refreshes from the network online and falls back to its saved public copy offline; hashed build assets remain cache-first. See the release guide for conflict-resolution and offline-cache limits.
 
 No billing account or card is required by the intended setup. Confirm current provider quotas and eligibility before activating optional services; do not enable paid upgrades or use shared accounts to bypass eligibility.
 

@@ -1,3 +1,9 @@
+import { LegendreExplorer } from "./LegendreExplorer";
+import { ComplexBranchExplorer } from "./ComplexBranchExplorer";
+import { PdeModesLab } from "./PdeModesLab";
+import { CoupledOscillatorLab } from "./CoupledOscillatorLab";
+import { SphericalFieldLab } from "./SphericalFieldLab";
+import { RadiationLab } from "./RadiationLab";
 import { GasLab } from "./GasLab";
 import { WaveLab } from "./WaveLab";
 import { DoubleSlitLab } from "./DoubleSlitLab";
@@ -7,6 +13,12 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  legendre_explorer: LegendreExplorer,
+  complex_branch_explorer: ComplexBranchExplorer,
+  pde_modes_lab: PdeModesLab,
+  coupled_oscillator_lab: CoupledOscillatorLab,
+  spherical_field_lab: SphericalFieldLab,
+  radiation_lab: RadiationLab,
   gas_lab: GasLab,
   wave_lab: WaveLab,
   double_slit_lab: DoubleSlitLab,

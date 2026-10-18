@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS6.2",
+  "title": "HII regions and nebulae",
+  "hook": "Why does an ionized nebula have a characteristic radius around a hot star?",
+  "recap": [
+    "Ionizations supplied and recombinations.",
+    "n⁻²ᐟ³ in the uniform pure-hydrogen model.",
+    "Leakage, geometry and dust absorption.",
+    "Excitation, abundance and transfer affect them."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does recombination balance depend only on mean density regardless of clumping?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Density products change under clumping.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is case B universal for every nebula?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Optical-depth and photon-recycling assumptions matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can an HII region expand after heating?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Pressure changes drive dynamics.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Radius ratio when Q increases by eight at fixed n?",
+      "answer": "2",
+      "explanation": "R∝Q¹ᐟ³.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Recombination time for α_B n_e=.2?",
+      "answer": "5",
+      "explanation": "1/.2=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why model nebular line ratios?",
+      "answer": "Excitation, abundance and transfer affect them.",
+      "options": [
+        "Excitation, abundance and transfer affect them.",
+        "Ionizations supplied and recombinations."
+      ],
+      "explanation": "Excitation, abundance and transfer affect them.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What balances in the ideal Strömgren sphere?",
+      "back": "Ionizations supplied and recombinations.",
+      "concept": "as6-2-theory"
+    },
+    {
+      "front": "What is the density scaling of radius?",
+      "back": "n⁻²ᐟ³ in the uniform pure-hydrogen model.",
+      "concept": "as6-2-theory"
+    },
+    {
+      "front": "What can let photons bypass the ideal balance?",
+      "back": "Leakage, geometry and dust absorption.",
+      "concept": "as6-2-theory"
+    },
+    {
+      "front": "Why model nebular line ratios?",
+      "back": "Excitation, abundance and transfer affect them.",
+      "concept": "as6-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Draine, Physics of the Interstellar and Intergalactic Medium — edition and exact section verification pending",
+    "Kulsrud, Plasma Physics for Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an ionized nebula have a characteristic radius around a hot star? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Photoionization and recombination balance connects radiation supply to density, while geometry, dust and dynamics limit the ideal sphere.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A simple Strömgren model is a uniform pure-hydrogen static region with an ionizing photon rate Q and a stated case-B recombination coefficient α_B.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Balancing supplied photons with volume recombinations gives $Q=4\pi R_S^3\alpha_Bn_en_p/3$ in the ionization-bounded ideal sphere. For fully ionized pure hydrogen n_e≈n_p≈n. Thus R_S∝Q¹ᐟ³n⁻²ᐟ³. Clumping changes the recombination integral because it depends on density products rather than only an average density.
+
+Case B treats recombinations directly to the ground state through an on-the-spot ionizing-photon approximation. It is not valid for every optically thin or photon-leaking geometry. Dust can absorb ionizing radiation, and density-bounded regions can let photons escape rather than satisfying the full ideal volume balance.
+
+The recombination time scale is approximately 1/(α_B n_e) when the coefficient and density are suitable. Heated gas can expand and drive a front, so a static Strömgren radius is a reference equilibrium scale, not the full time-dependent solution.
+
+Nebular line ratios depend on electron temperature, density, abundances, ionizing spectrum and collisional/radiative processes. Critical densities and optical depths matter. A bright recombination line can constrain ionization under assumptions but is not a direct uncorrected elemental mass measurement.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare recombination balances for a uniform sphere and a supplied two-density clumped model with the same mean density. Separate static balance from expansion and state whether photon escape/dust is included.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Increasing Q by eight at fixed density doubles the ideal radius. Increasing density by eight instead reduces radius by four. With α_B n_e=.2 in inverse-time units, recombination time is 5.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA4.6",
+  "title": "Sturm-Liouville theory",
+  "hook": "Why do different vibration modes become orthogonal even when they overlap in space?",
+  "recap": [
+    "The positive function w multiplying λy.",
+    "The inner-product adjoint identity forces the eigenvalue to equal its conjugate.",
+    "λₙ=(nπ/L)² for positive integers n.",
+    "At singular endpoints, unbounded intervals or incompatible operator domains."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are boundary conditions separate from the operator-domain question?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They are essential to the self-adjoint formulation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does p>0 alone ensure every eigenvalue is positive for arbitrary q?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A negative potential term can shift eigenvalues.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is orthogonality always with unweighted ordinary overlap?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The weight w defines the relevant inner product.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Second Dirichlet eigenvalue for −y″=λy on (0,π)?",
+      "answer": "4",
+      "explanation": "λ₂=2².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "First Dirichlet eigenvalue on (0,π)?",
+      "answer": "1",
+      "explanation": "λ₁=1².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Which step makes distinct eigenfunctions orthogonal?",
+      "answer": "Integration by parts with vanishing boundary form",
+      "options": [
+        "Integration by parts with vanishing boundary form",
+        "Only sketching different numbers of nodes"
+      ],
+      "explanation": "Boundary compatibility eliminates the extra endpoint term.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the regular Sturm–Liouville weight?",
+      "back": "The positive function w multiplying λy.",
+      "concept": "ma4-6-theory"
+    },
+    {
+      "front": "Why are self-adjoint eigenvalues real?",
+      "back": "The inner-product adjoint identity forces the eigenvalue to equal its conjugate.",
+      "concept": "ma4-6-theory"
+    },
+    {
+      "front": "What is the Dirichlet sine spectrum?",
+      "back": "λₙ=(nπ/L)² for positive integers n.",
+      "concept": "ma4-6-theory"
+    },
+    {
+      "front": "When does the regular finite-interval theory need extension?",
+      "back": "At singular endpoints, unbounded intervals or incompatible operator domains.",
+      "concept": "ma4-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do different vibration modes become orthogonal even when they overlap in space? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Sturm–Liouville theory places many separated wave and radial equations into a common self-adjoint framework. Boundary conditions are part of the operator and determine its spectrum.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Integration by parts moves derivatives between two trial modes. If the boundary contributions cancel, different eigenvalues force the weighted overlap to vanish.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A regular Sturm–Liouville problem on a finite interval has −(py′)′+qy=λwy with p>0 and weight w>0, suitably regular real coefficients, and self-adjoint boundary conditions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Use the weighted inner product $\langle u,v\rangle_w=\int_a^b\overline u v\,w\,dx$. Integration by parts gives a boundary form involving p times u and v derivatives. Separated real Dirichlet, Neumann or suitable Robin conditions make this form vanish for two admitted functions. Merely writing a symmetric differential expression without imposing a compatible domain is not enough for self-adjoint spectral conclusions.
+
+For two eigenfunctions with eigenvalues λ and μ, subtract the integrated equations to obtain $(\lambda-\mu)\int_a^b\overline u v\,w\,dx=0$ after boundary cancellation. A similar conjugate argument makes eigenvalues real. Distinct eigenvalues therefore give orthogonal modes in the weighted, not necessarily unweighted, inner product.
+
+For a nonzero admitted real test function, the Rayleigh quotient is the integrated energy form divided by ∫wy², including any boundary contribution appropriate to the stated conditions. With Dirichlet endpoints it is $R[y]=\int[p(y')^2+qy^2]dx/\int wy^2dx$. Positivity of p alone does not force all eigenvalues positive when q can be negative.
+
+For −y″=λy on (0,L) with y(0)=y(L)=0, negative and zero λ yield no nonzero solution satisfying both endpoints. Positive λ gives $y_n=\sin(n\pi x/L)$ and $\lambda_n=(n\pi/L)^2$, n=1,2,... . Their weighted orthogonality here uses w=1. Expansion completeness is a theorem under the regular assumptions; convergence mode must still be specified for a particular expansion.
+
+Singular endpoints, infinite intervals, vanishing coefficients or non-self-adjoint conditions require additional theory. For example a radial problem can need integrability and boundary selection at the origin. A finite-interval sine basis cannot be transplanted to every open-domain physical problem without checking its operator domain.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute the first few modes for Dirichlet and Neumann endpoints and compare the zero-mode possibility. Verify weighted overlaps numerically and by trigonometric identities. Record the boundary form before claiming two eigenfunctions must be orthogonal.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For L=π, the first two Dirichlet eigenvalues are 1 and 4, with eigenfunctions sin x and sin2x. Their overlap integrates to zero on [0,π]. Their squared norms are π/2, so unit-normalized modes multiply by √(2/π).
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.4",
+  "title": "Opacity and radiative transport",
+  "hook": "Why does a photon’s short local path not imply a short escape time from a star?",
+  "recap": [
+    "The path integral of extinction per length.",
+    "High optical depth and suitable local angular/thermal conditions.",
+    "Repeated interactions make transport a random walk.",
+    "An appropriate radiative-transfer treatment."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a Rosseland mean an unqualified arithmetic opacity average?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a weighted harmonic diffusion average.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does radiative diffusion work unchanged at every optically thin surface?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its local near-isotropy approximation fails.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can scattering direction affect transport opacity?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Forward scattering transfers direction differently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Mean free path for κρ=4?",
+      "answer": "0.25",
+      "explanation": "1/4=.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Rough diffusion time for R=2,c=1,ℓ=.25?",
+      "answer": "16",
+      "explanation": "R²/(cℓ)=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must replace diffusion near thin regions?",
+      "answer": "An appropriate radiative-transfer treatment.",
+      "options": [
+        "An appropriate radiative-transfer treatment.",
+        "The path integral of extinction per length."
+      ],
+      "explanation": "An appropriate radiative-transfer treatment.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is optical depth?",
+      "back": "The path integral of extinction per length.",
+      "concept": "as3-4-theory"
+    },
+    {
+      "front": "What supports the diffusion approximation?",
+      "back": "High optical depth and suitable local angular/thermal conditions.",
+      "concept": "as3-4-theory"
+    },
+    {
+      "front": "Why is escape slower than a straight crossing?",
+      "back": "Repeated interactions make transport a random walk.",
+      "concept": "as3-4-theory"
+    },
+    {
+      "front": "What must replace diffusion near thin regions?",
+      "back": "An appropriate radiative-transfer treatment.",
+      "concept": "as3-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a photon’s short local path not imply a short escape time from a star? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Optically thick transport behaves diffusively, and opacity averages must match the physical transport regime.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Opacity per mass κ gives extinction per length κρ. Optical depth is an integral of κρ along a path, with absorption/scattering and spectral conventions stated.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A mean free path is approximately $\ell=1/(\kappa\rho)$ in a homogeneous local model. A random walk over size R takes of order (R/ℓ)² steps, giving a rough diffusion time R²/(cℓ), up to geometry and transport coefficients. This differs from the straight crossing time R/c and assumes a suitable optically thick scattering/interaction picture.
+
+In LTE optically thick radiative diffusion, $F_r=-4acT^3\nabla T/(3\kappa_R\rho)$. Combining spherical luminosity L_r=4πr²F_r gives dT/dr=−3κ_RρL_r/(16πac r²T³). The Rosseland mean is a weighted harmonic opacity average appropriate to diffusion, not a generic arithmetic average over observed spectral lines.
+
+Absorption, emission and scattering must satisfy the model’s energy balance. Electron scattering, free–free, bound–free and lines contribute differently as ionization and composition change. Transport scattering opacities can differ from total scattering if angles are strongly forward peaked.
+
+Near a photosphere or optically thin region the diffusion approximation fails and an angle/frequency-dependent transfer treatment is needed. LTE itself requires sufficient local thermal coupling; radiation and particle temperatures need not coincide everywhere. A grey opacity can be a controlled simplification but cannot reproduce every spectral feature.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use synthetic random walks with a stated step model to compare straight crossing and diffusion scales. Record that this is a transport analogy, not tracked real stellar photons. Test the optical-depth regime before using a diffusion temperature gradient.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For κρ=4 in inverse-length units, the local mean free path is .25. With R=2 and c=1, the rough random-walk escape scale R²/(cℓ)=16, compared with crossing time 2. Numerical factors depend on the geometry and transport definition.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

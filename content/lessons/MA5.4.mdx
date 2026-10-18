@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA5.4",
+  "title": "Heat equation",
+  "hook": "Why does a hot spike smooth out instead of propagating as a sharp wave?",
+  "recap": [
+    "Diffusivity times squared spatial wavenumber.",
+    "For the uniform source-free model with zero net boundary flux.",
+    "2κt.",
+    "κΔt/Δx²≤1/2 for the stated centered scheme."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a zero Dirichlet boundary generally conserve total heat in the interval?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Heat can flow through fixed-temperature boundaries.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Which modes decay faster for constant positive diffusivity?",
+      "options": [
+        "Higher spatial frequencies",
+        "All decay at the same rate"
+      ],
+      "answer": "Higher spatial frequencies",
+      "explanation": "Their decay rate is proportional to squared wavenumber.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does numerical stability alone demonstrate accurate diffusion?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Grid convergence and boundary consistency also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "For L=π and κ=2, what is the n=2 modal decay rate?",
+      "answer": "8",
+      "explanation": "κ(nπ/L)²=2×4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "For κ=1, Δt=.1 and Δx=.5, what is r?",
+      "answer": "0.4",
+      "explanation": "r=.1/.25=.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What changes for variable conductivity?",
+      "answer": "The conductivity stays inside the spatial divergence",
+      "options": [
+        "The conductivity stays inside the spatial divergence",
+        "It can always be replaced by a constant without conditions"
+      ],
+      "explanation": "The flux divergence contains conductivity gradients.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets a heat-mode decay rate?",
+      "back": "Diffusivity times squared spatial wavenumber.",
+      "concept": "ma5-4-theory"
+    },
+    {
+      "front": "When is the interval mean conserved?",
+      "back": "For the uniform source-free model with zero net boundary flux.",
+      "concept": "ma5-4-theory"
+    },
+    {
+      "front": "What is the infinite-line kernel variance?",
+      "back": "2κt.",
+      "concept": "ma5-4-theory"
+    },
+    {
+      "front": "What is the standard 1D explicit diffusion stability bound?",
+      "back": "κΔt/Δx²≤1/2 for the stated centered scheme.",
+      "concept": "ma5-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strauss, Partial Differential Equations: An Introduction — edition and exact section verification pending",
+    "Stein and Shakarchi, Fourier Analysis: An Introduction — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a hot spike smooth out instead of propagating as a sharp wave? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Diffusion models thermal transport and smoothing. Its conservation law, boundary data and numerical stability must match before a temperature animation is meaningful.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Neighbouring regions exchange energy down temperature gradients. Sharp spatial variation drives stronger flux and high-frequency modes decay faster.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The constant-coefficient heat equation uₜ=κuₓₓ has diffusivity κ>0 with dimensions length²/time. It follows from local conservation plus a linear conductive flux in a uniform medium without sources.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Let volumetric heat capacity be constant C and heat flux j=−K uₓ. Conservation C uₜ=−∂ₓj gives $u_t=\kappa u_{xx}$ with κ=K/C. Variable conductivity instead belongs inside the divergence; sources add a source term with consistent heat-capacity scaling. Temperature itself is not generally a conserved integral when heat capacity or boundary exchange varies.
+
+On 0&lt;x&lt;L with fixed zero boundary values, separation u=X(x)T(t) gives X″+λX=0 and T′=−κλT. Nonzero Dirichlet modes are sin(nπx/L) with λₙ=(nπ/L)². For suitable initial data, $u(x,t)=\sum_{n\ge1}b_n\sin(n\pi x/L)e^{-\kappa(n\pi/L)^2t}$. The initial match can be L² even when pointwise compatibility fails at a boundary corner. For positive time the solution smooths under the stated model.
+
+For insulated endpoints, uₓ=0, the constant mode survives and the mean is conserved. With zero Dirichlet boundaries, heat can leave the interval. Integration by parts for a sufficiently regular homogeneous-boundary solution gives $\frac d{dt}\frac12\int u^2dx=-\kappa\int u_x^2dx$ when boundary terms vanish. This dissipates the squared norm; it is not a claim that every point decreases monotonically.
+
+On the infinite line, the fundamental solution is $G(x,t)=(4\pi\kappa t)^{-1/2}\exp[-x^2/(4\kappa t)]$ for t>0. It has unit integral and variance 2κt; convolving with initial data solves the initial-value problem under appropriate hypotheses. The classical equation has nonzero tails arbitrarily far away immediately. This is a continuum diffusion approximation, not a relativistic finite-signal-speed law.
+
+For a uniform spatial grid, forward Euler plus a centered second difference gives uⱼⁿ⁺¹=uⱼⁿ+r(uⱼ₊₁ⁿ−2uⱼⁿ+uⱼ₋₁ⁿ), r=κΔt/Δx². Fourier amplification is 1−4r sin²(θ/2), so the standard one-dimensional linear stability condition is 0≤r≤1/2. Stability alone is not accuracy: refine space/time and check boundaries, conservation where appropriate and convergence. Backward heat recovery amplifies short-scale errors and is ill-conditioned.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Evolve one sine mode and a narrow smooth pulse on a grid with zero endpoints. Compare against the exact single-mode decay; halve Δx while scaling Δt to keep r fixed below 1/2. Then deliberately exceed the stability threshold and label the growing oscillations numerical artifacts. Compare insulated endpoints before interpreting total heat.
+
+<Widget name="pde_modes_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Choose L=π, κ=2 and initial u(x,0)=sin x. The exact solution is sin x·e⁻²ᵗ. At t=(ln2)/2 its amplitude is 1/2. At the same time the n=2 mode has amplitude multiplier e⁻⁸ᵗ=1/16. Different rates explain smoothing.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

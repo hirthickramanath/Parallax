@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA6.4",
+  "title": "Laurent series and singularities",
+  "hook": "How can the same function have different Laurent expansions around the same centre?",
+  "recap": [
+    "Infinitely many nonzero negative-power Laurent coefficients.",
+    "The residue detects only one negative-power coefficient.",
+    "Examine f(1/w) at w=0.",
+    "The differential supplies a Jacobian and orientation sign."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does zero residue prove a singularity removable?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A double pole can have residue zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can one centre support different valid expansions on different annuli?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Singularities separate the annular domains.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does classifying a singularity at infinity use w=1/z?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Infinity becomes the origin in the reciprocal coordinate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Sum of finite residues of 1/[z(1−z)] at 0 and 1?",
+      "answer": "0",
+      "explanation": "The residues are 1 and −1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "exact": true
+    },
+    {
+      "id": "warmup",
+      "prompt": "Pole order of 1/z³ at zero?",
+      "answer": "3",
+      "explanation": "Its largest negative power is z⁻³.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup",
+      "exact": true
+    },
+    {
+      "id": "core",
+      "prompt": "What must accompany every Laurent expansion?",
+      "answer": "Its centre and annulus of convergence",
+      "options": [
+        "Its centre and annulus of convergence",
+        "Only its first coefficient"
+      ],
+      "explanation": "The series represents the function only on its valid annulus.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What classifies an essential isolated singularity?",
+      "back": "Infinitely many nonzero negative-power Laurent coefficients.",
+      "concept": "ma6-4-theory"
+    },
+    {
+      "front": "Why need a zero-residue pole not be removable?",
+      "back": "The residue detects only one negative-power coefficient.",
+      "concept": "ma6-4-theory"
+    },
+    {
+      "front": "How is infinity classified?",
+      "back": "Examine f(1/w) at w=0.",
+      "concept": "ma6-4-theory"
+    },
+    {
+      "front": "Why does the infinity residue require more than substituting 1/w?",
+      "back": "The differential supplies a Jacobian and orientation sign.",
+      "concept": "ma6-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Stein and Shakarchi, Complex Analysis — exact section verification pending",
+    "Ahlfors, Complex Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can the same function have different Laurent expansions around the same centre? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Local singularity structure helps classify response functions and evaluate contour integrals. An expansion is incomplete without its annulus of convergence.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A Laurent series is a local description on a ring. Expanding inward or outward relative to a nearby singularity changes which geometric series is valid.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Laurent expansion ∑aₙ(z−a)ⁿ includes integer powers of both signs and represents a holomorphic function on an annulus. Isolated singularities are classified by the negative-power part near the centre.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If f is holomorphic on r&lt;|z−a|&lt;R, it has a unique Laurent series on that annulus, converging uniformly on compact subannuli. The coefficients satisfy $a_n=(2\pi i)^{-1}\oint f(\zeta)/(\zeta-a)^{n+1}\,d\zeta$ on any admissible positively oriented circle inside the annulus. Different annuli separated by singularities can require different expansions of the same function.
+
+Near an isolated singularity a, no negative powers means a removable singularity; finitely many negative powers with a₋ₘ≠0 means a pole of order m; infinitely many nonzero negative powers means an essential singularity. A bounded holomorphic function on a punctured disk has a removable singularity. A residue of zero does not imply removability: 1/(z−a)² has a double pole but no (z−a)⁻¹ coefficient.
+
+For $f(z)=1/[z(1-z)]$, on 0&lt;|z|&lt;1 the geometric expansion is z⁻¹+1+z+z²+…. For |z|>1, rewrite it as $-z^{-2}(1-z^{-1})^{-1}=-\sum_{j\ge0}z^{-j-2}$. The outer series has no z⁻¹ term. This does not contradict uniqueness because the annuli differ; a circle outside the pole at one encloses contributions from both finite poles.
+
+At zero, e¹ᐟᶻ has infinitely many negative powers and an essential singularity; sin z/z extends holomorphically with value one. Essential singularity theorems describe highly variable local behaviour, but do not make every value attained exactly at every nearby point. When invoking a stronger theorem about exceptional values, state its precise hypotheses and conclusion rather than replacing it with a picture.
+
+To study infinity, set w=1/z and classify f(1/w) at w=0. The residue at infinity includes the differential: $\operatorname{Res}_\infty f=-\operatorname{Res}_{w=0}[f(1/w)/w^2]$. For a meromorphic function on the sphere, the finite residues plus the residue at infinity sum to zero. Confusing the singularity of f at infinity with the residue of f(z)dz misses the Jacobian and sign.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Expand the rational example numerically using inner and outer geometric partial sums at radii .5 and 2. Try each series outside its own convergence domain and record failure. Compare a zero-residue double pole with a removable singularity; a zero contour integral alone cannot distinguish them.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For 1/[z(1−z)] on 0&lt;|z|&lt;1, the residue at zero is 1. At z=1, write 1−z=−(z−1), giving residue −1. A positive circle of radius 2 therefore has total residue 0, in agreement with the outer Laurent series having no z⁻¹ coefficient.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

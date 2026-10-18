@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA9.1",
+  "title": "Euler-Lagrange equation",
+  "hook": "Why does a stationary action need not be the smallest action?",
+  "recap": [
+    "An admissible function or path.",
+    "Endpoint-zero variations.",
+    "d(Lq′)/dt−Lq=0.",
+    "It can alter boundary terms and canonical quantities."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does satisfying Euler–Lagrange automatically prove a minimum?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It establishes stationarity; classification requires more.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do fixed endpoint variations vanish at both endpoints?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "They preserve the specified endpoint values.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does adding a total derivative change the interior fixed-endpoint equations?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It changes only the action boundary contribution under those conditions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Action ∫₀¹q′²/2 dt for q=2t?",
+      "answer": "2",
+      "explanation": "q′=2, so the integrand is 2 over a unit interval.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Constant slope joining q(0)=0 to q(1)=3 over t in [0,1]?",
+      "answer": "3",
+      "explanation": "The endpoint displacement divided by interval length is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Where does the Euler–Lagrange equation come from?",
+      "answer": "Integration by parts plus vanishing first variation for every admitted test function",
+      "options": [
+        "Integration by parts plus vanishing first variation for every admitted test function",
+        "Comparing only two trial paths"
+      ],
+      "explanation": "The full variation class, not a finite trial list, gives the differential equation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is varied in a functional problem?",
+      "back": "An admissible function or path.",
+      "concept": "ma9-1-theory"
+    },
+    {
+      "front": "What removes the boundary term for fixed endpoints?",
+      "back": "Endpoint-zero variations.",
+      "concept": "ma9-1-theory"
+    },
+    {
+      "front": "What is the Euler–Lagrange equation?",
+      "back": "d(Lq′)/dt−Lq=0.",
+      "concept": "ma9-1-theory"
+    },
+    {
+      "front": "Why can a total derivative matter despite unchanged interior motion?",
+      "back": "It can alter boundary terms and canonical quantities.",
+      "concept": "ma9-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Gelfand and Fomin, Calculus of Variations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a stationary action need not be the smallest action? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Variational methods search over functions rather than a finite list of parameters. They derive equations of motion and equilibrium conditions from a functional, but stationarity and minimization are separate questions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Perturb an entire candidate path by a small test function. At a stationary path the first-order functional change vanishes for every allowed perturbation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For S[q]=∫L(t,q,q′)dt with fixed endpoint values, admissible variations q+εη have η zero at both endpoints. A classical derivation assumes enough smoothness to differentiate and integrate by parts.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Differentiate with respect to ε at zero to get $\delta S=\int_a^b(L_q\eta+L_{q'}\eta')dt$. Integration by parts yields $\delta S=[L_{q'}\eta]_a^b+\int_a^b[L_q-d(L_{q'})/dt]\eta\,dt$. Fixed endpoints remove the boundary term. The fundamental lemma says a continuous integrand whose integral against every suitable compactly supported test function vanishes must itself vanish. Thus $d(L_{q'})/dt-L_q=0$.
+
+The same argument holds componentwise for several coordinates. The resulting Euler–Lagrange equation is a necessary stationarity condition under the admitted variation class. It is not sufficient to establish a minimum. The second variation or a more global convexity argument is needed for that classification.
+
+For a free particle L=mq′²/2, the equation is mq″=0, giving a straight path. With fixed endpoints the quadratic kinetic functional is minimized: write q=qstationary+η and the cross term vanishes, leaving a positive integral mη′²/2. This positive result depends on that L; an arbitrary action can have saddle directions.
+
+If an endpoint coordinate is free while endpoint time is fixed, the boundary variation is not zero there and supplies a natural condition, such as Lq′=0 for a free scalar endpoint with no additional boundary functional. Moving endpoint times or constrained endpoint manifolds require a transversality analysis rather than reusing the fixed-endpoint formula.
+
+Adding a total derivative dF(t,q)/dt to L changes the action by an endpoint quantity. For fixed endpoint data it leaves the interior Euler–Lagrange equation unchanged, though canonical momenta and boundary terms can change. Smoothness, endpoint conditions and the admissible class therefore belong to the mathematical problem, not to optional presentation details.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare the action of the straight path with q=2t+εsinπt for several ε. Derive the quadratic excess analytically and compare computed integrals. Then change the endpoint condition and identify the boundary term that the original proof had removed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Minimize ∫₀¹q′²/2 dt with q(0)=0 and q(1)=2. The stationary solution is q=2t and action is 2. For any endpoint-zero perturbation η, action increases by ∫η′²/2, proving the minimum in this admissible class.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

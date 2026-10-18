@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA11.7",
+  "title": "Fibre bundles and gauge connections (intro)",
+  "hook": "Why can local gauge potentials fit together without one global potential formula?",
+  "recap": [
+    "A local base-times-fibre description.",
+    "Compatibility on overlaps, including triple-overlap consistency.",
+    "Parallel-transport comparison between fibres.",
+    "One chart need not describe the whole bundle."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does local product structure prove a bundle globally trivial?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Transition topology can be nontrivial.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an abelian A→A+dχ change local F=dA?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "d²χ=0.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must gauge-coupling/sign conventions be stated?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Connection formulas depend on them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Abelian curvature flux for A=x dy on oriented unit square?",
+      "answer": "1",
+      "explanation": "F=dx∧dy integrates to one.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Change of F under a smooth abelian exact gauge shift?",
+      "answer": "0",
+      "explanation": "d(A+dχ)−dA=d²χ=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why distinguish local potentials and global structure?",
+      "answer": "One chart need not describe the whole bundle.",
+      "options": [
+        "One chart need not describe the whole bundle.",
+        "A local base-times-fibre description."
+      ],
+      "explanation": "One chart need not describe the whole bundle.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a local trivialization?",
+      "back": "A local base-times-fibre description.",
+      "concept": "ma11-7-theory"
+    },
+    {
+      "front": "What constrains transition functions?",
+      "back": "Compatibility on overlaps, including triple-overlap consistency.",
+      "concept": "ma11-7-theory"
+    },
+    {
+      "front": "What does a connection supply?",
+      "back": "Parallel-transport comparison between fibres.",
+      "concept": "ma11-7-theory"
+    },
+    {
+      "front": "Why distinguish local potentials and global structure?",
+      "back": "One chart need not describe the whole bundle.",
+      "concept": "ma11-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Lee, Introduction to Smooth Manifolds — edition and exact section verification pending",
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can local gauge potentials fit together without one global potential formula? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Bundles describe local state spaces and their transition rules; connections compare fibres while curvature measures their local transport structure.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A fibre bundle locally resembles base space times a typical fibre, with compatible transition maps on overlaps. A connection specifies transport/comparison between nearby fibres.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Local trivializations describe the same total bundle over overlapping base patches. Transition functions must satisfy consistency on triple overlaps. A global product structure is an additional property; local product appearance alone does not prove a bundle trivial.
+
+A gauge choice is a local frame/trivialization. With a matrix connection convention, $F=dA+A\wedge A$ is curvature, and a gauge transformation uses the matching inhomogeneous connection term. In an abelian convention the commutator wedge term vanishes, leaving F=dA locally. Factors of coupling/i depend on the physical convention.
+
+Parallel transport along a path gives holonomy, which depends on connection and path and transforms under endpoint frame changes. Closed-loop traces or suitable abelian phase combinations can be gauge invariant. A local potential is not itself a unique directly observed field.
+
+Global flux/topology may require several patches even when the curvature is regular on the base. Quantization statements require the specified bundle and charge/representation assumptions, not only a sketch of a magnetic line. This introduction supplies geometric vocabulary; nonabelian gauge dynamics and topological classifications need the later field theory and topology hypotheses.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use two overlapping patches to describe a simple phase-valued fibre and check overlap consistency. Compare an abelian gauge shift with the curvature flux, then state what additional conventions would be needed for a matrix-valued connection.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For an abelian local potential A=x dy on a unit square, curvature F=dx∧dy has flux 1. Replacing A by A+dχ leaves F unchanged because d²χ=0. Two overlapping descriptions must use a compatible transition rule.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

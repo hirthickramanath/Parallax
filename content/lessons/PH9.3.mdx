@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH9.3",
+  "title": "Time-dependent perturbation theory and Fermi's golden rule",
+  "hook": "Why does a constant transition rate require more than a single coherent two-level system?",
+  "recap": [
+    "A time integral of interaction-picture matrix elements.",
+    "Observation duration and driving profile.",
+    "Weak coupling and a suitable dense spectrum/time regime.",
+    "First-order amplitudes fail when transferred probability is large."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does golden-rule constant rate hold forever in an isolated two-level system?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Coherent oscillations and depletion differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does rate scale with squared matrix element?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It follows from amplitude squared.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must final-state density specify energy versus frequency convention?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Conversion changes factors such as ℏ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Γ/(2π) for ℏ=1,|V|²=2,ρ=3?",
+      "answer": "6",
+      "explanation": "2×3=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Rate ratio after doubling perturbing amplitude?",
+      "answer": "4",
+      "explanation": "Amplitude squared gives four.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why check depletion?",
+      "answer": "First-order amplitudes fail when transferred probability is large.",
+      "options": [
+        "First-order amplitudes fail when transferred probability is large.",
+        "A time integral of interaction-picture matrix elements."
+      ],
+      "explanation": "First-order amplitudes fail when transferred probability is large.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What builds a transition amplitude?",
+      "back": "A time integral of interaction-picture matrix elements.",
+      "concept": "ph9-3-theory"
+    },
+    {
+      "front": "What sets finite-time resonance width?",
+      "back": "Observation duration and driving profile.",
+      "concept": "ph9-3-theory"
+    },
+    {
+      "front": "What enables a golden-rule rate window?",
+      "back": "Weak coupling and a suitable dense spectrum/time regime.",
+      "concept": "ph9-3-theory"
+    },
+    {
+      "front": "Why check depletion?",
+      "back": "First-order amplitudes fail when transferred probability is large.",
+      "concept": "ph9-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a constant transition rate require more than a single coherent two-level system? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Time-dependent perturbation connects driven amplitudes to continuum rates under limited-time, weak-coupling assumptions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+First-order transition amplitudes integrate the interaction-picture perturbation; Fermi’s golden rule approximates suitable transitions into a dense spectrum.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For initial n, $c_m^{(1)}(t)=-(i/\hbar)\int_0^t e^{i\omega_{mn}t'}V_{mn}(t')dt'$ with ω_mn=(E_m−E_n)/ℏ in the stated convention. Probability is the squared amplitude only to the consistent perturbative order; normalization errors grow if transition probabilities cease to be small.
+
+For harmonic driving, finite-time integrals give resonance envelopes with a width tied to observation duration. An isolated resonant two-level system can exhibit coherent Rabi oscillations and saturation, not an irreversible constant rate forever.
+
+A continuum long-enough-time and weak-coupling approximation gives $\Gamma=(2\pi/\hbar)|V|^2\rho(E)$ with a density of final states per energy and the relevant matching condition. Very short times, finite recurrences, broad variation of matrix elements and depletion can invalidate it.
+
+Selection rules constrain matrix elements of the actual interaction operator. Experimental rates include populations, linewidths and environment; a formally allowed transition can be weak. Keep peak/RMS driving conventions and energy/frequency density conversions explicit.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare the exact driven two-level population with a short-time perturbative calculation. Separately model a dense final spectrum and identify the time window in which a rate approximation is plausible.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With ℏ=1, |V|²=2 and energy-state density 3, golden-rule Γ divided by 2π is 6. Doubling the perturbation amplitude at fixed admitted conditions multiplies the rate by four, not two.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

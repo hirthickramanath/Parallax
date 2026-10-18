@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH14.1",
+  "title": "Crystal structure and diffraction",
+  "hook": "Why can sharp diffraction peaks reveal periodic order without imaging every atom?",
+  "recap": [
+    "Translation-periodic constructive scattering.",
+    "A basis-weighted complex scattering sum.",
+    "Finite size, strain, disorder and response.",
+    "Limited reciprocal data can be degenerate."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a lattice alone the complete crystal basis?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Constituent positions inside the cell also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can structure factors suppress otherwise permitted peaks?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Basis amplitudes interfere.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are θ and 2θ interchangeable in Bragg’s formula?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The angle convention matters.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "sinθ for d=1,λ=1,n=1?",
+      "answer": "0.5",
+      "explanation": "λ/(2d)=.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Displayed 2θ in degrees if θ=30°?",
+      "answer": "60",
+      "explanation": "2×30=60.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify structural identification?",
+      "answer": "Limited reciprocal data can be degenerate.",
+      "options": [
+        "Limited reciprocal data can be degenerate.",
+        "Translation-periodic constructive scattering."
+      ],
+      "explanation": "Limited reciprocal data can be degenerate.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines reciprocal phase matching?",
+      "back": "Translation-periodic constructive scattering.",
+      "concept": "ph14-1-theory"
+    },
+    {
+      "front": "What is a structure factor?",
+      "back": "A basis-weighted complex scattering sum.",
+      "concept": "ph14-1-theory"
+    },
+    {
+      "front": "What broadens ideal peaks?",
+      "back": "Finite size, strain, disorder and response.",
+      "concept": "ph14-1-theory"
+    },
+    {
+      "front": "Why qualify structural identification?",
+      "back": "Limited reciprocal data can be degenerate.",
+      "concept": "ph14-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ashcroft and Mermin, Solid State Physics — edition and exact section verification pending",
+    "Kittel, Introduction to Solid State Physics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can sharp diffraction peaks reveal periodic order without imaging every atom? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Crystal structure combines a translation lattice with a basis, and scattering intensities depend on both.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Bravais lattice specifies translations; a crystal basis attaches constituents. Reciprocal vectors encode periodic phase matching.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Constructive elastic scattering from lattice translations requires momentum transfer equal to a reciprocal lattice vector under the ideal periodic model. A plane-spacing form is $2d\sin\theta=n\lambda$, with θ the half-scattering-angle convention. Different conventions for the instrument’s displayed 2θ must not be mixed.
+
+A structure factor sums basis amplitudes with relative phases. Some reciprocal-lattice peaks vanish by basis interference even though translation periodicity permits them. Atomic form factors, thermal motion and instrument geometry affect intensities.
+
+Finite size, disorder and strain broaden peaks; powder averaging loses orientation information. Multiple structures can share limited peak positions, so identification needs intensity and chemical/context constraints. A unit cell choice is not a unique physical atom arrangement by itself.
+
+Real-space defects and nonperiodic materials require correlation-based descriptions beyond a perfect infinite lattice. Reciprocal-space patterns are transformed, response-weighted observations rather than literal photographs of point atoms.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute a synthetic one-dimensional lattice structure factor with one- and two-site bases. Compare allowed reciprocal locations with destructive basis interference and label the model, not a measured crystal.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For d=1,λ=1 and first order n=1, sinθ=.5 so θ=30°. The instrument angle 2θ would be 60°. Confusing them changes inferred spacing.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

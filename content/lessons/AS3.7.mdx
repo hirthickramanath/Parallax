@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.7",
+  "title": "Stellar atmospheres and spectra",
+  "hook": "Why does a spectral absorption line not directly reveal the amount of one element?",
+  "recap": [
+    "F=σ_SB T_eff⁴.",
+    "Thermal Bν under the stated local assumptions.",
+    "Excitation, ionization, opacity, broadening and atmospheric structure.",
+    "Calibration, atomic/model assumptions, provenance and uncertainties."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is effective temperature necessarily every atmosphere layer’s gas temperature?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is defined by integrated emergent flux.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does line depth alone directly count elemental abundance?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Population, saturation and transfer affect it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can limb angle change the sampled atmospheric layers?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The optical-depth path depends on viewing angle.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Luminosity ratio after doubling T_eff at fixed radius?",
+      "answer": "16",
+      "explanation": "L∝T_eff⁴.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Luminosity ratio after doubling radius at fixed T_eff?",
+      "answer": "4",
+      "explanation": "L∝R².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must actual spectral analyses retain?",
+      "answer": "Calibration, atomic/model assumptions, provenance and uncertainties.",
+      "options": [
+        "Calibration, atomic/model assumptions, provenance and uncertainties.",
+        "F=σ_SB T_eff⁴."
+      ],
+      "explanation": "Calibration, atomic/model assumptions, provenance and uncertainties.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines T_eff?",
+      "back": "F=σ_SB T_eff⁴.",
+      "concept": "as3-7-theory"
+    },
+    {
+      "front": "What does LTE permit for the source function?",
+      "back": "Thermal Bν under the stated local assumptions.",
+      "concept": "as3-7-theory"
+    },
+    {
+      "front": "What complicates abundance inference?",
+      "back": "Excitation, ionization, opacity, broadening and atmospheric structure.",
+      "concept": "as3-7-theory"
+    },
+    {
+      "front": "What must actual spectral analyses retain?",
+      "back": "Calibration, atomic/model assumptions, provenance and uncertainties.",
+      "concept": "as3-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a spectral absorption line not directly reveal the amount of one element? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Line formation couples atmospheric structure, atomic populations and radiative transfer, creating degeneracies that require calibrated models.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A stellar atmosphere model relates temperature, density, composition and radiation to emergent intensity; effective temperature is defined through total flux, not every local gas temperature.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a plane-parallel static LTE atmosphere, the source function equals Bν(T) when the relevant thermal assumptions hold, and transfer along optical depth gives the emergent intensity as a weighted integral. The Eddington–Barbier approximation relates Iν(0,μ) to a source value around τν≈μ for a sufficiently smooth source, not a delta-function formation depth.
+
+Effective temperature satisfies $F=\sigma_{SB}T_{eff}^4$ and L=4πR²F for a spherical radiating surface. A colour temperature or fitted line-excitation temperature need not equal T_eff when opacity, reddening and nonequilibrium effects matter. Limb darkening arises because different angles sample different source-function layers in a stratified atmosphere.
+
+Boltzmann excitation and Saha ionization give level populations only in the appropriate LTE regime with electron density, temperature and partition functions. A line strength also depends on oscillator strength, broadening, saturation and radiative transfer. Equivalent width can increase nonlinearly with abundance; the curve of growth separates regimes under model assumptions.
+
+Non-LTE, 3D motion, magnetic splitting, blends and instrumental response can bias a simplistic abundance fit. Continuum placement and extinction require uncertainties. A spectral match is an inference conditional on an atmosphere/atomic-data model, not a direct count of atoms from one dark pixel. Retain provenance for actual spectra; the lesson provides no new measured stellar observations.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare synthetic continuum spectra with a stated line-opacity perturbation. Compute equivalent width relative to an explicitly chosen continuum, then vary broadening and abundance separately. Do not interpret the same fitted spectrum as an independent validation dataset.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If effective temperature doubles at fixed radius, luminosity increases by 16. If radius doubles at fixed effective temperature, luminosity increases by four. Neither ratio implies that a selected absorption-line depth scales by the same factor.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH12.6",
+  "title": "Laser cooling and Bose-Einstein condensation",
+  "hook": "Why does cooling atoms with light require considering both friction and random recoil?",
+  "recap": [
+    "Momentum diffusion and other heating.",
+    "Level structure and cooling mechanisms differ.",
+    "Selective loss plus rethermalizing collisions.",
+    "Phase-space density with the specified geometry/statistics."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does friction without recoil noise determine a laser-cooled equilibrium temperature?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Diffusion/heating also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is molasses alone automatically a position trap?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Damping and restoring forces differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does low temperature alone guarantee condensation at arbitrary density?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Phase-space density and geometry matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Damping force for α=3,v=2?",
+      "answer": "-6",
+      "explanation": "−αv=−6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ideal T_D for ℏΓ/k_B=8?",
+      "answer": "4",
+      "explanation": "Divide by two.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What diagnoses ideal boson degeneracy?",
+      "answer": "Phase-space density with the specified geometry/statistics.",
+      "options": [
+        "Phase-space density with the specified geometry/statistics.",
+        "Momentum diffusion and other heating."
+      ],
+      "explanation": "Phase-space density with the specified geometry/statistics.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What competes with optical friction?",
+      "back": "Momentum diffusion and other heating.",
+      "concept": "ph12-6-theory"
+    },
+    {
+      "front": "Why qualify Doppler limits?",
+      "back": "Level structure and cooling mechanisms differ.",
+      "concept": "ph12-6-theory"
+    },
+    {
+      "front": "What does evaporation require?",
+      "back": "Selective loss plus rethermalizing collisions.",
+      "concept": "ph12-6-theory"
+    },
+    {
+      "front": "What diagnoses ideal boson degeneracy?",
+      "back": "Phase-space density with the specified geometry/statistics.",
+      "concept": "ph12-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Foot, Atomic Physics — edition and exact section verification pending",
+    "Townes and Schawlow, Microwave Spectroscopy — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does cooling atoms with light require considering both friction and random recoil? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Laser cooling balances average forces and diffusion, while Bose condensation adds quantum-statistical constraints beyond low mean kinetic energy.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Laser cooling uses velocity/position-dependent optical forces under a specified level and beam model; momentum diffusion limits simple friction-only predictions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In a low-velocity linearized model the mean force can be $F\approx-\alpha v$. Absorption and spontaneous-emission recoils cause fluctuations, so deterministic damping alone cannot determine the final temperature. The equilibrium follows the relevant friction/diffusion balance when that description applies.
+
+The elementary Doppler temperature scale is ℏΓ/(2k_B) for the ideal two-level cooling setting, with Γ convention as an angular decay rate. Multilevel sub-Doppler mechanisms, recoil and trapping dynamics change attainable limits. It is not a universal minimum temperature for every optical technique.
+
+A magneto-optical trap combines restoring and damping mechanisms with field gradients and polarization; optical molasses alone is not automatically a spatial trap. Evaporative cooling can further lower temperature by selectively losing high-energy atoms and rethermalizing through collisions.
+
+An ideal uniform three-dimensional boson condensation criterion involves nλ_T³ exceeding the appropriate threshold, with λ_T=h/√(2πmk_BT). Traps, finite size and interactions change quantitative conditions. Condensation, coherence and superfluidity are related but distinct, and loss/heating must be included in actual experiments.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare a synthetic deterministic damping trajectory with a noise-driven thermal distribution. State the stochastic convention and fluctuation model. Distinguish trapped-atom density from a criterion based only on temperature.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For force coefficient α=3 and velocity v=2, damping force is −6. If ℏΓ/k_B=8 in the ideal Doppler model, T_D=4. Neither value accounts for a full multilevel apparatus or establishes achieved experimental temperature.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

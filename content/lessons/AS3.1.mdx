@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS3.1",
+  "title": "Hydrostatic equilibrium and the virial theorem",
+  "hook": "Why does a star heat up when it loses energy and contracts?",
+  "recap": [
+    "Its pressure gradient balances gravity under the model assumptions.",
+    "E=W/2=−U for the specified nonrelativistic ideal regime.",
+    "Approximately √(R³/(GM)).",
+    "The constraints and self-gravitating ensemble differ from a fixed-volume canonical gas."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does hydrostatic balance imply thermal equilibrium?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Slow energy and composition evolution can continue.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can an ideal self-gravitating configuration heat while losing total energy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Contraction changes its binding and internal energy.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May surface terms always be ignored in virial arguments?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Confinement and external pressure can matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Internal U for W=−20 with 2U+W=0?",
+      "answer": "10",
+      "explanation": "U=−W/2=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Total E for that same configuration?",
+      "answer": "-10",
+      "explanation": "U+W=−10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify negative heat-capacity language?",
+      "answer": "The constraints and self-gravitating ensemble differ from a fixed-volume canonical gas.",
+      "options": [
+        "The constraints and self-gravitating ensemble differ from a fixed-volume canonical gas.",
+        "Its pressure gradient balances gravity under the model assumptions."
+      ],
+      "explanation": "The constraints and self-gravitating ensemble differ from a fixed-volume canonical gas.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What supports a hydrostatic star?",
+      "back": "Its pressure gradient balances gravity under the model assumptions.",
+      "concept": "as3-1-theory"
+    },
+    {
+      "front": "What is the ideal virial total energy?",
+      "back": "E=W/2=−U for the specified nonrelativistic ideal regime.",
+      "concept": "as3-1-theory"
+    },
+    {
+      "front": "What sets the dynamical time scale?",
+      "back": "Approximately √(R³/(GM)).",
+      "concept": "as3-1-theory"
+    },
+    {
+      "front": "Why qualify negative heat-capacity language?",
+      "back": "The constraints and self-gravitating ensemble differ from a fixed-volume canonical gas.",
+      "concept": "as3-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a star heat up when it loses energy and contracts? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Hydrostatic balance and the virial theorem explain gravitational confinement without implying that every star is static or an ideal gas.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a spherical nonrotating Newtonian star in hydrostatic equilibrium, dp/dr=−Gm(r)ρ/r² and dm/dr=4πr²ρ.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Integrating local gravity and pressure forces yields $dp/dr=-Gm\rho/r^2$. Pressure decreases outward while its gradient supports the fluid; the star does not need an outward force called heat separate from pressure. Rotation, magnetic stress, dynamical acceleration and general relativity modify this equation.
+
+For an isolated stationary configuration with negligible surface pressure and the appropriate kinetic/internal-energy bookkeeping, the scalar virial relation is 2K+W=0 for nonrelativistic particles with inverse-distance gravity. More generally pressure integrals, surface terms, bulk motion and additional stresses enter. For an ideal monatomic gas, thermal U=K and total E=U+W=W/2=−U.
+
+In that ideal regime, losing total energy makes E more negative and U larger: contraction can heat the star. This negative effective gravothermal response is not the fixed-volume canonical heat capacity of a gas in a rigid box. Nuclear energy, ionization, degeneracy and radiation pressure can alter the relation between temperature and contraction.
+
+Hydrostatic balance is an instantaneous structural approximation when the evolution time is long compared with the dynamical time $t_{dyn}\sim\sqrt{R^3/(GM)}$. It does not ensure thermal equilibrium or nuclear stability. A model can be hydrostatic while slowly contracting or changing composition; violent collapse requires acceleration rather than a hydrostatic shortcut.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct a uniform-density Newtonian sphere and integrate its pressure gradient with a stated surface pressure. Separately compare virial initial/final energy budgets. Identify where radiation, degeneracy or a rapid collapse invalidates the ideal-gas relation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For an ideal virialized configuration with W=−20 in energy units, U=10 and total E=−10. If it loses total energy 2 and re-equilibrates in the same regime, E=−12 and U=12. The heating follows a changed gravitational configuration, not energy creation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

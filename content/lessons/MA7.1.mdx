@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA7.1",
+  "title": "Gamma and beta functions",
+  "hook": "What does a factorial become when its argument is not an integer?",
+  "recap": [
+    "Γ(z+1)=zΓ(z), with continuation interpreted appropriately.",
+    "√π.",
+    "B(a,b)=Γ(a)Γ(b)/Γ(a+b) in its defining domain and by continuation where appropriate.",
+    "The ratio to the stated leading expression tends to one in the specified regime."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is Γ(n) equal to n! for a positive integer n?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Γ(n)=(n−1)!.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does meromorphic continuation make the defining gamma integral converge at negative integers?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The original integral domain and continued function are different.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a formal beta normalization guarantee a probability density outside positive real shape parameters?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Positivity and integrability must both hold.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Value of Γ(5)?",
+      "answer": "24",
+      "explanation": "Γ(5)=4!=24.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Value of B(2,3)?",
+      "answer": "0.08333333333333333",
+      "explanation": "The gamma ratio gives 1!2!/4!=1/12.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What justifies the beta–gamma change of variables?",
+      "answer": "Absolute integrability in the stated parameter domain and the Jacobian",
+      "options": [
+        "Absolute integrability in the stated parameter domain and the Jacobian",
+        "Only a resemblance between symbols"
+      ],
+      "explanation": "Endpoint convergence and the area factor are essential.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "State gamma recurrence.",
+      "back": "Γ(z+1)=zΓ(z), with continuation interpreted appropriately.",
+      "concept": "ma7-1-theory"
+    },
+    {
+      "front": "What is Γ(1/2)?",
+      "back": "√π.",
+      "concept": "ma7-1-theory"
+    },
+    {
+      "front": "What is the beta–gamma identity?",
+      "back": "B(a,b)=Γ(a)Γ(b)/Γ(a+b) in its defining domain and by continuation where appropriate.",
+      "concept": "ma7-1-theory"
+    },
+    {
+      "front": "What does Stirling equivalence mean?",
+      "back": "The ratio to the stated leading expression tends to one in the specified regime.",
+      "concept": "ma7-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NIST Digital Library of Mathematical Functions — exact section mapping and independent verification pending",
+    "Bender and Orszag, Advanced Mathematical Methods for Scientists and Engineers — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+What does a factorial become when its argument is not an integer? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Gamma and beta integrals appear in normalized distributions, dimensional integrals and radiation calculations. Their domains and normalization determine which formal manipulations are valid.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A weighted area under an exponential curve interpolates factorial values. A change of variables separates a two-variable positive integral into an overall scale and a fractional share.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For Re z>0 define Γ(z)=∫₀∞tᶻ⁻¹e⁻ᵗdt using the real logarithm of positive t. For Re a,Re b>0 define B(a,b)=∫₀¹tᵃ⁻¹(1−t)ᵇ⁻¹dt.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Near zero the gamma integrand behaves as tᶻ⁻¹, so Re z>0 controls convergence there; the exponential controls the positive-real tail. Integration by parts, with vanishing endpoint terms in this half-plane, yields $\Gamma(z+1)=z\Gamma(z)$. Since Γ(1)=1, Γ(n+1)=n! for nonnegative integers n. Thus Γ(n)=(n−1)!, not n!.
+
+The Gaussian integral follows by squaring ∫e⁻ˣ²dx on the line and using polar coordinates in the plane. It gives $\Gamma(1/2)=\sqrt\pi$ after t=x² on the positive half-line. Recurrence then gives Γ(3/2)=√π/2 and Γ(5/2)=3√π/4. Justify changes of order for these nonnegative or absolutely integrable expressions; not every oscillatory double integral permits the same interchange.
+
+For Re a,Re b>0, write Γ(a)Γ(b) as a double integral on positive variables x,y. Set r=x+y and t=x/(x+y); the Jacobian is r. The integrand factors into rᵃ⁺ᵇ⁻¹e⁻ʳ and tᵃ⁻¹(1−t)ᵇ⁻¹. Therefore $B(a,b)=\Gamma(a)\Gamma(b)/\Gamma(a+b)$. For a,b positive real, this also supplies the normalization of a beta density. Outside those original integral domains, a continued formula need not equal a convergent defining integral.
+
+Recurrence extends Γ meromorphically with simple poles at zero and the negative integers; it does not make the original positive-axis integral converge there. The reflection identity $\Gamma(z)\Gamma(1-z)=\pi/\sin(\pi z)$ holds away from integer singularities with the usual meromorphic interpretation. Near an integer where individual factors are singular, evaluate a justified limit rather than substituting an undefined infinity into algebra.
+
+For large positive x, Stirling’s leading form is $\Gamma(x+1)\sim\sqrt{2\pi x}(x/e)^x$. The ratio tends to one, not equality at finite x. Logarithmic evaluation avoids overflow for large factorials; log Γ is often the appropriate numerical object. Asymptotic corrections require a stated regime and remainder control. A symbolic extension of a normalization constant does not guarantee a positive, integrable probability density outside its parameter domain.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Numerically integrate beta kernels for several positive a,b and compare the gamma-ratio normalization. Increase resolution near endpoints when either parameter is below one. Then set a=0 and examine truncated lower limits tending to zero: distinguish divergence of the integral from formal analytic continuation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Use B(2,3)=Γ(2)Γ(3)/Γ(5)=1!·2!/4!=1/12. Direct integration gives ∫₀¹t(1−t)²dt=1/2−2/3+1/4=1/12. Also Γ(5)=4!=24. Both routes test the factorial index shift.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

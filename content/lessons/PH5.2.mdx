@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH5.2",
+  "title": "EM energy, Poynting vector and momentum",
+  "hook": "Where does energy travel when a battery powers a resistor?",
+  "recap": [
+    "ε₀E²/2+B²/(2μ₀).",
+    "J·E per unit volume.",
+    "S/c².",
+    "Dispersion, loss and material energy must be included."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does Poynting’s theorem include power transferred to matter?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Its source term is −J·E for field energy.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are peak and RMS electric amplitudes interchangeable in intensity formulas?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Their squares differ by two for a sine wave.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is every local nonzero Poynting vector outward radiation at infinity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Near fields can have reversible or circulating flux.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Absorption pressure for I=6,c=2 in consistent units?",
+      "answer": "3",
+      "explanation": "I/c=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ideal normal-reflection pressure with the same values?",
+      "answer": "6",
+      "explanation": "2I/c=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify energy formulas in matter?",
+      "answer": "Dispersion, loss and material energy must be included.",
+      "options": [
+        "Dispersion, loss and material energy must be included.",
+        "ε₀E²/2+B²/(2μ₀)."
+      ],
+      "explanation": "Dispersion, loss and material energy must be included.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is vacuum field energy density?",
+      "back": "ε₀E²/2+B²/(2μ₀).",
+      "concept": "ph5-2-theory"
+    },
+    {
+      "front": "What is field power delivered to matter?",
+      "back": "J·E per unit volume.",
+      "concept": "ph5-2-theory"
+    },
+    {
+      "front": "What is vacuum momentum density?",
+      "back": "S/c².",
+      "concept": "ph5-2-theory"
+    },
+    {
+      "front": "Why qualify energy formulas in matter?",
+      "back": "Dispersion, loss and material energy must be included.",
+      "concept": "ph5-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths, Introduction to Electrodynamics — edition and exact section verification pending",
+    "Jackson, Classical Electrodynamics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Where does energy travel when a battery powers a resistor? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Field energy and flux account for transfer through space rather than attributing all energy transport to a mental picture of drifting charges alone.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In vacuum SI, field energy density is u=ε₀E²/2+B²/(2μ₀), and the Poynting vector is S=E×B/μ₀.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Dot Ampère–Maxwell with E and Faraday with B/μ₀. A vector identity combines the curl terms into a divergence, giving $\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E$. The right side is power delivered by fields to matter per volume. Integrating yields stored-energy change plus outward boundary flux equal to negative work on matter inside.
+
+For a uniform vacuum plane wave, E and B are transverse, B=E/c in magnitude and energy is split equally between electric and magnetic terms. For sinusoidal peak electric amplitude E₀, $\langle S\rangle=\epsilon_0cE_0^2/2$. RMS and peak amplitudes differ by √2; mixing their conventions changes the intensity by a factor of two.
+
+Vacuum momentum density is g=S/c². The Maxwell stress tensor represents field momentum flux and forces through boundary surfaces. For normal absorption of a plane beam, pressure is I/c; for ideal normal reflection it is 2I/c, including the reversed photon/field momentum. Oblique incidence and transmission need the full geometry and momentum balance.
+
+In matter, the division of energy and momentum between fields and material response depends on the constitutive model. A simple εE²/2 expression is not generally adequate for dispersive or lossy media. Account for mechanical energy, heat, polarization and magnetization rather than interpreting an isolated field term as a complete conservation law. Near-field power flow can circulate locally without being net radiation to infinity.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw a closed surface around an ideal resistor and use the integrated Poynting theorem to relate inward field flux to heating. For a plane wave compare peak and RMS amplitude calculations. Treat a field diagram as a model calculation, not a measurement of energy trajectories.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In normalized units c=2, a normally absorbed intensity I=6 gives radiation pressure 3. Perfect normal reflection gives 6. If field energy inside a volume is constant and net inward Poynting flux is 10 W, the matter can receive 10 W through J·E.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

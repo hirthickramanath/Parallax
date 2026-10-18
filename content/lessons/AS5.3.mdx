@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS5.3",
+  "title": "X-ray binaries and gamma-ray bursts",
+  "hook": "Why can two compact sources with similar luminosities have very different spectra and time variability?",
+  "recap": [
+    "Accretion onto a compact object.",
+    "A material surface versus horizon and their associated energy release.",
+    "The energy inferred under an isotropic emission assumption.",
+    "Duration, environment and emission geometry can be degenerate."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is burst duration alone a perfect progenitor classifier?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Channels and observational conditions overlap.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is isotropic-equivalent energy necessarily the actual total emitted energy?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Emission can be beamed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a variability size estimate depend on motion and redshift?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Arrival times transform.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Luminosity for η=.1,dotM=2,c²=10?",
+      "answer": "2",
+      "explanation": ".1×2×10=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Beaming-corrected energy for E_iso=100,f_b=.02?",
+      "answer": "2",
+      "explanation": "100×.02=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify transient classifications?",
+      "answer": "Duration, environment and emission geometry can be degenerate.",
+      "options": [
+        "Duration, environment and emission geometry can be degenerate.",
+        "Accretion onto a compact object."
+      ],
+      "explanation": "Duration, environment and emission geometry can be degenerate.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What powers many X-ray binaries?",
+      "back": "Accretion onto a compact object.",
+      "concept": "as5-3-theory"
+    },
+    {
+      "front": "What distinguishes compact-object boundaries?",
+      "back": "A material surface versus horizon and their associated energy release.",
+      "concept": "as5-3-theory"
+    },
+    {
+      "front": "What is E_iso?",
+      "back": "The energy inferred under an isotropic emission assumption.",
+      "concept": "as5-3-theory"
+    },
+    {
+      "front": "Why qualify transient classifications?",
+      "back": "Duration, environment and emission geometry can be degenerate.",
+      "concept": "as5-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two compact sources with similar luminosities have very different spectra and time variability? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Accretion states, relativistic outflows and emission geometry connect compact binaries and gamma-ray bursts without identifying each source from one band alone.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An X-ray binary contains a compact accretor with a companion; a gamma-ray burst is a transient phenomenological class with multiple physical channels and beaming-dependent energetics.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Accretion luminosity can be parameterized $L=\eta\dot Mc^2$, but the partition among disc, hot plasma, surface/boundary emission and jets depends on state and accretor. A neutron-star surface and a black-hole horizon impose different boundary physics; spectral similarities do not erase those differences.
+
+Short variability suggests a causally connected scale roughly R≲cΔt in a simple nonrelativistic source, modified by Doppler factor, geometry and cosmological time dilation. It is a conditional scale constraint, not exact imaging. Absorption and reprocessing can change observed timing and colours.
+
+Gamma-ray burst prompt spectra, afterglows and host context constrain relativistic outflows. Duration classes correlate with channels but are not perfect progenitor labels. Isotropic-equivalent energy assumes emission over 4π; a beaming correction needs a jet geometry and can be uncertain.
+
+High compactness can make pair-production opacity important, motivating relativistic source models under stated spectral assumptions. Shock microphysics, magnetic reconnection and radiation efficiencies remain model dependent. Do not infer a unique compact-object mass, progenitor or radiative process solely from a bright transient light curve.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare synthetic light curves with the same integrated energy but different durations. Calculate isotropic-equivalent and beaming-corrected energies separately and list the information needed to choose a beaming fraction.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With η=.1,dotM=2,c²=10 in consistent units, luminosity is 2. A burst with isotropic-equivalent energy 100 and a supplied beaming fraction .02 has corrected model energy 2; that fraction is an assumed geometric input, not measured by the arithmetic.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

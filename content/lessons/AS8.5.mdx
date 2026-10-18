@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS8.5",
+  "title": "Galaxy formation and mergers",
+  "hook": "Why can two galaxies merge while individual stellar collisions remain rare?",
+  "recap": [
+    "Gravitational interaction with a wake under a stated approximation.",
+    "Dissipation, shocks and cooling.",
+    "Orbit, mass ratio, gas and internal structures.",
+    "Unresolved processes are modeled and require independent checks."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does galaxy merging require frequent direct stellar collisions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Collective gravitational forces redistribute orbits.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can radiative gas loss differ from collisionless stellar dynamics?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Gas dissipates and shocks.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a calibrated subgrid model independently validated by its calibration target?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Independent tests are still needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Snapshot depletion time for gas mass 12 and SFR 3?",
+      "answer": "4",
+      "explanation": "12/3=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Net gas loss rate with consumption 3 and matching inflow 3, ignoring other terms?",
+      "answer": "0",
+      "explanation": "3−3=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify subgrid conclusions?",
+      "answer": "Unresolved processes are modeled and require independent checks.",
+      "options": [
+        "Unresolved processes are modeled and require independent checks.",
+        "Gravitational interaction with a wake under a stated approximation."
+      ],
+      "explanation": "Unresolved processes are modeled and require independent checks.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What causes dynamical friction?",
+      "back": "Gravitational interaction with a wake under a stated approximation.",
+      "concept": "as8-5-theory"
+    },
+    {
+      "front": "What differentiates gas in mergers?",
+      "back": "Dissipation, shocks and cooling.",
+      "concept": "as8-5-theory"
+    },
+    {
+      "front": "What controls merger outcomes?",
+      "back": "Orbit, mass ratio, gas and internal structures.",
+      "concept": "as8-5-theory"
+    },
+    {
+      "front": "Why qualify subgrid conclusions?",
+      "back": "Unresolved processes are modeled and require independent checks.",
+      "concept": "as8-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Binney and Tremaine, Galactic Dynamics — edition and exact section verification pending",
+    "Mo, van den Bosch and White, Galaxy Formation and Evolution — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two galaxies merge while individual stellar collisions remain rare? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Large-scale gravity redistributes orbital energy and angular momentum through collective effects, while gas adds dissipative physics.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Galaxy formation couples dark-matter assembly, baryonic cooling, star formation and feedback. A merger is a collective dynamical interaction rather than a collision of every constituent star.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Gravitational encounters perturb orbits over large scales even when stellar physical cross sections are small. Dynamical friction transfers momentum/energy to a gravitational wake under its approximation, not ordinary material rubbing. Tidal forces can strip outer matter and create streams.
+
+Gas can shock, radiate and lose energy, unlike collisionless stars and dark matter. Cooling permits contraction when time scales allow, while feedback from stars and accreting black holes can heat or expel material. A simple gas consumption time is $t_{dep}=M_{gas}/\dot M_*$, conditional on a snapshot rate and no replenishment/outflow changes.
+
+Merger outcomes depend on mass ratio, orbit, gas fraction and internal structure. Angular momentum redistribution can fuel central activity or change morphology, but not every merger produces the same burst or remnant. Secular evolution also changes galaxies without a major merger.
+
+Cosmological simulations use sub-resolution prescriptions where stellar/black-hole processes are unresolved. Agreement with one calibrated relation is not independent proof of every feedback mechanism. Compare resolutions, conservation budgets and multiple observables with selection and uncertainty before claiming a unique assembly history.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare a collisionless toy encounter with a dissipative gas prescription and record which physics is actually represented. For a synthetic gas budget include inflow, star formation and outflow explicitly rather than using a depletion ratio as a full evolution equation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For gas mass 12 and star-formation rate 3 in compatible units, the snapshot depletion time is 4. If gas inflow balances consumption, that simple depletion estimate does not mean the reservoir disappears after four time units.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH12.4",
+  "title": "Molecular structure and spectra",
+  "hook": "Why does a molecular spectrum contain separate rotational and vibrational scales?",
+  "recap": [
+    "Moment of inertia and J(J+1).",
+    "Local curvature and reduced mass.",
+    "Electronic/nuclear coupling can invalidate separation.",
+    "Mass and nuclear statistics affect spectral assignments."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the harmonic potential include a finite dissociation limit?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a local quadratic approximation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do IR and Raman have identical selection mechanisms?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Dipole and polarizability response differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can isotopic mass alter rotational/vibrational scales?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "It changes inertia and reduced mass.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "J=2 to J=1 gap for rotor B=2?",
+      "answer": "8",
+      "explanation": "2×6−2×2=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "B ratio after quadrupling I?",
+      "answer": "0.25",
+      "explanation": "B∝I⁻¹.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why retain isotopologue labels?",
+      "answer": "Mass and nuclear statistics affect spectral assignments.",
+      "options": [
+        "Mass and nuclear statistics affect spectral assignments.",
+        "Moment of inertia and J(J+1)."
+      ],
+      "explanation": "Mass and nuclear statistics affect spectral assignments.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets rigid-rotor energy?",
+      "back": "Moment of inertia and J(J+1).",
+      "concept": "ph12-4-theory"
+    },
+    {
+      "front": "What sets harmonic vibration?",
+      "back": "Local curvature and reduced mass.",
+      "concept": "ph12-4-theory"
+    },
+    {
+      "front": "Why qualify Born–Oppenheimer?",
+      "back": "Electronic/nuclear coupling can invalidate separation.",
+      "concept": "ph12-4-theory"
+    },
+    {
+      "front": "Why retain isotopologue labels?",
+      "back": "Mass and nuclear statistics affect spectral assignments.",
+      "concept": "ph12-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Foot, Atomic Physics — edition and exact section verification pending",
+    "Townes and Schawlow, Microwave Spectroscopy — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a molecular spectrum contain separate rotational and vibrational scales? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Nuclear motion on electronic potential surfaces produces coupled level patterns whose simple limits have explicit mass and rigidity assumptions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A diatomic rigid rotor has E_J=ℏ²J(J+1)/(2I), while a harmonic vibration has E_v=ℏω(v+1/2) with reduced mass in ω.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The moment of inertia is I=μr_e² in a two-nucleus rigid-geometry model. Rotational transition spacings grow with J for the corresponding dipole-allowed rotor lines. Homonuclear symmetry and nuclear-spin statistics alter which states/intensities occur; a classical rotor diagram alone does not determine all selection rules.
+
+Near a stable potential minimum, $\omega=\sqrt{k/\mu}$ gives harmonic vibrational spacing. Anharmonicity, rotation-vibration coupling and electronic-surface changes alter high-excitation levels. A harmonic potential has no dissociation limit, so it cannot predict bond breaking without extension.
+
+A permanent dipole is needed for elementary electric-dipole pure rotational activity in the stated approximation, while vibration requires a changing dipole. Raman response uses polarizability and different rules. Absence in one channel does not imply absence of molecular motion or of the molecule.
+
+Born–Oppenheimer separation relies on scale structure and can fail near electronic degeneracies or strong nonadiabatic coupling. Spectral assignments need isotopologues, temperature populations, linewidths and instrument resolution. A supplied toy line list is not an observed molecular detection.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate a synthetic rigid-rotor line list and add thermal populations under a stated model. Compare an isotopic mass change and an anharmonic perturbation separately, preserving units and selection rules.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Let B=ℏ²/(2I)=2 energy units. J=1 has energy 4 and J=2 energy 12, so the 2→1 energy difference is 8. Quadrupling I reduces B by four at fixed ℏ.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS7.1",
+  "title": "Solar System physics",
+  "hook": "Why does orbital distance change a planet’s year more strongly than its circular speed?",
+  "recap": [
+    "Semimajor axis and total mass.",
+    "Spatially differential gravitational forcing.",
+    "Perturbations and dissipative interactions.",
+    "Numerical error can imitate secular or chaotic changes."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is semimajor axis always the current separation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They differ around an eccentric orbit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a near-rational period ratio alone prove resonance?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Dynamical resonant-angle behaviour is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do tides depend on gravity gradients?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Differential forces deform the body.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Period ratio for four times semimajor axis at fixed total mass?",
+      "answer": "8",
+      "explanation": "P∝a³ᐟ².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Escape-speed/orbital-speed ratio for a circular central potential?",
+      "answer": "1.4142135623730951",
+      "explanation": "The ratio is √2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why check orbital integrators?",
+      "answer": "Numerical error can imitate secular or chaotic changes.",
+      "options": [
+        "Numerical error can imitate secular or chaotic changes.",
+        "Semimajor axis and total mass."
+      ],
+      "explanation": "Numerical error can imitate secular or chaotic changes.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What determines Kepler period?",
+      "back": "Semimajor axis and total mass.",
+      "concept": "as7-1-theory"
+    },
+    {
+      "front": "What distinguishes tides from bulk attraction?",
+      "back": "Spatially differential gravitational forcing.",
+      "concept": "as7-1-theory"
+    },
+    {
+      "front": "What changes orbital elements in real systems?",
+      "back": "Perturbations and dissipative interactions.",
+      "concept": "as7-1-theory"
+    },
+    {
+      "front": "Why check orbital integrators?",
+      "back": "Numerical error can imitate secular or chaotic changes.",
+      "concept": "as7-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "de Pater and Lissauer, Planetary Sciences — edition and exact section verification pending",
+    "Perryman, The Exoplanet Handbook — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does orbital distance change a planet’s year more strongly than its circular speed? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Planetary orbits connect two-body mechanics with perturbations, tides and resonances; the Solar System is not an exact collection of independent circles.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In the Newtonian two-body approximation, semimajor axis and total mass determine period through Kepler’s third law.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The relative orbit satisfies $P^2=4\pi^2a^3/[G(M+m)]$. Semimajor axis is not the instantaneous star–planet distance for an eccentric orbit. Circular speed is √(GM/r) when the central-mass approximation applies, and local escape speed is √(2GM/r) without additional potentials.
+
+Orbital energy and angular momentum determine eccentricity and orientation in an isolated inverse-square model. Perturbing planets exchange orbital elements and can produce resonances or long-term secular evolution. A near-rational period ratio is suggestive but not by itself proof of resonant libration.
+
+Tidal forces depend on spatial gradients of gravity and material response. Dissipation can synchronize spin or alter eccentricity while exchanging angular momentum between orbit and rotation. A tide is not simply the total gravitational pull at the planet’s centre.
+
+Thermal histories, impacts and composition also shape planetary systems. A point-mass orbit model cannot predict geology or climate by itself. Numerical long-term trajectories need step-size and conserved-quantity checks, and chaotic sensitivity can limit precise far-future orbital phases.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the orbit explorer to compare semimajor axis, eccentricity and current radius. Verify period scaling under the same mass and unit convention. Add a perturbation only after validating the two-body reference.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At fixed central mass, increasing semimajor axis by four increases period by eight. In a circular central potential the escape-to-orbital speed ratio is √2. Those ratios do not imply a four-times-more-distant eccentric planet always has one instantaneous speed.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

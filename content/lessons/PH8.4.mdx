@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH8.4",
+  "title": "Harmonic oscillator and ladder operators",
+  "hook": "Why does repeatedly lowering an oscillator stop at a nonzero energy?",
+  "recap": [
+    "ℏω/2.",
+    "Nonnegativity of a†a and a normalizable lowest state.",
+    "√(n+1).",
+    "Poisson with mean |α|²."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can N=a†a have a negative expectation in a valid state?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a squared norm.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a stationary oscillator state need zero position uncertainty?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Stationarity does not remove quantum fluctuations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does an arbitrary anharmonic potential retain exact equal level spacing?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The ladder algebra depends on the quadratic Hamiltonian.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "n=3 energy for ℏω=2?",
+      "answer": "7",
+      "explanation": "2×(3+.5)=7.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Raising coefficient multiplying |4⟩ from |3⟩?",
+      "answer": "2",
+      "explanation": "√(3+1)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What number statistics characterize an ideal coherent state?",
+      "answer": "Poisson with mean |α|².",
+      "options": [
+        "Poisson with mean |α|².",
+        "ℏω/2."
+      ],
+      "explanation": "Poisson with mean |α|².",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is oscillator zero-point energy?",
+      "back": "ℏω/2.",
+      "concept": "ph8-4-theory"
+    },
+    {
+      "front": "What ensures the ladder terminates below?",
+      "back": "Nonnegativity of a†a and a normalizable lowest state.",
+      "concept": "ph8-4-theory"
+    },
+    {
+      "front": "What is the raising normalization?",
+      "back": "√(n+1).",
+      "concept": "ph8-4-theory"
+    },
+    {
+      "front": "What number statistics characterize an ideal coherent state?",
+      "back": "Poisson with mean |α|².",
+      "concept": "ph8-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending",
+    "Shankar, Principles of Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does repeatedly lowering an oscillator stop at a nonzero energy? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Ladder operators derive the discrete spectrum algebraically and connect a formal commutator to normalization and physical scales.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For H=p²/(2m)+mω²x²/2 with [x,p]=iℏ, define a=(mωx+ip)/√(2mℏω) and its adjoint a†.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The canonical commutator gives [a,a†]=1 and $H=\hbar\omega(a^\dagger a+1/2)$. The number operator N=a†a has nonnegative expectation because ⟨ψ|N|ψ⟩=||aψ||². Commutators [N,a]=−a and [N,a†]=a† shift eigenvalues whenever the resulting vector is nonzero.
+
+An indefinitely descending ladder would contradict nonnegativity. A normalizable lowest state satisfies a|0⟩=0, leading in position space to a Gaussian. Normalization gives a|n⟩=√n|n−1⟩ and a†|n⟩=√(n+1)|n+1⟩. Thus $E_n=\hbar\omega(n+1/2)$ for the stated full-line oscillator domain.
+
+The ground-state widths are Δx=√(ℏ/(2mω)) and Δp=√(mℏω/2), saturating ΔxΔp=ℏ/2. The zero-point energy comes from kinetic and potential fluctuations, not an arbitrary independent heating mechanism. Physicists’ Hermite functions describe higher stationary states when the coordinate is scaled by √(ℏ/(mω)).
+
+A coherent state satisfies a|α⟩=α|α⟩ and has a Poisson number distribution with mean |α|². Its centre follows the classical oscillator motion in this ideal quadratic Hamiltonian, while the state retains quantum fluctuations. Anharmonic systems do not retain the same equally spaced ladder or exact coherent-state propagation; adding a perturbation requires a controlled approximation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate normalized low-number wavefunctions and compare node counts, widths and energy spacing. For a coherent-state number distribution with a chosen |α|², verify mean and variance. Do not identify a stationary number state’s zero mean position with absence of motion-related fluctuations.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If ℏω=2, the ground energy is 1 and the n=3 energy is 7. Applying a† to |3⟩ produces coefficient √4=2 times |4⟩. The coefficient is an amplitude normalization, not a transition probability without an interaction model.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

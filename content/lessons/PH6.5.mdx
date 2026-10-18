@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH6.5",
+  "title": "Lasers and quantum optics intro",
+  "hook": "Why does stimulated emission alone not guarantee a laser?",
+  "recap": [
+    "Round-trip gain balances total loss.",
+    "Saturation and mode dynamics.",
+    "Poisson.",
+    "Timing, modes and detector response change measured correlations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does stimulated emission by itself establish laser oscillation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Gain must overcome losses with suitable feedback.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does gain saturation matter above threshold?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It prevents indefinite small-signal exponential growth.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Do equal mean intensities guarantee equal photon statistics?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Different states have different fluctuations and correlations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Threshold gain for R₁R₂=.25,L=1,α=0?",
+      "answer": "0.6931471805599453",
+      "explanation": "g=ln4/2=ln2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "g²(0) for an ideal single thermal mode?",
+      "answer": "2",
+      "explanation": "Its bunching factor is two.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state detection assumptions for g²?",
+      "answer": "Timing, modes and detector response change measured correlations.",
+      "options": [
+        "Timing, modes and detector response change measured correlations.",
+        "Round-trip gain balances total loss."
+      ],
+      "explanation": "Timing, modes and detector response change measured correlations.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is threshold physically?",
+      "back": "Round-trip gain balances total loss.",
+      "concept": "ph6-5-theory"
+    },
+    {
+      "front": "What limits above-threshold gain?",
+      "back": "Saturation and mode dynamics.",
+      "concept": "ph6-5-theory"
+    },
+    {
+      "front": "What are ideal coherent-state number statistics?",
+      "back": "Poisson.",
+      "concept": "ph6-5-theory"
+    },
+    {
+      "front": "Why state detection assumptions for g²?",
+      "back": "Timing, modes and detector response change measured correlations.",
+      "concept": "ph6-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Hecht, Optics — edition and exact section verification pending",
+    "Goodman, Introduction to Fourier Optics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does stimulated emission alone not guarantee a laser? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Laser operation requires gain, feedback and losses, while photon statistics distinguish idealized light states beyond their average intensity.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A laser oscillator combines an amplifying medium and optical feedback with a threshold condition; quantum-optical descriptions also track state statistics and field correlations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Stimulated emission adds a field contribution into the stimulating mode in the elementary transition picture, while absorption competes with it. A population inversion is defined with the relevant level degeneracies and transition populations. A closed two-level system under ordinary resonant pumping cannot sustain arbitrary inversion in its simplest steady-state rate model; practical schemes use additional structure.
+
+For intensity gain coefficient g and distributed loss α over length L with mirror intensity reflectivities R₁,R₂, threshold is $R_1R_2e^{2(g-\alpha)L}=1$. This small-signal round-trip balance includes output coupling. Above threshold, gain saturation and mode competition matter; infinite exponential growth is not a physical steady laser output.
+
+Cavity resonances constrain longitudinal/transverse modes, but linewidth, coherence and noise depend on dynamics, pumping and environment. A narrow classical spectrum alone does not identify a unique quantum photon state. Ideal coherent light has Poisson photon-number statistics, while a single thermal mode has enhanced number fluctuations.
+
+The normalized equal-time second-order correlation g²(0)=⟨n(n−1)⟩/⟨n⟩² distinguishes ideal examples: one for a coherent state, two for a single thermal mode and zero for an ideal one-photon state. Multimode averaging, detector timing and inefficiency affect measured values. Antibunching is a nonclassical signature in the stated correlation setting, not a claim that every laser output is exactly coherent.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate a gain threshold with stated intensity versus amplitude conventions. Compare synthetic Poisson and thermal photon-count histograms at the same mean, then compute factorial moments. Do not label a synthetic counting exercise as a measured laser experiment.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a round-trip mirror product is .25 and distributed loss is zero with L=1, threshold requires exp(2g)=4, so g=ln2. For an ideal coherent state g²(0)=1, whereas an ideal single thermal mode has value 2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

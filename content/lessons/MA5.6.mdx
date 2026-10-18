@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA5.6",
+  "title": "Laplace and Poisson equations with separation of variables",
+  "hook": "Why can the same Poisson source produce different fields when the boundary changes?",
+  "recap": [
+    "Geometry, boundary conditions and regularity requirements.",
+    "Their difference is harmonic with zero boundary data; an energy argument proves uniqueness.",
+    "An additive constant.",
+    "Both the differential residual and boundary conditions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the source alone determine a unique bounded-domain Poisson solution?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Boundary data and any reference convention are essential.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can an arbitrary constant be added to a pure Neumann solution?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Its gradient and normal derivative are unchanged.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must a particular Poisson solution already satisfy every requested boundary condition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "A harmonic correction may be needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "u(1/2) for −u″=2, u(0)=u(1)=0?",
+      "answer": "0.25",
+      "explanation": "u=x−x², giving .5−.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Integral of u″ over [0,1] for u=x−x²?",
+      "answer": "-2",
+      "explanation": "u″=−2 throughout the unit interval.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must a Neumann source and flux satisfy with −Δu=f?",
+      "answer": "Their integrals obey ∫f=−∫g for outward normal derivative g",
+      "options": [
+        "Their integrals obey ∫f=−∫g for outward normal derivative g",
+        "There is no compatibility relation"
+      ],
+      "explanation": "The divergence theorem enforces the sign-sensitive relation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What fixes a separated basis?",
+      "back": "Geometry, boundary conditions and regularity requirements.",
+      "concept": "ma5-6-theory"
+    },
+    {
+      "front": "How are two equal-Dirichlet Poisson solutions compared?",
+      "back": "Their difference is harmonic with zero boundary data; an energy argument proves uniqueness.",
+      "concept": "ma5-6-theory"
+    },
+    {
+      "front": "What ambiguity remains in a connected pure Neumann problem?",
+      "back": "An additive constant.",
+      "concept": "ma5-6-theory"
+    },
+    {
+      "front": "What must be checked for an approximate field?",
+      "back": "Both the differential residual and boundary conditions.",
+      "concept": "ma5-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strauss, Partial Differential Equations: An Introduction — edition and exact section verification pending",
+    "Stein and Shakarchi, Fourier Analysis: An Introduction — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can the same Poisson source produce different fields when the boundary changes? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Gravitational and electrostatic potentials depend on source and boundary information. Separation of variables is a construction method whose geometry and uniqueness assumptions must be explicit.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A source bends a potential locally, while the boundary controls which homogeneous solution can be added. Harmonic corrections can change an entire interior field.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Laplace’s equation is Δu=0; here use the Poisson sign convention −Δu=f. A boundary-value problem must specify boundary data and the domain.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a rectangular two-dimensional domain, an ansatz u=X(x)Y(y) in Δu=0 gives X″/X=−Y″/Y, a separation constant. If u vanishes at x=0,L, the nontrivial x modes are sin(nπx/L), while the y factors are hyperbolic functions. The basis follows the boundary conditions; it cannot be chosen solely because a sine expansion looks convenient.
+
+For the strip 0&lt;x&lt;L, 0&lt;y&lt;H with zero sides and bottom and top value h(x), a separated solution is $u(x,y)=\sum_{n\ge1}b_n\sin(n\pi x/L)\frac{\sinh(n\pi y/L)}{\sinh(n\pi H/L)}$, with bₙ the sine coefficients of h. Smooth compatibility at corners is an additional condition for smooth boundary behaviour; a convergent interior representation can coexist with nonsmooth corner data.
+
+To solve $-\Delta u=f$, one may find a particular solution and add a harmonic correction matching the boundary. The particular solution alone rarely satisfies the prescribed boundary data. In a smooth connected bounded domain, a sufficiently regular zero-source difference of two equal-Dirichlet solutions has $\int|\nabla w|^2=0$ by integration by parts, so w is constant and its zero boundary fixes w=0. This proves uniqueness, not an explicit construction for every domain.
+
+For Neumann data ∂ₙu=g and the convention −Δu=f, integrating gives $\int_\Omega f\,dV=-\int_{\partial\Omega}g\,dS$. This is a compatibility condition. If it holds under suitable solvability hypotheses, adding a constant preserves the problem, so a reference value or zero mean removes the ambiguity. Mixed conditions need their own analysis; pure Neumann uniqueness is not the same as Dirichlet uniqueness.
+
+In a ball or cylinder, angular/radial separation produces geometry-adapted modes and regularity requirements at the origin or axis. Growing/decaying branches must be selected by domain and boundary behaviour. A harmonic function obeys a mean-value property and a maximum principle under the usual hypotheses; a sourced Poisson solution does not inherit every zero-source statement unchanged. Numeric residuals and boundary error both matter when checking an approximate field.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare the one-dimensional exact Poisson solution with a finite-difference solution. Report boundary error separately from interior residual. Then compare two boundary choices for the same source. For a rectangular harmonic mode, sample the hyperbolic profile and verify the top and bottom values before plotting it.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+On 0&lt;x&lt;1 solve −u″=2 with u(0)=u(1)=0. Integrating gives u=−x²+Ax+B; boundaries give B=0,A=1. Thus u(1/2)=1/4. Adding 5 leaves the source equation unchanged but violates both Dirichlet boundary values.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

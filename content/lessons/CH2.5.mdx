@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH2.5",
+  "title": "Electronic spectroscopy and selection rules",
+  "hook": "Why can an electronic transition be energetically possible but spectroscopically weak?",
+  "recap": [
+    "Symmetry of both states and the interaction operator.",
+    "A rapid electronic transition with nuclear-overlap weighting.",
+    "The sum of independent loss rates.",
+    "Broadening redistributes intensity."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does an energy gap alone guarantee a strong dipole line?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The matrix element and populations matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is an overlap factor an amplitude squared?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Intensity uses squared modulus.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does one two-rate yield formula describe every multistate system?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Coupled kinetics may be needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Squared overlap factor for amplitude .3?",
+      "answer": "0.09",
+      "explanation": ".3²=.09.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Yield for kr=3,knr=1?",
+      "answer": "0.75",
+      "explanation": "3/(3+1)=.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why distinguish peak and integrated strength?",
+      "answer": "Broadening redistributes intensity.",
+      "options": [
+        "Broadening redistributes intensity.",
+        "Symmetry of both states and the interaction operator."
+      ],
+      "explanation": "Broadening redistributes intensity.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sets dipole selection?",
+      "back": "Symmetry of both states and the interaction operator.",
+      "concept": "ch2-5-theory"
+    },
+    {
+      "front": "What is Franck–Condon separation?",
+      "back": "A rapid electronic transition with nuclear-overlap weighting.",
+      "concept": "ch2-5-theory"
+    },
+    {
+      "front": "What controls lifetime in the simple model?",
+      "back": "The sum of independent loss rates.",
+      "concept": "ch2-5-theory"
+    },
+    {
+      "front": "Why distinguish peak and integrated strength?",
+      "back": "Broadening redistributes intensity.",
+      "concept": "ch2-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and Friedman, Molecular Quantum Mechanics — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can an electronic transition be energetically possible but spectroscopically weak? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Transition amplitudes combine symmetry, nuclear overlap and populations; allowed energy differences alone do not determine intensity.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+An electric-dipole transition amplitude is a matrix element of the dipole operator between full initial and final states under a specified light-coupling approximation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A transition intensity contains $|\langle f|\mathbf d\cdot\boldsymbol\epsilon|i\rangle|^2$ with occupation and radiation factors. If symmetry makes the matrix element zero in the model, an energy gap alone does not permit a strong line. Spin-orbit/vibronic coupling can relax approximate rules.
+
+The Franck–Condon picture treats an electronic transition as rapid compared with nuclear rearrangement, giving vibrational overlap factors in the admitted separation. Vertical geometry changes are not claims that nuclei literally move instantaneously between minima.
+
+Absorption, fluorescence, internal conversion, intersystem crossing and collisions compete. For a simple independent-rate excited state, radiative yield is k_r/(k_r+k_nr) and lifetime is 1/(k_r+k_nr). Multistate or time-dependent kinetics needs a network rather than one denominator.
+
+Solvent, temperature, broadening and instrument response alter bands. Oscillator strengths and state labels depend on consistent normalization and approximation. A fitted spectral envelope is not unique proof of one electronic pathway without complementary evidence.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare synthetic vibrational overlap progressions for shifted harmonic surfaces. Separately vary radiative/nonradiative rates and distinguish a line’s integrated strength from peak height after broadening.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A normalized overlap amplitude .3 contributes squared factor .09. For radiative rate 3 and nonradiative rate 1, the simple fluorescence yield is .75 and lifetime .25 in the corresponding time units.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

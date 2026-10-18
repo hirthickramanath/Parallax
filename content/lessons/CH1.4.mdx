@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.4",
+  "title": "Transition-state theory and reaction dynamics",
+  "hook": "Why does a transition-state estimate need a correction for trajectories that cross back?",
+  "recap": [
+    "A transition-region reference and reactant free energy in the adopted theory.",
+    "A nominal forward crossing that returns rather than commits.",
+    "The barrier components or dynamical correction can vary with temperature.",
+    "It meaningfully separates progress toward the competing dynamical basins."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every dividing-surface crossing necessarily become product?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Recrossing can return to reactants.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can unimolecular and bimolecular rate constants use identical units without a standard-state factor?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Molecularity changes rate-constant dimensions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a vacuum energy barrier automatically a solution activation free energy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Solvent, entropy and reference states can change it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Rate factor when a barrier increases by RT ln10 with other factors fixed?",
+      "answer": "0.1",
+      "explanation": "exp(−ln10)=0.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Rate factor for a recrossing-only κ change from 1 to 0.5?",
+      "answer": "0.5",
+      "explanation": "Rate is proportional to the stated κ.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why specify what κ corrects?",
+      "answer": "Recrossing and quantum corrections use different reference assumptions",
+      "options": [
+        "Recrossing and quantum corrections use different reference assumptions",
+        "Every transmission coefficient has one universal interpretation"
+      ],
+      "explanation": "Its definition determines the meaning of the numerical factor.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does an activation free energy compare?",
+      "back": "A transition-region reference and reactant free energy in the adopted theory.",
+      "concept": "ch1-4-theory"
+    },
+    {
+      "front": "What is recrossing?",
+      "back": "A nominal forward crossing that returns rather than commits.",
+      "concept": "ch1-4-theory"
+    },
+    {
+      "front": "Why can an Eyring plot curve?",
+      "back": "The barrier components or dynamical correction can vary with temperature.",
+      "concept": "ch1-4-theory"
+    },
+    {
+      "front": "What makes a reaction coordinate useful?",
+      "back": "It meaningfully separates progress toward the competing dynamical basins.",
+      "concept": "ch1-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a transition-state estimate need a correction for trajectories that cross back? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Transition-state theory converts a dividing-surface population into a rate estimate. Its assumptions expose why a free-energy barrier is useful without making every barrier-crossing event a completed reaction.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Imagine counting crossings of a surface separating reactants and products. Counting every forward crossing as success overestimates net conversion when trajectories recross.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Transition-state theory uses a chosen dividing surface, an equilibrium-like population estimate near it, and a flux calculation. A transmission coefficient accounts for dynamical corrections within the adopted formulation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a suitably defined unimolecular standard-state free-energy barrier, the Eyring form is $k=\kappa(k_BT/h)\exp[-\Delta G^\ddagger/(RT)]$. The prefactor has inverse-time units. Bimolecular rates require the appropriate concentration or standard-state factor; copying this expression without its molecularity convention gives incorrect units.
+
+Writing ΔG‡=ΔH‡−TΔS‡ makes $\ln(k/T)=\ln(\kappa k_B/h)+\Delta S^\ddagger/R-\Delta H^\ddagger/(RT)$ when these terms are effectively constant over the fitting interval. Temperature-dependent heat capacities, tunneling or a changing transmission coefficient can spoil a simple straight-line interpretation.
+
+Classical no-recrossing transition-state theory provides a reference flux estimate. Recrossing reduces the fraction that commits to product. Quantum tunneling can enhance a rate relative to a purely classical barrier model, and a combined empirical κ can encode more than one effect; do not assign it a universal range without defining which reference theory it corrects.
+
+A reaction coordinate is a model of progress, not necessarily one bond distance. Solvent and internal motions can influence whether it separates reactant and product well. The committor probability offers a dynamical perspective: configurations near a good transition region have intermediate probabilities of reaching either basin first.
+
+Rate predictions need both the free-energy landscape and dynamics. Raising pressure or changing solvent can modify friction, populations and pathways. A computed barrier in vacuum is not automatically the activation free energy for a solvated reaction. Validate against temperature trends, isotope effects and other discriminating observables.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare synthetic rates for two barriers differing by a known multiple of RT. Draw an ideal dividing surface and trajectories that commit or recross, recording what the flux count assumes. Keep a barrier estimate separate from a full dynamical validation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If all other Eyring factors stay fixed and a barrier rises by RT ln10, the rate falls by a factor of ten. If a recrossing-only correction changes from 1 to 0.5 under the same reference model, the predicted rate halves. Neither example measures an actual molecular barrier.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

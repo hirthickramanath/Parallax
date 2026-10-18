@@ -1,5 +1,7 @@
 # Checked chapter batches
 
+**Historical milestone:** the current authoring release is [RADIATION-INFERENCE-RELEASE.md](RADIATION-INFERENCE-RELEASE.md); current coverage is in [COURSE-STATUS.md](COURSE-STATUS.md).
+
 This is the current authoring-release record. `COURSE-STATUS.md` is the generated coverage ledger. Older foundation/follow-up documents describe earlier milestones and service setup.
 
 ## New content

@@ -133,3 +133,43 @@ The implemented course now has 49 authored drafts and 201 recall cards, includin
 ## Checked batch authoring update
 
 Four further units (MA1, PH1, MA2 and MA3) now have all thirty lesson bodies as drafts. Current totals are 79 authored drafts, 321 recall cards and 275 missing bodies; no independent verification is implied. `BATCH-RELEASE.md` describes the current batch and exact-number grading correction. `COURSE-STATUS.md` remains the authoritative generated coverage list.
+
+
+## Radiation and inference implementation update
+
+Five further units (MA4, PH11, AS2, MA8 and MA9) add 27 drafts. Current totals: 106 authored drafts, 429 recall cards, 248 missing bodies and zero independently verified lessons. The seventh virtual bench covers emitting/extinguishing slabs and radial Doppler markers. `RADIATION-INFERENCE-RELEASE.md` describes model limits and checks; the generated `COURSE-STATUS.md` lists remaining IDs. All source and production-service verification boundaries remain explicit.
+
+
+## Fields and organic-foundation implementation update
+
+PH4 and CH6 now have sixteen original lesson drafts, bringing current totals to 122 authored drafts, 493 recall cards and 232 missing lesson bodies. No independent verification is implied. The eighth lab bench compares uniform solid-sphere and conducting-shell electrostatics, including the ideal charged-sheet discontinuity. Current status and model limits are in `FIELDS-ORGANIC-RELEASE.md`; the generated `COURSE-STATUS.md` preserves the exact missing IDs.
+
+
+## Physical chemistry and analytical mechanics milestone
+
+Authored CH1.1–CH1.13 and PH2.1–PH2.7 as drafts, bringing coverage to 142/354 lessons and 573 retrieval cards. Added a coupled-oscillator apparatus with normal-mode releases and an energy balance. See [release details](PHYSICAL-CHEMISTRY-MECHANICS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 212 lesson bodies and independent source/scientific review remain. Live tutor eligibility/provider setup and live rules verification remain external prerequisites.
+
+
+## Fourier methods and PDE milestone
+
+Authored MA5.1–MA5.7 as drafts, bringing coverage to 149/354 lessons and 601 recall cards. Added a Fourier-mode heat/wave bench with exact mode evolution, fixed-axis traces, a squared-norm readout and conserved wave energy. See [release details](FOURIER-PDE-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 205 lesson bodies and independent scientific/source review remain, alongside the previously documented live rules and eligible tutor-provider prerequisites.
+
+
+## Complex analysis milestone
+
+Authored MA6.1–MA6.6 as drafts, bringing coverage to 155/354 lessons and 625 recall cards. Added a unit-circle branch explorer distinguishing principal values from continuation, with explicit cut exclusions. See [release details](COMPLEX-ANALYSIS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 199 lesson bodies and independent source/scientific review remain, alongside the documented live rules and eligible tutor-provider prerequisites.
+
+
+## Special functions and asymptotic methods milestone
+
+Authored MA7.1–MA7.5 as drafts, bringing coverage to 160/354 lessons and 645 recall cards. Added a Legendre/zonal-harmonic angular-profile explorer with explicit interval/sphere normalization. See [release details](SPECIAL-FUNCTIONS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 194 lesson bodies and independent scientific/source review remain, alongside the documented live rules and eligible tutor-provider prerequisites.
+
+
+## Continuous authoring through quantum foundations
+
+PH7, CP2, PH5 and PH8 now have draft lesson bodies. Coverage is 191/354, with 769 recall cards and 163 missing bodies. See [continuous release](CONTINUOUS-AUTHORING-RELEASE.md). Independent source/scientific review and the documented live-service prerequisites remain. Continue subsequent batches without awaiting another command.
+
+
+## Complete body-coverage milestone
+
+All 354 curriculum entries across 59 units now have draft bodies, totaling 1421 recall cards; no lesson body is missing. This is draft coverage, not exhaustive textbook depth or independent scientific certification. See [continuous authoring release](CONTINUOUS-AUTHORING-RELEASE.md), [course ledger](COURSE-STATUS.md) and [pending review/live checks](PENDING-REVIEW-AND-LIVE-CHECKS.md). No draft has been upgraded to verified/published. Source review, live owner-session verification and eligible tutor configuration remain uncompleted prerequisites; no new cloud schema was introduced.

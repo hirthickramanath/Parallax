@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { test, expect, type Page } from "@playwright/test";
 const apiKey = "AIzaSyBSSe8XOjx3dAb4h1Ert332830tKXwHf6M";
 async function signedIn(page: Page, uid = "test-learner") {
@@ -29,6 +29,23 @@ async function signedIn(page: Page, uid = "test-learner") {
       }),
     }),
   );
+  // A navigation handled by an existing service worker can bypass page.route.
+  // Remove that registration before entering the inert fixture, then verify it.
+  // The app registers its worker again on normal startup; offline tests retain it.
+  const originPage = page
+    .context()
+    .pages()
+    .find((candidate) => candidate.url().startsWith("http://127.0.0.1:4183/"));
+  if (originPage) {
+    await originPage.evaluate(async () => {
+      if ("serviceWorker" in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(
+          registrations.map((registration) => registration.unregister()),
+        );
+      }
+    });
+  }
   // Seed the fake session without a running Firebase instance that could overwrite it.
   await page.route("**/__fixture-auth", (route) =>
     route.fulfill({
@@ -37,6 +54,7 @@ async function signedIn(page: Page, uid = "test-learner") {
     }),
   );
   await page.goto("/__fixture-auth");
+  await expect(page).toHaveTitle("Auth fixture");
   await page.evaluate(
     async ({ apiKey, uid }) => {
       const token = [
@@ -685,4 +703,328 @@ test("real-analysis exact index answer rejects a nearby integer before accepting
   await question.getByRole("spinbutton").fill("101");
   await question.getByRole("button", { name: "Check answer" }).click();
   await expect(question.getByRole("status")).toContainText("That’s right");
+});
+
+test("radiation apparatus separates extinction, emission and radial Doppler interpretations", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Radiation bench", exact: true })
+    .click();
+  await expect(page.getByText(/Output: 6.000/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record slab reading", exact: true })
+    .click();
+  await page.getByLabel("Slab source function").fill("20");
+  await expect(page.getByText(/Output: 15.000/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record slab reading", exact: true })
+    .click();
+  await expect(page.getByRole("table").getByRole("row")).toHaveCount(3);
+  await page.getByLabel("Slab optical depth").fill("");
+  await expect(page.getByRole("alert")).toHaveText(
+    "Enter a finite optical depth from 0 to 10.",
+  );
+  await page.getByLabel("Slab optical depth").fill("0");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await expect(page.getByText(/Output: 10.000/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Doppler markers", exact: true })
+    .click();
+  await expect(page.getByText(/Observed wavelength: 1000.00 nm/)).toBeVisible();
+  await page.getByLabel("Radial speed beta").fill("0");
+  await expect(page.getByText(/Observed wavelength: 500.00 nm/)).toBeVisible();
+  await page.getByLabel("Radial speed beta").fill("-0.6");
+  await expect(page.getByText(/Observed wavelength: 250.00 nm/)).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await expect(
+    page.getByRole("link", { name: "Open the connected lesson →" }),
+  ).toHaveAttribute("href", "/lesson/AS2.3");
+  await page
+    .getByRole("link", { name: "Study Doppler shift and redshift →" })
+    .click();
+  await expect(page).toHaveURL(/lesson\/AS2.4/);
+});
+
+test("spherical apparatus distinguishes volume charge, conductor interior and an undefined ideal sheet value", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Spherical field", exact: true })
+    .click();
+  await expect(page.getByText(/Radial field: 0.1250/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record spherical reading", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Conducting shell", exact: true })
+    .click();
+  await expect(page.getByText(/Radial field: 0.0000/)).toBeVisible();
+  await page.getByLabel("Field probe radius").fill("2");
+  await expect(
+    page.getByText(/field has no single assigned value/),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Record spherical reading", exact: true }),
+  ).toBeDisabled();
+  await page.getByLabel("Field probe radius").fill("4");
+  await expect(page.getByText(/Radial field: 0.0625/)).toBeVisible();
+  await page.getByLabel("Total sphere charge").fill("-1");
+  await expect(page.getByText(/Radial field: -0.0625/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record spherical reading", exact: true })
+    .click();
+  await expect(page.getByRole("table").getByRole("row")).toHaveCount(3);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/lesson\/PH4.1/);
+});
+
+test("coupled oscillator bench exposes normal modes, conserved energy and traceable readings on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Coupled oscillators", exact: true })
+    .click();
+  await page.getByRole("button", { name: "In phase", exact: true }).click();
+  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
+  await page.getByLabel("Time (s)", { exact: true }).fill("7");
+  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
+  await page
+    .getByRole("button", { name: "Opposite phase", exact: true })
+    .click();
+  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.1200");
+  await page.getByRole("button", { name: "Record oscillator reading" }).click();
+  await expect(
+    page
+      .getByRole("list", { name: "Oscillator readings" })
+      .getByRole("listitem"),
+  ).toHaveCount(1);
+  await page
+    .getByRole("button", { name: "One mass released", exact: true })
+    .click();
+  await page.getByLabel("Coupling stiffness (N/m)", { exact: true }).fill("0");
+  await page.getByLabel("Time (s)", { exact: true }).fill("7");
+  await expect(page.getByText(/x₂ = 0.0000 m/)).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/lesson\/PH2.7/);
+});
+
+test("Fourier evolution bench distinguishes heat decay from conserved wave energy on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Heat flow and waves", exact: true })
+    .click();
+  await page.getByLabel("PDE initial shape").selectOption("First mode");
+  const initial = Number(
+    await page.getByLabel("PDE squared norm").textContent(),
+  );
+  expect(initial).toBeCloseTo(Math.PI / 2, 5);
+  await page.getByLabel("PDE time", { exact: true }).fill("1");
+  expect(
+    Number(await page.getByLabel("PDE squared norm").textContent()),
+  ).toBeCloseTo((Math.PI / 2) * Math.exp(-2), 5);
+  await page.getByRole("button", { name: "Record PDE reading" }).click();
+  await page.getByRole("button", { name: "Wave motion", exact: true }).click();
+  const energy = await page.getByLabel("PDE wave energy").textContent();
+  await page.getByLabel("PDE time", { exact: true }).fill("1.5");
+  await expect(page.getByLabel("PDE wave energy")).toHaveText(energy!);
+  expect(
+    Number(await page.getByLabel("PDE squared norm").textContent()),
+  ).toBeLessThan(0.01);
+  await page.getByLabel("PDE initial shape").selectOption("Third mode");
+  await expect(page.getByRole("table").getByRole("row").nth(3)).toContainText(
+    "3.000",
+  );
+  await page.getByRole("button", { name: "Record PDE reading" }).click();
+  await expect(
+    page.getByRole("list", { name: "PDE readings" }).getByRole("listitem"),
+  ).toHaveCount(2);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/lesson\/MA5.4/);
+});
+
+test("complex branch explorer tracks monodromy and excludes its principal cut on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/lesson/MA6.6");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "The continued root changes sign around zero, while the principal value uses its branch convention.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("interactive");
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("1.000 + 0.000i");
+  await page.getByRole("button", { name: "180°", exact: true }).click();
+  await expect(
+    page.getByLabel("Principal square root", { exact: true }),
+  ).toHaveText("Undefined on the chosen cut");
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("0.000 + 1.000i");
+  await page.getByRole("button", { name: "360°", exact: true }).click();
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("-1.000 + 0.000i");
+  await expect(
+    page.getByLabel("Principal square root", { exact: true }),
+  ).toHaveText("1.000 + 0.000i");
+  await page.getByRole("button", { name: "720°", exact: true }).click();
+  await expect(
+    page.getByLabel("Continued square root", { exact: true }),
+  ).toHaveText("1.000 + 0.000i");
+  await expect(
+    page.getByText(/Continued logarithm imaginary part: 4.000π/),
+  ).toBeVisible();
+  await page.getByLabel("Complex path angle").fill("270");
+  await expect(
+    page.getByLabel("Principal square root", { exact: true }),
+  ).toContainText("− 0.707i");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+});
+
+test("Legendre explorer distinguishes polynomial and spherical normalization on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/lesson/MA7.2");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "Regularity and global joining conditions select discrete angular modes.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("interactive");
+  await expect(
+    page.getByLabel("Selected Legendre value", { exact: true }),
+  ).toHaveText("-0.500000");
+  await expect(
+    page.getByLabel("Legendre squared norm", { exact: true }),
+  ).toHaveText("0.400000");
+  expect(
+    Number(
+      await page
+        .getByLabel("Selected zonal harmonic", { exact: true })
+        .textContent(),
+    ),
+  ).toBeCloseTo(-0.5 * Math.sqrt(5 / (4 * Math.PI)), 5);
+  await page.getByLabel("Legendre probe", { exact: true }).fill("1");
+  await expect(
+    page.getByLabel("Selected Legendre value", { exact: true }),
+  ).toHaveText("1.000000");
+  await page.getByLabel("Legendre degree", { exact: true }).fill("3");
+  await page.getByLabel("Legendre probe", { exact: true }).fill("-1");
+  await expect(
+    page.getByLabel("Selected Legendre value", { exact: true }),
+  ).toHaveText("-1.000000");
+  await expect(
+    page.getByLabel("Legendre squared norm", { exact: true }),
+  ).toHaveText("0.285714");
+  await expect(page.getByRole("table").getByRole("row")).toHaveCount(8);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+});
+
+test("cached lesson JSON refreshes online after a release and keeps the refreshed content offline", async ({
+  page,
+  context,
+}) => {
+  await signedIn(page);
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const path = "dist/content/PB1.1.json";
+  const original = readFileSync(path, "utf8");
+  try {
+    await page.evaluate(async () => {
+      await fetch("/content/PB1.1.json").then((response) => response.json());
+    });
+    await expect
+      .poll(() =>
+        page.evaluate(async () =>
+          Boolean(await caches.match("/content/PB1.1.json")),
+        ),
+      )
+      .toBeTruthy();
+    writeFileSync(
+      path,
+      JSON.stringify({ ...JSON.parse(original), releaseProbe: "fresh-lesson" }),
+    );
+    const revision = await page.evaluate(
+      async () =>
+        (await fetch("/content/PB1.1.json").then((response) => response.json()))
+          .releaseProbe,
+    );
+    expect(revision).toBe("fresh-lesson");
+    await expect
+      .poll(() =>
+        page.evaluate(
+          async () =>
+            (await (await caches.match("/content/PB1.1.json"))?.json())
+              ?.releaseProbe,
+        ),
+      )
+      .toBe("fresh-lesson");
+    await context.setOffline(true);
+    const offlineRevision = await page.evaluate(
+      async () =>
+        (await fetch("/content/PB1.1.json").then((response) => response.json()))
+          .releaseProbe,
+    );
+    expect(offlineRevision).toBe("fresh-lesson");
+  } finally {
+    await context.setOffline(false);
+    writeFileSync(path, original);
+  }
 });

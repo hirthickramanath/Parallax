@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH3.1",
+  "title": "Nonlinear oscillators, chaos and Lyapunov exponents",
+  "hook": "Why can a deterministic equation become unpredictable without adding random forces?",
+  "recap": [
+    "δẋ=Df δx along the trajectory.",
+    "To remain in a linearized growth regime.",
+    "Convergence and independent dynamical checks.",
+    "Reduced recurring structure of the flow under a stated sampling section."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does deterministic evolution guarantee practical predictability indefinitely?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Initial uncertainty can amplify.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a finite-time positive growth estimate prove asymptotic chaos?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Transients and numerical artifacts require exclusion.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does nonlinear evolution generally obey superposition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The state rule is not linear.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Finite-window rate ln(.04/.01)/2?",
+      "answer": "0.6931471805599453",
+      "explanation": "ln4/2=ln2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Growth factor from .01 to .04?",
+      "answer": "4",
+      "explanation": ".04/.01=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What can a Poincaré section reveal?",
+      "answer": "Reduced recurring structure of the flow under a stated sampling section.",
+      "options": [
+        "Reduced recurring structure of the flow under a stated sampling section.",
+        "δẋ=Df δx along the trajectory."
+      ],
+      "explanation": "Reduced recurring structure of the flow under a stated sampling section.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the tangent equation?",
+      "back": "δẋ=Df δx along the trajectory.",
+      "concept": "ph3-1-theory"
+    },
+    {
+      "front": "Why rescale perturbations numerically?",
+      "back": "To remain in a linearized growth regime.",
+      "concept": "ph3-1-theory"
+    },
+    {
+      "front": "What distinguishes sensitivity from numerical instability?",
+      "back": "Convergence and independent dynamical checks.",
+      "concept": "ph3-1-theory"
+    },
+    {
+      "front": "What can a Poincaré section reveal?",
+      "back": "Reduced recurring structure of the flow under a stated sampling section.",
+      "concept": "ph3-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Acheson, Elementary Fluid Dynamics — edition and exact section verification pending",
+    "Strogatz, Nonlinear Dynamics and Chaos — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a deterministic equation become unpredictable without adding random forces? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Nonlinearity can couple oscillation frequencies and amplify initial uncertainty. Numerical divergence must be separated from physical sensitivity.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A nonlinear dynamical system has state evolution ẋ=f(x,t) not reducible to linear superposition. A Lyapunov exponent measures asymptotic perturbation growth under a stated trajectory and norm convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For the weakly nonlinear oscillator $\ddot x+\omega_0^2x+\alpha x^3=0$, multiplying by ẋ gives conserved energy ẋ²/2+ω₀²x²/2+αx⁴/4. A negative quartic coefficient alone is not a globally confining potential; a local weak-amplitude approximation needs an admitted range or higher stabilizing terms.
+
+A perturbative nearly sinusoidal analysis yields a leading amplitude-dependent frequency shift proportional to αA² for the regular weak-nonlinearity regime. Resonant forcing and damping can produce multiple responses, hysteresis and bifurcations. Linear superposition of two solutions is generally no longer a solution.
+
+For a smooth system, a small perturbation obeys the tangent equation δẋ=Df(x(t),t)δx. A largest Lyapunov exponent can be defined by a long-time growth rate of perturbation norm, with rescaling needed in practical calculations before finite separation saturates. Positive finite-time growth alone is not a proof of asymptotic chaos; transients and numerical instability can imitate it.
+
+Chaotic behaviour requires the relevant bounded aperiodic dynamics and sensitivity qualifications, not merely a complicated plot. Poincaré sections and parameter sweeps can reveal structure. Verify convergence, conserved quantities when applicable and step-size dependence before assigning a computed exponent to the mathematical system. Predictability limits concern finite uncertainty, not a failure of deterministic evolution.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare nearby initial conditions using a converged integrator and a tangent-equation calculation. Repeat at smaller time steps and monitor energy in the unforced conservative model. Label the finite observation window and test whether separation has saturated.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a perturbation grows from .01 to .04 during time 2 in a local exponential-growth window, the estimated finite-time rate is ln4/2=ln2. This is a finite-window diagnostic; it is not automatically the infinite-time largest exponent.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

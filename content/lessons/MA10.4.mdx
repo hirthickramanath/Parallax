@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA10.4",
+  "title": "Representation theory basics",
+  "hook": "Why can the same symmetry act as numbers in one problem and matrices in another?",
+  "recap": [
+    "A homomorphism to invertible linear operators.",
+    "One preserved by every group action.",
+    "The trace of the represented element.",
+    "Reducibility and classification theorems depend on field, dimension and group properties."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can each represented matrix use an unrelated basis while preserving the same written representation law automatically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "One consistent basis change is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is character basis invariant?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Trace is preserved by similarity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does finite-group complete reducibility apply unchanged to every infinite group?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The averaging proof has hypotheses.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Trace of diag(1,−1)?",
+      "answer": "0",
+      "explanation": "1−1=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Character dimension value at identity for the trivial 1D representation?",
+      "answer": "1",
+      "explanation": "The identity matrix has trace one.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state representation hypotheses?",
+      "answer": "Reducibility and classification theorems depend on field, dimension and group properties.",
+      "options": [
+        "Reducibility and classification theorems depend on field, dimension and group properties.",
+        "A homomorphism to invertible linear operators."
+      ],
+      "explanation": "Reducibility and classification theorems depend on field, dimension and group properties.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a representation?",
+      "back": "A homomorphism to invertible linear operators.",
+      "concept": "ma10-4-theory"
+    },
+    {
+      "front": "What is an invariant subspace?",
+      "back": "One preserved by every group action.",
+      "concept": "ma10-4-theory"
+    },
+    {
+      "front": "What is a character?",
+      "back": "The trace of the represented element.",
+      "concept": "ma10-4-theory"
+    },
+    {
+      "front": "Why state representation hypotheses?",
+      "back": "Reducibility and classification theorems depend on field, dimension and group properties.",
+      "concept": "ma10-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Artin, Algebra — edition and exact section verification pending",
+    "Hall, Lie Groups, Lie Algebras, and Representations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can the same symmetry act as numbers in one problem and matrices in another? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Representations turn abstract composition into linear transformations, enabling symmetry-adapted states and selection rules.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A linear representation is a homomorphism from a group to invertible operators on a vector space. An invariant subspace is preserved by every represented group element.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A representation satisfies $D(gh)=D(g)D(h)$. Equivalent representations are related by one invertible basis change, not by changing each matrix independently. A reducible representation has a proper nonzero invariant subspace; an invariant complementary subspace is an additional issue in general settings.
+
+For a finite group over complex vector spaces, averaging an inner product over the group produces an invariant positive inner product. Orthogonal complements of invariant subspaces are then invariant, giving complete reducibility. This argument relies on finite-group/characteristic-zero assumptions and cannot be copied to every noncompact infinite group without qualifications.
+
+The character χ(g)=TrD(g) is basis invariant and constant on conjugacy classes. Finite-dimensional complex finite-group irreducible characters obey an orthogonality relation with a normalized sum over G. Characters can decompose such representations, but do not universally classify arbitrary infinite-dimensional nonunitary representations.
+
+If a Hamiltonian commutes with every symmetry operator, it preserves symmetry sectors. Schur’s lemma constrains operators intertwining irreducible complex representations under its hypotheses. Degeneracy follows in the appropriate irreducible sector, while accidental degeneracy and additional labels can remain. An allowed matrix element still needs its actual operator and states.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a small finite-group matrix representation and check the homomorphism table. Find invariant subspaces and compare traces before/after one fixed basis transformation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a matrix diag(1,−1), the character is zero and determinant is −1. A common basis change preserves its trace. For the trivial one-dimensional representation every character value is one.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

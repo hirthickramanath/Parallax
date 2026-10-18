@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH4.4",
+  "title": "Symmetry and qualitative bonding in polyatomic molecules",
+  "hook": "Why can two orbitals of similar energy still fail to mix?",
+  "recap": [
+    "A basis function organized by a representation of the symmetry group.",
+    "Nonzero coupling between compatible states.",
+    "Additional interactions or symmetry breaking can relax ideal selection rules.",
+    "Every numerical energy and transition intensity."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does symmetry-allowed mixing have to be strong?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Energy mismatch and actual matrix elements still matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can opposite reflection parity force a symmetry-preserving coupling to zero?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "The matrix element changes sign under the symmetry.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a dipole selection rule depend only on the final state?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Initial state and operator symmetry also enter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Level splitting for equal diagonal energies and |V|=1?",
+      "answer": "2",
+      "explanation": "The energies differ by 2|V|.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Upper level for ε=3,V=1?",
+      "answer": "4",
+      "explanation": "ε+|V|=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does symmetry not determine alone?",
+      "answer": "Every numerical energy and transition intensity.",
+      "options": [
+        "Every numerical energy and transition intensity.",
+        "A basis function organized by a representation of the symmetry group."
+      ],
+      "explanation": "Every numerical energy and transition intensity.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a symmetry-adapted combination?",
+      "back": "A basis function organized by a representation of the symmetry group.",
+      "concept": "ch4-4-theory"
+    },
+    {
+      "front": "What causes an avoided crossing in a two-state model?",
+      "back": "Nonzero coupling between compatible states.",
+      "concept": "ch4-4-theory"
+    },
+    {
+      "front": "Why can a forbidden line become weakly visible?",
+      "back": "Additional interactions or symmetry breaking can relax ideal selection rules.",
+      "concept": "ch4-4-theory"
+    },
+    {
+      "front": "What does symmetry not determine alone?",
+      "back": "Every numerical energy and transition intensity.",
+      "concept": "ch4-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and de Paula, Physical Chemistry — edition and exact section verification pending",
+    "Housecroft and Sharpe, Inorganic Chemistry — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two orbitals of similar energy still fail to mix? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Symmetry filters the couplings allowed in a Hamiltonian and organizes qualitative molecular orbitals without calculating every integral.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a Hamiltonian invariant under a molecular symmetry operation, states can be organized into symmetry types; a matrix element vanishes when its transformed integrand lacks the totally symmetric component.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If an operation R leaves H invariant and two states have opposite reflection parity, then $\langle a|H|b\rangle=-\langle a|H|b\rangle=0$. This elementary example shows why energy similarity alone does not guarantee mixing. For general groups, products of representations and their symmetry content determine the allowed couplings.
+
+Symmetry-adapted linear combinations of equivalent ligand orbitals can be built by applying group operations or projection operators. Only matching symmetry sectors couple in an exact symmetry-preserving model. Within one sector, energy mismatch and overlap still control the strength; allowed does not mean large.
+
+For a two-level same-symmetry Hamiltonian with equal diagonal energy ε and real coupling V, eigenvalues are ε±|V|. Different diagonal energies give an avoided crossing when coupling is nonzero. If exact symmetry forces V=0, states in different sectors can cross. Distortions or external fields can break the symmetry and enable previously forbidden mixing.
+
+Selection rules for spectroscopy use the symmetry of the perturbation operator, such as a dipole component, as well as both states. An electronic transition forbidden in an ideal approximation can acquire weak intensity through vibrations, spin-orbit coupling or symmetry breaking. A qualitative group label does not replace a quantitative intensity or energy calculation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a two-by-two Hamiltonian and vary coupling and energy mismatch. Track eigenvalues and compositions through the avoided crossing. Contrast an exactly symmetry-forbidden coupling with a small symmetry-breaking perturbation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Two equal-energy basis states with ε=3 and coupling V=1 have energies 2 and 4, a splitting of 2. If an exact symmetry instead forces V=0, both remain at 3 in this two-state model. A zero matrix element must be justified by the model symmetry rather than assumed from a sketch.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

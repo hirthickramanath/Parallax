@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA4.5",
+  "title": "Series solutions and Frobenius method",
+  "hook": "Why do some ODE solutions require a power times a series rather than an ordinary Taylor series?",
+  "recap": [
+    "A leading power xʳ times a convergent local power series under the theorem hypotheses.",
+    "Candidate leading exponents.",
+    "A second solution involving a logarithm.",
+    "Noninteger powers and logarithms need a defined domain."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a recurrence alone automatically prove convergence everywhere?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Analytic hypotheses and the convergence domain matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an integer difference of roots always force a logarithm?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A logarithmic second solution can arise but is not universal.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May a singular mathematical solution be rejected without checking physical boundary conditions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The admitted domain and physical conditions decide.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Larger indicial root of x²y″−2y=0?",
+      "answer": "2",
+      "explanation": "r²−r−2=(r−2)(r+1).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Smaller indicial root of the same equation?",
+      "answer": "-1",
+      "explanation": "The second root is −1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What defines a regular singular point in the stated normalized form?",
+      "answer": "xP and x²Q are analytic at zero",
+      "options": [
+        "xP and x²Q are analytic at zero",
+        "Every coefficient must itself be finite there"
+      ],
+      "explanation": "The weighted analyticity condition is weaker than an ordinary point.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the Frobenius ansatz?",
+      "back": "A leading power xʳ times a convergent local power series under the theorem hypotheses.",
+      "concept": "ma4-5-theory"
+    },
+    {
+      "front": "What does the indicial equation fix?",
+      "back": "Candidate leading exponents.",
+      "concept": "ma4-5-theory"
+    },
+    {
+      "front": "What can a repeated root introduce?",
+      "back": "A second solution involving a logarithm.",
+      "concept": "ma4-5-theory"
+    },
+    {
+      "front": "Why state a side or branch near zero?",
+      "back": "Noninteger powers and logarithms need a defined domain.",
+      "concept": "ma4-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do some ODE solutions require a power times a series rather than an ordinary Taylor series? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Wave equations in radial geometry lead to differential equations with singular coefficients. Series solutions reveal which singularities can be handled systematically and where local expansions are valid.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+An ordinary Taylor series assumes a regular leading behaviour. Factoring xʳ allows a controlled noninteger or negative leading power near a regular singular point.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For y″+P(x)y′+Q(x)y=0 near x=0, an ordinary point has analytic P and Q. A regular singular point has xP and x²Q analytic there.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+At an ordinary point seek $y=\sum_{n=0}^{\infty}a_nx^n$, differentiate termwise inside its convergence radius and match coefficients. A second-order homogeneous equation ordinarily leaves two independent constants. The radius is limited by analytic structure of the coefficients, and a formal recurrence is not by itself a proof of convergence for every equation.
+
+At a regular singular point, Frobenius seeks $y=x^r\sum_{n=0}^{\infty}a_nx^n$ with a₀≠0 on a chosen side or complex branch. If p₀=(xP)(0) and q₀=(x²Q)(0), the lowest power produces the indicial equation $r(r-1)+p_0r+q_0=0$. This equation determines candidate leading exponents, not all higher coefficients.
+
+For distinct indicial roots whose difference is not an integer, a standard Frobenius theorem supplies two such local solutions under the analytic hypotheses. Repeated roots or integer-separated roots can produce a second solution containing a logarithm, though logarithms are not forced in every integer-separated case. A reduction-of-order formula can construct the missing independent solution where a known solution is nonzero.
+
+For the Euler equation $x^2y''+axy'+by=0$, trying y=xʳ gives r(r−1)+ar+b=0 exactly. Distinct roots produce power solutions on x>0; a repeated root r gives xʳ and xʳln x. Complex roots yield real combinations involving cos(β ln x) and sin(β ln x) times a real power. Domain and branch must be stated before extending these forms across zero.
+
+For an irregular singular point the Frobenius ansatz may fail to span the solutions; asymptotic or other methods can be needed. A physical boundary condition may remove a mathematically valid singular solution, but regularity requirements must come from the problem rather than from an aesthetic preference for finite-looking curves.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Derive the indicial equation and substitute each candidate solution directly. Compare a repeated-root Euler equation and verify its logarithmic solution. Plot on a positive-domain logarithmic x axis without silently assigning values at the singular origin.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For x²y″−2y=0 on x>0, the indicial equation is r(r−1)−2=(r−2)(r+1)=0. Thus y=C₁x²+C₂x⁻¹. At a boundary including zero, boundedness would force C₂=0, but on an interval away from zero both solutions are valid.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

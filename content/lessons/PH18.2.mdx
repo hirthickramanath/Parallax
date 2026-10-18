@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH18.2",
+  "title": "Scientific writing and presenting",
+  "hook": "Why can a technically correct result still be impossible to assess from its presentation?",
+  "recap": [
+    "Data, model, inference and speculation.",
+    "Axes/units, uncertainty meaning and provenance.",
+    "The same formula can be misapplied under different conventions.",
+    "Evidence, assumptions and limitations are visible."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are all kinds of error bars interchangeable without a label?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They represent different uncertainty summaries.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a polished figure prove a method was validated?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Evidence and checks must be reported.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should unresolved discrepancies be included when material?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "They limit the conclusion.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Kinetic energy for m=2,v=3?",
+      "answer": "9",
+      "explanation": "mv²/2=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Energy factor if velocity doubles at fixed mass?",
+      "answer": "4",
+      "explanation": "It scales as v².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What makes an argument assessable?",
+      "answer": "Evidence, assumptions and limitations are visible.",
+      "options": [
+        "Evidence, assumptions and limitations are visible.",
+        "Data, model, inference and speculation."
+      ],
+      "explanation": "Evidence, assumptions and limitations are visible.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What should a report distinguish?",
+      "back": "Data, model, inference and speculation.",
+      "concept": "ph18-2-theory"
+    },
+    {
+      "front": "What belongs on a plot?",
+      "back": "Axes/units, uncertainty meaning and provenance.",
+      "concept": "ph18-2-theory"
+    },
+    {
+      "front": "Why define symbols?",
+      "back": "The same formula can be misapplied under different conventions.",
+      "concept": "ph18-2-theory"
+    },
+    {
+      "front": "What makes an argument assessable?",
+      "back": "Evidence, assumptions and limitations are visible.",
+      "concept": "ph18-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Official arXiv and INSPIRE documentation — exact page/version verification pending",
+    "Taylor, An Introduction to Error Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a technically correct result still be impossible to assess from its presentation? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Scientific communication exposes the question, assumptions, evidence and uncertainty so another person can evaluate the claim.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A scientific report distinguishes method, observation, inference and limitation, with reproducible figures/tables and source/data provenance.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Lead with a bounded question and the resulting behaviour. Equations need symbol definitions and units: $E=mv^2/2$ is incomplete for comparison if m and v are not measured/defined consistently. Put assumptions next to conclusions that depend on them.
+
+A figure needs axes, units, legend, uncertainty meaning and dataset/model provenance. Error bars can represent standard deviation, standard error or credible intervals; label which. Avoid visual normalization or axis choices that conceal relevant residuals.
+
+Separate new results from background and speculation. Cite exact sources for attributed claims and retain version/date for evolving data. A method’s failed check and unresolved discrepancy belong in the report rather than being hidden by a clean-looking summary.
+
+Presentations can simplify without erasing qualifiers that change interpretation. Use examples to explain a model before technical notation, and state what the evidence does not establish when it affects the conclusion. A polished plot is not scientific certification.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Write a one-page report for a synthetic foundation calculation with a labelled figure, assumptions, uncertainty and reproduction instructions. Mark every claim requiring an external source check.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For m=2,v=3 in consistent units, E=9. If a table instead silently uses velocity in another unit, the squared conversion error can be large; equation correctness alone would not rescue the reported value.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

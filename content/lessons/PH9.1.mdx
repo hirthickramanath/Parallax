@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH9.1",
+  "title": "Time-independent perturbation theory",
+  "hook": "When does a small perturbing coefficient still produce a large correction?",
+  "recap": [
+    "The diagonal perturbation expectation.",
+    "Small denominators.",
+    "To assess the admitted approximation regime.",
+    "Integrals with appropriate normalization instead of a discrete sum alone."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a small λ alone guarantee a valid approximation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Matrix elements and gaps set the ratio.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can ordinary nondegenerate formulas be used at an exact degeneracy?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A subspace treatment is needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can exact control models test a perturbative regime?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "They expose omitted-order errors.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Lower second-order shift coefficient for levels 2,5 and coupling 1?",
+      "answer": "-0.3333333333333333",
+      "explanation": "1/(2−5)=−1/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Upper coefficient?",
+      "answer": "0.3333333333333333",
+      "explanation": "1/(5−2)=1/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What can continuum states require?",
+      "answer": "Integrals with appropriate normalization instead of a discrete sum alone.",
+      "options": [
+        "Integrals with appropriate normalization instead of a discrete sum alone.",
+        "The diagonal perturbation expectation."
+      ],
+      "explanation": "Integrals with appropriate normalization instead of a discrete sum alone.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is first-order energy?",
+      "back": "The diagonal perturbation expectation.",
+      "concept": "ph9-1-theory"
+    },
+    {
+      "front": "What threatens a gap expansion?",
+      "back": "Small denominators.",
+      "concept": "ph9-1-theory"
+    },
+    {
+      "front": "Why compare orders?",
+      "back": "To assess the admitted approximation regime.",
+      "concept": "ph9-1-theory"
+    },
+    {
+      "front": "What can continuum states require?",
+      "back": "Integrals with appropriate normalization instead of a discrete sum alone.",
+      "concept": "ph9-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Griffiths and Schroeter, Introduction to Quantum Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+When does a small perturbing coefficient still produce a large correction? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Perturbation theory depends on coupling relative to spectral gaps, not on a coefficient’s name or apparent numerical smallness.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For H=H₀+λV and an isolated nondegenerate eigenstate, energy and state can be expanded perturbatively under suitable spectral/domain assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The first energy coefficient is $E_n^{(1)}=\langle n|V|n\rangle$. The first state correction involves V_mn/(E_n⁰−E_m⁰) for m≠n with a normalization/gauge convention. Small denominators can invalidate an apparently weak perturbation.
+
+The second energy coefficient is $E_n^{(2)}=\sum_{m\ne n}|V_{mn}|^2/(E_n^{(0)}-E_m^{(0)})$ in a discrete complete-basis setting with the needed convergence. A ground-state second-order correction is nonpositive when every coupled denominator is negative. Continuum contributions require integrals and appropriate normalization.
+
+Near degeneracy, first diagonalize the relevant subspace rather than divide by a tiny gap. A perturbation series can be asymptotic rather than convergent; comparing orders and an exactly soluble control helps delimit usefulness.
+
+Physical approximations also require the correct unperturbed domain and symmetry. An operator can be numerically small on selected states yet not be bounded on the entire Hilbert space. Report the gap, matrix elements and λ regime alongside an approximate energy.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Diagonalize the exact two-by-two model while varying coupling/gap and compare first and second orders. Mark where the perturbative ratio is no longer small.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For unperturbed levels 2 and 5, zero diagonal perturbation and off-diagonal coupling 1, the lower second-order shift is −1/3 in λ² units. The upper shift is +1/3; trace conservation of the two-level matrix gives a useful check.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -1,0 +1,186 @@
+---
+{
+  "id": "CH2.6",
+  "title": "NMR and EPR basics",
+  "hook": "Why can the same nuclear species resonate at slightly different frequencies in different molecules?",
+  "recap": [
+    "Chemical-shift comparisons.",
+    "Electronic and nuclear magnetic degrees of freedom.",
+    "Inhomogeneous dephasing adds different broadening.",
+    "Line shape, motion and apparatus contribute."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are NMR and EPR the same magnetic degree of freedom?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They primarily address nuclear and electron spin respectively.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is ppm an absolute frequency unit?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is a referenced dimensionless ratio.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are T₁ and T₂ always the same process/time?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Population and coherence relaxation differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Larmor angular frequency for |γ|=3,B=2?",
+      "answer": "6",
+      "explanation": "|γ|B=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Shift in ppm for difference 2 and reference 1e6?",
+      "answer": "2",
+      "explanation": "(2/1e6)×1e6=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify a linewidth interpretation?",
+      "answer": "Line shape, motion and apparatus contribute.",
+      "options": [
+        "Line shape, motion and apparatus contribute.",
+        "Chemical-shift comparisons."
+      ],
+      "explanation": "Line shape, motion and apparatus contribute.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What needs a resonance reference?",
+      "back": "Chemical-shift comparisons.",
+      "concept": "ch2-6-theory"
+    },
+    {
+      "front": "What does hyperfine coupling connect?",
+      "back": "Electronic and nuclear magnetic degrees of freedom.",
+      "concept": "ch2-6-theory"
+    },
+    {
+      "front": "Why distinguish T₂ and T₂*?",
+      "back": "Inhomogeneous dephasing adds different broadening.",
+      "concept": "ch2-6-theory"
+    },
+    {
+      "front": "Why qualify a linewidth interpretation?",
+      "back": "Line shape, motion and apparatus contribute.",
+      "concept": "ch2-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins and Friedman, Molecular Quantum Mechanics — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can the same nuclear species resonate at slightly different frequencies in different molecules? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+NMR and EPR probe magnetic environments with different magnetic moments and coupling/relaxation scales.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+NMR addresses nuclear-spin transitions; EPR addresses suitable unpaired-electron magnetic states. Resonance and shifts require a reference and angular/cyclic frequency convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a simple spin in a field, $\omega_L=|\gamma|B$ in an angular-frequency convention. Electronic shielding changes the local nuclear response; a chemical shift is usually a referenced dimensionless frequency difference reported in ppm. Different sign/reference conventions must be checked.
+
+Spin–spin couplings split levels and correlate resonances. Chemical equivalence, exchange and strong-coupling regimes can change simple line-counting rules. EPR g factors and hyperfine couplings encode electronic environment and anisotropy, not one universal isotropic number for every radical.
+
+Relaxation times T₁ and T₂ describe different population/coherence processes in qualified models; inhomogeneous broadening adds T₂* behaviour. Pulse sequence, temperature and motion determine what spectrum/echo is measured. A width cannot be converted into a unique chemical lifetime without a line-shape model.
+
+Compare assignments through calibration, field dependence and multiple observables. A predicted chemical shift is a model output with method/environment error, not an exact count of local electrons. This lesson is theoretical and supplies no new measured resonance dataset.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate a synthetic two-spin spectrum with explicit coupling/shift units. Vary field and separate a shift in ppm from a splitting in frequency units, retaining the reference convention.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For |γ|=3 angular-frequency units per field and B=2, ω_L=6. A referenced frequency difference of 2 on a reference 1,000,000 gives 2 ppm under the stated difference convention.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

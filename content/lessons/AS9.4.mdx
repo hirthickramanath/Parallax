@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS9.4",
+  "title": "CMB physics and anisotropies",
+  "hook": "Why do peaks in a sky correlation spectrum encode both sound physics and distance?",
+  "recap": [
+    "Statistical angular correlations in the stated model.",
+    "Perturbation evolution in the coupled photon-baryon plasma and projection.",
+    "Cosmic variance.",
+    "They alter observed harmonic statistics."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does instrument-free observation remove cosmic variance?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "We still observe one finite sky realization.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must ruler and distance conventions match in θ_s?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Comoving and physical definitions differ by scale factors.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are foregrounds identical to primordial anisotropy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their frequency/spatial behaviour needs separation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Angular sound scale for comoving r_s=2,D_M=100?",
+      "answer": "0.02",
+      "explanation": "r_s/D_M=.02.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Angle ratio after halving r_s at fixed D_M?",
+      "answer": "0.5",
+      "explanation": "It is linear in the ruler.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why include beams and masks?",
+      "answer": "They alter observed harmonic statistics.",
+      "options": [
+        "They alter observed harmonic statistics.",
+        "Statistical angular correlations in the stated model."
+      ],
+      "explanation": "They alter observed harmonic statistics.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Cℓ summarize?",
+      "back": "Statistical angular correlations in the stated model.",
+      "concept": "as9-4-theory"
+    },
+    {
+      "front": "What causes acoustic peaks?",
+      "back": "Perturbation evolution in the coupled photon-baryon plasma and projection.",
+      "concept": "as9-4-theory"
+    },
+    {
+      "front": "What limits one-sky estimates intrinsically?",
+      "back": "Cosmic variance.",
+      "concept": "as9-4-theory"
+    },
+    {
+      "front": "Why include beams and masks?",
+      "back": "They alter observed harmonic statistics.",
+      "concept": "as9-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ryden, Introduction to Cosmology — edition and exact section verification pending",
+    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do peaks in a sky correlation spectrum encode both sound physics and distance? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+CMB anisotropies combine primordial perturbations, plasma evolution, projection and foreground/instrument effects.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The CMB temperature field can be expanded in spherical harmonics; a statistical angular spectrum summarizes correlations under stated isotropy and ensemble assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Write ΔT/T=∑aℓmYℓm and $C_\ell=\langle|a_{\ell m}|^2\rangle$ in a statistically isotropic model. An observed finite sky supplies one realization, with cosmic variance even before instrument noise. Masks and beams mix or suppress estimated modes and must be modeled.
+
+Before recombination, the coupled photon-baryon fluid supports acoustic oscillations. The observed characteristic angle is approximately θ_s=r_s/D_M when both sound horizon r_s and transverse distance D_M use a consistent comoving convention. Mixing a comoving ruler with physical D_A loses a redshift factor.
+
+Baryon loading, gravitational driving, diffusion damping, optical depth and primordial parameters shape different peak features. Polarization adds independent structure through Thomson scattering geometry. Lensing remaps anisotropies; foreground dust and synchrotron require frequency-dependent separation.
+
+Parameter inference fits a correlated theoretical spectrum with calibration/foreground nuisance parameters and a chosen cosmological model. A good fit constrains that model; it does not independently measure every parameter without degeneracies. A plotted theoretical spectrum is not a newly observed all-sky map.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate a synthetic sky or supplied angular spectrum with an explicit beam and mask. Compare the input Cℓ with the processed estimate. Keep cosmic variance, noise and foreground uncertainty separate.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a supplied comoving sound scale is 2 and comoving transverse distance 100, θ_s=.02 radians. Halving that ruler at fixed distance halves the angle. This geometric toy value is not a measurement of the actual acoustic scale.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

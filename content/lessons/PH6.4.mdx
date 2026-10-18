@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH6.4",
+  "title": "Polarisation and crystal optics",
+  "hook": "Why can a transparent crystal split a beam into two polarizations?",
+  "recap": [
+    "Different propagation responses for polarization eigenmodes.",
+    "Relative phase between components.",
+    "A coherency matrix or Stokes parameters.",
+    "Wavelength, direction, alignment and material dispersion."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can one Jones vector represent unpolarized light completely?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It needs an ensemble/correlation description.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a lossless ideal retarder necessarily absorb energy?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It changes relative phase.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must circular-polarization sign conventions be stated?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Viewing/time conventions can reverse labels.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Malus transmitted fraction at 60°?",
+      "answer": "0.25",
+      "explanation": "cos²60°=1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Quarter-wave thickness for λ=1,Δn=.1?",
+      "answer": "2.5",
+      "explanation": "λ/(4Δn)=2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What affects real wave-plate performance?",
+      "answer": "Wavelength, direction, alignment and material dispersion.",
+      "options": [
+        "Wavelength, direction, alignment and material dispersion.",
+        "Different propagation responses for polarization eigenmodes."
+      ],
+      "explanation": "Wavelength, direction, alignment and material dispersion.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What causes birefringence?",
+      "back": "Different propagation responses for polarization eigenmodes.",
+      "concept": "ph6-4-theory"
+    },
+    {
+      "front": "What does a retarder change?",
+      "back": "Relative phase between components.",
+      "concept": "ph6-4-theory"
+    },
+    {
+      "front": "What can represent partial polarization?",
+      "back": "A coherency matrix or Stokes parameters.",
+      "concept": "ph6-4-theory"
+    },
+    {
+      "front": "What affects real wave-plate performance?",
+      "back": "Wavelength, direction, alignment and material dispersion.",
+      "concept": "ph6-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Hecht, Optics — edition and exact section verification pending",
+    "Goodman, Introduction to Fourier Optics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a transparent crystal split a beam into two polarizations? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Polarization propagation depends on tensor material response. Coherent Jones vectors and ensemble Stokes parameters answer different questions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Jones calculus describes a fully polarized coherent transverse field in a selected basis; Stokes parameters describe polarization through intensity/correlation observables, including partial polarization.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a linear anisotropic dielectric, D=ε·E with a tensor ε, so D and E need not be parallel. Direction-dependent normal modes can have different refractive indices and phases. Ordinary/extraordinary descriptions require the crystal symmetry and propagation direction; isotropic formulas cannot be reused unchanged.
+
+A retarder introduces relative phase $\delta=2\pi\Delta n\,d/\lambda$ for a stated vacuum wavelength and effective birefringence. A quarter-wave plate gives π/2 and a half-wave plate π modulo 2π in the design condition. Wavelength, incidence and axis alignment affect actual performance.
+
+For a fully linearly polarized input and ideal analyser at angle θ, Malus’s law gives I=I₀cos²θ. Unpolarized light transmitted by an ideal linear polarizer has mean intensity I₀/2, requiring ensemble averaging rather than a single deterministic Jones vector. A physical partial polarization state needs a coherency matrix or Stokes description.
+
+Stokes sign conventions, especially circular-polarization handedness, differ with time and viewing conventions. Depolarization, dichroism and birefringence are distinct effects. Scattering and magnetized plasmas can rotate or mix polarization; infer material properties only with the corresponding transfer model and calibration.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Apply Jones matrices to a linear input at several retarder orientations, then compare with an unpolarized ensemble calculation. Verify intensity conservation for an ideal lossless retarder and separate a polarization change from absorption.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+An ideal analyser 60° from a linear input transmits one quarter of its intensity. For Δn=.1 and λ=1 in normalized length units, a quarter-wave thickness is d=λ/(4Δn)=2.5. This is a design calculation, not a universal plate thickness.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

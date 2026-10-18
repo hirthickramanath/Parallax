@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS9.1",
+  "title": "Hubble's law and the distance ladder",
+  "hook": "Why can two distance measurements at the same redshift disagree without one instrument being broken?",
+  "recap": [
+    "Low redshift and appropriate flow corrections.",
+    "An error that can propagate through linked distance steps.",
+    "Flux relative to intrinsic luminosity.",
+    "Shared calibration errors do not behave like independent noise."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is cosmological redshift always one exact Newtonian speed?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Relativistic geometry and peculiar motion matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does averaging remove a shared calibration offset?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is correlated across measurements.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are D_L and D_A identical at every redshift?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their relation includes redshift and propagation assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Low-z distance for v=600,H₀=60 in compatible units?",
+      "answer": "10",
+      "explanation": "d=v/H₀=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "D_L/D_A at z=1 under distance duality?",
+      "answer": "4",
+      "explanation": "(1+1)²=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why keep covariance?",
+      "answer": "Shared calibration errors do not behave like independent noise.",
+      "options": [
+        "Shared calibration errors do not behave like independent noise.",
+        "Low redshift and appropriate flow corrections."
+      ],
+      "explanation": "Shared calibration errors do not behave like independent noise.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What qualifies the linear Hubble law?",
+      "back": "Low redshift and appropriate flow corrections.",
+      "concept": "as9-1-theory"
+    },
+    {
+      "front": "What is a ladder calibration uncertainty?",
+      "back": "An error that can propagate through linked distance steps.",
+      "concept": "as9-1-theory"
+    },
+    {
+      "front": "What defines D_L?",
+      "back": "Flux relative to intrinsic luminosity.",
+      "concept": "as9-1-theory"
+    },
+    {
+      "front": "Why keep covariance?",
+      "back": "Shared calibration errors do not behave like independent noise.",
+      "concept": "as9-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ryden, Introduction to Cosmology — edition and exact section verification pending",
+    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two distance measurements at the same redshift disagree without one instrument being broken? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Cosmological inference distinguishes distance definitions, peculiar velocities and calibration chains rather than treating every redshift as an exact ruler.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The local Hubble law v≈H₀d is a low-redshift expansion for the cosmological flow; measured redshift also contains peculiar-motion and observational contributions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For sufficiently small cosmological redshift, $cz\approx H_0d$ after the relevant velocity/frame corrections. At higher redshift a relativistic cosmological distance relation replaces this linear approximation. Redshift is measured from wavelength ratios, not generally a unique Newtonian recession speed.
+
+A distance ladder links geometric calibrators to standardizable objects and more distant samples. Each step has population, extinction, crowding, selection and calibration uncertainties, including correlations shared across many sources. Averaging many objects does not remove a common zero-point error.
+
+Luminosity distance is defined by F=L/(4πD_L²), while angular-diameter distance relates physical transverse size and angle. They are not interchangeable at cosmological redshift. In a transparent metric cosmology with the usual photon-propagation assumptions, D_L=(1+z)²D_A.
+
+Peculiar velocities strongly affect nearby redshifts, whereas higher-redshift fits depend more on expansion-model parameters. Compare likelihoods, covariance, calibrator choices and selection before interpreting a discrepancy as a new physical phenomenon. This lesson uses hypothetical values rather than reporting a newly measured H₀.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Create a synthetic ladder with a shared zero-point shift and independent noise. Fit the low-z slope with and without the common calibration covariance. Mark peculiar-velocity and model assumptions explicitly.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In a low-redshift toy model with v=600 and H₀=60 in consistent distance/time units, d=10. At z=1, the distance-duality factor D_L/D_A=(1+z)² is 4 under its assumptions, not 2.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

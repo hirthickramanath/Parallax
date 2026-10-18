@@ -1,0 +1,188 @@
+---
+{
+  "id": "CH1.2",
+  "title": "Phase equilibria and solutions",
+  "hook": "Why can a mixture boil over a range of temperatures instead of at one pure-substance boiling point?",
+  "recap": [
+    "Relevant component chemical potentials under common equilibrium conditions.",
+    "An ideal liquid solution with the stated vapour model.",
+    "ΔH/(TΔV) for a pure-substance coexistence boundary.",
+    "Metastability and nucleation can delay transformation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are liquid and vapour mole fractions always equal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Relative volatility can enrich one component in vapour.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is every Henry constant numerically comparable regardless of convention?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its definition and units depend on the concentration convention.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a phase diagram alone predict a nucleation rate?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Transformation kinetics needs additional information.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Total ideal vapour pressure for xA=0.25, pA*=80 and pB*=20?",
+      "answer": "35",
+      "explanation": "0.25×80+0.75×20=35.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Vapour mole fraction of A for the same mixture?",
+      "answer": "0.5714285714285714",
+      "explanation": "pA/ptotal=20/35.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What limits the integrated Clausius–Clapeyron approximation?",
+      "answer": "Ideal vapour, negligible condensed volume and approximately constant enthalpy",
+      "options": [
+        "Ideal vapour, negligible condensed volume and approximately constant enthalpy",
+        "It is exact for every liquid near its critical point"
+      ],
+      "explanation": "The approximations are part of the derivation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What equates across coexisting phases?",
+      "back": "Relevant component chemical potentials under common equilibrium conditions.",
+      "concept": "ch1-2-theory"
+    },
+    {
+      "front": "What does Raoult’s law assume here?",
+      "back": "An ideal liquid solution with the stated vapour model.",
+      "concept": "ch1-2-theory"
+    },
+    {
+      "front": "What is Clapeyron’s slope?",
+      "back": "ΔH/(TΔV) for a pure-substance coexistence boundary.",
+      "concept": "ch1-2-theory"
+    },
+    {
+      "front": "Why distinguish a transient from an equilibrium diagram?",
+      "back": "Metastability and nucleation can delay transformation.",
+      "concept": "ch1-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Atkins, de Paula and Keeler, Physical Chemistry — edition and exact section verification pending",
+    "McQuarrie and Simon, Physical Chemistry: A Molecular Approach — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a mixture boil over a range of temperatures instead of at one pure-substance boiling point? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Phase equilibrium combines component potentials with composition and pressure. Mixture vapour and liquid can have different compositions, so a pure-substance shortcut can fail.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A volatile component partitions between phases until its thermodynamic price matches on both sides. Each phase can reach that balance at a different composition.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Coexisting phases in equilibrium share temperature, pressure in the appropriate mechanical model, and chemical potentials of components that can exchange.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an ideal liquid solution and ideal gas vapour at low pressure, Raoult's law is $p_i=x_i p_i^*(T)$, where pi* is the pure-component saturation pressure at T. Total pressure is ∑pi and vapour mole fraction is yi=pi/ptotal. Vapour and liquid compositions are generally different. Nonideal mixtures require activities, fugacities or other validated models.
+
+Henry's law describes a dilute solute with a convention-dependent proportionality such as pi=Hi xi. Its constant and units depend on the chosen concentration and standard-state convention. It should not be equated numerically with Raoult's pure-component pressure without checking the limit and definition.
+
+For two phases of a pure substance, differentiating chemical-potential equality gives the Clapeyron equation $dp/dT=\Delta S/\Delta V=\Delta H/(T\Delta V)$. If vapour is ideal, liquid volume negligible and vaporization enthalpy approximately constant, integration gives ln(p₂/p₁)=−ΔH/R(1/T₂−1/T₁). Those approximations fail near a critical point or over a large range with varying enthalpy.
+
+For a simple nonreacting equilibrium system, Gibbs phase rule F=C−P+2 counts independent intensive variables under its assumptions. Fixing pressure removes one degree of freedom. Chemical reactions, extra external fields or additional constraints change the count and must be included explicitly.
+
+A phase diagram records stability boundaries, not a full transformation rate. Superheating, supercooling and nucleation barriers can delay a phase change. A measured transient temperature need not be an equilibrium boundary, and an azeotrope is a composition-dependent mixture feature rather than proof that all mixtures behave like pure substances.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic Raoult-law pressure-composition table at fixed temperature and compare liquid with vapour fractions. Then change one activity coefficient to see which ideal relation breaks. Label phase equilibrium assumptions before interpreting a boiling curve.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For an ideal binary liquid with xA=0.25, pA*=80 and pB*=20 in shared pressure units, pA=20 and pB=15, so total pressure is 35. The vapour fraction yA=20/35=4/7, larger than the liquid fraction.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

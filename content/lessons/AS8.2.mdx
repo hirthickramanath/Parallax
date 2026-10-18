@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS8.2",
+  "title": "Stellar dynamics (Jeans equations, relaxation)",
+  "hook": "Why can the same line-of-sight velocity dispersion fit different galaxy masses?",
+  "recap": [
+    "A velocity-moment relation of collisionless dynamics under stated assumptions.",
+    "Projected data do not uniquely determine radial/tangential orbital structure.",
+    "Geometry, boundaries and equilibrium.",
+    "It determines whether collisionless modelling is appropriate."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is tracer density always total gravitating density?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Visible tracers can inhabit another mass distribution.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can anisotropy mimic mass changes in projected dispersion?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Projection mixes velocity components.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is every algebraic Jeans solution guaranteed a nonnegative distribution function?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Moment consistency is not sufficient by itself.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Toy virial mass for R=3,σ=2,G=1 and coefficient 1?",
+      "answer": "12",
+      "explanation": "Rσ²/G=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Mass-estimate ratio after doubling σ at fixed R?",
+      "answer": "4",
+      "explanation": "It scales as σ².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why check relaxation time?",
+      "answer": "It determines whether collisionless modelling is appropriate.",
+      "options": [
+        "It determines whether collisionless modelling is appropriate.",
+        "A velocity-moment relation of collisionless dynamics under stated assumptions."
+      ],
+      "explanation": "It determines whether collisionless modelling is appropriate.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a Jeans equation?",
+      "back": "A velocity-moment relation of collisionless dynamics under stated assumptions.",
+      "concept": "as8-2-theory"
+    },
+    {
+      "front": "What causes mass–anisotropy degeneracy?",
+      "back": "Projected data do not uniquely determine radial/tangential orbital structure.",
+      "concept": "as8-2-theory"
+    },
+    {
+      "front": "What qualifies virial mass estimates?",
+      "back": "Geometry, boundaries and equilibrium.",
+      "concept": "as8-2-theory"
+    },
+    {
+      "front": "Why check relaxation time?",
+      "back": "It determines whether collisionless modelling is appropriate.",
+      "concept": "as8-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Binney and Tremaine, Galactic Dynamics — edition and exact section verification pending",
+    "Mo, van den Bosch and White, Galaxy Formation and Evolution — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can the same line-of-sight velocity dispersion fit different galaxy masses? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Collisionless dynamics connects phase-space populations to gravity, but projection and orbital anisotropy create inference degeneracies.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The collisionless Boltzmann equation evolves a distribution function under a smooth mean gravitational potential; Jeans equations are its velocity moments with closure/assumption requirements.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a steady spherical nonstreaming tracer, $d(\nu\sigma_r^2)/dr+2\beta\nu\sigma_r^2/r=-\nu GM(r)/r^2$, with β=1−(σ_θ²+σ_φ²)/(2σ_r²). Tracer density ν need not equal total gravitating mass density. Projected data do not directly reveal every three-dimensional moment.
+
+Different combinations of M(r) and anisotropy can produce similar projected dispersions, the mass–anisotropy degeneracy. Proper motions, multiple tracers and higher-order information can help but require their own data/model assumptions. A Jeans moment solution also must correspond to a physically nonnegative distribution function.
+
+The virial theorem provides an integrated relation with surface and stationarity qualifications. A rough M∼Rσ²/G includes a geometry/structure coefficient and is not exact for every galaxy. Rotation and non-equilibrium tidal structure can invalidate naive pressure-support estimates.
+
+Two-body relaxation is often slow in galaxies compared with their age, supporting a collisionless approximation, whereas dense star clusters can relax much faster. Close encounters, resonances and collective effects require separate time-scale checks. A numerical N-body model must distinguish physical relaxation from finite-particle artifacts.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare two supplied anisotropy profiles in a spherical Jeans calculation and project their dispersions. Verify positive tracer density and sensible boundary conditions. Report conditional mass estimates rather than presenting one best fit as a unique dynamical proof.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a stated toy estimator M=Rσ²/G with coefficient one, R=3,σ=2,G=1 give M=12. Doubling σ at fixed R multiplies that estimate by four; it does not remove uncertainty in anisotropy or structure.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

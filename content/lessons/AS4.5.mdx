@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS4.5",
+  "title": "Supernovae and nucleosynthesis",
+  "hook": "Why do different supernova classes make different elements and light curves?",
+  "recap": [
+    "Gravitational contraction with complex transfer to ejecta.",
+    "Thermodynamic history, composition and reaction time scales.",
+    "A yield requires a model connecting radiation to matter.",
+    "Decay chains and deposition/escape change the luminosity relation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are core-collapse and thermonuclear explosions the same mechanism?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their progenitors and energy paths differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does radioactive count alone fix observed luminosity without deposition?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Energy escape and transport matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can one elemental detection uniquely identify its astrophysical production site?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Multiple processes and histories can contribute.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Fraction remaining after three half-lives?",
+      "answer": "0.125",
+      "explanation": "(1/2)³=1/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Remaining count from 80 after three half-lives?",
+      "answer": "10",
+      "explanation": "80/8=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify decay-powered light curves?",
+      "answer": "Decay chains and deposition/escape change the luminosity relation.",
+      "options": [
+        "Decay chains and deposition/escape change the luminosity relation.",
+        "Gravitational contraction with complex transfer to ejecta."
+      ],
+      "explanation": "Decay chains and deposition/escape change the luminosity relation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What powers a core-collapse energy reservoir?",
+      "back": "Gravitational contraction with complex transfer to ejecta.",
+      "concept": "as4-5-theory"
+    },
+    {
+      "front": "What sets nucleosynthetic products?",
+      "back": "Thermodynamic history, composition and reaction time scales.",
+      "concept": "as4-5-theory"
+    },
+    {
+      "front": "What distinguishes a yield estimate from a line detection?",
+      "back": "A yield requires a model connecting radiation to matter.",
+      "concept": "as4-5-theory"
+    },
+    {
+      "front": "Why qualify decay-powered light curves?",
+      "back": "Decay chains and deposition/escape change the luminosity relation.",
+      "concept": "as4-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do different supernova classes make different elements and light curves? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Explosion mechanisms, progenitor history and radiation transport connect nucleosynthesis to observables without reducing all supernovae to one energy source.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Core-collapse and thermonuclear supernovae arise from different evolutionary channels; spectroscopic classifications and physical mechanisms are related but not identical labels.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In core collapse, loss of support in an evolved massive core leads to rapid contraction and a compact remnant, with neutrino transport and multidimensional dynamics central to the explosion problem. Gravitational binding energy provides a large reservoir, but only a fraction becomes ejecta kinetic energy; a simple bounce picture is not a complete mechanism.
+
+Thermonuclear events involve explosive burning in a degenerate stellar setting, commonly modeled with white-dwarf progenitors and multiple possible ignition/accretion/merger channels. Burning conditions and expansion set products. Treating every Type Ia event as one uniquely established progenitor path overstates current inference.
+
+Nucleosynthesis depends on temperature, density, electron fraction and reaction/expansion time scales. Hydrostatic burning, explosive burning and neutron-capture processes contribute differently. A nuclear network must conserve baryon number and track weak reactions and neutrino effects; one detected element does not identify a unique production event.
+
+Radioactive decay can power late luminosity. For a single isolated decay population, $N(t)=N_0e^{-\lambda t}$ and activity λN, but a real light curve also depends on decay chains, energy deposition and escape. Dust, distance, extinction and asymmetry affect inferred yields. Distinguish observed spectral lines from model-derived ejecta masses.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute a labelled single-decay model and compare full trapping with a supplied time-dependent deposition fraction. Identify which light-curve changes come from nuclear decay and which from transport. Keep actual supernova data provenance separate from the synthetic exercise.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+After one half-life a single radioactive population has half its nuclei; after three it has one eighth. If initial count is 80, the remaining count after three half-lives is 10. This does not automatically make bolometric luminosity proportional to the remaining count if trapping changes.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

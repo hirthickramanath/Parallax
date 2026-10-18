@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.1",
+  "title": "Laws of thermodynamics and potentials",
+  "hook": "Can heat and work be stored separately inside a gas?",
+  "recap": [
+    "Work done by the system is positive.",
+    "Along a reversible path.",
+    "Helmholtz free energy F.",
+    "Gibbs free energy G."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are heat and work independent stored state functions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They describe transfer paths; U is the state function.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the minimum-potential rule depend on controlled variables?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Different reservoir constraints select F or G.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a subsystem entropy decrease without violating the second law?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Entropy can be exported; the total balance matters.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Work output in J for cyclic heat input 100 J and rejection 60 J?",
+      "answer": "40",
+      "explanation": "The cyclic first law gives W=100−60.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Carnot efficiency for hot 500 K and cold 300 K?",
+      "answer": "0.4",
+      "explanation": "1−300/500=.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What potential suits fixed T,p?",
+      "answer": "Gibbs free energy G.",
+      "options": [
+        "Gibbs free energy G.",
+        "Work done by the system is positive."
+      ],
+      "explanation": "Gibbs free energy G.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sign convention is used for work?",
+      "back": "Work done by the system is positive.",
+      "concept": "ph7-1-theory"
+    },
+    {
+      "front": "When is δQ_rev=T dS valid?",
+      "back": "Along a reversible path.",
+      "concept": "ph7-1-theory"
+    },
+    {
+      "front": "What potential suits fixed T,V?",
+      "back": "Helmholtz free energy F.",
+      "concept": "ph7-1-theory"
+    },
+    {
+      "front": "What potential suits fixed T,p?",
+      "back": "Gibbs free energy G.",
+      "concept": "ph7-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can heat and work be stored separately inside a gas? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Thermodynamic potentials organize energy exchange in stellar matter and laboratory engines. The controlled variables decide which potential has an extremum.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use work done by the system as positive: dU=δQ−δW. For a simple compressible equilibrium system of fixed composition, dU=T dS−p dV.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Heat and work label energy transfer processes, not separate state functions stored in matter. For a quasistatic pressure-volume process, work is ∫p_ext dV; replacing external pressure by system pressure requires the appropriate mechanical-equilibrium limit. A free expansion into vacuum can have zero work even while the volume changes.
+
+For a reversible heat transfer δQ_rev=T dS. The Clausius inequality gives dS≥δQ/T_b for a system exchanging heat with a single boundary reservoir at temperature T_b, with the full surroundings included when entropy production is assessed. An isolated system has nondecreasing total entropy, but the entropy of an open subsystem may decrease by exporting entropy. Reversibility is not equivalent to simply operating slowly if friction or finite gradients remain.
+
+Legendre transformations give $F=U-TS$, H=U+pV and G=U−TS+pV. For fixed composition, $dF=-S\,dT-p\,dV$ and $dG=-S\,dT+V\,dp$. Thus at fixed T,V and appropriate allowed variations F is minimized in stable equilibrium; at fixed T,p the corresponding potential is G. These statements include reservoir contributions and are not unconstrained rules to minimize all energies simultaneously.
+
+Equality of mixed derivatives produces Maxwell relations such as (∂S/∂V)_T=(∂p/∂T)_V in a smooth single phase. Stability imposes response constraints, including positive heat capacities for ordinary stable canonical states. Phase boundaries and nonadditive gravitating systems need care: ensemble-specific stability conclusions cannot be transferred blindly. A cyclic engine between reservoirs satisfies η≤1−T_c/T_h when temperatures are absolute and all heat/work exchanges are included.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use the gas-piston bench to compare work paths between the same volumes. Record the stated process assumptions and compute work from the pressure-volume area. Compare a reversible ideal expansion with a free-expansion thought experiment; do not assign the same heat transfer just because the endpoint volumes agree.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+An engine absorbs 100 J and rejects 60 J in one cycle. Its internal-energy change is zero, so work output is 40 J and efficiency is .4. Reservoirs at 500 K and 300 K have Carnot bound .4; attaining that bound requires the reversible idealization, not merely matching two measured numbers.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
