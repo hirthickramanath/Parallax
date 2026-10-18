@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **160**.
-- Authored recall cards: **645**.
-- Missing lesson bodies: **194**.
+- Playable authored drafts: **170**.
+- Authored recall cards: **685**.
+- Missing lesson bodies: **184**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -42,7 +42,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 2 | PH4 | Electrostatics and magnetostatics | 8 / 8 | None |
 | 3 | PH5 | Electrodynamics | 0 / 8 | PH5.1, PH5.2, PH5.3, PH5.4, PH5.5, PH5.6, PH5.7, PH5.8 |
 | 4 | PH6 | Waves and optics | 0 / 5 | PH6.1, PH6.2, PH6.3, PH6.4, PH6.5 |
-| 3 | PH7 | Thermodynamics and statistical mechanics | 0 / 10 | PH7.1, PH7.2, PH7.3, PH7.4, PH7.5, PH7.6, PH7.7, PH7.8, PH7.9, PH7.10 |
+| 3 | PH7 | Thermodynamics and statistical mechanics | 10 / 10 | None |
 | 3 | PH8 | Quantum mechanics I | 0 / 8 | PH8.1, PH8.2, PH8.3, PH8.4, PH8.5, PH8.6, PH8.7, PH8.8 |
 | 5 | PH9 | Quantum mechanics II | 0 / 8 | PH9.1, PH9.2, PH9.3, PH9.4, PH9.5, PH9.6, PH9.7, PH9.8 |
 | 6 | PH10 | Advanced and relativistic quantum mechanics | 0 / 6 | PH10.1, PH10.2, PH10.3, PH10.4, PH10.5, PH10.6 |

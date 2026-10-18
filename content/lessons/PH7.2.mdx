@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.2",
+  "title": "Kinetic theory and Maxwell-Boltzmann",
+  "hook": "Why is the most probable molecular speed smaller than the root-mean-square speed?",
+  "recap": [
+    "Speed is a magnitude; velocity includes direction.",
+    "p=nk_BT for number density n.",
+    "Variance k_BT/m.",
+    "When collisions cannot relax the distribution on macroscopic evolution scales."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does zero mean velocity imply zero mean speed?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Opposite directions cancel as vectors.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a speed density contain a v² factor from geometry?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "A three-dimensional velocity shell has volume 4πv²dv.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does classical equipartition always describe low-temperature vibrational modes?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Quantum excitations can be frozen out.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Squared rms speed when k_BT/m=4?",
+      "answer": "12",
+      "explanation": "3k_BT/m=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Squared most probable speed with the same parameter?",
+      "answer": "8",
+      "explanation": "2k_BT/m=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does zero mean velocity imply zero mean speed?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Opposite directions cancel as vectors.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What distinguishes speed from velocity?",
+      "back": "Speed is a magnitude; velocity includes direction.",
+      "concept": "ph7-2-theory"
+    },
+    {
+      "front": "What is ideal-gas pressure?",
+      "back": "p=nk_BT for number density n.",
+      "concept": "ph7-2-theory"
+    },
+    {
+      "front": "What sets Maxwell component width?",
+      "back": "Variance k_BT/m.",
+      "concept": "ph7-2-theory"
+    },
+    {
+      "front": "When can local equilibrium fail?",
+      "back": "When collisions cannot relax the distribution on macroscopic evolution scales.",
+      "concept": "ph7-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why is the most probable molecular speed smaller than the root-mean-square speed? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Molecular velocity statistics explain pressure, thermal broadening and collision scales. A speed histogram includes a geometric factor absent from one Cartesian velocity component.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A dilute classical ideal gas in equilibrium has independent Gaussian Cartesian velocity components; its speed distribution includes the spherical velocity-space measure.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For particle mass m and temperature T, the normalized velocity density is $f(\mathbf v)=(m/2\pi k_BT)^{3/2}\exp[-m v^2/(2k_BT)]$. Rotational symmetry allows a velocity-space spherical shell of volume 4πv²dv, so the speed density is 4πv²f(v). A density per unit speed is not the same quantity as a density per unit Cartesian velocity volume.
+
+Differentiating the speed density gives v_mp=√(2k_BT/m). Gaussian moments yield mean speed √(8k_BT/(πm)) and rms speed √(3k_BT/m). The tail weights larger speeds differently in these statistics. None is a universal drift velocity: an equilibrium gas has zero mean velocity vector even though its mean speed is positive.
+
+Momentum transfer to an ideal wall gives $p=nm\langle v_x^2\rangle=nk_BT$, where n is number density. Equipartition assigns k_BT/2 per independent quadratic term under classical equilibrium assumptions. Frozen quantum modes, constraints and nonquadratic energies can invalidate naive degree counting. Elastic wall collisions and isotropy are part of the elementary derivation.
+
+For hard spheres of collision cross-section σ, the equilibrium mean free path is approximately 1/(√2 nσ) in a dilute homogeneous gas. This is a model-specific average, not the distance every particle travels. Local thermodynamic equilibrium requires collision relaxation fast compared with relevant gradients and evolution. Rarefied gas, shocks, nonthermal plasma tails and relativistic particles require extensions beyond this Maxwell–Boltzmann model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct synthetic histograms from three independently sampled normal components, then compare a component histogram with the speed histogram. Label the samples synthetic, check normalization with bin width and compare the three speed statistics. Increase sample count before interpreting a tail discrepancy.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In units with k_BT/m=4, v_mp=√8 and v_rms=√12. Their squares are 8 and 12. The mean velocity vector remains zero if no bulk flow is present; substituting v_rms for the vector mean would falsely predict a preferred direction.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

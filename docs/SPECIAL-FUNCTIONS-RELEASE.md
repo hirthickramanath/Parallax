@@ -1,6 +1,6 @@
 # Special functions and asymptotic methods batch
 
-This is the current authoring release. The generated [course ledger](COURSE-STATUS.md) records actual coverage.
+This is a historical authoring release. See [the current release](CONTINUOUS-AUTHORING-RELEASE.md). The generated [course ledger](COURSE-STATUS.md) records actual coverage.
 
 ## Added content
 

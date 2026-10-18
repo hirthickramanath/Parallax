@@ -302,3 +302,21 @@ test("special function examples preserve indexing, weights and asymptotic scales
     check(id, "warmup", warmup);
   }
 });
+test("thermal examples preserve energy, multiplicity and occupation conventions", () => {
+  const rows = [
+    ["PH7.1", 100 - 60, 1 - 300 / 500],
+    ["PH7.2", 3 * 4, 2 * 4],
+    ["PH7.3", 6, 6 / 4],
+    ["PH7.4", 1 / 4, 0.25 * 0.75],
+    ["PH7.5", 3 / 4, 0.75 * 0.25],
+    ["PH7.6", 1 / (3 + 1), 1 / (3 - 1)],
+    ["PH7.7", 2 ** 4, 2 ** 3],
+    ["PH7.8", Math.sqrt(4), -4 + 3 * 4],
+    ["PH7.9", 1 - -1, 2],
+    ["PH7.10", 2 * 3, 2 * 6 * 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

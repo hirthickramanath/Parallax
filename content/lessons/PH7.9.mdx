@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.9",
+  "title": "Ising model, renormalisation and critical phenomena",
+  "hook": "Why can systems made from different microscopic ingredients share critical exponents?",
+  "recap": [
+    "The spatial scale of correlation decay in the stated regime.",
+    "Finite systems round critical singularities.",
+    "One that grows under coarse graining near a fixed point.",
+    "Symmetry, dimensionality and relevant interaction structure."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the finite zero-field symmetric model need a nonzero mean magnetization?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Symmetry pairs positive and negative magnetization states.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the one-dimensional short-range Ising model have a positive-temperature transition?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its infinite-chain transition occurs only at zero temperature.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does coarse graining generally generate additional effective couplings?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The microscopic interaction form need not be preserved.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Energy increase from flipping one spin of a single aligned J=1 bond?",
+      "answer": "2",
+      "explanation": "+1−(−1)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of aligned states for two spins?",
+      "answer": "2",
+      "explanation": "They are ++ and −−.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does the finite zero-field symmetric model need a nonzero mean magnetization?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Symmetry pairs positive and negative magnetization states.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a correlation length characterize?",
+      "back": "The spatial scale of correlation decay in the stated regime.",
+      "concept": "ph7-9-theory"
+    },
+    {
+      "front": "Why use finite-size scaling?",
+      "back": "Finite systems round critical singularities.",
+      "concept": "ph7-9-theory"
+    },
+    {
+      "front": "What is a relevant perturbation?",
+      "back": "One that grows under coarse graining near a fixed point.",
+      "concept": "ph7-9-theory"
+    },
+    {
+      "front": "What helps determine universality?",
+      "back": "Symmetry, dimensionality and relevant interaction structure.",
+      "concept": "ph7-9-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can systems made from different microscopic ingredients share critical exponents? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+The Ising model and coarse graining expose how long-distance correlations can dominate microscopic detail, while keeping dimension and interaction assumptions explicit.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The nearest-neighbour Ising model has spins s_i=±1 and energy H=−J∑⟨ij⟩s_i s_j−h∑s_i, with each bond counted once.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For two spins in zero field with one bond, aligned states have energy −J and opposite states +J. The partition function is $Z=2e^{\beta J}+2e^{-\beta J}$. Local spin correlations encode the energy preference even when the finite symmetric system has zero mean magnetization at h=0. Spontaneous symmetry breaking requires an appropriate thermodynamic limit and ordering of the field limit.
+
+The one-dimensional finite-range zero-field chain has no positive-temperature phase transition in the infinite limit. A finite domain wall costs a finite energy, while possible wall locations supply entropy. In contrast, the two-dimensional nearest-neighbour ferromagnet on the square lattice has a positive critical temperature. Dimension, range and lattice/model assumptions therefore cannot be omitted from a statement about Ising criticality.
+
+For the connected correlation C(r)=⟨s(0)s(r)⟩−⟨s⟩², a correlation length describes exponential decay away from criticality in the relevant regimes. Near a continuous transition the length can diverge in the thermodynamic limit. Finite simulations round singular behaviour; a sharp-looking finite-data curve is not a literal finite-system nonanalyticity.
+
+Renormalisation groups coarse grain and rescale, generating effective couplings rather than simply replacing every block by one unchanged microscopic interaction. Fixed points organize scale-invariant behaviour. Relevant perturbations grow, irrelevant ones decay and marginal ones require more analysis. Universality classes depend on symmetry, dimension, range and other relevant structures, not the claim that every system has the same exponents. Controlled approximations and finite-size scaling are necessary before inferring critical exponents numerically.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Enumerate the two-spin model exactly before running a larger synthetic lattice. For Monte Carlo observations retain temperature, lattice size, boundary conditions, burn-in and autocorrelation diagnostics. Compare multiple sizes; do not label a finite-lattice maximum as a proven infinite-system critical point.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For two spins with J=1, flipping one spin in an aligned pair changes the single-bond energy from −1 to +1, so ΔE=2. There are two aligned and two anti-aligned configurations. This exact enumeration checks bond counting and prevents a spurious factor of two.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

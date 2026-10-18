@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.10",
+  "title": "Non-equilibrium: Boltzmann equation and fluctuation-dissipation",
+  "hook": "Why can random equilibrium motion reveal a system’s dissipative response?",
+  "recap": [
+    "A quantity conserved by the modeled collisions.",
+    "Molecular chaos for incoming particles.",
+    "D=μk_BT.",
+    "An appropriately defined equilibrium time-correlation integral."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the Boltzmann collision model require statistical assumptions beyond mechanics?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Molecular chaos approximates incoming correlations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is mean-squared displacement always the square of the mean displacement?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Fluctuations contribute even when the mean vanishes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "May equilibrium fluctuation-dissipation formulas be transferred blindly to strongly driven states?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Stationarity, equilibrium and linear-response conditions matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "D for mobility 2 and k_BT=3?",
+      "answer": "6",
+      "explanation": "D=μk_BT=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "One-dimensional free displacement variance at t=2 with D=6?",
+      "answer": "24",
+      "explanation": "2Dt=24.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does the Boltzmann collision model require statistical assumptions beyond mechanics?",
+      "answer": "Yes",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Molecular chaos approximates incoming correlations.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a collision invariant?",
+      "back": "A quantity conserved by the modeled collisions.",
+      "concept": "ph7-10-theory"
+    },
+    {
+      "front": "What approximation underlies the elementary Boltzmann collision closure?",
+      "back": "Molecular chaos for incoming particles.",
+      "concept": "ph7-10-theory"
+    },
+    {
+      "front": "State the Einstein relation with force mobility.",
+      "back": "D=μk_BT.",
+      "concept": "ph7-10-theory"
+    },
+    {
+      "front": "What does a Green–Kubo relation use?",
+      "back": "An appropriately defined equilibrium time-correlation integral.",
+      "concept": "ph7-10-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can random equilibrium motion reveal a system’s dissipative response? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Kinetic equations and fluctuation-response relations connect microscopic motion to transport, with assumptions that distinguish equilibrium from driven matter.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The Boltzmann equation evolves a one-particle phase-space distribution through streaming, forces and a modeled collision integral. Equilibrium fluctuation-dissipation relations connect specified correlations to linear response.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a dilute classical gas the kinetic equation is $\partial_t f+\mathbf v\cdot\nabla_x f+(\mathbf F/m)\cdot\nabla_v f=C[f]$. Its collision term uses a scattering model and a molecular-chaos approximation for incoming particles. Integrating with collision invariants yields number, momentum and energy balances when the modeled collisions conserve those quantities. Closing moment equations requires further constitutive assumptions.
+
+For suitable elastic-collision kernels and boundary conditions, the H theorem gives nonincreasing ∫f ln f from the collision contribution. This is a statement within the kinetic approximation, not a direct proof that time-reversible microscopic equations violate reversibility. Correlations neglected by molecular chaos and chosen initial conditions matter. Boundary-driven or forced states can maintain entropy production and nonthermal distributions.
+
+For one-dimensional overdamped Brownian motion, dx=μF dt+√(2D)dW in a classical equilibrium bath. With mobility defined as velocity per applied force, $D=\mu k_BT$ is the Einstein relation. It ensures the correct equilibrium density under a conservative force with suitable boundaries. A mobility defined with another convention, such as electrical mobility, changes the parameter conversion.
+
+A Green–Kubo expression relates diffusion to the equilibrium velocity autocorrelation: D=∫₀∞⟨v_x(t)v_x(0)⟩dt when the integral and diffusive long-time limit exist. More general fluctuation-dissipation formulas depend on the observable, conjugate perturbation and spectral convention; quantum versions differ from classical limits. Strong driving, aging and nonstationary systems do not automatically obey the equilibrium relation. A numerical correlation must include sampling, truncation and uncertainty analysis before it becomes a transport coefficient.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate explicitly synthetic unbiased random-walk displacements and check variance growth after the diffusion scaling limit is appropriate. Compare with a small constant drift and separate mean motion from fluctuations. State whether a velocity autocorrelation model is inertial or overdamped before using a Green–Kubo interpretation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With mobility μ=2 in consistent units and k_BT=3, D=6. A one-dimensional free diffusive displacement then has variance 2Dt=24 at t=2. This variance is not the squared mean displacement, which remains zero in the unbiased equilibrium example.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

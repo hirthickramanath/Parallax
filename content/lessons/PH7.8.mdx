@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.8",
+  "title": "Phase transitions and Landau theory",
+  "hook": "How can a symmetric equation have an equilibrium state that breaks its symmetry?",
+  "recap": [
+    "Macroscopic phases or symmetry-breaking states.",
+    "A locally stable state that is not the global free-energy minimum.",
+    "An energy cost for spatially varying order.",
+    "Long-range correlated fluctuations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every stationary point minimize free energy?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Curvature and global comparison distinguish extrema.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is coexistence fixed by equal minimum free energies?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "A spinodal concerns local stability instead.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are mean-field critical exponents exact in all dimensions?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Critical fluctuations can change them.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Positive minimizing m for a=−4,b=1,h=0?",
+      "answer": "2",
+      "explanation": "√(−a/b)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Curvature at that minimum?",
+      "answer": "8",
+      "explanation": "a+3bm²=−4+12=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does every stationary point minimize free energy?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Curvature and global comparison distinguish extrema.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does an order parameter distinguish?",
+      "back": "Macroscopic phases or symmetry-breaking states.",
+      "concept": "ph7-8-theory"
+    },
+    {
+      "front": "What is metastability?",
+      "back": "A locally stable state that is not the global free-energy minimum.",
+      "concept": "ph7-8-theory"
+    },
+    {
+      "front": "What does a positive gradient term model?",
+      "back": "An energy cost for spatially varying order.",
+      "concept": "ph7-8-theory"
+    },
+    {
+      "front": "What limits uniform mean field near criticality?",
+      "back": "Long-range correlated fluctuations.",
+      "concept": "ph7-8-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can a symmetric equation have an equilibrium state that breaks its symmetry? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Order parameters and free-energy landscapes organize phase changes, metastability and the limits of mean-field reasoning.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A Landau free-energy expansion describes a coarse order parameter near an appropriate transition, constrained by symmetry and stabilized by higher-order terms.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a scalar order parameter m with m→−m symmetry at zero field, use $f(m)=f_0+a m^2/2+b m^4/4-hm$. If b>0 and h=0, stationarity gives m(a+bm²)=0. For a>0 the minimum is m=0; for a&lt;0 the minima are m=±√(−a/b). Second derivatives distinguish stable minima from the stationary maximum. A symmetric free energy can therefore have two symmetry-related equilibrium minima.
+
+If a=a₀(T−T_c), mean field predicts |m|∝(T_c−T)¹ᐟ² below the transition. The susceptibility above it is (∂m/∂h)=1/a in this simple normalization. These are mean-field exponents, not universal exact values for every spatial dimension. The expansion assumes that the chosen order parameter and retained analytic terms describe the relevant long-scale physics.
+
+For b&lt;0 a positive sixth-order term can stabilize the polynomial and allow a first-order transition. Equality of free energies, not mere disappearance of a local minimum, determines coexistence. Metastable minima, barriers and spinodals are distinct; nucleation kinetics can delay an observed transition. For a fluid, density rather than a magnetic moment can serve as the order parameter, with the correct symmetry and field correspondence treated carefully.
+
+An interface costs gradient energy, often modeled by κ|∇m|²/2 with κ>0. The resulting functional includes spatial variation absent from a uniform polynomial. Near criticality, fluctuations and correlations can invalidate mean field; dimensionality, interaction range and conserved variables matter. A finite polynomial fit cannot by itself prove the thermodynamic order of a real material transition.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot the stated polynomial as a crosses zero, mark every stationary point and classify by curvature. Then apply a small field and compare the two minima’s free energies. If exploring b&lt;0, include a stabilizing sixth-order term rather than displaying an unbounded quartic as a stable equilibrium model.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a=−4, b=1 and h=0, the minima are m=±2. At m=2 the curvature a+3bm² is −4+12=8, confirming local stability. At m=0 the curvature is −4, so the central stationary point is unstable.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

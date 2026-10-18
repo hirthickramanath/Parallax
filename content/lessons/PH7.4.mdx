@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH7.4",
+  "title": "Canonical ensemble and partition function",
+  "hook": "Why does putting a system in contact with a large heat bath produce exponential energy weights?",
+  "recap": [
+    "A first-order expansion of the large bath entropy.",
+    "−k_BT lnZ.",
+    "−∂lnZ/∂β for a fixed Hamiltonian.",
+    "The second β derivative of lnZ."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is subsystem energy fixed in the canonical ensemble?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It fluctuates through exchange with the bath.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must degeneracy be included in a sum over distinct energy levels?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Each microstate contributes a weight.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can a fixed-Hamiltonian canonical heat capacity be negative?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is proportional to a nonnegative energy variance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Excited probability for two nondegenerate levels with βΔ=ln3?",
+      "answer": "0.25",
+      "explanation": "1/(1+3)=1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Energy variance with Δ=1 and p=1/4?",
+      "answer": "0.1875",
+      "explanation": "p(1−p)=3/16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Is subsystem energy fixed in the canonical ensemble?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "It fluctuates through exchange with the bath.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What produces the Boltzmann factor?",
+      "back": "A first-order expansion of the large bath entropy.",
+      "concept": "ph7-4-theory"
+    },
+    {
+      "front": "What is F in terms of Z?",
+      "back": "−k_BT lnZ.",
+      "concept": "ph7-4-theory"
+    },
+    {
+      "front": "What is mean energy from lnZ?",
+      "back": "−∂lnZ/∂β for a fixed Hamiltonian.",
+      "concept": "ph7-4-theory"
+    },
+    {
+      "front": "What controls canonical energy fluctuations?",
+      "back": "The second β derivative of lnZ.",
+      "concept": "ph7-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Schroeder, An Introduction to Thermal Physics — edition and exact section verification pending",
+    "Pathria and Beale, Statistical Mechanics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does putting a system in contact with a large heat bath produce exponential energy weights? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+The canonical ensemble derives thermal probabilities and energy fluctuations without assuming that the subsystem energy stays fixed.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+At fixed T,V,N, canonical microstate probabilities are p_i=e⁻ᵝᴱⁱ/Z, β=1/(k_BT), with Z the sum over microstates including degeneracy.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Combine a small system with a weakly coupled large isolated reservoir. The probability of subsystem energy E_i is proportional to the reservoir count Ω_b(E_tot−E_i). Expanding its entropy to first order gives S_b(E_tot−E_i)≈S_b(E_tot)−E_i/T, hence the Boltzmann factor. The approximation requires negligible interaction energy for this separation and a bath whose temperature changes negligibly.
+
+The partition function $Z=\sum_i e^{-\beta E_i}$ normalizes the microstate weights. If a distinct energy level has degeneracy g, it contributes g e⁻ᵝᴱ. Counting both degeneracy and each microstate separately would double count. For independent subsystems the partition functions multiply when the Hamiltonian and state space factorize; interactions generally prevent that simple product.
+
+At fixed Hamiltonian and volume, $U=-\partial_\beta\ln Z$ and $\operatorname{Var}(E)=\partial_\beta^2\ln Z$. Thus C_V=Var(E)/(k_BT²) is nonnegative for this canonical setup. Helmholtz free energy is F=−k_BT lnZ and S=−k_B∑p_i lnp_i. If energy levels themselves have explicit temperature dependence through an effective model, thermodynamic derivatives require additional care.
+
+For two nondegenerate levels 0 and Δ, Z=1+e⁻ᵝΔ and the excitation probability is 1/(1+eᵝΔ). It approaches one half at high temperature, not one, because both levels retain equal asymptotic weight. Finite-system relative fluctuations need not be small. A canonical formula is not a proof that a strongly coupled subsystem or a nonequilibrium distribution is thermal.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate exact two-level probabilities, average energy and variance over a temperature grid. Compare a synthetic histogram from sampled states with exact expectations. Include degeneracy as a separate experiment and verify that the high-temperature limiting fractions change accordingly.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With Δ/(k_BT)=ln3, the excited-state probability is 1/(1+3)=1/4. In units Δ=1, U=1/4 and Var(E)=p(1−p)=3/16. Direct averaging agrees with derivatives of ln(1+e⁻ᵝ).
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
