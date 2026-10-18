@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB2.1",
+  "title": "Trig identities and equations",
+  "hook": "Why can two different angles cast the same shadow?",
+  "recap": [
+    "Arc length divided by radius.",
+    "Where cosine is zero.",
+    "Periodicity and symmetry.",
+    "Radian units, small argument and an error check."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does arcsin return every possible solution angle?",
+      "answer": "No; it returns a principal value",
+      "options": [
+        "Yes",
+        "No; it returns a principal value"
+      ],
+      "explanation": "Periodicity produces further solutions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Which angle unit is required for sin θ≈θ?",
+      "answer": "Radians",
+      "options": [
+        "Radians",
+        "Degrees without conversion"
+      ],
+      "explanation": "Radian measure fixes the coefficient at 1.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Can dividing by sin θ lose solutions?",
+      "answer": "Yes, where sin θ=0",
+      "options": [
+        "No",
+        "Yes, where sin θ=0"
+      ],
+      "explanation": "Division is undefined at those zeros.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "How many degrees correspond to π radians?",
+      "answer": "180",
+      "explanation": "One half-turn is π radians or 180 degrees.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "How many degrees correspond to π radians?",
+      "answer": "180",
+      "explanation": "One half-turn is π radians or 180 degrees.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Can dividing by sin θ lose solutions?",
+      "answer": "Yes, where sin θ=0",
+      "options": [
+        "No",
+        "Yes, where sin θ=0"
+      ],
+      "explanation": "Division is undefined at those zeros.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How is a radian defined?",
+      "back": "Arc length divided by radius.",
+      "concept": "mb2-1-foundation"
+    },
+    {
+      "front": "Where is tangent undefined?",
+      "back": "Where cosine is zero.",
+      "concept": "mb2-1-foundation"
+    },
+    {
+      "front": "What creates multiple trigonometric solutions?",
+      "back": "Periodicity and symmetry.",
+      "concept": "mb2-1-foundation"
+    },
+    {
+      "front": "What must accompany a small-angle substitution?",
+      "back": "Radian units, small argument and an error check.",
+      "concept": "mb2-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can two different angles cast the same shadow? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Trigonometry connects angular measurements to lengths. Astronomical parallax and wave phase both require careful distinction between an angle, its unit and a periodic observable.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+On a unit circle, cosine is the horizontal coordinate and sine the vertical coordinate. Repeating a complete turn repeats both coordinates.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Radians measure arc length divided by radius. The unit-circle definitions extend sine and cosine beyond right triangles.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For a point $(\cos\theta,\sin\theta)$ on the unit circle, the distance equation gives $\sin^2\theta+\cos^2\theta=1$. Tangent is their ratio wherever cosine is nonzero. Sine and cosine have period $2\pi$, while tangent has period π on its admitted domain.
+
+Composition of plane rotations gives $\cos(a+b)=\cos a\cos b-\sin a\sin b$ and $\sin(a+b)=\sin a\cos b+\cos a\sin b$. Setting b=a yields double-angle identities. Dividing an identity by sine or cosine may exclude genuine solutions if that factor vanishes; keep the excluded cases separately.
+
+To solve $\sin\theta=s$, first require |s|≤1. With a principal arcsine α, the complete real solution consists of $\theta=\alpha+2\pi k$ and $\theta=\pi-\alpha+2\pi k$ for integer k. An inverse trigonometric function gives a principal value, not every angle solving the equation. Intersect the resulting family with the specified angular interval.
+
+For angles measured in radians near zero, $\sin\theta\approx\theta$ and $\cos\theta\approx1-\theta^2/2$. These approximations follow from Taylor expansion and their first omitted terms scale as θ³ and θ⁴ respectively. A numerical angle stated in degrees must be converted before using these formulas. Small-angle parallax inherits the same restriction.
+
+The cosine rule $c^2=a^2+b^2-2ab\cos C$ follows by resolving one side along the other and using the distance formula. It includes Pythagoras at C=π/2 and avoids assuming every triangle is right angled.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Draw a rotating radius and project its endpoint onto both axes. Sample every 30 degrees, then plot both projected coordinates against radians. Test the small-angle rule at 0.1, 0.5 and 1 rad, comparing relative errors rather than deciding from appearance alone.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+On [0,2π), sin θ=1/2 gives θ=π/6 and 5π/6. The angle 13π/6 has the same sine but lies outside the interval. For θ=0.01 rad, replacing sine by θ has an absolute leading error about θ³/6≈1.67×10⁻⁷.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

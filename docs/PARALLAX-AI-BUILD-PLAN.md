@@ -123,3 +123,8 @@ Apply `EXPERIMENTAL-TEACHING.md` to physics and maths: predict, investigate, con
 ## Applied follow-up status
 
 The chemistry expansion is now applied with retained IDs: 354 entries across 59 units. Fifteen lessons are authored drafts, not verified content. See FOLLOWUP-RELEASE.md for completed learning workflows, service blockers and the remaining 339 stubs. Do not mistake this implementation update for scientific review or a complete research-level course.
+
+
+## Foundation release implementation update
+
+The implemented course now has 49 authored drafts and 201 recall cards, including all 38 Phase 0 entries, all five AS1 entries and all six CP1 entries. Six apparatus benches and ten foundation projects are playable. There are still 305 missing lesson bodies and no independently verified lessons. Use `FOUNDATION-RELEASE.md` and the generated `COURSE-STATUS.md` as the current implementation status; older counts above are historical. The original retained scope is unchanged.

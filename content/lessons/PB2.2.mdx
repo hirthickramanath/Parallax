@@ -1,0 +1,190 @@
+---
+{
+  "id": "PB2.2",
+  "title": "Thermodynamics",
+  "hook": "Can the same temperature change require different amounts of heat?",
+  "recap": [
+    "Work done by the system is positive.",
+    "ΔU=Q−W.",
+    "At fixed pressure heating also supplies expansion work.",
+    "It is nonnegative for an isolated total system."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Is heat a state variable stored inside a system?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Heat denotes transfer, while internal energy is a state variable.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does adiabatic always mean constant temperature?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Work can change internal energy when heat transfer is zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "May one system decrease entropy by exporting it?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The nondecrease applies to an isolated total system.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Carnot efficiency between 600 K and 300 K as a decimal?",
+      "answer": "0.5",
+      "explanation": "1−300/600=0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Carnot efficiency between 600 K and 300 K as a decimal?",
+      "answer": "0.5",
+      "explanation": "1−300/600=0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "May one system decrease entropy by exporting it?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The nondecrease applies to an isolated total system.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What sign convention is used for work here?",
+      "back": "Work done by the system is positive.",
+      "concept": "pb2-2-foundation"
+    },
+    {
+      "front": "How does the first law read in that convention?",
+      "back": "ΔU=Q−W.",
+      "concept": "pb2-2-foundation"
+    },
+    {
+      "front": "Why is Cₚ greater than Cᵥ for an ideal gas?",
+      "back": "At fixed pressure heating also supplies expansion work.",
+      "concept": "pb2-2-foundation"
+    },
+    {
+      "front": "What is the entropy production constraint?",
+      "back": "It is nonnegative for an isolated total system.",
+      "concept": "pb2-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can the same temperature change require different amounts of heat? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Thermodynamics distinguishes a system’s state from the process used to reach it. Stellar interiors and engines both need energy accounting and a direction criterion for possible processes.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Internal energy is like a balance; heat and work are transfers, not contents stored in separate compartments.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+With work W done by the system taken positive, the first law is ΔU=Q−W. Temperature is a state variable; heat is energy transfer due to a temperature difference.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For quasistatic boundary work, $W=\int p_{\rm ext}\,dV$; in a reversible mechanical limit internal and external pressures differ infinitesimally. The area under a p–V path depends on the path, whereas ΔU depends only on endpoints. For an ideal gas $pV=nRT$ and internal energy depends only on temperature. With constant molar heat capacity, $\Delta U=nC_V\Delta T$.
+
+At constant volume W=0, so Q=nCᵥΔT. At constant pressure the gas expands and Q=nCₚΔT. For an ideal gas, Cₚ−Cᵥ=R. For a reversible adiabatic path with constant heat capacities, Q=0 and $pV^\gamma=$ constant, γ=Cₚ/Cᵥ. Adiabatic does not mean isothermal: the work changes internal energy.
+
+Entropy changes satisfy $dS=\delta Q_{\rm rev}/T$ along a reversible comparison path. For any process the entropy production of an isolated total system is nonnegative. A system’s entropy alone can decrease by exporting entropy. Heat flows spontaneously from hot to cold because the total entropy change is positive: Q/Tcold−Q/Thot>0.
+
+A cyclic engine has ΔU=0, hence net work equals net heat. Efficiency is W/Qhot and cannot exceed $1-T_{\rm cold}/T_{\rm hot}$ for two equilibrium reservoirs. Temperatures must be absolute. Equality requires reversibility, not merely an ideal-gas working fluid.
+
+The ideal gas and constant-capacity assumptions fail near condensation, at high density and when new molecular degrees of freedom become thermally active. State the regime before extrapolating a classroom equation to a star or atmosphere.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Use the gas-piston virtual apparatus to compare isothermal, isobaric and reversible-adiabatic paths. Record heat, work and internal energy for the same final volume, then explain why the final temperatures differ. Treat pressure as ideal equilibrium pressure and discuss why rapid compression or leaks violate that model.
+
+<Widget name="gas_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+One mole of monatomic ideal gas warms by 10 K. With Cᵥ=3R/2, ΔU≈124.7 J. Constant-volume heat equals this; constant-pressure heat is 5RΔT/2≈207.9 J. The difference ≈83.1 J is expansion work.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

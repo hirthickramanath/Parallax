@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB4.1",
+  "title": "Matrices and determinants",
+  "hook": "How can a transformation flatten a whole plane into one line?",
+  "recap": [
+    "Images of basis vectors in the chosen bases.",
+    "When its kernel is zero, equivalently its determinant is nonzero.",
+    "A nonzero vector mapped to a scalar multiple of itself.",
+    "It controls amplification of data and rounding errors."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Is matrix multiplication generally commutative?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Composition order matters.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does determinant zero always mean no solution?",
+      "answer": "No; infinitely many can occur",
+      "options": [
+        "No; infinitely many can occur",
+        "Yes"
+      ],
+      "explanation": "Consistency depends on the right-hand side.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "What does the absolute determinant measure in 2D?",
+      "answer": "Area scale",
+      "options": [
+        "Only a rotation angle",
+        "Area scale"
+      ],
+      "explanation": "It scales parallelogram area.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Determinant of [[2,1],[1,3]]?",
+      "answer": "5",
+      "explanation": "2×3−1×1=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Determinant of [[2,1],[1,3]]?",
+      "answer": "5",
+      "explanation": "2×3−1×1=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "What does the absolute determinant measure in 2D?",
+      "answer": "Area scale",
+      "options": [
+        "Only a rotation angle",
+        "Area scale"
+      ],
+      "explanation": "It scales parallelogram area.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What do the columns of a matrix represent?",
+      "back": "Images of basis vectors in the chosen bases.",
+      "concept": "mb4-1-foundation"
+    },
+    {
+      "front": "When is a square matrix invertible?",
+      "back": "When its kernel is zero, equivalently its determinant is nonzero.",
+      "concept": "mb4-1-foundation"
+    },
+    {
+      "front": "What is an eigenvector?",
+      "back": "A nonzero vector mapped to a scalar multiple of itself.",
+      "concept": "mb4-1-foundation"
+    },
+    {
+      "front": "Why does conditioning matter?",
+      "back": "It controls amplification of data and rounding errors.",
+      "concept": "mb4-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+How can a transformation flatten a whole plane into one line? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Matrices encode coupled linear equations and transformations of coordinates or signals. Singular systems occur when measurements contain repeated information rather than independent constraints.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+The columns show where the basis arrows go. If those transformed arrows collapse into one direction, an area becomes zero and information is lost.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A matrix represents a linear map after bases are chosen. A square matrix is invertible exactly when its kernel contains only zero.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+A linear map obeys $T(\alpha u+\beta v)=\alpha T(u)+\beta T(v)$. Its columns are the images of basis vectors, so multiplying a matrix by a column vector forms their weighted sum. Matrix multiplication represents composition, with the rightmost map applied first. In general AB≠BA; dimensions must match.
+
+For $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$, the determinant is ad−bc. It is the signed area scale. If it is nonzero, $A^{-1}=(ad-bc)^{-1}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$. If it is zero, the two columns are dependent and no unique inverse exists. An absolute determinant measures area scaling; the sign tracks orientation.
+
+To solve Ax=b, row operations preserve the solution set when performed on the augmented matrix. A contradictory row 0=nonzero means no solution. A consistent system with free variables has multiple solutions. A square singular system need not have no solutions: it can have infinitely many.
+
+The determinant of a product is the product of determinants. An eigenvector is a nonzero vector with Av=λv; an eigenvalue can be zero for a singular map. Eigenvectors describe invariant directions, not necessarily every possible direction. Repeated eigenvalues do not guarantee a full basis of eigenvectors.
+
+Numerical conditioning is distinct from invertibility. A nearly singular matrix may amplify measurement errors strongly even though its determinant is not exactly zero. In scientific computation solve the system with a stable factorization rather than explicitly forming an inverse, and propagate uncertainty.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Draw a square grid, transform its two basis arrows with a chosen 2×2 matrix, and reconstruct the grid from them. Compare determinant 1, −1 and 0. Add a small perturbation to nearly dependent equations and observe how far their intersection moves.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+Solve x+y=3 and x−y=1. Adding gives x=2, then y=1. The coefficient determinant is −2, so the solution is unique. Replacing the second equation by 2x+2y=6 creates dependence and infinitely many solutions, not a contradiction.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

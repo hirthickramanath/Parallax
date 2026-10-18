@@ -1,0 +1,188 @@
+---
+{
+  "id": "PB4.3",
+  "title": "Magnetism and induction",
+  "hook": "Can a magnetic force change a charged particle’s speed?",
+  "recap": [
+    "q(E+v×B).",
+    "Oriented surface integral of magnetic field.",
+    "Opposition to the flux change, consistent with energy conservation.",
+    "LI²/2."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does a static magnetic force alone change kinetic energy?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It is perpendicular to velocity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does constant field always imply constant flux through a moving loop?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Area and orientation can change.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Can the induced electric field always be represented by a single electrostatic potential?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It can have nonzero closed-loop circulation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Inductive timescale in seconds for L=2 H and R=4 Ω?",
+      "answer": "0.5",
+      "explanation": "τ=L/R=0.5 s.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Inductive timescale in seconds for L=2 H and R=4 Ω?",
+      "answer": "0.5",
+      "explanation": "τ=L/R=0.5 s.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Can the induced electric field always be represented by a single electrostatic potential?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It can have nonzero closed-loop circulation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the full Lorentz force?",
+      "back": "q(E+v×B).",
+      "concept": "pb4-3-foundation"
+    },
+    {
+      "front": "What is magnetic flux?",
+      "back": "Oriented surface integral of magnetic field.",
+      "concept": "pb4-3-foundation"
+    },
+    {
+      "front": "What does the minus sign in Faraday law encode?",
+      "back": "Opposition to the flux change, consistent with energy conservation.",
+      "concept": "pb4-3-foundation"
+    },
+    {
+      "front": "What energy does a linear ideal inductor store?",
+      "back": "LI²/2.",
+      "concept": "pb4-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can a magnetic force change a charged particle’s speed? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Magnetic deflection is central to charged-particle instruments, plasmas and dynamos. Induction explains how a changing field configuration can transfer energy through an electric field.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+The magnetic part of the Lorentz force turns velocity sideways. A changing magnetic flux is associated with an electric circulation that can do work.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+The Lorentz force is q(E+v×B). Magnetic flux is the oriented integral of B through a surface; Faraday’s law relates its change to electric circulation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For motion perpendicular to a uniform magnetic field, $|F_B|=|q|vB$. Equating to mv²/r gives $r=mv/(|q|B)$ nonrelativistically. The sign of q determines curvature direction. Since $\mathbf v\cdot(\mathbf v\times\mathbf B)=0$, a static magnetic force alone does no work; a parallel velocity component produces a helix. Relativistic momentum replaces mv at high speed.
+
+A straight current element experiences $d\mathbf F=I\,d\mathbf l\times\mathbf B$. For a long straight wire in vacuum, Ampère symmetry yields $B=\mu_0I/(2\pi r)$. Finite geometry and material magnetization alter the simple result. Magnetic Gauss law gives zero net flux through a closed surface; field lines do not begin or end at isolated classical magnetic charges.
+
+For a stationary loop, $\oint\mathbf E\cdot d\mathbf l=-d\Phi_B/dt$. The minus sign expresses Lenz's law: the induced response opposes the flux change, consistent with energy conservation. For a moving circuit the magnetic force on moving charges also contributes to the emf. Flux depends on area, orientation and field, not just field strength.
+
+A coil with self-inductance L has induced emf −L dI/dt in the linear fixed-geometry model and stored energy LI²/2. In an ideal RL step with resistance R, current approaches its final value on timescale L/R. Interrupting current abruptly can require a large voltage; a laboratory demonstration needs a safe protected circuit.
+
+Electrostatic potential alone cannot represent the induced electric field around a changing flux: the closed-loop electric circulation is nonzero. This distinction is needed before combining induction with the earlier conservative-field picture.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Move a bar magnet relative to a closed coil connected to a suitable classroom galvanometer. Compare direction for approach, withdrawal and a stationary magnet. Keep orientation explicit and avoid claiming flux change depends only on magnet speed without considering field geometry.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+A nonrelativistic particle with mass 2×10⁻⁶ kg, charge 10⁻³ C and perpendicular speed 3 m/s in B=2 T has radius 0.003 m. The magnetic force changes direction, while kinetic energy stays constant in this ideal field.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

@@ -1,0 +1,186 @@
+---
+{
+  "id": "PB2.1",
+  "title": "Fluid mechanics",
+  "hook": "Why does water pressure depend on depth rather than container shape?",
+  "recap": [
+    "dp/dz=−ρg with z upward.",
+    "Weight of displaced fluid in uniform gravity.",
+    "Volume flow Av along the tube.",
+    "Steady, inviscid, incompressible flow along a streamline without added work."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does hydrostatic pressure at fixed depth depend on container shape?",
+      "answer": "Not for the same fluid and surface pressure",
+      "options": [
+        "Always",
+        "Not for the same fluid and surface pressure"
+      ],
+      "explanation": "Local force balance depends on density, gravity and depth.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Is gauge pressure the same as absolute pressure?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Gauge pressure subtracts a reference pressure.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Can Bernoulli be applied unchanged across a dissipative pump system?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "External work and losses need additional terms.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Gauge pressure in Pa at 1 m depth for density 1000 kg/m³ and g=10 m/s²?",
+      "answer": "10000",
+      "explanation": "ρgh=1000×10×1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Gauge pressure in Pa at 1 m depth for density 1000 kg/m³ and g=10 m/s²?",
+      "answer": "10000",
+      "explanation": "ρgh=1000×10×1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Can Bernoulli be applied unchanged across a dissipative pump system?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "External work and losses need additional terms.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is hydrostatic balance?",
+      "back": "dp/dz=−ρg with z upward.",
+      "concept": "pb2-1-foundation"
+    },
+    {
+      "front": "What is the buoyant-force rule?",
+      "back": "Weight of displaced fluid in uniform gravity.",
+      "concept": "pb2-1-foundation"
+    },
+    {
+      "front": "What does steady incompressible continuity preserve?",
+      "back": "Volume flow Av along the tube.",
+      "concept": "pb2-1-foundation"
+    },
+    {
+      "front": "What limits elementary Bernoulli?",
+      "back": "Steady, inviscid, incompressible flow along a streamline without added work.",
+      "concept": "pb2-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why does water pressure depend on depth rather than container shape? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Pressure measurements underpin atmospheres, interiors and laboratory flow. A fluid at rest cannot sustain a static shear stress like an elastic solid; its internal stress is isotropic in the simple model.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Imagine balancing a thin horizontal slab of fluid. The bottom pressure must support the top pressure plus the slab’s weight.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Pressure is normal force per area. Hydrostatic equilibrium balances a pressure gradient against gravitational body force.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+Take z positive upward in a stationary fluid with mass density ρ. The vertical forces on area A and thickness dz yield $dp/dz=-\rho g$. For constant density and g, $p=p_0+\rho gh$ at depth h below a surface. Absolute pressure includes p₀; gauge pressure subtracts the chosen ambient reference. Shape does not enter, although wall forces contribute to the balance of an entire container.
+
+Integrating pressure forces over an immersed closed surface gives an upward buoyant force equal to the weight of displaced fluid in uniform gravity. A floating body displaces its own weight, not necessarily its own volume of liquid. Buoyancy depends on the surrounding density; compression and stratification complicate the simple expression.
+
+Mass conservation in steady flow through a tube gives $\rho Av=$ constant. Incompressible flow makes Av constant. Along a streamline, steady inviscid incompressible motion without pumps or dissipative loss gives Bernoulli's relation $p+\rho v^2/2+\rho gz=$ constant. It follows by work-energy balance on a moving fluid element. The relation is not a universal equality between arbitrary points across a viscous turbulent flow.
+
+Viscosity transports momentum and dissipates mechanical energy. For slow fully developed laminar flow in a cylindrical tube, Poiseuille flow scales as $Q=\pi R^4\Delta p/(8\eta L)$ with no-slip walls and a Newtonian fluid. The fourth-power dependence holds only within those assumptions. Reynolds number Re=ρvL/η compares inertia to viscosity; a critical transition depends on geometry and disturbances.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Use a transparent water container and a depth scale to illustrate pressure increasing with depth; compare shapes at equal depth. A classroom demonstration must use safe water volumes and avoid pressurizing sealed containers. For a quantitative virtual experiment, vary depth in the hydrostatic equation and distinguish computed readings from sensor data.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+In freshwater with density 1000 kg/m³, depth 2 m and g=9.8 m/s², gauge pressure is 19,600 Pa. The absolute pressure is about 120,900 Pa if the surface is at 101,300 Pa. Confusing gauge and absolute pressure gives an incorrect gas compression calculation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

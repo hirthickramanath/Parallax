@@ -1,0 +1,190 @@
+---
+{
+  "id": "PB3.3",
+  "title": "Wave optics",
+  "hook": "Why can opening a wider aperture reveal two stars that extra magnification cannot?",
+  "recap": [
+    "Coherent contributions with appropriate polarization.",
+    "λL/d in the small-angle far field.",
+    "Approximately 1.22λ/D.",
+    "Resolution depends on the measurement and inference task as well as the pattern."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Should intensities or amplitudes be added before interference is computed?",
+      "answer": "Amplitudes with phase",
+      "options": [
+        "Intensities only",
+        "Amplitudes with phase"
+      ],
+      "explanation": "Squaring the combined amplitude creates the cross term.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does a narrower single slit make a narrower far-field central peak?",
+      "answer": "No; it broadens it",
+      "options": [
+        "No; it broadens it",
+        "Yes"
+      ],
+      "explanation": "The angular scale is proportional to λ/a.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does magnification eliminate the aperture diffraction pattern?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It enlarges the pattern along with the image.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Fringe spacing in mm for λ=500 nm, L=2 m and d=0.5 mm?",
+      "answer": "2",
+      "explanation": "λL/d=0.002 m=2 mm.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Fringe spacing in mm for λ=500 nm, L=2 m and d=0.5 mm?",
+      "answer": "2",
+      "explanation": "λL/d=0.002 m=2 mm.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does magnification eliminate the aperture diffraction pattern?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It enlarges the pattern along with the image.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What enables visible stable interference?",
+      "back": "Coherent contributions with appropriate polarization.",
+      "concept": "pb3-3-foundation"
+    },
+    {
+      "front": "What sets double-slit fringe spacing?",
+      "back": "λL/d in the small-angle far field.",
+      "concept": "pb3-3-foundation"
+    },
+    {
+      "front": "What sets circular-aperture diffraction scale?",
+      "back": "Approximately 1.22λ/D.",
+      "concept": "pb3-3-foundation"
+    },
+    {
+      "front": "Why label the Rayleigh criterion as conventional?",
+      "back": "Resolution depends on the measurement and inference task as well as the pattern.",
+      "concept": "pb3-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can opening a wider aperture reveal two stars that extra magnification cannot? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Interference and diffraction show where ray optics loses information. Astronomical resolution depends on wavelength, aperture and propagation through the atmosphere, not simply on making the image bigger.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Add amplitudes with phase before converting to intensity. Equal waves can cancel at one place and reinforce elsewhere while redistributing energy.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Coherent wave superposition gives interference. Diffraction arises when contributions from an extended wavefront are limited by an aperture or obstacle.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For two coherent contributions with individual intensities I₁ and I₂ and relative phase δ, $I=I_1+I_2+2\sqrt{I_1I_2}\cos\delta$ for matched polarization. Time-varying random relative phase averages the cross term away. Coherence is about a stable correlation over the measurement, not merely identical advertised colours.
+
+For two narrow slits separated by d and a distant screen, path difference is approximately d sin θ. Constructive interference occurs at d sin θ=mλ. For small angles at distance L, fringe spacing is $\Delta y=\lambda L/d$. Finite slit widths multiply this by a diffraction envelope; the two-slit formula alone does not describe all brightness variation.
+
+A single slit of width a in the far field produces amplitude proportional to $\sin\beta/\beta$, with $\beta=\pi a\sin\theta/\lambda$. Noncentral minima satisfy a sin θ=mλ for nonzero integer m. As a shrinks, the central pattern broadens. This is not evidence that photons took individually measured trajectories through every point of the slit.
+
+For a circular aperture the first dark ring lies at angle approximately $1.22\lambda/D$. The Rayleigh criterion is a conventional separation scale for two incoherent point sources, not a universal hard limit for every estimation problem. At λ=500 nm and D=0.1 m it gives 6.1×10⁻⁶ rad, about 1.26 arcseconds. Atmospheric seeing can dominate a ground-based telescope.
+
+Polarization, bandwidth and near-field geometry can alter these scalar far-field expressions. State coherence, angular approximation and screen-distance assumptions before fitting a real pattern.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Use the virtual double-slit bench to vary slit spacing, wavelength and screen distance. Record peak positions and compare ratios before numerical fits. All traces are computed far-field patterns; finite slit width, coherence and detector noise must be identified before comparison with a real apparatus.
+
+<Widget name="double_slit_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+With λ=500 nm, L=2 m and slit separation d=0.5 mm, fringe spacing is 0.002 m=2 mm. Doubling slit separation halves the spacing; doubling wavelength doubles it. This does not change a detector’s physical pixel size.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

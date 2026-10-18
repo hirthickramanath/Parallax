@@ -312,3 +312,22 @@ test("foreground reminders respect timezone, daily goals, opt-in and dismissal",
     false,
   );
 });
+
+test("every Bridge foundation entry has authored theory, checks and retrieval material", async () => {
+  const fs = await import("node:fs");
+  const { parse } = await import("yaml");
+  const course = JSON.parse(fs.readFileSync("content/curriculum.json", "utf8"));
+  const foundation = course.lessons.filter((l) => l.phase === 0);
+  assert.ok(foundation.length > 0);
+  for (const lesson of foundation) {
+    const source = fs.readFileSync(`content/lessons/${lesson.id}.mdx`, "utf8");
+    const data = parse(/^---\r?\n([\s\S]*?)\r?\n---/.exec(source)[1]);
+    assert.equal(data.id, lesson.id);
+    assert.ok(data.review.length >= 3, lesson.id);
+    assert.ok(
+      data.questions.filter((q) => q.conceptual && !q.tier).length >= 3,
+      lesson.id,
+    );
+    assert.match(source, /layer="theory"/, lesson.id);
+  }
+});

@@ -28,6 +28,9 @@ export function Learn() {
       <Link className="text-button" to="/placement">
         Check your starting point — Bridge diagnostic →
       </Link>
+      <Link className="text-button" to="/projects">
+        Apply the foundations — unit projects →
+      </Link>
       <input
         className="search-input"
         aria-label="Search curriculum"

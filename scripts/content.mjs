@@ -115,9 +115,15 @@ export function buildContent() {
     .readdirSync("content/lessons")
     .filter((f) => f.endsWith(".mdx"))) {
     const source = fs.readFileSync(path.join("content/lessons", file), "utf8");
-    compileSync(source, {
-      remarkPlugins: [remarkFrontmatter, remarkMath, remarkSafeContent],
-    });
+    try {
+      compileSync(source, {
+        remarkPlugins: [remarkFrontmatter, remarkMath, remarkSafeContent],
+      });
+    } catch (error) {
+      throw new Error(`Invalid MDX in ${file}: ${error.message}`, {
+        cause: error,
+      });
+    }
     const header = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/.exec(source);
     if (!header) throw Error(`Missing lesson frontmatter ${file}`);
     const data = parse(header[1]);

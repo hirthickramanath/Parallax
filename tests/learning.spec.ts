@@ -29,7 +29,14 @@ async function signedIn(page: Page, uid = "test-learner") {
       }),
     }),
   );
-  await page.goto("/login");
+  // Seed the fake session without a running Firebase instance that could overwrite it.
+  await page.route("**/__fixture-auth", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<!doctype html><title>Auth fixture</title>",
+    }),
+  );
+  await page.goto("/__fixture-auth");
   await page.evaluate(
     async ({ apiKey, uid }) => {
       const token = [
@@ -85,6 +92,8 @@ async function signedIn(page: Page, uid = "test-learner") {
             fbase_key: `firebase:authUser:${apiKey}:[DEFAULT]`,
             value,
           });
+          tx.onabort = () => reject(tx.error);
+          tx.onerror = () => reject(tx.error);
           tx.oncomplete = () => {
             db.close();
             resolve();
@@ -117,6 +126,7 @@ test("all workspace screens, apparatus and themes work at phone and desktop widt
       "/dashboard",
       "/learn",
       "/labs",
+      "/projects",
       "/review",
       "/revise",
       "/plan",
@@ -537,7 +547,7 @@ test("weekly planning persists only authored unlocked lessons grouped by track",
   await signedIn(page);
   await page.goto("/plan");
   await page.getByRole("button", { name: "Build this week’s plan" }).click();
-  await expect(page.locator(".plan-list article")).toHaveCount(3);
+  await expect(page.locator(".plan-list article")).toHaveCount(7);
   const plan = await page.evaluate(
     () =>
       JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
@@ -545,7 +555,96 @@ test("weekly planning persists only authored unlocked lessons grouped by track",
   );
   const ids = Object.values(plan.items).flat();
   expect(new Set(ids).size).toBe(ids.length);
-  expect(new Set(ids)).toEqual(new Set(["PB1.1", "MB3.1", "CB.1"]));
+  expect(new Set(ids)).toEqual(
+    new Set(["PB1.1", "PB2.1", "PB3.1", "PB4.1", "MB1.1", "MB2.1", "CB.1"]),
+  );
   await page.reload();
-  await expect(page.locator(".plan-list article")).toHaveCount(3);
+  await expect(page.locator(".plan-list article")).toHaveCount(7);
+});
+
+test("gas, wave and interference benches expose model controls and reproducible readings", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page.getByRole("button", { name: "Gas piston", exact: true }).click();
+  await page.getByLabel("Gas volume ratio").fill("2");
+  await expect(page.getByText(/Temperature: 300.0 K/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record gas reading", exact: true })
+    .click();
+  await expect(page.getByRole("table")).toBeVisible();
+  await page.getByLabel("Thermodynamic path").selectOption("adiabatic");
+  await expect(page.getByRole("table")).toHaveCount(0);
+  await expect(page.getByText(/Q = 0.0 J/)).toBeVisible();
+  await expect(page.getByText(/Temperature: 189.0 K/)).toBeVisible();
+  await page
+    .getByRole("button", { name: "Standing waves", exact: true })
+    .click();
+  await page
+    .getByRole("slider", { name: "String harmonic", exact: true })
+    .fill("2");
+  await expect(
+    page.getByText("Node positions (m): 0.000, 0.500, 1.000"),
+  ).toBeVisible();
+  await page.getByLabel("String phase").fill("0");
+  await expect(
+    page.getByRole("img", {
+      name: "Standing string harmonic 2 with 3 fixed nodes",
+    }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Double slit", exact: true }).click();
+  await expect(
+    page.getByText(/Predicted small-angle fringe spacing: 2.000 mm/),
+  ).toBeVisible();
+  await page.getByLabel("Slit separation").fill("1");
+  await expect(
+    page.getByText(/Predicted small-angle fringe spacing: 1.000 mm/),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Record slit reading", exact: true })
+    .click();
+  await expect(page.getByRole("table")).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/PB3.3/);
+});
+
+test("foundation projects expose methods, rubrics and existing lesson notebooks without awarding credit", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/projects");
+  await page.getByLabel("Project unit").selectOption("PB2");
+  await expect(
+    page.getByRole("heading", { name: "Audit a gas expansion" }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Three p–V paths and an energy table."),
+  ).toBeVisible();
+  await page
+    .getByText("Reveal the consistency checkpoint", { exact: true })
+    .click();
+  await expect(
+    page.getByText(/Adiabatic doubling cools to about 189 K/),
+  ).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel("Project unit")).toBeVisible();
+  const records = await page.evaluate(() => {
+    const raw = localStorage.getItem("parallax-learning-v1:test-learner");
+    // A read-only project visit need not create a learning record at all.
+    return raw ? JSON.parse(raw).records : { days: {}, lessons: {} };
+  });
+  expect(Object.keys(records.days)).toHaveLength(0);
+  expect(Object.keys(records.lessons)).toHaveLength(0);
+  await page.getByLabel("Project unit").selectOption("PB2");
+  await page
+    .getByRole("link", { name: "Lesson PB2.2 and its notebook →" })
+    .click();
+  await expect(page).toHaveURL(/lesson\/PB2.2/);
 });

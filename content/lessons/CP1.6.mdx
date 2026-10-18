@@ -1,0 +1,196 @@
+---
+{
+  "id": "CP1.6",
+  "title": "Symbolic maths with SymPy",
+  "hook": "Can a computer simplify an expression correctly while ignoring the domain you intended?",
+  "recap": [
+    "They determine valid identities and branch restrictions.",
+    "A float introduced first already contains approximation.",
+    "Its derivative on the relevant domain intervals.",
+    "A checkable step within an argument, not an automatic physical justification."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Is sqrt(x²)=x for every real x?",
+      "answer": "No; it equals |x|",
+      "options": [
+        "Yes",
+        "No; it equals |x|"
+      ],
+      "explanation": "Negative x supplies a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does cancelling a denominator factor make original excluded points valid?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The original domain remains restricted.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does one numerical root-finder run prove all roots were found?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "A local search depends on its starting point and method.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "For real x=−3, what is the principal value of sqrt(x²)?",
+      "answer": "3",
+      "explanation": "The principal square root is nonnegative.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "For real x=−3, what is the principal value of sqrt(x²)?",
+      "answer": "3",
+      "explanation": "The principal square root is nonnegative.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does one numerical root-finder run prove all roots were found?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "A local search depends on its starting point and method.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why declare symbolic assumptions?",
+      "back": "They determine valid identities and branch restrictions.",
+      "concept": "cp1-6-foundation"
+    },
+    {
+      "front": "Why construct rationals exactly?",
+      "back": "A float introduced first already contains approximation.",
+      "concept": "cp1-6-foundation"
+    },
+    {
+      "front": "What does differentiating an antiderivative verify?",
+      "back": "Its derivative on the relevant domain intervals.",
+      "concept": "cp1-6-foundation"
+    },
+    {
+      "front": "What is the scientific role of symbolic output?",
+      "back": "A checkable step within an argument, not an automatic physical justification.",
+      "concept": "cp1-6-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NumPy, SciPy, Matplotlib and SymPy official documentation — relevant version and section verification pending",
+    "Numerical Recipes / scientific-computing reference — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can a computer simplify an expression correctly while ignoring the domain you intended? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Symbolic computation manipulates exact expressions and assumptions. It can expose a derivation or confirm an identity, but a returned formula still needs domains, branch conventions and physical interpretation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+The software follows the symbols and assumptions you provide. A parameter declared positive has different permissible simplifications from an unrestricted complex parameter.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A symbolic algebra system represents expressions exactly where possible, transforms them under assumptions, and separates symbolic operations from floating-point evaluation.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+The identity $\sqrt{x^2}=|x|$ holds for real x; replacing it by x requires x≥0. Complex square roots and logarithms have branch conventions that can invalidate familiar real identities. Cancelling a factor from a rational expression preserves equality only where the original denominator was nonzero; simplification does not retroactively fill the original domain.
+
+In SymPy, construct exact rational values before numerical evaluation. A binary float supplied first has already lost exact decimal or rational information. Keep symbolic parameters with declared assumptions, then use substitution and high-precision evaluation when needed. Verify dimensions separately: an algebra package does not automatically know that adding a distance to a time is physically meaningless.
+
+```python
+import sympy as sp
+x = sp.symbols('x', real=True)
+expr = sp.sqrt(x**2)
+print(sp.simplify(expr))  # Abs(x)
+f = sp.Rational(1, 3)*x**3
+assert sp.simplify(sp.diff(f, x) - x**2) == 0
+```
+
+Differentiating a proposed antiderivative checks it on the admitted intervals, but constants can differ across disconnected domains. Solving an equation may produce conditional solutions or omit branches if assumptions are insufficient. For a numerical root finder, the starting guess and convergence tolerance are additional algorithmic inputs; it is not a proof that every root was found.
+
+Use a symbolic result as one stage of a reproducible argument: state hypotheses, derive or explain the relevant step, inspect special and singular cases, differentiate or substitute as a check, and compare with independent numerical samples. Sampling can falsify a claimed identity, but agreement at selected points cannot prove a universal statement.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Compare SymPy simplifications with x unrestricted, real and positive. Test the square-root identity at x=−2 and the cancelled rational expression near x=1. Record domains before pressing simplify and write which hypotheses justify every output.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For (x²−1)/(x−1), simplification gives x+1 only on x≠1. The simplified polynomial has value 2 at x=1, while the original expression is undefined there. Extending by continuity is a new explicitly defined function, not an automatic algebraic equivalence on all real inputs.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

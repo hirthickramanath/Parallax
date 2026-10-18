@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB2.3",
+  "title": "3D geometry and vectors",
+  "hook": "Can two lines in space fail to meet without being parallel?",
+  "recap": [
+    "A point plus a real parameter times a nonzero direction.",
+    "It is perpendicular to every direction in the plane.",
+    "To remove its arbitrary magnitude.",
+    "Euclidean lengths and angles."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Must nonparallel lines in 3D intersect?",
+      "answer": "No; they can be skew",
+      "options": [
+        "Yes",
+        "No; they can be skew"
+      ],
+      "explanation": "They need not share a plane.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does rescaling a plane normal change its plane?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The equation is multiplied by a nonzero scalar.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Are latitude and polar angle the same convention?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Latitude is complementary to the polar angle from positive z.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Distance from (3,4,7) to the plane z=2?",
+      "answer": "5",
+      "explanation": "The perpendicular displacement has magnitude 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Distance from (3,4,7) to the plane z=2?",
+      "answer": "5",
+      "explanation": "The perpendicular displacement has magnitude 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Are latitude and polar angle the same convention?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Latitude is complementary to the polar angle from positive z.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How is a spatial line parametrized?",
+      "back": "A point plus a real parameter times a nonzero direction.",
+      "concept": "mb2-3-foundation"
+    },
+    {
+      "front": "What defines a plane normal?",
+      "back": "It is perpendicular to every direction in the plane.",
+      "concept": "mb2-3-foundation"
+    },
+    {
+      "front": "Why normalize a normal in a distance formula?",
+      "back": "To remove its arbitrary magnitude.",
+      "concept": "mb2-3-foundation"
+    },
+    {
+      "front": "What does an orthonormal change of basis preserve?",
+      "back": "Euclidean lengths and angles.",
+      "concept": "mb2-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can two lines in space fail to meet without being parallel? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Pointing telescopes and reconstructing three-dimensional motion require more than a flat drawing. Coordinates describe a geometric situation relative to chosen axes; they are not the situation itself.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+A line has a starting point and one direction. A plane has a point and two independent directions, or equivalently a normal direction.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+In Euclidean 3D space a position vector locates a point relative to an origin; a displacement vector connects two points independently of that origin.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+The distance between points A and B follows from three-dimensional Pythagoras: $|\mathbf B-\mathbf A|=\sqrt{(B_x-A_x)^2+(B_y-A_y)^2+(B_z-A_z)^2}$. A line through A with nonzero direction d is $\mathbf r=\mathbf A+t\mathbf d$ for real t. Rescaling d changes the parameter but not the line.
+
+A plane with point A and nonzero normal n satisfies $\mathbf n\cdot(\mathbf r-\mathbf A)=0$. The dot product vanishes for every displacement lying in the plane. The perpendicular distance of point P is $|\mathbf n\cdot(\mathbf P-\mathbf A)|/|\mathbf n|$; omitting normalization makes a false dependence on the chosen normal magnitude.
+
+For two lines, equate their vector expressions and solve three scalar equations in two parameters. Parallel directions need a separate coincidence test. Nonparallel lines may intersect, or may be skew: they lie in no common plane. A sketch on paper can hide this distinction.
+
+In spherical coordinates with polar angle θ measured from positive z and azimuth φ from positive x, $x=r\sin\theta\cos\phi$, $y=r\sin\theta\sin\phi$, $z=r\cos\theta$. Geographic latitude is π/2−θ. State conventions before comparing coordinates. At the poles the azimuth is indeterminate even though the spatial point is well defined.
+
+An orthonormal basis makes the Euclidean dot product a simple component sum. A change of orthonormal axes preserves lengths and angles, although numerical components change. In nonorthogonal coordinates a metric is needed; the component sum cannot be assumed.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Build two lines from pencils held at different heights. Make them nonparallel and nonintersecting, then compare front and side projections. Record what a single projection cannot tell you. Sketch the plane normal and a perpendicular distance.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+The plane z=2 has normal (0,0,1). Point (3,4,7) is distance |7−2|=5 from it. Choosing the normal (0,0,10) gives numerator 50 and denominator 10, preserving the same distance.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

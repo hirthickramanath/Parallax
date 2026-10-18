@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB1.4",
+  "title": "Induction and basic proof writing",
+  "hook": "Why does checking a thousand cases still fail to prove every case?",
+  "recap": [
+    "Base case and an implication for arbitrary permitted k.",
+    "One valid counterexample.",
+    "It may use all earlier cases through k.",
+    "Changing allowed objects can change the truth of the claim."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Can examples alone prove a universal integer claim?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Untested integers remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "What is missing from an induction step without a base?",
+      "answer": "A starting true statement",
+      "options": [
+        "A starting true statement",
+        "An extra computed example only"
+      ],
+      "explanation": "An implication does not establish its antecedent.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does a theorem automatically prove its converse?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Reversing an implication is a separate claim.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "What is 1+2+...+20?",
+      "answer": "210",
+      "explanation": "20×21/2=210.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "What is 1+2+...+20?",
+      "answer": "210",
+      "explanation": "20×21/2=210.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does a theorem automatically prove its converse?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Reversing an implication is a separate claim.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are the two obligations of ordinary induction?",
+      "back": "Base case and an implication for arbitrary permitted k.",
+      "concept": "mb1-4-foundation"
+    },
+    {
+      "front": "What refutes a universal statement?",
+      "back": "One valid counterexample.",
+      "concept": "mb1-4-foundation"
+    },
+    {
+      "front": "How does strong induction differ?",
+      "back": "It may use all earlier cases through k.",
+      "concept": "mb1-4-foundation"
+    },
+    {
+      "front": "Why specify domains in a proof?",
+      "back": "Changing allowed objects can change the truth of the claim.",
+      "concept": "mb1-4-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why does checking a thousand cases still fail to prove every case? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Physical measurements support models over tested regimes. A mathematical theorem has a different obligation: every case allowed by its hypotheses must follow logically. Induction provides one way to cross an infinite family without measuring every member.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Dominoes fall only if a first domino falls and each falling domino reaches the next. A perfect connection rule without a starting point proves nothing.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Induction proves P(n) for all integers n≥n₀ by establishing P(n₀) and P(k) implies P(k+1) for an arbitrary integer k≥n₀.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+To prove $1+2+\cdots+n=n(n+1)/2$, first check n=1. For the induction step assume the statement at an arbitrary k. Adding k+1 gives $k(k+1)/2+(k+1)=(k+1)(k+2)/2$, exactly the statement at k+1. The assumption was used conditionally, not declared true without proof. The base case initiates repeated implication.
+
+Strong induction assumes all statements from the base through k to prove the next one. For integer factorization, an integer m>1 is prime or a product of smaller integers greater than 1. The latter factors can be decomposed using the earlier hypotheses. This establishes existence of a prime factorization, while uniqueness requires a further argument.
+
+A universal statement is refuted by one counterexample. To disprove that every increasing function has positive derivative everywhere, use $f(x)=x^3$: it is strictly increasing but its derivative is zero at 0. A converse is a new claim: P implies Q does not itself establish Q implies P.
+
+For a proof by contradiction assume the negation of the conclusion together with the hypotheses and derive an impossibility. The classic parity proof for the irrationality of $\sqrt2$ begins with a lowest-terms fraction p/q. From $p^2=2q^2$, p is even, then q is even, contradicting lowest terms. The lowest-terms requirement is essential.
+
+A clear proof states its domain, assumptions, intermediate reason and conclusion. Numerical examples are useful for finding a conjecture or an error; they do not replace the logical link for an arbitrary case.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Write a false conjecture that survives the first five integer tests. Exchange it with a partner, seek a counterexample and identify which assumption would make a corrected theorem true. Then mark the base and the arbitrary k in your own induction proof.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+The claim n²≥n holds for integers n≥1. Base: 1≥1. If k²≥k, then (k+1)²=k²+2k+1≥3k+1≥k+1 since k≥1. Thus the implication and base prove all permitted integers. A shorter direct proof is n(n−1)≥0.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

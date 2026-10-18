@@ -1,0 +1,188 @@
+---
+{
+  "id": "AS1.5",
+  "title": "Tides and the Roche limit",
+  "hook": "Why does the Moon raise tidal bulges on both the near and far sides?",
+  "recap": [
+    "The centre’s uniform external acceleration.",
+    "Stretch along it and compress transversely.",
+    "It omits the full shape, rotation and material response.",
+    "A dissipative lag converts mechanical energy to internal energy."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Is the tide determined only by gravitational acceleration at the centre?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Spatial differences across the body matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does leading tidal strength scale as inverse distance squared?",
+      "answer": "No; inverse distance cubed",
+      "options": [
+        "No; inverse distance cubed",
+        "Yes"
+      ],
+      "explanation": "It is a spatial derivative of inverse-square gravity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Is the fluid Roche coefficient universal for all solids?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Material strength and the equilibrium model matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "By what factor does leading tidal strength change when source distance doubles?",
+      "answer": "0.125",
+      "explanation": "The scale is R⁻³, so the factor is 1/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "By what factor does leading tidal strength change when source distance doubles?",
+      "answer": "0.125",
+      "explanation": "The scale is R⁻³, so the factor is 1/8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Is the fluid Roche coefficient universal for all solids?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Material strength and the equilibrium model matter.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is subtracted in a freely falling tidal description?",
+      "back": "The centre’s uniform external acceleration.",
+      "concept": "as1-5-foundation"
+    },
+    {
+      "front": "What does a point-mass tidal field do along and across the source direction?",
+      "back": "Stretch along it and compress transversely.",
+      "concept": "as1-5-foundation"
+    },
+    {
+      "front": "Why is a simple disruption balance only approximate?",
+      "back": "It omits the full shape, rotation and material response.",
+      "concept": "as1-5-foundation"
+    },
+    {
+      "front": "Why can tidal evolution heat a body?",
+      "back": "A dissipative lag converts mechanical energy to internal energy.",
+      "concept": "as1-5-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Murray and Dermott, Solar System Dynamics — edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why does the Moon raise tidal bulges on both the near and far sides? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Tides arise from differential gravity and a body’s response to it. They affect planetary deformation, satellite survival and stellar encounters; a force evaluated only at a body’s centre misses the essential gradient.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Compare the external acceleration at a displaced point with the acceleration of the body’s centre. On the near side attraction is stronger; on the far side it is weaker, producing opposite relative accelerations.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+The leading tidal field is the spatial gradient of external gravitational acceleration in a freely falling frame. Its effects depend on material strength, self-gravity, rotation and time-dependent response.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For a distant point mass M at separation R, let the local x axis point toward it. Expand the external potential about the centre and remove the constant and uniform-acceleration terms. The leading tidal acceleration is $\delta\mathbf g=(GM/R^3)(2x,-y,-z)$. It stretches along the line of centres and compresses transverse directions. The approximation requires a local displacement much smaller than R.
+
+The characteristic differential acceleration across radius r is $2GMr/R^3$. It scales as inverse separation cubed, unlike the inverse-square centre acceleration. Comparing with self-gravity Gm/r² gives a rough disruption scale proportional to $r(M/m)^{1/3}$. This order-of-magnitude balance does not include an actual fluid equilibrium shape, rotation or strength.
+
+For an ideal synchronously rotating incompressible fluid satellite, a commonly quoted Roche separation is approximately $2.44R_p(\rho_p/\rho_s)^{1/3}$ from the primary centre. The coefficient is model-specific. A rigid or strength-supported object can survive closer; a weak rubble pile has other failure conditions. The Roche limit is not a universal radius at which every object instantly disintegrates.
+
+A tidal bulge with a phase lag dissipates mechanical energy. Angular momentum can transfer between spin and orbit while energy becomes heat. Whether a satellite migrates inward or outward depends on the relation between orbital angular speed and the primary's spin, not solely on its presence inside or outside a guessed diagrammatic bulge.
+
+Ocean tide amplitudes are not the static equilibrium bulge alone: coastlines, bathymetry, resonances, rotation and weather matter. Likewise solid-body tidal response requires rheology. A simple tidal tensor correctly explains the leading differential forcing but cannot forecast a local high tide or a material rupture time.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+On a line through a distant mass, calculate external acceleration at the near edge, centre and far edge of a small body, then subtract the centre value. Plot the two relative arrows. Compare the exact differences with the first-order 2GMr/R³ estimate as r/R increases; label the numbers as model calculations.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+At twice the source distance, a fixed-size body’s leading tidal acceleration falls to one eighth. The centre gravitational acceleration falls to one quarter. This distinction explains why comparing only apparent source force can mis-rank tidal influences.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

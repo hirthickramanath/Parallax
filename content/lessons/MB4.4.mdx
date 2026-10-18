@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB4.4",
+  "title": "Distributions and expectation",
+  "hook": "Why does averaging help with random noise but not calibration bias?",
+  "recap": [
+    "E[X²]−E[X]² when finite.",
+    "Both equal λ.",
+    "As σ/√n for finite variance.",
+    "Dependence, changing rates and bias alter its predictions."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does expectation have to be an attainable single outcome?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "A fair die has mean 3.5.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does averaging remove a common fixed bias?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The same offset remains in the average.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "When do independent variances add?",
+      "answer": "When finite variances exist",
+      "options": [
+        "Regardless of existence",
+        "When finite variances exist"
+      ],
+      "explanation": "Variance arithmetic requires defined finite moments here.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Mean of a binomial count with n=20 and p=0.25?",
+      "answer": "5",
+      "explanation": "np=20×0.25=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Mean of a binomial count with n=20 and p=0.25?",
+      "answer": "5",
+      "explanation": "np=20×0.25=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "When do independent variances add?",
+      "answer": "When finite variances exist",
+      "options": [
+        "Regardless of existence",
+        "When finite variances exist"
+      ],
+      "explanation": "Variance arithmetic requires defined finite moments here.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How is variance related to moments?",
+      "back": "E[X²]−E[X]² when finite.",
+      "concept": "mb4-4-foundation"
+    },
+    {
+      "front": "What is the Poisson mean-variance relation?",
+      "back": "Both equal λ.",
+      "concept": "mb4-4-foundation"
+    },
+    {
+      "front": "How does independent sample-mean error scale?",
+      "back": "As σ/√n for finite variance.",
+      "concept": "mb4-4-foundation"
+    },
+    {
+      "front": "Why must a noise model be checked?",
+      "back": "Dependence, changing rates and bias alter its predictions.",
+      "concept": "mb4-4-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why does averaging help with random noise but not calibration bias? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Photon counts, measurement noise and population models require probability distributions rather than one guessed value. Expected values summarize a distribution; they need not be possible individual outcomes.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+The expectation is a probability-weighted balance point. Variance measures the weighted squared spread about it, not a typical signed deviation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A random variable maps outcomes to numbers. Its distribution specifies their probabilities or a density; its expectation is a weighted sum or integral when it exists.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For a discrete X, $E[X]=\sum_x xp(x)$ and $\operatorname{Var}(X)=E[(X-E[X])^2]=E[X^2]-E[X]^2$. Standard deviation is the square root of variance and has the same units as X. Expectation is linear even for dependent variables, but variances add without a covariance term only for uncorrelated variables.
+
+For independent Bernoulli trials with common success probability p, the count X has binomial probability $P(X=k)=\binom nkp^k(1-p)^{n-k}$. Its mean is np and variance np(1−p), obtained by writing X as a sum of indicators. Trials with different success probabilities or dependence need another model.
+
+A Poisson count with mean λ has $P(X=k)=e^{-\lambda}\lambda^k/k!$ and variance λ. It approximates many rare independent opportunities and models a constant-rate process with independent increments. Counts from variable rates or clustered arrivals can be overdispersed. For a Poisson count N, the rough large-count noise scale is √N; this is not an exact symmetric confidence interval at low counts.
+
+For independent identically distributed measurements with finite variance σ², the sample mean has expectation μ and variance σ²/n. Thus random standard error falls as $1/\sqrt n$. A fixed calibration offset persists under averaging. Correlated measurements reduce the effective gain.
+
+The central limit theorem concerns the suitably standardized sum under stated assumptions; it does not claim every underlying quantity is Gaussian. Infinite-variance distributions and strongly dependent data can violate its familiar form. A confidence statement also requires an inferential method, not just a histogram resembling a bell.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Toss coins or generate explicitly simulated Bernoulli trials, repeat batches of several sizes, and compare the distribution of batch means. Then add the same offset to every reading. Record which spread shrinks and which error does not.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+Four independent unbiased measurements each have standard deviation 2 units. Their mean has standard deviation 2/√4=1 unit. If every measurement also has a +3 unit calibration bias, that bias in the mean remains +3.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

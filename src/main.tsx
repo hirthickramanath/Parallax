@@ -15,6 +15,9 @@ const AppLayout = lazy(() =>
     default: m.AppLayout,
   })),
 );
+const Projects = lazy(() =>
+  import("./pages/Projects").then((m) => ({ default: m.Projects })),
+);
 const Author = lazy(() =>
   import("./pages/Author").then((m) => ({ default: m.Author })),
 );
@@ -104,6 +107,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/labs" element={<Labs />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/review" element={<Review />} />
           <Route path="/revise" element={<Revise />} />
           <Route path="/stats" element={<Stats />} />

@@ -1,0 +1,196 @@
+---
+{
+  "id": "CP1.1",
+  "title": "Python and NumPy",
+  "hook": "Can a program return a plausible answer while using the wrong array shape?",
+  "recap": [
+    "Broadcasting can silently compute a different mathematical operation.",
+    "An error scale justified by precision, data and algorithm.",
+    "They differ in whether edits share storage.",
+    "Inputs, units, dependencies, assumptions and validation checks."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does successful execution prove an array calculation is scientifically correct?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Shape, units and model assumptions can still be wrong.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does NumPy * always mean matrix multiplication?",
+      "answer": "No; @ performs matrix products",
+      "options": [
+        "No; @ performs matrix products",
+        "Yes"
+      ],
+      "explanation": "The asterisk is elementwise.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Can a slice share data with its parent array?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Many slices are views, so edits can affect the source.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "How many entries result from broadcasting shapes (3,1) and (3,)?",
+      "answer": "9",
+      "explanation": "The broadcast shape is (3,3).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "How many entries result from broadcasting shapes (3,1) and (3,)?",
+      "answer": "9",
+      "explanation": "The broadcast shape is (3,3).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Can a slice share data with its parent array?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Many slices are views, so edits can affect the source.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "Why assert array shapes?",
+      "back": "Broadcasting can silently compute a different mathematical operation.",
+      "concept": "cp1-1-foundation"
+    },
+    {
+      "front": "What does a floating-point tolerance require?",
+      "back": "An error scale justified by precision, data and algorithm.",
+      "concept": "cp1-1-foundation"
+    },
+    {
+      "front": "Why distinguish a view from a copy?",
+      "back": "They differ in whether edits share storage.",
+      "concept": "cp1-1-foundation"
+    },
+    {
+      "front": "What should accompany a scientific script?",
+      "back": "Inputs, units, dependencies, assumptions and validation checks.",
+      "concept": "cp1-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NumPy, SciPy, Matplotlib and SymPy official documentation — relevant version and section verification pending",
+    "Numerical Recipes / scientific-computing reference — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can a program return a plausible answer while using the wrong array shape? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Scientific Python turns models into reproducible calculations. Correct syntax is only the first check: a program must also represent the intended units, shape, axes and numerical precision.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+An array is a block of values with a shape and a type. Operations may broadcast across dimensions rather than performing the pairing you intended.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Python names refer to objects; NumPy arrays support typed multidimensional data and vectorized operations. Reproducibility requires explicit inputs, dependencies and a record of choices.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+Python floating-point values usually approximate real numbers with binary finite precision. Thus decimal quantities need not add exactly: compare computed results with a justified absolute and relative tolerance, not an unexplained equality or an arbitrary large tolerance. Catastrophic cancellation occurs when nearly equal large values are subtracted; algebraically equivalent expressions can have different numerical accuracy.
+
+In NumPy a one-dimensional array of shape (n,) is not the same as a column of shape (n,1). Broadcasting aligns trailing dimensions, allowing equal sizes or a size of 1. Subtracting shapes (n,1) and (n,) creates an (n,n) result, not n residuals. Matrix product uses `@`; `*` is elementwise multiplication. Check shape and axis semantics at every scientific boundary. For compatible two-dimensional arrays, matrix multiplication computes $(AB)_{ij}=\sum_k A_{ik}B_{kj}$; elementwise multiplication computes $C_{ij}=A_{ij}B_{ij}$ when shapes match. These are different operations even for square arrays.
+
+Slicing may return a view sharing the original data. Use an explicit copy when independent modification is required. Integer arrays can overflow; floating arrays can contain NaN or infinity. A sum along an axis removes that axis unless requested otherwise. Masks and missing-value handling change the sample used by an estimator and must be recorded.
+
+```python
+import numpy as np
+x = np.array([0., 1., 2.])
+y = 2*x + 1
+assert x.shape == y.shape == (3,)
+residual = y - (2*x + 1)
+assert np.allclose(residual, 0, atol=1e-12, rtol=0)
+```
+
+A reproducible script separates model functions from file access and plotting, validates units and array shapes, and includes known analytic checks. A random seed helps reproduce one random sequence, but package versions and generator choice may also matter. Never treat the ability to run code without an exception as proof of a correct scientific result.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Run the code in a local Python environment with NumPy installed; this website does not execute arbitrary Python. Print shape and dtype after every operation. Deliberately reshape one input to (3,1), predict the broadcast result, then inspect and correct it.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For x=[0,1,2] and y=2x+1, y is [1,3,5]. If x is reshaped to a column and y stays one-dimensional, subtracting them gives nine differences. A shape assertion can catch this before an incorrect loss function silently sums them.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

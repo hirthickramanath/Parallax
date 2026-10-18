@@ -1,0 +1,188 @@
+---
+{
+  "id": "PB4.1",
+  "title": "Electrostatics",
+  "hook": "How can a field exist at a point where no charge is placed?",
+  "recap": [
+    "E=−∇V in electrostatics.",
+    "When symmetry supplies the field direction and constant magnitude on suitable surfaces.",
+    "Zero internal electrostatic field at equilibrium.",
+    "One fixes voltage; the other fixes total charge."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does zero net enclosed charge require zero field everywhere on a surface?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Only the net flux is fixed at zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does adding a constant to potential change the field?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The gradient is unchanged.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Is a negative test charge forced along the field direction?",
+      "answer": "No; opposite it",
+      "options": [
+        "Yes",
+        "No; opposite it"
+      ],
+      "explanation": "Force is qE.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Field in V/m for 20 V across an ideal 0.01 m plate gap?",
+      "answer": "2000",
+      "explanation": "E=V/d=20/0.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Field in V/m for 20 V across an ideal 0.01 m plate gap?",
+      "answer": "2000",
+      "explanation": "E=V/d=20/0.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Is a negative test charge forced along the field direction?",
+      "answer": "No; opposite it",
+      "options": [
+        "Yes",
+        "No; opposite it"
+      ],
+      "explanation": "Force is qE.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How are potential and field related?",
+      "back": "E=−∇V in electrostatics.",
+      "concept": "pb4-1-foundation"
+    },
+    {
+      "front": "When does Gauss law directly solve a field?",
+      "back": "When symmetry supplies the field direction and constant magnitude on suitable surfaces.",
+      "concept": "pb4-1-foundation"
+    },
+    {
+      "front": "What is an equipotential conductor condition?",
+      "back": "Zero internal electrostatic field at equilibrium.",
+      "concept": "pb4-1-foundation"
+    },
+    {
+      "front": "Why distinguish connected and isolated capacitors?",
+      "back": "One fixes voltage; the other fixes total charge.",
+      "concept": "pb4-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+How can a field exist at a point where no charge is placed? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Field theory separates the source distribution from the probe used to observe its influence. Electrostatic potential offers energy bookkeeping that scales to many charges without drawing every force arrow.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+A tiny positive test charge samples a field. It does not have to be present for the source configuration to define a field in the model.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Electric field is force per unit positive test charge in the negligible-perturbation limit. Electrostatic potential is potential energy per unit charge relative to a reference.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For a point charge Q in vacuum, $\mathbf E=Q\hat{\mathbf r}/(4\pi\epsilon_0r^2)$ away from the source. Fields superpose vectorially. The force on a probe q is qE; a negative probe accelerates opposite E. The point-source expression is singular at r=0 and cannot describe an extended charge internally without a distribution model.
+
+Gauss' law is $\oint\mathbf E\cdot d\mathbf A=Q_{\rm enclosed}/\epsilon_0$. Symmetry can make it an efficient field-solving tool. Without sufficient symmetry, knowing the total flux does not determine the field at every surface point. A zero net enclosed charge permits nonzero fields with cancelling flux.
+
+Electrostatics has $\mathbf E=-\nabla V$ and $V(B)-V(A)=-\int_A^B\mathbf E\cdot d\mathbf l$. Adding a constant to V changes no field. For an isolated point charge with V∞=0, $V=Q/(4\pi\epsilon_0r)$. Potential superposes as a scalar, whereas field requires vector components.
+
+An ideal conductor at electrostatic equilibrium has zero internal field, constant potential and excess charge on its surface. This is not a claim about a conductor carrying a resistive current. A parallel-plate capacitor with negligible fringing has $C=\epsilon A/d$, stored energy $U=CV^2/2$, and near-uniform gap field V/d. Inserting a dielectric changes charge or voltage according to whether the capacitor remains connected to a source.
+
+Energy density in a linear dielectric under appropriate static conditions is $u=\mathbf E\cdot\mathbf D/2$. Molecular polarization, breakdown and frequency dependence limit treating permittivity as one constant.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Draw field and equipotential maps for two point charges using vector addition at selected grid points. Check that the field is perpendicular to equipotentials in electrostatics. Any physical electrostatic demonstration should use approved low-energy classroom equipment rather than mains or high-voltage experiments.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+Between plates at separation 0.01 m and potential difference 100 V, the ideal field magnitude is 10,000 V/m. A +2 μC charge experiences 0.02 N. Its potential-energy change across a +100 V rise is +2×10⁻⁴ J, while field work is the negative of that change.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

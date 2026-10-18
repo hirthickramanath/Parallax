@@ -1,0 +1,186 @@
+---
+{
+  "id": "MB1.3",
+  "title": "Sequences, series, binomial theorem",
+  "hook": "Can adding infinitely many positive lengths give a finite result?",
+  "recap": [
+    "Its partial sums.",
+    "The common ratio has modulus below 1.",
+    "Selections of k objects from n distinct objects.",
+    "Its validity range and a remainder or error estimate."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Must a convergent series have terms tending to zero?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Its consecutive partial sums must approach the same limit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does terms tending to zero guarantee convergence?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The harmonic series provides a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "When does a nonzero geometric series converge?",
+      "answer": "When the ratio has modulus below 1",
+      "options": [
+        "Whenever the ratio is positive",
+        "When the ratio has modulus below 1"
+      ],
+      "explanation": "The remainder power must tend to zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Sum the first five terms of 2, 4, 6, 8, 10.",
+      "answer": "30",
+      "explanation": "Use 5(2+10)/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Sum the first five terms of 2, 4, 6, 8, 10.",
+      "answer": "30",
+      "explanation": "Use 5(2+10)/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "When does a nonzero geometric series converge?",
+      "answer": "When the ratio has modulus below 1",
+      "options": [
+        "Whenever the ratio is positive",
+        "When the ratio has modulus below 1"
+      ],
+      "explanation": "The remainder power must tend to zero.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What actually converges when a series converges?",
+      "back": "Its partial sums.",
+      "concept": "mb1-3-foundation"
+    },
+    {
+      "front": "What is the geometric infinite-sum condition?",
+      "back": "The common ratio has modulus below 1.",
+      "concept": "mb1-3-foundation"
+    },
+    {
+      "front": "What does a binomial coefficient count?",
+      "back": "Selections of k objects from n distinct objects.",
+      "concept": "mb1-3-foundation"
+    },
+    {
+      "front": "What must accompany a truncated expansion?",
+      "back": "Its validity range and a remainder or error estimate.",
+      "concept": "mb1-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can adding infinitely many positive lengths give a finite result? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Series enter numerical approximation, perturbation theory and the repeated-reflection models used in optics. A finite expression and the limit of infinitely many terms are different mathematical objects.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Watch the running total, not just the newest term. Tiny terms are necessary for convergence, but not sufficient: the harmonic series is the classic counterexample.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A sequence is an ordered list. A series converges when its sequence of partial sums has a finite limit.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For an arithmetic sequence $a_n=a_1+(n-1)d$, pair the first and last terms to obtain $S_n=n(a_1+a_n)/2$. A geometric sequence has $a_n=ar^{n-1}$. Subtracting $rS_n$ from $S_n$ gives $S_n=a(1-r^n)/(1-r)$ when r≠1. At r=1, the sum is na.
+
+For $|r|<1$, $r^n\to0$, hence $\sum_{k=0}^{\infty}ar^k=a/(1-r)$. The error after n terms is $ar^n/(1-r)$, so a useful approximation includes an error estimate. At r=−1 the partial sums oscillate; at r=1 nonzero terms accumulate without bound. The vanishing of terms is necessary for convergence, but $\sum1/n$ diverges: grouping terms from $2^{j-1}+1$ through $2^j$ contributes at least 1/2 each time.
+
+For a nonnegative integer n, expansion of $(1+x)^n$ selects x from k of n factors, giving coefficient $\binom nk=n!/[k!(n-k)!]$. Pascal's recurrence follows by distinguishing selections that contain a chosen object from those that do not. This finite binomial theorem needs no convergence argument.
+
+For a general real exponent the infinite binomial expansion has a restricted convergence domain, typically $|x|<1$. Keeping $1+nx$ is a small-x approximation, not an identity. State which power was neglected and compare its size with the retained terms before applying it to a physical model.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Cut a unit-length strip in half repeatedly and record partial lengths and remaining lengths. Compare r=1/2, r=−1 and r=2 on paper. Plot a partial sum against term count and state which evidence is suggestive and which limit argument proves convergence.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For a=3 and r=1/2, the infinite sum is 6. After four terms the partial sum is 3(1−1/16)/(1/2)=5.625, leaving a positive tail 0.375. The tail is smaller than the last retained term but is not zero.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+
