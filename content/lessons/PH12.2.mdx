@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH12.2",
+  "title": "Multi-electron atoms and term symbols",
+  "hook": "Why do atomic term labels require both orbital and spin coupling information?",
+  "recap": [
+    "Spin multiplicity, total orbital and total angular labels.",
+    "Relative electrostatic and spin-orbit scales.",
+    "They depend on configuration and coupling assumptions.",
+    "Configuration interaction, correlations and actual spectral context."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does term superscript 2S+1 count electrons?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is spin multiplicity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must Pauli restrictions be checked for equivalent electrons?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Some formal couplings are forbidden.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is LS coupling exact for every atom?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Intermediate/jj mixing can matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Total magnetic-state count for L=1,S=1 across J=0,1,2?",
+      "answer": "9",
+      "explanation": "1+3+5=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Largest J in that coupling?",
+      "answer": "2",
+      "explanation": "L+S=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What refines term assignments?",
+      "answer": "Configuration interaction, correlations and actual spectral context.",
+      "options": [
+        "Configuration interaction, correlations and actual spectral context.",
+        "Spin multiplicity, total orbital and total angular labels."
+      ],
+      "explanation": "Configuration interaction, correlations and actual spectral context.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a term symbol encode?",
+      "back": "Spin multiplicity, total orbital and total angular labels.",
+      "concept": "ph12-2-theory"
+    },
+    {
+      "front": "What sets coupling regime?",
+      "back": "Relative electrostatic and spin-orbit scales.",
+      "concept": "ph12-2-theory"
+    },
+    {
+      "front": "Why qualify Hund rules?",
+      "back": "They depend on configuration and coupling assumptions.",
+      "concept": "ph12-2-theory"
+    },
+    {
+      "front": "What refines term assignments?",
+      "back": "Configuration interaction, correlations and actual spectral context.",
+      "concept": "ph12-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Foot, Atomic Physics — edition and exact section verification pending",
+    "Townes and Schawlow, Microwave Spectroscopy — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do atomic term labels require both orbital and spin coupling information? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Multielectron spectra combine Pauli restrictions, interactions and angular coupling; filling rules are model tendencies rather than unconditional theorems.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In LS coupling, a term symbol is written ²ˢ⁺¹L_J with total electronic spin S, orbital L and total J.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an LS term, $J=|L-S|,|L-S|+1,\ldots,L+S$ when allowed by antisymmetry and configuration. The letters S,P,D,F correspond to L=0,1,2,3. The leading superscript is spin multiplicity, not electron count.
+
+Electron–electron interaction, exchange and spin-orbit coupling compete. Hund-type ordering rules apply within qualified configurations/regimes; equivalent-electron Pauli constraints forbid some naive couplings. A term list cannot be obtained by adding every label independently.
+
+LS coupling is useful when electrostatic coupling dominates appropriate spin-orbit mixing. Heavy atoms or particular configurations can require jj or intermediate coupling. State labels then describe dominant character rather than exact separate S and L conservation.
+
+Observed multiplets and selection patterns test models with configuration interaction and correlation. Orbital energies do not simply sum to every measured excitation energy. A spectroscopic assignment must retain isotope, charge state and field/environment context.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Enumerate angular couplings for a specified allowed configuration, then impose equivalent-electron restrictions. Compare LS and jj limiting descriptions without claiming one universal scheme.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For an allowed L=1,S=1 term, possible J values are 0,1,2. Their magnetic-state counts are 1,3,5, totaling nine and matching (2L+1)(2S+1)=9.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

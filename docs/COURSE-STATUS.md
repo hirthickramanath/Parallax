@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **287**.
-- Authored recall cards: **1153**.
-- Missing lesson bodies: **67**.
+- Playable authored drafts: **299**.
+- Authored recall cards: **1201**.
+- Missing lesson bodies: **55**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -45,9 +45,9 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 3 | PH7 | Thermodynamics and statistical mechanics | 10 / 10 | None |
 | 3 | PH8 | Quantum mechanics I | 8 / 8 | None |
 | 5 | PH9 | Quantum mechanics II | 8 / 8 | None |
-| 6 | PH10 | Advanced and relativistic quantum mechanics | 0 / 6 | PH10.1, PH10.2, PH10.3, PH10.4, PH10.5, PH10.6 |
+| 6 | PH10 | Advanced and relativistic quantum mechanics | 6 / 6 | None |
 | 2 | PH11 | Special relativity | 4 / 4 | None |
-| 6 | PH12 | Atomic, molecular and optical physics | 0 / 6 | PH12.1, PH12.2, PH12.3, PH12.4, PH12.5, PH12.6 |
+| 6 | PH12 | Atomic, molecular and optical physics | 6 / 6 | None |
 | 6 | PH13 | Nuclear and particle physics | 0 / 7 | PH13.1, PH13.2, PH13.3, PH13.4, PH13.5, PH13.6, PH13.7 |
 | 6 | PH14 | Condensed matter physics | 0 / 8 | PH14.1, PH14.2, PH14.3, PH14.4, PH14.5, PH14.6, PH14.7, PH14.8 |
 | 7 | PH15 | Quantum field theory and the Standard Model | 0 / 8 | PH15.1, PH15.2, PH15.3, PH15.4, PH15.5, PH15.6, PH15.7, PH15.8 |

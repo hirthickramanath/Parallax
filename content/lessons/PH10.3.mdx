@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH10.3",
+  "title": "Path-integral formulation",
+  "hook": "Why does a quantum propagator sum amplitudes rather than select the least-action path alone?",
+  "recap": [
+    "A regulated product of short-time propagators.",
+    "A stationary-phase approximation under its conditions.",
+    "It enforces the correct propagator composition and limit.",
+    "Analytic/operator assumptions and possible sign/continuation problems."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is exp(iS/ℏ) an ordinary positive probability?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a complex amplitude.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can more than one classical path contribute semiclassically?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Their amplitudes can interfere.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the formal path symbol remove the need for regularization/measure definition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The limiting construction is essential.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Free classical action for m=3,Δx=2,t=1?",
+      "answer": "6",
+      "explanation": "mΔx²/(2t)=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Phase angle S/ℏ for S=6,ℏ=2?",
+      "answer": "3",
+      "explanation": "6/2=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What qualifies imaginary-time methods?",
+      "answer": "Analytic/operator assumptions and possible sign/continuation problems.",
+      "options": [
+        "Analytic/operator assumptions and possible sign/continuation problems.",
+        "A regulated product of short-time propagators."
+      ],
+      "explanation": "Analytic/operator assumptions and possible sign/continuation problems.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What constructs a path integral?",
+      "back": "A regulated product of short-time propagators.",
+      "concept": "ph10-3-theory"
+    },
+    {
+      "front": "What recovers classical action paths?",
+      "back": "A stationary-phase approximation under its conditions.",
+      "concept": "ph10-3-theory"
+    },
+    {
+      "front": "Why retain normalization?",
+      "back": "It enforces the correct propagator composition and limit.",
+      "concept": "ph10-3-theory"
+    },
+    {
+      "front": "What qualifies imaginary-time methods?",
+      "back": "Analytic/operator assumptions and possible sign/continuation problems.",
+      "concept": "ph10-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does a quantum propagator sum amplitudes rather than select the least-action path alone? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Path integrals reorganize quantum evolution; stationary action emerges as a semiclassical limit, not as a literal exclusive route.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A configuration-space path integral is a regulated limit of short-time propagator products, with amplitude weight exp(iS/ℏ) and a specified measure/boundary prescription.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Insert position resolutions between short-time factors of U(t). Under an appropriate Trotter construction, the kinetic short-time kernel supplies a normalization and a phase containing the discrete action. The formal symbol $K(b,a)=\int\mathcal D x\,e^{iS[x]/\hbar}$ is shorthand for that limiting prescription, not an ordinary finite-dimensional integral over a uniform probability of all paths.
+
+For a free particle in one dimension, the exact kernel is √(m/(2πiℏt)) exp[im(x_b−x_a)²/(2ℏt)] for an appropriate nonzero-time branch. Its oscillatory complex amplitude is not a nonnegative path probability.
+
+In a semiclassical regime, stationary-phase contributions localize around classical paths with fluctuation determinants and phase corrections. Multiple classical paths can interfere. Endpoints, caustics and topology change the approximation; writing only the classical action need not give the full propagator.
+
+Imaginary-time continuation relates suitable amplitudes to statistical/Euclidean constructions under analytic and operator assumptions. It is not a universal replacement of every real-time process by a positive probability simulation; fermion signs, complex actions and continuation instability can remain.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct a short-time discretized free propagator and test composition against the exact kernel. Keep cutoff/normalization and complex phases visible rather than treating squared path weights as independent classical alternatives.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a free classical path from x_a=0 to x_b=2 over t=1 with m=3, action is mΔx²/(2t)=6. With ℏ=2 the phase angle S/ℏ is 3 radians. This is one stationary contribution, not the full kernel normalization.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

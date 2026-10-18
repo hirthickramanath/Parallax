@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH10.5",
+  "title": "Many-body theory and Hartree-Fock",
+  "hook": "Why does an independent-orbital approximation still contain exchange but miss correlation?",
+  "recap": [
+    "Slater determinants under the stated constraints.",
+    "Many-electron structure beyond its optimized determinant.",
+    "Relaxation and correlation can change actual energy differences.",
+    "Iteration, basis, state and physical-model errors."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does Hartree–Fock omit all exchange?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Antisymmetry generates exchange terms.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does small iterative residual prove a global HF minimum?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Other stationary states can exist.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a same-Hamiltonian variational bound automatically a real-world error bar?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Hamiltonian/model errors are separate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Correlation energy for exact −10 and HF −9?",
+      "answer": "-1",
+      "explanation": "−10−(−9)=−1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "HF energy excess above exact in that example?",
+      "answer": "1",
+      "explanation": "−9−(−10)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must numerical convergence distinguish?",
+      "answer": "Iteration, basis, state and physical-model errors.",
+      "options": [
+        "Iteration, basis, state and physical-model errors.",
+        "Slater determinants under the stated constraints."
+      ],
+      "explanation": "Iteration, basis, state and physical-model errors.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What family does HF optimize?",
+      "back": "Slater determinants under the stated constraints.",
+      "concept": "ph10-5-theory"
+    },
+    {
+      "front": "What is missing correlation relative to HF?",
+      "back": "Many-electron structure beyond its optimized determinant.",
+      "concept": "ph10-5-theory"
+    },
+    {
+      "front": "Why qualify orbital-energy ionization estimates?",
+      "back": "Relaxation and correlation can change actual energy differences.",
+      "concept": "ph10-5-theory"
+    },
+    {
+      "front": "What must numerical convergence distinguish?",
+      "back": "Iteration, basis, state and physical-model errors.",
+      "concept": "ph10-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does an independent-orbital approximation still contain exchange but miss correlation? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Many-body approximations optimize a restricted state family; their variational and predictive claims depend on Hamiltonian, basis and convergence.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Hartree–Fock minimizes an energy expectation over Slater determinants for a stated fermionic Hamiltonian and basis/domain.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A single determinant enforces antisymmetry. Its energy contains direct Coulomb and exchange terms from the same two-body interaction; exchange is not an additional classical force. For an admissible normalized determinant, $E_{HF}\ge E_0$ for the same lower-bounded Hamiltonian, while practical basis truncation adds another restriction.
+
+The Fock equations are self-consistent because the effective one-particle operator depends on occupied orbitals. Solving an iteration to a small residual does not prove the global variational minimum or the physically correct spin/symmetry state. Check multiple starts and stability where relevant.
+
+Correlation energy conventionally denotes the remaining exact-minus-HF energy within a specified nonrelativistic Hamiltonian and basis-limit definition. Configuration interaction, coupled-cluster and perturbative methods include different correlation structures and have different size-consistency/convergence properties. No one method label guarantees accuracy for strong correlation.
+
+Koopmans-style orbital-energy ionization estimates assume frozen orbitals and neglect relevant relaxation/correlation. Total-energy differences can answer a different question. Density-functional theory uses an exact formal framework with approximate practical functionals; it is not simply HF with renamed exchange.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare converged energy estimates as a basis grows and separate self-consistency residual from basis/model error. State spin, charge and geometry before interpreting orbital energies or differences.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a specified model exact energy −10 and HF energy −9, the conventional correlation energy E_exact−E_HF is −1. A practical trial value −8 remains an upper bound but is less optimal within that comparison; the sign does not assess a different Hamiltonian.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

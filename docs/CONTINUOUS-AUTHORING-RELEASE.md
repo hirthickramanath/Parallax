@@ -41,3 +41,7 @@ MA11, MA12 and MA13 add 16 drafts on tensors/manifolds/connections, curvature/fo
 ## Quantum mechanics II
 
 PH9.1–PH9.8 add perturbation, degenerate subspaces, transition rates, variational/WKB, identical particles, scattering, decoherence and Bell/information drafts. Coverage is 287/354 bodies, 1153 recall cards, 67 missing. Build, all 78 model/grading/example tests and the PH9 production-player sweep passed. Operator domains, normalization, approximation windows and no-signalling qualifications are explicit.
+
+## Relativistic/open-system quantum theory and AMO
+
+PH10 and PH12 add 12 drafts. Coverage is 299/354 bodies, 1201 recall cards, 55 missing. Build, all 79 model/grading/example tests and both new unit player sweeps passed. Relativistic field interpretation, operator distributions, complete positivity, level conventions and cooling limitations are explicit. No laboratory apparatus or live experiment was run.

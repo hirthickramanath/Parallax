@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH12.5",
+  "title": "Atom-light interaction",
+  "hook": "Why can a resonant light field drive oscillations rather than a one-way absorption rate?",
+  "recap": [
+    "The frequency mismatch in a declared transition/drive convention.",
+    "Matrix element, polarization and field amplitude.",
+    "Phase coherence, spectrum and environmental time scales.",
+    "Population can leave the assumed two-state subspace."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does resonant two-level evolution without damping have to be irreversible?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It can undergo Rabi oscillations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is rotating-wave approximation exact at arbitrary strong drive?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Its time-scale conditions can fail.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can far-detuned light still shift energies?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Virtual coupling can create light shifts.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Ideal excitation for resonant pulse area π?",
+      "answer": "1",
+      "explanation": "sin²(π/2)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Ideal excitation for area π/2?",
+      "answer": "0.5",
+      "explanation": "sin²(π/4)=1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why include optical pumping?",
+      "answer": "Population can leave the assumed two-state subspace.",
+      "options": [
+        "Population can leave the assumed two-state subspace.",
+        "The frequency mismatch in a declared transition/drive convention."
+      ],
+      "explanation": "Population can leave the assumed two-state subspace.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is detuning?",
+      "back": "The frequency mismatch in a declared transition/drive convention.",
+      "concept": "ph12-5-theory"
+    },
+    {
+      "front": "What sets dipole coupling?",
+      "back": "Matrix element, polarization and field amplitude.",
+      "concept": "ph12-5-theory"
+    },
+    {
+      "front": "What separates coherent and rate regimes?",
+      "back": "Phase coherence, spectrum and environmental time scales.",
+      "concept": "ph12-5-theory"
+    },
+    {
+      "front": "Why include optical pumping?",
+      "back": "Population can leave the assumed two-state subspace.",
+      "concept": "ph12-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Foot, Atomic Physics — edition and exact section verification pending",
+    "Townes and Schawlow, Microwave Spectroscopy — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a resonant light field drive oscillations rather than a one-way absorption rate? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Coherent atom–light coupling, spontaneous emission and detuning require different terms in the model.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A near-resonant driven two-level approximation uses a Rabi frequency, detuning and a specified rotating-wave/field-amplitude convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In one rotating-frame convention, $H=\hbar(\Delta\sigma_z+\Omega\sigma_x)/2$. On resonance and without damping, a ground-state population oscillates to excitation as sin²(Ωt/2). Peak/RMS field and angular/cyclic frequency conventions affect Ω definitions.
+
+The rotating-wave approximation discards rapidly oscillating terms only when coupling/detuning/time scales justify it relative to the carrier. Strong driving, large detuning or multilevel structure can require corrections. Dipole matrix elements and polarization determine which levels actually couple.
+
+Spontaneous emission, dephasing and population feeding add open-system dynamics. A steady absorption line and a coherent pulse experiment need not have the same width/power dependence. Saturation and optical pumping redistribute populations.
+
+Far-detuned coupling can produce light shifts and effective interactions in an admitted expansion, but photon scattering and multilevel effects can remain. Calling a drive off resonance does not mean no interaction. Compare experiment with the corresponding master equation and detector observable, not only a drawn two-state sinusoid.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot coherent populations for resonant/detuned toy pulses and separately add a valid decay channel. Compare the conditions for a π pulse with those for a golden-rule rate measurement.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a resonant pulse with Ωt=π, ideal excited population is one. At Ωt=π/2 it is .5. These ideal pulse areas do not include spontaneous loss or an uncertain drive amplitude.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

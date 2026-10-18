@@ -541,3 +541,23 @@ test("advanced quantum examples preserve gaps, domains, symmetry and probabiliti
     check(id, "warmup", w);
   }
 });
+test("relativistic and AMO examples preserve algebra, scales and open system conventions", () => {
+  const rows = [
+    ["PH10.1", 5, 5 - 3],
+    ["PH10.2", 5, 2],
+    ["PH10.3", (3 * 2 ** 2) / 2, 6 / 2],
+    ["PH10.4", Math.sqrt(4), 4],
+    ["PH10.5", -10 - -9, -9 - -10],
+    ["PH10.6", 0.8 / 2, 0.8 - 0.4],
+    ["PH12.1", 4 / 4, 4],
+    ["PH12.2", 1 + 3 + 5, 1 + 1],
+    ["PH12.3", 2 * 2 * 0.5, 4],
+    ["PH12.4", 2 * (6 - 2), 1 / 4],
+    ["PH12.5", 1, 0.5],
+    ["PH12.6", -3 * 2, 8 / 2],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

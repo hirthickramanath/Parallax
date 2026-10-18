@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH10.6",
+  "title": "Open quantum systems and the Lindblad equation",
+  "hook": "Why must an open-system equation preserve more than the trace of a density matrix?",
+  "recap": [
+    "Valid evolution including arbitrary untouched ancillas.",
+    "Whether rates are already included in L_k.",
+    "A decay transition jump.",
+    "They delimit the valid reduced-dynamics regime."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does trace preservation alone ensure physical density matrices?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Positivity and ancillary consistency also matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are dephasing and amplitude damping identical?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They affect populations differently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a Markovian bath approximation apply to every environment?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Memory/time-scale assumptions can fail.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Excited population for initial .8 and γt=ln2?",
+      "answer": "0.4",
+      "explanation": ".8/2=.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Population transferred to ground in that simple model?",
+      "answer": "0.4",
+      "explanation": ".8−.4=.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state bath approximations?",
+      "answer": "They delimit the valid reduced-dynamics regime.",
+      "options": [
+        "They delimit the valid reduced-dynamics regime.",
+        "Valid evolution including arbitrary untouched ancillas."
+      ],
+      "explanation": "They delimit the valid reduced-dynamics regime.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does complete positivity protect?",
+      "back": "Valid evolution including arbitrary untouched ancillas.",
+      "concept": "ph10-6-theory"
+    },
+    {
+      "front": "What is a jump-operator convention issue?",
+      "back": "Whether rates are already included in L_k.",
+      "concept": "ph10-6-theory"
+    },
+    {
+      "front": "What generates amplitude relaxation here?",
+      "back": "A decay transition jump.",
+      "concept": "ph10-6-theory"
+    },
+    {
+      "front": "Why state bath approximations?",
+      "back": "They delimit the valid reduced-dynamics regime.",
+      "concept": "ph10-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Sakurai and Napolitano, Modern Quantum Mechanics — edition and exact section verification pending",
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why must an open-system equation preserve more than the trace of a density matrix? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Physical reduced dynamics must respect positivity even when the system is part of a larger entangled state.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A time-homogeneous quantum dynamical semigroup with complete positivity and trace preservation has a GKSL/Lindblad generator under its mathematical assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+One convention is $\dot\rho=-i[H,\rho]/\hbar+\sum_k(L_k\rho L_k^\dagger-\tfrac12\{L_k^\dagger L_k,\rho\})$. The jump operators include rates by convention; adding another rate factor without checking dimensions can double count.
+
+Trace preservation follows by cyclicity, but an arbitrary trace-preserving matrix equation need not preserve positivity. Complete positivity also ensures a valid map when an untouched ancillary system is included. This is stricter than checking one chosen initial system state.
+
+For L=√γ|0⟩⟨1|, the simple amplitude-damping excited population decays as p₁(t)=p₁(0)e⁻γt. A dephasing jump can suppress coherences without the same population decay. Environment temperature and upward transitions change the stationary state.
+
+Deriving a Markovian generator from a bath commonly uses weak-coupling, time-scale and sometimes secular approximations. Structured environments and initial correlations can require memory/non-Markovian treatment. A fitted Lindblad equation is a controlled model, not proof that every environment has no memory.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Evolve basis states and an entangled system–ancilla test under a proposed channel, checking eigenvalues and trace. Compare amplitude damping with dephasing and identify their different fixed states.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If p₁(0)=.8 and γt=ln2, the excited population becomes .4. Its lost .4 population appears in the ground state in this two-level trace-preserving model. This population relaxation differs from pure dephasing.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
