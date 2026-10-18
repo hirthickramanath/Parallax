@@ -648,3 +648,84 @@ test("experimental and research examples preserve uncertainties and provenance d
     check(id, "warmup", w);
   }
 });
+
+test("expanded canonical example counts degenerate microstates and satisfies energy fluctuations", () => {
+  const beta = Math.log(3),
+    levels = [0, 1, 1, 1],
+    weights = levels.map((energy) => Math.exp(-beta * energy)),
+    Z = weights.reduce((sum, weight) => sum + weight, 0),
+    mean = levels.reduce(
+      (sum, energy, i) => sum + (energy * weights[i]) / Z,
+      0,
+    ),
+    variance = levels.reduce(
+      (sum, energy, i) => sum + ((energy - mean) ** 2 * weights[i]) / Z,
+      0,
+    );
+  assert.ok(Math.abs(mean - 0.5) < 1e-12);
+  assert.ok(Math.abs(variance - 0.25) < 1e-12);
+  const h = 1e-4;
+  const logZ = (b) => Math.log(1 + 3 * Math.exp(-b));
+  const secondDerivative =
+    (logZ(beta + h) - 2 * logZ(beta) + logZ(beta - h)) / h ** 2;
+  assert.ok(Math.abs(secondDerivative - variance) < 1e-7);
+});
+
+test("a Cartesian straight line obeys both polar geodesic equations away from the origin", () => {
+  for (const b of [0.25, 1, 3]) {
+    for (const t of [-4, -1, 0, 2, 5]) {
+      const r = Math.hypot(t, b),
+        rDot = t / r,
+        rDDot = (b * b) / r ** 3,
+        thetaDot = -b / r ** 2,
+        thetaDDot = (2 * b * t) / r ** 4;
+      assert.ok(Math.abs(rDDot - r * thetaDot ** 2) < 1e-12);
+      assert.ok(Math.abs(thetaDDot + (2 * rDot * thetaDot) / r) < 1e-12);
+      assert.ok(Math.abs(rDot ** 2 + r ** 2 * thetaDot ** 2 - 1) < 1e-12);
+    }
+  }
+});
+
+test("generated authored lesson downloads agree with curriculum availability", () => {
+  const course = JSON.parse(
+    fs.readFileSync("src/generated/course.json", "utf8"),
+  );
+  for (const lesson of course.lessons) {
+    if (!course.authored[lesson.id]) continue;
+    const downloaded = JSON.parse(
+      fs.readFileSync(`public/content/${lesson.id}.json`, "utf8"),
+    );
+    assert.equal(lesson.available, true, lesson.id);
+    assert.equal(
+      course.authored[lesson.id].available,
+      lesson.available,
+      lesson.id,
+    );
+    assert.equal(downloaded.available, lesson.available, lesson.id);
+  }
+});
+
+test("new Core transfers preserve degeneracy, gradient energy, tidal signs and covariance", () => {
+  check("PH7.4", "review-core-transfer", (3 * (1 / 3)) / (1 + 3 * (1 / 3)));
+  check("MA11.4", "review-core-transfer", 1 / Math.hypot(0, 1) ** 3);
+  check(
+    "PH15.2",
+    "review-core-transfer",
+    (3 ** 2 + 4 ** 2 + 2 ** 2 * 1 ** 2) / 2,
+  );
+  check("PH7.6", "review-core-transfer", 0.5 * (1 + 0.5));
+  check("PH16.1", "review-core-transfer", 2 * 2 * 0.1);
+  const covariance = [
+      [1, 0.5],
+      [0.5, 1],
+    ],
+    residual = [1, 1];
+  const determinant =
+    covariance[0][0] * covariance[1][1] - covariance[0][1] ** 2;
+  const quadratic =
+    (residual[0] ** 2 * covariance[1][1] -
+      2 * residual[0] * residual[1] * covariance[0][1] +
+      residual[1] ** 2 * covariance[0][0]) /
+    determinant;
+  check("PH18.1", "review-core-transfer", quadratic);
+});

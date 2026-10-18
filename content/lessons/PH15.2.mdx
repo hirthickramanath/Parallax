@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "In natural units, a free scalar has time derivative 3, spatial-gradient magnitude 4, mass 2 and field value 1. What is its Hamiltonian density?",
+      "answer": "14.5",
+      "explanation": "One half times (9+16+4) gives 14.5. The gradient energy is positive.",
+      "unit": "natural energy-density units",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +163,18 @@ Continuous variational symmetries yield Noether currents on shell. Translations 
 
 Gauge redundancy requires constraints rather than treating every component as an independent physical degree of freedom. Explicit symmetry breaking and boundary forcing alter conservation. Quantization and anomalies are further steps; a classical identity is not automatically every quantum Ward identity.
 
+### Keep the boundary term in the variation
+
+Write $\pi^\mu=\partial\mathcal L/\partial(\partial_\mu\phi)$. For a compact region, integration by parts gives
+
+$$\delta S=\int [\mathcal L_{,\phi}-\partial_\mu\pi^\mu]\delta\phi\,d^4x+\int_{\partial V}\pi^\mu\delta\phi\,d\Sigma_\mu.$$
+
+Vanishing variations on the boundary justify removing the second integral. Arbitrary interior variations then imply the field equation. For a fixed-coordinate transformation $\delta\phi=\epsilon\Delta\phi$ with constant parameter and $\delta\mathcal L=\epsilon\partial_\mu K^\mu$, the on-shell identity gives $j^\mu=\pi^\mu\Delta\phi-K^\mu$ and $\partial_\mu j^\mu=0$. This formula assumes a global transformation at fixed coordinates; spacetime transformations need the corresponding coordinate terms.
+
+### Conservation includes flux
+
+For a fixed spatial region $V$, the continuity equation implies $dQ_V/dt=-\int_{\partial V}\mathbf j\cdot\mathbf n\,dA$. A conserved local current need not give a constant charge inside an open region. Appropriate decay, periodic boundaries, or vanishing outward flux is required for a conserved integrated charge.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +187,19 @@ Derive the free scalar equation with an explicit boundary term. Then compare a N
 
 For a homogeneous scalar with L=φ̇²/2−m²φ²/2, φ̇=3 gives canonical momentum 3. With m=2,φ=1, Hamiltonian density is 9/2+4/2=6.5.
 
+The massless real scalar has shift symmetry $\Delta\phi=1$ and $K^\mu=0$, so $j^\mu=\partial^\mu\phi$. Its divergence is $\Box\phi=0$ on shell. Add $-m^2\phi^2/2$ to the Lagrangian: the same candidate current now has divergence $-m^2\phi$. The mass term breaks shift symmetry; it does not invalidate Noether's theorem.
+
+With the stated signature, the free Hamiltonian density is $\mathcal H=\tfrac12\dot\phi^2+\tfrac12|\nabla\phi|^2+\tfrac12m^2\phi^2$. The positive spatial-gradient contribution follows from the Legendre transform, despite the negative gradient term in the Lagrangian.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core derivation.** Starting from $\pi\dot\phi-\mathcal L$, derive the Hamiltonian above without discarding the gradient term. State the boundary condition needed to infer constant total energy from its local current.
+
+**Counterexample.** A pulse crosses the boundary of a finite observation box. Its energy in the box changes while the total energy over all space remains constant. Explain why measuring only the box cannot diagnose a violation of local conservation.
 
 </LessonSection>
 

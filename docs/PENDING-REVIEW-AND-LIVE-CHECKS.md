@@ -4,6 +4,8 @@ All 354 curriculum entries have draft MDX bodies and 1421 retrieval cards. This 
 
 ## Scientific and editorial review
 
+Internal expansion completed for six advanced lessons, with additional derivations, counterexamples and graded Core transfers. See [ADVANCED-CONTENT-REVIEW.md](ADVANCED-CONTENT-REVIEW.md) for the exact scope. This does not close independent scientific/source review.
+
 - Review every draft’s hypotheses, proofs/derivations, units, limiting cases, worked answers and distractors. Automated answer arithmetic and error-free rendering are necessary checks, not a substitute for this review.
 - Verify exact source editions/sections and inspect actual source material. Current book references are explicitly review leads; no quotations or precise source verification should be invented.
 - Expand treatments where the existing draft is too brief for its stated goals, particularly advanced field theory, geometry, many-body theory and research methods. Include counterexamples and appropriately challenging Core work.

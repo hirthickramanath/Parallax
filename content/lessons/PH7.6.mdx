@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "For a single independent boson state with mean occupation 0.5, what is the occupation variance?",
+      "answer": "0.75",
+      "explanation": "The grand-canonical geometric distribution gives b(1+b)=0.5 times 1.5.",
+      "unit": "occupation squared",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +163,14 @@ For fermions at zero temperature, the occupation approaches a step at the Fermi 
 
 For bosons μ cannot exceed the lowest single-particle energy in the ideal equilibrium model. In a uniform three-dimensional nonrelativistic gas, excited states hold a finite maximum number at fixed T in the thermodynamic limit, allowing a macroscopic ground-state occupation below the critical temperature. Dimensionality, confinement and interactions change that conclusion. Bose condensation is not identical to superfluidity, and an ideal-gas formula is not a complete theory of either phenomenon.
 
+### Occupation fluctuations follow from the same counting
+
+For one state write its grand sum as $\Xi(a)=\sum_n a^n$. Then $\langle n\rangle=a\partial_a\ln\Xi$ and $\operatorname{Var}(n)=a\partial_a\langle n\rangle$. Fermions therefore have variance $f(1-f)$, while bosons have $b(1+b)$. The suppression or enhancement is a statistical statement for this independent equilibrium state, not evidence of a new interparticle force.
+
+### Derive the degeneracy-pressure scaling
+
+At zero temperature, count momentum states in a box: $N=gV(4\pi p_F^3/3)/(2\pi\hbar)^3$. For nonrelativistic dispersion, integrating $p^2/(2m)$ over the filled sphere gives $U/N=3E_F/5$. The isotropic kinetic-pressure relation gives $P=2U/(3V)=2nE_F/5$, hence $P\propto n^{5/3}$. With ultrarelativistic dispersion, $U/N=3p_Fc/4$ and $P=U/(3V)$, hence $P\propto n^{4/3}$. These exponents depend on three spatial dimensions, an ideal gas and the stated dispersion; interactions can change the equation of state.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +183,19 @@ Plot all three occupation functions against β(ε−μ), respecting the allowed 
 
 When β(ε−μ)=ln3, fermion occupation is 1/4 while boson occupation is 1/2. Their classical approximation is 1/3. The comparison shows the correction direction at the same energy and chemical-potential offset, not at automatically identical total densities.
 
+At occupation $f=1/4$, a single fermion state's variance is $3/16$. At boson occupation $b=1/2$, it is $3/4$, four times larger. Both means came from the same $\beta(\epsilon-\mu)=\ln3$, but comparing variances at fixed offset is different from holding particle density fixed.
+
+For spin degeneracy two, doubling number density multiplies $p_F$ by $2^{1/3}$ and nonrelativistic pressure by $2^{5/3}$. Check that $nE_F$ has pressure units, energy per volume.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Derive both fluctuation formulas by differentiating the finite fermion sum and convergent boson geometric series. Explain why the boson derivation requires $a<1$.
+
+**Counterexample to an unrestricted condensation claim.** For a uniform ideal gas in two dimensions with quadratic dispersion, the low-energy density of states is constant. At chemical potential approaching the ground energy, the excited-particle integral behaves as $\int_0 d\epsilon/\epsilon$ and diverges. The three-dimensional finite-capacity argument therefore fails at finite temperature in that homogeneous thermodynamic limit. A finite trap is a different problem.
 
 </LessonSection>
 

@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "In a weak Newtonian vacuum field, GM/r³ = 2 s⁻². What is the leading radial relative acceleration for a small outward separation of 0.1 m?",
+      "answer": "0.4",
+      "explanation": "Radial stretching gives 2(GM/r³) times separation = 2 times 2 times 0.1.",
+      "unit": "m/s²",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +163,16 @@ Tidal separation depends on curvature through geodesic deviation. A sufficiently
 
 Test universality and coupling assumptions need experimental context. Charged bodies, pressure forces and self-gravity can depart from ideal test-geodesic motion. Spacetime geometry plus matter dynamics and initial/boundary conditions are needed for predictions, not the equivalence principle alone.
 
+### Separate the connection from curvature operationally
+
+At an event, choose a freely falling orthonormal frame. The metric can be Minkowski there and its first derivatives can vanish, while second derivatives need not. The connection is chart dependent; the relative motion of nearby test bodies supplies measurable tidal information. A nonrotating supported observer in flat spacetime can have nonzero proper acceleration even though curvature vanishes. Conversely, a freely falling observer in curved spacetime can have zero proper acceleration while measuring tides.
+
+In the Newtonian weak-field, slow-motion limit, relative acceleration for small separation is
+
+$$\delta\ddot x^i=-\partial_i\partial_j\Phi\,\xi^j.$$
+
+The Hessian has units of inverse time squared and multiplies a length to give acceleration. This is a useful tidal diagnostic in that limit; it is not a coordinate-independent definition of the relativistic curvature tensor in arbitrary coordinates.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +185,19 @@ Compare a uniformly accelerated flat-space chart with a curved-space tidal examp
 
 If a supplied local tidal coefficient maps separation ξ=2 to relative acceleration −6, its coefficient is −3 in consistent units. Doubling ξ doubles that leading small-separation response, not every finite separation effect.
 
+For $\Phi=-GM/r$, compare nearby freely falling particles with radial separation $\xi_r$ much smaller than $r$. Differentiating the radial gravitational acceleration gives $\delta\ddot r\simeq 2GM\xi_r/r^3$: radial stretching. In local transverse directions the corresponding coefficients are $-GM/r^3$: compression. The three eigenvalues sum to zero outside the source, consistent with $\nabla^2\Phi=0$ there. Inside matter that vacuum condition need not hold.
+
+This sign pattern also illustrates why the earlier supplied negative tidal coefficient cannot be assumed for every direction in a gravitational field.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Derive the radial coefficient by subtracting $-GM/(r+\xi_r)^2$ and $-GM/r^2$ to first order. Estimate the fractional correction when $|\xi_r|/r$ is no longer small.
+
+**Operational test.** An accelerometer reads zero while two released test masses drift apart. Explain why those observations can coexist and why a single zero reading cannot establish that a finite region is flat.
 
 </LessonSection>
 

@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "For one ground microstate and three excited microstates at beta times gap = ln(3), what is the total excited-level probability?",
+      "answer": "0.5",
+      "explanation": "The three excited weights sum to 1, matching the ground weight 1. Their probability is 1/(1+1).",
+      "unit": "probability",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +163,18 @@ At fixed Hamiltonian and volume, $U=-\partial_\beta\ln Z$ and $\operatorname{Var
 
 For two nondegenerate levels 0 and Δ, Z=1+e⁻ᵝΔ and the excitation probability is 1/(1+eᵝΔ). It approaches one half at high temperature, not one, because both levels retain equal asymptotic weight. Finite-system relative fluctuations need not be small. A canonical formula is not a proof that a strongly coupled subsystem or a nonequilibrium distribution is thermal.
 
+### Derive the fluctuation identity
+
+Hold the spectrum and volume fixed. Differentiate the normalized sum explicitly:
+
+$$\partial_\beta Z=-\sum_i E_i e^{-\beta E_i},\qquad \partial_\beta^2 Z=\sum_i E_i^2e^{-\beta E_i}.$$
+
+Consequently $\partial_\beta^2\ln Z=\langle E^2\rangle-\langle E\rangle^2$. Since $d\beta/dT=-1/(k_BT^2)$, the chain rule gives $C_V=\operatorname{Var}(E)/(k_BT^2)$. The units are energy per temperature: energy squared divided by energy times temperature. For an infinite state space, differentiating the sum requires convergence in the temperature range used.
+
+### A finite reservoir is a counterexample to exact exponential weights
+
+The next entropy term is $-E_i^2/(2T^2C_b)$, since $d^2S_b/dE_b^2=-1/(T^2C_b)$. Dividing entropy by $k_B$ gives a correction $-E_i^2/(2k_BT^2C_b)$ to the exponent. A reservoir with appreciable temperature change therefore produces weights that are not exactly canonical. The large-bath approximation must be checked over the occupied energy range, not just for the ground state.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +187,17 @@ Calculate exact two-level probabilities, average energy and variance over a temp
 
 With Δ/(k_BT)=ln3, the excited-state probability is 1/(1+3)=1/4. In units Δ=1, U=1/4 and Var(E)=p(1−p)=3/16. Direct averaging agrees with derivatives of ln(1+e⁻ᵝ).
 
+For an excited level of degeneracy three and a nondegenerate ground level, choose $\beta\Delta=\ln 3$. The excited level has total weight $3e^{-\ln 3}=1$, equal to the ground weight, so its total probability is $1/2$. Each of its three microstates has probability $1/6$. Thus $U=\Delta/2$, $\operatorname{Var}(E)=\Delta^2/4$, and $C_V/k_B=(\ln 3)^2/4$. At high temperature the excited *level* probability approaches $3/4$, while each of the four microstates approaches $1/4$.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core derivation.** For degeneracy ratio $g$ and $x=\Delta/(k_BT)$, derive $C_V/k_B=x^2g e^{-x}/(1+g e^{-x})^2$. Explain why the heat capacity vanishes as both $T\to0$ and $T\to\infty$ for this finite spectrum. The low-temperature exponential beats $x^2$; at high temperature the variance is bounded while $T^{-2}$ vanishes.
+
+**Counterexample.** Replace the finite spectrum by a classical harmonic oscillator. Equipartition gives constant heat capacity $k_B$, so the finite-spectrum high-temperature conclusion does not extend to an unbounded spectrum.
 
 </LessonSection>
 
