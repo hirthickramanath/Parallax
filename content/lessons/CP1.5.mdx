@@ -1,0 +1,195 @@
+---
+{
+  "id": "CP1.5",
+  "title": "Numerical linear algebra",
+  "hook": "Why can a solver produce a tiny residual while its parameter estimate is unreliable?",
+  "recap": [
+    "Sensitivity of a problem to perturbations.",
+    "Appropriate factorization is generally more efficient and numerically stable.",
+    "Weakly constrained parameter directions.",
+    "Its assumptions, strength selection and sensitivity analysis."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does a tiny residual guarantee accurate parameters?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Conditioning can amplify data errors.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does forming normal equations improve conditioning?",
+      "answer": "No; it squares the 2-norm condition number",
+      "options": [
+        "No; it squares the 2-norm condition number",
+        "Yes"
+      ],
+      "explanation": "For full-column-rank A, κ₂(AᵀA)=κ₂(A)².",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does regularization leave the inferred problem unchanged?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It introduces additional constraints or assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Amplification δ/ε for δ=10⁻⁶ and ε=10⁻⁶?",
+      "answer": "1",
+      "explanation": "The quotient is one.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Amplification δ/ε for δ=10⁻⁶ and ε=10⁻⁶?",
+      "answer": "1",
+      "explanation": "The quotient is one.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does regularization leave the inferred problem unchanged?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "It introduces additional constraints or assumptions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a condition number estimate?",
+      "back": "Sensitivity of a problem to perturbations.",
+      "concept": "cp1-5-foundation"
+    },
+    {
+      "front": "Why prefer a solve operation over an explicit inverse?",
+      "back": "Appropriate factorization is generally more efficient and numerically stable.",
+      "concept": "cp1-5-foundation"
+    },
+    {
+      "front": "What do small singular values reveal?",
+      "back": "Weakly constrained parameter directions.",
+      "concept": "cp1-5-foundation"
+    },
+    {
+      "front": "What must accompany regularization?",
+      "back": "Its assumptions, strength selection and sensitivity analysis.",
+      "concept": "cp1-5-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NumPy, SciPy, Matplotlib and SymPy official documentation — relevant version and section verification pending",
+    "Numerical Recipes / scientific-computing reference — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can a solver produce a tiny residual while its parameter estimate is unreliable? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Numerical linear algebra connects exact matrix theory with finite precision and noisy measurements. Fitting spectra and reconstructing images often produces ill-conditioned inverse problems.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+The residual checks how closely a proposed solution satisfies the supplied equations. Conditioning checks how much the solution changes when the equations change slightly.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+For Ax=b, backward error concerns a nearby problem solved exactly, while forward error concerns the distance from the intended solution. Conditioning relates them.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+A matrix norm condition number is $\kappa(A)=\|A\|\|A^{-1}\|$ for invertible A in a consistent norm. In a perturbative regime, relative forward error can be amplified by κ times relative data or backward error. A tiny residual therefore need not mean a small parameter error for an ill-conditioned A. Singular matrices have no unique inverse; rectangular systems require rank and consistency analysis.
+
+Solve a dense square system with a suitable factorization rather than explicitly computing A inverse times b. Pivoted LU handles many nonsingular systems; Cholesky uses symmetric positive-definite structure. Algorithm choice should reflect the matrix, not just which function name is familiar.
+
+Least squares minimizes $\|Ax-b\|_2$. QR factorization or singular-value decomposition are often preferable to directly forming normal equations, because forming AᵀA squares the 2-norm condition number for full-column-rank A. In an SVD $A=U\Sigma V^T$, small singular values identify directions that data constrain weakly.
+
+```python
+import numpy as np
+A = np.array([[1., 1.], [1., 1.000001]])
+b = np.array([2., 2.000001])
+x = np.linalg.solve(A, b)
+print(x, np.linalg.norm(A @ x - b), np.linalg.cond(A))
+```
+
+Regularization stabilizes weak directions by introducing a penalty or prior, changing the inverse problem. Its strength must be justified and sensitivity reported. Scaling columns can improve numerical behaviour but does not invent missing physical information. Uncertainty propagation should include data covariance and model error rather than only a solver tolerance.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Run the two-equation example for decreasing ε and small declared perturbations δ. Record both residual norms and parameter changes. Compare direct solution with an SVD-based least-squares result, reporting rank thresholds rather than hiding them.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For A=[[1,1],[1,1+ε]], b=[2,2+ε], the exact solution is (1,1). Changing the second b entry by δ changes x₂ by δ/ε and x₁ by −δ/ε. With ε=10⁻⁶ and δ=10⁻⁶, an apparently tiny data change moves each parameter by one.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

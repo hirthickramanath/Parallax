@@ -1,3 +1,6 @@
+import { GasLab } from "../components/widgets/GasLab";
+import { WaveLab } from "../components/widgets/WaveLab";
+import { DoubleSlitLab } from "../components/widgets/DoubleSlitLab";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PendulumLab } from "../components/widgets/PendulumLab";
@@ -29,8 +32,23 @@ export function Labs() {
         >
           Circuit bench
         </button>
+        {[
+          ["gas", "Gas piston"],
+          ["wave", "Standing waves"],
+          ["slit", "Double slit"],
+        ].map(([id, label]) => (
+          <button key={id} aria-pressed={lab === id} onClick={() => setLab(id)}>
+            {label}
+          </button>
+        ))}
       </div>
-      {lab === "circuit" ? (
+      {lab === "gas" ? (
+        <GasLab />
+      ) : lab === "wave" ? (
+        <WaveLab />
+      ) : lab === "slit" ? (
+        <DoubleSlitLab />
+      ) : lab === "circuit" ? (
         <CircuitLab />
       ) : lab === "pendulum" ? (
         <PendulumLab />
@@ -44,11 +62,14 @@ export function Labs() {
           checks.
         </p>
         <Link
-          to={`/lesson/${lab === "circuit" ? "PB4.2" : lab === "pendulum" ? "PB1.4" : "AS1.3"}`}
+          to={`/lesson/${lab === "gas" ? "PB2.2" : lab === "wave" ? "PB3.1" : lab === "slit" ? "PB3.3" : lab === "circuit" ? "PB4.2" : lab === "pendulum" ? "PB1.4" : "AS1.3"}`}
         >
           Open the connected lesson →
         </Link>
       </div>
+      <Link to="/projects" className="text-button">
+        Investigate a foundation project →
+      </Link>
       <Link to="/teaching-lab" className="text-button">
         Earlier intuition experiments →
       </Link>

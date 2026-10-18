@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA3.7",
+  "title": "SVD and least squares",
+  "hook": "How can singular values reveal directions that a measurement barely constrains?",
+  "recap": [
+    "Principal stretch factors of a linear map.",
+    "A minimum-norm least-squares solution.",
+    "The next singular value σk₊₁.",
+    "Weakly measured directions otherwise amplify noise severely."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does SVD require a square diagonalizable matrix?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It applies to every finite rectangular matrix.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a pseudoinverse always solve Ax=b exactly?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "An out-of-image component remains as a residual.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can tiny singular values amplify data errors?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Inversion divides by those small values.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Smallest nonzero singular value of diag(3,1,0)?",
+      "answer": "1",
+      "explanation": "The nonzero singular values are 3 and 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Residual magnitude for the pseudoinverse example with b=(6,2,5)?",
+      "answer": "5",
+      "explanation": "The unfit component is (0,0,5).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must accompany numerical rank truncation?",
+      "answer": "The threshold, scale and modeling justification",
+      "options": [
+        "The threshold, scale and modeling justification",
+        "A claim that the discarded directions never existed"
+      ],
+      "explanation": "Finite-precision rank is a decision sensitive to data and scale.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are singular values geometrically?",
+      "back": "Principal stretch factors of a linear map.",
+      "concept": "ma3-7-theory"
+    },
+    {
+      "front": "What does the pseudoinverse select?",
+      "back": "A minimum-norm least-squares solution.",
+      "concept": "ma3-7-theory"
+    },
+    {
+      "front": "What is the spectral error of a best rank-k SVD truncation?",
+      "back": "The next singular value σk₊₁.",
+      "concept": "ma3-7-theory"
+    },
+    {
+      "front": "Why may regularization be necessary?",
+      "back": "Weakly measured directions otherwise amplify noise severely.",
+      "concept": "ma3-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can singular values reveal directions that a measurement barely constrains? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Singular-value decomposition handles rectangular and rank-deficient maps without assuming an eigenbasis. It gives a geometric view of inverse problems and a principled way to expose noise amplification.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A linear map sends a unit sphere to an ellipsoid in its image. Singular values are its principal stretch factors, and zero stretches identify lost directions.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Every real m×n matrix admits A=UΣVᵀ with orthogonal U and V and nonnegative diagonal singular values in rectangular Σ. Complex matrices use unitary factors and conjugate transpose.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The symmetric positive-semidefinite matrix $A^TA$ has an orthonormal eigenbasis satisfying $A^TAv_i=\sigma_i^2v_i$ with $\sigma_i^2\ge0$. For each positive singular value define $u_i=Av_i/\sigma_i$; these uᵢ are orthonormal. Extending both orthonormal lists gives the SVD, including null directions. This construction establishes existence, though numerically forming AᵀA can lose accuracy for small singular values.
+
+Write b in left-singular coordinates. For nonzero σᵢ, solving the corresponding direction divides by σᵢ. Small σᵢ amplify errors; zero values mark directions that cannot be inverted. The Moore–Penrose pseudoinverse replaces positive singular values by reciprocals and zeros by zeros. It produces the minimum-norm least-squares solution, not necessarily an exact solution when b has a component outside the image.
+
+For a full-rank square matrix, the 2-norm condition number is σmax/σmin. Rank decisions in finite precision need a scale-dependent threshold. Declaring a small singular value zero changes the effective model and should be reported, not hidden behind an unqualified “exact rank.”
+
+Truncating the SVD to k largest singular values gives a best rank-k approximation in spectral and Frobenius norms. The spectral error is σk₊₁. This is the Eckart–Young approximation theorem, with nonuniqueness possible at repeated cutoff singular values. Low-rank approximation compresses a map; it does not prove the discarded components are scientifically irrelevant.
+
+Regularized inversion can truncate unstable directions or shrink them smoothly. The chosen threshold or penalty encodes a bias–variance tradeoff and should be checked against noise, validation data and physical prior information. A mathematically small residual can coexist with an unreliable inferred parameter when singular directions are weak.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Use a diagonal model with one shrinking singular value, perturb its corresponding data component and record how the inferred parameter grows. Compare exact pseudoinversion, truncation and residuals. Mark which regularization assumptions change the scientific question.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For A=diag(3,1,0), singular values are 3,1,0. The pseudoinverse is diag(1/3,1,0). Applied to b=(6,2,5), it gives x=(2,2,0) and fitted Ax=(6,2,0); the last data component remains as residual because it lies outside the image.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

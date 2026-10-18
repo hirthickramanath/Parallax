@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA1.5",
+  "title": "Continuity and compactness",
+  "hook": "Why does continuity on an open bounded interval fail to guarantee a largest value?",
+  "recap": [
+    "A uniform δ does not depend on the location in the domain.",
+    "A continuous function on a nonempty compact real set.",
+    "Continuity on a connected interval.",
+    "A limiting value may have no admitted input attaining it."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does continuity on a bounded open interval always give attained extrema?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Boundary values may be approached but excluded.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does compactness alone guarantee every intermediate value of a continuous function?",
+      "options": [
+        "No; connectedness is also needed",
+        "Yes"
+      ],
+      "answer": "No; connectedness is also needed",
+      "explanation": "A disconnected domain may have gaps in its image.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is every continuous function on a compact real set uniformly continuous?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "A subsequence contradiction supplies one δ for all points.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Maximum of x² on [−2,3]?",
+      "answer": "9",
+      "explanation": "The endpoint x=3 gives 9, greater than the other candidates.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Minimum of x² on [−2,3]?",
+      "answer": "0",
+      "explanation": "The admitted point x=0 has the least possible squared value.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What prevents the extremum proof from losing its candidate limit?",
+      "answer": "The compact domain contains the subsequential limit",
+      "options": [
+        "The compact domain contains the subsequential limit",
+        "A dense plot contains enough pixels"
+      ],
+      "explanation": "Closedness and boundedness provide the needed compactness, not plot resolution.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What distinguishes continuity from uniform continuity?",
+      "back": "A uniform δ does not depend on the location in the domain.",
+      "concept": "ma1-5-theory"
+    },
+    {
+      "front": "What does the extreme-value theorem require here?",
+      "back": "A continuous function on a nonempty compact real set.",
+      "concept": "ma1-5-theory"
+    },
+    {
+      "front": "What supplies the intermediate-value property?",
+      "back": "Continuity on a connected interval.",
+      "concept": "ma1-5-theory"
+    },
+    {
+      "front": "Why do open endpoints matter?",
+      "back": "A limiting value may have no admitted input attaining it.",
+      "concept": "ma1-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does continuity on an open bounded interval fail to guarantee a largest value? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Existence results in optimization depend on both the function and its domain. Compactness is the mechanism that prevents maximizing inputs from escaping a limit point.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A continuous function carries nearby inputs to nearby outputs. A compact domain keeps a convergent subsequence inside the allowed set, preventing a boundary value from being lost.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Continuity at x means every output tolerance has an input tolerance valid for all admitted nearby inputs. In the real line, compact sets are exactly closed bounded sets.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The ε–δ definition states: for every ε>0 there exists δ>0 such that admitted x with $|x-a|<\delta$ satisfy $|f(x)-f(a)|<\varepsilon$. Equivalently, for every sequence xₙ in the domain converging to a, f(xₙ)→f(a). One direction applies δ to the sequence tail; the other constructs a violating sequence with |xₙ−a|&lt;1/n if continuity fails.
+
+A continuous function on a nonempty compact real set is bounded and attains its supremum and infimum. For boundedness, an unbounded sequence of output magnitudes would correspond to inputs having a convergent subsequence inside the set; continuity then forces finite output convergence, a contradiction. For attainment, choose inputs with values approaching the supremum, take a convergent subsequence and apply continuity. The nonempty hypothesis matters.
+
+A continuous function on a closed interval [a,b] has every intermediate value between its endpoint values. A proof uses the supremum of points remaining on one side of the proposed value and continuity to exclude a jump. A continuous function on a disconnected compact set need not take intermediate values; compactness alone is not connectedness.
+
+Continuity on a compact set is uniform: one δ can serve all points for a chosen ε. Otherwise find xₙ,yₙ in the set with |xₙ−yₙ|→0 yet output differences at least a fixed ε. A convergent subsequence xₙₖ→a forces yₙₖ→a too; continuity contradicts that fixed separation.
+
+On an open or unbounded set these conclusions may fail. The function x on (0,1) attains neither boundary extreme. The function 1/x on (0,1) is continuous but unbounded. Uniform continuity also needs care: x² is continuous on the real line but not uniformly continuous there because arbitrarily small changes at large x can have a fixed-sized output effect.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare graphs of x, 1/x and x² on closed, open and unbounded domains. Mark excluded boundary points. For x², choose x=n and y=n+1/n: the input gap vanishes while the output gap tends to 2, illustrating failure of uniform continuity on the whole line.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For f(x)=x² on [−2,3], compactness and continuity guarantee attained extremes. Direct calculation finds minimum 0 at x=0 and maximum 9 at x=3. On the open interval (−2,3), the supremum remains 9 but no point attains it.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

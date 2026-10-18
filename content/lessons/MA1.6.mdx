@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA1.6",
+  "title": "Differentiability and the mean value theorem",
+  "hook": "If a derivative is positive everywhere, what actually proves the function increases?",
+  "recap": [
+    "Continuity on the closed interval and differentiability in its interior.",
+    "The mean value theorem yields a Lipschitz bound.",
+    "The derivative is zero.",
+    "Its remainder must be controlled as order increases before passing to a series."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does continuity imply differentiability?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The absolute-value cusp is a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Must the mean-value point c be unique?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The theorem guarantees existence only.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does strict increase require a strictly positive derivative at every point?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "x³ is strictly increasing but has derivative zero at zero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Mean-value point c for x² on [1,3]?",
+      "answer": "2",
+      "explanation": "2c equals the secant slope 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Derivative bound M=3 gives what upper bound for output change when input separation is 0.2?",
+      "answer": "0.6",
+      "explanation": "The mean value theorem gives M times the input separation.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What justifies a Taylor error bound?",
+      "answer": "A bound on the required derivative over the interval",
+      "options": [
+        "A bound on the required derivative over the interval",
+        "Only a matching value at the expansion point"
+      ],
+      "explanation": "The remainder depends on an intermediate derivative, not just the initial coefficients.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are the mean value theorem hypotheses?",
+      "back": "Continuity on the closed interval and differentiability in its interior.",
+      "concept": "ma1-6-theory"
+    },
+    {
+      "front": "What connects a derivative bound to global variation?",
+      "back": "The mean value theorem yields a Lipschitz bound.",
+      "concept": "ma1-6-theory"
+    },
+    {
+      "front": "What must hold at an interior differentiable extremum?",
+      "back": "The derivative is zero.",
+      "concept": "ma1-6-theory"
+    },
+    {
+      "front": "Why is finite Taylor approximation not an infinite-series theorem?",
+      "back": "Its remainder must be controlled as order increases before passing to a series.",
+      "concept": "ma1-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+If a derivative is positive everywhere, what actually proves the function increases? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Derivatives become useful beyond local slopes because the mean value theorem connects a whole interval change to a slope at some interior point. Its endpoint and continuity hypotheses prevent false conclusions from local-looking formulas.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A differentiable curve joining two points must somewhere match the secant slope. Subtract the secant line: the resulting curve returns to the same height, forcing a flat interior extremum unless it is constant.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The derivative at an interior point is the limit of its difference quotient. Differentiability implies continuity, but continuity does not imply differentiability.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If the derivative exists at a, write $f(a+h)-f(a)=h[f(a+h)-f(a)]/h$. The quotient stays bounded as h→0, so the product tends to zero, proving continuity. For |x| at zero the one-sided quotients are 1 and −1, so continuity is insufficient for differentiability.
+
+Rolle's theorem assumes continuity on [a,b], differentiability on (a,b), a&lt;b, and equal endpoint values. Compactness supplies attained extrema. If f is not constant, at least one relevant extremum is interior, and the two-sided difference quotients force its derivative to zero. If f is constant every interior derivative is zero.
+
+For the mean value theorem subtract the line joining the endpoint values. Applying Rolle gives some c in (a,b) with $f'(c)=[f(b)-f(a)]/(b-a)$. Existence does not mean c is unique or directly computable from endpoint measurements. The theorem can fail if differentiability is missing: |x| on [−1,1] has secant slope zero but no zero derivative at a differentiable interior point.
+
+If f′≥0 throughout an interval, every ordered pair of points has nonnegative secant slope, so f is nondecreasing. If f′>0, it is strictly increasing. The converse strict implication is false: x³ is strictly increasing but has derivative zero at 0. If |f′|≤M, the theorem gives the Lipschitz bound $|f(x)-f(y)|\le M|x-y|$.
+
+Taylor's theorem with Lagrange remainder states, under the requisite continuity and differentiability through order n+1 between a and x, $f(x)=\sum_{k=0}^n f^{(k)}(a)(x-a)^k/k!+f^{(n+1)}(\xi)(x-a)^{n+1}/(n+1)!$. A finite Taylor approximation does not claim an infinite series converges to f. Bound the derivative on the whole interval before quoting an error estimate.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot x² and its secant over [1,3], then construct the tangent with matching slope. Compare |x| over [−1,1] and identify the missing hypothesis. For the sine approximation tabulate true errors and the Taylor upper bound, distinguishing a bound from an equality.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For f(x)=x² on [1,3], the secant slope is (9−1)/2=4. Since f′(c)=2c, c=2 satisfies the theorem. For sin x expanded at zero to first order, |sin x−x|≤|x|³/6 follows from Taylor through degree two and |cos ξ|≤1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

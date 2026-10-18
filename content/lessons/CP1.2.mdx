@@ -1,0 +1,199 @@
+---
+{
+  "id": "CP1.2",
+  "title": "Plotting and visualisation",
+  "hook": "Can the same data appear to support different conclusions on different axes?",
+  "recap": [
+    "Equal multiplicative ratios.",
+    "Spread, mean uncertainty and confidence intervals are different.",
+    "It records transformations and makes the figure reproducible.",
+    "It minimizes differently weighted residuals under a different error model."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does a connecting line prove a measured continuous trajectory?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "The line may be only a plotting choice.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Can log axes include negative real values unchanged?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Real logarithms require positive arguments.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Are standard deviation and standard error interchangeable?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "They describe different uncertainties.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Log–log slope of y=5x³ for positive x?",
+      "answer": "3",
+      "explanation": "Taking logs gives log y=log5+3log x.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Log–log slope of y=5x³ for positive x?",
+      "answer": "3",
+      "explanation": "Taking logs gives log y=log5+3log x.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Are standard deviation and standard error interchangeable?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "They describe different uncertainties.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What do equal log-axis distances mean?",
+      "back": "Equal multiplicative ratios.",
+      "concept": "cp1-2-foundation"
+    },
+    {
+      "front": "Why label error-bar definitions?",
+      "back": "Spread, mean uncertainty and confidence intervals are different.",
+      "concept": "cp1-2-foundation"
+    },
+    {
+      "front": "Why preserve figure-generation code?",
+      "back": "It records transformations and makes the figure reproducible.",
+      "concept": "cp1-2-foundation"
+    },
+    {
+      "front": "Why may a log-space fit differ from an original-space fit?",
+      "back": "It minimizes differently weighted residuals under a different error model.",
+      "concept": "cp1-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NumPy, SciPy, Matplotlib and SymPy official documentation — relevant version and section verification pending",
+    "Numerical Recipes / scientific-computing reference — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can the same data appear to support different conclusions on different axes? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Plots are scientific arguments, not decorations. Axis transformations, binning, uncertainty and selection determine what a reader can reasonably infer from a figure.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+A graph maps values into positions. On a logarithmic axis equal distances represent ratios; on a linear axis they represent differences.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A reproducible figure identifies variables, units, scales, sampling and uncertainty. Visual appearance alone is not a fitted model or a hypothesis test.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+Choose a plot matched to the data: a scatter plot shows paired measurements; a line implies an order or connecting model; a histogram depends on bin choices; an image has a spatial coordinate system and colour scale. Connecting unordered samples can suggest a trajectory that was never observed.
+
+For a power law $y=Ax^p$ with positive x,y, logs give $\ln y=\ln A+p\ln x$. A straight log–log line is compatible with a power law but does not establish one uniquely. Additive errors transform nonuniformly under logs; least squares in log space and original space minimize different residuals. Zero and negative values cannot simply be dropped without explaining the selection.
+
+Error bars must state what they represent: measurement standard deviation, standard error or an interval from a specified inference method. Correlated errors are not fully described by independent bars. Use dimensionally meaningful labels and preserve relative geometric scales when angle or shape is the intended observable.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.array([1., 2., 3.])
+y = x*x
+fig, ax = plt.subplots()
+ax.plot(x, y, 'o', label='synthetic samples')
+ax.set(xlabel='x (dimensionless)', ylabel='y (dimensionless)')
+ax.legend()
+fig.savefig('square-samples.png', dpi=150, bbox_inches='tight')
+```
+
+Store the script and source data alongside a figure. Identify smoothing, normalization, excluded points and a colour scale. Avoid a colour map that makes an arbitrary midpoint appear to be a physical threshold. Captions should distinguish a generated model from independent measurements and state what comparison could refute the proposed interpretation.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Make linear, semilog and log–log versions of one explicitly synthetic dataset. Keep the data fixed, label transformations and describe which model would be linear in each view. Save the plotting script rather than manually adjusting an exported image without a record.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For y=x², the ratio y(2x)/y(x)=4 and log–log slope is 2. The ordinary-axis slope changes with x. Plotting a straight connecting line through only two samples does not establish that the underlying function is linear.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

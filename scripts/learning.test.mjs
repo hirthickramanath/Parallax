@@ -6,6 +6,7 @@ import {
   streakStats,
   dateKey,
   withinTolerance,
+  gradeNumeric,
 } from "../src/lib/learning-core.ts";
 import { validateGraph } from "./content.mjs";
 import {
@@ -260,6 +261,12 @@ test("authored-content checks reject bad answer keys and unreviewed publication"
       validateAuthored({ ...data, status: "published" }, layers, { id: "X.1" }),
     /Unreviewed/,
   );
+  const invalidExact = structuredClone(data);
+  invalidExact.questions[0].exact = true;
+  assert.throws(
+    () => validateAuthored(invalidExact, layers, { id: "X.1" }),
+    /Invalid exact/,
+  );
   const wrong = structuredClone(data);
   wrong.questions[0].answer = "missing";
   assert.throws(
@@ -311,4 +318,33 @@ test("foreground reminders respect timezone, daily goals, opt-in and dismissal",
     reminderDue(now, "Asia/Kolkata", "18:00", true, false, "2026-10-17"),
     false,
   );
+});
+
+test("every Bridge foundation entry has authored theory, checks and retrieval material", async () => {
+  const fs = await import("node:fs");
+  const { parse } = await import("yaml");
+  const course = JSON.parse(fs.readFileSync("content/curriculum.json", "utf8"));
+  const foundation = course.lessons.filter((l) => l.phase === 0);
+  assert.ok(foundation.length > 0);
+  for (const lesson of foundation) {
+    const source = fs.readFileSync(`content/lessons/${lesson.id}.mdx`, "utf8");
+    const data = parse(/^---\r?\n([\s\S]*?)\r?\n---/.exec(source)[1]);
+    assert.equal(data.id, lesson.id);
+    assert.ok(data.review.length >= 3, lesson.id);
+    assert.ok(
+      data.questions.filter((q) => q.conceptual && !q.tier).length >= 3,
+      lesson.id,
+    );
+    assert.match(source, /layer="theory"/, lesson.id);
+  }
+});
+
+test("exact numerical grading does not accept nearby integer answers under the approximate default", () => {
+  assert.equal(gradeNumeric("100", 101, true), false);
+  assert.equal(gradeNumeric("101", 101, true), true);
+  assert.equal(gradeNumeric("101.0", 101, true), true);
+  assert.equal(gradeNumeric("100", 101), true);
+  for (const response of ["", " ", "NaN", "Infinity"])
+    assert.equal(gradeNumeric(response, 0, true), false);
+  assert.equal(gradeNumeric("0", 0, true), true);
 });

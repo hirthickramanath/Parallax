@@ -1,5 +1,7 @@
 # Remaining-work follow-up
 
+**Historical release:** current lesson counts and status are in [FOUNDATION-RELEASE.md](FOUNDATION-RELEASE.md) and [COURSE-STATUS.md](COURSE-STATUS.md).
+
 This is the current status after the first integrated release. It supersedes that release's counts and pending-feature list. It does **not** declare the full research-level course complete.
 
 ## Completed in this branch

@@ -74,6 +74,11 @@ export function validateAuthored(data, sections, stub) {
   for (const q of data.questions) {
     if (ids.has(q.id)) throw Error(`Duplicate question ${data.id}:${q.id}`);
     ids.add(q.id);
+    if (
+      q.exact !== undefined &&
+      (typeof q.exact !== "boolean" || q.type !== "numeric")
+    )
+      throw Error(`Invalid exact grading flag ${data.id}:${q.id}`);
     if (q.type === "numeric" && !Number.isFinite(Number(q.answer)))
       throw Error(`Invalid numeric answer ${data.id}:${q.id}`);
     if (
@@ -115,9 +120,15 @@ export function buildContent() {
     .readdirSync("content/lessons")
     .filter((f) => f.endsWith(".mdx"))) {
     const source = fs.readFileSync(path.join("content/lessons", file), "utf8");
-    compileSync(source, {
-      remarkPlugins: [remarkFrontmatter, remarkMath, remarkSafeContent],
-    });
+    try {
+      compileSync(source, {
+        remarkPlugins: [remarkFrontmatter, remarkMath, remarkSafeContent],
+      });
+    } catch (error) {
+      throw new Error(`Invalid MDX in ${file}: ${error.message}`, {
+        cause: error,
+      });
+    }
     const header = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/.exec(source);
     if (!header) throw Error(`Missing lesson frontmatter ${file}`);
     const data = parse(header[1]);

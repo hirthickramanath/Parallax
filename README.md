@@ -19,9 +19,9 @@ If npm cannot find `package.json`, change to the repository folder. If a port is
 
 ## Current release
 
-The app includes Google/email-link sign-in, a dashboard, a 354-entry expanded course map, fifteen **draft** MDX lessons, a section-based player, virtual pendulum/orbit labs, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, multi-card concept revision, a visual prerequisite map, an exam-date revision schedule, mixed conceptual/numeric Bridge tests, balanced weekly planning, optional foreground reminders and settings. Unauthored lesson entries are clearly marked and cannot be played.
+The app includes Google/email-link sign-in, a dashboard, a 354-entry expanded course map, 79 **draft** MDX lessons, a section-based player, six virtual apparatus benches and ten foundation projects, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, multi-card concept revision, a visual prerequisite map, an exam-date revision schedule, mixed conceptual/numeric Bridge tests, balanced weekly planning, optional foreground reminders and settings. Unauthored lesson entries are clearly marked and cannot be played.
 
-The tutor interface and authenticated Worker are implemented but disabled. This repository is not a complete authored or scientifically verified course. Current capability boundaries and remaining work are in [docs/FOLLOWUP-RELEASE.md](docs/FOLLOWUP-RELEASE.md); the first integrated release and deployment instructions are recorded in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
+The tutor interface and authenticated Worker are implemented but disabled. This repository is not a complete authored or scientifically verified course. Current capability boundaries and remaining work are in [docs/BATCH-RELEASE.md](docs/BATCH-RELEASE.md) and the generated [course ledger](docs/COURSE-STATUS.md); the first integrated release and deployment instructions are recorded in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
 
 ## Verification
 
@@ -32,6 +32,7 @@ npm run typecheck:worker
 npm test
 npm run test:worker
 npm run test:browser
+npm run content:report
 ```
 
 Browser tests launch a production preview server. Install Chromium with `npx playwright install chromium` when `/usr/bin/chromium` is unavailable. Real Firebase sign-in and cloud writes require separate deployed verification; automated browser sessions are mocked. See the release guide for the emulator rules test and Worker bundle check.

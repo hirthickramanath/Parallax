@@ -1,0 +1,195 @@
+---
+{
+  "id": "CP1.4",
+  "title": "ODE solvers (Runge-Kutta, symplectic integrators)",
+  "hook": "Why can a visually smooth simulated orbit slowly spiral away from its true energy?",
+  "recap": [
+    "A differential equation and an initial state.",
+    "An energy-bounded trajectory can still accumulate timing error.",
+    "|1+hλ|≤1 for the scalar test problem, with boundary cases interpreted carefully.",
+    "Step size or tolerances while holding the modeled problem fixed."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does a smooth plotted trajectory guarantee conserved energy?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Small local errors can accumulate systematically.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does symplectic mean exact original-energy conservation each step?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "It preserves geometric structure under its assumptions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Are stability and accuracy the same requirement?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "A stable answer can still be inaccurate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Euler multiplier for y′=−10y with h=0.05?",
+      "answer": "0.5",
+      "explanation": "1+hλ=1−0.5=0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Euler multiplier for y′=−10y with h=0.05?",
+      "answer": "0.5",
+      "explanation": "1+hλ=1−0.5=0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Are stability and accuracy the same requirement?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "A stable answer can still be inaccurate.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines an initial-value problem?",
+      "back": "A differential equation and an initial state.",
+      "concept": "cp1-4-foundation"
+    },
+    {
+      "front": "Why compare long-time phase as well as energy?",
+      "back": "An energy-bounded trajectory can still accumulate timing error.",
+      "concept": "cp1-4-foundation"
+    },
+    {
+      "front": "What is the Euler linear stability condition?",
+      "back": "|1+hλ|≤1 for the scalar test problem, with boundary cases interpreted carefully.",
+      "concept": "cp1-4-foundation"
+    },
+    {
+      "front": "What does a convergence study vary?",
+      "back": "Step size or tolerances while holding the modeled problem fixed.",
+      "concept": "cp1-4-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NumPy, SciPy, Matplotlib and SymPy official documentation — relevant version and section verification pending",
+    "Numerical Recipes / scientific-computing reference — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can a visually smooth simulated orbit slowly spiral away from its true energy? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+An ODE solver advances a dynamical model in finite steps. Long-time mechanics demands attention to structure and invariants, not just an attractive animation.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Local slopes approximate a curve. A method can reduce each local error yet accumulate a systematic change in energy or phase over many cycles.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+An initial-value ODE problem specifies dy/dt=f(t,y) and y(t₀). A numerical integrator approximates its trajectory under stability and regularity constraints.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+Forward Euler uses $y_{n+1}=y_n+hf(t_n,y_n)$ with first-order global error in a suitable smooth nonstiff problem. Classical RK4 evaluates four weighted slopes and has fourth-order global error under appropriate conditions. Local error order differs by one power because errors accumulate over many steps.
+
+For the test problem $y'=\lambda y$, Euler multiplies each step by $1+h\lambda$. A decaying true solution with negative λ can numerically grow if |1+hλ|>1. Accuracy and stability are distinct. Stiff problems can demand an implicit method even when the visible solution changes slowly.
+
+For a conservative mechanical system with acceleration a(q), velocity Verlet is $q_{n+1}=q_n+hv_n+h^2a(q_n)/2$, followed by $v_{n+1}=v_n+h[a(q_n)+a(q_{n+1})]/2$. With suitable separable Hamiltonian assumptions and fixed step it is a second-order symplectic method. Symplectic does not mean exactly conserving the original energy at every step; it often bounds long-time energy error better than a nonstructural method.
+
+```python
+# One velocity-Verlet step for q'' = -q, unit mass
+h = 0.01
+q, v = 1.0, 0.0
+q_new = q + h*v - 0.5*h*h*q
+v_new = v - 0.5*h*(q + q_new)
+```
+
+Validate against an analytic oscillator, halve the time step and compare phase, amplitude and energy error over many periods. Near-collision gravity, discontinuous forces and event detection require additional treatment. An orbit that conserves energy approximately may still have unacceptable phase error. Adaptive step control needs a declared tolerance, scale and solver strategy; arbitrary variable steps can break a simple symplectic construction.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Implement Euler, RK4 and Verlet for a unit-frequency harmonic oscillator. Use the same initial state and duration, record energy error and zero-crossing times, then halve h. This is a numerical experiment with synthetic trajectories; compare invariants and convergence rather than judging only the plotted orbit.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For y′=−10y and Euler h=0.3, the step multiplier is −2, so numerical amplitudes grow despite physical decay. With h=0.05 the multiplier is 0.5 and the method is stable, although a refinement study is still needed for accuracy.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

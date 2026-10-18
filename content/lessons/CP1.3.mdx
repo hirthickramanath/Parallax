@@ -1,0 +1,195 @@
+---
+{
+  "id": "CP1.3",
+  "title": "Numerical differentiation and integration",
+  "hook": "Why can making a finite-difference step too small make the answer worse?",
+  "recap": [
+    "Truncation error and rounding or data error amplification.",
+    "Second order in h.",
+    "Consistency of results as resolution increases.",
+    "They can expose a consistently implemented but wrong formula."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does smaller h always improve a numerical derivative?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Cancellation and measurement error grow relative to h.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does the trapezoidal order claim hold for every nonsmooth integrand?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Smoothness assumptions enter the error derivation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Can dense decimal output replace missing measurements?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Printing precision is not information content.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "One-panel trapezoidal integral of x² over [0,1]?",
+      "answer": "0.5",
+      "explanation": "The interval width times average endpoint values is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "One-panel trapezoidal integral of x² over [0,1]?",
+      "answer": "0.5",
+      "explanation": "The interval width times average endpoint values is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Can dense decimal output replace missing measurements?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Printing precision is not information content.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What balances in finite-difference error?",
+      "back": "Truncation error and rounding or data error amplification.",
+      "concept": "cp1-3-foundation"
+    },
+    {
+      "front": "What is the centred-difference truncation order for smooth f?",
+      "back": "Second order in h.",
+      "concept": "cp1-3-foundation"
+    },
+    {
+      "front": "What does mesh refinement test?",
+      "back": "Consistency of results as resolution increases.",
+      "concept": "cp1-3-foundation"
+    },
+    {
+      "front": "Why need independent analytic examples?",
+      "back": "They can expose a consistently implemented but wrong formula.",
+      "concept": "cp1-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "NumPy, SciPy, Matplotlib and SymPy official documentation — relevant version and section verification pending",
+    "Numerical Recipes / scientific-computing reference — applicable edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can making a finite-difference step too small make the answer worse? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Numerical calculus is needed when a signal or model has no convenient analytic derivative or integral. Every algorithm balances approximation error against rounding, sampling and measurement noise.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+A difference quotient subtracts nearby values. A smaller separation improves local approximation but amplifies errors in those values.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Numerical differentiation and quadrature approximate continuous operations with finite samples. Convergence order must be interpreted within smoothness and error assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For smooth f, Taylor expansion gives the forward difference $[f(x+h)-f(x)]/h=f'(x)+hf''(x)/2+O(h^2)$. The centred difference $[f(x+h)-f(x-h)]/(2h)$ has leading truncation error $h^2f^{(3)}(x)/6$. Its second-order claim needs the required derivatives and a sufficiently regular neighbourhood.
+
+If each function value has rounding error of scale εF, differencing can introduce derivative error of order εF/h. Total error thus need not decrease monotonically with h. Noisy measurements create a similar amplification. The optimal step depends on function scales and precision; a single magic h is not universal.
+
+For equally spaced nodes over [a,b], composite trapezoidal quadrature sums $h[f(a)/2+\sum_{j=1}^{n-1}f(a+jh)+f(b)/2]$. With a bounded second derivative it has global error of order h². Simpson's rule combines quadratic interpolation and has order h⁴ under adequate smoothness with an even number of equal subintervals. Discontinuities and unresolved oscillations invalidate simple error estimates.
+
+```python
+import numpy as np
+x = np.linspace(0., 1., 101)
+y = x*x
+area = np.trapezoid(y, x)
+print(area)  # approximately 1/3
+```
+
+A refinement check compares n and 2n intervals, while an analytic test establishes whether the implementation solves a known case. Neither alone proves correctness for every new integrand. Sampling cannot reconstruct features absent between observations without further assumptions; quoting extra decimal places does not create information.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Compute the derivative of sin x at x=1 for steps from 10⁻¹ to 10⁻¹². Plot absolute error against step on log axes and identify the truncation-dominated and roundoff-dominated regions. Then integrate x² with successive mesh refinements.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+For f(x)=x², the centred derivative is exactly 2x in exact arithmetic at every nonzero h, while the forward difference is 2x+h. The one-panel trapezoidal integral on [0,1] is 0.5; using two panels gives 0.375, approaching the exact 1/3.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

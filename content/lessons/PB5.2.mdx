@@ -1,0 +1,188 @@
+---
+{
+  "id": "PB5.2",
+  "title": "Nuclei and radioactivity",
+  "hook": "Can an unpredictable individual decay produce a predictable population curve?",
+  "recap": [
+    "Expected decay rate λN in becquerels.",
+    "t½=ln2/λ.",
+    "Energy is required to separate the nucleus into free constituent nucleons.",
+    "Mixing atomic and nuclear masses can double-count or omit electron contributions."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does a surviving nucleus become more likely to decay just because it is older in this model?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "The constant-rate model is memoryless.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does positive reaction Q guarantee an immediate reaction?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Barriers and transition rules can suppress the rate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Is a detector count automatically the true decay count?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Efficiency, background and dead time matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Survivor percentage after two half-lives?",
+      "answer": "25",
+      "explanation": "100×(1/2)²=25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Survivor percentage after two half-lives?",
+      "answer": "25",
+      "explanation": "100×(1/2)²=25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Is a detector count automatically the true decay count?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Efficiency, background and dead time matter.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is activity?",
+      "back": "Expected decay rate λN in becquerels.",
+      "concept": "pb5-2-foundation"
+    },
+    {
+      "front": "How are half-life and decay constant related?",
+      "back": "t½=ln2/λ.",
+      "concept": "pb5-2-foundation"
+    },
+    {
+      "front": "What does positive binding energy mean?",
+      "back": "Energy is required to separate the nucleus into free constituent nucleons.",
+      "concept": "pb5-2-foundation"
+    },
+    {
+      "front": "Why use consistent mass conventions?",
+      "back": "Mixing atomic and nuclear masses can double-count or omit electron contributions.",
+      "concept": "pb5-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can an unpredictable individual decay produce a predictable population curve? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Radioactive decay links microscopic randomness with population statistics. Nuclear binding also reveals why mass differences, rather than total nucleon mass alone, determine released energy.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+A constant decay probability per surviving nucleus per unit time yields an exponential survival curve. A nucleus does not remember how long it has already survived in this model.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+For independent nuclei with constant decay rate λ, the expected surviving count follows dN/dt=−λN, and activity is λN.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+Integrating the rate equation yields $N(t)=N_0e^{-\lambda t}$ and $t_{1/2}=\ln2/\lambda$. Activity A=λN is measured in decays per second, or becquerels. The deterministic curve is an expectation or large-population description; individual counts fluctuate. Background, detection efficiency and dead time separate registered counts from true activity.
+
+For a fixed observation interval, independent survival yields a binomial count; in the rare-event limit a Poisson approximation is useful. Its standard deviation is approximately the square root of the expected count, not necessarily the square root of the unknown true activity. Subtracting background introduces additional uncertainty.
+
+Nuclear binding energy is $B=[Zm_p+(A-Z)m_n-M_{\rm nucleus}]c^2$. If atomic masses are used, electron masses and binding must be treated consistently. The reaction energy is Q=(initial mass−final mass)c² using a consistent set of masses and all products. Positive Q means energetically exothermic, not necessarily rapid: barriers and selection rules affect rate.
+
+Alpha decay changes mass number by −4 and atomic number by −2. Beta-minus decay changes a neutron into a proton with electron and antineutrino emission, leaving mass number unchanged. Gamma decay lowers nuclear excitation without changing A or Z. Charge, energy, momentum and appropriate particle-number conservation must all be checked.
+
+Fusion of light nuclei and fission of some heavy nuclei can release energy because the products have greater binding per nucleon. Neither process is guaranteed for every chosen pair or isotope. Reaction pathways and conditions matter. Radioisotope demonstrations should use simulations or appropriately supervised licensed equipment, never improvised sources.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Toss many coins, remove one designated face after each round, and record survivors. Compare multiple runs and the expected half-per-round curve. This is an analogy with discrete trials, not a real radioactive sample; explain the difference between a round probability and a continuous decay rate.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+After three half-lives, the expected survivor fraction is (1/2)³=1/8. Starting from an expected 8000 undecayed nuclei leaves 1000. A particular small sample need not equal that expectation exactly.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

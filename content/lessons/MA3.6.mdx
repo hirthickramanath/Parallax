@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA3.6",
+  "title": "Spectral theorem and Hermitian operators",
+  "hook": "Why do Hermitian operators have real measured eigenvalues?",
+  "recap": [
+    "Equality with its conjugate transpose.",
+    "It commutes with its adjoint.",
+    "Its smallest and largest eigenvalues.",
+    "Operator domains and continuous spectra go beyond a finite eigenbasis argument."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must a normal matrix have only real eigenvalues?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Hermitian matrices have real eigenvalues; normal is broader.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does an expectation have to equal a single eigenvalue?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It can be a weighted average of outcomes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can distinct Hermitian eigenvalues have nonorthogonal eigenvectors?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The adjoint identity forces orthogonality.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Largest eigenvalue of [[2,1],[1,2]]?",
+      "answer": "3",
+      "explanation": "The vector (1,1) is scaled by 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Smallest eigenvalue of the same matrix?",
+      "answer": "1",
+      "explanation": "The vector (1,−1) is scaled by 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does the finite Hermitian spectral theorem guarantee?",
+      "answer": "An orthonormal eigenbasis with real eigenvalues",
+      "options": [
+        "An orthonormal eigenbasis with real eigenvalues",
+        "Only that a determinant can be computed"
+      ],
+      "explanation": "The eigenbasis and reality are the structural conclusions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a Hermitian matrix?",
+      "back": "Equality with its conjugate transpose.",
+      "concept": "ma3-6-theory"
+    },
+    {
+      "front": "What defines a normal matrix?",
+      "back": "It commutes with its adjoint.",
+      "concept": "ma3-6-theory"
+    },
+    {
+      "front": "What bounds a Hermitian Rayleigh quotient?",
+      "back": "Its smallest and largest eigenvalues.",
+      "concept": "ma3-6-theory"
+    },
+    {
+      "front": "Why be careful in infinite dimensions?",
+      "back": "Operator domains and continuous spectra go beyond a finite eigenbasis argument.",
+      "concept": "ma3-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do Hermitian operators have real measured eigenvalues? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Hermitian structure connects complex vector spaces with real-valued quadratic forms and orthogonal mode expansions. It is foundational for vibration models and finite-dimensional quantum observables, but different symmetry conditions must not be conflated.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+An operator equal to its adjoint is symmetric relative to the inner product. Its eigen-directions can be chosen orthonormal, so the operator separates into independent real-weighted directions.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+In a finite-dimensional complex inner-product space, A is Hermitian if A=A*. It is normal if AA*=A*A. Every Hermitian matrix is normal, but normal matrices can have nonreal eigenvalues.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+If Av=λv with v≠0 and A=A*, then $v^*Av=\lambda v^*v$ is real because its conjugate equals itself. Since v*v>0, λ is real. If Au=λu and Av=μv with distinct real eigenvalues, the adjoint identity gives $(\lambda-\mu)u^*v=0$, so the eigenvectors are orthogonal.
+
+The finite-dimensional spectral theorem states that Hermitian A has an orthonormal eigenbasis and $A=U\Lambda U^*$ with U unitary and Λ real diagonal. A proof chooses one complex eigenvector, uses reality of its eigenvalue, observes that its orthogonal complement is invariant, and continues by induction on dimension. Existence of an eigenvalue over the complexes follows from the characteristic polynomial; orthogonality and induction complete the basis claim.
+
+More generally a complex normal matrix is unitarily diagonalizable, with possibly complex diagonal entries. A real symmetric matrix can be orthogonally diagonalized with real eigenvectors. A defective matrix is not covered by these conclusions. In infinite-dimensional operator theory, domains and continuous spectra require additional hypotheses; not every operator has a finite-style eigenvector basis.
+
+For Hermitian A, the Rayleigh quotient $R(x)=x^*Ax/(x^*x)$ is a weighted average of real eigenvalues in an orthonormal eigenbasis. Thus its minimum and maximum are the smallest and largest eigenvalues. Positive definiteness is equivalent to every eigenvalue being positive, and allows a unique positive-definite Hermitian square root.
+
+In a finite quantum model a normalized state has expectation x*Ax for a Hermitian observable, while outcome probabilities are squared projections onto its eigenspaces. An expectation can lie between eigenvalues and need not be one outcome. This mathematical structure alone is not a full derivation of quantum measurement physics.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Diagonalize a small real symmetric matrix, normalize its eigenvectors and reconstruct UΛU*. Test Rayleigh quotients on unit vectors and compare with the extremal eigenvalues. Contrast a normal rotation matrix and a defective shear before generalizing Hermitian conclusions.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For A=[[2,1],[1,2]], the normalized sum and difference vectors have eigenvalues 3 and 1. The unit state (1,0) has expectation 2, halfway between them. It is not itself an eigenstate, so expectation 2 is not an extra eigenvalue.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA3.3",
+  "title": "Determinants",
+  "hook": "Why does swapping two columns reverse a determinant but not the physical volume?",
+  "recap": [
+    "Normalized alternating multilinearity.",
+    "A zero determinant for a square matrix.",
+    "det(AB)=det A det B.",
+    "It is more efficient and supports scale-aware stable computation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a negative determinant imply negative geometric volume?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The sign records orientation; volume uses magnitude.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does a tiny determinant alone prove ill-conditioning?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Uniform scaling can make it tiny while relative conditioning stays good.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is a conventional determinant defined for every rectangular matrix?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It is a square-matrix quantity here.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Determinant of [[2,1],[1,3]]?",
+      "answer": "5",
+      "explanation": "2×3−1×1=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Determinant after swapping the two columns of that matrix?",
+      "answer": "-5",
+      "explanation": "One swap reverses its sign.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why does adding a multiple of another row preserve determinant?",
+      "answer": "Multilinearity adds a repeated-row determinant equal to zero",
+      "options": [
+        "Multilinearity adds a repeated-row determinant equal to zero",
+        "Every row operation preserves it"
+      ],
+      "explanation": "Swaps and scaling have different determinant effects.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are the defining determinant properties?",
+      "back": "Normalized alternating multilinearity.",
+      "concept": "ma3-3-theory"
+    },
+    {
+      "front": "What detects exact singularity?",
+      "back": "A zero determinant for a square matrix.",
+      "concept": "ma3-3-theory"
+    },
+    {
+      "front": "How does determinant behave under composition?",
+      "back": "det(AB)=det A det B.",
+      "concept": "ma3-3-theory"
+    },
+    {
+      "front": "Why prefer factorization numerically?",
+      "back": "It is more efficient and supports scale-aware stable computation.",
+      "concept": "ma3-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does swapping two columns reverse a determinant but not the physical volume? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Determinants encode orientation and local volume scaling. Their signs matter for coordinate transformations, while unsigned geometric volume uses the absolute value.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Think of a parallelepiped built from column vectors. Flattening it destroys volume; swapping two edges flips handedness without changing its size.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The determinant is the normalized alternating multilinear function of the columns of a square matrix. Normalization sets det I=1.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Multilinearity makes the determinant linear in each column when the others are fixed. Alternation makes it zero for repeated columns and reverses sign under a column swap. Expanding all columns in the standard basis gives the permutation formula $\det A=\sum_{\sigma}\operatorname{sgn}(\sigma)\prod_i a_{i,\sigma(i)}$. This is a definition-compatible formula, not a recommendation for efficient computation at large n.
+
+If columns are dependent, one can express a column as a combination of the others and multilinearity forces determinant zero. Conversely, a nonzero determinant implies independent columns and hence an invertible square matrix. Row elimination supplies a practical proof and computation: swapping rows flips sign, scaling a row scales the determinant, and adding a multiple of one row to another leaves it unchanged.
+
+The determinant of a triangular matrix is the product of diagonal entries. Tracking elimination then computes a dense determinant efficiently through a factorization. A naive permutation expansion has factorial growth in terms. For large or very small magnitudes, a signed log-determinant avoids representational overflow or underflow.
+
+Composition scales volume in successive steps, yielding $\det(AB)=\det A\det B$; a purely algebraic proof also follows from the defining alternating multilinear property. Thus det(A⁻¹)=1/det A when the inverse exists. A determinant is defined only for square matrices in this conventional setting.
+
+A small determinant alone is not a scale-independent condition-number estimate. Multiplying a well-conditioned n×n identity by a tiny nonzero scalar makes its determinant tiny without making its relative conditioning poor. Singular values, together with a declared norm, diagnose sensitivity more reliably. Determinants are useful for theoretical invertibility, orientation and Jacobians; numerical rank decisions require scale-aware tolerances.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Apply the three elementary row operations to a small matrix and track the determinant. Draw transformed basis arrows for a column swap and a singular flattening. Compare a uniformly scaled identity with a nearly dependent matrix before treating determinant magnitude as a stability diagnosis.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For A=[[2,1],[1,3]], determinant is 6−1=5. Swapping its columns gives determinant −5, but the image of a unit square has area 5 in both cases. For A=0.001 I in two dimensions, determinant is 10⁻⁶ while the 2-norm condition number is still 1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

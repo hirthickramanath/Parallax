@@ -1,0 +1,186 @@
+---
+{
+  "id": "MB1.2",
+  "title": "Logs, exponentials, complex numbers",
+  "hook": "Why can a logarithm turn multiplication into addition?",
+  "recap": [
+    "A positive-base exponential with base other than 1.",
+    "It is dimensionless.",
+    "They add modulo 2π.",
+    "Multiply by the denominator conjugate and use its squared modulus."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Which input is allowed for a real logarithm?",
+      "answer": "A positive number",
+      "options": [
+        "Any negative number",
+        "A positive number"
+      ],
+      "explanation": "Positive-base real exponentials have positive range.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "What does multiplying by i do geometrically?",
+      "answer": "Rotate by a quarter-turn",
+      "options": [
+        "Rotate by a quarter-turn",
+        "Double every modulus"
+      ],
+      "explanation": "Its modulus is 1 and argument π/2.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Is log(x+y)=log(x)+log(y) generally true?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "The addition identity applies to a product inside the logarithm.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Compute the squared modulus of 3+4i.",
+      "answer": "25",
+      "explanation": "The squared modulus is 3²+4².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Compute the squared modulus of 3+4i.",
+      "answer": "25",
+      "explanation": "The squared modulus is 3²+4².",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Is log(x+y)=log(x)+log(y) generally true?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "The addition identity applies to a product inside the logarithm.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a logarithm invert?",
+      "back": "A positive-base exponential with base other than 1.",
+      "concept": "mb1-2-foundation"
+    },
+    {
+      "front": "What must be true of an exponential argument?",
+      "back": "It is dimensionless.",
+      "concept": "mb1-2-foundation"
+    },
+    {
+      "front": "How do complex arguments combine in multiplication?",
+      "back": "They add modulo 2π.",
+      "concept": "mb1-2-foundation"
+    },
+    {
+      "front": "How is complex division simplified?",
+      "back": "Multiply by the denominator conjugate and use its squared modulus.",
+      "concept": "mb1-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can a logarithm turn multiplication into addition? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Brightness ratios and radioactive timescales span enormous ranges. Logarithms compress multiplicative scales, while complex numbers encode amplitude and phase without treating an imaginary coordinate as a second physical displacement.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+An exponential counts repeated scale changes. A logarithm asks how many changes were needed. A complex number is a point and a rotation-scaling operation on a plane.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+For positive b other than 1, log base b is the inverse of b raised to a real power. A complex number is a+ib with i²=−1.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For positive $x,y$, $\log_b(xy)=\log_b x+\log_b y$: write $x=b^u$, $y=b^v$, then $xy=b^{u+v}$. Likewise $\log_b(x^p)=p\log_b x$ for positive x. There is no corresponding rule replacing the logarithm of a sum by a sum of logarithms. Real logarithms require positive arguments, and an exponential with positive base has positive real output.
+
+The natural exponential is normalized so its derivative equals itself. A constant fractional growth rate gives $dy/dt=ky$ and $y(t)=y_0e^{kt}$. The product $kt$ must be dimensionless. For decay, the half-life satisfies $e^{-\lambda t_{1/2}}=1/2$, giving $t_{1/2}=\ln2/\lambda$.
+
+For $z=a+ib$, define its conjugate $\bar z=a-ib$ and modulus $|z|=\sqrt{a^2+b^2}$. Since $z\bar z=|z|^2$, division by a nonzero complex number can be performed by multiplying numerator and denominator by its conjugate.
+
+Polar form is $z=r(\cos\theta+i\sin\theta)=re^{i\theta}$. Multiplication adds arguments and multiplies moduli; angles are defined modulo $2\pi$. De Moivre's formula follows by repeated multiplication. The n roots of a nonzero z have modulus $r^{1/n}$ and arguments $(\theta+2\pi k)/n$, k=0,...,n−1. Zero has only the root zero. Complex logarithms require a branch choice; real-log rules must not be extended blindly.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Place 1, i, −1 and −i on an Argand diagram. Multiply each by i and trace the quarter-turn. Separately tabulate exponential doubling and show that equal log increments correspond to equal ratios, not equal differences.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+Compute (1+i)/(1−i). Multiply by (1+i)/(1+i): the numerator is 2i and denominator 2, so the quotient is i. Its modulus is 1 and its argument is π/2, consistent with subtracting the original arguments.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

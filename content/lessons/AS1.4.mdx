@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS1.4",
+  "title": "N-body problem and Lagrange points",
+  "hook": "How can a spacecraft remain near a point where gravity is not zero?",
+  "recap": [
+    "The third body does not affect the primaries.",
+    "Both gravitational attractions and centrifugal acceleration; Coriolis vanishes at zero rotating velocity.",
+    "L1, L2 and L3.",
+    "Step convergence and appropriate energy/angular-momentum or Jacobi-constant errors."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does a Lagrange point require gravity to vanish?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Noninertial terms also enter the rotating-frame balance.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does equilibrium imply nearby trajectories are stable?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Stability depends on how perturbations evolve.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Is the test body allowed to appreciably perturb the primaries in the restricted model?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Negligible test mass is a defining approximation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "For μ=3×10⁻⁶ and a=1 AU, approximate L1 distance from the smaller primary in AU?",
+      "answer": "0.01",
+      "explanation": "a(μ/3)^(1/3)=0.01 AU.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "For μ=3×10⁻⁶ and a=1 AU, approximate L1 distance from the smaller primary in AU?",
+      "answer": "0.01",
+      "explanation": "a(μ/3)^(1/3)=0.01 AU.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Is the test body allowed to appreciably perturb the primaries in the restricted model?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Negligible test mass is a defining approximation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes the three-body model restricted?",
+      "back": "The third body does not affect the primaries.",
+      "concept": "as1-4-foundation"
+    },
+    {
+      "front": "What balances at a rotating equilibrium?",
+      "back": "Both gravitational attractions and centrifugal acceleration; Coriolis vanishes at zero rotating velocity.",
+      "concept": "as1-4-foundation"
+    },
+    {
+      "front": "Which collinear points are linearly unstable in the circular restricted model?",
+      "back": "L1, L2 and L3.",
+      "concept": "as1-4-foundation"
+    },
+    {
+      "front": "What should a numerical orbit calculation monitor?",
+      "back": "Step convergence and appropriate energy/angular-momentum or Jacobi-constant errors.",
+      "concept": "as1-4-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Murray and Dermott, Solar System Dynamics — edition and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+How can a spacecraft remain near a point where gravity is not zero? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+The two-body solution is exceptional: adding a third gravitating body generally removes a simple closed orbital solution. Lagrange points are equilibrium configurations in a rotating description, not holes in gravity.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+In the co-rotating frame, the attraction of both primaries and the centrifugal term can balance. Nearby motion still needs a stability analysis; force balance at one point does not guarantee nearby objects stay there.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+The circular restricted three-body problem treats two massive bodies in circular mutual motion and a third body of negligible mass that does not alter them.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+Choose total primary mass 1, separation 1 and rotation rate 1 in normalized units. Let $\mu=M_2/(M_1+M_2)$, with primaries at x=−μ and x=1−μ. For a planar test particle define $\Omega=(x^2+y^2)/2+(1-\mu)/r_1+\mu/r_2$. The rotating equations are $\ddot x-2\dot y=\partial\Omega/\partial x$ and $\ddot y+2\dot x=\partial\Omega/\partial y$. The velocity terms are Coriolis terms; the x²+y² term supplies centrifugal acceleration.
+
+An equilibrium in this frame has zero velocity and acceleration, so ∇Ω=0. There are three collinear points L1, L2 and L3, and two triangular points L4 and L5 forming equilateral triangles with the primaries. In an inertial frame the configuration rotates; these are not stationary spatial positions.
+
+For small μ, the distance from the smaller primary to L1 or L2 is approximately $a(\mu/3)^{1/3}$. This leading-order expansion is not the exact position and does not describe the triangular points. All three collinear points are linearly unstable in the ideal circular restricted model. Triangular points are linearly stable for $\mu(1-\mu)<1/27$ within that model, with marginal cases and nonlinear behaviour requiring care. Real orbital eccentricity and additional forces complicate station keeping.
+
+A useful conserved quantity in the circular restricted model is $C=2\Omega-(\dot x^2+\dot y^2+\dot z^2)$ with the three-dimensional Ω. Zero-velocity surfaces delimit energetically allowed regions for a chosen C; they do not alone predict the trajectory. A general N-body computation instead integrates all accelerations $\ddot{\mathbf r}_i=G\sum_{j\ne i}m_j(\mathbf r_j-\mathbf r_i)/|\mathbf r_j-\mathbf r_i|^3$ and checks numerical energy and angular-momentum errors. Chaotic sensitivity is not a license to ignore those checks.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Draw the two primaries and all five rotating equilibria. For a candidate collinear point sum both gravitational accelerations and the centrifugal acceleration using the same frame convention. Perturb its position slightly and distinguish equilibrium from stability. The two-body orbit explorer is useful for contrast but is not an N-body solver.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+With μ≈3×10⁻⁶ and separation a=1 AU, the small-μ L1/L2 distance estimate is a×(10⁻⁶)^(1/3)=0.01 AU, about 1.5 million km. This is a leading-order scale estimate; a precise mission orbit requires additional dynamics and corrections.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

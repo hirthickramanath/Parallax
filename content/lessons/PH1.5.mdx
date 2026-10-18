@@ -1,0 +1,189 @@
+---
+{
+  "id": "PH1.5",
+  "title": "Systems of particles and rigid-body kinematics",
+  "hook": "Can a rigid body have a point at rest while the rest of it moves?",
+  "recap": [
+    "Centre translation plus internal relative kinetic energy.",
+    "vB=vA+ω×rBA.",
+    "Reference acceleration, angular-acceleration term and centripetal term.",
+    "The contacting material point has zero relative velocity to the stationary surface instantaneously."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does zero instantaneous contact velocity imply zero contact-point acceleration?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Velocity can vanish while acceleration is nonzero.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does every point of a translating and rotating rigid body have the centre velocity?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The rotational cross-product term varies by position.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does centre-of-mass translation require a perfectly rigid system?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The fixed-particle momentum result is more general than rigidity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Top-point speed in m/s for a wheel rolling without slip with centre speed 2 m/s?",
+      "answer": "4",
+      "explanation": "Translation and rotation add at the top.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Angular-speed magnitude in rad/s for speed 3 m/s and radius 0.5 m?",
+      "answer": "6",
+      "explanation": "ω=v/R=6 rad/s.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why is an instantaneous contact point not automatically a fixed dynamical pivot?",
+      "answer": "Its acceleration and identity can change",
+      "options": [
+        "Its acceleration and identity can change",
+        "Zero velocity makes its acceleration permanently zero"
+      ],
+      "explanation": "Kinematic zero velocity is not a fixed-origin torque condition.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How does kinetic energy separate about the centre of mass?",
+      "back": "Centre translation plus internal relative kinetic energy.",
+      "concept": "ph1-5-theory"
+    },
+    {
+      "front": "What is the rigid-body velocity relation?",
+      "back": "vB=vA+ω×rBA.",
+      "concept": "ph1-5-theory"
+    },
+    {
+      "front": "What terms determine rigid-body point acceleration?",
+      "back": "Reference acceleration, angular-acceleration term and centripetal term.",
+      "concept": "ph1-5-theory"
+    },
+    {
+      "front": "What does rolling without slip constrain?",
+      "back": "The contacting material point has zero relative velocity to the stationary surface instantaneously.",
+      "concept": "ph1-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Taylor, Classical Mechanics — edition and exact section verification pending",
+    "OpenStax University Physics, Volume 1 — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a rigid body have a point at rest while the rest of it moves? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Systems of particles require separating overall translation from internal motion. Rigid-body kinematics describes how points move under constraints, before torque and inertia determine why they move that way.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A rigid body carries a fixed internal shape through space. At one instant its motion is a common translation plus rotation, so different points can have different velocities.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The centre of mass is the mass-weighted average position of a fixed particle system. Rigidity preserves all pair separations and permits an instantaneous angular velocity.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For constant particle masses and total mass M, $\mathbf R=M^{-1}\sum_i m_i\mathbf r_i$ and total momentum $\mathbf P=M\dot{\mathbf R}$. Summing Newton's laws cancels internal forces when they occur in equal-and-opposite pairs, giving $M\ddot R=F_{\rm ext}$. This does not imply every internal torque cancels unless the interactions meet the appropriate torque condition.
+
+Write ri=R+ρi and vi=V+ρ̇i. Since ∑miρi=0 and ∑miρ̇i=0, the kinetic energy splits into $K=MV^2/2+\sum_i m_i\dot\rho_i^2/2$. Angular momentum about a fixed inertial origin splits into R×MV plus angular momentum relative to the centre of mass. Reference points and their motion must be specified when applying a torque equation.
+
+For a rigid body, velocities relative to two points satisfy $\mathbf v_B=\mathbf v_A+\boldsymbol\omega\times(\mathbf r_B-\mathbf r_A)$. For a continuously rotating body this follows by differentiating a length-preserving rotation matrix; its instantaneous generator is antisymmetric and corresponds to a cross product in 3D.
+
+Differentiate again to get $\mathbf a_B=\mathbf a_A+\boldsymbol\alpha\times\mathbf r_{BA}+\boldsymbol\omega\times(\boldsymbol\omega\times\mathbf r_{BA})$. There is no Coriolis term for two fixed points of the same rigid body because their relative rotating-frame velocity is zero. Sliding motion inside rotating coordinates would add one.
+
+For a wheel rolling without slip on a stationary flat surface, the instantaneous contact point has zero velocity, while the centre moves at v=ωR. The contact point's acceleration need not be zero and the material contact point changes over time. An instantaneous centre is a kinematic construction, not necessarily a permanently fixed pivot or a valid shortcut for torque dynamics about an accelerating origin.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw velocity arrows at the centre, top, bottom and sides of a rolling wheel. Reconstruct each from translation plus ω×r and verify fixed pair distances instantaneously. Compare a marked material point over several times with the changing instantaneous contact point.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A wheel of radius 0.5 m rolls right with centre speed 2 m/s. Its angular-speed magnitude is 4 rad/s. The top point has instantaneous speed 4 m/s to the right, the contact point zero, and a side point combines horizontal translation with vertical rotational velocity.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

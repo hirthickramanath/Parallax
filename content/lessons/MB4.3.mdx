@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB4.3",
+  "title": "Probability and conditional probability",
+  "hook": "Can a reliable detector still produce mostly false alarms?",
+  "recap": [
+    "Intersection probability divided by the probability of the conditioning event.",
+    "Independence factors joint probability; exclusivity makes it zero.",
+    "Likelihood, prior and evidence normalization.",
+    "False positives from the large background can dominate the selected sample."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Are disjoint nonzero-probability events independent?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "One excludes the other.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Does sensitivity equal the probability a positive result is genuine?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "The latter also depends on prevalence and false positives.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "What population does conditioning on B retain?",
+      "answer": "Only outcomes in B",
+      "options": [
+        "Only outcomes in A",
+        "Only outcomes in B"
+      ],
+      "explanation": "The denominator is the probability of B.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "For a fair six-sided die, P(even) as a decimal?",
+      "answer": "0.5",
+      "explanation": "Three of six equally likely outcomes are even.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "For a fair six-sided die, P(even) as a decimal?",
+      "answer": "0.5",
+      "explanation": "Three of six equally likely outcomes are even.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "What population does conditioning on B retain?",
+      "answer": "Only outcomes in B",
+      "options": [
+        "Only outcomes in A",
+        "Only outcomes in B"
+      ],
+      "explanation": "The denominator is the probability of B.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is conditional probability?",
+      "back": "Intersection probability divided by the probability of the conditioning event.",
+      "concept": "mb4-3-foundation"
+    },
+    {
+      "front": "What distinguishes independence from exclusivity?",
+      "back": "Independence factors joint probability; exclusivity makes it zero.",
+      "concept": "mb4-3-foundation"
+    },
+    {
+      "front": "What does Bayes rule combine?",
+      "back": "Likelihood, prior and evidence normalization.",
+      "concept": "mb4-3-foundation"
+    },
+    {
+      "front": "Why do rare detections need base-rate reasoning?",
+      "back": "False positives from the large background can dominate the selected sample.",
+      "concept": "mb4-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can a reliable detector still produce mostly false alarms? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Astronomical source detection combines a likelihood model with how common sources are. Ignoring a rare event’s base rate can make an apparently accurate instrument seem far more decisive than it is.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Conditioning changes the population you are counting. P(A given B) asks about the B group; it does not ask about the A group.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+Probability assigns nonnegative weights totaling one. Conditional probability is P(A∩B)/P(B) when P(B)>0.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+For events A and B, $P(A\cup B)=P(A)+P(B)-P(A\cap B)$. Independence means $P(A\cap B)=P(A)P(B)$. Mutual exclusivity means the intersection is empty. Two disjoint events with nonzero probabilities are not independent: knowing one occurred rules out the other.
+
+For $P(B)>0$, $P(A|B)=P(B|A)P(A)/P(B)$. If H and its complement partition the sample space, $P(B)=P(B|H)P(H)+P(B|H^c)P(H^c)$. These statements derive Bayes' rule; they do not require a special kind of detector.
+
+Suppose a true source occurs in 1% of locations. A test flags 90% of true sources and 5% of blank locations. Among 10,000 locations, expected true flags are 90 and false flags 495. Thus a flag has posterior source probability $90/(90+495)\approx0.154$. Sensitivity is not the probability that a flagged object is real.
+
+For sequential evidence multiply conditional probabilities along the sequence. Multiplying marginal probabilities is valid only under independence. Even tests that are independent conditional on a source state need not be independent after the state is mixed out.
+
+A continuous distribution assigns zero probability to an exact point while intervals may have positive probability. A probability density is integrated over a range and can exceed 1 in units reciprocal to the variable. Undefined conditioning on a probability-zero event needs a density or regular conditional construction, beyond simple event division.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Make a table of 1000 hypothetical detector locations with a stated prevalence, sensitivity and false-positive rate. Change only prevalence and recompute the flagged population. Label these as synthetic counts; compare the posteriors before claiming that a detector improved.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+Two fair independent coin flips have four equiprobable ordered outcomes. Given at least one head, HH, HT and TH remain. Only HH has two heads, so the conditional probability is 1/3, not 1/2. The wording of the observed evidence determines the conditioning event.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

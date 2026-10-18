@@ -48,6 +48,7 @@ export interface Question {
   answer: string;
   explanation: string;
   type: "mcq" | "numeric";
+  exact?: boolean;
   unit?: string;
   conceptual: boolean;
   tier?: string;

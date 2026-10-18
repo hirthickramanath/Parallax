@@ -1,0 +1,188 @@
+---
+{
+  "id": "PB2.3",
+  "title": "Kinetic theory",
+  "hook": "Why can molecules move quickly while the gas has no bulk motion?",
+  "recap": [
+    "Momentum transfer in wall collisions.",
+    "Mean translational kinetic energy is 3kT/2 per particle.",
+    "Collisions establish a local equilibrium distribution on relevant scales.",
+    "Other broadening mechanisms may contribute."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Can mean velocity vanish while mean squared speed is positive?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Opposite velocities cancel; their squares do not.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Is rms speed identical to mean speed?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Different averages weight the speed distribution differently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does classical equipartition apply unchanged to frozen quantum modes?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Large energy spacings suppress thermal occupation.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "By what factor does rms speed change when T increases from 100 K to 400 K?",
+      "answer": "2",
+      "explanation": "Speed scales as the square root of absolute temperature.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "By what factor does rms speed change when T increases from 100 K to 400 K?",
+      "answer": "2",
+      "explanation": "Speed scales as the square root of absolute temperature.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does classical equipartition apply unchanged to frozen quantum modes?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Large energy spacings suppress thermal occupation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "How does kinetic theory produce pressure?",
+      "back": "Momentum transfer in wall collisions.",
+      "concept": "pb2-3-foundation"
+    },
+    {
+      "front": "What energy corresponds to translational temperature?",
+      "back": "Mean translational kinetic energy is 3kT/2 per particle.",
+      "concept": "pb2-3-foundation"
+    },
+    {
+      "front": "What does local thermal equilibrium assume?",
+      "back": "Collisions establish a local equilibrium distribution on relevant scales.",
+      "concept": "pb2-3-foundation"
+    },
+    {
+      "front": "Why can a spectral width give only a temperature bound?",
+      "back": "Other broadening mechanisms may contribute.",
+      "concept": "pb2-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can molecules move quickly while the gas has no bulk motion? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Kinetic theory connects a statistical microscopic model with thermodynamic pressure and temperature. It also explains why astronomical line widths can reveal temperature without tracking individual particles.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Molecules move in every direction. Their mean vector velocity can be zero even while their mean squared speed is positive.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+For a dilute classical ideal gas in equilibrium, random translational motion produces pressure, and mean translational kinetic energy is 3kT/2 per particle.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+A molecule with x velocity vₓ reverses that component in an elastic wall collision, delivering momentum $2mv_x$. Collision frequency with that wall is |vₓ|/(2L). Summing and dividing by wall area yields $p=Nm\langle v_x^2\rangle/V$. Isotropy gives $\langle v_x^2\rangle=\langle v^2\rangle/3$, so $pV=Nm\langle v^2\rangle/3$.
+
+Comparing with pV=NkT gives $\langle mv^2/2\rangle=3kT/2$ and $v_{\rm rms}=\sqrt{3kT/m}$. This is root-mean-square speed, not mean speed or most probable speed. For a Maxwell speed distribution those are $\sqrt{8kT/(\pi m)}$ and $\sqrt{2kT/m}$ respectively. Their differences come from weighting a distribution, not conflicting temperature definitions.
+
+Equipartition assigns kT/2 to each independent quadratic energy term in the classical equilibrium limit. Monatomic gas has three translational terms. Rotational and vibrational modes can be frozen out quantum mechanically, so an unlimited classical count gives wrong heat capacities at low temperatures. Binding and ionization also alter energy accounting.
+
+For hard-sphere particles of effective diameter d in a dilute gas, a common mean-free-path estimate is $\ell=1/(\sqrt2\,n\pi d^2)$, with number density n. Collision rate and transport require a distribution of relative velocities. A collisionless gas may not remain in local thermal equilibrium, so a single temperature or fluid pressure description requires justification.
+
+Thermal Doppler broadening reflects the line-of-sight velocity distribution. Turbulence, instrumental response and natural broadening also contribute; assigning every observed width to thermal speed overestimates temperature when those contributions are ignored.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Imagine an elastic-particle box and record pressure by momentum transferred per wall area and time. Double particle number at fixed volume and temperature, then double temperature. Predict changes before using pV=NkT. Explicitly separate a statistical computed reading from a real pressure sensor.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+If temperature rises by a factor of four for the same molecular species in equilibrium, rms speed doubles. At the same temperature a particle with four times the mass has half the rms speed. Neither result changes the mean thermal vector velocity from zero in the rest frame.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

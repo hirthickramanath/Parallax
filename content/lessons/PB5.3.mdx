@@ -1,0 +1,188 @@
+---
+{
+  "id": "PB5.3",
+  "title": "Semiconductors",
+  "hook": "How can adding a trace impurity change electrical conduction so strongly?",
+  "recap": [
+    "A missing electron state in an almost filled band, treated as a positive carrier.",
+    "Diffusion leaves fixed ionized dopants and creates a balancing electric field.",
+    "Drift-speed response per unit electric field.",
+    "Collection efficiency and multiple noise processes also matter."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Does n-type mean the bulk material carries a large net negative charge?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Ionized donors and carriers satisfy bulk neutrality.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "Is a diode voltage drop universally exactly 0.7 V?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "It depends on current, temperature and device properties.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does conductivity depend only on carrier count?",
+      "answer": "No; mobility also matters",
+      "options": [
+        "Yes",
+        "No; mobility also matters"
+      ],
+      "explanation": "σ includes densities and mobilities.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "If electron-dominated conductivity doubles, by what factor does resistivity change?",
+      "answer": "0.5",
+      "explanation": "Resistivity is the reciprocal of conductivity.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "If electron-dominated conductivity doubles, by what factor does resistivity change?",
+      "answer": "0.5",
+      "explanation": "Resistivity is the reciprocal of conductivity.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does conductivity depend only on carrier count?",
+      "answer": "No; mobility also matters",
+      "options": [
+        "Yes",
+        "No; mobility also matters"
+      ],
+      "explanation": "σ includes densities and mobilities.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a hole?",
+      "back": "A missing electron state in an almost filled band, treated as a positive carrier.",
+      "concept": "pb5-3-foundation"
+    },
+    {
+      "front": "How does a depletion region form?",
+      "back": "Diffusion leaves fixed ionized dopants and creates a balancing electric field.",
+      "concept": "pb5-3-foundation"
+    },
+    {
+      "front": "What does low-field mobility describe?",
+      "back": "Drift-speed response per unit electric field.",
+      "concept": "pb5-3-foundation"
+    },
+    {
+      "front": "Why is a band gap insufficient to predict detector performance?",
+      "back": "Collection efficiency and multiple noise processes also matter.",
+      "concept": "pb5-3-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+How can adding a trace impurity change electrical conduction so strongly? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Semiconductors connect quantum band structure with detectors and electronic circuits. Astronomical cameras exploit carrier generation by photons; their dark noise and efficiency depend on material and device conditions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Available states and their occupancy both matter. A nearly full band can be described by the motion of missing electrons, called holes.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A semiconductor has a valence band and conduction band separated by a gap. Thermal excitation, light and dopants change mobile electron and hole populations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+In a simple uniform low-field model, conductivity is $\sigma=q(n\mu_n+p\mu_p)$, where n and p are carrier densities and the mobilities relate drift speed to field. Resistivity is 1/σ for an isotropic ohmic material. Mobility depends on scattering and temperature, so changing temperature affects more than carrier count.
+
+Donor impurities can supply electrons to the conduction band, producing n-type material; acceptors favour holes and p-type material. These labels do not mean the bulk crystal is macroscopically charged. Charge neutrality includes fixed ionized dopants. Under nondegenerate equilibrium assumptions, np equals the square of intrinsic carrier density; illumination or heavy doping requires more careful treatment.
+
+At a p–n junction, carrier diffusion exposes ionized dopants and creates a depletion region with an electric field. Equilibrium drift and diffusion balance, giving no net external current without an applied bias. Forward bias reduces the effective barrier; reverse bias widens depletion until leakage or breakdown becomes relevant.
+
+An idealized diode follows $I=I_s[\exp(qV/(\eta kT))-1]$ in a suitable regime, with ideality factor η representing the model’s recombination mechanism. Series resistance, high injection and breakdown limit it. A diode is not a perfect zero-threshold switch with one universal 0.7 V drop.
+
+Photons with suitable energy can generate electron-hole pairs. A depletion field separates carriers, allowing photodiodes to detect light. Quantum efficiency, recombination, dark current and read noise influence real detectors. A gap energy gives a long-wavelength cutoff scale λ≈hc/Eg, but does not alone determine the detector’s full response curve.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Use a low-voltage educational diode circuit with a series current-limiting resistor, or a simulation, to record current versus applied voltage. Compare the exponential-region slope with high-current series resistance. Never connect a bare diode directly across an unrestricted supply.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+If n doubles while mobility stays fixed and electron conduction dominates, conductivity doubles and resistivity halves. If mobility simultaneously halves, the conductivity is unchanged. Carrier density alone is therefore insufficient to predict a temperature trend.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

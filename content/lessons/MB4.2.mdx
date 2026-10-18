@@ -1,0 +1,188 @@
+---
+{
+  "id": "MB4.2",
+  "title": "Vector algebra",
+  "hook": "Why can a force be large yet do no work on a moving object?",
+  "recap": [
+    "Alignment times the two magnitudes.",
+    "The parallelogram area spanned by two vectors.",
+    "Position relative to the axis origin crossed with force.",
+    "Only the component along each displacement contributes."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Can a nonzero perpendicular force do zero instantaneous work?",
+      "answer": "Yes",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Work uses the dot product with displacement.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "What happens when cross-product order is reversed?",
+      "answer": "Its sign reverses",
+      "options": [
+        "Its sign reverses",
+        "It stays unchanged"
+      ],
+      "explanation": "The product is antisymmetric.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Is the cross product associative?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "The vector triple-product identity differs from associativity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Dot product of (1,2,3) and (4,0,−1)?",
+      "answer": "1",
+      "explanation": "4+0−3=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Dot product of (1,2,3) and (4,0,−1)?",
+      "answer": "1",
+      "explanation": "4+0−3=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Is the cross product associative?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "The vector triple-product identity differs from associativity.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does a dot product measure geometrically?",
+      "back": "Alignment times the two magnitudes.",
+      "concept": "mb4-2-foundation"
+    },
+    {
+      "front": "What does cross-product magnitude measure?",
+      "back": "The parallelogram area spanned by two vectors.",
+      "concept": "mb4-2-foundation"
+    },
+    {
+      "front": "How is torque defined?",
+      "back": "Position relative to the axis origin crossed with force.",
+      "concept": "mb4-2-foundation"
+    },
+    {
+      "front": "Why is force times path length insufficient for general work?",
+      "back": "Only the component along each displacement contributes.",
+      "concept": "mb4-2-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax Algebra and Trigonometry / Calculus / Introductory Statistics — applicable topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Why can a force be large yet do no work on a moving object? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Vectors distinguish direction-sensitive physics from scalar bookkeeping. Work, torque, angular momentum and field geometry use different vector products because they answer different geometric questions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+The dot product asks how much two arrows align. The cross product asks for the oriented area they span in ordinary three-dimensional space.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A vector has magnitude and direction; its components depend on basis. Scalar and vector products must not be interchanged.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+In an orthonormal Cartesian basis, $\mathbf a\cdot\mathbf b=a_xb_x+a_yb_y+a_zb_z=|a||b|\cos\theta$. The projection of a onto a nonzero b is $(\mathbf a\cdot\mathbf b)\mathbf b/|b|^2$. A scalar component uses the unit vector along b. A zero dot product indicates perpendicular nonzero vectors, although it also occurs if either vector is zero.
+
+In a right-handed 3D basis, $\mathbf a\times\mathbf b=(a_yb_z-a_zb_y,\ a_zb_x-a_xb_z,\ a_xb_y-a_yb_x)$. Its magnitude is $|a||b|\sin\theta$, and reversing order reverses its sign. Torque is r×F, so both the lever arm and direction matter. A cross product is not a general multiplication rule for arbitrary dimensions.
+
+The scalar triple product $\mathbf a\cdot(\mathbf b\times\mathbf c)$ is the signed volume of a parallelepiped. Its vanishing for three vectors means linear dependence in 3D. The vector triple product obeys $a\times(b\times c)=b(a\cdot c)-c(a\cdot b)$; it is not associative.
+
+For a displacement dr, mechanical work is $dW=\mathbf F\cdot d\mathbf r$. A centripetal force is perpendicular to instantaneous velocity and changes its direction without doing instantaneous work. Integrating work along a curve requires the local force direction; multiplying total force magnitude by path length generally fails.
+
+Unit vectors carry direction but no units. Vector components carry the units of the physical vector. Always check component signs against a declared axis convention before interpreting a negative result as an impossible magnitude.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Use a hinged ruler as a lever: mark equal distances and pull along versus perpendicular to it with the same nominal force. Predict the torque trend before trying. Draw both dot and cross products for the two orientations; avoid claiming calibrated force readings without a force sensor.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+Let F=(3,4,0) N and displacement (2,0,0) m. Work is 6 J although the force magnitude is 5 N. For lever arm (2,0,0) m, torque is (0,0,8) N m. Work is scalar; torque is axial vector despite sharing energy-like dimensions.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

@@ -1,0 +1,189 @@
+---
+{
+  "id": "MA3.5",
+  "title": "Inner product spaces and orthogonality",
+  "hook": "Why does the best least-squares approximation leave a perpendicular residual?",
+  "recap": [
+    "Conjugate-linear first argument and linear second argument.",
+    "Its residual is perpendicular to the target subspace.",
+    "An orthonormal basis with the same span as independent inputs.",
+    "It defines which residual size is minimized and should reflect the data model."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does the complex standard inner product use an unconjugated transpose?",
+      "options": [
+        "Yes",
+        "No; it uses conjugate transpose"
+      ],
+      "answer": "No; it uses conjugate transpose",
+      "explanation": "Conjugation is needed for positive squared norms.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "What is perpendicular to the fitting subspace at the least-squares solution?",
+      "options": [
+        "The residual",
+        "The fitted vector itself necessarily"
+      ],
+      "answer": "The residual",
+      "explanation": "A remaining in-subspace residual could be reduced.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are direct dot products coefficients for any nonorthogonal basis?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The simple coefficient formula requires orthonormality.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Residual norm when projecting (3,4) onto the x-axis?",
+      "answer": "4",
+      "explanation": "The residual is (0,4).",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Projection x-coordinate in the same example?",
+      "answer": "3",
+      "explanation": "The component along (1,0) is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can normal equations be numerically inferior to QR?",
+      "answer": "They square the 2-norm condition number when full column rank holds",
+      "options": [
+        "They square the 2-norm condition number when full column rank holds",
+        "They change the exact least-squares minimizer in exact arithmetic"
+      ],
+      "explanation": "The geometric condition is correct, but its numerical implementation can be unstable.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What convention is used for the complex inner product?",
+      "back": "Conjugate-linear first argument and linear second argument.",
+      "concept": "ma3-5-theory"
+    },
+    {
+      "front": "What characterizes an orthogonal projection?",
+      "back": "Its residual is perpendicular to the target subspace.",
+      "concept": "ma3-5-theory"
+    },
+    {
+      "front": "What does Gram–Schmidt construct?",
+      "back": "An orthonormal basis with the same span as independent inputs.",
+      "concept": "ma3-5-theory"
+    },
+    {
+      "front": "Why specify a weighted metric?",
+      "back": "It defines which residual size is minimized and should reflect the data model.",
+      "concept": "ma3-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Axler, Linear Algebra Done Right — edition and exact section verification pending",
+    "Strang, Introduction to Linear Algebra — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does the best least-squares approximation leave a perpendicular residual? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Inner products add geometry to vector spaces. Orthogonal projection explains approximation, regression and expansion coefficients, provided the chosen inner product matches the intended weighting.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+If a residual had a component along an allowed fitting direction, moving slightly in that direction could shorten it. At the best projection, no such component remains.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use an inner product conjugate-linear in its first argument and linear in its second. Its norm is the square root of the inner product of a vector with itself.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+In complex coordinates the standard inner product is $\langle x,y\rangle=x^*y$, using conjugate transpose. It satisfies conjugate symmetry and positive definiteness. Cauchy–Schwarz gives $|\langle x,y\rangle|\le\|x\|\|y\|$; it follows by requiring the squared norm of x−αy to remain nonnegative at the minimizing α. The triangle inequality then follows by expanding a norm square and applying that bound.
+
+For an orthonormal list q₁,...,qₖ, the projection onto its span is $p=\sum_i q_i\langle q_i,x\rangle$. The residual r=x−p is orthogonal to every qᵢ. For any other s in the span, orthogonality gives $\|x-s\|^2=\|r\|^2+\|p-s\|^2$, establishing the unique best approximation in that finite-dimensional subspace.
+
+Gram–Schmidt subtracts these projections from each new independent vector and normalizes the remainder. In exact arithmetic it builds an orthonormal basis of the same span. In floating arithmetic nearly dependent inputs can lose orthogonality; modified Gram–Schmidt, reorthogonalization or Householder QR can be preferable.
+
+For a full-column-rank real matrix A, least-squares stationarity gives $A^T(Ax-b)=0$. The residual is orthogonal to the column space. This is a geometric characterization, not an instruction to form the normal equations as the best numerical method: QR and SVD avoid the squared condition number of AᵀA.
+
+A weighted inner product x*Wy requires Hermitian positive-definite W to retain the stated norm geometry. If data errors have covariance Σ, weighting by Σ⁻¹ can be appropriate under the model, but estimated or singular covariance needs treatment. In infinite-dimensional Hilbert spaces, projection onto a closed subspace extends this result; nonclosed subspaces can fail to attain the infimum.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Project one vector onto a line and a plane using orthonormal bases, checking residual dot products. Compare with a nonorthogonal basis and show why directly reading dot products as coefficients then fails. If using data weights, state their uncertainty model.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Project x=(3,4) onto the x-axis spanned by q=(1,0). The projection is (3,0), residual (0,4), and residual norm 4. Any point (s,0) leaves squared distance (3−s)²+16, minimized uniquely at s=3.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

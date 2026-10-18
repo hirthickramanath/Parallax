@@ -1,0 +1,190 @@
+---
+{
+  "id": "PB3.1",
+  "title": "Waves and sound",
+  "hook": "Can a travelling wave transport energy without transporting the whole medium?",
+  "recap": [
+    "The motion of a wave crest or phase point.",
+    "Fixed nodes and antinodes from counter-propagating waves.",
+    "The wave equation and boundary conditions.",
+    "Uniform spherical lossless spreading from a localized source."
+  ],
+  "questions": [
+    {
+      "id": "c1",
+      "prompt": "Is wave speed usually the material particle speed?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Particles oscillate locally while phase propagates.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c2",
+      "prompt": "What permits exact superposition in this model?",
+      "answer": "Linearity",
+      "options": [
+        "Linearity",
+        "Any amplitude regardless of medium"
+      ],
+      "explanation": "Nonlinear equations need not superpose.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "c3",
+      "prompt": "Does every air column have the fixed-string spectrum?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Boundary conditions select the modes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "n1",
+      "prompt": "Wavelength in metres for speed 340 m/s and frequency 170 Hz?",
+      "answer": "2",
+      "explanation": "λ=v/f=340/170.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as stated in question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Wavelength in metres for speed 340 m/s and frequency 170 Hz?",
+      "answer": "2",
+      "explanation": "λ=v/f=340/170.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "core",
+      "prompt": "Does every air column have the fixed-string spectrum?",
+      "answer": "No",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "explanation": "Boundary conditions select the modes.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does constant phase determine?",
+      "back": "The motion of a wave crest or phase point.",
+      "concept": "pb3-1-foundation"
+    },
+    {
+      "front": "What distinguishes a standing wave?",
+      "back": "Fixed nodes and antinodes from counter-propagating waves.",
+      "concept": "pb3-1-foundation"
+    },
+    {
+      "front": "What fixes normal-mode frequencies?",
+      "back": "The wave equation and boundary conditions.",
+      "concept": "pb3-1-foundation"
+    },
+    {
+      "front": "What does inverse-square spreading assume?",
+      "back": "Uniform spherical lossless spreading from a localized source.",
+      "concept": "pb3-1-foundation"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "OpenStax University Physics — volume, topic and section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original draft. Algebra and sample calculations checked internally; independent scientific and exact bibliographic review pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Use the linked prerequisites for earlier concepts. State units and coordinate conventions in your notebook; a soft-lock override does not replace missing knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Make a prediction" layer="puzzle">
+
+Can a travelling wave transport energy without transporting the whole medium? Write a prediction and one reason before reading the explanation.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why this matters" layer="story">
+
+Sound and stellar oscillations connect local restoring forces to signals that propagate. A wave’s pattern velocity is not generally the velocity of any particle.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build the picture" layer="intuition">
+
+Adjacent oscillators pass a disturbance along while each moves near its equilibrium position. A snapshot hides the time dependence needed to identify travel direction.
+
+</LessonSection>
+
+<LessonSection id="concept" title="State the model" layer="concept">
+
+A linear one-dimensional nondispersive wave satisfies ∂²y/∂t²=v²∂²y/∂x². Sinusoidal phase relates angular frequency, wavenumber and propagation speed.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derive and qualify the result" layer="theory" fullOnly>
+
+A right-travelling disturbance has form $y(x,t)=f(x-vt)$. Differentiating twice gives the wave equation. For $y=A\cos(kx-\omega t+\phi)$, constant phase moves with $v=\omega/k=f\lambda$. Displacement y and wave speed v have distinct units and meanings; particle transverse velocity is ∂y/∂t.
+
+For a taut string with tension T and linear mass density μ, balancing the small-angle transverse forces on an element gives $v=\sqrt{T/\mu}$. Large slopes or changing tension violate this linear approximation. Small-amplitude sound in a fluid has $v=\sqrt{B_s/\rho}$ using the adiabatic bulk modulus; for an ideal gas this becomes $\sqrt{\gamma RT/M}$.
+
+Linearity permits superposition. Equal counter-propagating sinusoidal waves form $2A\cos(kx)\cos(\omega t)$ up to phase, a standing wave with fixed nodes. A string fixed at both ends L admits $\lambda_n=2L/n$ and $f_n=nv/(2L)$. An open or closed air column has different pressure and displacement boundary conditions; do not copy the string rule without checking them.
+
+For uniform spreading in a lossless three-dimensional medium, mean intensity scales as 1/r² from energy conservation over a sphere. Absorption and directional sources change this. Sound level is $10\log_{10}(I/I_0)$ dB; a tenfold intensity increase is 10 dB, while a doubled intensity is about 3 dB.
+
+For a stationary medium and approach along the source-observer line, classical sound Doppler formulas distinguish source and observer velocities. Light requires relativistic reasoning. In dispersive media phase velocity and group velocity can differ, so v=fλ describes phase, not automatically information transport.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+Stretch a light cord and demonstrate a pulse and reflections with small amplitudes. Use the wave virtual apparatus to vary frequency and record node spacing; compare λ/2 with adjacent standing-wave nodes. Label the visualization as a linear ideal model.
+
+<Widget name="wave_lab" />
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
+
+A 0.50 m string with wave speed 100 m/s has fundamental 100 Hz and second harmonic 200 Hz. The fundamental wavelength is 1.0 m. A point on the string oscillates transversely rather than crossing 100 m each second.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Complete the tagged questions below, then change one assumption in the worked example and explain which equation ceases to apply. Write a limiting-case or dimensional check before computing a new answer.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before calculating" layer="check">
+
+Answer the conceptual checks and the numerical question. Numbers use the stated units. Your notebook explanation should identify the model, assumptions and a reasonableness check; a correct number alone does not establish a valid argument.
+
+</LessonSection>
+
+<LessonSection id="connections" title="From foundation to astrophysics" layer="connections">
+
+Connect this lesson to a measurement, model or inference in astrophysics. Separate what is directly observed from what the equations infer. List one systematic error and one regime in which the present model would fail.
+
+</LessonSection>
+

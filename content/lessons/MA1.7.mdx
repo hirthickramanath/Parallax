@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA1.7",
+  "title": "Riemann integration",
+  "hook": "Can a bounded function fail to have an ordinary Riemann integral?",
+  "recap": [
+    "Partitions can make the upper-minus-lower sum arbitrarily small.",
+    "Uniform continuity controls all cell oscillations.",
+    "As separately convergent limits of proper integrals.",
+    "Continuous integrands, derivatives of accumulation functions and antiderivative endpoint differences."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is every bounded function Riemann integrable?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The rational-indicator function on an interval is a counterexample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does symmetric cancellation prove ordinary convergence across a singularity?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Both one-sided improper integrals must converge separately.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Where does the integral-defined F have derivative f under the stated theorem?",
+      "options": [
+        "At every point without hypotheses",
+        "At continuity points of f"
+      ],
+      "answer": "At continuity points of f",
+      "explanation": "Continuity controls the shrinking-interval average.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Upper-minus-lower gap for f(x)=x on [0,1] with 20 equal cells?",
+      "answer": "0.05",
+      "explanation": "The gap is 1/n.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Riemann integral of x on [0,1]?",
+      "answer": "0.5",
+      "explanation": "Both bounding sums approach 1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why can a numerical grid fail to diagnose the rational-indicator example?",
+      "answer": "Every interval contains both kinds of points, which finite sampling cannot establish",
+      "options": [
+        "Every interval contains both kinds of points, which finite sampling cannot establish",
+        "Every bounded function is automatically integrable"
+      ],
+      "explanation": "Integrability depends on upper/lower behaviour throughout each cell.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the Darboux integrability criterion?",
+      "back": "Partitions can make the upper-minus-lower sum arbitrarily small.",
+      "concept": "ma1-7-theory"
+    },
+    {
+      "front": "Why does continuity on a closed interval suffice?",
+      "back": "Uniform continuity controls all cell oscillations.",
+      "concept": "ma1-7-theory"
+    },
+    {
+      "front": "How is an improper integral defined?",
+      "back": "As separately convergent limits of proper integrals.",
+      "concept": "ma1-7-theory"
+    },
+    {
+      "front": "What does the fundamental theorem connect?",
+      "back": "Continuous integrands, derivatives of accumulation functions and antiderivative endpoint differences.",
+      "concept": "ma1-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Abbott, Understanding Analysis (2nd ed.) — exact section mapping and independent source verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Can a bounded function fail to have an ordinary Riemann integral? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Integration is not just reverse differentiation. Defining it from upper and lower sums shows which irregularities are tolerated and which require a broader integral concept.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Partition an interval into bins and bound the area in each bin by its lowest and highest function values. Integrability means the total uncertainty can be made arbitrarily small.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a bounded real function on [a,b], lower and upper Darboux sums use the infimum and supremum on each partition interval. Riemann integrability means their limiting lower and upper integrals agree.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For partition $a=x_0<\cdots<x_n=b$, set $L(f,P)=\sum m_i\Delta x_i$ and $U(f,P)=\sum M_i\Delta x_i$. Refinement raises lower sums and lowers upper sums. A bounded function is Riemann integrable exactly when for each ε>0 some partition has $U(f,P)-L(f,P)<\varepsilon$. This criterion controls all choices of sample values within that partition's cells.
+
+A continuous function on a closed bounded interval is integrable: uniform continuity makes the oscillation within sufficiently small cells uniformly tiny, so the upper-minus-lower sum is at most that oscillation times interval length. Bounded functions with a finite number of discontinuities are also integrable; cover those points by intervals of arbitrarily small total length and control the remaining continuous pieces.
+
+The function equal to 1 on rational points and 0 on irrational points of [0,1] is not Riemann integrable. Every nontrivial cell has infimum 0 and supremum 1, so every partition leaves lower sum 0 and upper sum 1. A finite plot cannot display the density-based obstruction accurately. A broader Lebesgue integral assigns it a value, but that is a different definition.
+
+For integrable f define $F(x)=\int_a^x f(t)\,dt$. At a point where f is continuous, the average integral over a shrinking interval approaches f(x), proving F′(x)=f(x). If a differentiable antiderivative G has derivative f on the interval and f is integrable, the fundamental theorem yields $\int_a^b f=G(b)-G(a)$. The hypotheses should accompany the shorthand “integration reverses differentiation.”
+
+Improper integrals at an infinite endpoint or singularity are limits of proper integrals. Split at an interior singularity and require each one-sided limit separately; cancellation across divergences is a principal-value construction, not ordinary improper convergence. For example, symmetric cancellation does not make ∫₋₁¹1/x an ordinary improper integral.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw lower and upper rectangles for x and for a step function. Refine partitions and compare the total gap. Contrast with the rational-indicator example by reasoning about every interval rather than sampling only rational floating-point coordinates.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For f(x)=x on [0,1] with n equal cells, lower sum is (n−1)/(2n) and upper sum (n+1)/(2n). Their difference 1/n tends to zero, so the integral is 1/2. This gives an error bracket without assuming an antiderivative formula.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA2.2",
+  "title": "Gradient and multivariable Taylor expansion",
+  "hook": "Why does steepest ascent depend on how distances are measured?",
+  "recap": [
+    "The normalized nonzero gradient.",
+    "Second-order variation and local curvature of a scalar field.",
+    "It defines unit steps, lengths and conversion of differentials into gradients.",
+    "The defining gradient is nonzero there."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is the gradient tangent to a regular level surface?",
+      "options": [
+        "Yes",
+        "No; it is normal"
+      ],
+      "answer": "No; it is normal",
+      "explanation": "Tangent first-order changes have zero dot product with it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does equality of mixed partials follow merely from their existence at one point?",
+      "options": [
+        "Not generally",
+        "Always"
+      ],
+      "answer": "Not generally",
+      "explanation": "A standard theorem assumes suitable nearby continuity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can the Euclidean steepest direction depend on coordinate scaling?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Changing the metric notion of a unit step changes the optimization.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Gradient norm squared for f=x²+3y² at (1,1)?",
+      "answer": "40",
+      "explanation": "2²+6²=40.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Second derivative with respect to y twice for f=x²+3y²?",
+      "answer": "6",
+      "explanation": "The second derivative of 3y² is 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What justifies the second-order expansion here?",
+      "answer": "Continuous second derivatives near the expansion point",
+      "options": [
+        "Continuous second derivatives near the expansion point",
+        "A good-looking contour plot alone"
+      ],
+      "explanation": "Taylor requires regularity, not visual evidence.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What direction maximizes the Euclidean first-order increase?",
+      "back": "The normalized nonzero gradient.",
+      "concept": "ma2-2-theory"
+    },
+    {
+      "front": "What does a Hessian describe?",
+      "back": "Second-order variation and local curvature of a scalar field.",
+      "concept": "ma2-2-theory"
+    },
+    {
+      "front": "Why specify a coordinate metric?",
+      "back": "It defines unit steps, lengths and conversion of differentials into gradients.",
+      "concept": "ma2-2-theory"
+    },
+    {
+      "front": "What makes a level point regular?",
+      "back": "The defining gradient is nonzero there.",
+      "concept": "ma2-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does steepest ascent depend on how distances are measured? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Gradients turn scalar models into local change predictions. Their geometric meaning assumes a metric: coordinates with incompatible scales or units cannot be compared by an unqualified Euclidean arrow.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Among unit steps in Euclidean space, the step aligned with the gradient gives the largest first-order increase. A Hessian describes how that local slope changes.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+For a differentiable real scalar field in orthonormal Cartesian coordinates, the gradient has its partial derivatives as components. The Hessian contains second partials when they exist.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a unit vector u, the directional derivative is $D_uf=\nabla f\cdot u$. Cauchy–Schwarz bounds its magnitude by |∇f|, with maximal increase along ∇f/|∇f| when the gradient is nonzero. At a critical point, every first-order directional change vanishes and higher order determines behaviour.
+
+If f has continuous second partials near a, Taylor expansion along the line a+th gives $f(a+h)=f(a)+\nabla f(a)\cdot h+\tfrac12h^TH(a)h+o(|h|^2)$. Equality of mixed partials under these regularity assumptions makes the Hessian symmetric. Mere existence of both mixed partials at a point is not the general equality theorem.
+
+For stronger smoothness, applying one-variable Taylor to the line function gives a higher-order remainder controlled by directional higher derivatives along the segment. A quadratic approximation is local; a large displacement can invalidate an apparently accurate curvature picture.
+
+A differentiable level surface f=c has tangent displacements satisfying ∇f·h=0 at a regular point where ∇f≠0. Thus the gradient is normal to that surface. When ∇f=0 the implicit-surface conclusion needs further analysis: the zero set may cross, collapse or still be smooth for another defining function.
+
+The identity “gradient equals partial-derivative components” uses an orthonormal Euclidean basis. With a general coordinate metric g, differential components ∂ᵢf are converted to gradient components by the inverse metric. Rescaling one coordinate changes a naive steepest-descent algorithm unless its notion of step size changes consistently. Physical optimization should state parameter scales and units rather than comparing one metre with one kelvin as equal coordinate lengths.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Draw contours of x²+3y² and gradient arrows, then evaluate equal-length steps in several directions. Repeat after measuring y in a differently scaled coordinate and explain which metric represents equal physical displacement. Record second-order predictions and actual residuals.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For f(x,y)=x²+3y² at (1,1), gradient is (2,6) and Hessian diag(2,6). A step h=(0.1,−0.2) gives linear change −1.0 and quadratic correction 0.13, so predicted change is −0.87. Because f is exactly quadratic, the prediction is exact: f(1,1)=4 and f(1.1,0.8)=3.13, giving a difference of −0.87.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+

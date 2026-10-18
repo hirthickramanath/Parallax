@@ -1,0 +1,190 @@
+---
+{
+  "id": "MA2.7",
+  "title": "Green, Stokes and divergence theorems",
+  "hook": "Why can a calculation on a boundary reveal what happens throughout a region?",
+  "recap": [
+    "Planar circulation and scalar curl integrated over the region.",
+    "Boundary circulation and curl flux through an oriented surface.",
+    "Outward flux of a closed boundary and integrated divergence.",
+    "They can invalidate smoothness hypotheses and require additional boundary or source treatment."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Can the ordinary divergence theorem ignore an interior field singularity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The field must meet the theorem assumptions or the singular region must be handled.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Do Stokes normal and boundary direction have independent arbitrary signs?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "They must follow one orientation convention.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does divergence theorem concern circulation around a loop?",
+      "options": [
+        "Yes",
+        "No; it concerns closed-surface flux"
+      ],
+      "answer": "No; it concerns closed-surface flux",
+      "explanation": "Curl and circulation belong to Stokes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Outward flux of F=(x,y,z) through the unit cube?",
+      "answer": "3",
+      "explanation": "Divergence is 3 and the volume is 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Curl z-component of F=(−y,x,0)?",
+      "answer": "2",
+      "explanation": "∂x/∂x−∂(−y)/∂y=1−(−1)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why do internal boundary contributions cancel in the geometric proof idea?",
+      "answer": "Adjacent cells induce opposite orientations on their shared boundary",
+      "options": [
+        "Adjacent cells induce opposite orientations on their shared boundary",
+        "Every internal field value vanishes"
+      ],
+      "explanation": "The cancellation is geometric and signed, not a zero-field assumption.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does Green connect?",
+      "back": "Planar circulation and scalar curl integrated over the region.",
+      "concept": "ma2-7-theory"
+    },
+    {
+      "front": "What does Stokes connect?",
+      "back": "Boundary circulation and curl flux through an oriented surface.",
+      "concept": "ma2-7-theory"
+    },
+    {
+      "front": "What does divergence theorem connect?",
+      "back": "Outward flux of a closed boundary and integrated divergence.",
+      "concept": "ma2-7-theory"
+    },
+    {
+      "front": "Why inspect singularities before using an integral theorem?",
+      "back": "They can invalidate smoothness hypotheses and require additional boundary or source treatment.",
+      "concept": "ma2-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Apostol, Calculus, Volume II — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a calculation on a boundary reveal what happens throughout a region? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Green, Stokes and divergence theorems connect local derivatives with global boundary integrals. They unify conservation-law calculations but require regular fields and compatible orientations.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Partition a region into small cells. Contributions on shared internal boundaries cancel in opposite orientations, leaving only the external boundary.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The integral theorems relate circulation to curl and outward flux to divergence for fields with suitable continuous derivatives on appropriate regions and their neighbourhoods.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For a planar region with positively oriented piecewise smooth boundary, Green's theorem gives $\oint_{\partial D}P\,dx+Q\,dy=\iint_D(Q_x-P_y)\,dA$ under standard smoothness assumptions. Positive orientation keeps the region on the left while traversing its boundary; holes require opposite orientation on inner boundary components.
+
+Stokes' theorem generalizes this to an oriented smooth or piecewise smooth surface S: $\oint_{\partial S}F\cdot dr=\iint_S(\nabla\times F)\cdot n\,dS$. The boundary direction follows the right-hand convention from the chosen normal. Changing both orientations preserves equality; changing only one reverses just one side and breaks it.
+
+The divergence theorem for a bounded region V with suitable closed outward boundary gives $\iint_{\partial V}F\cdot n\,dS=\iiint_V\nabla\cdot F\,dV$. It is a flux theorem, not a circulation theorem. A field singular within the region does not meet the ordinary smooth-field hypotheses; removing a small surrounding region introduces an additional inner boundary.
+
+For F=(−y,x,0), curl is (0,0,2). A counterclockwise unit circle in the xy-plane has circulation 2π, matching curl flux 2 times disk area π. For F=(x,y,z), divergence is 3, and a radius-R sphere has outward flux 3 times its volume, or 4πR³.
+
+The field r/|r|³ has zero divergence away from the origin but flux 4π through a centred sphere. Applying the divergence theorem over the full ball while ignoring the singular origin is invalid. On a punctured shell, outer and inner flux contributions cancel as the ordinary theorem predicts; a distributional formulation can represent the missing point source explicitly.
+
+These identities are exact mathematical statements under their hypotheses. Interpreting a measured flux as evidence for a source requires a field model, boundary data and uncertainty treatment. An unresolved hole or discontinuity can matter more than an algebraic simplification.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Calculate the cube example face by face and compare with its volume integral. Then reverse one normal deliberately and identify the mismatch. For the inverse-square radial field, draw a punctured shell and explicitly include its inner boundary rather than discarding the singularity.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+On the unit cube [0,1]³ with F=(x,y,z), the three faces at coordinate 0 contribute zero and the three at coordinate 1 each contribute 1. Total flux 3 agrees with volume integral of divergence 3 over unit volume.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
+
