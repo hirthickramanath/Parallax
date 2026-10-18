@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS9.5",
+  "title": "Structure formation and perturbation theory",
+  "hook": "How can tiny initial density variations become galaxies without every scale growing the same way?",
+  "recap": [
+    "A fractional density perturbation relative to a specified background.",
+    "Small perturbations and the stated subhorizon/component regime.",
+    "A relation between observed tracer and matter statistics.",
+    "Resolution and numerical/model choices alter small-scale predictions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May linear growth be applied unchanged at arbitrarily large δ?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Nonlinear mode coupling becomes important.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is observed galaxy clustering automatically identical to matter clustering?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Bias and selection enter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does power scale with the square of a coherent amplitude growth factor?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "It is a second-order statistic.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Amplitude ratio when D goes from 2 to 6?",
+      "answer": "3",
+      "explanation": "6/2=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Power ratio for that amplitude change?",
+      "answer": "9",
+      "explanation": "3²=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why validate nonlinear simulations?",
+      "answer": "Resolution and numerical/model choices alter small-scale predictions.",
+      "options": [
+        "Resolution and numerical/model choices alter small-scale predictions.",
+        "A fractional density perturbation relative to a specified background."
+      ],
+      "explanation": "Resolution and numerical/model choices alter small-scale predictions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is density contrast?",
+      "back": "A fractional density perturbation relative to a specified background.",
+      "concept": "as9-5-theory"
+    },
+    {
+      "front": "What limits Newtonian linear growth?",
+      "back": "Small perturbations and the stated subhorizon/component regime.",
+      "concept": "as9-5-theory"
+    },
+    {
+      "front": "What is tracer bias?",
+      "back": "A relation between observed tracer and matter statistics.",
+      "concept": "as9-5-theory"
+    },
+    {
+      "front": "Why validate nonlinear simulations?",
+      "back": "Resolution and numerical/model choices alter small-scale predictions.",
+      "concept": "as9-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Ryden, Introduction to Cosmology — edition and exact section verification pending",
+    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+How can tiny initial density variations become galaxies without every scale growing the same way? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Perturbation growth depends on component pressure, expansion and scale. Linear equations cannot be extrapolated unchanged into collapsed haloes.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Density contrast δ=(ρ−ρ_bar)/ρ_bar measures a perturbation relative to the background in a stated slicing/gauge convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For pressureless subhorizon linear perturbations in a suitable Newtonian regime, $\ddot\delta+2H\dot\delta-4\pi G\bar\rho\delta=0$. Expansion damps peculiar motion while gravity amplifies overdensities. Radiation, pressure and relativistic horizon-scale effects require extended equations and explicit gauge conventions.
+
+A linear growth factor D(t) describes a mode family only when scale dependence can be neglected in the admitted model. Matter-radiation transfer, neutrino free streaming and baryonic effects can make observed structure scale dependent. Initial amplitude and growth history are not the same parameter.
+
+The power spectrum P(k) describes a two-point statistic with a Fourier normalization and dimensions. Nonlinear collapse couples modes and changes the distribution, so δ≫1 lies outside linear perturbation theory. N-body/hydrodynamic calculations need resolution, force, initial-condition and subgrid validation.
+
+Galaxies are biased tracers of matter. Redshift-space distortions, survey windows and selection alter clustering estimates. Weak lensing probes differently weighted structure and has its own shape/redshift systematics. Compare multiple probes through consistent covariance rather than equating observed galaxy power with total matter power unconditionally.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Evolve a small-amplitude toy perturbation and mark when linearity fails. Apply a supplied tracer bias and survey window to a synthetic spectrum and compare with the original matter spectrum.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a linear growing mode has D increasing from 2 to 6, its contrast amplitude triples and its power contribution scales by nine when other factors are fixed. This cannot justify taking an already nonlinear collapsed halo through the same linear scaling.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

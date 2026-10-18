@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS7.2",
+  "title": "Planetary interiors and atmospheres",
+  "hook": "Why can similar-mass planets have different radii and atmospheres?",
+  "recap": [
+    "An EOS, composition and thermal/transport model.",
+    "Temperature, molecular mass and gravity.",
+    "Clouds, reference radius, chemistry and calibration.",
+    "Heating, geometry and regime assumptions enter."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does bulk density uniquely determine internal composition?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Compression, temperature and mixtures are degenerate.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is scale height a sharp atmospheric edge?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It is a local exponential scale in a model.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Are Jeans and hydrodynamic escape the same approximation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They describe different flow regimes.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "H for k_BT=6,mean mass=2,g=3?",
+      "answer": "1",
+      "explanation": "6/(2×3)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "H ratio after halving g with other inputs fixed?",
+      "answer": "2",
+      "explanation": "H∝1/g.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why qualify escape rates?",
+      "answer": "Heating, geometry and regime assumptions enter.",
+      "options": [
+        "Heating, geometry and regime assumptions enter.",
+        "An EOS, composition and thermal/transport model."
+      ],
+      "explanation": "Heating, geometry and regime assumptions enter.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What closes interior structure?",
+      "back": "An EOS, composition and thermal/transport model.",
+      "concept": "as7-2-theory"
+    },
+    {
+      "front": "What controls ideal atmospheric H?",
+      "back": "Temperature, molecular mass and gravity.",
+      "concept": "as7-2-theory"
+    },
+    {
+      "front": "What can complicate atmospheric retrieval?",
+      "back": "Clouds, reference radius, chemistry and calibration.",
+      "concept": "as7-2-theory"
+    },
+    {
+      "front": "Why qualify escape rates?",
+      "back": "Heating, geometry and regime assumptions enter.",
+      "concept": "as7-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "de Pater and Lissauer, Planetary Sciences — edition and exact section verification pending",
+    "Perryman, The Exoplanet Handbook — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can similar-mass planets have different radii and atmospheres? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Interior composition, thermal state and atmospheric loss create degeneracies that require multiple observables.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A planetary structure model couples gravity, EOS, thermal evolution and composition. A simple atmosphere scale height applies only under its hydrostatic/isothermal assumptions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Hydrostatic interiors obey dp/dr=−Gmρ/r² together with mass continuity and an EOS. Different mixtures of rock, metal, ice and gas can produce similar total mass/radius pairs. Temperature, compression and age affect radius, so bulk density is not a unique composition label.
+
+For an isothermal ideal atmosphere with approximately constant gravity, $H=k_BT/(\bar m g)$ and density falls exponentially in the simplified column. Real atmospheres have temperature gradients, chemistry, clouds and variable gravity. The scale height is not a rigid upper boundary.
+
+Escape depends on energy deposition and particle distributions. Jeans escape and hydrodynamic escape are different regimes; stellar irradiation, magnetic interaction and planetary gravity affect loss. One energy-limited scaling is a model with efficiency and geometry assumptions, not a universal exact erosion rate.
+
+Convection, conduction, radiation and phase transitions shape interior evolution and dynamos. Atmospheric retrieval from transmission/emission spectra is conditional on reference radius, temperature, abundances, cloud and instrument models. A narrow spectral feature does not uniquely map to a global inventory without those assumptions.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare synthetic mass-radius models with different compositions and add an atmosphere. Calculate scale heights at stated conditions, then vary temperature and mean molecular mass separately to expose retrieval degeneracy.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+With k_BT=6, mean particle mass 2 and g=3 in consistent units, H=1. Halving gravity at fixed temperature/composition doubles H. A larger scale height changes an atmospheric signal but does not by itself prove more total atmospheric mass.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

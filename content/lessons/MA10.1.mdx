@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA10.1",
+  "title": "Groups and homomorphisms",
+  "hook": "Why does preserving a multiplication rule constrain which structures a map can collapse?",
+  "recap": [
+    "A homomorphism.",
+    "Elements mapped to the target identity.",
+    "It makes coset multiplication representative independent.",
+    "The image of φ."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Must every group commute?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Commutativity is an additional abelian property.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is the kernel of a homomorphism normal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Conjugation preserves its identity image.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does an abstract group alone specify a physical action?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The representation/action must also be given.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Kernel size for reduction Z₆→Z₃?",
+      "answer": "2",
+      "explanation": "The kernel is {0,3}.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Image size for that map?",
+      "answer": "3",
+      "explanation": "Every residue modulo three occurs.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is G/kerφ isomorphic to?",
+      "answer": "The image of φ.",
+      "options": [
+        "The image of φ.",
+        "A homomorphism."
+      ],
+      "explanation": "The image of φ.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What preserves group composition?",
+      "back": "A homomorphism.",
+      "concept": "ma10-1-theory"
+    },
+    {
+      "front": "What is the kernel?",
+      "back": "Elements mapped to the target identity.",
+      "concept": "ma10-1-theory"
+    },
+    {
+      "front": "Why need normality for a quotient group?",
+      "back": "It makes coset multiplication representative independent.",
+      "concept": "ma10-1-theory"
+    },
+    {
+      "front": "What is G/kerφ isomorphic to?",
+      "back": "The image of φ.",
+      "concept": "ma10-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Artin, Algebra — edition and exact section verification pending",
+    "Hall, Lie Groups, Lie Algebras, and Representations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does preserving a multiplication rule constrain which structures a map can collapse? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Groups encode reversible composition, and homomorphisms separate preserved symmetry from information lost in a kernel.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A group has associative composition, an identity and an inverse for every element. A homomorphism satisfies φ(ab)=φ(a)φ(b).
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The group axioms do not require commutativity. A homomorphism sends identity to identity and inverses to inverses by applying the composition law. Its kernel is the elements mapped to identity; closure and inverse properties make it a subgroup.
+
+For k in the kernel, $\phi(gkg^{-1})=\phi(g)\phi(k)\phi(g)^{-1}=e$, so the kernel is normal. Normality makes coset multiplication well defined in a quotient group. Arbitrary subgroups need not admit that quotient multiplication.
+
+The first isomorphism theorem identifies G/kerφ with imφ through gkerφ→φ(g). Well-definedness follows because elements in the same coset differ by kernel information. Injectivity of this induced map and surjectivity onto the image complete the argument.
+
+For finite groups, subgroup cosets partition G and give Lagrange’s divisibility relation. It does not claim that every divisor of group order occurs as a subgroup order in every group. Symmetry in physics also needs an action on states/observables; an abstract group alone does not specify what is transformed.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Write the complete map table for this example and verify composition for all pairs. Compare a nonnormal subgroup in a small nonabelian group before attempting quotient multiplication.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+The additive map Z₆→Z₃ given by reduction modulo three has kernel the two residues 0 and 3, size two, and image size three. The quotient has three cosets. It preserves addition even though the map is not injective.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

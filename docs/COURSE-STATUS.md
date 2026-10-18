@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **233**.
-- Authored recall cards: **937**.
-- Missing lesson bodies: **121**.
+- Playable authored drafts: **263**.
+- Authored recall cards: **1057**.
+- Missing lesson bodies: **91**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -27,7 +27,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 4 | MA7 | Special functions and asymptotics | 5 / 5 | None |
 | 2 | MA8 | Probability and statistics | 7 / 7 | None |
 | 2 | MA9 | Calculus of variations | 3 / 3 | None |
-| 5 | MA10 | Abstract algebra and group theory | 0 / 6 | MA10.1, MA10.2, MA10.3, MA10.4, MA10.5, MA10.6 |
+| 5 | MA10 | Abstract algebra and group theory | 6 / 6 | None |
 | 5 | MA11 | Tensors and differential geometry | 0 / 7 | MA11.1, MA11.2, MA11.3, MA11.4, MA11.5, MA11.6, MA11.7 |
 | 5 | MA12 | Topology and functional analysis | 0 / 5 | MA12.1, MA12.2, MA12.3, MA12.4, MA12.5 |
 | 6 | MA13 | Research-level mathematics for physics | 0 / 4 | MA13.1, MA13.2, MA13.3, MA13.4 |
@@ -66,10 +66,10 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 5 | AS4 | Stellar evolution and remnants | 7 / 7 | None |
 | 7 | AS5 | Compact objects and high-energy astrophysics | 6 / 6 | None |
 | 5 | AS6 | Interstellar medium and plasma astrophysics | 5 / 5 | None |
-| 4 | AS7 | Planets and exoplanets | 0 / 5 | AS7.1, AS7.2, AS7.3, AS7.4, AS7.5 |
-| 4 | AS8 | Galaxies and galactic dynamics | 0 / 7 | AS8.1, AS8.2, AS8.3, AS8.4, AS8.5, AS8.6, AS8.7 |
-| 7 | AS9 | Cosmology | 0 / 8 | AS9.1, AS9.2, AS9.3, AS9.4, AS9.5, AS9.6, AS9.7, AS9.8 |
-| 8 | AS10 | Astrophysics research skills | 0 / 4 | AS10.1, AS10.2, AS10.3, AS10.4 |
+| 4 | AS7 | Planets and exoplanets | 5 / 5 | None |
+| 4 | AS8 | Galaxies and galactic dynamics | 7 / 7 | None |
+| 7 | AS9 | Cosmology | 8 / 8 | None |
+| 8 | AS10 | Astrophysics research skills | 4 / 4 | None |
 | 4 | CH4 | Chemical bonding and molecular structure | 8 / 8 | None |
 | 5 | CH5 | Selected inorganic and block chemistry | 0 / 4 | CH5.1, CH5.2, CH5.3, CH5.4 |
 | 1 | CH6 | Organic foundations for astrochemistry | 8 / 8 | None |

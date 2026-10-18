@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA10.2",
+  "title": "Permutation groups",
+  "hook": "Why can changing the order of two swaps change the final arrangement?",
+  "recap": [
+    "The least positive repetition giving identity.",
+    "(−1)^(k−1).",
+    "The even-permutation subgroup.",
+    "Written products otherwise become ambiguous."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Do overlapping permutations always commute?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Their action order can change the mapping.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is cycle-product order generally the sum of lengths?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "For disjoint cycles it is their least common multiple.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is parity independent of the transposition factorization?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The sign homomorphism is well defined.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Order of a three-cycle?",
+      "answer": "3",
+      "explanation": "Three applications return every label.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of elements in S₃?",
+      "answer": "6",
+      "explanation": "3!=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state composition convention?",
+      "answer": "Written products otherwise become ambiguous.",
+      "options": [
+        "Written products otherwise become ambiguous.",
+        "The least positive repetition giving identity."
+      ],
+      "explanation": "Written products otherwise become ambiguous.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is permutation order?",
+      "back": "The least positive repetition giving identity.",
+      "concept": "ma10-2-theory"
+    },
+    {
+      "front": "What is a k-cycle sign?",
+      "back": "(−1)^(k−1).",
+      "concept": "ma10-2-theory"
+    },
+    {
+      "front": "What is A_n?",
+      "back": "The even-permutation subgroup.",
+      "concept": "ma10-2-theory"
+    },
+    {
+      "front": "Why state composition convention?",
+      "back": "Written products otherwise become ambiguous.",
+      "concept": "ma10-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Artin, Algebra — edition and exact section verification pending",
+    "Hall, Lie Groups, Lie Algebras, and Representations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can changing the order of two swaps change the final arrangement? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Permutation groups make noncommutativity, parity and state-label symmetry concrete.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+S_n is the group of bijections of n labels under composition. Use the convention that the rightmost permutation acts first.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Every finite permutation decomposes into disjoint cycles, which commute when their supports are disjoint. Its order is the least common multiple of cycle lengths, not generally their sum. The same permutation can have different written products of overlapping cycles.
+
+A k-cycle can be decomposed into k−1 transpositions, so its parity is $(-1)^{k-1}$. Although transposition factorizations are not unique, parity is well defined, for example through the determinant of a permutation matrix. The sign map S_n to the two signs ±1 is a homomorphism with even-permutation kernel A_n.
+
+There are n! permutations because successive images have n,n−1,… choices. Cycle type controls conjugacy classes in S_n: relabelling preserves cycle lengths and any matching cycle structure is related by a relabelling. A conjugacy claim depends on which group’s conjugation is allowed.
+
+In quantum identical-particle theory, exchanging labels acts on a state space; the permutation group alone does not settle every allowed physical representation. Spatial dimension, spin-statistics assumptions and internal state structure matter. A relabelling convention should not be confused with physically rotating an apparatus.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct permutation matrices for two overlapping swaps and multiply in both orders. Verify the stated rightmost-first convention and compare determinant sign with cycle parity.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+A three-cycle has order three and sign +1 because it uses two transpositions. S₃ contains six elements. A product of disjoint cycles of lengths two and three has order six, not five.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

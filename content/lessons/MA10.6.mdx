@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA10.6",
+  "title": "Lorentz and Poincare groups",
+  "hook": "Why do two boosts in different directions produce more than one simple velocity change?",
+  "recap": [
+    "A Lorentz transformation.",
+    "Rapidity.",
+    "Lorentz transformations act on translations.",
+    "The four-momentum norm."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are relativistic velocities generally added by ordinary arithmetic?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Collinear rapidities rather than velocities add.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does the Poincaré group include translations?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "It extends Lorentz transformations.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does every curved spacetime have global Poincaré symmetry?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Local inertial structure is not global homogeneity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Mass squared for E=5,p=3,c=1?",
+      "answer": "16",
+      "explanation": "E²−p²=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Positive mass for that example?",
+      "answer": "4",
+      "explanation": "√16=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What invariant labels massive kinematics?",
+      "answer": "The four-momentum norm.",
+      "options": [
+        "The four-momentum norm.",
+        "A Lorentz transformation."
+      ],
+      "explanation": "The four-momentum norm.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What preserves the Minkowski metric?",
+      "back": "A Lorentz transformation.",
+      "concept": "ma10-6-theory"
+    },
+    {
+      "front": "What adds for collinear boosts?",
+      "back": "Rapidity.",
+      "concept": "ma10-6-theory"
+    },
+    {
+      "front": "Why is Poincaré a semidirect product?",
+      "back": "Lorentz transformations act on translations.",
+      "concept": "ma10-6-theory"
+    },
+    {
+      "front": "What invariant labels massive kinematics?",
+      "back": "The four-momentum norm.",
+      "concept": "ma10-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Artin, Algebra — edition and exact section verification pending",
+    "Hall, Lie Groups, Lie Algebras, and Representations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why do two boosts in different directions produce more than one simple velocity change? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Spacetime symmetry includes rotations, boosts and translations, and their composition controls relativistic state classification.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+With metric η=diag(1,−1,−1,−1), the Lorentz group preserves ΛᵀηΛ=η. The Poincaré group also includes spacetime translations.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The full Lorentz group includes disconnected parity/time-orientation components. The proper orthochronous subgroup preserves determinant and future time orientation. A boost along one direction can be parameterized by rapidity χ with β=tanhχ, so collinear rapidities add even though velocities do not add linearly.
+
+Generators of noncollinear boosts have commutators proportional to rotations, with convention-dependent factors/signs. Thomas/Wigner rotations reflect this noncommutative structure. Treating every boost composition as one unchanged-axis Galilean velocity sum misses it.
+
+Translations transform as spacetime vectors under Lorentz transformations, giving a semidirect rather than independent direct-product structure. Invariant momentum norm is $P^\mu P_\mu=m^2c^2$ for a massive on-shell particle in this signature. Energy and each momentum component individually depend on frame.
+
+Relativistic quantum state representations involve mass and spin/helicity labels with little-group structure. Fields and particle states transform in related but distinct representations; a finite-dimensional spinor field matrix is not by itself the full unitary Hilbert-space representation. Curved-spacetime local frames do not imply one global Poincaré symmetry for an arbitrary geometry.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compose two explicit subluminal boosts, first collinear and then orthogonal. Check metric preservation and momentum invariant. Record active/passive and generator conventions before interpreting the resulting rotation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For E=5,p=3 and c=1 in a one-dimensional massive example, m²=E²−p²=16 and m=4. Two collinear boosts each with rapidity χ add to 2χ, not generally twice the velocity.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

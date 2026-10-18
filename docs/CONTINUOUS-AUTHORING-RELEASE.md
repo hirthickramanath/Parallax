@@ -29,3 +29,7 @@ AS4.1–AS4.7 add collapse/star formation, main-sequence inference, giant evolut
 ## High-energy sources and interstellar matter
 
 AS5.1–AS5.6 and AS6.1–AS6.5 add 11 drafts on accretion, jets, transients, particles, messengers, interstellar phases, nebulae, MHD, shocks and dynamos. Coverage is 233/354 bodies, 937 recall cards, 121 missing. Build, all 73 model/grading/example tests and both new unit player sweeps passed. No actual new event, catalogue, observation or source detection is claimed.
+
+## Planetary, galactic, cosmological and symmetry foundations
+
+AS7, AS8, AS9, AS10 and MA10 add 30 drafts. Coverage is 263/354 bodies, 1057 recall cards, 91 missing. The production build, all 76 model/grading/example tests and a full 66-case browser run passed. All 263 authored lessons rendered theory/investigation successfully. Core prompts in the 103 drafts added during this continuous run now test a distinct additional theorem/assumption rather than repeating an introductory check. A galaxy mass inequality was repaired inside TeX before the successful sweep. Hypothetical cosmological values are not presented as current measured tensions.

@@ -447,3 +447,57 @@ test("high energy and interstellar examples preserve transport and geometry", ()
     check(id, "warmup", w);
   }
 });
+test("planetary and galactic examples preserve geometry and inference scalings", () => {
+  const rows = [
+    ["AS7.1", 4 ** 1.5, Math.sqrt(2)],
+    ["AS7.2", 6 / (2 * 3), 2],
+    ["AS7.3", 6 * (1 / (3 * 72)) ** (1 / 3), 8 ** (1 / 3)],
+    ["AS7.4", 0.1 ** 2, 0.2],
+    ["AS7.5", 400 * 0.5, (1 / 16) ** 0.25],
+    ["AS8.1", 200 / 10, 200 / 20],
+    ["AS8.2", 3 * 2 ** 2, 2 ** 2],
+    ["AS8.3", (4 ** 2 * 3) / 2, 2],
+    ["AS8.4", 2 ** 4, 0.5],
+    ["AS8.5", 12 / 3, 3 - 3],
+    ["AS8.6", Math.sqrt(4 * 9), Math.sqrt(4)],
+    ["AS8.7", 6 / (0.2 * 3), 0.8 * 10],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("cosmology and research examples retain distances, covariance and provenance", () => {
+  const rows = [
+    ["AS9.1", 600 / 60, (1 + 1) ** 2],
+    ["AS9.2", 2 ** -3, 2 ** -4],
+    ["AS9.3", (2 * (1 / 7)) / (1 + 1 / 7), 0.5],
+    ["AS9.4", 2 / 100, 0.5],
+    ["AS9.5", 6 / 2, (6 / 2) ** 2],
+    ["AS9.6", 3, 2 + 4],
+    ["AS9.7", 2 ** 3, 3 * 2 ** 3],
+    ["AS9.8", 4 / Math.sqrt(2 ** 2 + 2 ** 2), 0.8 * Math.sqrt(0.3 / 0.3)],
+    ["AS10.1", (3 / 2) ** 2, 3],
+    ["AS10.2", (2 + 4 / 4) / (1 + 1 / 4), 4],
+    ["AS10.3", 0.8 / (0.8 + 0.2), (0.2 * 0.8) / (0.2 * 0.8 + 0.8 * 0.2)],
+    ["AS10.4", (12 - 10) / 2, (12 - 10) / 10],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});
+test("group theory examples preserve kernels, dimensions and invariant norms", () => {
+  const rows = [
+    ["MA10.1", 2, 3],
+    ["MA10.2", 3, 3 * 2],
+    ["MA10.3", 2, 4],
+    ["MA10.4", 1 - 1, 1],
+    ["MA10.5", -2, 2],
+    ["MA10.6", 5 ** 2 - 3 ** 2, Math.sqrt(25 - 9)],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

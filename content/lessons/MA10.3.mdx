@@ -1,0 +1,186 @@
+---
+{
+  "id": "MA10.3",
+  "title": "Rings and fields",
+  "hook": "Why does arithmetic modulo a composite number fail to behave like ordinary division?",
+  "recap": [
+    "A nonzero factor of a zero product with another nonzero element.",
+    "Coprimality with n.",
+    "An ideal.",
+    "Factorization and solvability depend on it."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "May every nonzero ring element be divided out?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It may not be a unit.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does Z_p form a field for prime p?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Every nonzero residue has an inverse.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is polynomial irreducibility independent of coefficient field?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Available factors depend on the field.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Number of units in Z₆?",
+      "answer": "2",
+      "explanation": "They are 1 and 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Number of nonzero units in Z₅?",
+      "answer": "4",
+      "explanation": "Every nonzero residue is invertible.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why state the coefficient field?",
+      "answer": "Factorization and solvability depend on it.",
+      "options": [
+        "Factorization and solvability depend on it.",
+        "A nonzero factor of a zero product with another nonzero element."
+      ],
+      "explanation": "Factorization and solvability depend on it.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a zero divisor?",
+      "back": "A nonzero factor of a zero product with another nonzero element.",
+      "concept": "ma10-3-theory"
+    },
+    {
+      "front": "What tests invertibility modulo n?",
+      "back": "Coprimality with n.",
+      "concept": "ma10-3-theory"
+    },
+    {
+      "front": "What enables a quotient ring?",
+      "back": "An ideal.",
+      "concept": "ma10-3-theory"
+    },
+    {
+      "front": "Why state the coefficient field?",
+      "back": "Factorization and solvability depend on it.",
+      "concept": "ma10-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Artin, Algebra — edition and exact section verification pending",
+    "Hall, Lie Groups, Lie Algebras, and Representations — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does arithmetic modulo a composite number fail to behave like ordinary division? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Rings and fields distinguish algebraic manipulations that are valid from cancellations destroyed by zero divisors.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use commutative rings with identity. A field is a nonzero such ring in which every nonzero element has a multiplicative inverse.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A zero divisor is a nonzero element whose product with another nonzero element is zero. In Z₆, 2×3=0 modulo six, so cancelling a factor two from an equation is unsafe. A field has no nonzero zero divisors because multiplying by an inverse would contradict nonzero status.
+
+An element of Z_n is invertible exactly when its integer representative is coprime to n, by Bézout’s identity. Thus $\mathbb Z_p$ is a field when p is prime. The prime condition is not cosmetic: composite moduli supply nontrivial factor products equal to zero.
+
+An ideal absorbs multiplication by arbitrary ring elements and permits a quotient ring. For a commutative ring with identity, quotient by a maximal ideal is a field under the standard proper-ideal hypotheses. A subgroup of the additive group need not automatically be an ideal.
+
+Polynomial coefficients and base field determine factorization and roots. A polynomial irreducible over the reals can factor over the complex numbers; changing fields changes the algebraic question. Physical matrix equations also need an actual invertibility condition before division by an operator or determinant.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Enumerate multiplication tables for moduli five and six. Find inverses and zero divisors directly, then compare with gcd tests. State the ring before solving or cancelling factors.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In Z₆ only residues 1 and 5 are units, so there are two. In Z₅ all four nonzero residues are invertible. The equation 2x=2 modulo six has x=1 and x=4, demonstrating failed cancellation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

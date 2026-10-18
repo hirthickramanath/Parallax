@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS10.4",
+  "title": "Capstone: reproduce a published result",
+  "hook": "What counts as reproducing a published result rather than merely drawing a similar-looking plot?",
+  "recap": [
+    "A precisely identified output/claim with exact source version.",
+    "Whether data or methodological assumptions were changed.",
+    "It makes unresolved differences reviewable.",
+    "Independent correctness of the original or reproduced scientific claim."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does a visually similar plot prove a faithful reproduction?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Units, normalization and data/method can differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can an extension replace the original baseline without disclosure?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "The changed assumptions must be separated.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Should inaccessible original inputs be documented rather than fabricated?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Missing evidence cannot be replaced silently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Simple standardized difference for new 12,reference 10,σ_ref=2?",
+      "answer": "1",
+      "explanation": "(12−10)/2=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Relative numerical difference (12−10)/10?",
+      "answer": "0.2",
+      "explanation": "2/10=.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What does completion not certify automatically?",
+      "answer": "Independent correctness of the original or reproduced scientific claim.",
+      "options": [
+        "Independent correctness of the original or reproduced scientific claim.",
+        "A precisely identified output/claim with exact source version."
+      ],
+      "explanation": "Independent correctness of the original or reproduced scientific claim.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is a bounded reproduction target?",
+      "back": "A precisely identified output/claim with exact source version.",
+      "concept": "as10-4-theory"
+    },
+    {
+      "front": "What separates baseline and extension?",
+      "back": "Whether data or methodological assumptions were changed.",
+      "concept": "as10-4-theory"
+    },
+    {
+      "front": "Why retain a discrepancy log?",
+      "back": "It makes unresolved differences reviewable.",
+      "concept": "as10-4-theory"
+    },
+    {
+      "front": "What does completion not certify automatically?",
+      "back": "Independent correctness of the original or reproduced scientific claim.",
+      "concept": "as10-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Official NASA ADS and arXiv documentation — exact page/version verification pending",
+    "Gelman et al., Bayesian Data Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+What counts as reproducing a published result rather than merely drawing a similar-looking plot? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+A capstone needs a chosen claim, exact inputs, defined tolerances and a transparent record of differences from the original analysis.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A reproduction project specifies a published target and reconstructs its result with traceable data/code/method assumptions, distinguishing reproduction, replication and extension as defined in the project.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Choose one bounded target such as a table entry, scaling fit or figure panel. Record paper version, data release, preprocessing, model, parameter convention and output definition. A visually similar curve can arise from different units or normalization; compare numerical quantities such as $r=(x_{new}-x_{ref})/\sigma_{ref}$ only when the reference uncertainty and correlation assumptions support that comparison.
+
+Separate a faithful reproduction baseline from changed priors, algorithms or data. An extension may be scientifically useful but does not substitute for demonstrating the original target. Missing proprietary inputs or unavailable calibration can make an exact reproduction impossible; document the limitation rather than silently inventing replacement observations.
+
+Use a clean executable workflow with input checksums, dependencies, seeds and declared tolerances. Validate components on exact or synthetic test cases. Keep a difference log explaining whether mismatches come from data versions, stochastic error, numeric precision or unresolved methodology.
+
+The final report includes claim, assumptions, evidence, uncertainty, reproducibility instructions and remaining discrepancies. No automatic XP or a successful script should be called independent scientific certification. This lesson offers a project rubric and methods; it does not claim that a specific published result has already been reproduced.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Write a capstone proposal with one exact target and a data-access/provenance plan. Complete a synthetic control case before real observations. Keep unavailable inputs as explicit blockers, not invented files, and report every departure from the baseline.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a hypothetical reference is 10±2 and the reproduced value is 12 with reference uncertainty used for a simple diagnostic, the standardized difference is 1. That number alone is not a complete joint-consistency test if the two analyses share correlated data or have other errors.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

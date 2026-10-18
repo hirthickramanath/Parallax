@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS10.3",
+  "title": "Bayesian inference for astronomy",
+  "hook": "Why can two analysts infer different source parameters from the same data?",
+  "recap": [
+    "Likelihood times prior, normalized by evidence.",
+    "It can depend on model parameters.",
+    "Comparing model-generated data features with observations.",
+    "One summary interval may conceal separated explanations."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a flat prior invariant under every nonlinear reparameterization?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The density transforms with a Jacobian.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does sampler convergence prove the physical model is correct?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It only concerns the specified posterior.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can selection require likelihood renormalization?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Only an observable subset may enter the sample.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Posterior first-hypothesis probability for equal priors and likelihoods .8,.2?",
+      "answer": "0.8",
+      "explanation": "Normalize .8 and .2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Posterior first probability for prior .2,.8 and likelihood .8,.2?",
+      "answer": "0.5",
+      "explanation": "Both unnormalized weights are .16.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why inspect multimodality?",
+      "answer": "One summary interval may conceal separated explanations.",
+      "options": [
+        "One summary interval may conceal separated explanations.",
+        "Likelihood times prior, normalized by evidence."
+      ],
+      "explanation": "One summary interval may conceal separated explanations.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines a posterior?",
+      "back": "Likelihood times prior, normalized by evidence.",
+      "concept": "as10-3-theory"
+    },
+    {
+      "front": "Why keep likelihood normalization when noise varies?",
+      "back": "It can depend on model parameters.",
+      "concept": "as10-3-theory"
+    },
+    {
+      "front": "What is posterior predictive checking?",
+      "back": "Comparing model-generated data features with observations.",
+      "concept": "as10-3-theory"
+    },
+    {
+      "front": "Why inspect multimodality?",
+      "back": "One summary interval may conceal separated explanations.",
+      "concept": "as10-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Official NASA ADS and arXiv documentation — exact page/version verification pending",
+    "Gelman et al., Bayesian Data Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two analysts infer different source parameters from the same data? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Bayesian inference combines a likelihood and prior, with posterior predictive validation needed before treating parameter estimates as scientifically adequate.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Bayes’ rule gives p(θ|d) proportional to p(d|θ)p(θ); every factor is tied to a data-generating/selection model and a parameter convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For independent Gaussian residuals with known variances, log likelihood contains $-\tfrac12\sum_i[(d_i-m_i(\theta))^2/\sigma_i^2+\ln(2\pi\sigma_i^2)]$. If variances or correlations depend on parameters, the normalization cannot be discarded as a constant. A covariance matrix replaces independent terms when errors are correlated.
+
+Priors encode a measure on parameters. A flat prior in θ is not flat in logθ, because transformation includes a Jacobian. State physical bounds and sensitivity rather than calling every convenient prior uninformative. Selection or truncation can require an explicit likelihood normalization over what could be observed.
+
+Posterior samples need convergence/mixing and effective-sample-size diagnostics. A credible interval is a probability statement within the model/prior, not automatically a frequentist coverage guarantee. Degeneracy and multimodality should not be hidden behind one symmetric error bar.
+
+Posterior predictive checks ask whether replicated data from the fitted model reproduce relevant observed features. Good chain convergence only validates exploration of the stated posterior; it does not prove the model explains reality. Record code, seeds, parameterization and data provenance, and distinguish synthetic inference from an actual source result.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Perform the two-hypothesis calculation and then a synthetic continuous fit with a changed prior parameterization. Compare posterior predictions, not only best-fit parameter values, and test sampler exploration separately.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For two equally likely prior hypotheses with likelihoods .8 and .2 for the observed data, posterior probabilities are .8 and .2. If the first prior probability were .2 instead, the unnormalized weights would be .16 and .16, yielding .5 each.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

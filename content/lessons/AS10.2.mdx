@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS10.2",
+  "title": "Analysing survey data (Gaia, TESS, SDSS)",
+  "hook": "Why does downloading a survey table not yet produce a defensible astrophysical sample?",
+  "recap": [
+    "Saved selection, exclusion counts and input provenance.",
+    "A justified common-quantity model with appropriate error assumptions.",
+    "The distinction among missing, flagged and nondetected values.",
+    "To test pipeline response on known synthetic inputs."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Should a nondetection automatically become numeric zero?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Censoring and noise need a measurement model.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can quality cuts change the target population?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Selection depends on observable properties.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a fresh mutable query alone ensure reproducibility?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "The exact response/release must be retained.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Weighted mean for values 2,4 with σ=1,2?",
+      "answer": "2.4",
+      "explanation": "(2×1+4×.25)/(1+.25)=2.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Weight ratio of σ=1 to σ=2?",
+      "answer": "4",
+      "explanation": "Inverse variances are 1 and .25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why use injections?",
+      "answer": "To test pipeline response on known synthetic inputs.",
+      "options": [
+        "To test pipeline response on known synthetic inputs.",
+        "Saved selection, exclusion counts and input provenance."
+      ],
+      "explanation": "To test pipeline response on known synthetic inputs.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What makes a sample auditable?",
+      "back": "Saved selection, exclusion counts and input provenance.",
+      "concept": "as10-2-theory"
+    },
+    {
+      "front": "When does inverse-variance weighting apply?",
+      "back": "A justified common-quantity model with appropriate error assumptions.",
+      "concept": "as10-2-theory"
+    },
+    {
+      "front": "What must masks retain?",
+      "back": "The distinction among missing, flagged and nondetected values.",
+      "concept": "as10-2-theory"
+    },
+    {
+      "front": "Why use injections?",
+      "back": "To test pipeline response on known synthetic inputs.",
+      "concept": "as10-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Official NASA ADS and arXiv documentation — exact page/version verification pending",
+    "Gelman et al., Bayesian Data Analysis — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does downloading a survey table not yet produce a defensible astrophysical sample? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Survey analysis requires quality cuts, completeness, provenance and measurement-model choices before any population conclusion.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A survey workflow transforms a versioned input catalogue or time series into a specified sample and statistic, retaining every selection and uncertainty assumption.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Preserve source release, exact query, raw response/checksum, column units, masks and quality flags. A Gaia-like astrometric sample, TESS-like light curve and SDSS-like spectrum have different windows, calibration and selection. Do not label a synthetic exercise as one of these actual survey products.
+
+An inverse-variance weighted mean is $\bar x=\sum x_i/\sigma_i^2\,/\sum1/\sigma_i^2$ for independent Gaussian measurements of one common quantity. Correlated systematics and intrinsic variability invalidate that simple uncertainty interpretation. Censoring and nondetections need explicit treatment rather than zero substitution.
+
+Quality cuts can improve measurements while altering population completeness. A magnitude or signal-to-noise threshold can correlate with distance, colour or physical state. Save both the selection expression and exclusion counts, and test sensitivity to reasonable alternative cuts.
+
+Validate a pipeline on small hand-checkable cases and independent synthetic injections, then propagate uncertainty to the scientific statistic. Reproducibility includes code/environment and fixed data, not an undocumented mutable web query. No real survey dataset is fetched or certified by this lesson.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Build a synthetic masked table and a provenance manifest, perform stated quality cuts and compare exclusion counts. Test a weighted mean on the worked example before using a real release with documented calibration.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For values 2 and 4 with uncertainties 1 and 2, weights are 1 and 1/4 and the common-mean estimate is (2+1)/1.25=2.4. This formula is not justified if the values represent an intrinsically changing source without that model.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

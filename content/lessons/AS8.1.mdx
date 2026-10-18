@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS8.1",
+  "title": "Milky Way structure",
+  "hook": "Why does our position inside the Milky Way make its structure difficult to measure?",
+  "recap": [
+    "Stars have random and noncircular motions.",
+    "Distance, extinction and observer geometry are entangled.",
+    "Footprint, magnitude, quality and detection selection.",
+    "Solar position/motion and coordinate conventions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is a flat circular-speed curve solid-body rotation?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Ω falls as 1/R.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a brightness map automatically a mass map?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Population and extinction weight light differently.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must survey selection enter population inference?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The catalogue is not a complete volume census.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Angular speed for circular v=200,R=10 in compatible units?",
+      "answer": "20",
+      "explanation": "v/R=20.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Angular speed for v=200,R=20?",
+      "answer": "10",
+      "explanation": "v/R=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What frame inputs affect velocity conversion?",
+      "answer": "Solar position/motion and coordinate conventions.",
+      "options": [
+        "Solar position/motion and coordinate conventions.",
+        "Stars have random and noncircular motions."
+      ],
+      "explanation": "Solar position/motion and coordinate conventions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What distinguishes v_c and every stellar velocity?",
+      "back": "Stars have random and noncircular motions.",
+      "concept": "as8-1-theory"
+    },
+    {
+      "front": "Why are internal Galactic maps difficult?",
+      "back": "Distance, extinction and observer geometry are entangled.",
+      "concept": "as8-1-theory"
+    },
+    {
+      "front": "What biases catalogues?",
+      "back": "Footprint, magnitude, quality and detection selection.",
+      "concept": "as8-1-theory"
+    },
+    {
+      "front": "What frame inputs affect velocity conversion?",
+      "back": "Solar position/motion and coordinate conventions.",
+      "concept": "as8-1-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Binney and Tremaine, Galactic Dynamics — edition and exact section verification pending",
+    "Mo, van den Bosch and White, Galaxy Formation and Evolution — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does our position inside the Milky Way make its structure difficult to measure? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Galactic maps combine incomplete distance, velocity and extinction information; a survey’s selection changes the apparent populations.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+The Milky Way has disc, bulge/bar and halo components with distinct but overlapping spatial, chemical and dynamical distributions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For an axisymmetric circular approximation, $\Omega(R)=v_c(R)/R$. A rotation curve is not identical to every observed star’s azimuthal velocity, because random motion, noncircular streams and selection contribute. Converting heliocentric measurements requires solar position/velocity conventions and a coordinate frame.
+
+Distances from parallax, candles or population models carry different uncertainties. Dust extinction obscures some sight lines and changes colours; near/far geometry can be degenerate in kinematic-distance methods. A brightness map is not a direct mass-density map.
+
+The thin/thick disc, bar, stellar halo and gaseous components are useful descriptions rather than perfectly disjoint universal categories. Abundance patterns and phase-space substructure preserve formation information, but mixing and selection complicate assigning every star a unique origin.
+
+Survey footprints, magnitude limits, completeness and astrometric/radial-velocity quality shape a catalogue. Correcting selection requires a model of what could enter the sample. Use multiple tracers and retain calibration/provenance rather than interpreting an apparent deficit as an empty galactic volume.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Construct a synthetic disc and apply a magnitude/extinction selection. Compare the true simulation population with the selected catalogue, labelling both synthetic. State solar-motion/frame choices before plotting measured velocities.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For circular speed 200 and radius 10 in compatible units, angular speed is 20 in speed-per-length units. At the same speed and radius 20 it is 10. A flat circular-speed curve therefore is not solid-body rotation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>
