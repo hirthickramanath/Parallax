@@ -584,3 +584,27 @@ test("nuclear particle and condensed examples preserve conventions and response 
     check(id, "warmup", w);
   }
 });
+test("field theory and relativity examples retain conventions and approximation limits", () => {
+  const rows = [
+    ["PH15.1", 2 * 3, 3],
+    ["PH15.2", 3, (9 + 4) / 2],
+    ["PH15.3", 5, 10],
+    ["PH15.4", 0, 2],
+    ["PH15.5", 0.2 ** 2, 4],
+    ["PH15.6", 0.1 * 2, 0.1 ** 2],
+    ["PH15.7", 2 + 3, 2 * 3],
+    ["PH15.8", 4 / (2 * 2), 8 / (2 * 2)],
+    ["PH16.1", -6 / 2, -3 * 4],
+    ["PH16.2", -2 * 3, -1],
+    ["PH16.3", (2 * 3) / 2, Math.sqrt(0.75)],
+    ["PH16.4", 5 + Math.sqrt(25 - 9), 0.5],
+    ["PH16.5", 0.5, 0.25],
+    ["PH16.6", 8 ** (2 / 3), Math.sqrt(4)],
+    ["PH16.7", 0.5 ** 2, 0.04 / 4],
+    ["PH16.8", Math.sqrt(4 * 9), 2 ** -1.5],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

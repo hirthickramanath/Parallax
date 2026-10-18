@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH16.7",
+  "title": "Numerical relativity intro",
+  "hook": "Why can a stable-looking numerical spacetime still violate Einstein’s equations?",
+  "recap": [
+    "Slicing/coordinate evolution quantities in a 3+1 description.",
+    "Constraint and solution convergence under refinement.",
+    "Finite-radius approximations affect waveform error.",
+    "A study design, not an actually executed merger simulation."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does visually smooth output guarantee constraints are satisfied?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Residual and convergence checks are needed.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can boundary treatment contaminate extracted waves?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Finite domains and reflections matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does computation cost prove scientific validity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Verification and validation remain necessary.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Error ratio after halving h in an admitted second-order regime?",
+      "answer": "0.25",
+      "explanation": "(.5)²=.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Next error after .04 under that factor?",
+      "answer": "0.01",
+      "explanation": ".04/4=.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What is claimed by this lesson?",
+      "answer": "A study design, not an actually executed merger simulation.",
+      "options": [
+        "A study design, not an actually executed merger simulation.",
+        "Slicing/coordinate evolution quantities in a 3+1 description."
+      ],
+      "explanation": "A study design, not an actually executed merger simulation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What are lapse and shift?",
+      "back": "Slicing/coordinate evolution quantities in a 3+1 description.",
+      "concept": "ph16-7-theory"
+    },
+    {
+      "front": "What tests continuum consistency?",
+      "back": "Constraint and solution convergence under refinement.",
+      "concept": "ph16-7-theory"
+    },
+    {
+      "front": "Why record extraction radius?",
+      "back": "Finite-radius approximations affect waveform error.",
+      "concept": "ph16-7-theory"
+    },
+    {
+      "front": "What is claimed by this lesson?",
+      "back": "A study design, not an actually executed merger simulation.",
+      "concept": "ph16-7-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Carroll, Spacetime and Geometry — edition and exact section verification pending",
+    "Wald, General Relativity — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a stable-looking numerical spacetime still violate Einstein’s equations? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Numerical relativity must evolve constrained gauge-redundant geometry and test more than visually smooth output.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A 3+1 decomposition separates spatial metric, extrinsic curvature, lapse and shift; constraint equations restrict initial data and diagnostics.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A foliation writes spacetime in lapse/shift form, and the evolution system depends on formulation and gauge choices. Physical observables must be extracted with those conventions accounted for. Gauge stability is not identical to physical correctness.
+
+Hamiltonian/momentum constraints should hold in the continuum. A diagnostic norm can be written $\|C\|_2=[V^{-1}\int C^2dV]^{1/2}$ with a stated geometric weight. Numerical truncation produces residuals; their convergence and propagation matter more than a single arbitrary small number.
+
+Finite boundaries, mesh refinement and singular-region treatment can contaminate waves. Excision and puncture methods are distinct strategies with conditions, not instructions to delete unknown physical content arbitrarily. Wave extraction at finite radius needs error/control when approximating asymptotic radiation.
+
+Verification uses exact solutions, symmetry limits, resolution studies and conservation/balance checks. Validation against observations adds source/measurement modelling. A simulation is not a new experiment, and expensive computation alone is not evidence of convergence. This introduction defines a reproducible study design rather than claiming a merger calculation was run.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Design a convergence experiment on a supplied exact spacetime test, recording formulation, gauge, domain, resolutions and diagnostics. Do not present a toy grid curve as an executed numerical-relativity waveform.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If a second-order error model predicts error ∝h², halving grid spacing reduces the error by four. Values .04,.01,.0025 at successive halvings fit that scaling but still need a reference/constraint interpretation.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

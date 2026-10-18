@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH15.6",
+  "title": "Renormalisation",
+  "hook": "Why does removing regulator dependence not mean ignoring short-distance physics?",
+  "recap": [
+    "A stated matching/measurement condition.",
+    "dg/dlnμ in the chosen convention.",
+    "Intermediate couplings and coefficients depend on it.",
+    "Omitted degrees of freedom/operators can cease to be suppressed."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is regularization identical to renormalization?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They define singular quantities and fix matched parameters in distinct steps.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can an EFT with higher operators be predictive at fixed order?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Power counting limits needed inputs.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does regulator independence remove every theoretical uncertainty?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Truncation and model errors remain.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Toy Δg for beta=.1 and Δlnμ=2?",
+      "answer": "0.2",
+      "explanation": ".1×2=.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Suppression (E/Λ)² at E/Λ=.1?",
+      "answer": "0.01",
+      "explanation": ".1²=.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why respect an EFT cutoff?",
+      "answer": "Omitted degrees of freedom/operators can cease to be suppressed.",
+      "options": [
+        "Omitted degrees of freedom/operators can cease to be suppressed.",
+        "A stated matching/measurement condition."
+      ],
+      "explanation": "Omitted degrees of freedom/operators can cease to be suppressed.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What fixes a renormalized parameter?",
+      "back": "A stated matching/measurement condition.",
+      "concept": "ph15-6-theory"
+    },
+    {
+      "front": "What is an energy-scale beta function?",
+      "back": "dg/dlnμ in the chosen convention.",
+      "concept": "ph15-6-theory"
+    },
+    {
+      "front": "Why state scheme?",
+      "back": "Intermediate couplings and coefficients depend on it.",
+      "concept": "ph15-6-theory"
+    },
+    {
+      "front": "Why respect an EFT cutoff?",
+      "back": "Omitted degrees of freedom/operators can cease to be suppressed.",
+      "concept": "ph15-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending",
+    "Schwartz, Quantum Field Theory and the Standard Model — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does removing regulator dependence not mean ignoring short-distance physics? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Renormalization separates intermediate regulator choices from matched observables and organizes scale dependence and effective-theory uncertainty.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Regularization defines singular expressions; renormalization fixes parameters/operators through conditions so predictions at a stated order can be compared across scales.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A cutoff or dimensional regulator changes intermediate integrals. Counterterms consistent with symmetry and power counting absorb dependence into defined parameters; simply deleting every large term is not a justified procedure. The renormalization condition specifies what measured or matched quantity fixes a parameter.
+
+A running coupling obeys a beta function $\beta(g)=dg/d\ln\mu$ under this energy-scale convention. Coefficients and coupling definitions can be scheme dependent, while consistently matched observables agree to the admitted accuracy. A coupling is not a universal scale-independent number in every process.
+
+For an EFT, higher-dimension operators are suppressed by a high scale under a stated power counting. Nonrenormalizable in the old finite-counterterm sense does not imply useless: it can be predictive to fixed order with finitely many needed coefficients. Extrapolation past the cutoff is not justified.
+
+Perturbative series can be asymptotic, and large logarithms may require resummation. A regulator-independent answer still has truncation, input and model uncertainties. Naturalness arguments and speculative ultraviolet completions are not direct experimental measurements.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare a regulated toy integral under two cutoffs after fixing the same low-energy condition. Track residual truncation dependence and the expansion parameter rather than declaring all uncertainty removed.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For a toy beta law dg/dlnμ=.1 at effectively constant beta over a step Δlnμ=2, Δg≈.2. This linear approximation is not a universal QFT running law. A term suppressed as (E/Λ)² is .01 at E/Λ=.1.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

@@ -49,3 +49,7 @@ PH10 and PH12 add 12 drafts. Coverage is 299/354 bodies, 1201 recall cards, 55 m
 ## Nuclear, particle and condensed matter
 
 PH13 and PH14 add 15 drafts. Coverage is 314/354 bodies, 1261 recall cards, 40 missing. Build, all 80 model/grading/example tests and both new unit player sweeps passed. These are theoretical model/analysis lessons, not executed nuclear or device experiments. Source/scientific review remains pending.
+
+## Field theory and relativity
+
+PH15 and PH16 add 16 drafts. Coverage is 330/354 bodies, 1325 recall cards, 24 missing. Build, all 81 model/grading/example tests and both new unit player sweeps passed. Gauge, metric, EFT and semiclassical assumptions are stated; frontiers are not presented as experimentally settled. No numerical-relativity simulation was claimed to have been executed.

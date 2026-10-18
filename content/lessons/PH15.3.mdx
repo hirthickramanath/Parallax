@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH15.3",
+  "title": "Canonical quantisation of the scalar field",
+  "hook": "Why does quantizing one field produce a collection of oscillator modes?",
+  "recap": [
+    "Canonical mode algebra and an appropriate state space.",
+    "It defines otherwise singular operations for controlled limits.",
+    "Ordering/boundary prescription and normalization.",
+    "They have different physical and renormalization questions."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is normal ordering a universal solution to all vacuum-energy problems?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Its scope is limited by theory and gravity.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Are Feynman time-ordered and retarded propagators identical?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Their prescriptions differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Must momentum measure match commutator normalization?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "The factors define the same field algebra.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Free-mode ω for m=3,k=4?",
+      "answer": "5",
+      "explanation": "√(9+16)=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Excitation energy for two quanta of that free mode?",
+      "answer": "10",
+      "explanation": "2ω=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why separate vacuum reference and excitation energy?",
+      "answer": "They have different physical and renormalization questions.",
+      "options": [
+        "They have different physical and renormalization questions.",
+        "Canonical mode algebra and an appropriate state space."
+      ],
+      "explanation": "They have different physical and renormalization questions.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What quantizes the free field?",
+      "back": "Canonical mode algebra and an appropriate state space.",
+      "concept": "ph15-3-theory"
+    },
+    {
+      "front": "What is the role of a regulator?",
+      "back": "It defines otherwise singular operations for controlled limits.",
+      "concept": "ph15-3-theory"
+    },
+    {
+      "front": "What must a propagator specify?",
+      "back": "Ordering/boundary prescription and normalization.",
+      "concept": "ph15-3-theory"
+    },
+    {
+      "front": "Why separate vacuum reference and excitation energy?",
+      "back": "They have different physical and renormalization questions.",
+      "concept": "ph15-3-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending",
+    "Schwartz, Quantum Field Theory and the Standard Model — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does quantizing one field produce a collection of oscillator modes? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Free scalar quantization connects canonical algebra, particle excitations and vacuum fluctuations under a normalization convention.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+At equal time a canonical scalar field and momentum obey [φ(x),π(y)]=iδ³(x−y) in ℏ=1 units, interpreted distributionally.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+Expand the free field in positive/negative-frequency modes with creation and annihilation operators. Normalizations are chosen so $[a_{\mathbf k},a^\dagger_{\mathbf q}]$ equals the chosen momentum delta measure. Factors of 2ω and (2π)³ depend on convention; using one mode measure with another commutator changes predictions.
+
+Each free mode contributes oscillator excitations with energy ω_k=√(k²+m²) in natural units. Normal ordering subtracts a chosen vacuum constant in this setting but does not by itself resolve gravitational vacuum-energy questions or every interacting divergence.
+
+Correlation functions describe amplitudes and fluctuations; a propagator is a distribution with boundary/time-ordering prescription. A time-ordered propagator is not identical to a retarded classical response kernel, though they are related constructions.
+
+Local products and coincident correlations require regularization and renormalized definitions. Finite-volume and lattice cutoffs make computations controllable but introduce regulator dependence that must be assessed. The free construction is not a full solution of an interacting scalar theory.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Quantize a finite set of scalar modes as oscillators and verify energy increments. State the box volume, cutoff and vacuum reference before comparing with continuum formulas.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+For m=3 and |k|=4, a free quantum has ω=5. Two quanta in that same free mode contribute excitation energy 10 above the chosen vacuum reference. Bose occupation allows this without treating them as labelled distinguishable particles.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

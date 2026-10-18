@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH15.4",
+  "title": "Interactions and Feynman diagrams",
+  "hook": "Why must amplitudes be added before probabilities in a diagram expansion?",
+  "recap": [
+    "Time ordering and interaction expansion.",
+    "The chosen theory’s interaction structure.",
+    "They correct contraction/state counting.",
+    "The truncation is not an exact prediction."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Are internal lines necessarily physical on-shell particles?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "They are integrated terms in an amplitude.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can coherent diagram probabilities always be summed independently?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Amplitudes interfere.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does a rate require phase space and incident normalization?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Amplitude alone is not a cross section.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Squared total for amplitudes 1 and −1?",
+      "answer": "0",
+      "explanation": "|1−1|²=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Squared total for amplitudes 1 and i?",
+      "answer": "2",
+      "explanation": "|1+i|²=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why estimate higher orders?",
+      "answer": "The truncation is not an exact prediction.",
+      "options": [
+        "The truncation is not an exact prediction.",
+        "Time ordering and interaction expansion."
+      ],
+      "explanation": "The truncation is not an exact prediction.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does the Dyson series impose?",
+      "back": "Time ordering and interaction expansion.",
+      "concept": "ph15-4-theory"
+    },
+    {
+      "front": "What do vertices encode?",
+      "back": "The chosen theory’s interaction structure.",
+      "concept": "ph15-4-theory"
+    },
+    {
+      "front": "Why retain symmetry factors?",
+      "back": "They correct contraction/state counting.",
+      "concept": "ph15-4-theory"
+    },
+    {
+      "front": "Why estimate higher orders?",
+      "back": "The truncation is not an exact prediction.",
+      "concept": "ph15-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending",
+    "Schwartz, Quantum Field Theory and the Standard Model — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why must amplitudes be added before probabilities in a diagram expansion? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Perturbative diagrams encode interference, symmetry factors and virtual integrations rather than independent alternative probabilities.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A perturbative S-matrix expansion organizes interactions between specified asymptotic states under the theory’s regulator and normalization conventions.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The Dyson series uses $S=T\exp[-i\int H_I(t)dt]$ in ℏ=1 notation. Wick contractions organize terms into propagators and vertices. The time ordering and combinatorial factors are part of the expansion, not decorations to omit from a sketch.
+
+For indistinguishable paths to one final state, total probability uses |∑M_i|² with interference. Summing |M_i|² is appropriate only after a justified incoherent/orthogonal distinction. Internal lines carry integrated/summed variables and need not obey external on-shell conditions.
+
+Phase space, incident flux, spin sums/averages and identical-particle factors convert amplitudes into rates/cross sections. A diagram’s coupling power identifies an order, but loop integrals can contain divergences and large logarithms. A lowest-order result requires an admitted regime and uncertainty from neglected effects.
+
+Unitarity, symmetry and conservation constrain the expansion. A selected incomplete set of terms can violate gauge invariance or an order-consistent probability balance. Nonperturbative phenomena need methods beyond drawing more unvalidated weak-coupling terms.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compute a two-amplitude interference example and track normalization separately from a phase-space conversion. Identify external and internal variables in a supplied elementary diagram without calling the internal line an observed trajectory.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Two contributions M₁=1 and M₂=−1 give total probability scale zero, whereas adding separate squared magnitudes would give two. For M₂=i instead, the total magnitude squared is two.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

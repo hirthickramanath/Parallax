@@ -1,0 +1,186 @@
+---
+{
+  "id": "PH15.5",
+  "title": "Quantum electrodynamics",
+  "hook": "Why does electric charge conservation constrain an entire scattering amplitude?",
+  "recap": [
+    "Coordinated matter/potential transformations and symmetry-respecting calculation.",
+    "Ward identities and other conservation/unitarity conditions.",
+    "Renormalized coupling depends on definition and scale.",
+    "Soft/collinear radiation affects the measured observable."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does gauge fixing change a properly defined physical observable?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "It chooses a redundant description.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Is a bare charge automatically the measured renormalized charge?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "A matching prescription is required.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Can soft real emission matter for finite measured rates?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Infrared-safe observables combine appropriate contributions.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "α for e=.2 and normalized denominator 1?",
+      "answer": "0.04",
+      "explanation": ".2²=.04.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "α ratio when e doubles?",
+      "answer": "4",
+      "explanation": "It scales as e².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Why define detector acceptance?",
+      "answer": "Soft/collinear radiation affects the measured observable.",
+      "options": [
+        "Soft/collinear radiation affects the measured observable.",
+        "Coordinated matter/potential transformations and symmetry-respecting calculation."
+      ],
+      "explanation": "Soft/collinear radiation affects the measured observable.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What does local gauge consistency require?",
+      "back": "Coordinated matter/potential transformations and symmetry-respecting calculation.",
+      "concept": "ph15-5-theory"
+    },
+    {
+      "front": "What constrain QED amplitudes?",
+      "back": "Ward identities and other conservation/unitarity conditions.",
+      "concept": "ph15-5-theory"
+    },
+    {
+      "front": "Why specify a scale for charge?",
+      "back": "Renormalized coupling depends on definition and scale.",
+      "concept": "ph15-5-theory"
+    },
+    {
+      "front": "Why define detector acceptance?",
+      "back": "Soft/collinear radiation affects the measured observable.",
+      "concept": "ph15-5-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Peskin and Schroeder, An Introduction to Quantum Field Theory — edition and exact section verification pending",
+    "Schwartz, Quantum Field Theory and the Standard Model — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does electric charge conservation constrain an entire scattering amplitude? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+QED is a local gauge theory with renormalized parameters, infrared qualifications and observable-state definitions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+QED couples a charged Dirac field to an abelian gauge field through a covariant derivative and a stated charge/sign convention.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A common natural-unit structure is $\mathcal L=-F_{\mu\nu}F^{\mu\nu}/4+\bar\psi(i\gamma^\mu D_\mu-m)\psi$. Local gauge transformations act consistently on matter and potential; gauge fixing removes redundant calculation variables rather than changing observables.
+
+Ward identities connect parts of amplitudes/correlation functions and enforce gauge-consistent relations when the regulator/renormalization preserve the symmetry. Dropping arbitrary pieces of one order can spoil those relations. A physical observable should not depend on the chosen gauge parameter after consistent computation.
+
+The coupling α=e²/(4πℏc) in a specified unit convention is a scale-defined renormalized quantity. Precision calculations include loop and real-emission contributions appropriate to the measurement. Bare parameters are not directly inserted as measured constants without a matching prescription.
+
+Soft-photon infrared structure requires inclusive or otherwise well-defined observable constructions; an exact no-extra-photon exclusive idealization can be singular. Detector thresholds matter. QED is highly tested in its regime, but that is not a declaration that a finite tutorial amplitude describes strong fields, composite structure or every experimental correction.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Check gauge consistency of a supplied elementary current-conservation calculation and distinguish a renormalized parameter input from a bare symbol. Define photon-energy acceptance before discussing an inclusive observable.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In normalized units 4πℏc=1 and e=.2, α=.04. Doubling e gives four times this coupling parameter. These deliberately normalized values are not the measured physical fine-structure constant.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

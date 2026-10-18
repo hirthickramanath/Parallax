@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **314**.
-- Authored recall cards: **1261**.
-- Missing lesson bodies: **40**.
+- Playable authored drafts: **330**.
+- Authored recall cards: **1325**.
+- Missing lesson bodies: **24**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -50,8 +50,8 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 6 | PH12 | Atomic, molecular and optical physics | 6 / 6 | None |
 | 6 | PH13 | Nuclear and particle physics | 7 / 7 | None |
 | 6 | PH14 | Condensed matter physics | 8 / 8 | None |
-| 7 | PH15 | Quantum field theory and the Standard Model | 0 / 8 | PH15.1, PH15.2, PH15.3, PH15.4, PH15.5, PH15.6, PH15.7, PH15.8 |
-| 6 | PH16 | General relativity | 0 / 8 | PH16.1, PH16.2, PH16.3, PH16.4, PH16.5, PH16.6, PH16.7, PH16.8 |
+| 7 | PH15 | Quantum field theory and the Standard Model | 8 / 8 | None |
+| 6 | PH16 | General relativity | 8 / 8 | None |
 | 5 | PH17 | Experimental and computational physics | 0 / 5 | PH17.1, PH17.2, PH17.3, PH17.4, PH17.5 |
 | 8 | PH18 | Research readiness | 0 / 4 | PH18.1, PH18.2, PH18.3, PH18.4 |
 | 0 | CB | Bridge | 5 / 5 | None |
