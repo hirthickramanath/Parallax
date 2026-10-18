@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS4.6",
+  "title": "White dwarfs, neutron stars and pulsars",
+  "hook": "Why can a dead stellar core remain supported without ongoing fusion?",
+  "recap": [
+    "Degenerate electron pressure with relevant corrections.",
+    "Electron number per mass affects pressure.",
+    "Relativistic hydrostatic balance with a dense-matter EOS.",
+    "Rotation and beam/observer geometry."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does absence of fusion imply immediate gravitational collapse for every remnant?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Degeneracy and dense-matter pressure can support it.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can neutron stars be modeled precisely by electron white-dwarf scaling?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "Their matter and gravity regimes differ.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Is pulsar characteristic age always the true age?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Torque and initial-period assumptions enter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Radius ratio for eight times mass in R∝M⁻¹ᐟ³?",
+      "answer": "0.5",
+      "explanation": "8⁻¹ᐟ³=1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Characteristic age for P=2,Pdot=.01?",
+      "answer": "100",
+      "explanation": "P/(2Pdot)=100.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does absence of fusion imply immediate gravitational collapse for every remnant?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Degeneracy and dense-matter pressure can support it.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What mainly supports a white dwarf?",
+      "back": "Degenerate electron pressure with relevant corrections.",
+      "concept": "as4-6-theory"
+    },
+    {
+      "front": "Why is the limiting mass composition dependent?",
+      "back": "Electron number per mass affects pressure.",
+      "concept": "as4-6-theory"
+    },
+    {
+      "front": "What framework describes a nonrotating neutron star?",
+      "back": "Relativistic hydrostatic balance with a dense-matter EOS.",
+      "concept": "as4-6-theory"
+    },
+    {
+      "front": "What produces pulsar periodicity?",
+      "back": "Rotation and beam/observer geometry.",
+      "concept": "as4-6-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a dead stellar core remain supported without ongoing fusion? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Compact remnants use degeneracy and strong gravity, with separate physics for white dwarfs and neutron stars.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+White dwarfs are supported largely by degenerate electrons; neutron-star structure requires dense-matter pressure and general-relativistic equilibrium, not a scaled white-dwarf model.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For cold nonrelativistic electron degeneracy, the approximate white-dwarf mass–radius trend is $R\propto M^{-1/3}$ for fixed composition in the admitted polytropic regime. More mass can mean smaller radius. At relativistic electron momenta the EOS softens toward a 4/3 exponent, producing the idealized Chandrasekhar limiting-mass scale with composition dependence.
+
+Actual white dwarfs have finite-temperature envelopes, composition stratification and possible magnetic/rotational effects. A cold ideal limit is not a universal exact observed maximum under all conditions. Cooling luminosity reflects thermal evolution rather than sustained ordinary core fusion.
+
+Neutron stars require a high-density EOS and the Tolman–Oppenheimer–Volkoff equations in the nonrotating spherical relativistic model. Nuclear interactions, composition and causality/stability constrain the EOS; ideal neutron degeneracy alone is not a precision mass-radius theory. Rapid rotation and fields require extensions.
+
+Pulsars are rotating magnetized compact stars whose beam geometry and spin evolution can produce pulses. Spin-down power scales with Iω|ω̇| when moment of inertia is treated constant, but magnetospheric torque and inclination models affect inferred field/age. A characteristic age P/(2Ṗ) relies on braking and initial-period assumptions, not an automatic true birth date.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Compare labelled cold white-dwarf scaling curves with a hypothetical finite-temperature deviation. Calculate pulsar characteristic ages and list the assumptions. Do not infer a neutron-star radius from an ideal electron-degeneracy relation.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+In the nonrelativistic white-dwarf scaling, increasing mass by eight reduces radius by two. A pulsar with P=2 and Ṗ=.01 in consistent units has characteristic age 100 under the stated formula, not an independently measured true age.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

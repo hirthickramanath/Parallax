@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS4.2",
+  "title": "Main sequence and the HR diagram",
+  "hook": "Why can two stars with the same surface temperature have very different luminosities?",
+  "recap": [
+    "Predominantly core hydrogen fusion.",
+    "Stefan–Boltzmann surface scaling.",
+    "Usable fuel divided by luminosity.",
+    "Evolutionary tracks, composition and observational corrections."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Is colour always equal to effective temperature without a model?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Atmospheres and extinction affect colour.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can a more massive star have a shorter lifetime?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Its luminosity can grow faster than available fuel.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does an isochrone age require assumptions about composition and distance?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "explanation": "Those parameters affect the fitted locus.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Luminosity ratio for equal T_eff and twice the radius?",
+      "answer": "4",
+      "explanation": "L∝R².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Lifetime ratio for twice the mass if L∝M³ and fuel fraction fixed?",
+      "answer": "0.25",
+      "explanation": "M/L scales as M⁻².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Is colour always equal to effective temperature without a model?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Atmospheres and extinction affect colour.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What defines main-sequence power in the model?",
+      "back": "Predominantly core hydrogen fusion.",
+      "concept": "as4-2-theory"
+    },
+    {
+      "front": "What connects luminosity, radius and T_eff?",
+      "back": "Stefan–Boltzmann surface scaling.",
+      "concept": "as4-2-theory"
+    },
+    {
+      "front": "What sets a nuclear lifetime estimate?",
+      "back": "Usable fuel divided by luminosity.",
+      "concept": "as4-2-theory"
+    },
+    {
+      "front": "What makes turnoff age inference conditional?",
+      "back": "Evolutionary tracks, composition and observational corrections.",
+      "concept": "as4-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can two stars with the same surface temperature have very different luminosities? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+The HR diagram organizes surface observables; stellar age and mass inference require evolutionary and population assumptions.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+A theoretical HR diagram relates luminosity and effective temperature; observational colour-magnitude diagrams add distance, extinction, bandpass and calibration effects.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+The surface definition gives $L=4\pi R^2\sigma_{SB}T_{eff}^4$. At equal T_eff, a larger radius produces a larger luminosity. Colour is not automatically a direct thermometer without accounting for reddening, metallicity and atmospheric spectral response.
+
+Main-sequence stars primarily balance core hydrogen fusion with losses over the appropriate quasi-static evolutionary interval. Their luminosity–mass relation depends on mass, composition and energy/transport regime; a single universal power is an approximation. The nuclear lifetime scale is available fuel divided by luminosity, not simply total rest-mass energy divided by luminosity.
+
+If locally L∝M^α and usable fuel fraction is held fixed, the lifetime scales as M^(1−α). Massive stars can therefore be shorter lived despite containing more fuel. Composition, convective-core extent, rotation and mass exchange alter that estimate.
+
+In a coeval population, the turnoff can constrain age through a model comparison, while unresolved binaries, distance, extinction and abundance spreads create degeneracies. An isochrone fit is conditional inference, not a unique age read directly from one colour. Main-sequence position alone does not specify every interior profile.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Plot synthetic stars in luminosity-temperature and colour-magnitude coordinates with declared transforms. Add distance/extinction and an unresolved companion separately. Explain which changes mimic an age or mass trend.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+At equal effective temperature a star with twice the radius is four times as luminous. In a local L∝M³ model with fixed fuel fraction, doubling mass gives eight times luminosity and one quarter of the lifetime.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

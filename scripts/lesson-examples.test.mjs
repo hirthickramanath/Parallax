@@ -413,3 +413,18 @@ test("stellar structure examples preserve gravothermal and transport assumptions
     check(id, "warmup", w);
   }
 });
+test("stellar evolution examples preserve collapse, lifetime and orbital scalings", () => {
+  const rows = [
+    ["AS4.1", Math.sqrt(4), 1 / Math.sqrt(4)],
+    ["AS4.2", 2 ** 2, 2 / 2 ** 3],
+    ["AS4.3", 8 * 3 * 2, 10 / 2],
+    ["AS4.4", 1 / Math.sqrt(4), 1 / 0.5],
+    ["AS4.5", 0.5 ** 3, 80 * 0.5 ** 3],
+    ["AS4.6", 8 ** (-1 / 3), 2 / (2 * 0.01)],
+    ["AS4.7", (6 / 3) ** 2, 4 ** 1.5],
+  ];
+  for (const [id, n, w] of rows) {
+    check(id, "numeric", n);
+    check(id, "warmup", w);
+  }
+});

@@ -1,0 +1,186 @@
+---
+{
+  "id": "AS4.4",
+  "title": "Variable stars and asteroseismology",
+  "hook": "Why can a star’s brightness oscillation reveal something about its interior?",
+  "recap": [
+    "Pressure.",
+    "Buoyancy in a suitable stable stratification.",
+    "Sampling gaps and cadence create aliases.",
+    "Interior structure through mode/model comparisons."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "Does every structural eigenmode have observable amplitude?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Driving, damping and visibility matter.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Can cadence create aliases?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "explanation": "Sampling changes the observed spectral window.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Does the period–density coefficient ignore mode identity?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "explanation": "Mode and structure set the coefficient.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Period ratio for four times mean density in the stated scaling?",
+      "answer": "0.5",
+      "explanation": "P∝ρ_bar⁻¹ᐟ².",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Frequency in cycles/day for period .5 day?",
+      "answer": "2",
+      "explanation": "f=1/P=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "Does every structural eigenmode have observable amplitude?",
+      "answer": "No",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "explanation": "Driving, damping and visibility matter.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What restores p modes?",
+      "back": "Pressure.",
+      "concept": "as4-4-theory"
+    },
+    {
+      "front": "What restores g modes?",
+      "back": "Buoyancy in a suitable stable stratification.",
+      "concept": "as4-4-theory"
+    },
+    {
+      "front": "Why identify the spectral window?",
+      "back": "Sampling gaps and cadence create aliases.",
+      "concept": "as4-4-theory"
+    },
+    {
+      "front": "What does asteroseismology infer conditionally?",
+      "back": "Interior structure through mode/model comparisons.",
+      "concept": "as4-4-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why can a star’s brightness oscillation reveal something about its interior? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Pulsation modes respond to internal sound speed, buoyancy and rotation, but mode identification and driving must be separated from a mere periodic light curve.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+Start with the concrete worked example below. Track which quantities belong to the system, which are imposed by its surroundings, and which conclusions require a limiting approximation.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Stellar oscillations are perturbations of a background structure. Pressure and buoyancy provide restoring forces for different mode families.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+A characteristic acoustic crossing time is R/c_s, while a radial dynamical period scales with $\sqrt{R^3/(GM)}$. Thus similar-structure pulsators have an approximate period–mean-density relation P∝ρ_bar⁻¹ᐟ². The coefficient depends on the mode and stellar model.
+
+Acoustic p modes and buoyancy g modes sample different structures. A positive squared Brunt–Väisälä frequency indicates stable buoyancy oscillations in the stated convention, while an unstable stratification changes the interpretation. Rotation and magnetic fields split or couple modes.
+
+Mode driving includes opacity-related heat-engine mechanisms and stochastic forcing by convection in different classes. A structural eigenfrequency is not by itself a proof that a mode is excited to observable amplitude. Damping, nonlinear saturation and surface visibility influence the light curve.
+
+Asteroseismic inference compares mode frequencies, spacings and splittings with models. Cadence, gaps, aliases, finite duration and blended companions affect observed spectra. A peak can be an instrumental artifact or rotation signal, so mode identification needs diagnostics. Synthetic oscillation curves must not be relabelled as actual telescope observations.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Generate a synthetic multi-frequency light curve with recorded cadence and gaps, then compare its periodogram to the known inputs. Change the window and show aliases. Use model frequency ratios separately from an excitation/amplitude claim.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+If two similar-structure pulsators differ in mean density by a factor of four, the denser one has half the characteristic period. A sampled 2-cycle-per-day signal needs cadence and a long enough baseline to distinguish aliases; a frequency label alone does not establish a radial mode.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

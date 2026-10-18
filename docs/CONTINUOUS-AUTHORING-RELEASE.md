@@ -21,3 +21,7 @@ The production build and all 68 model/grading/example tests passed. Targeted pro
 CH4.1–CH4.8, PH3.1–PH3.4, PH6.1–PH6.5 and AS3.1–AS3.7 add 24 drafts. Coverage is 215/354 bodies, 865 recall cards, 139 missing. Models distinguish formal charge from electron density, conductivity from conductance, physical from numerical dispersion, and stellar hydrostatic from thermal equilibrium.
 
 The production build, all 71 model/grading/example tests and targeted production-player sweeps for all four units passed. The full suite at the preceding 191-body state passed all 54 cases. A missing typeset crystal-field equation was corrected before the passing bonding sweep. References and science remain independently unverified drafts.
+
+## Stellar evolution
+
+AS4.1–AS4.7 add collapse/star formation, main-sequence inference, giant evolution, pulsations, supernovae, remnants and interacting binaries. Coverage is 222/354 bodies, 893 recall cards, 132 missing. Build, all 72 model/grading/example tests and the seven-lesson AS4 production-player sweep passed. Stellar ratios and classifications are explicitly model-dependent, and all source/scientific review remains pending.

@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **215**.
-- Authored recall cards: **865**.
-- Missing lesson bodies: **139**.
+- Playable authored drafts: **222**.
+- Authored recall cards: **893**.
+- Missing lesson bodies: **132**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -63,7 +63,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 2 | AS1 | Sky and orbits | 5 / 5 | None |
 | 2 | AS2 | Radiation and telescopes | 7 / 7 | None |
 | 4 | AS3 | Stellar structure | 7 / 7 | None |
-| 5 | AS4 | Stellar evolution and remnants | 0 / 7 | AS4.1, AS4.2, AS4.3, AS4.4, AS4.5, AS4.6, AS4.7 |
+| 5 | AS4 | Stellar evolution and remnants | 7 / 7 | None |
 | 7 | AS5 | Compact objects and high-energy astrophysics | 0 / 6 | AS5.1, AS5.2, AS5.3, AS5.4, AS5.5, AS5.6 |
 | 5 | AS6 | Interstellar medium and plasma astrophysics | 0 / 5 | AS6.1, AS6.2, AS6.3, AS6.4, AS6.5 |
 | 4 | AS7 | Planets and exoplanets | 0 / 5 | AS7.1, AS7.2, AS7.3, AS7.4, AS7.5 |
