@@ -1,6 +1,6 @@
 # Physical chemistry and analytical mechanics batch
 
-This is the current authoring release. The generated [course ledger](COURSE-STATUS.md) records actual coverage.
+This is a historical authoring release. See [the current release](FOURIER-PDE-RELEASE.md). The generated [course ledger](COURSE-STATUS.md) records actual coverage.
 
 Twenty new draft lessons cover CH1.1–CH1.13 and PH2.1–PH2.7. The course now contains **142 playable drafts, 573 retrieval cards and 212 missing lesson bodies** within its unchanged 354-entry inventory. All new references remain review leads pending edition/section checks and independent scientific review.
 

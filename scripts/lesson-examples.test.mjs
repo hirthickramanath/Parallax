@@ -260,3 +260,18 @@ test("physical chemistry and analytical mechanics numerical examples follow thei
       check(`${unit}.${i + 1}`, "warmup", warmup);
     });
 });
+test("Fourier and PDE draft examples retain normalization, rate and boundary conventions", () => {
+  const values = [
+    ["MA5.1", 3 ** 2 + (2 ** 2 + (-4) ** 2) / 2, 2 * 3],
+    ["MA5.2", 2 * 2, 3],
+    ["MA5.3", 3 / (1 + 2), 3 * 2 - 4],
+    ["MA5.4", 2 * 2 ** 2, 0.1 / 0.5 ** 2],
+    ["MA5.5", 2 * 3, 4 / 2],
+    ["MA5.6", 0.5 - 0.5 ** 2, -2 * 1],
+    ["MA5.7", 0.5 * (1 - 0.5), -0.5 - 0.5],
+  ];
+  for (const [id, numeric, warmup] of values) {
+    check(id, "numeric", numeric);
+    check(id, "warmup", warmup);
+  }
+});

@@ -3,9 +3,9 @@
 Generated from the curriculum and authored MDX with `npm run content:report`. This counts content, not scientific certification.
 
 - Curriculum: **354 entries in 59 units**.
-- Playable authored drafts: **142**.
-- Authored recall cards: **573**.
-- Missing lesson bodies: **212**.
+- Playable authored drafts: **149**.
+- Authored recall cards: **601**.
+- Missing lesson bodies: **205**.
 - Independently verified/published lessons: **0**.
 
 All lesson drafts require source and scientific review. A filled foundation unit does not imply textbook-level depth across every advanced subtopic.
@@ -22,7 +22,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 1 | MA2 | Multivariable and vector calculus | 8 / 8 | None |
 | 1 | MA3 | Linear algebra | 8 / 8 | None |
 | 2 | MA4 | Ordinary differential equations | 6 / 6 | None |
-| 3 | MA5 | PDEs and Fourier methods | 0 / 7 | MA5.1, MA5.2, MA5.3, MA5.4, MA5.5, MA5.6, MA5.7 |
+| 3 | MA5 | PDEs and Fourier methods | 7 / 7 | None |
 | 3 | MA6 | Complex analysis | 0 / 6 | MA6.1, MA6.2, MA6.3, MA6.4, MA6.5, MA6.6 |
 | 4 | MA7 | Special functions and asymptotics | 0 / 5 | MA7.1, MA7.2, MA7.3, MA7.4, MA7.5 |
 | 2 | MA8 | Probability and statistics | 7 / 7 | None |

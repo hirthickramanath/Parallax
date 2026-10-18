@@ -817,3 +817,46 @@ test("coupled oscillator bench exposes normal modes, conserved energy and tracea
   await page.getByRole("link", { name: "Open the connected lesson →" }).click();
   await expect(page).toHaveURL(/lesson\/PH2.7/);
 });
+
+test("Fourier evolution bench distinguishes heat decay from conserved wave energy on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/labs");
+  await page
+    .getByRole("button", { name: "Heat flow and waves", exact: true })
+    .click();
+  await page.getByLabel("PDE initial shape").selectOption("First mode");
+  const initial = Number(
+    await page.getByLabel("PDE squared norm").textContent(),
+  );
+  expect(initial).toBeCloseTo(Math.PI / 2, 5);
+  await page.getByLabel("PDE time", { exact: true }).fill("1");
+  expect(
+    Number(await page.getByLabel("PDE squared norm").textContent()),
+  ).toBeCloseTo((Math.PI / 2) * Math.exp(-2), 5);
+  await page.getByRole("button", { name: "Record PDE reading" }).click();
+  await page.getByRole("button", { name: "Wave motion", exact: true }).click();
+  const energy = await page.getByLabel("PDE wave energy").textContent();
+  await page.getByLabel("PDE time", { exact: true }).fill("1.5");
+  await expect(page.getByLabel("PDE wave energy")).toHaveText(energy!);
+  expect(
+    Number(await page.getByLabel("PDE squared norm").textContent()),
+  ).toBeLessThan(0.01);
+  await page.getByLabel("PDE initial shape").selectOption("Third mode");
+  await expect(page.getByRole("table").getByRole("row").nth(3)).toContainText(
+    "3.000",
+  );
+  await page.getByRole("button", { name: "Record PDE reading" }).click();
+  await expect(
+    page.getByRole("list", { name: "PDE readings" }).getByRole("listitem"),
+  ).toHaveCount(2);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBeTruthy();
+  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(page).toHaveURL(/lesson\/MA5.4/);
+});

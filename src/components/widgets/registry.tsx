@@ -1,3 +1,4 @@
+import { PdeModesLab } from "./PdeModesLab";
 import { CoupledOscillatorLab } from "./CoupledOscillatorLab";
 import { SphericalFieldLab } from "./SphericalFieldLab";
 import { RadiationLab } from "./RadiationLab";
@@ -10,6 +11,7 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  pde_modes_lab: PdeModesLab,
   coupled_oscillator_lab: CoupledOscillatorLab,
   spherical_field_lab: SphericalFieldLab,
   radiation_lab: RadiationLab,

@@ -220,3 +220,68 @@ test("coupled oscillator rejects nonphysical or nonfinite inputs", () => {
   ])
     assert.throws(() => coupledOscillator(...args), RangeError);
 });
+
+import { pdeModes } from "../src/lib/pde-modes.ts";
+test("PDE mode solutions satisfy initial data, fixed endpoints and heat/wave rate laws", () => {
+  for (const kind of ["heat", "wave"])
+    for (const c of [0.25, 1, 2]) {
+      const start = pdeModes(kind, c, 0, [1, 0.5, 0.25]);
+      near(
+        start.at(0.7),
+        Math.sin(0.7) + 0.5 * Math.sin(1.4) + 0.25 * Math.sin(2.1),
+      );
+      for (const t of [0, 0.1, 1, 5]) {
+        const model = pdeModes(kind, c, t, [1, 0.5, 0.25]);
+        near(model.at(0), 0);
+        near(model.at(Math.PI), 0);
+        for (const mode of model.modes)
+          near(mode.rate, c * (kind === "heat" ? mode.n ** 2 : mode.n));
+        if (kind === "heat") {
+          assert.ok(model.squaredNorm <= start.squaredNorm);
+          assert.equal(model.waveEnergy, null);
+        } else near(model.waveEnergy, start.waveEnergy);
+      }
+    }
+});
+test("finite-mode solutions satisfy their PDEs independently through numerical derivatives", () => {
+  const h = 1e-4,
+    x = 0.8,
+    t = 0.6,
+    c = 0.75,
+    a = [1, 0.5, 0.25];
+  for (const kind of ["heat", "wave"]) {
+    const mid = pdeModes(kind, c, t, a);
+    const xx = (mid.at(x + h) - 2 * mid.at(x) + mid.at(x - h)) / (h * h);
+    const before = pdeModes(kind, c, t - h, a).at(x),
+      after = pdeModes(kind, c, t + h, a).at(x);
+    if (kind === "heat") near((after - before) / (2 * h), c * xx, 1e-6);
+    else near((after - 2 * mid.at(x) + before) / (h * h), c * c * xx, 1e-6);
+  }
+});
+test("modal norm matches spatial quadrature and high heat modes decay faster", () => {
+  const state = pdeModes("wave", 1, 0.7, [1, 0.5, 0.25]);
+  const intervals = 1000,
+    dx = Math.PI / intervals;
+  let norm = 0;
+  for (let i = 1; i < intervals; i++) norm += state.at(i * dx) ** 2 * dx;
+  near(norm, state.squaredNorm);
+  const heat = pdeModes("heat", 1, Math.log(2), [1, 0, 1]);
+  near(heat.modes[0].value, 0.5);
+  near(heat.modes[2].value, 1 / 512);
+  const wave = pdeModes("wave", 1, Math.PI / 2, [1, 0, 0]);
+  near(wave.squaredNorm, 0);
+  near(wave.waveEnergy, Math.PI / 4);
+});
+test("PDE modes reject invalid controls and probes", () => {
+  for (const args of [
+    ["other", 1, 0, [1, 0, 0]],
+    ["heat", 0, 0, [1, 0, 0]],
+    ["heat", 1, -1, [1, 0, 0]],
+    ["wave", 1, 0, [1, 0]],
+    ["wave", 1, 0, [1, NaN, 0]],
+  ])
+    assert.throws(() => pdeModes(...args), RangeError);
+  const state = pdeModes("heat", 1, 0, [1, 0, 0]);
+  for (const x of [-1, Math.PI + 0.01, NaN])
+    assert.throws(() => state.at(x), RangeError);
+});

@@ -148,3 +148,8 @@ PH4 and CH6 now have sixteen original lesson drafts, bringing current totals to 
 ## Physical chemistry and analytical mechanics milestone
 
 Authored CH1.1–CH1.13 and PH2.1–PH2.7 as drafts, bringing coverage to 142/354 lessons and 573 retrieval cards. Added a coupled-oscillator apparatus with normal-mode releases and an energy balance. See [release details](PHYSICAL-CHEMISTRY-MECHANICS-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 212 lesson bodies and independent source/scientific review remain. Live tutor eligibility/provider setup and live rules verification remain external prerequisites.
+
+
+## Fourier methods and PDE milestone
+
+Authored MA5.1–MA5.7 as drafts, bringing coverage to 149/354 lessons and 601 recall cards. Added a Fourier-mode heat/wave bench with exact mode evolution, fixed-axis traces, a squared-norm readout and conserved wave energy. See [release details](FOURIER-PDE-RELEASE.md) and the generated [course ledger](COURSE-STATUS.md). 205 lesson bodies and independent scientific/source review remain, alongside the previously documented live rules and eligible tutor-provider prerequisites.

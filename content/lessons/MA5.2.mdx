@@ -1,0 +1,188 @@
+---
+{
+  "id": "MA5.2",
+  "title": "Fourier transform",
+  "hook": "Why does observing a signal through a finite window broaden its spectrum?",
+  "recap": [
+    "The transform of f′ is ikF when justified.",
+    "Convolves the true spectrum with the window transform, including normalization.",
+    "Sampling cannot distinguish frequencies separated by sampling-frequency multiples.",
+    "No; Plancherel provides an L² extension."
+  ],
+  "questions": [
+    {
+      "id": "concept-1",
+      "prompt": "What does the transform at zero frequency equal for an integrable function?",
+      "options": [
+        "Always its maximum",
+        "Its integral"
+      ],
+      "answer": "Its integral",
+      "explanation": "Set the exponential kernel to one.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-2",
+      "prompt": "Does zero-padding create new physical spectral resolution?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "explanation": "It interpolates finite-data spectral samples.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "concept-3",
+      "prompt": "Under this convention, what does convolution in x become?",
+      "options": [
+        "A derivative in k",
+        "A product of transforms"
+      ],
+      "answer": "A product of transforms",
+      "explanation": "The convolution theorem gives a product with the stated normalization.",
+      "type": "mcq",
+      "conceptual": true
+    },
+    {
+      "id": "numeric",
+      "prompt": "Zero-frequency transform of a unit rectangular pulse on [−2,2]?",
+      "answer": "4",
+      "explanation": "It equals the pulse area.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question"
+    },
+    {
+      "id": "warmup",
+      "prompt": "Gaussian transform at k=0 divided by √(2π), for σ=3?",
+      "answer": "3",
+      "explanation": "The zero-frequency value is √(2π)σ.",
+      "type": "numeric",
+      "conceptual": false,
+      "unit": "as specified in the question",
+      "tier": "warmup"
+    },
+    {
+      "id": "core",
+      "prompt": "What must accompany a quoted spectral width?",
+      "answer": "Transform and frequency convention, window and sampling assumptions",
+      "options": [
+        "Transform and frequency convention, window and sampling assumptions",
+        "Only the number of plotted bins"
+      ],
+      "explanation": "Those choices determine normalization, leakage and interpretation.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    }
+  ],
+  "review": [
+    {
+      "front": "What is the angular-frequency derivative rule?",
+      "back": "The transform of f′ is ikF when justified.",
+      "concept": "ma5-2-theory"
+    },
+    {
+      "front": "What does finite windowing do spectrally?",
+      "back": "Convolves the true spectrum with the window transform, including normalization.",
+      "concept": "ma5-2-theory"
+    },
+    {
+      "front": "What causes aliasing?",
+      "back": "Sampling cannot distinguish frequencies separated by sampling-frequency multiples.",
+      "concept": "ma5-2-theory"
+    },
+    {
+      "front": "Does an L² transform require an ordinary absolutely convergent integral?",
+      "back": "No; Plancherel provides an L² extension.",
+      "concept": "ma5-2-theory"
+    }
+  ],
+  "status": "draft",
+  "book_refs": [
+    "Strauss, Partial Differential Equations: An Introduction — edition and exact section verification pending",
+    "Stein and Shakarchi, Fourier Analysis: An Introduction — exact section verification pending"
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Original authored draft. Proof hypotheses, limiting cases and example arithmetic checked internally; independent scientific review and exact reference mapping remain pending."
+  }
+}
+---
+
+<LessonSection id="ready" title="Before you start" layer="before">
+
+Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+
+</LessonSection>
+
+<LessonSection id="puzzle" title="Commit to a prediction" layer="puzzle">
+
+Why does observing a signal through a finite window broaden its spectrum? State a prediction and a reason before reading the argument.
+
+</LessonSection>
+
+<LessonSection id="story" title="Why the question matters" layer="story">
+
+Astronomical spectra and image resolution require continuous-frequency reasoning, but sampling and finite observation change what a transform can reveal.
+
+</LessonSection>
+
+<LessonSection id="intuition" title="Build a mental model" layer="intuition">
+
+A localized pulse needs a range of wavelengths. Multiplying by a window mixes nearby spectral information through convolution.
+
+</LessonSection>
+
+<LessonSection id="concept" title="Definitions and hypotheses" layer="concept">
+
+Use the convention F(k)=∫f(x)e⁻ⁱᵏˣdx and inverse f(x)=(1/(2π))∫F(k)eⁱᵏˣdk when the relevant integrability or L² interpretation is available.
+
+</LessonSection>
+
+<LessonSection id="theory" title="Derivation, proof and limitations" layer="theory" fullOnly>
+
+For $F(k)=\int_{\mathbb R}f(x)e^{-ikx}dx$, an L¹ function has a bounded continuous transform. Inversion needs hypotheses or an appropriate limiting interpretation; it is not an absolutely convergent inverse integral for every L¹ input. Plancherel extends the transform to L² with $\int|f|^2dx=(2\pi)^{-1}\int|F|^2dk$ under this convention.
+
+Integration by parts gives the derivative rule $\widehat{f'}(k)=ikF(k)$ when derivative integrability and boundary decay justify it; distribution theory extends the rule to broader cases. Translation f(x−a) contributes e⁻ⁱᵏᵃ. A spatial rescaling f(ax) has transform |a|⁻¹F(k/a) for nonzero real a. Keeping the absolute value prevents a sign error for reflected coordinates.
+
+For integrable functions with the needed convolution hypotheses, $\widehat{f*g}=FG$. Multiplication in space instead gives $\widehat{fg}=(2\pi)^{-1}(F*G)$. Thus a finite window broadens ideal spectral features. For a rectangular pulse of height one on [−a,a], direct integration gives F(k)=2sin(ka)/k with continuous limit F(0)=2a. A zero denominator at k=0 is a removable formula singularity.
+
+For f(x)=exp(−x²/(2σ²)), the Gaussian integral yields $F(k)=\sqrt{2\pi}\sigma e^{-\sigma^2k^2/2}$. The normalized squared-amplitude widths obey ΔxΔk≥1/2 when finite variances and derivative hypotheses hold, with equality for the corresponding Gaussian family. Frequency ν in cycles per unit and angular frequency k differ by 2π; a numerical width cannot be moved between conventions unchanged.
+
+A discrete Fourier transform samples a finite vector and assumes a periodic extension. It is not the full continuous transform without sampling, window and normalization factors. Aliasing folds frequencies under sampling; zero-padding interpolates the finite-data transform and does not recover lost resolution. Sampling theorems require a bandlimit and the stated sampling rate. Noise and a finite instrument response are additional inference problems.
+
+</LessonSection>
+
+<LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+Numerically integrate a rectangular pulse and a Gaussian using a declared transform convention. Check their zero-frequency areas, compare width changes and increase both the integration interval and sampling density. Apply two different windows to a finite sinusoid and compare leakage. Keep zero-padding separate from gathering more observations.
+
+</LessonSection>
+
+<LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
+
+Take a=2 in a unit-height rectangular pulse. The zero-frequency transform is its area, 4. At k=π/2, sin(ka)=sinπ=0, so the transform vanishes. The first positive zero is π/a=π/2; doubling the width halves that spectral-zero spacing.
+
+</LessonSection>
+
+<LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
+
+Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+</LessonSection>
+
+<LessonSection id="check" title="Explain before computing" layer="check">
+
+The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+
+</LessonSection>
+
+<LessonSection id="connections" title="Connect the idea" layer="connections">
+
+Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+
+</LessonSection>

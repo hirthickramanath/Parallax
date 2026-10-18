@@ -1,3 +1,4 @@
+import { PdeModesLab } from "../components/widgets/PdeModesLab";
 import { CoupledOscillatorLab } from "../components/widgets/CoupledOscillatorLab";
 import { SphericalFieldLab } from "../components/widgets/SphericalFieldLab";
 import { RadiationLab } from "../components/widgets/RadiationLab";
@@ -36,6 +37,7 @@ export function Labs() {
           Circuit bench
         </button>
         {[
+          ["pde", "Heat flow and waves"],
           ["coupled", "Coupled oscillators"],
           ["field", "Spherical field"],
           ["radiation", "Radiation bench"],
@@ -48,7 +50,9 @@ export function Labs() {
           </button>
         ))}
       </div>
-      {lab === "coupled" ? (
+      {lab === "pde" ? (
+        <PdeModesLab />
+      ) : lab === "coupled" ? (
         <CoupledOscillatorLab />
       ) : lab === "field" ? (
         <SphericalFieldLab />
@@ -74,7 +78,7 @@ export function Labs() {
           checks.
         </p>
         <Link
-          to={`/lesson/${lab === "coupled" ? "PH2.7" : lab === "field" ? "PH4.1" : lab === "radiation" ? "AS2.3" : lab === "gas" ? "PB2.2" : lab === "wave" ? "PB3.1" : lab === "slit" ? "PB3.3" : lab === "circuit" ? "PB4.2" : lab === "pendulum" ? "PB1.4" : "AS1.3"}`}
+          to={`/lesson/${lab === "pde" ? "MA5.4" : lab === "coupled" ? "PH2.7" : lab === "field" ? "PH4.1" : lab === "radiation" ? "AS2.3" : lab === "gas" ? "PB2.2" : lab === "wave" ? "PB3.1" : lab === "slit" ? "PB3.3" : lab === "circuit" ? "PB4.2" : lab === "pendulum" ? "PB1.4" : "AS1.3"}`}
         >
           Open the connected lesson →
         </Link>
