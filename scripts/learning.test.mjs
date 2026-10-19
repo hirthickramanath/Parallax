@@ -348,3 +348,58 @@ test("exact numerical grading does not accept nearby integer answers under the a
     assert.equal(gradeNumeric(response, 0, true), false);
   assert.equal(gradeNumeric("0", 0, true), true);
 });
+
+test("intentional restart epochs beat stale completion, skip credit and recall schedules in either merge direction", async () => {
+  const { mergeDocument } = await import("../src/lib/learning-core.ts");
+  for (const kind of ["lessons", "units", "reviewCards", "attempts"]) {
+    const stale = {
+      status: "done",
+      depthCompleted: "full",
+      ladderTierDone: ["core"],
+      skippedWithCredit: true,
+      fsrs: { last_review: "2030-01-01" },
+      updatedAt: 999999,
+    };
+    const reset = {
+      resetAt: 100,
+      status: "not_started",
+      depthCompleted: null,
+      ladderTierDone: [],
+      skippedWithCredit: false,
+      fsrs: {},
+      updatedAt: 100,
+    };
+    assert.deepEqual(mergeDocument(kind, stale, reset, 20), reset);
+    assert.deepEqual(mergeDocument(kind, reset, stale, 20), reset);
+  }
+});
+test("adaptive questions move both directions without repeating and weeks start on local Monday", async () => {
+  const { adaptiveNext, adjustChallenge, weekStart } =
+    await import("../src/lib/journey.ts");
+  const bank = [
+    { id: "warm", tier: "warmup" },
+    { id: "check" },
+    { id: "core", tier: "core" },
+  ];
+  assert.equal(adaptiveNext(bank, [], 1).id, "check");
+  assert.equal(
+    adaptiveNext(bank, ["check"], adjustChallenge(1, true)).id,
+    "core",
+  );
+  assert.equal(
+    adaptiveNext(bank, ["check"], adjustChallenge(1, false)).id,
+    "warm",
+  );
+  assert.equal(adaptiveNext(bank, ["check", "core", "warm"], 1), undefined);
+  assert.equal(weekStart("2026-10-18"), "2026-10-12");
+  assert.equal(weekStart("2026-10-19"), "2026-10-19");
+});
+test("Schwarzschild photon explorer distinguishes capture and scattering away from the critical orbit", async () => {
+  const { photonPath } = await import("../src/lib/black-hole.ts");
+  assert.equal(photonPath(4).captured, true);
+  assert.equal(photonPath(7).captured, false);
+  assert.throws(() => photonPath(NaN));
+  for (const impact of [3, 4, 5, 6, 7, 8])
+    for (const point of photonPath(impact).points)
+      assert.ok(point.every(Number.isFinite));
+});

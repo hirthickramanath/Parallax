@@ -46,7 +46,7 @@ export function StudyReminder() {
         <p>
           Your daily goal is still ahead. A short review is a good next step.
         </p>
-        <Link to="/review">Open review →</Link>
+        <Link to="/dashboard">Continue your journey →</Link>
       </div>
       <button
         onClick={() => store.setPreferences({ reminderDismissedDate: today })}

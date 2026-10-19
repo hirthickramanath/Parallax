@@ -25,6 +25,7 @@ export function QuestionCard({
     setResult(correct);
     const id = crypto.randomUUID();
     store.put("attempts", id, {
+      resetAt: store.records.lessons[lessonId]?.resetAt || 0,
       questionId: `${lessonId}:${question.id}`,
       tier: question.tier || "check",
       response,

@@ -1,8 +1,8 @@
+import { RestartJourney } from "../components/learning/RestartJourney";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useLearning } from "../hooks/useLearning";
 import { useAuth } from "../hooks/useAuth";
-import { ThemeSelect } from "../components/ThemeSelect";
 import { Button } from "../components/ui/button";
 export function Settings() {
   const { logout } = useAuth();
@@ -49,9 +49,10 @@ export function Settings() {
           Open local authoring audit →
         </Link>
       )}
+      <RestartJourney />
       <section className="settings-card">
         <h2>Appearance & study</h2>
-        <ThemeSelect />
+        <p>Use Appearance and Color theme in the dashboard header.</p>
         <label>
           Default lesson depth
           <select

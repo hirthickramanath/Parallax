@@ -1,8 +1,15 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { Orbit } from "lucide-react";
-import { ThemeSelect } from "./components/ThemeSelect";
+import { ThemeSelect, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
 import { LearningProvider } from "./hooks/useLearning";
@@ -26,9 +33,6 @@ const Dashboard = lazy(() =>
 );
 const Learn = lazy(() =>
   import("./pages/Learn").then((m) => ({ default: m.Learn })),
-);
-const Labs = lazy(() =>
-  import("./pages/Labs").then((m) => ({ default: m.Labs })),
 );
 const Review = lazy(() =>
   import("./pages/Review").then((m) => ({ default: m.Review })),
@@ -106,7 +110,7 @@ function App() {
         >
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/labs" element={<Labs />} />
+          <Route path="/labs" element={<Navigate to="/dashboard" replace />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/review" element={<Review />} />
           <Route path="/revise" element={<Revise />} />
@@ -135,6 +139,7 @@ function App() {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
+      <AppearanceSync />
       <AuthProvider>
         <App />
       </AuthProvider>

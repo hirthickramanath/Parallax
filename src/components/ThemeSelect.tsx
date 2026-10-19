@@ -1,41 +1,87 @@
-import { useEffect, useState } from "react";
-type Theme = "system" | "light" | "dark";
+import { useEffect, useSyncExternalStore } from "react";
+const transient: Record<string, string> = {};
+const event = "parallax-appearance";
+function read(key: string, fallback: string) {
+  try {
+    return localStorage.getItem(key) || transient[key] || fallback;
+  } catch {
+    return transient[key] || fallback;
+  }
+}
+function subscribe(fn: () => void) {
+  window.addEventListener(event, fn);
+  window.addEventListener("storage", fn);
+  return () => {
+    window.removeEventListener(event, fn);
+    window.removeEventListener("storage", fn);
+  };
+}
+function save(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    transient[key] = value;
+  }
+  document.documentElement.dataset[
+    key === "parallax-theme" ? "theme" : "palette"
+  ] = value;
+  window.dispatchEvent(new Event(event));
+}
 export function ThemeSelect() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    try {
-      const saved = localStorage.getItem("parallax-theme");
-      return saved === "light" || saved === "dark" ? saved : "system";
-    } catch {
-      return "system";
-    }
-  });
+  const theme = useSyncExternalStore(subscribe, () =>
+      read("parallax-theme", "system"),
+    ),
+    palette = useSyncExternalStore(subscribe, () =>
+      read("parallax-palette", "forest"),
+    );
+  return (
+    <div className="appearance-controls">
+      <label className="theme-label">
+        <span>Appearance</span>
+        <select
+          aria-label="Appearance"
+          value={theme}
+          onChange={(e) => save("parallax-theme", e.target.value)}
+        >
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+      <label className="theme-label">
+        <span>Color theme</span>
+        <select
+          aria-label="Color theme"
+          value={palette}
+          onChange={(e) => save("parallax-palette", e.target.value)}
+        >
+          <option value="forest">Forest</option>
+          <option value="cosmic">Cosmic violet</option>
+          <option value="ocean">Ocean blue</option>
+          <option value="ember">Ember</option>
+        </select>
+      </label>
+    </div>
+  );
+}
+
+export function AppearanceSync() {
+  const theme = useSyncExternalStore(subscribe, () =>
+      read("parallax-theme", "system"),
+    ),
+    palette = useSyncExternalStore(subscribe, () =>
+      read("parallax-palette", "forest"),
+    );
   useEffect(() => {
     const media = matchMedia("(prefers-color-scheme: dark)");
     const apply = () => {
       document.documentElement.dataset.theme =
         theme === "system" ? (media.matches ? "dark" : "light") : theme;
+      document.documentElement.dataset.palette = palette;
     };
     apply();
     media.addEventListener("change", apply);
-    try {
-      localStorage.setItem("parallax-theme", theme);
-    } catch {
-      /* Themes still work when browser storage is unavailable. */
-    }
     return () => media.removeEventListener("change", apply);
-  }, [theme]);
-  return (
-    <label className="theme-label">
-      <span>Appearance</span>
-      <select
-        aria-label="Appearance"
-        value={theme}
-        onChange={(e) => setTheme(e.target.value as Theme)}
-      >
-        <option value="system">System</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
-    </label>
-  );
+  }, [theme, palette]);
+  return null;
 }

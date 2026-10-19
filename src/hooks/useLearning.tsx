@@ -1,3 +1,5 @@
+import { createEmptyCard, type Card } from "ts-fsrs";
+import { course, journeyLessons } from "../lib/course";
 import {
   createContext,
   useContext,
@@ -34,6 +36,7 @@ class LearningStore {
   started = false;
   loaded = false;
   busy = false;
+  batching = false;
   preferences: Preferences = {
     depth: "full",
     dailyGoal: 20,
@@ -102,10 +105,62 @@ class LearningStore {
       version: Date.now() + Math.random(),
     };
     this.status = "Saved on this device · syncing";
+    if (this.batching) return;
+    this.persist();
+    void this.sync();
+  }
+  restartJourney(from: string, section = "ready") {
+    const start = journeyLessons.findIndex((l) => l.id === from);
+    if (start < 0) throw Error("Choose an existing lesson");
+    const ids = new Set(journeyLessons.slice(start).map((l) => l.id));
+    const resetAt = Date.now();
+    this.batching = true;
+    if (course.authored[from]?.sections.find((s) => s.id === section)?.fullOnly)
+      this.preferences.depth = "full";
+    for (const id of ids)
+      this.put("lessons", id, {
+        resetAt,
+        status: id === from ? "in_progress" : "not_started",
+        mastery: 0,
+        depthCompleted: null,
+        ladderTierDone: [],
+        lastSection: id === from ? section : "ready",
+        updatedAt: resetAt,
+      });
+    for (const unit of course.units.filter((u) =>
+      u.lessons.some((id) => ids.has(id)),
+    ))
+      this.put("units", unit.id, {
+        resetAt,
+        skippedWithCredit: false,
+        skipTestScore: 0,
+        completedAt: null,
+      });
+    for (const [id, card] of Object.entries(this.records.reviewCards))
+      if (ids.has(card.lessonId))
+        this.put("reviewCards", id, {
+          ...card,
+          resetAt,
+          fsrs: createEmptyCard<Card>(),
+        });
+    this.put("plan", "journey", {
+      lessonId: from,
+      section,
+      updatedAt: resetAt,
+    });
+    // Invalidate the weekly plan; the dashboard rebuilds from the new position.
+    this.put("plan", "current", { week: "", items: [], generatedAt: resetAt });
+    this.batching = false;
     this.persist();
     void this.sync();
   }
   award(id: string, xp: number, track: string) {
+    if (
+      Object.values(this.records.days).some((day) =>
+        day.activities.some((activity) => activity.id === id),
+      )
+    )
+      return;
     const key = dateKey(Date.now(), this.preferences.timezone);
     const day = activityDay(
       { id, xp, track, at: Date.now() },

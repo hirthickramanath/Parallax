@@ -72,8 +72,8 @@ export function Projects() {
             </li>
           ))}
         </ul>
-        <Link className="text-button" to="/labs">
-          Open the virtual apparatus →
+        <Link className="text-button" to={`/lesson/${p.lessons[0]}`}>
+          Open the lesson and its apparatus →
         </Link>
       </article>
     </main>

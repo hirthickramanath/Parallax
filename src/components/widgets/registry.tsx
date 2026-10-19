@@ -1,3 +1,5 @@
+import { VectorExplorer } from "./VectorExplorer";
+import { BlackHoleExplorer } from "./BlackHoleExplorer";
 import { LegendreExplorer } from "./LegendreExplorer";
 import { ComplexBranchExplorer } from "./ComplexBranchExplorer";
 import { PdeModesLab } from "./PdeModesLab";
@@ -13,6 +15,8 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  vector_explorer: VectorExplorer,
+  black_hole_explorer: BlackHoleExplorer,
   legendre_explorer: LegendreExplorer,
   complex_branch_explorer: ComplexBranchExplorer,
   pde_modes_lab: PdeModesLab,
