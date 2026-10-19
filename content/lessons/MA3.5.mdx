@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "Find the scalar coefficient of u=(1,1) in the projection of v=(3,1) onto u.",
+      "answer": "2",
+      "hint": "Compute (u·v)/(u·u).",
+      "explanation": "Compute (u·v)/(u·u). The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For v=(3,4) projected onto the x axis, find residual norm.",
+      "answer": "4",
+      "hint": "The residual is (0,4).",
+      "explanation": "The residual is (0,4). The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "May Gram–Schmidt normalize a zero residual from a dependent input vector?",
+      "answer": "No; the division is undefined and dependence must be handled.",
+      "options": [
+        "Yes; every supplied vector adds one basis direction.",
+        "No; the division is undefined and dependence must be handled."
+      ],
+      "explanation": "A zero residual indicates no new independent direction.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every supplied vector adds one basis direction.": "A zero residual indicates no new independent direction."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For a full-column-rank real matrix A, least-squares stationarity gives $A^T(Ax-b
 
 A weighted inner product x*Wy requires Hermitian positive-definite W to retain the stated norm geometry. If data errors have covariance Σ, weighting by Σ⁻¹ can be appropriate under the model, but estimated or singular covariance needs treatment. In infinite-dimensional Hilbert spaces, projection onto a closed subspace extends this result; nonclosed subspaces can fail to attain the infimum.
 
+
+### Derive, test and transfer
+
+Projection of v onto a nonzero vector u is $u\langle u,v\rangle/\langle u,u\rangle$ in a real Euclidean convention. The residual is orthogonal to u, and the Pythagorean identity separates the squared norm into projection plus residual. Using a nonunit vector without dividing by its squared norm gives the wrong projection.
+
+Gram–Schmidt successively subtracts projections onto an orthonormal basis. If a residual becomes zero, the new input was dependent; dividing by that residual norm is invalid. Complex inner products require conjugation and a stated linear-slot convention. Numerical orthogonality can also degrade for nearly dependent data, motivating modified algorithms rather than assuming exact symbolic arithmetic.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA3.5" />
+
 
 Project one vector onto a line and a plane using orthonormal bases, checking residual dot products. Compare with a nonorthogonal basis and show why directly reading dot products as coefficients then fails. If using data weights, state their uncertainty model.
 

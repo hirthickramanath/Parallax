@@ -1722,3 +1722,27 @@ test("multivariable investigations distinguish directional derivatives and orien
     page.getByText(/Outward flux for F=a\(x,y,z\): -12.5664/),
   ).toBeVisible();
 });
+
+test("linear algebra and PDE investigations preserve conditioning, integer modes and boundary response", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA3.7");
+  await expect(
+    page.getByText(/Unregularized solution component: 10.0000/),
+  ).toBeVisible();
+  await page.getByLabel("Small singular value", { exact: true }).fill("0.5");
+  await expect(
+    page.getByText(/Unregularized solution component: 2.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/MA5.1");
+  await page.getByLabel("Number of odd sine modes", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Number of odd sine modes", { exact: true }),
+  ).toHaveValue("4");
+  await page.goto("/lesson/MA5.7");
+  await expect(page.getByText(/Green function G\(x,s\): 0.1250/)).toBeVisible();
+  await page.getByLabel("Observation point x", { exact: true }).fill("0");
+  await expect(page.getByText(/Green function G\(x,s\): 0.0000/)).toBeVisible();
+});

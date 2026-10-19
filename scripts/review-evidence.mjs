@@ -9,7 +9,13 @@ function nonempty(x) {
   );
 }
 /** Validates evidence completeness and freshness; it cannot authenticate human identities or truthfulness. */
-export function requireReviewEvidence(data, source, sections, ledger) {
+export function requireReviewEvidence(
+  data,
+  source,
+  sections,
+  ledger,
+  modelArtifacts = {},
+) {
   if (!["verified", "published"].includes(data.status)) return;
   const entries = (ledger?.reviews || []).filter(
     (r) => r.id === data.verification?.evidenceId,
@@ -37,6 +43,18 @@ export function requireReviewEvidence(data, source, sections, ledger) {
     r.reviewer !== data.verification.reviewer
   )
     throw Error(`Review identity/date mismatch ${data.id}`);
+  const artifactKeys = Object.keys(modelArtifacts).sort();
+  if (source.includes("<Widget ") && !artifactKeys.length)
+    throw Error(`Model artifact evidence missing ${data.id}`);
+  if (
+    artifactKeys.length &&
+    (!r.modelArtifacts ||
+      Object.keys(r.modelArtifacts).length !== artifactKeys.length ||
+      !artifactKeys.every(
+        (key) => r.modelArtifacts[key] === modelArtifacts[key],
+      ))
+  )
+    throw Error(`Stale or incomplete model artifact review ${data.id}`);
   const requiredSections = sections.map((s) => s.id),
     requiredQuestions = data.questions.map((q) => q.id);
   if (

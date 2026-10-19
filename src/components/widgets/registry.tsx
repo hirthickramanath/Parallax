@@ -1,3 +1,4 @@
+import { linearOdeInvestigations } from "../../lib/linear-ode-investigations";
 import { multivariableInvestigations } from "../../lib/multivariable-investigations";
 import { AstroInvestigation } from "./AstroInvestigation";
 import { astroInvestigations } from "../../lib/astro-investigations";
@@ -97,6 +98,14 @@ export function Widget({ name }: { name: string }) {
         key={name}
         lessonId={name.slice(14)}
         model={multivariableInvestigations[name.slice(14)]}
+      />
+    );
+  if (name.startsWith("linear_ode_") && linearOdeInvestigations[name.slice(11)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(11)}
+        model={linearOdeInvestigations[name.slice(11)]}
       />
     );
   const Component = widgets[name as keyof typeof widgets];

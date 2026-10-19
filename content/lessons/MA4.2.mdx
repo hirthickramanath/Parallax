@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For y′+2y=4 with y(0)=0, find y at t=ln2.",
+      "answer": "1.5",
+      "hint": "The solution is 2(1−e^(−2t)).",
+      "explanation": "The solution is 2(1−e^(−2t)). The value in the stated units is 1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For y′+3y=6, find the steady constant solution.",
+      "answer": "2",
+      "hint": "Set the time derivative to zero.",
+      "explanation": "Set the time derivative to zero. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Is a Green function fixed by the differential expression alone without boundary or initial conditions?",
+      "answer": "No; the inverse problem also includes those conditions and possible zero modes.",
+      "options": [
+        "Yes; every operator expression has one universal kernel.",
+        "No; the inverse problem also includes those conditions and possible zero modes."
+      ],
+      "explanation": "Different solution spaces and boundaries produce different responses.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every operator expression has one universal kernel.": "Different solution spaces and boundaries produce different responses."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For a general leading coefficient a(t), the derivative jump is 1/a(s), not unive
 
 Time-translation invariance makes a Green kernel depend on t−s, giving convolution. A time-varying linear system can still have a two-time Green function but not a stationary convolution. Nonlinear equations generally do not obey this superposition rule. Distributional impulses describe an ideal limit of short forcing, not an infinite measured force applied for a finite duration.
 
+
+### Derive, test and transfer
+
+For a forced scalar decay y′+a y=f(t), the integrating factor e^(at) gives y(t)=e^(−at)y₀+∫₀ᵗe^(−a(t−s))f(s)ds. The kernel vanishes for future forcing and is therefore a causal Green response under this initial-value convention.
+
+A different boundary-value problem can require a different Green function and compatibility conditions. In particular, a homogeneous zero mode can prevent a unique inverse unless one constrains the kernel and source. Superposition follows from linearity, not from the mere presence of a differential equation. State the operator, domain and initial/boundary conditions before using a kernel as an inverse.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA4.2" />
+
 
 Compute the step response in the worked example and approximate it by adding a finite set of narrow pulse responses. Refine the pulse discretization and compare the residual and initial conditions. Keep boundary-value Green functions distinct from causal initial-value responses.
 

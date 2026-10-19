@@ -53,10 +53,11 @@ export function AstroInvestigation({
         min={model.parameter[1]}
         max={model.parameter[2]}
         step={
+          model.parameterStep ??
           10 **
-          Math.floor(
-            Math.log10((model.parameter[2] - model.parameter[1]) / 1000),
-          )
+            Math.floor(
+              Math.log10((model.parameter[2] - model.parameter[1]) / 1000),
+            )
         }
         onChange={setP}
       />

@@ -75,3 +75,7 @@ The excluded-subjects and separate engineering/technology plans remain in their 
 ## Astrophysics and multivariable follow-up
 
 All 61 astrophysics lessons and eight MA2 lessons now have additional derivations, 207 added questions and 69 directly manipulable analytic investigations. Current partial source mappings total 80; 248 lessons lack explicit widgets. See [the expansion report](ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md) for scope, source issues and remaining independent review. These models do not turn synthetic demonstrations into real observations or completed capstones.
+
+## Linear algebra, ODE and PDE follow-up
+
+Twenty-one MA3–MA5 lessons now have 63 additional questions, deeper examples and 21 curve investigations. Current partial mappings total 98 and 230 lessons lack explicit widgets. [Details](LINEAR-ODE-PDE-EXPANSION.md). Independent review is still zero; [review packets](INDEPENDENT-REVIEW-PACKETS.md) now bind model code as well as lesson text.

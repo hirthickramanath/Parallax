@@ -102,7 +102,7 @@ test("actual partial source ledger matches current drafts and immutable official
   const ledger = JSON.parse(
     fs.readFileSync("content/review/source-inspections.json", "utf8"),
   );
-  assert.equal(ledger.inspections.length, 80);
+  assert.equal(ledger.inspections.length, 98);
   for (const r of ledger.inspections) {
     const source = fs.readFileSync(`content/lessons/${r.lessonId}.mdx`, "utf8");
     assert.equal(r.lessonSha256, sourceFingerprint(source));
@@ -112,6 +112,7 @@ test("actual partial source ledger matches current drafts and immutable official
       "https://github.com/openstax/osbooks-calculus-bundle",
       "https://github.com/openstax/osbooks-chemistry-bundle",
       "https://github.com/jirilebl/ra",
+      "https://github.com/jirilebl/diffyqs",
       "https://github.com/sympy/sympy",
       "https://github.com/openstax/osbooks-astronomy",
     ];
@@ -129,4 +130,23 @@ test("actual partial source ledger matches current drafts and immutable official
     );
     assert.ok(source.includes('"status": "draft"'));
   }
+});
+
+test("publication rejects missing or stale reviewed model implementations", () => {
+  const f = fixture(),
+    artifacts = { "src/lib/model.ts": "currenthash" };
+  assert.throws(
+    () =>
+      requireReviewEvidence(f.data, f.source, f.sections, f.ledger, artifacts),
+    /model artifact/,
+  );
+  f.ledger.reviews[0].modelArtifacts = { ...artifacts };
+  requireReviewEvidence(f.data, f.source, f.sections, f.ledger, artifacts);
+  assert.throws(
+    () =>
+      requireReviewEvidence(f.data, f.source, f.sections, f.ledger, {
+        "src/lib/model.ts": "changedhash",
+      }),
+    /model artifact/,
+  );
 });

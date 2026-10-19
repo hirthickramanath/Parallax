@@ -77,6 +77,45 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "Find the dimension of the subspace x+y+z=0 in real three-dimensional space.",
+      "answer": "2",
+      "hint": "One independent homogeneous equation removes one dimension.",
+      "explanation": "One independent homogeneous equation removes one dimension. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "A linear map from R^5 has rank 3. Find its kernel dimension.",
+      "answer": "2",
+      "hint": "Use rank plus nullity equals domain dimension.",
+      "explanation": "Use rank plus nullity equals domain dimension. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Is the plane x+y+z=1 a vector subspace of R³?",
+      "answer": "No; it does not contain the zero vector.",
+      "options": [
+        "Yes; every geometric plane is a vector subspace.",
+        "No; it does not contain the zero vector."
+      ],
+      "explanation": "An affine translation generally loses the required zero vector.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every geometric plane is a vector subspace.": "An affine translation generally loses the required zero vector."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +194,19 @@ Polynomials of degree at most n form a space of dimension n+1, with basis 1,x,..
 
 A sum U+W is a subspace, while a union U∪W need not be: vectors drawn from different pieces may add outside the union. For finite-dimensional subspaces, $\dim(U+W)=\dim U+\dim W-\dim(U\cap W)$. A direct sum has trivial intersection and unique decomposition. Always specify the scalar field: a complex vector space can have a different dimension when regarded over the reals.
 
+
+### Derive, test and transfer
+
+A subspace contains zero and is closed under addition and scalar multiplication. The plane x+y+z=0 is a kernel of a linear map, so closure follows by linearity. In contrast x+y+z=1 is an affine translate and excludes zero; it is not a vector subspace even though it looks like a plane.
+
+For a consistent single nonzero linear equation in three real unknowns, rank-nullity gives a two-dimensional kernel. Multiple written equations need not be independent; row reduction, not a raw equation count, determines rank. A basis must both span the set and be linearly independent. These algebraic conditions distinguish the underlying vector space from its particular coordinate representation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA3.1" />
+
 
 Test closure for homogeneous planes, shifted planes, fixed-degree polynomials and two intersecting lines. For each accepted space, give a basis and prove both independence and spanning. A few randomly sampled successful sums do not prove closure for all scalars.
 

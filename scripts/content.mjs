@@ -1,3 +1,4 @@
+import { widgetArtifacts } from "./widget-artifacts.mjs";
 import { requireReviewEvidence } from "./review-evidence.mjs";
 import { compileSync } from "@mdx-js/mdx";
 import remarkFrontmatter from "remark-frontmatter";
@@ -171,7 +172,13 @@ export function buildContent() {
       const ledger = JSON.parse(
         fs.readFileSync("content/review/evidence.json", "utf8"),
       );
-      requireReviewEvidence(data, source, sections, ledger);
+      requireReviewEvidence(
+        data,
+        source,
+        sections,
+        ledger,
+        widgetArtifacts(process.cwd(), source, data),
+      );
     }
     authored[data.id] = {
       ...stub,

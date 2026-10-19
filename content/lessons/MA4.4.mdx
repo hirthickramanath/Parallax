@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For x′=−x³ and V=x²/2, find dV/dt at x=2.",
+      "answer": "-16",
+      "hint": "Use Vdot=x xdot=−x⁴.",
+      "explanation": "Use Vdot=x xdot=−x⁴. The value in the stated units is -16.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For x′=−x³ with x(0)=1, find x at t=1.5.",
+      "answer": "0.5",
+      "hint": "The exact solution is 1/sqrt(1+2t).",
+      "explanation": "The exact solution is 1/sqrt(1+2t). The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Does a zero linearization derivative prove that an equilibrium is neither stable nor unstable?",
+      "answer": "No; higher-order terms can establish either behavior.",
+      "options": [
+        "Yes; zero linearization completely determines the nonlinear flow.",
+        "No; higher-order terms can establish either behavior."
+      ],
+      "explanation": "Opposite cubic signs have identical linearizations and different stability.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; zero linearization completely determines the nonlinear flow.": "Opposite cubic signs have identical linearizations and different stability."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For x′=−x³, choose V=x²/2. Then V̇=−x⁴&lt;0 away from zero, establish
 
 A saddle-node example is x′=μ−x². For μ>0 the equilibria ±√μ have derivative −2x, making the positive one stable and negative one unstable. At μ=0 they merge into a nonhyperbolic equilibrium; for μ&lt;0 there are none. This is a local normal-form illustration, not a universal description of every parameter-dependent system. Periodic forcing, higher dimensions and global basins require further analysis.
 
+
+### Derive, test and transfer
+
+Linearization of x′=f(x) at an equilibrium x* gives δx′≈f′(x*)δx. A negative derivative gives local exponential attraction in the one-dimensional smooth hyperbolic case. If the derivative is zero, higher-order terms decide behavior: x′=−x³ attracts while x′=x³ repels despite identical zero linearizations.
+
+A Lyapunov function can settle such cases. For V=x²/2 and x′=−x³, its derivative along motion is −x⁴, negative away from equilibrium, while the exact decay is algebraic rather than exponential. Stability, attraction and rate of convergence must not be conflated. Nonlinear or finite-amplitude behavior can differ from what a truncated linear test suggests.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA4.4" />
+
 
 Plot the vector directions for ±x³ near zero and compare their identical tangent slope. Track V along exact or refined numerical trajectories. Vary μ in μ−x² and record both equilibrium existence and derivative signs rather than labeling stability from position alone.
 

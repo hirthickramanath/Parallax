@@ -86,3 +86,5 @@ See the [advanced mechanics batch](docs/ADVANCED-MECHANICS-BATCH.md) for the lat
 The [batch progress report](docs/BATCH-PROGRESS.md) records the latest 21-lesson expansion, seven new models, source-review scope and remaining work.
 
 The [astrophysics and multivariable expansion](docs/ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md) adds investigations and questions across 69 further lessons, with precise source-scope and validation notes.
+
+See the [linear algebra/ODE/PDE expansion](docs/LINEAR-ODE-PDE-EXPANSION.md) and [independent-review packets](docs/INDEPENDENT-REVIEW-PACKETS.md) for the next release and implementation-freshness checks.

@@ -1,6 +1,7 @@
 /** Idealized lesson investigations. These are explicit models, not observational datasets. */
 export interface AstroInvestigation {
   xStep?: number;
+  parameterStep?: number;
   title: string;
   x: [string, number, number, number];
   parameter: [string, number, number, number];

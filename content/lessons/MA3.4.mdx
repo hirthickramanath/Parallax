@@ -77,6 +77,44 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For A=diag(2,5), find trace.",
+      "answer": "7",
+      "hint": "Trace equals the sum of diagonal eigenvalues here.",
+      "explanation": "Trace equals the sum of diagonal eigenvalues here. The value in the stated units is 7.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For A=[[1,1],[0,1]], find the dimension of the eigenspace for eigenvalue 1.",
+      "answer": "1",
+      "hint": "Solve (A−I)v=0, which forces the second component to zero.",
+      "explanation": "Solve (A−I)v=0, which forces the second component to zero. The value in the stated units is 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Does every real matrix with real eigenvalues have a complete eigenvector basis?",
+      "answer": "No; repeated eigenvalues can be defective.",
+      "options": [
+        "Yes; real eigenvalues alone guarantee diagonalization.",
+        "No; repeated eigenvalues can be defective."
+      ],
+      "explanation": "The two-dimensional Jordan shear is a counterexample.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; real eigenvalues alone guarantee diagonalization.": "The two-dimensional Jordan shear is a counterexample."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +193,19 @@ The matrix J=[[1,1],[0,1]] has characteristic root 1 twice, but (J−I)v=0 force
 
 The scalar field matters: a real planar quarter-turn has no real eigenvector but has complex eigenvalues ±i. A complex eigenbasis can simplify real dynamics, with conjugate pairing used to recover real solutions. Do not infer instability merely from a nonreal eigenvalue; for continuous-time linear systems real parts, Jordan structure and the time convention determine growth.
 
+
+### Derive, test and transfer
+
+For an eigenpair Av=λv, nonzero v is a direction preserved up to scale. Distinct eigenvalues have linearly independent eigenvectors, but a repeated eigenvalue can have too few eigenvectors for diagonalization. The shear [[1,1],[0,1]] has algebraic multiplicity two for λ=1 and only a one-dimensional eigenspace.
+
+A diagonalization A=PDP inverse requires a full basis of eigenvectors. It simplifies powers and evolution without implying that P is orthogonal; orthogonality needs additional normal/Hermitian structure. Eigenvalues alone do not determine transient behavior for a nonnormal matrix. Checking eigenspace dimensions prevents treating a defective matrix as if a numerical eigensolver had supplied a robust complete basis.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA3.4" />
+
 
 Compute eigenspaces for an identity, a diagonal matrix, a shear and a quarter-turn over both real and complex scalars. Check whether proposed eigenvectors form an invertible basis. Compare powers directly before using a diagonalization shortcut.
 

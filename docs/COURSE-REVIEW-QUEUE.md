@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 80 have current partial AI-assisted source mappings; 248 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 98 have current partial AI-assisted source mappings; 230 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -165,27 +165,27 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA2.6 Surface integrals | 9 / 9 | 4 | 3 | multivariable_MA2.6 |
 | MA2.7 Green, Stokes and divergence theorems | 9 / 9 | 4 | 3 | multivariable_MA2.7 |
 | MA2.8 Div, grad, curl in curvilinear coordinates | 9 / 9 | 4 | 3 | multivariable_MA2.8 |
-| MA3.1 Vector spaces and subspaces | 6 / 6 | 2 | 0 | pending |
-| MA3.2 Linear maps and matrices | 6 / 6 | 2 | 0 | pending |
-| MA3.3 Determinants | 6 / 6 | 2 | 0 | pending |
-| MA3.4 Eigenvalues and diagonalisation | 6 / 6 | 2 | 0 | pending |
-| MA3.5 Inner product spaces and orthogonality | 6 / 6 | 2 | 0 | pending |
-| MA3.6 Spectral theorem and Hermitian operators | 6 / 6 | 2 | 0 | pending |
-| MA3.7 SVD and least squares | 6 / 6 | 2 | 0 | pending |
-| MA3.8 Jordan form and matrix exponentials | 6 / 6 | 2 | 0 | pending |
-| MA4.1 First-order methods | 6 / 6 | 2 | 0 | pending |
-| MA4.2 Linear ODEs and Green's functions | 6 / 6 | 2 | 0 | pending |
-| MA4.3 Systems and phase plane | 6 / 6 | 2 | 0 | pending |
-| MA4.4 Stability and nonlinear dynamics | 6 / 6 | 2 | 0 | pending |
-| MA4.5 Series solutions and Frobenius method | 6 / 6 | 2 | 0 | pending |
-| MA4.6 Sturm-Liouville theory | 6 / 6 | 2 | 0 | pending |
-| MA5.1 Fourier series | 6 / 6 | 2 | 0 | pde_modes_lab |
-| MA5.2 Fourier transform | 6 / 6 | 2 | 0 | pending |
-| MA5.3 Laplace transform | 6 / 6 | 2 | 0 | pending |
-| MA5.4 Heat equation | 6 / 6 | 2 | 0 | pde_modes_lab |
-| MA5.5 Wave equation | 6 / 6 | 2 | 0 | pde_modes_lab |
-| MA5.6 Laplace and Poisson equations with separation of variables | 6 / 6 | 2 | 0 | pending |
-| MA5.7 Green's functions for PDEs | 6 / 6 | 2 | 0 | pending |
+| MA3.1 Vector spaces and subspaces | 9 / 9 | 4 | 3 | linear_ode_MA3.1 |
+| MA3.2 Linear maps and matrices | 9 / 9 | 4 | 3 | linear_ode_MA3.2 |
+| MA3.3 Determinants | 9 / 9 | 4 | 3 | linear_ode_MA3.3 |
+| MA3.4 Eigenvalues and diagonalisation | 9 / 9 | 4 | 3 | linear_ode_MA3.4 |
+| MA3.5 Inner product spaces and orthogonality | 9 / 9 | 4 | 3 | linear_ode_MA3.5 |
+| MA3.6 Spectral theorem and Hermitian operators | 9 / 9 | 4 | 3 | linear_ode_MA3.6 |
+| MA3.7 SVD and least squares | 9 / 9 | 4 | 3 | linear_ode_MA3.7 |
+| MA3.8 Jordan form and matrix exponentials | 9 / 9 | 4 | 3 | linear_ode_MA3.8 |
+| MA4.1 First-order methods | 9 / 9 | 4 | 3 | linear_ode_MA4.1 |
+| MA4.2 Linear ODEs and Green's functions | 9 / 9 | 4 | 3 | linear_ode_MA4.2 |
+| MA4.3 Systems and phase plane | 9 / 9 | 4 | 3 | linear_ode_MA4.3 |
+| MA4.4 Stability and nonlinear dynamics | 9 / 9 | 4 | 3 | linear_ode_MA4.4 |
+| MA4.5 Series solutions and Frobenius method | 9 / 9 | 4 | 3 | linear_ode_MA4.5 |
+| MA4.6 Sturm-Liouville theory | 9 / 9 | 4 | 3 | linear_ode_MA4.6 |
+| MA5.1 Fourier series | 9 / 9 | 4 | 3 | linear_ode_MA5.1, pde_modes_lab |
+| MA5.2 Fourier transform | 9 / 9 | 4 | 3 | linear_ode_MA5.2 |
+| MA5.3 Laplace transform | 9 / 9 | 4 | 3 | linear_ode_MA5.3 |
+| MA5.4 Heat equation | 9 / 9 | 4 | 3 | linear_ode_MA5.4, pde_modes_lab |
+| MA5.5 Wave equation | 9 / 9 | 4 | 3 | linear_ode_MA5.5, pde_modes_lab |
+| MA5.6 Laplace and Poisson equations with separation of variables | 9 / 9 | 4 | 3 | linear_ode_MA5.6 |
+| MA5.7 Green's functions for PDEs | 9 / 9 | 4 | 3 | linear_ode_MA5.7 |
 | MA6.1 Analytic functions and Cauchy-Riemann | 6 / 6 | 2 | 0 | pending |
 | MA6.2 Contour integration and Cauchy's theorem | 6 / 6 | 2 | 0 | pending |
 | MA6.3 Residues and real integrals | 6 / 6 | 2 | 0 | pending |

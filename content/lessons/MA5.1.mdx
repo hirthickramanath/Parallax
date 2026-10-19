@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For f=sin x+2sin3x on [−π,π], find its third sine coefficient under the standard Fourier convention.",
+      "answer": "2",
+      "hint": "Orthogonality isolates the coefficient of sin3x.",
+      "explanation": "Orthogonality isolates the coefficient of sin3x. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For a jump from left limit −2 to right limit 4, find the Fourier midpoint value under the standard convergence hypotheses.",
+      "answer": "1",
+      "hint": "Average the one-sided limits.",
+      "explanation": "Average the one-sided limits. The value in the stated units is 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Does adding Fourier modes remove the limiting fractional Gibbs overshoot near a jump?",
+      "answer": "No; it narrows the overshoot region rather than making that fraction vanish.",
+      "options": [
+        "Yes; enough modes give uniform convergence to the discontinuous target.",
+        "No; it narrows the overshoot region rather than making that fraction vanish."
+      ],
+      "explanation": "Uniform limits of continuous partial sums would be continuous.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; enough modes give uniform convergence to the discontinuous target.": "Uniform limits of continuous partial sums would be continuous."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Near a jump, ordinary partial sums exhibit Gibbs oscillations. Their spatial reg
 
 With this normalization, Parseval reads $\pi^{-1}\int_{-\pi}^{\pi}|f|^2dx=a_0^2/2+\sum_{n\ge1}(a_n^2+b_n^2)$ for real f. For complex functions use modulus-squared coefficients in the complex convention. Termwise differentiation requires additional regularity/convergence justification: differentiating an L² series formally is not automatically differentiating its limit. A half-range sine or cosine expansion chooses an odd or even extension, so boundary behaviour belongs to the chosen extension.
 
+
+### Derive, test and transfer
+
+On [−π,π], sine and cosine orthogonality isolate Fourier coefficients by integration. For f(x)=sin x+2sin3x, only the first and third sine coefficients are nonzero. Orthogonality is an integral statement on a stated interval and measure, not a claim that two mode values are perpendicular at every point.
+
+At a jump, an appropriately regular Fourier series converges to the midpoint of the two one-sided limits. Gibbs overshoot persists near the discontinuity as more modes narrow its spatial extent; pointwise convergence away from the jump does not imply uniform convergence to a discontinuous target. A partial-sum plot can illustrate the effect but cannot replace the convergence hypotheses.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA5.1" />
+
 
 Compute odd square-wave partial sums with 1, 5 and 25 odd modes on a fine grid. Record the value at the jump, the local maximum near it and the integral of squared error. Refine the grid before comparing maxima. Then compare a sine expansion with a cosine expansion of the same half-interval data; explain which extensions differ.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For u=x²−y², find the two-dimensional Laplacian.",
+      "answer": "0",
+      "hint": "The second derivatives are 2 and −2.",
+      "explanation": "The second derivatives are 2 and −2. The value in the stated units is 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For u=x²+y², find the two-dimensional Laplacian.",
+      "answer": "4",
+      "hint": "Add the two second derivatives.",
+      "explanation": "Add the two second derivatives. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Can a smooth nonconstant harmonic function attain a strict interior maximum on a connected domain?",
+      "answer": "No; the strong maximum principle excludes it under its hypotheses.",
+      "options": [
+        "Yes; harmonicity imposes no restriction on interior extrema.",
+        "No; the strong maximum principle excludes it under its hypotheses."
+      ],
+      "explanation": "The maximum principle is a domain and regularity statement.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; harmonicity imposes no restriction on interior extrema.": "The maximum principle is a domain and regularity statement."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For Neumann data ∂ₙu=g and the convention −Δu=f, integrating gives $\int_
 
 In a ball or cylinder, angular/radial separation produces geometry-adapted modes and regularity requirements at the origin or axis. Growing/decaying branches must be selected by domain and boundary behaviour. A harmonic function obeys a mean-value property and a maximum principle under the usual hypotheses; a sourced Poisson solution does not inherit every zero-source statement unchanged. Numeric residuals and boundary error both matter when checking an approximate field.
 
+
+### Derive, test and transfer
+
+A harmonic function solves ∇²u=0. On a bounded regular connected region with continuous boundary data, the maximum principle constrains its extremes and supports uniqueness of the Dirichlet solution. Uniqueness does not mean a chosen simple separated expression automatically matches the requested boundary values.
+
+For a rectangular separated example sin(kx)sinh(ky), the second x derivative is −k² times the function and the second y derivative is +k² times it, so they cancel. Poisson's equation adds a source and requires a particular solution plus boundary correction. A point-source singularity falls outside an ordinary smooth interior harmonic claim and must be handled explicitly.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA5.6" />
+
 
 Compare the one-dimensional exact Poisson solution with a finite-difference solution. Report boundary error separately from interior residual. Then compare two boundary choices for the same source. For a rectangular harmonic mode, sample the hyperbolic profile and verify the top and bottom values before plotting it.
 

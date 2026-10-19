@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For J=[[0,1],[0,0]], find the upper-right entry of exp(3J).",
+      "answer": "3",
+      "hint": "J²=0 truncates the exponential.",
+      "explanation": "J²=0 truncates the exponential. The value in the stated units is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "For J=[[-1,1],[0,-1]], find the upper-right entry of exp(J).",
+      "answer": "0.36787944117144233",
+      "hint": "Use e^−1(I+N).",
+      "explanation": "Use e^−1(I+N). The value in the stated units is 0.367879441171.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "Can replacing a defective Jordan block by a diagonal matrix with the same eigenvalues preserve its full exponential?",
+      "answer": "No; the nilpotent polynomial terms would be lost.",
+      "options": [
+        "Yes; eigenvalues alone determine every matrix exponential.",
+        "No; the nilpotent polynomial terms would be lost."
+      ],
+      "explanation": "The eigenvector/Jordan structure also controls evolution.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; eigenvalues alone determine every matrix exponential.": "The eigenvector/Jordan structure also controls evolution."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -159,9 +196,19 @@ Time-dependent matrices require caution. Writing exp(∫A(t)dt) as a fundamental
 
 Jordan form is useful for exact classification but can be numerically unstable near defective matrices: arbitrarily small perturbations can split eigenvalues and alter the block structure. Practical matrix-exponential algorithms use stable factorizations and scaling strategies, such as Schur-based or Padé scaling-and-squaring methods, rather than inferring an exact Jordan structure from noisy decimal data.
 
+
+### Derive, test and transfer
+
+For a Jordan block J=λI+N with N²=0, the commuting exponential factorization gives exp(tJ)=exp(λt)(I+tN). The polynomial factor arises from the nilpotent part and is lost if one replaces the block by a diagonal matrix with the same repeated eigenvalue.
+
+For J=[[-1,1],[0,-1]], solutions include t exp(−t) terms even though both eigenvalues are negative. They still decay asymptotically, but transient components can initially grow. For longer nilpotent chains the exponential includes higher finite powers of t. A defective representation is sensitive to perturbations, so Jordan form is a structural analytic tool rather than a universally stable numerical decomposition.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA3.8" />
+
 
 Compute the nilpotent two-by-two exponential directly from its power series and differentiate the resulting solution. Compare with a slightly perturbed matrix and observe that its exact Jordan type can change while the finite-time solution varies continuously.
 

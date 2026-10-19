@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-1",
+      "prompt": "For −y″=λy on [0,π] with zero endpoints, find the second eigenvalue.",
+      "answer": "4",
+      "hint": "Use λn=n² on this interval.",
+      "explanation": "Use λn=n² on this interval. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-transfer-2",
+      "prompt": "Find ∫₀^π sin²(x) dx.",
+      "answer": "1.5707963267948966",
+      "hint": "Use the half-angle identity or orthogonality normalization.",
+      "explanation": "Use the half-angle identity or orthogonality normalization. The value in the stated units is 1.570796326795.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "linear-ode-model-assumptions",
+      "prompt": "May the positive Sturm–Liouville weight be ignored in an orthogonality calculation?",
+      "answer": "No; it defines the relevant inner product.",
+      "options": [
+        "Yes; every weight yields the same numerical inner product.",
+        "No; it defines the relevant inner product."
+      ],
+      "explanation": "The operator symmetry and orthogonality are tied to that measure.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every weight yields the same numerical inner product.": "The operator symmetry and orthogonality are tied to that measure."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For −y″=λy on (0,L) with y(0)=y(L)=0, negative and zero λ yield no nonzero
 
 Singular endpoints, infinite intervals, vanishing coefficients or non-self-adjoint conditions require additional theory. For example a radial problem can need integrability and boundary selection at the origin. A finite-interval sine basis cannot be transplanted to every open-domain physical problem without checking its operator domain.
 
+
+### Derive, test and transfer
+
+For the regular Sturm–Liouville problem −(p y′)′+q y=λw y with appropriate separated self-adjoint boundary conditions, integration by parts cancels the boundary form. Subtracting equations for two different eigenvalues gives weighted orthogonality ∫w y_m y_n=0. The weight w belongs to the inner product and cannot be omitted at will.
+
+For −y″=λy on [0,L] with zero endpoints, eigenfunctions are sin(nπx/L) and eigenvalues (nπ/L)² for positive n. A zero mode can appear with different boundaries, such as Neumann conditions, changing invertibility and compatibility. Completeness and regularity claims require the stated operator setting rather than an unrestricted analogy to finite matrices.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="linear_ode_MA4.6" />
+
 
 Compute the first few modes for Dirichlet and Neumann endpoints and compare the zero-mode possibility. Verify weighted overlaps numerically and by trigonometric identities. Record the boundary form before claiming two eigenfunctions must be orthogonal.
 
