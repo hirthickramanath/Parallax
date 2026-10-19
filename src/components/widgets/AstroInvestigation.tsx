@@ -11,9 +11,19 @@ export function AstroInvestigation({
   const model = suppliedModel ?? astroInvestigations[lessonId];
   const [x, setX] = useState(model.x[3]),
     [p, setP] = useState(model.parameter[3]);
-  const xs = Array.from(
-    { length: 121 },
-    (_, i) => model.x[1] + ((model.x[2] - model.x[1]) * i) / 120,
+  const xs = Array.from({ length: 121 }, (_, i) =>
+    model.xStep
+      ? Math.max(
+          model.x[1],
+          Math.min(
+            model.x[2],
+            Math.round(
+              (model.x[1] + ((model.x[2] - model.x[1]) * i) / 120) /
+                model.xStep,
+            ) * model.xStep,
+          ),
+        )
+      : model.x[1] + ((model.x[2] - model.x[1]) * i) / 120,
   );
   const ys = xs.map((v) => model.value(v, p));
   const lo = Math.min(0, ...ys),

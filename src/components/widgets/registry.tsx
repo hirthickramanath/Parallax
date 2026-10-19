@@ -1,3 +1,4 @@
+import { thermalOpticsInvestigations } from "../../lib/thermal-optics-investigations";
 import {
   ElectrostaticProbe,
   ImageChargeProbe,
@@ -123,6 +124,17 @@ export function Widget({ name }: { name: string }) {
         key={name}
         lessonId={name.slice(3)}
         model={emInvestigations[name.slice(3)]}
+      />
+    );
+  if (
+    name.startsWith("thermal_optics_") &&
+    thermalOpticsInvestigations[name.slice(15)]
+  )
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(15)}
+        model={thermalOpticsInvestigations[name.slice(15)]}
       />
     );
   const Component = widgets[name as keyof typeof widgets];

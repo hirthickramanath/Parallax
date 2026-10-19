@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "thermal-optics-transfer-1",
+      "prompt": "For two equal coherent fields of unit amplitude in phase, find resultant intensity when intensity is amplitude squared.",
+      "answer": "4",
+      "hint": "Add amplitudes before squaring.",
+      "explanation": "Add amplitudes before squaring. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "thermal-optics-transfer-2",
+      "prompt": "For equal fields with phase difference π, find ideal resultant intensity.",
+      "answer": "0",
+      "hint": "The amplitudes cancel under the coherent equal-amplitude assumptions.",
+      "explanation": "The amplitudes cancel under the coherent equal-amplitude assumptions. The value in the stated units is 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "thermal-optics-model-assumptions",
+      "prompt": "Does finite slit width affect only fringe spacing and leave the overall envelope unchanged?",
+      "answer": "No; it creates a diffraction envelope that can suppress fringes.",
+      "options": [
+        "Yes; slit width and slit separation have identical roles.",
+        "No; it creates a diffraction envelope that can suppress fringes."
+      ],
+      "explanation": "Single-aperture diffraction and two-source phase interference are distinct factors.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; slit width and slit separation have identical roles.": "Single-aperture diffraction and two-source phase interference are distinct factors."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A circular aperture instead produces an Airy-type pattern involving J₁; the id
 
 Near-field Fresnel diffraction retains quadratic phase terms neglected in a far-field approximation. Polarization, vector fields, finite bandwidth and aperture structure can matter. A plotted intensity must be normalized if interpreted probabilistically, and pixel size plus detector response can limit an actual measurement.
 
+
+### Derive, test and transfer
+
+For two equal coherent narrow slits, phase difference δ gives an interference factor cos²(δ/2) relative to its central maximum. Finite slit width multiplies this by a single-slit diffraction envelope sinc²β, with β=πa sinθ/λ and δ/2=πd sinθ/λ. The widths and separation therefore control distinct structures.
+
+At β=0 the sinc ratio is defined by its limit one, not a division error. An interference maximum can be suppressed when it lies on a diffraction-envelope zero. Partial coherence, unequal amplitudes and non-Fraunhofer geometry alter the ideal pattern. The display is an analytic far-field intensity relation, with its horizontal phase coordinate stated explicitly.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="thermal_optics_PH6.2" />
+
 
 Use the slit bench to vary aperture and separation independently. Identify the single-slit envelope versus two-source fringe spacing and test the far-field assumptions before interpreting the plotted angular axis.
 

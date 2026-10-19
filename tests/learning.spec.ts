@@ -1801,3 +1801,39 @@ test("electromagnetic probes distinguish zero potential, grounded boundaries and
     page.getByText("Magnetic field: (1.0000, 0.0000).", { exact: true }),
   ).toBeVisible();
 });
+
+test("optical and thermal investigations distinguish pump saturation and equilibrium statistics", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PH6.5");
+  await expect(
+    page.getByText(/Steady excited-state fraction: 0.3333/),
+  ).toBeVisible();
+  await page.getByLabel("Incoherent pump rate R", { exact: true }).fill("0");
+  await expect(
+    page.getByText(/Steady excited-state fraction: 0.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH7.6");
+  await page.getByLabel("Reduced energy x=β(ε−μ)", { exact: true }).fill("1");
+  await expect(
+    page.getByText(/Mean occupation per mode: 0.2689/),
+  ).toBeVisible();
+  await page
+    .getByLabel("Statistics: 0=Fermi, 1=Bose", { exact: true })
+    .fill("1");
+  await expect(
+    page.getByText(/Mean occupation per mode: 0.5820/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH7.3");
+  await page.getByLabel("Subsystem A multiplicity", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Subsystem A multiplicity", { exact: true }),
+  ).toHaveValue("5");
+  await page.goto("/lesson/PH7.10");
+  await page.getByLabel("Elapsed time", { exact: true }).fill("0");
+  await expect(
+    page.getByText(/Variance from initial value zero: 0.0000/),
+  ).toBeVisible();
+});

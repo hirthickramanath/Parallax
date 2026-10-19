@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 108 have current partial AI-assisted source mappings; 217 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 116 have current partial AI-assisted source mappings; 198 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -309,10 +309,10 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH2.5 Canonical transformations and Poisson brackets | 10 / 10 | 5 | 4 | canonical_shear_explorer |
 | PH2.6 Hamilton-Jacobi theory and action-angle variables | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
 | PH2.7 Small oscillations and normal modes | 10 / 10 | 5 | 4 | coupled_oscillator_lab |
-| PH3.1 Nonlinear oscillators, chaos and Lyapunov exponents | 6 / 6 | 2 | 0 | pending |
-| PH3.2 Stress and strain | 6 / 6 | 2 | 0 | pending |
-| PH3.3 Fluid dynamics (Euler and Navier-Stokes) | 6 / 6 | 2 | 0 | pending |
-| PH3.4 Waves in fluids and turbulence | 6 / 6 | 2 | 0 | pending |
+| PH3.1 Nonlinear oscillators, chaos and Lyapunov exponents | 9 / 9 | 4 | 3 | thermal_optics_PH3.1 |
+| PH3.2 Stress and strain | 9 / 9 | 4 | 3 | thermal_optics_PH3.2 |
+| PH3.3 Fluid dynamics (Euler and Navier-Stokes) | 9 / 9 | 4 | 3 | thermal_optics_PH3.3 |
+| PH3.4 Waves in fluids and turbulence | 9 / 9 | 4 | 3 | thermal_optics_PH3.4 |
 | PH4.1 Coulomb's law and Gauss's law (integral and differential) | 9 / 9 | 4 | 3 | electrostatic_probe, spherical_field_lab |
 | PH4.2 Electric potential, Poisson and Laplace equations | 9 / 9 | 4 | 3 | electrostatic_probe, spherical_field_lab |
 | PH4.3 Boundary-value problems and images | 9 / 9 | 4 | 3 | image_charge_probe |
@@ -329,21 +329,21 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH5.6 Radiation from accelerating charges | 9 / 9 | 4 | 3 | em_PH5.6 |
 | PH5.7 Covariant electrodynamics (field tensor) | 9 / 9 | 4 | 3 | em_PH5.7 |
 | PH5.8 Dispersion, plasmas and radiation reaction | 9 / 9 | 4 | 3 | em_PH5.8 |
-| PH6.1 Wave equation and dispersion | 6 / 6 | 2 | 0 | pending |
-| PH6.2 Interference and diffraction | 6 / 6 | 2 | 0 | pending |
-| PH6.3 Fourier optics and coherence | 6 / 6 | 2 | 0 | pending |
-| PH6.4 Polarisation and crystal optics | 6 / 6 | 2 | 0 | pending |
-| PH6.5 Lasers and quantum optics intro | 6 / 6 | 2 | 0 | pending |
-| PH7.1 Laws of thermodynamics and potentials | 6 / 6 | 2 | 0 | pending |
-| PH7.10 Non-equilibrium: Boltzmann equation and fluctuation-dissipation | 6 / 6 | 2 | 0 | pending |
-| PH7.2 Kinetic theory and Maxwell-Boltzmann | 6 / 6 | 2 | 0 | pending |
-| PH7.3 Microcanonical ensemble and entropy | 6 / 6 | 2 | 0 | pending |
-| PH7.4 Canonical ensemble and partition function | 7 / 7 | 3 | 0 | pending |
-| PH7.5 Grand canonical ensemble | 6 / 6 | 2 | 0 | pending |
-| PH7.6 Fermi-Dirac and Bose-Einstein statistics | 7 / 7 | 3 | 0 | pending |
-| PH7.7 Blackbody radiation and Debye model | 6 / 6 | 2 | 0 | pending |
-| PH7.8 Phase transitions and Landau theory | 6 / 6 | 2 | 0 | pending |
-| PH7.9 Ising model, renormalisation and critical phenomena | 6 / 6 | 2 | 0 | pending |
+| PH6.1 Wave equation and dispersion | 9 / 9 | 4 | 3 | thermal_optics_PH6.1 |
+| PH6.2 Interference and diffraction | 9 / 9 | 4 | 3 | thermal_optics_PH6.2 |
+| PH6.3 Fourier optics and coherence | 9 / 9 | 4 | 3 | thermal_optics_PH6.3 |
+| PH6.4 Polarisation and crystal optics | 9 / 9 | 4 | 3 | thermal_optics_PH6.4 |
+| PH6.5 Lasers and quantum optics intro | 9 / 9 | 4 | 3 | thermal_optics_PH6.5 |
+| PH7.1 Laws of thermodynamics and potentials | 9 / 9 | 4 | 3 | thermal_optics_PH7.1 |
+| PH7.10 Non-equilibrium: Boltzmann equation and fluctuation-dissipation | 9 / 9 | 4 | 3 | thermal_optics_PH7.10 |
+| PH7.2 Kinetic theory and Maxwell-Boltzmann | 9 / 9 | 4 | 3 | thermal_optics_PH7.2 |
+| PH7.3 Microcanonical ensemble and entropy | 9 / 9 | 4 | 3 | thermal_optics_PH7.3 |
+| PH7.4 Canonical ensemble and partition function | 10 / 10 | 5 | 3 | thermal_optics_PH7.4 |
+| PH7.5 Grand canonical ensemble | 9 / 9 | 4 | 3 | thermal_optics_PH7.5 |
+| PH7.6 Fermi-Dirac and Bose-Einstein statistics | 10 / 10 | 5 | 3 | thermal_optics_PH7.6 |
+| PH7.7 Blackbody radiation and Debye model | 9 / 9 | 4 | 3 | thermal_optics_PH7.7 |
+| PH7.8 Phase transitions and Landau theory | 9 / 9 | 4 | 3 | thermal_optics_PH7.8 |
+| PH7.9 Ising model, renormalisation and critical phenomena | 9 / 9 | 4 | 3 | thermal_optics_PH7.9 |
 | PH8.1 Origins of quantum theory and wave mechanics | 6 / 6 | 2 | 0 | pending |
 | PH8.2 Schrodinger equation and 1D problems | 6 / 6 | 2 | 0 | pending |
 | PH8.3 Postulates and Dirac notation | 6 / 6 | 2 | 0 | pending |
