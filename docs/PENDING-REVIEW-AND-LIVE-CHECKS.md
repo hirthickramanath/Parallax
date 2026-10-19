@@ -103,3 +103,7 @@ Fifty-two lessons have 156 added questions and embedded investigations. Current 
 ## Current checkpoint after the remaining physics release
 
 All 354 draft lessons now have expanded banks and explicit investigations. The current ledger has 162 partial source mappings, zero independent approvals and zero explicit-widget gaps. Full scientific/source review remains open, including 192 lessons without a current partial mapping. Numerical checks and source mappings do not certify every claim. See [the five-item status](FIVE-ITEM-EXECUTION-STATUS.md) and [the final release](QUANTUM-MATTER-FIELDS-EXPANSION.md). Earlier counts above are historical checkpoints.
+
+## Scientific review and access follow-up
+
+Current partial source coverage is 181 lessons; independent approvals remain zero. The production build, 645 main checks, eight separate service tests and three local Worker dry runs passed. The public deployment checker passed against a local production build; production access remains blocked until the saved environment network draft is applied. Qualitative pilot intake has begun, but actual app use, scored outcomes and delayed follow-up remain uncollected. [Detailed evidence and access steps](REVIEW-AND-LIVE-VERIFICATION-FOLLOWUP.md).

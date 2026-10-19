@@ -18,8 +18,10 @@ Recent completed releases:
 
 Earlier real-analysis, mechanics and foundation releases remain included. The final physics release also closes fourteen widget gaps in earlier lessons. Shared models are reused where appropriate; not every lesson has a bespoke apparatus. Models disclose their assumptions and distinguish analytic demonstrations from executed experiments or research projects.
 
-Current validation: production build, 640 unit/content/model/evidence tests and 109 full browser cases passed, followed by four targeted checks against the final grading build. Browser authentication is mocked. Git pushes are distinct from confirmed Cloudflare deployment or live integration success.
+Current validation: production build, 645 unit/content/model/evidence tests and 109 full browser cases passed, followed by four targeted checks against the final grading build. Browser authentication is mocked. Git pushes are distinct from confirmed Cloudflare deployment or live integration success.
 
-There are 162 current partial source mappings and zero independent approvals. All 354 lessons remain drafts. Every review packet exports current lesson and transitive model-source hashes. Partial source inspections do not approve an entire advanced lesson.
+There are 181 current partial source mappings and zero independent approvals. All 354 lessons remain drafts. Every review packet exports current lesson and transitive model-source hashes. Partial source inspections do not approve an entire advanced lesson.
 
 See [the final physics release](QUANTUM-MATTER-FIELDS-EXPANSION.md), [the generated review queue](COURSE-REVIEW-QUEUE.md), [the five-item execution status](FIVE-ITEM-EXECUTION-STATUS.md) and [live/service prerequisites](PENDING-REVIEW-AND-LIVE-CHECKS.md).
+
+Latest scientific/pilot/live-check follow-up: [current report](REVIEW-AND-LIVE-VERIFICATION-FOLLOWUP.md).

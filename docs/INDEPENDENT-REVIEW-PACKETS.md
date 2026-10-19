@@ -19,3 +19,7 @@ The packets are a review handoff, not evidence that review occurred. A reviewer 
 The publication gate now requires an independently approved evidence record's `modelArtifacts` to match computed current implementation hashes whenever models are used. It already requires matching lesson text, all sections and questions, named author/reviewer separation, exact-source metadata and no unresolved issues. Neither metadata validation nor packet export authenticates a person's identity or proves scientific correctness. No reviews were fabricated, no draft was promoted and `content/review/evidence.json` remains empty.
 
 A current source mapping is weaker than this approval: it may corroborate only one introductory claim in a long lesson. The ledger explicitly states the remaining internally checked claims. All 354 lessons still require independent review before a publication claim.
+
+## Shareable source bundle
+
+`npm run review:handoff -- /tmp/parallax-review-export` creates a new directory containing all lesson/model sources, packets, blank unapproved worksheets and an integrity manifest. Pass lesson IDs after the destination to select a subset. Keep the original export intact; reviewers should return a separate working copy of their notes. The exporter refuses to overwrite an existing destination and excludes environment files and private participant records. Integrity matching does not authenticate a reviewer or establish scientific approval.
