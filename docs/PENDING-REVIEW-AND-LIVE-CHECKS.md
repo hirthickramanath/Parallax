@@ -12,6 +12,14 @@ Internal expansion completed for nine advanced lessons, with additional derivati
 - Add named reviewer/date and verified sources using the existing publication contract before changing draft status. Currently zero lessons are independently verified/published.
 - Real research reproductions, capstones and physical experiments have not been executed merely because a lesson describes their methods. Preserve that distinction and provide real data provenance when such work is performed.
 
+## Lesson simulations and adaptive question depth
+
+These remain explicit pending work after the [learning-flow redesign](LEARNING-FLOW-REDESIGN.md):
+
+- Expand lesson-specific interactive simulations beyond the connected apparatus and new vector/black-hole models. The 354 authored lessons do not each have a bespoke simulation. Track coverage per lesson and develop suitable visual explorations, direct manipulation, predictions and theory connections, with accessible keyboard controls and clearly stated model assumptions.
+- Deepen question banks across the curriculum with meaningful foundation, intermediate, Core and transfer problems, useful distractors, worked explanations and support after mistakes. Current adaptive sequencing uses a small authored bank; it does not establish equally rich or appropriately challenging practice in every lesson.
+- Evaluate difficulty progression with learner feedback and assessment results. Check that stronger answers lead to substantively harder reasoning and repeated errors lead to useful scaffolding, while retaining complete theory. Do not treat sequencing alone as calibrated difficulty or completed content-depth work.
+
 ## Live Firebase verification
 
 The browser suite uses synthetic authentication and blocked/mocked cloud requests. It does not prove production Firestore rules were published or that cross-device synchronization works under an owner session.
