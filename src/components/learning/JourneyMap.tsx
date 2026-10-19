@@ -1,3 +1,8 @@
+import {
+  FOUNDATION_ORDER,
+  foundationRevised,
+  nextFoundation,
+} from "../../lib/foundation-path";
 import { demonstratedMastery } from "../../lib/mastery";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -13,6 +18,46 @@ export function JourneyMap() {
   const [phase, setPhase] = useState(
     course.lessons.find((l) => l.id === currentId)?.phase || 0,
   );
+  if (store.preferences.foundationRevision)
+    return (
+      <section className="journey-map" aria-label="Learning level map">
+        <p className="eyebrow">REBUILD BEFORE THE FRONTIER</p>
+        <h2>Your foundation revision path</h2>
+        <p>
+          Each node revisits vocabulary, worked examples, full theory and guided
+          practice. Revision practice is separate from course mastery.
+        </p>
+        <ol className="level-path">
+          {FOUNDATION_ORDER.map((id, i) => {
+            const done = foundationRevised(store.records, id),
+              current = id === nextFoundation(store.records);
+            return (
+              <li
+                key={id}
+                className={`${done ? "complete" : "available"} ${current ? "current-level" : ""}`}
+                style={
+                  {
+                    "--bend": `${Math.sin(i * 1.2) * 60}px`,
+                  } as React.CSSProperties
+                }
+              >
+                <Link
+                  to={`/foundation-revision/${id}`}
+                  aria-label={`${course.authored[id].title} · ${done ? "revision practice complete" : "foundation revision"}`}
+                >
+                  <span className="level-node">{done ? "✓" : i + 1}</span>
+                  <strong>{course.authored[id].title}</strong>
+                  <small>
+                    {id}
+                    {current ? " · Continue here" : ""}
+                  </small>
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    );
   return (
     <section className="journey-map" aria-label="Learning level map">
       <p className="eyebrow">ONE IDEA LEADS TO ANOTHER</p>

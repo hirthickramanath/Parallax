@@ -20,7 +20,40 @@ export function reviewPacket(root, id) {
       "utf8",
     ),
   );
+  const revisionFile = "content/revision/foundation.json";
+  const revisionPath = path.join(root, revisionFile);
+  const revisionData = fs.existsSync(revisionPath)
+    ? JSON.parse(fs.readFileSync(revisionPath, "utf8"))
+    : null;
+  const guide = revisionData?.modules.find((module) => module.id === id);
+  const revisionArtifacts = guide
+    ? Object.fromEntries(
+        [
+          revisionFile,
+          "src/pages/FoundationRevision.tsx",
+          "src/lib/foundation-revision.ts",
+          "src/lib/foundation-path.ts",
+          "src/lib/learning-core.ts",
+        ].map((name) => [
+          name,
+          sourceFingerprint(fs.readFileSync(path.join(root, name))),
+        ]),
+      )
+    : null;
   return {
+    ...(guide
+      ? {
+          foundationRevision: {
+            version: revisionData.version,
+            status: "draft",
+            module: guide,
+            moduleSha256: sourceFingerprint(JSON.stringify(guide)),
+            artifacts: revisionArtifacts,
+            independentReviewCompleted: false,
+            note: "Separate unapproved revision material. MDX approval does not approve this guide, its examples or its grading. Review these artifacts explicitly.",
+          },
+        }
+      : {}),
     lessonId: id,
     title: data.title,
     sha256: sourceFingerprint(source),

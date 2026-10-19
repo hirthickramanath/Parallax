@@ -1,3 +1,4 @@
+import { FOUNDATION_ORDER, foundationRevised } from "../../lib/foundation-path";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useClock, useLearning } from "../../hooks/useLearning";
@@ -10,8 +11,22 @@ export function WeekOverview() {
     now = useClock(),
     week = weekStart(dateKey(now, store.preferences.timezone));
   const saved = store.records.plan.current;
+  const revision = !!store.preferences.foundationRevision;
+  const mode = revision ? "revision" : "course";
   useEffect(() => {
-    if (saved?.week === week) return;
+    if (saved?.week === week && (saved.mode || "course") === mode) return;
+    if (revision) {
+      const ids = FOUNDATION_ORDER.filter(
+        (id) => !foundationRevised(store.records, id),
+      ).slice(0, 7);
+      store.put("plan", "current", {
+        week,
+        mode,
+        items: { revision: ids },
+        generatedAt: Date.now(),
+      });
+      return;
+    }
     const candidates = course.lessons.filter(
       (l) =>
         l.available &&
@@ -24,10 +39,15 @@ export function WeekOverview() {
       ...store.preferences.trackMix,
     }))
       (items[lesson.track] ||= []).push(lesson.id);
-    store.put("plan", "current", { week, items, generatedAt: Date.now() });
-  }, [week, saved?.week]);
+    store.put("plan", "current", {
+      week,
+      mode,
+      items,
+      generatedAt: Date.now(),
+    });
+  }, [week, saved?.week, mode]);
   const ids =
-    saved?.week === week
+    saved?.week === week && (saved.mode || "course") === mode
       ? (Object.values(saved.items || {}).flat() as string[])
       : [];
   return (
@@ -47,10 +67,15 @@ export function WeekOverview() {
     >
       <summary>This week’s learning plan</summary>
       <p className="eyebrow">YOUR WEEK · STARTING {week}</p>
-      <h2>A week of good questions.</h2>
+      <h2>
+        {revision
+          ? "A week to rebuild your foundations."
+          : "A week of good questions."}
+      </h2>
       <p>
-        Your plan appears automatically each Monday when you open Parallax. It
-        follows your prerequisites and keeps the full course in view.
+        {revision
+          ? "Revision comes first this week. These are the next foundation chapters; take as much time as you need before advanced work."
+          : "Your plan appears automatically each Monday when you open Parallax. It follows your prerequisites and keeps the full course in view."}
       </p>
       <div className="plan-list">
         {ids.map((id) => {
@@ -59,11 +84,19 @@ export function WeekOverview() {
           return (
             <article key={id}>
               <span className="pill">
-                {store.records.lessons[id]?.status === "done"
-                  ? "Reading complete"
-                  : l.track}
+                {revision
+                  ? foundationRevised(store.records, id)
+                    ? "Revision practice complete"
+                    : "Rebuild"
+                  : store.records.lessons[id]?.status === "done"
+                    ? "Reading complete"
+                    : l.track}
               </span>
-              <Link to={`/lesson/${id}`}>{l.title} →</Link>
+              <Link
+                to={revision ? `/foundation-revision/${id}` : `/lesson/${id}`}
+              >
+                {l.title} →
+              </Link>
             </article>
           );
         })}

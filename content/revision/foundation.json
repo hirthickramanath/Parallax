@@ -1,0 +1,2805 @@
+{
+  "version": "foundation-rebuild-v1",
+  "status": "draft",
+  "modules": [
+    {
+      "id": "MB1.1",
+      "intro": "Start by translating a sentence into quantities and a relationship. A variable is a number whose value may change; an equation specifies equality, while an inequality specifies an order. We will keep track of both the allowed inputs and the meaning of a graph.",
+      "terms": [
+        {
+          "term": "Variable",
+          "meaning": "A symbol standing for a number in the stated problem."
+        },
+        {
+          "term": "Domain",
+          "meaning": "The inputs for which the original expression is defined."
+        },
+        {
+          "term": "Slope",
+          "meaning": "Change in vertical value divided by change in horizontal value."
+        }
+      ],
+      "derivation": [
+        "For a line y=mx+b, b is the value at x=0. Changing x by Δx changes y by mΔx, so the ratio is m.",
+        "The same operation on both sides preserves an equation when it is defined and reversible. For inequalities, multiplying or dividing by a negative number reverses the order.",
+        "Factor x²−5x+6=(x−2)(x−3). The product is negative between 2 and 3 because its two factors have opposite signs. Endpoints depend on whether equality is allowed."
+      ],
+      "examples": [
+        {
+          "title": "Solve an equation without guessing",
+          "steps": [
+            "3x+2=14. Subtract 2 from both sides: 3x=12.",
+            "Divide by 3: x=4. Substitute into the original equation: 3(4)+2=14."
+          ]
+        },
+        {
+          "title": "Reverse an inequality correctly",
+          "steps": [
+            "−2x<6. Dividing by −2 reverses the sign, giving x>−3.",
+            "Test x=0: the original inequality is true. Test x=−4: it is false."
+          ]
+        }
+      ],
+      "pitfall": "A graph helps you predict a solution; exact algebra and a domain check establish it.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Solve 4x−3=17. What is x?",
+          "answer": "5",
+          "unit": "",
+          "hint": "Add 3, then divide by 4.",
+          "explanation": "4x=20, so x=5.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "When you divide an inequality by a negative number, what happens?",
+          "answer": "Reverse its direction.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Multiplication by a negative reverses numerical order.",
+          "type": "mcq",
+          "options": [
+            "Reverse its direction.",
+            "Keep its direction unchanged."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For y=3x−2, what is the change in y when x rises from 1 to 4?",
+          "answer": "9",
+          "unit": "",
+          "hint": "Find Δx first.",
+          "explanation": "Δx=3; Δy=3×3=9.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB1.2",
+      "intro": "Exponents describe repeated multiplication and logarithms undo exponentiation. A complex number extends the real line by keeping two components. Review these as operations with domains, rather than a list of rules to memorize.",
+      "terms": [
+        {
+          "term": "Exponent",
+          "meaning": "The power in a quantity such as 2³=8."
+        },
+        {
+          "term": "Logarithm",
+          "meaning": "log_b(x) is the power that makes b raised to that power equal x."
+        },
+        {
+          "term": "Modulus",
+          "meaning": "The length of a complex number viewed as a point in a plane."
+        }
+      ],
+      "derivation": [
+        "For b>0 and b≠1, b^y=x means log_b(x)=y. A real logarithm needs x>0.",
+        "For positive x and y, ln(xy)=ln x+ln y because multiplying exponentials adds their exponents. This does not make ln(x+y) a sum of logarithms.",
+        "For z=x+iy with i²=−1, its squared modulus is x²+y². Its modulus is the nonnegative square root."
+      ],
+      "examples": [
+        {
+          "title": "Undo a power",
+          "steps": [
+            "2^5=32, so log₂32=5.",
+            "The logarithm returns the exponent, not 32 divided by 2."
+          ]
+        },
+        {
+          "title": "Measure a complex number",
+          "steps": [
+            "For z=5+12i, |z|²=25+144=169.",
+            "Thus |z|=13. Squaring the complex number itself would be a different operation."
+          ]
+        }
+      ],
+      "pitfall": "ln(x+y) is generally not ln x+ln y. Complex logarithms also need a branch convention.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find log₂64.",
+          "answer": "6",
+          "unit": "",
+          "hint": "Which power of two gives 64?",
+          "explanation": "2⁶=64, so the logarithm is 6.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "May ln x be used as a real-valued expression when x≤0?",
+          "answer": "No; its real domain requires x>0.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The original domain must be preserved.",
+          "type": "mcq",
+          "options": [
+            "Yes; logarithms accept every real input.",
+            "No; its real domain requires x>0."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Find the modulus of 8+6i.",
+          "answer": "10",
+          "unit": "",
+          "hint": "Use the length of its two components.",
+          "explanation": "sqrt(8²+6²)=10.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB1.3",
+      "intro": "A sequence lists terms; a series adds them. Seeing the terms shrink is not enough to know that the sum approaches a finite value. We will derive one exact sum and then distinguish it from an arbitrary infinite series.",
+      "terms": [
+        {
+          "term": "Sequence",
+          "meaning": "An indexed list such as 1, 1/2, 1/3, … ."
+        },
+        {
+          "term": "Series",
+          "meaning": "A sum of terms from a sequence."
+        },
+        {
+          "term": "Ratio",
+          "meaning": "The multiplier between consecutive terms of a geometric sequence."
+        }
+      ],
+      "derivation": [
+        "Let S=1+r+…+r^N. Multiplying by r shifts every term one place.",
+        "Subtract rS from S: (1−r)S=1−r^(N+1). For r≠1, divide by 1−r.",
+        "When |r|<1, r^(N+1) approaches zero, so the infinite sum is 1/(1−r). The binomial coefficient n choose k counts ways to select k positions in expanding (1+x)^n."
+      ],
+      "examples": [
+        {
+          "title": "Sum a geometric tail",
+          "steps": [
+            "1+1/3+1/9+… has r=1/3.",
+            "Its sum is 1/(1−1/3)=3/2. This uses the infinite-series convergence condition."
+          ]
+        },
+        {
+          "title": "Read a binomial coefficient",
+          "steps": [
+            "The x² term in (1+x)^4 comes from choosing two of four factors to supply x.",
+            "There are 4×3/2=6 choices, so the coefficient is 6."
+          ]
+        }
+      ],
+      "pitfall": "Terms tending to zero are necessary for convergence, but the harmonic series shows this condition is not sufficient.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find the sum 1+1/4+1/16+… .",
+          "answer": "1.3333333333333333",
+          "unit": "",
+          "hint": "Use the geometric ratio 1/4.",
+          "explanation": "1/(1−1/4)=4/3.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "If the terms approach zero, must their infinite sum converge?",
+          "answer": "No; further convergence reasoning is needed.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The harmonic series has vanishing terms but diverges.",
+          "type": "mcq",
+          "options": [
+            "No; further convergence reasoning is needed.",
+            "Yes; a term limit of zero proves convergence."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Find the coefficient of x² in (1+x)^6.",
+          "answer": "15",
+          "unit": "",
+          "hint": "Choose two of the six factors.",
+          "explanation": "6×5/2=15.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB1.4",
+      "intro": "Proof turns a pattern into a statement that covers every allowed case. Revision begins by identifying exactly what is claimed, which inputs are allowed, and what would disprove it. Induction is one tool for statements indexed by integers.",
+      "terms": [
+        {
+          "term": "Claim",
+          "meaning": "A precise statement with explicit assumptions."
+        },
+        {
+          "term": "Counterexample",
+          "meaning": "One permitted case that makes a universal claim false."
+        },
+        {
+          "term": "Induction",
+          "meaning": "A base case plus an implication from n to n+1."
+        }
+      ],
+      "derivation": [
+        "For the sum 1+…+n=n(n+1)/2, first check n=1. Both sides equal 1.",
+        "Assume the formula at an arbitrary n. Add n+1 to obtain n(n+1)/2+(n+1)=(n+1)(n+2)/2.",
+        "The base case and this implication establish every integer n≥1. Testing a finite list alone does not provide that implication."
+      ],
+      "examples": [
+        {
+          "title": "Disprove a universal claim",
+          "steps": [
+            "Claim: x²>x for every positive integer x.",
+            "At x=1 both sides equal 1, so this permitted case disproves the strict claim."
+          ]
+        },
+        {
+          "title": "Use a proved sum",
+          "steps": [
+            "The formula gives 1+…+12=12×13/2=78.",
+            "Adding the next term, 13, gives 91, agreeing with 13×14/2."
+          ]
+        }
+      ],
+      "pitfall": "An induction assumption is a temporary premise for proving the next case, not permission to assume the conclusion for all n.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find 1+2+…+8.",
+          "answer": "36",
+          "unit": "",
+          "hint": "Use n(n+1)/2.",
+          "explanation": "8×9/2=36.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does checking a formula for 100 integers prove it for every integer?",
+          "answer": "No; a general argument is still needed.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "A finite sample leaves untested cases.",
+          "type": "mcq",
+          "options": [
+            "Yes; enough numerical examples replace proof.",
+            "No; a general argument is still needed."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "How many subsets does a three-element set have?",
+          "answer": "8",
+          "unit": "",
+          "hint": "Each element is either included or excluded.",
+          "explanation": "Two independent choices for each of three elements give 2³=8.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB2.1",
+      "intro": "An angle describes a turn. A radian measures that turn using arc length divided by radius, which makes calculus formulas natural. Trigonometric functions connect angles with component ratios and repeating motion.",
+      "terms": [
+        {
+          "term": "Radian",
+          "meaning": "An angle whose arc length divided by radius gives its numerical measure."
+        },
+        {
+          "term": "Sine",
+          "meaning": "For a unit circle, the vertical coordinate at a given angle."
+        },
+        {
+          "term": "Period",
+          "meaning": "The input change after which a function repeats."
+        }
+      ],
+      "derivation": [
+        "On a unit circle, coordinates are (cosθ,sinθ), so the distance-from-origin relation gives cos²θ+sin²θ=1.",
+        "A full turn has arc length 2πr, hence angle 2π radians. To convert degrees to radians, multiply by π/180.",
+        "The inverse sine returns one chosen principal value. Solving a sine equation also requires symmetry and periodic copies in the requested interval."
+      ],
+      "examples": [
+        {
+          "title": "Convert an angle",
+          "steps": [
+            "60 degrees ×π/180=π/3 radians.",
+            "Therefore sin60°=sin(π/3)=sqrt(3)/2."
+          ]
+        },
+        {
+          "title": "Find both solutions",
+          "steps": [
+            "sinθ=1/2 on 0≤θ<2π has θ=π/6 and θ=5π/6.",
+            "Both unit-circle points have the same vertical coordinate."
+          ]
+        }
+      ],
+      "pitfall": "Do not pass degrees into a formula written for radians, or treat an inverse-function output as every solution.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "How many degrees is π/2 radians?",
+          "answer": "90",
+          "unit": "degrees",
+          "hint": "A full turn is 2π radians and 360 degrees.",
+          "explanation": "One quarter-turn is 90 degrees.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does arcsin alone list every solution of a sine equation?",
+          "answer": "No; symmetry and periodicity can add solutions.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "An inverse branch is restricted to a chosen interval.",
+          "type": "mcq",
+          "options": [
+            "No; symmetry and periodicity can add solutions.",
+            "Yes; its principal value is the entire solution set."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Find sin²(0.7)+cos²(0.7).",
+          "answer": "1",
+          "unit": "",
+          "hint": "Use the identity rather than approximating each term.",
+          "explanation": "The unit-circle identity makes the sum exactly one.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB2.2",
+      "intro": "An ellipse is a curve for which distances to two fixed points add to a constant. Those fixed points are foci. In an ideal two-body orbit, the central mass sits at a focus, so orbital distances are measured from that focus—not the ellipse center.",
+      "terms": [
+        {
+          "term": "Semimajor axis a",
+          "meaning": "Half the longest diameter, measured from the center to a major-axis end."
+        },
+        {
+          "term": "Eccentricity e",
+          "meaning": "The focus offset divided by a; for an ellipse 0≤e<1."
+        },
+        {
+          "term": "Periapsis / apoapsis",
+          "meaning": "The nearest / farthest orbital point from the occupied focus."
+        }
+      ],
+      "derivation": [
+        "Let the center-to-focus offset be c. By definition, c=ae.",
+        "At the nearest major-axis end, the focus-to-end distance is a−c. Thus r_peri=a(1−e).",
+        "At the farthest end it is a+c, giving r_apo=a(1+e). Adding the two distances recovers 2a; subtracting them gives 2ae."
+      ],
+      "examples": [
+        {
+          "title": "Find the two orbital distances",
+          "steps": [
+            "Take a=10 AU and e=0.2. Then c=2 AU.",
+            "Nearest distance is 10−2=8 AU; farthest is 10+2=12 AU. Both begin at the same focus."
+          ]
+        },
+        {
+          "title": "Recover the ellipse from its extremes",
+          "steps": [
+            "If r_peri=3 and r_apo=9, then a=(3+9)/2=6.",
+            "The focus offset is (9−3)/2=3, hence e=c/a=0.5."
+          ]
+        }
+      ],
+      "pitfall": "The semimajor axis starts at the center; periapsis and apoapsis distances start at the focus. They coincide only in a circle.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For a=6 AU and e=0.5, find periapsis distance.",
+          "answer": "3",
+          "unit": "AU",
+          "hint": "Use a(1−e).",
+          "explanation": "6×(1−0.5)=3 AU from the focus.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Where is an orbital periapsis distance measured from?",
+          "answer": "From the focus occupied by the central mass.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The focus and center differ when e is nonzero.",
+          "type": "mcq",
+          "options": [
+            "From the geometric center of the ellipse.",
+            "From the focus occupied by the central mass."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "An orbit has nearest distance 2 AU and farthest distance 8 AU. Find eccentricity.",
+          "answer": "0.6",
+          "unit": "",
+          "hint": "Use (far−near)/(far+near).",
+          "explanation": "(8−2)/(8+2)=0.6.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "MB2.3",
+      "intro": "Coordinates locate a point; a vector describes a direction and size. A plane can be described by a normal vector, which points perpendicular to it. Normalization means dividing a nonzero vector by its length so that its new length is one.",
+      "terms": [
+        {
+          "term": "Normal vector",
+          "meaning": "A vector perpendicular to a line or plane."
+        },
+        {
+          "term": "Unit vector",
+          "meaning": "A direction vector with length exactly one."
+        },
+        {
+          "term": "Signed distance",
+          "meaning": "Distance with a sign identifying which side of an oriented plane a point occupies."
+        }
+      ],
+      "derivation": [
+        "For n=(A,B,C), its length is |n|=sqrt(A²+B²+C²). The normalized vector is n/|n|.",
+        "The plane equation n·r=D says every point on the plane has the same projection along n. For a point r0, the residual is n·r0−D.",
+        "Divide that residual by |n| to get distance along a unit normal: d=(Ax0+By0+Cz0−D)/sqrt(A²+B²+C²). Physical unsigned distance is |d|."
+      ],
+      "examples": [
+        {
+          "title": "Normalize a direction",
+          "steps": [
+            "For n=(2,2,1), length is sqrt(4+4+1)=3.",
+            "Its unit vector is (2/3,2/3,1/3); the squares of these components sum to one."
+          ]
+        },
+        {
+          "title": "Turn a plane residual into distance",
+          "steps": [
+            "For 2x+2y+z=0 and point (3,0,0), the residual is 6.",
+            "The normal has length 3, so signed distance is 6/3=2. Multiplying the whole equation by −1 reverses orientation and sign, not physical distance."
+          ]
+        }
+      ],
+      "pitfall": "An unnormalized plane residual is not a distance: scaling the equation would change it even though the plane stays fixed.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find the length of normal vector (0,3,4).",
+          "answer": "5",
+          "unit": "",
+          "hint": "Use the square root of the component squares.",
+          "explanation": "sqrt(0+9+16)=5.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "What does normalizing a nonzero vector do?",
+          "answer": "Divide by its length to keep direction and make length one.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Length normalization changes scale, not direction.",
+          "type": "mcq",
+          "options": [
+            "Divide by its length to keep direction and make length one.",
+            "Subtract one from each coordinate."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For plane 2x=4 and point (5,0,0), find signed distance using normal (2,0,0).",
+          "answer": "3",
+          "unit": "",
+          "hint": "Divide the plane residual by the normal length.",
+          "explanation": "(2×5−4)/2=3.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB3.1",
+      "intro": "A limit asks what a function approaches as the input approaches a point. Its value at that point may be different or undefined. Continuity adds the requirement that the limiting value agrees with the actual function value.",
+      "terms": [
+        {
+          "term": "Limit",
+          "meaning": "The approached output as inputs approach a specified value."
+        },
+        {
+          "term": "Continuity",
+          "meaning": "The limit exists and equals the function value."
+        },
+        {
+          "term": "Tolerance",
+          "meaning": "A chosen small allowed output error."
+        }
+      ],
+      "derivation": [
+        "Factor (x²−4)/(x−2)=(x−2)(x+2)/(x−2)=x+2 only when x≠2.",
+        "As x approaches 2 through allowed inputs, x+2 approaches 4. The original quotient remains undefined at x=2.",
+        "Defining the missing value as 4 fills this removable gap. A jump or oscillation need not have such a repair."
+      ],
+      "examples": [
+        {
+          "title": "Separate limit from substitution",
+          "steps": [
+            "For (x²−9)/(x−3), cancellation away from x=3 gives x+3.",
+            "The limit at 3 is 6, although direct substitution into the original quotient gives 0/0, not a numerical answer."
+          ]
+        },
+        {
+          "title": "Translate a tolerance",
+          "steps": [
+            "For f(x)=2x near x=1, output error is |2x−2|=2|x−1|.",
+            "Keeping input error below 0.005 guarantees output error below 0.01."
+          ]
+        }
+      ],
+      "pitfall": "0/0 is an indeterminate expression, not zero. Cancellation must preserve the original domain.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find the limit of (x²−16)/(x−4) as x approaches 4.",
+          "answer": "8",
+          "unit": "",
+          "hint": "Cancel x−4 away from four.",
+          "explanation": "The remaining expression x+4 approaches 8.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Must the limit equal the function value if that value is undefined?",
+          "answer": "No; a limit concerns nearby inputs.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "A removable gap can have a well-defined limit.",
+          "type": "mcq",
+          "options": [
+            "Yes; an undefined point makes every limit impossible.",
+            "No; a limit concerns nearby inputs."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For f(x)=3x, what maximum input error guarantees output error at most 0.03?",
+          "answer": "0.01",
+          "unit": "",
+          "hint": "The output error is three times the input error.",
+          "explanation": "0.03/3=0.01.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "MB3.2",
+      "intro": "A derivative measures an instantaneous rate of change. It comes from nearby averages, not from setting a finite interval to zero before simplifying. In physics, derivatives connect position, velocity and acceleration.",
+      "terms": [
+        {
+          "term": "Difference quotient",
+          "meaning": "The average change [f(x+h)−f(x)]/h."
+        },
+        {
+          "term": "Derivative",
+          "meaning": "The limit of that quotient as nonzero h approaches zero."
+        },
+        {
+          "term": "Chain rule",
+          "meaning": "A rule for differentiating one changing function inside another."
+        }
+      ],
+      "derivation": [
+        "For f(x)=x², the quotient is [(x+h)²−x²]/h=2x+h for h≠0.",
+        "Let h approach zero to obtain f′(x)=2x. The local linear approximation is f(x+h)≈f(x)+f′(x)h.",
+        "For f(g(x)), an input change first scales by g′ and then by f′, giving f′(g(x))g′(x) under differentiability assumptions."
+      ],
+      "examples": [
+        {
+          "title": "Differentiate with units",
+          "steps": [
+            "If position is x(t)=t² metres with t in seconds, velocity is 2t m/s.",
+            "At t=3 seconds, velocity is 6 m/s; acceleration is 2 m/s²."
+          ]
+        },
+        {
+          "title": "Use the chain rule",
+          "steps": [
+            "For y=(3x+1)², the outside derivative is 2(3x+1), and the inside derivative is 3.",
+            "Thus y′=6(3x+1), not just 2(3x+1)."
+          ]
+        }
+      ],
+      "pitfall": "A derivative is a signed rate with units. It is not generally the function divided by the input.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find the derivative of x² at x=4.",
+          "answer": "8",
+          "unit": "",
+          "hint": "Differentiate the power: d(x²)/dx = 2x, then insert the stated value.",
+          "explanation": "The derivative is 2×4=8.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "For position as a function of time, what does the first derivative represent?",
+          "answer": "Velocity, including its sign.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Position change per time is velocity.",
+          "type": "mcq",
+          "options": [
+            "Velocity, including its sign.",
+            "Distance divided by mass."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Find d[(2x+1)²]/dx at x=1.",
+          "answer": "12",
+          "unit": "",
+          "hint": "Differentiate the outside, then multiply by the inside derivative.",
+          "explanation": "2(2x+1)×2 gives 12 at x=1.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB3.3",
+      "intro": "Integration accumulates small contributions. A definite integral produces a signed total over an interval; an antiderivative is a function whose derivative matches the integrand. The connection is precise when the fundamental theorem hypotheses hold.",
+      "terms": [
+        {
+          "term": "Integrand",
+          "meaning": "The function being accumulated."
+        },
+        {
+          "term": "Antiderivative",
+          "meaning": "A function F with F′=f on the stated interval."
+        },
+        {
+          "term": "Integration constant",
+          "meaning": "The arbitrary constant lost when differentiating an antiderivative."
+        }
+      ],
+      "derivation": [
+        "Approximate an accumulated total by summing f(xi)Δx over many small pieces. The limit gives the definite integral under suitable integrability conditions.",
+        "If F′=f and the fundamental theorem applies, ∫ from a to b of f(x)dx=F(b)−F(a).",
+        "Substitution changes both the expression and differential: if u=g(x), then du=g′(x)dx. For definite integrals, also transform the endpoints."
+      ],
+      "examples": [
+        {
+          "title": "Accumulate a straight-line rate",
+          "steps": [
+            "∫ from 0 to 2 of 3x dx=[3x²/2] from 0 to 2.",
+            "The result is 6. If 3x represented a signed rate, this would be its net accumulation."
+          ]
+        },
+        {
+          "title": "Recognize a substitution",
+          "steps": [
+            "For ∫2x cos(x²)dx, take u=x² so du=2x dx.",
+            "The integral becomes ∫cos u du=sin u+C=sin(x²)+C. Check by differentiation."
+          ]
+        }
+      ],
+      "pitfall": "A signed integral and a geometric area are not always the same; negative portions cancel in the signed total.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find ∫ from 0 to 3 of 2x dx.",
+          "answer": "9",
+          "unit": "",
+          "hint": "Use antiderivative x².",
+          "explanation": "Use the antiderivative x² at each endpoint: 3² − 0² = 9.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Why does an indefinite antiderivative include C?",
+          "answer": "Differentiating a constant gives zero.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Functions differing only by a constant share a derivative.",
+          "type": "mcq",
+          "options": [
+            "Every integral must be positive.",
+            "Differentiating a constant gives zero."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Find ∫ from 0 to 1 of 2x exp(x²)dx.",
+          "answer": "1.718281828459045",
+          "unit": "",
+          "hint": "Use u=x² and transform endpoints to zero and one.",
+          "explanation": "The result is exp(1)−exp(0)=e−1.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "MB3.4",
+      "intro": "Calculus turns changing quantities into predictions: slopes locate rates and stationary points, while integrals accumulate signed effects. The physical interpretation matters as much as the algebra.",
+      "terms": [
+        {
+          "term": "Stationary point",
+          "meaning": "A differentiable point where the derivative is zero."
+        },
+        {
+          "term": "Net displacement",
+          "meaning": "Signed change in position, obtained by integrating velocity."
+        },
+        {
+          "term": "Distance travelled",
+          "meaning": "Accumulated speed, which does not cancel when direction changes."
+        }
+      ],
+      "derivation": [
+        "To find candidates for a maximum on a closed interval, examine stationary points, nondifferentiable points and endpoints.",
+        "A zero derivative is a candidate, not automatically a maximum; sign changes or higher-order analysis distinguish behavior.",
+        "Displacement is ∫v dt, whereas distance is ∫|v|dt. Split intervals at sign changes when evaluating total travel."
+      ],
+      "examples": [
+        {
+          "title": "Find a maximum with a boundary check",
+          "steps": [
+            "For f(x)=4x−x² on [0,4], f′=4−2x vanishes at x=2.",
+            "Values are f(0)=0, f(2)=4 and f(4)=0, so the maximum is 4."
+          ]
+        },
+        {
+          "title": "Separate travel and displacement",
+          "steps": [
+            "Move at +2 m/s for 3 seconds, then −2 m/s for 3 seconds.",
+            "Displacement is 6−6=0 m; distance is 6+6=12 m."
+          ]
+        }
+      ],
+      "pitfall": "A stationary point can be a minimum or neither; a net displacement can be zero after considerable travel.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find the x coordinate of the maximum of 6x−x² on [0,6].",
+          "answer": "3",
+          "unit": "",
+          "hint": "Set the derivative to zero and compare endpoints.",
+          "explanation": "6−2x=0 gives x=3, larger than both endpoint values.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Is distance always equal to signed displacement?",
+          "answer": "No; reversing direction makes them differ.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Distance integrates speed, not signed velocity.",
+          "type": "mcq",
+          "options": [
+            "No; reversing direction makes them differ.",
+            "Yes; both are the integral of signed velocity."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Travel +3 m/s for 2 s and −1 m/s for 2 s. Find total distance.",
+          "answer": "8",
+          "unit": "m",
+          "hint": "Add the magnitudes of each travel segment.",
+          "explanation": "Distance is 6+2=8 m; displacement would be 4 m.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB3.5",
+      "intro": "A differential equation relates a function to its rates of change. It describes a family of possible histories; initial or boundary data select the relevant history. Start by checking a proposed solution through differentiation.",
+      "terms": [
+        {
+          "term": "ODE",
+          "meaning": "An equation involving derivatives with respect to one independent variable."
+        },
+        {
+          "term": "Initial condition",
+          "meaning": "A value or derivative specified at a starting point."
+        },
+        {
+          "term": "Exponential decay",
+          "meaning": "A process whose loss rate is proportional to the amount remaining."
+        }
+      ],
+      "derivation": [
+        "For dy/dt=−ky with k>0, separate dy/y=−k dt when y≠0. The zero solution must also be retained.",
+        "Integration gives ln|y|=−kt+C, so y=A exp(−kt).",
+        "The initial condition y(0)=y0 fixes A=y0. The half-life solves exp(−kt_half)=1/2, giving t_half=ln2/k."
+      ],
+      "examples": [
+        {
+          "title": "Apply an initial condition",
+          "steps": [
+            "For y′=−2y and y(0)=5, y(t)=5exp(−2t).",
+            "Differentiate: y′=−10exp(−2t)=−2y, confirming both equation and initial value."
+          ]
+        },
+        {
+          "title": "Interpret a half-life",
+          "steps": [
+            "If the half-life is 3 hours, after 6 hours two halvings leave one quarter.",
+            "This is an ensemble/continuous decay relation, not a fixed disappearance time for every individual object."
+          ]
+        }
+      ],
+      "pitfall": "Solving an equation without applying its initial condition leaves an undetermined family, not the requested prediction.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For y′=−y,y(0)=4, find y at t=ln2.",
+          "answer": "2",
+          "unit": "",
+          "hint": "Use the exponential solution.",
+          "explanation": "4 exp(−ln2)=2.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "What selects one solution from an ODE family?",
+          "answer": "Appropriate initial or boundary conditions.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The equation alone can leave free constants.",
+          "type": "mcq",
+          "options": [
+            "The name of the variable alone.",
+            "Appropriate initial or boundary conditions."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A quantity has half-life 2 h. What fraction remains after 8 h?",
+          "answer": "0.0625",
+          "unit": "",
+          "hint": "Count four half-lives.",
+          "explanation": "(1/2)⁴=1/16=0.0625.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "MB4.1",
+      "intro": "A matrix represents a linear operation once bases are chosen. Multiplication combines operations in a specified order, and a determinant tracks signed scaling of area or volume. These ideas will reappear in rotations, quantum states and coordinate changes.",
+      "terms": [
+        {
+          "term": "Matrix",
+          "meaning": "A rectangular array representing coefficients or a linear map."
+        },
+        {
+          "term": "Determinant",
+          "meaning": "For a square matrix, a signed volume-scaling factor."
+        },
+        {
+          "term": "Inverse",
+          "meaning": "An operation that undoes an invertible linear map."
+        }
+      ],
+      "derivation": [
+        "For [[a,b],[c,d]], multiplying (x,y) gives (ax+by,cx+dy). Rows combine the input coordinates.",
+        "The two-by-two determinant is ad−bc. If it vanishes, some direction is collapsed and the matrix has no inverse on the full plane.",
+        "A nonzero determinant establishes invertibility, but not good numerical conditioning. Large differences between singular-value scales can amplify errors."
+      ],
+      "examples": [
+        {
+          "title": "Apply a matrix",
+          "steps": [
+            "[[2,1],[0,3]] acting on (1,2) gives (2×1+1×2,0×1+3×2)=(4,6).",
+            "Check each row against the column vector, not by multiplying every entry indiscriminately."
+          ]
+        },
+        {
+          "title": "Find an area factor",
+          "steps": [
+            "For [[2,1],[1,3]], det=2×3−1×1=5.",
+            "Oriented area is multiplied by 5; this is not the same as multiplying every vector length by 5."
+          ]
+        }
+      ],
+      "pitfall": "Matrix multiplication generally depends on order; entrywise multiplication is a different operation.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find det [[3,1],[2,4]].",
+          "answer": "10",
+          "unit": "",
+          "hint": "Use ad−bc.",
+          "explanation": "3×4−1×2=10.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does determinant zero allow an inverse on the whole input space?",
+          "answer": "No; the map collapses at least one direction.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "A singular map loses information.",
+          "type": "mcq",
+          "options": [
+            "No; the map collapses at least one direction.",
+            "Yes; every square array has an inverse."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For [[1,2],[0,3]] acting on (2,1), find the first output component.",
+          "answer": "4",
+          "unit": "",
+          "hint": "Use the first row.",
+          "explanation": "1×2+2×1=4.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB4.2",
+      "intro": "Vectors encode size and direction. Resolve them into components before combining them; adding lengths alone loses directional information. Two vector products answer different questions: projection and oriented area.",
+      "terms": [
+        {
+          "term": "Dot product",
+          "meaning": "A scalar measuring aligned components: a·b=|a||b|cosθ."
+        },
+        {
+          "term": "Cross product",
+          "meaning": "In three dimensions, a vector perpendicular to both inputs, with magnitude |a||b|sinθ."
+        },
+        {
+          "term": "Projection",
+          "meaning": "The component of a vector along a chosen unit direction."
+        }
+      ],
+      "derivation": [
+        "In an orthonormal basis, a·b=ax bx+ay by+az bz.",
+        "The squared length is a·a, so |a|=sqrt(ax²+ay²+az²). Dividing by this length produces a unit direction when a≠0.",
+        "For perpendicular inputs the dot product vanishes, while the cross-product magnitude is the product of their lengths. The cross-product sign/orientation uses the right-hand rule."
+      ],
+      "examples": [
+        {
+          "title": "Combine directions",
+          "steps": [
+            "(3,0)+(0,4)=(3,4), whose magnitude is 5 rather than 7.",
+            "The components combine first; the Pythagorean relation then gives length."
+          ]
+        },
+        {
+          "title": "Take a projection",
+          "steps": [
+            "For a=(2,3) and unit x direction (1,0), a·ex=2.",
+            "Its y component does not contribute to the x projection."
+          ]
+        }
+      ],
+      "pitfall": "A dot product can be negative. The cross product changes sign when the order of its inputs is reversed.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find (2,1,−1)·(3,0,2).",
+          "answer": "4",
+          "unit": "",
+          "hint": "Multiply corresponding components and add.",
+          "explanation": "Multiply matching components and add: 6 + 0 − 2 = 4.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "For two nonzero perpendicular vectors, what is their dot product?",
+          "answer": "Zero.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "cos(π/2)=0 makes their dot product zero.",
+          "type": "mcq",
+          "options": [
+            "The product of their lengths.",
+            "Zero."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Find the magnitude of the cross product of perpendicular vectors of lengths 2 and 5.",
+          "answer": "10",
+          "unit": "",
+          "hint": "Use the sine of their angle.",
+          "explanation": "2×5×sin(π/2)=10.",
+          "type": "numeric",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "id": "MB4.3",
+      "intro": "Conditional probability restricts attention to a specified reference event. The direction of the condition matters: the chance of a test result given a condition is not automatically the chance of the condition given that result.",
+      "terms": [
+        {
+          "term": "Conditional probability",
+          "meaning": "P(A|B)=P(A∩B)/P(B) when P(B)>0."
+        },
+        {
+          "term": "Independence",
+          "meaning": "The joint probability equals the product of the marginal probabilities."
+        },
+        {
+          "term": "Base rate",
+          "meaning": "The prior frequency of a condition in the relevant population."
+        }
+      ],
+      "derivation": [
+        "Restrict to outcomes in B, then count the share also in A. This gives the conditional ratio.",
+        "For independent A and B, P(A∩B)=P(A)P(B); disjoint nonzero events instead have zero intersection and are not independent.",
+        "Bayes updating normalizes the true-positive mass against all positive outcomes, including false positives among those without the condition."
+      ],
+      "examples": [
+        {
+          "title": "Condition on a smaller group",
+          "steps": [
+            "If P(A∩B)=0.12 and P(B)=0.4, then P(A|B)=0.12/0.4=0.3.",
+            "The denominator describes the reference group B, not the entire population."
+          ]
+        },
+        {
+          "title": "Count positive results before interpreting them",
+          "steps": [
+            "Out of 1000 people, suppose 10 have a condition and all test positive; 99 of the other 990 also test positive.",
+            "Only 10 of 109 positive results are true positives. A sensitive test does not erase the base rate."
+          ]
+        }
+      ],
+      "pitfall": "Mutually exclusive and independent describe different relationships. Reversing a condition needs a new calculation.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "If P(A∩B)=0.2 and P(B)=0.5, find P(A|B).",
+          "answer": "0.4",
+          "unit": "",
+          "hint": "Divide by the conditioning probability.",
+          "explanation": "0.2/0.5=0.4.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Is P(A|B) generally the same as P(B|A)?",
+          "answer": "No; their reference groups differ.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Their denominators need not be equal.",
+          "type": "mcq",
+          "options": [
+            "No; their reference groups differ.",
+            "Yes; conditioning is symmetric."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Independent events have probabilities 0.3 and 0.4. Find their intersection probability.",
+          "answer": "0.12",
+          "unit": "",
+          "hint": "Use independence to multiply.",
+          "explanation": "0.3×0.4=0.12.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "MB4.4",
+      "intro": "A distribution specifies possible values and their probabilities. An expectation is a weighted average, not a guaranteed outcome. Variance measures spread around that average and requires careful handling of dependence.",
+      "terms": [
+        {
+          "term": "Expectation",
+          "meaning": "The probability-weighted average of a random variable."
+        },
+        {
+          "term": "Variance",
+          "meaning": "The expected squared deviation from the mean."
+        },
+        {
+          "term": "Standard deviation",
+          "meaning": "The nonnegative square root of variance, in the variable’s original units."
+        }
+      ],
+      "derivation": [
+        "For discrete X, E[X]=ΣxP(X=x). All probabilities must be nonnegative and sum to one.",
+        "Expand (X−E[X])² and average to get Var(X)=E[X²]−E[X]².",
+        "For independent sums, variances add. In general include covariance: Var(X+Y)=VarX+VarY+2Cov(X,Y)."
+      ],
+      "examples": [
+        {
+          "title": "Compute a weighted mean",
+          "steps": [
+            "Let X be 0 with probability 0.75 and 4 with probability 0.25.",
+            "E[X]=0×0.75+4×0.25=1, although X never actually equals 1."
+          ]
+        },
+        {
+          "title": "Compute spread rather than guessing it",
+          "steps": [
+            "For the same variable, E[X²]=16×0.25=4.",
+            "Variance is 4−1²=3; standard deviation is sqrt3."
+          ]
+        }
+      ],
+      "pitfall": "Averages are linear even without independence; variance additivity without covariance is not.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "A variable is 0 with probability 0.6 and 5 with probability 0.4. Find its expectation.",
+          "answer": "2",
+          "unit": "",
+          "hint": "Weight each value by its probability.",
+          "explanation": "0×0.6+5×0.4=2.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Must a random variable ever equal its expectation?",
+          "answer": "No; the weighted mean can lie between possible outcomes.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "A fair die has mean 3.5, which is not a possible face.",
+          "type": "mcq",
+          "options": [
+            "Yes; expectation is the most certain outcome.",
+            "No; the weighted mean can lie between possible outcomes."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Two independent variables have variances 4 and 9. Find the standard deviation of their sum.",
+          "answer": "3.605551275463989",
+          "unit": "",
+          "hint": "Add variances, then take the square root.",
+          "explanation": "Variance is 13, so standard deviation is sqrt13.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB1.1",
+      "intro": "Begin with a chosen direction and a timeline. Position tells where an object is; velocity tells how its position changes; acceleration tells how its velocity changes. Newton’s law links acceleration to the net force, not to motion alone.",
+      "terms": [
+        {
+          "term": "Displacement",
+          "meaning": "The signed change in position."
+        },
+        {
+          "term": "Acceleration",
+          "meaning": "Velocity change per unit time."
+        },
+        {
+          "term": "Net force",
+          "meaning": "The vector sum of all forces on the chosen body."
+        }
+      ],
+      "derivation": [
+        "Average velocity is Δx/Δt. For constant acceleration, velocity changes linearly: v=u+at.",
+        "The area under that straight velocity-time graph gives displacement s=ut+at²/2. These formulas assume constant a.",
+        "For constant mass in an inertial frame, ΣF=ma. Draw all forces and add components before dividing by mass."
+      ],
+      "examples": [
+        {
+          "title": "Read a motion history",
+          "steps": [
+            "An object starts from rest with a=2 m/s² for 3 s. Its final velocity is 6 m/s.",
+            "Its displacement is 0×3+(1/2)×2×3²=9 m, not final velocity times the whole time."
+          ]
+        },
+        {
+          "title": "Use net rather than individual force",
+          "steps": [
+            "A 2 kg body has forces +10 N and −4 N. Net force is +6 N.",
+            "Its acceleration is +3 m/s². Equal and opposite third-law forces on different bodies do not cancel on this single-body diagram."
+          ]
+        }
+      ],
+      "pitfall": "A moving object need not have a nonzero net force; constant velocity requires zero acceleration.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "A 3 kg body has net force 12 N. Find acceleration.",
+          "answer": "4",
+          "unit": "m/s²",
+          "hint": "Use net force divided by mass.",
+          "explanation": "12/3=4 m/s².",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Must a body moving at constant velocity have a nonzero net force?",
+          "answer": "No; zero acceleration means zero net force in this model.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Newton’s law relates force to acceleration.",
+          "type": "mcq",
+          "options": [
+            "No; zero acceleration means zero net force in this model.",
+            "Yes; force is needed simply to maintain velocity."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Starting from rest, accelerate uniformly at 3 m/s² for 4 s. Find displacement.",
+          "answer": "24",
+          "unit": "m",
+          "hint": "Use at²/2.",
+          "explanation": "3×16/2=24 m.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB1.2",
+      "intro": "Work and energy describe transfer without tracking every instant of motion. Momentum instead keeps direction and is especially useful for short interactions. Choose the system and check external influences before invoking a conservation law.",
+      "terms": [
+        {
+          "term": "Work",
+          "meaning": "The force component along a displacement accumulated over the motion."
+        },
+        {
+          "term": "Kinetic energy",
+          "meaning": "mv²/2 for a nonrelativistic particle."
+        },
+        {
+          "term": "Momentum",
+          "meaning": "The vector mv; its change is related to impulse."
+        }
+      ],
+      "derivation": [
+        "For a constant force along displacement, work is Fs; more generally it is the integral of F·dr.",
+        "The work-energy theorem gives net work equal to the change in kinetic energy. A conservative force can be represented by potential energy.",
+        "Total momentum is conserved when external impulse is negligible. Kinetic energy is additionally conserved only for an elastic collision, not every collision."
+      ],
+      "examples": [
+        {
+          "title": "Find a speed from net work",
+          "steps": [
+            "A 2 kg body starts at rest and receives 9 J of net work.",
+            "Its final kinetic energy is 9 J, so (1/2)×2×v²=9 and speed is 3 m/s."
+          ]
+        },
+        {
+          "title": "Follow an inelastic collision",
+          "steps": [
+            "A 1 kg body at 4 m/s sticks to an initially stationary 1 kg body.",
+            "Momentum 4 kg m/s gives combined velocity 2 m/s. Kinetic energy falls from 8 J to 4 J; it was not conserved as kinetic energy."
+          ]
+        }
+      ],
+      "pitfall": "Energy conservation does not mean kinetic energy alone stays constant, and internal forces do not imply zero force on each body.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find kinetic energy for m=2 kg,v=5 m/s.",
+          "answer": "25",
+          "unit": "J",
+          "hint": "Use mv²/2.",
+          "explanation": "2×25/2=25 J.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "When two bodies stick together, must their kinetic energy be conserved?",
+          "answer": "No; some can transfer into internal energy.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Momentum and kinetic energy are different quantities.",
+          "type": "mcq",
+          "options": [
+            "Yes; momentum conservation guarantees kinetic conservation.",
+            "No; some can transfer into internal energy."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A 2 kg body at 3 m/s sticks to a stationary 1 kg body. Find combined velocity.",
+          "answer": "2",
+          "unit": "m/s",
+          "hint": "Conserve total momentum with negligible external impulse.",
+          "explanation": "6/(2+1)=2 m/s.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB1.3",
+      "intro": "Rotation has its own bookkeeping: angle, angular velocity, torque and moment of inertia. Translational and rotational motion can occur together, as in a rolling wheel. The rolling condition is an extra constraint rather than a universal identity.",
+      "terms": [
+        {
+          "term": "Torque",
+          "meaning": "The turning effect r×F about a chosen origin or axis."
+        },
+        {
+          "term": "Moment of inertia I",
+          "meaning": "The sum or integral of mass times squared distance from the chosen axis."
+        },
+        {
+          "term": "Rolling without slipping",
+          "meaning": "The contact point has no relative sliding; on a fixed plane, v=ωR."
+        }
+      ],
+      "derivation": [
+        "For a fixed axis and rigid body, angular acceleration obeys τ=Iα under the corresponding assumptions.",
+        "Rotational kinetic energy is Iω²/2. A rolling body also has center-of-mass kinetic energy Mv²/2.",
+        "Substitute ω=v/R only for no-slip rolling: total kinetic energy is [M+I/R²]v²/2. The shape and axis determine I."
+      ],
+      "examples": [
+        {
+          "title": "Use an axis-dependent inertia",
+          "steps": [
+            "Two point masses of 1 kg each are 2 m from an axis.",
+            "I=1×2²+1×2²=8 kg m². Bringing them closer reduces I."
+          ]
+        },
+        {
+          "title": "Compare rolling energies",
+          "steps": [
+            "A solid cylinder has I=MR²/2. For no-slip rolling, rotational energy is Mv²/4.",
+            "Total energy is 3Mv²/4, greater than the translational contribution alone."
+          ]
+        }
+      ],
+      "pitfall": "Do not apply v=ωR to a slipping contact, or use an inertia formula for the wrong axis.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For torque 6 N m and I=3 kg m², find angular acceleration.",
+          "answer": "2",
+          "unit": "rad/s²",
+          "hint": "Divide torque by moment of inertia.",
+          "explanation": "Angular acceleration is torque divided by moment of inertia: α = 6/3 = 2 rad/s².",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "When is v=ωR valid for a wheel on a fixed surface?",
+          "answer": "When it rolls without slipping.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "It follows from the no-slip contact constraint.",
+          "type": "mcq",
+          "options": [
+            "When it rolls without slipping.",
+            "For every rotating body, even while sliding."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A body has I=2 kg m² and ω=3 rad/s. Find rotational kinetic energy.",
+          "answer": "9",
+          "unit": "J",
+          "hint": "Use Iω²/2.",
+          "explanation": "2×9/2=9 J.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB1.4",
+      "intro": "Gravity links masses through distance, while simple harmonic motion describes a linear restoring response near a stable equilibrium. Similar-looking inverse-square and oscillator equations describe different forces and assumptions.",
+      "terms": [
+        {
+          "term": "Gravitational parameter μ",
+          "meaning": "G times the relevant central or total mass in a two-body model."
+        },
+        {
+          "term": "Restoring force",
+          "meaning": "A force directed back toward equilibrium."
+        },
+        {
+          "term": "Angular frequency ω",
+          "meaning": "Oscillation phase change per time, with period 2π/ω."
+        }
+      ],
+      "derivation": [
+        "For a point or spherical central source, acceleration magnitude is μ/r². Circular motion requires v²/r=μ/r², so v=sqrt(μ/r).",
+        "A spring force −kx gives m x″=−kx, hence x″+ω²x=0 with ω=sqrt(k/m).",
+        "A small pendulum is approximately harmonic because sinθ≈θ for small radian angles. Its period 2πsqrt(L/g) is not exact at large amplitude."
+      ],
+      "examples": [
+        {
+          "title": "Use circular-orbit balance",
+          "steps": [
+            "With μ=16 and r=4 in consistent units, v=sqrt(16/4)=2.",
+            "This is a circular-orbit result, not a speed law for every point on an eccentric orbit."
+          ]
+        },
+        {
+          "title": "Find a spring period",
+          "steps": [
+            "For k=4 N/m and m=1 kg, ω=2 rad/s.",
+            "The period is 2π/2=π s; angular frequency and ordinary frequency differ by 2π."
+          ]
+        }
+      ],
+      "pitfall": "A restoring force is not automatically exactly linear. Check the small-displacement or small-angle approximation.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "At fixed central mass, radius doubles. Find the gravitational-acceleration factor.",
+          "answer": "0.25",
+          "unit": "",
+          "hint": "Use inverse-square scaling.",
+          "explanation": "Doubling radius gives 1/2²=1/4.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Is the small-angle pendulum period exact for arbitrarily large swings?",
+          "answer": "No; it uses a small-angle approximation.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The approximation replaces sinθ by θ.",
+          "type": "mcq",
+          "options": [
+            "Yes; amplitude never matters in any pendulum.",
+            "No; it uses a small-angle approximation."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For spring constant 9 N/m and mass 1 kg, find angular frequency.",
+          "answer": "3",
+          "unit": "rad/s",
+          "hint": "Use sqrt(k/m).",
+          "explanation": "sqrt9=3 rad/s.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB2.1",
+      "intro": "Pressure is force per area, but the pressure increase with depth follows a local force balance rather than the total container width. We will distinguish pressure relative to the atmosphere from pressure measured relative to vacuum.",
+      "terms": [
+        {
+          "term": "Pressure",
+          "meaning": "Normal force per unit area."
+        },
+        {
+          "term": "Gauge pressure",
+          "meaning": "Pressure above the chosen ambient reference."
+        },
+        {
+          "term": "Density ρ",
+          "meaning": "Mass per volume, assumed uniform in the simple formula."
+        }
+      ],
+      "derivation": [
+        "Take a stationary liquid slab of area A and thickness h. Its weight is ρAhg.",
+        "The lower pressure force minus the upper pressure force balances that weight: (p_bottom−p_top)A=ρAhg.",
+        "Cancel A to get Δp=ρgh. A cancels because both the supported weight and pressure force scale with area; absolute pressure also includes the top reference."
+      ],
+      "examples": [
+        {
+          "title": "Find a depth pressure",
+          "steps": [
+            "For ρ=1000 kg/m³,h=3 m,g=10 m/s², gauge pressure is 30000 Pa.",
+            "If atmospheric pressure is 100000 Pa, absolute pressure is 130000 Pa."
+          ]
+        },
+        {
+          "title": "Check a different vessel",
+          "steps": [
+            "At the same depth in the same stationary liquid with the same surface pressure, a wider vessel has the same pressure.",
+            "It contains more liquid and has more total bottom force, but pressure remains force divided by area."
+          ]
+        }
+      ],
+      "pitfall": "The static uniform-density formula does not automatically describe accelerating liquids, compressible density profiles or a Bernoulli flow.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For ρ=900 kg/m³,h=2 m,g=10 m/s², find gauge pressure.",
+          "answer": "18000",
+          "unit": "Pa",
+          "hint": "Multiply density, g and depth.",
+          "explanation": "900×10×2=18000 Pa.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "At fixed depth, density and surface pressure, what does widening a static vessel do to pressure?",
+          "answer": "It leaves the pressure unchanged.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Area cancels in the local slab balance.",
+          "type": "mcq",
+          "options": [
+            "It leaves the pressure unchanged.",
+            "It increases pressure in proportion to vessel width."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A liquid has Δp=24000 Pa over 3 m with g=10 m/s². Find density.",
+          "answer": "800",
+          "unit": "kg/m³",
+          "hint": "Rearrange Δp=ρgh.",
+          "explanation": "24000/(10×3)=800 kg/m³.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB2.2",
+      "intro": "Track what enters and leaves a chosen thermodynamic system. Heat and work are energy transfers, while internal energy is a state property. We will use one explicit sign convention throughout, then check a cycle as a consistency test.",
+      "terms": [
+        {
+          "term": "Heat Q",
+          "meaning": "Energy transferred because of a temperature difference; positive into the gas here."
+        },
+        {
+          "term": "Work W",
+          "meaning": "Energy transferred by mechanical action; positive when done by the gas here."
+        },
+        {
+          "term": "Internal energy U",
+          "meaning": "A property of the thermodynamic state, not heat stored as a substance."
+        }
+      ],
+      "derivation": [
+        "With Q positive into the gas and W positive by it, energy balance gives ΔU=Q−W.",
+        "Expansion against pressure can give W=∫p_external dV under the stated process model. Compression gives negative W in this convention.",
+        "Over a cycle the gas returns to the same state, so net ΔU=0 and net Q=net W. Heat and work separately depend on the process."
+      ],
+      "examples": [
+        {
+          "title": "Make the signs explicit",
+          "steps": [
+            "A gas absorbs 300 J and does 110 J of work. Q=+300,W=+110.",
+            "ΔU=300−110=190 J."
+          ]
+        },
+        {
+          "title": "Translate work done on the gas",
+          "steps": [
+            "A gas releases 50 J while 140 J is done on it. Q=−50,W_by=−140.",
+            "ΔU=−50−(−140)=+90 J. The incoming work more than offsets the heat loss."
+          ]
+        }
+      ],
+      "pitfall": "“Work done on” and “work done by” have opposite signs. Keep the convention rather than memorizing an isolated plus or minus.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "A gas absorbs 250 J and does 80 J of work. Find ΔU.",
+          "answer": "170",
+          "unit": "J",
+          "hint": "Use ΔU=Q−W_by.",
+          "explanation": "250−80=170 J.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "A gas is compressed with positive work done on it. What is W_by in this convention?",
+          "answer": "Negative.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Work entering mechanically is negative work by the gas.",
+          "type": "mcq",
+          "options": [
+            "Positive by definition in every convention.",
+            "Negative."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A gas loses 60 J of heat while 180 J of work is done on it. Find ΔU.",
+          "answer": "120",
+          "unit": "J",
+          "hint": "Use Q=−60 and W_by=−180.",
+          "explanation": "−60−(−180)=120 J.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB2.3",
+      "intro": "Temperature describes a statistical energy scale, not the identical speed of every molecule. An ideal gas model connects microscopic motion to pressure and thermal energy. Characteristic speeds are different averages.",
+      "terms": [
+        {
+          "term": "Kelvin",
+          "meaning": "An absolute temperature scale used in gas-law ratios."
+        },
+        {
+          "term": "Rms speed",
+          "meaning": "The square root of the mean squared speed."
+        },
+        {
+          "term": "Equipartition",
+          "meaning": "In a classical regime, each independent quadratic energy term contributes kT/2."
+        }
+      ],
+      "derivation": [
+        "For a monatomic classical ideal gas, the three translational terms give mean kinetic energy 3kT/2.",
+        "Equating m〈v²〉/2 to 3kT/2 gives v_rms=sqrt(3kT/m).",
+        "The ideal gas law pV=NkT=nRT connects the same thermal scale with number density. Internal molecular modes and quantum effects require further qualifications."
+      ],
+      "examples": [
+        {
+          "title": "Compare temperatures properly",
+          "steps": [
+            "At fixed mass, increasing absolute temperature from 100 K to 400 K multiplies rms speed by sqrt4=2.",
+            "The temperature ratio must use kelvin, not Celsius."
+          ]
+        },
+        {
+          "title": "Find pressure scaling",
+          "steps": [
+            "At fixed particle count and temperature, halving volume doubles pressure in the ideal model.",
+            "It does not double the temperature unless an additional process relation requires it."
+          ]
+        }
+      ],
+      "pitfall": "Rms speed is not mean speed, and a classical monatomic heat-capacity formula is not universal for all molecules and temperatures.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "At fixed mass, temperature rises by factor 9. Find rms-speed factor.",
+          "answer": "3",
+          "unit": "",
+          "hint": "Speed scales as sqrt(T).",
+          "explanation": "The speed ratio is the square root of the temperature ratio: √9 = 3.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Are all molecules required to have the rms speed?",
+          "answer": "No; it summarizes a distribution of speeds.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "An average is not every individual value.",
+          "type": "mcq",
+          "options": [
+            "No; it summarizes a distribution of speeds.",
+            "Yes; temperature fixes one identical speed for every molecule."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "With k=1,T=3,m=1 in model units, find rms speed.",
+          "answer": "3",
+          "unit": "",
+          "hint": "Use sqrt(3kT/m).",
+          "explanation": "sqrt(3×3)=3.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB3.1",
+      "intro": "A wave carries a changing pattern. A medium particle may oscillate locally while the pattern travels, so particle motion and propagation speed must be kept separate. Frequency and wavelength connect the two descriptions.",
+      "terms": [
+        {
+          "term": "Wavelength λ",
+          "meaning": "Distance between equivalent phase points such as adjacent crests."
+        },
+        {
+          "term": "Frequency f",
+          "meaning": "Cycles passing a point per unit time."
+        },
+        {
+          "term": "Standing wave",
+          "meaning": "A superposition with fixed nodes and oscillating regions."
+        }
+      ],
+      "derivation": [
+        "A sinusoidal traveling wave can be written A cos(kx−ωt), with k=2π/λ and ω=2πf.",
+        "Following constant phase gives speed v=ω/k=fλ.",
+        "For a string fixed at both ends, the length contains an integer number of half wavelengths: L=nλ/2. Thus allowed frequencies are nv/(2L)."
+      ],
+      "examples": [
+        {
+          "title": "Turn a period into a wavelength",
+          "steps": [
+            "A wave has period 0.2 s, so f=5 Hz. If speed is 10 m/s, λ=v/f=2 m.",
+            "Do not multiply speed by frequency when seeking a wavelength."
+          ]
+        },
+        {
+          "title": "Find a fixed-end fundamental",
+          "steps": [
+            "For L=2 m and v=20 m/s, f1=v/(2L)=5 Hz.",
+            "The second harmonic is 10 Hz; the boundary condition selects this sequence."
+          ]
+        }
+      ],
+      "pitfall": "The phase speed is not generally a medium particle’s speed or a pulse’s group speed in a dispersive medium.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For f=4 Hz and λ=3 m, find phase speed.",
+          "answer": "12",
+          "unit": "m/s",
+          "hint": "Multiply frequency by wavelength: v = fλ.",
+          "explanation": "4×3=12 m/s.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does a traveling crest have to carry the same medium particle along with it?",
+          "answer": "No; particles can oscillate locally.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Pattern propagation and local displacement differ.",
+          "type": "mcq",
+          "options": [
+            "Yes; each crest is a permanent lump of matter.",
+            "No; particles can oscillate locally."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A fixed-end string has L=1 m,v=30 m/s. Find its fundamental frequency.",
+          "answer": "15",
+          "unit": "Hz",
+          "hint": "Use v/(2L).",
+          "explanation": "30/2=15 Hz.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB3.2",
+      "intro": "Geometrical optics follows rays under approximations that ignore fine wave effects. For lenses, choose a sign convention before substituting distances. A real image can form on a screen; a virtual image is located by extending rays backward.",
+      "terms": [
+        {
+          "term": "Focal length f",
+          "meaning": "A scale describing paraxial lens focusing under a stated convention."
+        },
+        {
+          "term": "Real image",
+          "meaning": "An image where rays actually converge."
+        },
+        {
+          "term": "Magnification",
+          "meaning": "Image height divided by object height, with a sign for orientation."
+        }
+      ],
+      "derivation": [
+        "For a converging thin lens with real object distance u>f>0, use 1/f=1/u+1/v.",
+        "Rearrangement gives v=fu/(u−f), and transverse magnification m=−v/u.",
+        "These are paraxial thin-lens relations. Very large ray angles, lens thickness and aberrations can change the model."
+      ],
+      "examples": [
+        {
+          "title": "Place a screen",
+          "steps": [
+            "For f=3 cm and u=9 cm, v=3×9/(9−3)=4.5 cm.",
+            "A screen there catches a real image in this convention."
+          ]
+        },
+        {
+          "title": "Interpret its sign",
+          "steps": [
+            "Magnification is −4.5/9=−0.5.",
+            "The negative sign means inverted, while its magnitude means half the object height."
+          ]
+        }
+      ],
+      "pitfall": "A negative magnification is not a negative physical size; it specifies image orientation.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For f=2 cm,u=4 cm, find image distance.",
+          "answer": "4",
+          "unit": "cm",
+          "hint": "Use v=fu/(u−f).",
+          "explanation": "2×4/(4−2)=4 cm.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "What does negative transverse magnification mean?",
+          "answer": "An inverted image in the chosen convention.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Its sign encodes orientation.",
+          "type": "mcq",
+          "options": [
+            "An inverted image in the chosen convention.",
+            "An impossible negative object size."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "An image has v=6 cm and object distance u=12 cm. Find signed magnification.",
+          "answer": "-0.5",
+          "unit": "",
+          "hint": "Use −v/u.",
+          "explanation": "−6/12=−0.5.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB3.3",
+      "intro": "Interference comes from adding amplitudes before calculating intensity. Two positive individual intensities can produce a dark combined point because the underlying fields cancel. A stable phase relationship is essential.",
+      "terms": [
+        {
+          "term": "Coherence",
+          "meaning": "A sufficiently stable relative phase for observable interference."
+        },
+        {
+          "term": "Path difference",
+          "meaning": "The difference in distances traveled by two wave contributions."
+        },
+        {
+          "term": "Diffraction",
+          "meaning": "Wave spreading/interference associated with finite apertures or obstacles."
+        }
+      ],
+      "derivation": [
+        "Phase difference from path difference is δ=2πΔ/λ for the stated monochromatic model.",
+        "For equal single-wave intensities I0, the combined coherent intensity is 2I0(1+cosδ).",
+        "For a small-angle double-slit screen, Δ≈dy/L, giving adjacent bright-fringe spacing β=λL/d. This approximation needs y small relative to L."
+      ],
+      "examples": [
+        {
+          "title": "Create a dark point",
+          "steps": [
+            "If path difference is λ/2, δ=π and cosδ=−1.",
+            "Combined intensity is zero for equal coherent amplitudes."
+          ]
+        },
+        {
+          "title": "Predict a fringe change",
+          "steps": [
+            "Doubling slit separation d at fixed wavelength and screen distance halves β.",
+            "This is a controlled geometry change, not a change in light frequency."
+          ]
+        }
+      ],
+      "pitfall": "Adding the two separate intensities omits the interference cross term; independent incoherent sources average differently.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Equal coherent waves each have intensity 2. Find their maximum combined intensity.",
+          "answer": "8",
+          "unit": "intensity units",
+          "hint": "Maximum is four times one wave’s intensity.",
+          "explanation": "Equal coherent amplitudes add at a maximum. Intensity is squared amplitude, so Imax = 4I₀ = 4×2 = 8 in the given intensity units.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Can nonzero coherent fields cancel at a point?",
+          "answer": "Yes; opposite amplitudes can sum to zero.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Superposition applies to fields before intensity is formed.",
+          "type": "mcq",
+          "options": [
+            "No; all individual intensities simply add.",
+            "Yes; opposite amplitudes can sum to zero."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "At fixed λ and L, slit separation doubles. Find the fringe-spacing factor.",
+          "answer": "0.5",
+          "unit": "",
+          "hint": "Spacing is inversely proportional to separation.",
+          "explanation": "The new spacing is one half.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB4.1",
+      "intro": "Charge produces an electric field, while potential describes energy per unit test charge relative to a reference. Fields are vectors; potentials are scalars. Their different meanings explain why one can vanish without the other.",
+      "terms": [
+        {
+          "term": "Electric field E",
+          "meaning": "Force per unit positive test charge."
+        },
+        {
+          "term": "Potential V",
+          "meaning": "Electric potential energy per charge, with a chosen reference."
+        },
+        {
+          "term": "Superposition",
+          "meaning": "Adding contributions as vectors or scalars according to the quantity."
+        }
+      ],
+      "derivation": [
+        "For a point charge away from its position, radial E=kq/r² and V=kq/r relative to infinity.",
+        "Force on a test charge is F=q_test E; negative test charge reverses the force direction.",
+        "Potential difference and field obey E=−grad V in electrostatics. A zero potential value does not force its gradient to vanish."
+      ],
+      "examples": [
+        {
+          "title": "Keep charge signs",
+          "steps": [
+            "If E=3 N/C toward +x and a test charge is −2 C, force is −6 N along x.",
+            "The field direction is defined using positive test charge, not the actual negative test charge."
+          ]
+        },
+        {
+          "title": "Compare different distance laws",
+          "steps": [
+            "For k=q=1 and r=2, E_radial=1/4 and V=1/2.",
+            "Doubling r quarters field but only halves potential."
+          ]
+        }
+      ],
+      "pitfall": "Zero potential is reference-dependent; a force or field cannot be inferred solely from that one scalar value.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "With k=1,q=2,r=2, find outward radial field.",
+          "answer": "0.5",
+          "unit": "model units",
+          "hint": "Use kq/r².",
+          "explanation": "Use the stated Coulomb model: Eᵣ = kq/r² = 1×2/2² = +0.5 in the given field units.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does zero electric potential necessarily mean zero field?",
+          "answer": "No; the potential can have a nonzero gradient there.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Potential value and its spatial derivative differ.",
+          "type": "mcq",
+          "options": [
+            "No; the potential can have a nonzero gradient there.",
+            "Yes; field and potential are identical quantities."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "A charge −3 C is in field +2 N/C along x. Find signed x force.",
+          "answer": "-6",
+          "unit": "N",
+          "hint": "Multiply charge and field, retaining sign.",
+          "explanation": "−3×2=−6 N.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB4.2",
+      "intro": "A circuit must satisfy both charge conservation at junctions and energy bookkeeping around loops. Voltage is not a substance that is used up as charge passes; it represents energy transferred per charge.",
+      "terms": [
+        {
+          "term": "Current I",
+          "meaning": "Charge crossing a section per unit time."
+        },
+        {
+          "term": "Resistance R",
+          "meaning": "The voltage/current ratio for the specified component and regime."
+        },
+        {
+          "term": "Series / parallel",
+          "meaning": "A single current path / branches sharing the same pair of nodes."
+        }
+      ],
+      "derivation": [
+        "For an ideal ohmic resistor at fixed conditions, V=IR. Electrical power is VI=I²R=V²/R.",
+        "Series resistors carry the same current and their voltage drops add, giving R_series=ΣR.",
+        "Parallel branches share voltage and their currents add, giving 1/R_parallel=Σ(1/R). Junction conservation prevents charge accumulation in a steady ideal circuit."
+      ],
+      "examples": [
+        {
+          "title": "Add a series pair",
+          "steps": [
+            "Resistors 2 Ω and 4 Ω in series have R=6 Ω. At 12 V, current is 2 A.",
+            "Drops are 4 V and 8 V, summing to the supply voltage."
+          ]
+        },
+        {
+          "title": "Add equal parallel branches",
+          "steps": [
+            "Two 6 Ω resistors in parallel have conductance 1/6+1/6=1/3.",
+            "Their equivalent resistance is 3 Ω, smaller than either branch alone."
+          ]
+        }
+      ],
+      "pitfall": "The current is not necessarily the same in parallel branches; the voltage is shared across their common nodes.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For V=9 V and R=3 Ω, find current.",
+          "answer": "3",
+          "unit": "A",
+          "hint": "Use Ohm’s law in the form I = V/R.",
+          "explanation": "Divide potential difference by resistance: I = 9/3 = 3 A.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Which quantity is shared by ideal parallel branches connected to the same two nodes?",
+          "answer": "Voltage across each branch.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The shared endpoints fix a common potential difference.",
+          "type": "mcq",
+          "options": [
+            "Current through every branch, regardless of resistance.",
+            "Voltage across each branch."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Two 4 Ω resistors are in parallel. Find equivalent resistance.",
+          "answer": "2",
+          "unit": "Ω",
+          "hint": "Add reciprocal resistances.",
+          "explanation": "1/R=1/4+1/4=1/2, so R=2 Ω.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB4.3",
+      "intro": "Magnetic fields bend moving charges and can transfer momentum without doing magnetic work on an ideal point charge. Electromagnetic induction is a separate relation: changing magnetic flux generates a loop emf with an orientation-dependent sign.",
+      "terms": [
+        {
+          "term": "Magnetic flux",
+          "meaning": "The surface integral of the field component normal to a chosen oriented surface."
+        },
+        {
+          "term": "Emf",
+          "meaning": "Energy supplied per charge around a circuit, measured in volts."
+        },
+        {
+          "term": "Lenz’s law",
+          "meaning": "The induced response opposes the flux change that drives it."
+        }
+      ],
+      "derivation": [
+        "Magnetic force is q v×B. For perpendicular velocity its magnitude is |q|vB; the force is perpendicular to velocity.",
+        "For a loop, emf=−dΦ/dt. A coil of N equivalent turns has emf=−N dΦ/dt.",
+        "Opposing the change does not always mean opposing the existing field: when an external flux decreases, the response can support its direction."
+      ],
+      "examples": [
+        {
+          "title": "Calculate a magnetic force",
+          "steps": [
+            "For q=2 C,v=3 m/s,B=4 T at right angles, force magnitude is 24 N.",
+            "If v is parallel to B instead, the magnetic force is zero."
+          ]
+        },
+        {
+          "title": "Keep the induction orientation",
+          "steps": [
+            "Positive loop flux rises by 0.6 Wb in 0.2 s at a constant rate.",
+            "The signed emf is −0.6/0.2=−3 V for that loop orientation."
+          ]
+        }
+      ],
+      "pitfall": "A steady nonzero flux need not induce emf; the time derivative, moving-loop geometry and chosen orientation matter.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For |q|=1 C,v=2 m/s,B=3 T at right angles, find magnetic force magnitude.",
+          "answer": "6",
+          "unit": "N",
+          "hint": "Use |q|vB.",
+          "explanation": "1×2×3=6 N.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "What change does the induced response oppose?",
+          "answer": "The change in magnetic flux driving it.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "A decreasing field can induce a response supporting the original direction.",
+          "type": "mcq",
+          "options": [
+            "The change in magnetic flux driving it.",
+            "The existing magnetic field direction in every situation."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "Positive flux changes by +0.8 Wb in 0.2 s. Find signed single-loop emf.",
+          "answer": "-4",
+          "unit": "V",
+          "hint": "Use minus the flux-change rate.",
+          "explanation": "−0.8/0.2=−4 V.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB4.4",
+      "intro": "An alternating signal changes sign with time. Its average value can be zero while its heating effect is positive. Rms values summarize squared amplitude, while phase tells whether voltage and current rise together.",
+      "terms": [
+        {
+          "term": "Rms value",
+          "meaning": "Square root of the time average of the square."
+        },
+        {
+          "term": "Reactance",
+          "meaning": "Frequency-dependent opposition from ideal capacitors or inductors."
+        },
+        {
+          "term": "Power factor",
+          "meaning": "The phase-dependent multiplier relating rms voltage/current to average power in the sinusoidal model."
+        }
+      ],
+      "derivation": [
+        "For V=V0 cosωt, the average of cos² over a cycle is 1/2, so V_rms=V0/sqrt2.",
+        "For a resistor, average power is V_rms²/R. More generally a sinusoidal circuit has P_avg=V_rms I_rms cosφ.",
+        "Inductive and capacitive reactances are ωL and 1/(ωC). In an ideal series RLC circuit they cancel at ω0=1/sqrt(LC)."
+      ],
+      "examples": [
+        {
+          "title": "Find heating from a peak voltage",
+          "steps": [
+            "A sinusoid has V0=10sqrt2 V, so V_rms=10 V.",
+            "Across 5 Ω, average power is 100/5=20 W."
+          ]
+        },
+        {
+          "title": "Read a resonance condition",
+          "steps": [
+            "For L=1 H,C=0.25 F, ω0=2 rad/s.",
+            "Its ordinary frequency is ω0/(2π), not 2 Hz."
+          ]
+        }
+      ],
+      "pitfall": "Do not use peak voltage in a formula requiring rms voltage, or omit phase in a reactive circuit.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find rms voltage when peak voltage is 6sqrt2 V.",
+          "answer": "6",
+          "unit": "V",
+          "hint": "Divide peak by sqrt2.",
+          "explanation": "6sqrt2/sqrt2=6 V.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Can a sinusoidal voltage average to zero while heating a resistor?",
+          "answer": "Yes; heating depends on its square.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The squared signal has a positive average.",
+          "type": "mcq",
+          "options": [
+            "No; zero signed average means zero power.",
+            "Yes; heating depends on its square."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For rms voltage 8 V and R=4 Ω, find average power.",
+          "answer": "16",
+          "unit": "W",
+          "hint": "Use V_rms²/R.",
+          "explanation": "64/4=16 W.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB5.1",
+      "intro": "Classical wave intensity alone cannot explain the photoelectric threshold. A photon transfers energy hf in a single-photon picture. Atomic spectra add discrete bound-state energies, whose differences determine emitted or absorbed photon frequencies.",
+      "terms": [
+        {
+          "term": "Photon",
+          "meaning": "A quantum of electromagnetic energy E=hf."
+        },
+        {
+          "term": "Work function Φ",
+          "meaning": "The minimum energy needed to remove an electron under the specified material conditions."
+        },
+        {
+          "term": "Energy level",
+          "meaning": "An allowed energy of the stated atomic model."
+        }
+      ],
+      "derivation": [
+        "For above-threshold photoemission, maximum kinetic energy is hf−Φ; a stopping voltage obeys eV_stop=K_max.",
+        "Increasing intensity at fixed frequency changes photon rate in the simple regime, not energy per photon.",
+        "For hydrogenic bound levels, E_n scales as −Z²/n² in the nonrelativistic Coulomb approximation. A photon energy is a positive level difference, not the negative bound energy itself."
+      ],
+      "examples": [
+        {
+          "title": "Use a threshold",
+          "steps": [
+            "With hf=5 energy units and Φ=2, K_max=3.",
+            "If hf<2, the elementary single-photon model predicts no emission, not a detected electron with a negative kinetic energy."
+          ]
+        },
+        {
+          "title": "Take a level difference",
+          "steps": [
+            "A transition from −2 to −8 energy units releases 6 units.",
+            "The final state is lower; the emitted photon energy is E_initial−E_final=6."
+          ]
+        }
+      ],
+      "pitfall": "Intensity and photon energy are different. A negative bound-state energy does not mean a photon has negative energy.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For photon energy 7 eV and work function 3 eV, find maximum kinetic energy.",
+          "answer": "4",
+          "unit": "eV",
+          "hint": "Subtract the work function.",
+          "explanation": "7−3=4 eV.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "At fixed frequency, does increasing intensity increase each photon’s energy?",
+          "answer": "No; photon energy is set by frequency.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Intensity also depends on photon arrival rate.",
+          "type": "mcq",
+          "options": [
+            "No; photon energy is set by frequency.",
+            "Yes; intensity is the energy per photon."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "An electron drops from energy −1 to −4 in consistent units. Find emitted photon energy.",
+          "answer": "3",
+          "unit": "energy units",
+          "hint": "Subtract final from initial.",
+          "explanation": "−1−(−4)=3.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB5.2",
+      "intro": "A radioactive decay law describes survival probabilities or an expected population, not a countdown for every nucleus. Nuclear energy release is a rest-energy difference; it does not alone determine how quickly a reaction occurs.",
+      "terms": [
+        {
+          "term": "Decay constant λ",
+          "meaning": "The proportional loss-rate parameter in N′=−λN."
+        },
+        {
+          "term": "Half-life",
+          "meaning": "Time after which the expected surviving population halves."
+        },
+        {
+          "term": "Activity",
+          "meaning": "Expected decay rate λN, not the number of nuclei remaining."
+        }
+      ],
+      "derivation": [
+        "Solve N′=−λN to obtain N=N0exp(−λt).",
+        "At N/N0=1/2, λt_half=ln2. Mean lifetime 1/λ differs from half-life.",
+        "A mass defect Δm corresponds to energy Δmc². Reaction rates also depend on barriers and interaction dynamics, even when energy release is favorable."
+      ],
+      "examples": [
+        {
+          "title": "Count half-lives",
+          "steps": [
+            "Start with an expected 160 undecayed nuclei and half-life 2 h. After 6 h there are three halvings.",
+            "The expected remaining population is 160/8=20, not a guarantee of exactly 20 in a random realization."
+          ]
+        },
+        {
+          "title": "Distinguish activity",
+          "steps": [
+            "If λ=0.1 s⁻¹ and N=200, activity is 20 decays/s.",
+            "As N decreases, activity decreases even though λ stays fixed in this model."
+          ]
+        }
+      ],
+      "pitfall": "Half-life is not the exact time at which each nucleus decays, and activity has units of events per time.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "A sample has half-life 3 h. What fraction remains after 6 h?",
+          "answer": "0.25",
+          "unit": "",
+          "hint": "Count two half-lives.",
+          "explanation": "(1/2)²=1/4.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does half-life determine the exact decay time of one nucleus?",
+          "answer": "No; it characterizes a survival distribution.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Individual outcomes are random within the model.",
+          "type": "mcq",
+          "options": [
+            "Yes; all nuclei wait exactly one half-life.",
+            "No; it characterizes a survival distribution."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For λ=0.2 s⁻¹ and N=50, find activity.",
+          "answer": "10",
+          "unit": "decays/s",
+          "hint": "Activity is decay constant times the number of undecayed nuclei: A = λN.",
+          "explanation": "0.2×50=10 decays/s.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "PB5.3",
+      "intro": "A semiconductor’s band structure and occupations control available charge carriers. Devices also depend on fields, contacts and scattering. Begin by distinguishing the negatively charged mobile electron from the donor ion it leaves behind.",
+      "terms": [
+        {
+          "term": "Band gap",
+          "meaning": "An energy interval without bulk states in the specified ideal band model."
+        },
+        {
+          "term": "Doping",
+          "meaning": "Adding selected impurities to alter carrier populations and electronic structure."
+        },
+        {
+          "term": "Diode",
+          "meaning": "A junction device with strongly asymmetric current response in its applicable regime."
+        }
+      ],
+      "derivation": [
+        "A donor can supply an electron to the conduction band and remain a positive ion. The mobile carriers in an n-type material are mainly electrons.",
+        "A simple conductivity relation is σ=nqμ using positive carrier charge magnitude and appropriate mobility; real materials can require multiple carriers.",
+        "The ideal diode relation is I=I_s[exp(V/(nV_T))−1]. Series resistance, heating and breakdown limit its regime."
+      ],
+      "examples": [
+        {
+          "title": "Read a donor diagram",
+          "steps": [
+            "An impurity releases one electron into mobile states.",
+            "The mobile electron is negative; the remaining donor is positive. Naming the material n-type does not make the donor ion negative."
+          ]
+        },
+        {
+          "title": "Use normalized diode voltage",
+          "steps": [
+            "For ideality n=1 and V/V_T=ln2, I/I_s=exp(ln2)−1=1.",
+            "At V=0, net ideal current is zero."
+          ]
+        }
+      ],
+      "pitfall": "A band gap alone does not fix an entire device current, and the ideal diode exponential is not valid at unlimited current.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "In the ideal diode law with n=1 and V/V_T=ln4, find I/I_s.",
+          "answer": "3",
+          "unit": "",
+          "hint": "Evaluate the exponential, then subtract one.",
+          "explanation": "The ideal diode equation gives I/Iₛ = exp(V/V_T) − 1 = exp(ln4) − 1 = 4 − 1 = 3.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "After donating a mobile electron, what is the donor ion’s charge sign?",
+          "answer": "Positive.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Losing a negative electron leaves positive ionic charge.",
+          "type": "mcq",
+          "options": [
+            "Positive.",
+            "Negative, because the material is n-type."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "At fixed carrier density, doubling mobility changes simple conductivity by what factor?",
+          "answer": "2",
+          "unit": "",
+          "hint": "Use σ proportional to mobility.",
+          "explanation": "The conductivity doubles in the specified model.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "CB.1",
+      "intro": "Atoms are quantum systems, not tiny classical solar systems. Begin with electron counting and then use shielding and shell structure to explain trends. A simple hydrogenic model is a reference, not a universal formula for every atom.",
+      "terms": [
+        {
+          "term": "Atomic number Z",
+          "meaning": "The number of protons in a nucleus."
+        },
+        {
+          "term": "Orbital",
+          "meaning": "A one-electron state in a specified quantum model, not a literal orbit."
+        },
+        {
+          "term": "Shielding",
+          "meaning": "Reduction of the effective nuclear attraction experienced by an electron due to other electrons."
+        }
+      ],
+      "derivation": [
+        "A neutral atom has Z electrons. Positive ionic charge means fewer electrons than protons.",
+        "Fill states using the allowed quantum numbers, Pauli exclusion and a stated approximate energy ordering. Shell and subshell capacities count distinct spin-orbitals.",
+        "Across many periodic trends, effective nuclear attraction and shell size compete. The one-electron estimate E_n∝−Z²/n² does not include all many-electron screening and correlation."
+      ],
+      "examples": [
+        {
+          "title": "Count an ion",
+          "steps": [
+            "An atom with Z=12 has 12 electrons when neutral.",
+            "Its 2+ ion has lost two electrons, leaving 10."
+          ]
+        },
+        {
+          "title": "Use a restricted energy model",
+          "steps": [
+            "For a one-electron ion with Z=2, the energy scale at fixed n is four times the Z=1 magnitude.",
+            "The negative sign still identifies a bound level relative to its continuum reference."
+          ]
+        }
+      ],
+      "pitfall": "Do not apply the bare hydrogenic Z² energy rule to every electron in a many-electron atom.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "An ion has Z=11 and charge +1. How many electrons does it have?",
+          "answer": "10",
+          "unit": "electrons",
+          "hint": "Positive charge means electrons have been removed.",
+          "explanation": "11−1=10 electrons.",
+          "type": "numeric",
+          "exact": true
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Is an atomic orbital a definite classical path followed by an electron?",
+          "answer": "No; it is a quantum state description.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Orbital and orbit are distinct concepts.",
+          "type": "mcq",
+          "options": [
+            "Yes; it is a tiny planetary orbit with a known trajectory.",
+            "No; it is a quantum state description."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "At fixed principal n, doubling Z in a one-electron Coulomb model changes binding-energy magnitude by what factor?",
+          "answer": "4",
+          "unit": "",
+          "hint": "Use the stated Z² scaling.",
+          "explanation": "2²=4, within the one-electron approximation.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "CB.2",
+      "intro": "Bonding models organize electron distributions and molecular geometry. Start with bookkeeping, then distinguish electron-domain arrangements, molecular shape and total polarity. A convenient drawing is not a unique physical decomposition of an electronic state.",
+      "terms": [
+        {
+          "term": "Formal charge",
+          "meaning": "Valence electron count minus assigned nonbonding electrons and half the bonding electrons."
+        },
+        {
+          "term": "Electron domain",
+          "meaning": "A region of bonding or lone-pair electron density used in a simple geometry model."
+        },
+        {
+          "term": "Molecular dipole",
+          "meaning": "A vector property of the full charge distribution; bond contributions can cancel."
+        }
+      ],
+      "derivation": [
+        "For ordinary two-electron bonds, formal charge can be counted as valence electrons−nonbonding electrons−bond-order sum.",
+        "Four electron domains have a tetrahedral ideal arrangement, but if some domains are lone pairs, the atom positions need not form a tetrahedral molecular shape.",
+        "Polar bonds do not guarantee a polar molecule. Opposite contributions cancel in symmetric linear CO2; bent water does not have that cancellation."
+      ],
+      "examples": [
+        {
+          "title": "Count a nitrogen formal charge",
+          "steps": [
+            "Nitrogen has five valence electrons. Three single bonds and one lone pair give 5−3−2=0.",
+            "Four single bonds and no lone pair instead give 5−4=+1."
+          ]
+        },
+        {
+          "title": "Separate geometry and shape",
+          "steps": [
+            "Water has four electron domains around oxygen, two of them lone pairs.",
+            "The ideal domain arrangement is tetrahedral, while the three nuclei form a bent molecular shape."
+          ]
+        }
+      ],
+      "pitfall": "Formal charge is bookkeeping, not a direct measurement of the actual partial charge on an atom.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For nitrogen with four single bonds and no lone pair, find formal charge.",
+          "answer": "1",
+          "unit": "elementary-charge units",
+          "hint": "Use five valence electrons minus four assigned bonding electrons.",
+          "explanation": "Formal charge is valence electrons minus assigned electrons: 5 − 4 = +1.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Must a molecule with polar bonds have a nonzero total dipole?",
+          "answer": "No; its vector contributions can cancel by symmetry.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Dipole contributions have direction.",
+          "type": "mcq",
+          "options": [
+            "No; its vector contributions can cancel by symmetry.",
+            "Yes; bond polarities always add as positive scalars."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "In a simple MO count with 6 bonding and 2 antibonding electrons, find bond order.",
+          "answer": "2",
+          "unit": "",
+          "hint": "Use half of bonding minus antibonding occupancy.",
+          "explanation": "(6−2)/2=2.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "CB.3",
+      "intro": "Thermodynamics asks which changes are favorable under specified constraints; equilibrium asks how far a reaction proceeds. A negative standard Gibbs change is not the statement that every reactant molecule disappears.",
+      "terms": [
+        {
+          "term": "Enthalpy H",
+          "meaning": "A state function useful for constant-pressure heat accounting under appropriate work conditions."
+        },
+        {
+          "term": "Gibbs energy G",
+          "meaning": "The state function governing specified constant-temperature/pressure equilibrium conditions."
+        },
+        {
+          "term": "Equilibrium constant K",
+          "meaning": "The equilibrium value of a reaction quotient using a defined activity convention."
+        }
+      ],
+      "derivation": [
+        "With consistent conventions, ΔG=ΔG°+RT lnQ. At equilibrium, the reaction Gibbs change is zero.",
+        "Therefore ΔG°=−RT lnK. A finite K usually gives finite amounts of both sides rather than automatic complete conversion.",
+        "For ideal A⇌B with B/A=K and fixed total N=A+B, substitute B=KA into the balance to obtain B=NK/(1+K)."
+      ],
+      "examples": [
+        {
+          "title": "Combine equilibrium with a balance",
+          "steps": [
+            "Let total amount be 12 and equilibrium B/A=2. Then A+2A=12.",
+            "A=4 and B=8; a favorable ratio does not mean B=12."
+          ]
+        },
+        {
+          "title": "Check reaction bookkeeping",
+          "steps": [
+            "If RT=1 and K=e², the standard Gibbs change is −2.",
+            "Actual reaction Gibbs change can differ because RT lnQ also depends on the present composition."
+          ]
+        }
+      ],
+      "pitfall": "Equilibrium is not a rate statement: a favorable reaction can still be very slow.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For ideal A⇌B with total amount 10 and B/A=4, find B.",
+          "answer": "8",
+          "unit": "amount units",
+          "hint": "Use B=NK/(1+K).",
+          "explanation": "10×4/5=8.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does a negative standard Gibbs change guarantee complete conversion?",
+          "answer": "No; equilibrium composition depends on the finite constant and balances.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "The actual quotient enters the equilibrium condition.",
+          "type": "mcq",
+          "options": [
+            "Yes; favorable means every reactant disappears.",
+            "No; equilibrium composition depends on the finite constant and balances."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "With RT=1 and K=exp(3), find ΔG°.",
+          "answer": "-3",
+          "unit": "energy units",
+          "hint": "Use −RT lnK.",
+          "explanation": "Use ΔG° = −RT lnK. Here RT=1 and lnK=3, giving −3 in the stated energy units.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "CB.4",
+      "intro": "A rate describes how fast composition changes, while an electrode potential describes a free-energy difference per transferred charge under specified conditions. Their relationship needs a mechanism and transport model; they are not interchangeable numbers.",
+      "terms": [
+        {
+          "term": "Rate constant k",
+          "meaning": "A coefficient in a stated rate law, with units determined by that law."
+        },
+        {
+          "term": "Activation barrier",
+          "meaning": "A pathway energy/free-energy scale that influences the rate."
+        },
+        {
+          "term": "Reversible cell voltage",
+          "meaning": "A free-energy-per-charge measure in a specified thermodynamic state."
+        }
+      ],
+      "derivation": [
+        "For a first-order loss, dc/dt=−kc and c=c0exp(−kt). Its half-life is ln2/k.",
+        "An Arrhenius model k=Aexp(−Ea/(RT)) separates a barrier factor from its prefactor. A catalyst changes pathways but not the equilibrium free-energy difference between the same endpoints.",
+        "For a reversible electrochemical reaction, ΔG=−nFE. Current under load additionally depends on electrode kinetics, resistance and mass transport."
+      ],
+      "examples": [
+        {
+          "title": "Use a rate law",
+          "steps": [
+            "For c0=8 and kt=ln2, c=8/2=4.",
+            "This is a concentration prediction under first-order kinetics, not a universal half-life for every reaction order."
+          ]
+        },
+        {
+          "title": "Use a cell-energy relation",
+          "steps": [
+            "For ΔG=−12,n=2,F=1 in model units, E=6.",
+            "A positive reversible voltage does not alone establish a high operating current."
+          ]
+        }
+      ],
+      "pitfall": "A catalyst can speed equilibrium approach without changing the equilibrium constant for the same temperature and reaction definition.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "For c0=12 and kt=ln3 in first-order decay, find c.",
+          "answer": "4",
+          "unit": "concentration units",
+          "hint": "Use c=c0exp(−kt).",
+          "explanation": "First-order decay gives c = c₀exp(−kt) = 12exp(−ln3) = 12/3 = 4 in the concentration units used.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does a catalyst change equilibrium K for the same reaction at the same temperature?",
+          "answer": "No; it changes pathways and rates, not the endpoint free-energy difference.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Kinetic and thermodynamic effects are distinct.",
+          "type": "mcq",
+          "options": [
+            "No; it changes pathways and rates, not the endpoint free-energy difference.",
+            "Yes; faster always means a different thermodynamic equilibrium."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "For ΔG=−8,n=2,F=1, find reversible voltage.",
+          "answer": "4",
+          "unit": "model volts",
+          "hint": "Use E=−ΔG/(nF).",
+          "explanation": "Use ΔG = −nFE, so E = −ΔG/(nF) = −(−8)/(2×1) = 4 in the stated voltage units.",
+          "type": "numeric"
+        }
+      ]
+    },
+    {
+      "id": "CB.5",
+      "intro": "Organic formulas constrain possible molecules but do not uniquely identify them. Functional groups describe connected patterns of atoms, and spectroscopy provides evidence about those patterns. Keep composition, connectivity and evidence separate.",
+      "terms": [
+        {
+          "term": "Functional group",
+          "meaning": "A connected atomic arrangement associated with characteristic chemical behavior."
+        },
+        {
+          "term": "Isomer",
+          "meaning": "A different structure with the same molecular formula."
+        },
+        {
+          "term": "Degree of unsaturation",
+          "meaning": "A valence-based count of ring and multiple-bond equivalents under stated assumptions."
+        }
+      ],
+      "derivation": [
+        "For conventional neutral closed-shell C/H/N/halogen formulas, DBE=(2C+2+N−H−X)/2; oxygen does not enter this count.",
+        "A ring or double bond contributes one DBE, while a triple bond contributes two. The count does not locate a bond or identify a functional group.",
+        "A harmonic stretch has ω=sqrt(k/μ), so both restoring strength and participating mass influence a spectral region. One matching peak is not a unique structural proof."
+      ],
+      "examples": [
+        {
+          "title": "Count without overclaiming",
+          "steps": [
+            "For C2H4, DBE=(4+2−4)/2=1.",
+            "This permits one double-bond equivalent, but a general DBE alone never specifies all connectivity."
+          ]
+        },
+        {
+          "title": "Recognize formula ambiguity",
+          "steps": [
+            "Ethanol and dimethyl ether both have formula C2H6O.",
+            "Their connectivity and functional groups differ, so formula counting alone cannot distinguish them."
+          ]
+        }
+      ],
+      "pitfall": "Do not treat resonance drawings as rapidly switching distinct molecules, or a single spectral peak as complete identification.",
+      "checks": [
+        {
+          "id": "rebuild-1",
+          "prompt": "Find DBE for neutral closed-shell C3H6.",
+          "answer": "1",
+          "unit": "",
+          "hint": "Use (2C+2−H)/2.",
+          "explanation": "(6+2−6)/2=1.",
+          "type": "numeric"
+        },
+        {
+          "id": "rebuild-2",
+          "prompt": "Does a molecular formula uniquely determine connectivity?",
+          "answer": "No; different isomers can share the formula.",
+          "unit": "",
+          "hint": "Compare the meaning of the quantities.",
+          "explanation": "Composition and connectivity carry different information.",
+          "type": "mcq",
+          "options": [
+            "Yes; atom counts identify every bond.",
+            "No; different isomers can share the formula."
+          ]
+        },
+        {
+          "id": "rebuild-3",
+          "prompt": "At fixed restoring coefficient, reduced mass increases by factor 4. Find harmonic-frequency factor.",
+          "answer": "0.5",
+          "unit": "",
+          "hint": "Frequency scales as inverse square root of mass.",
+          "explanation": "1/sqrt4=1/2.",
+          "type": "numeric"
+        }
+      ]
+    }
+  ]
+}

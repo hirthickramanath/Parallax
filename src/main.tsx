@@ -46,6 +46,11 @@ const Stats = lazy(() =>
 const Settings = lazy(() =>
   import("./pages/Settings").then((m) => ({ default: m.Settings })),
 );
+const FoundationRevision = lazy(() =>
+  import("./pages/FoundationRevision").then((m) => ({
+    default: m.FoundationRevision,
+  })),
+);
 const RevisionPlan = lazy(() =>
   import("./pages/RevisionPlan").then((m) => ({ default: m.RevisionPlan })),
 );
@@ -119,6 +124,11 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/plan" element={<WeeklyPlan />} />
           <Route path="/revision-plan" element={<RevisionPlan />} />
+          <Route path="/foundation-revision" element={<FoundationRevision />} />
+          <Route
+            path="/foundation-revision/:id"
+            element={<FoundationRevision />}
+          />
           <Route path="/placement" element={<Placement />} />
           <Route path="/lesson/:id" element={<LessonPlayer />} />
           <Route path="/teaching-lab" element={<TeachingLab />} />

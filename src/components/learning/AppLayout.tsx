@@ -27,7 +27,10 @@ export function AppLayout() {
       store.records.days,
       dateKey(now, store.preferences.timezone),
     );
-  const focused = useLocation().pathname.startsWith("/lesson/");
+  const pathname = useLocation().pathname;
+  const focused =
+    pathname.startsWith("/lesson/") ||
+    pathname.startsWith("/foundation-revision/");
   if (focused)
     return (
       <div className="learning-app focused-study">

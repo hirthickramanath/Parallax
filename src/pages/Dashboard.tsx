@@ -1,3 +1,5 @@
+import { FoundationRevisionCard } from "../components/learning/FoundationRevisionCard";
+import { nextFoundation } from "../lib/foundation-path";
 import { WeekOverview } from "../components/learning/WeekOverview";
 import { JourneyMap } from "../components/learning/JourneyMap";
 import { Link } from "react-router-dom";
@@ -27,9 +29,14 @@ export function Dashboard() {
     (p) => p.status === "done",
   ).length;
   const dayIndex = Math.floor(Date.parse(today) / 86400000);
-  const puzzleSource = last
-    ? course.authored[last[0]]
-    : course.authored["PB1.1"];
+  const revisionNext = store.preferences.foundationRevision
+    ? nextFoundation(store.records)
+    : undefined;
+  const puzzleSource = revisionNext
+    ? course.authored[revisionNext]
+    : last
+      ? course.authored[last[0]]
+      : course.authored["PB1.1"];
   const puzzlePool = puzzleSource.questions.filter(
     (q) => !q.tier && q.conceptual === (dayIndex % 2 === 0),
   );
@@ -63,47 +70,52 @@ export function Dashboard() {
       </div>
       <div className="dashboard-columns">
         <div className="dashboard-primary">
+          <FoundationRevisionCard />
           <WeekOverview />
           <div className="dashboard-grid">
-            <section className="continue-card">
-              <div className="continue-copy">
-                <span className="pill">
-                  {last ? "CONTINUE YOUR JOURNEY" : "START EXPLORING"} ·{" "}
-                  {lesson?.id || "COURSE"}
-                </span>
-                <h2>{lesson?.title || "Every question opens a door."}</h2>
-                <p>{lesson?.hook || "Your next lesson is waiting."}</p>
-                {last && (
-                  <details className="recap-card" open>
-                    <summary>
-                      Your 30-second recap{last ? ` · ${last[0]}` : ""}
-                    </summary>
-                    <ul>
-                      {recap.map((text) => (
-                        <li key={text}>{text}</li>
-                      ))}
-                    </ul>
-                    <p>
-                      Before you continue: can you explain one of these ideas
-                      without looking?
-                    </p>
-                  </details>
-                )}
-                {lesson && missingNeeds(lesson, store.records).length > 0 && (
-                  <small>Soft-lock preview · prerequisites recommended.</small>
-                )}
-                <Button asChild>
-                  <Link to={lesson ? `/lesson/${lesson.id}` : "/learn"}>
-                    {resuming ? "Recap & resume" : "Start this lesson"}
-                    <ArrowRight size={18} />
-                  </Link>
-                </Button>
-              </div>
-              <div className="planet-emblem" aria-hidden="true">
-                <Telescope size={70} />
-                <span>LOOK CLOSER</span>
-              </div>
-            </section>
+            {!store.preferences.foundationRevision && (
+              <section className="continue-card">
+                <div className="continue-copy">
+                  <span className="pill">
+                    {last ? "CONTINUE YOUR JOURNEY" : "START EXPLORING"} ·{" "}
+                    {lesson?.id || "COURSE"}
+                  </span>
+                  <h2>{lesson?.title || "Every question opens a door."}</h2>
+                  <p>{lesson?.hook || "Your next lesson is waiting."}</p>
+                  {last && (
+                    <details className="recap-card" open>
+                      <summary>
+                        Your 30-second recap{last ? ` · ${last[0]}` : ""}
+                      </summary>
+                      <ul>
+                        {recap.map((text) => (
+                          <li key={text}>{text}</li>
+                        ))}
+                      </ul>
+                      <p>
+                        Before you continue: can you explain one of these ideas
+                        without looking?
+                      </p>
+                    </details>
+                  )}
+                  {lesson && missingNeeds(lesson, store.records).length > 0 && (
+                    <small>
+                      Soft-lock preview · prerequisites recommended.
+                    </small>
+                  )}
+                  <Button asChild>
+                    <Link to={lesson ? `/lesson/${lesson.id}` : "/learn"}>
+                      {resuming ? "Recap & resume" : "Start this lesson"}
+                      <ArrowRight size={18} />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="planet-emblem" aria-hidden="true">
+                  <Telescope size={70} />
+                  <span>LOOK CLOSER</span>
+                </div>
+              </section>
+            )}
             <section className="goal-card">
               <div className="goal-heading">
                 <Flame />

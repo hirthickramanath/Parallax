@@ -2610,3 +2610,25 @@ th {
 @media(max-width:1100px) { .dashboard-columns { grid-template-columns:minmax(0,1fr); } .dashboard-aside { position:static; grid-row:1; } .dashboard-aside .daily-puzzle { padding:18px; } }
 @media(max-width:760px) { .focused-study .lesson-layout.with-simulation { grid-template-columns:minmax(0,1fr); } .lesson-simulation { position:static; max-height:none; } .focused-study .lesson-player { padding:16px; } .appearance-controls { gap:6px; } .level-path { padding-inline:40px; } .level-path li { transform:translateX(calc(var(--bend) * .6)); } .app-topbar .sync-status { display:none; } }
 .current-level .level-node { outline:3px solid var(--gold); outline-offset:5px; }
+
+/* A quiet, account-scoped path for returning learners. */
+.foundation-revision-card { margin-bottom:24px; border-left:5px solid hsl(var(--primary)); }
+.foundation-chapter-list { list-style:none; padding:0; display:grid; gap:12px; }
+.foundation-chapter-list li a { display:flex; justify-content:space-between; gap:16px; padding:18px; border:1px solid hsl(var(--border)); border-radius:16px; background:var(--app-card); }
+.foundation-chapter-list small { color:var(--muted); }
+.revision-player-header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px; }
+.revision-step-select { display:grid; gap:8px; max-width:420px; margin-bottom:20px; }
+.revision-step-select select { padding:12px; border:1px solid hsl(var(--border)); border-radius:12px; background:var(--app-card); }
+.revision-guide { min-width:0; line-height:1.8; }
+.revision-guide p,.revision-derivation li { max-width:76ch; }
+.revision-glossary { display:grid; gap:14px; }
+.revision-glossary div { border-left:3px solid hsl(var(--primary)); padding:10px 16px; background:var(--app-card); border-radius:0 12px 12px 0; }
+.revision-glossary dt { font-weight:700; }
+.revision-glossary dd { margin:4px 0 0; }
+.revision-derivation { padding-left:25px; }
+.revision-derivation li { margin-bottom:18px; padding-left:8px; }
+.revision-worked { padding:20px; border:1px solid hsl(var(--border)); border-radius:18px; margin:20px 0; background:var(--app-card); }
+.revision-worked details { margin:12px 0; }
+.revision-worked summary { cursor:pointer; font-weight:700; }
+.revision-player .question-card input[type=number] { max-width:100%; padding:12px; border:1px solid hsl(var(--border)); border-radius:10px; }
+@media(max-width:600px) { .foundation-chapter-list li a { flex-direction:column; gap:6px; } .revision-player-header .appearance-controls { max-width:100%; flex-wrap:wrap; } }

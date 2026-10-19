@@ -50,6 +50,26 @@ export function Settings() {
           Open local authoring audit →
         </Link>
       )}
+      <section className="settings-card">
+        <h2>Rebuild before moving further</h2>
+        <p>
+          Prioritize in-depth foundation revision without resetting existing
+          lessons, notes or XP.
+        </p>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={!!store.preferences.foundationRevision}
+            onChange={(e) =>
+              store.setPreferences({ foundationRevision: e.target.checked })
+            }
+          />
+          Prioritize foundation revision
+        </label>
+        <Link className="text-button" to="/foundation-revision">
+          Open the 38-chapter revision path →
+        </Link>
+      </section>
       <RestartJourney />
       <BackgroundReminderSettings />
       <section className="settings-card">

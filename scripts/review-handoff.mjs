@@ -21,7 +21,7 @@ export function exportReviewHandoff(root, destination, ids) {
   const files = new Map();
   const add = (name) => {
     if (
-      !/^(content\/lessons\/[A-Z]+\d*\.\d+\.mdx|src\/[\w./-]+\.(ts|tsx)|package(-lock)?\.json)$/.test(
+      !/^(content\/lessons\/[A-Z]+\d*\.\d+\.mdx|content\/revision\/foundation\.json|src\/[\w./-]+\.(ts|tsx)|package(-lock)?\.json)$/.test(
         name,
       ) ||
       name.split("/").includes("..")
@@ -39,6 +39,13 @@ export function exportReviewHandoff(root, destination, ids) {
         packet.modelArtifacts[name]
       )
         throw Error("Model changed during export");
+    }
+    for (const [name, hash] of Object.entries(
+      packet.foundationRevision?.artifacts || {},
+    )) {
+      add(name);
+      if (sourceFingerprint(fs.readFileSync(path.join(root, name))) !== hash)
+        throw Error("Revision changed during export");
     }
     files.set(
       `packets/${packet.lessonId}.json`,
@@ -71,7 +78,7 @@ export function exportReviewHandoff(root, destination, ids) {
   add("package-lock.json");
   files.set(
     "README.md",
-    `# Independent scientific review handoff\n\n${packets.length} current draft lessons. No independent approval is recorded by this export.\n\nRead source/content/lessons with the associated packet and model sources. Verify every proof, assumption, unit, exercise, grading rule, model convention and limiting case. Partial source records corroborate only their explicitly stated scope. Obtain and inspect the pinned external references; this bundle does not redistribute textbooks.\n\nReview worksheets start unapproved with empty coverage and reviewer fields. Make a working copy and return it separately; preserve the original source bundle and manifest. Record real findings and unresolved issues. Do not merely switch the decision field. A qualified reviewer must identify themselves, disclose author independence, list every section/question actually checked and provide inspected source editions/locators. The repository publication gate must validate current artifacts after an actual approval is imported. Metadata cannot authenticate a person or establish truth.\n\nThis is a scientific handoff, not a learner study. Keep participant data and credentials outside this bundle and repository. Package files identify dependencies; inspect source before running any code.\n`,
+    `# Independent scientific review handoff\n\n${packets.length} current draft lessons. No independent approval is recorded by this export.\n\nRead source/content/lessons with the associated packet and model sources. Foundation packets also include a separate draft revision guide, examples, practice and hashed UI/grading sources. Review that material explicitly; MDX approval does not approve revision guides. Verify every proof, assumption, unit, exercise, grading rule, model convention and limiting case. Partial source records corroborate only their explicitly stated scope. Obtain and inspect the pinned external references; this bundle does not redistribute textbooks.\n\nReview worksheets start unapproved with empty coverage and reviewer fields. Make a working copy and return it separately; preserve the original source bundle and manifest. Record real findings and unresolved issues. Do not merely switch the decision field. A qualified reviewer must identify themselves, disclose author independence, list every section/question actually checked and provide inspected source editions/locators. The repository publication gate must validate current artifacts after an actual approval is imported. Metadata cannot authenticate a person or establish truth.\n\nThis is a scientific handoff, not a learner study. Keep participant data and credentials outside this bundle and repository. Package files identify dependencies; inspect source before running any code.\n`,
   );
   const manifest = {
     format: "parallax-review-handoff-v1",

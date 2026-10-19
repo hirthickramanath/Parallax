@@ -2013,3 +2013,159 @@ test("discrete group orders reject tolerance-based fractional answers in lesson 
   await question.getByRole("button", { name: "Check answer" }).click();
   await expect(question.getByRole("status")).toContainText("That’s right");
 });
+
+test("foundation revision begins from dashboard and saves a separate progressive lesson", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/dashboard");
+  await page.getByRole("link", { name: "Start in-depth revision" }).click();
+  await expect(page.locator(".foundation-chapter-list li")).toHaveCount(38);
+  await page.getByRole("button", { name: "Begin guided revision" }).click();
+  await expect(page).toHaveURL(/foundation-revision\/MB1.1$/);
+  await expect(
+    page.locator(".app-sidebar,.app-topbar,.mobile-nav"),
+  ).toHaveCount(0);
+  await expect(page.locator(".revision-glossary dt")).toHaveCount(3);
+  await page
+    .getByRole("button", { name: "Continue revision", exact: true })
+    .click();
+  await expect(page.locator(".revision-worked")).toHaveCount(2);
+  await page
+    .getByRole("button", { name: "Continue revision", exact: true })
+    .click();
+  await expect(page.locator(".lesson-prose")).toBeVisible();
+  await expect(page.locator(".lesson-prose .katex").first()).toBeVisible();
+  await page
+    .getByRole("button", { name: "I’ve read the argument — practise" })
+    .click();
+  const finish = page.getByRole("button", {
+    name: "Finish this revision",
+    exact: true,
+  });
+  await expect(finish).toBeDisabled();
+  const content = JSON.parse(
+    readFileSync("content/revision/foundation.json", "utf8"),
+  );
+  const guide = content.modules.find((m: { id: string }) => m.id === "MB1.1");
+  const first = page.locator("form[data-question-id='revision-rebuild-1']");
+  await first.getByRole("spinbutton").fill("4");
+  await first
+    .getByRole("button", { name: "Check answer", exact: true })
+    .click();
+  await expect(first.getByRole("status")).toContainText("Not yet");
+  await first
+    .getByRole("button", { name: "Help me take a smaller step" })
+    .click();
+  await expect(first.locator(".info-box")).toBeVisible();
+  for (const q of guide.checks) {
+    const form = page.locator(`form[data-question-id='revision-${q.id}']`);
+    if (q.type === "mcq")
+      await form.getByRole("radio", { name: q.answer, exact: true }).check();
+    else await form.getByRole("spinbutton").fill(q.answer);
+    await form
+      .getByRole("button", { name: "Check answer", exact: true })
+      .click();
+    await expect(form.getByRole("status")).toContainText("That’s right");
+  }
+  await expect(finish).toBeEnabled();
+  await finish.click();
+  await page.reload();
+  await expect(
+    page.getByRole("heading", { name: "Revision practice complete" }),
+  ).toBeVisible();
+  const data = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!),
+  );
+  expect(data.preferences.foundationRevision).toBe(true);
+  expect(
+    data.records.plan["foundation-rebuild-MB1.1"].completedAt,
+  ).toBeGreaterThan(0);
+  expect(data.records.lessons["MB1.1"]?.mastery || 0).toBe(0);
+  await page.getByRole("link", { name: "Dashboard", exact: true }).click();
+  await expect(page.locator(".foundation-revision-card")).toContainText(
+    "1 of 38",
+  );
+  await expect(page.locator(".foundation-revision-card a")).toHaveAttribute(
+    "href",
+    "/foundation-revision/MB1.2",
+  );
+  await expect(page.locator(".plan-list article")).toHaveCount(7);
+  await expect(page.locator(".plan-list a").first()).toHaveAttribute(
+    "href",
+    /foundation-revision/,
+  );
+  await expect(page.locator(".continue-card")).toHaveCount(0);
+});
+
+test("foundation revision retains original history can be paused and remains account scoped", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/dashboard");
+  await page.evaluate(() => {
+    const key = "parallax-learning-v1:test-learner",
+      d = JSON.parse(localStorage.getItem(key)!);
+    d.records.lessons["PH1.1"] = {
+      status: "done",
+      mastery: 0.9,
+      updatedAt: 123,
+    };
+    localStorage.setItem(key, JSON.stringify(d));
+  });
+  await page.goto("/foundation-revision/MB2.3");
+  await expect(page.locator(".revision-glossary")).toContainText(/normal/i);
+  await page
+    .getByRole("button", { name: "Continue revision", exact: true })
+    .click();
+  await page.reload();
+  await expect(page.getByLabel("Revision step", { exact: true })).toHaveValue(
+    "1",
+  );
+  await page.goto("/settings");
+  await page
+    .getByLabel("Prioritize foundation revision", { exact: true })
+    .uncheck();
+  await page.goto("/dashboard");
+  await expect(page.locator(".continue-card")).toBeVisible();
+  const d = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!),
+  );
+  expect(d.records.lessons["PH1.1"].mastery).toBe(0.9);
+  expect(d.records.plan["foundation-rebuild-MB2.3"].step).toBe(1);
+  await signedIn(page, "other-revision-learner");
+  await page.goto("/foundation-revision/MB2.3");
+  await expect(page.getByLabel("Revision step", { exact: true })).toHaveValue(
+    "0",
+  );
+});
+
+test("all foundation revision chapters load real theory and mobile interactive models", async ({
+  page,
+}) => {
+  test.setTimeout(180000);
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const ids = JSON.parse(
+    readFileSync("content/revision/foundation.json", "utf8"),
+  ).modules.map((m: { id: string }) => m.id);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  for (const id of ids) {
+    await page.goto(`/foundation-revision/${id}`);
+    await expect(page.locator(".revision-glossary dt").first()).toBeVisible();
+    await expect(
+      page.getByRole("complementary", { name: "Lesson simulation" }),
+    ).toBeVisible();
+    await page.getByLabel("Revision step", { exact: true }).selectOption("2");
+    await expect(page.locator(".lesson-prose")).toBeVisible();
+    expect(await page.locator(".lesson-prose").innerText()).not.toHaveLength(0);
+    await expect(page.locator(".katex-error")).toHaveCount(0);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth + 1,
+      ),
+    ).toBe(true);
+  }
+  expect(errors).toEqual([]);
+});

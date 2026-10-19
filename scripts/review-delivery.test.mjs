@@ -148,3 +148,28 @@ test("missing deployed assets and unsafe origin URLs do not pass", async () => {
     /without path or credentials/,
   );
 });
+test("foundation handoff includes separately unapproved revision content and grading sources", () => {
+  const parent = fs.mkdtempSync(
+    path.join(os.tmpdir(), "parallax-revision-handoff-"),
+  );
+  try {
+    const out = path.join(parent, "bundle");
+    exportReviewHandoff(process.cwd(), out, ["PB2.1"]);
+    const packet = JSON.parse(
+      fs.readFileSync(path.join(out, "packets/PB2.1.json"), "utf8"),
+    );
+    assert.equal(packet.foundationRevision.status, "draft");
+    assert.equal(packet.foundationRevision.independentReviewCompleted, false);
+    assert.equal(packet.foundationRevision.module.examples.length, 2);
+    assert.equal(packet.foundationRevision.module.checks.length, 3);
+    assert.ok(packet.foundationRevision.artifacts["src/lib/learning-core.ts"]);
+    assert.equal(verifyReviewHandoff(out).integrity, "matched");
+    fs.appendFileSync(
+      path.join(out, "source/content/revision/foundation.json"),
+      " ",
+    );
+    assert.throws(() => verifyReviewHandoff(out), /Changed handoff artifact/);
+  } finally {
+    fs.rmSync(parent, { recursive: true, force: true });
+  }
+});
