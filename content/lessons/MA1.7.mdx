@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "For x² on [0,1] and 10 equal cells, find upper Darboux sum minus lower Darboux sum.",
+      "answer": "0.1",
+      "hint": "Consecutive endpoint squares telescope in the difference.",
+      "explanation": "U_n−L_n=(1/n)∑[(i/n)²−((i−1)/n)²]=1/n.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "Find the Riemann integral of x² on [0,1].",
+      "answer": "0.3333333333333333",
+      "hint": "Compare limits of the lower and upper sums.",
+      "explanation": "Both sums approach 1/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "For the right-endpoint sum of x² with n=100 equal cells, find its excess over 1/3.",
+      "answer": "0.005016666666666667",
+      "hint": "Use ∑i²=n(n+1)(2n+1)/6.",
+      "explanation": "U_n=1/3+1/(2n)+1/(6n²).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "For the indicator of rational numbers on [0,1], what are the lower and upper Darboux sums for any finite partition into positive-length cells?",
+      "answer": "Lower 0 and upper 1.",
+      "options": [
+        "Both tend to the same value on sufficiently fine grids.",
+        "Lower 0 and upper 1."
+      ],
+      "explanation": "Every cell contains both rational and irrational points.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "Both tend to the same value on sufficiently fine grids.": "Every cell contains both rational and irrational points."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +204,18 @@ For integrable f define $F(x)=\int_a^x f(t)\,dt$. At a point where f is continuo
 
 Improper integrals at an infinite endpoint or singularity are limits of proper integrals. Split at an interior singularity and require each one-sided limit separately; cancellation across divergences is a principal-value construction, not ordinary improper convergence. For example, symmetric cancellation does not make ∫₋₁¹1/x an ordinary improper integral.
 
+
+### Quantitative proof and failure case
+
+For $f(x)=x^2$ on $[0,1]$, monotonicity gives lower sum $L_n=\sum_{i=0}^{n-1}i^2/n^3$ and upper sum $U_n=\sum_{i=1}^{n}i^2/n^3$. Their difference telescopes to $1/n$. The square-sum formula gives $U_n=1/3+1/(2n)+1/(6n^2)$; squeezing proves the integral is $1/3$ and supplies an explicit numerical error bound.
+
+The Darboux criterion requires partitions with arbitrarily small upper-minus-lower gap for a bounded function. For the rational indicator, density of rationals and irrationals makes each cell's supremum 1 and infimum 0. The gap remains 1 regardless of mesh size, so the function is not Riemann integrable. A finite floating-point sampling grid cannot establish which values occur throughout every interval.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="darboux_explorer" />
 
 Draw lower and upper rectangles for x and for a step function. Refine partitions and compare the total gap. Contrast with the rational-indicator example by reasoning about every interval rather than sampling only rational floating-point coordinates.
 

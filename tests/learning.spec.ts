@@ -715,9 +715,7 @@ test("real-analysis exact index answer rejects a nearby integer before accepting
     );
   await page.getByRole("button", { name: "Commit and investigate" }).click();
   await page.getByLabel("Lesson section").selectOption("problems");
-  const question = page
-    .locator(".question-card")
-    .filter({ has: page.getByRole("heading", { name: /floor\(1\/ε\)/ }) });
+  const question = page.locator('[data-question-id="warmup"]');
   await question.getByRole("spinbutton").fill("100");
   await question.getByRole("button", { name: "Check answer" }).click();
   await expect(question.getByRole("status")).toContainText("Not quite");
@@ -1521,5 +1519,34 @@ test("calculus and molecular models expose proof bounds area cancellation and nu
     page.getByText(
       /Visible atom geometry: one bond. Bond domains: 1. Lone-pair domains: 1/,
     ),
+  ).toBeVisible();
+});
+
+test("analysis models distinguish Darboux envelopes and uniform domain dependence", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA1.7");
+  await page.getByLabel("Darboux cells", { exact: true }).fill("10");
+  await page.getByLabel("Cell sample fraction", { exact: true }).fill("0");
+  await expect(
+    page.getByText(
+      "Lower: 0.28500. Sampled: 0.28500. Upper: 0.38500. Gap: 0.10000.",
+    ),
+  ).toBeVisible();
+  await page.getByLabel("Cell sample fraction", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Cell sample fraction", { exact: true }),
+  ).toHaveValue("0.01");
+  await page.goto("/lesson/MA1.8");
+  await expect(
+    page.getByText(
+      /Supremum error to the pointwise limit: 1.000000. Not uniform/,
+    ),
+  ).toBeVisible();
+  await page.getByLabel("Power domain endpoint", { exact: true }).fill("0.5");
+  await expect(
+    page.getByText(/Supremum error to the pointwise limit: 0.003906. Uniform/),
   ).toBeVisible();
 });

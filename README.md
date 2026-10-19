@@ -25,6 +25,8 @@ The [broader foundation follow-up](docs/BROAD-FOUNDATION-RELEASE.md) removes rem
 
 The [calculus/bonding follow-up](docs/CALCULUS-BONDING-RELEASE.md) deepens eight more lessons, adds four interactive models and extends partial source mappings to 21 lessons. Learner-pilot reporting now supports optional second-marker agreement and matched immediate/delayed summaries.
 
+The [real-analysis batch](docs/REAL-ANALYSIS-BATCH.md) expands all eight MA1 lessons, adds Darboux/uniform-convergence models and extends current partial source inspection to 29 lessons.
+
 The tutor, new server-owned assessment Worker and background-reminder Worker are implemented but **disabled until configured and live-tested**. Server assessment currently covers 11 draft lesson banks; it is not independent certification or proctoring. Background reminders are a bounded opt-in pilot. No personal-study client XP is an authoritative ranking source.
 
 Scientific/source review, broader pedagogical-depth/simulation work and live-service verification remain incomplete. See [post-comparison implementation](docs/POST-COMPARISON-IMPLEMENTATION.md), [service rollout](docs/SERVER-ASSESSMENTS-AND-REMINDERS.md), [pending checks](docs/PENDING-REVIEW-AND-LIVE-CHECKS.md) and the generated [course ledger](docs/COURSE-STATUS.md). Older release reports retain their historical milestones.

@@ -77,6 +77,57 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "Find the minimum value of x²+1 on [−2,3].",
+      "answer": "1",
+      "hint": "Include the stationary point and both endpoints.",
+      "explanation": "The stationary point x=0 has value 1, below the endpoint values.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "How many points of (0,1) attain the supremum of f(x)=x on that interval?",
+      "answer": "0",
+      "hint": "The supremum is not in the domain.",
+      "explanation": "The supremum is 1, but no point of (0,1) maps to 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "For f(x)=3x+2, choose δ=ε/3 when ε=0.12.",
+      "answer": "0.04",
+      "hint": "This bound is independent of the base point.",
+      "explanation": "|f(x)−f(y)|=3|x−y|, so δ=0.04 works uniformly.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "A continuous injective function maps a compact real set K into R. Is its inverse continuous on the image?",
+      "answer": "Yes; images of closed subsets of K are compact and hence closed in the image.",
+      "options": [
+        "No; compactness is irrelevant to inverse continuity.",
+        "Yes; images of closed subsets of K are compact and hence closed in the image."
+      ],
+      "explanation": "Test the inverse using preimages of closed sets.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "No; compactness is irrelevant to inverse continuity.": "Test the inverse using preimages of closed sets."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +204,16 @@ A continuous function on a closed interval [a,b] has every intermediate value be
 Continuity on a compact set is uniform: one δ can serve all points for a chosen ε. Otherwise find xₙ,yₙ in the set with |xₙ−yₙ|→0 yet output differences at least a fixed ε. A convergent subsequence xₙₖ→a forces yₙₖ→a too; continuity contradicts that fixed separation.
 
 On an open or unbounded set these conclusions may fail. The function x on (0,1) attains neither boundary extreme. The function 1/x on (0,1) is continuous but unbounded. Uniform continuity also needs care: x² is continuous on the real line but not uniformly continuous there because arbitrarily small changes at large x can have a fixed-sized output effect.
+
+
+### Quantitative proof and failure case
+
+For a continuous function on a compact nonempty real set, boundedness and sequential compactness produce an attained extremum. Take a sequence whose values approach the infimum; a subsequence converges to a point in the domain, and continuity transfers the limiting value to that point. An open interval can exclude precisely the needed endpoint, as $f(x)=x$ on $(0,1)$ demonstrates.
+
+To prove uniform continuity by contradiction, suppose one fixed $\varepsilon_0>0$ persists while pairs $x_n,y_n$ approach one another with $|x_n-y_n|<1/n$. Compactness gives a convergent subsequence of $x_n$; the corresponding $y_n$ converge to the same domain point. Continuity forces both image sequences to the same limit, contradicting their separation by $\varepsilon_0$. The single uniform tail choice is the key extra content beyond pointwise continuity.
+
+
+There is also an inverse-continuity consequence. If $f$ is continuous and injective on compact $K$, a closed subset $F$ of $K$ is compact, and $f(F)$ is compact and therefore closed in $\mathbb R$. As a preimage under the inverse, $f(F)$ is closed in $f(K)$. This closed-set criterion proves that the inverse on the image is continuous; injectivity alone would not supply this argument.
 
 </LessonSection>
 

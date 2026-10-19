@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "For f(x)=x² on [1,4], find a mean-value point c.",
+      "answer": "2.5",
+      "hint": "Set f′(c) equal to the endpoint secant slope.",
+      "explanation": "(16−1)/(4−1)=5, so 2c=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "If f′≥2 on [0,3] and the mean value theorem hypotheses hold, what lower bound follows for f(3)−f(0)?",
+      "answer": "6",
+      "hint": "Multiply the derivative lower bound by the positive interval length.",
+      "explanation": "f(3)−f(0)=3f′(c)≥6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "If |f″|≤4 along a step h=0.25, give the first-order Taylor remainder bound 4h²/2.",
+      "answer": "0.125",
+      "hint": "The bound is quadratic in the step.",
+      "explanation": "4·0.25²/2=0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "Why cannot Rolle’s theorem force a zero derivative for |x| on [−1,1]?",
+      "answer": "It is not differentiable at the interior point 0.",
+      "options": [
+        "Equal endpoint values are never relevant to Rolle’s theorem.",
+        "It is not differentiable at the interior point 0."
+      ],
+      "explanation": "All theorem hypotheses must hold, not just the endpoint equality.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "Equal endpoint values are never relevant to Rolle’s theorem.": "All theorem hypotheses must hold, not just the endpoint equality."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +203,13 @@ For the mean value theorem subtract the line joining the endpoint values. Applyi
 If f′≥0 throughout an interval, every ordered pair of points has nonnegative secant slope, so f is nondecreasing. If f′>0, it is strictly increasing. The converse strict implication is false: x³ is strictly increasing but has derivative zero at 0. If |f′|≤M, the theorem gives the Lipschitz bound $|f(x)-f(y)|\le M|x-y|$.
 
 Taylor's theorem with Lagrange remainder states, under the requisite continuity and differentiability through order n+1 between a and x, $f(x)=\sum_{k=0}^n f^{(k)}(a)(x-a)^k/k!+f^{(n+1)}(\xi)(x-a)^{n+1}/(n+1)!$. A finite Taylor approximation does not claim an infinite series converges to f. Bound the derivative on the whole interval before quoting an error estimate.
+
+
+### Quantitative proof and failure case
+
+Subtract the secant line from $f$: $g(x)=f(x)-f(a)-(x-a)[f(b)-f(a)]/(b-a)$. Then $g(a)=g(b)=0$. Rolle's theorem gives $g'(c)=0$, hence $f'(c)=[f(b)-f(a)]/(b-a)$ when continuity on $[a,b]$ and differentiability on $(a,b)$ hold. Without these hypotheses the conclusion can fail.
+
+If $|f'|\leq M$, the same equality bounds $|f(b)-f(a)|\leq M|b-a|$. A derivative lower bound gives a corresponding lower increment bound. A Taylor remainder estimate uses additional smoothness: with a second derivative bounded by $M_2$ on the relevant interval, the first-order error is at most $M_2h^2/2$. A small numerical residual alone does not establish the derivative bound needed for that conclusion.
 
 </LessonSection>
 

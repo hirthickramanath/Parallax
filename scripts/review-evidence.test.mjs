@@ -102,7 +102,7 @@ test("actual partial source ledger matches current drafts and immutable official
   const ledger = JSON.parse(
     fs.readFileSync("content/review/source-inspections.json", "utf8"),
   );
-  assert.equal(ledger.inspections.length, 21);
+  assert.equal(ledger.inspections.length, 29);
   for (const r of ledger.inspections) {
     const source = fs.readFileSync(`content/lessons/${r.lessonId}.mdx`, "utf8");
     assert.equal(r.lessonSha256, sourceFingerprint(source));
@@ -111,6 +111,7 @@ test("actual partial source ledger matches current drafts and immutable official
       "https://github.com/openstax/osbooks-university-physics-bundle",
       "https://github.com/openstax/osbooks-calculus-bundle",
       "https://github.com/openstax/osbooks-chemistry-bundle",
+      "https://github.com/jirilebl/ra",
     ];
     assert.ok(
       r.sources.every((s) =>
@@ -118,10 +119,10 @@ test("actual partial source ledger matches current drafts and immutable official
       ),
     );
     assert.ok(
-      r.sources.every((s) =>
-        s.url.startsWith(
-          `${s.repository || ledger.repository}/blob/${s.commit || ledger.commit}/modules/`,
-        ),
+      r.sources.every(
+        (s) =>
+          s.url ===
+          `${s.repository || ledger.repository}/blob/${s.commit || ledger.commit}/${s.locator}`,
       ),
     );
     assert.ok(source.includes('"status": "draft"'));

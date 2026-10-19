@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 21 have current partial AI-assisted source mappings; 322 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 29 have current partial AI-assisted source mappings; 320 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -127,14 +127,14 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CP2.3 Astropy, astroquery and survey data | 6 / 6 | 2 | 0 | pending |
 | CP2.4 Machine learning for science | 6 / 6 | 2 | 0 | pending |
 | CP2.5 Git, reproducibility and high-performance computing basics | 6 / 6 | 2 | 0 | pending |
-| MA1.1 Logic, sets and proof techniques | 6 / 6 | 2 | 0 | pending |
-| MA1.2 Real numbers and completeness | 6 / 6 | 2 | 0 | pending |
-| MA1.3 Sequences and limits | 6 / 6 | 2 | 0 | pending |
-| MA1.4 Series and convergence tests | 6 / 6 | 2 | 0 | pending |
-| MA1.5 Continuity and compactness | 6 / 6 | 2 | 0 | pending |
-| MA1.6 Differentiability and the mean value theorem | 6 / 6 | 2 | 0 | pending |
-| MA1.7 Riemann integration | 6 / 6 | 2 | 0 | pending |
-| MA1.8 Uniform convergence | 6 / 6 | 2 | 0 | pending |
+| MA1.1 Logic, sets and proof techniques | 10 / 10 | 5 | 4 | pending |
+| MA1.2 Real numbers and completeness | 10 / 10 | 5 | 4 | pending |
+| MA1.3 Sequences and limits | 10 / 10 | 5 | 4 | pending |
+| MA1.4 Series and convergence tests | 10 / 10 | 5 | 4 | pending |
+| MA1.5 Continuity and compactness | 10 / 10 | 5 | 4 | pending |
+| MA1.6 Differentiability and the mean value theorem | 10 / 10 | 5 | 4 | pending |
+| MA1.7 Riemann integration | 10 / 10 | 5 | 4 | darboux_explorer |
+| MA1.8 Uniform convergence | 10 / 10 | 5 | 4 | uniform_power_explorer |
 | MA10.1 Groups and homomorphisms | 6 / 6 | 2 | 0 | pending |
 | MA10.2 Permutation groups | 6 / 6 | 2 | 0 | pending |
 | MA10.3 Rings and fields | 6 / 6 | 2 | 0 | pending |

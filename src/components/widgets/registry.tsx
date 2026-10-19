@@ -1,3 +1,4 @@
+import { DarbouxExplorer, UniformPowerExplorer } from "./AnalysisExplorers";
 import {
   LimitBandExplorer,
   SignedAreaExplorer,
@@ -34,6 +35,8 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  darboux_explorer: DarbouxExplorer,
+  uniform_power_explorer: UniformPowerExplorer,
   limit_band_explorer: LimitBandExplorer,
   signed_area_explorer: SignedAreaExplorer,
   ode_accuracy_explorer: OdeAccuracyExplorer,

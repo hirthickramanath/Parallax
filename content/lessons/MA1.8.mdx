@@ -77,6 +77,57 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "For f_n(x)=x^n on [0,1], find sup |f_n(x)−f(x)| where f is the pointwise limit.",
+      "answer": "1",
+      "hint": "At x=1 the error is zero, but values just below 1 approach unit error.",
+      "explanation": "The supremum is 1 for every n, although it is not attained at the endpoint.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "Find sup x⁸ on [0,1/2].",
+      "answer": "0.00390625",
+      "hint": "The function increases with x on this interval.",
+      "explanation": "The supremum is (1/2)^8=1/256.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "Find the least nonnegative integer N for which (1/2)^N<0.001.",
+      "answer": "10",
+      "hint": "Check the preceding integer as well.",
+      "explanation": "2^(−10)=0.0009765625, but 2^(−9)>0.001.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "In uniform convergence, may the chosen tail index N depend on the point x?",
+      "answer": "No; one N must control every x in the domain.",
+      "options": [
+        "Yes; choosing a different N for each x is uniform convergence.",
+        "No; one N must control every x in the domain."
+      ],
+      "explanation": "Exchanging the order of the domain and tail quantifiers changes the condition.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "Yes; choosing a different N for each x is uniform convergence.": "Exchanging the order of the domain and tail quantifiers changes the condition."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +205,18 @@ Uniform function convergence alone does not preserve derivatives. For $f_n(x)=\s
 
 For a function series, the Weierstrass M-test uses |gₙ(x)|≤Mₙ uniformly and ∑Mₙ&lt;∞. The uniform tail bound makes the partial sums uniformly Cauchy. A geometric bound can therefore justify termwise integration on a finite interval; termwise differentiation still needs control of the derivative series. Always name the theorem and its domain before exchanging operations.
 
+
+### Quantitative proof and failure case
+
+Pointwise convergence allows the tail index to depend on both $x$ and $\varepsilon$; uniform convergence requires one $N(\varepsilon)$ working for all points. The powers $x^n$ converge to zero for $x<1$ and to 1 at the endpoint 1. Their error relative to this pointwise limit has supremum 1 for every $n$, so convergence is not uniform on $[0,1]$. On $[0,b]$ with $b<1$, the supremum error is $b^n\to0$.
+
+If continuous $f_n$ converge uniformly to $f$, bound $|f(x)-f(a)|$ by the two uniform approximation errors plus $|f_N(x)-f_N(a)|$. Choose the uniform errors below $\varepsilon/3$ and then use continuity of one fixed $f_N$ for the middle term. Differentiation requires stronger hypotheses: $\sin(nx)/n$ converges uniformly to zero while its derivatives $\cos(nx)$ do not converge to the derivative of that limit.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="uniform_power_explorer" />
 
 Plot xⁿ for increasing n near x=1, using finer x resolution as n grows. Explain why a fixed plotting grid can hide the nonuniform boundary layer. Compare the shrinking sine example and calculate derivatives at zero analytically rather than trusting a visual slope.
 

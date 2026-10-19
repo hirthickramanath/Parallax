@@ -78,6 +78,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "Compute the finite sum of 1/[n(n+1)] for n=1 through 9.",
+      "answer": "0.9",
+      "hint": "Write each term as 1/n−1/(n+1).",
+      "explanation": "All interior terms cancel, leaving 1−1/10=0.9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "For the alternating harmonic series, what error bound does the first omitted term give after 20 terms?",
+      "answer": "0.047619047619047616",
+      "hint": "The term magnitudes decrease to zero.",
+      "explanation": "The alternating-series remainder is at most 1/(20+1).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "For aₙ=n/3ⁿ, find the limit of aₙ₊₁/aₙ.",
+      "answer": "0.3333333333333333",
+      "hint": "Simplify the ratio before taking its limit.",
+      "explanation": "(n+1)/(3n) tends to 1/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "Alternating term magnitudes tend to zero but monotonicity has not been established. May the usual first-omitted-term error bound be assumed?",
+      "answer": "No; the usual bound needs its monotone-magnitude hypothesis.",
+      "options": [
+        "Yes; alternating signs alone imply that error bound.",
+        "No; the usual bound needs its monotone-magnitude hypothesis."
+      ],
+      "explanation": "The theorem’s hypotheses must be checked before applying its quantitative remainder estimate.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "Yes; alternating signs alone imply that error bound.": "The theorem’s hypotheses must be checked before applying its quantitative remainder estimate."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,6 +204,13 @@ For nonzero terms with a ratio limit $\lim|a_{n+1}/a_n|=r$, convergence is absol
 If bₙ decreases to zero, the alternating series ∑(−1)ⁿ⁻¹bₙ converges and the remainder after N terms has magnitude at most bN₊₁. Pairing and interleaving the even and odd partial sums proves that they approach the same boundary. Monotonicity and vanishing terms are substantive conditions, not optional labels.
 
 Absolute convergence implies convergence through a Cauchy tail bound: the magnitude of any signed tail is no larger than its absolute tail sum. It also permits rearrangement without changing the sum. A real conditionally convergent series has divergent positive and negative subseries; suitable reorderings can produce different sums or divergence. This statement concerns a new order of infinitely many terms, not a violation of finite addition.
+
+
+### Quantitative proof and failure case
+
+The identity $1/[n(n+1)]=1/n-1/(n+1)$ reduces a partial sum to $1-1/(N+1)$ and proves convergence by evaluating the limit of partial sums. A small final term alone is not a convergence proof: the harmonic terms vanish while their sum diverges.
+
+For a ratio limit $L<1$, choose $q$ with $L<q<1$. Eventually $|a_{n+1}|\leq q|a_n|$, giving a geometric majorant for the tail and therefore absolute convergence. When $L=1$, no such $q$ follows. The alternating remainder bound instead assumes decreasing nonnegative magnitudes tending to zero; it must not be applied to an arbitrary series merely because signs alternate.
 
 </LessonSection>
 

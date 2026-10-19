@@ -18,6 +18,10 @@ Thirty additional banks have distinct warm-up/Core prompts, a new numeric transf
 
 MB3.1–MB3.5, PB4.2, CB.1 and CB.2 now have 40 added problems/checks and theory extensions. Four models support limit bounds, signed/geometric area, ODE accuracy and ideal molecular geometry. [Additional source inspection](CALCULUS-CHEMISTRY-SOURCE-INSPECTION.md) extends current partial source mappings to 21 lessons; it is not independent verification. The pilot reporter also tracks optional second-marker agreement and matched immediate/delayed outcomes without equating forms or claiming a real trial.
 
+## Real-analysis follow-up
+
+MA1.1–MA1.8 have 32 added transfer/hypothesis questions, proof extensions and two embedded mathematical investigations. [Source inspection](REAL-ANALYSIS-SOURCE-INSPECTION.md) records eight scoped author-repository mappings, bringing the current total to 29 partially inspected drafts. Exact grading protects discrete counts and tail thresholds. This does not close independent review or advanced-course authoring.
+
 ## Scientific and editorial review
 
 Internal expansion completed for nine advanced lessons, with additional derivations, counterexamples and graded Core transfers. See [ADVANCED-CONTENT-REVIEW.md](ADVANCED-CONTENT-REVIEW.md) for the exact scope and follow-up. This does not close independent scientific/source review.

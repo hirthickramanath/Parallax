@@ -77,6 +77,57 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "Starting with an interval of length 1, what is its length after ten equal bisections?",
+      "answer": "0.0009765625",
+      "hint": "Each bisection multiplies length by 1/2.",
+      "explanation": "The length is 2^(−10)=1/1024.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "Find the least nonnegative integer n with 2^(−n)<0.002.",
+      "answer": "9",
+      "hint": "Check both the proposed n and the immediately preceding integer.",
+      "explanation": "2^(−9)=0.001953125<0.002, while 2^(−8)>0.002.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "Find sup{1−1/n : n is a positive integer}.",
+      "answer": "1",
+      "hint": "An upper bound need not be a member of the set.",
+      "explanation": "All terms are below 1 and approach it; any smaller proposed upper bound is exceeded.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "Does the least-upper-bound property hold for all nonempty bounded-above subsets of the rational numbers within Q?",
+      "answer": "No; a rational cut can have no rational supremum.",
+      "options": [
+        "Yes; bounded rational sets always have rational suprema.",
+        "No; a rational cut can have no rational supremum."
+      ],
+      "explanation": "The positive rationals q with q²<2 form a standard counterexample.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "Yes; bounded rational sets always have rational suprema.": "The positive rationals q with q²<2 form a standard counterexample."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +204,13 @@ To see why rationals are not complete, consider positive rationals q with q²&lt
 A key consequence is monotone convergence: if a real sequence increases and is bounded above, take α as the supremum of its range. Given ε>0, choose some term aN>α−ε. For n≥N, monotonicity gives $\alpha-\varepsilon<a_N\le a_n\le\alpha$, proving convergence to α. Without boundedness it can diverge; without completeness the boundary may be missing.
 
 Nested nonempty closed bounded intervals with lengths tending to zero have one common real point. The endpoints form monotone bounded sequences, whose limits coincide. Closedness keeps the limits inside each interval. Open intervals, or closed unbounded sets, do not support the same conclusion without further hypotheses.
+
+
+### Quantitative proof and failure case
+
+Completeness is a property of the real number system, not just an inequality technique. A nonempty set bounded above has a least real upper bound. The set $\{1-1/n:n\in\mathbb N, n\geq1\}$ has supremum 1, although 1 is not attained. If $u<1$, choosing $n>1/(1-u)$ gives a term larger than $u$.
+
+The analogous property fails in $\mathbb Q$: consider nonnegative rational $q$ with $q^2<2$. A proposed rational supremum with square below 2 can be increased by a sufficiently small rational increment; one with square above 2 can be decreased while remaining an upper bound. Equality would require a rational square root of 2, ruled out by the usual even/odd contradiction in lowest terms. Nested closed-interval proofs must use closedness and shrinking lengths explicitly; nested open intervals can lose every candidate point.
 
 </LessonSection>
 

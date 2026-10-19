@@ -79,6 +79,59 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analysis-transfer-1",
+      "prompt": "Among the four truth assignments to P and Q, how many make P⇒Q true?",
+      "answer": "3",
+      "hint": "Only a true antecedent with a false consequent falsifies an implication.",
+      "explanation": "The false/false, false/true and true/true assignments satisfy the implication.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analysis-transfer-2",
+      "prompt": "A finite set has exactly three distinct elements. How many subsets does it have?",
+      "answer": "8",
+      "hint": "Each element is either included or excluded independently.",
+      "explanation": "There are 2³=8 subsets, including the empty set and the whole set.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analysis-transfer-3",
+      "prompt": "Among integers −2,−1,0,1,2, how many are counterexamples to x²>x?",
+      "answer": "2",
+      "hint": "A counterexample makes the strict inequality false.",
+      "explanation": "Only 0 and 1 fail the strict inequality in this finite list.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analysis-hypotheses",
+      "prompt": "Over the real numbers, does ∀x ∃y (y>x) imply ∃y ∀x (y>x)?",
+      "answer": "No; y can depend on x, but no real number exceeds all reals.",
+      "options": [
+        "Yes; quantifiers can always be exchanged.",
+        "No; y can depend on x, but no real number exceeds all reals."
+      ],
+      "explanation": "For a proposed universal y, choose x=y+1.",
+      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "misconceptions": {
+        "Yes; quantifiers can always be exchanged.": "For a proposed universal y, choose x=y+1."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,6 +208,13 @@ For sets A and B, A is contained in B if every element of A lies in B. Equality 
 For a function f:D→E, an inverse on f(D) exists if f is injective. A preimage $f^{-1}(S)=\{x\in D:f(x)\in S\}$ is defined for any subset S of E, even if f has no inverse function. Preimages preserve unions, intersections and complements relative to the admitted domains. Images need not preserve intersections: for f(x)=x², images of the disjoint singleton sets containing −1 and 1 both contain 1.
 
 A direct proof begins with an arbitrary element satisfying the hypotheses. A contradiction proof adds the negation of the desired conclusion and derives an impossibility. An existence proof must construct an admissible example or supply a valid theorem guaranteeing one. In analysis, hypotheses such as nonemptiness, boundedness and positive denominators often do real work; omit none silently.
+
+
+### Quantitative proof and failure case
+
+The implication $P\Rightarrow Q$ fails only when $P$ is true and $Q$ false. Its contrapositive $\neg Q\Rightarrow\neg P$ excludes exactly the same assignment; its converse does not. A biconditional requires both implications. Equality of sets likewise requires showing both inclusions, rather than only counting examples.
+
+Quantifier order controls the allowed dependence of witnesses. For every real $x$ there is a larger real $y=x+1$, but there is no single real $y$ larger than all $x$. Given a proposed universal $y$, the choice $x=y+1$ contradicts it. Negating a quantified claim reverses the quantifier and negates the predicate: the negation of $\forall x\exists y\,R(x,y)$ is $\exists x\forall y\,\neg R(x,y)$.
 
 </LessonSection>
 
