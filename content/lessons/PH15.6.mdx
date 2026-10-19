@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "For the toy beta law dg/dln(mu)=0.1g², initial g=0.5 and log scale step 2, what is the integrated final coupling? Give a decimal.",
+      "answer": "0.5555555555555556",
+      "explanation": "g=0.5/(1-0.1 times 0.5 times 2)=5/9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "in the stated convention and units"
     }
   ],
   "review": [
@@ -153,6 +163,18 @@ For an EFT, higher-dimension operators are suppressed by a high scale under a st
 
 Perturbative series can be asymptotic, and large logarithms may require resummation. A regulator-independent answer still has truncation, input and model uncertainties. Naturalness arguments and speculative ultraviolet completions are not direct experimental measurements.
 
+### Carry out a matching subtraction in a regulated toy model
+
+Let $q>0$ and define the dimensionless integral $I_\Lambda(q)=\int_0^\Lambda dk/(k+q)=\ln[(\Lambda+q)/q]$. This is an illustrative integral, not a claimed loop amplitude for a specified QFT. Write $A_\Lambda(q)=c_\Lambda+I_\Lambda(q)$ and fix a common matching condition $A_\Lambda(q_0)=A_0$ at positive $q_0$. Eliminating the bare coefficient gives
+
+$$A_\Lambda(q)=A_0+\ln\frac{(\Lambda+q)q_0}{q(\Lambda+q_0)}\longrightarrow A_0+\ln(q_0/q).$$
+
+The divergent constant cancels because the same physical matching condition fixes it. At finite large cutoff, the leading residual is $(q-q_0)/\Lambda$. The result does not authorize dropping an arbitrary momentum-dependent divergence with a single constant counterterm.
+
+### Integrate a specified beta function
+
+For the toy law $dg/d\ln\mu=bg^2$, separation of variables gives $g(\mu)=g_0/[1-bg_0\ln(\mu/\mu_0)]$. Differentiating verifies the differential equation. For $b>0$ this approximation grows with energy. A zero denominator is a failure of this perturbative extrapolation; it is not by itself experimental proof of a physical singularity or a complete ultraviolet theory.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +187,19 @@ Compare a regulated toy integral under two cutoffs after fixing the same low-ene
 
 For a toy beta law dg/dlnμ=.1 at effectively constant beta over a step Δlnμ=2, Δg≈.2. This linear approximation is not a universal QFT running law. A term suppressed as (E/Λ)² is .01 at E/Λ=.1.
 
+Take $q_0=1$, $q=2$ and $A_0=0$. The matched finite-cutoff prediction is $\ln[(\Lambda+2)/(2(\Lambda+1))]$. At cutoffs 10 and 100 it is approximately −0.6061 and −0.6833, approaching $-\ln2\simeq-0.6931$. Matching removes the logarithmic divergence while finite-cutoff errors remain.
+
+For $b=0.1$, $g_0=0.5$ and $\ln(\mu/\mu_0)=2$, the integrated toy running gives $g=5/9$, rather than replacing the beta function by a constant over the whole interval.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Derive the matching subtraction and its leading finite-cutoff correction. Check that the correction vanishes at the matching point exactly, at every cutoff.
+
+**EFT test.** A dimensionless correction is $c(E/\Lambda)^2$. At $E/\Lambda=0.1$, a one-percent estimate also assumes $c$ is of order one and that no lower-order contribution cancels. Explain why power counting alone is not a measured error bar.
 
 </LessonSection>
 

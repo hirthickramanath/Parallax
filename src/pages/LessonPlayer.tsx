@@ -1,7 +1,14 @@
+import { questionLevel } from "../lib/journey";
+import { AdaptiveCheck } from "../components/learning/AdaptiveCheck";
+import { LessonRecap } from "../components/learning/LessonRecap";
+import {
+  LessonSimulation,
+  simulationNames,
+} from "../components/learning/LessonSimulation";
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { createEmptyCard, type Card } from "ts-fsrs";
-import { course, missingNeeds } from "../lib/course";
+import { course, missingNeeds, nextLesson } from "../lib/course";
 import { useLearning } from "../hooks/useLearning";
 import {
   SectionContext,
@@ -10,13 +17,12 @@ import {
 } from "../components/learning/StoredSection";
 import { QuestionCard } from "../components/learning/QuestionCard";
 import { TutorPanel } from "../components/learning/TutorPanel";
-import { Widget } from "../components/widgets/registry";
 import { Button } from "../components/ui/button";
 import type { LessonProgress } from "../types/progress";
 import "katex/dist/katex.min.css";
 const mdxComponents = {
   LessonSection: StoredSection,
-  Widget,
+  Widget: () => null,
   Symbol: SymbolDefinition,
 };
 const modules = import.meta.glob<{
@@ -51,11 +57,19 @@ function Player({ id }: { id: string }) {
     [showTutor, setShowTutor] = useState(false),
     [cardAdded, setCardAdded] = useState(false),
     [prediction, setPrediction] = useState(
-      store.records.attempts[`prediction-${id}`]?.response || "",
+      (store.records.attempts[`prediction-${id}`]?.resetAt || 0) ===
+        (store.records.lessons[id]?.resetAt || 0)
+        ? store.records.attempts[`prediction-${id}`]?.response || ""
+        : "",
     ),
     [reveal, setReveal] = useState(
-      !!store.records.attempts[`prediction-${id}`],
+      !!store.records.attempts[`prediction-${id}`] &&
+        (store.records.attempts[`prediction-${id}`].resetAt || 0) ===
+          (store.records.lessons[id]?.resetAt || 0),
     );
+  const challenge = Number(
+    store.records.plan[`challenge-${lesson.track}`]?.level ?? 1,
+  );
   const depth = store.preferences.depth;
   const sections = lesson.sections.filter(
     (s) => depth === "full" || !s.fullOnly,
@@ -91,7 +105,12 @@ function Player({ id }: { id: string }) {
     const attempts = Object.values(store.records.attempts);
     const latest = new Map(
       attempts
-        .filter((a) => a.questionId.startsWith(id + ":"))
+        .filter(
+          (a) =>
+            a.questionId.startsWith(id + ":") &&
+            a.createdAt >= (current.resetAt || 0) &&
+            (a.resetAt || 0) === (current.resetAt || 0),
+        )
         .sort((a, b) => a.createdAt - b.createdAt)
         .map((a) => [a.questionId.slice(id.length + 1), a.isCorrect]),
     );
@@ -171,6 +190,14 @@ function Player({ id }: { id: string }) {
             <li key={line}>{line}</li>
           ))}
         </ul>
+        <LessonRecap lessonId={id} />
+        {nextLesson(store.records) && (
+          <Button asChild>
+            <Link to={`/lesson/${nextLesson(store.records)!.id}`}>
+              Continue the journey →
+            </Link>
+          </Button>
+        )}
         <Button asChild>
           <Link to="/dashboard">Back to dashboard</Link>
         </Button>
@@ -214,7 +241,12 @@ function Player({ id }: { id: string }) {
           </p>
         )}
       </div>
-      <div className={`lesson-layout ${showTutor ? "with-tutor" : ""}`}>
+      {(active.layer === "before" || active.layer === "connections") && (
+        <LessonRecap lessonId={id} />
+      )}
+      <div
+        className={`lesson-layout ${showTutor ? "with-tutor" : ""} ${simulationNames(lesson).length ? "with-simulation" : ""}`}
+      >
         <div>
           <div className="section-navigation">
             <label>
@@ -255,6 +287,7 @@ function Player({ id }: { id: string }) {
                 disabled={!prediction.trim()}
                 onClick={() => {
                   store.put("attempts", `prediction-${id}`, {
+                    resetAt: store.records.lessons[id]?.resetAt || 0,
                     questionId: `${id}:prediction`,
                     tier: "prediction",
                     response: prediction,
@@ -277,6 +310,7 @@ function Player({ id }: { id: string }) {
                   onTheoryComplete: () => {
                     if (!store.records.attempts[`theory-${id}`]) {
                       store.put("attempts", `theory-${id}`, {
+                        resetAt: store.records.lessons[id]?.resetAt || 0,
                         questionId: `${id}:theory-view`,
                         tier: "theory",
                         response: "All theory blocks revealed",
@@ -294,33 +328,26 @@ function Player({ id }: { id: string }) {
               </SectionContext.Provider>
             </Suspense>
           )}
-          {active.layer === "before" && (
-            <section>
-              <h3>A short readiness check</h3>
-              <p>
-                If two or more feel uncertain, revisit the listed prerequisites
-                before studying the full derivation. This check does not grant
-                mastery.
-              </p>
-              {lesson.questions
-                .filter((q) => q.conceptual && !q.tier)
-                .slice(0, 3)
-                .map((q) => (
-                  <QuestionCard
-                    key={q.id}
-                    lessonId={id}
-                    question={{
-                      ...q,
-                      id: "readiness-" + q.id,
-                      tier: "readiness",
-                    }}
-                  />
-                ))}
-            </section>
+          {active.layer === "before" && <AdaptiveCheck lesson={lesson} />}
+          {active.layer === "problems" && (
+            <p className="info-box">
+              {challenge === 0
+                ? "Start with the warm-up and worked example. Then try the Core question in smaller steps."
+                : challenge === 2
+                  ? "Try the Core transfer first. Use the worked example if you get stuck."
+                  : "Work through a warm-up, then transfer the idea to a Core problem."}{" "}
+              All questions and the complete derivation remain available.
+            </p>
           )}
           {(active.layer === "check" || active.layer === "problems") &&
             lesson.questions
               .filter((q) => (active.layer === "check" ? !q.tier : !!q.tier))
+              .sort((a, b) =>
+                active.layer === "problems"
+                  ? Math.abs(questionLevel(a) - challenge) -
+                    Math.abs(questionLevel(b) - challenge)
+                  : 0,
+              )
               .map((q) => (
                 <QuestionCard
                   key={q.id}
@@ -393,6 +420,7 @@ function Player({ id }: { id: string }) {
             remains pending; no verified badge is implied.
           </p>
         </div>
+        <LessonSimulation lesson={lesson} />
         {showTutor && (
           <TutorPanel lessonId={id} sectionId={active.id} depth={depth} />
         )}

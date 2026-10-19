@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "For synthetic residuals (1,1), unit variances and correlation 0.5, what is chi-squared using the full covariance? Give a decimal.",
+      "answer": "1.3333333333333333",
+      "explanation": "The full covariance inverse gives 2/(1+0.5)=4/3. Ignoring correlation would give 2.",
+      "unit": "dimensionless",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +163,14 @@ Read parameter definitions, units, priors, selection and excluded regimes. Recom
 
 Maintain a claim-evidence matrix and label unread/unverified sections. Do not fabricate citations, quotations or page numbers to make a report appear complete. If a needed source is inaccessible, record the gap and continue independent checks without inventing its contents.
 
+### Turn a claim into an auditable record
+
+For each quantitative claim, retain the exact source identifier and version, the equation/table/figure used, definitions and units, data selection, uncertainty model and a status such as inspected, recalculated, replicated or unresolved. Record the command and software version for a computational check. An inspected equation is weaker evidence than reproducing its numerical result, and reproducing one result is weaker than independently validating its physical assumptions.
+
+### Correlated errors change the check
+
+For a residual vector $\mathbf r=\mathbf x-\mathbf m$ with known positive-definite covariance $C$, the quadratic statistic is $\chi^2=\mathbf r^TC^{-1}\mathbf r$. Summing individually squared standardized residuals assumes diagonal covariance. Even with a valid Gaussian model, estimating parameters changes the reference distribution and effective degrees of freedom; selection and multiple searches require their own treatment.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +183,17 @@ Create a reading note for one exact versioned source and extract definitions for
 
 For hypothetical data 12, model 10 and standard uncertainty 2, the simple residual is 1. That does not by itself define a discovery p-value for a search over many targets.
 
+Use a deliberately synthetic two-measurement example: residuals $(1,1)$, unit variances and correlation $\rho$. Inverting the two-by-two covariance gives $\chi^2=2/(1+\rho)$. At $\rho=1/2$ this is $4/3$, rather than the independent-error value 2. Positive correlation makes a shared residual less surprising in this specified model. At $\rho=1$ the matrix is singular, so the inverse formula cannot be used. No observational dataset or published discovery has been reproduced by this calculation.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Repeat the calculation for residuals $(1,-1)$. Obtain $\chi^2=2/(1-\rho)$ and explain why the effect of positive correlation reverses.
+
+**Evidence exercise.** Make a claim ledger for one source you actually inspect. Leave unavailable versions or missing data explicitly unresolved. A filled template without source inspection earns no claim of replication.
 
 </LessonSection>
 

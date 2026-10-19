@@ -77,6 +77,16 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "review-core-transfer",
+      "prompt": "For the flat-plane line x=t, y=1 at t=0, what is the polar radial second derivative d²r/dt²?",
+      "answer": "1",
+      "explanation": "r=sqrt(t²+1), so r second derivative is 1/r³=1 at t=0. It cancels r times angular speed squared in the geodesic equation.",
+      "unit": "in the stated coordinate units",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,6 +163,18 @@ In Lorentzian spacetime, freely falling test particles follow timelike geodesics
 
 External forces, pressure and self-force effects can move matter away from test geodesics. A connection-dependent coordinate acceleration can be nonzero without a locally measured nongravitational force. Global paths also depend on topology and boundary/initial data, not just one local differential equation.
 
+### Obtain the equation from stationary energy
+
+For a smooth positive-definite metric and fixed endpoints, use $L=\tfrac12 g_{ij}\dot x^i\dot x^j$. Its Euler–Lagrange equation is
+
+$$g_{kj}\ddot x^j+\partial_lg_{kj}\dot x^l\dot x^j-\tfrac12\partial_kg_{ij}\dot x^i\dot x^j=0.$$
+
+Multiplying by the inverse metric and symmetrizing the two velocity indices yields the Christoffel expression and the affine geodesic equation. Metric compatibility then implies $d(g_{ij}\dot x^i\dot x^j)/d\lambda=0$: the speed is constant in an affine parameter. Fixed endpoints eliminate the variation boundary term; without that condition additional boundary equations may be needed.
+
+### Change the parameter carefully
+
+If $x(\lambda)$ is affine and $\lambda=\lambda(s)$ with nonzero first derivative, the covariant acceleration with respect to $s$ is $(\lambda''/\lambda')dx/ds$. Only linear changes preserve the zero right-hand side in general. The geometric curve remains the same. Constant curves are a special case and do not establish the converse for moving paths.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
@@ -165,11 +187,17 @@ Integrate a straight line in Cartesian and polar coordinates and compare the sam
 
 In Euclidean Cartesian coordinates x=3λ,y=4λ for 0≤λ≤1 is a constant-speed affine geodesic of length 5. Its speed squared is 25. Expressing that same path relative to another origin in polar coordinates changes the component equations without changing its geometric length.
 
+In the Euclidean plane use $x=t$, $y=b$ with constant $b>0$, so $r=\sqrt{t^2+b^2}$ and a continuously chosen polar angle satisfies $\dot\theta=-b/r^2$. The nonzero polar coefficients are $\Gamma^r_{\theta\theta}=-r$ and $\Gamma^\theta_{r\theta}=\Gamma^\theta_{\theta r}=1/r$. Compute $\ddot r=b^2/r^3$ and $r\dot\theta^2=b^2/r^3$, so the radial equation cancels. Differentiating the angle also gives $\ddot\theta+2\dot r\dot\theta/r=0$. Nonzero coordinate accelerations have described a straight line in flat space.
+
 </LessonSection>
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
 Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+
+**Core.** Reparametrize a nonconstant Cartesian straight line by $t=s^2$ on $s>0$. Show that its acceleration equals its velocity divided by $s$. Explain why $s=0$ is excluded by the regular-parameter assumption.
+
+**Global counterexample.** On a unit sphere, travel along a great-circle arc of angle $3\pi/2$. It is a geodesic, but the complementary $\pi/2$ arc between the same endpoints is shorter. Stationarity alone does not prove global minimization.
 
 </LessonSection>
 

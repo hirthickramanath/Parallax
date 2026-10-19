@@ -146,6 +146,13 @@ export function mergeDocument(
     b = incoming as Record<string, unknown>;
   const clock = (v: Record<string, unknown>) =>
     Number(v.updatedAt || v.generatedAt || v.completedAt || v.createdAt || 0);
+  if (
+    ["lessons", "units", "reviewCards", "attempts"].includes(kind) &&
+    Number(a.resetAt || 0) !== Number(b.resetAt || 0)
+  )
+    return Number(a.resetAt || 0) > Number(b.resetAt || 0)
+      ? existing
+      : incoming;
   if (kind === "lessons") {
     const latest = clock(b) >= clock(a) ? b : a;
     return {

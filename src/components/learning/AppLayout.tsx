@@ -1,13 +1,10 @@
-import { NavLink, Link, Outlet } from "react-router-dom";
+import { ThemeSelect } from "../ThemeSelect";
+import { NavLink, Link, Outlet, useLocation } from "react-router-dom";
 import {
   Orbit,
   LayoutDashboard,
   Map,
-  FlaskConical,
-  Layers,
-  RefreshCw,
   Flame,
-  CalendarDays,
   Settings,
   LogOut,
 } from "lucide-react";
@@ -18,10 +15,6 @@ import { StudyReminder } from "./StudyReminder";
 const links = [
   ["/dashboard", "Dashboard", LayoutDashboard],
   ["/learn", "Learn", Map],
-  ["/labs", "Lab", FlaskConical],
-  ["/review", "Review", Layers],
-  ["/revise", "Revise", RefreshCw],
-  ["/plan", "Weekly plan", CalendarDays],
   ["/stats", "Activity", Flame],
   ["/settings", "Settings", Settings],
 ] as const;
@@ -32,6 +25,16 @@ export function AppLayout() {
     stats = streakStats(
       store.records.days,
       dateKey(now, store.preferences.timezone),
+    );
+  const focused = useLocation().pathname.startsWith("/lesson/");
+  if (focused)
+    return (
+      <div className="learning-app focused-study">
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <Outlet />
+      </div>
     );
   return (
     <div className="learning-app">
@@ -74,6 +77,7 @@ export function AppLayout() {
           <span className="sync-status" role="status">
             {store.storageError ? "Browser storage unavailable" : store.status}
           </span>
+          <ThemeSelect />
           <div className="topbar-stats">
             <span>
               <Flame size={19} />
@@ -96,9 +100,7 @@ export function AppLayout() {
       <nav className="mobile-nav" aria-label="Mobile study navigation">
         {links
           .filter(([to]) =>
-            ["/dashboard", "/learn", "/labs", "/review", "/settings"].includes(
-              to,
-            ),
+            ["/dashboard", "/learn", "/stats", "/settings"].includes(to),
           )
           .map(([to, label, Icon]) => (
             <NavLink key={to} to={to}>

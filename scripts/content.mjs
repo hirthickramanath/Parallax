@@ -159,7 +159,15 @@ export function buildContent() {
     if (new Set(sections.map((s) => s.id)).size !== sections.length)
       throw Error(`Duplicate section ${file}`);
     validateAuthored(data, sections, stub);
-    authored[data.id] = { ...stub, ...data, sections };
+    authored[data.id] = {
+      ...stub,
+      ...data,
+      available: true,
+      widgets: [...content.matchAll(/<Widget name="([^"]+)"/g)].map(
+        (m) => m[1],
+      ),
+      sections,
+    };
     stub.available = true;
     stub.hook = data.hook || stub.hook;
   }

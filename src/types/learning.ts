@@ -13,6 +13,7 @@ export interface Day {
   xpByTrack: Record<string, number>;
 }
 export interface Attempt {
+  resetAt?: number;
   questionId: string;
   tier: string;
   response: string;
@@ -21,6 +22,7 @@ export interface Attempt {
   createdAt: number;
 }
 export interface ReviewCard {
+  resetAt?: number;
   type: string;
   front: string;
   back: string;
@@ -33,6 +35,7 @@ export interface Note {
   updatedAt: number;
 }
 export interface UnitProgress {
+  resetAt?: number;
   skipTestScore: number;
   skippedWithCredit: boolean;
   completedAt: number | null;

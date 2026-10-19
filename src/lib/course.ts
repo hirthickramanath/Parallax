@@ -29,6 +29,7 @@ export interface SectionMeta {
   text: string;
 }
 export interface Authored extends Lesson {
+  widgets?: string[];
   book_refs: string[];
   verification?: {
     status?: string;
@@ -58,6 +59,10 @@ export const course = raw as unknown as {
   lessons: Lesson[];
   authored: Record<string, Authored>;
 };
+/** Stable order within each phase, shared by restart and the level path. */
+export const journeyLessons = [...course.lessons].sort(
+  (a, b) => a.phase - b.phase,
+);
 export const phases = [
   "Bridge refresher",
   "Foundations",
@@ -105,7 +110,7 @@ export function missingNeeds(lesson: Lesson, records: Records) {
   return missing;
 }
 export function nextLesson(records: Records) {
-  const available = course.lessons.filter(
+  const available = journeyLessons.filter(
     (l) => l.available && records.lessons[l.id]?.status !== "done",
   );
   return (

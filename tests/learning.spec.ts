@@ -127,6 +127,25 @@ async function signedIn(page: Page, uid = "test-learner") {
     page.getByRole("heading", { name: "Ready, Test?" }),
   ).toBeVisible();
 }
+async function openSimulation(page: Page, name: string) {
+  const lessons: Record<string, string> = {
+    "Pendulum & gravity": "PB1.4",
+    "Orbit explorer": "AS1.3",
+    "Circuit bench": "PB4.2",
+    "Gas piston": "PB2.2",
+    "Standing waves": "PB3.1",
+    "Double slit": "PB3.3",
+    "Radiation bench": "AS2.3",
+    "Spherical field": "PH4.1",
+    "Coupled oscillators": "PH2.7",
+    "Heat flow and waves": "MA5.4",
+  };
+  await page.goto(`/lesson/${lessons[name]}`);
+  await expect(
+    page.getByRole("complementary", { name: "Lesson simulation" }),
+  ).toBeVisible();
+  await expect(page.locator(".app-sidebar")).toHaveCount(0);
+}
 test("signed-out app pages require a session", async ({ page }) => {
   await page.goto("/labs");
   await expect(page).toHaveURL("/login");
@@ -166,14 +185,12 @@ test("all workspace screens, apparatus and themes work at phone and desktop widt
         ),
       ).toBeTruthy();
     }
-    await page.goto("/labs");
+    await openSimulation(page, "Pendulum & gravity");
     await page
       .getByRole("button", { name: "Record synthetic 10-cycle timing" })
       .click();
     await expect(page.getByRole("table")).toBeVisible();
-    await page
-      .getByRole("button", { name: "Orbit explorer", exact: true })
-      .click();
+    await openSimulation(page, "Orbit explorer");
     await page.getByRole("button", { name: "Escape boundary" }).click();
     await expect(page.getByText("Parabola", { exact: true })).toBeVisible();
   }
@@ -487,10 +504,8 @@ test("resistor apparatus changes topology and keeps measurements tied to one loa
   page,
 }) => {
   await signedIn(page);
-  await page.goto("/labs");
-  await page
-    .getByRole("button", { name: "Circuit bench", exact: true })
-    .click();
+  await openSimulation(page, "Pendulum & gravity");
+  await openSimulation(page, "Circuit bench");
   await page
     .getByRole("button", { name: "Parallel load", exact: true })
     .click();
@@ -578,7 +593,7 @@ test("weekly planning persists only authored unlocked lessons grouped by track",
 }) => {
   await signedIn(page);
   await page.goto("/plan");
-  await page.getByRole("button", { name: "Build this week’s plan" }).click();
+  await expect(page).toHaveURL("/dashboard");
   await expect(page.locator(".plan-list article")).toHaveCount(7);
   const plan = await page.evaluate(
     () =>
@@ -599,8 +614,8 @@ test("gas, wave and interference benches expose model controls and reproducible 
 }) => {
   await signedIn(page);
   await page.setViewportSize({ width: 390, height: 900 });
-  await page.goto("/labs");
-  await page.getByRole("button", { name: "Gas piston", exact: true }).click();
+  await openSimulation(page, "Pendulum & gravity");
+  await openSimulation(page, "Gas piston");
   await page.getByLabel("Gas volume ratio").fill("2");
   await expect(page.getByText(/Temperature: 300.0 K/)).toBeVisible();
   await page
@@ -611,9 +626,7 @@ test("gas, wave and interference benches expose model controls and reproducible 
   await expect(page.getByRole("table")).toHaveCount(0);
   await expect(page.getByText(/Q = 0.0 J/)).toBeVisible();
   await expect(page.getByText(/Temperature: 189.0 K/)).toBeVisible();
-  await page
-    .getByRole("button", { name: "Standing waves", exact: true })
-    .click();
+  await openSimulation(page, "Standing waves");
   await page
     .getByRole("slider", { name: "String harmonic", exact: true })
     .fill("2");
@@ -626,7 +639,7 @@ test("gas, wave and interference benches expose model controls and reproducible 
       name: "Standing string harmonic 2 with 3 fixed nodes",
     }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Double slit", exact: true }).click();
+  await openSimulation(page, "Double slit");
   await expect(
     page.getByText(/Predicted small-angle fringe spacing: 2.000 mm/),
   ).toBeVisible();
@@ -643,7 +656,9 @@ test("gas, wave and interference benches expose model controls and reproducible 
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
-  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(
+    page.getByRole("complementary", { name: "Lesson simulation" }),
+  ).toBeVisible();
   await expect(page).toHaveURL(/PB3.3/);
 });
 
@@ -710,10 +725,8 @@ test("radiation apparatus separates extinction, emission and radial Doppler inte
 }) => {
   await signedIn(page);
   await page.setViewportSize({ width: 390, height: 900 });
-  await page.goto("/labs");
-  await page
-    .getByRole("button", { name: "Radiation bench", exact: true })
-    .click();
+  await openSimulation(page, "Pendulum & gravity");
+  await openSimulation(page, "Radiation bench");
   await expect(page.getByText(/Output: 6.000/)).toBeVisible();
   await page
     .getByRole("button", { name: "Record slab reading", exact: true })
@@ -748,9 +761,7 @@ test("radiation apparatus separates extinction, emission and radial Doppler inte
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
-  await expect(
-    page.getByRole("link", { name: "Open the connected lesson →" }),
-  ).toHaveAttribute("href", "/lesson/AS2.3");
+  await expect(page).toHaveURL(/lesson\/AS2.3/);
   await page
     .getByRole("link", { name: "Study Doppler shift and redshift →" })
     .click();
@@ -762,10 +773,8 @@ test("spherical apparatus distinguishes volume charge, conductor interior and an
 }) => {
   await signedIn(page);
   await page.setViewportSize({ width: 390, height: 900 });
-  await page.goto("/labs");
-  await page
-    .getByRole("button", { name: "Spherical field", exact: true })
-    .click();
+  await openSimulation(page, "Pendulum & gravity");
+  await openSimulation(page, "Spherical field");
   await expect(page.getByText(/Radial field: 0.1250/)).toBeVisible();
   await page
     .getByRole("button", { name: "Record spherical reading", exact: true })
@@ -794,7 +803,9 @@ test("spherical apparatus distinguishes volume charge, conductor interior and an
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
-  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(
+    page.getByRole("complementary", { name: "Lesson simulation" }),
+  ).toBeVisible();
   await expect(page).toHaveURL(/lesson\/PH4.1/);
 });
 
@@ -803,10 +814,8 @@ test("coupled oscillator bench exposes normal modes, conserved energy and tracea
 }) => {
   await signedIn(page);
   await page.setViewportSize({ width: 390, height: 900 });
-  await page.goto("/labs");
-  await page
-    .getByRole("button", { name: "Coupled oscillators", exact: true })
-    .click();
+  await openSimulation(page, "Pendulum & gravity");
+  await openSimulation(page, "Coupled oscillators");
   await page.getByRole("button", { name: "In phase", exact: true }).click();
   await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
   await page.getByLabel("Time (s)", { exact: true }).fill("7");
@@ -832,7 +841,9 @@ test("coupled oscillator bench exposes normal modes, conserved energy and tracea
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
-  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(
+    page.getByRole("complementary", { name: "Lesson simulation" }),
+  ).toBeVisible();
   await expect(page).toHaveURL(/lesson\/PH2.7/);
 });
 
@@ -841,10 +852,8 @@ test("Fourier evolution bench distinguishes heat decay from conserved wave energ
 }) => {
   await signedIn(page);
   await page.setViewportSize({ width: 390, height: 900 });
-  await page.goto("/labs");
-  await page
-    .getByRole("button", { name: "Heat flow and waves", exact: true })
-    .click();
+  await openSimulation(page, "Pendulum & gravity");
+  await openSimulation(page, "Heat flow and waves");
   await page.getByLabel("PDE initial shape").selectOption("First mode");
   const initial = Number(
     await page.getByLabel("PDE squared norm").textContent(),
@@ -875,7 +884,9 @@ test("Fourier evolution bench distinguishes heat decay from conserved wave energ
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
-  await page.getByRole("link", { name: "Open the connected lesson →" }).click();
+  await expect(
+    page.getByRole("complementary", { name: "Lesson simulation" }),
+  ).toBeVisible();
   await expect(page).toHaveURL(/lesson\/MA5.4/);
 });
 
@@ -1027,4 +1038,221 @@ test("cached lesson JSON refreshes online after a release and keeps the refreshe
     await context.setOffline(false);
     writeFileSync(path, original);
   }
+});
+
+test("journey dashboard integrates the weekly plan, level map and appearance without separate lab navigation", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/dashboard");
+  await expect(
+    page.getByRole("region", { name: "Learning level map" }),
+  ).toBeVisible();
+  await expect(page.getByText("A week of good questions.")).toBeVisible();
+  await expect(page.locator(".plan-list article")).toHaveCount(7);
+  await expect(
+    page
+      .getByRole("navigation", { name: "Study navigation" })
+      .getByRole("link", { name: "Lab", exact: true }),
+  ).toHaveCount(0);
+  await page.getByLabel("Appearance", { exact: true }).selectOption("dark");
+  await page.getByLabel("Color theme", { exact: true }).selectOption("cosmic");
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(page.locator("html")).toHaveAttribute("data-palette", "cosmic");
+  const bridgeMath = JSON.parse(
+    readFileSync("src/generated/course.json", "utf8"),
+  )
+    .lessons.filter(
+      (l: { phase: number; track: string }) =>
+        l.phase === 0 && l.track === "maths",
+    )
+    .map((l: { id: string }) => l.id);
+  await page.evaluate((ids) => {
+    const key = "parallax-learning-v1:test-learner",
+      data = JSON.parse(localStorage.getItem(key)!);
+    data.records.lessons = {};
+    for (const id of ids)
+      data.records.lessons[id] = {
+        status: "done",
+        mastery: 1,
+        depthCompleted: "full",
+        ladderTierDone: ["core", "warmup"],
+        lastSection: "connections",
+        updatedAt: 1,
+      };
+    localStorage.setItem(key, JSON.stringify(data));
+  }, bridgeMath);
+  await page.reload();
+  await expect(page.locator(".journey-map select")).toHaveValue("0");
+  await expect(page.locator(".current-level")).toContainText("PB1.1");
+  await page.goto("/lesson/PB1.1");
+  await expect(
+    page.locator(".app-sidebar,.app-topbar,.mobile-nav"),
+  ).toHaveCount(0);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
+test("restart confirms a chosen lesson and resets only its suffix while retaining notes and past XP", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/dashboard");
+  await page.evaluate(() => {
+    const key = "parallax-learning-v1:test-learner",
+      data = JSON.parse(localStorage.getItem(key)!);
+    const completed = {
+      status: "done",
+      mastery: 1,
+      depthCompleted: "full",
+      ladderTierDone: ["core", "warmup"],
+      lastSection: "connections",
+      updatedAt: 1,
+    };
+    data.records.lessons["PB1.1"] = completed;
+    data.records.lessons["PB1.4"] = completed;
+    data.preferences.depth = "quick";
+    data.records.days["2026-10-18"] = {
+      xp: 20,
+      activities: [{ id: "lesson:PB1.4", xp: 20, track: "physics", at: 1 }],
+      goalMet: true,
+      xpByTrack: { physics: 20 },
+    };
+    data.records.notes["PB1.4"] = {
+      bodyMd: "Keep my reasoning.",
+      updatedAt: 1,
+    };
+    localStorage.setItem(key, JSON.stringify(data));
+  });
+  await page.goto("/settings");
+  await page.reload();
+  await page.getByRole("button", { name: "Revert lesson progress" }).click();
+  await page
+    .getByLabel("Where would you like to restart?")
+    .selectOption("point");
+  await page
+    .getByLabel("Restart lesson", { exact: true })
+    .selectOption("PB1.4");
+  await page
+    .getByLabel("Restart section", { exact: true })
+    .selectOption("theory");
+  await page.getByRole("button", { name: "Confirm restart" }).click();
+  await expect(page).toHaveURL("/lesson/PB1.4");
+  await expect(page.getByLabel("Lesson section")).toHaveValue("theory");
+  const data = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!),
+  );
+  expect(data.records.lessons["PB1.1"].status).toBe("done");
+  expect(data.records.lessons["PB1.4"].status).toBe("in_progress");
+  expect(data.records.lessons["PB1.4"].mastery).toBe(0);
+  expect(data.records.lessons["PB1.4"].resetAt).toBeGreaterThan(0);
+  expect(data.records.notes["PB1.4"].bodyMd).toBe("Keep my reasoning.");
+  expect(data.records.days["2026-10-18"].xp).toBe(20);
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill("A longer pendulum takes longer to swing.");
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("connections");
+  await page.getByRole("button", { name: "Finish lesson" }).click();
+  const total = await page.evaluate(() =>
+    Object.values(
+      JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+        .records.days,
+    ).reduce((sum: number, day: any) => sum + day.xp, 0),
+  );
+  expect(total).toBe(20);
+});
+
+test("adaptive readiness steps up after a correct first attempt and down after a mistake", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB1.1");
+  const course = JSON.parse(readFileSync("src/generated/course.json", "utf8"));
+  const bank = course.authored["PB1.1"].questions;
+  async function answer(correct: boolean) {
+    const form = page.locator(".adaptive-check .question-card");
+    const prompt = await form.locator("h3").textContent();
+    const q = bank.find((q: { prompt: string }) => q.prompt === prompt);
+    if (q.options) {
+      await form
+        .getByLabel(
+          correct ? q.answer : q.options.find((x: string) => x !== q.answer),
+          { exact: true },
+        )
+        .check();
+    } else {
+      await form
+        .locator('input[type="number"]')
+        .fill(correct ? q.answer : String(Number(q.answer) + 1000));
+    }
+    await form.getByRole("button", { name: "Check answer" }).click();
+    await page.getByRole("button", { name: "Next challenge" }).click();
+  }
+  await answer(true);
+  let level = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+        .records.plan["challenge-physics"].level,
+  );
+  expect(level).toBe(2);
+  await answer(false);
+  level = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+        .records.plan["challenge-physics"].level,
+  );
+  expect(level).toBe(1);
+});
+
+test("vectors and black-hole trajectories respond directly to accessible manipulation inside lessons", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MB2.3");
+  const tip = page.getByRole("button", {
+    name: "Move vector a tip with arrow keys",
+  });
+  await tip.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByText(/A = \(2.25, 1.00\)/)).toBeVisible();
+  await page.goto("/lesson/PH16.3");
+  await page.getByLabel("Photon impact parameter", { exact: true }).fill("4");
+  await expect(
+    page.getByText("Captured: the ray crosses r = 2."),
+  ).toBeVisible();
+  await page.getByLabel("Photon impact parameter", { exact: true }).fill("7");
+  await expect(
+    page.getByText("Scattered: the ray returns toward large radius."),
+  ).toBeVisible();
+});
+
+test("due lesson repetitions appear in the next lesson and schedule through inline recall ratings", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB1.1");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill("Acceleration is independent of mass in vacuum.");
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("connections");
+  await page.getByRole("button", { name: "Finish lesson" }).click();
+  await page.goto("/lesson/PB1.2");
+  const recap = page.getByRole("region", { name: "Between-lesson recall" });
+  await expect(recap).toBeVisible();
+  for (let i = 0; i < 2; i++) {
+    await recap.getByRole("button", { name: "Recall, then reveal" }).click();
+    await recap.getByRole("button", { name: "Good", exact: true }).click();
+  }
+  await expect(recap).toHaveCount(0);
+  const logs = await page.evaluate(() =>
+    Object.values(
+      JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+        .records.reviewLog,
+    ),
+  );
+  expect(logs).toHaveLength(2);
 });
