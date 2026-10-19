@@ -26,7 +26,7 @@ export interface SectionMeta {
   title: string;
   layer: string;
   fullOnly: boolean;
-  text: string;
+  text?: string;
 }
 export interface Authored extends Lesson {
   widgets?: string[];
@@ -48,6 +48,8 @@ export interface Question {
   options?: string[];
   answer: string;
   explanation: string;
+  hint?: string;
+  misconceptions?: Record<string, string>;
   type: "mcq" | "numeric";
   exact?: boolean;
   unit?: string;

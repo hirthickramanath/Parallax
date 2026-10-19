@@ -2,6 +2,10 @@
 
 All 354 curriculum entries have draft MDX bodies and 1421 retrieval cards. This completes body coverage, not independent verification or exhaustive textbook-level treatment. Advanced lessons are concise draft introductions; some need deeper derivations, harder exercises and additional investigations before a publication-quality claim is appropriate.
 
+## Shared flow and conditional services implemented
+
+The [post-comparison release](POST-COMPARISON-IMPLEMENTATION.md) implements precise interaction resume, honest reading/mastery semantics, retry safeguards, clearer unavailable help, searchable restart selection, startup payload reduction, a deeper four-lesson mechanics unit, server-owned assessment records and opt-in background-reminder infrastructure. The new services are disabled until securely configured and deployed; local validation is not live activation or independent educational review.
+
 ## Scientific and editorial review
 
 Internal expansion completed for nine advanced lessons, with additional derivations, counterexamples and graded Core transfers. See [ADVANCED-CONTENT-REVIEW.md](ADVANCED-CONTENT-REVIEW.md) for the exact scope and follow-up. This does not close independent scientific/source review.
@@ -32,11 +36,11 @@ The Firebase browser configuration is intentionally public and was previously re
 
 The authenticated tutor interface/Worker remains disabled pending an eligible provider/account and securely configured server-side credentials, quotas and live verification. Do not bypass provider age/account restrictions or place secret provider keys in browser code, commits or chat.
 
-Current reminders are opt-in foreground reminders. Background push is a separate uncompleted design requiring service, permission and delivery considerations. Additional profile/cloud paths likewise remain a separate design decision.
+Foreground reminders remain available. Background Web Push is now implemented as a bounded opt-in service but remains disabled pending secure VAPID configuration, deployment and real-browser delivery checks. See [SERVER-ASSESSMENTS-AND-REMINDERS.md](SERVER-ASSESSMENTS-AND-REMINDERS.md). Additional profile/cloud paths remain a separate design decision.
 
 ## Deployment and regression checks
 
-Validated code is pushed to `codex/complete-foundation-course`. It is not automatically production until the configured production branch is updated and Cloudflare successfully deploys it. This work does not assert that a merge or production deployment was performed.
+Feature work is prepared on `codex/complete-foundation-course`. Production availability requires the production-branch update and a successful Cloudflare build; consult the current release report for the actual push/merge evidence. No production success follows from local tests alone.
 
 At the completed draft checkpoint, the production build, all 83 model/grading/example tests and all 82 browser cases passed. Lesson content refreshes online with a saved-copy offline fallback; this is covered by a deployment-refresh regression.
 

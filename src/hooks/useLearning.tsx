@@ -1,3 +1,4 @@
+import type { LessonInteraction } from "../types/progress";
 import { createEmptyCard, type Card } from "ts-fsrs";
 import { course, journeyLessons } from "../lib/course";
 import {
@@ -108,6 +109,28 @@ class LearningStore {
     if (this.batching) return;
     this.persist();
     void this.sync();
+  }
+  saveLessonInteraction(id: string, patch: LessonInteraction) {
+    if (!course.authored[id]) return;
+    const current = this.records.lessons[id] || {
+      status: "in_progress" as const,
+      mastery: 0,
+      depthCompleted: null,
+      ladderTierDone: [],
+      lastSection: "ready",
+      updatedAt: Date.now(),
+    };
+    const before = current.interaction || {};
+    this.put("lessons", id, {
+      ...current,
+      interaction: {
+        ...before,
+        ...patch,
+        responses: { ...before.responses, ...patch.responses },
+        theoryShown: { ...before.theoryShown, ...patch.theoryShown },
+      },
+      updatedAt: Date.now(),
+    });
   }
   restartJourney(from: string, section = "ready") {
     const start = journeyLessons.findIndex((l) => l.id === from);

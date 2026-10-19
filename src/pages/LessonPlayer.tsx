@@ -1,3 +1,5 @@
+import { LessonFeedback } from "../components/learning/LessonFeedback";
+import { TrustedAssessment } from "../components/learning/TrustedAssessment";
 import { questionLevel } from "../lib/journey";
 import { AdaptiveCheck } from "../components/learning/AdaptiveCheck";
 import { LessonRecap } from "../components/learning/LessonRecap";
@@ -57,10 +59,12 @@ function Player({ id }: { id: string }) {
     [showTutor, setShowTutor] = useState(false),
     [cardAdded, setCardAdded] = useState(false),
     [prediction, setPrediction] = useState(
-      (store.records.attempts[`prediction-${id}`]?.resetAt || 0) ===
+      store.records.lessons[id]?.interaction?.responses?.["prediction-draft"]
+        ?.response ||
+        ((store.records.attempts[`prediction-${id}`]?.resetAt || 0) ===
         (store.records.lessons[id]?.resetAt || 0)
-        ? store.records.attempts[`prediction-${id}`]?.response || ""
-        : "",
+          ? store.records.attempts[`prediction-${id}`]?.response || ""
+          : ""),
     ),
     [reveal, setReveal] = useState(
       !!store.records.attempts[`prediction-${id}`] &&
@@ -98,6 +102,33 @@ function Player({ id }: { id: string }) {
       updatedAt: Date.now(),
     });
     window.scrollTo(0, 0);
+    const target = current?.interaction?.lastQuestionId;
+    if (!target) return;
+    let observer: MutationObserver | undefined;
+    const restore = () => {
+      const form = [
+        ...document.querySelectorAll<HTMLElement>("[data-question-id]"),
+      ].find((node) => node.dataset.questionId === target);
+      if (!form) return;
+      form.scrollIntoView({ block: "center" });
+      form
+        .querySelector<HTMLElement>(
+          "input:not(:disabled),textarea:not(:disabled)",
+        )
+        ?.focus({ preventScroll: true });
+      observer?.disconnect();
+    };
+    observer = new MutationObserver(restore);
+    observer.observe(document.getElementById("main")!, {
+      childList: true,
+      subtree: true,
+    });
+    restore();
+    const timer = setTimeout(() => observer?.disconnect(), 2000);
+    return () => {
+      clearTimeout(timer);
+      observer?.disconnect();
+    };
   }, [id, active.id]);
   function result(qid: string, correct: boolean) {
     const q = lesson.questions.find((q) => q.id === qid)!;
@@ -147,7 +178,18 @@ function Player({ id }: { id: string }) {
       depthCompleted: current.depthCompleted === "full" ? "full" : depth,
       updatedAt: Date.now(),
     });
-    store.award(`lesson:${id}`, 20, lesson.track);
+    const mastered =
+      current.mastery >= 0.8 &&
+      current.ladderTierDone.includes("warmup") &&
+      current.ladderTierDone.includes("core") &&
+      (current.depthCompleted === "full" || depth === "full");
+    if (mastered) store.award(`lesson:${id}`, 20, lesson.track);
+    else if (
+      !Object.values(store.records.days).some((day) =>
+        day.activities.some((a) => a.id === `lesson:${id}`),
+      )
+    )
+      store.award(`reading:${id}`, 5, lesson.track);
     for (const [i, card] of lesson.review.entries())
       if (!store.records.reviewCards[`${id}-${i}`])
         store.put("reviewCards", `${id}-${i}`, {
@@ -178,8 +220,8 @@ function Player({ id }: { id: string }) {
         <p className="eyebrow">ANOTHER PERSPECTIVE UNLOCKED</p>
         <h1>Keep the question alive.</h1>
         <p>
-          Lesson completed. Your answers and study activity are saved on this
-          device.
+          Reading completed. This is separate from demonstrated mastery. Your
+          answers and study activity are saved on this device.
         </p>
         <p>
           Mastery: {Math.round((store.records.lessons[id]?.mastery || 0) * 100)}
@@ -190,6 +232,8 @@ function Player({ id }: { id: string }) {
             <li key={line}>{line}</li>
           ))}
         </ul>
+        <LessonFeedback lessonId={id} />
+        <TrustedAssessment lessonId={id} />
         <LessonRecap lessonId={id} />
         {nextLesson(store.records) && (
           <Button asChild>
@@ -279,8 +323,20 @@ function Player({ id }: { id: string }) {
               <label>
                 Your prediction
                 <textarea
+                  aria-label="Your prediction"
                   value={prediction}
-                  onChange={(e) => setPrediction(e.target.value)}
+                  onChange={(e) => {
+                    setPrediction(e.target.value);
+                    store.saveLessonInteraction(id, {
+                      responses: {
+                        "prediction-draft": {
+                          response: e.target.value,
+                          result: null,
+                          submitted: null,
+                        },
+                      },
+                    });
+                  }}
                 />
               </label>
               <Button
@@ -307,6 +363,7 @@ function Player({ id }: { id: string }) {
               <SectionContext.Provider
                 value={{
                   activeId: active.id,
+                  lessonId: id,
                   onTheoryComplete: () => {
                     if (!store.records.attempts[`theory-${id}`]) {
                       store.put("attempts", `theory-${id}`, {
@@ -402,7 +459,11 @@ function Player({ id }: { id: string }) {
               className="text-button"
               onClick={() => setShowTutor(!showTutor)}
             >
-              {showTutor ? "Close tutor" : "Ask about this section"}
+              {showTutor
+                ? "Close tutor"
+                : import.meta.env.VITE_TUTOR_URL
+                  ? "Ask about this section"
+                  : "Saved tutor conversations (live tutor unavailable)"}
             </button>
             <Button
               disabled={active.layer === "puzzle" && !reveal}
@@ -412,7 +473,13 @@ function Player({ id }: { id: string }) {
                   : setIndex((n) => n + 1)
               }
             >
-              {index === sections.length - 1 ? "Finish lesson" : "Continue"}
+              {index === sections.length - 1
+                ? "Finish reading"
+                : active.layer === "check" ||
+                    active.layer === "problems" ||
+                    active.layer === "before"
+                  ? "Continue reading / skip remaining practice"
+                  : "Continue"}
             </Button>
           </div>
           <p className="source-note">

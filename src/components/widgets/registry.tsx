@@ -1,3 +1,4 @@
+import { CollisionExplorer, RollingExplorer } from "./MechanicsExplorer";
 import { VectorExplorer } from "./VectorExplorer";
 import { BlackHoleExplorer } from "./BlackHoleExplorer";
 import { LegendreExplorer } from "./LegendreExplorer";
@@ -15,6 +16,8 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  collision_explorer: CollisionExplorer,
+  rolling_explorer: RollingExplorer,
   vector_explorer: VectorExplorer,
   black_hole_explorer: BlackHoleExplorer,
   legendre_explorer: LegendreExplorer,

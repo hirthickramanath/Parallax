@@ -65,6 +65,7 @@ export interface Records {
 }
 export type Collection = keyof Records;
 export interface Preferences {
+  backgroundReminders?: boolean;
   remindersEnabled?: boolean;
   reminderTime?: string;
   reminderDismissedDate?: string;

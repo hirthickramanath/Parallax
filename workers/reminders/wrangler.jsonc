@@ -1,0 +1,18 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "parallax-reminders",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-19",
+  "vars": {
+    "SITE_ORIGIN": "https://parallax-science.pages.dev",
+    "FIREBASE_PROJECT_ID": "parallax-73",
+    "ENABLE_REMINDERS": "false",
+    "VAPID_PUBLIC_KEY": "",
+    "VAPID_SUBJECT": "",
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "REMINDERS", "class_name": "ReminderRegistry" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ReminderRegistry"] }],
+  "triggers": { "crons": ["*/5 * * * *"] },
+}

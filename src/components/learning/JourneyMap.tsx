@@ -1,3 +1,4 @@
+import { demonstratedMastery } from "../../lib/mastery";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { course, missingNeeds, phases, nextLesson } from "../../lib/course";
@@ -37,6 +38,7 @@ export function JourneyMap() {
                 store.records.lessons[l.id]?.status,
               ),
               locked = missingNeeds(l, store.records).length > 0;
+            const mastered = demonstratedMastery(store.records.lessons[l.id]);
             return (
               <li
                 key={l.id}
@@ -45,14 +47,14 @@ export function JourneyMap() {
                     "--bend": `${Math.sin(i * 1.2) * 60}px`,
                   } as React.CSSProperties
                 }
-                className={`${done ? "complete" : locked ? "waiting" : "available"} ${l.id === currentId ? "current-level" : ""}`}
+                className={`${mastered ? "complete" : done ? "read-level" : locked ? "waiting" : "available"} ${l.id === currentId ? "current-level" : ""}`}
               >
                 <Link
                   to={`/lesson/${l.id}`}
-                  aria-label={`${l.title}${done ? " · completed" : locked ? " · prerequisites recommended" : ""}`}
+                  aria-label={`${l.title}${mastered ? " · practice mastery demonstrated" : done ? " · reading complete; mastery separate" : locked ? " · prerequisites recommended" : ""}`}
                 >
                   <span className="level-node">
-                    {done ? "✓" : locked ? "◇" : i + 1}
+                    {mastered ? "✓" : done ? "○" : locked ? "◇" : i + 1}
                   </span>
                   <strong>{l.title}</strong>
                   <small>

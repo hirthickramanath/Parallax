@@ -1,3 +1,4 @@
+import { BackgroundReminderSync } from "./BackgroundReminder";
 import { ThemeSelect } from "../ThemeSelect";
 import { NavLink, Link, Outlet, useLocation } from "react-router-dom";
 import {
@@ -33,6 +34,7 @@ export function AppLayout() {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
+        <BackgroundReminderSync />
         <Outlet />
       </div>
     );
@@ -90,6 +92,7 @@ export function AppLayout() {
           </div>
         </header>
         <StudyReminder />
+        <BackgroundReminderSync />
         <Outlet />
         <footer className="app-footer">
           Draft lessons · Full theory · Real questions

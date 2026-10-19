@@ -7,17 +7,23 @@ import { Button } from "../ui/button";
 export function AdaptiveCheck({ lesson }: { lesson: Authored }) {
   const store = useLearning(),
     saved = store.records.plan[`challenge-${lesson.track}`];
+  const session = store.records.lessons[lesson.id]?.interaction?.adaptive;
   const [level, setLevel] = useState(
-      Math.max(0, Math.min(2, Number(saved?.level ?? 1))),
+      Math.max(0, Math.min(2, Number(session?.level ?? saved?.level ?? 1))),
     ),
-    [seen, setSeen] = useState<string[]>([]),
-    [feedback, setFeedback] = useState(""),
-    [answer, setAnswer] = useState<boolean | null>(null),
-    [done, setDone] = useState(false);
+    [seen, setSeen] = useState<string[]>(session?.seen || []),
+    [feedback, setFeedback] = useState(session?.feedback || ""),
+    [answer, setAnswer] = useState<boolean | null>(session?.answer ?? null),
+    [done, setDone] = useState(session?.done || false);
   const q = useMemo(
     () => adaptiveNext(lesson.questions, seen, level),
     [lesson, seen, level],
   );
+  function persist(patch: Partial<NonNullable<typeof session>>) {
+    store.saveLessonInteraction(lesson.id, {
+      adaptive: { level, seen, feedback, answer, done, ...patch },
+    });
+  }
   return (
     <section className="adaptive-check">
       <span className="pill">FIND YOUR CHALLENGE</span>
@@ -48,20 +54,42 @@ export function AdaptiveCheck({ lesson }: { lesson: Authored }) {
               setSeen([]);
               setDone(false);
               setAnswer(null);
+              store.saveLessonInteraction(lesson.id, {
+                adaptive: {
+                  level,
+                  seen: [],
+                  done: false,
+                  answer: null,
+                  feedback: "",
+                },
+                responses: Object.fromEntries(
+                  lesson.questions.map((item) => [
+                    `adaptive-${item.id}`,
+                    { response: "", result: null, submitted: null },
+                  ]),
+                ),
+              });
             }}
           >
-            Try a fresh check
+            Try the check again
           </Button>
         </>
       ) : (
         <>
           <QuestionCard
-            key={q.id}
+            key={`${q.id}-${seen.length}`}
+            lockAfterSubmit
             lessonId={lesson.id}
             question={{ ...q, id: `adaptive-${q.id}`, tier: "adaptive" }}
             onResult={(_, correct) => {
               if (answer !== null) return;
               setAnswer(correct);
+              persist({
+                answer: correct,
+                feedback: correct
+                  ? "Good reasoning. Let’s step up."
+                  : "Take a smaller step. Use the explanation, then try another idea.",
+              });
               setFeedback(
                 correct
                   ? "Good reasoning. Let’s step up."
@@ -79,6 +107,14 @@ export function AdaptiveCheck({ lesson }: { lesson: Authored }) {
                   setLevel(next);
                   setSeen(ids);
                   setAnswer(null);
+                  persist({
+                    level: next,
+                    seen: ids,
+                    answer: null,
+                    done:
+                      ids.length >= 4 ||
+                      !adaptiveNext(lesson.questions, ids, next),
+                  });
                   store.put("plan", `challenge-${lesson.track}`, {
                     level: next,
                     updatedAt: Date.now(),

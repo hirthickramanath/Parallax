@@ -5,7 +5,7 @@
   "hook": "Why can a rolling object have zero velocity at its contact point while its centre moves?",
   "recap": [
     "Rigid-body point velocities combine translation and rotation.",
-    "No-slip rolling on a stationary surface requires v_cm=R\u03c9.",
+    "No-slip rolling on a stationary surface requires v_cm=Rω.",
     "The moment of inertia depends on mass distribution and axis.",
     "Rolling kinetic energy contains both centre-of-mass and rotational terms."
   ],
@@ -20,11 +20,12 @@
       "answer": "No",
       "explanation": "The instantaneous contact point changes as the wheel turns.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the governing equation and identify the relevant system before cancelling terms."
     },
     {
       "id": "q2",
-      "prompt": "Does v_cm=R\u03c9 hold for arbitrary slipping?",
+      "prompt": "Does v_cm=Rω hold for arbitrary slipping?",
       "options": [
         "Yes",
         "No"
@@ -48,20 +49,20 @@
     },
     {
       "id": "q4",
-      "prompt": "For a uniform disk with M=2 kg and R=1 m, I in kg m\u00b2?",
+      "prompt": "For a uniform disk with M=2 kg and R=1 m, I in kg m²?",
       "options": null,
       "answer": "1",
-      "explanation": "I=MR\u00b2/2.",
+      "explanation": "I=MR²/2.",
       "type": "numeric",
       "conceptual": false,
       "unit": "as specified"
     },
     {
       "id": "q5",
-      "prompt": "If R=0.5 m and \u03c9=4 rad/s, no-slip centre speed in m/s?",
+      "prompt": "If R=0.5 m and ω=4 rad/s, no-slip centre speed in m/s?",
       "options": null,
       "answer": "2",
-      "explanation": "v=R\u03c9.",
+      "explanation": "v=Rω.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -79,6 +80,91 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "warmup-rolling",
+      "prompt": "A wheel rolls without slip with radius 0.5 m and angular speed 4 rad/s. Find centre speed.",
+      "answer": "2",
+      "explanation": "v_cm=R omega=2 m/s.",
+      "unit": "m/s",
+      "tier": "warmup",
+      "hint": "The no-slip condition connects angular and translational motion.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-torque",
+      "prompt": "A rigid body has I=2 kg m² about a fixed axis. Net torque gives angular acceleration 3 rad/s². Find torque.",
+      "answer": "6",
+      "explanation": "tau=I alpha=6 N m.",
+      "unit": "N m",
+      "tier": "warmup",
+      "hint": "Use moment of inertia about the same axis.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-rotation-energy",
+      "prompt": "Find rotational kinetic energy for I=0.5 kg m² and omega=2 rad/s.",
+      "answer": "1",
+      "explanation": "K_rot=I omega²/2=1 J.",
+      "unit": "J",
+      "tier": "warmup",
+      "hint": "Do not confuse angular momentum I omega with energy.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-cylinder",
+      "prompt": "A solid cylinder starts from rest and rolls without slip through a height loss of 0.3 m. Use g=10 m/s² and I/(mR²)=0.5. Find centre speed.",
+      "answer": "2",
+      "explanation": "v²=2gh/(1+0.5)=4, so v=2 m/s.",
+      "unit": "m/s",
+      "tier": "core",
+      "hint": "Gravitational energy feeds translation and rotation.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-hoop",
+      "prompt": "A thin hoop starts from rest and rolls without slip through height loss 1 m. Use g=10 m/s². Find centre speed.",
+      "answer": "3.1622776601683795",
+      "explanation": "I/(mR²)=1 gives v²=gh=10.",
+      "unit": "m/s",
+      "tier": "core",
+      "hint": "A hoop stores as much rotational as translational kinetic energy.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-top-speed",
+      "prompt": "A wheel rolls without slipping on stationary ground with centre speed 3 m/s. Find speed of its top point relative to the ground.",
+      "answer": "6",
+      "explanation": "Translation and rotation add at the top: 2v_cm=6 m/s.",
+      "unit": "m/s",
+      "tier": "core",
+      "hint": "Add point velocity relative to the centre to centre velocity.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-reasoning",
+      "prompt": "A hoop rolls down a 45 degree incline. The required static coefficient is at least 0.5. If the available coefficient is 0.3, which model is justified?",
+      "options": [
+        "Assume no slip anyway",
+        "A slipping model is needed",
+        "Energy is no longer conserved in the entire universe"
+      ],
+      "answer": "A slipping model is needed",
+      "explanation": "The proposed no-slip solution requires a friction force that the surface cannot supply.",
+      "hint": "State which assumption would have to hold before applying the formula.",
+      "tier": "core",
+      "type": "mcq",
+      "conceptual": true,
+      "misconceptions": {
+        "Assume no slip anyway": "The proposed no-slip solution requires a friction force that the surface cannot supply.",
+        "Energy is no longer conserved in the entire universe": "The proposed no-slip solution requires a friction force that the surface cannot supply."
+      }
     }
   ],
   "review": [
@@ -89,7 +175,7 @@
     },
     {
       "front": "What condition characterizes no-slip rolling on a fixed plane?",
-      "back": "No-slip rolling on a stationary surface requires v_cm=R\u03c9.",
+      "back": "No-slip rolling on a stationary surface requires v_cm=Rω.",
       "concept": "pb1-3-foundation"
     },
     {
@@ -105,8 +191,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Taylor, Classical Mechanics \u2014 edition/section review pending",
-    "OpenStax University Physics Volume 1 \u2014 chapter reference review pending"
+    "Taylor, Classical Mechanics — edition/section review pending",
+    "OpenStax University Physics Volume 1 — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -166,6 +252,12 @@ $$Mgh=\frac12Mv^2+\frac12I\frac{v^2}{R^2},\qquad v^2=\frac{2gh}{1+I/(MR^2)}.$$
 A disk therefore has v²=4gh/3; a hoop has v²=gh. Shape matters through mass distribution, even though total mass cancels.
 
 One can also derive acceleration down an incline. With friction f up the slope, Mg sinα−f=Ma and fR=I(a/R). Eliminating f gives $a=g\sin\alpha/[1+I/(MR^2)]$. This solution must be checked against the maximum available static friction; otherwise the assumed no-slip motion is inconsistent.
+
+### Derive the rolling energy partition
+
+For a rigid body, $\mathbf v_P=\mathbf v_{cm}+\boldsymbol\omega\times\mathbf r_{P/cm}$. Rolling without slip on stationary ground sets the contact-point velocity to zero and gives $v_{cm}=R\omega$. For $I=\beta mR^2$, total kinetic energy is $\tfrac12m(1+\beta)v_{cm}^2$. Starting from rest through height loss $h$, conservation gives $v_{cm}^2=2gh/(1+\beta)$ when losses are negligible.
+
+Along an incline of angle $\theta$, write $ma=mg\sin\theta-f$ and $I\alpha=fR$, with $a=R\alpha$. Elimination gives $a=g\sin\theta/(1+\beta)$ and $f=\beta mg\sin\theta/(1+\beta)$. The required static coefficient is at least $\beta\tan\theta/(1+\beta)$. If that condition fails, the no-slip energy partition cannot simply be imposed. Ideal static friction does no work at a stationary contact point, although it provides torque about the centre.
 
 </LessonSection>
 

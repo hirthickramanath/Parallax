@@ -746,3 +746,66 @@ test("field and curvature Core transfers distinguish conventions and integrated 
     Math.abs((g(2 + h) - g(2 - h)) / (2 * h) - 0.1 * g(2) ** 2) < 1e-10,
   );
 });
+
+test("expanded mechanics transfer answers match independent force, work, rolling and pendulum calculations", () => {
+  const cases = {
+    "PB1.1": {
+      "warmup-net-force": 6 / 3,
+      "warmup-velocity": 3 * 4,
+      "warmup-displacement": (10 * 2 ** 2) / 2,
+      "transfer-stopping": 10 ** 2 / (2 * 2),
+      "transfer-height": 1 / 2 ** 2,
+      "transfer-terminal": (2 * 10) / 5,
+    },
+    "PB1.2": {
+      "warmup-work": 10 * 2 * Math.cos(Math.PI / 3),
+      "warmup-kinetic": (2 * 3 ** 2) / 2,
+      "warmup-impulse": 6 * 0.5,
+      "transfer-inelastic": 0.5 * 4 ** 2 - 0.5 * 2 * 2 ** 2,
+      "transfer-spring": (100 * 0.2 ** 2) / 2,
+      "transfer-friction": -0.2 * 2 * 10 * 3,
+    },
+    "PB1.3": {
+      "warmup-rolling": 0.5 * 4,
+      "warmup-torque": 2 * 3,
+      "warmup-rotation-energy": 0.5 * 0.5 * 2 ** 2,
+      "transfer-cylinder": Math.sqrt((2 * 10 * 0.3) / 1.5),
+      "transfer-hoop": Math.sqrt((2 * 10) / (1 + 1)),
+      "transfer-top-speed": 2 * 3,
+    },
+    "PB1.4": {
+      "warmup-length-ratio": Math.sqrt(4),
+      "warmup-period": 2 * Math.PI * Math.sqrt(1 / Math.PI ** 2),
+      "warmup-frequency": 1 / 0.5,
+      "transfer-infer-gravity": (4 * Math.PI ** 2) / Math.PI ** 2,
+      "transfer-amplitude": 0.4 ** 2 / 16,
+      "transfer-planet": 1 / Math.sqrt(4),
+    },
+  };
+  for (const [id, questions] of Object.entries(cases))
+    for (const [qid, value] of Object.entries(questions)) check(id, qid, value);
+});
+
+test("lean course metadata preserves section identity while public lesson JSON retains full tutor text", () => {
+  const course = JSON.parse(
+    fs.readFileSync("src/generated/course.json", "utf8"),
+  );
+  for (const [id, lesson] of Object.entries(course.authored)) {
+    const full = JSON.parse(
+      fs.readFileSync(`public/content/${id}.json`, "utf8"),
+    );
+    assert.deepEqual(
+      lesson.sections.map((s) => s.id),
+      full.sections.map((s) => s.id),
+      id,
+    );
+    assert.ok(
+      lesson.sections.every((s) => !Object.hasOwn(s, "text")),
+      id,
+    );
+    assert.ok(
+      full.sections.find((s) => s.id === "theory")?.text.length > 0,
+      id,
+    );
+  }
+});

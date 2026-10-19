@@ -31,7 +31,21 @@ export function WeekOverview() {
       ? (Object.values(saved.items || {}).flat() as string[])
       : [];
   return (
-    <section className="weekly-overview">
+    <details
+      className="weekly-overview"
+      open={store.records.plan[`viewed-week-${week}`]?.viewed !== true}
+      onToggle={(e) => {
+        if (
+          !e.currentTarget.open &&
+          store.records.plan[`viewed-week-${week}`]?.viewed !== true
+        )
+          store.put("plan", `viewed-week-${week}`, {
+            viewed: true,
+            updatedAt: Date.now(),
+          });
+      }}
+    >
+      <summary>This week’s learning plan</summary>
       <p className="eyebrow">YOUR WEEK · STARTING {week}</p>
       <h2>A week of good questions.</h2>
       <p>
@@ -46,7 +60,7 @@ export function WeekOverview() {
             <article key={id}>
               <span className="pill">
                 {store.records.lessons[id]?.status === "done"
-                  ? "✓ Completed"
+                  ? "Reading complete"
                   : l.track}
               </span>
               <Link to={`/lesson/${id}`}>{l.title} →</Link>
@@ -60,6 +74,6 @@ export function WeekOverview() {
           check your prerequisite progress.
         </p>
       )}
-    </section>
+    </details>
   );
 }

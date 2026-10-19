@@ -136,7 +136,7 @@ export function Dashboard() {
             <div>
               <Target />
               <strong>{done}</strong>
-              <span>Lessons completed</span>
+              <span>Lessons read</span>
             </div>
             <div>
               <Flame />

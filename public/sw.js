@@ -64,3 +64,42 @@ self.addEventListener("fetch", (event) => {
     );
   }
 });
+
+self.addEventListener("push", (event) => {
+  let data = {};
+  try {
+    data = event.data?.json() || {};
+  } catch {
+    /* Generic reminder remains available. */
+  }
+  event.waitUntil(
+    self.registration.showNotification(
+      String(data.title || "A little curiosity, today").slice(0, 100),
+      {
+        body: String(
+          data.body || "Your next science question is waiting.",
+        ).slice(0, 240),
+        tag: "parallax-study",
+        data: { url: "/dashboard" },
+      },
+    ),
+  );
+});
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  event.waitUntil(
+    (async () => {
+      const pages = await self.clients.matchAll({
+        type: "window",
+        includeUncontrolled: true,
+      });
+      const page = pages.find(
+        (p) => new URL(p.url).origin === self.location.origin,
+      );
+      if (page) {
+        await page.navigate("/dashboard");
+        await page.focus();
+      } else await self.clients.openWindow("/dashboard");
+    })(),
+  );
+});

@@ -19,9 +19,11 @@ If npm cannot find `package.json`, change to the repository folder. If a port is
 
 ## Current release
 
-The app includes Google/email-link sign-in, a dashboard, a 354-entry expanded course map, 354 **draft** MDX lessons, a section-based player, ten virtual apparatus benches and ten foundation projects, local-first progress, attempts and notes, goal-based XP/streaks, FSRS review, multi-card concept revision, a visual prerequisite map, an exam-date revision schedule, mixed conceptual/numeric Bridge tests, balanced weekly planning, optional foreground reminders and settings. Unauthored lesson entries are clearly marked and cannot be played.
+The app includes Google/email-link sign-in, 354 **draft** MDX lessons, an astrophysics-focused level map, automatic weekly planning, focused lessons with connected simulations, precise interaction resume, explicit reading-versus-mastery states, local-first progress, XP/streaks, FSRS recall interludes, projects and study settings. Mechanics PB1.1–PB1.4 has an expanded question ladder and collision/rolling investigations.
 
-The tutor interface and authenticated Worker are implemented but disabled. All 354 curriculum entries have draft lesson bodies. Independent scientific/source review, pedagogical depth expansion and live-service verification remain incomplete. Current capability boundaries and remaining work are in [docs/CONTINUOUS-AUTHORING-RELEASE.md](docs/CONTINUOUS-AUTHORING-RELEASE.md) and the generated [course ledger](docs/COURSE-STATUS.md); the first integrated release and deployment instructions are recorded in [docs/INTEGRATED-RELEASE.md](docs/INTEGRATED-RELEASE.md).
+The tutor, new server-owned assessment Worker and background-reminder Worker are implemented but **disabled until configured and live-tested**. Server assessment currently covers six draft lesson banks; it is not independent certification or proctoring. Background reminders are a bounded opt-in pilot. No personal-study client XP is an authoritative ranking source.
+
+Scientific/source review, broader pedagogical-depth/simulation work and live-service verification remain incomplete. See [post-comparison implementation](docs/POST-COMPARISON-IMPLEMENTATION.md), [service rollout](docs/SERVER-ASSESSMENTS-AND-REMINDERS.md), [pending checks](docs/PENDING-REVIEW-AND-LIVE-CHECKS.md) and the generated [course ledger](docs/COURSE-STATUS.md). Older release reports retain their historical milestones.
 
 ## Verification
 
@@ -31,6 +33,10 @@ npm run typecheck
 npm run typecheck:worker
 npm test
 npm run test:worker
+npm run typecheck:assessment
+npm run test:assessment
+npm run typecheck:reminders
+npm run test:reminders
 npm run test:browser
 npm run content:report
 ```

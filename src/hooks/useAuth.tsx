@@ -38,7 +38,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
   return (
     <AuthContext.Provider
-      value={{ user, loading, error, logout: () => signOut(auth) }}
+      value={{
+        user,
+        loading,
+        error,
+        logout: async () => {
+          try {
+            const { stopBackgroundReminders } =
+              await import("../lib/background-reminders");
+            await stopBackgroundReminders();
+          } catch {
+            /* Account sign-out must still complete. */
+          }
+          await signOut(auth);
+        },
+      }}
     >
       {children}
     </AuthContext.Provider>

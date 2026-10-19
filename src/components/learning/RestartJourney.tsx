@@ -9,7 +9,8 @@ export function RestartJourney() {
   const [open, setOpen] = useState(false),
     [mode, setMode] = useState("beginning"),
     [from, setFrom] = useState(journeyLessons[0].id),
-    [section, setSection] = useState("ready");
+    [section, setSection] = useState("ready"),
+    [search, setSearch] = useState("");
   const target = mode === "beginning" ? journeyLessons[0].id : from;
   const count =
     journeyLessons.length - journeyLessons.findIndex((l) => l.id === target);
@@ -19,7 +20,7 @@ export function RestartJourney() {
       <p>Revisit the beginning or restart from a particular lesson.</p>
       {!open ? (
         <Button variant="outline" onClick={() => setOpen(true)}>
-          Revert lesson progress
+          Restart learning progress
         </Button>
       ) : (
         <div className="restart-controls">
@@ -33,6 +34,15 @@ export function RestartJourney() {
           {mode === "point" && (
             <>
               <label>
+                Find a lesson
+                <input
+                  aria-label="Search restart lessons"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search by topic or lesson ID"
+                />
+              </label>
+              <label>
                 Restart lesson
                 <select
                   aria-label="Restart lesson"
@@ -42,11 +52,19 @@ export function RestartJourney() {
                     setSection("ready");
                   }}
                 >
-                  {journeyLessons.map((l) => (
-                    <option key={l.id} value={l.id}>
-                      {l.id} · {l.title}
-                    </option>
-                  ))}
+                  {journeyLessons
+                    .filter(
+                      (l) =>
+                        l.id === from ||
+                        `${l.id} ${l.title}`
+                          .toLowerCase()
+                          .includes(search.toLowerCase()),
+                    )
+                    .map((l) => (
+                      <option key={l.id} value={l.id}>
+                        {l.id} · {l.title}
+                      </option>
+                    ))}
                 </select>
               </label>
               <label>

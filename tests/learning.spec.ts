@@ -238,7 +238,7 @@ test("lesson prediction, equations, checks, notes, completion, recap and FSRS wo
     "Weight and inertia both scale with mass.",
   );
   await page.getByLabel("Lesson section").selectOption("connections");
-  await page.getByRole("button", { name: "Finish lesson" }).click();
+  await page.getByRole("button", { name: "Finish reading" }).click();
   await expect(
     page.getByRole("heading", { name: "Keep the question alive." }),
   ).toBeVisible();
@@ -249,7 +249,7 @@ test("lesson prediction, equations, checks, notes, completion, recap and FSRS wo
   );
   await page.goto("/lesson/PB1.1");
   await page.getByLabel("Lesson section").selectOption("connections");
-  await page.getByRole("button", { name: "Finish lesson" }).click();
+  await page.getByRole("button", { name: "Finish reading" }).click();
   const after = await page.evaluate(
     () =>
       JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
@@ -550,14 +550,20 @@ test("saved tutor messages restore per account even with live tutoring disabled"
   );
   await page.goto("/lesson/PB1.1");
   await page
-    .getByRole("button", { name: "Ask about this section", exact: true })
+    .getByRole("button", {
+      name: "Saved tutor conversations (live tutor unavailable)",
+      exact: true,
+    })
     .click();
   await expect(
     page.getByText("Why does mass cancel?", { exact: true }),
   ).toBeVisible();
   await page.reload();
   await page
-    .getByRole("button", { name: "Ask about this section", exact: true })
+    .getByRole("button", {
+      name: "Saved tutor conversations (live tutor unavailable)",
+      exact: true,
+    })
     .click();
   await expect(
     page.getByText("Both force and inertia scale with mass in this model.", {
@@ -1126,7 +1132,7 @@ test("restart confirms a chosen lesson and resets only its suffix while retainin
   });
   await page.goto("/settings");
   await page.reload();
-  await page.getByRole("button", { name: "Revert lesson progress" }).click();
+  await page.getByRole("button", { name: "Restart learning progress" }).click();
   await page
     .getByLabel("Where would you like to restart?")
     .selectOption("point");
@@ -1154,7 +1160,7 @@ test("restart confirms a chosen lesson and resets only its suffix while retainin
     .fill("A longer pendulum takes longer to swing.");
   await page.getByRole("button", { name: "Commit and investigate" }).click();
   await page.getByLabel("Lesson section").selectOption("connections");
-  await page.getByRole("button", { name: "Finish lesson" }).click();
+  await page.getByRole("button", { name: "Finish reading" }).click();
   const total = await page.evaluate(() =>
     Object.values(
       JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
@@ -1239,7 +1245,7 @@ test("due lesson repetitions appear in the next lesson and schedule through inli
     .fill("Acceleration is independent of mass in vacuum.");
   await page.getByRole("button", { name: "Commit and investigate" }).click();
   await page.getByLabel("Lesson section").selectOption("connections");
-  await page.getByRole("button", { name: "Finish lesson" }).click();
+  await page.getByRole("button", { name: "Finish reading" }).click();
   await page.goto("/lesson/PB1.2");
   const recap = page.getByRole("region", { name: "Between-lesson recall" });
   await expect(recap).toBeVisible();
@@ -1255,4 +1261,120 @@ test("due lesson repetitions appear in the next lesson and schedule through inli
     ),
   );
   expect(logs).toHaveLength(2);
+});
+
+test("exact resume retains unsubmitted responses, submitted feedback and theory reveal position", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB1.1");
+  const adaptive = page.locator(".adaptive-check .question-card");
+  await adaptive.locator('input[type="number"]').fill("123");
+  await page.reload();
+  await expect(
+    page.locator('.adaptive-check input[type="number"]'),
+  ).toHaveValue("123");
+  await page
+    .locator(".adaptive-check")
+    .getByRole("button", { name: "Check answer" })
+    .click();
+  await page.reload();
+  await expect(page.locator(".adaptive-check .answer-feedback")).toContainText(
+    "Not quite",
+  );
+  await expect(
+    page
+      .locator(".adaptive-check")
+      .getByRole("button", { name: "Check answer" }),
+  ).toBeDisabled();
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill("My unfinished reasoning");
+  await page.reload();
+  await expect(page.getByLabel("Your prediction", { exact: true })).toHaveValue(
+    "My unfinished reasoning",
+  );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("theory");
+  await page.getByRole("button", { name: "Reveal next theory step" }).click();
+  const count = await page.getByText(/of .* theory blocks shown/).textContent();
+  await page.reload();
+  await expect(page.getByText(/of .* theory blocks shown/)).toHaveText(count!);
+});
+test("reading completion is labelled separately from mastery and unchanged answer submissions are disabled", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB1.1");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill("Both accelerate together in vacuum.");
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("check");
+  const first = page.locator(".question-card").first();
+  await first
+    .getByLabel("Weight and inertia scale together", { exact: true })
+    .check();
+  await first.getByRole("button", { name: "Check answer" }).click();
+  await expect(
+    first.getByRole("button", { name: "Check answer" }),
+  ).toBeDisabled();
+  await page.getByLabel("Lesson section").selectOption("connections");
+  await page.getByRole("button", { name: "Finish reading" }).click();
+  await expect(
+    page.getByText(
+      /Reading completed. This is separate from demonstrated mastery/,
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText(/Server-graded assessments are not connected/),
+  ).toBeVisible();
+  await page.getByRole("link", { name: "Back to dashboard" }).click();
+  await expect(
+    page.getByRole("link", {
+      name: "Kinematics and Newton’s laws · reading complete; mastery separate",
+      exact: true,
+    }),
+  ).toBeVisible();
+});
+test("new mechanics models expose energy loss and rolling mass distribution in the connected lessons", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB1.2");
+  await page.getByLabel("Collision restitution", { exact: true }).fill("0");
+  await expect(page.getByText(/Kinetic energy lost: 3.000 J/)).toBeVisible();
+  await page.goto("/lesson/PB1.3");
+  await page.getByLabel("Ramp travel", { exact: true }).fill("1");
+  await page
+    .getByLabel("Rolling mass distribution", { exact: true })
+    .selectOption("1");
+  await expect(page.getByText(/Speed: 4.429 m\/s/)).toBeVisible();
+  await page.getByRole("button", { name: "Rolling body handle" }).focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(page.getByLabel("Ramp travel", { exact: true })).toHaveValue(
+    "0.95",
+  );
+});
+
+test("resume returns to the unfinished practice question rather than the top of a long section", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB1.2");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "Momentum and kinetic energy have different conservation conditions.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("problems");
+  const form = page.locator('[data-question-id="transfer-friction"]');
+  await form.locator('input[type="number"]').fill("-12");
+  await page.reload();
+  await expect(form.locator('input[type="number"]')).toHaveValue("-12");
+  await expect(form.locator('input[type="number"]')).toBeFocused();
 });

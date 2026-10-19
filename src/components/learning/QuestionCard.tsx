@@ -8,21 +8,52 @@ export function QuestionCard({
   question,
   lessonId,
   onResult,
+  lockAfterSubmit = false,
 }: {
   question: Question;
   lessonId: string;
   onResult?: (id: string, correct: boolean) => void;
+  lockAfterSubmit?: boolean;
 }) {
   const store = useLearning();
-  const [response, setResponse] = useState(""),
-    [result, setResult] = useState<boolean | null>(null);
+  const saved =
+    store.records.lessons[lessonId]?.interaction?.responses?.[question.id];
+  const [response, setResponse] = useState(saved?.response || ""),
+    [result, setResult] = useState<boolean | null>(saved?.result ?? null),
+    [submitted, setSubmitted] = useState<string | null>(
+      saved?.submitted ?? null,
+    ),
+    [showHint, setShowHint] = useState(false);
+  function change(value: string) {
+    setResponse(value);
+    setResult(null);
+    store.saveLessonInteraction(lessonId, {
+      lastQuestionId: question.id,
+      responses: {
+        [question.id]: { response: value, result: null, submitted },
+      },
+    });
+  }
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (
+      !response.trim() ||
+      response === submitted ||
+      (lockAfterSubmit && submitted !== null)
+    )
+      return;
     const correct =
       question.type === "numeric"
         ? gradeNumeric(response, Number(question.answer), question.exact)
         : response === question.answer;
     setResult(correct);
+    setSubmitted(response);
+    store.saveLessonInteraction(lessonId, {
+      lastQuestionId: question.id,
+      responses: {
+        [question.id]: { response, result: correct, submitted: response },
+      },
+    });
     const id = crypto.randomUUID();
     store.put("attempts", id, {
       resetAt: store.records.lessons[lessonId]?.resetAt || 0,
@@ -36,14 +67,18 @@ export function QuestionCard({
     onResult?.(question.id, correct);
   }
   return (
-    <form className="question-card" onSubmit={submit}>
+    <form
+      className="question-card"
+      data-question-id={question.id}
+      onSubmit={submit}
+    >
       <span className="pill">
         {question.tier || "Concept check"}
         {question.conceptual ? " · Explain why" : ""}
       </span>
       <h3>{question.prompt}</h3>
       {question.options ? (
-        <fieldset>
+        <fieldset disabled={lockAfterSubmit && submitted !== null}>
           <legend className="sr-only">Choose an answer</legend>
           {question.options.map((option) => (
             <label
@@ -57,8 +92,7 @@ export function QuestionCard({
                 value={option}
                 checked={response === option}
                 onChange={() => {
-                  setResponse(option);
-                  setResult(null);
+                  change(option);
                 }}
               />
               {option}
@@ -70,12 +104,12 @@ export function QuestionCard({
           Your answer ({question.unit})
           <input
             required
+            disabled={lockAfterSubmit && submitted !== null}
             type="number"
             step="any"
             value={response}
             onChange={(e) => {
-              setResponse(e.target.value);
-              setResult(null);
+              change(e.target.value);
             }}
           />
           <small>
@@ -85,9 +119,28 @@ export function QuestionCard({
           </small>
         </label>
       )}
-      <Button disabled={!response} type="submit">
+      <Button
+        disabled={
+          !response.trim() ||
+          response === submitted ||
+          (lockAfterSubmit && submitted !== null)
+        }
+        type="submit"
+      >
         Check answer
       </Button>
+      {question.hint && (
+        <>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => setShowHint(!showHint)}
+          >
+            {showHint ? "Hide hint" : "Give me a hint"}
+          </Button>
+          {showHint && <p className="info-box">{question.hint}</p>}
+        </>
+      )}
       {result !== null && (
         <div
           className={`answer-feedback ${result ? "correct" : "incorrect"}`}
@@ -99,7 +152,9 @@ export function QuestionCard({
               {result ? "That’s right." : "Not quite—here’s why."}
             </strong>
             <br />
-            {question.explanation}
+            {!result && question.misconceptions?.[response]
+              ? question.misconceptions[response]
+              : question.explanation}
           </p>
         </div>
       )}

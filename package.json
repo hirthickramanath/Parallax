@@ -18,9 +18,16 @@
     "test:browser": "playwright test",
     "test:worker": "node --experimental-strip-types --test scripts/worker.test.mjs",
     "test:rules": "node --test scripts/firestore-rules.test.mjs",
-    "content:report": "node scripts/course-status.mjs"
+    "content:report": "node scripts/course-status.mjs",
+    "test:assessment": "node --experimental-strip-types --test scripts/assessment.test.mjs",
+    "typecheck:assessment": "tsc -p workers/assessment/tsconfig.json",
+    "assessment:check": "wrangler deploy --dry-run --outdir /tmp/parallax-assessment-check --config workers/assessment/wrangler.jsonc",
+    "test:reminders": "node --experimental-strip-types --test scripts/reminders.test.mjs",
+    "typecheck:reminders": "tsc -p workers/reminders/tsconfig.json",
+    "reminders:check": "wrangler deploy --dry-run --outdir /tmp/parallax-reminders-check --config workers/reminders/wrangler.jsonc"
   },
   "dependencies": {
+    "@block65/webcrypto-web-push": "^2.0.0",
     "@mdx-js/react": "^3.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",

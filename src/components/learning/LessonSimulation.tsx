@@ -6,6 +6,8 @@ export function simulationNames(lesson: Authored) {
     names.push("black_hole_explorer");
   if (/vector|dot product|cross product/i.test(lesson.title))
     names.push("vector_explorer");
+  if (lesson.id === "PB1.2") names.push("collision_explorer");
+  if (lesson.id === "PB1.3") names.push("rolling_explorer");
   return [...new Set(names)];
 }
 export function LessonSimulation({ lesson }: { lesson: Authored }) {

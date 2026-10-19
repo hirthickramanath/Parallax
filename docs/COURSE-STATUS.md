@@ -81,4 +81,4 @@ All lesson drafts require source and scientific review. A filled foundation unit
 3. Record named reviewer/date and verified sources before upgrading any lesson from draft status. Automated checks are not independent scientific review.
 4. Run the production build, model/example tests and full authored-lesson browser sweep after material changes; regenerate this ledger and push validated batches.
 5. Complete owner-session Firebase rules, cross-account and cross-device checks. Configure the disabled tutor only with an eligible provider/account and secure server-side credentials.
-6. Background push and additional cloud profile paths remain separate unresolved designs; current foreground reminders and existing schema must not be described as those features.
+6. Activate and live-test the separately implemented background-reminder and server-assessment Workers only with authorized secure configuration; their disabled code is not live delivery or certification. Additional cloud profile paths remain a separate design.

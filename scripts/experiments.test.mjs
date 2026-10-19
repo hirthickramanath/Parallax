@@ -386,3 +386,25 @@ test("Legendre explorer rejects invalid degrees and probes", () => {
     assert.throws(() => zonalHarmonic(n, x), RangeError);
   }
 });
+
+test("collision and rolling explorations satisfy conservation, restitution and energy partition", async () => {
+  const { collision, rolling } = await import("../src/lib/mechanics.ts");
+  for (const m1 of [1, 2, 5])
+    for (const m2 of [1, 3])
+      for (const e of [0, 0.5, 1]) {
+        const c = collision(m1, m2, 4, -1, e);
+        assert.ok(Math.abs(c.before - c.after) < 1e-10);
+        assert.ok(Math.abs(c.v2 - c.v1 - e * 5) < 1e-10);
+        const before = 0.5 * m1 * 16 + 0.5 * m2,
+          after = 0.5 * m1 * c.v1 ** 2 + 0.5 * m2 * c.v2 ** 2;
+        assert.ok(Math.abs(before - after - c.lost) < 1e-10);
+      }
+  for (const h of [0, 0.2, 2])
+    for (const beta of [0.4, 0.5, 1]) {
+      const r = rolling(h, beta);
+      assert.ok(Math.abs(r.translation + r.rotation - r.potentialLost) < 1e-10);
+    }
+  assert.ok(rolling(1, 0.4).speed > rolling(1, 1).speed);
+  assert.throws(() => collision(0, 1, 1, 0, 1));
+  assert.throws(() => rolling(-1, 0.5));
+});

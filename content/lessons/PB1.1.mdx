@@ -1,7 +1,7 @@
 ---
 {
   "id": "PB1.1",
-  "title": "Kinematics and Newton\u2019s laws",
+  "title": "Kinematics and Newton’s laws",
   "hook": "Does heavier mean faster?",
   "recap": [
     "Net force determines acceleration, not velocity.",
@@ -20,7 +20,8 @@
       "answer": "Weight and inertia scale together",
       "explanation": "F = mg and F = ma give a = g when gravitational and inertial mass agree.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the governing equation and identify the relevant system before cancelling terms."
     },
     {
       "id": "drag",
@@ -48,10 +49,10 @@
     },
     {
       "id": "distance",
-      "prompt": "Distance fallen from rest after 1 s at g = 9.81 m/s\u00b2?",
+      "prompt": "Distance fallen from rest after 1 s at g = 9.81 m/s²?",
       "options": null,
       "answer": "4.905",
-      "explanation": "Use y = gt\u00b2/2.",
+      "explanation": "Use y = gt²/2.",
       "type": "numeric",
       "conceptual": false,
       "unit": "m"
@@ -65,7 +66,7 @@
         "8"
       ],
       "answer": "4",
-      "explanation": "Displacement scales with t\u00b2.",
+      "explanation": "Displacement scales with t².",
       "type": "mcq",
       "conceptual": false,
       "tier": "warmup"
@@ -74,14 +75,99 @@
       "id": "core",
       "prompt": "For equal linear drag b and unequal masses, why can accelerations differ?",
       "options": [
-        "Drag acceleration is \u2212bv/m",
+        "Drag acceleration is −bv/m",
         "Gravity changes with the bob colour"
       ],
-      "answer": "Drag acceleration is \u2212bv/m",
+      "answer": "Drag acceleration is −bv/m",
       "explanation": "The mass does not cancel in the drag term.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "warmup-net-force",
+      "prompt": "A net force of 6 N acts on a 3 kg object. Find acceleration.",
+      "answer": "2",
+      "explanation": "a=F_net/m=6/3.",
+      "unit": "m/s²",
+      "tier": "warmup",
+      "hint": "Use the net force, not an arbitrary individual force.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-velocity",
+      "prompt": "Starting from rest at constant acceleration 3 m/s², find speed after 4 s.",
+      "answer": "12",
+      "explanation": "v=v0+at=12.",
+      "unit": "m/s",
+      "tier": "warmup",
+      "hint": "Separate initial velocity from its change.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-displacement",
+      "prompt": "Starting from rest with downward acceleration 10 m/s², find downward displacement after 2 s.",
+      "answer": "20",
+      "explanation": "s=at²/2=20.",
+      "unit": "m",
+      "tier": "warmup",
+      "hint": "Displacement is the area under the velocity-time graph.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-stopping",
+      "prompt": "A body initially moves at 10 m/s with constant acceleration −2 m/s² until it stops. Find distance travelled before stopping.",
+      "answer": "25",
+      "explanation": "0=10²+2(−2)s gives s=25 m. After stopping, continuing the same acceleration reverses motion.",
+      "unit": "m",
+      "tier": "core",
+      "hint": "Use a relation that eliminates elapsed time.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-height",
+      "prompt": "At a height equal to Earth radius R above its surface, what fraction of surface gravity remains in a spherical inverse-square model?",
+      "answer": "0.25",
+      "explanation": "Distance from the centre is 2R, giving 1/4, not 1/2.",
+      "unit": "fraction",
+      "tier": "core",
+      "hint": "The inverse-square radius is measured from the centre.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-terminal",
+      "prompt": "For downward-positive motion m dv/dt=mg−bv, use m=2 kg, g=10 m/s² and b=5 kg/s. Find terminal speed.",
+      "answer": "4",
+      "explanation": "Set acceleration, not velocity, equal to zero: mg/b=4.",
+      "unit": "m/s",
+      "tier": "core",
+      "hint": "At terminal speed the resultant force vanishes.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-reasoning",
+      "prompt": "At the highest point of a vertical throw in vacuum near Earth, which statement is correct?",
+      "options": [
+        "Velocity and acceleration are both zero",
+        "Velocity is zero but acceleration remains downward",
+        "Acceleration points upward"
+      ],
+      "answer": "Velocity is zero but acceleration remains downward",
+      "explanation": "Zero instantaneous velocity does not imply zero derivative of velocity.",
+      "hint": "State which assumption would have to hold before applying the formula.",
+      "tier": "core",
+      "type": "mcq",
+      "conceptual": true,
+      "misconceptions": {
+        "Velocity and acceleration are both zero": "Zero instantaneous velocity does not imply zero derivative of velocity.",
+        "Acceleration points upward": "Zero instantaneous velocity does not imply zero derivative of velocity."
+      }
     }
   ],
   "review": [
@@ -92,12 +178,12 @@
     },
     {
       "front": "What initial information is needed in addition to a constant acceleration?",
-      "back": "Initial position and velocity select the trajectory y=y\u2080+v\u2080t+gt\u00b2/2.",
+      "back": "Initial position and velocity select the trajectory y=y₀+v₀t+gt²/2.",
       "concept": "newton-freefall"
     },
     {
       "front": "Why can drag make masses fall differently?",
-      "back": "For equal linear coefficient b, drag acceleration is \u2212bv/m, so mass no longer cancels.",
+      "back": "For equal linear coefficient b, drag acceleration is −bv/m, so mass no longer cancels.",
       "concept": "newton-freefall"
     },
     {
@@ -110,7 +196,11 @@
   "book_refs": [
     "Taylor, Classical Mechanics (edition and section review pending)",
     "Carroll & Ostlie, An Introduction to Modern Astrophysics (edition and section review pending)"
-  ]
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Internal expansion and arithmetic checks; independent scientific review and exact source inspection remain pending."
+  }
 }
 ---
 
@@ -165,6 +255,12 @@ With linear drag, $m\dot v=mg-bv$. Let $\tau=m/b$ for $b>0$. Multiplication by $
 $$v=g\tau(1-e^{-t/\tau}),\qquad y=g\tau[t-\tau(1-e^{-t/\tau})].$$
 
 Mass now appears through $\tau$. Expanding the exponential as $b\to0$ recovers $y=gt^2/2$.
+
+### A trajectory requires force and initial conditions
+
+For constant acceleration, integrate $dv/dt=a$ with $v(0)=v_0$ to get $v=v_0+at$. Integrating again gives $x=x_0+v_0t+at^2/2$. Acceleration has units of length per time squared; every term in the position equation has length units. At a turning point, velocity can vanish while acceleration remains nonzero. Constant-g free fall assumes a local region and negligible drag; it is not a complete orbit model.
+
+With downward-positive linear drag, $m\dot v=mg-bv$. Starting from rest gives $v=(mg/b)(1-e^{-bt/m})$ for positive $b$. The time scale is $m/b$ and the terminal speed is $mg/b$. Both depend on mass for fixed $b$. The limit $b\to0$ recovers $v=gt$ by expanding the exponential. A shared drag coefficient is a modelling choice, not a universal description of differently shaped objects.
 
 </LessonSection>
 

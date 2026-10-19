@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "parallax-assessment",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-19",
+  "vars": {
+    "SITE_ORIGIN": "https://parallax-science.pages.dev",
+    "FIREBASE_PROJECT_ID": "parallax-73",
+    "ENABLE_ASSESSMENTS": "false",
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "ASSESSMENTS", "class_name": "AssessmentLedger" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["AssessmentLedger"] }],
+}

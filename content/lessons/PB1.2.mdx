@@ -20,7 +20,8 @@
       "answer": "No",
       "explanation": "Internal dissipation can change kinetic energy while total momentum stays fixed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the governing equation and identify the relevant system before cancelling terms."
     },
     {
       "id": "q2",
@@ -30,7 +31,7 @@
         "No"
       ],
       "answer": "No",
-      "explanation": "Instantaneous power F\u00b7v is zero.",
+      "explanation": "Instantaneous power F·v is zero.",
       "type": "mcq",
       "conceptual": true
     },
@@ -77,11 +78,96 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as specified"
+    },
+    {
+      "id": "warmup-work",
+      "prompt": "A 10 N force acts at 60 degrees to a displacement of 2 m. Find its work.",
+      "answer": "10",
+      "explanation": "W=Fd cos(60°)=10 J.",
+      "unit": "J",
+      "tier": "warmup",
+      "hint": "Only the component along displacement contributes.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-kinetic",
+      "prompt": "Find kinetic energy of a 2 kg body moving at 3 m/s.",
+      "answer": "9",
+      "explanation": "K=mv²/2=9 J.",
+      "unit": "J",
+      "tier": "warmup",
+      "hint": "Speed enters quadratically.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-impulse",
+      "prompt": "A constant 6 N net force acts for 0.5 s. Find impulse magnitude.",
+      "answer": "3",
+      "explanation": "Impulse=F dt=3 N s, equal to the momentum change.",
+      "unit": "N s",
+      "tier": "warmup",
+      "hint": "Impulse is the area under the force-time graph.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-inelastic",
+      "prompt": "Two 1 kg carts stick together. Initial velocities are 4 m/s and 0. Find kinetic energy lost.",
+      "answer": "4",
+      "explanation": "Momentum gives common speed 2 m/s. Initial K=8 J, final K=4 J, so 4 J becomes other energy.",
+      "unit": "J",
+      "tier": "core",
+      "hint": "Find the final speed from momentum before comparing energies.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-spring",
+      "prompt": "An ideal spring of stiffness 100 N/m is compressed by 0.2 m. Find stored elastic energy relative to equilibrium.",
+      "answer": "2",
+      "explanation": "E=kx²/2=2 J; using kx gives force, not energy.",
+      "unit": "J",
+      "tier": "core",
+      "hint": "Integrate the changing spring force.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-friction",
+      "prompt": "A 2 kg object slides 3 m horizontally under kinetic friction coefficient 0.2. Use g=10 m/s². Find the work done by friction.",
+      "answer": "-12",
+      "explanation": "Normal force=20 N; friction=4 N opposes displacement, so W=−12 J.",
+      "unit": "J",
+      "tier": "core",
+      "hint": "Include the sign of the force projection.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-reasoning",
+      "prompt": "Zero net work on a constant-mass particle over a displacement implies what?",
+      "options": [
+        "Every force is zero",
+        "Its kinetic energy has the same final and initial value",
+        "Its momentum vector is unchanged"
+      ],
+      "answer": "Its kinetic energy has the same final and initial value",
+      "explanation": "Work fixes the change of kinetic energy. The direction of momentum can still change.",
+      "hint": "State which assumption would have to hold before applying the formula.",
+      "tier": "core",
+      "type": "mcq",
+      "conceptual": true,
+      "misconceptions": {
+        "Every force is zero": "Work fixes the change of kinetic energy. The direction of momentum can still change.",
+        "Its momentum vector is unchanged": "Work fixes the change of kinetic energy. The direction of momentum can still change."
+      }
     }
   ],
   "review": [
     {
-      "front": "What changes a system\u2019s total momentum?",
+      "front": "What changes a system’s total momentum?",
       "back": "Momentum changes through external impulse.",
       "concept": "pb1-2-foundation"
     },
@@ -103,8 +189,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Taylor, Classical Mechanics \u2014 edition/section review pending",
-    "OpenStax University Physics Volume 1 \u2014 chapter reference review pending"
+    "Taylor, Classical Mechanics — edition/section review pending",
+    "OpenStax University Physics Volume 1 — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -166,6 +252,12 @@ Subtract the final kinetic energy from the initial value and simplify:
 $$K_i-K_f=\frac12\frac{m_1m_2}{m_1+m_2}(v_1-v_2)^2\ge0.$$
 
 The missing resolved kinetic energy can appear as deformation, thermal energy and sound. Equality occurs for equal initial velocities, not for every momentum-conserving collision.
+
+### Derive work-energy and identify the system boundary
+
+For constant mass, dot $m\dot{\mathbf v}=\mathbf F_{net}$ with velocity: $d(mv^2/2)/dt=\mathbf F_{net}\cdot\mathbf v$. Integrate to obtain $\Delta K=\int\mathbf F_{net}\cdot d\mathbf r$. A force can change direction without changing speed when its instantaneous power vanishes. Zero net work over an interval does not require zero force throughout it.
+
+For two bodies, equal and opposite internal forces cancel in the total momentum equation, leaving $\Delta\mathbf P=\mathbf J_{external}$. Their work contributions need not cancel because the points of application can have different displacements. For a one-dimensional collision, momentum plus restitution determines final velocities. The kinetic-energy loss is $\tfrac12\mu(1-e^2)(u_1-u_2)^2$, with reduced mass $\mu=m_1m_2/(m_1+m_2)$. This model requires negligible external impulse during the impact and $0\le e\le1$ for the ordinary passive collision considered here.
 
 </LessonSection>
 

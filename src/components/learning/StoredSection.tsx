@@ -1,3 +1,4 @@
+import { useLearning } from "../../hooks/useLearning";
 import {
   Children,
   createContext,
@@ -9,6 +10,7 @@ import {
 import { Button } from "../ui/button";
 export const SectionContext = createContext({
   activeId: "",
+  lessonId: "",
   onTheoryComplete: () => {},
 });
 function TheoryReveal({
@@ -19,7 +21,25 @@ function TheoryReveal({
   onComplete: () => void;
 }) {
   const blocks = Children.toArray(children);
-  const [count, setCount] = useState(1);
+  const context = useContext(SectionContext),
+    store = useLearning();
+  const [count, setCountState] = useState(() =>
+    Math.max(
+      1,
+      Math.min(
+        blocks.length,
+        store.records.lessons[context.lessonId]?.interaction?.theoryShown?.[
+          context.activeId
+        ] || 1,
+      ),
+    ),
+  );
+  function setCount(value: number) {
+    setCountState(value);
+    store.saveLessonInteraction(context.lessonId, {
+      theoryShown: { [context.activeId]: value },
+    });
+  }
   return (
     <>
       <div>{blocks.slice(0, count)}</div>

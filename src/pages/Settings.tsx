@@ -1,3 +1,4 @@
+import { BackgroundReminderSettings } from "../components/learning/BackgroundReminder";
 import { RestartJourney } from "../components/learning/RestartJourney";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -50,6 +51,7 @@ export function Settings() {
         </Link>
       )}
       <RestartJourney />
+      <BackgroundReminderSettings />
       <section className="settings-card">
         <h2>Appearance & study</h2>
         <p>Use Appearance and Color theme in the dashboard header.</p>

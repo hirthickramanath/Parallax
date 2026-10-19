@@ -186,7 +186,20 @@ export function buildContent() {
   fs.mkdirSync("public/content", { recursive: true });
   fs.writeFileSync(
     "src/generated/course.json",
-    JSON.stringify({ ...curriculum, authored }),
+    // Lesson bodies are already lazy-loaded MDX. Keep complete text in public
+    // lesson JSON for the tutor/offline contract, not twice in the entry bundle.
+    JSON.stringify({
+      ...curriculum,
+      authored: Object.fromEntries(
+        Object.entries(authored).map(([id, lesson]) => [
+          id,
+          {
+            ...lesson,
+            sections: lesson.sections.map(({ text, ...metadata }) => metadata),
+          },
+        ]),
+      ),
+    }),
   );
   for (const file of fs.readdirSync("public/content"))
     if (

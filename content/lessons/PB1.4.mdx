@@ -2,10 +2,10 @@
 {
   "id": "PB1.4",
   "title": "Gravitation and SHM",
-  "hook": "Can a swinging bob measure a planet\u2019s gravity?",
+  "hook": "Can a swinging bob measure a planet’s gravity?",
   "recap": [
-    "A pendulum\u2019s restoring torque gives \u03b8\u0308 + (g/L)sin \u03b8 = 0.",
-    "T = 2\u03c0\u221a(L/g) requires small amplitude.",
+    "A pendulum’s restoring torque gives θ̈ + (g/L)sin θ = 0.",
+    "T = 2π√(L/g) requires small amplitude.",
     "Repeated timing reduces random timing error, not model bias."
   ],
   "questions": [
@@ -18,18 +18,18 @@
         "Bob colour"
       ],
       "answer": "String length",
-      "explanation": "T = 2\u03c0\u221a(L/g), independent of bob mass.",
+      "explanation": "T = 2π√(L/g), independent of bob mass.",
       "type": "mcq",
       "conceptual": true
     },
     {
       "id": "angle",
-      "prompt": "Why does a 60\u00b0 release bias a small-angle estimate of g?",
+      "prompt": "Why does a 60° release bias a small-angle estimate of g?",
       "options": [
-        "The approximation sin \u03b8 \u2248 \u03b8 is inadequate",
+        "The approximation sin θ ≈ θ is inadequate",
         "Gravity changes sign"
       ],
-      "answer": "The approximation sin \u03b8 \u2248 \u03b8 is inadequate",
+      "answer": "The approximation sin θ ≈ θ is inadequate",
       "explanation": "The nonlinear period is longer than the small-angle period.",
       "type": "mcq",
       "conceptual": true
@@ -48,10 +48,10 @@
     },
     {
       "id": "period",
-      "prompt": "Small-angle period at L = 1 m and g = 9.81 m/s\u00b2?",
+      "prompt": "Small-angle period at L = 1 m and g = 9.81 m/s²?",
       "options": null,
       "answer": "2.006",
-      "explanation": "Use 2\u03c0\u221a(1/9.81).",
+      "explanation": "Use 2π√(1/9.81).",
       "type": "numeric",
       "conceptual": false,
       "unit": "s"
@@ -65,7 +65,7 @@
         "16"
       ],
       "answer": "2",
-      "explanation": "The period scales with \u221aL.",
+      "explanation": "The period scales with √L.",
       "type": "mcq",
       "conceptual": false,
       "tier": "warmup"
@@ -75,11 +75,96 @@
       "prompt": "What is g from L = 1 m and ten oscillations taking 20 s?",
       "options": null,
       "answer": "9.8696",
-      "explanation": "One period is 2 s, so g = 4\u03c0\u00b2L/T\u00b2.",
+      "explanation": "One period is 2 s, so g = 4π²L/T².",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
-      "unit": "m/s\u00b2"
+      "unit": "m/s²"
+    },
+    {
+      "id": "warmup-length-ratio",
+      "prompt": "Two ideal small-angle pendulums at equal g have length ratio L2/L1=4. Find T2/T1.",
+      "answer": "2",
+      "explanation": "T scales as sqrt(L), hence sqrt(4)=2.",
+      "unit": "ratio",
+      "tier": "warmup",
+      "hint": "Distinguish proportionality to length from its square root.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-period",
+      "prompt": "For an ideal small-angle pendulum with length 1 m and g=pi² m/s², find period.",
+      "answer": "2",
+      "explanation": "T=2pi sqrt(1/pi²)=2 s.",
+      "unit": "s",
+      "tier": "warmup",
+      "hint": "Keep pi in numerator and denominator until simplifying.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "warmup-frequency",
+      "prompt": "A periodic motion has period 0.5 s. Find frequency.",
+      "answer": "2",
+      "explanation": "f=1/T=2 Hz. Angular frequency would be 2pi f.",
+      "unit": "Hz",
+      "tier": "warmup",
+      "hint": "Frequency counts cycles per second, not radians per second.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-infer-gravity",
+      "prompt": "An ideal small-angle pendulum of length 1 m has period pi seconds. Infer g.",
+      "answer": "4",
+      "explanation": "g=4pi²L/T²=4 m/s².",
+      "unit": "m/s²",
+      "tier": "core",
+      "hint": "Rearrange the square of the period equation.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-amplitude",
+      "prompt": "Use T/T0 approximately 1+theta0²/16 with theta0=0.4 radians. Find the fractional period increase.",
+      "answer": "0.01",
+      "explanation": "theta0²/16=0.16/16=0.01, or 1 percent. Higher corrections are omitted.",
+      "unit": "fraction",
+      "tier": "core",
+      "hint": "Report the increase, not the entire ratio.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-planet",
+      "prompt": "The same ideal pendulum moves to a location with four times the original g. Find T_new/T_old.",
+      "answer": "0.5",
+      "explanation": "Period scales as 1/sqrt(g), giving 1/2.",
+      "unit": "ratio",
+      "tier": "core",
+      "hint": "Hold length fixed while changing gravity.",
+      "type": "numeric",
+      "conceptual": false
+    },
+    {
+      "id": "transfer-reasoning",
+      "prompt": "At larger amplitude, why does the ideal small-angle period become inaccurate?",
+      "options": [
+        "The bob mass enters the formula",
+        "sin(theta) differs appreciably from theta",
+        "Gravity stops acting at the turning point"
+      ],
+      "answer": "sin(theta) differs appreciably from theta",
+      "explanation": "The pendulum restoring torque is proportional to sin(theta), approximated by theta only near zero.",
+      "hint": "State which assumption would have to hold before applying the formula.",
+      "tier": "core",
+      "type": "mcq",
+      "conceptual": true,
+      "misconceptions": {
+        "The bob mass enters the formula": "The pendulum restoring torque is proportional to sin(theta), approximated by theta only near zero.",
+        "Gravity stops acting at the turning point": "The pendulum restoring torque is proportional to sin(theta), approximated by theta only near zero."
+      }
     }
   ],
   "review": [
@@ -89,18 +174,18 @@
       "concept": "measurement-uncertainty"
     },
     {
-      "front": "When does T = 2\u03c0\u221a(L/g) hold?",
+      "front": "When does T = 2π√(L/g) hold?",
       "back": "For an ideal point-mass, fixed-length, undamped pendulum in uniform gravity at small angle.",
       "concept": "pendulum-period"
     },
     {
       "front": "How is gravity inferred from small-angle pendulum timing?",
-      "back": "g=4\u03c0\u00b2L/T\u00b2; measure length and average period, and check the small-angle model.",
+      "back": "g=4π²L/T²; measure length and average period, and check the small-angle model.",
       "concept": "pendulum-period"
     },
     {
       "front": "What changes the ideal pendulum period at finite amplitude?",
-      "back": "The nonlinear sin \u03b8 restoring term makes the period longer than the small-angle prediction.",
+      "back": "The nonlinear sin θ restoring term makes the period longer than the small-angle prediction.",
       "concept": "pendulum-period"
     },
     {
@@ -113,7 +198,11 @@
   "book_refs": [
     "Taylor, Classical Mechanics (edition and section review pending)",
     "Carroll & Ostlie, An Introduction to Modern Astrophysics (edition and section review pending)"
-  ]
+  ],
+  "verification": {
+    "status": "pending",
+    "note": "Internal expansion and arithmetic checks; independent scientific review and exact source inspection remain pending."
+  }
 }
 ---
 
@@ -172,6 +261,12 @@ Substitute $\sin(\theta/2)=k\sin\phi$, where $k=\sin(\theta_0/2)$. The square-ro
 $$T=4\sqrt{\frac Lg}\int_0^{\pi/2}\frac{d\phi}{\sqrt{1-k^2\sin^2\phi}}.$$
 
 As $\theta_0\to0$, $k\to0$ and the integral tends to $\pi/2$, recovering $T_0$. The lab evaluates this integral numerically.
+
+### Recover the small-angle model and quantify its limit
+
+For a point bob and massless rigid-length suspension, tangential force gives $mL\ddot\theta=-mg\sin\theta$. Cancelling mass and replacing $\sin\theta$ by $\theta$ yields $\ddot\theta+(g/L)\theta=0$, so $T_0=2\pi\sqrt{L/g}$. The square root has time units. Small-angle behaviour is a hypothesis about amplitude, not about bob mass.
+
+For moderate amplitudes the expansion starts $T/T_0=1+\theta_0^2/16+O(\theta_0^4)$ with angle in radians. The positive correction means a large-amplitude timing can bias a gravity estimate based on $T_0$. Since $g=4\pi^2L/T^2$, small independent uncertainties give approximately $\sigma_g/g=\sqrt{(\sigma_L/L)^2+(2\sigma_T/T)^2}$. This propagation assumes the input-error model; a systematic amplitude bias is not removed merely by timing more oscillations.
 
 </LessonSection>
 
