@@ -1,4 +1,8 @@
 import {
+  HamiltonianPhaseExplorer,
+  CanonicalShearExplorer,
+} from "./AnalyticalMechanicsExplorers";
+import {
   CoriolisExplorer,
   InertiaTensorExplorer,
   RutherfordExplorer,
@@ -40,6 +44,8 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  hamiltonian_phase_explorer: HamiltonianPhaseExplorer,
+  canonical_shear_explorer: CanonicalShearExplorer,
   coriolis_explorer: CoriolisExplorer,
   inertia_tensor_explorer: InertiaTensorExplorer,
   rutherford_explorer: RutherfordExplorer,

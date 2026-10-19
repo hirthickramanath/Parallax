@@ -82,3 +82,5 @@ The companion websites are plans only, not additional projects implemented here.
 React Router v6 retains its documented moderate advisories; the application uses safe internal destinations and no SSR hydration. Upgrading to v7 is a separate stack decision. A patched gRPC 1.x override resolves earlier Firebase transitive high-severity findings. Run `npm audit` for the current full report rather than assuming the dependency tree is advisory-free.
 
 See the [advanced mechanics batch](docs/ADVANCED-MECHANICS-BATCH.md) for the latest content, models, checks and review limits.
+
+The [batch progress report](docs/BATCH-PROGRESS.md) records the latest 21-lesson expansion, seven new models, source-review scope and remaining work.

@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analytical-transfer-1",
+      "prompt": "Two equal masses m=2 have K=[[16,−8],[−8,16]]. Find the lower angular normal frequency.",
+      "answer": "2",
+      "hint": "For the in-phase vector, K has eigenvalue 8; divide by m before taking the square root.",
+      "explanation": "omega_low²=8/2=4, hence omega_low=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-2",
+      "prompt": "For the same mass and stiffness matrices, find the higher angular normal frequency.",
+      "answer": "3.4641016151377544",
+      "hint": "The opposite-phase stiffness eigenvalue is 24.",
+      "explanation": "omega_high²=24/2=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-3",
+      "prompt": "For M=2I, find the positive common component c of the normalized in-phase vector (c,c) with vᵀMv=1.",
+      "answer": "0.5",
+      "hint": "Normalize in the mass inner product.",
+      "explanation": "2c²+2c²=1 gives c=1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-hypotheses",
+      "prompt": "For a repeated eigenfrequency, must any two supplied eigenvectors be mass-orthogonal?",
+      "answer": "No; a mass-orthogonal basis can be chosen, but arbitrary vectors in the degenerate eigenspace need not be orthogonal.",
+      "options": [
+        "Yes; equal eigenvalues force every pair of eigenvectors to be orthogonal.",
+        "No; a mass-orthogonal basis can be chosen, but arbitrary vectors in the degenerate eigenspace need not be orthogonal."
+      ],
+      "explanation": "Subtracting the two eigenvalue equations gives no orthogonality condition when the eigenvalues coincide.",
+      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "misconceptions": {
+        "Yes; equal eigenvalues force every pair of eigenvectors to be orthogonal.": "Subtracting the two eigenvalue equations gives no orthogonality condition when the eigenvalues coincide."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,6 +204,13 @@ For two identical masses m connected to walls by springs k and to one another by
 For zero initial velocities, each normal coordinate evolves as q±(t)=q±(0)cos(ω±t). Recombining gives the two mass displacements. A one-mass release excites both modes. The resulting envelopes need not be a single oscillator frequency, and the elementary close-frequency beat description is only appropriate when the two frequencies are sufficiently close.
 
 Conserved energy is m(v₁²+v₂²)/2+k(x₁²+x₂²)/2+kc(x₂−x₁)²/2 in this ideal model. Real damping, large-amplitude nonlinear springs and unequal masses require extensions. The mode decomposition is an approximation to the actual system when derived from a small-displacement expansion.
+
+
+### Variational derivation and transfer case
+
+Expand near a stable equilibrium as $T=\dot q^T M\dot q/2$ and $V=V_0+q^T Kq/2$, with real symmetric M positive definite. A mode $q=v e^{i\omega t}$ obeys $Kv=\omega^2Mv$, not an ordinary stiffness-only eigenproblem when M is nontrivial. Multiplication by $M^{-1/2}$ gives the symmetric mass-weighted problem.
+
+For distinct eigenvalues, symmetry gives $(\omega_i^2-\omega_j^2)v_i^TMv_j=0$, so modes are orthogonal in the mass inner product. In a degenerate eigenspace that subtraction is uninformative, although an M-orthonormal basis can be constructed. General initial data are expanded in the chosen mode basis; observing one coordinate oscillate is not proof that only one mode is excited.
 
 </LessonSection>
 

@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analytical-transfer-1",
+      "prompt": "For H=p²/(2m)+kq²/2, with m=2 and p=2, find qdot.",
+      "answer": "1",
+      "hint": "Hamilton’s first equation differentiates H with respect to p.",
+      "explanation": "qdot=H_p=p/m=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-2",
+      "prompt": "For the same oscillator with k=8 and q=0.5, find pdot.",
+      "answer": "-4",
+      "hint": "Hamilton’s second equation has a minus sign.",
+      "explanation": "pdot=−H_q=−kq=−4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-3",
+      "prompt": "A one-degree harmonic oscillator has energy E=3 and angular frequency omega=2. Find enclosed canonical phase area in q-p coordinates.",
+      "answer": "9.42477796076938",
+      "hint": "The ellipse area is 2πE/omega.",
+      "explanation": "Area=2π·3/2=3π.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-hypotheses",
+      "prompt": "For qdot=p/m and pdot=−kq−gamma p with gamma>0, does canonical phase area remain constant?",
+      "answer": "No; the flow divergence is −gamma and area contracts.",
+      "options": [
+        "Yes; every differential equation preserves Hamiltonian phase area.",
+        "No; the flow divergence is −gamma and area contracts."
+      ],
+      "explanation": "The damping term changes divergence, so the standard Hamiltonian incompressibility argument no longer applies.",
+      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "misconceptions": {
+        "Yes; every differential equation preserves Hamiltonian phase area.": "The damping term changes divergence, so the standard Hamiltonian incompressibility argument no longer applies."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +205,19 @@ Energy conservation requires absence of explicit time dependence in H. A time-de
 
 If the velocity Hessian is singular, the naive Legendre inversion fails. Constraints, gauge redundancy and a constrained Hamiltonian formulation may then be required. A zero determinant is a structural warning, not a license to divide by it numerically.
 
+
+### Variational derivation and transfer case
+
+For a regular Lagrangian, invert $p=L_{\dot q}$ locally to define $H=p\dot q-L$ as a function of $(q,p,t)$. Differentiating the Legendre transform cancels the velocity variations and yields $\dot q=H_p$, $\dot p=-H_q$. Inverting a singular velocity Hessian is not justified by merely writing the formal transform.
+
+For twice differentiable H, canonical flow has divergence $\partial_q H_p-\partial_p H_q=0$. This gives local canonical phase-volume preservation, not preservation of every projection onto position coordinates. Adding linear damping gives divergence $-\gamma$, a genuinely different flow. For an oscillator, the energy contour is an ellipse with semiaxes $\sqrt{2E/(m\omega^2)}$ and $\sqrt{2mE}$, hence area $2\pi E/\omega$.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="hamiltonian_phase_explorer" />
+
 
 Compute trajectories for the harmonic oscillator in (q,p), compare with (q,q̇) and monitor energy. Check area preservation for the exact flow and distinguish numerical integrator artifacts. Identify the Hessian before attempting a Legendre transform.
 

@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analytical-transfer-1",
+      "prompt": "For L=m xdot²/2−k x²/2 with m=2 kg, k=8 N/m and x=0.3 m, find acceleration in m/s².",
+      "answer": "-1.2",
+      "hint": "Use the Euler–Lagrange equation m x-double-dot+kx=0.",
+      "explanation": "Acceleration is −kx/m=−1.2 m/s².",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-2",
+      "prompt": "For planar polar kinetic energy and a central potential, find p_theta for m=3, r=2 and theta-dot=0.5.",
+      "answer": "6",
+      "hint": "Differentiate L with respect to angular velocity.",
+      "explanation": "p_theta=m r² theta-dot=3·4·0.5=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-3",
+      "prompt": "Add dF/dt to a Lagrangian, with F(q)=3q². At q=2, what is the shift in canonical momentum?",
+      "answer": "12",
+      "hint": "The velocity coefficient added by dF/dt is dF/dq.",
+      "explanation": "The shift is F_q=6q=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-hypotheses",
+      "prompt": "Does adding dF(q,t)/dt alter the Euler–Lagrange trajectory when endpoint coordinate variations are fixed to zero?",
+      "answer": "No; the added action is an endpoint term with zero allowed variation.",
+      "options": [
+        "Yes; every changed expression for L gives different trajectories.",
+        "No; the added action is an endpoint term with zero allowed variation."
+      ],
+      "explanation": "Canonical momenta can change while the fixed-endpoint equations remain equivalent.",
+      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "misconceptions": {
+        "Yes; every changed expression for L gives different trajectories.": "Canonical momenta can change while the fixed-endpoint equations remain equivalent."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,6 +204,13 @@ Canonical momenta are $p_i=\partial L/\partial\dot q_i$. They need not equal Car
 Generalized nonconservative forces can be included as d(Lq̇)/dt−Lq=Qi under the appropriate virtual-work formulation. A Rayleigh dissipation function quadratic in velocities models certain linear drag forces through Qi=−∂R/∂q̇i; it is not a universal recipe for every dissipative process.
 
 Adding dF(q,t)/dt to L leaves the fixed-endpoint interior equations unchanged but shifts canonical momenta by ∂F/∂q. Derive observables from the complete formulation rather than identifying one gauge-dependent canonical expression with a measured mechanical quantity in every setting.
+
+
+### Variational derivation and transfer case
+
+Vary $S=\int L(q,\dot q,t)dt$ and integrate the velocity variation by parts. The result is $\delta S=[p\,\delta q]_{t_0}^{t_1}+\int(L_q-dp/dt)\delta q\,dt$. Fixed endpoint variations remove the boundary term, and arbitrary interior variations give the Euler–Lagrange equation. This establishes stationarity, not a universal global minimum.
+
+Adding $dF(q,t)/dt$ changes the action by $F(q_1,t_1)-F(q_0,t_0)$. With fixed endpoints it leaves the equations unchanged, while $p$ shifts by $F_q$. For a regular velocity Hessian this gauge freedom must be carried consistently into the Hamiltonian construction. Generalized momentum is defined by differentiation of L, not by automatically multiplying a coordinate speed by mass.
 
 </LessonSection>
 

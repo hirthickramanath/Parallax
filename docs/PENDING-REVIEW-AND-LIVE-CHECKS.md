@@ -20,7 +20,7 @@ MB3.1–MB3.5, PB4.2, CB.1 and CB.2 now have 40 added problems/checks and theory
 
 ## Real-analysis follow-up
 
-MA1.1–MA1.8 have 32 added transfer/hypothesis questions, proof extensions and two embedded mathematical investigations. [Source inspection](REAL-ANALYSIS-SOURCE-INSPECTION.md) records eight scoped author-repository mappings, bringing the current total to 29 partially inspected drafts. Exact grading protects discrete counts and tail thresholds. This does not close independent review or advanced-course authoring.
+MA1.1–MA1.8 have 32 added transfer/hypothesis questions, proof extensions and two embedded mathematical investigations. [Source inspection](REAL-ANALYSIS-SOURCE-INSPECTION.md) records eight scoped author-repository mappings, bringing that checkpoint to 29 partially inspected drafts. Exact grading protects discrete counts and tail thresholds. This does not close independent review or advanced-course authoring.
 
 ## Scientific and editorial review
 
@@ -66,4 +66,8 @@ The excluded-subjects and separate engineering/technology plans remain in their 
 
 ## Advanced mechanics follow-up
 
-[PH1 batch](ADVANCED-MECHANICS-BATCH.md): six deeper banks, 24 questions, three manipulable models and three scoped source mappings. Current partial source coverage is 32 lessons; independent verification remains zero.
+[PH1 batch](ADVANCED-MECHANICS-BATCH.md): six deeper banks, 24 questions, three manipulable models and three scoped source mappings. Partial source coverage at that checkpoint was 32 lessons; independent verification remains zero.
+
+## Analytical mechanics follow-up
+
+[PH2 batch](ANALYTICAL-MECHANICS-BATCH.md): seven deeper banks, 28 added questions, two embedded models and two narrowly scoped documentation mappings. Current partial source coverage is 34 lessons. See [cumulative batch progress](BATCH-PROGRESS.md) for completed and remaining work; independent verification remains zero.

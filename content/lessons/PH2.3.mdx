@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analytical-transfer-1",
+      "prompt": "For a rotationally invariant polar Lagrangian, find conserved p_theta for m=2, r=3 and theta-dot=0.5.",
+      "answer": "9",
+      "hint": "Use the conjugate momentum to the cyclic angle.",
+      "explanation": "p_theta=m r² theta-dot=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-2",
+      "prompt": "A constant-force model has conserved J=p−Ft. At p=14, F=4 and t=2, find J.",
+      "answer": "6",
+      "hint": "Include the boundary-term correction, not just momentum.",
+      "explanation": "J=14−4·2=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-3",
+      "prompt": "For planar rotation, compute angular momentum x p_y−y p_x at x=2,y=1,p_x=3,p_y=4.",
+      "answer": "5",
+      "hint": "Use the signed generator of rotations.",
+      "explanation": "2·4−1·3=5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-hypotheses",
+      "prompt": "For L=m qdot²/2+Fq, a constant coordinate translation changes L by a total derivative. Which charge is conserved?",
+      "answer": "p−Ft",
+      "options": [
+        "p alone",
+        "p−Ft"
+      ],
+      "explanation": "The boundary term F times translation times t contributes to Noether’s charge.",
+      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "misconceptions": {
+        "p alone": "The boundary term F times translation times t contributes to Noether’s charge."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,6 +204,13 @@ For a rotationally invariant point-particle system, an infinitesimal rotation η
 If the Lagrangian changes by a total derivative, retain B in the charge. A change of L by a total derivative shifts canonical definitions consistently and should not create a new physical nonconservation. Symmetry of the differential equations alone is not automatically the variational symmetry required by this theorem.
 
 A useful derivation checks the transformation of Ldt, writes the resulting charge and differentiates it using the actual equations. Discrete parity or time-reversal symmetry does not yield the same one-parameter infinitesimal charge through this simple theorem, though those symmetries have other physical consequences.
+
+
+### Variational derivation and transfer case
+
+For an infinitesimal transformation $\delta q=\varepsilon\eta$, suppose $\delta L=\varepsilon\,dB/dt$. On solutions, integration by parts reduces the variation to a total derivative and gives $d(p\eta-B)/dt=0$. A strict symmetry has $B=0$, but a symmetry up to a boundary term generally does not.
+
+For $L=m\dot q^2/2+Fq$ and constant translation, $\eta=1$ and $B=Ft$. Thus $J=p-Ft$ is conserved even though ordinary momentum increases at rate F. Rotational invariance similarly gives the angular-momentum generator. The symmetry must apply to the complete stated system, including prescribed external fields; a fixed apparatus can break a symmetry that an isolated subsystem would have had.
 
 </LessonSection>
 

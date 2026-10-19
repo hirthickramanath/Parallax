@@ -77,6 +77,57 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analytical-transfer-1",
+      "prompt": "On x²+y²=25, at x=3,y=4 and xdot=2, find ydot.",
+      "answer": "-1.5",
+      "hint": "Differentiate the constraint along the actual trajectory.",
+      "explanation": "2x xdot+2y ydot=0 gives ydot=−3·2/4=−1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-2",
+      "prompt": "A 1 kg bead moves at 3 m/s around a fixed horizontal frictionless circle of radius 2 m. Find inward constraint-force magnitude in N.",
+      "answer": "4.5",
+      "hint": "The constraint supplies the centripetal force in this stated model.",
+      "explanation": "F=m v²/R=9/2=4.5 N.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-3",
+      "prompt": "Two particles move freely in 3D but maintain one independent fixed-distance constraint. How many local configuration degrees of freedom remain?",
+      "answer": "5",
+      "hint": "Count six position coordinates minus one independent scalar constraint.",
+      "explanation": "The regular constraint removes one local degree of freedom, leaving five.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "exact": true
+    },
+    {
+      "id": "analytical-hypotheses",
+      "prompt": "For an explicitly moving constraint f(q,t)=0, is grad(f)·qdot=0 the complete velocity condition?",
+      "answer": "No; grad(f)·qdot+f_t=0 is required.",
+      "options": [
+        "Yes; explicit time dependence never enters the velocity condition.",
+        "No; grad(f)·qdot+f_t=0 is required."
+      ],
+      "explanation": "Differentiate f(q(t),t) using both parts of the chain rule.",
+      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "misconceptions": {
+        "Yes; explicit time dependence never enters the velocity condition.": "Differentiate f(q(t),t) using both parts of the chain rule."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,6 +205,13 @@ For a particle constrained to a sphere, a multiplier force normal to the sphere 
 A velocity relation a(q,t)·q̇+b(q,t)=0 is not automatically an integrable position constraint. Rolling without slipping is a common source of nonholonomic restrictions. Directly treating every such relation as a variational holonomic constraint can lead to equations different from physical d'Alembert dynamics.
 
 A moving ideal constraint can transfer energy even when its reaction does no virtual work in the relevant instantaneous variation class. Virtual displacements are not identical to the actual time displacement of a moving support. State the support motion and energy exchange before invoking conservation of the unconstrained mechanical energy.
+
+
+### Variational derivation and transfer case
+
+For a regular holonomic constraint $f(q,t)=0$, allowed virtual displacements at fixed time obey $\nabla f\cdot\delta q=0$. A multiplier reaction $\lambda\nabla f$ then has zero virtual work on those variations. Its numerical multiplier depends on how the same constraint equation is scaled; the physical reaction must be reconstructed from the product.
+
+Actual velocities satisfy $\nabla f\cdot\dot q+f_t=0$. Therefore a moving ideal constraint can have power $\lambda\nabla f\cdot\dot q=-\lambda f_t$, which need not vanish. Zero virtual work is not zero actual energy exchange with moving apparatus. Counting constraints also requires independence and local regularity; dependent equations do not each remove a separate degree of freedom.
 
 </LessonSection>
 

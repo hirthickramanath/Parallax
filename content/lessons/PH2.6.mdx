@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "analytical-transfer-1",
+      "prompt": "For a harmonic oscillator with E=10 and omega=4, find action J=(1/2π)∮p dq.",
+      "answer": "2.5",
+      "hint": "Divide canonical phase area by 2π.",
+      "explanation": "J=E/omega=2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-2",
+      "prompt": "For a free particle of mass 2 and energy 9, find the positive momentum branch in consistent units.",
+      "answer": "6",
+      "hint": "Solve p²/(2m)=E and choose the stated sign.",
+      "explanation": "p=+sqrt(2mE)=6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-transfer-3",
+      "prompt": "For an action Hamiltonian H(J)=3J+0.5J², find angle frequency at J=2.",
+      "answer": "5",
+      "hint": "Differentiate H with respect to J.",
+      "explanation": "theta-dot=3+J=5 at J=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "analytical-hypotheses",
+      "prompt": "For H(J)=3J+0.5J², should the canonical angle frequency be computed as H/J?",
+      "answer": "No; it is ∂H/∂J.",
+      "options": [
+        "Yes; energy divided by action always equals angle frequency.",
+        "No; it is ∂H/∂J."
+      ],
+      "explanation": "The equality H/J=omega holds for a purely linear oscillator Hamiltonian, not every H(J).",
+      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "misconceptions": {
+        "Yes; energy divided by action always equals angle frequency.": "The equality H/J=omega holds for a purely linear oscillator Hamiltonian, not every H(J)."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +205,19 @@ For a harmonic oscillator H=p²/(2m)+mω²q²/2, the phase ellipse area is 2πE/
 
 Several degrees of freedom need enough independent commuting integrals and the applicable regular compact invariant structure for the standard integrable-torus construction. Generic coupled or chaotic motion does not automatically admit a global set of conserved actions. Adiabatic invariance is an approximation with timescale and separatrix restrictions, not a blanket conservation law for any slowly described parameter change.
 
+
+### Variational derivation and transfer case
+
+A Hamilton–Jacobi principal function satisfies $S_t+H(q,S_q,t)=0$. For an autonomous system, use $S=W(q,E)-Et$ to obtain $H(q,W_q)=E$. Choosing one sign of $W_q$ selects a local momentum branch; turning points and caustics can obstruct a single global representation.
+
+For a bounded one-degree orbit, $J=(1/2\pi)\oint p\,dq$ and its canonical angle evolves with $\dot\theta=\partial H/\partial J$. A harmonic oscillator has $H=\omega J$ and therefore amplitude-independent frequency, but a nonlinear H(J) generally does not. At a separatrix the period can diverge, so extending a regular action–angle chart across it without checking invertibility is unjustified.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="hamiltonian_phase_explorer" />
+
 
 Compute the oscillator phase-ellipse area from its two intercepts and recover J. Compare numerical area estimates with E/ω. Then sketch a pendulum separatrix and explain why periodic-orbit coordinates need care near that boundary.
 

@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 32 have current partial AI-assisted source mappings; 316 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 34 have current partial AI-assisted source mappings; 313 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -302,13 +302,13 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH18.2 Scientific writing and presenting | 6 / 6 | 2 | 0 | pending |
 | PH18.3 Designing a research project | 6 / 6 | 2 | 0 | pending |
 | PH18.4 Survey of open problems in physics | 6 / 6 | 2 | 0 | pending |
-| PH2.1 Lagrangian mechanics | 6 / 6 | 2 | 0 | pending |
-| PH2.2 Constraints and generalised coordinates | 6 / 6 | 2 | 0 | pending |
-| PH2.3 Symmetries and Noether's theorem | 6 / 6 | 2 | 0 | pending |
-| PH2.4 Hamiltonian mechanics and phase space | 6 / 6 | 2 | 0 | pending |
-| PH2.5 Canonical transformations and Poisson brackets | 6 / 6 | 2 | 0 | pending |
-| PH2.6 Hamilton-Jacobi theory and action-angle variables | 6 / 6 | 2 | 0 | pending |
-| PH2.7 Small oscillations and normal modes | 6 / 6 | 2 | 0 | coupled_oscillator_lab |
+| PH2.1 Lagrangian mechanics | 10 / 10 | 5 | 4 | pending |
+| PH2.2 Constraints and generalised coordinates | 10 / 10 | 5 | 4 | pending |
+| PH2.3 Symmetries and Noether's theorem | 10 / 10 | 5 | 4 | pending |
+| PH2.4 Hamiltonian mechanics and phase space | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
+| PH2.5 Canonical transformations and Poisson brackets | 10 / 10 | 5 | 4 | canonical_shear_explorer |
+| PH2.6 Hamilton-Jacobi theory and action-angle variables | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
+| PH2.7 Small oscillations and normal modes | 10 / 10 | 5 | 4 | coupled_oscillator_lab |
 | PH3.1 Nonlinear oscillators, chaos and Lyapunov exponents | 6 / 6 | 2 | 0 | pending |
 | PH3.2 Stress and strain | 6 / 6 | 2 | 0 | pending |
 | PH3.3 Fluid dynamics (Euler and Navier-Stokes) | 6 / 6 | 2 | 0 | pending |

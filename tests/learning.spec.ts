@@ -1585,3 +1585,34 @@ test("advanced mechanics models expose frame signs tensor dynamics and scatterin
     page.getByText(/Deflection angle: 53.130 degrees/),
   ).toBeVisible();
 });
+
+test("analytical mechanics displays canonical flow and area-preserving shear", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PH2.4");
+  await expect(
+    page.getByText(
+      /Energy: 0.5000. Action J: 0.5000. Enclosed phase area: 3.1416/,
+    ),
+  ).toBeVisible();
+  await page.getByLabel("Phase momentum p", { exact: true }).fill("1");
+  await expect(
+    page.getByText(/Energy: 1.0000. Action J: 1.0000/),
+  ).toBeVisible();
+  await page.getByLabel("Phase angular frequency", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Phase angular frequency", { exact: true }),
+  ).toHaveValue("1.1");
+  await page.goto("/lesson/PH2.5");
+  await expect(
+    page.getByText(/New point: Q=1.000, P=0.000. Poisson bracket: 1.000/),
+  ).toBeVisible();
+  await page.getByLabel("Canonical shear alpha", { exact: true }).fill("-1");
+  await expect(page.getByText(/New point: Q=1.000, P=2.000/)).toBeVisible();
+  await page.goto("/lesson/PH2.6");
+  await expect(
+    page.getByLabel("Phase position q", { exact: true }),
+  ).toBeVisible();
+});
