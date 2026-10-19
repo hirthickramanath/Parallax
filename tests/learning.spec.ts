@@ -1378,3 +1378,52 @@ test("resume returns to the unfinished practice question rather than the top of 
   await expect(form.locator('input[type="number"]')).toHaveValue("-12");
   await expect(form.locator('input[type="number"]')).toBeFocused();
 });
+
+test("fluids heat conics and spatial projection are embedded and respond to keyboard controls", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PB2.1");
+  await page.getByLabel("Probe depth (m)", { exact: true }).fill("3");
+  await expect(
+    page.getByText("Gauge pressure: 29400 Pa. Absolute pressure: 130700 Pa."),
+  ).toBeVisible();
+  await page.getByLabel("Probe depth (m)", { exact: true }).focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(page.getByLabel("Probe depth (m)", { exact: true })).toHaveValue(
+    "2.9",
+  );
+  const probe = page.getByLabel("Drag pressure probe", { exact: true });
+  const box = (await probe.boundingBox())!;
+  const scale = Math.min(box.width / 400, box.height / 260);
+  await probe.locator("circle").hover();
+  await page.mouse.down();
+  await page.mouse.move(
+    box.x + box.width / 2,
+    box.y + (box.height - 260 * scale) / 2 + 170 * scale,
+  );
+  await page.mouse.up();
+  await expect(
+    page.getByText("Gauge pressure: 34300 Pa. Absolute pressure: 135600 Pa."),
+  ).toBeVisible();
+  await page.goto("/lesson/PB2.2");
+  await page
+    .getByLabel("Heating constraint", { exact: true })
+    .selectOption("pressure");
+  await expect(
+    page.getByText("ΔU: 249.42 J. W: 166.28 J. Q: 415.70 J."),
+  ).toBeVisible();
+  await page.goto("/lesson/MB2.2");
+  await page.getByLabel("Ellipse eccentricity", { exact: true }).fill("0");
+  await expect(
+    page.getByText(
+      "Radius: 5.000 AU. Periapsis: 5.000 AU. Apoapsis: 5.000 AU.",
+    ),
+  ).toBeVisible();
+  await page.goto("/lesson/MB2.3");
+  await page.getByLabel("Point x", { exact: true }).fill("3");
+  await page.getByLabel("Point z", { exact: true }).fill("0");
+  await expect(
+    page.getByText("Signed distance: 0.000. Foot: (3.000, 0.000, 0.000)."),
+  ).toBeVisible();
+});

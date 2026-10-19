@@ -57,26 +57,97 @@
     },
     {
       "id": "warmup",
-      "prompt": "For an ellipse with a=5 and b=3, what is c?",
-      "answer": "4",
-      "explanation": "c²=25−9=16.",
+      "prompt": "An ellipse has semimajor axis 13 and semiminor axis 12. Find the positive focal distance c.",
+      "answer": "5",
+      "explanation": "c²=a²−b²=169−144=25.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
-      "unit": "as stated in question"
+      "unit": "as stated in question",
+      "hint": "Identify the changed quantity before substituting."
     },
     {
       "id": "core",
-      "prompt": "Does the shape alone establish a gravitational force law?",
-      "answer": "No",
+      "prompt": "A particle moves on a Kepler ellipse. Does advancing true anomaly by equal increments generally advance time by equal increments?",
+      "answer": "No; equal areas, not equal angles, correspond to equal times.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; an ellipse has constant angular speed.",
+        "No; equal areas, not equal angles, correspond to equal times."
       ],
-      "explanation": "Dynamics needs a force and initial conditions.",
+      "explanation": "Conserved specific angular momentum gives r² dν/dt constant. Radius changes on a noncircular ellipse.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "misconceptions": {
+        "Yes; an ellipse has constant angular speed.": "Conserved specific angular momentum gives r² dν/dt constant. Radius changes on a noncircular ellipse."
+      }
+    },
+    {
+      "id": "ellipse-minor",
+      "prompt": "An ellipse has semimajor axis a=5 and focal distance c=3. Semiminor axis b?",
+      "answer": "4",
+      "explanation": "b²=a²−c²=16; choose the positive axis length.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "ellipse-eccentricity",
+      "prompt": "An ellipse has a=5 and c=3. Eccentricity?",
+      "answer": "0.6",
+      "explanation": "e=c/a=3/5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "periapsis-transfer",
+      "prompt": "An ellipse has a=10 AU and e=0.4. Periapsis distance in AU?",
+      "answer": "6",
+      "explanation": "r_p=a(1−e)=6 AU.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "AU",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "apoapsis-transfer",
+      "prompt": "An ellipse has a=10 AU and e=0.4. Apoapsis distance in AU?",
+      "answer": "14",
+      "explanation": "r_a=a(1+e)=14 AU.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "AU",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "polar-transfer",
+      "prompt": "A focus-based conic has p=6 AU and e=0.5. Radius at true anomaly 90 degrees in AU?",
+      "answer": "6",
+      "explanation": "r=p/(1+e cosν); cos90°=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "AU",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "hyperbola-transfer",
+      "prompt": "A hyperbola has transverse semiaxis a=3 and conjugate semiaxis b=4. Focal distance c?",
+      "answer": "5",
+      "explanation": "c²=a²+b², unlike the ellipse relation.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
     }
   ],
   "review": [
@@ -154,11 +225,23 @@ Translations replace x and y with x−h and y−k. A rotation can remove a mixed
 
 For a focus at the polar origin a suitable orientation gives $r=\ell/(1+e\cos\theta)$ over its physical domain. This describes conic geometry. In gravity, a separate angular-momentum and force-law derivation determines ℓ and e from energy and initial conditions.
 
+### Extended derivation and transfer checks
+
+Place ellipse foci at $(\pm c,0)$ and impose $r_++r_-=2a$, where $0\leq c<a$. Isolate one radical, square, isolate the remaining radical and square again; simplifying gives $x^2/a^2+y^2/(a^2-c^2)=1$. More explicitly, let $d_R=\sqrt{(x-c)^2+y^2}$ and $d_L=\sqrt{(x+c)^2+y^2}$. Since $d_L^2-d_R^2=4cx$ and $d_L+d_R=2a$, we obtain $d_L-d_R=2cx/a$ and $d_L=a+cx/a$. Squaring the last identity and cancelling $2cx$ yields $(1-c^2/a^2)x^2+y^2=a^2-c^2$, which gives the stated ellipse equation. Because squaring can introduce extraneous branches, substitute candidate points back into the positive-distance sum. Define $b^2=a^2-c^2$ and $e=c/a$. The circle is the regular $e=0$ limit.
+
+For a hyperbola use $|r_+-r_-|=2a$ with $c>a$. The same elimination yields $x^2/a^2-y^2/b^2=1$ with $b^2=c^2-a^2$. Its two branches and asymptotes $y=\pm(b/a)x$ distinguish it from an ellipse. For a parabola with focus $(f,0)$ and directrix $x=-f$, equality of distances gives $(x-f)^2+y^2=(x+f)^2$, hence $y^2=4fx$.
+
+With the focus as origin and periapsis on the positive polar axis, the focus/directrix definition gives $r=\ell/(1+e\cos\nu)$. Here $\ell$ denotes the semilatus rectum, not the earlier parabola focus distance $p$. For an ellipse $\ell=a(1-e^2)$ and $r_p=a(1-e)$, $r_a=a(1+e)$. Do not put a center-based Cartesian coordinate into this focus-based radius without translating the origin. At $e=1$ the denominator vanishes only in the asymptotic direction; at $e>1$ only angles with positive radius belong to this branch.
+
+Kepler motion in an attractive inverse-square field has this conic form with $\ell=h^2/\mu$. Geometry alone does not establish an orbit law or time dependence. The true anomaly slider samples position, not equal time intervals: equal areas, not equal angles, correspond to equal times. Bound orbits have $e<1$ in the point-mass Newtonian model; perturbations and relativistic precession need a more complete model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
 
-Use two pins and a string loop to trace an ellipse, keeping the total moving-string length constant. Record the two distances for several points. Contrast the geometric apparatus with an orbit model: a string constrains motion differently from gravity.
+<Widget name="conic_explorer" />
+
+Use the embedded model beside this lesson. Predict a change before moving a handle, compare two states, and explain the difference using the derived equation. Sliders provide keyboard access to the same quantities. The display is computed from an ideal model, not a physical sensor reading. Record a limiting case and a condition under which the model fails.
 
 </LessonSection>
 

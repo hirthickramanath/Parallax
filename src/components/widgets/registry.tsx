@@ -1,3 +1,9 @@
+import {
+  HydrostaticExplorer,
+  ThermalPathExplorer,
+  ConicExplorer,
+  PlaneDistanceExplorer,
+} from "./FoundationExplorers";
 import { CollisionExplorer, RollingExplorer } from "./MechanicsExplorer";
 import { VectorExplorer } from "./VectorExplorer";
 import { BlackHoleExplorer } from "./BlackHoleExplorer";
@@ -16,6 +22,10 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  hydrostatic_explorer: HydrostaticExplorer,
+  thermal_path_explorer: ThermalPathExplorer,
+  conic_explorer: ConicExplorer,
+  plane_distance_explorer: PlaneDistanceExplorer,
   collision_explorer: CollisionExplorer,
   rolling_explorer: RollingExplorer,
   vector_explorer: VectorExplorer,

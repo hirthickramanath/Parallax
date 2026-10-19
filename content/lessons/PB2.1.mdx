@@ -57,26 +57,97 @@
     },
     {
       "id": "warmup",
-      "prompt": "Gauge pressure in Pa at 1 m depth for density 1000 kg/m³ and g=10 m/s²?",
-      "answer": "10000",
-      "explanation": "ρgh=1000×10×1.",
+      "prompt": "For uniform water of density 1000 kg/m³, how much does gauge pressure increase in Pa over an additional depth of 0.5 m? Use g=9.8 m/s².",
+      "answer": "4900",
+      "explanation": "Δp=ρgΔh=4900 Pa; the starting depth cancels.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
-      "unit": "as stated in question"
+      "unit": "as stated in question",
+      "hint": "Identify the changed quantity before substituting."
     },
     {
       "id": "core",
-      "prompt": "Can Bernoulli be applied unchanged across a dissipative pump system?",
-      "answer": "No",
+      "prompt": "A pump raises a steady water stream to greater height at unchanged speed and pressure. Can elementary Bernoulli without an added-work term describe the two endpoints?",
+      "answer": "No; pump work must supply the increase in gravitational energy.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; equal speed makes all energy changes zero.",
+        "No; pump work must supply the increase in gravitational energy."
       ],
-      "explanation": "External work and losses need additional terms.",
+      "explanation": "Equal pressure and kinetic energy leave an increase ρgΔz in gravitational energy per volume. Shaft work supplies it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "misconceptions": {
+        "Yes; equal speed makes all energy changes zero.": "Equal pressure and kinetic energy leave an increase ρgΔz in gravitational energy per volume. Shaft work supplies it."
+      }
+    },
+    {
+      "id": "depth-transfer",
+      "prompt": "Freshwater density 1000 kg/m³, g=9.8 m/s², depth 3 m. Gauge pressure in Pa?",
+      "answer": "29400",
+      "explanation": "Integrate dp/dz=−ρg from the free surface: Δp=ρgh.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "Pa",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "absolute-transfer",
+      "prompt": "Surface pressure 101300 Pa and gauge pressure 29400 Pa. Absolute pressure in Pa?",
+      "answer": "130700",
+      "explanation": "Absolute pressure is surface pressure plus gauge pressure.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "Pa",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "buoyancy-transfer",
+      "prompt": "An object displaces 0.003 m³ of water of density 1000 kg/m³. With g=9.8 m/s², buoyant force in N?",
+      "answer": "29.4",
+      "explanation": "F_b=ρgV; use displaced volume, not mass of the object.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "N",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "floating-transfer",
+      "prompt": "A uniform block density 600 kg/m³ floats in water density 1000 kg/m³. What fraction of its volume is submerged?",
+      "answer": "0.6",
+      "explanation": "ρ_water V_sub g = ρ_block V_total g. The ratio is 0.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "continuity-transfer",
+      "prompt": "Steady incompressible flow: inlet area 6 cm² at 2 m/s, outlet area 3 cm². Outlet speed in m/s?",
+      "answer": "4",
+      "explanation": "A₁v₁=A₂v₂; the common area conversion cancels.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "m/s",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "bernoulli-transfer",
+      "prompt": "Horizontal ideal water flow (ρ=1000 kg/m³) speeds up from 2 to 4 m/s. What is p_out−p_in in Pa?",
+      "answer": "-6000",
+      "explanation": "p_out−p_in=ρ(v_in²−v_out²)/2. Pressure falls.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "Pa",
+      "hint": "Write the governing relation and check units before substituting."
     }
   ],
   "review": [
@@ -152,11 +223,23 @@ Mass conservation in steady flow through a tube gives $\rho Av=$ constant. Incom
 
 Viscosity transports momentum and dissipates mechanical energy. For slow fully developed laminar flow in a cylindrical tube, Poiseuille flow scales as $Q=\pi R^4\Delta p/(8\eta L)$ with no-slip walls and a Newtonian fluid. The fourth-power dependence holds only within those assumptions. Reynolds number Re=ρvL/η compares inertia to viscosity; a critical transition depends on geometry and disturbances.
 
+### Extended derivation and transfer checks
+
+For a stationary slab of area $A$ and thickness $dz$, upward pressure is $p(z)A$ and downward forces are $p(z+dz)A+\rho gA\,dz$. Setting their difference to zero and taking a limit gives $dp/dz=-\rho g$. A pressure difference, not an isolated pressure value, balances weight. At equal depth the result is independent of vessel shape; the vessel walls carry the remaining force in the global balance.
+
+For variable density use $p(z_2)-p(z_1)=-\int_{z_1}^{z_2}\rho(z)g(z)\,dz$; inserting a single density over a stellar interior is generally invalid. Integrating the pressure force $-\oint p\mathbf n\,dA$ over a submerged body and applying the divergence theorem gives $-\int\nabla p\,dV=\int\rho g\hat{\mathbf z}\,dV$. Constant surrounding density gives Archimedes' rule. A floating body has submerged fraction $\rho_{body}/\rho_{fluid}$ only if it is homogeneous, in equilibrium and not supported by surface tension or other forces.
+
+Continuity follows from conservation of mass: $\dot m=\rho Av$. Bernoulli along a streamline follows by integrating Euler's steady equation after neglecting viscosity: $dp/\rho+v\,dv+g\,dz=0$. Constant density and uniform gravity give $p+\rho v^2/2+\rho gz=C$. Different streamlines need not have the same constant in rotational flow. Viscous losses, pumps and compressibility require additional physics.
+
+A horizontal narrowing can increase speed while decreasing static pressure. That does not mean pressure is always lower wherever speed is higher: compare points only after checking the same-streamline and energy assumptions. Each term of Bernoulli has units Pa = J/m³. The hydrostatic limit $v=0$ recovers the slab result.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
 
-Use a transparent water container and a depth scale to illustrate pressure increasing with depth; compare shapes at equal depth. A classroom demonstration must use safe water volumes and avoid pressurizing sealed containers. For a quantitative virtual experiment, vary depth in the hydrostatic equation and distinguish computed readings from sensor data.
+<Widget name="hydrostatic_explorer" />
+
+Use the embedded model beside this lesson. Predict a change before moving a handle, compare two states, and explain the difference using the derived equation. Sliders provide keyboard access to the same quantities. The display is computed from an ideal model, not a physical sensor reading. Record a limiting case and a condition under which the model fails.
 
 </LessonSection>
 

@@ -57,26 +57,97 @@
     },
     {
       "id": "warmup",
-      "prompt": "Carnot efficiency between 600 K and 300 K as a decimal?",
-      "answer": "0.5",
-      "explanation": "1−300/600=0.5.",
+      "prompt": "A gas receives 150 J of heat while doing 40 J of work. What is its internal-energy change in J?",
+      "answer": "110",
+      "explanation": "ΔU=Q−W=150−40=110 J with work by the gas positive.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
-      "unit": "as stated in question"
+      "unit": "as stated in question",
+      "hint": "Identify the changed quantity before substituting."
     },
     {
       "id": "core",
-      "prompt": "May one system decrease entropy by exporting it?",
-      "answer": "Yes",
+      "prompt": "An insulated ideal gas expands freely into a vacuum and equilibrates. Is its entropy necessarily unchanged?",
+      "answer": "No; the irreversible expansion can increase entropy.",
       "options": [
-        "No",
-        "Yes"
+        "Yes; no heat transfer always means constant entropy.",
+        "No; the irreversible expansion can increase entropy."
       ],
-      "explanation": "The nondecrease applies to an isolated total system.",
+      "explanation": "Q=W=0 gives ΔU=0. For an ideal gas T stays fixed but ΔS=nR ln(V₂/V₁)>0.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "misconceptions": {
+        "Yes; no heat transfer always means constant entropy.": "Q=W=0 gives ΔU=0. For an ideal gas T stays fixed but ΔS=nR ln(V₂/V₁)>0."
+      }
+    },
+    {
+      "id": "isochoric-transfer",
+      "prompt": "One mole of monatomic ideal gas is heated by 20 K at constant volume. Use R=8.314 J/(mol K). Heat in J?",
+      "answer": "249.42",
+      "explanation": "Q=ΔU=(3/2)nRΔT. No boundary displacement means W=0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "J",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "isobaric-work",
+      "prompt": "One mole ideal gas heats by 20 K at constant pressure. R=8.314 J/(mol K). Work done by gas in J?",
+      "answer": "166.28",
+      "explanation": "W=pΔV=nRΔT. Work is positive for expansion.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "J",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "isobaric-heat",
+      "prompt": "One mole monatomic ideal gas heats by 20 K at constant pressure. R=8.314. Heat supplied in J?",
+      "answer": "415.7",
+      "explanation": "Q=ΔU+W=(5/2)nRΔT.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "J",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "first-law-transfer",
+      "prompt": "A gas receives 500 J of heat and does 180 J of work. Change in internal energy in J?",
+      "answer": "320",
+      "explanation": "With work by the system positive, ΔU=Q−W.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "J",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "cycle-transfer",
+      "prompt": "A gas returns to its initial state after receiving net 80 J of heat. Net work done by gas in J?",
+      "answer": "80",
+      "explanation": "Internal energy is a state function, so cycle ΔU=0 and W_net=Q_net.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "J",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "entropy-transfer",
+      "prompt": "A reservoir at fixed 300 K absorbs 600 J reversibly. Entropy change in J/K?",
+      "answer": "2",
+      "explanation": "For the isothermal reservoir, ΔS=Q_rev/T. This is not a general finite-temperature-change formula.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "J/K",
+      "hint": "Write the governing relation and check units before substituting."
     }
   ],
   "review": [
@@ -154,13 +225,25 @@ A cyclic engine has ΔU=0, hence net work equals net heat. Efficiency is W/Qhot 
 
 The ideal gas and constant-capacity assumptions fail near condensation, at high density and when new molecular degrees of freedom become thermally active. State the regime before extrapolating a classroom equation to a star or atmosphere.
 
+### Extended derivation and transfer checks
+
+Choose the gas as the system and count boundary work done by it as positive. A quasistatic piston displacement $dx$ gives $\delta W=F\,dx=p_{ext}A\,dx=p_{ext}\,dV$. Only in the mechanically reversible limit may the gas pressure replace $p_{ext}$ throughout the integral. The first law is $dU=\delta Q-\delta W$. The $d$ versus $\delta$ distinction matters: $U$ is a state function, but heat and work describe a path.
+
+For a monatomic ideal gas with only translational degrees of freedom active, $U=3nRT/2$. At fixed volume $W=0$ and $Q_V=3nR\Delta T/2$. At fixed pressure, $W=p\Delta V=nR\Delta T$ and $Q_p=5nR\Delta T/2$. Thus $C_p-C_V=nR$ for the total heat capacities of an ideal gas. Molecular vibrations, phase changes and nonideal interactions invalidate the monatomic constant-capacity model.
+
+To see path dependence between the SAME states, take $A=(V_0,T_0)$ and $B=(2V_0,2T_0)$. Path I heats at $V_0$ to $2T_0$ then expands isothermally at $2T_0$: $W_I=2nRT_0\ln2$. Path II expands isothermally at $T_0$ then heats at $2V_0$: $W_{II}=nRT_0\ln2$. Both have $\Delta U=3nRT_0/2$, but their heats differ by their works. In contrast, comparing isobaric and isochoric heating from the same initial state to the same temperature generally compares different final volumes.
+
+Entropy is defined through a reversible comparison path: $dS=\delta Q_{rev}/T$. For an ideal gas $\Delta S=nC_{V,m}\ln(T_2/T_1)+nR\ln(V_2/V_1)$. It is the total entropy of an isolated system that cannot decrease; an individual subsystem can lose entropy while its surroundings gain more. An adiabatic process need not be isentropic if it is irreversible.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
 
-Use the gas-piston virtual apparatus to compare isothermal, isobaric and reversible-adiabatic paths. Record heat, work and internal energy for the same final volume, then explain why the final temperatures differ. Treat pressure as ideal equilibrium pressure and discuss why rapid compression or leaks violate that model.
-
 <Widget name="gas_lab" />
+
+<Widget name="thermal_path_explorer" />
+
+Use the embedded model beside this lesson. Predict a change before moving a handle, compare two states, and explain the difference using the derived equation. Sliders provide keyboard access to the same quantities. The display is computed from an ideal model, not a physical sensor reading. Record a limiting case and a condition under which the model fails.
 
 </LessonSection>
 

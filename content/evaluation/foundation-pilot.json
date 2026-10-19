@@ -1,0 +1,24 @@
+{
+  "version": "foundation-pilot-v1",
+  "scope": "Uncalibrated parallel-form pilot for PB2.1, PB2.2, MB2.2 and MB2.3; not certification or an effectiveness claim",
+  "forms": {
+    "baseline": [
+      {"id":"fluid","prompt":"A uniform liquid has density 800 kg/m³. At 2 m depth with g=10 m/s², find gauge pressure in Pa. Explain why vessel width does not enter.","answer":16000,"unit":"Pa","reasoning":"Local slab force balance gives rho*g*h; same surface pressure and density are assumed."},
+      {"id":"heat","prompt":"A gas absorbs 420 J and does 150 J of work. Find its internal-energy change in J and state the work sign convention.","answer":270,"unit":"J","reasoning":"Work by system positive; delta U=Q-W."},
+      {"id":"conic","prompt":"An ellipse has semimajor axis 8 AU and eccentricity 0.25. Find periapsis distance in AU and identify the radius origin.","answer":6,"unit":"AU","reasoning":"Radius measured from focus; a*(1-e)."},
+      {"id":"plane","prompt":"For plane 2x-y+2z=3 with normal (2,-1,2), find the signed distance of (3,0,3). Explain the normalization.","answer":3,"unit":"length units","reasoning":"Residual 9 divided by normal magnitude 3; oriented unit normal."}
+    ],
+    "immediate": [
+      {"id":"fluid","prompt":"Liquid density is 1200 kg/m³. At 1.5 m depth with g=10 m/s², find gauge pressure in Pa. If the vessel widens, does this value change? Explain.","answer":18000,"unit":"Pa","reasoning":"rho*g*h; width does not enter local equilibrium with same free-surface pressure."},
+      {"id":"heat","prompt":"A gas releases 80 J of heat while 200 J of work is done on it. Find internal-energy change in J and justify both signs.","answer":120,"unit":"J","reasoning":"Q=-80 and W_by=-200; delta U=120."},
+      {"id":"conic","prompt":"An ellipse has a=12 AU and e=0.5. Find apoapsis in AU and explain why the focus is not the center.","answer":18,"unit":"AU","reasoning":"r_a=a*(1+e) measured from focus, displaced by ae from center."},
+      {"id":"plane","prompt":"Plane 3x+4y=10 has oriented normal (3,4,0). Find signed distance of (2,3,0). What happens if the whole equation is multiplied by -1?","answer":1.6,"unit":"length units","reasoning":"Residual 8 divided by 5; orientation and signed distance reverse on negative scaling."}
+    ],
+    "delayed": [
+      {"id":"fluid","prompt":"A liquid pressure difference of 27000 Pa is measured over a downward depth change of 3 m. g=10 m/s². Infer uniform density in kg/m³ and give one limitation of the inference.","answer":900,"unit":"kg/m³","reasoning":"rho=delta p/(g*h); stationary uniform density, reference pressure and g assumptions."},
+      {"id":"heat","prompt":"Over a closed cycle a gas receives net heat 95 J. Find net work done by it in J and explain why internal energy cannot accumulate over the cycle.","answer":95,"unit":"J","reasoning":"Same thermodynamic state implies delta U=0; W=Q."},
+      {"id":"conic","prompt":"An elliptical orbit has periapsis 4 AU and apoapsis 12 AU. Infer eccentricity and explain the common radius origin.","answer":0.5,"unit":"dimensionless","reasoning":"e=(r_a-r_p)/(r_a+r_p); both measured from same focus."},
+      {"id":"plane","prompt":"Plane x+2y+2z=9 and point (0,0,0). Find oriented signed distance using normal (1,2,2); explain why it can be negative while physical distance cannot.","answer":-3,"unit":"length units","reasoning":"Residual -9 divided by 3; sign denotes side, unsigned distance is absolute value."}
+    ]
+  }
+}

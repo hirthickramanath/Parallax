@@ -6,6 +6,10 @@ All 354 curriculum entries have draft MDX bodies and 1421 retrieval cards. This 
 
 The [post-comparison release](POST-COMPARISON-IMPLEMENTATION.md) implements precise interaction resume, honest reading/mastery semantics, retry safeguards, clearer unavailable help, searchable restart selection, startup payload reduction, a deeper four-lesson mechanics unit, server-owned assessment records and opt-in background-reminder infrastructure. The new services are disabled until securely configured and deployed; local validation is not live activation or independent educational review.
 
+## Foundation expansion and evaluation follow-up
+
+PB2.1, PB2.2, MB2.2 and MB2.3 now have expanded derivations, 24 new numeric transfer questions and four directly manipulable embedded models. See [internal scientific notes](FOUNDATION-SCIENTIFIC-REVIEW.md), the [354-lesson review queue](COURSE-REVIEW-QUEUE.md) and [learner pilot kit](FOUNDATION-LEARNER-PILOT.md). The kit provides baseline/immediate/delayed forms and descriptive scoring; no real learner trial or independent review has occurred. Breadth/depth work across the remaining lessons is still pending.
+
 ## Scientific and editorial review
 
 Internal expansion completed for nine advanced lessons, with additional derivations, counterexamples and graded Core transfers. See [ADVANCED-CONTENT-REVIEW.md](ADVANCED-CONTENT-REVIEW.md) for the exact scope and follow-up. This does not close independent scientific/source review.

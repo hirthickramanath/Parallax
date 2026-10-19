@@ -19,7 +19,7 @@ If npm cannot find `package.json`, change to the repository folder. If a port is
 
 ## Current release
 
-The app includes Google/email-link sign-in, 354 **draft** MDX lessons, an astrophysics-focused level map, automatic weekly planning, focused lessons with connected simulations, precise interaction resume, explicit reading-versus-mastery states, local-first progress, XP/streaks, FSRS recall interludes, projects and study settings. Mechanics PB1.1–PB1.4 has an expanded question ladder and collision/rolling investigations.
+The app includes Google/email-link sign-in, 354 **draft** MDX lessons, an astrophysics-focused level map, automatic weekly planning, focused lessons with connected simulations, precise interaction resume, explicit reading-versus-mastery states, local-first progress, XP/streaks, FSRS recall interludes, projects and study settings. Mechanics PB1.1–PB1.4 has an expanded question ladder and collision/rolling investigations. Fluids, thermodynamics, conics and spatial geometry now have 24 further transfer items and four connected models. A [course-wide review queue](docs/COURSE-REVIEW-QUEUE.md), [internal review notes](docs/FOUNDATION-SCIENTIFIC-REVIEW.md) and [voluntary learner pilot](docs/FOUNDATION-LEARNER-PILOT.md) distinguish implemented tools from independent review and real trials still to conduct.
 
 The tutor, new server-owned assessment Worker and background-reminder Worker are implemented but **disabled until configured and live-tested**. Server assessment currently covers six draft lesson banks; it is not independent certification or proctoring. Background reminders are a bounded opt-in pilot. No personal-study client XP is an authoritative ranking source.
 
@@ -39,6 +39,7 @@ npm run typecheck:reminders
 npm run test:reminders
 npm run test:browser
 npm run content:report
+npm run content:audit
 ```
 
 Browser tests launch a production preview server. Install Chromium with `npx playwright install chromium` when `/usr/bin/chromium` is unavailable. Real Firebase sign-in and cloud writes require separate deployed verification; automated browser sessions are mocked. See the release guide for the emulator rules test and Worker bundle check.

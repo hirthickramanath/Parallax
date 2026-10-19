@@ -24,7 +24,7 @@
     },
     {
       "id": "c2",
-      "prompt": "Does rescaling a plane normal change its plane?",
+      "prompt": "Does multiplying both sides of a plane equation by the same nonzero scalar change its plane?",
       "answer": "No",
       "options": [
         "No",
@@ -57,26 +57,97 @@
     },
     {
       "id": "warmup",
-      "prompt": "Distance from (3,4,7) to the plane z=2?",
-      "answer": "5",
-      "explanation": "The perpendicular displacement has magnitude 5.",
+      "prompt": "What is the unsigned distance of (0,0,1) from the plane z=−2?",
+      "answer": "3",
+      "explanation": "Distance is |1−(−2)|=3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
-      "unit": "as stated in question"
+      "unit": "as stated in question",
+      "hint": "Identify the changed quantity before substituting."
     },
     {
       "id": "core",
-      "prompt": "Are latitude and polar angle the same convention?",
-      "answer": "No",
+      "prompt": "A line has n·v=0 for a plane n·r=d. Which additional condition puts the entire line in the plane?",
+      "answer": "Its starting point a satisfies n·a=d.",
       "options": [
-        "Yes",
-        "No"
+        "Its direction v must be nonzero only.",
+        "Its starting point a satisfies n·a=d."
       ],
-      "explanation": "Latitude is complementary to the polar angle from positive z.",
+      "explanation": "Then n·(a+tv)=d for every t. If the starting point fails the plane equation, the line is disjoint.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "misconceptions": {
+        "Its direction v must be nonzero only.": "Then n·(a+tv)=d for every t. If the starting point fails the plane equation, the line is disjoint."
+      }
+    },
+    {
+      "id": "normal-length",
+      "prompt": "A plane normal is (2,−1,2). What is its Euclidean length?",
+      "answer": "3",
+      "explanation": "sqrt(4+1+4)=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "signed-distance",
+      "prompt": "Plane 2x−y+2z=6, oriented normal (2,−1,2). Signed distance of (3,0,3)?",
+      "answer": "2",
+      "explanation": "(2·3−0+2·3−6)/3=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "normal-rescale",
+      "prompt": "For the same plane written 4x−2y+4z=12, unsigned distance of (3,0,3)?",
+      "answer": "2",
+      "explanation": "Numerator and normal length both double, preserving unsigned distance.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "projection-x",
+      "prompt": "For plane x+2y+2z=3 and P=(3,3,3), what is the x-coordinate of the perpendicular foot?",
+      "answer": "1.6666666666666667",
+      "explanation": "n·P−d=12 and |n|²=9; foot=P−(12/9)n so x=5/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "line-plane",
+      "prompt": "Line r(t)=(0,0,1)+t(1,2,−1) intersects z=−2. What is t?",
+      "answer": "3",
+      "explanation": "1−t=−2, so t=3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
+    },
+    {
+      "id": "skew-distance",
+      "prompt": "Lines (t,0,0) and (0,s,2) with independent real t,s are skew. Shortest distance?",
+      "answer": "2",
+      "explanation": "Their common perpendicular is parallel to z; separation is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated",
+      "hint": "Write the governing relation and check units before substituting."
     }
   ],
   "review": [
@@ -154,11 +225,23 @@ In spherical coordinates with polar angle θ measured from positive z and azimut
 
 An orthonormal basis makes the Euclidean dot product a simple component sum. A change of orthonormal axes preserves lengths and angles, although numerical components change. In nonorthogonal coordinates a metric is needed; the component sum cannot be assumed.
 
+### Extended derivation and transfer checks
+
+A plane through $\mathbf r_0$ with nonzero normal $\mathbf n$ is $\mathbf n\cdot(\mathbf r-\mathbf r_0)=0$. Write $d=\mathbf n\cdot\mathbf r_0$. For a point $\mathbf P$, its displacement along the oriented UNIT normal is $s=(\mathbf n\cdot\mathbf P-d)/\|\mathbf n\|$. The perpendicular foot is $\mathbf H=\mathbf P-[(\mathbf n\cdot\mathbf P-d)/\|\mathbf n\|^2]\mathbf n$. Substitution shows $\mathbf n\cdot\mathbf H=d$ and $\mathbf P-\mathbf H$ is normal to the plane. These two checks establish the projection geometrically.
+
+Rescaling both $\mathbf n$ and $d$ by a positive scalar preserves signed distance; a negative scalar reverses orientation and therefore reverses signed distance. Unsigned distance is unchanged by either. The zero normal is invalid: the equation then describes either all space or no points, and division by its norm is undefined.
+
+Intersect a line $\mathbf r=\mathbf a+t\mathbf v$ with the plane: $t=(d-\mathbf n\cdot\mathbf a)/(\mathbf n\cdot\mathbf v)$ when the denominator is nonzero. If it vanishes, the line either lies in the plane (zero numerator) or never intersects (nonzero numerator). A small denominator means near-parallel geometry and high sensitivity to measurement error.
+
+For nonparallel directions $\mathbf u,\mathbf v$, shortest distance between two lines is $|(\mathbf b-\mathbf a)\cdot(\mathbf u\times\mathbf v)|/\|\mathbf u\times\mathbf v\|$. The scalar triple product tests coplanarity. Parallel lines require a different formula because the cross product vanishes. Orthogonal changes of basis preserve dot products, lengths and angles; a general nonorthogonal coordinate change requires the metric in the inner product.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
 
-Build two lines from pencils held at different heights. Make them nonparallel and nonintersecting, then compare front and side projections. Record what a single projection cannot tell you. Sketch the plane normal and a perpendicular distance.
+<Widget name="plane_distance_explorer" />
+
+Use the embedded model beside this lesson. Predict a change before moving a handle, compare two states, and explain the difference using the derived equation. Sliders provide keyboard access to the same quantities. The display is computed from an ideal model, not a physical sensor reading. Record a limiting case and a condition under which the model fails.
 
 </LessonSection>
 
