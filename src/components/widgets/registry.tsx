@@ -1,4 +1,10 @@
 import {
+  BayesExplorer,
+  ThinLensExplorer,
+  InductionExplorer,
+  TidalExplorer,
+} from "./TransferExplorers";
+import {
   HydrostaticExplorer,
   ThermalPathExplorer,
   ConicExplorer,
@@ -22,6 +28,10 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  bayes_explorer: BayesExplorer,
+  thin_lens_explorer: ThinLensExplorer,
+  induction_explorer: InductionExplorer,
+  tidal_explorer: TidalExplorer,
   hydrostatic_explorer: HydrostaticExplorer,
   thermal_path_explorer: ThermalPathExplorer,
   conic_explorer: ConicExplorer,

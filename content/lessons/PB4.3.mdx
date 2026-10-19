@@ -57,8 +57,9 @@
     },
     {
       "id": "warmup",
-      "prompt": "Inductive timescale in seconds for L=2 H and R=4 Ω?",
+      "prompt": "A series RL circuit has inductance 3 H and resistance 6 Ω. Find its inductive time constant in seconds.",
       "answer": "0.5",
+      "hint": "Compare L di/dt with R i.",
       "explanation": "τ=L/R=0.5 s.",
       "type": "numeric",
       "conceptual": false,
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Can the induced electric field always be represented by a single electrostatic potential?",
-      "answer": "No",
+      "prompt": "Magnetic flux through a loop is positive but decreasing. In Lenz’s law, does the induced current oppose the decrease or necessarily oppose the existing field?",
+      "answer": "It opposes the decrease; its field can reinforce the existing flux.",
       "options": [
-        "Yes",
-        "No"
+        "It must always produce flux opposite to the existing field.",
+        "It opposes the decrease; its field can reinforce the existing flux."
       ],
-      "explanation": "It can have nonzero closed-loop circulation.",
+      "explanation": "The minus sign refers to the change of flux, not the flux value alone.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "It must always produce flux opposite to the existing field.": "The minus sign refers to the change of flux, not the flux value alone."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "A five-turn coil has flux per turn changing uniformly by 0.08 Wb over 0.02 s. Find induced emf magnitude in V.",
+      "answer": "20",
+      "hint": "Differentiate flux linkage NΦ, not the flux per turn alone.",
+      "explanation": "|emf|=N|ΔΦ|/Δt=5·0.08/0.02=20 V.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -154,9 +170,16 @@ A coil with self-inductance L has induced emf −L dI/dt in the linear fixed-geo
 
 Electrostatic potential alone cannot represent the induced electric field around a changing flux: the closed-loop electric circulation is nonzero. This distinction is needed before combining induction with the earlier conservative-field picture.
 
+
+### Transfer derivation and failure case
+
+Integrating the electric field around a stationary loop gives $\oint\mathbf E\cdot d\boldsymbol\ell=-d\Phi_B/dt$. In a changing magnetic field this nonzero circulation prevents a single electrostatic scalar potential from describing the entire induced field. For $N$ identical turns, flux linkage is $N\Phi_B$; confusing linkage with per-turn flux loses a factor of $N$. In an ideal series RL step, $L\,di/dt+Ri=V_0$ has solution $i=(V_0/R)(1-e^{-tR/L})$ for zero initial current. The time constant has units H/Ω = s.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="induction_explorer" />
 
 Move a bar magnet relative to a closed coil connected to a suitable classroom galvanometer. Compare direction for approach, withdrawal and a stationary magnet. Keep orientation explicit and avoid claiming flux change depends only on magnet speed without considering field geometry.
 

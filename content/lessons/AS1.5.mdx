@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "By what factor does leading tidal strength change when source distance doubles?",
-      "answer": "0.125",
-      "explanation": "The scale is R⁻³, so the factor is 1/8.",
+      "prompt": "By what factor does leading point-source tidal strength change when source distance triples?",
+      "answer": "0.037037037037037035",
+      "hint": "Tidal strength scales with inverse distance cubed, not inverse square.",
+      "explanation": "(1/3)³=1/27.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Is the fluid Roche coefficient universal for all solids?",
-      "answer": "No",
+      "prompt": "In vacuum outside a spherical source, does zero trace of the Newtonian tidal tensor mean every component is zero?",
+      "answer": "No; radial stretching can balance transverse compression.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; zero trace means no tides.",
+        "No; radial stretching can balance transverse compression."
       ],
-      "explanation": "Material strength and the equilibrium model matter.",
+      "explanation": "Trace is a sum of eigenvalues, not their individual values.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; zero trace means no tides.": "Trace is a sum of eigenvalues, not their individual values."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Use Δa≈2GMℓ/r³ with GM=10¹⁴ m³/s², separation ℓ=10 m and r=10⁶ m. Find radial differential acceleration in m/s².",
+      "answer": "0.002",
+      "hint": "The separation must be small relative to r.",
+      "explanation": "2·10¹⁴·10/(10⁶)³=0.002 m/s².",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -154,9 +170,16 @@ A tidal bulge with a phase lag dissipates mechanical energy. Angular momentum ca
 
 Ocean tide amplitudes are not the static equilibrium bulge alone: coastlines, bathymetry, resonances, rotation and weather matter. Likewise solid-body tidal response requires rheology. A simple tidal tensor correctly explains the leading differential forcing but cannot forecast a local high tide or a material rupture time.
 
+
+### Transfer derivation and failure case
+
+For radial gravity $a_r=-GM/r^2$, a small radial displacement changes acceleration by $\Delta a_r\simeq(2GM/r^3)\ell$. This is a first derivative of the field and explains the inverse-cube tide law. In an orthonormal local frame, point-source Newtonian tidal eigenvalues are proportional to $(2,-1,-1)GM/r^3$: stretching in one direction and compression in two. Their sum vanishes in vacuum even though each is nonzero. Roche estimates additionally compare tides with self-gravity and depend on rotation, structure and material strength; a fluid numerical coefficient cannot be universally applied to a cohesive solid.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="tidal_explorer" />
 
 On a line through a distant mass, calculate external acceleration at the near edge, centre and far edge of a small body, then subtract the centre value. Plot the two relative arrows. Compare the exact differences with the first-order 2GMr/R³ estimate as r/R increases; label the numbers as model calculations.
 

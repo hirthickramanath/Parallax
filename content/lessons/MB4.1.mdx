@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Determinant of [[2,1],[1,3]]?",
-      "answer": "5",
-      "explanation": "2×3−1×1=5.",
+      "prompt": "Find det([[3,2],[1,4]]).",
+      "answer": "10",
+      "hint": "For a 2×2 matrix use ad−bc.",
+      "explanation": "3·4−2·1=10.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "What does the absolute determinant measure in 2D?",
-      "answer": "Area scale",
+      "prompt": "A real 2D linear map has determinant −2. What does this say about area and orientation?",
+      "answer": "Area magnitudes double and orientation reverses.",
       "options": [
-        "Only a rotation angle",
-        "Area scale"
+        "Area becomes negative and orientation is preserved.",
+        "Area magnitudes double and orientation reverses."
       ],
-      "explanation": "It scales parallelogram area.",
+      "explanation": "The determinant is signed; geometric area magnitudes are nonnegative.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Area becomes negative and orientation is preserved.": "The determinant is signed; geometric area magnitudes are nonnegative."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "What is the first diagonal entry of the inverse of diag(2,5)?",
+      "answer": "0.5",
+      "hint": "Multiply the proposed inverse by the original diagonal matrix.",
+      "explanation": "Diagonal entries invert individually, giving diag(1/2,1/5).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ To solve Ax=b, row operations preserve the solution set when performed on the au
 The determinant of a product is the product of determinants. An eigenvector is a nonzero vector with Av=λv; an eigenvalue can be zero for a singular map. Eigenvectors describe invariant directions, not necessarily every possible direction. Repeated eigenvalues do not guarantee a full basis of eigenvectors.
 
 Numerical conditioning is distinct from invertibility. A nearly singular matrix may amplify measurement errors strongly even though its determinant is not exactly zero. In scientific computation solve the system with a stable factorization rather than explicitly forming an inverse, and propagate uncertainty.
+
+
+### Transfer derivation and failure case
+
+The columns of a matrix are the images of the coordinate basis vectors. Their oriented parallelogram area is $ad-bc$ for a $2\times2$ matrix. Absolute determinant gives the area scale, while a negative sign records orientation reversal. The inverse formula divides by the determinant, so determinant zero signals collapse to a lower-dimensional image. A nonzero but tiny determinant alone is not a scale-invariant condition-number test: compare singular values to assess sensitivity.
 
 </LessonSection>
 

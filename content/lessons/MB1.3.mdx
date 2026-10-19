@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Sum the first five terms of 2, 4, 6, 8, 10.",
-      "answer": "30",
-      "explanation": "Use 5(2+10)/2.",
+      "prompt": "Sum the first four terms of 3, 6, 12, 24, ….",
+      "answer": "45",
+      "hint": "This is a finite geometric sum with ratio 2.",
+      "explanation": "3+6+12+24=45; convergence of the infinite series is irrelevant.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "When does a nonzero geometric series converge?",
-      "answer": "When the ratio has modulus below 1",
+      "prompt": "For a noninteger exponent α, may the binomial power series about x=0 be used at every real x?",
+      "answer": "No; its usual open convergence interval is |x|<1.",
       "options": [
-        "Whenever the ratio is positive",
-        "When the ratio has modulus below 1"
+        "Yes; the finite-polynomial binomial rule applies unchanged.",
+        "No; its usual open convergence interval is |x|<1."
       ],
-      "explanation": "The remainder power must tend to zero.",
+      "explanation": "A terminating integer expansion and a nonterminating power series have different domains.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; the finite-polynomial binomial rule applies unchanged.": "A terminating integer expansion and a nonterminating power series have different domains."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Find the sum of the infinite geometric series with first term 3 and ratio 1/2.",
+      "answer": "6",
+      "hint": "Use the finite partial sum and take its limit.",
+      "explanation": "S_N=3(1−(1/2)^N)/(1−1/2) tends to 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -151,6 +167,11 @@ For $|r|<1$, $r^n\to0$, hence $\sum_{k=0}^{\infty}ar^k=a/(1-r)$. The error after
 For a nonnegative integer n, expansion of $(1+x)^n$ selects x from k of n factors, giving coefficient $\binom nk=n!/[k!(n-k)!]$. Pascal's recurrence follows by distinguishing selections that contain a chosen object from those that do not. This finite binomial theorem needs no convergence argument.
 
 For a general real exponent the infinite binomial expansion has a restricted convergence domain, typically $|x|<1$. Keeping $1+nx$ is a small-x approximation, not an identity. State which power was neglected and compare its size with the retained terms before applying it to a physical model.
+
+
+### Transfer derivation and failure case
+
+If $S_N=a+ar+\cdots+ar^{N-1}$, subtract $rS_N$ to get $(1-r)S_N=a(1-r^N)$. For $r\ne1$, this proves $S_N=a(1-r^N)/(1-r)$ without assuming convergence. Only when $|r|<1$ does the remainder $ar^N$ vanish and give $S=a/(1-r)$. For $r=1$ the finite sum is $Na$; for a nonzero first term the infinite sum diverges. A noninteger binomial expansion is likewise a power series with a convergence domain; endpoint behavior must be checked separately.
 
 </LessonSection>
 

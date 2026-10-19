@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Fringe spacing in mm for λ=500 nm, L=2 m and d=0.5 mm?",
-      "answer": "2",
-      "explanation": "λL/d=0.002 m=2 mm.",
+      "prompt": "Two slits have separation 0.3 mm; light wavelength is 600 nm and screen distance 1.5 m. Find small-angle fringe spacing in mm.",
+      "answer": "3",
+      "hint": "Convert slit separation and wavelength to the same length units first.",
+      "explanation": "Δy=λL/d=0.003 m=3 mm.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does magnification eliminate the aperture diffraction pattern?",
-      "answer": "No",
+      "prompt": "Two equal-frequency slit sources have a relative phase that wanders rapidly during exposure. What happens to the time-averaged fringes?",
+      "answer": "The interference term can average away.",
       "options": [
-        "Yes",
-        "No"
+        "Fringes remain fully visible regardless of relative-phase stability.",
+        "The interference term can average away."
       ],
-      "explanation": "It enlarges the pattern along with the image.",
+      "explanation": "Average the cosine cross term over the exposure.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Fringes remain fully visible regardless of relative-phase stability.": "Average the cosine cross term over the exposure."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "For coherent equal-phase slits and wavelength 500 nm, what is the smallest positive path difference for destructive interference in nm?",
+      "answer": "250",
+      "hint": "Destructive interference requires an odd half-wavelength path difference.",
+      "explanation": "The first minimum has path difference λ/2=250 nm.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ A single slit of width a in the far field produces amplitude proportional to $\s
 For a circular aperture the first dark ring lies at angle approximately $1.22\lambda/D$. The Rayleigh criterion is a conventional separation scale for two incoherent point sources, not a universal hard limit for every estimation problem. At λ=500 nm and D=0.1 m it gives 6.1×10⁻⁶ rad, about 1.26 arcseconds. Atmospheric seeing can dominate a ground-based telescope.
 
 Polarization, bandwidth and near-field geometry can alter these scalar far-field expressions. State coherence, angular approximation and screen-distance assumptions before fitting a real pattern.
+
+
+### Transfer derivation and failure case
+
+For equal-amplitude coherent waves, adding fields and then squaring yields $I=2I_0[1+\cos\delta]$, where $\delta=2\pi\Delta/\lambda$ includes path and initial-phase differences. Maxima require integer $2\pi$ phase and minima odd $\pi$. The small-angle geometry $\Delta\simeq dy/L$ then gives fringe spacing $\lambda L/d$. If relative phase changes randomly during exposure, the averaged cross term tends toward zero; intensities remain but stable fringes do not. Finite slit width adds a diffraction envelope and unequal amplitudes prevent perfectly dark minima.
 
 </LessonSection>
 

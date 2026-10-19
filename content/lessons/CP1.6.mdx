@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "For real x=−3, what is the principal value of sqrt(x²)?",
-      "answer": "3",
-      "explanation": "The principal square root is nonnegative.",
+      "prompt": "For real x=−5, find the principal nonnegative value of sqrt(x²).",
+      "answer": "5",
+      "hint": "For real x, sqrt(x²)=|x|.",
+      "explanation": "|−5|=5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does one numerical root-finder run prove all roots were found?",
-      "answer": "No",
+      "prompt": "Simplifying x/x to 1 changes what if the original domain restriction is forgotten?",
+      "answer": "It incorrectly admits x=0.",
       "options": [
-        "Yes",
-        "No"
+        "Nothing; division by zero becomes valid after simplification.",
+        "It incorrectly admits x=0."
       ],
-      "explanation": "A local search depends on its starting point and method.",
+      "explanation": "An algebraic expression carries its domain with it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Nothing; division by zero becomes valid after simplification.": "An algebraic expression carries its domain with it."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "For f(x)=x³, find the exact derivative evaluated at x=2.",
+      "answer": "12",
+      "hint": "Differentiate symbolically before substituting.",
+      "explanation": "f′(x)=3x², so f′(2)=12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -161,6 +177,11 @@ assert sp.simplify(sp.diff(f, x) - x**2) == 0
 Differentiating a proposed antiderivative checks it on the admitted intervals, but constants can differ across disconnected domains. Solving an equation may produce conditional solutions or omit branches if assumptions are insufficient. For a numerical root finder, the starting guess and convergence tolerance are additional algorithmic inputs; it is not a proof that every root was found.
 
 Use a symbolic result as one stage of a reproducible argument: state hypotheses, derive or explain the relevant step, inspect special and singular cases, differentiate or substitute as a check, and compare with independent numerical samples. Sampling can falsify a claimed identity, but agreement at selected points cannot prove a universal statement.
+
+
+### Transfer derivation and failure case
+
+Symbolic identities are statements under assumptions. Over the real numbers, $\sqrt{x^2}=|x|$; dropping the absolute value requires $x\geq0$. Cancelling $x/x$ gives 1 only for $x\ne0$, so simplification must preserve an excluded point in the domain. Distinguish exact rational constants from floating approximations before asking a symbolic engine to simplify. A numerical root search typically finds one basin-dependent root and does not prove completeness; symbolic factorization plus domain checks or rigorous root-counting arguments are needed for an exhaustive claim.
 
 </LessonSection>
 

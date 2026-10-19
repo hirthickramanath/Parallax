@@ -1427,3 +1427,58 @@ test("fluids heat conics and spatial projection are embedded and respond to keyb
     page.getByText("Signed distance: 0.000. Foot: (3.000, 0.000, 0.000)."),
   ).toBeVisible();
 });
+
+test("Bayes lens induction and tide models connect directly to their lessons", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MB4.3");
+  await expect(
+    page.getByText(
+      "True positives: 90.0. False positives: 495.0. P(condition | positive): 0.1538.",
+    ),
+  ).toBeVisible();
+  await page.getByLabel("Condition prevalence", { exact: true }).fill("0");
+  await page
+    .getByLabel("False-positive probability", { exact: true })
+    .fill("0");
+  await expect(page.getByText(/undefined \(no positives\)/)).toBeVisible();
+  await page.getByLabel("Condition prevalence", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Condition prevalence", { exact: true }),
+  ).toHaveValue("0.001");
+  await page.goto("/lesson/PB3.2");
+  await expect(
+    page.getByText(
+      "Image distance: 30.000 cm. Magnification: -1.000. Real image.",
+    ),
+  ).toBeVisible();
+  await page.getByLabel("Lens focal length (cm)", { exact: true }).fill("10");
+  await page.getByLabel("Lens object distance (cm)", { exact: true }).fill("5");
+  await expect(
+    page.getByText(
+      "Image distance: -10.000 cm. Magnification: 2.000. Virtual image.",
+    ),
+  ).toBeVisible();
+  await page
+    .getByLabel("Lens object distance (cm)", { exact: true })
+    .fill("10");
+  await expect(
+    page.getByText("Image at infinity: emerging rays are parallel."),
+  ).toBeVisible();
+  await page.goto("/lesson/PB4.3");
+  await expect(page.getByText("Induced emf: -2.000 V.")).toBeVisible();
+  await page
+    .getByLabel("Coil normal angle (degrees)", { exact: true })
+    .fill("90");
+  await expect(page.getByText("Induced emf: 0.000 V.")).toBeVisible();
+  await page.goto("/lesson/AS1.5");
+  await page.getByLabel("Tide center radius", { exact: true }).fill("2");
+  await page.getByLabel("Tide probe separation", { exact: true }).fill("2");
+  await expect(
+    page.getByText(
+      "Exact differential acceleration: 0.888889. Linear tide: 0.500000. Separation/radius: 1.000.",
+    ),
+  ).toBeVisible();
+});

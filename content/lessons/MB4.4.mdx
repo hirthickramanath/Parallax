@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Mean of a binomial count with n=20 and p=0.25?",
-      "answer": "5",
-      "explanation": "np=20×0.25=5.",
+      "prompt": "A binomial count has n=12 and p=0.25. Find its mean.",
+      "answer": "3",
+      "hint": "Write the count as a sum of Bernoulli indicators.",
+      "explanation": "E[X]=np=3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "When do independent variances add?",
-      "answer": "When finite variances exist",
+      "prompt": "May Var(X+Y)=Var(X)+Var(Y) be assumed for correlated finite-variance X and Y?",
+      "answer": "No; the term 2 Cov(X,Y) is also required.",
       "options": [
-        "Regardless of existence",
-        "When finite variances exist"
+        "Yes; variance is linear for all random variables.",
+        "No; the term 2 Cov(X,Y) is also required."
       ],
-      "explanation": "Variance arithmetic requires defined finite moments here.",
+      "explanation": "Expand the square of the centered sum.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; variance is linear for all random variables.": "Expand the square of the centered sum."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "X is binomial with n=12 and p=0.25. Find Var(2X).",
+      "answer": "9",
+      "hint": "Scaling a variable by 2 scales its variance by 4.",
+      "explanation": "Var(2X)=4np(1−p)=4·12·0.25·0.75=9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ A Poisson count with mean λ has $P(X=k)=e^{-\lambda}\lambda^k/k!$ and variance 
 For independent identically distributed measurements with finite variance σ², the sample mean has expectation μ and variance σ²/n. Thus random standard error falls as $1/\sqrt n$. A fixed calibration offset persists under averaging. Correlated measurements reduce the effective gain.
 
 The central limit theorem concerns the suitably standardized sum under stated assumptions; it does not claim every underlying quantity is Gaussian. Infinite-variance distributions and strongly dependent data can violate its familiar form. A confidence statement also requires an inferential method, not just a histogram resembling a bell.
+
+
+### Transfer derivation and failure case
+
+For indicators $I_j$ of independent Bernoulli trials, $E[I_j]=p$ and $\operatorname{Var}(I_j)=p(1-p)$. Linearity of expectation needs no independence; adding variances does, or more generally requires zero pairwise covariance. Expanding $E[(X-E[X]+Y-E[Y])^2]$ produces $\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)$. Scaling gives $\operatorname{Var}(aX)=a^2\operatorname{Var}(X)$, not $a\operatorname{Var}(X)$. Correlated instrument errors can therefore invalidate a naive square-root-of-sample-size uncertainty reduction.
 
 </LessonSection>
 

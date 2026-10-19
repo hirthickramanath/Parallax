@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Log–log slope of y=5x³ for positive x?",
-      "answer": "3",
-      "explanation": "Taking logs gives log y=log5+3log x.",
+      "prompt": "For positive x, what is the log–log slope of y=7x^(−2)?",
+      "answer": "-2",
+      "hint": "Take logarithms on both axes; the coefficient of log x is the slope.",
+      "explanation": "log y=log7−2 log x.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Are standard deviation and standard error interchangeable?",
-      "answer": "No",
+      "prompt": "A data set includes zero and negative measurements. Is silently discarding them to make a logarithmic plot acceptable?",
+      "answer": "No; the transformation and excluded data must be explained.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; logarithmic axes make missing points irrelevant.",
+        "No; the transformation and excluded data must be explained."
       ],
-      "explanation": "They describe different uncertainties.",
+      "explanation": "A log transform has a domain and can change the represented population.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; logarithmic axes make missing points irrelevant.": "A log transform has a domain and can change the represented population."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Independent measurements have sample standard deviation 12 and sample size 36. Estimate standard error of the mean.",
+      "answer": "2",
+      "hint": "This estimate assumes independent observations with a suitable finite variance.",
+      "explanation": "s/sqrt(n)=12/6=2; it does not replace the spread of individual observations.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -164,6 +180,11 @@ fig.savefig('square-samples.png', dpi=150, bbox_inches='tight')
 ```
 
 Store the script and source data alongside a figure. Identify smoothing, normalization, excluded points and a colour scale. Avoid a colour map that makes an arbitrary midpoint appear to be a physical threshold. Captions should distinguish a generated model from independent measurements and state what comparison could refute the proposed interpretation.
+
+
+### Transfer derivation and failure case
+
+For a positive power law $y=Ax^m$, logarithms give $\log y=\log A+m\log x$. A straight line on log–log axes is therefore consistent with a power law only over the inspected range; it does not prove the law outside it. Standard deviation describes sample spread, while the estimated standard error $s/\sqrt n$ describes uncertainty in a mean under independence assumptions. Correlation can invalidate that reduction. A log axis cannot represent nonpositive measurements, so exclusions or alternative transforms must be reported rather than silently changing the sample.
 
 </LessonSection>
 

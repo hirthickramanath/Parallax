@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "How many entries result from broadcasting shapes (3,1) and (3,)?",
-      "answer": "9",
-      "explanation": "The broadcast shape is (3,3).",
+      "prompt": "How many entries result when NumPy broadcasts shapes (4,1) and (1,5) together?",
+      "answer": "20",
+      "hint": "Align dimensions from the right; dimensions of size 1 can expand.",
+      "explanation": "The output shape is (4,5), with 20 entries.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Can a slice share data with its parent array?",
-      "answer": "Yes",
+      "prompt": "A NumPy basic slice is modified in place. Can the parent array change unless a copy was made?",
+      "answer": "Yes; basic slicing can share the parent data buffer.",
       "options": [
-        "No",
-        "Yes"
+        "No; every slice automatically owns an independent copy.",
+        "Yes; basic slicing can share the parent data buffer."
       ],
-      "explanation": "Many slices are views, so edits can affect the source.",
+      "explanation": "Compare shared views with explicit .copy() semantics.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "No; every slice automatically owns an independent copy.": "Compare shared views with explicit .copy() semantics."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "For an array of shape (2,3), how many entries remain after sum(axis=0) with keepdims=False?",
+      "answer": "3",
+      "hint": "Axis 0 is removed by the reduction.",
+      "explanation": "The result shape is (3,), containing 3 entries.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -161,6 +177,11 @@ assert np.allclose(residual, 0, atol=1e-12, rtol=0)
 ```
 
 A reproducible script separates model functions from file access and plotting, validates units and array shapes, and includes known analytic checks. A random seed helps reproduce one random sequence, but package versions and generator choice may also matter. Never treat the ability to run code without an exception as proof of a correct scientific result.
+
+
+### Transfer derivation and failure case
+
+Broadcasting compares shapes from the right; paired dimensions must be equal or one must be 1. For $(4,1)$ and $(1,5)$ the result is $(4,5)$, not $(4,1,5)$. A reduction with axis=0 combines the rows and removes that axis unless keepdims is requested. Basic slicing generally returns a view, so assignment through it can mutate the parent; an explicit copy separates storage. Shape compatibility is not evidence that a calculation represents the intended physical pairing: label which axes denote samples, coordinates and parameters before broadcasting scientific arrays.
 
 </LessonSection>
 

@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Dot product of (1,2,3) and (4,0,−1)?",
-      "answer": "1",
-      "explanation": "4+0−3=1.",
+      "prompt": "Find (2,−1,3)·(1,4,0).",
+      "answer": "-2",
+      "hint": "Multiply matching coordinates and sum.",
+      "explanation": "2−4+0=−2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Is the cross product associative?",
-      "answer": "No",
+      "prompt": "Two nonzero 3D vectors have zero cross product. Must their dot product be zero?",
+      "answer": "No; parallel or antiparallel vectors have nonzero dot product.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; a zero cross product proves orthogonality.",
+        "No; parallel or antiparallel vectors have nonzero dot product."
       ],
-      "explanation": "The vector triple-product identity differs from associativity.",
+      "explanation": "Cross and dot products test different geometric relations.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; a zero cross product proves orthogonality.": "Cross and dot products test different geometric relations."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Find the z-component of (1,0,0)×(0,3,0).",
+      "answer": "3",
+      "hint": "Use the right-handed orientation x cross y = z.",
+      "explanation": "The result is (0,0,3).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ The scalar triple product $\mathbf a\cdot(\mathbf b\times\mathbf c)$ is the sign
 For a displacement dr, mechanical work is $dW=\mathbf F\cdot d\mathbf r$. A centripetal force is perpendicular to instantaneous velocity and changes its direction without doing instantaneous work. Integrating work along a curve requires the local force direction; multiplying total force magnitude by path length generally fails.
 
 Unit vectors carry direction but no units. Vector components carry the units of the physical vector. Always check component signs against a declared axis convention before interpreting a negative result as an impossible magnitude.
+
+
+### Transfer derivation and failure case
+
+The dot product $\mathbf u\cdot\mathbf v=|\mathbf u||\mathbf v|\cos\theta$ measures a projection; the cross-product magnitude is $|\mathbf u||\mathbf v|\sin\theta$. For nonzero vectors, a zero dot product means perpendicular directions, whereas a zero cross product means collinearity. Component signs of a cross product depend on a stated right-handed orientation. The identity $\mathbf a\times(\mathbf b\times\mathbf c)=\mathbf b(\mathbf a\cdot\mathbf c)-\mathbf c(\mathbf a\cdot\mathbf b)$ also demonstrates why the cross product is generally not associative.
 
 </LessonSection>
 

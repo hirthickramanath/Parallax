@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "By what factor does rms speed change when T increases from 100 K to 400 K?",
-      "answer": "2",
-      "explanation": "Speed scales as the square root of absolute temperature.",
+      "prompt": "By what factor does ideal-gas rms molecular speed change when T rises from 300 K to 675 K?",
+      "answer": "1.5",
+      "hint": "The molecular mass stays fixed and speed scales as sqrt(T).",
+      "explanation": "sqrt(675/300)=1.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does classical equipartition apply unchanged to frozen quantum modes?",
-      "answer": "No",
+      "prompt": "At low temperature a molecular vibrational mode is quantum-frozen. Should it contribute the full classical equipartition heat capacity?",
+      "answer": "No; excitation is suppressed when its energy spacing is large compared with kT.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; every coordinate contributes classically at all temperatures.",
+        "No; excitation is suppressed when its energy spacing is large compared with kT."
       ],
-      "explanation": "Large energy spacings suppress thermal occupation.",
+      "explanation": "Compare kT with the mode’s quantum energy spacing.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; every coordinate contributes classically at all temperatures.": "Compare kT with the mode’s quantum energy spacing."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "An ideal gas has number density 3×10²⁵ m⁻³ at 300 K. Using k=1.38×10⁻²³ J/K, find pressure in Pa.",
+      "answer": "124200",
+      "hint": "Use particle number density rather than molar density in p=n_number kT.",
+      "explanation": "3×10²⁵·1.38×10⁻²³·300=124200 Pa.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ Equipartition assigns kT/2 to each independent quadratic energy term in the clas
 For hard-sphere particles of effective diameter d in a dilute gas, a common mean-free-path estimate is $\ell=1/(\sqrt2\,n\pi d^2)$, with number density n. Collision rate and transport require a distribution of relative velocities. A collisionless gas may not remain in local thermal equilibrium, so a single temperature or fluid pressure description requires justification.
 
 Thermal Doppler broadening reflects the line-of-sight velocity distribution. Turbulence, instrumental response and natural broadening also contribute; assigning every observed width to thermal speed overestimates temperature when those contributions are ignored.
+
+
+### Transfer derivation and failure case
+
+In an isotropic gas, $\langle v_x^2\rangle=\langle v^2\rangle/3$. Momentum transfer to a wall gives $p=(N/V)m\langle v^2\rangle/3$; comparison with $p=(N/V)kT$ yields $v_{rms}=\sqrt{3kT/m}$. This is a root-mean-square speed, not the most probable speed or the mean of the speed distribution. Classical quadratic degrees of freedom each contribute $kT/2$ to the mean energy only in their classical regime. If level spacing is comparable to or exceeds $kT$, the classical heat-capacity count must be replaced with a quantum population calculation.
 
 </LessonSection>
 

@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "How many degrees correspond to π radians?",
-      "answer": "180",
-      "explanation": "One half-turn is π radians or 180 degrees.",
+      "prompt": "Convert 3π/2 radians to degrees.",
+      "answer": "270",
+      "hint": "Use 180 degrees per π radians.",
+      "explanation": "(3π/2)(180/π)=270.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Can dividing by sin θ lose solutions?",
-      "answer": "Yes, where sin θ=0",
+      "prompt": "Dividing sinθ cosθ=0 by cosθ on [0,2π) loses which solutions?",
+      "answer": "θ=π/2 and 3π/2",
       "options": [
-        "No",
-        "Yes, where sin θ=0"
+        "θ=0 and π",
+        "θ=π/2 and 3π/2"
       ],
-      "explanation": "Division is undefined at those zeros.",
+      "explanation": "Division by a zero factor discards the factor’s own zeros.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "θ=0 and π": "Division by a zero factor discards the factor’s own zeros."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "How many solutions does sinθ=1/2 have in [0,2π)?",
+      "answer": "2",
+      "hint": "Use both quadrants with positive sine.",
+      "explanation": "π/6 and 5π/6 are the two solutions in the stated half-open interval.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ To solve $\sin\theta=s$, first require |s|≤1. With a principal arcsine α, the
 For angles measured in radians near zero, $\sin\theta\approx\theta$ and $\cos\theta\approx1-\theta^2/2$. These approximations follow from Taylor expansion and their first omitted terms scale as θ³ and θ⁴ respectively. A numerical angle stated in degrees must be converted before using these formulas. Small-angle parallax inherits the same restriction.
 
 The cosine rule $c^2=a^2+b^2-2ab\cos C$ follows by resolving one side along the other and using the distance formula. It includes Pythagoras at C=π/2 and avoids assuming every triangle is right angled.
+
+
+### Transfer derivation and failure case
+
+A zero product is solved by retaining every factor: $\sin\theta\cos\theta=0$ implies either $\sin\theta=0$ or $\cos\theta=0$. Dividing by the second factor before considering its zeros loses valid solutions. In $[0,2\pi)$, the solutions are $0,\pi/2,\pi,3\pi/2$. For $\sin\theta=1/2$, symmetry gives $\theta=\pi/6$ and $5\pi/6$ in this interval; an inverse-sine principal value alone does not enumerate all roots. State the angle interval and endpoint inclusion before counting solutions.
 
 </LessonSection>
 

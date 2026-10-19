@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Mean power in W for 10 V rms across 5 Ω?",
-      "answer": "20",
-      "explanation": "P=Vrms²/R=100/5.",
+      "prompt": "A 12 V rms sinusoidal supply drives a pure 6 Ω resistor. Find mean power in W.",
+      "answer": "24",
+      "hint": "Rms voltage can be used directly for resistive mean power.",
+      "explanation": "P=V_rms²/R=144/6=24 W.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Do phasors alone describe the switch-on transient?",
-      "answer": "No",
+      "prompt": "An ideal capacitor carries sinusoidal current in steady state. Can its average absorbed power be zero while its current is nonzero?",
+      "answer": "Yes; stored energy is returned during the cycle.",
       "options": [
-        "Yes",
-        "No"
+        "No; any nonzero current implies positive mean dissipation.",
+        "Yes; stored energy is returned during the cycle."
       ],
-      "explanation": "They describe sinusoidal steady state.",
+      "explanation": "Voltage and current are a quarter-cycle out of phase for an ideal capacitor.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "No; any nonzero current implies positive mean dissipation.": "Voltage and current are a quarter-cycle out of phase for an ideal capacitor."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "For L=0.1 H and C=0.001 F, find the ideal series-LC angular resonance frequency in rad/s.",
+      "answer": "100",
+      "hint": "Set inductive and capacitive reactance magnitudes equal.",
+      "explanation": "ωL=1/(ωC), so ω=1/sqrt(LC)=100 rad/s.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ For sinusoidal voltage and current, mean real power is $V_{\rm rms}I_{\rm rms}\c
 Maxwell's corrected Ampère law includes displacement current density ∂D/∂t. In vacuum, combining it with Faraday's law produces transverse waves with $c=1/\sqrt{\mu_0\epsilon_0}$. For a plane wave, E and B are perpendicular and E=cB. Energy flux is $\mathbf S=\mathbf E\times\mathbf B/\mu_0$.
 
 These vacuum relations change in matter: phase speed, dispersion and absorption require material response. A lumped-element circuit model also fails when the circuit size becomes comparable to wavelength; propagation delay then needs transmission-line or field treatment.
+
+
+### Transfer derivation and failure case
+
+For sinusoidal voltage and current, time-averaging their product gives $P=V_{rms}I_{rms}\cos\phi$. A resistor has $\phi=0$ and dissipates energy, while an ideal reactive element stores and returns energy with zero net cycle work. Setting $\omega L=1/(\omega C)$ gives $\omega_0=1/\sqrt{LC}$ for the ideal reactance cancellation. Radians per second are not hertz: $f_0=\omega_0/(2\pi)$. Phasors describe a sinusoidal steady-state particular solution; initial-condition transients require the time-domain homogeneous solution.
 
 </LessonSection>
 

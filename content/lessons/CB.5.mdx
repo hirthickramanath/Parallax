@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Degree of unsaturation of neutral C₆H₆?",
-      "answer": "4",
-      "explanation": "(2×6+2−6)/2=4.",
+      "prompt": "Find the degree of unsaturation of neutral C₅H₁₀O under ordinary closed-shell valences.",
+      "answer": "1",
+      "hint": "Oxygen does not enter the elementary hydrogen-deficiency count.",
+      "explanation": "DBE=(2C+2−H)/2=(12−10)/2=1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does detecting an organic molecule alone demonstrate life?",
-      "answer": "No",
+      "prompt": "Can molecular formula C₂H₆O alone distinguish ethanol from dimethyl ether?",
+      "answer": "No; connectivity or additional evidence is needed.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; one formula uniquely determines a functional group.",
+        "No; connectivity or additional evidence is needed."
       ],
-      "explanation": "Organic chemistry also occurs abiotically.",
+      "explanation": "Constitutional isomers share a formula but differ in bonding connectivity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; one formula uniquely determines a functional group.": "Constitutional isomers share a formula but differ in bonding connectivity."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Find degree of unsaturation of neutral C₄H₇Cl under ordinary closed-shell valences.",
+      "answer": "1",
+      "hint": "Count one halogen as one hydrogen in the deficiency formula.",
+      "explanation": "DBE=(2·4+2−7−1)/2=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ Constitutional isomers have different connectivity. Stereoisomers share connecti
 Electron-pair movement organizes introductory mechanisms: nucleophiles donate an electron pair to an electrophilic centre. Curved arrows track pairs from their origin, not motion of a positive charge. Resonance contributors describe one delocalized state; they are not molecules rapidly interconverting. Substitution, addition, elimination and acid-base transfer are broad patterns whose pathways depend on substrate, solvent and conditions.
 
 Infrared spectra suggest bond vibrations, mass spectra constrain mass and fragmentation, and NMR constrains local environments. No single functional-group band establishes the entire molecular structure. Astronomical detections additionally require line assignments, excitation models and confusion checks.
+
+
+### Transfer derivation and failure case
+
+For a neutral closed-shell formula with ordinary valences, the hydrogen-deficiency index is $\mathrm{DBE}=(2C+2+N-H-X)/2$, with $X$ the halogen count and oxygen omitted. Each ring or double bond contributes one and a triple bond contributes two. This formula constrains possible structures but does not identify connectivity or a functional group. Ethanol and dimethyl ether both have formula C₂H₆O; spectroscopy or chemical evidence must distinguish them. Charged species, radicals and unusual valence states require checking the counting assumptions before interpreting a fractional result.
 
 </LessonSection>
 

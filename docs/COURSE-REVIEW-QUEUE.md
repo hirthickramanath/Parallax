@@ -2,15 +2,15 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 332 without explicit widgets; 30 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 13 have current partial AI-assisted source mappings; 328 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
 | AS1.1 Celestial coordinates and time | 6 / 6 | 2 | 0 | pending |
 | AS1.2 Seasons, precession and eclipses | 6 / 6 | 2 | 0 | pending |
 | AS1.3 Orbits and orbital elements | 6 / 6 | 2 | 0 | orbit_explorer |
-| AS1.4 N-body problem and Lagrange points | 6 / 4 | 2 | 0 | pending |
-| AS1.5 Tides and the Roche limit | 6 / 4 | 2 | 0 | pending |
+| AS1.4 N-body problem and Lagrange points | 7 / 7 | 3 | 3 | pending |
+| AS1.5 Tides and the Roche limit | 7 / 7 | 3 | 3 | tidal_explorer |
 | AS10.1 Reading arXiv and NASA ADS | 6 / 6 | 2 | 0 | pending |
 | AS10.2 Analysing survey data (Gaia, TESS, SDSS) | 6 / 6 | 2 | 0 | pending |
 | AS10.3 Bayesian inference for astronomy | 6 / 6 | 2 | 0 | pending |
@@ -69,9 +69,9 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS9.8 Observational cosmology and tensions (H0, S8) | 6 / 6 | 2 | 0 | pending |
 | CB.1 Atomic structure and periodic trends | 6 / 6 | 2 | 0 | pending |
 | CB.2 Bonding and molecular shapes | 6 / 6 | 2 | 0 | pending |
-| CB.3 Thermochemistry and equilibrium | 6 / 4 | 2 | 0 | pending |
-| CB.4 Kinetics and electrochemistry | 6 / 4 | 2 | 0 | pending |
-| CB.5 Organic functional groups overview | 6 / 4 | 2 | 0 | pending |
+| CB.3 Thermochemistry and equilibrium | 7 / 7 | 3 | 3 | pending |
+| CB.4 Kinetics and electrochemistry | 7 / 7 | 3 | 3 | pending |
+| CB.5 Organic functional groups overview | 7 / 7 | 3 | 3 | pending |
 | CH1.1 Chemical thermodynamics and chemical potential | 6 / 6 | 2 | 0 | pending |
 | CH1.10 Ionic solutions and conductivity | 6 / 6 | 2 | 0 | pending |
 | CH1.11 Transport: diffusion, viscosity and thermal conduction | 6 / 6 | 2 | 0 | pending |
@@ -116,12 +116,12 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CH6.6 Aromaticity and aromatic reactions | 6 / 6 | 2 | 0 | pending |
 | CH6.7 Organic spectroscopy and molecular identification | 6 / 6 | 2 | 0 | pending |
 | CH6.8 Interstellar organics and prebiotic reaction questions | 6 / 6 | 2 | 0 | pending |
-| CP1.1 Python and NumPy | 6 / 4 | 2 | 0 | pending |
-| CP1.2 Plotting and visualisation | 6 / 4 | 2 | 0 | pending |
-| CP1.3 Numerical differentiation and integration | 6 / 4 | 2 | 0 | pending |
-| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 6 / 4 | 2 | 0 | pending |
-| CP1.5 Numerical linear algebra | 6 / 4 | 2 | 0 | pending |
-| CP1.6 Symbolic maths with SymPy | 6 / 4 | 2 | 0 | pending |
+| CP1.1 Python and NumPy | 7 / 7 | 3 | 3 | pending |
+| CP1.2 Plotting and visualisation | 7 / 7 | 3 | 3 | pending |
+| CP1.3 Numerical differentiation and integration | 7 / 7 | 3 | 3 | pending |
+| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 7 / 7 | 3 | 3 | pending |
+| CP1.5 Numerical linear algebra | 7 / 7 | 3 | 3 | pending |
+| CP1.6 Symbolic maths with SymPy | 7 / 7 | 3 | 3 | pending |
 | CP2.1 PDE solvers (finite differences) | 6 / 6 | 2 | 0 | pending |
 | CP2.2 Monte Carlo and MCMC | 6 / 6 | 2 | 0 | pending |
 | CP2.3 Astropy, astroquery and survey data | 6 / 6 | 2 | 0 | pending |
@@ -207,11 +207,11 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA9.1 Euler-Lagrange equation | 6 / 6 | 2 | 0 | pending |
 | MA9.2 Constraints and Lagrange multipliers in functionals | 6 / 6 | 2 | 0 | pending |
 | MA9.3 Noether's theorem (mathematical form) | 6 / 6 | 2 | 0 | pending |
-| MB1.1 Inequalities, functions and graphs | 6 / 4 | 2 | 0 | pending |
-| MB1.2 Logs, exponentials, complex numbers | 6 / 4 | 2 | 0 | pending |
-| MB1.3 Sequences, series, binomial theorem | 6 / 4 | 2 | 0 | pending |
-| MB1.4 Induction and basic proof writing | 6 / 4 | 2 | 0 | pending |
-| MB2.1 Trig identities and equations | 6 / 4 | 2 | 0 | pending |
+| MB1.1 Inequalities, functions and graphs | 7 / 7 | 3 | 3 | pending |
+| MB1.2 Logs, exponentials, complex numbers | 7 / 7 | 3 | 3 | pending |
+| MB1.3 Sequences, series, binomial theorem | 7 / 7 | 3 | 3 | pending |
+| MB1.4 Induction and basic proof writing | 7 / 7 | 3 | 3 | pending |
+| MB2.1 Trig identities and equations | 7 / 7 | 3 | 3 | pending |
 | MB2.2 Conic sections | 12 / 12 | 8 | 8 | conic_explorer |
 | MB2.3 3D geometry and vectors | 12 / 12 | 8 | 8 | plane_distance_explorer |
 | MB3.1 Limits and continuity | 6 / 6 | 2 | 0 | pending |
@@ -219,27 +219,27 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MB3.3 Integration techniques | 6 / 6 | 2 | 0 | pending |
 | MB3.4 Applications: areas, extrema and rates | 6 / 6 | 3 | 0 | pending |
 | MB3.5 Basic ordinary differential equations | 6 / 6 | 2 | 0 | pending |
-| MB4.1 Matrices and determinants | 6 / 4 | 2 | 0 | pending |
-| MB4.2 Vector algebra | 6 / 4 | 2 | 0 | pending |
-| MB4.3 Probability and conditional probability | 6 / 4 | 2 | 0 | pending |
-| MB4.4 Distributions and expectation | 6 / 4 | 2 | 0 | pending |
+| MB4.1 Matrices and determinants | 7 / 7 | 3 | 3 | pending |
+| MB4.2 Vector algebra | 7 / 7 | 3 | 3 | pending |
+| MB4.3 Probability and conditional probability | 7 / 7 | 3 | 3 | bayes_explorer |
+| MB4.4 Distributions and expectation | 7 / 7 | 3 | 3 | pending |
 | PB1.1 Kinematics and Newton’s laws | 13 / 13 | 7 | 8 | falling_bodies |
 | PB1.2 Work, energy and momentum | 13 / 13 | 9 | 8 | pending |
 | PB1.3 Rotation and rolling | 13 / 13 | 8 | 8 | pending |
 | PB1.4 Gravitation and SHM | 13 / 13 | 8 | 7 | pendulum_lab |
 | PB2.1 Fluid mechanics | 12 / 12 | 8 | 8 | hydrostatic_explorer |
 | PB2.2 Thermodynamics | 12 / 12 | 8 | 8 | gas_lab, thermal_path_explorer |
-| PB2.3 Kinetic theory | 6 / 4 | 2 | 0 | pending |
-| PB3.1 Waves and sound | 6 / 4 | 2 | 0 | wave_lab |
-| PB3.2 Geometric optics | 6 / 4 | 2 | 0 | pending |
-| PB3.3 Wave optics | 6 / 4 | 2 | 0 | double_slit_lab |
-| PB4.1 Electrostatics | 6 / 4 | 2 | 0 | pending |
+| PB2.3 Kinetic theory | 7 / 7 | 3 | 3 | pending |
+| PB3.1 Waves and sound | 7 / 7 | 3 | 3 | wave_lab |
+| PB3.2 Geometric optics | 7 / 7 | 3 | 3 | thin_lens_explorer |
+| PB3.3 Wave optics | 7 / 7 | 3 | 3 | double_slit_lab |
+| PB4.1 Electrostatics | 7 / 7 | 3 | 3 | pending |
 | PB4.2 Current electricity | 6 / 6 | 3 | 0 | circuit_lab |
-| PB4.3 Magnetism and induction | 6 / 4 | 2 | 0 | pending |
-| PB4.4 AC and EM waves | 6 / 4 | 2 | 0 | pending |
-| PB5.1 Photoelectric effect and Bohr model | 6 / 4 | 2 | 0 | pending |
-| PB5.2 Nuclei and radioactivity | 6 / 4 | 2 | 0 | pending |
-| PB5.3 Semiconductors | 6 / 4 | 2 | 0 | pending |
+| PB4.3 Magnetism and induction | 7 / 7 | 3 | 3 | induction_explorer |
+| PB4.4 AC and EM waves | 7 / 7 | 3 | 3 | pending |
+| PB5.1 Photoelectric effect and Bohr model | 7 / 7 | 3 | 3 | pending |
+| PB5.2 Nuclei and radioactivity | 7 / 7 | 3 | 3 | pending |
+| PB5.3 Semiconductors | 7 / 7 | 3 | 3 | pending |
 | PH1.1 Newtonian mechanics with calculus (drag, variable mass) | 6 / 6 | 2 | 0 | pending |
 | PH1.2 Non-inertial frames and Coriolis force | 6 / 6 | 2 | 0 | pending |
 | PH1.3 Central forces and orbits | 6 / 6 | 2 | 0 | pending |

@@ -4,7 +4,11 @@ import { build } from "esbuild";
 import { Miniflare, convertV4MiniflareOptions } from "miniflare";
 import { generateKeyPair, exportJWK, SignJWT, createLocalJWKSet } from "jose";
 import { assessmentUser } from "../workers/assessment/src/auth.ts";
-import { assessmentItems, gradeItem } from "../workers/assessment/src/bank.ts";
+import {
+  assessmentItems,
+  gradeItem,
+  supported,
+} from "../workers/assessment/src/bank.ts";
 test("assessment JWT validation binds issuer, audience, expiry and nonempty subject", async () => {
   const { privateKey, publicKey } = await generateKeyPair("RS256");
   const jwk = await exportJWK(publicKey);
@@ -42,13 +46,18 @@ test("assessment JWT validation binds issuer, audience, expiry and nonempty subj
   );
 });
 test("server assessment bank checks units, all supported lessons and finite numeric responses", () => {
-  for (const lesson of ["PB1.1", "PB1.2", "PB1.3", "PB1.4", "MB2.3", "AS1.3"])
+  for (const lesson of supported)
     for (const r of [0, 0.3, 0.999])
       for (const item of assessmentItems(lesson, () => r)) {
         assert.ok(gradeItem(String(item.answer), item));
         assert.ok(!gradeItem("", item));
         assert.ok(!gradeItem("Infinity", item));
-        assert.ok(!gradeItem(String(item.answer + 1000), item));
+        assert.ok(
+          !gradeItem(
+            String(item.answer + Math.max(1000, Math.abs(item.answer) * 0.2)),
+            item,
+          ),
+        );
       }
   assert.equal(assessmentItems("PB1.1", () => 0)[0].answer, 2);
   assert.equal(assessmentItems("MB2.3", () => 0)[1].answer, 4);
@@ -220,5 +229,39 @@ test("assessment ledger owns scores, isolates users, prevents mutation/replay in
     assert.equal(statuses.filter((x) => x === 429).length, 11);
   } finally {
     await mf.dispose();
+  }
+});
+
+test("five additional assessment banks agree with separately derived numeric instances", () => {
+  const expected = {
+    "PB2.1": [1000 * 2 * 2, 10 * 2, 2 * 2, 1000 * 2 * 2, 10 * 2],
+    "PB2.2": [
+      1.5 * 2 * 8.314 * 2,
+      200 - 20,
+      2000 / 200,
+      1.5 * 2 * 8.314 * 2,
+      200 - 20,
+    ],
+    "MB2.2": [2, 6, Math.sqrt(8), 2, 6],
+    "MB4.3": [
+      0.02 / 0.04,
+      1000 * 0.02 * 0.8,
+      (0.8 * 0.02) / (0.8 * 0.02 + 0.02 * 0.98),
+      0.02 / 0.04,
+      1000 * 0.02 * 0.8,
+    ],
+    "AS1.5": [
+      1 / 8,
+      (2 * 1e8 * 2) / 2000 ** 3,
+      1 / 8,
+      (2 * 1e8 * 2) / 2000 ** 3,
+      1 / 8,
+    ],
+  };
+  for (const [id, values] of Object.entries(expected)) {
+    const items = assessmentItems(id, () => 0);
+    items.forEach((item, i) =>
+      assert.ok(Math.abs(item.answer - values[i]) < 1e-10, `${id}:${i}`),
+    );
   }
 });

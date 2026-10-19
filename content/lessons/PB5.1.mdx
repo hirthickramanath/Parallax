@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Stopping voltage in V for photons of 5 eV and work function 2 eV?",
-      "answer": "3",
-      "explanation": "Maximum kinetic energy is 3 eV.",
+      "prompt": "Photon energy is 6.5 eV and a metal work function is 2.5 eV. Find stopping-voltage magnitude in V.",
+      "answer": "4",
+      "hint": "Use maximum kinetic energy, not photon energy alone.",
+      "explanation": "K_max=6.5−2.5=4 eV, hence stopping-voltage magnitude 4 V.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "What does stopping voltage determine?",
-      "answer": "Maximum photoelectron kinetic energy",
+      "prompt": "In the ordinary single-photon photoelectric model, can increasing intensity overcome a photon energy below the work function?",
+      "answer": "No; each photon still lacks the required energy.",
       "options": [
-        "Mean photon arrival rate",
-        "Maximum photoelectron kinetic energy"
+        "Yes; intensity always raises the energy per photon.",
+        "No; each photon still lacks the required energy."
       ],
-      "explanation": "eVs equals the maximum emitted kinetic energy.",
+      "explanation": "Distinguish photon energy hf from the number of photons per second.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; intensity always raises the energy per photon.": "Distinguish photon energy hf from the number of photons per second."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Hydrogen has E_n=−13.6/n² eV. Find the energy needed to excite n=1 to n=2 in eV.",
+      "answer": "10.2",
+      "hint": "Subtract initial energy from final energy.",
+      "explanation": "E₂−E₁=−3.4−(−13.6)=10.2 eV.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ Bohr's hydrogen model combines Coulomb attraction with the quantization $mvr=n\h
 The Bohr orbit is a historically useful calculation, not a literal electron trajectory in modern quantum mechanics. A wavefunction gives state amplitudes; measured probabilities follow its squared magnitude. The model fails for many-electron interactions and does not explain all intensities or fine structure. A hydrogenic formula applies to one-electron ions with further relativistic corrections at large Z.
 
 The de Broglie relation λ=h/p links matter wavelength to momentum. It does not imply that a macroscopic object has a visibly resolvable wave pattern; preparation, coherence and environmental interaction matter. Threshold and spectral experiments motivate a theory richer than either tiny classical balls or classical waves alone.
+
+
+### Transfer derivation and failure case
+
+A single absorbed photon supplies energy $hf=\phi+K$ in the elementary photoelectric model, so the maximum kinetic energy is $hf-\phi$ when positive. Increasing intensity at fixed frequency increases the photon arrival rate, not $hf$. The stopping potential measures the maximum electron energy rather than the average emitted energy. Multiphoton effects require a different high-intensity model and do not rescue the single-photon rule below threshold. In the Bohr spectrum, bound levels are negative relative to ionization; excitation energies are differences between levels, not their absolute magnitudes.
 
 </LessonSection>
 

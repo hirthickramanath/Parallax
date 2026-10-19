@@ -1,3 +1,4 @@
+import { assessmentLessonIds } from "../../lib/assessment-support";
 import { useState, useEffect } from "react";
 import { useLearning } from "../../hooks/useLearning";
 import { auth } from "../../lib/firebase";
@@ -32,14 +33,7 @@ export function TrustedAssessment({ lessonId }: { lessonId: string }) {
     [receipt, setReceipt] = useState<Receipt | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
-  const supported = [
-    "PB1.1",
-    "PB1.2",
-    "PB1.3",
-    "PB1.4",
-    "MB2.3",
-    "AS1.3",
-  ].includes(lessonId);
+  const supported = assessmentLessonIds.includes(lessonId);
   async function request(path: string, body?: object, method = "POST") {
     setBusy(true);
     setError("");

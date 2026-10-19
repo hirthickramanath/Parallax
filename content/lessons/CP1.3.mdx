@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "One-panel trapezoidal integral of x² over [0,1]?",
-      "answer": "0.5",
-      "explanation": "The interval width times average endpoint values is 0.5.",
+      "prompt": "Use central difference [f(2.1)−f(1.9)]/0.2 for f(x)=x³. Find the derivative estimate.",
+      "answer": "12.01",
+      "hint": "Expand (x+h)³ and (x−h)³ before subtracting.",
+      "explanation": "The central quotient is 3x²+h²=12.01 at x=2, h=0.1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Can dense decimal output replace missing measurements?",
-      "answer": "No",
+      "prompt": "Should a central finite-difference step always be made as tiny as the computer permits?",
+      "answer": "No; cancellation and roundoff can grow as h decreases.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; smaller h always improves the total error.",
+        "No; cancellation and roundoff can grow as h decreases."
       ],
-      "explanation": "Printing precision is not information content.",
+      "explanation": "Balance truncation error against subtraction of nearly equal rounded values.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; smaller h always improves the total error.": "Balance truncation error against subtraction of nearly equal rounded values."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Use the composite trapezoid rule with two equal panels to integrate x² from 0 to 1.",
+      "answer": "0.375",
+      "hint": "Give the interior sample full weight and endpoints half weight.",
+      "explanation": "h=0.5; integral≈0.5(0/2+0.25+1/2)=0.375.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -160,6 +176,11 @@ print(area)  # approximately 1/3
 ```
 
 A refinement check compares n and 2n intervals, while an analytic test establishes whether the implementation solves a known case. Neither alone proves correctness for every new integrand. Sampling cannot reconstruct features absent between observations without further assumptions; quoting extra decimal places does not create information.
+
+
+### Transfer derivation and failure case
+
+Taylor expansion of the symmetric quotient gives $[f(x+h)-f(x-h)]/(2h)=f'(x)+h^2 f^{(3)}(x)/6+O(h^4)$ for a sufficiently smooth function. For a cubic, the correction is exactly $h^2$. Floating-point subtraction introduces an error scale proportional to machine precision divided by $h$, so truncation improvement cannot be extrapolated to arbitrarily small steps. Composite trapezoidal quadrature instead averages neighboring endpoint values across each panel; refining panels is a convergence test, not additional measured information. Discontinuities and noisy data require separate error models.
 
 </LessonSection>
 

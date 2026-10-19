@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "For ideal A⇌B with K=4, A+B=10 mol and equal volume activity factors, equilibrium B amount in mol?",
-      "answer": "8",
-      "explanation": "B/A=4 and A+B=10, so A=2 and B=8.",
+      "prompt": "For ideal A⇌B with K=9 and A+B=20 mol in the same volume, find equilibrium B in mol.",
+      "answer": "18",
+      "hint": "Use B/A=9 together with conservation of total amount.",
+      "explanation": "A=2 mol and B=18 mol.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does equilibrium mean molecules stop reacting?",
-      "answer": "No",
+      "prompt": "At fixed temperature, does a catalyst change the equilibrium constant of a specified reaction?",
+      "answer": "No; it changes pathways and rates, not the equilibrium free-energy difference.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; faster forward reaction necessarily raises K.",
+        "No; it changes pathways and rates, not the equilibrium free-energy difference."
       ],
-      "explanation": "Forward and reverse processes balance dynamically.",
+      "explanation": "Both forward and reverse pathways must respect the same equilibrium.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; faster forward reaction necessarily raises K.": "Both forward and reverse pathways must respect the same equilibrium."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "At 300 K take R=8.314 J/(mol K) and ln K=2. Find standard reaction Gibbs energy in J/mol.",
+      "answer": "-4988.4",
+      "hint": "Use ΔG°=−RT ln K; the sign matters.",
+      "explanation": "−8.314·300·2=−4988.4 J/mol.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ At equilibrium Q=K and $\Delta_rG^\circ=-RT\ln K$. A large K favours products at
 For a weak acid HA in an ideal dilute solution, $K_a=a_Ha_A/a_{HA}$. Together with mass balance and charge balance this determines composition. The shortcut x≈√(KₐC) requires x≪C and negligible water autoionization; verify both assumptions. pH is defined with hydrogen-ion activity, not simply a dimensional concentration.
 
 Changing temperature alters K. Adding a catalyst changes rates but not the equilibrium constant of the same reaction at the same temperature. Pressure and concentration perturbations change Q and the constrained equilibrium composition; slogan-based shifts should be checked against the actual reaction quotient.
+
+
+### Transfer derivation and failure case
+
+For a specified reaction, $\Delta_rG=\Delta_rG^\circ+RT\ln Q$ with dimensionless activity quotient $Q$. At equilibrium $\Delta_rG=0$, so $\Delta_rG^\circ=-RT\ln K$. An ideal equal-volume A⇌B example has $K=n_B/n_A$ only under the stated activity approximation. A catalyst does not change the equilibrium thermodynamic states and therefore cannot change $K$ at fixed temperature. It can change the time needed to approach equilibrium. Dynamic equilibrium has nonzero balanced forward and reverse microscopic rates, not immobile molecules.
 
 </LessonSection>
 

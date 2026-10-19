@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Survivor percentage after two half-lives?",
-      "answer": "25",
-      "explanation": "100×(1/2)²=25.",
+      "prompt": "What survivor percentage remains after three half-lives in a constant-rate decay model?",
+      "answer": "12.5",
+      "hint": "Each half-life multiplies the remaining population by 1/2.",
+      "explanation": "100·(1/2)³=12.5%.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Is a detector count automatically the true decay count?",
-      "answer": "No",
+      "prompt": "A detector has substantial dead time. May observed counts always be converted to true decays by dividing by a constant efficiency alone?",
+      "answer": "No; rate-dependent losses need a dead-time model.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; dead time never changes the count-rate relation.",
+        "No; rate-dependent losses need a dead-time model."
       ],
-      "explanation": "Efficiency, background and dead time matter.",
+      "explanation": "A detector cannot record a second event while it is recovering.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; dead time never changes the count-rate relation.": "A detector cannot record a second event while it is recovering."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "During a short interval, expected true decays are 100 and detection efficiency is 0.2, with 5 expected background counts. Find expected total observed counts.",
+      "answer": "25",
+      "hint": "Add expected signal and expected background after applying signal efficiency.",
+      "explanation": "Expected observed count is 100·0.2+5=25, assuming negligible dead time.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ Nuclear binding energy is $B=[Zm_p+(A-Z)m_n-M_{\rm nucleus}]c^2$. If atomic mass
 Alpha decay changes mass number by −4 and atomic number by −2. Beta-minus decay changes a neutron into a proton with electron and antineutrino emission, leaving mass number unchanged. Gamma decay lowers nuclear excitation without changing A or Z. Charge, energy, momentum and appropriate particle-number conservation must all be checked.
 
 Fusion of light nuclei and fission of some heavy nuclei can release energy because the products have greater binding per nucleon. Neither process is guaranteed for every chosen pair or isotope. Reaction pathways and conditions matter. Radioisotope demonstrations should use simulations or appropriately supervised licensed equipment, never improvised sources.
+
+
+### Transfer derivation and failure case
+
+With constant decay probability per unit time $\lambda$, $dN/dt=-\lambda N$ integrates to $N=N_0e^{-\lambda t}$ and $t_{1/2}=\ln2/\lambda$. The expected number of detected signal events is reduced by efficiency; independent background adds to the expected count. Subtracting an estimated background also introduces its uncertainty and does not recover unobserved event identities. At high rates, dead time makes observed counts nonlinear in the true rate, so a constant efficiency correction can fail. A deterministic exponential is an expectation law, not a prediction of the exact next decay time.
 
 </LessonSection>
 

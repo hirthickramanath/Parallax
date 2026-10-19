@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "If electron-dominated conductivity doubles, by what factor does resistivity change?",
-      "answer": "0.5",
-      "explanation": "Resistivity is the reciprocal of conductivity.",
+      "prompt": "Electron density is 10²¹ m⁻³, mobility 0.1 m²/(V s), and charge magnitude 1.6×10⁻¹⁹ C. Find electron-only conductivity in S/m.",
+      "answer": "16",
+      "hint": "Use σ=neμ with consistent SI units.",
+      "explanation": "10²¹·1.6×10⁻¹⁹·0.1=16 S/m.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does conductivity depend only on carrier count?",
-      "answer": "No; mobility also matters",
+      "prompt": "Does an ordinary n-type bulk semiconductor necessarily carry a large net negative charge?",
+      "answer": "No; mobile electrons can be balanced by fixed ionized donors.",
       "options": [
-        "Yes",
-        "No; mobility also matters"
+        "Yes; n-type means the whole bulk is negatively charged.",
+        "No; mobile electrons can be balanced by fixed ionized donors."
       ],
-      "explanation": "σ includes densities and mobilities.",
+      "explanation": "Distinguish carrier type from net bulk charge density.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; n-type means the whole bulk is negatively charged.": "Distinguish carrier type from net bulk charge density."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "In an electron-dominated model, density doubles while mobility halves. By what factor does conductivity change?",
+      "answer": "1",
+      "hint": "Conductivity depends on the product of carrier density and mobility.",
+      "explanation": "σ_new/σ_old=2·(1/2)=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ At a p–n junction, carrier diffusion exposes ionized dopants and creates a dep
 An idealized diode follows $I=I_s[\exp(qV/(\eta kT))-1]$ in a suitable regime, with ideality factor η representing the model’s recombination mechanism. Series resistance, high injection and breakdown limit it. A diode is not a perfect zero-threshold switch with one universal 0.7 V drop.
 
 Photons with suitable energy can generate electron-hole pairs. A depletion field separates carriers, allowing photodiodes to detect light. Quantum efficiency, recombination, dark current and read noise influence real detectors. A gap energy gives a long-wavelength cutoff scale λ≈hc/Eg, but does not alone determine the detector’s full response curve.
+
+
+### Transfer derivation and failure case
+
+In the low-field drift model, electron drift speed magnitude is $\mu_n|E|$, and charge-current magnitude leads to $\sigma_n=en\mu_n$. Holes add $ep\mu_p$, giving $\sigma=e(n\mu_n+p\mu_p)$. Density alone cannot determine conductivity if mobility changes with temperature, impurities or field. A doped bulk can remain approximately charge-neutral because ionized donors balance mobile electrons. Depletion regions and junction potentials require solving charge and field together; a uniform-neutral-bulk approximation cannot describe a junction everywhere.
 
 </LessonSection>
 

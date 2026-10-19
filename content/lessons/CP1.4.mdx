@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Euler multiplier for y′=−10y with h=0.05?",
-      "answer": "0.5",
-      "explanation": "1+hλ=1−0.5=0.5.",
+      "prompt": "For y′=−4y, what is the explicit Euler multiplier with step h=0.1?",
+      "answer": "0.6",
+      "hint": "Euler gives y_next=(1−4h)y.",
+      "explanation": "1−4·0.1=0.6.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Are stability and accuracy the same requirement?",
-      "answer": "No",
+      "prompt": "Does a symplectic integrator generally conserve the original Hamiltonian exactly at every finite step?",
+      "answer": "No; symplectic structure is not exact stepwise energy conservation.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; symplectic always means zero energy error.",
+        "No; symplectic structure is not exact stepwise energy conservation."
       ],
-      "explanation": "A stable answer can still be inaccurate.",
+      "explanation": "Distinguish preservation of the symplectic form from preservation of the original energy.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; symplectic always means zero energy error.": "Distinguish preservation of the symplectic form from preservation of the original energy."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Starting with y₀=1, apply four explicit Euler steps of h=0.1 to y′=−4y. Find y₄.",
+      "answer": "0.1296",
+      "hint": "Apply the one-step multiplier four times.",
+      "explanation": "y₄=(0.6)^4=0.1296; the exact value at t=0.4 is exp(−1.6).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -160,6 +176,11 @@ v_new = v - 0.5*h*(q + q_new)
 ```
 
 Validate against an analytic oscillator, halve the time step and compare phase, amplitude and energy error over many periods. Near-collision gravity, discontinuous forces and event detection require additional treatment. An orbit that conserves energy approximately may still have unacceptable phase error. Adaptive step control needs a declared tolerance, scale and solver strategy; arbitrary variable steps can break a simple symplectic construction.
+
+
+### Transfer derivation and failure case
+
+For $y'=\lambda y$, explicit Euler has amplification $1+h\lambda$; decay is numerically stable only when $|1+h\lambda|<1$. With real negative $\lambda$, this requires $0<h<2/|\lambda|$. A stable multiplier can still produce an inaccurate trajectory, so compare refined steps or an exact test problem. Symplectic methods preserve a phase-space geometric structure for Hamiltonian problems and can exhibit bounded oscillatory energy error under suitable assumptions. They do not guarantee exact conservation of the original Hamiltonian or universal stability at arbitrary step size.
 
 </LessonSection>
 

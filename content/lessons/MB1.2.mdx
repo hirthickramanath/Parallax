@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Compute the squared modulus of 3+4i.",
-      "answer": "25",
-      "explanation": "The squared modulus is 3²+4².",
+      "prompt": "Find the squared modulus of 5−12i.",
+      "answer": "169",
+      "hint": "Square both real components and add.",
+      "explanation": "|z|²=z conjugate(z)=25+144=169.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Is log(x+y)=log(x)+log(y) generally true?",
-      "answer": "No",
+      "prompt": "With the principal complex logarithm, does Log((-1)(-1)) equal Log(-1)+Log(-1)?",
+      "answer": "No; the values are 0 and 2πi.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; the product rule has no branch restriction.",
+        "No; the values are 0 and 2πi."
       ],
-      "explanation": "The addition identity applies to a product inside the logarithm.",
+      "explanation": "The argument is defined on a branch; adding arguments may cross its cut.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; the product rule has no branch restriction.": "The argument is defined on a branch; adding arguments may cross its cut."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Solve 2^x=32 for real x.",
+      "answer": "5",
+      "hint": "Write 32 as a power of 2.",
+      "explanation": "Strict monotonicity of 2^x makes x=5 unique.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -151,6 +167,11 @@ The natural exponential is normalized so its derivative equals itself. A constan
 For $z=a+ib$, define its conjugate $\bar z=a-ib$ and modulus $|z|=\sqrt{a^2+b^2}$. Since $z\bar z=|z|^2$, division by a nonzero complex number can be performed by multiplying numerator and denominator by its conjugate.
 
 Polar form is $z=r(\cos\theta+i\sin\theta)=re^{i\theta}$. Multiplication adds arguments and multiplies moduli; angles are defined modulo $2\pi$. De Moivre's formula follows by repeated multiplication. The n roots of a nonzero z have modulus $r^{1/n}$ and arguments $(\theta+2\pi k)/n$, k=0,...,n−1. Zero has only the root zero. Complex logarithms require a branch choice; real-log rules must not be extended blindly.
+
+
+### Transfer derivation and failure case
+
+For $z=a+ib$, multiply by its conjugate to obtain $z\bar z=a^2+b^2$; modulus is the positive square root, not the squared modulus itself. For positive real arguments, $\log(xy)=\log x+\log y$. Principal complex arguments require branch control: $\operatorname{Log}(-1)=i\pi$ under the argument convention $(-\pi,\pi]$, while $\operatorname{Log}(1)=0$. The two sides of the product rule can therefore differ by $2\pi i$. Real exponential equations additionally use injectivity: equality of powers with a fixed positive base other than 1 implies equality of exponents.
 
 </LessonSection>
 

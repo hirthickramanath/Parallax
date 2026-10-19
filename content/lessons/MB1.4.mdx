@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "What is 1+2+...+20?",
-      "answer": "210",
-      "explanation": "20×21/2=210.",
+      "prompt": "What is 1+2+…+30?",
+      "answer": "465",
+      "hint": "Pair the first and last terms.",
+      "explanation": "30·31/2=465.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does a theorem automatically prove its converse?",
-      "answer": "No",
+      "prompt": "To prove P(n) for every positive integer using P(n)⇒P(n+2), which starting information is sufficient?",
+      "answer": "Both P(1) and P(2)",
       "options": [
-        "Yes",
-        "No"
+        "P(1) alone",
+        "Both P(1) and P(2)"
       ],
-      "explanation": "Reversing an implication is a separate claim.",
+      "explanation": "The step connects odd indices to odd indices and even indices to even indices.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "P(1) alone": "The step connects odd indices to odd indices and even indices to even indices."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "A sequence has a₁=2 and aₙ₊₁=aₙ+3. Find a₁₀.",
+      "answer": "29",
+      "hint": "There are nine increments between the first and tenth entries.",
+      "explanation": "a_n=2+3(n−1); a_10=29.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ A universal statement is refuted by one counterexample. To disprove that every i
 For a proof by contradiction assume the negation of the conclusion together with the hypotheses and derive an impossibility. The classic parity proof for the irrationality of $\sqrt2$ begins with a lowest-terms fraction p/q. From $p^2=2q^2$, p is even, then q is even, contradicting lowest terms. The lowest-terms requirement is essential.
 
 A clear proof states its domain, assumptions, intermediate reason and conclusion. Numerical examples are useful for finding a conjecture or an error; they do not replace the logical link for an arbitrary case.
+
+
+### Transfer derivation and failure case
+
+For the sum identity, the base case is $1=1(2)/2$. Assuming $\sum_{j=1}^n j=n(n+1)/2$, adding $n+1$ gives $(n+1)(n+2)/2$. The hypothesis is an assumption within an implication, not permission to assert the desired conclusion outright. If a recurrence advances by two indices, a single base case covers only one parity class. For $a_{n+1}=a_n+3$, induction proves $a_n=2+3(n-1)$; testing the claimed formula at $n=1$ prevents an off-by-one error.
 
 </LessonSection>
 

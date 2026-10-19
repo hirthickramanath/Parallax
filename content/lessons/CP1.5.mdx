@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Amplification δ/ε for δ=10⁻⁶ and ε=10⁻⁶?",
-      "answer": "1",
-      "explanation": "The quotient is one.",
+      "prompt": "A relative input perturbation 10⁻⁸ produces a relative output change 10⁻⁴. Find their amplification ratio.",
+      "answer": "10000",
+      "hint": "Divide output change by input perturbation.",
+      "explanation": "10⁻⁴/10⁻⁸=10⁴.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does regularization leave the inferred problem unchanged?",
-      "answer": "No",
+      "prompt": "For an ill-conditioned least-squares problem, does forming AᵀA usually improve its 2-norm conditioning?",
+      "answer": "No; the full-rank 2-norm condition number is squared.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; squaring the matrix removes sensitivity.",
+        "No; the full-rank 2-norm condition number is squared."
       ],
-      "explanation": "It introduces additional constraints or assumptions.",
+      "explanation": "Compare singular values of A with eigenvalues of AᵀA.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; squaring the matrix removes sensitivity.": "Compare singular values of A with eigenvalues of AᵀA."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Find the 2-norm condition number of diag(1,0.001).",
+      "answer": "1000",
+      "hint": "Divide the largest singular value by the smallest.",
+      "explanation": "κ₂=1/0.001=1000.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -160,6 +176,11 @@ print(x, np.linalg.norm(A @ x - b), np.linalg.cond(A))
 ```
 
 Regularization stabilizes weak directions by introducing a penalty or prior, changing the inverse problem. Its strength must be justified and sensitivity reported. Scaling columns can improve numerical behaviour but does not invent missing physical information. Uncertainty propagation should include data covariance and model error rather than only a solver tolerance.
+
+
+### Transfer derivation and failure case
+
+For nonsingular $A$, perturbation bounds involve $\kappa_2(A)=\sigma_{max}/\sigma_{min}$. A small singular value identifies a data direction that is weakly constrained. In full-column-rank least squares, singular values squared are the eigenvalues of $A^TA$, giving $\kappa_2(A^TA)=\kappa_2(A)^2$. QR or SVD methods avoid explicitly worsening conditioning through the normal equations. Regularization changes the inference problem by penalizing or suppressing selected directions; its parameter and scientific prior assumptions must be reported, not treated as a neutral numerical repair.
 
 </LessonSection>
 

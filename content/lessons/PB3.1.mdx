@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Wavelength in metres for speed 340 m/s and frequency 170 Hz?",
-      "answer": "2",
-      "explanation": "λ=v/f=340/170.",
+      "prompt": "A sound wave travels at 330 m/s with frequency 110 Hz. Find wavelength in metres.",
+      "answer": "3",
+      "hint": "Speed is wavelength times frequency.",
+      "explanation": "λ=v/f=3 m.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Does every air column have the fixed-string spectrum?",
-      "answer": "No",
+      "prompt": "For an ideal pipe closed at one end and open at the other, does the displacement boundary condition allow all integer harmonics of the fundamental?",
+      "answer": "No; the elementary model allows odd harmonics.",
       "options": [
-        "Yes",
-        "No"
+        "Yes; it has the same mode sequence as a string fixed at both ends.",
+        "No; the elementary model allows odd harmonics."
       ],
-      "explanation": "Boundary conditions select the modes.",
+      "explanation": "One displacement node and one antinode fit an odd number of quarter-wavelengths.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; it has the same mode sequence as a string fixed at both ends.": "One displacement node and one antinode fit an odd number of quarter-wavelengths."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "An ideal string fixed at both ends has length 1.2 m and wave speed 120 m/s. Find its fundamental frequency in Hz.",
+      "answer": "50",
+      "hint": "The fundamental has half a wavelength along the string.",
+      "explanation": "λ₁=2L=2.4 m; f₁=v/(2L)=50 Hz.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ Linearity permits superposition. Equal counter-propagating sinusoidal waves form
 For uniform spreading in a lossless three-dimensional medium, mean intensity scales as 1/r² from energy conservation over a sphere. Absorption and directional sources change this. Sound level is $10\log_{10}(I/I_0)$ dB; a tenfold intensity increase is 10 dB, while a doubled intensity is about 3 dB.
 
 For a stationary medium and approach along the source-observer line, classical sound Doppler formulas distinguish source and observer velocities. Light requires relativistic reasoning. In dispersive media phase velocity and group velocity can differ, so v=fλ describes phase, not automatically information transport.
+
+
+### Transfer derivation and failure case
+
+Write a fixed-end mode as $y(x,t)=A\sin(kx)\cos(\omega t+\phi)$. The second endpoint requires $\sin(kL)=0$, so $k_n=n\pi/L$ and $f_n=nv/(2L)$. A closed-open pipe instead requires a displacement node at the closed end and an antinode at the open end, giving $kL=(2n-1)\pi/2$. The resulting odd sequence assumes an ideal uniform tube; end corrections and losses shift observed resonances. Plotting a wave at successive times distinguishes particle displacement from propagation of a phase pattern.
 
 </LessonSection>
 

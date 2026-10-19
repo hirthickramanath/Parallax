@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Half-life in seconds for first-order k=0.2 s⁻¹, using ln2=0.693?",
-      "answer": "3.465",
-      "explanation": "t½=0.693/0.2.",
+      "prompt": "For a first-order rate constant k=0.1 s⁻¹, find half-life in seconds using ln2=0.693.",
+      "answer": "6.93",
+      "hint": "Integrate the first-order rate law before taking the halfway condition.",
+      "explanation": "t_1/2=ln2/k=6.93 s.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Where does oxidation occur?",
-      "answer": "At the anode",
+      "prompt": "Is an anode always the negative electrode in both galvanic and electrolytic cells?",
+      "answer": "No; oxidation defines the anode, while its sign depends on cell operation.",
       "options": [
-        "Always at the positive electrode regardless of operation",
-        "At the anode"
+        "Yes; electrode sign alone defines oxidation.",
+        "No; oxidation defines the anode, while its sign depends on cell operation."
       ],
-      "explanation": "Anode is defined by oxidation.",
+      "explanation": "Keep the reaction definition separate from the external power supply.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; electrode sign alone defines oxidation.": "Keep the reaction definition separate from the external power supply."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "What fraction of a first-order reactant remains after two of its half-lives?",
+      "answer": "0.25",
+      "hint": "Apply the same multiplicative remaining fraction twice.",
+      "explanation": "(1/2)²=0.25 for a constant first-order rate coefficient.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ For a reversible electrochemical cell with n moles of electrons transferred per 
 Oxidation occurs at the anode and reduction at the cathode in both galvanic and electrolytic devices; their electrical signs depend on operation. Faraday's law relates charge It to electron amount It/F. For deposition, deposited mass is $m=MIt/(nF)$ at 100% current efficiency.
 
 Ohmic loss, activation overpotential, concentration gradients and side reactions alter practical cells. Standard potential is an intensive quantity, so standard electrode potentials cannot be added as if they were extensive energies.
+
+
+### Transfer derivation and failure case
+
+Integrating $d[A]/dt=-k[A]$ gives $[A]=[A]_0e^{-kt}$, and setting the ratio to one half gives $t_{1/2}=\ln2/k$. A concentration-independent half-life is characteristic of this first-order model, not a universal property of every reaction order. In electrochemistry the anode is the site of oxidation and the cathode the site of reduction. The sign of an electrode depends on whether spontaneous chemical work drives the circuit or an external supply forces a nonspontaneous reaction; memorizing a universal anode sign creates errors.
 
 </LessonSection>
 

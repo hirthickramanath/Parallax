@@ -246,16 +246,35 @@ test("authored-content checks reject bad answer keys and unreviewed publication"
     questions: [
       ...Array.from({ length: 3 }, (_, i) => ({
         id: `c${i}`,
+        prompt: `Conceptual fixture ${i}`,
         type: "mcq",
         options: ["a", "b"],
         answer: "a",
         conceptual: true,
       })),
-      { id: "w", type: "numeric", answer: "1", tier: "warmup" },
-      { id: "p", type: "numeric", answer: "2", tier: "core" },
+      {
+        id: "w",
+        prompt: "Warmup fixture",
+        type: "numeric",
+        answer: "1",
+        tier: "warmup",
+      },
+      {
+        id: "p",
+        prompt: "Core fixture",
+        type: "numeric",
+        answer: "2",
+        tier: "core",
+      },
     ],
   };
   validateAuthored(data, layers, { id: "X.1" });
+  const repeated = structuredClone(data);
+  repeated.questions[1].prompt = repeated.questions[0].prompt;
+  assert.throws(
+    () => validateAuthored(repeated, layers, { id: "X.1" }),
+    /Duplicate question prompt/,
+  );
   assert.throws(
     () =>
       validateAuthored({ ...data, status: "published" }, layers, { id: "X.1" }),

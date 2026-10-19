@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "What is the boundary value for 2−3x>8?",
-      "answer": "-2",
-      "explanation": "Set 2−3x=8, giving x=−2.",
+      "prompt": "Find the boundary value of 5−2x>11.",
+      "answer": "-3",
+      "hint": "Solve the boundary equation first; dividing an inequality by −2 reverses its direction.",
+      "explanation": "5−2x=11 gives x=−3; the solution set is x<−3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Is every squared-equation solution automatically valid originally?",
-      "answer": "No; substitute it back",
+      "prompt": "Squaring sqrt(x+6)=x gives candidates 3 and −2. Which satisfies the original equation?",
+      "answer": "Only 3",
       "options": [
-        "Yes",
-        "No; substitute it back"
+        "Both 3 and −2",
+        "Only 3"
       ],
-      "explanation": "Squaring loses sign information.",
+      "explanation": "The square root is nonnegative, so x must be nonnegative before substitution.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Both 3 and −2": "The square root is nonnegative, so x must be nonnegative before substitution."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "How many real solutions does sqrt(x+6)=x have?",
+      "answer": "1",
+      "hint": "Use the original equation’s sign restriction, not just its squared version.",
+      "explanation": "The quadratic has two roots, but only x=3 survives.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -151,6 +167,11 @@ Adding the same real number preserves an inequality. Multiplying by a positive n
 Squaring is reversible only with sign information: $x=3$ implies $x^2=9$, but the latter also allows −3. Similarly, taking square roots means the principal nonnegative root. For $\sqrt{x+1}=x-1$, the domain and right-hand sign demand $x\ge1$. Squaring yields $x(x-3)=0$; substitution rejects 0 and keeps 3.
 
 A transformation $y=a f(b(x-h))+k$ changes the graph horizontally about $h$ and vertically about $k$. Horizontal scale is $1/|b|$, not $|b|$. A function is one-to-one if distinct inputs have distinct outputs; restricting $x^2$ to $x\ge0$ makes its inverse $\sqrt{x}$. Always state the inverse domain.
+
+
+### Transfer derivation and failure case
+
+For a rational inequality, isolate zeros of the numerator and denominator before testing signs on the remaining intervals. A denominator zero is never included even if multiplication appears to remove it. In $\sqrt{x+6}=x$, the domain requires $x\geq0$; squaring yields $(x-3)(x+2)=0$, and substitution eliminates $-2$. An implication produced by squaring is not automatically an equivalence. For $5-2x>11$, subtract 5 and divide by the negative coefficient to get $x<-3$; a test point such as $x=-4$ checks the direction.
 
 </LessonSection>
 

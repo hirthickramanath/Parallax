@@ -1,3 +1,4 @@
+import { requireReviewEvidence } from "./review-evidence.mjs";
 import { compileSync } from "@mdx-js/mdx";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMath from "remark-math";
@@ -70,8 +71,15 @@ export function validateAuthored(data, sections, stub) {
     throw Error(`Missing recap/review ${data.id}`);
   if (!Array.isArray(data.questions))
     throw Error(`Missing questions ${data.id}`);
-  const ids = new Set();
+  const ids = new Set(),
+    prompts = new Set();
   for (const q of data.questions) {
+    if (typeof q.prompt !== "string" || !q.prompt.trim())
+      throw Error(`Missing question prompt ${data.id}:${q.id}`);
+    const normalized = q.prompt.trim().toLowerCase();
+    if (prompts.has(normalized))
+      throw Error(`Duplicate question prompt ${data.id}:${q.id}`);
+    prompts.add(normalized);
     if (ids.has(q.id)) throw Error(`Duplicate question ${data.id}:${q.id}`);
     ids.add(q.id);
     if (
@@ -159,6 +167,12 @@ export function buildContent() {
     if (new Set(sections.map((s) => s.id)).size !== sections.length)
       throw Error(`Duplicate section ${file}`);
     validateAuthored(data, sections, stub);
+    if (["verified", "published"].includes(data.status)) {
+      const ledger = JSON.parse(
+        fs.readFileSync("content/review/evidence.json", "utf8"),
+      );
+      requireReviewEvidence(data, source, sections, ledger);
+    }
     authored[data.id] = {
       ...stub,
       ...data,

@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "For a fair six-sided die, P(even) as a decimal?",
-      "answer": "0.5",
-      "explanation": "Three of six equally likely outcomes are even.",
+      "prompt": "P(A∩B)=0.12 and P(B)=0.30. Find P(A|B).",
+      "answer": "0.4",
+      "hint": "Conditioning changes the reference population to B.",
+      "explanation": "P(A|B)=P(A∩B)/P(B)=0.4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "What population does conditioning on B retain?",
-      "answer": "Only outcomes in B",
+      "prompt": "A rare condition gives P(positive|condition)=0.9. Is P(condition|positive) determined by this alone?",
+      "answer": "No; prevalence and false-positive probability are also needed.",
       "options": [
-        "Only outcomes in A",
-        "Only outcomes in B"
+        "Yes; the conditional probabilities are interchangeable.",
+        "No; prevalence and false-positive probability are also needed."
       ],
-      "explanation": "The denominator is the probability of B.",
+      "explanation": "Bayes’ denominator includes positives from people without the condition.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; the conditional probabilities are interchangeable.": "Bayes’ denominator includes positives from people without the condition."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "Prevalence is 0.01, sensitivity 0.90 and false-positive probability 0.05. Find P(condition|positive).",
+      "answer": "0.15384615384615383",
+      "hint": "Partition all positives into true positives and false positives.",
+      "explanation": "0.009/(0.009+0.99·0.05)=0.153846…; the low base rate matters.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -154,9 +170,16 @@ For sequential evidence multiply conditional probabilities along the sequence. M
 
 A continuous distribution assigns zero probability to an exact point while intervals may have positive probability. A probability density is integrated over a range and can exceed 1 in units reciprocal to the variable. Undefined conditioning on a probability-zero event needs a density or regular conditional construction, beyond simple event division.
 
+
+### Transfer derivation and failure case
+
+Partition the sample space into $A$ and its complement. Then $P(B)=P(B|A)P(A)+P(B|A^c)P(A^c)$, and Bayes gives $P(A|B)=P(B|A)P(A)/P(B)$ when $P(B)>0$. With the stated rates, only 0.009 of the whole population are true positives, while 0.0495 are false positives. A high sensitivity is therefore compatible with a modest posterior probability. Selection effects in astronomical detection have the same denominator problem: the detected sample is not automatically representative of the underlying population.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="bayes_explorer" />
 
 Make a table of 1000 hypothetical detector locations with a stated prevalence, sensitivity and false-positive rate. Change only prevalence and recompute the flagged population. Label these as synthetic counts; compare the posteriors before claiming that a detector improved.
 

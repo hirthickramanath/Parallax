@@ -10,6 +10,10 @@ The [post-comparison release](POST-COMPARISON-IMPLEMENTATION.md) implements prec
 
 PB2.1, PB2.2, MB2.2 and MB2.3 now have expanded derivations, 24 new numeric transfer questions and four directly manipulable embedded models. See [internal scientific notes](FOUNDATION-SCIENTIFIC-REVIEW.md), the [354-lesson review queue](COURSE-REVIEW-QUEUE.md) and [learner pilot kit](FOUNDATION-LEARNER-PILOT.md). The kit provides baseline/immediate/delayed forms and descriptive scoring; no real learner trial or independent review has occurred. Breadth/depth work across the remaining lessons is still pending.
 
+## Broader foundation follow-up
+
+Thirty additional banks have distinct warm-up/Core prompts, a new numeric transfer question and a theory extension. All 354 banks now pass normalized prompt uniqueness checks. Bayesian inference, thin-lens, induction and tidal models are embedded in their connected lessons. [Partial source inspection](PARTIAL-SOURCE-INSPECTION.md) covers specific claims in 13 physics drafts; it does not verify complete lessons. Publication now also requires a complete evidence record tied to the current lesson fingerprint. The server assessment bank supports 11 lessons, but activation remains pending.
+
 ## Scientific and editorial review
 
 Internal expansion completed for nine advanced lessons, with additional derivations, counterexamples and graded Core transfers. See [ADVANCED-CONTENT-REVIEW.md](ADVANCED-CONTENT-REVIEW.md) for the exact scope and follow-up. This does not close independent scientific/source review.

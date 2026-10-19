@@ -57,9 +57,10 @@
     },
     {
       "id": "warmup",
-      "prompt": "Field in V/m for 20 V across an ideal 0.01 m plate gap?",
-      "answer": "2000",
-      "explanation": "E=V/d=20/0.01.",
+      "prompt": "An ideal parallel-plate region has 30 V across a 0.02 m gap. Find field magnitude in V/m.",
+      "answer": "1500",
+      "hint": "For a uniform gap, magnitude is potential difference divided by distance.",
+      "explanation": "|E|=30/0.02=1500 V/m; edge fields are neglected.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -67,16 +68,31 @@
     },
     {
       "id": "core",
-      "prompt": "Is a negative test charge forced along the field direction?",
-      "answer": "No; opposite it",
+      "prompt": "If E=0 throughout a connected electrostatic region, must its potential be zero?",
+      "answer": "No; potential is constant there, with an arbitrary reference value.",
       "options": [
-        "Yes",
-        "No; opposite it"
+        "Yes; zero field fixes the numerical potential to zero.",
+        "No; potential is constant there, with an arbitrary reference value."
       ],
-      "explanation": "Force is qE.",
+      "explanation": "The field depends on the gradient, not the additive constant.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the assumptions and explain the tempting alternative.",
+      "misconceptions": {
+        "Yes; zero field fixes the numerical potential to zero.": "The field depends on the gradient, not the additive constant."
+      }
+    },
+    {
+      "id": "transfer-model-check",
+      "prompt": "An electron moves through a potential increase of 12 V with no other work. Find its kinetic-energy gain in eV.",
+      "answer": "12",
+      "hint": "Use ΔK=−qΔV and q=−e.",
+      "explanation": "ΔU=−12 eV, so kinetic energy increases by 12 eV.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
     }
   ],
   "review": [
@@ -153,6 +169,11 @@ Electrostatics has $\mathbf E=-\nabla V$ and $V(B)-V(A)=-\int_A^B\mathbf E\cdot 
 An ideal conductor at electrostatic equilibrium has zero internal field, constant potential and excess charge on its surface. This is not a claim about a conductor carrying a resistive current. A parallel-plate capacitor with negligible fringing has $C=\epsilon A/d$, stored energy $U=CV^2/2$, and near-uniform gap field V/d. Inserting a dielectric changes charge or voltage according to whether the capacitor remains connected to a source.
 
 Energy density in a linear dielectric under appropriate static conditions is $u=\mathbf E\cdot\mathbf D/2$. Molecular polarization, breakdown and frequency dependence limit treating permittivity as one constant.
+
+
+### Transfer derivation and failure case
+
+Electrostatic work gives $\Delta U=q\Delta V$ and $\Delta K=-q\Delta V$ when no other forces do work. The sign of the test charge therefore matters: electrons accelerate toward increasing electric potential in this energy balance. Locally, $\mathbf E=-\nabla V$; adding a spatially constant reference to $V$ leaves the field unchanged. For a uniform parallel-plate gap, $|E|=|\Delta V|/d$ neglects fringing. Do not use that relation as a general local field law in a nonuniform geometry.
 
 </LessonSection>
 

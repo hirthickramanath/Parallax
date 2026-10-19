@@ -6,7 +6,7 @@ import {
   planeProjection,
   thermalHeating,
 } from "../../lib/foundation-models";
-function Control({
+export function Control({
   label,
   value,
   min,
@@ -23,7 +23,7 @@ function Control({
 }) {
   return (
     <label>
-      {label}: {value.toFixed(2)}
+      {label}: {value.toFixed(step < 0.01 ? 3 : 2)}
       <input
         aria-label={label}
         type="range"
@@ -36,7 +36,7 @@ function Control({
     </label>
   );
 }
-function Scene({
+export function Scene({
   label,
   x,
   y,
