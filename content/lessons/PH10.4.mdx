@@ -77,6 +77,45 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "Find the squared norm of bosonic creation acting on n=4.",
+      "answer": "5",
+      "hint": "Use n+1.",
+      "explanation": "Use n+1. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Find the maximum occupation of one fermionic spin-orbital.",
+      "answer": "1",
+      "hint": "Pauli occupation is zero or one.",
+      "explanation": "Pauli occupation is zero or one. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can a single fermionic spin-orbital have arbitrary integer occupation like a bosonic mode?",
+      "answer": "No; its occupation is restricted to zero or one.",
+      "options": [
+        "Yes; creation operators all have the same algebra.",
+        "No; its occupation is restricted to zero or one."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Commutation and anticommutation differ.",
+      "misconceptions": {
+        "Yes; creation operators all have the same algebra.": "Commutation and anticommutation differ."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +192,19 @@ Field operators expand in mode functions and are generally distributions in spac
 
 Second quantization is a representation framework, not automatically an interacting solution. Interactions couple occupation states and can change particle numbers when allowed by the theory and conserved charges. Fermion ordering signs must be tracked consistently in basis states and operator products.
 
+
+### Derivation and transfer
+
+Second quantization organizes variable occupations of modes. Bosonic creation acts with sqrt(n+1), while a fermionic mode has occupation zero or one and anticommutes with other fermionic mode operators. These are operator algebras, not a second approximation applied to a single first-quantized wavefunction.
+
+The display probes one bosonic matrix-element norm. It does not assign unlimited occupation to a fermionic mode, or calculate a many-body interaction by merely counting particles.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH10.4" />
+
 
 Construct small truncated boson and exact fermion matrices, then check the appropriate algebra with explicit attention to boson truncation at its top state. Do not claim a finite truncated boson matrix obeys the infinite algebra everywhere.
 

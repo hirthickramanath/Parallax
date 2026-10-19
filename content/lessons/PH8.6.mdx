@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For Ry=1,Z=2,n=2, find bound energy.",
+      "answer": "-1",
+      "hint": "Use −Z²/n².",
+      "explanation": "Use −Z²/n². Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For Z=1,Ry=1, find photon energy from n=2 to n=1.",
+      "answer": "0.75",
+      "hint": "Subtract final energy from initial energy.",
+      "explanation": "Subtract final energy from initial energy. Result: 0.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Is a negative bound-state energy a negative emitted-photon energy?",
+      "answer": "No; transition photons use positive energy differences.",
+      "options": [
+        "Yes; bound states emit negative energy.",
+        "No; transition photons use positive energy differences."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The continuum defines the energy zero.",
+      "misconceptions": {
+        "Yes; bound states emit negative energy.": "The continuum defines the energy zero."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The normalized wavefunction supplies a three-dimensional density. A radial shell
 
 Emission or absorption transfers an energy difference hν, with selection rules depending on the coupling operator. Leading electric-dipole orbital rules include Δℓ=±1 and appropriate m changes, but parity, spin and state mixing matter in fuller models. Fine structure, nuclear motion, hyperfine interactions and QED corrections change the simple n-only spectrum; multielectron screening cannot be captured by merely reusing every hydrogen degeneracy.
 
+
+### Derivation and transfer
+
+For a nonrelativistic hydrogenic ion, En=−Ry Z²/n² with a reduced-mass-dependent Rydberg scale. Emission photon energy is the positive difference between the initial and final bound energies. Ionization starts at the continuum threshold zero.
+
+The display uses Ry=1 and integer n. Fine structure, hyperfine coupling, external fields and finite nuclear size are omitted. A negative energy is relative to a chosen continuum zero, not a negative measured photon energy.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.6" />
+
 
 Plot the ground-state radial shell density and compare it with the three-dimensional density along a line. Normalize using the correct measure. Calculate several line-energy differences and label the nonrelativistic model; do not present them as precision laboratory wavelengths without the relevant corrections.
 

@@ -1,33 +1,25 @@
-# Course depth, simulations and review: batch progress
+# Course implementation and review progress
 
-Latest release: [69-lesson astrophysics/multivariable expansion](ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md). Followed by the [21-lesson MA3–MA5 expansion](LINEAR-ODE-PDE-EXPANSION.md). Then the [electromagnetism release](ELECTROMAGNETISM-EXPANSION.md). Then the [physical/molecular chemistry release](PHYSICAL-MOLECULAR-CHEMISTRY-EXPANSION.md). Then the [bonding/organic chemistry release](BONDING-ORGANIC-CHEMISTRY-EXPANSION.md). Then the [complex/probability/variational release](COMPLEX-PROBABILITY-VARIATIONAL-EXPANSION.md). Then the [52-lesson structure/computing/foundation release](STRUCTURE-COMPUTING-FOUNDATION-EXPANSION.md). Current partial mappings: 146; lessons without explicit widgets: 86. The counts below describe the earlier three-batch run.
+The curriculum now has 354 authored draft lessons, each with an expanded question bank of at least nine questions and an explicit embedded investigation. The current audit has zero duplicate prompts and zero missing explicit widgets. This is implementation coverage, not independent scientific approval or proof that every lesson has equal depth.
 
-## Completed in this run
+Recent completed releases:
 
-| Batch | Lessons deepened | Questions added | New interactive models |
-| --- | --- | --- | --- |
-| Real analysis, MA1.1–MA1.8 | 8 | 32 | Darboux envelopes; uniform convergence/domain dependence |
-| Advanced mechanics, PH1.1–PH1.6 | 6 | 24 | Coriolis vectors; rigid-body inertia; Rutherford scattering |
-| Analytical mechanics, PH2.1–PH2.7 | 7 | 28 | Hamiltonian phase contours; canonical shear |
-| Total | 21 | 84 | 7 |
+| Release | Lessons expanded | Questions added |
+| --- | ---: | ---: |
+| Astrophysics and multivariable | 69 | 207 |
+| Linear algebra, ODE and PDE | 21 | 63 |
+| Electromagnetism | 16 | 48 |
+| Nonlinear mechanics, optics and thermal physics | 19 | 57 |
+| Physical and molecular chemistry | 19 | 57 |
+| Bonding, astrochemistry and organic chemistry | 28 | 84 |
+| Complex analysis, special functions, probability and variation | 21 | 63 |
+| Algebra, geometry, computing and remaining foundations | 52 | 156 |
+| Quantum, matter, fields, gravity and research | 72 | 216 |
 
-Questions include numeric transfer problems, conceptual hypothesis checks, hints and explanations. New models support direct manipulation and accessible numeric/keyboard controls inside lessons. Existing orbit and coupled-oscillator models are reused only where relevant. These displays explain their idealizations and do not pretend to numerically integrate a trajectory when they show an exact contour or instantaneous vector.
+Earlier real-analysis, mechanics and foundation releases remain included. The final physics release also closes fourteen widget gaps in earlier lessons. Shared models are reused where appropriate; not every lesson has a bespoke apparatus. Models disclose their assumptions and distinguish analytic demonstrations from executed experiments or research projects.
 
-Source inspection expanded from 21 to 34 current lesson mappings. Inspected sources include the author-maintained Basic Analysis book, official OpenStax source snapshots and official SymPy mechanics documentation. Every mapping states its scope and source/lesson fingerprint. This is partial AI-assisted inspection, not complete source verification, an independent review, or a learner trial.
+Current validation: production build, 640 unit/content/model/evidence tests and 109 full browser cases passed, followed by four targeted checks against the final grading build. Browser authentication is mocked. Git pushes are distinct from confirmed Cloudflare deployment or live integration success.
 
-Detailed batch notes: [real analysis](REAL-ANALYSIS-BATCH.md), [advanced mechanics](ADVANCED-MECHANICS-BATCH.md), [analytical mechanics source scope](ANALYTICAL-MECHANICS-SOURCE-INSPECTION.md).
+There are 162 current partial source mappings and zero independent approvals. All 354 lessons remain drafts. Every review packet exports current lesson and transitive model-source hashes. Partial source inspections do not approve an entire advanced lesson.
 
-## Validation
-
-Final production build passed; all 188 unit/content/model/evidence checks and all 97 browser cases passed. The browser sweep covers all 354 lesson bodies plus shared flows and new model controls. All three batches were committed and pushed to `codex/complete-foundation-course` and `main`. Cloudflare production deployment success remains unverified.
-
-## Still pending across the project
-
-- Continue deeper derivations, worked examples and more varied adaptive question banks through the rest of the curriculum. All 354 lessons have draft bodies; body coverage does not mean publication-level depth.
-- Broaden lesson-specific interactive coverage. The generated review queue currently lists 313 lessons without an explicit widget; implicit vector/black-hole widgets are excluded from that count, and some proof-based lessons need a counterexample explorer rather than an apparatus.
-- Continue exact-source inspection beyond the 34 partially mapped lessons and beyond the narrow claims already mapped. In particular, advanced canonical, Noether and Hamilton–Jacobi proofs still need theoretical-source inspection.
-- Independent expert review of lesson text, questions and model code. Zero lessons are independently verified. The publication gate remains closed without matching independent evidence.
-- Run real learner pilots and use their results to tune difficulty, transfer and retention. Pilot forms/reporting infrastructure exists; no genuine learner study has been run.
-- Verify the production Pages deployment, real Firebase sign-in/progress and configured optional services. A Git push does not establish that a deployment or live integration succeeded. Browser test authentication is mocked. Optional tutor, shared assessment and reminders infrastructure still needs service configuration and deployed checks; these are distinct from content work.
-
-See [the generated review queue](COURSE-REVIEW-QUEUE.md) for lesson-by-lesson triage and [pending live checks](PENDING-REVIEW-AND-LIVE-CHECKS.md) for service prerequisites. No change in this run activates a paid service or changes eligibility requirements.
+See [the final physics release](QUANTUM-MATTER-FIELDS-EXPANSION.md), [the generated review queue](COURSE-REVIEW-QUEUE.md), [the five-item execution status](FIVE-ITEM-EXECUTION-STATUS.md) and [live/service prerequisites](PENDING-REVIEW-AND-LIVE-CHECKS.md).

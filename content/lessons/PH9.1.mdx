@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For lower unperturbed energy 0,upper Δ=2 and off-diagonal g=0.1, find second-order lower shift.",
+      "answer": "-0.005",
+      "hint": "Use −g²/Δ.",
+      "explanation": "Use −g²/Δ. Result: -0.005.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For a nondegenerate state with diagonal perturbation matrix element 3 and coupling parameter 0.2, find first-order shift.",
+      "answer": "0.6",
+      "hint": "Multiply the diagonal expectation by the coupling.",
+      "explanation": "Multiply the diagonal expectation by the coupling. Result: 0.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can a nondegenerate perturbation formula be trusted unchanged as its level denominator approaches zero?",
+      "answer": "No; degeneracy requires a different treatment.",
+      "options": [
+        "Yes; small denominators always improve accuracy.",
+        "No; degeneracy requires a different treatment."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check the expansion scale.",
+      "misconceptions": {
+        "Yes; small denominators always improve accuracy.": "Check the expansion scale."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Near degeneracy, first diagonalize the relevant subspace rather than divide by a
 
 Physical approximations also require the correct unperturbed domain and symmetry. An operator can be numerically small on selected states yet not be bounded on the entire Hilbert space. Report the gap, matrix elements and λ regime alongside an approximate energy.
 
+
+### Derivation and transfer
+
+For a nondegenerate level, the first-order shift is the diagonal matrix element of the perturbation. Off-diagonal mixing contributes at second order with denominators En−Em. Small denominators signal that the assumed expansion may fail.
+
+For [[0,g],[g,Δ]], the lower exact eigenvalue is (Δ−sqrt(Δ²+4g²))/2, with small-g shift −g²/Δ. The display compares an exact two-state avoided mixing, not a universal error bound for many-state perturbation theory.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.1" />
+
 
 Diagonalize the exact two-by-two model while varying coupling/gap and compare first and second orders. Mark where the perturbative ratio is no longer small.
 

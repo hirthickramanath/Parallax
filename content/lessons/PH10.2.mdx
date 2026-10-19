@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For p=4,m=3,c=1, find positive free energy.",
+      "answer": "5",
+      "hint": "Use sqrt(p²+m²).",
+      "explanation": "Use sqrt(p²+m²). Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For those values, find kinetic energy above rest.",
+      "answer": "2",
+      "hint": "Subtract m=3.",
+      "explanation": "Subtract m=3. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Does plotting relativistic energy alone specify the full Dirac spinor state?",
+      "answer": "No; spinor components and preparation are additional.",
+      "options": [
+        "Yes; one scalar curve determines every spin degree of freedom.",
+        "No; spinor components and preparation are additional."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Energy eigenvalues do not uniquely fix all states.",
+      "misconceptions": {
+        "Yes; one scalar curve determines every spin degree of freedom.": "Energy eigenvalues do not uniquely fix all states."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A controlled low-velocity expansion with electromagnetic coupling produces Pauli
 
 Lorentz transformations act on spinor components differently from ordinary four-vectors. The equation is not a license to treat every classical spin vector as a spinor, and the nonrelativistic reduction requires separating large/small components within an admitted energy regime.
 
+
+### Derivation and transfer
+
+The Dirac Hamiltonian linearizes relativistic momentum through matrices satisfying an anticommutation algebra. Its free energies are ±sqrt(p²+m²) in c=1 units. Spin and negative-energy structure require spinor solutions; the scalar energy curve alone does not encode all components.
+
+The display compares kinetic energy above rest energy on the positive branch. At low momentum it approaches p²/(2m), while the exact relativistic expression remains the reference. No external-field spin dynamics is solved.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH10.2" />
+
 
 Choose explicit gamma matrices and verify anticommutators numerically. Square the free Hamiltonian and check its dispersion. Keep matrix identities separate from a physical many-particle interpretation.
 

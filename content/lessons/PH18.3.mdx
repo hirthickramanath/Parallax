@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "Independent random standard error is 0.3 and systematic uncertainty is 0.4. Find combined uncertainty under independent components.",
+      "answer": "0.5",
+      "hint": "Combine in quadrature under the stated error model.",
+      "explanation": "Combine in quadrature under the stated error model. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "As independent sample count tends to infinity with fixed systematic standard uncertainty 0.2, find the limiting total uncertainty.",
+      "answer": "0.2",
+      "hint": "The systematic floor remains.",
+      "explanation": "The systematic floor remains. Result: 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Can arbitrarily many independent repeats eliminate an unchanged shared calibration uncertainty?",
+      "answer": "No; a systematic floor remains.",
+      "options": [
+        "Yes; all errors vanish with large N.",
+        "No; a systematic floor remains."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Improve calibration as well as sample size.",
+      "misconceptions": {
+        "Yes; all errors vanish with large N.": "Improve calibration as well as sample size."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A risk register lists missing rates, degeneracies, unavailable inputs and numeri
 
 Deliverables include code/data manifests, a reproducible baseline, uncertainty and a discrepancy analysis. New cloud services, datasets or real experiments require their own authorization/access conditions. A lesson project proposal does not claim those external actions have already happened.
 
+
+### Derivation and transfer
+
+A research plan should state a falsifiable hypothesis, competing explanation, measurable observable and a feasible analysis with failure criteria. More data cannot repair an unidentified systematic bias or a model that predicts no discriminating observation.
+
+The display budgets independent-trial precision with an explicit systematic floor in quadrature. It is a proposal estimate, not a completed study or a power calculation for every test. Resources, ethics where applicable, calibration and reproducible outputs must be specified for actual execution.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH18.3" />
+
 
 Write a project with one baseline, one extension and a stop/redirect criterion for a failed validation check. Include a useful fallback target that does not depend on a hoped-for positive signal.
 

@@ -87,6 +87,43 @@
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "In the convention j0=2ω|A|², with ω=3,A=2, find charge density.",
+      "answer": "24",
+      "hint": "Substitute the amplitude magnitude squared.",
+      "explanation": "Substitute the amplitude magnitude squared. Result: 24.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For a conserved charge with no boundary flux, find its time derivative.",
+      "answer": "0",
+      "hint": "Integrate the continuity equation.",
+      "explanation": "Integrate the continuity equation. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Must a current be conserved for arbitrary fields that do not satisfy the equations of motion?",
+      "answer": "No; the Noether conservation statement is on shell.",
+      "options": [
+        "Yes; every arbitrary field configuration conserves that current.",
+        "No; the Noether conservation statement is on shell."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use the action and equations together.",
+      "misconceptions": {
+        "Yes; every arbitrary field configuration conserves that current.": "Use the action and equations together."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Vanishing variations on the boundary justify removing the second integral. Arbit
 
 For a fixed spatial region $V$, the continuity equation implies $dQ_V/dt=-\int_{\partial V}\mathbf j\cdot\mathbf n\,dA$. A conserved local current need not give a constant charge inside an open region. Appropriate decay, periodic boundaries, or vanishing outward flux is required for a conserved integrated charge.
 
+
+### Derivation and transfer
+
+For a complex scalar field with a global phase symmetry, a Noether current can be formed from the field and its derivatives. Conservation is an on-shell statement with the specified Lagrangian and boundary conditions, not a property of every arbitrary input function.
+
+The display uses a single harmonic complex mode and a declared current convention giving density proportional to 2ω|A|². It is an illustrative classical charge density, not a normalized single-particle probability or a full field solution with interactions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH15.2" />
+
 
 Derive the free scalar equation with an explicit boundary term. Then compare a Noether charge with and without boundary flux, keeping the action and variation domain fixed.
 

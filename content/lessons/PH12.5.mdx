@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For Ω=1,Δ=sqrt3, find the maximum excitation probability.",
+      "answer": "0.25",
+      "hint": "Use Ω²/(Ω²+Δ²).",
+      "explanation": "Use Ω²/(Ω²+Δ²). Result: 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For Ω=3,Δ=4, find generalized Rabi frequency.",
+      "answer": "5",
+      "hint": "Use the Euclidean norm.",
+      "explanation": "Use the Euclidean norm. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does detuning leave full-transfer probability unchanged in an isolated driven two-level model?",
+      "answer": "No; the oscillation amplitude is reduced.",
+      "options": [
+        "Yes; it changes only the oscillation period.",
+        "No; the oscillation amplitude is reduced."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Both amplitude and frequency depend on detuning.",
+      "misconceptions": {
+        "Yes; it changes only the oscillation period.": "Both amplitude and frequency depend on detuning."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Spontaneous emission, dephasing and population feeding add open-system dynamics.
 
 Far-detuned coupling can produce light shifts and effective interactions in an admitted expansion, but photon scattering and multilevel effects can remain. Calling a drive off resonance does not mean no interaction. Compare experiment with the corresponding master equation and detector observable, not only a drawn two-state sinusoid.
 
+
+### Derivation and transfer
+
+For a coherent driven two-level atom with detuning Δ and resonant Rabi frequency Ω, the generalized frequency is sqrt(Ω²+Δ²). Excitation probability has amplitude Ω²/(Ω²+Δ²), so detuning suppresses complete transfer.
+
+The display fixes Ω=1 and varies time and detuning under the rotating-wave approximation. It omits spontaneous emission, laser noise and motion. A fitted line width cannot be inferred from this closed-system oscillation alone.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH12.5" />
+
 
 Plot coherent populations for resonant/detuned toy pulses and separately add a valid decay channel. Compare the conditions for a π pulse with those for a golden-rule rate measurement.
 

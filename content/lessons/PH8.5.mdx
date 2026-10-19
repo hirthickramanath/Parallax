@@ -77,6 +77,44 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For j=1 and ℏ=1, find J².",
+      "answer": "2",
+      "hint": "Use j(j+1).",
+      "explanation": "Use j(j+1). Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For j=3/2, find the number of allowed m values.",
+      "answer": "4",
+      "hint": "Use 2j+1.",
+      "explanation": "Use 2j+1. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Does a sharp Jz value make Jx and Jy simultaneously sharp?",
+      "answer": "No; noncommuting components limit simultaneous sharpness.",
+      "options": [
+        "Yes; angular momentum is an ordinary known vector.",
+        "No; noncommuting components limit simultaneous sharpness."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use the angular-momentum commutators.",
+      "misconceptions": {
+        "Yes; angular momentum is an ordinary known vector.": "Use the angular-momentum commutators."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +191,19 @@ Adding two angular momenta produces total J=J₁+J₂ with allowed j from |j₁�
 
 For spin half, J_i=ℏσ_i/2 with Pauli matrices. Different components do not have simultaneous sharp values in a general state. Rotation operators include exp(−iθn·J/ℏ), and spinors change sign under a 2π rotation while projective probabilities remain unchanged. Relative phases in composite processes still matter.
 
+
+### Derivation and transfer
+
+Angular momentum has J² eigenvalue ℏ²j(j+1), while Jz has ℏm with m from −j to j. A state of definite projection does not have a classical vector of fixed orientation with every component simultaneously sharp.
+
+The display shows the total magnitude from j. The allowed half-integer sequence and projection count 2j+1 must be respected. Orbital angular momentum uses integer l; general spin can be half-integer.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.5" />
+
 
 Enumerate m labels for j=0,1/2,1 and compare component maxima with J². Construct the two-spin singlet and triplet basis and check orthogonality. Keep orbital and intrinsic-spin interpretations distinct.
 

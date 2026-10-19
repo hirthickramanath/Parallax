@@ -77,6 +77,45 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For four spin-orbitals and two identical fermions, find the number of occupations.",
+      "answer": "6",
+      "hint": "Choose two distinct orbitals from four.",
+      "explanation": "Choose two distinct orbitals from four. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "How many electrons can occupy one spatial orbital with two available spin projections?",
+      "answer": "2",
+      "hint": "The spin-orbitals must be distinct.",
+      "explanation": "The spin-orbitals must be distinct. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can two identical fermions occupy the same complete spin-orbital?",
+      "answer": "No; the antisymmetric state then vanishes.",
+      "options": [
+        "Yes; only their spatial positions must differ.",
+        "No; the antisymmetric state then vanishes."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Apply exchange to all labels including spin.",
+      "misconceptions": {
+        "Yes; only their spatial positions must differ.": "Apply exchange to all labels including spin."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +192,19 @@ For helium, nuclear attraction and electron–electron repulsion require a corre
 
 Spin–orbit coupling and additional interactions can make separate spin/spatial labels approximate. State counting and energies must use consistent symmetry and Hamiltonian assumptions. Do not identify distinguishable labels used in calculations with physically distinguishable identical electrons.
 
+
+### Derivation and transfer
+
+Identical-fermion states are antisymmetric under exchange of all particle labels, including spin. Two electrons may share a spatial orbital only in an antisymmetric spin state. A Slater determinant with two identical spin-orbitals vanishes.
+
+For K distinct one-particle spin-orbitals, N identical fermions have choose(K,N) occupation configurations. The display fixes N=2. It is a counting model, not a helium energy calculation or proof that electron interactions can be ignored.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.5" />
+
 
 Construct and normalize singlet/triplet states and apply the exchange operator. Pair with symmetric/antisymmetric spatial examples and verify the total fermionic sign.
 

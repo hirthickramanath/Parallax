@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For resonant Ω=2 and t=π/2, find transition probability.",
+      "answer": "1",
+      "hint": "Use sin²(Ωt/2).",
+      "explanation": "Use sin²(Ωt/2). Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Find the first full-transfer time for Ω=3.",
+      "answer": "1.0471975511965976",
+      "hint": "Set Ωt/2=π/2.",
+      "explanation": "Set Ωt/2=π/2. Result: 1.047197551197.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can an isolated two-state transition probability grow linearly without bound forever?",
+      "answer": "No; coherent probabilities are bounded and can oscillate.",
+      "options": [
+        "Yes; the golden rule is exact at all times for every spectrum.",
+        "No; coherent probabilities are bounded and can oscillate."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Rate limits have coupling and continuum assumptions.",
+      "misconceptions": {
+        "Yes; the golden rule is exact at all times for every spectrum.": "Rate limits have coupling and continuum assumptions."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A continuum long-enough-time and weak-coupling approximation gives $\Gamma=(2\pi
 
 Selection rules constrain matrix elements of the actual interaction operator. Experimental rates include populations, linewidths and environment; a formally allowed transition can be weak. Keep peak/RMS driving conventions and energy/frequency density conversions explicit.
 
+
+### Derivation and transfer
+
+For an isolated resonantly driven two-level system in the rotating-wave approximation, transition probability is sin²(Ωt/2). It oscillates and remains bounded. Fermi's golden rule instead describes an appropriate weak-coupling continuum/long-time regime, not indefinite linear growth in an isolated two-state system.
+
+The display is coherent resonant Rabi dynamics. Detuning, damping, pulse shape and rotating-wave validity require additional parameters. A rate approximation must identify the timescale over which it is used.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.3" />
+
 
 Compare the exact driven two-level population with a short-time perturbative calculation. Separately model a dense final spectrum and identify the time window in which a rate approximation is plausible.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For relative action ΔS/ℏ=π, find real phase factor.",
+      "answer": "-1",
+      "hint": "Use cosπ.",
+      "explanation": "Use cosπ. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For ΔS/ℏ=2π, find its real phase factor.",
+      "answer": "1",
+      "hint": "A full phase turn returns to one.",
+      "explanation": "A full phase turn returns to one. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Are path-integral phase weights ordinary nonnegative probabilities for each path?",
+      "answer": "No; amplitudes interfere before probabilities are formed.",
+      "options": [
+        "Yes; each path carries an independent classical probability.",
+        "No; amplitudes interfere before probabilities are formed."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Complex phases are essential.",
+      "misconceptions": {
+        "Yes; each path carries an independent classical probability.": "Complex phases are essential."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ In a semiclassical regime, stationary-phase contributions localize around classi
 
 Imaginary-time continuation relates suitable amplitudes to statistical/Euclidean constructions under analytic and operator assumptions. It is not a universal replacement of every real-time process by a positive probability simulation; fermion signs, complex actions and continuation instability can remain.
 
+
+### Derivation and transfer
+
+A path-integral amplitude sums complex phase weights exp(iS/ℏ), not positive classical probabilities assigned independently to paths. Near stationary action, neighboring phases vary slowly, giving a semiclassical contribution under suitable conditions.
+
+The display shows the real part of one relative phase and its oscillation with action. It is not an evaluated functional integral or a claim that destructive interference removes every nonclassical path individually. Normalization, measure and boundary data belong to the actual calculation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH10.3" />
+
 
 Construct a short-time discretized free propagator and test composition against the exact kernel. Keep cutoff/normalization and complex phases visible rather than treating squared path weights as independent classical alternatives.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For ℏ=1,k=2,m=4, find recoil energy.",
+      "answer": "0.5",
+      "hint": "Use k²/(2m).",
+      "explanation": "Use k²/(2m). Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "At fixed wave number, doubling mass changes recoil energy by what factor?",
+      "answer": "0.5",
+      "hint": "It is inversely proportional to mass.",
+      "explanation": "It is inversely proportional to mass. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does laser cooling alone automatically establish a Bose–Einstein condensate?",
+      "answer": "No; phase-space density and other conditions must be demonstrated.",
+      "options": [
+        "Yes; every cold gas is condensed.",
+        "No; phase-space density and other conditions must be demonstrated."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Temperature alone is insufficient.",
+      "misconceptions": {
+        "Yes; every cold gas is condensed.": "Temperature alone is insufficient."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A magneto-optical trap combines restoring and damping mechanisms with field grad
 
 An ideal uniform three-dimensional boson condensation criterion involves nλ_T³ exceeding the appropriate threshold, with λ_T=h/√(2πmk_BT). Traps, finite size and interactions change quantitative conditions. Condensation, coherence and superfluidity are related but distinct, and loss/heating must be included in actual experiments.
 
+
+### Derivation and transfer
+
+Photon recoil energy is (ℏk)²/(2m), so lighter atoms receive a larger energy kick at fixed wave number. Doppler cooling balances scattering-force damping and momentum diffusion under a specific transition and laser configuration; sub-Doppler and recoil limits involve different mechanisms.
+
+The display isolates recoil in ℏ=1 units. It neither simulates cooling trajectories nor proves Bose–Einstein condensation. Condensation also depends on phase-space density, interactions, trapping and thermalization.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH12.6" />
+
 
 Compare a synthetic deterministic damping trajectory with a noise-driven thermal distribution. State the stochastic convention and fluctuation model. Distinguish trapped-atom density from a criterion based only on temperature.
 

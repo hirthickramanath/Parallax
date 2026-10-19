@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "Find the ideal quantum CHSH magnitude for optimal singlet settings.",
+      "answer": "2.8284271247461903",
+      "hint": "The Tsirelson optimum is 2sqrt2.",
+      "explanation": "The Tsirelson optimum is 2sqrt2. Result: 2.828427124746.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Find singlet correlation for parallel measurement axes.",
+      "answer": "-1",
+      "hint": "Use −cos0.",
+      "explanation": "Use −cos0. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Does a Bell-inequality violation permit controllable faster-than-light communication?",
+      "answer": "No; the local marginal outcomes do not carry such a signal.",
+      "options": [
+        "Yes; correlation lets one choose the remote random outcome.",
+        "No; the local marginal outcomes do not carry such a signal."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Correlation is different from controllable signaling.",
+      "misconceptions": {
+        "Yes; correlation lets one choose the remote random outcome.": "Correlation is different from controllable signaling."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Entanglement does not permit controllable superluminal signalling: the unconditi
 
 Quantum information protocols require precise resources: teleportation includes shared entanglement, local operations and classical communication; it is not transport of matter or an unknown state copied while the original is retained. No-cloning concerns arbitrary unknown states under linear quantum operations, not every special orthogonal-state copying task.
 
+
+### Derivation and transfer
+
+For a spin singlet, ideal two-axis correlations are E(a,b)=−cosθ. Suitable four settings produce a CHSH magnitude 2sqrt2, above the local-hidden-variable bound two under the standard assumptions. This does not enable controllable faster-than-light signaling.
+
+The display evaluates the ideal correlation with a visibility factor. Real tests need setting independence, detection and locality analysis plus statistical evidence. A smooth theoretical curve is not an experimental Bell test.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.8" />
+
 
 Compute correlations for a supplied entangled two-qubit state and four measurement axes. Separately verify the remote reduced state before/after a local unconditioned measurement, keeping postselected and unconditional statistics distinct.
 

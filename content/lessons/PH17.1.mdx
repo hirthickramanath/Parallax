@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For independent standard uncertainties 3 and 4 on a sum, find combined standard uncertainty.",
+      "answer": "5",
+      "hint": "Use sqrt(3²+4²).",
+      "explanation": "Use sqrt(3²+4²). Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For two identical perfectly correlated unit-standard-deviation errors added, find standard deviation of the sum.",
+      "answer": "2",
+      "hint": "Include the covariance contribution.",
+      "explanation": "Include the covariance contribution. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "May perfectly correlated errors be combined as if they were independent?",
+      "answer": "No; covariance changes the result.",
+      "options": [
+        "Yes; quadrature always applies without conditions.",
+        "No; covariance changes the result."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "State the correlation model.",
+      "misconceptions": {
+        "Yes; quadrature always applies without conditions.": "State the correlation model."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A pendulum experiment measures length from pivot to the appropriate mass centre 
 
 Use calibration/check standards, repeats across settings and residual analysis before inferring a parameter. Report significant digits according to uncertainty, not every displayed calculator digit. Synthetic bench readings verify a model workflow but do not establish a new physical measurement of local g.
 
+
+### Derivation and transfer
+
+Independent standard uncertainties combine in quadrature for a linear sum, while correlated contributions introduce covariance terms. A systematic offset shared by repeated measurements does not shrink as independent noise under averaging.
+
+The display varies two standard deviations and assumes independence. Real reports must state calibration, units, uncertainty type and propagation method. A small displayed error bar is not evidence that an unmodeled bias is absent.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH17.1" />
+
 
 Use the pendulum bench to inspect release, timing and measurement roles. Design a real low-risk measurement protocol separately and label simulated readings. Compare repeated timing scatter with a deliberately shared length offset.
 

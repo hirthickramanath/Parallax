@@ -77,6 +77,44 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For integer filling ν=3, find Hall conductance in e²/h units.",
+      "answer": "3",
+      "hint": "The normalized conductance equals ν.",
+      "explanation": "The normalized conductance equals ν. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For that ideal plateau, find Hall resistance in h/e² units.",
+      "answer": "0.3333333333333333",
+      "hint": "Invert the nonzero conductance.",
+      "explanation": "Invert the nonzero conductance. Result: 0.333333333333.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does choosing a plateau index in a toy display compute a material Chern number?",
+      "answer": "No; that requires the actual Hamiltonian and occupied-state structure.",
+      "options": [
+        "Yes; a slider proves a topological phase.",
+        "No; that requires the actual Hamiltonian and occupied-state structure."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "A supplied invariant is different from a derived one.",
+      "misconceptions": {
+        "Yes; a slider proves a topological phase.": "A supplied invariant is different from a derived one."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +191,19 @@ Bulk-boundary correspondence predicts boundary phenomena under its hypotheses an
 
 Time-reversal-protected topological insulators use different invariants from a Chern Hall state. Fractional Hall phases involve interactions/topological order and cannot be fully explained by one noninteracting integer-band picture. Compare transport, boundaries and gap/symmetry evidence together.
 
+
+### Derivation and transfer
+
+An ideal integer quantum Hall plateau has Hall conductance νe²/h for integer filling ν under the appropriate gapped transport conditions. Topological quantization concerns a robust invariant, whereas dissipative transport and sample contacts still require care.
+
+The display steps a specified integer plateau index. It does not derive a Chern number from a Hamiltonian or simulate disorder, edge modes or a fractional Hall state. The longitudinal response is a separate observable.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.8" />
+
 
 Compute a supplied two-band model’s gap and Berry curvature with a gauge-consistent numerical method. Track the gap when varying parameters and distinguish a true invariant change from coarse-grid error.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For state (|0>+sqrt(3)|1>)/2, find P1.",
+      "answer": "0.75",
+      "hint": "Square the normalized amplitude sqrt3/2.",
+      "explanation": "Square the normalized amplitude sqrt3/2. Result: 0.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For observable diag(1,−1) and P1=0.75, find its expectation.",
+      "answer": "-0.5",
+      "hint": "Use P0−P1.",
+      "explanation": "Use P0−P1. Result: -0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can relative phase affect another-basis measurements even when computational-basis populations are unchanged?",
+      "answer": "Yes; interference depends on phase.",
+      "options": [
+        "No; populations alone determine every pure state.",
+        "Yes; interference depends on phase."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Specify the measurement basis.",
+      "misconceptions": {
+        "No; populations alone determine every pure state.": "Specify the measurement basis."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ An ideal projective measurement has a state-update rule conditioned on its outco
 
 Mixed states are described by a positive trace-one density operator ρ, with p(a)=Tr(ρP_a). A mixed state is not merely a different global phase of one pure state. A composite system can be entangled, and tracing over one factor produces a reduced mixed state even when the joint state is pure. No basis change alone removes genuine entanglement across a fixed subsystem division.
 
+
+### Derivation and transfer
+
+For an orthonormal measurement basis, Born probabilities are squared amplitude magnitudes and sum to one for a normalized state. The state cosθ|0>+sinθ|1> has P1=sin²θ. A relative phase affects measurements in another basis even if these two populations stay fixed.
+
+The display computes a pure-state population and does not sample random outcomes. An observable needs a self-adjoint operator and a measurement prescription; multiplying arbitrary coefficients without normalization does not define probabilities.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.3" />
+
 
 Represent a two-state vector in two orthonormal bases and transform the observable with the same unitary change. Verify invariant expectation values. Compare a coherent superposition and a diagonal mixture with the same original basis probabilities using a second measurement basis.
 

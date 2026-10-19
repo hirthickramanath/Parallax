@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For k=0 and scattering length a=2, find σ.",
+      "answer": "50.26548245743669",
+      "hint": "Use 4πa².",
+      "explanation": "Use 4πa². Result: 50.265482457437.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For k=1,a=1, find σ.",
+      "answer": "6.283185307179586",
+      "hint": "Use 4π/(1+1).",
+      "explanation": "Use 4π/(1+1). Result: 6.28318530718.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can the short-range s-wave model be applied unchanged to long-range Coulomb scattering?",
+      "answer": "No; the interaction and asymptotic assumptions differ.",
+      "options": [
+        "Yes; every potential has the same scattering-length formula.",
+        "No; the interaction and asymptotic assumptions differ."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check range, channels and energy.",
+      "misconceptions": {
+        "Yes; every potential has the same scattering-length formula.": "Check range, channels and energy."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Partial waves encode phase shifts for central interactions. Unitarity constrains
 
 Long-range Coulomb scattering does not satisfy every simple short-range asymptotic assumption; forward divergences require physical screening/angular acceptance or a different treatment. A finite detector covers limited angles and response, so observed counts require acceptance/luminosity corrections before quoting a total cross section.
 
+
+### Derivation and transfer
+
+For low-energy s-wave elastic scattering, a simple effective scattering-length model gives σ=4πa²/(1+k²a²), neglecting effective-range corrections. It approaches 4πa² at k→0 and respects the s-wave unitarity scale as ka grows in this model.
+
+The display uses one partial wave and an elastic short-range assumption. Coulomb scattering, inelastic channels and higher partial waves need different treatment. A total cross section has area units and is not the probability of every incoming particle scattering.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.6" />
+
 
 Integrate a supplied angular amplitude with the correct measure and compare limited detector acceptance. Test a Born calculation against a weak-potential control before increasing coupling.
 

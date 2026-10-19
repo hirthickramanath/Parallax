@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For sample rate 100 Hz, find Nyquist frequency in Hz.",
+      "answer": "50",
+      "hint": "It is half the sample rate.",
+      "explanation": "It is half the sample rate. Result: 50.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "A 70 Hz sinusoid sampled at 100 Hz has a principal aliased frequency magnitude of what value in Hz?",
+      "answer": "30",
+      "hint": "Fold 70 about 50 or use |70−100|.",
+      "explanation": "Fold 70 about 50 or use |70−100|. Result: 30.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Can more ADC amplitude bits alone eliminate aliasing from insufficient sample rate?",
+      "answer": "No; time sampling and antialias filtering are separate.",
+      "options": [
+        "Yes; amplitude resolution repairs every sampling error.",
+        "No; time sampling and antialias filtering are separate."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Resolve time and amplitude limitations separately.",
+      "misconceptions": {
+        "Yes; amplitude resolution repairs every sampling error.": "Resolve time and amplitude limitations separately."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Sensor impedance/loading, amplifier gain, grounding and instrument bandwidth alt
 
 Record timestamps, units, gain, filter, range and calibration with raw samples. A transformed plot without raw-data provenance is not a reproducible measurement. Synthetic test signals can verify software but cannot independently calibrate every physical sensor.
 
+
+### Derivation and transfer
+
+Uniform sampling identifies frequencies only modulo the sample rate unless prior band limits and antialias filtering are imposed. A component above Nyquist can alias into the observed band. Increasing ADC bit depth does not repair temporal undersampling.
+
+The display evaluates a sinusoid at an integer sample index with a frequency normalized by sample rate. It demonstrates identical samples for frequencies separated by an integer, not an actual data-acquisition run or a complete noise model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH17.2" />
+
 
 Use a synthetic sine wave to demonstrate aliasing at two sample rates and record the original signal as known synthetic input. Separately draw the low-voltage circuit bench’s voltage/current measurement connections.
 

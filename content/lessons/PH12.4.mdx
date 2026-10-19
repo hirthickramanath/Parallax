@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For B=2,J=3, find rigid-rotor level energy.",
+      "answer": "24",
+      "hint": "Use BJ(J+1).",
+      "explanation": "Use BJ(J+1). Result: 24.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For that rotor, find the J=2 to J=3 transition energy.",
+      "answer": "12",
+      "hint": "Use 2B(Jlower+1).",
+      "explanation": "Use 2B(Jlower+1). Result: 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Do predicted energy differences alone determine observed line intensities?",
+      "answer": "No; populations and transition strengths are needed.",
+      "options": [
+        "Yes; every energy difference appears equally bright.",
+        "No; populations and transition strengths are needed."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Selection and excitation matter.",
+      "misconceptions": {
+        "Yes; every energy difference appears equally bright.": "Selection and excitation matter."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A permanent dipole is needed for elementary electric-dipole pure rotational acti
 
 Born–Oppenheimer separation relies on scale structure and can fail near electronic degeneracies or strong nonadiabatic coupling. Spectral assignments need isotopologues, temperature populations, linewidths and instrument resolution. A supplied toy line list is not an observed molecular detection.
 
+
+### Derivation and transfer
+
+A rigid rotor has EJ=BJ(J+1), so neighboring rotational transitions are separated by 2B(J+1) in the same energy convention. Harmonic vibrational levels instead have roughly constant spacing ℏω. Rotation-vibration coupling and anharmonicity shift real lines.
+
+The display is an integer rotational ladder, not a full molecular spectrum or an abundance inference. Selection rules and level populations determine which predicted differences appear and with what intensity.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH12.4" />
+
 
 Generate a synthetic rigid-rotor line list and add thermal populations under a stated model. Compare an isotopic mass change and an anharmonic perturbation separately, preserving units and selection rules.
 

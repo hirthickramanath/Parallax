@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For ℏω=2 and n=3, find oscillator energy.",
+      "answer": "7",
+      "hint": "Use ℏω(n+1/2).",
+      "explanation": "Use ℏω(n+1/2). Result: 7.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Find the squared norm of a†|3>.",
+      "answer": "4",
+      "hint": "The coefficient is sqrt(n+1).",
+      "explanation": "The coefficient is sqrt(n+1). Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Does a|0>=0 mean the oscillator ground-state energy vanishes?",
+      "answer": "No; the zero-point term remains.",
+      "options": [
+        "Yes; annihilation means every physical quantity is zero.",
+        "No; the zero-point term remains."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The Hamiltonian includes one half.",
+      "misconceptions": {
+        "Yes; annihilation means every physical quantity is zero.": "The Hamiltonian includes one half."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The ground-state widths are Δx=√(ℏ/(2mω)) and Δp=√(mℏω/2), saturatin
 
 A coherent state satisfies a|α⟩=α|α⟩ and has a Poisson number distribution with mean |α|². Its centre follows the classical oscillator motion in this ideal quadratic Hamiltonian, while the state retains quantum fluctuations. Anharmonic systems do not retain the same equally spaced ladder or exact coherent-state propagation; adding a perturbation requires a controlled approximation.
 
+
+### Derivation and transfer
+
+Oscillator ladder operators satisfy a|n>=sqrt(n)|n−1> and a†|n>=sqrt(n+1)|n+1>. Their nonzero commutator fixes the zero-point shift E=ℏω(n+1/2). The ground state is annihilated by a but still has nonzero energy.
+
+The display keeps n integer and varies ω in ℏ=1 units. It does not identify ladder coefficients with normalized transition probabilities; an applied interaction and duration are needed for a rate.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.4" />
+
 
 Calculate normalized low-number wavefunctions and compare node counts, widths and energy spacing. For a coherent-state number distribution with a chosen |α|², verify mean and variance. Do not identify a stationary number state’s zero mean position with absence of motion-related fluctuations.
 

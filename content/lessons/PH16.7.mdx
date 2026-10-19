@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For second-order leading error, halving grid spacing changes error by what factor?",
+      "answer": "0.25",
+      "hint": "Use h² scaling.",
+      "explanation": "Use h² scaling. Result: 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "Errors at spacings h and h/2 are 0.04 and 0.01. Find observed order log2(error ratio).",
+      "answer": "2",
+      "hint": "log2(4)=2.",
+      "explanation": "log2(4)=2. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Does a synthetic convergence curve count as an executed numerical relativity simulation?",
+      "answer": "No; the field evolution and recorded diagnostics are still required.",
+      "options": [
+        "Yes; any h² plot solves Einstein equations.",
+        "No; the field evolution and recorded diagnostics are still required."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Benchmark and research execution are different.",
+      "misconceptions": {
+        "Yes; any h² plot solves Einstein equations.": "Benchmark and research execution are different."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Finite boundaries, mesh refinement and singular-region treatment can contaminate
 
 Verification uses exact solutions, symmetry limits, resolution studies and conservation/balance checks. Validation against observations adds source/measurement modelling. A simulation is not a new experiment, and expensive computation alone is not evidence of convergence. This introduction defines a reproducible study design rather than claiming a merger calculation was run.
 
+
+### Derivation and transfer
+
+A numerical relativity calculation must specify formulation, initial constraints, gauge, discretization, boundaries and diagnostics. A convergent discretization error does not by itself show that constraints are satisfied or that the continuum model matches the physical question.
+
+The display uses an exact second-order error benchmark E=C h². It is not an executed Einstein-equation simulation. A real result needs multiple resolutions, constraint monitoring, waveform extraction and archived inputs/software sufficient to reproduce the run.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH16.7" />
+
 
 Design a convergence experiment on a supplied exact spacetime test, recording formulation, gauge, domain, resolutions and diagnostics. Do not present a toy grid curve as an executed numerical-relativity waveform.
 

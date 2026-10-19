@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For an equal superposition with ΔE/ℏ=1, find complementary plus probability at t=π.",
+      "answer": "0",
+      "hint": "Use (1+cos t)/2.",
+      "explanation": "Use (1+cos t)/2. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "At t=0 in that preparation, find the same probability.",
+      "answer": "1",
+      "hint": "The two amplitudes interfere constructively.",
+      "explanation": "The two amplitudes interfere constructively. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Do changing energy eigenstate phases alone change the energy-basis populations?",
+      "answer": "No; phase magnitudes stay unchanged.",
+      "options": [
+        "Yes; every phase evolution redistributes energy populations.",
+        "No; phase magnitudes stay unchanged."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Interference depends on the measurement basis.",
+      "misconceptions": {
+        "Yes; every phase evolution redistributes energy populations.": "Interference depends on the measurement basis."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For a time-dependent Hamiltonian, a simple exponential of the time integral work
 
 For a wave packet in a smooth potential, Ehrenfest gives d⟨x⟩/dt=⟨p⟩/m and d⟨p⟩/dt=−⟨V′(x)⟩ when valid. Replacing ⟨V′⟩ by V′(⟨x⟩) is exact for the corresponding linear force but not for every potential. Closed-system unitary evolution does not itself model every open-system dissipative state; reduced dynamics can require a density matrix and a justified environment model.
 
+
+### Derivation and transfer
+
+A superposition of two energies acquires relative phase ΔEt/ℏ. Measuring in the energy basis leaves populations unchanged, but another basis can show oscillating probabilities. Schrödinger and Heisenberg pictures place the same dynamics in states or operators and agree on observables.
+
+The explorer uses an initially equal superposition and a complementary basis, giving P+=(1+cosΔt)/2. It does not describe spontaneous decay, dephasing or a collapse occurring merely because time passes.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.8" />
+
 
 Calculate one spin-precession expectation in both pictures and compare at a time grid. For two noncommuting Hamiltonian pulses, reverse their order and show the final probabilities can differ. Keep a time-ordered product distinct from a scalar exponential of the summed generators.
 

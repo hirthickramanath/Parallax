@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "Using 2Δ(0)/(kBTc)=3.528 and kB=Tc=1, find Δ(0).",
+      "answer": "1.764",
+      "hint": "Divide the stated ratio by two.",
+      "explanation": "Divide the stated ratio by two. Result: 1.764.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For a pair of electrons, find Cooper-pair charge magnitude in units of e.",
+      "answer": "2",
+      "hint": "The pair contains two electronic charges.",
+      "explanation": "The pair contains two electronic charges. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does one BCS interpolation apply without qualification to every superconducting material?",
+      "answer": "No; pairing and coupling regimes differ.",
+      "options": [
+        "Yes; every superconductor has an identical gap law.",
+        "No; pairing and coupling regimes differ."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "State the conventional weak-coupling approximation.",
+      "misconceptions": {
+        "Yes; every superconductor has an identical gap law.": "State the conventional weak-coupling approximation."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ BCS theory describes pairing and a gap in an admitted weak-coupling framework, w
 
 Josephson relations connect current and phase, and voltage to phase evolution, under junction conventions. Dissipation, quasiparticles, fluctuations and device environment matter. A zero-resistance observation and a full thermodynamic/magnetic characterization provide different evidence; this course claims no new material discovery.
 
+
+### Derivation and transfer
+
+A weak-coupling BCS benchmark gives Δ(0)≈1.764kBTc. The common interpolation Δ(T)≈Δ(0)tanh[1.74sqrt(Tc/T−1)] describes a conventional gap below Tc approximately, not every superconductor.
+
+The display keeps 0&lt;T/Tc&lt;1 and a specified zero-temperature gap. Unconventional pairing, strong coupling and fields require different evidence. A zero-resistance report alone is not the full Meissner-effect characterization.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.7" />
+
 
 Compare an ideal-conductor initial-flux thought experiment with equilibrium Meissner screening. Plot a labelled London profile and state where vortices or critical fields invalidate a simple full-expulsion picture.
 

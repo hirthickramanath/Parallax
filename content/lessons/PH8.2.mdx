@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "In units π²ℏ²/(2m)=1 and L=2, find n=3 well energy.",
+      "answer": "2.25",
+      "hint": "Use n²/L².",
+      "explanation": "Use n²/L². Result: 2.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For L=2, find ground-state density at the midpoint.",
+      "answer": "1",
+      "hint": "Use 2/L times sin²(π/2).",
+      "explanation": "Use 2/L times sin²(π/2). Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Is probability density at one point the probability of obtaining exactly that point in a continuous measurement?",
+      "answer": "No; interval probability is an integral.",
+      "options": [
+        "Yes; density itself is a dimensionless point probability.",
+        "No; interval probability is an integral."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Density carries inverse-length units.",
+      "misconceptions": {
+        "Yes; density itself is a dimensionless point probability.": "Density carries inverse-length units."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For a finite nonsingular potential step, ψ and ψ′ are continuous when the ma
 
 In a region E&lt;V, stationary solutions can be exponential. A finite barrier can transmit nonzero probability current through matching across both interfaces; a decaying amplitude alone is not automatically a nonzero transmitted current. Reflection and transmission probabilities use current ratios, not always raw amplitude squares. Hermitian boundary conditions and the full domain are essential for probability conservation.
 
+
+### Derivation and transfer
+
+For an infinite well on 0&lt;x&lt;L, normalized eigenfunctions are sqrt(2/L)sin(nπx/L) and energies scale as n²/L². The nonzero lowest energy follows confinement and boundary conditions, not a classical particle sitting at the bottom.
+
+The explorer gives the n=1 probability density. A density is not a point probability; integrate it over an interval. Finite barriers allow penetration and require different matching conditions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.2" />
+
 
 Compute the first three exact well eigenfunctions and check normalization, endpoints and node counts. For a finite step calculate current ratios on both sides and verify R+T=1 in the stated conservative regime. Label exponential barrier profiles separately from propagating flux.
 

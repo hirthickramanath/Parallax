@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For restricted perturbation [[2,0.5],[0.5,2]], find larger first-order eigenvalue.",
+      "answer": "2.5",
+      "hint": "Diagonalize into symmetric and antisymmetric combinations.",
+      "explanation": "Diagonalize into symmetric and antisymmetric combinations. Result: 2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Find the separation of those two shifts.",
+      "answer": "1",
+      "hint": "Use 2|g|.",
+      "explanation": "Use 2|g|. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "May diagonal elements in an arbitrary degenerate basis always be read as the first-order shifts?",
+      "answer": "No; diagonalize the restricted perturbation first.",
+      "options": [
+        "Yes; basis mixing never matters in degeneracy.",
+        "No; diagonalize the restricted perturbation first."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Off-diagonal elements can split the level.",
+      "misconceptions": {
+        "Yes; basis mixing never matters in degeneracy.": "Off-diagonal elements can split the level."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Hydrogen fine structure includes relativistic kinetic, spin-orbit and Darwin-typ
 
 External electric/magnetic fields and hyperfine interactions select further bases/scales. Compare correction sizes before combining incompatible perturbative hierarchies. A degeneracy protected by symmetry differs from an accidental equality broken by a chosen perturbation.
 
+
+### Derivation and transfer
+
+Within a degenerate eigenspace, first diagonalize the perturbation restricted to that space. Arbitrary original basis vectors need not be the states with well-defined first-order shifts. For [[a,g],[g,a]], shifts are a±g.
+
+The display isolates the splitting 2|g|. Couplings to states outside the subspace and higher orders remain separate. Degeneracy does not mean every perturbation leaves the level unchanged.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.2" />
+
 
 Rotate the basis inside a two-dimensional degenerate subspace and verify the same eigenvalues. Compare a diagonal entry before/after rotation to see why it is not an invariant energy prediction.
 

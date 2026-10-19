@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "Prepare spin up along z, then measure along x. Find the up probability.",
+      "answer": "0.5",
+      "hint": "The axes differ by π/2.",
+      "explanation": "The axes differ by π/2. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Measure the same prepared state along the opposite z axis. Find up probability.",
+      "answer": "0",
+      "hint": "Use cos²(π/2).",
+      "explanation": "Use cos²(π/2). Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Can an ideal measurement along x preserve a previously sharp z projection in every selected state?",
+      "answer": "No; the projections do not commute.",
+      "options": [
+        "Yes; measurements merely reveal all pre-existing sharp components.",
+        "No; the projections do not commute."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Preparation and measurement update matter.",
+      "misconceptions": {
+        "Yes; measurements merely reveal all pre-existing sharp components.": "Preparation and measurement update matter."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Prepare z-up, measure x and select x-up, then measure z. The first x probability
 
 A uniform magnetic field generates unitary precession rather than spatial filtering. For H=ℏωσ_z/2, the Bloch vector rotates around z with the appropriate sign convention; measurement and rotation are different operations. Experimental imperfections, finite gradients, decoherence and detector efficiency require extensions before interpreting real beam counts.
 
+
+### Derivation and transfer
+
+A spin-up state measured along an axis tilted by θ has spin-up probability cos²(θ/2). An ideal Stern–Gerlach apparatus correlates spin projection with spatial separation; it does not reveal a hidden classical orientation already sharp along every axis.
+
+The display predicts an ensemble probability. Consecutive noncommuting measurements require state update, and detector inefficiency changes observed counts. It is not a deterministic trajectory calculation for each atom.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH8.7" />
+
 
 Compute ideal sequences with and without postselection and draw a probability tree. Keep conditional and joint probabilities separate. Compare a unitary field rotation with a projective filter rather than representing both by the same state-update rule.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "With μB=1,gJ=2,mJ=1/2,B=3, find Zeeman shift.",
+      "answer": "3",
+      "hint": "Multiply all four factors.",
+      "explanation": "Multiply all four factors. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "At fixed allowed sublevels, doubling weak B changes the linear shift by what factor?",
+      "answer": "2",
+      "hint": "The first-order shift is linear in B.",
+      "explanation": "The first-order shift is linear in B. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does one level shift directly specify every observed transition frequency and intensity?",
+      "answer": "No; both levels and transition matrix elements matter.",
+      "options": [
+        "Yes; all lines equal one level shift.",
+        "No; both levels and transition matrix elements matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "A line is a difference with a strength.",
+      "misconceptions": {
+        "Yes; all lines equal one level shift.": "A line is a difference with a strength."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ An electric dipole perturbation is −d·E. A nondegenerate parity eigenstate of
 
 Real spectra also include gradients, broadening and calibration. Identify whether B/E values are uniform and whether transition frequencies reflect differences of shifted states. A single-state energy shift is not automatically the full measured transition shift.
 
+
+### Derivation and transfer
+
+In the weak-field Zeeman regime, an energy shift is μB gJ mJ B. Linear dependence assumes the field does not strongly remix the coupling structure. Stark shifts and strong-field Paschen–Back behavior require different perturbations and regimes.
+
+The display varies one signed projection factor with μB=1. It is an individual level shift, not a complete spectrum: observable lines also need differences between levels and transition strengths.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH12.3" />
+
 
 Diagonalize a small internal-plus-field Hamiltonian while increasing field strength and track state composition. Compare the result with weak-field slopes, marking where the approximation ceases to match.
 

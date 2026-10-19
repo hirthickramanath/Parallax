@@ -57,29 +57,37 @@ export function widgetArtifacts(root, source, lesson = {}) {
     }
   };
   for (const name of new Set(names)) {
-    const config = name.startsWith("structure_")
-      ? "structure-investigations.ts"
-      : name.startsWith("computing_")
-        ? "computing-investigations.ts"
-        : name.startsWith("foundation_next_")
-          ? "foundation-next-investigations.ts"
-          : name.startsWith("advanced_math_")
-            ? "advanced-math-investigations.ts"
-            : name.startsWith("chemistry_")
-              ? "chemistry-investigations.ts"
-              : name.startsWith("physical_chemistry_")
-                ? "physical-chemistry-investigations.ts"
-                : name.startsWith("thermal_optics_")
-                  ? "thermal-optics-investigations.ts"
-                  : name.startsWith("em_")
-                    ? "em-investigations.ts"
-                    : name.startsWith("astro_")
-                      ? "astro-investigations.ts"
-                      : name.startsWith("multivariable_")
-                        ? "multivariable-investigations.ts"
-                        : name.startsWith("linear_ode_")
-                          ? "linear-ode-investigations.ts"
-                          : null;
+    const config = name.startsWith("coverage_")
+      ? "coverage-investigations.ts"
+      : name.startsWith("quantum_")
+        ? "quantum-investigations.ts"
+        : name.startsWith("matter_")
+          ? "matter-investigations.ts"
+          : name.startsWith("fields_")
+            ? "fields-investigations.ts"
+            : name.startsWith("structure_")
+              ? "structure-investigations.ts"
+              : name.startsWith("computing_")
+                ? "computing-investigations.ts"
+                : name.startsWith("foundation_next_")
+                  ? "foundation-next-investigations.ts"
+                  : name.startsWith("advanced_math_")
+                    ? "advanced-math-investigations.ts"
+                    : name.startsWith("chemistry_")
+                      ? "chemistry-investigations.ts"
+                      : name.startsWith("physical_chemistry_")
+                        ? "physical-chemistry-investigations.ts"
+                        : name.startsWith("thermal_optics_")
+                          ? "thermal-optics-investigations.ts"
+                          : name.startsWith("em_")
+                            ? "em-investigations.ts"
+                            : name.startsWith("astro_")
+                              ? "astro-investigations.ts"
+                              : name.startsWith("multivariable_")
+                                ? "multivariable-investigations.ts"
+                                : name.startsWith("linear_ode_")
+                                  ? "linear-ode-investigations.ts"
+                                  : null;
     if (config) {
       const configuration = fs.readFileSync(
         path.join(root, "src/lib", config),

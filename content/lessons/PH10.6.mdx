@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For initial excited population one and γt=ln2, find excited population.",
+      "answer": "0.5",
+      "hint": "Use exp(−γt).",
+      "explanation": "Use exp(−γt). Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For amplitude damping rate γ=2 without pure dephasing, find coherence decay rate.",
+      "answer": "1",
+      "hint": "It is γ/2.",
+      "explanation": "It is γ/2. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Must population relaxation and coherence decay have identical rates?",
+      "answer": "No; even simple amplitude damping gives different rates.",
+      "options": [
+        "Yes; all density-matrix entries decay identically.",
+        "No; even simple amplitude damping gives different rates."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The generator acts differently on populations and coherences.",
+      "misconceptions": {
+        "Yes; all density-matrix entries decay identically.": "The generator acts differently on populations and coherences."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For L=√γ|0⟩⟨1|, the simple amplitude-damping excited population decays as
 
 Deriving a Markovian generator from a bath commonly uses weak-coupling, time-scale and sometimes secular approximations. Structured environments and initial correlations can require memory/non-Markovian treatment. A fitted Lindblad equation is a controlled model, not proof that every environment has no memory.
 
+
+### Derivation and transfer
+
+A Markovian amplitude-damping model has excited population ρ11(t)=ρ11(0)exp(−γt) and coherence decaying at γ/2 when no additional dephasing is present. A Lindblad generator with appropriate nonnegative rates preserves trace and complete positivity.
+
+The display isolates the excited population from an initially excited state. It does not establish the Markov approximation for every environment; memory, strong coupling or time-dependent modeling can require different equations. Population relaxation and pure dephasing need not have the same rate.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH10.6" />
+
 
 Evolve basis states and an entangled system–ancilla test under a proposed channel, checking eigenvalues and trace. Compare amplitude damping with dephasing and identify their different fixed states.
 

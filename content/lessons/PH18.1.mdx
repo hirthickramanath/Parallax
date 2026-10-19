@@ -87,6 +87,43 @@
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "Under conditional independence, two likelihood ratios of 3 and 4 combine to what factor?",
+      "answer": "12",
+      "hint": "Multiply under the stated assumption.",
+      "explanation": "Multiply under the stated assumption. Result: 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For prior odds 1:9 and an independent likelihood factor 9, find posterior probability.",
+      "answer": "0.5",
+      "hint": "Updated odds are one.",
+      "explanation": "Updated odds are one. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "May likelihood factors from papers sharing the same underlying data always be multiplied as independent evidence?",
+      "answer": "No; dependence can double-count information.",
+      "options": [
+        "Yes; different publication titles ensure independence.",
+        "No; dependence can double-count information."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Inspect data and method provenance.",
+      "misconceptions": {
+        "Yes; different publication titles ensure independence.": "Inspect data and method provenance."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -171,9 +208,19 @@ For each quantitative claim, retain the exact source identifier and version, the
 
 For a residual vector $\mathbf r=\mathbf x-\mathbf m$ with known positive-definite covariance $C$, the quadratic statistic is $\chi^2=\mathbf r^TC^{-1}\mathbf r$. Summing individually squared standardized residuals assumes diagonal covariance. Even with a valid Gaussian model, estimating parameters changes the reference distribution and effective degrees of freedom; selection and multiple searches require their own treatment.
 
+
+### Derivation and transfer
+
+A literature claim should be linked to the actual version, method, assumptions and relevant source passage. Citation count and a preprint's existence do not establish correctness. Independent replications can share data or methods and therefore need not be statistically independent.
+
+The display illustrates how repeated likelihood factors multiply only under a stated conditional-independence model. It is not a score for paper quality or evidence extracted from a literature search. A real review retains search terms, inclusion criteria and conflicting results.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH18.1" />
+
 
 Create a reading note for one exact versioned source and extract definitions for a single equation. Separate observations, assumptions, deductions and open questions before planning an extension.
 

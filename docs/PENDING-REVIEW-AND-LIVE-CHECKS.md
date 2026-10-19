@@ -99,3 +99,7 @@ MA6–MA9 have 63 added questions and 21 embedded investigations. Current partia
 ## Remaining maths, computing and foundation follow-up
 
 Fifty-two lessons have 156 added questions and embedded investigations. Current partial mappings: 146; lessons without explicit widgets: 86; independent approvals: zero. [Scope and validation](STRUCTURE-COMPUTING-FOUNDATION-EXPANSION.md).
+
+## Current checkpoint after the remaining physics release
+
+All 354 draft lessons now have expanded banks and explicit investigations. The current ledger has 162 partial source mappings, zero independent approvals and zero explicit-widget gaps. Full scientific/source review remains open, including 192 lessons without a current partial mapping. Numerical checks and source mappings do not certify every claim. See [the five-item status](FIVE-ITEM-EXECUTION-STATUS.md) and [the final release](QUANTUM-MATTER-FIELDS-EXPANSION.md). Earlier counts above are historical checkpoints.

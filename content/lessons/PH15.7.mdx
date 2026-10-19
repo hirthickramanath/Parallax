@@ -77,6 +77,45 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For Ti=σi/2, find the real coefficient c in [T1,T2]=icT3.",
+      "answer": "1",
+      "hint": "Use the SU(2) commutator.",
+      "explanation": "Use the SU(2) commutator. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For A=2T1 and B=3T2, find c in [A,B]=icT3.",
+      "answer": "6",
+      "hint": "The commutator is bilinear.",
+      "explanation": "The commutator is bilinear. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Do arbitrary non-Abelian connection components commute like U(1) scalars?",
+      "answer": "No; their generator algebra contributes commutators.",
+      "options": [
+        "Yes; every gauge group is Abelian in components.",
+        "No; their generator algebra contributes commutators."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Keep the matrix-valued structure.",
+      "misconceptions": {
+        "Yes; every gauge group is Abelian in components.": "Keep the matrix-valued structure."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +192,19 @@ For QCD, colour confinement and strong low-energy behaviour require nonperturbat
 
 Representations and anomaly cancellation constrain consistent matter content. Local Lie algebra and global gauge-group structure need not encode identical topological data. Lattice and other methods add regulator/continuum-limit questions beyond an introductory diagram expansion.
 
+
+### Derivation and transfer
+
+Non-Abelian gauge generators do not commute, so field strength contains connection commutator terms in addition to derivatives. For Pauli generators σi/2, [T1,T2]=iT3. This algebraic structure is not reproduced by simply copying an Abelian potential three times.
+
+The display shows the coefficient of a commutator for constant chosen algebra components. It is not a full spacetime Yang–Mills solution, gauge-invariant energy density or confinement calculation. Generator normalization and coupling convention are stated explicitly.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH15.7" />
+
 
 Choose a small matrix Lie algebra and compute a commutator before forming curvature. Compare with an abelian case. Keep classical field nonlinearity, quantization constraints and observed particle content distinct.
 

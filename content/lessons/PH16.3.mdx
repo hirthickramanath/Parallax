@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For r=8M, find the stationary clock factor relative to Schwarzschild time.",
+      "answer": "0.8660254037844386",
+      "hint": "Use sqrt(1−2M/r).",
+      "explanation": "Use sqrt(1−2M/r). Result: 0.866025403784.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For M=3 in G=c=1 units, find horizon radius.",
+      "answer": "6",
+      "hint": "Use 2M.",
+      "explanation": "Use 2M. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Does the stationary clock factor imply an infalling observer experiences proper time stopping at the horizon?",
+      "answer": "No; static and freely falling observers differ.",
+      "options": [
+        "Yes; every local clock physically stops there.",
+        "No; static and freely falling observers differ."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use the worldline and regular local frame.",
+      "misconceptions": {
+        "Yes; every local clock physically stops there.": "Use the worldline and regular local frame."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Timelike/null geodesics yield perihelion advance, light deflection and time-dela
 
 The metric applies outside a suitable spherical nonrotating source, not every rotating star or disc. Stable circular orbit limits, photon orbits and horizons are distinct radii. A coordinate plot of slowing infall is not proof that a falling observer never crosses the horizon in finite proper time.
 
+
+### Derivation and transfer
+
+For a static Schwarzschild exterior, a stationary clock has dτ/dt=sqrt(1−2M/r) in G=c=1 units. Static observers require r>2M and increasing acceleration near the horizon; freely falling observers are a different family.
+
+The display uses radius in units of the Schwarzschild radius and never crosses the horizon. Its coordinate-time factor is not a statement that an infalling observer's proper time stops. Observable redshifts must specify emitter and receiver motion.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH16.3" />
+
 
 Compare radial null curves in Schwarzschild and a horizon-regular chart. Compute a weak-field light-bending example and state where the expansion fails.
 

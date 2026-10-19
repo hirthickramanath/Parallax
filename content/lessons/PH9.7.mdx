@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "Find purity of an equal incoherent two-state mixture.",
+      "answer": "0.5",
+      "hint": "Square and sum the probabilities.",
+      "explanation": "Square and sum the probabilities. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For diagonal probabilities 0.8 and 0.2, find purity.",
+      "answer": "0.68",
+      "hint": "Use 0.8²+0.2².",
+      "explanation": "Use 0.8²+0.2². Result: 0.68.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Is an equal coherent superposition identical to an equal incoherent mixture?",
+      "answer": "No; their density matrices have different coherences.",
+      "options": [
+        "Yes; equal populations make every measurement identical.",
+        "No; their density matrices have different coherences."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Another measurement basis reveals interference.",
+      "misconceptions": {
+        "Yes; equal populations make every measurement identical.": "Another measurement basis reveals interference."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A simple qubit dephasing model multiplies off-diagonal entries by e⁻γt while 
 
 Decoherence rates and preferred structures depend on the coupling and environment. Markovian master equations add approximations; memory and initial correlations can matter. Basis-specific coherence, purity, energy relaxation and entropy are different diagnostics.
 
+
+### Derivation and transfer
+
+A density matrix is positive semidefinite with unit trace. Purity Trρ² equals one for a pure state and is below one for a mixed state. For diagonal probabilities p and 1−p, purity is p²+(1−p)².
+
+A diagonal state depends on basis; loss of off-diagonal entries in one representation does not by itself establish a physical decoherence mechanism. The display describes a stated diagonal mixture, not an environmental simulation or a state reconstructed from data.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.7" />
+
 
 Construct a pure entangled two-qubit state and calculate one reduced density matrix. Compare its purity with the global purity. Then apply a valid dephasing channel and track trace/eigenvalues as well as off-diagonal magnitude.
 

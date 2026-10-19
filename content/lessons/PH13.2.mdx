@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For a parent with half-life 1, find its surviving fraction after 3.",
+      "answer": "0.125",
+      "hint": "Use three half-lives.",
+      "explanation": "Use three half-lives. Result: 0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For equal rates λ=1 and N0=1, find daughter population at t=1.",
+      "answer": "0.36787944117144233",
+      "hint": "Use the equal-rate limit t exp(−t).",
+      "explanation": "Use the equal-rate limit t exp(−t). Result: 0.367879441171.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Must every daughter population decrease immediately from zero in a decay chain?",
+      "answer": "No; feeding can first build it up.",
+      "options": [
+        "Yes; every nuclide follows an isolated decreasing exponential.",
+        "No; feeding can first build it up."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Include production as well as loss.",
+      "misconceptions": {
+        "Yes; every nuclide follows an isolated decreasing exponential.": "Include production as well as loss."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Decay chains require coupled source/sink equations. Secular/transient equilibriu
 
 Quantum short-time and long-tail qualifications exist, while exponential decay is an excellent model in many measured regimes. Uncertainty intervals for low counts require an appropriate count likelihood. Distinguish expected counts and one random realization.
 
+
+### Derivation and transfer
+
+For a two-step decay A→B with no initial B and distinct rates, NB=N0 λA[exp(−λAt)−exp(−λBt)]/(λB−λA). The daughter population can rise before falling, unlike an isolated parent exponential. Equal rates require the continuous limit N0λt exp(−λt).
+
+The display fixes λB=2 and keeps λA below it. It computes expected counts, not sampled decay events or branching chains. Activity and population should not be conflated.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH13.2" />
+
 
 Generate synthetic decay counts with declared Poisson/background assumptions and fit the rate over time. Include daughter production in a second model and compare with a single exponential.
 

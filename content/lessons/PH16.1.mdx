@@ -87,6 +87,43 @@
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For ΔΦ/c²=0.001, find the leading fractional clock-rate change.",
+      "answer": "0.001",
+      "hint": "Use the weak-field first-order relation.",
+      "explanation": "Use the weak-field first-order relation. Result: 0.001.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "If the weak-field height difference doubles at fixed g, find the fractional-shift factor.",
+      "answer": "2",
+      "hint": "ΔΦ≈gΔh is linear in height.",
+      "explanation": "ΔΦ≈gΔh is linear in height. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Can a freely falling frame eliminate tidal curvature throughout a finite region?",
+      "answer": "No; local removal of acceleration does not remove curvature.",
+      "options": [
+        "Yes; equivalence makes every gravitational effect vanish everywhere.",
+        "No; local removal of acceleration does not remove curvature."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Distinguish a local inertial frame from a flat spacetime.",
+      "misconceptions": {
+        "Yes; equivalence makes every gravitational effect vanish everywhere.": "Distinguish a local inertial frame from a flat spacetime."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -173,9 +210,19 @@ $$\delta\ddot x^i=-\partial_i\partial_j\Phi\,\xi^j.$$
 
 The Hessian has units of inverse time squared and multiplies a length to give acceleration. This is a useful tidal diagnostic in that limit; it is not a coordinate-independent definition of the relativistic curvature tensor in arbitrary coordinates.
 
+
+### Derivation and transfer
+
+In a weak static field, a clock frequency ratio differs by approximately ΔΦ/c² between nearby potentials. This is a leading small-potential statement, not an exact law valid arbitrarily near every horizon. Locally a freely falling observer can remove uniform gravitational acceleration at a point, but tidal curvature remains.
+
+The display uses a prescribed small dimensionless potential difference. It does not calculate a metric or equate a coordinate acceleration with an invariant curvature measurement.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH16.1" />
+
 
 Compare a uniformly accelerated flat-space chart with a curved-space tidal example. Track accelerometer response and relative geodesic separation separately.
 

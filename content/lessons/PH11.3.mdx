@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "Two particles each have m=3 and opposite momentum magnitude 4 in c=1 units. Find center-of-momentum energy.",
+      "answer": "10",
+      "hint": "Add their equal positive energies.",
+      "explanation": "Add their equal positive energies. Result: 10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "Two massless photons of energy 2 collide head-on. Find total invariant mass in c=1 units.",
+      "answer": "4",
+      "hint": "Total spatial momentum cancels.",
+      "explanation": "Total spatial momentum cancels. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Are equal laboratory projectile energies always equally efficient in collider and fixed-target geometries?",
+      "answer": "No; overall momentum changes the invariant energy.",
+      "options": [
+        "Yes; geometry cannot affect collision invariant energy.",
+        "No; overall momentum changes the invariant energy."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Compare the total four-momentum.",
+      "misconceptions": {
+        "Yes; geometry cannot affect collision invariant energy.": "Compare the total four-momentum."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For equal opposing beams with equal energies E and opposite momenta, total momen
 
 For a two-body final state in its centre frame, momenta have equal magnitude and opposite directions. Energy conservation gives $E_3^*=(s+m_3^2c^4-m_4^2c^4)/(2\sqrt{s})$. The momentum then follows from its mass shell. Transforming to lab angles and energies requires another boost; the centre-frame isotropic distribution, if physically present, need not look isotropic in the laboratory.
 
+
+### Derivation and transfer
+
+For two equal-mass particles with opposite momenta in the center-of-momentum frame, total energy is 2sqrt(m²+p²) in c=1 units. A fixed-target collision puts energy into overall center-of-mass motion, so the usable invariant energy grows differently.
+
+Threshold conditions apply to invariant energy and all conserved quantum numbers, not just a laboratory projectile energy. The display assumes a symmetric collider and does not calculate a cross section or detector acceptance.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH11.3" />
+
 
 Draw four-momentum balance for a fixed target and equal opposing beams. Compute s from several frames and compare threshold total versus kinetic energy. State any conserved quantum numbers separately; passing a mass threshold does not prove that an actual reaction occurs.
 

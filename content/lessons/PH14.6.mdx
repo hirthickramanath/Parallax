@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For Curie constant C=3 and T=2, find susceptibility.",
+      "answer": "1.5",
+      "hint": "Use C/T.",
+      "explanation": "Use C/T. Result: 1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "At fixed C, doubling T changes ideal susceptibility by what factor?",
+      "answer": "0.5",
+      "hint": "It is inversely proportional to temperature.",
+      "explanation": "It is inversely proportional to temperature. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Is weak-field Curie linearity guaranteed at arbitrarily strong magnetic fields?",
+      "answer": "No; saturation and other effects can matter.",
+      "options": [
+        "Yes; every magnetization is linear at all fields.",
+        "No; saturation and other effects can matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Respect the response regime.",
+      "misconceptions": {
+        "Yes; every magnetization is linear at all fields.": "Respect the response regime."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For an Ising pair, $H=-Js_1s_2$ favours aligned spins when J>0 and opposite spin
 
 Hysteresis depends on metastability, defects and dynamics; an equilibrium susceptibility curve does not predict every loop. Dimensionality, interaction range and anisotropy limit ordering theorems. Experimental moments can include orbital as well as spin contributions.
 
+
+### Derivation and transfer
+
+Curie's ideal paramagnetic law is χ=C/T in a suitable high-temperature weak-field regime. Interactions can change it to a Curie–Weiss form and generate ordering; a susceptibility divergence in a simple fit is not a complete microscopic phase transition calculation.
+
+The display keeps positive T and a prescribed Curie constant. Saturation, anisotropy and hysteresis are omitted. Magnetization should not be assumed linear at arbitrarily strong fields.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.6" />
+
 
 Compare a two-spin exact count with a collective mean-field curve and a separately labelled hysteresis model. Distinguish equilibrium order, domain cancellation and irreversible dynamics.
 

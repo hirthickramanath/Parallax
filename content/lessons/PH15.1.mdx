@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "In three spatial dimensions a spherical mode count scales as K³. Find its factor when cutoff K doubles.",
+      "answer": "8",
+      "hint": "Cube the cutoff ratio.",
+      "explanation": "Cube the cutoff ratio. Result: 8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For one oscillator with ℏ=ω=1, find zero-point energy.",
+      "answer": "0.5",
+      "hint": "Use ℏω/2.",
+      "explanation": "Use ℏω/2. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Is an arbitrary regulator cutoff itself necessarily a measured physical observable?",
+      "answer": "No; regulator dependence must be interpreted and removed or matched appropriately.",
+      "options": [
+        "Yes; any chosen cutoff is directly measured physics.",
+        "No; regulator dependence must be interpreted and removed or matched appropriately."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Separate calculational regulator and prediction.",
+      "misconceptions": {
+        "Yes; any chosen cutoff is directly measured physics.": "Separate calculational regulator and prediction."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ An effective field theory describes a regime below a cutoff with symmetries, deg
 
 A Feynman diagram is a term-organizing device in an expansion, not an observed movie of virtual particles following paths. Nonperturbative phases, confinement and curved/time-dependent backgrounds can complicate a simple particle picture. QFT is a framework requiring a specified dynamics, state and measurement model.
 
+
+### Derivation and transfer
+
+A relativistic field has modes throughout space and can describe processes with variable particle number. A finite collection of harmonic modes is a useful analogy, but continuum sums can diverge and require a physical definition and regularization. A cutoff is not automatically an observable.
+
+The display gives the three-dimensional mode-count scaling with a momentum cutoff. It does not derive a renormalized vacuum energy or resolve the cosmological constant problem. State which quantity depends on the regulator before interpreting a graph.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH15.1" />
+
 
 Compare a fixed two-level particle model and a Fock-space process with explicit conserved charges. Identify what additional sectors are needed rather than inserting a creation event into a wavefunction with fixed particle count.
 

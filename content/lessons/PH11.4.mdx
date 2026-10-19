@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For a photon transverse in the original frame and boost β=0.6, find cosθ′.",
+      "answer": "-0.6",
+      "hint": "Set cosθ=0.",
+      "explanation": "Set cosθ=0. Result: -0.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For β=0.6 and a transverse photon, find ω′/ω.",
+      "answer": "1.25",
+      "hint": "Use γ(1−βcosθ).",
+      "explanation": "Use γ(1−βcosθ). Result: 1.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Can the sign of a boost be changed without changing the frame-transformation convention?",
+      "answer": "No; the direction and frequency formulas change accordingly.",
+      "options": [
+        "Yes; aberration is independent of boost direction.",
+        "No; the direction and frequency formulas change accordingly."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Label the two frames and axes.",
+      "misconceptions": {
+        "Yes; aberration is independent of boost direction.": "Label the two frames and axes."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ A transverse direction must be defined in a particular frame: θ=π/2 in S gives
 
 Specific intensity transforms with the invariant Iν/ν³ along the same ray in flat-spacetime Lorentz transformations. Apparent beaming additionally changes solid angle and arrival-time mapping. Cosmological or gravitational redshift needs geometric propagation beyond a global inertial boost; constant proper acceleration in flat spacetime does not itself introduce spacetime curvature.
 
+
+### Derivation and transfer
+
+Relativistic aberration transforms a photon direction by cosθ′=(cosθ−β)/(1−βcosθ) for a boost convention along positive x. The frequency transformation is γω(1−βcosθ), so direction and Doppler shift are related but distinct observables.
+
+The display uses the stated convention and subluminal β. It does not model accelerated observers, Thomas precession or an entire radiation beam. Reversing the frame transformation changes the boost sign.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH11.4" />
+
 
 Apply photon energy and momentum boosts to directions θ=0, π/2 and π and check that transformed photon speed remains c. Compare constant proper acceleration with constant lab acceleration using the rapidity formulas. State the compared frame before assigning a red or blue shift.
 

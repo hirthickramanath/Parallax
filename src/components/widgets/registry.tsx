@@ -1,3 +1,7 @@
+import { coverageInvestigations } from "../../lib/coverage-investigations";
+import { fieldsInvestigations } from "../../lib/fields-investigations";
+import { matterInvestigations } from "../../lib/matter-investigations";
+import { quantumInvestigations } from "../../lib/quantum-investigations";
 import { foundationNextInvestigations } from "../../lib/foundation-next-investigations";
 import { computingInvestigations } from "../../lib/computing-investigations";
 import { structureInvestigations } from "../../lib/structure-investigations";
@@ -103,6 +107,38 @@ export const widgets = {
   secant_explorer: SecantExplorer,
 };
 export function Widget({ name }: { name: string }) {
+  if (name.startsWith("coverage_") && coverageInvestigations[name.slice(9)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(9)}
+        model={coverageInvestigations[name.slice(9)]}
+      />
+    );
+  if (name.startsWith("fields_") && fieldsInvestigations[name.slice(7)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(7)}
+        model={fieldsInvestigations[name.slice(7)]}
+      />
+    );
+  if (name.startsWith("matter_") && matterInvestigations[name.slice(7)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(7)}
+        model={matterInvestigations[name.slice(7)]}
+      />
+    );
+  if (name.startsWith("quantum_") && quantumInvestigations[name.slice(8)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(8)}
+        model={quantumInvestigations[name.slice(8)]}
+      />
+    );
   if (
     name.startsWith("foundation_next_") &&
     foundationNextInvestigations[name.slice(16)]

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "At fixed mass and degeneracy, density rises by factor 8. Find free Fermi-energy factor.",
+      "answer": "4",
+      "hint": "Use density to power 2/3.",
+      "explanation": "Use density to power 2/3. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For two orthonormal occupied orbitals, find the squared norm of their properly normalized Slater determinant.",
+      "answer": "1",
+      "hint": "The antisymmetric normalization is 1/sqrt(2!).",
+      "explanation": "The antisymmetric normalization is 1/sqrt(2!). Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Does one Slater determinant generally include every electron-correlation effect?",
+      "answer": "No; Hartree–Fock omits correlation beyond its mean-field exchange structure.",
+      "options": [
+        "Yes; antisymmetry alone solves all interactions exactly.",
+        "No; Hartree–Fock omits correlation beyond its mean-field exchange structure."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Exchange and full correlation are distinct.",
+      "misconceptions": {
+        "Yes; antisymmetry alone solves all interactions exactly.": "Exchange and full correlation are distinct."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Correlation energy conventionally denotes the remaining exact-minus-HF energy wi
 
 Koopmans-style orbital-energy ionization estimates assume frozen orbitals and neglect relevant relaxation/correlation. Total-energy differences can answer a different question. Density-functional theory uses an exact formal framework with approximate practical functionals; it is not simply HF with renamed exchange.
 
+
+### Derivation and transfer
+
+A Slater determinant enforces fermionic antisymmetry and leads to exchange terms in Hartree–Fock. The resulting orbitals solve self-consistent equations; simply subtracting a universal constant does not account for all correlation. Correlation energy is defined relative to a specified reference and Hamiltonian.
+
+The display uses the leading free Fermi-gas density scaling EF∝n^(2/3), not an executed self-consistent-field computation. Basis convergence, spin state and reference data are still needed for a real many-body calculation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH10.5" />
+
 
 Compare converged energy estimates as a basis grows and separate self-consistency residual from basis/model error. State spin, charge and geometry before interpreting orbital energies or differences.
 

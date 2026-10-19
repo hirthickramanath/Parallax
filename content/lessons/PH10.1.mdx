@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "For c=ℏ=1,m=3,k=4, find positive frequency.",
+      "answer": "5",
+      "hint": "Use sqrt(k²+m²).",
+      "explanation": "Use sqrt(k²+m²). Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "For that mode, find group velocity.",
+      "answer": "0.8",
+      "hint": "Differentiate ω with respect to k.",
+      "explanation": "Differentiate ω with respect to k. Result: 0.8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "For a massive relativistic mode, are phase and group velocities generally equal?",
+      "answer": "No; ω/k and k/ω differ in these units.",
+      "options": [
+        "Yes; every wave has one identical velocity.",
+        "No; ω/k and k/ω differ in these units."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use the dispersion relation.",
+      "misconceptions": {
+        "Yes; every wave has one identical velocity.": "Use the dispersion relation."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The equation is second order in time and needs field and time-derivative initial
 
 External interactions and particle production require a consistent field framework. Classical positive energy density and quantum charge density are different objects. The nonrelativistic limit can recover a Schrödinger-type envelope after factoring a rapid rest-energy phase under a controlled small-momentum/slow-envelope approximation.
 
+
+### Derivation and transfer
+
+A free Klein–Gordon plane wave obeys ω²=c²k²+(mc²/ℏ)². Positive- and negative-frequency solutions appear, and a relativistic quantum-field interpretation resolves issues with treating the naive density as a single-particle probability.
+
+The display follows a positive-frequency branch in c=ℏ=1 units. It is not a field quantization or an assertion that a massive particle group velocity equals its phase velocity. The group velocity k/ω stays below one for positive mass.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH10.1" />
+
 
 Compare exact positive-branch dispersion with its low-momentum expansion. Track initial data and the sign of the charge density for simple frequency branches without calling it a universally positive probability.
 

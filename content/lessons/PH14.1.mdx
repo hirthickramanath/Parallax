@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For first order,d=2 and θ=π/6, find wavelength.",
+      "answer": "2",
+      "hint": "Use 2d sinθ.",
+      "explanation": "Use 2d sinθ. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "If the Bragg angle θ is 20 degrees, find detector scattering angle 2θ in degrees.",
+      "answer": "40",
+      "hint": "Double the angle under this convention.",
+      "explanation": "Double the angle under this convention. Result: 40.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does a geometrically possible Bragg condition guarantee nonzero peak intensity?",
+      "answer": "No; the structure factor can extinguish it.",
+      "options": [
+        "Yes; every lattice condition has equal intensity.",
+        "No; the structure factor can extinguish it."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Basis interference and selection rules matter.",
+      "misconceptions": {
+        "Yes; every lattice condition has equal intensity.": "Basis interference and selection rules matter."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Finite size, disorder and strain broaden peaks; powder averaging loses orientati
 
 Real-space defects and nonperiodic materials require correlation-based descriptions beyond a perfect infinite lattice. Reciprocal-space patterns are transformed, response-weighted observations rather than literal photographs of point atoms.
 
+
+### Derivation and transfer
+
+Bragg diffraction requires 2d sinθ=nλ, with θ the angle to lattice planes in the stated convention. A detector scattering angle is often 2θ, so confusing the two produces an incorrect lattice spacing. Structure factors determine which geometrically possible peaks have intensity.
+
+The display follows the first-order wavelength satisfying the condition. It is not a complete crystal diffraction pattern or a proof that every reciprocal-lattice point is allowed.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.1" />
+
 
 Compute a synthetic one-dimensional lattice structure factor with one- and two-site bases. Compare allowed reciprocal locations with destructive basis interference and label the model, not a measured crystal.
 

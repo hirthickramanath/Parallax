@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For β=0.6, find γ.",
+      "answer": "1.25",
+      "hint": "Use 1/sqrt(1−β²).",
+      "explanation": "Use 1/sqrt(1−β²). Result: 1.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "In c=1 units, t=5,x=3,v=0.6. Find transformed t′.",
+      "answer": "4",
+      "hint": "Use γ(t−vx).",
+      "explanation": "Use γ(t−vx). Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Can time dilation alone determine every comparison between spatially separated events?",
+      "answer": "No; simultaneity and event coordinates must be specified.",
+      "options": [
+        "Yes; multiply every time interval by γ regardless of separation.",
+        "No; simultaneity and event coordinates must be specified."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use the full Lorentz transformation.",
+      "misconceptions": {
+        "Yes; multiply every time interval by γ regardless of separation.": "Use the full Lorentz transformation."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Differentiate the boost to obtain parallel velocity addition $u_x'=(u_x-v)/(1-u_
 
 For an accelerated journey in flat spacetime, integrate proper time along each worldline. The reunion-clock comparison is not resolved by asserting one globally inertial frame for both paths. Acceleration can distinguish the histories, while the accumulated proper-time difference is a geometric path calculation. These statements exclude gravitational curvature, which requires general relativity.
 
+
+### Derivation and transfer
+
+Lorentz time transformation is t′=γ(t−vx/c²), so simultaneity depends on the frame as well as time dilation along one clock worldline. Proper time is accumulated along a timelike path and is not the coordinate time difference for an arbitrary pair of separated events.
+
+The display probes γ at subluminal speed. It does not assign a rest frame to light or infer a distant clock comparison without specifying which events are compared.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH11.1" />
+
 
 Draw two event pairs: ticks at one clock and endpoint measurements of a rod. Apply the Lorentz formulas to both coordinates of each event and verify the interval. Label the simultaneous frame for a length measurement rather than transforming only an isolated distance.
 

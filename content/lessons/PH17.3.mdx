@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For independent Bernoulli p=0.2,N=100, find estimator standard error.",
+      "answer": "0.04",
+      "hint": "Use sqrt(p(1−p)/N).",
+      "explanation": "Use sqrt(p(1−p)/N). Result: 0.04.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "If an importance integrand value is 0.6 and proposal density 0.2 at the sampled point, find weight.",
+      "answer": "3",
+      "hint": "Use f/q.",
+      "explanation": "Use f/q. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "May an importance proposal assign zero density where a nonzero target contribution exists?",
+      "answer": "No; the estimator loses required support.",
+      "options": [
+        "Yes; rare regions can always be ignored without bias.",
+        "No; the estimator loses required support."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check support before optimizing variance.",
+      "misconceptions": {
+        "Yes; rare regions can always be ignored without bias.": "Check support before optimizing variance."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Markov-chain samples can be correlated and need effective-sample-size/mixing che
 
 Validate on exact integrals or known distributions before a complex physical application. Check dimensions, normalization and any conserved quantities. A simulation’s stochastic noise is distinct from discretization and physical-model uncertainty.
 
+
+### Derivation and transfer
+
+Importance sampling estimates an integral by sampling a proposal q and weighting by f/q, requiring proposal support wherever the integrand contributes. A poor proposal can produce enormous or infinite variance even if the estimator is formally unbiased.
+
+The display uses independent Bernoulli sampling as a known-variance Monte Carlo benchmark. It does not execute random sampling or validate a complex importance proposal. Seed, proposal, weights and uncertainty diagnostics belong in a real experiment record.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH17.3" />
+
 
 Run a labelled synthetic area estimator with multiple seeds and compare interval coverage. Deliberately use a biased proposal without weights to expose an error that increased N cannot repair.
 

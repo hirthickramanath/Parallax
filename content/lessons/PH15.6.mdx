@@ -87,6 +87,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "in the stated convention and units"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For α0=0.1,b=1 and ln(μ/μ0)=2, find toy running α.",
+      "answer": "0.125",
+      "hint": "Use 0.1/(1−0.2).",
+      "explanation": "Use 0.1/(1−0.2). Result: 0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For that toy at the reference scale, find α.",
+      "answer": "0.1",
+      "hint": "The logarithm is zero.",
+      "explanation": "The logarithm is zero. Result: 0.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Does a perturbative running-coupling pole prove an exact physical infinite observable?",
+      "answer": "No; the approximation breaks down there.",
+      "options": [
+        "Yes; perturbation theory remains valid at its divergence.",
+        "No; the approximation breaks down there."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check the regime of the expansion.",
+      "misconceptions": {
+        "Yes; perturbation theory remains valid at its divergence.": "Check the regime of the expansion."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ The divergent constant cancels because the same physical matching condition fixe
 
 For the toy law $dg/d\ln\mu=bg^2$, separation of variables gives $g(\mu)=g_0/[1-bg_0\ln(\mu/\mu_0)]$. Differentiating verifies the differential equation. For $b>0$ this approximation grows with energy. A zero denominator is a failure of this perturbative extrapolation; it is not by itself experimental proof of a physical singularity or a complete ultraviolet theory.
 
+
+### Derivation and transfer
+
+For a declared one-loop toy beta function dα/dlnμ=bα², integration gives α(μ)=α0/[1−bα0ln(μ/μ0)]. The coefficient and sign depend on the theory. A denominator zero warns of the perturbative expression's breakdown rather than providing a trustworthy infinite physical coupling.
+
+The display keeps well away from that pole with b=1. It does not fit a real gauge theory or show that every interaction runs in the same direction. Scheme and matching thresholds belong to a quantitative calculation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH15.6" />
+
 
 Compare a regulated toy integral under two cutoffs after fixing the same low-energy condition. Track residual truncation dependence and the expansion parameter rather than declaring all uncertainty removed.
 

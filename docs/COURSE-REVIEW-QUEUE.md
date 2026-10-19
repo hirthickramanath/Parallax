@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 146 have current partial AI-assisted source mappings; 86 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 162 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS9.6 Inflation | 9 / 9 | 4 | 3 | astro_AS9.6 |
 | AS9.7 Dark matter and dark energy | 9 / 9 | 4 | 3 | astro_AS9.7 |
 | AS9.8 Observational cosmology and tensions (H0, S8) | 9 / 9 | 4 | 3 | astro_AS9.8 |
-| CB.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | pending |
+| CB.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | chemistry_CH5.1 |
 | CB.2 Bonding and molecular shapes | 11 / 11 | 6 | 5 | molecular_geometry_explorer |
 | CB.3 Thermochemistry and equilibrium | 10 / 10 | 5 | 6 | chemistry_CB.3 |
 | CB.4 Kinetics and electrochemistry | 10 / 10 | 5 | 6 | chemistry_CB.4 |
@@ -127,12 +127,12 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CP2.3 Astropy, astroquery and survey data | 9 / 9 | 4 | 3 | computing_CP2.3 |
 | CP2.4 Machine learning for science | 9 / 9 | 4 | 3 | computing_CP2.4 |
 | CP2.5 Git, reproducibility and high-performance computing basics | 9 / 9 | 4 | 3 | computing_CP2.5 |
-| MA1.1 Logic, sets and proof techniques | 10 / 10 | 5 | 4 | pending |
-| MA1.2 Real numbers and completeness | 10 / 10 | 5 | 4 | pending |
-| MA1.3 Sequences and limits | 10 / 10 | 5 | 4 | pending |
-| MA1.4 Series and convergence tests | 10 / 10 | 5 | 4 | pending |
-| MA1.5 Continuity and compactness | 10 / 10 | 5 | 4 | pending |
-| MA1.6 Differentiability and the mean value theorem | 10 / 10 | 5 | 4 | pending |
+| MA1.1 Logic, sets and proof techniques | 10 / 10 | 5 | 4 | coverage_MA1.1 |
+| MA1.2 Real numbers and completeness | 10 / 10 | 5 | 4 | coverage_MA1.2 |
+| MA1.3 Sequences and limits | 10 / 10 | 5 | 4 | coverage_MA1.3 |
+| MA1.4 Series and convergence tests | 10 / 10 | 5 | 4 | coverage_MA1.4 |
+| MA1.5 Continuity and compactness | 10 / 10 | 5 | 4 | coverage_MA1.5 |
+| MA1.6 Differentiability and the mean value theorem | 10 / 10 | 5 | 4 | coverage_MA1.6 |
 | MA1.7 Riemann integration | 10 / 10 | 5 | 4 | darboux_explorer |
 | MA1.8 Uniform convergence | 10 / 10 | 5 | 4 | uniform_power_explorer |
 | MA10.1 Groups and homomorphisms | 9 / 9 | 4 | 3 | structure_MA10.1 |
@@ -224,8 +224,8 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MB4.3 Probability and conditional probability | 10 / 10 | 5 | 6 | foundation_next_MB4.3, bayes_explorer |
 | MB4.4 Distributions and expectation | 10 / 10 | 5 | 6 | foundation_next_MB4.4 |
 | PB1.1 Kinematics and Newton’s laws | 13 / 13 | 7 | 8 | falling_bodies |
-| PB1.2 Work, energy and momentum | 13 / 13 | 9 | 8 | pending |
-| PB1.3 Rotation and rolling | 13 / 13 | 8 | 8 | pending |
+| PB1.2 Work, energy and momentum | 13 / 13 | 9 | 8 | collision_explorer |
+| PB1.3 Rotation and rolling | 13 / 13 | 8 | 8 | rolling_explorer |
 | PB1.4 Gravitation and SHM | 13 / 13 | 8 | 7 | pendulum_lab |
 | PB2.1 Fluid mechanics | 12 / 12 | 8 | 8 | hydrostatic_explorer |
 | PB2.2 Thermodynamics | 12 / 12 | 8 | 8 | gas_lab, thermal_path_explorer |
@@ -240,71 +240,71 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PB5.1 Photoelectric effect and Bohr model | 10 / 10 | 5 | 6 | foundation_next_PB5.1 |
 | PB5.2 Nuclei and radioactivity | 10 / 10 | 5 | 6 | foundation_next_PB5.2 |
 | PB5.3 Semiconductors | 10 / 10 | 5 | 6 | foundation_next_PB5.3 |
-| PH1.1 Newtonian mechanics with calculus (drag, variable mass) | 10 / 10 | 5 | 4 | pending |
+| PH1.1 Newtonian mechanics with calculus (drag, variable mass) | 10 / 10 | 5 | 4 | coverage_PH1.1 |
 | PH1.2 Non-inertial frames and Coriolis force | 10 / 10 | 5 | 4 | coriolis_explorer |
 | PH1.3 Central forces and orbits | 10 / 10 | 5 | 4 | orbit_explorer |
 | PH1.4 Scattering (Rutherford) | 10 / 10 | 5 | 4 | rutherford_explorer |
-| PH1.5 Systems of particles and rigid-body kinematics | 10 / 10 | 5 | 4 | pending |
+| PH1.5 Systems of particles and rigid-body kinematics | 10 / 10 | 5 | 4 | inertia_tensor_explorer |
 | PH1.6 Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes) | 10 / 10 | 5 | 4 | inertia_tensor_explorer |
-| PH10.1 Klein-Gordon equation | 6 / 6 | 2 | 0 | pending |
-| PH10.2 Dirac equation and spin | 6 / 6 | 2 | 0 | pending |
-| PH10.3 Path-integral formulation | 6 / 6 | 2 | 0 | pending |
-| PH10.4 Second quantisation | 6 / 6 | 2 | 0 | pending |
-| PH10.5 Many-body theory and Hartree-Fock | 6 / 6 | 2 | 0 | pending |
-| PH10.6 Open quantum systems and the Lindblad equation | 6 / 6 | 2 | 0 | pending |
-| PH11.1 Spacetime and Lorentz transformations | 6 / 6 | 2 | 0 | pending |
-| PH11.2 Four-vectors and relativistic dynamics | 6 / 6 | 2 | 0 | pending |
-| PH11.3 Relativistic collisions and particle kinematics | 6 / 6 | 2 | 0 | pending |
-| PH11.4 Acceleration, Thomas precession and relativistic optics | 6 / 6 | 2 | 0 | pending |
-| PH12.1 Hydrogenic fine and hyperfine structure | 6 / 6 | 2 | 0 | pending |
-| PH12.2 Multi-electron atoms and term symbols | 6 / 6 | 2 | 0 | pending |
-| PH12.3 Atoms in fields (Zeeman, Stark) | 6 / 6 | 2 | 0 | pending |
-| PH12.4 Molecular structure and spectra | 6 / 6 | 2 | 0 | pending |
-| PH12.5 Atom-light interaction | 6 / 6 | 2 | 0 | pending |
-| PH12.6 Laser cooling and Bose-Einstein condensation | 6 / 6 | 2 | 0 | pending |
-| PH13.1 Nuclear structure and models | 6 / 6 | 2 | 0 | pending |
-| PH13.2 Radioactivity and decay | 6 / 6 | 2 | 0 | pending |
-| PH13.3 Nuclear reactions, fission and fusion | 6 / 6 | 2 | 0 | pending |
-| PH13.4 Particles and the Standard Model | 6 / 6 | 2 | 0 | pending |
-| PH13.5 Symmetries and conservation laws | 6 / 6 | 2 | 0 | pending |
-| PH13.6 Weak interactions and CP violation | 6 / 6 | 2 | 0 | pending |
-| PH13.7 Accelerators and detectors | 6 / 6 | 2 | 0 | pending |
-| PH14.1 Crystal structure and diffraction | 6 / 6 | 2 | 0 | pending |
-| PH14.2 Lattice vibrations and phonons | 6 / 6 | 2 | 0 | pending |
-| PH14.3 Free electron model | 6 / 6 | 2 | 0 | pending |
-| PH14.4 Band theory | 6 / 6 | 2 | 0 | pending |
-| PH14.5 Semiconductors and devices | 6 / 6 | 2 | 0 | pending |
-| PH14.6 Magnetism | 6 / 6 | 2 | 0 | pending |
-| PH14.7 Superconductivity | 6 / 6 | 2 | 0 | pending |
-| PH14.8 Topological phases and the quantum Hall effect | 6 / 6 | 2 | 0 | pending |
-| PH15.1 Why quantum field theory | 6 / 6 | 2 | 0 | pending |
-| PH15.2 Classical fields and Noether currents | 7 / 7 | 3 | 0 | pending |
-| PH15.3 Canonical quantisation of the scalar field | 7 / 7 | 3 | 0 | pending |
-| PH15.4 Interactions and Feynman diagrams | 6 / 6 | 2 | 0 | pending |
-| PH15.5 Quantum electrodynamics | 6 / 6 | 2 | 0 | pending |
-| PH15.6 Renormalisation | 7 / 7 | 3 | 0 | pending |
-| PH15.7 Gauge theories and Yang-Mills | 6 / 6 | 2 | 0 | pending |
-| PH15.8 Higgs mechanism and electroweak theory | 6 / 6 | 2 | 0 | pending |
-| PH16.1 Equivalence principle and curved spacetime | 7 / 7 | 3 | 0 | pending |
-| PH16.2 Einstein field equations | 6 / 6 | 2 | 0 | pending |
-| PH16.3 Schwarzschild solution and classical tests | 6 / 6 | 2 | 0 | pending |
-| PH16.4 Black holes: Kerr, thermodynamics and Hawking radiation | 6 / 6 | 2 | 0 | pending |
-| PH16.5 Gravitational waves | 6 / 6 | 2 | 0 | pending |
-| PH16.6 Cosmological solutions (FLRW) | 6 / 6 | 2 | 0 | pending |
-| PH16.7 Numerical relativity intro | 6 / 6 | 2 | 0 | pending |
-| PH16.8 GR and quantum gravity frontiers | 6 / 6 | 2 | 0 | pending |
-| PH17.1 Measurement, uncertainty and lab technique | 6 / 6 | 2 | 0 | pending |
-| PH17.2 Instrumentation and data acquisition | 6 / 6 | 2 | 0 | pending |
-| PH17.3 Monte Carlo methods | 6 / 6 | 2 | 0 | pending |
-| PH17.4 Molecular dynamics and simulation | 6 / 6 | 2 | 0 | pending |
-| PH17.5 Lab capstone design | 6 / 6 | 2 | 0 | pending |
-| PH18.1 Reading and searching the literature (arXiv, INSPIRE) | 7 / 7 | 3 | 0 | pending |
-| PH18.2 Scientific writing and presenting | 6 / 6 | 2 | 0 | pending |
-| PH18.3 Designing a research project | 6 / 6 | 2 | 0 | pending |
-| PH18.4 Survey of open problems in physics | 6 / 6 | 2 | 0 | pending |
-| PH2.1 Lagrangian mechanics | 10 / 10 | 5 | 4 | pending |
-| PH2.2 Constraints and generalised coordinates | 10 / 10 | 5 | 4 | pending |
-| PH2.3 Symmetries and Noether's theorem | 10 / 10 | 5 | 4 | pending |
+| PH10.1 Klein-Gordon equation | 9 / 9 | 4 | 3 | quantum_PH10.1 |
+| PH10.2 Dirac equation and spin | 9 / 9 | 4 | 3 | quantum_PH10.2 |
+| PH10.3 Path-integral formulation | 9 / 9 | 4 | 3 | quantum_PH10.3 |
+| PH10.4 Second quantisation | 9 / 9 | 4 | 3 | quantum_PH10.4 |
+| PH10.5 Many-body theory and Hartree-Fock | 9 / 9 | 4 | 3 | quantum_PH10.5 |
+| PH10.6 Open quantum systems and the Lindblad equation | 9 / 9 | 4 | 3 | quantum_PH10.6 |
+| PH11.1 Spacetime and Lorentz transformations | 9 / 9 | 4 | 3 | matter_PH11.1 |
+| PH11.2 Four-vectors and relativistic dynamics | 9 / 9 | 4 | 3 | matter_PH11.2 |
+| PH11.3 Relativistic collisions and particle kinematics | 9 / 9 | 4 | 3 | matter_PH11.3 |
+| PH11.4 Acceleration, Thomas precession and relativistic optics | 9 / 9 | 4 | 3 | matter_PH11.4 |
+| PH12.1 Hydrogenic fine and hyperfine structure | 9 / 9 | 4 | 3 | matter_PH12.1 |
+| PH12.2 Multi-electron atoms and term symbols | 9 / 9 | 4 | 3 | matter_PH12.2 |
+| PH12.3 Atoms in fields (Zeeman, Stark) | 9 / 9 | 4 | 3 | matter_PH12.3 |
+| PH12.4 Molecular structure and spectra | 9 / 9 | 4 | 3 | matter_PH12.4 |
+| PH12.5 Atom-light interaction | 9 / 9 | 4 | 3 | matter_PH12.5 |
+| PH12.6 Laser cooling and Bose-Einstein condensation | 9 / 9 | 4 | 3 | matter_PH12.6 |
+| PH13.1 Nuclear structure and models | 9 / 9 | 4 | 3 | matter_PH13.1 |
+| PH13.2 Radioactivity and decay | 9 / 9 | 4 | 3 | matter_PH13.2 |
+| PH13.3 Nuclear reactions, fission and fusion | 9 / 9 | 4 | 3 | matter_PH13.3 |
+| PH13.4 Particles and the Standard Model | 9 / 9 | 4 | 3 | matter_PH13.4 |
+| PH13.5 Symmetries and conservation laws | 9 / 9 | 4 | 3 | matter_PH13.5 |
+| PH13.6 Weak interactions and CP violation | 9 / 9 | 4 | 3 | matter_PH13.6 |
+| PH13.7 Accelerators and detectors | 9 / 9 | 4 | 3 | matter_PH13.7 |
+| PH14.1 Crystal structure and diffraction | 9 / 9 | 4 | 3 | matter_PH14.1 |
+| PH14.2 Lattice vibrations and phonons | 9 / 9 | 4 | 3 | matter_PH14.2 |
+| PH14.3 Free electron model | 9 / 9 | 4 | 3 | matter_PH14.3 |
+| PH14.4 Band theory | 9 / 9 | 4 | 3 | matter_PH14.4 |
+| PH14.5 Semiconductors and devices | 9 / 9 | 4 | 3 | matter_PH14.5 |
+| PH14.6 Magnetism | 9 / 9 | 4 | 3 | matter_PH14.6 |
+| PH14.7 Superconductivity | 9 / 9 | 4 | 3 | matter_PH14.7 |
+| PH14.8 Topological phases and the quantum Hall effect | 9 / 9 | 4 | 3 | matter_PH14.8 |
+| PH15.1 Why quantum field theory | 9 / 9 | 4 | 3 | fields_PH15.1 |
+| PH15.2 Classical fields and Noether currents | 10 / 10 | 5 | 3 | fields_PH15.2 |
+| PH15.3 Canonical quantisation of the scalar field | 10 / 10 | 5 | 3 | fields_PH15.3 |
+| PH15.4 Interactions and Feynman diagrams | 9 / 9 | 4 | 3 | fields_PH15.4 |
+| PH15.5 Quantum electrodynamics | 9 / 9 | 4 | 3 | fields_PH15.5 |
+| PH15.6 Renormalisation | 10 / 10 | 5 | 3 | fields_PH15.6 |
+| PH15.7 Gauge theories and Yang-Mills | 9 / 9 | 4 | 3 | fields_PH15.7 |
+| PH15.8 Higgs mechanism and electroweak theory | 9 / 9 | 4 | 3 | fields_PH15.8 |
+| PH16.1 Equivalence principle and curved spacetime | 10 / 10 | 5 | 3 | fields_PH16.1 |
+| PH16.2 Einstein field equations | 9 / 9 | 4 | 3 | fields_PH16.2 |
+| PH16.3 Schwarzschild solution and classical tests | 9 / 9 | 4 | 3 | fields_PH16.3 |
+| PH16.4 Black holes: Kerr, thermodynamics and Hawking radiation | 9 / 9 | 4 | 3 | fields_PH16.4 |
+| PH16.5 Gravitational waves | 9 / 9 | 4 | 3 | fields_PH16.5 |
+| PH16.6 Cosmological solutions (FLRW) | 9 / 9 | 4 | 3 | fields_PH16.6 |
+| PH16.7 Numerical relativity intro | 9 / 9 | 4 | 3 | fields_PH16.7 |
+| PH16.8 GR and quantum gravity frontiers | 9 / 9 | 4 | 3 | fields_PH16.8 |
+| PH17.1 Measurement, uncertainty and lab technique | 9 / 9 | 4 | 3 | fields_PH17.1 |
+| PH17.2 Instrumentation and data acquisition | 9 / 9 | 4 | 3 | fields_PH17.2 |
+| PH17.3 Monte Carlo methods | 9 / 9 | 4 | 3 | fields_PH17.3 |
+| PH17.4 Molecular dynamics and simulation | 9 / 9 | 4 | 3 | fields_PH17.4 |
+| PH17.5 Lab capstone design | 9 / 9 | 4 | 3 | fields_PH17.5 |
+| PH18.1 Reading and searching the literature (arXiv, INSPIRE) | 10 / 10 | 5 | 3 | fields_PH18.1 |
+| PH18.2 Scientific writing and presenting | 9 / 9 | 4 | 3 | fields_PH18.2 |
+| PH18.3 Designing a research project | 9 / 9 | 4 | 3 | fields_PH18.3 |
+| PH18.4 Survey of open problems in physics | 9 / 9 | 4 | 3 | fields_PH18.4 |
+| PH2.1 Lagrangian mechanics | 10 / 10 | 5 | 4 | advanced_math_MA9.1 |
+| PH2.2 Constraints and generalised coordinates | 10 / 10 | 5 | 4 | rolling_explorer |
+| PH2.3 Symmetries and Noether's theorem | 10 / 10 | 5 | 4 | advanced_math_MA9.3 |
 | PH2.4 Hamiltonian mechanics and phase space | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
 | PH2.5 Canonical transformations and Poisson brackets | 10 / 10 | 5 | 4 | canonical_shear_explorer |
 | PH2.6 Hamilton-Jacobi theory and action-angle variables | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
@@ -344,19 +344,19 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH7.7 Blackbody radiation and Debye model | 9 / 9 | 4 | 3 | thermal_optics_PH7.7 |
 | PH7.8 Phase transitions and Landau theory | 9 / 9 | 4 | 3 | thermal_optics_PH7.8 |
 | PH7.9 Ising model, renormalisation and critical phenomena | 9 / 9 | 4 | 3 | thermal_optics_PH7.9 |
-| PH8.1 Origins of quantum theory and wave mechanics | 6 / 6 | 2 | 0 | pending |
-| PH8.2 Schrodinger equation and 1D problems | 6 / 6 | 2 | 0 | pending |
-| PH8.3 Postulates and Dirac notation | 6 / 6 | 2 | 0 | pending |
-| PH8.4 Harmonic oscillator and ladder operators | 6 / 6 | 2 | 0 | pending |
-| PH8.5 Angular momentum and spin | 6 / 6 | 2 | 0 | pending |
-| PH8.6 Hydrogen atom | 6 / 6 | 2 | 0 | pending |
-| PH8.7 Spin-1/2 systems and Stern-Gerlach | 6 / 6 | 2 | 0 | pending |
-| PH8.8 Time evolution (Schrodinger and Heisenberg pictures) | 6 / 6 | 2 | 0 | pending |
-| PH9.1 Time-independent perturbation theory | 6 / 6 | 2 | 0 | pending |
-| PH9.2 Degenerate perturbation theory and fine structure | 6 / 6 | 2 | 0 | pending |
-| PH9.3 Time-dependent perturbation theory and Fermi's golden rule | 6 / 6 | 2 | 0 | pending |
-| PH9.4 Variational method and WKB | 6 / 6 | 2 | 0 | pending |
-| PH9.5 Identical particles and helium | 6 / 6 | 2 | 0 | pending |
-| PH9.6 Scattering theory | 6 / 6 | 2 | 0 | pending |
-| PH9.7 Density matrices and decoherence | 6 / 6 | 2 | 0 | pending |
-| PH9.8 Entanglement, Bell inequalities and quantum information | 6 / 6 | 2 | 0 | pending |
+| PH8.1 Origins of quantum theory and wave mechanics | 9 / 9 | 4 | 3 | quantum_PH8.1 |
+| PH8.2 Schrodinger equation and 1D problems | 9 / 9 | 4 | 3 | quantum_PH8.2 |
+| PH8.3 Postulates and Dirac notation | 9 / 9 | 4 | 3 | quantum_PH8.3 |
+| PH8.4 Harmonic oscillator and ladder operators | 9 / 9 | 4 | 3 | quantum_PH8.4 |
+| PH8.5 Angular momentum and spin | 9 / 9 | 4 | 3 | quantum_PH8.5 |
+| PH8.6 Hydrogen atom | 9 / 9 | 4 | 3 | quantum_PH8.6 |
+| PH8.7 Spin-1/2 systems and Stern-Gerlach | 9 / 9 | 4 | 3 | quantum_PH8.7 |
+| PH8.8 Time evolution (Schrodinger and Heisenberg pictures) | 9 / 9 | 4 | 3 | quantum_PH8.8 |
+| PH9.1 Time-independent perturbation theory | 9 / 9 | 4 | 3 | quantum_PH9.1 |
+| PH9.2 Degenerate perturbation theory and fine structure | 9 / 9 | 4 | 3 | quantum_PH9.2 |
+| PH9.3 Time-dependent perturbation theory and Fermi's golden rule | 9 / 9 | 4 | 3 | quantum_PH9.3 |
+| PH9.4 Variational method and WKB | 9 / 9 | 4 | 3 | quantum_PH9.4 |
+| PH9.5 Identical particles and helium | 9 / 9 | 4 | 3 | quantum_PH9.5 |
+| PH9.6 Scattering theory | 9 / 9 | 4 | 3 | quantum_PH9.6 |
+| PH9.7 Density matrices and decoherence | 9 / 9 | 4 | 3 | quantum_PH9.7 |
+| PH9.8 Entanglement, Bell inequalities and quantum information | 9 / 9 | 4 | 3 | quantum_PH9.8 |

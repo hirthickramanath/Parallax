@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For corrected counts 120 and 80, find normalized asymmetry.",
+      "answer": "0.2",
+      "hint": "Use difference over sum.",
+      "explanation": "Use difference over sum. Result: 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For equal positive corrected counts, find asymmetry.",
+      "answer": "0",
+      "hint": "The numerator vanishes.",
+      "explanation": "The numerator vanishes. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does a raw detector count asymmetry by itself establish fundamental CP violation?",
+      "answer": "No; production and detector effects need control.",
+      "options": [
+        "Yes; every unequal count is intrinsic CP violation.",
+        "No; production and detector effects need control."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Separate apparatus asymmetry from the physical observable.",
+      "misconceptions": {
+        "Yes; every unequal count is intrinsic CP violation.": "Separate apparatus asymmetry from the physical observable."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Quark mixing is parameterized by a unitary CKM matrix in the model, while lepton
 
 CPT statements require the hypotheses of the relevant local relativistic quantum theorem. Neutrino oscillation measures differences and mixing, not a unique absolute mass scale. Explaining the cosmic matter asymmetry involves more than merely noting that CP violation exists in one laboratory channel.
 
+
+### Derivation and transfer
+
+A measured particle-antiparticle count asymmetry is not automatically intrinsic CP violation. Production, detection efficiencies and backgrounds can produce apparent asymmetry and must be controlled. A normalized count statistic is (N−Nbar)/(N+Nbar).
+
+The display computes that statistic from expected positive counts. It is not a weak-interaction amplitude, a significance estimate or a real CP measurement. Physical CP interpretation also needs the channel, conjugate process and correction model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH13.6" />
+
 
 Create synthetic conjugate-channel counts with a known detector asymmetry and compare corrected/uncorrected estimates. Keep the physics channel, production and detection terms separate.
 

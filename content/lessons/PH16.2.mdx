@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "In four-dimensional vacuum with Rμν=Λgμν and Λ=0.5, find R.",
+      "answer": "2",
+      "hint": "Contract the metric trace four.",
+      "explanation": "Contract the metric trace four. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For Λ=0 in that equation, find Ricci scalar R.",
+      "answer": "0",
+      "hint": "The vacuum contraction vanishes.",
+      "explanation": "The vacuum contraction vanishes. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Does vanishing Ricci scalar alone imply all Riemann curvature vanishes?",
+      "answer": "No; Weyl curvature can remain.",
+      "options": [
+        "Yes; one scalar determines the whole curvature tensor.",
+        "No; Weyl curvature can remain."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Vacuum black-hole exteriors provide counterexamples.",
+      "misconceptions": {
+        "Yes; one scalar determines the whole curvature tensor.": "Vacuum black-hole exteriors provide counterexamples."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Einstein equations have diffeomorphism redundancy and constraint/evolution struc
 
 Vacuum means T=0 for the region, not necessarily zero curvature: gravitational waves and exterior tidal geometry can remain. A cosmological constant can be placed geometrically or modeled as an effective stress term with a consistent convention. Matching and boundary conditions choose a physical spacetime.
 
+
+### Derivation and transfer
+
+Einstein's equation relates spacetime curvature to stress-energy and cosmological constant under stated sign conventions. In four-dimensional vacuum with Rμν=Λgμν, contracting gives R=4Λ. Vacuum here excludes ordinary matter but need not imply zero curvature.
+
+The display isolates this constant-curvature contraction. It is not a metric solver or a claim that all vacuum spacetimes are maximally symmetric; gravitational-wave and black-hole vacuum geometries need not be described by one scalar alone.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH16.2" />
+
 
 Check the trace algebra and the weak-field assumptions separately. Compare a vacuum curved exterior with flat space to identify why vanishing matter tensor does not force every Riemann component to vanish.
 

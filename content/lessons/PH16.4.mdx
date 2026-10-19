@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For Kerr χ=0 and M=2, find outer horizon radius.",
+      "answer": "4",
+      "hint": "The nonrotating limit gives 2M.",
+      "explanation": "The nonrotating limit gives 2M. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For χ=0.6, find r+/M.",
+      "answer": "1.8",
+      "hint": "Use 1+sqrt(1−χ²).",
+      "explanation": "Use 1+sqrt(1−χ²). Result: 1.8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Are the Kerr horizon, ergosurface and innermost stable circular orbit generally the same surface?",
+      "answer": "No; they are distinct geometric or dynamical loci.",
+      "options": [
+        "Yes; rotation changes only their shared name.",
+        "No; they are distinct geometric or dynamical loci."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "State which radius is being calculated.",
+      "misconceptions": {
+        "Yes; rotation changes only their shared name.": "State which radius is being calculated."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Black-hole thermodynamics assigns entropy proportional to horizon area and a tem
 
 Hawking radiation is a semiclassical prediction with quantum fields on a curved background, not a complete quantum-gravity resolution of information or singularities. Astrophysical observations constrain compact geometry through emission, motion and waves with model systematics. Do not label every philosophical issue experimentally settled.
 
+
+### Derivation and transfer
+
+A Kerr black hole has outer horizon r+=M+sqrt(M²−a²), with |a|≤M in the black-hole family and G=c=1. The dimensionless spin χ=a/M gives r+/M=1+sqrt(1−χ²). Horizon radius is not the same as the equatorial ergosurface or the innermost stable orbit.
+
+The display keeps subextremal spin and computes only this radius. Hawking temperature and entropy need their own conventions and constants; no toy curve solves the information problem.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH16.4" />
+
 
 Compare horizon, ergoregion and stable-orbit definitions in a supplied Kerr model. Plot inverse-mass temperature scaling with units and clarify the semiclassical domain.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For t=a=ℏ=1 and ka=π/2, find band group velocity.",
+      "answer": "2",
+      "hint": "Differentiate −2cos(ka).",
+      "explanation": "Differentiate −2cos(ka). Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For that band at ka=π, find group velocity.",
+      "answer": "0",
+      "hint": "sinπ vanishes.",
+      "explanation": "sinπ vanishes. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does nonzero crystal momentum always imply nonzero group velocity in a band?",
+      "answer": "No; a band edge can have zero slope.",
+      "options": [
+        "Yes; every band is a free-particle parabola.",
+        "No; a band edge can have zero slope."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use the actual dispersion derivative.",
+      "misconceptions": {
+        "Yes; every band is a free-particle parabola.": "Use the actual dispersion derivative."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A filled band and a gap can be insulating in the elementary model, while partial
 
 Tight-binding and nearly-free approximations suit different limits. Basis convergence, exchange/correlation treatment and geometry affect calculated bands. A density-functional Kohn–Sham gap need not equal an exact optical or quasiparticle gap; excitons and measurement processes add physics.
 
+
+### Derivation and transfer
+
+A one-dimensional nearest-neighbor tight-binding band E=−2tcos(ka) has group velocity (1/ℏ)dE/dk=2ta sin(ka)/ℏ. A band edge has zero group velocity even though the state can have nonzero crystal momentum.
+
+The display isolates this derivative in a=ℏ=1 units. Metallic conduction also needs filling, scattering and interactions. A plotted dispersive band does not by itself establish the transport of a real material.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.4" />
+
 
 Diagonalize a two-state avoided crossing and compare its gap with a broader band calculation. Keep eigenvalue, quasiparticle and optical gaps separately labelled.
 

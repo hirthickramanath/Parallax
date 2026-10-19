@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For K=m=1 at ka=π, find phonon frequency.",
+      "answer": "2",
+      "hint": "Use the zone-edge sine.",
+      "explanation": "Use the zone-edge sine. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For that chain at small k and a=1, find sound-speed limit.",
+      "answer": "1",
+      "hint": "Expand sin(k/2)≈k/2.",
+      "explanation": "Expand sin(k/2)≈k/2. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Is a lattice acoustic dispersion exactly linear at every wave number?",
+      "answer": "No; discreteness changes the zone-edge behavior.",
+      "options": [
+        "Yes; the sound approximation is exact throughout the Brillouin zone.",
+        "No; discreteness changes the zone-edge behavior."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Keep the approximation range.",
+      "misconceptions": {
+        "Yes; the sound approximation is exact throughout the Brillouin zone.": "Keep the approximation range."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Quantization gives mode energies ℏω(n+1/2). Thermal occupation is bosonic whe
 
 Anharmonicity allows interactions, thermal expansion and finite lifetimes. Pure harmonic periodic models do not alone supply every measured thermal conductivity; scattering, defects, boundaries and electronic contributions matter. A simulated dispersion requires force-constant and convergence validation.
 
+
+### Derivation and transfer
+
+A monatomic nearest-neighbor harmonic chain has ω(k)=2sqrt(K/m)|sin(ka/2)|. Near zero, the acoustic branch is linear, but the full lattice dispersion bends near the zone edge. Group and phase velocities therefore differ away from the long-wavelength limit.
+
+The display fixes a=m=1. It is a dispersion relation rather than an integrated thermal lattice. Anharmonicity, scattering and multiple-atom optical branches require a richer model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.2" />
+
 
 Compare exact chain dispersion with its small-k limit. Build a two-mass cell and track branch separation, stating boundary and harmonic assumptions.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For the normalized Lennard–Jones potential at r=1,ε=1, find outward radial force.",
+      "answer": "24",
+      "hint": "Differentiate U and negate it.",
+      "explanation": "Differentiate U and negate it. Result: 24.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "Find positive r where that force vanishes.",
+      "answer": "1.122462048309373",
+      "hint": "Set 2r^−13=r^−7.",
+      "explanation": "Set 2r^−13=r^−7. Result: 1.122462048309.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Does a zero potential value imply a zero force at the same point?",
+      "answer": "No; force depends on the potential derivative.",
+      "options": [
+        "Yes; zero energy always means mechanical equilibrium.",
+        "No; force depends on the potential derivative."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Value and slope are different.",
+      "misconceptions": {
+        "Yes; zero energy always means mechanical equilibrium.": "Value and slope are different."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Periodic boundaries, minimum-image assumptions and neighbour lists require a com
 
 Thermostats/barostats change dynamics/ensembles and require their own sampling justification. Naively rescaling velocities can distort correlations. Statistical errors need autocorrelation analysis, and force-field error remains even after numerical convergence. Do not call a classical force-field trajectory a first-principles quantum result.
 
+
+### Derivation and transfer
+
+For a Lennard–Jones pair U=4ε(r^−12−r^−6) in σ=1 units, radial force is −dU/dr=24ε(2r^−13−r^−7). It vanishes at the potential minimum, while a zero potential at r=1 need not mean zero force.
+
+The display probes instantaneous pair force. A molecular dynamics project additionally needs initial states, integrator, timestep tests, neighbor handling, boundaries and conserved-quantity diagnostics. An analytic force curve is not a completed many-particle trajectory simulation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH17.4" />
+
 
 Test a harmonic or constant-force control before a many-particle model. Compare decreasing time steps, momentum and energy budgets, then separate thermostat effects from conservative-integrator error.
 

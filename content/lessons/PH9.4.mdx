@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-1",
+      "prompt": "Find E(a)=(a+1/a)/4 at a=2.",
+      "answer": "0.625",
+      "hint": "Substitute the Gaussian parameter.",
+      "explanation": "Substitute the Gaussian parameter. Result: 0.625.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-transfer-2",
+      "prompt": "Find its minimum over positive a.",
+      "answer": "0.5",
+      "hint": "Use a+1/a≥2.",
+      "explanation": "Use a+1/a≥2. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "quantum-assumptions",
+      "prompt": "Does a variational estimate below another approximation automatically mean the physical Hamiltonians are comparable?",
+      "answer": "No; the Hamiltonian and domain must match.",
+      "options": [
+        "Yes; any smaller number is more accurate.",
+        "No; the Hamiltonian and domain must match."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Compare like with like.",
+      "misconceptions": {
+        "Yes; any smaller number is more accurate.": "Compare like with like."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ WKB approximates slowly varying differential equations away from turning points.
 
 A variational upper bound and a WKB estimate have different guarantee structures. Compare with exact/control limits, check turning-point connections and avoid calling a truncated semiclassical expression an exact inequality. Degeneracy and multiple coupled channels require extensions.
 
+
+### Derivation and transfer
+
+The variational principle bounds a ground energy from above using normalized trial states in the Hamiltonian domain. For a harmonic oscillator with ℏ=m=ω=1 and Gaussian width parameter a, E(a)=(a+1/a)/4, minimized at a=1 with E=1/2.
+
+A lower trial energy is meaningful only for the same Hamiltonian and comparable approximation. WKB has a separate semiclassical regime and turning-point caveat. The display is an exact benchmark of one trial family, not an executed molecular calculation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="quantum_PH9.4" />
+
 
 Optimize a Gaussian trial width for a stated confining potential and compare with a numerical reference. Separately inspect a turning-point region before applying the smooth-boundary WKB rule.
 

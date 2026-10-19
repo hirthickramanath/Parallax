@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For Eg/(2kT)=ln10, find activation factor.",
+      "answer": "0.1",
+      "hint": "Exponentiate the negative reduced gap.",
+      "explanation": "Exponentiate the negative reduced gap. Result: 0.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "At fixed carrier density, mobility doubles. Find conductivity factor in σ=nqμ.",
+      "answer": "2",
+      "hint": "Conductivity is linear in mobility.",
+      "explanation": "Conductivity is linear in mobility. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does an activation factor alone determine a complete device current?",
+      "answer": "No; prefactors, mobility and device conditions also matter.",
+      "options": [
+        "Yes; gap alone fixes every circuit response.",
+        "No; prefactors, mobility and device conditions also matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Separate carrier population and transport.",
+      "misconceptions": {
+        "Yes; gap alone fixes every circuit response.": "Separate carrier population and transport."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A pn junction forms a space-charge/depletion region in equilibrium with one elec
 
 Ideal diode equations and depletion approximations have limited ranges. Tunnelling, breakdown, series resistance, heating and traps require extensions. This lesson explains low-energy device physics; it does not prescribe hazardous apparatus operation or claim a fabricated device measurement.
 
+
+### Derivation and transfer
+
+In a simple nondegenerate intrinsic semiconductor model, carrier concentration includes an activation factor exp(−Eg/(2kT)). Both electrons and holes contribute, while density-of-states prefactors and their temperature dependence complete the expression.
+
+The display holds that prefactor fixed. It is not a doped junction solution or a universal conductivity prediction: mobility, defects, degeneracy and contacts also matter. Doubling a gap cannot be interpreted without the temperature and units.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH14.5" />
+
 
 Compare equilibrium band/charge diagrams with a driven junction model and keep electrochemical and electrostatic potentials distinct. Vary carrier density and mobility separately in synthetic conductivity calculations.
 

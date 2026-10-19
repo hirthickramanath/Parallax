@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For p=6,|q|=2,B=3, find curvature radius.",
+      "answer": "1",
+      "hint": "Use p/(|q|B).",
+      "explanation": "Use p/(|q|B). Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "At fixed charge and field, doubling momentum changes radius by what factor?",
+      "answer": "2",
+      "hint": "Radius is linear in momentum.",
+      "explanation": "Radius is linear in momentum. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does a neutral particle follow the same magnetic bending radius as a unit-charge particle?",
+      "answer": "No; the Lorentz force depends on charge.",
+      "options": [
+        "Yes; momentum alone determines curvature.",
+        "No; the Lorentz force depends on charge."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Charge and field geometry are essential.",
+      "misconceptions": {
+        "Yes; momentum alone determines curvature.": "Charge and field geometry are essential."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A multi-bin response matrix maps truth to reconstructed distributions with ineff
 
 Statistical significance differs from parameter precision and discovery from exclusion. Trials, nuisance parameters and systematic covariance belong in inference. This lesson gives analysis principles, not operational accelerator construction or a claim of a new particle from synthetic events.
 
+
+### Derivation and transfer
+
+In a uniform magnetic field perpendicular to momentum, a charged track has curvature radius r=p/(|q|B). Bending direction identifies a charge sign only with a known field direction and tracking convention. Energy loss, multiple scattering and detector resolution alter measured tracks.
+
+The display uses |q|=1 and a transverse momentum magnitude. It is not a full accelerator lattice, event reconstruction or detector-efficiency simulation. Neutral particles do not acquire the same curvature formula.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH13.7" />
+
 
 Use a labelled synthetic two-bin response and test forward folding before unfolding. Retain signal/background definitions, calibration assumptions and fiducial region in the result.
 

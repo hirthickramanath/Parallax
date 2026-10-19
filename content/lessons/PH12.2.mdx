@@ -77,6 +77,44 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "matter-transfer-1",
+      "prompt": "For L=1,S=1/2, find the larger allowed J.",
+      "answer": "1.5",
+      "hint": "Use L+S.",
+      "explanation": "Use L+S. Result: 1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "matter-transfer-2",
+      "prompt": "For S=1, find spin multiplicity.",
+      "answer": "3",
+      "hint": "Use 2S+1.",
+      "explanation": "Use 2S+1. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "matter-assumptions",
+      "prompt": "Does a list of allowed angular couplings alone identify the ground term energy ordering?",
+      "answer": "No; configuration and interactions are also needed.",
+      "options": [
+        "Yes; the largest J is always lowest in energy.",
+        "No; configuration and interactions are also needed."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Counting and energy ordering are separate.",
+      "misconceptions": {
+        "Yes; the largest J is always lowest in energy.": "Counting and energy ordering are separate."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +191,19 @@ LS coupling is useful when electrostatic coupling dominates appropriate spin-orb
 
 Observed multiplets and selection patterns test models with configuration interaction and correlation. Orbital energies do not simply sum to every measured excitation energy. A spectroscopic assignment must retain isotope, charge state and field/environment context.
 
+
+### Derivation and transfer
+
+In LS coupling, total J takes values |L−S| through L+S in integer steps. A term has spin multiplicity 2S+1, but assigning a ground term also requires electron configuration, antisymmetry and the relevant interaction hierarchy.
+
+The display counts allowed J values while varying permitted L and S. It does not apply LS coupling unchanged when spin-orbit coupling dominates or substitute term counting for a many-electron energy calculation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="matter_PH12.2" />
+
 
 Enumerate angular couplings for a specified allowed configuration, then impose equivalent-electron restrictions. Compare LS and jj limiting descriptions without claiming one universal scheme.
 

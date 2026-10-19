@@ -87,6 +87,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "in the stated convention and units"
+    },
+    {
+      "id": "fields-transfer-1",
+      "prompt": "For ℏω=2 and occupation n=4, find mode energy including zero point.",
+      "answer": "9",
+      "hint": "Use 2(4+1/2).",
+      "explanation": "Use 2(4+1/2). Result: 9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-transfer-2",
+      "prompt": "For that mode, find energy above its vacuum.",
+      "answer": "8",
+      "hint": "Subtract the zero-point contribution.",
+      "explanation": "Subtract the zero-point contribution. Result: 8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "fields-assumptions",
+      "prompt": "Does subtracting a free-theory vacuum constant automatically solve the cosmological constant problem?",
+      "answer": "No; gravitational and renormalization questions remain.",
+      "options": [
+        "Yes; normal ordering settles every vacuum-energy effect.",
+        "No; gravitational and renormalization questions remain."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "A reference convention is not a complete physical solution.",
+      "misconceptions": {
+        "Yes; normal ordering settles every vacuum-energy effect.": "A reference convention is not a complete physical solution."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -173,9 +210,19 @@ Here $\omega_k=\sqrt{|\mathbf k|^2+m^2}$ and $\pi=\dot\phi$. Substituting both e
 
 Substitution into the quadratic Hamiltonian gives $H=\sum_{\mathbf k}\omega_k(a^\dagger_{\mathbf k}a_{\mathbf k}+1/2)$. Normal ordering replaces it by the excitation Hamiltonian. The expansion requires a positive mode frequency: a massless zero mode needs separate treatment rather than division by zero.
 
+
+### Derivation and transfer
+
+Canonical quantization of each free scalar mode gives oscillator energies ℏω(n+1/2). The equal-time field commutator is distributional in space, not merely a finite matrix identity. Normal ordering changes a vacuum reference in the specified free theory but does not solve every gravitational vacuum-energy question.
+
+The display isolates an integer mode occupation and free dispersion with fixed mass. It is not a continuum field quantization performed in the browser or a calculation of interacting particle creation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="fields_PH15.3" />
+
 
 Quantize a finite set of scalar modes as oscillators and verify energy increments. State the box volume, cutoff and vacuum reference before comparing with continuum formulas.
 

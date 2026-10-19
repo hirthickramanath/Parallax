@@ -1941,3 +1941,75 @@ test("structure computing and foundation investigations respond with physical an
   await page.getByLabel("Success probability p", { exact: true }).fill("1");
   await expect(page.getByText(/Variance of the sum: 0.0000/)).toBeVisible();
 });
+
+test("quantum matter and gravity models preserve discrete occupations and observer conventions", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PH8.5");
+  await page.getByLabel("Half-integer j", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByLabel("Half-integer j", { exact: true })).toHaveValue(
+    "1",
+  );
+  await expect(
+    page.getByText(/Total angular momentum magnitude: 1.4142/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH9.5");
+  await expect(
+    page.getByText(/Fermionic occupation configurations: 6.0000/),
+  ).toBeVisible();
+  await page.getByLabel("Integer fermion count N", { exact: true }).fill("1");
+  await expect(
+    page.getByText(/Fermionic occupation configurations: 4.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH11.4");
+  await expect(
+    page.getByText(/Transformed direction cosine: -0.6000/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH16.4");
+  await page.getByLabel("Dimensionless spin χ", { exact: true }).fill("0.6");
+  await expect(page.getByText(/Outer horizon radius: 1.8000/)).toBeVisible();
+});
+
+test("proof explorers expose a counterexample and research widgets retain execution boundaries", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA1.1");
+  await page.getByLabel("Integer n", { exact: true }).fill("1");
+  await expect(
+    page.getByText(/Difference between two sides: -1.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH17.2");
+  await page
+    .getByLabel("Frequency\/sample-rate ratio", { exact: true })
+    .fill("1.3");
+  await expect(page.getByText(/Sample amplitude: 0.9511/)).toBeVisible();
+  await page.goto("/lesson/PH18.3");
+  await expect(
+    page.getByText(/planning model, not executed research/),
+  ).toBeVisible();
+});
+
+test("discrete group orders reject tolerance-based fractional answers in lesson practice", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA10.1");
+  await page.getByLabel("Lesson section").selectOption("puzzle");
+  await page
+    .getByLabel("Your prediction", { exact: true })
+    .fill(
+      "The image order must be an integer fixed by the kernel and group orders.",
+    );
+  await page.getByRole("button", { name: "Commit and investigate" }).click();
+  await page.getByLabel("Lesson section").selectOption("problems");
+  const question = page.locator('[data-question-id="structure-transfer-1"]');
+  await question.getByRole("spinbutton").fill("4.01");
+  await question.getByRole("button", { name: "Check answer" }).click();
+  await expect(question.getByRole("status")).toContainText("Not quite");
+  await question.getByRole("spinbutton").fill("4");
+  await question.getByRole("button", { name: "Check answer" }).click();
+  await expect(question.getByRole("status")).toContainText("That’s right");
+});
