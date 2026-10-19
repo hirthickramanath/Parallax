@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "mechanics-transfer-1",
+      "prompt": "For principal inertia I=diag(2,3,4) kg m² and ω=(1,2,0) rad/s, find rotational kinetic energy in J.",
+      "answer": "7",
+      "hint": "Evaluate one half of ω·Iω, not one half of a scalar I times an arbitrary speed squared.",
+      "explanation": "T=(2·1²+3·2²+4·0²)/2=7 J.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-2",
+      "prompt": "For a torque-free body with I=diag(2,3,4) and body angular velocity (1,2,3), find dotω₁.",
+      "answer": "-3",
+      "hint": "Use I₁ dotω₁=(I₂−I₃)ω₂ω₃.",
+      "explanation": "dotω₁=(3−4)·2·3/2=−3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-3",
+      "prompt": "For I₁=2, I₂=3, I₃=4 and spin Ω=2 about the intermediate axis, find linear perturbation growth rate Ω sqrt[(I₂−I₁)(I₃−I₂)/(I₁I₃)].",
+      "answer": "0.7071067811865475",
+      "hint": "The two moment differences are positive in the stated ordering.",
+      "explanation": "λ=2 sqrt(1/8)=1/sqrt2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-model-limits",
+      "prompt": "For torque-free motion, must the body-axis components of angular momentum each remain constant?",
+      "answer": "No; the body axes rotate even though the inertial angular-momentum vector is constant.",
+      "options": [
+        "Yes; conservation of a vector fixes its components in every rotating basis.",
+        "No; the body axes rotate even though the inertial angular-momentum vector is constant."
+      ],
+      "explanation": "Use the transport rule to relate an inertially constant vector to its body-frame derivative.",
+      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "misconceptions": {
+        "Yes; conservation of a vector fixes its components in every rotating basis.": "Use the transport rule to relate an inertially constant vector to its body-frame derivative."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +205,18 @@ For a rapidly spinning symmetric top with an approximately steady tilt and spin-
 
 An inertia tensor depends on reference point and axis convention. The parallel-axis theorem adds $M[(d\cdot d)\mathbf1-dd^T]$ when shifting from the centre of mass by vector d. Material deformation or fuel redistribution changes I and takes the system outside a fixed-rigid-body model.
 
+
+### Extended derivation and transfer case
+
+In principal body axes, $\mathbf L=I\boldsymbol\omega$ and the transport equation is $\boldsymbol\tau=(d\mathbf L/dt)_{body}+\boldsymbol\omega\times\mathbf L$. With zero torque this yields $I_1\dot\omega_1=(I_2-I_3)\omega_2\omega_3$ and cyclic companions. The body components can change while inertial angular momentum and kinetic energy remain constant. The scalar formula $L=I\omega$ cannot replace a tensor relation away from a principal direction.
+
+For $I_1<I_2<I_3$, perturb a spin $\Omega$ about axis 2 by small components $a=\omega_1$ and $c=\omega_3$. Linearization gives $I_1\dot a=(I_2-I_3)\Omega c$ and $I_3\dot c=(I_1-I_2)\Omega a$. Consequently $\ddot a=\lambda^2a$ with $\lambda=|\Omega|\sqrt{(I_2-I_1)(I_3-I_2)/(I_1I_3)}$, producing exponential growth. This is a local small-perturbation result, not a claim that the linear approximation stays valid after large tumbling.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="inertia_tensor_explorer" />
 
 Use an asymmetrical model or a safe soft object to discuss principal axes, then calculate torque-free linearized perturbation signs for moments (2,3,4). Compare rotations about each axis. Physical toss demonstrations should use soft low-energy objects with clear space; no high-speed improvised rotor is needed.
 

@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "mechanics-transfer-1",
+      "prompt": "For a bound Newtonian point-mass orbit, μ=8 and specific energy ε=−0.5 in consistent units. Find semimajor axis a.",
+      "answer": "8",
+      "hint": "Use ε=−μ/(2a).",
+      "explanation": "a=−μ/(2ε)=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-2",
+      "prompt": "For μ=8, specific energy ε=−0.5 and squared specific angular momentum h²=48, find eccentricity.",
+      "answer": "0.5",
+      "hint": "Use e²=1+2εh²/μ².",
+      "explanation": "e²=1−48/64=1/4, hence e=1/2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-3",
+      "prompt": "A Newtonian ellipse has semimajor axis 8 and eccentricity 0.5. Find periapsis distance.",
+      "answer": "4",
+      "hint": "The focus-based minimum radius is a(1−e).",
+      "explanation": "r_p=8(1−0.5)=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-model-limits",
+      "prompt": "At a circular-orbit position, increase tangential speed above circular but below escape speed, with no radial velocity. What is that point on the new orbit?",
+      "answer": "A periapsis; the initial radial acceleration becomes outward.",
+      "options": [
+        "An apoapsis; higher tangential speed always makes the starting radius maximal.",
+        "A periapsis; the initial radial acceleration becomes outward."
+      ],
+      "explanation": "r-double-dot=v²/r−μ/r² is positive when v exceeds circular speed.",
+      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "misconceptions": {
+        "An apoapsis; higher tangential speed always makes the starting radius maximal.": "r-double-dot=v²/r−μ/r² is positive when v exceeds circular speed."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -159,9 +209,18 @@ Specific energy ε=v²/2−k/r satisfies $e^2=1+2\varepsilon\ell^2/k^2$. Negativ
 
 Perturbing the force law can preserve planarity and area rate while changing closedness of the orbit. Extra bodies, dissipation or time dependence can break the simplified conserved quantities. Do not assign a two-body eccentricity a constant physical meaning in a strongly perturbed trajectory without defining an osculating approximation.
 
+
+### Extended derivation and transfer case
+
+For nonradial inverse-square motion with $r>0$ and nonzero $h$, specific angular momentum $h=r^2\dot\theta$ is constant. Set $u=1/r$ and use $d/dt=(h/r^2)d/d\theta$ in the radial equation to obtain $u''+u=\mu/h^2$. Its solution is $u=(\mu/h^2)[1+e\cos(\theta-\theta_0)]$. The conic geometry therefore follows from the force law, not from the area law alone.
+
+Combining the orbit with $\varepsilon=\dot r^2/2+h^2/(2r^2)-\mu/r$ gives $e^2=1+2\varepsilon h^2/\mu^2$, $a=-\mu/(2\varepsilon)$ for bound orbits, and $h^2=\mu a(1-e^2)$. At an apsis $\dot r=0$; radial acceleration distinguishes a minimum from a maximum radius. At fixed radius, a tangential speed between circular and escape gives positive radial acceleration and a new elliptical periapsis. Perturbations, extended mass distributions and relativistic corrections require revisiting these identities.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="orbit_explorer" />
 
 Use the orbit explorer to compare negative, zero and positive energy states while keeping the model two-body. Compute energy and angular momentum from the initial state rather than judging shape from a truncated drawing. Separately sketch an effective potential and identify radial turning points from E=Ueff.
 

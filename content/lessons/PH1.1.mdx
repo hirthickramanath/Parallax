@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "mechanics-transfer-1",
+      "prompt": "A falling mass of 3 kg has linear drag coefficient 2 kg/s. Find its drag relaxation time in seconds.",
+      "answer": "1.5",
+      "hint": "Compare m dv/dt with the coefficient multiplying v.",
+      "explanation": "τ=m/b=3/2=1.5 s.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-2",
+      "prompt": "A 3 kg mass starts from rest with downward gravity g=10 m/s² and linear drag b=2 kg/s. Find downward speed at t=(3/2)ln2 seconds in m/s.",
+      "answer": "7.5",
+      "hint": "Use the terminal speed times 1−exp(−t/τ).",
+      "explanation": "v∞=mg/b=15 m/s and exp(−t/τ)=1/2, giving 7.5 m/s.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-3",
+      "prompt": "An ideal rocket in free space has fixed exhaust speed 500 m/s relative to the rocket and mass ratio m_initial/m_final=2. Find Δv in m/s.",
+      "answer": "346.5735902799726",
+      "hint": "The logarithm contains a dimensionless mass ratio.",
+      "explanation": "Δv=u ln(m_initial/m_final)=500 ln2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-model-limits",
+      "prompt": "With fixed relative exhaust speed, no external force and fixed initial/final masses, does burn timing change the ideal rocket Δv?",
+      "answer": "No; the ideal logarithmic result depends on the mass ratio.",
+      "options": [
+        "Yes; a slower burn necessarily changes ideal free-space Δv.",
+        "No; the ideal logarithmic result depends on the mass ratio."
+      ],
+      "explanation": "Burn history matters once external forces or changing exhaust conditions are added, not in this stated ideal model.",
+      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "misconceptions": {
+        "Yes; a slower burn necessarily changes ideal free-space Δv.": "Burn history matters once external forces or changing exhaust conditions are added, not in this stated ideal model."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,6 +204,13 @@ With negligible external force and constant exhaust-speed magnitude ve=−u, int
 Energy accounting must include the exhaust and the propulsion energy source. Conservation of momentum does not imply the rocket's kinetic energy is constant or that chemical energy converts entirely into vehicle kinetic energy. An open subsystem is not closed merely because its external aerodynamic force is zero.
 
 For numerical work, test initial position and speed, terminal behaviour and the vacuum limit of the drag solution. Very small c can cause cancellation in 1−exp(−t/τ); a stable exponential-difference function or a series expansion can be needed even when the analytic expression is correct.
+
+
+### Extended derivation and transfer case
+
+With downward speed positive, the linear-drag equation is $m\dot v=mg-bv$. Subtract $v_\infty=mg/b$ to get $d(v-v_\infty)/dt=-(b/m)(v-v_\infty)$, hence $v=v_\infty+(v_0-v_\infty)e^{-t/\tau}$ with $\tau=m/b$. Terminal motion has balanced nonzero forces; it does not mean gravity disappeared. Quadratic drag has a different transient and must not be inserted into this exponential solution unchanged.
+
+A rocket is an open subsystem. For backward exhaust speed $u>0$ relative to the rocket, conservation of momentum across an infinitesimal ejection gives $m\,dv=-u\,dm$ in the ideal force-free limit. Integrating gives $\Delta v=u\ln(m_0/m_1)$. The result uses a relative exhaust velocity and dimensionless mass ratio. Applying the closed-system formula to a changing rocket mass without a momentum-flux term changes the physical system and yields an incorrect equation.
 
 </LessonSection>
 

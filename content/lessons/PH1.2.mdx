@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "mechanics-transfer-1",
+      "prompt": "In rotating axes Ω=(0,0,0.5) rad/s, a 3 kg body has v_rot=(4,0,0) m/s. Find the y-component of Coriolis force in N.",
+      "answer": "-12",
+      "hint": "Use F_C=−2m Ω×v_rot and a right-handed basis.",
+      "explanation": "Ω×v_rot=(0,2,0), so F_C=(0,−12,0) N.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-2",
+      "prompt": "A 3 kg body is at radius 8 m perpendicular to an axis rotating at 0.5 rad/s. Find centrifugal-force magnitude in N.",
+      "answer": "6",
+      "hint": "The centrifugal force is outward with magnitude mΩ²r.",
+      "explanation": "3·0.5²·8=6 N.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-3",
+      "prompt": "A rotating frame has angular acceleration (0,0,0.1) rad/s². For m=3 kg and r=(5,0,0) m, find the y-component of Euler force in N.",
+      "answer": "-1.5",
+      "hint": "Use F_E=−m dotΩ×r.",
+      "explanation": "dotΩ×r=(0,0.5,0), so F_E,y=−1.5 N.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-model-limits",
+      "prompt": "A point is fixed away from the axis in a uniformly rotating frame. Must its inertial acceleration vanish?",
+      "answer": "No; its inertial motion has centripetal acceleration.",
+      "options": [
+        "Yes; zero rotating-coordinate velocity means zero inertial acceleration.",
+        "No; its inertial motion has centripetal acceleration."
+      ],
+      "explanation": "Coordinate stationarity is frame dependent.",
+      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "misconceptions": {
+        "Yes; zero rotating-coordinate velocity means zero inertial acceleration.": "Coordinate stationarity is frame dependent."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +207,18 @@ For constant Ω the centrifugal force derives from effective potential $U_{\rm c
 
 On Earth, local gravity already incorporates the equilibrium centrifugal contribution used by the observer. Adding it again double-counts that effect. Real atmospheric and oceanic motion also includes pressure gradients, friction and geometry; Coriolis alone is not a full weather model.
 
+
+### Extended derivation and transfer case
+
+For any vector, the transport rule is $(d\mathbf A/dt)_I=(d\mathbf A/dt)_R+\boldsymbol\Omega\times\mathbf A$. Apply it twice to the position vector and include an accelerating frame origin to obtain $\mathbf a_I=\mathbf a_O+\mathbf a_R+2\boldsymbol\Omega\times\mathbf v_R+\dot{\boldsymbol\Omega}\times\mathbf r+\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)$. Moving the extra terms to the force side fixes their signs.
+
+The Coriolis force is perpendicular to $\mathbf v_R$, so its instantaneous power relative to that rotating velocity is zero. This does not say that all frame-related energy statements are identical. A point fixed in rotating coordinates has $\mathbf v_R=0$ but generally has nonzero inertial centripetal acceleration. The Euler term depends on angular acceleration and vanishes only for constant angular-velocity vector, not merely a fixed rotation axis.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="coriolis_explorer" />
 
 Sketch a straight inertial path across a rotating disk and draw the disk axes at several times. Compute the same positions in the rotating axes. Identify whether an apparent acceleration depends on velocity, position or changing rotation, and do not fit all three with one fictitious-force label.
 

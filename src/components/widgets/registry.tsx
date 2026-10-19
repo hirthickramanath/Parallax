@@ -1,3 +1,8 @@
+import {
+  CoriolisExplorer,
+  InertiaTensorExplorer,
+  RutherfordExplorer,
+} from "./AdvancedMechanicsExplorers";
 import { DarbouxExplorer, UniformPowerExplorer } from "./AnalysisExplorers";
 import {
   LimitBandExplorer,
@@ -35,6 +40,9 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  coriolis_explorer: CoriolisExplorer,
+  inertia_tensor_explorer: InertiaTensorExplorer,
+  rutherford_explorer: RutherfordExplorer,
   darboux_explorer: DarbouxExplorer,
   uniform_power_explorer: UniformPowerExplorer,
   limit_band_explorer: LimitBandExplorer,

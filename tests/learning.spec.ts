@@ -1550,3 +1550,38 @@ test("analysis models distinguish Darboux envelopes and uniform domain dependenc
     page.getByText(/Supremum error to the pointwise limit: 0.003906. Uniform/),
   ).toBeVisible();
 });
+
+test("advanced mechanics models expose frame signs tensor dynamics and scattering geometry", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/PH1.2");
+  await expect(
+    page.getByText(/Coriolis acceleration: \(0.000, -4.000\) m\/s²/),
+  ).toBeVisible();
+  await page.getByLabel("Frame angular speed", { exact: true }).fill("-0.5");
+  await expect(
+    page.getByText(/Coriolis acceleration: \(0.000, 4.000\) m\/s²/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH1.6");
+  await expect(page.getByText(/Energy: 7.000 J/)).toBeVisible();
+  await page.getByLabel("Body omega 1", { exact: true }).fill("0");
+  await expect(page.getByText(/Energy: 6.000 J. \|ω×L\|: 0.000/)).toBeVisible();
+  await page.getByLabel("Body omega 3", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByLabel("Body omega 3", { exact: true })).toHaveValue(
+    "0.1",
+  );
+  await page.goto("/lesson/PH1.4");
+  await expect(
+    page.getByText(
+      "Deflection angle: 90.000 degrees. Differential cross section: 1.00000 model area/sr.",
+    ),
+  ).toBeVisible();
+  await page
+    .getByLabel("Scattering impact parameter", { exact: true })
+    .fill("2");
+  await expect(
+    page.getByText(/Deflection angle: 53.130 degrees/),
+  ).toBeVisible();
+});

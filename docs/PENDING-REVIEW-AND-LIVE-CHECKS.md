@@ -63,3 +63,7 @@ At the completed draft checkpoint, the production build, all 83 model/grading/ex
 After material edits, run content validation/production build, model/grading/example tests and the full browser suite. Retain passed, failed and unrun results distinctly. Worker/rules/live-provider checks should be rerun when those components or their configuration change; an unrun live check must not be reported as passed.
 
 The excluded-subjects and separate engineering/technology plans remain in their existing Markdown documents. They were not silently added as new selectable domains to this astrophysics-focused app.
+
+## Advanced mechanics follow-up
+
+[PH1 batch](ADVANCED-MECHANICS-BATCH.md): six deeper banks, 24 questions, three manipulable models and three scoped source mappings. Current partial source coverage is 32 lessons; independent verification remains zero.

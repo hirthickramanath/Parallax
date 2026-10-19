@@ -77,6 +77,56 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "mechanics-transfer-1",
+      "prompt": "For repulsive Rutherford scattering use b=[κ/(2E)]cot(θ/2). Find b for κ=4, E=2 and θ=90 degrees.",
+      "answer": "1",
+      "hint": "The half-angle is 45 degrees, whose cotangent is 1.",
+      "explanation": "κ/(2E)=1 and cot45°=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-2",
+      "prompt": "With κ=4 and E=2 in the same model, find b at θ=60 degrees.",
+      "answer": "1.7320508075688772",
+      "hint": "Use the half-angle of 30 degrees.",
+      "explanation": "b=cot30°=sqrt(3).",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-transfer-3",
+      "prompt": "At fixed κ and E, find [dσ/dΩ at θ=60°]/[dσ/dΩ at θ=90°].",
+      "answer": "4",
+      "hint": "Use the inverse fourth power of sin(θ/2).",
+      "explanation": "[sin45°/sin30°]^4=(sqrt2)^4=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated"
+    },
+    {
+      "id": "mechanics-model-limits",
+      "prompt": "Is the all-angle integrated cross section finite for an ideal unscreened repulsive Coulomb law with no forward cutoff?",
+      "answer": "No; the forward-angle integral diverges.",
+      "options": [
+        "Yes; a divergent value at one angle never affects an integral.",
+        "No; the forward-angle integral diverges."
+      ],
+      "explanation": "Near zero, dσ/dΩ scales as θ^(−4), while dΩ supplies only a factor proportional to θ dθ.",
+      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "misconceptions": {
+        "Yes; a divergent value at one angle never affects an integral.": "Near zero, dσ/dΩ scales as θ^(−4), while dΩ supplies only a factor proportional to θ dθ."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -161,9 +211,18 @@ For a head-on repulsive encounter, all relative kinetic energy converts temporar
 
 The ideal unscreened Coulomb cross section diverges in the forward limit. Atomic screening, finite experimental acceptance and multiple scattering limit direct application there. Finite nuclear size, nuclear interactions and relativistic or quantum effects can alter the classical point-charge prediction. An approximately heavy stationary target and a thin foil suppress some complications, but these assumptions must be checked rather than inferred from the name of the experiment.
 
+
+### Extended derivation and transfer case
+
+For an azimuthally symmetric beam, trajectories in the annulus $[b,b+db]$ occupy cross-sectional area $2\pi b|db|$. Their scattering directions occupy solid angle $2\pi\sin\theta\,d\theta$, giving $d\sigma/d\Omega=(b/\sin\theta)|db/d\theta|$. Substitution of $b=[\kappa/(2E)]\cot(\theta/2)$ yields $d\sigma/d\Omega=[\kappa/(4E)]^2\csc^4(\theta/2)$ in the appropriate two-body relative-coordinate description.
+
+A detector accepts a finite solid-angle bin, so predicted counts require integrating over that acceptance and including beam exposure and detector efficiency. The ideal forward singularity is not automatically integrable: near zero the angular measure leaves an integral proportional to $\int\theta^{-3}d\theta$. Screening or a finite angular cutoff changes the physical prediction. Converting relative-frame scattering to a laboratory angle additionally requires the target/projectile mass kinematics.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="rutherford_explorer" />
 
 Draw a set of synthetic impact parameters and compute their predicted angles. Bin incident annuli and compare with equal-solid-angle rather than equal-angle bins. Record the centre-of-mass and laboratory assumptions explicitly; this is a calculated scattering experiment, not an instruction to use radioactive sources.
 

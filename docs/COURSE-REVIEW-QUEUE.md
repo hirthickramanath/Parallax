@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 29 have current partial AI-assisted source mappings; 320 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 32 have current partial AI-assisted source mappings; 316 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -240,12 +240,12 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PB5.1 Photoelectric effect and Bohr model | 7 / 7 | 3 | 3 | pending |
 | PB5.2 Nuclei and radioactivity | 7 / 7 | 3 | 3 | pending |
 | PB5.3 Semiconductors | 7 / 7 | 3 | 3 | pending |
-| PH1.1 Newtonian mechanics with calculus (drag, variable mass) | 6 / 6 | 2 | 0 | pending |
-| PH1.2 Non-inertial frames and Coriolis force | 6 / 6 | 2 | 0 | pending |
-| PH1.3 Central forces and orbits | 6 / 6 | 2 | 0 | pending |
-| PH1.4 Scattering (Rutherford) | 6 / 6 | 2 | 0 | pending |
-| PH1.5 Systems of particles and rigid-body kinematics | 6 / 6 | 2 | 0 | pending |
-| PH1.6 Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes) | 6 / 6 | 2 | 0 | pending |
+| PH1.1 Newtonian mechanics with calculus (drag, variable mass) | 10 / 10 | 5 | 4 | pending |
+| PH1.2 Non-inertial frames and Coriolis force | 10 / 10 | 5 | 4 | coriolis_explorer |
+| PH1.3 Central forces and orbits | 10 / 10 | 5 | 4 | orbit_explorer |
+| PH1.4 Scattering (Rutherford) | 10 / 10 | 5 | 4 | rutherford_explorer |
+| PH1.5 Systems of particles and rigid-body kinematics | 10 / 10 | 5 | 4 | pending |
+| PH1.6 Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes) | 10 / 10 | 5 | 4 | inertia_tensor_explorer |
 | PH10.1 Klein-Gordon equation | 6 / 6 | 2 | 0 | pending |
 | PH10.2 Dirac equation and spin | 6 / 6 | 2 | 0 | pending |
 | PH10.3 Path-integral formulation | 6 / 6 | 2 | 0 | pending |
