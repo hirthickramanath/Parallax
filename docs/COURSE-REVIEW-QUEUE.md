@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 13 have current partial AI-assisted source mappings; 328 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 21 have current partial AI-assisted source mappings; 322 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -67,8 +67,8 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS9.6 Inflation | 6 / 6 | 2 | 0 | pending |
 | AS9.7 Dark matter and dark energy | 6 / 6 | 2 | 0 | pending |
 | AS9.8 Observational cosmology and tensions (H0, S8) | 6 / 6 | 2 | 0 | pending |
-| CB.1 Atomic structure and periodic trends | 6 / 6 | 2 | 0 | pending |
-| CB.2 Bonding and molecular shapes | 6 / 6 | 2 | 0 | pending |
+| CB.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | pending |
+| CB.2 Bonding and molecular shapes | 11 / 11 | 6 | 5 | molecular_geometry_explorer |
 | CB.3 Thermochemistry and equilibrium | 7 / 7 | 3 | 3 | pending |
 | CB.4 Kinetics and electrochemistry | 7 / 7 | 3 | 3 | pending |
 | CB.5 Organic functional groups overview | 7 / 7 | 3 | 3 | pending |
@@ -119,7 +119,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CP1.1 Python and NumPy | 7 / 7 | 3 | 3 | pending |
 | CP1.2 Plotting and visualisation | 7 / 7 | 3 | 3 | pending |
 | CP1.3 Numerical differentiation and integration | 7 / 7 | 3 | 3 | pending |
-| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 7 / 7 | 3 | 3 | pending |
+| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 7 / 7 | 3 | 3 | ode_accuracy_explorer |
 | CP1.5 Numerical linear algebra | 7 / 7 | 3 | 3 | pending |
 | CP1.6 Symbolic maths with SymPy | 7 / 7 | 3 | 3 | pending |
 | CP2.1 PDE solvers (finite differences) | 6 / 6 | 2 | 0 | pending |
@@ -214,11 +214,11 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MB2.1 Trig identities and equations | 7 / 7 | 3 | 3 | pending |
 | MB2.2 Conic sections | 12 / 12 | 8 | 8 | conic_explorer |
 | MB2.3 3D geometry and vectors | 12 / 12 | 8 | 8 | plane_distance_explorer |
-| MB3.1 Limits and continuity | 6 / 6 | 2 | 0 | pending |
-| MB3.2 Differentiation | 6 / 6 | 2 | 0 | secant_explorer |
-| MB3.3 Integration techniques | 6 / 6 | 2 | 0 | pending |
-| MB3.4 Applications: areas, extrema and rates | 6 / 6 | 3 | 0 | pending |
-| MB3.5 Basic ordinary differential equations | 6 / 6 | 2 | 0 | pending |
+| MB3.1 Limits and continuity | 11 / 11 | 6 | 5 | limit_band_explorer |
+| MB3.2 Differentiation | 11 / 11 | 6 | 5 | secant_explorer |
+| MB3.3 Integration techniques | 11 / 11 | 6 | 5 | signed_area_explorer |
+| MB3.4 Applications: areas, extrema and rates | 11 / 11 | 7 | 5 | signed_area_explorer |
+| MB3.5 Basic ordinary differential equations | 11 / 11 | 6 | 5 | ode_accuracy_explorer |
 | MB4.1 Matrices and determinants | 7 / 7 | 3 | 3 | pending |
 | MB4.2 Vector algebra | 7 / 7 | 3 | 3 | pending |
 | MB4.3 Probability and conditional probability | 7 / 7 | 3 | 3 | bayes_explorer |
@@ -234,7 +234,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PB3.2 Geometric optics | 7 / 7 | 3 | 3 | thin_lens_explorer |
 | PB3.3 Wave optics | 7 / 7 | 3 | 3 | double_slit_lab |
 | PB4.1 Electrostatics | 7 / 7 | 3 | 3 | pending |
-| PB4.2 Current electricity | 6 / 6 | 3 | 0 | circuit_lab |
+| PB4.2 Current electricity | 11 / 11 | 7 | 5 | circuit_lab |
 | PB4.3 Magnetism and induction | 7 / 7 | 3 | 3 | induction_explorer |
 | PB4.4 AC and EM waves | 7 / 7 | 3 | 3 | pending |
 | PB5.1 Photoelectric effect and Bohr model | 7 / 7 | 3 | 3 | pending |

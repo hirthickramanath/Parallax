@@ -48,7 +48,7 @@
     },
     {
       "id": "q4",
-      "prompt": "Electron count in O\u00b2\u207b for Z=8?",
+      "prompt": "Electron count in O²⁻ for Z=8?",
       "options": null,
       "answer": "10",
       "explanation": "Two electrons are added.",
@@ -61,7 +61,7 @@
       "prompt": "Maximum electron capacity of n=3?",
       "options": null,
       "answer": "18",
-      "explanation": "2n\u00b2 = 18.",
+      "explanation": "2n² = 18.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -69,13 +69,74 @@
     },
     {
       "id": "q6",
-      "prompt": "Why does hydrogen\u2019s energy formula fail unchanged for neutral carbon?",
+      "prompt": "Why does hydrogen’s energy formula fail unchanged for neutral carbon?",
       "options": [
         "Electron interactions and screening matter",
         "Carbon has no nucleus"
       ],
       "answer": "Electron interactions and screening matter",
       "explanation": "The many-electron Hamiltonian differs from the one-electron model.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "An aluminium ion Al³⁺ has nuclear charge number Z=13. How many electrons does it have?",
+      "answer": "10",
+      "hint": "Positive ion charge means electrons were removed.",
+      "explanation": "13−3=10 electrons; nuclear charge is unchanged.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "How many orbitals are in a p subshell?",
+      "answer": "3",
+      "hint": "For l=1, m_l ranges from −1 through +1.",
+      "explanation": "The three magnetic quantum numbers give three spatial orbitals.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "What is the maximum number of electrons in a d subshell?",
+      "answer": "10",
+      "hint": "For l=2 there are five orbitals, each with two spin states.",
+      "explanation": "2(2l+1)=2·5=10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "For hydrogen with E_n=−13.6/n² eV, find the energy magnitude required to ionize from n=2 in eV.",
+      "answer": "3.4",
+      "hint": "The final ionized reference energy is zero.",
+      "explanation": "0−(−13.6/4)=3.4 eV.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "Why is the hydrogen energy formula not an exact spectrum for a neutral many-electron atom?",
+      "answer": "Electron interactions and screening change the effective problem.",
+      "options": [
+        "Each electron simply has an independent hydrogen spectrum with the same Z.",
+        "Electron interactions and screening change the effective problem."
+      ],
+      "explanation": "Nuclear attraction alone does not describe the interacting electron system.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "Each electron simply has an independent hydrogen spectrum with the same Z.": "Nuclear attraction alone does not describe the interacting electron system."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -105,8 +166,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Atkins, Physical Chemistry \u2014 edition/section review pending",
-    "OpenStax Chemistry 2e \u2014 chapter reference review pending"
+    "Atkins, Physical Chemistry — edition/section review pending",
+    "OpenStax Chemistry 2e — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -160,6 +221,13 @@ A useful qualitative screened attraction is −Z_eff e²/(4πε₀r). Increasing
 These statements do not produce exact ionization energies. Pairing, subshell changes and configuration stability create exceptions to simple monotonic rules. Ionization is defined as the energy change for removal from a specified gaseous state; electron affinity has different sign conventions that must be stated.
 
 For a neutral atom the electron count is Z. A cation with charge +q has Z−q electrons; an anion with charge −q has Z+q. Isotopes change neutron count and mass without changing Z. Chemical trends depend chiefly on electronic structure, while isotope effects can matter through nuclear mass and spin.
+
+
+### Derivation and transfer checkpoint
+
+For a specified orbital angular momentum $l$, the magnetic quantum number takes $2l+1$ integer values. With two allowed electron spin projections, a subshell can accommodate $2(2l+1)$ electrons. Summing over $l=0,\ldots,n-1$ gives shell capacity $2n^2$. Capacity does not by itself specify the energetic order in which subshells fill in interacting atoms.
+
+For a one-electron Coulomb model, bound energies are negative relative to the ionization threshold. Ionizing hydrogen from $n=2$ therefore costs 3.4 eV, not 13.6 eV. In many-electron atoms, screening and electron-electron interactions invalidate an unchanged one-electron formula. Periodic trends are useful model-based tendencies with structural exceptions, not exceptionless monotonic laws.
 
 </LessonSection>
 

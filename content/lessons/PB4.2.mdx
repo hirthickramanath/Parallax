@@ -5,7 +5,7 @@
   "hook": "Does putting a second resistor in parallel always reduce the supply current?",
   "recap": [
     "Current is charge flow rate, while voltage measures energy transfer per charge.",
-    "Ohm\u2019s law describes an ohmic element under specified conditions.",
+    "Ohm’s law describes an ohmic element under specified conditions.",
     "Series elements share current; parallel branches share voltage.",
     "Ideal meters do not disturb a circuit, but real meters do."
   ],
@@ -48,7 +48,7 @@
     },
     {
       "id": "q4",
-      "prompt": "Current through 300 \u03a9 at 6 V, in amperes?",
+      "prompt": "Current through 300 Ω at 6 V, in amperes?",
       "options": null,
       "answer": "0.02",
       "explanation": "I=V/R.",
@@ -58,7 +58,7 @@
     },
     {
       "id": "q5",
-      "prompt": "Equivalent resistance of two 100 \u03a9 resistors in parallel, in ohms?",
+      "prompt": "Equivalent resistance of two 100 Ω resistors in parallel, in ohms?",
       "options": null,
       "answer": "50",
       "explanation": "Reciprocals add.",
@@ -72,11 +72,72 @@
       "prompt": "At fixed voltage, doubling a resistor changes its dissipated power by what factor?",
       "options": null,
       "answer": "0.5",
-      "explanation": "P=V\u00b2/R under fixed voltage.",
+      "explanation": "P=V²/R under fixed voltage.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
       "unit": "as specified"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "A 12 V ideal supply drives a 400 Ω resistor. Find current in A.",
+      "answer": "0.03",
+      "hint": "Apply Ohm’s law to an ohmic resistor in its stated regime.",
+      "explanation": "I=V/R=12/400=0.03 A.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "Find the equivalent resistance of 200 Ω and 300 Ω in parallel, in Ω.",
+      "answer": "120",
+      "hint": "Add conductances, then invert.",
+      "explanation": "R_eq=200·300/(200+300)=120 Ω.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "A 9 V ideal source has internal resistance 1 Ω and an external load 8 Ω. Find source current in A.",
+      "answer": "1",
+      "hint": "Both resistances carry the same current.",
+      "explanation": "I=9/(1+8)=1 A; the load terminal voltage is 8 V.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "A 1000 Ω voltmeter is placed across a 1000 Ω load. Find their effective parallel resistance in Ω.",
+      "answer": "500",
+      "hint": "A measuring device is part of the circuit when its input resistance is finite.",
+      "explanation": "1/R_eff=1/1000+1/1000, so R_eff=500 Ω.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "Can a finite-input-resistance voltmeter alter the circuit voltage it is meant to measure?",
+      "answer": "Yes; its parallel branch can load the source or voltage divider.",
+      "options": [
+        "No; every meter is electrically invisible.",
+        "Yes; its parallel branch can load the source or voltage divider."
+      ],
+      "explanation": "The ideal infinite-resistance meter is a limit, not every physical instrument.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "No; every meter is electrically invisible.": "The ideal infinite-resistance meter is a limit, not every physical instrument."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -87,7 +148,7 @@
     },
     {
       "front": "When is a fixed-resistance Ohm law appropriate?",
-      "back": "Ohm\u2019s law describes an ohmic element under specified conditions.",
+      "back": "Ohm’s law describes an ohmic element under specified conditions.",
       "concept": "pb4-2-foundation"
     },
     {
@@ -103,8 +164,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "OpenStax University Physics Volume 2 \u2014 circuit chapter review pending",
-    "An introductory electricity text \u2014 edition/section review pending"
+    "OpenStax University Physics Volume 2 — circuit chapter review pending",
+    "An introductory electricity text — edition/section review pending"
   ],
   "verification": {
     "status": "pending",
@@ -164,6 +225,13 @@ For positive finite R₁ and R₂, adding a parallel branch decreases equivalent
 Power follows from energy per charge times charge per time: P = VI. With an ohmic resistor, substitute V=IR to obtain P=I²R=V²/R. The formulas refer to different controlled quantities; doubling resistance at fixed current increases power, while doubling it at fixed voltage decreases power.
 
 An ideal voltmeter has infinite input resistance and is connected across a component. An ideal ammeter has zero resistance and is connected in series. Real instrument resistances alter the circuit, so loading must be included when precision matters.
+
+
+### Derivation and transfer checkpoint
+
+An ohmic element obeys $V=IR$ within its operating regime. Series resistances add because the same current passes through them; parallel conductances add because branch voltages are equal. An emf source with internal resistance $r$ drives $I=\mathcal E/(R+r)$ through a load $R$, leaving terminal voltage $\mathcal E-Ir$ rather than the unloaded emf.
+
+A real voltmeter presents finite input resistance and changes the branch it samples. Across a 1000 Ω load, a 1000 Ω meter makes the effective resistance 500 Ω. A surrounding source or divider can then produce a different voltage. Stating ideal-meter assumptions is therefore part of interpreting a measurement, not a minor detail to discard after circuit algebra.
 
 </LessonSection>
 

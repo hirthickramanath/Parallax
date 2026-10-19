@@ -12,13 +12,13 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Does f\u2032(c)=0 guarantee an extremum?",
+      "prompt": "Does f′(c)=0 guarantee an extremum?",
       "options": [
         "Yes",
         "No"
       ],
       "answer": "No",
-      "explanation": "x\u00b3 at zero is a counterexample.",
+      "explanation": "x³ at zero is a counterexample.",
       "type": "mcq",
       "conceptual": true
     },
@@ -36,7 +36,7 @@
     },
     {
       "id": "q3",
-      "prompt": "What units does \u222b x \u03bb(x) dx have if \u03bb is kg/m?",
+      "prompt": "What units does ∫ x λ(x) dx have if λ is kg/m?",
       "options": [
         "kg m",
         "kg"
@@ -48,7 +48,7 @@
     },
     {
       "id": "q4",
-      "prompt": "For x\u00b2 on [\u22121,2], the maximum value is?",
+      "prompt": "For x² on [−1,2], the maximum value is?",
       "options": null,
       "answer": "4",
       "explanation": "Compare endpoints and the critical point zero.",
@@ -58,10 +58,10 @@
     },
     {
       "id": "q5",
-      "prompt": "For V = 4\u03c0r\u00b3/3, r=1 m and dr/dt=0.5 m/s, dV/dt in m\u00b3/s?",
+      "prompt": "For V = 4πr³/3, r=1 m and dr/dt=0.5 m/s, dV/dt in m³/s?",
       "options": null,
       "answer": "6.283185307179586",
-      "explanation": "Use 4\u03c0r\u00b2 dr/dt.",
+      "explanation": "Use 4πr² dr/dt.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -69,19 +69,80 @@
     },
     {
       "id": "q6",
-      "prompt": "For x\u00b3\u22123x on [0,2], where is the minimum? Enter x.",
+      "prompt": "For x³−3x on [0,2], where is the minimum? Enter x.",
       "options": null,
       "answer": "1",
-      "explanation": "Check x=0,1,2; values are 0,\u22122,2.",
+      "explanation": "Check x=0,1,2; values are 0,−2,2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
       "unit": "as specified"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "Find the x-coordinate of the minimum of f(x)=(x−2)²+1 on [0,3].",
+      "answer": "2",
+      "hint": "Check both the stationary point and interval endpoints.",
+      "explanation": "f′=2(x−2); values at x=0,2,3 are 5,1,2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "Find the maximum value of f(x)=(x−2)²+1 on [0,3].",
+      "answer": "5",
+      "hint": "A convex curve can have its interval maximum at an endpoint.",
+      "explanation": "Compare f(0)=5, f(2)=1 and f(3)=2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "A rod occupies 0≤x≤2 m with uniform linear density 3 kg/m. Find its center-of-mass x-coordinate in m.",
+      "answer": "1",
+      "hint": "Divide the first mass moment by the total mass.",
+      "explanation": "M=6 kg and integral x·3 dx=6 kg m, hence x_cm=1 m.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "A sphere has radius 2 m growing at 0.25 m/s. Find dV/dt in m³/s.",
+      "answer": "12.566370614359172",
+      "hint": "Differentiate volume with respect to time using the chain rule.",
+      "explanation": "dV/dt=4πr² dr/dt=4π m³/s.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "Does f′(0)=0 for f(x)=x³ make x=0 a local extremum?",
+      "answer": "No; the function increases through that stationary point.",
+      "options": [
+        "Yes; every stationary point is a maximum or minimum.",
+        "No; the function increases through that stationary point."
+      ],
+      "explanation": "Inspect the sign change of the derivative or compare neighboring values.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "Yes; every stationary point is a maximum or minimum.": "Inspect the sign change of the derivative or compare neighboring values."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
     {
-      "front": "Why is f\u2032(c)=0 insufficient to declare an extremum?",
+      "front": "Why is f′(c)=0 insufficient to declare an extremum?",
       "back": "Critical points are candidates, not automatically maxima or minima.",
       "concept": "mb3-4-foundation"
     },
@@ -103,8 +164,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Spivak, Calculus \u2014 exact edition/section review pending",
-    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+    "Spivak, Calculus — exact edition/section review pending",
+    "OpenStax Calculus Volume 1 — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -155,9 +216,18 @@ For a related-rate problem, write the geometric constraint before differentiatin
 
 For accumulation, a nonuniform rod with linear density λ(x) has $M=\int_a^b\lambda(x)dx$. Its moment about the origin is $\int_a^b x\lambda(x)dx$, giving $x_{cm}=M^{-1}\int_a^b x\lambda(x)dx$ for M>0. Units distinguish mass from first moment. These formulas come from taking limits of sums of small segment masses.
 
+
+### Derivation and transfer checkpoint
+
+For a differentiable function on a closed bounded interval, an interior extremum must be stationary, but a global search must also include endpoints and any nondifferentiable points. For $(x-2)^2+1$ on $[0,3]$, the stationary value is the minimum and the larger endpoint value is the maximum. A stationary inflection such as $x^3$ demonstrates why a zero first derivative alone is insufficient.
+
+A center of mass is a ratio of a first moment to a total mass: $x_{cm}=\int x\lambda(x)dx/\int\lambda(x)dx$. The numerator has units kg m, so it cannot itself be a position. Related rates likewise require the time-dependent chain rule: $dV/dt=4\pi r^2dr/dt$ for a sphere, evaluated at the specified instantaneous radius and rate.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="signed_area_explorer" />
 
 Use a table or graph of x³−3x on [−2,2]. Predict the extrema before calculating, then mark the endpoints and stationary points separately. Change the interval to [0,2] and explain why the set of candidates changes.
 

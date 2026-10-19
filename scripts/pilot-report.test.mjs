@@ -97,3 +97,31 @@ test("item evidence separates assistance and leaves missing answers in the denom
   assert.equal(out.unassistedStages.baseline.participants, 0);
   assert.equal(out.stages.baseline.possible, 4);
 });
+
+test("second-marker agreement is counted without replacing primary reasoning scores", () => {
+  const r = record();
+  r.baseline.responses.fluid.reasoningScore = 2;
+  r.baseline.responses.fluid.secondReasoningScore = 1;
+  r.baseline.responses.heat.reasoningScore = 1;
+  r.baseline.responses.heat.secondReasoningScore = 1;
+  const out = pilotReport([r]);
+  assert.equal(out.stages.baseline.doubleScoredItems, 2);
+  assert.equal(out.stages.baseline.exactReasoningAgreement, 1);
+  assert.equal(out.stages.baseline.reasoningDisagreements, 1);
+  assert.equal(out.stages.baseline.reasoningPoints, 3);
+});
+test("secondary scores cannot fabricate agreement when a primary score is missing", () => {
+  const r = record();
+  r.baseline.responses.fluid.secondReasoningScore = 2;
+  assert.throws(() => pilotReport([r]), /two valid human scores/);
+});
+test("immediate-delayed paired report excludes unmatched participants and retains answer counts", () => {
+  const r = record();
+  r.immediate = stage("immediate", "2026-10-01T01:00:00Z");
+  delete r.delayed.responses.fluid;
+  const out = pilotReport([r]);
+  assert.equal(out.matchedImmediateDelayed.participants, 1);
+  assert.equal(out.matchedImmediateDelayed.immediateAnswered, 4);
+  assert.equal(out.matchedImmediateDelayed.delayedAnswered, 3);
+  assert.equal(pilotReport([record()]).matchedImmediateDelayed.participants, 0);
+});

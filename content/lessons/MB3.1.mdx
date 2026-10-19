@@ -48,20 +48,20 @@
     },
     {
       "id": "q4",
-      "prompt": "Limit of (x\u00b2\u22121)/(x\u22121) as x tends to 1?",
+      "prompt": "Limit of (x²−1)/(x−1) as x tends to 1?",
       "options": null,
       "answer": "2",
-      "explanation": "Factor for x \u2260 1, then take the limit.",
+      "explanation": "Factor for x ≠ 1, then take the limit.",
       "type": "numeric",
       "conceptual": false,
       "unit": "as specified"
     },
     {
       "id": "q5",
-      "prompt": "For f(x)=3x+2, choose \u03b4 for \u03b5=0.06.",
+      "prompt": "For f(x)=3x+2, choose δ for ε=0.06.",
       "options": null,
       "answer": "0.02",
-      "explanation": "\u03b4 = \u03b5/3.",
+      "explanation": "δ = ε/3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -69,13 +69,74 @@
     },
     {
       "id": "q6",
-      "prompt": "Why is \u03b4 = min(1, \u03b5/(1+2|a|)) useful for x\u00b2?",
+      "prompt": "Why is δ = min(1, ε/(1+2|a|)) useful for x²?",
       "options": [
         "It bounds both factors in the error",
         "It sets x equal to a"
       ],
       "answer": "It bounds both factors in the error",
       "explanation": "One bound controls x+a; the other controls the requested error.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "For f(x)=5x−1, what positive δ makes |f(x)−f(a)|<0.1 follow from |x−a|<δ?",
+      "answer": "0.02",
+      "hint": "Factor out the constant slope.",
+      "explanation": "|f(x)−f(a)|=5|x−a|, so δ=0.1/5 works.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "For f(x)=x² at a=1, find the sufficient δ=min(1,ε/3) when ε=0.03.",
+      "answer": "0.01",
+      "hint": "Bound |x+1| by 3 while |x−1|<1.",
+      "explanation": "δ=min(1,0.03/3)=0.01 ensures |x²−1|<ε.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "For x≠2, g(x)=(x²−4)/(x−2). Find lim g(x) as x approaches 2.",
+      "answer": "4",
+      "hint": "Cancel only for x≠2; the limit ignores the value at 2.",
+      "explanation": "g(x)=x+2 for x≠2, so the limit is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "Define g(x)=(x²−4)/(x−2) for x≠2. What value of g(2) makes the extension continuous?",
+      "answer": "4",
+      "hint": "Continuity requires the assigned value to equal the limit.",
+      "explanation": "Assigning 4 removes the discontinuity.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "If a function has a jump at a, can choosing just f(a) repair continuity?",
+      "answer": "No; unequal one-sided limits cannot be repaired by one point value.",
+      "options": [
+        "Yes; any discontinuity is removable.",
+        "No; unequal one-sided limits cannot be repaired by one point value."
+      ],
+      "explanation": "Distinguish failure of the limit from a missing or mismatched point value.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "Yes; any discontinuity is removable.": "Distinguish failure of the limit from a missing or mismatched point value."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -88,7 +149,7 @@
       "concept": "mb3-1-foundation"
     },
     {
-      "front": "What must an epsilon\u2013delta argument control?",
+      "front": "What must an epsilon–delta argument control?",
       "back": "A finite limit controls every sufficiently close nonzero displacement, not a few samples.",
       "concept": "mb3-1-foundation"
     },
@@ -105,8 +166,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Spivak, Calculus \u2014 exact edition/section review pending",
-    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+    "Spivak, Calculus — exact edition/section review pending",
+    "OpenStax Calculus Volume 1 — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -163,9 +224,18 @@ Contrast $h(x)=|x|/x$ for nonzero x. On the right it is 1; on the left it is −
 
 Finally, limits are unique. If distinct L and M were limits, choose ε = |L−M|/3 and x close enough for both error bounds. The triangle inequality gives $|L-M|\le|L-f(x)|+|f(x)-M|<2|L-M|/3$, a contradiction.
 
+
+### Derivation and transfer checkpoint
+
+For the quadratic at $a=1$, $|x^2-1|=|x-1||x+1|$. Restrict $|x-1|<1$ to obtain $0<x<2$ and $|x+1|<3$. The explicit choice $\delta=\min(1,\varepsilon/3)$ then gives a strict $\varepsilon$ bound for every admitted $x$, not just a plotted sample. A graph can suggest a bound but cannot supply the universal quantifier.
+
+A removable hole and a jump are different failures. For $x\ne2$, $(x^2-4)/(x-2)=x+2$; the limiting value is 4 regardless of an assigned value at the excluded point. Setting $g(2)=4$ restores continuity. If left and right limits differ, no single point assignment can make the common two-sided limit exist.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="limit_band_explorer" />
 
 In your notebook, tabulate (x²−1)/(x−1) at x = 0.9, 0.99, 1.01, and 1.1. Record the nearby trend and separately mark x = 1 as undefined. Then choose a requested error ε = 0.001 and derive a sufficient input distance analytically. The table illustrates the claim; the error bound proves it.
 

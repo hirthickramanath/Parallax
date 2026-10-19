@@ -1,4 +1,10 @@
 import {
+  LimitBandExplorer,
+  SignedAreaExplorer,
+  OdeAccuracyExplorer,
+  MolecularGeometryExplorer,
+} from "./CalculusExplorers";
+import {
   BayesExplorer,
   ThinLensExplorer,
   InductionExplorer,
@@ -28,6 +34,10 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  limit_band_explorer: LimitBandExplorer,
+  signed_area_explorer: SignedAreaExplorer,
+  ode_accuracy_explorer: OdeAccuracyExplorer,
+  molecular_geometry_explorer: MolecularGeometryExplorer,
   bayes_explorer: BayesExplorer,
   thin_lens_explorer: ThinLensExplorer,
   induction_explorer: InductionExplorer,

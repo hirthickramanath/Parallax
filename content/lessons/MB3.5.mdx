@@ -12,7 +12,7 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "What selects a particular trajectory from y\u2032=ky?",
+      "prompt": "What selects a particular trajectory from y′=ky?",
       "options": [
         "An initial condition",
         "Only the sign of k"
@@ -48,7 +48,7 @@
     },
     {
       "id": "q4",
-      "prompt": "For y\u2032=2y and y(0)=3, find y\u2032(0).",
+      "prompt": "For y′=2y and y(0)=3, find y′(0).",
       "options": null,
       "answer": "6",
       "explanation": "Substitute the initial value into the rate law.",
@@ -58,7 +58,7 @@
     },
     {
       "id": "q5",
-      "prompt": "For y\u2032+2y=6, what is the equilibrium?",
+      "prompt": "For y′+2y=6, what is the equilibrium?",
       "options": null,
       "answer": "3",
       "explanation": "Set the time derivative to zero.",
@@ -76,6 +76,67 @@
       ],
       "answer": "Discretization error and stability limits",
       "explanation": "Validate the solver independently of the physical model.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "For y′=−2y and y(0)=3, find y′(0).",
+      "answer": "-6",
+      "hint": "Insert the initial value into the vector field.",
+      "explanation": "y′(0)=−2·3=−6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "For y′=−2y and y(0)=3, find y(ln2).",
+      "answer": "0.75",
+      "hint": "The exact solution is 3 exp(−2t).",
+      "explanation": "3 exp(−2 ln2)=3/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "For y′+3y=12, find the constant equilibrium solution.",
+      "answer": "4",
+      "hint": "At equilibrium the time derivative is zero.",
+      "explanation": "3y=12 gives y=4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "Explicit Euler applies one step h=0.25 to y′=−2y from y₀=3. Find y₁.",
+      "answer": "1.5",
+      "hint": "Use y_next=y+h F(t,y).",
+      "explanation": "3+0.25(−2·3)=1.5; this is a numerical step, not the exact exponential.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "If separating y′=ky requires division by y, what additional solution must be checked?",
+      "answer": "The equilibrium y=0.",
+      "options": [
+        "No additional solution can be lost.",
+        "The equilibrium y=0."
+      ],
+      "explanation": "Division is valid only on nonzero branches.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "No additional solution can be lost.": "Division is valid only on nonzero branches."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -105,8 +166,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Spivak, Calculus \u2014 exact edition/section review pending",
-    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+    "Spivak, Calculus — exact edition/section review pending",
+    "OpenStax Calculus Volume 1 — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -161,9 +222,18 @@ Uniqueness cannot be taken for granted. For y′=√|y| with y(0)=0, y(t)=0 is o
 
 An approximate numerical method such as Euler uses $y_{n+1}=y_n+\Delta t\, F(t_n,y_n)$. This discretization is not the differential equation itself. Its accuracy and stability depend on step size and the problem.
 
+
+### Derivation and transfer checkpoint
+
+Separating $y'=ky$ on a nonzero branch yields $\ln|y|=kt+C$, hence $y=Ae^{kt}$. The equilibrium $y=0$ must be checked separately because division by $y$ excluded it. For $y'+ay=b$ with constant coefficients and $a\ne0$, the equilibrium is $b/a$ and deviations evolve as $Ce^{-at}$. Initial data determine $C$.
+
+Existence and uniqueness are different claims. Continuity of the right-hand side can support local existence, while a suitable local Lipschitz condition in $y$ gives uniqueness. Numerical Euler steps replace the exact flow by a tangent-line step and introduce both accuracy and stability restrictions. For negative $k$, the multiplier $1+kh$ must be checked before trusting apparent decay.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="ode_accuracy_explorer" />
 
 For y′ = −y with y(0)=1, compute Euler steps with Δt = 1 and Δt = 0.5, then compare to $e^{-t}$. Explain why reaching zero after one coarse step is an error of the numerical method, not a feature of exponential decay.
 

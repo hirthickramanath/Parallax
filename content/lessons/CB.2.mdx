@@ -5,7 +5,7 @@
   "hook": "If every atom wants an octet, why do real molecules sometimes refuse the rule?",
   "recap": [
     "Lewis structures track valence electrons; they are not literal pictures of density.",
-    "Formal charge is bookkeeping, not generally an atom\u2019s measured partial charge.",
+    "Formal charge is bookkeeping, not generally an atom’s measured partial charge.",
     "Electron-domain repulsion gives a useful qualitative shape model.",
     "Bond order, resonance and quantum structure require more than a single localized drawing."
   ],
@@ -48,20 +48,20 @@
     },
     {
       "id": "q4",
-      "prompt": "Total valence electrons in NH\u2084\u207a?",
+      "prompt": "Total valence electrons in NH₄⁺?",
       "options": null,
       "answer": "8",
-      "explanation": "5 + 4 \u2212 1 = 8.",
+      "explanation": "5 + 4 − 1 = 8.",
       "type": "numeric",
       "conceptual": false,
       "unit": "as specified"
     },
     {
       "id": "q5",
-      "prompt": "Formal charge on oxygen in the usual H\u2082O Lewis structure?",
+      "prompt": "Formal charge on oxygen in the usual H₂O Lewis structure?",
       "options": null,
       "answer": "0",
-      "explanation": "6 \u2212 4 \u2212 4/2 = 0.",
+      "explanation": "6 − 4 − 4/2 = 0.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -79,6 +79,67 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "How many total valence electrons are in neutral CO₂?",
+      "answer": "16",
+      "hint": "Add valence electrons from carbon and both oxygens.",
+      "explanation": "4+2·6=16.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "In the usual Lewis structure of NH₄⁺, find the formal charge on nitrogen.",
+      "answer": "1",
+      "hint": "Formal charge subtracts assigned nonbonding electrons and half the bonding electrons.",
+      "explanation": "N has 5 valence electrons, no lone-pair electrons and four assigned bonding electrons: +1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "How many electron domains surround the central carbon in the elementary CO₂ VSEPR model?",
+      "answer": "2",
+      "hint": "Each multiple bond counts as one directional domain.",
+      "explanation": "Two double bonds give two domains, not four.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "For ideal tetrahedral directions, compute their mutual angle in degrees using cosθ=−1/3.",
+      "answer": "109.47122063449069",
+      "hint": "Use the angle between normalized direction vectors.",
+      "explanation": "arccos(−1/3)=109.471… degrees; real molecular bond angles need not equal this ideal value.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "Does an ideal tetrahedral electron-domain picture predict that every AX₂E₂ molecule has exactly the tetrahedral bond angle?",
+      "answer": "No; lone pairs and chemical context change actual bond angles.",
+      "options": [
+        "Yes; an ideal domain geometry fixes every measured angle exactly.",
+        "No; lone pairs and chemical context change actual bond angles."
+      ],
+      "explanation": "VSEPR is a qualitative geometric model, not an exact energy calculation.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "Yes; an ideal domain geometry fixes every measured angle exactly.": "VSEPR is a qualitative geometric model, not an exact energy calculation."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -89,7 +150,7 @@
     },
     {
       "front": "How is formal charge different from a partial charge?",
-      "back": "Formal charge is bookkeeping, not generally an atom\u2019s measured partial charge.",
+      "back": "Formal charge is bookkeeping, not generally an atom’s measured partial charge.",
       "concept": "cb-2-foundation"
     },
     {
@@ -105,8 +166,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Atkins, Physical Chemistry \u2014 edition/section review pending",
-    "OpenStax Chemistry 2e \u2014 chapter reference review pending"
+    "Atkins, Physical Chemistry — edition/section review pending",
+    "OpenStax Chemistry 2e — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -161,9 +222,18 @@ For CO₂, 16 valence electrons admit O=C=O with zero formal charges. The centra
 
 Equivalent resonance drawings do not imply a molecule switches between discrete structures. They indicate that no single localized Lewis drawing represents the electronic state well. Formal charge differs from partial charge, which depends on how the actual density is partitioned. A quantum molecular-orbital description is needed to treat delocalization, spin and quantitative energies beyond this bookkeeping model.
 
+
+### Derivation and transfer checkpoint
+
+A Lewis formal charge is $V-N-B/2$, where $V$ is the free atom's valence count, $N$ its nonbonding electrons and $B$ the electrons in bonds attached to it. This bookkeeping is not a direct measurement of partial charge. In VSEPR, a multiple bond counts as one directional electron domain; molecular geometry describes atom positions, while electron-domain geometry also includes lone pairs.
+
+Four equivalent ideal directions can be represented by $(1,1,1)$, $(1,-1,-1)$, $(-1,1,-1)$ and $(-1,-1,1)$ divided by $\sqrt3$. Any pair has dot product $-1/3$, giving the ideal tetrahedral angle. Treating one or two domains as lone pairs changes the visible atom geometry, but the ideal-vector construction does not compute actual angle relaxation. Real structures require chemical evidence or a more detailed energy model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="molecular_geometry_explorer" />
 
 Build electron ledgers for H₂O, CO₂ and NH₄⁺. Record total electrons, bonds, lone pairs, formal charges and predicted geometry separately. Check charge conservation before judging whether a structure is chemically reasonable.
 

@@ -73,7 +73,9 @@ export function pilotReport(records) {
       let answered = 0,
         correct = 0,
         reasoningPoints = 0,
-        reasoningItems = 0;
+        reasoningItems = 0,
+        doubleScored = 0,
+        exactAgreement = 0;
       for (const q of bank.forms[stage]) {
         const a = entry.responses[q.id];
         const item = items[stage][q.id];
@@ -103,6 +105,20 @@ export function pilotReport(records) {
           reasoningItems++;
           reasoningPoints += a.reasoningScore;
         } else unscoredReasoning++;
+        if (
+          a.secondReasoningScore !== null &&
+          a.secondReasoningScore !== undefined
+        ) {
+          if (
+            ![0, 1, 2].includes(a.secondReasoningScore) ||
+            ![0, 1, 2].includes(a.reasoningScore)
+          )
+            throw Error(
+              "Second reasoning score requires two valid human scores",
+            );
+          doubleScored++;
+          if (a.reasoningScore === a.secondReasoningScore) exactAgreement++;
+        }
       }
       groups[stage].push({
         studyCode: r.studyCode,
@@ -111,6 +127,8 @@ export function pilotReport(records) {
         total: bank.forms[stage].length,
         reasoningItems,
         reasoningPoints,
+        doubleScored,
+        exactAgreement,
         assisted: entry.assisted,
       });
     }
@@ -122,11 +140,21 @@ export function pilotReport(records) {
     possible: items.reduce((s, x) => s + x.total, 0),
     humanScoredReasoningItems: items.reduce((s, x) => s + x.reasoningItems, 0),
     reasoningPoints: items.reduce((s, x) => s + x.reasoningPoints, 0),
+    doubleScoredItems: items.reduce((s, x) => s + x.doubleScored, 0),
+    exactReasoningAgreement: items.reduce((s, x) => s + x.exactAgreement, 0),
+    reasoningDisagreements: items.reduce(
+      (s, x) => s + x.doubleScored - x.exactAgreement,
+      0,
+    ),
   });
   const paired = groups.delayed.map((d) => ({
     d,
     b: groups.baseline.find((b) => b.studyCode === d.studyCode),
   }));
+  const retentionPairs = groups.delayed.flatMap((d) => {
+    const immediate = groups.immediate.find((i) => i.studyCode === d.studyCode);
+    return immediate ? [{ immediate, delayed: d }] : [];
+  });
   return {
     scope:
       "Descriptive uncalibrated pilot only; parallel forms differ and no causal learning gain can be inferred. Reasoning scores are human supplied, not independently verified.",
@@ -152,6 +180,25 @@ export function pilotReport(records) {
         aggregate(v.filter((x) => !x.assisted)),
       ]),
     ),
+    matchedImmediateDelayed: {
+      participants: retentionPairs.length,
+      immediateCorrect: retentionPairs.reduce(
+        (s, x) => s + x.immediate.correct,
+        0,
+      ),
+      delayedCorrect: retentionPairs.reduce((s, x) => s + x.delayed.correct, 0),
+      immediateAnswered: retentionPairs.reduce(
+        (s, x) => s + x.immediate.answered,
+        0,
+      ),
+      delayedAnswered: retentionPairs.reduce(
+        (s, x) => s + x.delayed.answered,
+        0,
+      ),
+      unassistedPairs: retentionPairs.filter(
+        (x) => !x.immediate.assisted && !x.delayed.assisted,
+      ).length,
+    },
     matchedBaselineDelayed: {
       participants: paired.length,
       baselineCorrect: paired.reduce((s, x) => s + x.b.correct, 0),

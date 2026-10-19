@@ -5,7 +5,7 @@
   "hook": "When does an average rate become an instantaneous rate?",
   "recap": [
     "A derivative is a two-sided limit of difference quotients.",
-    "For x\u00b2 the secant slope is exactly 2a + h.",
+    "For x² the secant slope is exactly 2a + h.",
     "A plotted pattern is a conjecture; the quantified argument proves it."
   ],
   "questions": [
@@ -47,7 +47,7 @@
     },
     {
       "id": "value",
-      "prompt": "Derivative of x\u00b2 at x = 3?",
+      "prompt": "Derivative of x² at x = 3?",
       "options": null,
       "answer": "6",
       "explanation": "The derivative is 2x.",
@@ -68,13 +68,74 @@
     },
     {
       "id": "core",
-      "prompt": "To make the slope error less than \u03b5, which \u03b4 suffices?",
+      "prompt": "To make the slope error less than ε, which δ suffices?",
       "options": [
-        "\u03b4 = \u03b5",
-        "\u03b4 = 0"
+        "δ = ε",
+        "δ = 0"
       ],
-      "answer": "\u03b4 = \u03b5",
-      "explanation": "The error is |h|, so 0 < |h| < \u03b5 guarantees the desired bound.",
+      "answer": "δ = ε",
+      "explanation": "The error is |h|, so 0 < |h| < ε guarantees the desired bound.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "For f(x)=x³, find the derivative at x=2 from the exact derivative formula.",
+      "answer": "12",
+      "hint": "Expand (x+h)³ before dividing by h.",
+      "explanation": "The quotient is 3x²+3xh+h², whose limit is 3x².",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "For f(x)=x³ at x=2, compute the forward secant slope with h=0.1.",
+      "answer": "12.61",
+      "hint": "Keep the nonzero h terms in the quotient.",
+      "explanation": "3·4+3·2·0.1+0.1²=12.61, not exactly 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "For y=(3x+1)², find dy/dx at x=1.",
+      "answer": "24",
+      "hint": "The derivative of the inner function contributes a factor of 3.",
+      "explanation": "2(3x+1)·3=24 at x=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "For f(x)=1/x, find f′(2).",
+      "answer": "-0.25",
+      "hint": "Use the reciprocal derivative only where x≠0.",
+      "explanation": "f′(x)=−1/x², so f′(2)=−1/4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "A function is differentiable at a. Must it be continuous there?",
+      "answer": "Yes; differentiability implies continuity.",
+      "options": [
+        "No; a differentiable jump is possible.",
+        "Yes; differentiability implies continuity."
+      ],
+      "explanation": "Write f(a+h)−f(a) as h times its convergent difference quotient.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "No; a differentiable jump is possible.": "Write f(a+h)−f(a) as h times its convergent difference quotient."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -82,23 +143,23 @@
   ],
   "review": [
     {
-      "front": "Why does h \u2260 0 matter in a derivative proof?",
+      "front": "Why does h ≠ 0 matter in a derivative proof?",
       "back": "The difference quotient divides by h; the limit approaches zero through nonzero values.",
       "concept": "derivative-limit"
     },
     {
-      "front": "What is the exact secant slope for f(x)=x\u00b2 at a with nonzero h?",
+      "front": "What is the exact secant slope for f(x)=x² at a with nonzero h?",
       "back": "It is 2a+h. The difference from the derivative 2a is exactly h.",
       "concept": "derivative-limit"
     },
     {
-      "front": "What proves the derivative limit for x\u00b2?",
-      "back": "For every \u03b5>0 choose \u03b4=\u03b5; 0<|h|<\u03b4 ensures the quotient error |h| is below \u03b5.",
+      "front": "What proves the derivative limit for x²?",
+      "back": "For every ε>0 choose δ=ε; 0<|h|<δ ensures the quotient error |h| is below ε.",
       "concept": "derivative-limit"
     },
     {
       "front": "Why is continuity insufficient for differentiability?",
-      "back": "|x| is continuous at zero, but its left and right difference quotients tend to \u22121 and +1.",
+      "back": "|x| is continuous at zero, but its left and right difference quotients tend to −1 and +1.",
       "concept": "derivative-limit"
     }
   ],
@@ -153,6 +214,13 @@ $$0<|h|<\delta\quad\Longrightarrow\quad\left|\frac{f(a+h)-f(a)}h-2a\right|=|h|<\
 This is precisely the definition of a two-sided limit; it holds for every real a. Thus $f'(a)=2a$.
 
 For comparison, at zero the quotient for $|x|$ equals $|h|/h$, which is 1 on the positive side and −1 on the negative side. The two-sided limit fails, although the function is continuous. A finite set of positive-h samples would miss that obstruction.
+
+
+### Derivation and transfer checkpoint
+
+For a cubic, expand $(x+h)^3-x^3=3x^2h+3xh^2+h^3$. Dividing by nonzero $h$ gives $3x^2+3xh+h^2$, whose limit is $3x^2$. A finite secant is an approximation with an explicit error, not the limiting derivative. The chain rule adds another structural requirement: differentiating an outer function at the inner value must be multiplied by the derivative of that inner function.
+
+If the difference quotient tends to a finite derivative, then $f(a+h)-f(a)=h[(f(a+h)-f(a))/h]\to0$, proving continuity. The converse fails: $|x|$ is continuous at zero but its left and right difference quotients approach different values. A visually smooth raster plot cannot settle that distinction.
 
 </LessonSection>
 

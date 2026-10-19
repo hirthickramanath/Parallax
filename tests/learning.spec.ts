@@ -1482,3 +1482,44 @@ test("Bayes lens induction and tide models connect directly to their lessons", a
     ),
   ).toBeVisible();
 });
+
+test("calculus and molecular models expose proof bounds area cancellation and numerical failure", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MB3.1");
+  await page.getByLabel("Limit delta", { exact: true }).fill("0.1");
+  await expect(
+    page.getByText(/Closed-interval supremum \|f\(x\)−1\|: 0.2100/),
+  ).toBeVisible();
+  await page.getByLabel("Limit delta", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByLabel("Limit delta", { exact: true })).toHaveValue(
+    "0.11",
+  );
+  await page.goto("/lesson/MB3.3");
+  await page.getByLabel("Integration endpoint", { exact: true }).fill("1");
+  await expect(
+    page.getByText(/Exact signed integral: -0.6667. Geometric area: 0.6667/),
+  ).toBeVisible();
+  await page.goto("/lesson/MB3.5");
+  await page.getByLabel("ODE Euler steps", { exact: true }).fill("1");
+  await expect(page.getByText(/Euler value: -9.00000/)).toBeVisible();
+  await page.getByLabel("ODE Euler steps", { exact: true }).fill("40");
+  await expect(page.getByText(/Euler value: 0.04434/)).toBeVisible();
+  await page.goto("/lesson/CB.2");
+  await page.getByLabel("Lone-pair domains", { exact: true }).selectOption("2");
+  await expect(
+    page.getByText(
+      /Visible atom geometry: bent. Bond domains: 2. Lone-pair domains: 2/,
+    ),
+  ).toBeVisible();
+  await page
+    .getByLabel("Electron-domain count", { exact: true })
+    .selectOption("2");
+  await expect(
+    page.getByText(
+      /Visible atom geometry: one bond. Bond domains: 1. Lone-pair domains: 1/,
+    ),
+  ).toBeVisible();
+});

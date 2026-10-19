@@ -48,10 +48,10 @@
     },
     {
       "id": "q4",
-      "prompt": "Integral of x\u00b2 from 0 to 1?",
+      "prompt": "Integral of x² from 0 to 1?",
       "options": null,
       "answer": "0.3333333333333333",
-      "explanation": "Use x\u00b3/3 at the endpoints.",
+      "explanation": "Use x³/3 at the endpoints.",
       "type": "numeric",
       "conceptual": false,
       "unit": "as specified"
@@ -61,7 +61,7 @@
       "prompt": "Integral of 2x from 1 to 3?",
       "options": null,
       "answer": "8",
-      "explanation": "x\u00b2 evaluated at 3 and 1 gives 9\u22121.",
+      "explanation": "x² evaluated at 3 and 1 gives 9−1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -75,7 +75,68 @@
         "Only a numerical pattern"
       ],
       "answer": "Product rule",
-      "explanation": "Integrate (uv)\u2032 = u\u2032v + uv\u2032 and rearrange.",
+      "explanation": "Integrate (uv)′ = u′v + uv′ and rearrange.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "depth-transfer-1",
+      "prompt": "Compute the definite integral of 3x² from 0 to 2.",
+      "answer": "8",
+      "hint": "Differentiate x³ to check the antiderivative.",
+      "explanation": "[x³]₀²=8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "warmup",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-2",
+      "prompt": "Compute the signed integral of x²−1 from 0 to sqrt(3).",
+      "answer": "0",
+      "hint": "Evaluate x³/3−x at both endpoints.",
+      "explanation": "At sqrt(3), x³/3=x, so the positive and negative contributions cancel.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-3",
+      "prompt": "Compute the total geometric area between y=x²−1 and the x-axis from 0 to sqrt(3).",
+      "answer": "1.3333333333333333",
+      "hint": "Split at the zero x=1 and reverse the negative part.",
+      "explanation": "The negative part has magnitude 2/3 and the positive part also has area 2/3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-transfer-4",
+      "prompt": "Compute the integral of x exp(x) from 0 to 1.",
+      "answer": "1",
+      "hint": "Use integration by parts with u=x and dv=exp(x) dx.",
+      "explanation": "[(x−1)exp(x)]₀¹=1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "unit": "as stated in question"
+    },
+    {
+      "id": "depth-model-limits",
+      "prompt": "When substituting u=x² in an integral from x=1 to x=3, what are the new u-limits?",
+      "answer": "1 and 9",
+      "options": [
+        "1 and 3",
+        "1 and 9"
+      ],
+      "explanation": "A definite integral’s bounds are values of the integration variable.",
+      "hint": "Identify the model assumptions before applying a formula.",
+      "misconceptions": {
+        "1 and 3": "A definite integral’s bounds are values of the integration variable."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -105,8 +166,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Spivak, Calculus \u2014 exact edition/section review pending",
-    "OpenStax Calculus Volume 1 \u2014 chapter reference review pending"
+    "Spivak, Calculus — exact edition/section review pending",
+    "OpenStax Calculus Volume 1 — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -169,9 +230,18 @@ $$\int_a^b u v'\,dx=[uv]_a^b-\int_a^b u'v\,dx.$$
 
 As an example, take u=x and v′=eˣ. Then $\int xe^x dx=xe^x-e^x+C$. Differentiation checks the result exactly. Improper integrals require a further limit at singular or infinite endpoints; the theorem is not a licence to ignore divergence.
 
+
+### Derivation and transfer checkpoint
+
+Integration by parts follows by integrating the product rule: $\int u\,dv=uv-\int v\,du$. With $u=x$ and $dv=e^x dx$, an antiderivative is $(x-1)e^x$; differentiating it checks both terms. Under $u=x^2$, the differential is $du=2x\,dx$ and the limits must also transform to the corresponding values of $u$.
+
+A signed integral and geometric area answer different questions. The function $x^2-1$ changes sign at 1. From 0 to $\sqrt3$, its signed integral vanishes, but splitting at 1 and integrating the absolute value gives total area $4/3$. A negative rectangle in a Riemann sum contributes a negative signed amount, not a negative geometric area.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="signed_area_explorer" />
 
 Approximate the integral of x² from 0 to 1 using n equal-width rectangles with right endpoints. For n = 1, 2, and 4 compare the sums with 1/3. Then derive the general sum using the formula for the sum of squares; do not infer equality from a finite table.
 
