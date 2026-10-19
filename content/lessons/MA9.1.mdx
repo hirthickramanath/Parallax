@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For unit-mass oscillator L=(q′²−4q²)/2 at q=3, find q″.",
+      "answer": "-12",
+      "hint": "Use q″=−ω²q.",
+      "explanation": "Use q″=−ω²q. Result: -12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For L=q′²/2 and no q dependence, find q″.",
+      "answer": "0",
+      "hint": "The conjugate momentum q′ is constant.",
+      "explanation": "The conjugate momentum q′ is constant. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does a vanishing first variation guarantee a minimum?",
+      "answer": "No; stationary points can be saddles or maxima.",
+      "options": [
+        "Yes; every stationary action is a minimum.",
+        "No; stationary points can be saddles or maxima."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Second variation and constraints decide the character.",
+      "misconceptions": {
+        "Yes; every stationary action is a minimum.": "Second variation and constraints decide the character."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ If an endpoint coordinate is free while endpoint time is fixed, the boundary var
 
 Adding a total derivative dF(t,q)/dt to L changes the action by an endpoint quantity. For fixed endpoint data it leaves the interior Euler–Lagrange equation unchanged, though canonical momenta and boundary terms can change. Smoothness, endpoint conditions and the admissible class therefore belong to the mathematical problem, not to optional presentation details.
 
+
+### Derivation and transfer
+
+For a functional ∫L(q,q′,t)dt, vary q by εη with fixed endpoint η=0. Integration by parts gives δS=∫[∂L/∂q−d(∂L/∂q′)/dt]ηdt. Stationarity for all admissible η yields Euler–Lagrange, not necessarily a minimum.
+
+For L=(q′²−ω²q²)/2 this gives q″=−ω²q. The display probes the acceleration law at a point, not the full space of variations. Endpoint conditions and regularity are part of the derivation; free endpoints add boundary conditions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA9.1" />
+
 
 Compare the action of the straight path with q=2t+εsinπt for several ε. Derive the quadratic excess analytically and compare computed integrals. Then change the endpoint condition and identify the boundary term that the original proof had removed.
 

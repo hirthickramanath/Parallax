@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For f(z)=z² at z=2+3i, find the real part of f' (z).",
+      "answer": "4",
+      "hint": "Differentiate to 2z.",
+      "explanation": "Differentiate to 2z. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For z=2+3i, find the real part of z².",
+      "answer": "-5",
+      "hint": "Use x²−y².",
+      "explanation": "Use x²−y². Result: -5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does checking Cauchy–Riemann equations at one isolated point automatically establish analyticity on a neighborhood?",
+      "answer": "No; neighborhood regularity and the derivative limit still matter.",
+      "options": [
+        "Yes; a pointwise check proves every nearby derivative.",
+        "No; neighborhood regularity and the derivative limit still matter."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Analyticity is a neighborhood property.",
+      "misconceptions": {
+        "Yes; a pointwise check proves every nearby derivative.": "Analyticity is a neighborhood property."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ A local power series converges holomorphically inside its radius, with termwise 
 
 With sufficient second-derivative regularity, differentiating Cauchy–Riemann gives $\Delta u=0$ and $\Delta v=0$. Thus real and imaginary parts are harmonic. A harmonic real function has a harmonic conjugate locally on a disk, but a global single-valued conjugate can fail on a domain with holes. For log|z| on the punctured plane, the would-be conjugate is an angle that cannot be chosen continuously around a full loop. Domain topology is part of the conclusion.
 
+
+### Derivation and transfer
+
+For f(z)=z², writing z=x+iy gives u=x²−y² and v=2xy. Hence ux=vy=2x and uy=−vx=−2y on the whole plane. The derivative is 2z, independent of the direction of the increment. Conjugation instead reverses the imaginary increment quotient and fails complex differentiability.
+
+The explorer checks one real-part derivative, not a proof from a plot. Cauchy–Riemann equations with continuous first partials in a neighborhood are a sufficient local criterion; equations at an isolated point alone require additional control of the remainder.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA6.1" />
+
 
 Calculate difference quotients for z² and conjugation using small increments along the real axis, imaginary axis and diagonal. Compare all directions as the step shrinks. Then examine |z|² at zero and at a nonzero point; distinguish one-point differentiability from holomorphicity on an open region.
 

@@ -79,6 +79,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find the imaginary change in a continued logarithm after two positive circuits.",
+      "answer": "12.566370614359172",
+      "hint": "Each circuit adds 2πi.",
+      "explanation": "Each circuit adds 2πi. Result: 12.566370614359.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For real z=exp(3), find the real part of any logarithm branch.",
+      "answer": "3",
+      "hint": "The real part is ln|z|.",
+      "explanation": "The real part is ln|z|. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does continuation of log around zero return the same value after one positive circuit?",
+      "answer": "No; it gains 2πi.",
+      "options": [
+        "Yes; all analytic continuations are globally single valued.",
+        "No; it gains 2πi."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "The puncture produces monodromy.",
+      "misconceptions": {
+        "Yes; all analytic continuations are globally single valued.": "The puncture produces monodromy."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +194,19 @@ The identity theorem says that two holomorphic functions on a connected domain a
 
 Path dependence of continuation around singularities is monodromy. Under the hypotheses of the monodromy theorem, continuation along all paths in a simply connected domain becomes single valued. One must establish the allowed paths and absence of obstructions rather than simply calling a formula analytic. In physical applications, branch cuts, outgoing-wave choices and causal prescriptions must follow the model; a software library’s default principal branch does not by itself establish the correct physical condition.
 
+
+### Derivation and transfer
+
+Writing a continued logarithm along z=r exp(it) gives ln r+it. A full positive circuit changes the continuation by 2πi even though z returns to its starting point. A principal branch instead imposes a cut and restricts the argument interval.
+
+The continuous angle display follows a path on the covering surface; it is not the principal value after wrapping. No single-valued logarithm exists on the entire punctured plane. Branch conventions must be specified before comparing values or powers.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA6.6" />
+
 
 Trace a unit circle and compare two computations: principal arguments at each point, and a continuously unwrapped argument. Use each to construct a square root. Mark the principal jump at the negative real axis and the sign change of the continued root after one loop. Never connect values across a branch cut as if they formed one holomorphic chart.
 

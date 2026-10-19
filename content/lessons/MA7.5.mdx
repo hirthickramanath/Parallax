@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For I(λ)=∫exp(−λx²/2)dx over the real line, find I(2).",
+      "answer": "1.7724538509055159",
+      "hint": "Use sqrt(2π/λ).",
+      "explanation": "Use sqrt(2π/λ). Result: 1.772453850906.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find I(4λ)/I(λ) for this Gaussian integral.",
+      "answer": "0.5",
+      "hint": "The prefactor scales as λ^−1/2.",
+      "explanation": "The prefactor scales as λ^−1/2. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Can the nondegenerate Gaussian saddle formula be used unchanged when f″ vanishes?",
+      "answer": "No; higher-order local terms change the scaling.",
+      "options": [
+        "Yes; all saddles have identical curvature.",
+        "No; higher-order local terms change the scaling."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "The quadratic approximation has explicit hypotheses.",
+      "misconceptions": {
+        "Yes; all saddles have identical curvature.": "The quadratic approximation has explicit hypotheses."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For $\varepsilon^2y''+q(x)y=0$ with smooth positive q away from zeros, a leading
 
 At a simple turning point q=0 the leading WKB amplitude diverges and the scale test fails. A local Airy-type analysis and justified matching replace that approximation. Boundary quantization and connection phases require the actual endpoint/turning-point configuration; there is no universal rule obtained by dropping the matching step. An asymptotic series can be divergent yet useful when truncated near its smallest term. Fix the parameter regime, compare successive truncations and use available remainder estimates rather than equating a formal expansion with a convergent exact answer.
 
+
+### Derivation and transfer
+
+Near an isolated nondegenerate maximum, write f(x)≈f(x0)−a(x−x0)²/2 with a>0. The resulting Gaussian integral has leading factor sqrt(2π/(λa)) exp(λf(x0)). Endpoint maxima, merging saddles or a vanishing second derivative need different approximations.
+
+A WKB amplitude also fails at an ordinary turning point where local momentum vanishes; a connection formula is needed. The explorer shows the exact Gaussian benchmark for the quadratic local model, not a universal error bound for arbitrary saddle-point or WKB expansions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA7.5" />
+
 
 Compare Gaussian localization at several λ after rescaling x by √λ. Add a quartic term in the exponent and compare a leading saddle estimate with converged numerical quadrature; isolate finite integration-window error. For WKB, contrast constant positive q with q=x near zero and identify precisely where the amplitude and slow-variation test fail.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For q=Acos(ωt), unit mass A=2,ω=3, find conserved oscillator energy.",
+      "answer": "18",
+      "hint": "Use A²ω²/2.",
+      "explanation": "Use A²ω²/2. Result: 18.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For a free particle with mass 2 and velocity 3, find translation Noether momentum.",
+      "answer": "6",
+      "hint": "Use p=mv.",
+      "explanation": "Use p=mv. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does any visually symmetric plotted path by itself establish a Noether symmetry of the action?",
+      "answer": "No; the action transformation must be checked.",
+      "options": [
+        "Yes; shape alone proves a conserved charge.",
+        "No; the action transformation must be checked."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Noether symmetry is a variational statement.",
+      "misconceptions": {
+        "Yes; shape alone proves a conserved charge.": "Noether symmetry is a variational statement."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -158,9 +195,19 @@ A symmetry of the differential equations need not be a symmetry of the action, a
 
 The converse question—whether a proposed conserved quantity arises from a variational symmetry—requires the appropriate mathematical setting. In applications, verify the change of Ldt and its boundary term explicitly, then differentiate the proposed charge using the equations of motion as an independent check.
 
+
+### Derivation and transfer
+
+For a continuous symmetry of an action, a suitable boundary-term variation gives a conserved Noether charge on solutions. Time translation for an autonomous regular Lagrangian yields energy; coordinate translation yields its conjugate momentum when the Lagrangian is invariant.
+
+A visually symmetric trajectory is not enough: the action and allowed transformations matter. The display checks energy along a harmonic solution q=Acos(ωt), q′=−Aωsin(ωt). Its constant value illustrates a charge after solving the motion, rather than proving every system with an attractive-looking orbit conserves that same quantity.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA9.3" />
+
 
 Derive the charges for a free-particle translation, time translation and planar rotation with the same sign convention. Then add an explicit time-dependent potential and identify which action symmetry is broken. Keep system boundaries and total-derivative terms visible.
 

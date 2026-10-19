@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Minimize x²+y² with x+y=4. Find the minimizing x.",
+      "answer": "2",
+      "hint": "Symmetry or Lagrange multipliers gives x=y.",
+      "explanation": "Symmetry or Lagrange multipliers gives x=y. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For that minimum, find x²+y².",
+      "answer": "8",
+      "hint": "Substitute x=y=2.",
+      "explanation": "Substitute x=y=2. Result: 8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Can the constraint equation be discarded after introducing its multiplier?",
+      "answer": "No; it must still be solved with stationarity.",
+      "options": [
+        "Yes; the multiplier automatically enforces any chosen constraint.",
+        "No; it must still be solved with stationarity."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "The augmented equations include the original constraint.",
+      "misconceptions": {
+        "Yes; the multiplier automatically enforces any chosen constraint.": "The augmented equations include the original constraint."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ Velocity-dependent nonholonomic constraints are especially delicate. Imposing th
 
 A change to generalized coordinates can sometimes solve regular holonomic constraints explicitly, reducing the variational dimension. Coordinate singularities or dependent constraints can invalidate a local elimination. Check both the original constraint and admissible variation class after any reduction.
 
+
+### Derivation and transfer
+
+A constrained extremum of J under K=c can be sought using J−λ(K−c), provided the relevant constraint qualification holds. For the isoperimetric example minimizing ∫y′² dx with fixed ∫y dx and fixed endpoints, variation gives a constant second derivative.
+
+The multiplier is determined together with the solution and the constraint, not selected independently as an arbitrary physical force. The display shows the elementary finite-dimensional quadratic analog; singular constraints or functional boundary conditions need their own analysis.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA9.2" />
+
 
 Compute the constrained parabola and verify both endpoints and its integral. Compare with the unconstrained zero path, which has lower kinetic functional but violates the integral constraint. Distinguish a global integral multiplier from a time-dependent pointwise multiplier.
 

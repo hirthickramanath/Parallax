@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find P2(0).",
+      "answer": "-0.5",
+      "hint": "Use (3x²−1)/2.",
+      "explanation": "Use (3x²−1)/2. Result: -0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find ∫ from −1 to 1 of P2(x) dx.",
+      "answer": "0",
+      "hint": "Orthogonality to P0 or direct integration.",
+      "explanation": "Orthogonality to P0 or direct integration. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does one Legendre polynomial encode every spherical harmonic order and normalization?",
+      "answer": "No; associated order and angular factors also matter.",
+      "options": [
+        "Yes; degree alone determines every angular state.",
+        "No; associated order and angular factors also matter."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Spherical harmonics have both degree and order.",
+      "misconceptions": {
+        "Yes; degree alone determines every angular state.": "Spherical harmonics have both degree and order."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ On the unit sphere, $\Delta_{S^2}Y_\ell^m=-\ell(\ell+1)Y_\ell^m$. The surface me
 
 Outside a bounded source in a source-free region, separated multipoles combine angular harmonics with radial factors rℓ and r⁻ˡ⁻¹. Boundary conditions and decay determine which radial branches are allowed. A truncated angular expansion is not a claim that unresolved small-scale structure is absent. Sky masks, uneven noise and a telescope beam can mix observed modes, so mathematical orthogonality on the full sphere does not guarantee uncorrelated measured coefficients.
 
+
+### Derivation and transfer
+
+The first Legendre polynomials are P0=1, P1=x and P2=(3x²−1)/2. Orthogonality on [−1,1] with unit weight makes ∫P2 dx=0. Spherical harmonics add angular phase, associated-polynomial order and normalization conventions.
+
+A plotted polynomial is not a complete spherical harmonic. The display isolates a degree-two axisymmetric angular shape with a chosen amplitude; it does not imply arbitrary functions are represented by one mode or that normalization is unchanged when the amplitude moves.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA7.2" />
+
 
 Compare P₀ through P₆ on a fixed [−1,1] plot. Compute pairwise weighted sums approximating their ordinary interval inner products, then refine the grid. For zonal harmonics replace x by cosθ and include sinθ in θ quadrature; show why an unweighted θ average is the wrong spherical measure.
 

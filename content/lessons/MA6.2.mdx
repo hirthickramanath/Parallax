@@ -79,6 +79,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find the imaginary part of the integral of 1/z on a positive once-traversed circle about zero.",
+      "answer": "6.283185307179586",
+      "hint": "Parametrize z=R exp(it).",
+      "explanation": "Parametrize z=R exp(it). Result: 6.28318530718.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find that imaginary part when the orientation is reversed.",
+      "answer": "-6.283185307179586",
+      "hint": "Reverse the contour orientation.",
+      "explanation": "Reverse the contour orientation. Result: -6.28318530718.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Can Cauchy's theorem set the integral of 1/z around its pole to zero?",
+      "answer": "No; the enclosed singularity violates its hypotheses.",
+      "options": [
+        "Yes; every closed contour integral is zero.",
+        "No; the enclosed singularity violates its hypotheses."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Check the entire relevant domain.",
+      "misconceptions": {
+        "Yes; every closed contour integral is zero.": "Check the entire relevant domain."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +194,19 @@ If f is holomorphic on a neighbourhood of the closure of a disk and z₀ is insi
 
 Cauchy estimates give |f⁽ⁿ⁾(z₀)|≤n!M/Rⁿ on a radius-R circle where |f|≤M. In particular an entire bounded function is constant by letting R grow in the first-derivative estimate. The maximum modulus principle concerns holomorphic functions; an interior maximum of the real part alone is a related harmonic statement with its own formulation. Contour deformation must avoid crossing singularities and preserve the relevant winding data.
 
+
+### Derivation and transfer
+
+Parametrize a circle by z=R exp(it). For the integrand 1/z, dz=iR exp(it)dt, so the contour integral is 2πi for one positive turn. Cancellation removes R, not the orientation or winding number. Reversing the traversal changes its sign.
+
+Cauchy's theorem requires holomorphicity on the appropriate enclosed domain; a pole inside the circle violates that hypothesis. The investigation plots accumulated imaginary integral along this one parametrized contour. It does not infer a theorem from finite samples or allow a contour through the pole.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA6.2" />
+
 
 Parametrize a circle and numerically integrate z², 1/z and 1/(z−a) for a inside and outside the circle. Refine the quadrature and reverse orientation. Move a toward the contour and identify where the integral becomes singular rather than reporting a finite sampled sum as a valid contour theorem.
 

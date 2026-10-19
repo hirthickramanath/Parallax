@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Independent events have probabilities 0.4 and 0.5. Find intersection probability.",
+      "answer": "0.2",
+      "hint": "Multiply only under independence.",
+      "explanation": "Multiply only under independence. Result: 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "P(A∩B)=0.1 and P(B)=0.25. Find P(A|B).",
+      "answer": "0.4",
+      "hint": "Divide intersection by the conditioning probability.",
+      "explanation": "Divide intersection by the conditioning probability. Result: 0.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Are mutually exclusive events with positive probabilities independent?",
+      "answer": "No; their intersection is zero but the product is positive.",
+      "options": [
+        "Yes; disjoint and independent mean the same thing.",
+        "No; their intersection is zero but the product is positive."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Compare the joint probability to the product.",
+      "misconceptions": {
+        "Yes; disjoint and independent mean the same thing.": "Compare the joint probability to the product."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Conditional probability P(A|B)=P(A∩B)/P(B) requires P(B)>0. Conditioning a con
 
 The law of total expectation averages conditional means. The law of total variance splits $\operatorname{Var}(X)=E[\operatorname{Var}(X|Y)]+\operatorname{Var}(E[X|Y])$ when finite. The first part is average within-group variation, while the second is variation between group means. Ignoring the second can understate uncertainty in a mixed source population.
 
+
+### Derivation and transfer
+
+Conditional probability P(A|B)=P(A∩B)/P(B) requires P(B)>0. Independence makes P(A∩B)=P(A)P(B), but mutually exclusive nonzero-probability events cannot be independent. Expectations are linear even without independence.
+
+The display assumes independent Bernoulli trials and computes P(all successes)=p^n. Correlation would change that joint probability. Neither a small conditional probability nor a rare observation establishes an impossible event; sampling design and the reference event matter.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.1" />
+
 
 Draw equal-area densities with several interval widths and compare heights. Build two groups with different conditional means, then compute total variance directly and by its two terms. Keep normalized probabilities distinct from likelihood values for observed data.
 

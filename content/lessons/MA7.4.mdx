@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find physicists' H2(1).",
+      "answer": "2",
+      "hint": "Use 4x²−2.",
+      "explanation": "Use 4x²−2. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find the positive zero of H2.",
+      "answer": "0.7071067811865475",
+      "hint": "Solve 4x²−2=0.",
+      "explanation": "Solve 4x²−2=0. Result: 0.707106781187.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Is a bare nonconstant Hermite polynomial a normalized oscillator wavefunction on the real line?",
+      "answer": "No; the Gaussian factor and normalization are required.",
+      "options": [
+        "Yes; orthogonality removes every weight factor.",
+        "No; the Gaussian factor and normalization are required."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Polynomial and weighted eigenfunction are different objects.",
+      "misconceptions": {
+        "Yes; orthogonality removes every weight factor.": "Polynomial and weighted eigenfunction are different objects."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For the three-dimensional Coulomb radial problem, separating angular modes and i
 
 Termination of an otherwise growing series and decay at infinity explain discrete solutions in the appropriate eigenproblem. Generic solutions of the underlying differential equation need not be normalizable polynomials times the chosen envelope. Near singular endpoints, the admissible domain of the operator must be stated. Orthogonality is a weighted integral statement, not a claim that two plotted functions never cross or never share the same value.
 
+
+### Derivation and transfer
+
+Using the physicists' convention, H0=1, H1=2x and H2=4x²−2. Hermite functions multiply these polynomials by a Gaussian, so the polynomial itself is not a normalizable oscillator wavefunction. Laguerre families use a different domain and weight.
+
+An oscillator mode requires its normalization and physical length scale. The display isolates H2 exp(−x²/2) with an adjustable amplitude; varying that amplitude does not preserve probability normalization. State the polynomial convention before applying recurrence or orthogonality formulas.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA7.4" />
+
 
 Plot H₀,H₁,H₂ both alone and multiplied by their Gaussian envelope. Numerically compare weighted polynomial inner products with unweighted ones. Repeat with L₀^(2), L₁^(2) and the weight x²e⁻ˣ, checking the endpoint and tail truncation. State the dimensionless coordinate before relating the plot to a physical oscillator.
 

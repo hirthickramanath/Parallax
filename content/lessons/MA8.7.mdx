@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Combine two independent measurements each with standard deviation 2. Find uncertainty of their equal-weight mean.",
+      "answer": "1.4142135623730951",
+      "hint": "The variance of the mean is (4+4)/4.",
+      "explanation": "The variance of the mean is (4+4)/4. Result: 1.414213562373.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For independent variances 1 and 4, find normalized inverse-variance weight on the first measurement.",
+      "answer": "0.8",
+      "hint": "Normalize weights 1 and 1/4.",
+      "explanation": "Normalize weights 1 and 1/4. Result: 0.8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does averaging eliminate a perfectly shared calibration bias?",
+      "answer": "No; the shared contribution persists.",
+      "options": [
+        "Yes; every uncertainty falls as 1/√n.",
+        "No; the shared contribution persists."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Only independent fluctuations average down that way.",
+      "misconceptions": {
+        "Yes; every uncertainty falls as 1/√n.": "Only independent fluctuations average down that way."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Residual plots should examine structure against time, wavelength, predictors and
 
 For y=ab with independent small uncertainties, fractional variances add. If a and b share a calibration, covariance can reinforce or cancel their errors depending on the derived quantity. A common additive bias does not shrink as 1/√n when measurements are repeated. Report calibration, model and sampling contributions rather than compressing all uncertainty into one unexplained error bar.
 
+
+### Derivation and transfer
+
+For independent measurements with known variances, inverse-variance weights give the minimum-variance linear unbiased mean. With covariance, generalized least squares uses the inverse covariance matrix instead; ignoring shared calibration errors falsely inflates precision.
+
+The display gives the uncertainty of combining two independent measurements, not a fitted residual distribution. A small residual alone does not certify a model: examine systematic structure, degrees of freedom and the error assumptions. Propagation by linearization can fail for strong nonlinearities or large uncertainties.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.7" />
+
 
 Generate synthetic linear data with a known offset and correlated noise. Fit under both correct and deliberately wrong covariance models, compare coverage and residual structure, and retain the generating truth separately. A simulated success validates only the declared synthetic setup.
 

@@ -91,3 +91,7 @@ CH1–CH2 now have 57 additional questions and nineteen embedded investigations.
 ## Bonding, astrochemistry and organic chemistry follow-up
 
 Twenty-eight more chemistry lessons have 84 added questions and embedded investigations. Current partial mappings: 136; lessons without explicit widgets: 151; independent approvals: zero. [Scope and validation](BONDING-ORGANIC-CHEMISTRY-EXPANSION.md).
+
+## Complex analysis, probability and variation follow-up
+
+MA6–MA9 have 63 added questions and 21 embedded investigations. Current partial mappings: 142; lessons without explicit widgets: 132. [Release details](COMPLEX-PROBABILITY-VARIATIONAL-EXPANSION.md). Independent scientific approval remains outstanding.

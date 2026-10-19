@@ -1,3 +1,4 @@
+import { advancedMathInvestigations } from "../../lib/advanced-math-investigations";
 import { chemistryInvestigations } from "../../lib/chemistry-investigations";
 import { physicalChemistryInvestigations } from "../../lib/physical-chemistry-investigations";
 import { thermalOpticsInvestigations } from "../../lib/thermal-optics-investigations";
@@ -99,6 +100,17 @@ export const widgets = {
   secant_explorer: SecantExplorer,
 };
 export function Widget({ name }: { name: string }) {
+  if (
+    name.startsWith("advanced_math_") &&
+    advancedMathInvestigations[name.slice(14)]
+  )
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(14)}
+        model={advancedMathInvestigations[name.slice(14)]}
+      />
+    );
   if (name.startsWith("astro_") && astroInvestigations[name.slice(6)])
     return <AstroInvestigation key={name} lessonId={name.slice(6)} />;
   if (

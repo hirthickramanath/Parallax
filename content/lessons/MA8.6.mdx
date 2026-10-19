@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For symmetric Metropolis proposals with target ratio 0.25, find acceptance probability.",
+      "answer": "0.25",
+      "hint": "Take min(1,ratio).",
+      "explanation": "Take min(1,ratio). Result: 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For target ratio 4, find acceptance probability.",
+      "answer": "1",
+      "hint": "Probabilities are capped at one.",
+      "explanation": "Probabilities are capped at one. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Can the proposal ratio be omitted for an arbitrary asymmetric proposal?",
+      "answer": "No; the Hastings correction is required.",
+      "options": [
+        "Yes; every proposal is effectively symmetric.",
+        "No; the Hastings correction is required."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Detailed balance includes forward and reverse proposal densities.",
+      "misconceptions": {
+        "Yes; every proposal is effectively symmetric.": "Detailed balance includes forward and reverse proposal densities."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Run multiple dispersed chains and inspect trace plots, rank-based convergence di
 
 Warm-up adaptation can tune proposal or Hamiltonian parameters, but naively changing the transition rule indefinitely can invalidate the simple stationary-chain argument. Separate adaptation from retained sampling or use a justified adaptive method. Validate on a known distribution before applying an implementation to an expensive scientific posterior, and keep computational Monte Carlo error distinct from uncertainty in the underlying physical parameters.
 
+
+### Derivation and transfer
+
+For a symmetric Metropolis proposal, the acceptance probability is min(1,π(y)/π(x)). This ratio cancels an unknown normalizing constant, but stationarity alone does not guarantee fast mixing. Autocorrelation and separated modes can leave apparently long chains uninformative.
+
+The display uses a dimensionless negative log-target difference ΔU so acceptance is min(1,exp(−ΔU)). It does not execute a chain. Asymmetric proposals require the Hastings proposal-density ratio. Effective sample size and multiple-chain diagnostics remain necessary for an actual sampling project.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.6" />
+
 
 Run a simple sampler on a known Gaussian and a separated mixture with documented seeds and proposals. Compare chains started in different modes, acceptance and estimand-specific errors. Treat agreement of one histogram as limited evidence, not a convergence proof.
 

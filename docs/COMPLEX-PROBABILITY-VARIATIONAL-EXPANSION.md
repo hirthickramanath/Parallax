@@ -1,0 +1,9 @@
+# Complex analysis, special functions, probability and variation
+
+MA6–MA9 now have 42 added numeric transfer problems, 21 assumption checks, derivation extensions and 21 embedded investigations. The models cover complex-polynomial slices, winding and branch continuation, Laurent truncation, special-function benchmarks, sampling uncertainty, conjugate updating, Metropolis acceptance and variational examples.
+
+The release distinguishes local from global conformality, pointwise checks from analyticity, saddle approximations from exact Gaussian benchmarks, raw data from sampling distributions, p-values from posterior hypothesis probabilities, and stationary action from a guaranteed minimum. Displays do not claim to run a Markov chain or prove a theorem by plotting.
+
+Validation: 477 unit/content/model checks and the production build passed, followed by all five targeted browser cases and the full 106-case browser suite. A duplicate prompt was replaced with a genuine convergence question. A raw less-than sign that MDX parsed as markup was escaped. The Bessel implementation is checked against its differential equation; other checks cover orthogonality, probability bounds and conservation in an exact oscillator benchmark.
+
+Six scoped official SymPy source inspections bring the ledger to 142 current partial mappings. Source wording issues are recorded rather than adopted blindly: the Gamma prose omits zero in its pole description, and Normal parameter prose inconsistently describes its scale. The lessons use the explicit positive-integer Gamma formula and standard-deviation density convention. All 354 lessons remain drafts, with zero independent approvals. At this checkpoint 132 lessons lack explicit widgets. Complete model-bound review packets export successfully; independent review, actual learner trials and live service checks remain separate.

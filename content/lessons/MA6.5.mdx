@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find the local length scale of z² at |z|=3.",
+      "answer": "6",
+      "hint": "Use |f'|=2|z|.",
+      "explanation": "Use |f'|=2|z|. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find the local area scale at |z|=2.",
+      "answer": "16",
+      "hint": "Square the local length scale.",
+      "explanation": "Square the local length scale. Result: 16.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does local conformality imply global one-to-one behavior?",
+      "answer": "No; distinct points may share an image.",
+      "options": [
+        "Yes; preserving local angles proves global injectivity.",
+        "No; distinct points may share an image."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "The square map supplies a counterexample.",
+      "misconceptions": {
+        "Yes; preserving local angles proves global injectivity.": "The square map supplies a counterexample."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ The Cayley map $w=(z-i)/(z+i)$ sends the upper half-plane to the unit disk: if I
 
 If U is harmonic in the w-plane and w=f(z) is holomorphic, the chain rule gives $\Delta_z(U\circ f)=|f'(z)|^2(\Delta_wU)\circ f$ with sufficient smoothness. Harmonicity is preserved, while a Poisson source transforms with a scale factor and is not generally unchanged. Normal derivatives, fluxes and lengths also transform. Dirichlet values pull back directly; Neumann data require metric scaling. Riemann mapping applies to a nonempty simply connected proper plane domain, but does not automatically provide an elementary formula or arbitrary smooth boundary extension.
 
+
+### Derivation and transfer
+
+For w=z², a nonzero complex derivative scales local lengths by |2z| and rotates all tangent directions by arg(2z), preserving oriented angles. At z=0 the derivative vanishes and this local conformality argument fails. Global injectivity is separate: z and −z share an image.
+
+The magnitude display varies the radius of the evaluation point. It gives a local differential scale, not a global distance-preserving transformation or a proof of one-to-one mapping. Domain restrictions matter when selecting an inverse branch.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA6.5" />
+
 
 Plot a rectangular grid under z², restricting first to a small patch away from zero and then comparing patches centred at z and −z. Measure tangent angles and identify overlapping images. For the Cayley map, test several upper-half-plane points and algebraically prove the modulus inequality; numerical samples alone do not prove the domain map.
 

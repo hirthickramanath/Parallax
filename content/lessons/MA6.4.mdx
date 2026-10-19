@@ -79,6 +79,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find the residue at zero of 1/[z(z−1)].",
+      "answer": "-1",
+      "hint": "Use partial fractions.",
+      "explanation": "Use partial fractions. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find the coefficient of z² in its Laurent expansion for 0 &lt; |z| &lt; 1.",
+      "answer": "-1",
+      "hint": "Expand −1/(1−z).",
+      "explanation": "Expand −1/(1−z). Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Can a Laurent series be used across another singularity without checking its annulus?",
+      "answer": "No; the convergence region is essential.",
+      "options": [
+        "Yes; all local Laurent series converge everywhere.",
+        "No; the convergence region is essential."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "The nearest singularities delimit the annulus.",
+      "misconceptions": {
+        "Yes; all local Laurent series converge everywhere.": "The nearest singularities delimit the annulus."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +194,19 @@ At zero, e¹ᐟᶻ has infinitely many negative powers and an essential singular
 
 To study infinity, set w=1/z and classify f(1/w) at w=0. The residue at infinity includes the differential: $\operatorname{Res}_\infty f=-\operatorname{Res}_{w=0}[f(1/w)/w^2]$. For a meromorphic function on the sphere, the finite residues plus the residue at infinity sum to zero. Confusing the singularity of f at infinity with the residue of f(z)dz misses the Jacobian and sign.
 
+
+### Derivation and transfer
+
+In an annulus, a Laurent expansion has both positive and negative powers; its coefficients depend on the annular region. For 1/[z(z−1)] near zero with 0 &lt; |z| &lt; 1, partial fractions give −1/z−1−z−z²−… . The residue at zero is −1.
+
+A finite principal part indicates a pole, whereas infinitely many negative powers indicate an essential isolated singularity. Convergence regions must accompany a series; crossing another singularity changes the expansion. The explorer compares a finite truncation only on its stated positive-radius interval, not at the puncture.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA6.4" />
+
 
 Expand the rational example numerically using inner and outer geometric partial sums at radii .5 and 2. Try each series outside its own convergence domain and record failure. Compare a zero-residue double pole with a removable singularity; a zero contour integral alone cannot distinguish them.
 

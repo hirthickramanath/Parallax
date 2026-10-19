@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For xbar=12,μ0=10,σ=4,n=16, find z.",
+      "answer": "2",
+      "hint": "Divide displacement by σ/√n.",
+      "explanation": "Divide displacement by σ/√n. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "For known standard error 0.5 and normal 95% multiplier 1.96, find interval half-width.",
+      "answer": "0.98",
+      "hint": "Multiply the standard error by the stated quantile.",
+      "explanation": "Multiply the standard error by the stated quantile. Result: 0.98.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Is a p-value the posterior probability that the null hypothesis is true?",
+      "answer": "No; it is a tail probability under the null sampling model.",
+      "options": [
+        "Yes; p directly gives the probability of the null.",
+        "No; it is a tail probability under the null sampling model."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Posterior hypotheses require a different model and prior.",
+      "misconceptions": {
+        "Yes; p directly gives the probability of the null.": "Posterior hypotheses require a different model and prior."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Type-I error rejects a true null and type-II error fails to reject a specified a
 
 Report effect sizes, uncertainty, model assumptions and search choices. A detection threshold alone is not a calibrated physical measurement. Coverage simulations can test an implementation under declared synthetic models, but they do not prove that the real data-generating mechanism matches those models.
 
+
+### Derivation and transfer
+
+For a known-variance Gaussian mean, z=(xbar−μ0)/(σ/√n). A two-sided p-value is computed under the null sampling model; it is not the probability that the null is true. Confidence coverage refers to repeated sampling of the interval procedure.
+
+The display varies a standardized mean displacement at fixed sample size assumptions. Multiple testing, sequential stopping, model selection and unknown variance can require different calibration. Statistical significance alone does not establish a large or useful effect.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.4" />
+
 
 Generate repeated Gaussian datasets with a fixed known mean and record interval coverage. Then change the distribution or add correlations to test robustness. Separate the simulated coverage result from a claim that the real observational errors are Gaussian.
 

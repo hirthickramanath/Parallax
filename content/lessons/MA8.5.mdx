@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "With uniform Beta(1,1) prior, 3 successes and 1 failure, find posterior mean.",
+      "answer": "0.6666666666666666",
+      "hint": "Use (1+s)/(2+s+f).",
+      "explanation": "Use (1+s)/(2+s+f). Result: 0.666666666667.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "With Beta(2,3) prior and 4 successes,2 failures, find posterior beta parameter.",
+      "answer": "5",
+      "hint": "Add failures to the prior beta parameter.",
+      "explanation": "Add failures to the prior beta parameter. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does a Bayesian posterior cease to depend on likelihood assumptions?",
+      "answer": "No; updating is conditional on that model.",
+      "options": [
+        "Yes; any dataset uniquely determines a model-free posterior.",
+        "No; updating is conditional on that model."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Prior and likelihood jointly define the update.",
+      "misconceptions": {
+        "Yes; any dataset uniquely determines a model-free posterior.": "Prior and likelihood jointly define the update."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Under a one-to-one parameter transformation φ=g(θ), density changes by a Jacob
 
 Posterior predictive distributions average predictions over parameter uncertainty: $p(D_{\rm new}|D)=\int p(D_{\rm new}|\theta)p(\theta|D)d\theta$ under the specified model. They can reveal failures of fit, but using the same data twice for selection and checking needs interpretation. A highly concentrated posterior can be confidently wrong if the likelihood excludes important systematics.
 
+
+### Derivation and transfer
+
+For a Bernoulli parameter and a Beta(α,β) prior, s successes and f failures give Beta(α+s,β+f). The posterior mean is (α+s)/(α+β+s+f). This relies on the chosen likelihood and prior, not on a universal rule that data remove modeling choices.
+
+The explorer fixes a uniform prior and a stated failure count while varying integer successes. A credible interval is a posterior probability statement conditional on that model; it need not have exact frequentist coverage for every parameter.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.5" />
+
 
 Compare posterior curves for several Beta priors on one small Bernoulli dataset. Transform to odds and include the density Jacobian. Generate posterior predictive counts and distinguish parameter uncertainty from new-observation randomness.
 

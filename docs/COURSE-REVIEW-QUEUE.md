@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 136 have current partial AI-assisted source mappings; 151 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 142 have current partial AI-assisted source mappings; 132 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -186,27 +186,27 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA5.5 Wave equation | 9 / 9 | 4 | 3 | linear_ode_MA5.5, pde_modes_lab |
 | MA5.6 Laplace and Poisson equations with separation of variables | 9 / 9 | 4 | 3 | linear_ode_MA5.6 |
 | MA5.7 Green's functions for PDEs | 9 / 9 | 4 | 3 | linear_ode_MA5.7 |
-| MA6.1 Analytic functions and Cauchy-Riemann | 6 / 6 | 2 | 0 | pending |
-| MA6.2 Contour integration and Cauchy's theorem | 6 / 6 | 2 | 0 | pending |
-| MA6.3 Residues and real integrals | 6 / 6 | 2 | 0 | pending |
-| MA6.4 Laurent series and singularities | 6 / 6 | 2 | 0 | pending |
-| MA6.5 Conformal maps | 6 / 6 | 2 | 0 | pending |
-| MA6.6 Branch cuts and analytic continuation | 6 / 6 | 2 | 0 | complex_branch_explorer |
-| MA7.1 Gamma and beta functions | 6 / 6 | 2 | 0 | pending |
-| MA7.2 Legendre polynomials and spherical harmonics | 6 / 6 | 2 | 0 | legendre_explorer |
-| MA7.3 Bessel functions | 6 / 6 | 2 | 0 | pending |
-| MA7.4 Hermite and Laguerre polynomials | 6 / 6 | 2 | 0 | pending |
-| MA7.5 Asymptotic methods (saddle point, WKB) | 6 / 6 | 2 | 0 | pending |
-| MA8.1 Probability axioms and random variables | 6 / 6 | 2 | 0 | pending |
-| MA8.2 Distributions and the central limit theorem | 6 / 6 | 2 | 0 | pending |
-| MA8.3 Markov chains and Poisson processes | 6 / 6 | 2 | 0 | pending |
-| MA8.4 Estimation and hypothesis testing | 6 / 6 | 2 | 0 | pending |
-| MA8.5 Bayesian inference | 6 / 6 | 2 | 0 | pending |
-| MA8.6 MCMC | 6 / 6 | 2 | 0 | pending |
-| MA8.7 Error analysis and fitting | 6 / 6 | 2 | 0 | pending |
-| MA9.1 Euler-Lagrange equation | 6 / 6 | 2 | 0 | pending |
-| MA9.2 Constraints and Lagrange multipliers in functionals | 6 / 6 | 2 | 0 | pending |
-| MA9.3 Noether's theorem (mathematical form) | 6 / 6 | 2 | 0 | pending |
+| MA6.1 Analytic functions and Cauchy-Riemann | 9 / 9 | 4 | 3 | advanced_math_MA6.1 |
+| MA6.2 Contour integration and Cauchy's theorem | 9 / 9 | 4 | 3 | advanced_math_MA6.2 |
+| MA6.3 Residues and real integrals | 9 / 9 | 4 | 3 | advanced_math_MA6.3 |
+| MA6.4 Laurent series and singularities | 9 / 9 | 4 | 3 | advanced_math_MA6.4 |
+| MA6.5 Conformal maps | 9 / 9 | 4 | 3 | advanced_math_MA6.5 |
+| MA6.6 Branch cuts and analytic continuation | 9 / 9 | 4 | 3 | advanced_math_MA6.6, complex_branch_explorer |
+| MA7.1 Gamma and beta functions | 9 / 9 | 4 | 3 | advanced_math_MA7.1 |
+| MA7.2 Legendre polynomials and spherical harmonics | 9 / 9 | 4 | 3 | advanced_math_MA7.2, legendre_explorer |
+| MA7.3 Bessel functions | 9 / 9 | 4 | 3 | advanced_math_MA7.3 |
+| MA7.4 Hermite and Laguerre polynomials | 9 / 9 | 4 | 3 | advanced_math_MA7.4 |
+| MA7.5 Asymptotic methods (saddle point, WKB) | 9 / 9 | 4 | 3 | advanced_math_MA7.5 |
+| MA8.1 Probability axioms and random variables | 9 / 9 | 4 | 3 | advanced_math_MA8.1 |
+| MA8.2 Distributions and the central limit theorem | 9 / 9 | 4 | 3 | advanced_math_MA8.2 |
+| MA8.3 Markov chains and Poisson processes | 9 / 9 | 4 | 3 | advanced_math_MA8.3 |
+| MA8.4 Estimation and hypothesis testing | 9 / 9 | 4 | 3 | advanced_math_MA8.4 |
+| MA8.5 Bayesian inference | 9 / 9 | 4 | 3 | advanced_math_MA8.5 |
+| MA8.6 MCMC | 9 / 9 | 4 | 3 | advanced_math_MA8.6 |
+| MA8.7 Error analysis and fitting | 9 / 9 | 4 | 3 | advanced_math_MA8.7 |
+| MA9.1 Euler-Lagrange equation | 9 / 9 | 4 | 3 | advanced_math_MA9.1 |
+| MA9.2 Constraints and Lagrange multipliers in functionals | 9 / 9 | 4 | 3 | advanced_math_MA9.2 |
+| MA9.3 Noether's theorem (mathematical form) | 9 / 9 | 4 | 3 | advanced_math_MA9.3 |
 | MB1.1 Inequalities, functions and graphs | 7 / 7 | 3 | 3 | pending |
 | MB1.2 Logs, exponentials, complex numbers | 7 / 7 | 3 | 3 | pending |
 | MB1.3 Sequences, series, binomial theorem | 7 / 7 | 3 | 3 | pending |

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find Γ(6) using Γ(x+1)=xΓ(x).",
+      "answer": "120",
+      "hint": "Use Γ(n)=(n−1)!.",
+      "explanation": "Γ(6)=5!=120.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find B(2,3).",
+      "answer": "0.08333333333333333",
+      "hint": "Use Γ(2)Γ(3)/Γ(5).",
+      "explanation": "Use Γ(2)Γ(3)/Γ(5). Result: 0.083333333333.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "May the positive-argument beta integral be used for arbitrary negative endpoint exponents without a convergence check?",
+      "answer": "No; convergence or a separate analytic continuation is needed.",
+      "options": [
+        "Yes; the factorial identity removes all endpoint restrictions.",
+        "No; convergence or a separate analytic continuation is needed."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "For the defining real beta integral, both parameters must be positive.",
+      "misconceptions": {
+        "Yes; the factorial identity removes all endpoint restrictions.": "An algebraic identity does not establish convergence of an improper integral."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Recurrence extends Γ meromorphically with simple poles at zero and the negative
 
 For large positive x, Stirling’s leading form is $\Gamma(x+1)\sim\sqrt{2\pi x}(x/e)^x$. The ratio tends to one, not equality at finite x. Logarithmic evaluation avoids overflow for large factorials; log Γ is often the appropriate numerical object. Asymptotic corrections require a stated regime and remainder control. A symbolic extension of a normalization constant does not guarantee a positive, integrable probability density outside its parameter domain.
 
+
+### Derivation and transfer
+
+Integration by parts gives Γ(x+1)=xΓ(x) for positive x, with Γ(1)=1. Consequently Γ(n)=(n−1)! for positive integers, not n!. The beta integral gives B(p,q)=Γ(p)Γ(q)/Γ(p+q) when both real arguments are positive.
+
+Endpoint convergence is a hypothesis, not a consequence of manipulating a factorial symbol. The display integrates the beta density shape only as an unnormalized function on a closed interior interval. It does not perform analytic continuation or evaluate singular endpoint values.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA7.1" />
+
 
 Numerically integrate beta kernels for several positive a,b and compare the gamma-ratio normalization. Increase resolution near endpoints when either parameter is below one. Then set a=0 and examine truncated lower limits tending to zero: distinguish divergence of the integral from formal analytic continuation.
 

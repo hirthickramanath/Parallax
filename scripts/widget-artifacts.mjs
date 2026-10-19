@@ -57,21 +57,23 @@ export function widgetArtifacts(root, source, lesson = {}) {
     }
   };
   for (const name of new Set(names)) {
-    const config = name.startsWith("chemistry_")
-      ? "chemistry-investigations.ts"
-      : name.startsWith("physical_chemistry_")
-        ? "physical-chemistry-investigations.ts"
-        : name.startsWith("thermal_optics_")
-          ? "thermal-optics-investigations.ts"
-          : name.startsWith("em_")
-            ? "em-investigations.ts"
-            : name.startsWith("astro_")
-              ? "astro-investigations.ts"
-              : name.startsWith("multivariable_")
-                ? "multivariable-investigations.ts"
-                : name.startsWith("linear_ode_")
-                  ? "linear-ode-investigations.ts"
-                  : null;
+    const config = name.startsWith("advanced_math_")
+      ? "advanced-math-investigations.ts"
+      : name.startsWith("chemistry_")
+        ? "chemistry-investigations.ts"
+        : name.startsWith("physical_chemistry_")
+          ? "physical-chemistry-investigations.ts"
+          : name.startsWith("thermal_optics_")
+            ? "thermal-optics-investigations.ts"
+            : name.startsWith("em_")
+              ? "em-investigations.ts"
+              : name.startsWith("astro_")
+                ? "astro-investigations.ts"
+                : name.startsWith("multivariable_")
+                  ? "multivariable-investigations.ts"
+                  : name.startsWith("linear_ode_")
+                    ? "linear-ode-investigations.ts"
+                    : null;
     if (config) {
       const configuration = fs.readFileSync(
         path.join(root, "src/lib", config),

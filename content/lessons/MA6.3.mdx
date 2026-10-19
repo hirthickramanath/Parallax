@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "Find the residue of exp(z)/(z−ln2) at z=ln2.",
+      "answer": "2",
+      "hint": "Evaluate the analytic numerator at the simple pole.",
+      "explanation": "Evaluate the analytic numerator at the simple pole. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "Find ∫ from −∞ to ∞ of dx/(x²+4).",
+      "answer": "1.5707963267948966",
+      "hint": "Use the upper pole at 2i and a vanishing large semicircle.",
+      "explanation": "Use the upper pole at 2i and a vanishing large semicircle. Result: 1.570796326795.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Do residues alone prove that a closing arc contributes zero?",
+      "answer": "No; a separate estimate is needed.",
+      "options": [
+        "Yes; every large arc vanishes.",
+        "No; a separate estimate is needed."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Growth and contour geometry control the arc.",
+      "misconceptions": {
+        "Yes; every large arc vanishes.": "Growth and contour geometry control the arc."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ An exponential eⁱᵏᶻ decays in the upper half-plane for k>0 and in the lowe
 
 A pole on the real axis requires a declared indentation or principal-value prescription. A Cauchy principal value can exist even when the ordinary improper integral fails; it is not interchangeable with that integral. Branch points require branch cuts and branch-contour accounting. Before interpreting any result physically, distinguish a mathematical prescription from a causal or radiation condition supplied by the model.
 
+
+### Derivation and transfer
+
+For a simple pole at a, the residue is the coefficient of (z−a)^−1. Thus exp(z)/(z−a) has residue exp(a). A contour enclosing that pole once positively has integral 2πi exp(a). Poles outside the contour contribute nothing.
+
+A real improper integral derived by contour closure also needs a bound for the arc and a prescription for any real-axis poles. Residues alone do not justify discarding an arc or interchanging limits. The display varies a real pole location inside an assumed admissible contour; it is not a contour-selection algorithm.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA6.3" />
+
 
 Compute a real-axis truncated integral of 1/(x²+a²) together with its upper semicircle contribution for growing radii. Compare their complex sum with 2πi times the residue. Then try 1/x near zero and report the two one-sided improper integrals separately from a symmetric principal value.
 

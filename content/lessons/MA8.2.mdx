@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "For independent observations with standard deviation 3 and n=36, find standard error of the mean.",
+      "answer": "0.5",
+      "hint": "Use σ/√n.",
+      "explanation": "Use σ/√n. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "To halve standard error at fixed variance, find the sample-size multiplier.",
+      "answer": "4",
+      "hint": "Error scales as n^−1/2.",
+      "explanation": "Error scales as n^−1/2. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does the central limit theorem make the individual raw observations normally distributed?",
+      "answer": "No; it concerns a suitably standardized aggregate.",
+      "options": [
+        "Yes; all raw distributions change to normal as n grows.",
+        "No; it concerns a suitably standardized aggregate."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Distinguish data distribution from sampling distribution.",
+      "misconceptions": {
+        "Yes; all raw distributions change to normal as n grows.": "Distinguish data distribution from sampling distribution."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Bernoulli sums are binomial under identical independent trials. Poisson limits a
 
 Correlated time-series samples require covariance terms, not simply σ²/n. Infinite variance, changing populations or strong dependence require other limit theorems or direct models. Report whether the uncertainty formula describes observations, a sample mean or an inferred parameter; these are not interchangeable objects.
 
+
+### Derivation and transfer
+
+For independent identically distributed observations with finite variance σ², the mean has variance σ²/n. A central limit theorem describes the standardized sum approaching a normal law under suitable conditions, not the raw data becoming Gaussian. Heavy tails can invalidate the finite-variance assumptions.
+
+The standard-error display isolates the square-root scaling under independence. Increasing sample size cannot remove a fixed calibration bias, and autocorrelation reduces effective information. Convergence speed depends on the parent distribution and the statistic.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.2" />
+
 
 Generate explicitly simulated Bernoulli, exponential and heavy-tailed samples. Compare histograms of individual values and averages over repeated batches. Plot mean-error scaling and label when variance assumptions fail; do not interpret one finite simulated histogram as a proof of a limit theorem.
 

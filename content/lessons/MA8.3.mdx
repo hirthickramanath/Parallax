@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-1",
+      "prompt": "A Poisson count has mean 2. Find zero-count probability.",
+      "answer": "0.1353352832366127",
+      "hint": "Use exp(−mean).",
+      "explanation": "Use exp(−mean). Result: 0.135335283237.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-transfer-2",
+      "prompt": "At rate 3 events per unit time over time 2, find count variance.",
+      "answer": "6",
+      "hint": "A homogeneous Poisson count has variance λt.",
+      "explanation": "A homogeneous Poisson count has variance λt. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "advanced-math-assumptions",
+      "prompt": "Does matching an observed mean alone establish a Poisson process?",
+      "answer": "No; variance, dependence and timing must also be checked.",
+      "options": [
+        "Yes; any count with that mean is Poisson.",
+        "No; variance, dependence and timing must also be checked."
+      ],
+      "hint": "Check the hypotheses and the scope of the conclusion.",
+      "explanation": "Many non-Poisson models share a mean.",
+      "misconceptions": {
+        "Yes; any count with that mean is Poisson.": "Many non-Poisson models share a mean."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ The waiting time to the first event satisfies P(T>t)=P(N(t)=0)=e⁻λt, so it is
 
 Real photon or event streams can include dead time, bunching, changing source intensity or instrumental triggers. These effects can violate a simple Poisson process even if a limited histogram looks plausible. State whether transitions, waiting times or aggregate counts were observed and test the corresponding dependence assumptions.
 
+
+### Derivation and transfer
+
+A homogeneous Poisson process has count mean and variance λt, with P(N=0)=exp(−λt). Counts on disjoint intervals are independent under the model. A Markov property alone neither forces exponential holding times in every representation nor establishes stationarity.
+
+The display shows only a zero-event probability. Time-varying intensity requires an integrated rate, while correlated bursts can invalidate Poisson assumptions. Testing a count model needs more than matching its mean.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="advanced_math_MA8.3" />
+
 
 Compute successive distributions for a two-state alternating chain and for a chain with positive self-transition probabilities. Simulate Poisson arrival times from exponential waits and compare interval counts, while marking all values as synthetic. Add dead time and identify the broken assumptions.
 

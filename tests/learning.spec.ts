@@ -1901,3 +1901,23 @@ test("bonding and organic investigations keep discrete charges, conformations an
     page.getByText(/Orbital energy for α=0, β=−1: -1.0000/),
   ).toBeVisible();
 });
+
+test("advanced maths investigations expose assumptions, integer sampling and variational constants", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA8.5");
+  await expect(
+    page.getByText(/Posterior mean under Beta\(1,1\): 0.6667/),
+  ).toBeVisible();
+  await page.getByLabel("Integer successes", { exact: true }).fill("7");
+  await expect(
+    page.getByText(/Posterior mean under Beta\(1,1\): 0.8000/),
+  ).toBeVisible();
+  await page.goto("/lesson/MA7.3");
+  await page.getByLabel("Dimensionless radius", { exact: true }).fill("0");
+  await expect(page.getByText(/J0\(kr\): 1.0000/)).toBeVisible();
+  await page.goto("/lesson/MA9.3");
+  await page.getByLabel("Phase ωt", { exact: true }).fill("2");
+  await expect(page.getByText(/Total energy: 0.5000/)).toBeVisible();
+});
