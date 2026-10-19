@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For γ=1 and AV=ln2 in the stated attenuation model, find k/k0.",
+      "answer": "0.5",
+      "hint": "Evaluate exp(−ln2).",
+      "explanation": "Evaluate exp(−ln2). The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "A molecule population undergoes first-order destruction with k=1 for time 2ln2. Find surviving fraction.",
+      "answer": "0.25",
+      "hint": "Use exp(−kt).",
+      "explanation": "Use exp(−kt). The value in the stated units is 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does suppressing one photodestruction channel alone fix the abundance of an interstellar organic molecule?",
+      "answer": "No; formation and competing losses/transport also enter.",
+      "options": [
+        "Yes; shielding uniquely determines every abundance.",
+        "No; formation and competing losses/transport also enter."
+      ],
+      "explanation": "A network balance requires all relevant channels.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; shielding uniquely determines every abundance.": "A network balance requires all relevant channels."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ An astronomical molecular identification needs multiple consistent transitions w
 
 Organic means carbon-based chemistry in the relevant convention, not biological production. A prebiotic precursor can be produced abiotically and still face major transport, concentration, stability and subsequent-reaction barriers before a biological pathway is relevant. Chiral excess, isotopic ratios or complex mixtures also need alternative-source and selection analyses. Keep abundance measurements, reaction-network hypotheses and origin claims at their different evidentiary levels.
 
+
+### Derive, test and transfer
+
+A simple dust-attenuated photodestruction coefficient is k=k0 exp(−γAV) for a specified effective extinction parameter. More shielding reduces that one loss channel, but molecular abundance also depends on formation, transport and other destruction reactions.
+
+Laboratory formation of an organic building block under chosen conditions does not establish that those conditions occurred in every interstellar environment or that life arose. Radiation fields, temperature, surfaces and timescales must be matched. The display is a one-channel attenuation toy, not a solved prebiotic network or a biosignature detection.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH6.8" />
+
 
 Build a small explicitly hypothetical formation/destruction network and vary one rate at a time. Compare its relaxation time with a stated environmental lifetime. For a candidate line assignment, require a table of predicted and observed features with uncertainties rather than one selected coincidence.
 

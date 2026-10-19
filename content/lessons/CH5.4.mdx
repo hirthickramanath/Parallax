@@ -77,6 +77,45 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For tetrahedra with no bridging oxygen corners, find O/Si ratio.",
+      "answer": "4",
+      "hint": "Each of four corners belongs to one tetrahedron.",
+      "explanation": "Each of four corners belongs to one tetrahedron. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For tetrahedra with four bridging oxygen corners, find average O/Si ratio.",
+      "answer": "2",
+      "hint": "Each shared oxygen contributes one half to each tetrahedron.",
+      "explanation": "Each shared oxygen contributes one half to each tetrahedron. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does sharing a silicate corner mean an oxygen atom physically disappears?",
+      "answer": "No; it is counted once globally and shared by neighboring tetrahedra.",
+      "options": [
+        "Yes; bond formation destroys the shared oxygen nucleus.",
+        "No; it is counted once globally and shared by neighboring tetrahedra."
+      ],
+      "explanation": "Stoichiometric accounting preserves atoms.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; bond formation destroys the shared oxygen nucleus.": "Stoichiometric accounting preserves atoms."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +192,19 @@ Amorphous and crystalline grains with similar bulk elements can have different v
 
 An opacity-based dust mass estimate is conditional on optical depth, temperature distribution and adopted material coefficients. Preserve laboratory optical-data provenance and distinguish synthetic spectra from observed mineral identification. This unit supports astrochemical prerequisites without adding a separate full geoscience course to Parallax.
 
+
+### Derive, test and transfer
+
+An isolated SiO₄ tetrahedron has four oxygens per silicon. When a tetrahedron has n bridging oxygen corners, each shared oxygen is counted one half per tetrahedron, giving average O/Si=4−n/2. Full corner sharing gives the SiO₂ framework ratio rather than four independent oxygens per silicon.
+
+Charge-balancing cations, aluminum substitution and network topology add chemical information beyond that mean ratio. Grain condensation and survival also depend on thermodynamics and kinetics. The display relates a chosen mean network connectivity to an oxygen number density; it is not a full mineral structure or a computed astrophysical condensation sequence.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH5.4" />
+
 
 Compare synthetic amorphous/crystalline opacity curves only with declared source/model coefficients. Vary grain temperature and mass separately to expose dust-emission degeneracy.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For a Lennard–Jones potential with σ=1, find equilibrium separation.",
+      "answer": "1.122462048309373",
+      "hint": "Differentiate the pair potential and choose the positive minimum.",
+      "explanation": "Differentiate the pair potential and choose the positive minimum. The value in the stated units is 1.122462048309.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For that potential with ε=3, find minimum potential energy.",
+      "answer": "-3",
+      "hint": "At the minimum U=−ε.",
+      "explanation": "At the minimum U=−ε. The value in the stated units is -3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Is the Lennard–Jones parameter σ the location of its potential minimum?",
+      "answer": "No; it is a zero crossing and the minimum is at 2^(1/6)σ.",
+      "options": [
+        "Yes; every length parameter is an equilibrium distance.",
+        "No; it is a zero crossing and the minimum is at 2^(1/6)σ."
+      ],
+      "explanation": "Potential parameters must be interpreted from the actual function.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every length parameter is an equilibrium distance.": "Potential parameters must be interpreted from the actual function."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A Lennard–Jones 12–6 potential is a convenient empirical model combining a s
 
 Hydrogen bonding often involves an X–H donor and an acceptor electron-density region with strong geometry dependence. Electrostatics, induction, exchange and charge-transfer language describe parts of a coupled electronic interaction rather than universally separable observables. Networks, solvent competition and zero-point motion matter; counting hydrogen atoms alone does not predict boiling points or binding strength.
 
+
+### Derive, test and transfer
+
+A Lennard–Jones toy potential U=4ε[(σ/r)¹²−(σ/r)⁶] combines a steep repulsive term with a longer-range attraction. Setting its derivative to zero gives rmin=2^(1/6)σ and Umin=−ε. The parameter σ is a zero crossing, not the equilibrium separation.
+
+The inverse-sixth attraction has a dispersion interpretation in an appropriate nonretarded regime, while the inverse-twelfth repulsion is a convenient approximation rather than an exact universal electron-overlap law. Hydrogen bonding and anisotropic multipoles require additional structure. The display is a pair potential, not a full liquid simulation or a universal molecular interaction.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH4.5" />
+
 
 Plot an explicitly labelled model pair potential and locate its minimum and zero. Compare fixed orientations before thermal averaging. Explain why adsorption on an actual grain surface may need many-body, surface and temperature information beyond one gas-phase pair curve.
 

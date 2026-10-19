@@ -1865,3 +1865,39 @@ test("physical chemistry investigations retain logarithmic references, electron 
     page.getByText(/Variational energy \(ħ=m=1\): 0.6250/),
   ).toBeVisible();
 });
+
+test("bonding and organic investigations keep discrete charges, conformations and orbital indices explicit", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/CH4.1");
+  await expect(
+    page.getByText(/Formal charge on nitrogen: 0.0000/),
+  ).toBeVisible();
+  await page
+    .getByLabel("Nonbonding electron count on N", { exact: true })
+    .fill("0");
+  await page.getByLabel("Bond-order sum around N", { exact: true }).fill("4");
+  await expect(
+    page.getByText(/Formal charge on nitrogen: 1.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/CH6.2");
+  await expect(
+    page.getByText(/Relative torsional energy: 2.0000/),
+  ).toBeVisible();
+  await page
+    .getByLabel("Torsion angle φ (degrees)", { exact: true })
+    .fill("60");
+  await expect(
+    page.getByText(/Relative torsional energy: 0.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/CH6.6");
+  await page.getByLabel("Orbital index m (mod N)", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Orbital index m (mod N)", { exact: true }),
+  ).toHaveValue("1");
+  await expect(
+    page.getByText(/Orbital energy for α=0, β=−1: -1.0000/),
+  ).toBeVisible();
+});

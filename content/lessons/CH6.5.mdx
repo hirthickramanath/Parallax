@@ -79,6 +79,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For the stated ideal addition model, K=2 and nucleophile activity 1. Find equilibrium product fraction.",
+      "answer": "0.6666666666666666",
+      "hint": "Use K a/(1+K a).",
+      "explanation": "Use K a/(1+K a). The value in the stated units is 0.666666666667.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "With RT=1 and K=4, find standard reaction Gibbs energy.",
+      "answer": "-1.3862943611198906",
+      "hint": "Use −RT lnK.",
+      "explanation": "Use −RT lnK. The value in the stated units is -1.38629436112.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does an equilibrium product fraction by itself determine the elementary rate law?",
+      "answer": "No; multiple mechanisms can share the same equilibrium.",
+      "options": [
+        "Yes; thermodynamic conversion uniquely fixes every step rate.",
+        "No; multiple mechanisms can share the same equilibrium."
+      ],
+      "explanation": "Equilibrium and kinetics are separate constraints.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; thermodynamic conversion uniquely fixes every step rate.": "Equilibrium and kinetics are separate constraints."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +194,19 @@ Degree of unsaturation for conventional neutral closed-shell C/H/N/halogen formu
 
 Chemoselectivity distinguishes reactions at different functional groups; regioselectivity distinguishes positions and stereoselectivity spatial products. These categories describe observations, while a mechanism attempts to explain them. Interstellar analogues need environment-specific activation and energy-removal pathways rather than copying a bulk-solution scheme unchanged.
 
+
+### Derive, test and transfer
+
+For a simple reversible carbonyl addition C+Nu⇌P with nucleophile activity held by a reservoir, mass action gives P/C=K aNu. Conserving carbonyl-derived material gives product fraction K aNu/(1+K aNu). The fraction is an equilibrium result, not an elementary kinetic rate law.
+
+Acid/base catalysis, proton transfers and hydration/solvent effects can change the relevant pathway and species definitions. Functional-group reactivity depends on electronics and conditions rather than one universal activity parameter. The investigation makes the reservoir and ideality assumptions explicit so equilibrium conversion is not confused with mechanism or speed.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH6.5" />
+
 
 Build several constitutional structures sharing a formula and count DBE. For a carbonyl sketch, track the electron pair and total charge during an addition step, then compare a derivative with a plausible leaving group. Use the exercise to state which selectivity prediction needs more reagent information.
 

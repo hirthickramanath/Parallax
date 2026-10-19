@@ -77,6 +77,44 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "Find the ideal tetrahedral angle arccos(−1/3) in degrees.",
+      "answer": "109.47122063449069",
+      "hint": "Use the dot product between tetrahedral directions.",
+      "explanation": "Use the dot product between tetrahedral directions. The value in the stated units is 109.471220634491.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "How many p-orbital contributions are mixed with one s orbital in an ideal sp² construction?",
+      "answer": "2",
+      "hint": "Read the superscript as the number of p contributions.",
+      "explanation": "Read the superscript as the number of p contributions. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does assigning sp³ guarantee every actual molecular bond angle is exactly the ideal tetrahedral angle?",
+      "answer": "No; electron distribution and ligand/lone-pair effects can distort it.",
+      "options": [
+        "Yes; a hybrid label is an exact universal geometry measurement.",
+        "No; electron distribution and ligand/lone-pair effects can distort it."
+      ],
+      "explanation": "Hybridization is a useful approximate representation, not a complete observable geometry law.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a hybrid label is an exact universal geometry measurement.": "Hybridization is a useful approximate representation, not a complete observable geometry law."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +191,19 @@ For ideal tetrahedral directions, $\cos\theta=-1/3$, giving about 109.47°. Actu
 
 Valence-bond and molecular-orbital descriptions are alternative expansions of electronic structure, not necessarily mutually exclusive physical realities. Correlation, resonance and basis completeness control their quantitative quality. Simple d-orbital hybrid labels for hypervalent main-group molecules should not be treated as proof of substantial d participation without electronic evidence.
 
+
+### Derive, test and transfer
+
+For equivalent ideal spn hybrids made from one s and n p contributions, orthogonality yields cosθ=−1/n in the simple directed-hybrid construction. This gives linear sp, trigonal sp² and tetrahedral sp³ reference angles. These are model geometries, not exact bond-angle laws for every molecule.
+
+Lone pairs, unequal ligands, multiple bonding and the actual electronic wavefunction can shift a geometry away from an ideal hybrid picture. Hybrid orbitals also depend on how occupied states are represented; they are not unique directly observable objects. Use the molecular-geometry explorer to compare ideal electron-domain geometry with actual molecular shape rather than treating a hybrid label as the complete explanation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="molecular_geometry_explorer" />
+
 
 Construct four tetrahedral unit vectors and verify their pairwise dot products. Compare an ideal geometry with a distorted molecule and identify which energetic/electronic assumptions are missing from the hybrid label alone.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For octahedral d³ occupation t₂g³ eg⁰, find CFSE in units of Δ.",
+      "answer": "-1.2",
+      "hint": "Multiply three lower-orbital electrons by −0.4.",
+      "explanation": "Multiply three lower-orbital electrons by −0.4. The value in the stated units is -1.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For low-spin d⁶ occupation t₂g⁶ eg⁰, find the field contribution alone in units of Δ.",
+      "answer": "-2.4",
+      "hint": "Pairing energy is explicitly not included in this requested contribution.",
+      "explanation": "Pairing energy is explicitly not included in this requested contribution. The value in the stated units is -2.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Can the ligand-field stabilization term alone always settle high-spin versus low-spin energy?",
+      "answer": "No; pairing and other electronic terms must be compared.",
+      "options": [
+        "Yes; one orbital-energy sum contains every contribution.",
+        "No; pairing and other electronic terms must be compared."
+      ],
+      "explanation": "The requested field contribution is only part of the total energy.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; one orbital-energy sum contains every contribution.": "The requested field contribution is only part of the total energy."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Ligand-field theory treats donor/acceptor mixing with metal orbitals. π donatio
 
 Electronic spectra, magnetic moments, geometry and vibrational shifts test these models together. Spin-only moments neglect orbital and spin-orbit contributions, which can be significant. Jahn–Teller distortions and excited-state effects can lower ideal symmetry. Do not infer a unique bonding mechanism from one absorption peak or a single formal d count.
 
+
+### Derive, test and transfer
+
+In a simple octahedral ligand-field convention, t₂g orbital energies are −0.4Δ and eg energies are +0.6Δ relative to their weighted barycenter. The crystal-field stabilization bookkeeping is therefore (−0.4 nt+0.6 ne)Δ. Occupations and pair energies are separate inputs.
+
+High-spin versus low-spin selection compares splitting with pairing and other electronic energies; CFSE alone is not always the full energy difference. Geometry, covalency and spin-orbit coupling can defeat the simplest ionic picture. The display counts occupancy contributions and does not assert that every slider combination is a ground-state configuration for a specified metal complex.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH4.7" />
+
 
 Fill explicitly stated octahedral diagrams for d⁴ through d⁷ in both limiting spin regimes. Count unpaired electrons and orbital energy separately from pairing. Compare with a tetrahedral diagram to identify which assumptions change.
 

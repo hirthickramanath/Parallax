@@ -87,3 +87,7 @@ PH4–PH5 now have 48 additional questions, three two-dimensional probes and ele
 ## Physical/molecular chemistry follow-up
 
 CH1–CH2 now have 57 additional questions and nineteen embedded investigations. At this checkpoint partial mappings total 124 and 179 lessons lack explicit widgets. [Release details](PHYSICAL-MOLECULAR-CHEMISTRY-EXPANSION.md); independent approval remains zero.
+
+## Bonding, astrochemistry and organic chemistry follow-up
+
+Twenty-eight more chemistry lessons have 84 added questions and embedded investigations. Current partial mappings: 136; lessons without explicit widgets: 151; independent approvals: zero. [Scope and validation](BONDING-ORGANIC-CHEMISTRY-EXPANSION.md).

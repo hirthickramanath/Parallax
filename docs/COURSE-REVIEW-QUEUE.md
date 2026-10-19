@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 124 have current partial AI-assisted source mappings; 179 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 136 have current partial AI-assisted source mappings; 151 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -69,9 +69,9 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS9.8 Observational cosmology and tensions (H0, S8) | 9 / 9 | 4 | 3 | astro_AS9.8 |
 | CB.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | pending |
 | CB.2 Bonding and molecular shapes | 11 / 11 | 6 | 5 | molecular_geometry_explorer |
-| CB.3 Thermochemistry and equilibrium | 7 / 7 | 3 | 3 | pending |
-| CB.4 Kinetics and electrochemistry | 7 / 7 | 3 | 3 | pending |
-| CB.5 Organic functional groups overview | 7 / 7 | 3 | 3 | pending |
+| CB.3 Thermochemistry and equilibrium | 10 / 10 | 5 | 6 | chemistry_CB.3 |
+| CB.4 Kinetics and electrochemistry | 10 / 10 | 5 | 6 | chemistry_CB.4 |
+| CB.5 Organic functional groups overview | 10 / 10 | 5 | 6 | chemistry_CB.5 |
 | CH1.1 Chemical thermodynamics and chemical potential | 9 / 9 | 4 | 3 | physical_chemistry_CH1.1 |
 | CH1.10 Ionic solutions and conductivity | 9 / 9 | 4 | 3 | physical_chemistry_CH1.10 |
 | CH1.11 Transport: diffusion, viscosity and thermal conduction | 9 / 9 | 4 | 3 | physical_chemistry_CH1.11 |
@@ -91,31 +91,31 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CH2.4 Rotational and vibrational spectroscopy | 9 / 9 | 4 | 3 | physical_chemistry_CH2.4 |
 | CH2.5 Electronic spectroscopy and selection rules | 9 / 9 | 4 | 3 | physical_chemistry_CH2.5 |
 | CH2.6 NMR and EPR basics | 9 / 9 | 4 | 3 | physical_chemistry_CH2.6 |
-| CH3.1 Molecules in the interstellar medium | 6 / 6 | 2 | 0 | pending |
-| CH3.2 Gas-phase and grain-surface reaction networks | 6 / 6 | 2 | 0 | pending |
-| CH3.3 Molecular spectral fingerprints in radio astronomy | 6 / 6 | 2 | 0 | pending |
-| CH3.4 Prebiotic chemistry and astrobiology | 6 / 6 | 2 | 0 | pending |
-| CH3.5 Computational chemistry mini-project | 6 / 6 | 2 | 0 | pending |
-| CH4.1 Lewis structures, formal charge and resonance | 6 / 6 | 2 | 0 | pending |
-| CH4.2 Valence-bond theory, hybridization and its limits | 6 / 6 | 2 | 0 | pending |
-| CH4.3 Molecular orbitals in diatomic molecules | 6 / 6 | 2 | 0 | pending |
-| CH4.4 Symmetry and qualitative bonding in polyatomic molecules | 6 / 6 | 2 | 0 | pending |
-| CH4.5 Intermolecular forces and hydrogen bonding | 6 / 6 | 2 | 0 | pending |
-| CH4.6 Metallic and solid-state bonding | 6 / 6 | 2 | 0 | pending |
-| CH4.7 Coordination bonding and ligand-field models | 6 / 6 | 2 | 0 | pending |
-| CH4.8 Bonding evidence from spectroscopy and computation | 6 / 6 | 2 | 0 | pending |
-| CH5.1 Periodicity and selected s/p-block trends | 6 / 6 | 2 | 0 | pending |
-| CH5.2 Transition metals, oxidation states and coordination | 6 / 6 | 2 | 0 | pending |
-| CH5.3 Selected f-block chemistry and electronic structure | 6 / 6 | 2 | 0 | pending |
-| CH5.4 Minerals, silicates and refractory astrophysical material | 6 / 6 | 2 | 0 | pending |
-| CH6.1 Structure, resonance and acid-base reasoning | 6 / 6 | 2 | 0 | pending |
-| CH6.2 Stereochemistry and conformations | 6 / 6 | 2 | 0 | pending |
-| CH6.3 Electron-pair movement and elementary mechanisms | 6 / 6 | 2 | 0 | pending |
-| CH6.4 Substitution and elimination | 6 / 6 | 2 | 0 | pending |
-| CH6.5 Addition, carbonyl chemistry and functional groups | 6 / 6 | 2 | 0 | pending |
-| CH6.6 Aromaticity and aromatic reactions | 6 / 6 | 2 | 0 | pending |
-| CH6.7 Organic spectroscopy and molecular identification | 6 / 6 | 2 | 0 | pending |
-| CH6.8 Interstellar organics and prebiotic reaction questions | 6 / 6 | 2 | 0 | pending |
+| CH3.1 Molecules in the interstellar medium | 9 / 9 | 4 | 3 | chemistry_CH3.1 |
+| CH3.2 Gas-phase and grain-surface reaction networks | 9 / 9 | 4 | 3 | chemistry_CH3.2 |
+| CH3.3 Molecular spectral fingerprints in radio astronomy | 9 / 9 | 4 | 3 | chemistry_CH3.3 |
+| CH3.4 Prebiotic chemistry and astrobiology | 9 / 9 | 4 | 3 | bayes_explorer |
+| CH3.5 Computational chemistry mini-project | 9 / 9 | 4 | 3 | physical_chemistry_CH2.3 |
+| CH4.1 Lewis structures, formal charge and resonance | 9 / 9 | 4 | 3 | chemistry_CH4.1 |
+| CH4.2 Valence-bond theory, hybridization and its limits | 9 / 9 | 4 | 3 | molecular_geometry_explorer |
+| CH4.3 Molecular orbitals in diatomic molecules | 9 / 9 | 4 | 3 | chemistry_CH4.3 |
+| CH4.4 Symmetry and qualitative bonding in polyatomic molecules | 9 / 9 | 4 | 3 | molecular_geometry_explorer |
+| CH4.5 Intermolecular forces and hydrogen bonding | 9 / 9 | 4 | 3 | chemistry_CH4.5 |
+| CH4.6 Metallic and solid-state bonding | 9 / 9 | 4 | 3 | chemistry_CH4.6 |
+| CH4.7 Coordination bonding and ligand-field models | 9 / 9 | 4 | 3 | chemistry_CH4.7 |
+| CH4.8 Bonding evidence from spectroscopy and computation | 9 / 9 | 4 | 3 | chemistry_CH4.8 |
+| CH5.1 Periodicity and selected s/p-block trends | 9 / 9 | 4 | 3 | chemistry_CH5.1 |
+| CH5.2 Transition metals, oxidation states and coordination | 9 / 9 | 4 | 3 | chemistry_CH5.2 |
+| CH5.3 Selected f-block chemistry and electronic structure | 9 / 9 | 4 | 3 | chemistry_CH5.3 |
+| CH5.4 Minerals, silicates and refractory astrophysical material | 9 / 9 | 4 | 3 | chemistry_CH5.4 |
+| CH6.1 Structure, resonance and acid-base reasoning | 9 / 9 | 4 | 3 | chemistry_CH6.1 |
+| CH6.2 Stereochemistry and conformations | 9 / 9 | 4 | 3 | chemistry_CH6.2 |
+| CH6.3 Electron-pair movement and elementary mechanisms | 9 / 9 | 4 | 3 | chemistry_CH6.3 |
+| CH6.4 Substitution and elimination | 9 / 9 | 4 | 3 | chemistry_CH6.4 |
+| CH6.5 Addition, carbonyl chemistry and functional groups | 9 / 9 | 4 | 3 | chemistry_CH6.5 |
+| CH6.6 Aromaticity and aromatic reactions | 9 / 9 | 4 | 3 | chemistry_CH6.6 |
+| CH6.7 Organic spectroscopy and molecular identification | 9 / 9 | 4 | 3 | chemistry_CH6.7 |
+| CH6.8 Interstellar organics and prebiotic reaction questions | 9 / 9 | 4 | 3 | chemistry_CH6.8 |
 | CP1.1 Python and NumPy | 7 / 7 | 3 | 3 | pending |
 | CP1.2 Plotting and visualisation | 7 / 7 | 3 | 3 | pending |
 | CP1.3 Numerical differentiation and integration | 7 / 7 | 3 | 3 | pending |

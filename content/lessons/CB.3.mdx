@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For ideal A⇌B with equilibrium ratio B/A=3 and total amount 8, find product amount B.",
+      "answer": "6",
+      "hint": "Use B=N K/(1+K).",
+      "explanation": "Use B=N K/(1+K). The value in the stated units is 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "With RT=1 and equilibrium constant K=4, find standard reaction Gibbs energy.",
+      "answer": "-1.3862943611198906",
+      "hint": "Use ΔrG°=−RT ln K.",
+      "explanation": "Use ΔrG°=−RT ln K. The value in the stated units is -1.38629436112.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does a thermodynamically favorable standard reaction necessarily convert all reactant into product at equilibrium?",
+      "answer": "No; the finite equilibrium constant and material balance determine composition.",
+      "options": [
+        "Yes; a negative standard Gibbs change implies complete conversion.",
+        "No; the finite equilibrium constant and material balance determine composition."
+      ],
+      "explanation": "Actual activities enter the equilibrium condition.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a negative standard Gibbs change implies complete conversion.": "Actual activities enter the equilibrium condition."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Changing temperature alters K. Adding a catalyst changes rates but not the equil
 
 For a specified reaction, $\Delta_rG=\Delta_rG^\circ+RT\ln Q$ with dimensionless activity quotient $Q$. At equilibrium $\Delta_rG=0$, so $\Delta_rG^\circ=-RT\ln K$. An ideal equal-volume A⇌B example has $K=n_B/n_A$ only under the stated activity approximation. A catalyst does not change the equilibrium thermodynamic states and therefore cannot change $K$ at fixed temperature. It can change the time needed to approach equilibrium. Dynamic equilibrium has nonzero balanced forward and reverse microscopic rates, not immobile molecules.
 
+
+### Derive, test and transfer
+
+For an ideal interconversion A⇌B at fixed temperature, ΔrG=ΔrG°+RT ln(aB/aA). At equilibrium the ratio is K=exp(−ΔrG°/(RT)). If the two activities track amounts in the same dilute volume and total amount is conserved, the product amount is N K/(1+K).
+
+This inference combines thermodynamics with mass conservation; a favorable standard reaction does not mean complete conversion. Real activity coefficients, coupled reactions and heat exchange require further equations. The investigation varies a dimensionless standard-energy change, not a measured kinetic barrier. Equilibrium composition and the time needed to reach it remain distinct questions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="chemistry_CB.3" />
+
 
 Construct a virtual equilibrium table for A⇌B using a fixed total amount. For several trial compositions calculate Q and the sign of ΔrG. Mark the point Q=K. Then change a rate constant pair while preserving their ratio and distinguish approach time from the final composition.
 

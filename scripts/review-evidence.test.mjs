@@ -102,7 +102,7 @@ test("actual partial source ledger matches current drafts and immutable official
   const ledger = JSON.parse(
     fs.readFileSync("content/review/source-inspections.json", "utf8"),
   );
-  assert.equal(ledger.inspections.length, 124);
+  assert.equal(ledger.inspections.length, 136);
   for (const r of ledger.inspections) {
     const source = fs.readFileSync(`content/lessons/${r.lessonId}.mdx`, "utf8");
     assert.equal(r.lessonSha256, sourceFingerprint(source));
@@ -115,6 +115,7 @@ test("actual partial source ledger matches current drafts and immutable official
       "https://github.com/jirilebl/diffyqs",
       "https://github.com/sympy/sympy",
       "https://github.com/openstax/osbooks-astronomy",
+      "https://github.com/openstax/osbooks-organic-chemistry",
     ];
     assert.ok(
       r.sources.every((s) =>

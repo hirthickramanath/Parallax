@@ -1,3 +1,4 @@
+import { chemistryInvestigations } from "../../lib/chemistry-investigations";
 import { physicalChemistryInvestigations } from "../../lib/physical-chemistry-investigations";
 import { thermalOpticsInvestigations } from "../../lib/thermal-optics-investigations";
 import {
@@ -147,6 +148,14 @@ export function Widget({ name }: { name: string }) {
         key={name}
         lessonId={name.slice(19)}
         model={physicalChemistryInvestigations[name.slice(19)]}
+      />
+    );
+  if (name.startsWith("chemistry_") && chemistryInvestigations[name.slice(10)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(10)}
+        model={chemistryInvestigations[name.slice(10)]}
       />
     );
   const Component = widgets[name as keyof typeof widgets];

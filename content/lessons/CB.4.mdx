@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "At fixed prefactor and temperature, an activation barrier decreases by RT ln2. Find rate factor.",
+      "answer": "2",
+      "hint": "The Arrhenius exponential increases by exp(ln2).",
+      "explanation": "The Arrhenius exponential increases by exp(ln2). The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "With ΔrG=−10,n=2 and F=1, find reversible cell voltage.",
+      "answer": "5",
+      "hint": "Use E=−ΔrG/(nF).",
+      "explanation": "Use E=−ΔrG/(nF). The value in the stated units is 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Are reversible cell voltage and activation-controlled reaction rate the same physical quantity?",
+      "answer": "No; voltage is a free-energy-per-charge measure, while rate depends on a pathway.",
+      "options": [
+        "Yes; high voltage always uniquely fixes fast kinetics.",
+        "No; voltage is a free-energy-per-charge measure, while rate depends on a pathway."
+      ],
+      "explanation": "Thermodynamics and kinetic barriers answer different questions.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; high voltage always uniquely fixes fast kinetics.": "Thermodynamics and kinetic barriers answer different questions."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Ohmic loss, activation overpotential, concentration gradients and side reactions
 
 Integrating $d[A]/dt=-k[A]$ gives $[A]=[A]_0e^{-kt}$, and setting the ratio to one half gives $t_{1/2}=\ln2/k$. A concentration-independent half-life is characteristic of this first-order model, not a universal property of every reaction order. In electrochemistry the anode is the site of oxidation and the cathode the site of reduction. The sign of an electrode depends on whether spontaneous chemical work drives the circuit or an external supply forces a nonspontaneous reaction; memorizing a universal anode sign creates errors.
 
+
+### Derive, test and transfer
+
+A simple Arrhenius expression k=Aexp(−Ea/(RT)) separates a prefactor from a reduced activation-energy factor. At a fixed temperature, lowering a barrier can speed a pathway without changing the initial/final state free energies. The complete catalytic mechanism must respect the same equilibrium constraints.
+
+An electrochemical cell's reversible voltage instead measures reaction free energy per charge, not an activation rate. Current under load additionally depends on electrode kinetics and transport. A fast reaction need not have a large voltage, and a favorable cell reaction can be slow. The display is a normalized kinetic comparison, not a computed battery power curve.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="chemistry_CB.4" />
+
 
 Plot synthetic concentration-versus-time curves for first- and second-order models and compare linearized residuals. For electrochemistry use a safe low-voltage educational cell or virtual model; compare open-circuit voltage with a loaded reading and identify why they differ.
 

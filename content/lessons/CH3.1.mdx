@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For unit level degeneracies and ΔE/(kT)=ln2, find excited-to-ground population ratio.",
+      "answer": "0.5",
+      "hint": "Use exp(−ΔE/(kT)).",
+      "explanation": "Use exp(−ΔE/(kT)). The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For degeneracy ratio 4 and Boltzmann factor 0.5, find the excited-to-ground population ratio.",
+      "answer": "2",
+      "hint": "Multiply degeneracy ratio by the Boltzmann factor; this is not a normalized probability.",
+      "explanation": "Multiply degeneracy ratio by the Boltzmann factor; this is not a normalized probability. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does a population ratio above one necessarily violate probability normalization?",
+      "answer": "No; a ratio is not itself a normalized probability.",
+      "options": [
+        "Yes; every population ratio must lie between zero and one.",
+        "No; a ratio is not itself a normalized probability."
+      ],
+      "explanation": "Both populations can be normalized after the ratio is formed.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every population ratio must lie between zero and one.": "Both populations can be normalized after the ratio is formed."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Abundance fractions require a denominator such as total hydrogen nuclei, H₂ or
 
 Molecular detection requires multiple consistent transitions, rest-frequency/provenance, excitation and line-blend checks. A reaction network predicting a species does not demonstrate its observation. Retain unknown rates and environmental uncertainty rather than inventing a complete chemical inventory.
 
+
+### Derive, test and transfer
+
+For two molecular levels in local thermodynamic equilibrium, the population ratio is (g1/g0)exp(−ΔE/(kT)). Degeneracy multiplies a ratio before normalization, so a ratio can exceed one without being a probability above one. A total column abundance requires a partition sum and a line/transfer model.
+
+Interstellar gas can be too dilute for collisions to maintain LTE; radiation pumping and optical depth then change line inference. Detecting a molecular transition also needs accurate frequencies, velocity context and blending checks. The display uses one unit-degeneracy ratio as a controlled example and does not claim to infer an actual survey abundance.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH3.1" />
+
 
 Compare a synthetic production-loss solution from two initial abundances and identify when steady state is reached. Change the radiation loss rate and keep abundance convention explicit.
 

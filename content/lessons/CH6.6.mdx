@@ -79,6 +79,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For a six-site Hückel ring with α=0,β=−1 and m=0, find orbital energy.",
+      "answer": "-2",
+      "hint": "Use cos0=1.",
+      "explanation": "Use cos0=1. The value in the stated units is -2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For the same ring with m=1, find orbital energy.",
+      "answer": "-1",
+      "hint": "cos(2π/6)=1/2.",
+      "explanation": "cos(2π/6)=1/2. The value in the stated units is -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does a 4n+2 electron count alone prove aromaticity without checking conjugation and geometry?",
+      "answer": "No; those structural hypotheses are essential.",
+      "options": [
+        "Yes; electron count alone settles every ring.",
+        "No; those structural hypotheses are essential."
+      ],
+      "explanation": "The guideline applies within a specified orbital/geometry setting.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; electron count alone settles every ring.": "The guideline applies within a specified orbital/geometry setting."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +194,19 @@ Substituents alter both reaction rate and positional preference through electron
 
 Aromaticity is assessed through multiple indicators such as geometry, energetic comparisons and magnetic response, not a single structural doodle. Spectra constrain a model but can be affected by other groups and environments. An aromatic species identified in a space spectrum requires line assignments and excitation modeling, not simply a terrestrial reaction analogy.
 
+
+### Derive, test and transfer
+
+A simple Hückel ring has energies α+2βcos(2πm/N) for a uniform N-site nearest-neighbor model. The allowed independent indices can be chosen modulo N. Electron filling, planarity and continuous conjugation are additional conditions before an aromaticity argument is applied.
+
+The familiar 4n+2 ground-state guideline is not a license to classify any molecule with that electron count as aromatic. Geometry and orbital topology matter, and excited-state rules can differ. The display shows one model's level positions with α=0 and β=−1, not a computed aromatic stabilization energy for a real substituted molecule.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH6.6" />
+
 
 Compare model rings with six and eight π electrons, explicitly marking planarity and uninterrupted p-orbital overlap. Draw a substitution pathway that restores aromaticity and a net-addition product that does not. Identify what evidence would test the qualitative energy argument.
 

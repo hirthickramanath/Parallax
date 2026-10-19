@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For f(x)=x² at x=2 and h=0.1, find the central-difference derivative.",
+      "answer": "4",
+      "hint": "Evaluate [(2.1)²−(1.9)²]/0.2.",
+      "explanation": "Evaluate [(2.1)²−(1.9)²]/0.2. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "In the truncation-dominated O(h²) regime, halve the step. Find the leading error ratio.",
+      "answer": "0.25",
+      "hint": "Square the step ratio.",
+      "explanation": "Square the step ratio. The value in the stated units is 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does an analytic toy benchmark count as an executed ab initio molecular project?",
+      "answer": "No; the actual molecular inputs, method, computation and provenance are still required.",
+      "options": [
+        "Yes; any energy plot is a complete molecular calculation.",
+        "No; the actual molecular inputs, method, computation and provenance are still required."
+      ],
+      "explanation": "A method demonstration and a performed reproducible project are distinct.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; any energy plot is a complete molecular calculation.": "A method demonstration and a performed reproducible project are distinct."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Compare with a benchmark not used to tune the calculation, including uncertainty
 
 Deliver source code/configuration, input/output provenance, plots with units and a concise discrepancy analysis. Protect credentials and irrelevant private files. A completed tutorial calculation is not independent scientific certification, and this lesson provides a rubric rather than claiming a real project was executed.
 
+
+### Derive, test and transfer
+
+A computational mini-project should specify geometry, Hamiltonian or electronic method, basis, convergence thresholds, units and reference data before interpreting a result. A lower numerical energy across unrelated approximations is not automatically a better value for the same physical problem.
+
+Central finite differences [f(x+h)−f(x−h)]/(2h) have second-order truncation error for sufficiently smooth f, but reducing h indefinitely amplifies floating-point cancellation. The Gaussian variational investigation is an analytic benchmark with a known exact answer, not a completed molecular calculation. A real project must retain input files, software versions, failed convergence attempts and a reproducible comparison target.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH2.3" />
+
 
 Write a bounded project specification and reproduce the worked uncertainty calculation. Execute a real chemistry package only after documenting the installed method/version and input; do not substitute a synthetic curve while calling it a computed quantum result.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For prior probability 0.01 and likelihood ratio 10 in a two-hypothesis toy, find posterior probability.",
+      "answer": "0.09174311926605505",
+      "hint": "Use LR p/(1−p+LR p).",
+      "explanation": "Use LR p/(1−p+LR p). The value in the stated units is 0.091743119266.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For prior probability 0.25 and likelihood ratio 3, find posterior probability.",
+      "answer": "0.5",
+      "hint": "Prior odds are 1/3; updating gives odds one.",
+      "explanation": "Prior odds are 1/3; updating gives odds one. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does finding an organic molecule by itself prove a biological origin?",
+      "answer": "No; abiotic formation and environmental context must be tested.",
+      "options": [
+        "Yes; organic and biological are interchangeable origin claims.",
+        "No; abiotic formation and environmental context must be tested."
+      ],
+      "explanation": "Molecular composition alone is not a unique origin mechanism.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; organic and biological are interchangeable origin claims.": "Molecular composition alone is not a unique origin mechanism."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A claimed biosignature must be evaluated against abiotic sources, sinks, transpo
 
 Use precise evidence levels: species identification, environmental chemistry, plausible prebiotic role and biological interpretation. Preserve experimental/observational provenance and distinguish a hypothesis from a demonstrated mechanism. This supporting unit does not expand into an unrelated full biology curriculum.
 
+
+### Derive, test and transfer
+
+Prebiotic chemistry asks whether plausible environments can produce and preserve relevant molecular building blocks; it does not equate an organic detection with a biological origin. Competing abiotic pathways and destructive processes must be included before interpreting an observation.
+
+Bayes' odds form makes an evidential distinction explicit: posterior odds equal prior odds times a valid likelihood ratio for the stated data and hypotheses. A likelihood ratio is not supplied by calling a molecule interesting. The embedded Bayesian toy demonstrates dependence on assumptions, not measured support for life. Real biosignature inference needs contextual chemistry, selection and false-positive models.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="bayes_explorer" />
+
 
 Create a claim-evidence ladder for a hypothetical organic detection. Identify at least one abiotic route, one kinetic bottleneck and one contamination test before discussing biological significance.
 

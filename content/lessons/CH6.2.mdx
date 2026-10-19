@@ -79,6 +79,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For the stated torsion model with V3=2, find U at φ=0.",
+      "answer": "2",
+      "hint": "cos0=1 gives the full barrier.",
+      "explanation": "cos0=1 gives the full barrier. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For that model with V3=2, find U at φ=60 degrees.",
+      "answer": "0",
+      "hint": "cos180°=−1.",
+      "explanation": "cos180°=−1. The value in the stated units is 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Is rotation between ordinary conformations automatically an inversion of every stereocenter configuration?",
+      "answer": "No; conformation and configuration are distinct.",
+      "options": [
+        "Yes; any bond rotation changes all stereochemical labels.",
+        "No; conformation and configuration are distinct."
+      ],
+      "explanation": "The atom connectivity and stereocenter geometry must be tracked.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; any bond rotation changes all stereochemical labels.": "The atom connectivity and stereocenter geometry must be tracked."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -157,9 +194,19 @@ Conformational preferences arise from torsional, steric and electronic free-ener
 
 A racemic mixture can have zero net optical rotation even though each molecule is chiral. Zero rotation can also arise from other circumstances and is not a complete structure proof. Spectroscopic time resolution, exchange rate and environment determine which conformers are experimentally distinguishable; a static molecular picture does not answer that question alone.
 
+
+### Derive, test and transfer
+
+A threefold ethane torsion toy can be written U(φ)=V3[1+cos3φ]/2. Under the stated zero, eclipsed positions have energy V3 and staggered positions have zero. The parameter is a barrier scale; it does not determine every vibrational or solvent contribution to a real molecule's conformational free energy.
+
+Conformation changes by rotation differ from configurational stereoisomer changes. A drawing must preserve connectivity and stereocenter assignment conventions when comparing structures. The display is a torsional energy illustration, not a molecular dynamics trajectory or a general butane anti/gauche potential.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH6.2" />
+
 
 Build a tetrahedral model and its mirror image, testing superposition by rigid rotations. Compare a symmetric two-centre model with the naive 2ⁿ count. Draw conformers separately from configurations and state whether the modeled motion breaks a bond or changes a double-bond arrangement.
 

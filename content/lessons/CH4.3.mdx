@@ -77,6 +77,45 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For 8 bonding and 4 antibonding electrons in a stated MO ordering, find bond order.",
+      "answer": "2",
+      "hint": "Use (8−4)/2.",
+      "explanation": "Use (8−4)/2. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "Two electrons are added to previously empty antibonding orbitals with bonding occupancy fixed. Find the bond-order change.",
+      "answer": "-1",
+      "hint": "The antibonding term increases by two inside a half difference.",
+      "explanation": "The antibonding term increases by two inside a half difference. The value in the stated units is -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does adding electrons always increase MO bond order?",
+      "answer": "No; added antibonding occupancy can decrease it.",
+      "options": [
+        "Yes; every electron contributes positive bond order.",
+        "No; added antibonding occupancy can decrease it."
+      ],
+      "explanation": "The orbital character matters, not just total electron count.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every electron contributes positive bond order.": "The orbital character matters, not just total electron count."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +192,19 @@ For O₂, the qualitative valence MO filling leaves two parallel-spin electrons 
 
 Heteronuclear orbitals can be polarized toward one atom and need not have equal atomic coefficients. Electron removal changes bonding differently depending on which orbital loses occupancy. Bond lengths, vibrational frequencies, magnetism and photoelectron spectra provide complementary tests; no single pictorial bond-order count is the entire electronic structure.
 
+
+### Derive, test and transfer
+
+Bond order in a simple MO occupation picture is half bonding minus antibonding occupancy. Adding two electrons to an antibonding level lowers that count by one; it does not simply add another stabilizing bond because more electrons are present. Pauli and Hund occupations must be applied to defined orbitals.
+
+The sequence of orbital energies depends on molecule, symmetry and mixing. A single ordering should not be reused blindly across all diatomic species. Magnetic behavior depends on unpaired electrons, while a formal bond order is only one structural descriptor. The display isolates occupancy bookkeeping and does not calculate orbital energies or full dissociation curves.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH4.3" />
+
 
 Fill a stated diatomic orbital-energy diagram and count unpaired electrons before calculating bond order. Compare ionization from bonding and antibonding levels. State the diagram convention and whether it is appropriate for the chosen species.
 

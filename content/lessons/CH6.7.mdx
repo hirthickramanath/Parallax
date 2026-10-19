@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "For ε=2,c=0.5 and path length 3 in consistent units, find absorbance.",
+      "answer": "3",
+      "hint": "Multiply ε c l.",
+      "explanation": "Multiply ε c l. The value in the stated units is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For decadic absorbance A=2, find transmittance.",
+      "answer": "0.01",
+      "hint": "Use 10^−A.",
+      "explanation": "Use 10^−A. The value in the stated units is 0.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does one matched IR or UV absorption feature uniquely determine a complete organic structure?",
+      "answer": "No; multiple spectral and chemical constraints are needed.",
+      "options": [
+        "Yes; a single band is a full structure proof.",
+        "No; multiple spectral and chemical constraints are needed."
+      ],
+      "explanation": "Different molecules and environments can share features.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a single band is a full structure proof.": "Different molecules and environments can share features."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For a simple synthetic first-order example, an ethyl group can show a three-prot
 
 For an ideal absorbance calibration, $A=-\log_{10}(I/I_0)=\varepsilon c\ell$ in the Beer–Lambert regime. Scattering, saturation, concentration-dependent association and background errors can break the linear concentration model. Spectral lines in astronomical gas additionally require rotational or vibrational assignments, excitation, velocity and line-confusion checks. A terrestrial functional-group guide is not an independently verified interstellar detection.
 
+
+### Derive, test and transfer
+
+Beer–Lambert absorbance is A=εcl under its defined decadic convention, and transmittance is 10^−A. Absorbance adds for independent absorbers in an appropriate dilute linear regime; transmittances multiply instead of adding in the same way.
+
+Organic identification combines IR, NMR, mass and electronic spectral constraints with a molecular formula and plausible structure. Concentration, path length, baseline and overlapping bands affect inference. The display illustrates a controlled absorbance relation, not a unique structure solver or a full synthetic spectrum.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH6.7" />
+
 
 Use explicitly synthetic spectra and a small candidate list. Eliminate candidates by formula, DBE and multiple independent features, keeping ambiguous matches. Record calibration units and compare model-generated spectral evidence with the requirements of a real identification claim.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "At fixed surface site density, grain radius doubles. Find adsorption-site-count factor.",
+      "answer": "4",
+      "hint": "Surface area scales as radius squared.",
+      "explanation": "Surface area scales as radius squared. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "For a dilute binary rate k nA nB with k=0.5,nA=2,nB=3 in consistent units, find rate density.",
+      "answer": "3",
+      "hint": "Multiply the rate coefficient and both densities.",
+      "explanation": "Multiply the rate coefficient and both densities. The value in the stated units is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does a large geometric number of grain sites by itself guarantee a fast surface reaction?",
+      "answer": "No; arrival, motion, occupancy and desorption also matter.",
+      "options": [
+        "Yes; geometry alone fixes every reaction rate.",
+        "No; arrival, motion, occupancy and desorption also matter."
+      ],
+      "explanation": "A site budget is different from a kinetic encounter model.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; geometry alone fixes every reaction rate.": "A site budget is different from a kinetic encounter model."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ When expected surface occupation per grain is below one, a deterministic product
 
 Track elemental/charge budgets and uncertainty in poorly known reactions. Negative computed densities or mass drift can signal a solver/problem-definition error. A chemically plausible final abundance is not sufficient proof of a correct network history.
 
+
+### Derive, test and transfer
+
+A spherical grain with surface site density ns has approximately 4πa²ns adsorption sites. Doubling its radius quadruples site count, while its mass scales with radius cubed at fixed composition/density. Surface availability per unit dust mass therefore changes with the size distribution.
+
+Gas-phase binary reaction rates scale as k nA nB in a simple dilute model, while grain-surface rates depend on adsorption, diffusion, occupancy and desorption. A large site count alone does not establish rapid formation: reactants must meet and survive. Sparse stochastic populations can defeat deterministic rate equations. The investigation is a geometric site budget rather than an executed chemical network.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH3.2" />
+
 
 Integrate a small reversible synthetic network and monitor conserved elemental totals. Then compare deterministic and stochastic surface models in a rare-occupation toy case.
 

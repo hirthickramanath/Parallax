@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-1",
+      "prompt": "At fixed force constant, reduced mass doubles. Find vibrational frequency ratio.",
+      "answer": "0.7071067811865475",
+      "hint": "Use μ^−1/2.",
+      "explanation": "Use μ^−1/2. The value in the stated units is 0.707106781187.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-transfer-2",
+      "prompt": "At fixed reduced mass, measured harmonic frequency doubles. Find inferred force-constant factor.",
+      "answer": "4",
+      "hint": "Force constant scales as frequency squared.",
+      "explanation": "Force constant scales as frequency squared. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "chemistry-model-assumptions",
+      "prompt": "Does agreement with one bond length prove a computational bonding model is correct for every observable?",
+      "answer": "No; independent spectral/energetic tests and uncertainties are needed.",
+      "options": [
+        "Yes; one matched number validates the entire theory.",
+        "No; independent spectral/energetic tests and uncertainties are needed."
+      ],
+      "explanation": "Model assessment requires multiple discriminating predictions.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; one matched number validates the entire theory.": "Model assessment requires multiple discriminating predictions."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A computational result must specify electronic method, basis, charge, spin state
 
 Compare predicted and measured quantities with units, calibration and uncertainties. Use more than one independent diagnostic and preserve provenance for any actual data. Fitting parameters to a spectrum and then using that same spectrum as independent validation overstates evidence. This lesson provides model calculations, not a new experimental detection or a benchmarked quantum-chemistry dataset.
 
+
+### Derive, test and transfer
+
+Spectroscopic and computational evidence should constrain a bonding model rather than merely decorate a chosen structural drawing. A harmonic mode has ω=sqrt(k/μ), so isotopic shifts test mass participation while inferred force constants depend on mode assignment and coupling.
+
+Different electronic methods, basis sets and geometry constraints can produce similar individual observables. A useful comparison records uncertainty, calibration and where predictions disagree, not just one matching bond length. The oscillator display is an analytic diagnostic benchmark, not a quantum-chemical calculation or a unique decomposition of bond energy.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="chemistry_CH4.8" />
+
 
 Use an explicitly synthetic set of isotopic masses and frequencies to fit the harmonic mass scaling. Then add a stated measurement uncertainty and examine residuals. If importing real spectra later, retain source, resolution, calibration and the distinction between fitted and validation observations.
 
