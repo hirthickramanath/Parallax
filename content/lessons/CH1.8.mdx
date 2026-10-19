@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For Kf=1.86 K kg/mol,m=0.1 mol/kg and ideal i=2, find freezing-point depression in K.",
+      "answer": "0.372",
+      "hint": "Multiply i Kf m.",
+      "explanation": "Multiply i Kf m. The value in the stated units is 0.372.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "For ideal i=1,c=0.1 and RT=10 in consistent pressure/concentration units, find osmotic pressure.",
+      "answer": "1",
+      "hint": "Use i cRT.",
+      "explanation": "Use i cRT. The value in the stated units is 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Are molality and molarity interchangeable without a density and composition conversion?",
+      "answer": "No; one is per solvent mass and the other per solution volume.",
+      "options": [
+        "Yes; both concentration labels always have the same numerical value.",
+        "No; one is per solvent mass and the other per solution volume."
+      ],
+      "explanation": "The solvent/solution measure is part of the concentration definition.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; both concentration labels always have the same numerical value.": "The solvent/solution measure is part of the concentration definition."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ A phase diagram locates stable coexistence boundaries under specified pressure a
 
 Freezing-point measurements can estimate molar mass only when concentration, solvent purity, dissociation and equilibrium assumptions are controlled. Supercooling, inaccurate solvent mass and unknown aggregation can bias the inferred amount. Use activities for nonideal mixtures rather than extrapolating linear dilute formulas indefinitely.
 
+
+### Derive, test and transfer
+
+In the ideal dilute freezing-point approximation, ΔTf=iKf m depends on solute particle molality and an effective particle factor. Osmotic pressure similarly approaches i cRT under its dilute assumptions. Dissociation can increase particle count, while association and nonideality can change the effective behavior.
+
+These expressions are limiting laws, not complete high-concentration phase diagrams. Molality and molarity are different concentration definitions, and interchanging them silently changes units and temperature dependence. A measured colligative shift can constrain an effective particle number only with solvent constants and a valid model; it is not a unique molecular identity test.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH1.8" />
+
 
 Build a synthetic table of depression versus molality in the dilute model, then add a stated concentration-dependent activity correction. Use mass balance on a two-phase diagram to compare an overall composition with endpoint phase compositions.
 

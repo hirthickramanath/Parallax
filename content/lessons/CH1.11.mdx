@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For one-dimensional D=2 and dc/dx=−3, find signed flux J.",
+      "answer": "6",
+      "hint": "Use −D times the concentration gradient.",
+      "explanation": "Use −D times the concentration gradient. The value in the stated units is 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "For one-dimensional free diffusion with D=0.5 and time 4, find mean-square displacement.",
+      "answer": "4",
+      "hint": "Use 2Dt in one dimension.",
+      "explanation": "Use 2Dt in one dimension. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Is the total three-dimensional mean-square displacement always 2Dt under isotropic free diffusion?",
+      "answer": "No; summing three independent components gives 6Dt.",
+      "options": [
+        "Yes; dimensionality never changes the total squared-displacement factor.",
+        "No; summing three independent components gives 6Dt."
+      ],
+      "explanation": "The requested displacement variable and dimension must be specified.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; dimensionality never changes the total squared-displacement factor.": "The requested displacement variable and dimension must be specified."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For a Newtonian fluid in simple shear, stress is proportional to the velocity gr
 
 Boundary conditions set concentrations, temperatures or fluxes and are essential for a solved transport problem. A no-flux boundary is not a zero-concentration boundary. Diffusion coefficients inferred from a finite experiment can be confounded with geometry, adsorption or reaction unless those processes are modeled.
 
+
+### Derive, test and transfer
+
+Fick's first law J=−D grad c gives flux down a concentration gradient for a simple isotropic dilute diffusion model. Combining it with local conservation yields the diffusion equation when D is constant and no sources or advection are present. The negative sign is a directional statement, not a negative diffusion coefficient.
+
+For a one-dimensional free diffusion process, mean-square displacement is 2Dt; in three independent dimensions the total squared displacement is 6Dt. Boundaries, spatially varying diffusivity, flow and reactions change the problem. Viscosity and thermal conductivity describe different transported quantities, so their constitutive coefficients cannot be swapped merely because their equations have gradient forms.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH1.11" />
+
 
 Solve or simulate diffusion with reflecting and absorbing endpoints using the same initial profile. Track total material to distinguish no-flux conservation from absorbing loss. Compare a local flux calculation with the separate time-evolution equation.
 

@@ -90,3 +90,5 @@ The [astrophysics and multivariable expansion](docs/ASTROPHYSICS-MULTIVARIABLE-E
 See the [linear algebra/ODE/PDE expansion](docs/LINEAR-ODE-PDE-EXPANSION.md) and [independent-review packets](docs/INDEPENDENT-REVIEW-PACKETS.md) for the next release and implementation-freshness checks.
 
 The [electromagnetism expansion](docs/ELECTROMAGNETISM-EXPANSION.md) adds sixteen deeper banks and directly manipulable field probes with checked boundary, sign and gradient identities.
+
+[Physical and molecular chemistry](docs/PHYSICAL-MOLECULAR-CHEMISTRY-EXPANSION.md): nineteen additional deeper lessons, source scopes and checked investigations.

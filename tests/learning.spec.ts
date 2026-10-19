@@ -1837,3 +1837,31 @@ test("optical and thermal investigations distinguish pump saturation and equilib
     page.getByText(/Variance from initial value zero: 0.0000/),
   ).toBeVisible();
 });
+
+test("physical chemistry investigations retain logarithmic references, electron counts and variational minima", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/CH1.1");
+  await expect(page.getByText(/Chemical potential μ−μ°: 0.0000/)).toBeVisible();
+  await page.getByLabel("Dimensionless activity a", { exact: true }).fill("2");
+  await expect(page.getByText(/Chemical potential μ−μ°: 0.6931/)).toBeVisible();
+  await page.goto("/lesson/CH1.9");
+  await page
+    .getByLabel("Transferred electron number n", { exact: true })
+    .focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Transferred electron number n", { exact: true }),
+  ).toHaveValue("2");
+  await page.goto("/lesson/CH2.3");
+  await expect(
+    page.getByText(/Variational energy \(ħ=m=1\): 0.5000/),
+  ).toBeVisible();
+  await page
+    .getByLabel("Gaussian width parameter a", { exact: true })
+    .fill("1");
+  await expect(
+    page.getByText(/Variational energy \(ħ=m=1\): 0.6250/),
+  ).toBeVisible();
+});

@@ -83,3 +83,7 @@ Twenty-one MA3–MA5 lessons now have 63 additional questions, deeper examples a
 ## Electromagnetism follow-up
 
 PH4–PH5 now have 48 additional questions, three two-dimensional probes and eleven analytic curve investigations. Current partial mappings: 108; lessons without explicit widgets: 217; independent approvals: zero. See [the release scope and checks](ELECTROMAGNETISM-EXPANSION.md).
+
+## Physical/molecular chemistry follow-up
+
+CH1–CH2 now have 57 additional questions and nineteen embedded investigations. At this checkpoint partial mappings total 124 and 179 lessons lack explicit widgets. [Release details](PHYSICAL-MOLECULAR-CHEMISTRY-EXPANSION.md); independent approval remains zero.

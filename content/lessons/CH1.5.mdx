@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For a zero-point-shifted harmonic mode with exp(−θ/T)=0.5, find qvib.",
+      "answer": "2",
+      "hint": "Sum the geometric series.",
+      "explanation": "Sum the geometric series. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "For the high-temperature rigid-rotor approximation T/θrot=10 and symmetry number 2, find qrot.",
+      "answer": "5",
+      "hint": "Divide the temperature ratio by σ.",
+      "explanation": "Divide the temperature ratio by σ. The value in the stated units is 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Does dropping the same zero-point reference term change relative populations if the energy convention is handled consistently?",
+      "answer": "No; ratios between levels remain unchanged.",
+      "options": [
+        "Yes; a constant shift changes every relative Boltzmann ratio.",
+        "No; ratios between levels remain unchanged."
+      ],
+      "explanation": "A common energy offset cancels in normalized probabilities.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a constant shift changes every relative Boltzmann ratio.": "A common energy offset cancels in normalized probabilities."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For a two-level system with energies 0 and ε and equal degeneracy, excited prob
 
 Energy-zero conventions shift free energies and partition functions consistently; reaction or phase comparisons must retain compatible references. A molecular spectrum can constrain level spacings, while predicting bulk thermodynamics also requires state counts, interactions and ensemble assumptions.
 
+
+### Derive, test and transfer
+
+A molecular partition function counts translational, rotational, vibrational and electronic states under a specified separability approximation. For an ideal harmonic vibration with its ground energy set to zero, qvib=Σexp(−nθ/T)=1/(1−exp(−θ/T)). Restoring zero-point energy multiplies by a Boltzmann factor and changes absolute energy bookkeeping while leaving relative level populations consistent.
+
+At sufficiently high temperature a simple rigid-rotor factor scales as T/(σθrot), with symmetry number σ preventing overcounting equivalent orientations. Nuclear-spin statistics, anharmonicity and rotation-vibration coupling require refinements. State degeneracy belongs in the sum; a mode frequency alone is not a complete molecular thermodynamic model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH1.5" />
+
 
 Build a synthetic level table and normalize its Boltzmann weights. Vary temperature and degeneracy independently, then compute mean energy and finite-difference heat capacity. State whether levels or individual microstates are being counted.
 

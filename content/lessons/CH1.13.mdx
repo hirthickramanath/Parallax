@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For 200 absorbed photons and quantum yield 0.25 for the specified event, find expected event count.",
+      "answer": "50",
+      "hint": "Multiply absorbed photons by yield.",
+      "explanation": "Multiply absorbed photons by yield. The value in the stated units is 50.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "Using hc=1240 eV nm, find photon energy in eV at wavelength 620 nm.",
+      "answer": "2",
+      "hint": "Divide hc by wavelength.",
+      "explanation": "Divide hc by wavelength. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Must every event-defined photochemical quantum yield be at most one even when chain reactions occur?",
+      "answer": "No; one absorbed photon can initiate multiple counted chemical events.",
+      "options": [
+        "Yes; more than one counted event would always violate energy conservation.",
+        "No; one absorbed photon can initiate multiple counted chemical events."
+      ],
+      "explanation": "Stored chemical energy and the event definition must be included.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; more than one counted event would always violate energy conservation.": "Stored chemical energy and the event definition must be included."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Photochemical reaction rates integrate spectral photon flux, absorption cross se
 
 Gas-phase reaction dynamics may include collision energy, orientation and radiative stabilization; ice or surface environments can accept excess energy differently. Track whether a reported abundance change is formation, destruction, desorption or a redistribution of existing species before attributing it to a unique reaction.
 
+
+### Derive, test and transfer
+
+A photochemical quantum yield counts specified molecular events per absorbed photon under a defined measurement. The denominator is absorbed photons, not every incident photon; incomplete absorption changes the inference. Chain chemistry can yield more than one molecular event per absorbed photon when stored chemical energy feeds subsequent steps.
+
+Photon energy is hc/λ, while a rate depends additionally on flux, cross section, excited-state branching and competing relaxation. A quantum yield by itself is not a complete reaction mechanism or an energy-conversion efficiency. The display is an expected count budget, not a time-resolved excited-state simulation or a claim that every outcome count is deterministic.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH1.13" />
+
 
 Build a synthetic competing-channel population model, change one rate and compare lifetime with product fraction. Keep incident flux, absorbed photons and counted products in separate table columns. Then state which assumptions would fail for a chain or a multistate system.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For γ=2 and mole fraction x=0.25, find activity γx under this convention.",
+      "answer": "0.5",
+      "hint": "Multiply the coefficient by mole fraction.",
+      "explanation": "Multiply the coefficient by mole fraction. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "At fixed x and RT=1, activity coefficient doubles. Find chemical-potential increase.",
+      "answer": "0.6931471805599453",
+      "hint": "Use the logarithm of the coefficient ratio.",
+      "explanation": "Use the logarithm of the coefficient ratio. The value in the stated units is 0.69314718056.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Can activity coefficients be changed arbitrarily without checking standard states or mixture consistency?",
+      "answer": "No; conventions and thermodynamic consistency constrain their use.",
+      "options": [
+        "Yes; any correction factor leaves all chemical predictions consistent.",
+        "No; conventions and thermodynamic consistency constrain their use."
+      ],
+      "explanation": "Activities and standard quantities must be defined together.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; any correction factor leaves all chemical predictions consistent.": "Activities and standard quantities must be defined together."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Gibbs–Duhem links activity-coefficient variations across composition. Fitting 
 
 Phase and reaction equilibrium use activities or fugacities consistently on both sides. A numerical K changes with a changed standard-state definition even when the underlying physical equilibrium does not. Always report reference pressure, composition scale, temperature and the model used to infer nonideality.
 
+
+### Derive, test and transfer
+
+A nonideal mixture can be described with dimensionless activities ai=γi xi under a chosen convention. Then μi−μi°=RT ln(γi xi). Activity coefficients are not arbitrary correction factors to insert without a standard state; different conventions can shift coefficients and standard potentials together while preserving physical predictions.
+
+For gases, fugacity replaces the simple pressure role through a dimensionless f/f°. An equation of state or measured excess thermodynamics constrains these quantities. Setting γ=1 is an ideality assumption, not a claim that a solution is dilute in every useful sense. The display varies one coefficient as an illustrative local input; it does not construct a globally thermodynamically consistent multicomponent excess-Gibbs model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH1.7" />
+
 
 Compare an ideal calculation with a supplied synthetic activity-coefficient table, keeping its composition convention fixed. Recompute a reaction quotient and record which inferred parameter changes arise from physics versus merely a changed reference definition.
 

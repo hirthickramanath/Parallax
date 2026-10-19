@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 116 have current partial AI-assisted source mappings; 198 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 124 have current partial AI-assisted source mappings; 179 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -72,25 +72,25 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CB.3 Thermochemistry and equilibrium | 7 / 7 | 3 | 3 | pending |
 | CB.4 Kinetics and electrochemistry | 7 / 7 | 3 | 3 | pending |
 | CB.5 Organic functional groups overview | 7 / 7 | 3 | 3 | pending |
-| CH1.1 Chemical thermodynamics and chemical potential | 6 / 6 | 2 | 0 | pending |
-| CH1.10 Ionic solutions and conductivity | 6 / 6 | 2 | 0 | pending |
-| CH1.11 Transport: diffusion, viscosity and thermal conduction | 6 / 6 | 2 | 0 | pending |
-| CH1.12 Electrode kinetics and electrochemical measurements | 6 / 6 | 2 | 0 | pending |
-| CH1.13 Photochemistry and elementary reaction dynamics | 6 / 6 | 2 | 0 | pending |
-| CH1.2 Phase equilibria and solutions | 6 / 6 | 2 | 0 | pending |
-| CH1.3 Chemical kinetics and mechanisms | 6 / 6 | 2 | 0 | pending |
-| CH1.4 Transition-state theory and reaction dynamics | 6 / 6 | 2 | 0 | pending |
-| CH1.5 Statistical thermodynamics of molecules | 6 / 6 | 2 | 0 | pending |
-| CH1.6 Surfaces and catalysis | 6 / 6 | 2 | 0 | pending |
-| CH1.7 Nonideal mixtures, activity and fugacity | 6 / 6 | 2 | 0 | pending |
-| CH1.8 Colligative properties and phase diagrams | 6 / 6 | 2 | 0 | pending |
-| CH1.9 Electrochemical potentials and the Nernst equation | 6 / 6 | 2 | 0 | pending |
-| CH2.1 Molecular orbital theory and LCAO | 6 / 6 | 2 | 0 | pending |
-| CH2.2 Born-Oppenheimer approximation and potential energy surfaces | 6 / 6 | 2 | 0 | pending |
-| CH2.3 Hartree-Fock and density functional theory | 6 / 6 | 2 | 0 | pending |
-| CH2.4 Rotational and vibrational spectroscopy | 6 / 6 | 2 | 0 | pending |
-| CH2.5 Electronic spectroscopy and selection rules | 6 / 6 | 2 | 0 | pending |
-| CH2.6 NMR and EPR basics | 6 / 6 | 2 | 0 | pending |
+| CH1.1 Chemical thermodynamics and chemical potential | 9 / 9 | 4 | 3 | physical_chemistry_CH1.1 |
+| CH1.10 Ionic solutions and conductivity | 9 / 9 | 4 | 3 | physical_chemistry_CH1.10 |
+| CH1.11 Transport: diffusion, viscosity and thermal conduction | 9 / 9 | 4 | 3 | physical_chemistry_CH1.11 |
+| CH1.12 Electrode kinetics and electrochemical measurements | 9 / 9 | 4 | 3 | physical_chemistry_CH1.12 |
+| CH1.13 Photochemistry and elementary reaction dynamics | 9 / 9 | 4 | 3 | physical_chemistry_CH1.13 |
+| CH1.2 Phase equilibria and solutions | 9 / 9 | 4 | 3 | physical_chemistry_CH1.2 |
+| CH1.3 Chemical kinetics and mechanisms | 9 / 9 | 4 | 3 | physical_chemistry_CH1.3 |
+| CH1.4 Transition-state theory and reaction dynamics | 9 / 9 | 4 | 3 | physical_chemistry_CH1.4 |
+| CH1.5 Statistical thermodynamics of molecules | 9 / 9 | 4 | 3 | physical_chemistry_CH1.5 |
+| CH1.6 Surfaces and catalysis | 9 / 9 | 4 | 3 | physical_chemistry_CH1.6 |
+| CH1.7 Nonideal mixtures, activity and fugacity | 9 / 9 | 4 | 3 | physical_chemistry_CH1.7 |
+| CH1.8 Colligative properties and phase diagrams | 9 / 9 | 4 | 3 | physical_chemistry_CH1.8 |
+| CH1.9 Electrochemical potentials and the Nernst equation | 9 / 9 | 4 | 3 | physical_chemistry_CH1.9 |
+| CH2.1 Molecular orbital theory and LCAO | 9 / 9 | 4 | 3 | physical_chemistry_CH2.1 |
+| CH2.2 Born-Oppenheimer approximation and potential energy surfaces | 9 / 9 | 4 | 3 | physical_chemistry_CH2.2 |
+| CH2.3 Hartree-Fock and density functional theory | 9 / 9 | 4 | 3 | physical_chemistry_CH2.3 |
+| CH2.4 Rotational and vibrational spectroscopy | 9 / 9 | 4 | 3 | physical_chemistry_CH2.4 |
+| CH2.5 Electronic spectroscopy and selection rules | 9 / 9 | 4 | 3 | physical_chemistry_CH2.5 |
+| CH2.6 NMR and EPR basics | 9 / 9 | 4 | 3 | physical_chemistry_CH2.6 |
 | CH3.1 Molecules in the interstellar medium | 6 / 6 | 2 | 0 | pending |
 | CH3.2 Gas-phase and grain-surface reaction networks | 6 / 6 | 2 | 0 | pending |
 | CH3.3 Molecular spectral fingerprints in radio astronomy | 6 / 6 | 2 | 0 | pending |

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For E(a)=a/2+1/(8a) at a=0.5, find the energy.",
+      "answer": "0.5",
+      "hint": "Evaluate both kinetic and potential terms.",
+      "explanation": "Evaluate both kinetic and potential terms. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "For the same expression at a=1, find the energy.",
+      "answer": "0.625",
+      "hint": "Compute 1/2+1/8.",
+      "explanation": "Compute 1/2+1/8. The value in the stated units is 0.625.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Are arbitrary Kohn–Sham orbital gaps guaranteed to equal exact many-body excitation energies?",
+      "answer": "No; auxiliary eigenvalues and physical excitations are distinct quantities.",
+      "options": [
+        "Yes; every approximate ground-state functional is an exact spectroscopy model.",
+        "No; auxiliary eigenvalues and physical excitations are distinct quantities."
+      ],
+      "explanation": "The inference requires a justified excited-state framework.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every approximate ground-state functional is an exact spectroscopy model.": "The inference requires a justified excited-state framework."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Self-consistency residual, basis convergence, numerical-grid convergence and fun
 
 Compare methods with benchmark quantities and uncertainties appropriate to the chemical regime. Strong correlation, dispersion, charge transfer and open-shell states can challenge approximations differently. Selecting a functional after seeing one target and then calling that target independent validation is circular.
 
+
+### Derive, test and transfer
+
+For a normalized Gaussian exp(−a x²) in the harmonic oscillator with ħ=m=ω=1, the energy expectation is a/2+1/(8a). Its minimum at a=1/2 gives E=1/2. Varying a checks both normalization-dependent kinetic and potential contributions rather than assuming an arbitrary trial shape is exact.
+
+The variational principle bounds ground-state energy for the specified Hamiltonian and admissible normalized states. Hartree–Fock restricts the state class to a determinant and omits correlation beyond that ansatz; approximate density functionals have their own errors. Kohn–Sham auxiliary orbital energy gaps are not automatically exact physical excitation energies. An internally consistent ground-state optimization is not a universal spectroscopy solver.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH2.3" />
+
 
 Prepare a computational specification with geometry, charge, spin, method and basis. Compare independent convergence axes and retain a benchmark not used to choose the method.
 

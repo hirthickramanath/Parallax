@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-1",
+      "prompt": "For ideal xA=0.25, pure vapor pressures pA*=4 and pB*=1, find total pressure.",
+      "answer": "1.75",
+      "hint": "Sum xA pA*+(1−xA)pB*.",
+      "explanation": "Sum xA pA*+(1−xA)pB*. The value in the stated units is 1.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-transfer-2",
+      "prompt": "For one total mole of an equimolar ideal binary mixture with R=1, find mixing entropy.",
+      "answer": "0.6931471805599453",
+      "hint": "Use −Σni ln xi.",
+      "explanation": "Use −Σni ln xi. The value in the stated units is 0.69314718056.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "physical-chemistry-model-assumptions",
+      "prompt": "Does a straight ideal Raoult-law pressure line establish the full phase behavior of every real mixture?",
+      "answer": "No; nonideal activities and phase equilibria can alter it.",
+      "options": [
+        "Yes; every mixture has the same ideal straight-line diagram.",
+        "No; nonideal activities and phase equilibria can alter it."
+      ],
+      "explanation": "The constitutive ideality assumption must be tested.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every mixture has the same ideal straight-line diagram.": "The constitutive ideality assumption must be tested."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ For a simple nonreacting equilibrium system, Gibbs phase rule F=C−P+2 counts i
 
 A phase diagram records stability boundaries, not a full transformation rate. Superheating, supercooling and nucleation barriers can delay a phase change. A measured transient temperature need not be an equilibrium boundary, and an azeotrope is a composition-dependent mixture feature rather than proof that all mixtures behave like pure substances.
 
+
+### Derive, test and transfer
+
+An ideal liquid solution with ideal vapor obeys a component partial pressure pi=xi pi*, so total pressure is the mole-fraction-weighted sum. A pressure–composition line therefore encodes both ideality and the chosen pure-component vapor pressures; it is not a general nonideal phase diagram.
+
+For ideal mixing, entropy change is −RΣni ln xi, with xi ln xi interpreted by its zero limit for an absent component. Equality of chemical potential between phases supplies the actual equilibrium condition. Nonideal activities, azeotropes and composition-dependent excess Gibbs energy can invalidate a straight Raoult line. A curve at fixed temperature cannot silently predict all temperature-dependent phase boundaries.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="physical_chemistry_CH1.2" />
+
 
 Build a synthetic Raoult-law pressure-composition table at fixed temperature and compare liquid with vapour fractions. Then change one activity coefficient to see which ideal relation breaks. Label phase equilibrium assumptions before interpreting a boiling curve.
 
