@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 98 have current partial AI-assisted source mappings; 230 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 108 have current partial AI-assisted source mappings; 217 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -313,22 +313,22 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH3.2 Stress and strain | 6 / 6 | 2 | 0 | pending |
 | PH3.3 Fluid dynamics (Euler and Navier-Stokes) | 6 / 6 | 2 | 0 | pending |
 | PH3.4 Waves in fluids and turbulence | 6 / 6 | 2 | 0 | pending |
-| PH4.1 Coulomb's law and Gauss's law (integral and differential) | 6 / 6 | 2 | 0 | spherical_field_lab |
-| PH4.2 Electric potential, Poisson and Laplace equations | 6 / 6 | 2 | 0 | spherical_field_lab |
-| PH4.3 Boundary-value problems and images | 6 / 6 | 2 | 0 | pending |
-| PH4.4 Multipole expansion | 6 / 6 | 2 | 0 | pending |
-| PH4.5 Conductors and capacitance | 6 / 6 | 2 | 0 | spherical_field_lab |
-| PH4.6 Dielectrics and polarisation | 6 / 6 | 2 | 0 | pending |
-| PH4.7 Biot-Savart and Ampere's law | 6 / 6 | 2 | 0 | pending |
-| PH4.8 Vector potential and magnetic materials | 6 / 6 | 2 | 0 | pending |
-| PH5.1 Faraday induction and Maxwell's equations | 6 / 6 | 2 | 0 | pending |
-| PH5.2 EM energy, Poynting vector and momentum | 6 / 6 | 2 | 0 | pending |
-| PH5.3 EM waves in vacuum and matter | 6 / 6 | 2 | 0 | pending |
-| PH5.4 Reflection, refraction and waveguides | 6 / 6 | 2 | 0 | pending |
-| PH5.5 Potentials, gauge freedom and retarded potentials | 6 / 6 | 2 | 0 | pending |
-| PH5.6 Radiation from accelerating charges | 6 / 6 | 2 | 0 | pending |
-| PH5.7 Covariant electrodynamics (field tensor) | 6 / 6 | 2 | 0 | pending |
-| PH5.8 Dispersion, plasmas and radiation reaction | 6 / 6 | 2 | 0 | pending |
+| PH4.1 Coulomb's law and Gauss's law (integral and differential) | 9 / 9 | 4 | 3 | electrostatic_probe, spherical_field_lab |
+| PH4.2 Electric potential, Poisson and Laplace equations | 9 / 9 | 4 | 3 | electrostatic_probe, spherical_field_lab |
+| PH4.3 Boundary-value problems and images | 9 / 9 | 4 | 3 | image_charge_probe |
+| PH4.4 Multipole expansion | 9 / 9 | 4 | 3 | electrostatic_probe |
+| PH4.5 Conductors and capacitance | 9 / 9 | 4 | 3 | em_PH4.5, spherical_field_lab |
+| PH4.6 Dielectrics and polarisation | 9 / 9 | 4 | 3 | em_PH4.6 |
+| PH4.7 Biot-Savart and Ampere's law | 9 / 9 | 4 | 3 | wire_field_probe |
+| PH4.8 Vector potential and magnetic materials | 9 / 9 | 4 | 3 | em_PH4.8 |
+| PH5.1 Faraday induction and Maxwell's equations | 9 / 9 | 4 | 3 | em_PH5.1 |
+| PH5.2 EM energy, Poynting vector and momentum | 9 / 9 | 4 | 3 | em_PH5.2 |
+| PH5.3 EM waves in vacuum and matter | 9 / 9 | 4 | 3 | em_PH5.3 |
+| PH5.4 Reflection, refraction and waveguides | 9 / 9 | 4 | 3 | em_PH5.4 |
+| PH5.5 Potentials, gauge freedom and retarded potentials | 9 / 9 | 4 | 3 | em_PH5.5 |
+| PH5.6 Radiation from accelerating charges | 9 / 9 | 4 | 3 | em_PH5.6 |
+| PH5.7 Covariant electrodynamics (field tensor) | 9 / 9 | 4 | 3 | em_PH5.7 |
+| PH5.8 Dispersion, plasmas and radiation reaction | 9 / 9 | 4 | 3 | em_PH5.8 |
 | PH6.1 Wave equation and dispersion | 6 / 6 | 2 | 0 | pending |
 | PH6.2 Interference and diffraction | 6 / 6 | 2 | 0 | pending |
 | PH6.3 Fourier optics and coherence | 6 / 6 | 2 | 0 | pending |

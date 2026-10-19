@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "For k=q=1 and source height a=2 above a grounded infinite plane, find attraction-force magnitude.",
+      "answer": "0.0625",
+      "hint": "The image is distance 2a away.",
+      "explanation": "The image is distance 2a away. The value in the stated units is 0.0625.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "In the ideal grounded-plane image solution, what is the potential on the plane under the grounded convention?",
+      "answer": "0",
+      "hint": "Opposite equal image charges cancel scalar potentials on that boundary.",
+      "explanation": "Opposite equal image charges cancel scalar potentials on that boundary. The value in the stated units is 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Is the image charge a second independently placed physical charge in the conductor half-space?",
+      "answer": "No; it constructs the field in the physical exterior region.",
+      "options": [
+        "Yes; the method creates a real additional point source.",
+        "No; it constructs the field in the physical exterior region."
+      ],
+      "explanation": "A mathematical boundary construction must be distinguished from actual source matter.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; the method creates a real additional point source.": "A mathematical boundary construction must be distinguished from actual source matter."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For a grounded sphere of radius R and an external charge q at distance a>R from 
 
 Other boundary methods include separation of variables and numerical finite-difference or finite-element solutions. A numerical residual alone does not prove convergence to the intended continuum boundary problem; refine the mesh and check the actual boundary conditions and known limits. Images are special constructions, not a universal recipe for every conductor geometry.
 
+
+### Derive, test and transfer
+
+A point charge q above an infinite grounded conducting plane has a half-space solution equal to the real charge plus an opposite image at the reflected location. Every point on the plane is equidistant from the two charges, so their potentials cancel there. The image is a device for the boundary solution and is not a physical free charge below the conductor.
+
+The force on the real charge follows from the image field evaluated at its position, with real/image separation 2a. Its magnitude is kq²/(4a²), directed toward the plane. Care is needed with energy: charging the conductor response gives a different bookkeeping factor than treating two independently assembled physical charges. Uniqueness and the actual conductor geometry justify the solution only in the stated physical region.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="image_charge_probe" />
+
 
 Draw the plane and real/image positions, verify zero potential at several plane points, then prove the equality from the distance relation. Compute force and energy separately and check Fz=−dU/da. Mark the image region as mathematical rather than physically charged.
 

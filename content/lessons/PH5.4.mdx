@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "At normal incidence from n=1 to n=1.5 in lossless nonmagnetic media, find intensity reflectance.",
+      "answer": "0.04",
+      "hint": "Square (1−1.5)/(1+1.5).",
+      "explanation": "Square (1−1.5)/(1+1.5). The value in the stated units is 0.04.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "From n=2 to n=1, find sine of the critical angle.",
+      "answer": "0.5",
+      "hint": "Use n_low/n_high.",
+      "explanation": "Use n_low/n_high. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Is the transmitted field identically zero at an ideal total-internal-reflection interface?",
+      "answer": "No; an evanescent field can exist beyond it.",
+      "options": [
+        "Yes; zero transmitted far-field normal power means no field anywhere.",
+        "No; an evanescent field can exist beyond it."
+      ],
+      "explanation": "Local evanescent structure and propagating normal energy flux differ.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; zero transmitted far-field normal power means no field anywhere.": "Local evanescent structure and propagating normal energy flux differ."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A simple perfectly conducting rectangular guide has allowed transverse wavenumbe
 
 Above cutoff, the modal phase and group velocities differ, with their product c² for this ideal vacuum-guide dispersion. Energy flow remains compatible with causality. Wall loss, finite conductivity, bends and mode conversion modify the ideal model. A boundary-generated cutoff should not be confused with a material absorption resonance.
 
+
+### Derive, test and transfer
+
+At a stationary planar interface, tangential phase matching gives n₁sinθ₁=n₂sinθ₂ for simple isotropic media. Frequency stays fixed; propagation direction and wavelength change. At normal incidence between lossless nonmagnetic media, intensity reflectance is [(n₁−n₂)/(n₁+n₂)]² under the usual field/impedance assumptions.
+
+Total internal reflection occurs from the higher-index side when the transmitted angle would require sine greater than one. The transmitted field is evanescent rather than identically absent at the boundary. A waveguide adds spatial boundary conditions and mode cutoffs; a single refraction angle is not its whole spectrum. Keep amplitude coefficients distinct from power coefficients when impedances differ.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="em_PH5.4" />
+
 
 Calculate amplitude and power coefficients separately for several impedance ratios. Verify R+T=1 for the stated lossless setup. For a guide, plot k_z versus ω around a supplied cutoff and identify propagating versus evanescent regimes without drawing an imaginary k_z as an ordinary real oscillation.
 

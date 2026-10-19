@@ -57,13 +57,15 @@ export function widgetArtifacts(root, source, lesson = {}) {
     }
   };
   for (const name of new Set(names)) {
-    const config = name.startsWith("astro_")
-      ? "astro-investigations.ts"
-      : name.startsWith("multivariable_")
-        ? "multivariable-investigations.ts"
-        : name.startsWith("linear_ode_")
-          ? "linear-ode-investigations.ts"
-          : null;
+    const config = name.startsWith("em_")
+      ? "em-investigations.ts"
+      : name.startsWith("astro_")
+        ? "astro-investigations.ts"
+        : name.startsWith("multivariable_")
+          ? "multivariable-investigations.ts"
+          : name.startsWith("linear_ode_")
+            ? "linear-ode-investigations.ts"
+            : null;
     if (config) {
       const configuration = fs.readFileSync(
         path.join(root, "src/lib", config),

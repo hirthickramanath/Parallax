@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "For A=(−2y,2x,0), find z component of curl A.",
+      "answer": "4",
+      "hint": "Compute ∂Ay/∂x−∂Ax/∂y.",
+      "explanation": "Compute ∂Ay/∂x−∂Ax/∂y. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "For a sufficiently smooth scalar χ in an ordinary local chart, find the magnitude of curl(gradχ).",
+      "answer": "0",
+      "hint": "Commuting mixed derivatives cancel.",
+      "explanation": "Commuting mixed derivatives cancel. The value in the stated units is 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Does adding a smooth gradient to A change B=curl A locally?",
+      "answer": "No; curl of that gradient vanishes under the stated regularity.",
+      "options": [
+        "Yes; every change in potential changes magnetic field.",
+        "No; curl of that gradient vanishes under the stated regularity."
+      ],
+      "explanation": "Gauge-related potentials can encode the same local field.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every change in potential changes magnetic field.": "Gauge-related potentials can encode the same local field."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ Magnetization contributes bound current $J_b=\nabla\times M$ and surface current
 
 For a linear isotropic simple response, M=χmH and B=μH with μ=μ₀(1+χm). Ferromagnetic hysteresis, saturation, anisotropy and frequency response violate a universal constant-μ picture. Magnetic energy and force in matter require specified constraints and material response; the vacuum B²/(2μ₀) formula cannot be blindly substituted as a complete energy model for every magnetic medium.
 
+
+### Derive, test and transfer
+
+The vector potential satisfies B=curl A, so adding gradχ leaves B unchanged when mixed derivatives commute on the relevant smooth domain. This gauge freedom means a particular A value is not itself a unique local magnetic field observable. Physical fields and the boundary/topological setting must remain consistent under the transformation.
+
+For a uniform z-directed field, one gauge is A=(−By/2,Bx/2,0). Computing its curl recovers Bz=B. In materials, H and magnetization separate source conventions in a macroscopic constitutive description; a scalar susceptibility is an approximation with limits. A local smooth curl identity does not settle every global flux/topology question.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="em_PH4.8" />
+
 
 Differentiate both uniform-field potentials and check equal curls. Then compute volume and surface bound-current contributions for a uniformly magnetized cylinder. Keep the material constitutive assumption distinct from the exact definitions of B, H and M.
 

@@ -1746,3 +1746,58 @@ test("linear algebra and PDE investigations preserve conditioning, integer modes
   await page.getByLabel("Observation point x", { exact: true }).fill("0");
   await expect(page.getByText(/Green function G\(x,s\): 0.0000/)).toBeVisible();
 });
+
+test("electromagnetic probes distinguish zero potential, grounded boundaries and current reversal", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/lesson/PH4.2");
+  await expect(
+    page.getByText("Electric field: (2.0000, 0.0000). Potential: 0.0000.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.getByLabel("Right-hand charge", { exact: true }).fill("1");
+  await expect(
+    page.getByText("Electric field: (0.0000, 0.0000). Potential: 2.0000.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  const scene = page.getByLabel("Drag charges field probe", { exact: true });
+  await scene.scrollIntoViewIfNeeded();
+  const dot = await scene.locator("circle").last().boundingBox();
+  expect(dot).toBeTruthy();
+  await page.mouse.move(dot!.x + dot!.width / 2, dot!.y + dot!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(
+    dot!.x + dot!.width / 2 + 20,
+    dot!.y + dot!.height / 2 - 20,
+    { steps: 5 },
+  );
+  await page.mouse.up();
+  expect(
+    Number(
+      await page.getByLabel("Field probe y", { exact: true }).inputValue(),
+    ),
+  ).toBeGreaterThan(0);
+  await page.goto("/lesson/PH4.3");
+  await expect(
+    page.getByText("Electric field: (0.0000, -0.7071). Potential: 0.0000.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.getByLabel("Field probe x", { exact: true }).fill("0");
+  await page.getByLabel("Field probe y", { exact: true }).fill("1");
+  await expect(
+    page.getByText(/Probe is inside an excluded source disc/),
+  ).toBeVisible();
+  await page.goto("/lesson/PH4.7");
+  await expect(
+    page.getByText("Magnetic field: (-1.0000, 0.0000).", { exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("Wire current", { exact: true }).fill("-1");
+  await expect(
+    page.getByText("Magnetic field: (1.0000, 0.0000).", { exact: true }),
+  ).toBeVisible();
+});

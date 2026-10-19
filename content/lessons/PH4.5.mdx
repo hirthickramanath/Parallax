@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "For ε=A=1 and plate separation d=0.5, find ideal capacitance.",
+      "answer": "2",
+      "hint": "Use εA/d.",
+      "explanation": "Use εA/d. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "For capacitance 2 and voltage 3, find stored electric energy.",
+      "answer": "9",
+      "hint": "Use CV²/2.",
+      "explanation": "Use CV²/2. The value in the stated units is 9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "When voltage is held fixed by a battery, can mechanical energy changes always be computed from capacitor energy alone?",
+      "answer": "No; the voltage source can exchange energy.",
+      "options": [
+        "Yes; the battery never affects energy bookkeeping.",
+        "No; the voltage source can exchange energy."
+      ],
+      "explanation": "The controlled boundary condition determines which system energy must be included.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; the battery never affects energy bookkeeping.": "The controlled boundary condition determines which system energy must be included."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For a linear fixed capacitor, assembly energy is $U=\int_0^Qq/C\,dq=Q^2/(2C)=CV^
 
 Capacitors in series share equal-magnitude intermediate-node charges under the standard initially uncharged isolated-node setup, while parallel capacitors share voltage. Precharged floating nodes and stray capacitance can require additional charge-balance equations. A diagrammatic rule is not a substitute for the actual conductor and source constraints.
 
+
+### Derive, test and transfer
+
+For ideal parallel plates, uniform field E=V/d gives capacitance C=εA/d from Q=εEA. Stored field energy is Q²/(2C) or CV²/2, but these expressions must be used with the actual controlled variable. Doubling separation at fixed charge raises stored energy; at fixed voltage it lowers the capacitor's stored energy while the voltage source exchanges energy.
+
+Electrostatic equilibrium makes a connected ideal conductor an equipotential, not a region with zero surface charge in every circumstance. Fringing and finite geometry alter the parallel-plate approximation. A mechanical-force or energy argument must include the battery when voltage is controlled; comparing only isolated field energies can give the wrong sign for work.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="em_PH4.5" />
+
 
 Compare the conducting-shell and uniform-solid-sphere bench at equal radius and charge, paying attention to the discontinuous normal field at the shell. Compute the conductor energy at fixed charge and at fixed voltage, explicitly including any voltage source before discussing work.
 

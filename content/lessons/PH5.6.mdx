@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "In a fixed nonrelativistic Larmor regime, acceleration triples. Find radiated-power factor.",
+      "answer": "9",
+      "hint": "Power scales as a².",
+      "explanation": "Power scales as a². The value in the stated units is 9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "At fixed acceleration, charge doubles. Find radiated-power factor.",
+      "answer": "4",
+      "hint": "Power also scales as q².",
+      "explanation": "Power also scales as q². The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Does the Larmor acceleration-radiation term imply a uniformly moving charge in vacuum radiates that power?",
+      "answer": "No; its acceleration is zero in the inertial nonrelativistic setting.",
+      "options": [
+        "Yes; every moving charge radiates the same acceleration term.",
+        "No; its acceleration is zero in the inertial nonrelativistic setting."
+      ],
+      "explanation": "Motion and acceleration are distinct inputs to this formula.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every moving charge radiates the same acceleration term.": "Motion and acceleration are distinct inputs to this formula."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For a localized source much smaller than a wavelength, electric-dipole radiation
 
 Relativistic radiation is beamed and requires the appropriate relativistic formula and retarded geometry. A bound charge inside matter also couples to material response, and a collection of charges can interfere coherently or incoherently. Adding individual powers is not always equivalent to adding fields and then forming the flux. The point-charge radiation model has short-distance and self-force limitations.
 
+
+### Derive, test and transfer
+
+For a nonrelativistic accelerating point charge in vacuum, the Larmor power is proportional to q²a² with the familiar SI coefficient q²/(6πε₀c³). Constant velocity does not generate this acceleration-radiation term, though static/velocity fields still exist. Far-zone radiation fields and near-zone energy storage have different distance scalings.
+
+The power formula alone does not give an observed spectrum, polarization or angular pattern without a trajectory. Relativistic motion requires the appropriate generalization and can beam radiation strongly. Feeding a radiated-power estimate back as a local self-force is a separate radiation-reaction problem with subtleties; it is not justified by merely subtracting energy in an arbitrary time step.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="em_PH5.6" />
+
 
 Compare the sin²θ angular pattern with equal-solid-angle bins rather than equal θ widths. Calculate relative Larmor powers for scaled accelerations and separate far-field scaling from a near-field Coulomb diagram. Keep any animation explicitly synthetic and within its velocity approximation.
 

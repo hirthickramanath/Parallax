@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "With ε₀=1, susceptibility χ=3 and field E=2, find polarization magnitude.",
+      "answer": "6",
+      "hint": "Use P=ε₀χE.",
+      "explanation": "Use P=ε₀χE. The value in the stated units is 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "For the same linear dielectric, find relative permittivity εr.",
+      "answer": "4",
+      "hint": "For this model εr=1+χ.",
+      "explanation": "For this model εr=1+χ. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Does uniform polarization imply there can be no bound surface charge?",
+      "answer": "No; P dot the outward normal can be nonzero at a boundary.",
+      "options": [
+        "Yes; zero bulk divergence removes every bound charge.",
+        "No; P dot the outward normal can be nonzero at a boundary."
+      ],
+      "explanation": "Bulk and surface polarization charge are different terms.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; zero bulk divergence removes every bound charge.": "Bulk and surface polarization charge are different terms."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For a parallel-plate capacitor fully filled by a uniform dielectric with relativ
 
 For a reversible linear nondispersive medium under appropriate conditions, electrostatic energy density is E·D/2. Real dielectric losses, hysteresis and frequency dependence require additional material and energy accounting. A macroscopic constitutive law cannot be extrapolated to arbitrarily strong fields or down to a molecular point without checking its averaging assumptions.
 
+
+### Derive, test and transfer
+
+Macroscopic polarization P is dipole moment per volume. For a linear homogeneous isotropic dielectric, P=ε₀χE and D=ε₀E+P=εE under the stated constitutive model. Gauss' law for D counts free charge, whereas the total electric field responds to both free and bound charges.
+
+Bound charge follows ρb=−div P and σb=P dot n at an interface. A uniform polarization can have zero bulk bound density while retaining opposite bound surface charges. Relative permittivity is not automatically one scalar at every frequency or field strength: anisotropy, dispersion, loss and nonlinear response require more structure. The investigation holds the simple linear constitutive relation fixed while varying its inputs.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="em_PH4.6" />
+
 
 Draw the free plate charge and bound dielectric surface charge separately. Compare isolated and voltage-clamped capacitor calculations, keeping total free charge and source work explicit. Use diagrams or computed examples; no high-voltage dielectric insertion experiment is needed.
 

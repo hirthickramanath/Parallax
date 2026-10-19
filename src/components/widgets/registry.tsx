@@ -1,3 +1,9 @@
+import {
+  ElectrostaticProbe,
+  ImageChargeProbe,
+  WireFieldProbe,
+} from "./FieldProbes";
+import { emInvestigations } from "../../lib/em-investigations";
 import { linearOdeInvestigations } from "../../lib/linear-ode-investigations";
 import { multivariableInvestigations } from "../../lib/multivariable-investigations";
 import { AstroInvestigation } from "./AstroInvestigation";
@@ -48,6 +54,9 @@ import { FallingBodies } from "./FallingBodies";
 import { SecantExplorer } from "./SecantExplorer";
 import { CircuitLab } from "./CircuitLab";
 export const widgets = {
+  electrostatic_probe: ElectrostaticProbe,
+  image_charge_probe: ImageChargeProbe,
+  wire_field_probe: WireFieldProbe,
   hamiltonian_phase_explorer: HamiltonianPhaseExplorer,
   canonical_shear_explorer: CanonicalShearExplorer,
   coriolis_explorer: CoriolisExplorer,
@@ -106,6 +115,14 @@ export function Widget({ name }: { name: string }) {
         key={name}
         lessonId={name.slice(11)}
         model={linearOdeInvestigations[name.slice(11)]}
+      />
+    );
+  if (name.startsWith("em_") && emInvestigations[name.slice(3)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(3)}
+        model={emInvestigations[name.slice(3)]}
       />
     );
   const Component = widgets[name as keyof typeof widgets];

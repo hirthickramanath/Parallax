@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "With ε₀=1 and total enclosed charge 3, find outward electric flux through a closed surface.",
+      "answer": "3",
+      "hint": "Gauss law gives q_enclosed/ε₀.",
+      "explanation": "Gauss law gives q_enclosed/ε₀. The value in the stated units is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "For one point charge q=2, k=1/(4πε₀)=1 and distance r=2, find electric-field magnitude.",
+      "answer": "0.5",
+      "hint": "Use k|q|/r² in the explicitly stated units.",
+      "explanation": "Use k|q|/r² in the explicitly stated units. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Does zero net enclosed charge imply zero electric field at every point on a closed surface?",
+      "answer": "No; it constrains net flux rather than every local field value.",
+      "options": [
+        "Yes; zero flux forces the whole surface field to vanish.",
+        "No; it constrains net flux rather than every local field value."
+      ],
+      "explanation": "Outside charges and positive/negative contributions can yield cancellation in flux.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; zero flux forces the whole surface field to vanish.": "Outside charges and positive/negative contributions can yield cancellation in flux."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For an infinite plane sheet with surface charge σ, a pillbox yields the normal-
 
 A chosen Gaussian surface simplifies a calculation only when actual source symmetry fixes enough of the field. Drawing a sphere around an arbitrary charge arrangement does not make its field spherically symmetric. Evaluate signed normal components and state the reference charge distribution before using a one-number field estimate.
 
+
+### Derive, test and transfer
+
+Gauss' integral law fixes net outward flux through a closed surface from enclosed charge. Charges outside can contribute a nonzero field on the surface while their total flux through it cancels. The law is not an assertion that the electric field is zero whenever enclosed charge is zero.
+
+To extract a local field magnitude from total flux, symmetry must justify a constant normal component or a known angular dependence. A charge pair generally lacks the spherical symmetry needed to divide flux by sphere area pointwise. The field probe illustrates superposition and lets you compare a zero-potential location with a nonzero field. In differential form the charge density is related to the full three-dimensional divergence; a two-dimensional slice plot must not be mistaken for all three spatial derivatives.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="electrostatic_probe" />
+
 
 Use the spherical-field bench to compare a uniformly charged solid sphere with a conducting shell at equal total charge and radius. Record signed radial field and enclosed charge at several radii. All readouts are ideal-model calculations, not voltmeter measurements.
 

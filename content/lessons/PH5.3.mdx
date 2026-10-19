@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "em-transfer-1",
+      "prompt": "For relative εr=4 and μr=1 in a nondispersive positive medium, find phase-speed ratio v/c.",
+      "answer": "0.5",
+      "hint": "Use 1/sqrt(εr μr).",
+      "explanation": "Use 1/sqrt(εr μr). The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-transfer-2",
+      "prompt": "Across a stationary interface the speed halves at unchanged frequency. Find wavelength ratio.",
+      "answer": "0.5",
+      "hint": "Use λ=v/f.",
+      "explanation": "Use λ=v/f. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "em-model-assumptions",
+      "prompt": "Are phase velocity and group velocity necessarily equal in a dispersive medium?",
+      "answer": "No; frequency-dependent dispersion generally separates them.",
+      "options": [
+        "Yes; every wave speed definition is interchangeable.",
+        "No; frequency-dependent dispersion generally separates them."
+      ],
+      "explanation": "A derivative of the dispersion relation governs a narrow packet envelope.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every wave speed definition is interchangeable.": "A derivative of the dispersion relation governs a narrow packet envelope."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ With conductivity σ and e⁻ⁱωᵗ time convention, an effective permittivity
 
 Polarization specifies relative component amplitudes and phases: equal orthogonal amplitudes with quadrature phase give circular polarization under a stated viewing convention. Linear superposition is a property of the linear medium model. Absorption and scattering are different mechanisms of beam attenuation; an extinction coefficient alone need not identify which energy-transfer process occurred.
 
+
+### Derive, test and transfer
+
+In homogeneous lossless nondispersive matter with simple positive ε and μ, a plane wave has phase speed 1/sqrt(εμ). The vacuum expression c=1/sqrt(ε₀μ₀) is a special case. Frequency is fixed across a stationary interface while wavelength changes with phase speed.
+
+Dispersive matter has frequency-dependent response, so phase and group velocities differ. A wavepacket envelope description requires a sufficiently narrow spectral band and a meaningful propagation regime. Loss makes propagation constants complex; substituting one real index into every formula can hide attenuation and causality. The investigation isolates the lossless scaling and does not model all material response.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="em_PH5.3" />
+
 
 Compare two orthogonal sinusoidal field components at relative phases 0, π/2 and π. Track their endpoint to identify polarization. For a dispersive packet, separate carrier phase motion from envelope motion and state the bandwidth assumptions; do not infer a signal speed from a single monochromatic curve.
 

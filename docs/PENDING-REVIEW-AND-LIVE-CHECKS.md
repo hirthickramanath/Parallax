@@ -79,3 +79,7 @@ All 61 astrophysics lessons and eight MA2 lessons now have additional derivation
 ## Linear algebra, ODE and PDE follow-up
 
 Twenty-one MA3–MA5 lessons now have 63 additional questions, deeper examples and 21 curve investigations. Current partial mappings total 98 and 230 lessons lack explicit widgets. [Details](LINEAR-ODE-PDE-EXPANSION.md). Independent review is still zero; [review packets](INDEPENDENT-REVIEW-PACKETS.md) now bind model code as well as lesson text.
+
+## Electromagnetism follow-up
+
+PH4–PH5 now have 48 additional questions, three two-dimensional probes and eleven analytic curve investigations. Current partial mappings: 108; lessons without explicit widgets: 217; independent approvals: zero. See [the release scope and checks](ELECTROMAGNETISM-EXPANSION.md).
