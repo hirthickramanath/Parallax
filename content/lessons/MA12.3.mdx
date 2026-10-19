@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For exp(i7x), find the L² norm amplification under differentiation.",
+      "answer": "7",
+      "hint": "The derivative factor has magnitude |n|.",
+      "explanation": "The derivative factor has magnitude |n|. Result: 7.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For diagonal matrix diag(2,−5) in Euclidean norm, find operator norm.",
+      "answer": "5",
+      "hint": "Take the maximum singular value.",
+      "explanation": "Take the maximum singular value. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does boundedness of every finite spectral truncation prove a uniform bound as the cutoff grows?",
+      "answer": "No; the bound may grow without limit.",
+      "options": [
+        "Yes; finite matrices settle the infinite-dimensional operator.",
+        "No; the bound may grow without limit."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Uniform control is the issue.",
+      "misconceptions": {
+        "Yes; finite matrices settle the infinite-dimensional operator.": "Uniform control is the issue."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A symmetric operator agrees with its adjoint pairing on its stated domain; self-
 
 Closedness and closability control limits of graph pairs (x,Ax). Quantum unitary-evolution theorems require self-adjoint generators under their hypotheses, not just an informally real energy expression. Commutators and uncertainty inequalities also need a common domain where the required products exist.
 
+
+### Derivation and transfer
+
+An operator is bounded when one constant C controls ||Tx||≤C||x|| on its whole domain. Finite matrix examples are bounded, but differentiation on an L²-based domain is not bounded in the L² norm: higher-frequency modes amplify its norm.
+
+For exp(inx), differentiation multiplies by in, so the norm ratio is |n|. Truncating to finite n hides the unbounded limit. The display makes that sequence explicit; it does not assert differentiation is unbounded under every possible graph or Sobolev norm.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA12.3" />
+
 
 Calculate the boundary term for a momentum-like derivative on an interval under periodic and zero-value choices. State the domain before comparing symmetry, adjointness and possible unitary evolution.
 

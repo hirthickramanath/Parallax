@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "Find the dot product of (1,2,3) and (4,5,6).",
+      "answer": "32",
+      "hint": "Sum pairwise products.",
+      "explanation": "Sum pairwise products. Result: 32.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "A 3-by-4 matrix multiplies a compatible vector. Find output length.",
+      "answer": "3",
+      "hint": "The output has one entry per matrix row.",
+      "explanation": "The output has one entry per matrix row. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Does elementwise array multiplication always equal matrix multiplication?",
+      "answer": "No; the operations and compatible shapes differ.",
+      "options": [
+        "Yes; broadcasting implements every matrix product.",
+        "No; the operations and compatible shapes differ."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check both operation and dimensions.",
+      "misconceptions": {
+        "Yes; broadcasting implements every matrix product.": "Check both operation and dimensions."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -183,9 +220,19 @@ A reproducible script separates model functions from file access and plotting, v
 
 Broadcasting compares shapes from the right; paired dimensions must be equal or one must be 1. For $(4,1)$ and $(1,5)$ the result is $(4,5)$, not $(4,1,5)$. A reduction with axis=0 combines the rows and removes that axis unless keepdims is requested. Basic slicing generally returns a view, so assignment through it can mutate the parent; an explicit copy separates storage. Shape compatibility is not evidence that a calculation represents the intended physical pairing: label which axes denote samples, coordinates and parameters before broadcasting scientific arrays.
 
+
+### Derivation and transfer
+
+Array shape is part of a numerical computation. For an n-by-m matrix and a length-m vector, matrix multiplication produces a length-n vector, whereas elementwise multiplication follows broadcasting rules and is a different operation. Units and axis meanings must accompany a shape.
+
+The explorer computes an explicit small dot product in the browser; it does not run Python or NumPy. A vectorization speed claim needs a measured benchmark with dtype, memory layout and problem size. Copying an expression without checking broadcasting can silently compute a different scientific quantity.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="computing_CP1.1" />
+
 
 Run the code in a local Python environment with NumPy installed; this website does not execute arbitrary Python. Print shape and dtype after every operation. Deliberately reshape one input to (3,1), predict the broadcast result, then inspect and correct it.
 

@@ -87,6 +87,43 @@
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For a flat-plane geodesic at r=2 and θ′=3, find radial coordinate r″.",
+      "answer": "18",
+      "hint": "Use r″=rθ′².",
+      "explanation": "Use r″=rθ′². Result: 18.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For a straight Cartesian path in an affine parameter, find covariant acceleration magnitude.",
+      "answer": "0",
+      "hint": "Geodesic covariant acceleration vanishes.",
+      "explanation": "Geodesic covariant acceleration vanishes. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Must every coordinate acceleration component vanish along a geodesic?",
+      "answer": "No; the connection terms can cancel it.",
+      "options": [
+        "Yes; geodesic means zero second derivative in every chart.",
+        "No; the connection terms can cancel it."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use covariant rather than ordinary acceleration.",
+      "misconceptions": {
+        "Yes; geodesic means zero second derivative in every chart.": "Use covariant rather than ordinary acceleration."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Multiplying by the inverse metric and symmetrizing the two velocity indices yiel
 
 If $x(\lambda)$ is affine and $\lambda=\lambda(s)$ with nonzero first derivative, the covariant acceleration with respect to $s$ is $(\lambda''/\lambda')dx/ds$. Only linear changes preserve the zero right-hand side in general. The geometric curve remains the same. Constant curves are a special case and do not establish the converse for moving paths.
 
+
+### Derivation and transfer
+
+A geodesic has zero covariant acceleration in an affine parameter. In flat polar coordinates its radial equation is r″−rθ′²=0, so r″ can be nonzero even for a Cartesian straight line. Coordinate acceleration is not invariant acceleration.
+
+The display isolates the instantaneous radial coordinate term. It does not integrate a geodesic or prove that every geodesic is a global shortest path. Beyond conjugate points or on closed geometries, local and global minimizing properties differ.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.4" />
+
 
 Integrate a straight line in Cartesian and polar coordinates and compare the same endpoints/metric length. Separately test an affine versus nonlinear parameter change and identify the extra tangent term.
 

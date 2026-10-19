@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "A bin holds probability mass 0.2 and has width 0.5. Find its density height.",
+      "answer": "0.4",
+      "hint": "Divide mass by width.",
+      "explanation": "Divide mass by width. Result: 0.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "A constant density 2 occupies width 0.3. Find its probability mass.",
+      "answer": "0.6",
+      "hint": "Multiply height by width.",
+      "explanation": "Multiply height by width. Result: 0.6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "For unequal-width density bins, is probability represented by height alone?",
+      "answer": "No; it is density times bin width.",
+      "options": [
+        "Yes; width has no effect on probability.",
+        "No; it is density times bin width."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Histogram area encodes the mass.",
+      "misconceptions": {
+        "Yes; width has no effect on probability.": "Histogram area encodes the mass."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -186,9 +223,19 @@ Store the script and source data alongside a figure. Identify smoothing, normali
 
 For a positive power law $y=Ax^m$, logarithms give $\log y=\log A+m\log x$. A straight line on log–log axes is therefore consistent with a power law only over the inspected range; it does not prove the law outside it. Standard deviation describes sample spread, while the estimated standard error $s/\sqrt n$ describes uncertainty in a mean under independence assumptions. Correlation can invalidate that reduction. A log axis cannot represent nonpositive measurements, so exclusions or alternative transforms must be reported rather than silently changing the sample.
 
+
+### Derivation and transfer
+
+A density histogram divides bin counts by total count and bin width, so the sum of density times width is one. Unequal-width bins make raw bar heights particularly misleading. Log axes require positive values and do not change the underlying units.
+
+The display varies a bin width for a fixed probability mass; the height changes while area remains fixed. This is a plotting normalization benchmark, not a real dataset or an uncertainty estimate. Error bars must identify whether they show sample spread, standard error or an interval.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="computing_CP1.2" />
+
 
 Make linear, semilog and log–log versions of one explicitly synthetic dataset. Keep the data fixed, label transformations and describe which model would be linear in each view. Save the plotting script rather than manually adjusting an exported image without a record.
 

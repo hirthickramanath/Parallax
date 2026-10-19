@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For D=1,dt=0.1,dx=0.5, find r.",
+      "answer": "0.4",
+      "hint": "Use Ddt/dx².",
+      "explanation": "Use Ddt/dx². Result: 0.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "For r=0.5 at the grid-scale mode, find amplification.",
+      "answer": "-1",
+      "hint": "Use 1−4r.",
+      "explanation": "Use 1−4r. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Can halving dx at fixed dt destabilize an explicit diffusion solver?",
+      "answer": "Yes; the ratio Ddt/dx² grows by four.",
+      "options": [
+        "No; spatial refinement always increases stability.",
+        "Yes; the ratio Ddt/dx² grows by four."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Time and space resolution are coupled.",
+      "misconceptions": {
+        "No; spatial refinement always increases stability.": "Time and space resolution are coupled."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Backward Euler solves a linear system at each step and is unconditionally stable
 
 Use an exact mode u=sin(πx/L)exp[−D(π/L)²t] for verification. Refine grids with a consistent time-step strategy and compute an explicit norm of the error at the same physical time. A small solver residual measures the discrete equation, not its agreement with the continuum. Conservation tests apply only to boundary conditions where the corresponding quantity should be conserved. Label the Fourier-mode bench’s analytic curves separately from an actual finite-difference calculation.
 
+
+### Derivation and transfer
+
+For forward-time centered-space diffusion, un+1_j=un_j+r(un_j+1−2un_j+un_j−1), where r=Ddt/dx². A Fourier mode has amplification 1−4r sin²(kdx/2). Stability in one dimension requires r≤1/2 for nonnegative D.
+
+The display probes the grid-scale worst case kdx=π. Halving dx at fixed dt quadruples r, so spatial refinement can destabilize an explicit computation. Boundary conditions, multidimensional grids and other schemes require their own analysis. This is a mode test, not a solved observational PDE project.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="computing_CP2.1" />
+
 
 Implement the stated stencil with separate old/new arrays so updates do not accidentally mix time levels. Compare the exact sine-mode decay on three grids. Report boundary condition, Δx, Δt, final time and error norm; deliberately test an unstable ratio only as a labelled numerical failure.
 

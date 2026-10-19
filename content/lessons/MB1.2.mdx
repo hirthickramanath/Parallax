@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Solve ln(x)=2 for positive x.",
+      "answer": "7.38905609893065",
+      "hint": "Apply the real exponential.",
+      "explanation": "Apply the real exponential. Result: 7.389056098931.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "Find |3+4i|.",
+      "answer": "5",
+      "hint": "Use the Euclidean norm.",
+      "explanation": "Use the Euclidean norm. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "May a real logarithm equation keep a candidate with a nonpositive original argument?",
+      "answer": "No; it violates the original domain.",
+      "options": [
+        "Yes; cancellation removes every logarithm domain restriction.",
+        "No; it violates the original domain."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Substitute into the original expression.",
+      "misconceptions": {
+        "Yes; cancellation removes every logarithm domain restriction.": "Substitute into the original expression."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -173,9 +210,19 @@ Polar form is $z=r(\cos\theta+i\sin\theta)=re^{i\theta}$. Multiplication adds ar
 
 For $z=a+ib$, multiply by its conjugate to obtain $z\bar z=a^2+b^2$; modulus is the positive square root, not the squared modulus itself. For positive real arguments, $\log(xy)=\log x+\log y$. Principal complex arguments require branch control: $\operatorname{Log}(-1)=i\pi$ under the argument convention $(-\pi,\pi]$, while $\operatorname{Log}(1)=0$. The two sides of the product rule can therefore differ by $2\pi i$. Real exponential equations additionally use injectivity: equality of powers with a fixed positive base other than 1 implies equality of exponents.
 
+
+### Derivation and transfer
+
+A real logarithm requires a positive argument. Product and power rules must respect domains; over complex numbers a chosen branch adds further restrictions. The exponential is monotone on the real line, so it can preserve order when solving real logarithmic equations.
+
+The display compares ln x under a positive scaling. It does not implement every complex branch, and a formal algebraic transformation cannot admit an original zero or negative real argument.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB1.2" />
+
 
 Place 1, i, −1 and −i on an Argand diagram. Multiply each by i and trace the quarter-turn. Separately tabulate exponential doubling and show that equal log increments correspond to equal ratios, not equal differences.
 

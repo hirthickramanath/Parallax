@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For prevalence 0.01,sensitivity 1 and false-positive rate 0.01, find probability of the condition after a positive test.",
+      "answer": "0.5025125628140703",
+      "hint": "Normalize true-positive mass 0.01 against false-positive mass 0.0099.",
+      "explanation": "Normalize true-positive mass 0.01 against false-positive mass 0.0099. Result: 0.502512562814.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "If P(A∩B)=0.12 and P(B)=0.3, find P(A|B).",
+      "answer": "0.4",
+      "hint": "Divide by P(B).",
+      "explanation": "Divide by P(B). Result: 0.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Is P(positive|condition) generally equal to P(condition|positive)?",
+      "answer": "No; prevalence and false positives matter.",
+      "options": [
+        "Yes; conditional probability is symmetric.",
+        "No; prevalence and false positives matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Reverse conditioning requires Bayes' rule.",
+      "misconceptions": {
+        "Yes; conditional probability is symmetric.": "Reverse conditioning requires Bayes' rule."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ A continuous distribution assigns zero probability to an exact point while inter
 
 Partition the sample space into $A$ and its complement. Then $P(B)=P(B|A)P(A)+P(B|A^c)P(A^c)$, and Bayes gives $P(A|B)=P(B|A)P(A)/P(B)$ when $P(B)>0$. With the stated rates, only 0.009 of the whole population are true positives, while 0.0495 are false positives. A high sensitivity is therefore compatible with a modest posterior probability. Selection effects in astronomical detection have the same denominator problem: the detected sample is not automatically representative of the underlying population.
 
+
+### Derivation and transfer
+
+Bayes' rule combines prevalence with sensitivity and false-positive rate. A positive test has posterior probability sp/[sp+f(1−p)] when these probabilities describe the same population and testing process. A low false-positive rate does not erase a very small prior prevalence.
+
+The display fixes sensitivity at 0.9 and varies prevalence and the false-positive rate. It is a transparent probability toy, not a clinical recommendation or a calibrated diagnostic. Conditional directions must not be reversed.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB4.3" />
+
 
 <Widget name="bayes_explorer" />
 

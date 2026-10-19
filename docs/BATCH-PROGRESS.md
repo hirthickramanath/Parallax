@@ -1,6 +1,6 @@
 # Course depth, simulations and review: batch progress
 
-Latest release: [69-lesson astrophysics/multivariable expansion](ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md). Followed by the [21-lesson MA3–MA5 expansion](LINEAR-ODE-PDE-EXPANSION.md). Then the [electromagnetism release](ELECTROMAGNETISM-EXPANSION.md). Then the [physical/molecular chemistry release](PHYSICAL-MOLECULAR-CHEMISTRY-EXPANSION.md). Then the [bonding/organic chemistry release](BONDING-ORGANIC-CHEMISTRY-EXPANSION.md). Then the [complex/probability/variational release](COMPLEX-PROBABILITY-VARIATIONAL-EXPANSION.md). Current partial mappings: 142; lessons without explicit widgets: 132. The counts below describe the earlier three-batch run.
+Latest release: [69-lesson astrophysics/multivariable expansion](ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md). Followed by the [21-lesson MA3–MA5 expansion](LINEAR-ODE-PDE-EXPANSION.md). Then the [electromagnetism release](ELECTROMAGNETISM-EXPANSION.md). Then the [physical/molecular chemistry release](PHYSICAL-MOLECULAR-CHEMISTRY-EXPANSION.md). Then the [bonding/organic chemistry release](BONDING-ORGANIC-CHEMISTRY-EXPANSION.md). Then the [complex/probability/variational release](COMPLEX-PROBABILITY-VARIATIONAL-EXPANSION.md). Then the [52-lesson structure/computing/foundation release](STRUCTURE-COMPUTING-FOUNDATION-EXPANSION.md). Current partial mappings: 146; lessons without explicit widgets: 86. The counts below describe the earlier three-batch run.
 
 ## Completed in this run
 

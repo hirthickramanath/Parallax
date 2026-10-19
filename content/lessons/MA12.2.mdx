@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For vector (3,4), find squared distance to the x-axis.",
+      "answer": "16",
+      "hint": "The perpendicular component is (0,4).",
+      "explanation": "The perpendicular component is (0,4). Result: 16.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find squared norm of the same vector.",
+      "answer": "25",
+      "hint": "Add the two squared components.",
+      "explanation": "Add the two squared components. Result: 25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Can an incomplete inner-product subspace be called a Hilbert space without taking its completion?",
+      "answer": "No; completeness in the induced norm is required.",
+      "options": [
+        "Yes; an inner product alone suffices.",
+        "No; completeness in the induced norm is required."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Completeness is part of the Hilbert-space definition.",
+      "misconceptions": {
+        "Yes; an inner product alone suffices.": "An incomplete inner-product space is not yet Hilbert."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For a closed linear subspace of a Hilbert space, the nearest-point projection ex
 
 The Riesz representation theorem identifies continuous linear functionals with an inner-product pairing in a Hilbert space under its convention. It does not say every algebraic functional or every distribution is an ordinary vector of the same L² space. Boundary traces and generalized eigenvectors need their own function-space framework.
 
+
+### Derivation and transfer
+
+A Banach space is complete in its norm; a Hilbert space additionally has an inner product inducing the norm. Cauchy sequences must converge inside the space, so an incomplete subspace cannot be repaired merely by naming a norm.
+
+In an inner-product space, orthogonal projection decomposes a vector into parallel and perpendicular parts and obeys the Pythagorean identity. The display uses a two-dimensional Euclidean example. Infinite-dimensional projection requires a closed subspace for the standard closest-point theorem.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA12.2" />
+
 
 Approximate a known square-integrable function using an orthonormal basis and compare partial-sum error norms. Separate pointwise plots from L² convergence and state whether the selected span is closed.
 

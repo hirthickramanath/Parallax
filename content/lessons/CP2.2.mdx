@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For independent Bernoulli p=0.5 and N=100, find standard error.",
+      "answer": "0.05",
+      "hint": "Use sqrt(p(1−p)/N).",
+      "explanation": "Use sqrt(p(1−p)/N). Result: 0.05.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "A chain has 1000 samples and integrated autocorrelation factor 5 under ESS=N/factor. Find ESS.",
+      "answer": "200",
+      "hint": "Divide by the stated correlation factor.",
+      "explanation": "Divide by the stated correlation factor. Result: 200.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Does a long raw MCMC chain automatically provide the same number of independent samples?",
+      "answer": "No; autocorrelation reduces effective information.",
+      "options": [
+        "Yes; every stored state is independent.",
+        "No; autocorrelation reduces effective information."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Assess effective sample size and mixing.",
+      "misconceptions": {
+        "Yes; every stored state is independent.": "Assess effective sample size and mixing."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Detailed balance is a sufficient route to invariance for the stated kernel. Irre
 
 For a stationary correlated chain, the integrated autocorrelation time τ=1+2∑ρ_k gives effective sample size roughly N/τ when the sum and variance assumptions hold. Multiple dispersed chains, trace plots, rank-based convergence diagnostics and effective sample sizes expose some failures but cannot prove every hidden mode was found. Report priors, likelihood, proposal, seeds and uncertainty; synthetic inference exercises are not observational discovery.
 
+
+### Derivation and transfer
+
+Independent Monte Carlo estimates of a Bernoulli probability have standard error sqrt(p(1−p)/N). Correlated MCMC samples instead need autocorrelation-aware effective sample size; raw chain length is not the number of independent observations.
+
+The display varies an assumed effective independent count. It does not generate random samples or certify mixing. A useful project records random seed, estimator, uncertainty method and convergence diagnostics, and compares an analytic benchmark when available.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="computing_CP2.2" />
+
 
 Sample a one-dimensional normal target, then a separated mixture. Compare short-step and long-step proposals using traces, rejection rates and effective sample sizes. Retain rejected states, run dispersed starts and label all targets/samples synthetic.
 

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For k=1,T=2,m=3, find rms speed.",
+      "answer": "1.4142135623730951",
+      "hint": "Use sqrt(3kT/m).",
+      "explanation": "Use sqrt(3kT/m). Result: 1.414213562373.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "At fixed mass, temperature quadruples. Find rms-speed factor.",
+      "answer": "2",
+      "hint": "Speed scales as sqrt(T).",
+      "explanation": "Speed scales as sqrt(T). Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Are rms speed and mean speed exactly the same statistic?",
+      "answer": "No; averaging and squaring do not commute.",
+      "options": [
+        "Yes; every characteristic speed is identical.",
+        "No; averaging and squaring do not commute."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Compare definitions before substituting.",
+      "misconceptions": {
+        "Yes; every characteristic speed is identical.": "Compare definitions before substituting."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Thermal Doppler broadening reflects the line-of-sight velocity distribution. Tur
 
 In an isotropic gas, $\langle v_x^2\rangle=\langle v^2\rangle/3$. Momentum transfer to a wall gives $p=(N/V)m\langle v^2\rangle/3$; comparison with $p=(N/V)kT$ yields $v_{rms}=\sqrt{3kT/m}$. This is a root-mean-square speed, not the most probable speed or the mean of the speed distribution. Classical quadratic degrees of freedom each contribute $kT/2$ to the mean energy only in their classical regime. If level spacing is comparable to or exceeds $kT$, the classical heat-capacity count must be replaced with a quantum population calculation.
 
+
+### Derivation and transfer
+
+For a classical monatomic ideal gas, each translational quadratic degree contributes kT/2 to the mean energy. Thus mean kinetic energy is 3kT/2 and rms speed is sqrt(3kT/m). Rms speed differs from mean speed.
+
+The explorer uses k=1 model units and a selected particle mass. Quantum degeneracy, internal molecular modes and interacting dense gases require more physics. A single representative speed is not the full Maxwell distribution.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB2.3" />
+
 
 Imagine an elastic-particle box and record pressure by momentum transferred per wall area and time. Double particle number at fixed volume and temperature, then double temperature. Predict changes before using pV=NkT. Explicitly separate a statistical computed reading from a real pressure sensor.
 

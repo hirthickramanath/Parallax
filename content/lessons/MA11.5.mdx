@@ -87,6 +87,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "in the stated convention and units"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For a two-sphere of radius 2, find Gaussian curvature.",
+      "answer": "0.25",
+      "hint": "Use 1/R².",
+      "explanation": "Use 1/R². Result: 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For that sphere, find scalar curvature.",
+      "answer": "0.5",
+      "hint": "In two dimensions scalar curvature is twice Gaussian curvature.",
+      "explanation": "In two dimensions scalar curvature is twice Gaussian curvature. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does visible extrinsic bending always imply intrinsic Gaussian curvature?",
+      "answer": "No; a cylinder is intrinsically flat.",
+      "options": [
+        "Yes; any bent surface has positive Gaussian curvature.",
+        "No; a cylinder is intrinsically flat."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Intrinsic curvature concerns the metric.",
+      "misconceptions": {
+        "Yes; any bent surface has positive Gaussian curvature.": "Intrinsic curvature concerns the metric."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Lowering the first index and dividing by the metric area factor gives Gaussian c
 
 Take the product of a two-sphere of curvature $+1/R^2$ and a hyperbolic plane of curvature $-1/R^2$, with the product Riemannian metric. Their scalar curvatures add to zero, but planes tangent to either factor still have nonzero sectional curvature. The four-dimensional product is not flat. In two dimensions alone the scalar determines the full Riemann tensor; dimensional assumptions change this conclusion.
 
+
+### Derivation and transfer
+
+For a two-sphere of radius R, Gaussian curvature is 1/R² and scalar curvature is 2/R². These are intrinsic despite being readily illustrated by a sphere embedded in three dimensions. A cylinder can bend extrinsically while having zero intrinsic Gaussian curvature.
+
+The display varies a constant-curvature sphere family. It does not calculate arbitrary Riemann components from a metric. Sign conventions for the Riemann tensor should be stated before comparing component formulas across references.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.5" />
+
 
 Compute curvature for the polar plane and round sphere using the same convention. Compare the invariant results and transport a tangent around a small loop, retaining the loop-area and finite-size qualifications.
 

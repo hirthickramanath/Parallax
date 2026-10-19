@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "Find the 1-norm of (3,4).",
+      "answer": "7",
+      "hint": "Sum absolute components.",
+      "explanation": "Sum absolute components. Result: 7.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find its Euclidean 2-norm.",
+      "answer": "5",
+      "hint": "Use the square root of 3²+4².",
+      "explanation": "Use the square root of 3²+4². Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Do equivalent norms necessarily assign identical numeric lengths?",
+      "answer": "No; they can induce the same topology with different lengths.",
+      "options": [
+        "Yes; equivalent means numerically equal.",
+        "No; they can induce the same topology with different lengths."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Compare 1-norm and 2-norm in finite dimensions.",
+      "misconceptions": {
+        "Yes; equivalent means numerically equal.": "Compare 1-norm and 2-norm in finite dimensions."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Compactness is the finite-subcover property. In Euclidean Rⁿ, Heine–Borel id
 
 Connectedness, path connectedness and simple connectedness are different properties. A hole can obstruct global primitives without preventing ordinary connectedness. Physical spaces also need a specified topology and admissible boundary conditions; drawing one coordinate patch does not settle their global structure.
 
+
+### Derivation and transfer
+
+A metric supplies nonnegative distance, symmetry, identity of indiscernibles and the triangle inequality. It induces open balls and a topology, but different metrics can induce the same topology. Convergence is defined through neighborhoods, not a particular drawing.
+
+For vectors (x,1), the p-norm is (|x|^p+1)^(1/p), with p≥1. The display compares finite-dimensional norms. Equivalent finite-dimensional norms do not imply identical distances or extend automatically to every infinite-dimensional space.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA12.1" />
+
 
 Compare sequences in an open interval, closed interval and rational-number subspace. State which metric/topology is used, then test the exact completeness/compactness definition rather than relying on a picture.
 

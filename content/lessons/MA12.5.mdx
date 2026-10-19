@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For diag(−1,2), find its largest eigenvalue.",
+      "answer": "2",
+      "hint": "Read the diagonal entries.",
+      "explanation": "Read the diagonal entries. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For the λ=2 eigenspace and z=0, find resolvent factor 1/(λ−z).",
+      "answer": "0.5",
+      "hint": "Substitute into the resolvent factor.",
+      "explanation": "Substitute into the resolvent factor. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Must every self-adjoint operator have a complete countable basis of ordinary eigenvectors?",
+      "answer": "No; continuous spectrum can occur.",
+      "options": [
+        "Yes; all spectral resolutions are finite-matrix sums.",
+        "No; continuous spectrum can occur."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The spectral theorem also uses projection-valued measures.",
+      "misconceptions": {
+        "Yes; all spectral resolutions are finite-matrix sums.": "The spectral theorem also uses projection-valued measures."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Compact self-adjoint operators have a discrete nonzero eigenvalue structure with
 
 The functional calculus defines projectors, evolution and measurement probabilities, but unbounded functions of A restrict domains. Approximate numerical matrix eigenvalues are a discretization result, not automatically a proof of the continuum spectrum; check refinement, boundary truncation and possible spectral artifacts.
 
+
+### Derivation and transfer
+
+A self-adjoint operator has a real spectrum, but its spectral resolution need not be a finite sum of ordinary eigenvectors. Multiplication by x on L²([0,1]) has continuous spectrum, illustrating why finite-matrix intuition is incomplete.
+
+For the finite diagonal example diag(−1,2), the resolvent eigenvalues are 1/(λ−z) away from the spectrum. The display probes one real resolvent branch without crossing its pole. It is not a complete spectral measure or a classification of non-self-adjoint operators.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA12.5" />
+
 
 Diagonalize a finite Hermitian matrix and compare projector probabilities before a basis change. Then enlarge a truncated free-particle box and study how dense eigenvalues approach a continuum description without claiming each finite box already has continuous spectrum.
 

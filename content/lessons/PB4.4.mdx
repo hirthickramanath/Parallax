@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For peak voltage 10, find rms voltage.",
+      "answer": "7.071067811865475",
+      "hint": "Divide by sqrt2.",
+      "explanation": "Divide by sqrt2. Result: 7.071067811865.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For rms voltage 6 across resistance 3, find average power.",
+      "answer": "12",
+      "hint": "Use Vrms²/R.",
+      "explanation": "Use Vrms²/R. Result: 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Are peak and rms values of a sinusoid interchangeable in a power formula?",
+      "answer": "No; the conversion factor matters.",
+      "options": [
+        "Yes; they are merely two labels for the same voltage.",
+        "No; the conversion factor matters."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Average the square rather than the signed sinusoid.",
+      "misconceptions": {
+        "Yes; they are merely two labels for the same voltage.": "Average the square rather than the signed sinusoid."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ These vacuum relations change in matter: phase speed, dispersion and absorption 
 
 For sinusoidal voltage and current, time-averaging their product gives $P=V_{rms}I_{rms}\cos\phi$. A resistor has $\phi=0$ and dissipates energy, while an ideal reactive element stores and returns energy with zero net cycle work. Setting $\omega L=1/(\omega C)$ gives $\omega_0=1/\sqrt{LC}$ for the ideal reactance cancellation. Radians per second are not hertz: $f_0=\omega_0/(2\pi)$. Phasors describe a sinusoidal steady-state particular solution; initial-condition transients require the time-domain homogeneous solution.
 
+
+### Derivation and transfer
+
+For a sinusoidal voltage V=V0cosωt, rms voltage is V0/√2. Average resistive power is Vrms²/R. In a reactive circuit, voltage and current can be phase shifted so average power also includes a power factor.
+
+The display isolates instantaneous resistor power V²/R. It does not describe a general impedance or guarantee maximum power whenever an amplitude is high. Rms values and peak values must not be substituted interchangeably.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB4.4" />
+
 
 Draw voltage and current sinusoids for a resistor, capacitor and inductor with one shared time axis. Mark lead and lag by a quarter cycle rather than matching peak magnitudes. For practical demonstrations use only a low-voltage isolated educational source; this is not a mains wiring exercise.
 

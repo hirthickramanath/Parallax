@@ -1,3 +1,6 @@
+import { foundationNextInvestigations } from "../../lib/foundation-next-investigations";
+import { computingInvestigations } from "../../lib/computing-investigations";
+import { structureInvestigations } from "../../lib/structure-investigations";
 import { advancedMathInvestigations } from "../../lib/advanced-math-investigations";
 import { chemistryInvestigations } from "../../lib/chemistry-investigations";
 import { physicalChemistryInvestigations } from "../../lib/physical-chemistry-investigations";
@@ -100,6 +103,33 @@ export const widgets = {
   secant_explorer: SecantExplorer,
 };
 export function Widget({ name }: { name: string }) {
+  if (
+    name.startsWith("foundation_next_") &&
+    foundationNextInvestigations[name.slice(16)]
+  )
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(16)}
+        model={foundationNextInvestigations[name.slice(16)]}
+      />
+    );
+  if (name.startsWith("computing_") && computingInvestigations[name.slice(10)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(10)}
+        model={computingInvestigations[name.slice(10)]}
+      />
+    );
+  if (name.startsWith("structure_") && structureInvestigations[name.slice(10)])
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(10)}
+        model={structureInvestigations[name.slice(10)]}
+      />
+    );
   if (
     name.startsWith("advanced_math_") &&
     advancedMathInvestigations[name.slice(14)]

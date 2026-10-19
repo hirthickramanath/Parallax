@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "Find the polar-to-Cartesian area Jacobian magnitude at radius 3.",
+      "answer": "3",
+      "hint": "The determinant magnitude is r.",
+      "explanation": "The determinant magnitude is r. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For r=2,θ=π/3, find x.",
+      "answer": "1",
+      "hint": "Use r cosθ.",
+      "explanation": "Use r cosθ. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does the failure of polar angle at the origin make the Euclidean plane geometrically singular?",
+      "answer": "No; the coordinates fail there.",
+      "options": [
+        "Yes; every coordinate singularity is physical.",
+        "No; the coordinates fail there."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use another regular chart.",
+      "misconceptions": {
+        "Yes; every coordinate singularity is physical.": "Use another regular chart."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A differential form or metric is additional structure on the manifold, not alrea
 
 The rank of a map controls local regularity through inverse/implicit-function theorems under their hypotheses. A vanishing coordinate determinant can indicate a bad chart rather than a physical divergence. To diagnose a true singularity, seek coordinate-independent structure and the relevant extendibility/geodesic information rather than relying on one plotted component.
 
+
+### Derivation and transfer
+
+A coordinate chart maps an open region of a manifold to an open Euclidean region. Polar coordinates fail at the origin and need angle branches even though the plane itself is smooth. A chart singularity does not automatically signal a geometric singularity.
+
+For x=r cosθ,y=r sinθ, the area Jacobian magnitude is r. The display follows one circle in its Cartesian x projection. It does not cover a sphere with one globally nonsingular chart or equate a projection with an embedding of every manifold.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.2" />
+
 
 Cover a sphere with two stereographic charts and identify which point each omits. Verify transition smoothness on their overlap. Keep a chart diagram separate from a claim that the sphere is globally one Euclidean coordinate plane.
 

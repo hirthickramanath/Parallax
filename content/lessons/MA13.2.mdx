@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For stationary OU parameters D=3,κ=2, find variance.",
+      "answer": "1.5",
+      "hint": "Use D/κ.",
+      "explanation": "Use D/κ. Result: 1.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For a Wiener increment over dt=0.25, find its standard deviation.",
+      "answer": "0.5",
+      "hint": "Use sqrt(dt).",
+      "explanation": "Use sqrt(dt). Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does a Wiener increment scale in standard deviation as dt rather than sqrt(dt)?",
+      "answer": "No; its variance is dt.",
+      "options": [
+        "Yes; it scales like a deterministic velocity increment.",
+        "No; its variance is dt."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Stochastic and ordinary differential increments differ.",
+      "misconceptions": {
+        "Yes; it scales like a deterministic velocity increment.": "Stochastic and ordinary differential increments differ."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ In one dimension a Stratonovich drift converts to Itô drift by adding b b′/2 
 
 For geometric Brownian motion dX=αXdt+σXdW, Itô’s formula yields dlnX=(α−σ²/2)dt+σdW for positive X. Mean growth, typical logarithmic growth and sample extrema are different. Euler–Maruyama has convergence regimes and can violate positivity at finite steps for this process; an exact log update is available here.
 
+
+### Derivation and transfer
+
+For the Ornstein–Uhlenbeck process dX=−κXdt+sqrt(2D)dW, starting at zero, the variance is D(1−exp(−2κt))/κ. Its stationary variance is D/κ. The stochastic forcing scales with sqrt(dt), unlike a deterministic increment.
+
+The display uses the exact variance with κ=1, not a sampled path. An Itô or Stratonovich convention must be specified for multiplicative noise; they coincide here because the diffusion coefficient is constant. Discretization bias and sampling error remain separate.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA13.2" />
+
 
 Simulate a labelled geometric Brownian model with exact log updates and compare with decreasing-step Euler–Maruyama. Check positivity, ensemble mean and log mean separately. State Itô/Stratonovich convention in every reported equation.
 

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For half-life 2 time units, find the fraction remaining after 6 units.",
+      "answer": "0.125",
+      "hint": "Three half-lives leave one eighth.",
+      "explanation": "Three half-lives leave one eighth. Result: 0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For λ=0.5 per time unit, find mean lifetime.",
+      "answer": "2",
+      "hint": "Use 1/λ.",
+      "explanation": "Use 1/λ. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does a half-life specify the exact decay time of each individual nucleus?",
+      "answer": "No; it characterizes a survival distribution.",
+      "options": [
+        "Yes; every nucleus decays at the half-life.",
+        "No; it characterizes a survival distribution."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The law describes probabilities and ensemble counts.",
+      "misconceptions": {
+        "Yes; every nucleus decays at the half-life.": "The law describes probabilities and ensemble counts."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Fusion of light nuclei and fission of some heavy nuclei can release energy becau
 
 With constant decay probability per unit time $\lambda$, $dN/dt=-\lambda N$ integrates to $N=N_0e^{-\lambda t}$ and $t_{1/2}=\ln2/\lambda$. The expected number of detected signal events is reduced by efficiency; independent background adds to the expected count. Subtracting an estimated background also introduces its uncertainty and does not recover unobserved event identities. At high rates, dead time makes observed counts nonlinear in the true rate, so a constant efficiency correction can fail. A deterministic exponential is an expectation law, not a prediction of the exact next decay time.
 
+
+### Derivation and transfer
+
+Radioactive survival is N(t)=N0exp(−λt), with half-life ln2/λ. Activity λN decreases with the surviving count, while an individual nucleus has no deterministic countdown. Independent decays lead to count fluctuations.
+
+The display is the ensemble expected population, which need not be an integer. It does not sample individual decay events or include daughter-chain feeding. Half-life and mean lifetime 1/λ are different constants.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB5.2" />
+
 
 Toss many coins, remove one designated face after each round, and record survivors. Compare multiple runs and the expected half-per-round curve. This is an analogy with discrete trials, not a real radioactive sample; explain the difference between a round probability and a continuous decay rate.
 

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For a Bernoulli variable with p=0.25, find variance.",
+      "answer": "0.1875",
+      "hint": "Use p(1−p).",
+      "explanation": "Use p(1−p). Result: 0.1875.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For four independent such Bernoulli variables, find variance of their sum.",
+      "answer": "0.75",
+      "hint": "Add the four variances.",
+      "explanation": "Add the four variances. Result: 0.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Do variances of arbitrary dependent variables always add without covariance terms?",
+      "answer": "No; covariance can change the sum variance.",
+      "options": [
+        "Yes; linearity of expectation removes dependence.",
+        "No; covariance can change the sum variance."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Linearity of means does not imply variance additivity.",
+      "misconceptions": {
+        "Yes; linearity of expectation removes dependence.": "Linearity of means does not imply variance additivity."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ The central limit theorem concerns the suitably standardized sum under stated as
 
 For indicators $I_j$ of independent Bernoulli trials, $E[I_j]=p$ and $\operatorname{Var}(I_j)=p(1-p)$. Linearity of expectation needs no independence; adding variances does, or more generally requires zero pairwise covariance. Expanding $E[(X-E[X]+Y-E[Y])^2]$ produces $\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)$. Scaling gives $\operatorname{Var}(aX)=a^2\operatorname{Var}(X)$, not $a\operatorname{Var}(X)$. Correlated instrument errors can therefore invalidate a naive square-root-of-sample-size uncertainty reduction.
 
+
+### Derivation and transfer
+
+Expectation is a probability-weighted sum, and variance is E[X²]−E[X]². Under independence, variances add for sums; arbitrary dependence introduces covariance terms. The mean alone does not determine spread or tail behavior.
+
+The display computes Bernoulli variance p(1−p), scaled for a sum of independent identical trials. It is not a distribution of the sample mean unless divided by the appropriate count squared. State the random variable before interpreting its units.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB4.4" />
+
 
 Toss coins or generate explicitly simulated Bernoulli trials, repeat batches of several sizes, and compare the distribution of batch means. Then add the same offset to every reading. Record which spread shrinks and which error does not.
 

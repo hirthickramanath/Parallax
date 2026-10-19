@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For A=diag(1,0.01), find its 2-norm condition number.",
+      "answer": "100",
+      "hint": "Divide largest singular value by smallest.",
+      "explanation": "Divide largest singular value by smallest. Result: 100.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "For 0.01x=1, increasing the right-hand side by 0.001 changes x by how much?",
+      "answer": "0.1",
+      "hint": "Divide the perturbation by 0.01.",
+      "explanation": "Divide the perturbation by 0.01. Result: 0.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Does a small residual always guarantee a small forward solution error?",
+      "answer": "No; conditioning can amplify error.",
+      "options": [
+        "Yes; residual and solution error are identical.",
+        "No; conditioning can amplify error."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Relate the error through A inverse and singular values.",
+      "misconceptions": {
+        "Yes; residual and solution error are identical.": "Relate the error through A inverse and singular values."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -182,9 +219,19 @@ Regularization stabilizes weak directions by introducing a penalty or prior, cha
 
 For nonsingular $A$, perturbation bounds involve $\kappa_2(A)=\sigma_{max}/\sigma_{min}$. A small singular value identifies a data direction that is weakly constrained. In full-column-rank least squares, singular values squared are the eigenvalues of $A^TA$, giving $\kappa_2(A^TA)=\kappa_2(A)^2$. QR or SVD methods avoid explicitly worsening conditioning through the normal equations. Regularization changes the inference problem by penalizing or suppressing selected directions; its parameter and scientific prior assumptions must be reported, not treated as a neutral numerical repair.
 
+
+### Derivation and transfer
+
+A small residual ||Ax−b|| need not imply a small solution error when A is ill-conditioned. For A=diag(1,ε), the 2-norm condition number is 1/ε when 0&lt;ε≤1. Perturbations along the small-singular-value direction are amplified.
+
+The display isolates this conditioning example. It does not recommend explicitly forming an inverse: a factorization or suitable iterative solver is normally preferable. Conditioning is a problem property, while algorithmic stability describes how a computation responds to rounding.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="computing_CP1.5" />
+
 
 Run the two-equation example for decreasing ε and small declared perturbations δ. Record both residual norms and parameter changes. Compare direct solution with an SVD-based least-squares result, reporting rank thresholds rather than hiding them.
 

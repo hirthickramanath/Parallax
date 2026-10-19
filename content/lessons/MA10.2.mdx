@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "Find the order of a permutation with disjoint cycles of lengths 3 and 4.",
+      "answer": "12",
+      "hint": "Use the least common multiple.",
+      "explanation": "Use the least common multiple. Result: 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find the sign of a 4-cycle.",
+      "answer": "-1",
+      "hint": "It is a product of three transpositions.",
+      "explanation": "It is a product of three transpositions. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Do arbitrary overlapping cycles commute?",
+      "answer": "No; composition order can change the result.",
+      "options": [
+        "Yes; cycle notation is commutative.",
+        "No; composition order can change the result."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Apply each map to the same test index.",
+      "misconceptions": {
+        "Yes; cycle notation is commutative.": "Apply each map to the same test index."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ There are n! permutations because successive images have n,n−1,… choices. Cy
 
 In quantum identical-particle theory, exchanging labels acts on a state space; the permutation group alone does not settle every allowed physical representation. Spatial dimension, spin-statistics assumptions and internal state structure matter. A relabelling convention should not be confused with physically rotating an apparatus.
 
+
+### Derivation and transfer
+
+A cycle of length k can be written as k−1 transpositions and has sign (−1)^(k−1). The order of a permutation with disjoint cycles is their length least common multiple. Composition order must be specified before multiplying cycle notation.
+
+The display follows an index around one cycle. It does not encode all permutations of n objects or infer that different cycle decompositions commute. Disjoint cycles commute; overlapping ones generally do not.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA10.2" />
+
 
 Construct permutation matrices for two overlapping swaps and multiply in both orders. Verify the stated rightmost-first convention and compare determinant sign with cycle parity.
 

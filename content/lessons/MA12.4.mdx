@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For test function φ(x)=exp(−x²), find δ[φ].",
+      "answer": "1",
+      "hint": "Evaluate φ at zero.",
+      "explanation": "Evaluate φ at zero. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For φ(x)=x exp(−x²), find δ′[φ].",
+      "answer": "-1",
+      "hint": "Use minus the derivative at zero.",
+      "explanation": "Use minus the derivative at zero. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Is the delta distribution an ordinary function with a finite value at zero and zero elsewhere?",
+      "answer": "No; it is defined through its action on test functions.",
+      "options": [
+        "Yes; choosing a tall enough finite spike defines it exactly.",
+        "No; it is defined through its action on test functions."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Normalized approximants are not the distribution itself.",
+      "misconceptions": {
+        "Yes; choosing a tall enough finite spike defines it exactly.": "Normalized approximants are not the distribution itself."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For nonzero real a, the scaling rule is $\delta(ax)=\delta(x)/|a|$ under change 
 
 Green functions and weak PDE solutions use distributions to encode point sources and discontinuities. Boundary sources require their own domain and trace conventions. Weak convergence is convergence of actions on all test functions in the stated space, not uniform or pointwise convergence of the approximating kernel.
 
+
+### Derivation and transfer
+
+The delta distribution is defined by its action δ[φ]=φ(0), not by a finite height at zero. Its derivative acts as δ′[φ]=−φ′(0). A Gaussian approximation has fixed unit area while its height rises and width shrinks.
+
+The display uses a normalized Gaussian of positive width. Convergence is distributional against appropriate test functions, not pointwise convergence to an ordinary function with a finite value at zero. Products of distributions are not automatically defined.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA12.4" />
+
 
 Integrate normalized Gaussian delta approximations against a smooth test function while reducing their width. Compare the functional limit with the diverging peak height and explain why those are different questions.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For metric diag(1,4) and vector (0,3), find squared norm.",
+      "answer": "36",
+      "hint": "Contract vi gij vj.",
+      "explanation": "Contract vi gij vj. Result: 36.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For that vector and metric, find the lowered second component.",
+      "answer": "12",
+      "hint": "Multiply the second component by g22=4.",
+      "explanation": "Multiply the second component by g22=4. Result: 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "May an index be lowered without a metric or another specified pairing?",
+      "answer": "No; the pairing defines the conversion.",
+      "options": [
+        "Yes; upper and lower indices are interchangeable typography.",
+        "No; the pairing defines the conversion."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Vectors and covectors have different transformation laws.",
+      "misconceptions": {
+        "Yes; upper and lower indices are interchangeable typography.": "Vectors and covectors have different transformation laws."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A nondegenerate metric identifies vectors and covectors through v_i=g_ijv^j, but
 
 An arbitrary table of numbers or a partial derivative of tensor components does not automatically transform as a tensor. The connection supplies correction terms for differentiation. Checking one coordinate system cannot establish a proposed tensor law; derive the transformation or give a coordinate-free definition.
 
+
+### Derivation and transfer
+
+A vector and a covector transform oppositely so their contraction is invariant. In coordinates with metric g, lowering an index multiplies by g; it is not merely changing a symbol position. For a diagonal metric diag(1,a²), a vector with components (0,v) has squared norm a²v².
+
+The display changes this coordinate metric scale. A coordinate component and a physical measured magnitude are distinct. Tensor transformation laws must hold for all allowed changes of basis, not just for one convenient diagonal example.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.1" />
+
 
 Perform a two-dimensional linear coordinate change on a vector, covector and metric. Verify a contraction and squared norm, then deliberately use the wrong Jacobian for the covector to locate the failure.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For du/dℓ=2u and ℓ=ln2 from u0=1, find u.",
+      "answer": "4",
+      "hint": "Exponentiate 2ln2.",
+      "explanation": "Exponentiate 2ln2. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For scaling eigenvalue y=−1 and ℓ=ln3, find u/u0.",
+      "answer": "0.3333333333333333",
+      "hint": "Use exp(yℓ).",
+      "explanation": "Use exp(yℓ). Result: 0.333333333333.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does a zero linear RG eigenvalue alone prove a coupling stays exactly constant?",
+      "answer": "No; nonlinear flow terms can matter.",
+      "options": [
+        "Yes; marginal means no possible flow.",
+        "No; nonlinear flow terms can matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Linearization cannot decide all marginal behavior.",
+      "misconceptions": {
+        "Yes; marginal means no possible flow.": "Linearization cannot decide all marginal behavior."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A relevant tuning direction gives a correlation-length scaling ξ∝|t|⁻ν wit
 
 RG applies to critical phenomena and quantum field theory with different physical scale interpretations. Regulators and renormalization schemes affect intermediate couplings; observable predictions must be compared with matched definitions. An asymptotic perturbative beta function requires a stated small-coupling/regime limit.
 
+
+### Derivation and transfer
+
+Near a fixed point, a linearized renormalization flow du/dℓ=y u gives u(ℓ)=u0 exp(yℓ). Positive y grows under increasing coarse-graining scale and is called relevant in this convention; negative y is irrelevant. A marginal y=0 needs nonlinear terms.
+
+The display makes a chosen local eigenvalue explicit. It does not calculate beta functions from a microscopic theory or justify extrapolation far from the fixed point. Reversing flow conventions can reverse labels, so the direction of scale change must be stated.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA13.3" />
+
 
 Iterate a supplied two-coupling map near a fixed point and compare eigen-directions with coordinate axes. Include a marginal example with a quadratic term and show why the linear exponent alone does not settle its flow.
 

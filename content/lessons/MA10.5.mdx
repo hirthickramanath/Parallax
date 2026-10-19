@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For a spin-half z rotation through 2π, find the common real diagonal factor.",
+      "answer": "-1",
+      "hint": "Use exp(±iπ).",
+      "explanation": "Use exp(±iπ). Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find the dimension of the Lie algebra of SO(3).",
+      "answer": "3",
+      "hint": "There are three independent infinitesimal rotation generators.",
+      "explanation": "There are three independent infinitesimal rotation generators. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Are SU(2) and SO(3) globally identical because their Lie algebras correspond?",
+      "answer": "No; SU(2) double-covers SO(3).",
+      "options": [
+        "Yes; local algebra fixes all global topology.",
+        "No; SU(2) double-covers SO(3)."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Finite rotations retain global information.",
+      "misconceptions": {
+        "Yes; local algebra fixes all global topology.": "Finite rotations retain global information."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A spin-half rotation is U=exp(−iθn·σ/2). At θ=2π it becomes −I, while i
 
 The exponential map provides local coordinates near identity under the appropriate theorem, but global surjectivity/injectivity differs among groups. Noncommuting rotations generate commutator effects at second order. A Lie-algebra approximation must retain an admitted small-angle regime.
 
+
+### Derivation and transfer
+
+For spin one-half, U(θ)=exp(−iθσz/2) has diagonal phases exp(∓iθ/2). A 2π rotation gives −I while 4π gives I. The map to spatial rotations is two-to-one, explaining why SO(3) and SU(2) differ globally despite closely related local algebras.
+
+The real phase component plotted here is not a full spinor or observable probability. A global phase of one isolated state is unobservable, but relative phases in interference can matter.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA10.5" />
+
 
 Compute small rotations about x and y in both orders using Pauli and ordinary rotation matrices. Compare local commutators and the separate global 2π/4π behaviour.
 

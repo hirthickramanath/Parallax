@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 142 have current partial AI-assisted source mappings; 132 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 146 have current partial AI-assisted source mappings; 86 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -116,17 +116,17 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CH6.6 Aromaticity and aromatic reactions | 9 / 9 | 4 | 3 | chemistry_CH6.6 |
 | CH6.7 Organic spectroscopy and molecular identification | 9 / 9 | 4 | 3 | chemistry_CH6.7 |
 | CH6.8 Interstellar organics and prebiotic reaction questions | 9 / 9 | 4 | 3 | chemistry_CH6.8 |
-| CP1.1 Python and NumPy | 7 / 7 | 3 | 3 | pending |
-| CP1.2 Plotting and visualisation | 7 / 7 | 3 | 3 | pending |
-| CP1.3 Numerical differentiation and integration | 7 / 7 | 3 | 3 | pending |
-| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 7 / 7 | 3 | 3 | ode_accuracy_explorer |
-| CP1.5 Numerical linear algebra | 7 / 7 | 3 | 3 | pending |
-| CP1.6 Symbolic maths with SymPy | 7 / 7 | 3 | 3 | pending |
-| CP2.1 PDE solvers (finite differences) | 6 / 6 | 2 | 0 | pending |
-| CP2.2 Monte Carlo and MCMC | 6 / 6 | 2 | 0 | pending |
-| CP2.3 Astropy, astroquery and survey data | 6 / 6 | 2 | 0 | pending |
-| CP2.4 Machine learning for science | 6 / 6 | 2 | 0 | pending |
-| CP2.5 Git, reproducibility and high-performance computing basics | 6 / 6 | 2 | 0 | pending |
+| CP1.1 Python and NumPy | 10 / 10 | 5 | 6 | computing_CP1.1 |
+| CP1.2 Plotting and visualisation | 10 / 10 | 5 | 6 | computing_CP1.2 |
+| CP1.3 Numerical differentiation and integration | 10 / 10 | 5 | 6 | computing_CP1.3 |
+| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 10 / 10 | 5 | 6 | computing_CP1.4, ode_accuracy_explorer |
+| CP1.5 Numerical linear algebra | 10 / 10 | 5 | 6 | computing_CP1.5 |
+| CP1.6 Symbolic maths with SymPy | 10 / 10 | 5 | 6 | computing_CP1.6 |
+| CP2.1 PDE solvers (finite differences) | 9 / 9 | 4 | 3 | computing_CP2.1 |
+| CP2.2 Monte Carlo and MCMC | 9 / 9 | 4 | 3 | computing_CP2.2 |
+| CP2.3 Astropy, astroquery and survey data | 9 / 9 | 4 | 3 | computing_CP2.3 |
+| CP2.4 Machine learning for science | 9 / 9 | 4 | 3 | computing_CP2.4 |
+| CP2.5 Git, reproducibility and high-performance computing basics | 9 / 9 | 4 | 3 | computing_CP2.5 |
 | MA1.1 Logic, sets and proof techniques | 10 / 10 | 5 | 4 | pending |
 | MA1.2 Real numbers and completeness | 10 / 10 | 5 | 4 | pending |
 | MA1.3 Sequences and limits | 10 / 10 | 5 | 4 | pending |
@@ -135,28 +135,28 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA1.6 Differentiability and the mean value theorem | 10 / 10 | 5 | 4 | pending |
 | MA1.7 Riemann integration | 10 / 10 | 5 | 4 | darboux_explorer |
 | MA1.8 Uniform convergence | 10 / 10 | 5 | 4 | uniform_power_explorer |
-| MA10.1 Groups and homomorphisms | 6 / 6 | 2 | 0 | pending |
-| MA10.2 Permutation groups | 6 / 6 | 2 | 0 | pending |
-| MA10.3 Rings and fields | 6 / 6 | 2 | 0 | pending |
-| MA10.4 Representation theory basics | 6 / 6 | 2 | 0 | pending |
-| MA10.5 Lie groups and Lie algebras (SO(3), SU(2)) | 6 / 6 | 2 | 0 | pending |
-| MA10.6 Lorentz and Poincare groups | 6 / 6 | 2 | 0 | pending |
-| MA11.1 Tensors and index notation | 6 / 6 | 2 | 0 | pending |
-| MA11.2 Manifolds and coordinates | 6 / 6 | 2 | 0 | pending |
-| MA11.3 Metric and covariant derivative | 6 / 6 | 2 | 0 | pending |
-| MA11.4 Geodesics | 7 / 7 | 3 | 0 | pending |
-| MA11.5 Curvature and the Riemann tensor | 7 / 7 | 3 | 0 | pending |
-| MA11.6 Differential forms | 6 / 6 | 2 | 0 | pending |
-| MA11.7 Fibre bundles and gauge connections (intro) | 6 / 6 | 2 | 0 | pending |
-| MA12.1 Metric and topological spaces | 6 / 6 | 2 | 0 | pending |
-| MA12.2 Hilbert and Banach spaces | 6 / 6 | 2 | 0 | pending |
-| MA12.3 Bounded and unbounded operators | 6 / 6 | 2 | 0 | pending |
-| MA12.4 Distributions and the Dirac delta | 6 / 6 | 2 | 0 | pending |
-| MA12.5 Spectral theory of operators | 6 / 6 | 2 | 0 | pending |
-| MA13.1 Dynamical systems and chaos | 6 / 6 | 2 | 0 | pending |
-| MA13.2 Stochastic differential equations and Fokker-Planck | 6 / 6 | 2 | 0 | pending |
-| MA13.3 Renormalisation group mathematics | 6 / 6 | 2 | 0 | pending |
-| MA13.4 Topology in physics (Berry phase, topological invariants) | 6 / 6 | 2 | 0 | pending |
+| MA10.1 Groups and homomorphisms | 9 / 9 | 4 | 3 | structure_MA10.1 |
+| MA10.2 Permutation groups | 9 / 9 | 4 | 3 | structure_MA10.2 |
+| MA10.3 Rings and fields | 9 / 9 | 4 | 3 | structure_MA10.3 |
+| MA10.4 Representation theory basics | 9 / 9 | 4 | 3 | structure_MA10.4 |
+| MA10.5 Lie groups and Lie algebras (SO(3), SU(2)) | 9 / 9 | 4 | 3 | structure_MA10.5 |
+| MA10.6 Lorentz and Poincare groups | 9 / 9 | 4 | 3 | structure_MA10.6 |
+| MA11.1 Tensors and index notation | 9 / 9 | 4 | 3 | structure_MA11.1 |
+| MA11.2 Manifolds and coordinates | 9 / 9 | 4 | 3 | structure_MA11.2 |
+| MA11.3 Metric and covariant derivative | 9 / 9 | 4 | 3 | structure_MA11.3 |
+| MA11.4 Geodesics | 10 / 10 | 5 | 3 | structure_MA11.4 |
+| MA11.5 Curvature and the Riemann tensor | 10 / 10 | 5 | 3 | structure_MA11.5 |
+| MA11.6 Differential forms | 9 / 9 | 4 | 3 | structure_MA11.6 |
+| MA11.7 Fibre bundles and gauge connections (intro) | 9 / 9 | 4 | 3 | structure_MA11.7 |
+| MA12.1 Metric and topological spaces | 9 / 9 | 4 | 3 | structure_MA12.1 |
+| MA12.2 Hilbert and Banach spaces | 9 / 9 | 4 | 3 | structure_MA12.2 |
+| MA12.3 Bounded and unbounded operators | 9 / 9 | 4 | 3 | structure_MA12.3 |
+| MA12.4 Distributions and the Dirac delta | 9 / 9 | 4 | 3 | structure_MA12.4 |
+| MA12.5 Spectral theory of operators | 9 / 9 | 4 | 3 | structure_MA12.5 |
+| MA13.1 Dynamical systems and chaos | 9 / 9 | 4 | 3 | structure_MA13.1 |
+| MA13.2 Stochastic differential equations and Fokker-Planck | 9 / 9 | 4 | 3 | structure_MA13.2 |
+| MA13.3 Renormalisation group mathematics | 9 / 9 | 4 | 3 | structure_MA13.3 |
+| MA13.4 Topology in physics (Berry phase, topological invariants) | 9 / 9 | 4 | 3 | structure_MA13.4 |
 | MA2.1 Partial derivatives and chain rule | 9 / 9 | 4 | 3 | multivariable_MA2.1 |
 | MA2.2 Gradient and multivariable Taylor expansion | 9 / 9 | 4 | 3 | multivariable_MA2.2 |
 | MA2.3 Extrema and Lagrange multipliers | 9 / 9 | 4 | 3 | multivariable_MA2.3 |
@@ -207,11 +207,11 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA9.1 Euler-Lagrange equation | 9 / 9 | 4 | 3 | advanced_math_MA9.1 |
 | MA9.2 Constraints and Lagrange multipliers in functionals | 9 / 9 | 4 | 3 | advanced_math_MA9.2 |
 | MA9.3 Noether's theorem (mathematical form) | 9 / 9 | 4 | 3 | advanced_math_MA9.3 |
-| MB1.1 Inequalities, functions and graphs | 7 / 7 | 3 | 3 | pending |
-| MB1.2 Logs, exponentials, complex numbers | 7 / 7 | 3 | 3 | pending |
-| MB1.3 Sequences, series, binomial theorem | 7 / 7 | 3 | 3 | pending |
-| MB1.4 Induction and basic proof writing | 7 / 7 | 3 | 3 | pending |
-| MB2.1 Trig identities and equations | 7 / 7 | 3 | 3 | pending |
+| MB1.1 Inequalities, functions and graphs | 10 / 10 | 5 | 6 | foundation_next_MB1.1 |
+| MB1.2 Logs, exponentials, complex numbers | 10 / 10 | 5 | 6 | foundation_next_MB1.2 |
+| MB1.3 Sequences, series, binomial theorem | 10 / 10 | 5 | 6 | foundation_next_MB1.3 |
+| MB1.4 Induction and basic proof writing | 10 / 10 | 5 | 6 | foundation_next_MB1.4 |
+| MB2.1 Trig identities and equations | 10 / 10 | 5 | 6 | foundation_next_MB2.1 |
 | MB2.2 Conic sections | 12 / 12 | 8 | 8 | conic_explorer |
 | MB2.3 3D geometry and vectors | 12 / 12 | 8 | 8 | plane_distance_explorer |
 | MB3.1 Limits and continuity | 11 / 11 | 6 | 5 | limit_band_explorer |
@@ -219,27 +219,27 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MB3.3 Integration techniques | 11 / 11 | 6 | 5 | signed_area_explorer |
 | MB3.4 Applications: areas, extrema and rates | 11 / 11 | 7 | 5 | signed_area_explorer |
 | MB3.5 Basic ordinary differential equations | 11 / 11 | 6 | 5 | ode_accuracy_explorer |
-| MB4.1 Matrices and determinants | 7 / 7 | 3 | 3 | pending |
-| MB4.2 Vector algebra | 7 / 7 | 3 | 3 | pending |
-| MB4.3 Probability and conditional probability | 7 / 7 | 3 | 3 | bayes_explorer |
-| MB4.4 Distributions and expectation | 7 / 7 | 3 | 3 | pending |
+| MB4.1 Matrices and determinants | 10 / 10 | 5 | 6 | foundation_next_MB4.1 |
+| MB4.2 Vector algebra | 10 / 10 | 5 | 6 | foundation_next_MB4.2 |
+| MB4.3 Probability and conditional probability | 10 / 10 | 5 | 6 | foundation_next_MB4.3, bayes_explorer |
+| MB4.4 Distributions and expectation | 10 / 10 | 5 | 6 | foundation_next_MB4.4 |
 | PB1.1 Kinematics and Newton’s laws | 13 / 13 | 7 | 8 | falling_bodies |
 | PB1.2 Work, energy and momentum | 13 / 13 | 9 | 8 | pending |
 | PB1.3 Rotation and rolling | 13 / 13 | 8 | 8 | pending |
 | PB1.4 Gravitation and SHM | 13 / 13 | 8 | 7 | pendulum_lab |
 | PB2.1 Fluid mechanics | 12 / 12 | 8 | 8 | hydrostatic_explorer |
 | PB2.2 Thermodynamics | 12 / 12 | 8 | 8 | gas_lab, thermal_path_explorer |
-| PB2.3 Kinetic theory | 7 / 7 | 3 | 3 | pending |
-| PB3.1 Waves and sound | 7 / 7 | 3 | 3 | wave_lab |
-| PB3.2 Geometric optics | 7 / 7 | 3 | 3 | thin_lens_explorer |
-| PB3.3 Wave optics | 7 / 7 | 3 | 3 | double_slit_lab |
-| PB4.1 Electrostatics | 7 / 7 | 3 | 3 | pending |
+| PB2.3 Kinetic theory | 10 / 10 | 5 | 6 | foundation_next_PB2.3 |
+| PB3.1 Waves and sound | 10 / 10 | 5 | 6 | foundation_next_PB3.1, wave_lab |
+| PB3.2 Geometric optics | 10 / 10 | 5 | 6 | foundation_next_PB3.2, thin_lens_explorer |
+| PB3.3 Wave optics | 10 / 10 | 5 | 6 | foundation_next_PB3.3, double_slit_lab |
+| PB4.1 Electrostatics | 10 / 10 | 5 | 6 | foundation_next_PB4.1 |
 | PB4.2 Current electricity | 11 / 11 | 7 | 5 | circuit_lab |
-| PB4.3 Magnetism and induction | 7 / 7 | 3 | 3 | induction_explorer |
-| PB4.4 AC and EM waves | 7 / 7 | 3 | 3 | pending |
-| PB5.1 Photoelectric effect and Bohr model | 7 / 7 | 3 | 3 | pending |
-| PB5.2 Nuclei and radioactivity | 7 / 7 | 3 | 3 | pending |
-| PB5.3 Semiconductors | 7 / 7 | 3 | 3 | pending |
+| PB4.3 Magnetism and induction | 10 / 10 | 5 | 6 | foundation_next_PB4.3, induction_explorer |
+| PB4.4 AC and EM waves | 10 / 10 | 5 | 6 | foundation_next_PB4.4 |
+| PB5.1 Photoelectric effect and Bohr model | 10 / 10 | 5 | 6 | foundation_next_PB5.1 |
+| PB5.2 Nuclei and radioactivity | 10 / 10 | 5 | 6 | foundation_next_PB5.2 |
+| PB5.3 Semiconductors | 10 / 10 | 5 | 6 | foundation_next_PB5.3 |
 | PH1.1 Newtonian mechanics with calculus (drag, variable mass) | 10 / 10 | 5 | 4 | pending |
 | PH1.2 Non-inertial frames and Coriolis force | 10 / 10 | 5 | 4 | coriolis_explorer |
 | PH1.3 Central forces and orbits | 10 / 10 | 5 | 4 | orbit_explorer |

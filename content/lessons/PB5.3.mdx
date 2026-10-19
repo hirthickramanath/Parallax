@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For ideality n=1 and V/VT=ln3, find I/Is.",
+      "answer": "2",
+      "hint": "Use exp(V/VT)−1.",
+      "explanation": "Use exp(V/VT)−1. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "At zero applied voltage, find net ideal diode current in Is units.",
+      "answer": "0",
+      "hint": "The exponential equals one.",
+      "explanation": "The exponential equals one. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does the ideal exponential diode law describe unlimited high-current operation without series resistance or heating?",
+      "answer": "No; its regime and circuit limits matter.",
+      "options": [
+        "Yes; the exponential is exact at every current.",
+        "No; its regime and circuit limits matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Real devices have additional mechanisms and limits.",
+      "misconceptions": {
+        "Yes; the exponential is exact at every current.": "Real devices have additional mechanisms and limits."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Photons with suitable energy can generate electron-hole pairs. A depletion field
 
 In the low-field drift model, electron drift speed magnitude is $\mu_n|E|$, and charge-current magnitude leads to $\sigma_n=en\mu_n$. Holes add $ep\mu_p$, giving $\sigma=e(n\mu_n+p\mu_p)$. Density alone cannot determine conductivity if mobility changes with temperature, impurities or field. A doped bulk can remain approximately charge-neutral because ionized donors balance mobile electrons. Depletion regions and junction potentials require solving charge and field together; a uniform-neutral-bulk approximation cannot describe a junction everywhere.
 
+
+### Derivation and transfer
+
+An ideal diode obeys I=Is[exp(V/(nVT))−1] within its applicable regime. Forward bias gives a rapidly increasing current, but a real circuit includes series resistance, heating and breakdown limits. The thermal-voltage scale depends on temperature.
+
+The display uses voltage normalized by VT and current normalized by Is. It does not predict a particular component without parameters or replace a safe operating limit. A band gap alone does not determine every device characteristic.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB5.3" />
+
 
 Use a low-voltage educational diode circuit with a series current-limiting resistor, or a simulation, to record current versus applied voltage. Compare the exponential-region slope with high-current series resistance. Never connect a bare diode directly across an unrestricted supply.
 

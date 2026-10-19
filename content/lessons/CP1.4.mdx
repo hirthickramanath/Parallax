@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For Euler applied to y′=−2y at h=0.25, find one-step amplification.",
+      "answer": "0.5",
+      "hint": "Use 1−λh.",
+      "explanation": "Use 1−λh. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "For RK4 on y′=−y at h=1, find one-step amplification.",
+      "answer": "0.375",
+      "hint": "Evaluate 1−1+1/2−1/6+1/24.",
+      "explanation": "Evaluate 1−1+1/2−1/6+1/24. Result: 0.375.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Does local order alone guarantee stability for every step size?",
+      "answer": "No; the equation and amplification region matter.",
+      "options": [
+        "Yes; fourth order is unconditionally stable.",
+        "No; the equation and amplification region matter."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check the method on the problem spectrum.",
+      "misconceptions": {
+        "Yes; fourth order is unconditionally stable.": "Check the method on the problem spectrum."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -182,9 +219,19 @@ Validate against an analytic oscillator, halve the time step and compare phase, 
 
 For $y'=\lambda y$, explicit Euler has amplification $1+h\lambda$; decay is numerically stable only when $|1+h\lambda|<1$. With real negative $\lambda$, this requires $0<h<2/|\lambda|$. A stable multiplier can still produce an inaccurate trajectory, so compare refined steps or an exact test problem. Symplectic methods preserve a phase-space geometric structure for Hamiltonian problems and can exhibit bounded oscillatory energy error under suitable assumptions. They do not guarantee exact conservation of the original Hamiltonian or universal stability at arbitrary step size.
 
+
+### Derivation and transfer
+
+For y′=−λy, explicit Euler advances by factor 1−λh. Absolute stability requires |1−λh|≤1 on this real negative test axis, while RK4 has factor 1−z+z²/2−z³/6+z⁴/24 with z=λh. Accuracy and stability are different requirements.
+
+The display evaluates RK4's one-step amplification polynomial, not an adaptive solver or long-time symplectic orbit. A symplectic method is designed around Hamiltonian structure; it is not interchangeable with a high local order for arbitrary dissipative equations. Tolerances require a convergence check.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="computing_CP1.4" />
+
 
 <Widget name="ode_accuracy_explorer" />
 

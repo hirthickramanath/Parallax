@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For ideal parallax 20 milliarcseconds, find distance in parsecs.",
+      "answer": "50",
+      "hint": "Convert to 0.020 arcseconds before inversion.",
+      "explanation": "Convert to 0.020 arcseconds before inversion. Result: 50.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "Convert 0.5 degrees to arcseconds.",
+      "answer": "1800",
+      "hint": "Multiply by 3600.",
+      "explanation": "Multiply by 3600. Result: 1800.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Is inverse measured parallax a universally unbiased distance estimator even at low signal-to-noise?",
+      "answer": "No; the transform and measurement model need care.",
+      "options": [
+        "Yes; every measured parallax can be inverted without inference.",
+        "No; the transform and measurement model need care."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Uncertainty, selection and priors can matter.",
+      "misconceptions": {
+        "Yes; every measured parallax can be inverted without inference.": "Uncertainty, selection and priors can matter."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ FITS headers and tables can encode units, calibration and provenance, but missin
 
 For remote queries save service, catalogue release, exact query, retrieval date, response metadata and a checksum of the retained result. Respect row limits, pagination and service terms; an incomplete query result can bias a sample. Cache immutable inputs for reproducibility and distinguish local synthetic fixtures from externally retrieved observations. No live survey data are bundled or claimed by this lesson.
 
+
+### Derivation and transfer
+
+A catalog quantity carries units, reference frame, time convention and uncertainty. For positive high-signal-to-noise parallax in arcseconds, distance in parsecs is approximately 1/p; the nonlinear transform becomes biased and problematic at low signal-to-noise, including negative measured parallaxes.
+
+The display is an ideal unit-conversion benchmark, not an Astropy/astroquery request or a real catalog analysis. A real project must retain query provenance, selection cuts, coordinate frames, masks and uncertainty treatment. Never silently replace a missing or negative measurement with a fabricated positive distance.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="computing_CP2.3" />
+
 
 Create a small explicitly synthetic table with units, masked values, frame and epoch metadata. Propagate a constant proper motion before matching two epochs. If later using a real catalogue, first write a provenance manifest and preserve the query response; do not substitute synthetic values while calling them downloaded observations.
 

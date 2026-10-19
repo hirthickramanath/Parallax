@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "A wave has frequency 5 Hz and wavelength 2 m. Find phase speed in m/s.",
+      "answer": "10",
+      "hint": "Use v=fλ.",
+      "explanation": "Use v=fλ. Result: 10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "Find wavelength for k=π radians/m.",
+      "answer": "2",
+      "hint": "Use 2π/k.",
+      "explanation": "Use 2π/k. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Must a medium particle move along the medium at the wave phase speed?",
+      "answer": "No; local oscillation and pattern propagation differ.",
+      "options": [
+        "Yes; every crest carries the same particle forward.",
+        "No; local oscillation and pattern propagation differ."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Track particle motion separately from phase.",
+      "misconceptions": {
+        "Yes; every crest carries the same particle forward.": "Track particle motion separately from phase."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ For a stationary medium and approach along the source-observer line, classical s
 
 Write a fixed-end mode as $y(x,t)=A\sin(kx)\cos(\omega t+\phi)$. The second endpoint requires $\sin(kL)=0$, so $k_n=n\pi/L$ and $f_n=nv/(2L)$. A closed-open pipe instead requires a displacement node at the closed end and an antinode at the open end, giving $kL=(2n-1)\pi/2$. The resulting odd sequence assumes an ideal uniform tube; end corrections and losses shift observed resonances. Plotting a wave at successive times distinguishes particle displacement from propagation of a phase pattern.
 
+
+### Derivation and transfer
+
+For a traveling sinusoid y=Acos(kx−ωt), phase speed is ω/k and wavelength is 2π/k. At a fixed point particles oscillate rather than traveling along the medium at the phase speed. Energy transport depends on the medium and amplitude.
+
+The display is a spatial slice at fixed time. It does not model nonlinear shocks or infer a group velocity from one sinusoidal frequency. Superposition and dispersion need their own assumptions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB3.1" />
+
 
 Stretch a light cord and demonstrate a pulse and reflections with small amplitudes. Use the wave virtual apparatus to vary frequency and record node spacing; compare λ/2 with adjacent standing-wave nodes. Label the visualization as a linear ideal model.
 

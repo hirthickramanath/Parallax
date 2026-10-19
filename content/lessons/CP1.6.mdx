@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For real x=−3, find sqrt(x²).",
+      "answer": "3",
+      "hint": "Use the absolute value.",
+      "explanation": "Use the absolute value. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "Find the removable-limit value of (x²−1)/(x−1) as x approaches 1.",
+      "answer": "2",
+      "hint": "Cancel away from one, then take the limit.",
+      "explanation": "Cancel away from one, then take the limit. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "May sqrt(x²) always be replaced by x for an unspecified real x?",
+      "answer": "No; the correct real expression is |x|.",
+      "options": [
+        "Yes; squaring makes the sign irrelevant to the final x.",
+        "No; the correct real expression is |x|."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Domain assumptions determine simplification.",
+      "misconceptions": {
+        "Yes; squaring makes the sign irrelevant to the final x.": "Domain assumptions determine simplification."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -183,9 +220,19 @@ Use a symbolic result as one stage of a reproducible argument: state hypotheses,
 
 Symbolic identities are statements under assumptions. Over the real numbers, $\sqrt{x^2}=|x|$; dropping the absolute value requires $x\geq0$. Cancelling $x/x$ gives 1 only for $x\ne0$, so simplification must preserve an excluded point in the domain. Distinguish exact rational constants from floating approximations before asking a symbolic engine to simplify. A numerical root search typically finds one basin-dependent root and does not prove completeness; symbolic factorization plus domain checks or rigorous root-counting arguments are needed for an exhaustive claim.
 
+
+### Derivation and transfer
+
+A symbolic identity depends on assumptions. sqrt(x²)=|x| for real x, not x without a nonnegative assumption. Algebraic cancellation of (x²−1)/(x−1) gives x+1 only away from x=1 unless an extension is explicitly defined.
+
+The browser demonstrates the real square-root identity numerically; it does not execute SymPy. A reproducible symbolic notebook must record assumptions, domains and exceptional points, then compare numerical special cases as a diagnostic rather than a proof.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="computing_CP1.6" />
+
 
 Compare SymPy simplifications with x unrestricted, real and positive. Test the square-root identity at x=−2 and the cancelled rational expression near x=1. Record domains before pressing simplify and write which hypotheses justify every output.
 

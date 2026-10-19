@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "With k=q=1 and r=2, find outward radial electric field.",
+      "answer": "0.25",
+      "hint": "Use kq/r².",
+      "explanation": "Use kq/r². Result: 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For the same charge and position, find potential relative to infinity.",
+      "answer": "0.5",
+      "hint": "Use kq/r.",
+      "explanation": "Use kq/r. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does zero electric potential necessarily imply zero electric field?",
+      "answer": "No; the gradient can be nonzero there.",
+      "options": [
+        "Yes; potential and field vanish at exactly the same points.",
+        "No; the gradient can be nonzero there."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "A value and its spatial derivative differ.",
+      "misconceptions": {
+        "Yes; potential and field vanish at exactly the same points.": "A value and its spatial derivative differ."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Energy density in a linear dielectric under appropriate static conditions is $u=
 
 Electrostatic work gives $\Delta U=q\Delta V$ and $\Delta K=-q\Delta V$ when no other forces do work. The sign of the test charge therefore matters: electrons accelerate toward increasing electric potential in this energy balance. Locally, $\mathbf E=-\nabla V$; adding a spatially constant reference to $V$ leaves the field unchanged. For a uniform parallel-plate gap, $|E|=|\Delta V|/d$ neglects fringing. Do not use that relation as a general local field law in a nonuniform geometry.
 
+
+### Derivation and transfer
+
+A point charge produces electric field kq/r² in the radial direction, while potential kq/r is a scalar defined relative to infinity. Fields add as vectors and potentials as scalars. A zero potential does not imply a zero electric field.
+
+The display follows one radial field component away from the point singularity. It does not describe the interior of an extended charged object. The sign identifies inward versus outward radial direction, not a negative field magnitude.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB4.1" />
+
 
 Draw field and equipotential maps for two point charges using vector addition at selected grid points. Check that the field is perpendicular to equipotentials in electrostatics. Any physical electrostatic demonstration should use approved low-energy classroom equipment rather than mains or high-voltage experiments.
 

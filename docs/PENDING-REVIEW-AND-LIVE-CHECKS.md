@@ -95,3 +95,7 @@ Twenty-eight more chemistry lessons have 84 added questions and embedded investi
 ## Complex analysis, probability and variation follow-up
 
 MA6–MA9 have 63 added questions and 21 embedded investigations. Current partial mappings: 142; lessons without explicit widgets: 132. [Release details](COMPLEX-PROBABILITY-VARIATIONAL-EXPANSION.md). Independent scientific approval remains outstanding.
+
+## Remaining maths, computing and foundation follow-up
+
+Fifty-two lessons have 156 added questions and embedded investigations. Current partial mappings: 146; lessons without explicit widgets: 86; independent approvals: zero. [Scope and validation](STRUCTURE-COMPUTING-FOUNDATION-EXPANSION.md).

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For f=2 and object distance u=6, find image distance.",
+      "answer": "3",
+      "hint": "Use v=fu/(u−f).",
+      "explanation": "Use v=fu/(u−f). Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For those distances, find signed transverse magnification.",
+      "answer": "-0.5",
+      "hint": "Use −v/u.",
+      "explanation": "Use −v/u. Result: -0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does the thin-lens equation include all large-angle aberrations?",
+      "answer": "No; it is a paraxial idealization.",
+      "options": [
+        "Yes; every ray obeys the same exact focal geometry.",
+        "No; it is a paraxial idealization."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "State the approximation and aperture regime.",
+      "misconceptions": {
+        "Yes; every ray obeys the same exact focal geometry.": "State the approximation and aperture regime."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Energy is not determined by ray intersection alone. Reflection, absorption and f
 
 Use one consistent lens sign convention before substituting: for a real object at positive $u$ and positive converging focal length $f$, $1/v=1/f-1/u$. For $u>f$, $v>0$ gives a real image; for $0<u<f$, $v<0$ gives a virtual image. The limit $u\to f$ sends the paraxial image distance to infinity. This divergence is not a physical claim about collecting a finite image on a screen at the focus. Thin-lens and small-angle assumptions exclude thickness effects, large-angle aberration and diffraction-limited resolving power.
 
+
+### Derivation and transfer
+
+The thin-lens equation 1/f=1/u+1/v requires a stated sign convention and paraxial approximation. For a converging lens and a real object outside the focal length, v=fu/(u−f)>0 and the transverse magnification is −v/u.
+
+The display restricts the object beyond the focal point. It does not include aberration, finite aperture or a full ray bundle. The focal singularity describes the ideal collimated-image limit rather than a finite screen image at the lens.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB3.2" />
+
 
 <Widget name="thin_lens_explorer" />
 

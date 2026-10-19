@@ -1921,3 +1921,23 @@ test("advanced maths investigations expose assumptions, integer sampling and var
   await page.getByLabel("Phase ωt", { exact: true }).fill("2");
   await expect(page.getByText(/Total energy: 0.5000/)).toBeVisible();
 });
+
+test("structure computing and foundation investigations respond with physical and statistical limits", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA10.1");
+  await page.getByLabel("Integer representative", { exact: true }).fill("-1");
+  await expect(page.getByText(/Residue in 0..n−1: 4.0000/)).toBeVisible();
+  await page.goto("/lesson/CP2.1");
+  await page.getByLabel("Diffusion ratio r", { exact: true }).fill("0.6");
+  await expect(page.getByText(/Mode amplification: -1.4000/)).toBeVisible();
+  await page.goto("/lesson/PB5.1");
+  await page.getByLabel("Photon energy hf", { exact: true }).fill("0");
+  await expect(
+    page.getByText(/Nonnegative energy excess: 0.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/MB4.4");
+  await page.getByLabel("Success probability p", { exact: true }).fill("1");
+  await expect(page.getByText(/Variance of the sum: 0.0000/)).toBeVisible();
+});

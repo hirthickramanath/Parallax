@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Find the larger root of x²−5x+6=0.",
+      "answer": "3",
+      "hint": "Factor as (x−2)(x−3).",
+      "explanation": "Factor as (x−2)(x−3). Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For x²−5x+6<0, find the midpoint of its solution interval.",
+      "answer": "2.5",
+      "hint": "The strict interval lies between roots 2 and 3.",
+      "explanation": "The strict interval lies between roots 2 and 3. Result: 2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does multiplying an inequality by a negative number preserve its direction?",
+      "answer": "No; its direction reverses.",
+      "options": [
+        "Yes; only the endpoint numbers change.",
+        "No; its direction reverses."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Test the order after multiplication.",
+      "misconceptions": {
+        "Yes; only the endpoint numbers change.": "Test the order after multiplication."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -173,9 +210,19 @@ A transformation $y=a f(b(x-h))+k$ changes the graph horizontally about $h$ and 
 
 For a rational inequality, isolate zeros of the numerator and denominator before testing signs on the remaining intervals. A denominator zero is never included even if multiplication appears to remove it. In $\sqrt{x+6}=x$, the domain requires $x\geq0$; squaring yields $(x-3)(x+2)=0$, and substitution eliminates $-2$. An implication produced by squaring is not automatically an equivalence. For $5-2x>11$, subtract 5 and divide by the negative coefficient to get $x<-3$; a test point such as $x=-4$ checks the direction.
 
+
+### Derivation and transfer
+
+Solving an inequality requires tracking sign changes: multiplying by a negative number reverses the inequality. For a quadratic with positive leading coefficient and two real roots, the expression is negative between the roots and positive outside. Boundary inclusion depends on strict versus nonstrict comparison.
+
+The explorer displays a shifted quadratic and its signed value. It is not enough to inspect a few pixels near a root: use factorization or a sign chart, then check domain restrictions in the original expression.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB1.1" />
+
 
 Draw the sign chart for (x−1)/(x+2), test one input in each interval, and compare with a graph. Add an open circle at each excluded point. Then investigate which steps in a square-root equation create extra candidates.
 

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Find the infinite sum 1+1/2+1/4+… .",
+      "answer": "2",
+      "hint": "Use 1/(1−r).",
+      "explanation": "Use 1/(1−r). Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "Find the coefficient of x² in (1+x)^5.",
+      "answer": "10",
+      "hint": "Use the binomial coefficient 5 choose 2.",
+      "explanation": "Use the binomial coefficient 5 choose 2. Result: 10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does an individual term tending to zero guarantee convergence of its series?",
+      "answer": "No; the harmonic series is a counterexample.",
+      "options": [
+        "Yes; zero terms always produce a finite sum.",
+        "No; the harmonic series is a counterexample."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The sum needs more than a term limit.",
+      "misconceptions": {
+        "Yes; zero terms always produce a finite sum.": "The sum needs more than a term limit."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -173,9 +210,19 @@ For a general real exponent the infinite binomial expansion has a restricted con
 
 If $S_N=a+ar+\cdots+ar^{N-1}$, subtract $rS_N$ to get $(1-r)S_N=a(1-r^N)$. For $r\ne1$, this proves $S_N=a(1-r^N)/(1-r)$ without assuming convergence. Only when $|r|<1$ does the remainder $ar^N$ vanish and give $S=a/(1-r)$. For $r=1$ the finite sum is $Na$; for a nonzero first term the infinite sum diverges. A noninteger binomial expansion is likewise a power series with a convergence domain; endpoint behavior must be checked separately.
 
+
+### Derivation and transfer
+
+For a geometric series with ratio r, the finite sum is (1−r^(N+1))/(1−r) from index zero through N when r≠1. The infinite sum exists for |r|&lt;1 and equals 1/(1−r). A sequence tending to zero is necessary but not sufficient for an arbitrary series to converge.
+
+The display keeps a convergent positive ratio and shows the finite-sum remainder. It is an exact geometric benchmark, not a convergence test for every alternating or conditional series.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB1.3" />
+
 
 Cut a unit-length strip in half repeatedly and record partial lengths and remaining lengths. Compare r=1/2, r=−1 and r=2 on paper. Plot a partial sum against term count and state which evidence is suggestive and which limit argument proves convergence.
 

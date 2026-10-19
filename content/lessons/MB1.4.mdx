@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Find the sum of integers 1 through 20.",
+      "answer": "210",
+      "hint": "Use n(n+1)/2.",
+      "explanation": "Use n(n+1)/2. Result: 210.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "Find the increment from the triangular sum at n=9 to n=10.",
+      "answer": "10",
+      "hint": "The added term is n+1=10.",
+      "explanation": "The added term is n+1=10. Result: 10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does verifying an identity for a thousand integers replace an induction step?",
+      "answer": "No; untested integers remain.",
+      "options": [
+        "Yes; enough examples prove every integer.",
+        "No; untested integers remain."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "A universal implication is needed.",
+      "misconceptions": {
+        "Yes; enough examples prove every integer.": "A universal implication is needed."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ A clear proof states its domain, assumptions, intermediate reason and conclusion
 
 For the sum identity, the base case is $1=1(2)/2$. Assuming $\sum_{j=1}^n j=n(n+1)/2$, adding $n+1$ gives $(n+1)(n+2)/2$. The hypothesis is an assumption within an implication, not permission to assert the desired conclusion outright. If a recurrence advances by two indices, a single base case covers only one parity class. For $a_{n+1}=a_n+3$, induction proves $a_n=2+3(n-1)$; testing the claimed formula at $n=1$ prevents an off-by-one error.
 
+
+### Derivation and transfer
+
+An induction proof needs a base case and an implication from the statement at an arbitrary integer n to the statement at n+1. Checking many examples never replaces that implication. For the triangular sum, adding n+1 to n(n+1)/2 produces (n+1)(n+2)/2.
+
+The explorer checks the closed form against a direct finite sum as a diagnostic. It can expose an error but cannot turn finite testing into proof of all integers. State the initial index and all assumptions used in the inductive step.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB1.4" />
+
 
 Write a false conjecture that survives the first five integer tests. Exchange it with a partner, seek a counterexample and identify which assumption would make a corrected theorem true. Then mark the base and the arbitrary k in your own induction proof.
 

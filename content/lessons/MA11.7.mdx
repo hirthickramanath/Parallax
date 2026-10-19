@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For U(1) holonomy exp(iΦ) at Φ=π, find its real part.",
+      "answer": "-1",
+      "hint": "Use cosπ.",
+      "explanation": "Use cosπ. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find the positive phase increment that leaves exp(iΦ) unchanged.",
+      "answer": "6.283185307179586",
+      "hint": "The complex phase has period 2π.",
+      "explanation": "The complex phase has period 2π. Result: 6.28318530718.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Is a local gauge potential itself generally gauge invariant?",
+      "answer": "No; gauge transformations change its representative.",
+      "options": [
+        "Yes; every component is directly observable.",
+        "No; gauge transformations change its representative."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Distinguish representative and gauge-invariant quantities.",
+      "misconceptions": {
+        "Yes; every component is directly observable.": "Distinguish representative and gauge-invariant quantities."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Parallel transport along a path gives holonomy, which depends on connection and 
 
 Global flux/topology may require several patches even when the curvature is regular on the base. Quantization statements require the specified bundle and charge/representation assumptions, not only a sketch of a magnetic line. This introduction supplies geometric vocabulary; nonabelian gauge dynamics and topological classifications need the later field theory and topology hypotheses.
 
+
+### Derivation and transfer
+
+A connection gives a rule for comparing fibers locally; a gauge transformation changes its local representative without changing appropriate observables. For a U(1) loop, a phase can be written exp(iΦ), where Φ is the connection integral in suitable units.
+
+The phase is periodic modulo 2π, while a particular local potential depends on gauge. The display shows only the real part of a toy holonomy. It does not construct a non-Abelian bundle, solve field equations or infer that a nonzero potential alone is a measurable field.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.7" />
+
 
 Use two overlapping patches to describe a simple phase-valued fibre and check overlap consistency. Compare an abelian gauge shift with the curvature flux, then state what additional conventions would be needed for a matrix-valued connection.
 

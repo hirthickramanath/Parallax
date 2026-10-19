@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "A finite group of order 24 has a homomorphism with kernel order 6. Find image order.",
+      "answer": "4",
+      "hint": "Use kernel times image order.",
+      "explanation": "Use kernel times image order. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For integers modulo 5, find the residue of 17.",
+      "answer": "2",
+      "hint": "Subtract three multiples of five.",
+      "explanation": "Subtract three multiples of five. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does every subset of a group define a possible kernel?",
+      "answer": "No; a kernel must be a normal subgroup.",
+      "options": [
+        "Yes; every subset is automatically normal.",
+        "No; a kernel must be a normal subgroup."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Closure and conjugation invariance are required.",
+      "misconceptions": {
+        "Yes; every subset is automatically normal.": "Closure and conjugation invariance are required."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The first isomorphism theorem identifies G/kerφ with imφ through gkerφ→φ(g
 
 For finite groups, subgroup cosets partition G and give Lagrange’s divisibility relation. It does not claim that every divisor of group order occurs as a subgroup order in every group. Symmetry in physics also needs an action on states/observables; an abstract group alone does not specify what is transformed.
 
+
+### Derivation and transfer
+
+A homomorphism preserves the operation: φ(ab)=φ(a)φ(b). Its kernel is a normal subgroup, and two elements have the same image exactly when their quotient lies in the kernel. For finite groups, |G|=|kerφ| |imφ|.
+
+The modular map from integers to residues illustrates a quotient; it does not prove that an arbitrary subset is a subgroup. The display uses addition modulo n with integer controls. Changing n changes the target group, not merely the labeling of the same map.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA10.1" />
+
 
 Write the complete map table for this example and verify composition for all pairs. Compare a nonnormal subgroup in a small nonabelian group before attempting quotient multiplication.
 

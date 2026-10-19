@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Find (1,2,3)·(2,0,−1).",
+      "answer": "-1",
+      "hint": "Sum coordinate products.",
+      "explanation": "Sum coordinate products. Result: -1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For perpendicular vectors of lengths 2 and 3, find cross-product magnitude.",
+      "answer": "6",
+      "hint": "Use |a||b|sin(π/2).",
+      "explanation": "Use |a||b|sin(π/2). Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Can a dot product be negative for nonzero vectors?",
+      "answer": "Yes; an obtuse angle gives a negative projection.",
+      "options": [
+        "No; it is always a length.",
+        "Yes; an obtuse angle gives a negative projection."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "The dot product is signed and distinct from a norm.",
+      "misconceptions": {
+        "No; it is always a length.": "The dot product is signed and distinct from a norm."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Unit vectors carry direction but no units. Vector components carry the units of 
 
 The dot product $\mathbf u\cdot\mathbf v=|\mathbf u||\mathbf v|\cos\theta$ measures a projection; the cross-product magnitude is $|\mathbf u||\mathbf v|\sin\theta$. For nonzero vectors, a zero dot product means perpendicular directions, whereas a zero cross product means collinearity. Component signs of a cross product depend on a stated right-handed orientation. The identity $\mathbf a\times(\mathbf b\times\mathbf c)=\mathbf b(\mathbf a\cdot\mathbf c)-\mathbf c(\mathbf a\cdot\mathbf b)$ also demonstrates why the cross product is generally not associative.
 
+
+### Derivation and transfer
+
+The dot product measures projection: a·b=|a||b|cosθ. The cross-product magnitude is |a||b|sinθ in three dimensions, with orientation fixed by the right-hand rule. Their scalar magnitudes answer different geometrical questions.
+
+The display fixes one vector magnitude to one and varies the other and their angle. It is a signed dot product, not a cross-product magnitude or a guarantee that every coordinate basis is orthonormal.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB4.2" />
+
 
 Use a hinged ruler as a lever: mark equal distances and pull along versus perpendicular to it with the same nominal force. Predict the torque trend before trying. Draw both dot and cross products for the two orientations; avoid claiming calibrated force readings without a force sensor.
 

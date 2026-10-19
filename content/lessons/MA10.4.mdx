@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "Find the character of a planar rotation through π.",
+      "answer": "-2",
+      "hint": "Trace is 2cosθ.",
+      "explanation": "Trace is 2cosθ. Result: -2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find the determinant of a planar rotation through π/3.",
+      "answer": "1",
+      "hint": "A proper rotation has determinant one.",
+      "explanation": "A proper rotation has determinant one. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does changing the matrix basis change a representation character?",
+      "answer": "No; similarity preserves trace.",
+      "options": [
+        "Yes; trace depends on the basis labeling.",
+        "No; similarity preserves trace."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Use cyclic invariance of trace.",
+      "misconceptions": {
+        "Yes; trace depends on the basis labeling.": "Use cyclic invariance of trace."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The character χ(g)=TrD(g) is basis invariant and constant on conjugacy classes.
 
 If a Hamiltonian commutes with every symmetry operator, it preserves symmetry sectors. Schur’s lemma constrains operators intertwining irreducible complex representations under its hypotheses. Degeneracy follows in the appropriate irreducible sector, while accidental degeneracy and additional labels can remain. An allowed matrix element still needs its actual operator and states.
 
+
+### Derivation and transfer
+
+A representation maps group elements to invertible linear maps while preserving products. Its character is the trace, invariant under a change of basis. For a planar rotation, trace R(θ)=2cosθ and determinant one.
+
+Equal character values for selected elements do not prove arbitrary representations equivalent without the appropriate group and completeness assumptions. The display is a real two-dimensional rotation representation, not a decomposition algorithm for all groups.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA10.4" />
+
 
 Build a small finite-group matrix representation and check the homomorphism table. Find invariant subspaces and compare traces before/after one fixed basis transformation.
 

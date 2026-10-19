@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For predictions (1,3) and targets (2,1), find mean squared error.",
+      "answer": "2.5",
+      "hint": "Average squared residuals 1 and 4.",
+      "explanation": "Average squared residuals 1 and 4. Result: 2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "A test set has 20 errors out of 100 cases. Find error fraction.",
+      "answer": "0.2",
+      "hint": "Divide errors by evaluated cases.",
+      "explanation": "Divide errors by evaluated cases. Result: 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "May preprocessing be fit on the full dataset before declaring the test split untouched?",
+      "answer": "No; that can leak test information.",
+      "options": [
+        "Yes; preprocessing cannot affect evaluation.",
+        "No; that can leak test information."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Fit learned preprocessing only on training data.",
+      "misconceptions": {
+        "Yes; preprocessing cannot affect evaluation.": "Fit learned preprocessing only on training data."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Regularization and model complexity affect bias and variance, but hyperparameter
 
 A calibrated predictive probability is not automatically a physical posterior over causal parameters. Distinguish measurement noise, model uncertainty and out-of-distribution ignorance. Compare simple baselines, inspect residuals against physical covariates and test conservation/symmetry constraints where justified. Feature importance or correlation does not establish causation. Keep synthetic training data labelled and document simulator mismatch before claiming performance on real observations.
 
+
+### Derivation and transfer
+
+A scientific model must be evaluated on data that did not leak into training or preprocessing. If scaling or feature selection sees the test set, reported error can be optimistic even when the final regressor never directly fits test labels. Splits must respect shared objects, time and spatial dependence.
+
+The display computes a squared prediction error for a one-point toy. It does not train a model or establish generalization. Compare against a baseline and examine calibration, out-of-distribution behavior and physical constraints before treating a small held-out error as scientific discovery.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="computing_CP2.4" />
+
 
 Build a synthetic regression example with repeated measurements of the same source. Compare a random-row split with a source-group split and fit scaling separately inside each training fold. Explain any score difference as a validation-design result, not a newly discovered physical law.
 

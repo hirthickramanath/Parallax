@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "With μ0/(2π)=1,I=2,r=4, find magnetic-field magnitude.",
+      "answer": "0.5",
+      "hint": "Use I/r.",
+      "explanation": "Use I/r. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "A loop flux increases at 3 flux units/time in its positive orientation. Find signed induced emf.",
+      "answer": "-3",
+      "hint": "Use minus the flux derivative.",
+      "explanation": "Use minus the flux derivative. Result: -3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does a static magnetic-field plot alone determine a time-dependent induced emf?",
+      "answer": "No; the flux history and loop orientation are required.",
+      "options": [
+        "Yes; every nonzero magnetic field creates the same emf.",
+        "No; the flux history and loop orientation are required."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Induction depends on flux change.",
+      "misconceptions": {
+        "Yes; every nonzero magnetic field creates the same emf.": "Induction depends on flux change."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Electrostatic potential alone cannot represent the induced electric field around
 
 Integrating the electric field around a stationary loop gives $\oint\mathbf E\cdot d\boldsymbol\ell=-d\Phi_B/dt$. In a changing magnetic field this nonzero circulation prevents a single electrostatic scalar potential from describing the entire induced field. For $N$ identical turns, flux linkage is $N\Phi_B$; confusing linkage with per-turn flux loses a factor of $N$. In an ideal series RL step, $L\,di/dt+Ri=V_0$ has solution $i=(V_0/R)(1-e^{-tR/L})$ for zero initial current. The time constant has units H/Ω = s.
 
+
+### Derivation and transfer
+
+For a long straight wire, magnetic field magnitude is μ0I/(2πr) with tangential direction from the right-hand rule. Faraday induction instead relates a loop emf to minus the rate of magnetic flux change, including orientation.
+
+The display uses normalized μ0/(2π)=1 and a signed current. It is a wire-field slice, not a complete induction experiment. Changing current can require an electric field, but a static inverse-radius plot does not calculate the full transient.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB4.3" />
+
 
 <Widget name="induction_explorer" />
 

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "For two coherent equal fields each with intensity 1, find maximum combined intensity.",
+      "answer": "4",
+      "hint": "Add amplitudes then square.",
+      "explanation": "Add amplitudes then square. Result: 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "For path difference λ/2, find phase difference in radians.",
+      "answer": "3.141592653589793",
+      "hint": "Use 2πΔ/λ.",
+      "explanation": "Use 2πΔ/λ. Result: 3.14159265359.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Can two coherent waves cancel even when each has nonzero intensity alone?",
+      "answer": "Yes; opposite field amplitudes can cancel.",
+      "options": [
+        "No; intensities always add without a cross term.",
+        "Yes; opposite field amplitudes can cancel."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Superpose fields before forming intensity.",
+      "misconceptions": {
+        "No; intensities always add without a cross term.": "Superpose fields before forming intensity."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Polarization, bandwidth and near-field geometry can alter these scalar far-field
 
 For equal-amplitude coherent waves, adding fields and then squaring yields $I=2I_0[1+\cos\delta]$, where $\delta=2\pi\Delta/\lambda$ includes path and initial-phase differences. Maxima require integer $2\pi$ phase and minima odd $\pi$. The small-angle geometry $\Delta\simeq dy/L$ then gives fringe spacing $\lambda L/d$. If relative phase changes randomly during exposure, the averaged cross term tends toward zero; intensities remain but stable fringes do not. Finite slit width adds a diffraction envelope and unequal amplitudes prevent perfectly dark minima.
 
+
+### Derivation and transfer
+
+For two coherent equal-amplitude waves, intensity is proportional to 2I0(1+cosδ), ranging from zero to 4I0. Path difference converts to phase through δ=2πΔ/λ. Incoherent sources instead lose the stable interference cross term under averaging.
+
+The display varies phase and single-source intensity. It does not include a diffraction envelope, finite coherence length or a resolved detector model. Amplitudes add before squaring; adding intensities alone misses coherent cancellation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB3.3" />
+
 
 Use the virtual double-slit bench to vary slit spacing, wavelength and screen distance. Record peak positions and compare ratios before numerical fits. All traces are computed far-field patterns; finite slit width, coherence and detector noise must be identified before comparison with a real apparatus.
 

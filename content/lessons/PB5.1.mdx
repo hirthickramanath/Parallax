@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "With h=e=1, frequency 5 and work function 2, find stopping voltage.",
+      "answer": "3",
+      "hint": "Use hf−Φ divided by e.",
+      "explanation": "Use hf−Φ divided by e. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "With h=1 and work function 3, find threshold frequency.",
+      "answer": "3",
+      "hint": "Set hf0=Φ.",
+      "explanation": "Set hf0=Φ. Result: 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "At fixed above-threshold frequency, does higher intensity necessarily raise maximum photoelectron kinetic energy in the single-photon model?",
+      "answer": "No; photon energy is fixed by frequency.",
+      "options": [
+        "Yes; intensity is the energy of each photon.",
+        "No; photon energy is fixed by frequency."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Separate photon rate and energy per photon.",
+      "misconceptions": {
+        "Yes; intensity is the energy of each photon.": "Separate photon rate and energy per photon."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ The de Broglie relation λ=h/p links matter wavelength to momentum. It does not 
 
 A single absorbed photon supplies energy $hf=\phi+K$ in the elementary photoelectric model, so the maximum kinetic energy is $hf-\phi$ when positive. Increasing intensity at fixed frequency increases the photon arrival rate, not $hf$. The stopping potential measures the maximum electron energy rather than the average emitted energy. Multiphoton effects require a different high-intensity model and do not rescue the single-photon rule below threshold. In the Bohr spectrum, bound levels are negative relative to ionization; excitation energies are differences between levels, not their absolute magnitudes.
 
+
+### Derivation and transfer
+
+The photoelectric stopping potential follows eVs=hf−Φ for photons above the threshold. Increasing intensity at fixed frequency chiefly changes the number of emitted electrons in the simple single-photon regime, not their maximum kinetic energy.
+
+The display uses h=e=1 and a nonnegative energy excess. Below threshold its zero output means no emission in this model, not an emitted electron with a measured zero kinetic energy. Multiphoton and material-surface effects require additional assumptions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_PB5.1" />
+
 
 Use a virtual photoelectric plot: compute stopping voltage for several photon frequencies above threshold and mark the no-emission region below it. Compare varying frequency and intensity separately. A real photocell requires calibrated apparatus; avoid treating a drawn current curve as experimental data.
 

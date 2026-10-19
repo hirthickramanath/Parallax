@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For parallel fraction 0.8 and 4 ideal workers, find Amdahl speedup.",
+      "answer": "2.5",
+      "hint": "Use 1/(0.2+0.8/4).",
+      "explanation": "Use 1/(0.2+0.8/4). Result: 2.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "For parallel fraction 0.9, find the ideal infinite-worker speedup limit.",
+      "answer": "10",
+      "hint": "The serial fraction gives 1/0.1.",
+      "explanation": "The serial fraction gives 1/0.1. Result: 10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Does a Git commit alone capture untracked datasets and external service state?",
+      "answer": "No; those need explicit provenance and reproducible configuration.",
+      "options": [
+        "Yes; committing source archives every dependency and service.",
+        "No; those need explicit provenance and reproducible configuration."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Record artifacts beyond source code.",
+      "misconceptions": {
+        "Yes; committing source archives every dependency and service.": "Record artifacts beyond source code."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Measure before parallelizing. Amdahl’s law for an idealized workload with para
 
 Floating-point addition is not associative, so a parallel reduction order can change low bits. State whether the requirement is bitwise identity or agreement within a justified physical/numerical tolerance. Checkpoint long computations with validated restart data and track resource use. HPC job scripts, containers and compiler flags are provenance artifacts, not proof of scientific correctness or a reason to disable signature/TLS verification.
 
+
+### Derivation and transfer
+
+Reproducibility needs versioned source, locked dependencies, input provenance, configuration and a record of random seeds where applicable. A Git commit alone does not preserve untracked data, external services or runtime assumptions. Secrets belong in secure configuration, not source history.
+
+Amdahl's ideal speedup is 1/[(1−f)+f/p] for parallelizable fraction f and p workers, ignoring overhead. The display evaluates that bound, not an HPC benchmark. Communication, memory bandwidth and load imbalance can lower actual speedup. A reproducible performance report records hardware and wall-clock measurements.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="computing_CP2.5" />
+
 
 Create a local reproducibility manifest for a synthetic calculation: revision, input checksum, parameters, seed, dependencies and tolerance. Re-run from a clean process and compare numeric outputs. Profile one bottleneck before proposing parallel execution; do not place API keys or personal files into the manifest.
 

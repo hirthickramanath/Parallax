@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For logistic r=2, find its nonzero fixed point.",
+      "answer": "0.5",
+      "hint": "Use 1−1/r.",
+      "explanation": "Use 1−1/r. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "At that fixed point, find derivative f′.",
+      "answer": "0",
+      "hint": "Use 2−r.",
+      "explanation": "Use 2−r. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Does any nonlinear map automatically have chaotic trajectories?",
+      "answer": "No; stable fixed points and cycles can occur.",
+      "options": [
+        "Yes; nonlinearity alone proves chaos.",
+        "No; stable fixed points and cycles can occur."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Analyze parameters and orbit stability.",
+      "misconceptions": {
+        "Yes; nonlinearity alone proves chaos.": "Analyze parameters and orbit stability."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A Lyapunov exponent measures trajectory-wise infinitesimal growth with norm/time
 
 Bifurcation theory asks how qualitative invariant structure changes with parameters. A computed diagram can miss unstable branches or exhibit discretization artifacts. A reproducible dynamical claim records equations, parameters, initial states, integration controls and the precise local/global assertion being tested.
 
+
+### Derivation and transfer
+
+For the logistic map xn+1=r xn(1−xn), fixed points are zero and 1−1/r when the latter exists. Linear stability depends on |f′(x*)|&lt;1; at the nonzero fixed point f′=2−r. Thus its stable range is 1&lt;r&lt;3.
+
+The display plots the one-step map, not a long trajectory or Lyapunov estimate. Sensitive dependence requires a dynamical diagnostic; a nonlinear-looking curve alone does not establish chaos. Finite precision can alter long iterates.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA13.1" />
+
 
 Compare eigenvalue-based local predictions with numerical trajectories near and far from a fixed point. Include a zero-eigenvalue example and show why higher-order terms are decisive there.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For α=x dy, find the coefficient of dx∧dy in dα.",
+      "answer": "1",
+      "hint": "Differentiate Q=x with respect to x.",
+      "explanation": "Differentiate Q=x with respect to x. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For α=x dy on a positively oriented 2-by-3 rectangle, find its boundary integral.",
+      "answer": "6",
+      "hint": "Integrate dα over its area.",
+      "explanation": "Integrate dα over its area. Result: 6.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Is dx∧dy equal to dy∧dx?",
+      "answer": "No; exchanging factors reverses the sign.",
+      "options": [
+        "Yes; wedge multiplication is symmetric.",
+        "No; exchanging factors reverses the sign."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Orientation is encoded algebraically.",
+      "misconceptions": {
+        "Yes; wedge multiplication is symmetric.": "Orientation is encoded algebraically."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Closed means dω=0; exact means ω=dη. Exact forms are closed, but closed forms
 
 A Hodge star requires a metric and orientation and depends on signature. Maxwell equations can be expressed using a field-strength two-form and its dual with source conventions, but metric-free d identities and metric-dependent duality are distinct. Differential forms simplify bookkeeping without eliminating boundary, gauge or topology assumptions.
 
+
+### Derivation and transfer
+
+Exterior products are antisymmetric: dx∧dy=−dy∧dx and dx∧dx=0. For α=Pdx+Qdy in a plane, dα=(∂xQ−∂yP)dx∧dy. Applying d twice gives zero for sufficiently smooth forms.
+
+Stokes' theorem compares an oriented boundary integral to the integral of dα with compatible orientation. The display uses α=a x dy and an oriented rectangular area; it does not replace smoothness, orientation or domain hypotheses.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.6" />
+
 
 Compute both sides of Stokes for the square and then for a punctured domain with a closed nonexact one-form. Explain which local derivative test fails to detect the global hole.
 

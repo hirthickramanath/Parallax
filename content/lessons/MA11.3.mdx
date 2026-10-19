@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "In flat polar coordinates at r=2, find Γrθθ.",
+      "answer": "-2",
+      "hint": "It equals −r.",
+      "explanation": "It equals −r. Result: -2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "At r=2, find Γθrθ.",
+      "answer": "0.5",
+      "hint": "It equals 1/r.",
+      "explanation": "It equals 1/r. Result: 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Do nonzero Christoffel symbols necessarily imply nonzero curvature?",
+      "answer": "No; flat polar coordinates already have them.",
+      "options": [
+        "Yes; every connection coefficient is a curvature component.",
+        "No; flat polar coordinates already have them."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Connections are coordinate-dependent coefficients.",
+      "misconceptions": {
+        "Yes; every connection coefficient is a curvature component.": "Connections are coordinate-dependent coefficients."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ In flat polar coordinates ds²=dr²+r²dθ², nonzero symbols include Γ^r_θθ=
 
 Other connections can include torsion or nonmetricity, so the Levi–Civita choice is an assumption justified by the theory being used. A scalar’s first covariant derivative equals its partial derivative, but its second derivative involves connection terms because the first derivative is a covector.
 
+
+### Derivation and transfer
+
+A covariant derivative adds connection terms to ordinary component derivatives so the result transforms tensorially. In flat polar coordinates, Γrθθ=−r and Γθrθ=1/r are nonzero. Nonzero Christoffel symbols alone therefore do not imply curvature.
+
+The display probes one connection coefficient in a flat chart. Its coordinate dependence is expected. Curvature requires the appropriate derivatives and products of connection coefficients, not the magnitude of one coefficient.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA11.3" />
+
 
 Compute the polar metric and its Christoffel symbols, then compare a constant Cartesian vector written in the polar basis. Show how its component derivatives and connection terms combine.
 

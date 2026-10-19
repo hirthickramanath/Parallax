@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "Find 2·3 modulo 6.",
+      "answer": "0",
+      "hint": "Reduce the product modulo six.",
+      "explanation": "Reduce the product modulo six. Result: 0.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "Find the multiplicative inverse of 3 modulo 7 in 0..6.",
+      "answer": "5",
+      "hint": "3·5=15≡1 mod7.",
+      "explanation": "3·5=15≡1 mod7. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Is the residue ring modulo every positive integer a field?",
+      "answer": "No; composite moduli have zero divisors.",
+      "options": [
+        "Yes; finite arithmetic always has inverses.",
+        "No; composite moduli have zero divisors."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Check nonzero multiplicative inverses.",
+      "misconceptions": {
+        "Yes; finite arithmetic always has inverses.": "Check nonzero multiplicative inverses."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ An ideal absorbs multiplication by arbitrary ring elements and permits a quotien
 
 Polynomial coefficients and base field determine factorization and roots. A polynomial irreducible over the reals can factor over the complex numbers; changing fields changes the algebraic question. Physical matrix equations also need an actual invertibility condition before division by an operator or determinant.
 
+
+### Derivation and transfer
+
+In a field every nonzero element has a multiplicative inverse. The integers modulo a prime form a field, while composite moduli can have zero divisors. In Z/6Z, 2·3=0 even though neither factor is zero.
+
+The display multiplies residue representatives by two. Noninjectivity for an even modulus exposes a zero divisor; it does not classify every finite ring. Addition and multiplication, identity conventions and the chosen modulus must be fixed before making a field claim.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA10.3" />
+
 
 Enumerate multiplication tables for moduli five and six. Find inverses and zero divisors directly, then compare with gcd tests. State the ring before solving or cancelling factors.
 

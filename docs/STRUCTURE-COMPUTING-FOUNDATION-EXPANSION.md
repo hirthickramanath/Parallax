@@ -1,0 +1,11 @@
+# Algebra, geometry, computing and foundation expansion
+
+This batch extends 52 lessons: MA10–MA13 (22), CP1–CP2 (11), and remaining MB/PB foundation lessons (19). It adds 104 numeric transfer problems, 52 assumption checks, specific derivation/context extensions and 52 embedded analytic investigations. Existing theory and question identifiers remain available.
+
+Coverage includes quotient groups, permutation/ring arithmetic, representations, Lorentz rapidity, coordinate charts, covariant derivatives, curvature, differential forms, operator domains, distributions, dynamics and stochastic moments. Computing investigates array operations, plot normalization, derivative error, RK stability, conditioning, symbolic assumptions, diffusion stability, Monte Carlo precision, units, evaluation leakage and reproducibility. Foundations emphasize transferable mathematical and physical distinctions rather than only recall.
+
+Browser benchmarks are labeled honestly: they do not execute Python, NumPy, SymPy, a survey query, a trained model or an HPC job. A synthetic uncertainty curve does not count as collected experimental data. Integer controls preserve discrete mathematical objects.
+
+Validation: production build, 541 unit/content/model checks, all 14 targeted browser cases and all 107 full browser cases passed. Checks include negative quotient representatives, boost composition, normalized distribution approximants, logistic fixed points, stochastic moments, RG composition, second-order error, RK/FTCS instability, speedup ceilings and physical thresholds. The duplicate Hilbert-space prompt was replaced by a completeness question.
+
+Four new narrow source mappings and reinspection of ten changed foundation mappings bring current partial inspection to 146. The new mappings cover metric/completeness definitions, Euclidean inner products and symbolic-assumption restrictions. They do not verify every advanced extension. All 354 lessons remain drafts with zero independent approvals. At this checkpoint 86 lessons lack explicit widgets. All review packets export with current model artifacts. Production/cloud checks, actual research execution, learner trials and independent expert review remain separate.

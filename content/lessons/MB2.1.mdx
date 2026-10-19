@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Find the number of distinct solutions of sinθ=1/2 in 0≤θ<2π.",
+      "answer": "2",
+      "hint": "Use π/6 and 5π/6.",
+      "explanation": "Use π/6 and 5π/6. Result: 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "Find sin²(π/3)+cos²(π/3).",
+      "answer": "1",
+      "hint": "Use the Pythagorean identity.",
+      "explanation": "Use the Pythagorean identity. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does a principal inverse sine value list every solution of sinθ=s?",
+      "answer": "No; other branches and periods can contribute.",
+      "options": [
+        "Yes; arcsin returns the complete solution set.",
+        "No; other branches and periods can contribute."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Apply symmetry and periodicity.",
+      "misconceptions": {
+        "Yes; arcsin returns the complete solution set.": "Apply symmetry and periodicity."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ The cosine rule $c^2=a^2+b^2-2ab\cos C$ follows by resolving one side along the 
 
 A zero product is solved by retaining every factor: $\sin\theta\cos\theta=0$ implies either $\sin\theta=0$ or $\cos\theta=0$. Dividing by the second factor before considering its zeros loses valid solutions. In $[0,2\pi)$, the solutions are $0,\pi/2,\pi,3\pi/2$. For $\sin\theta=1/2$, symmetry gives $\theta=\pi/6$ and $5\pi/6$ in this interval; an inverse-sine principal value alone does not enumerate all roots. State the angle interval and endpoint inclusion before counting solutions.
 
+
+### Derivation and transfer
+
+The identity sin²θ+cos²θ=1 constrains trigonometric equations, but inverse functions return a principal value rather than every solution. Solving sinθ=s requires both angular branches and periodic shifts where applicable.
+
+The explorer varies a phase and amplitude without pretending a local graph gives all roots. Degrees and radians must not be mixed. Squaring an equation can introduce extraneous roots, so verify candidates in the original signed equation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB2.1" />
+
 
 Draw a rotating radius and project its endpoint onto both axes. Sample every 30 degrees, then plot both projected coordinates against radians. Test the small-angle rule at 0.1, 0.5 and 1 rad, comparing relative errors rather than deciding from appearance alone.
 

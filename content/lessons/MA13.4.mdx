@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "structure-transfer-1",
+      "prompt": "For a loop with solid angle π in the stated spin-half convention, find Berry phase.",
+      "answer": "-1.5707963267948966",
+      "hint": "Use −Ω/2.",
+      "explanation": "Use −Ω/2. Result: -1.570796326795.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-transfer-2",
+      "prompt": "For a Bloch-sphere equatorial loop, find solid angle in the north-cap convention.",
+      "answer": "6.283185307179586",
+      "hint": "Use 2π(1−cos(π/2)).",
+      "explanation": "Use 2π(1−cos(π/2)). Result: 6.28318530718.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "structure-assumptions",
+      "prompt": "Is every Berry phase necessarily an integer topological invariant?",
+      "answer": "No; it can vary continuously modulo 2π.",
+      "options": [
+        "Yes; every geometric phase is an integer.",
+        "No; it can vary continuously modulo 2π."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Distinguish loop phase from a normalized closed-surface Chern number.",
+      "misconceptions": {
+        "Yes; every geometric phase is an integer.": "Distinguish loop phase from a normalized closed-surface Chern number."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ For a suitable complex line bundle over a closed oriented two-dimensional parame
 
 For a spin-half eigenstate following a closed direction loop, the geometric phase is proportional to half the enclosed solid angle with sign tied to the branch/state convention. Topological robustness needs the protecting gap/symmetry conditions; a disorder or interaction change that closes the relevant gap can change classification. This introduction does not claim every phase factor is a topological invariant.
 
+
+### Derivation and transfer
+
+For a spin-half state adiabatically transported around a latitude on the Bloch sphere, a geometric phase is −Ω/2 modulo 2π for a stated eigenstate convention. The enclosed solid angle is Ω=2π(1−cosθ). Dynamical phase is a separate contribution.
+
+The display follows that ideal loop and chosen sign convention. A Berry phase is not automatically an integer topological invariant; a Chern number instead integrates curvature over an appropriate closed parameter surface with normalization. Gap closing can invalidate an adiabatic argument.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="structure_MA13.4" />
+
 
 Compare local eigenvector phase choices around a parameter loop and keep overlap/end-point corrections. Check that the computed closed phase is unchanged modulo 2π. State where the spectral gap and smoothness assumptions fail.
 

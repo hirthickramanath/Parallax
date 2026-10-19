@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "foundation_next-transfer-1",
+      "prompt": "Find the determinant of [[2,1],[3,4]].",
+      "answer": "5",
+      "hint": "Compute 2·4−1·3.",
+      "explanation": "Compute 2·4−1·3. Result: 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-transfer-2",
+      "prompt": "Find the determinant of a planar rotation.",
+      "answer": "1",
+      "hint": "A proper rotation preserves oriented area.",
+      "explanation": "A proper rotation preserves oriented area. Result: 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "foundation_next-assumptions",
+      "prompt": "Does a nonzero determinant guarantee a numerically well-conditioned matrix?",
+      "answer": "No; singular values can differ greatly.",
+      "options": [
+        "Yes; every invertible matrix is equally stable.",
+        "No; singular values can differ greatly."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Invertibility and conditioning differ.",
+      "misconceptions": {
+        "Yes; every invertible matrix is equally stable.": "Invertibility and conditioning differ."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Numerical conditioning is distinct from invertibility. A nearly singular matrix 
 
 The columns of a matrix are the images of the coordinate basis vectors. Their oriented parallelogram area is $ad-bc$ for a $2\times2$ matrix. Absolute determinant gives the area scale, while a negative sign records orientation reversal. The inverse formula divides by the determinant, so determinant zero signals collapse to a lower-dimensional image. A nonzero but tiny determinant alone is not a scale-invariant condition-number test: compare singular values to assess sensitivity.
 
+
+### Derivation and transfer
+
+For a two-by-two matrix [[a,b],[c,d]], determinant ad−bc measures signed area scaling and determines invertibility. A zero determinant means some nonzero direction is collapsed; a small determinant alone is not a scale-invariant condition-number diagnostic.
+
+The display varies diagonal scaling for diag(x,a). Matrix multiplication order and vector convention still matter. In higher dimensions determinant and numerical conditioning answer different questions; a large determinant can coexist with severe anisotropy.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="foundation_next_MB4.1" />
+
 
 Draw a square grid, transform its two basis arrows with a chosen 2×2 matrix, and reconstruct the grid from them. Compare determinant 1, −1 and 0. Add a small perturbation to nearly dependent equations and observe how far their intersection moves.
 

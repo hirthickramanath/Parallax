@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "computing-transfer-1",
+      "prompt": "For f=x³ at x=1 and h=0.1, find the centered derivative estimate.",
+      "answer": "3.01",
+      "hint": "Expand the two cubes.",
+      "explanation": "Expand the two cubes. Result: 3.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-transfer-2",
+      "prompt": "In the truncation regime, halving h changes the centered derivative error by what factor?",
+      "answer": "0.25",
+      "hint": "The leading error is proportional to h².",
+      "explanation": "The leading error is proportional to h². Result: 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "computing-assumptions",
+      "prompt": "Does taking the smallest representable step always improve a finite-difference derivative?",
+      "answer": "No; roundoff and cancellation can dominate.",
+      "options": [
+        "Yes; truncation is the only numerical error.",
+        "No; roundoff and cancellation can dominate."
+      ],
+      "hint": "Check the domain, transformation and hypotheses.",
+      "explanation": "Compare truncation and floating-point effects.",
+      "misconceptions": {
+        "Yes; truncation is the only numerical error.": "Compare truncation and floating-point effects."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -182,9 +219,19 @@ A refinement check compares n and 2n intervals, while an analytic test establish
 
 Taylor expansion of the symmetric quotient gives $[f(x+h)-f(x-h)]/(2h)=f'(x)+h^2 f^{(3)}(x)/6+O(h^4)$ for a sufficiently smooth function. For a cubic, the correction is exactly $h^2$. Floating-point subtraction introduces an error scale proportional to machine precision divided by $h$, so truncation improvement cannot be extrapolated to arbitrarily small steps. Composite trapezoidal quadrature instead averages neighboring endpoint values across each panel; refining panels is a convergence test, not additional measured information. Discontinuities and noisy data require separate error models.
 
+
+### Derivation and transfer
+
+A centered derivative [f(x+h)−f(x−h)]/(2h) has O(h²) truncation error for sufficiently smooth f. For f=x³ at x=1 it equals 3+h² exactly, exposing the leading error. Floating-point cancellation eventually defeats the benefit of reducing h.
+
+The browser evaluates this analytic benchmark without hiding the error sign. A convergence study needs several step sizes and a reference or asymptotic regime. Singularities, nonsmoothness and noisy data can invalidate the textbook power law.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="computing_CP1.3" />
+
 
 Compute the derivative of sin x at x=1 for steps from 10⁻¹ to 10⁻¹². Plot absolute error against step on log axes and identify the truncation-dominated and roundoff-dominated regions. Then integrate x² with successive mesh refinements.
 
