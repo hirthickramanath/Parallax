@@ -71,3 +71,7 @@ The excluded-subjects and separate engineering/technology plans remain in their 
 ## Analytical mechanics follow-up
 
 [PH2 batch](ANALYTICAL-MECHANICS-BATCH.md): seven deeper banks, 28 added questions, two embedded models and two narrowly scoped documentation mappings. Current partial source coverage is 34 lessons. See [cumulative batch progress](BATCH-PROGRESS.md) for completed and remaining work; independent verification remains zero.
+
+## Astrophysics and multivariable follow-up
+
+All 61 astrophysics lessons and eight MA2 lessons now have additional derivations, 207 added questions and 69 directly manipulable analytic investigations. Current partial source mappings total 80; 248 lessons lack explicit widgets. See [the expansion report](ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md) for scope, source issues and remaining independent review. These models do not turn synthetic demonstrations into real observations or completed capstones.

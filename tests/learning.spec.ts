@@ -1616,3 +1616,109 @@ test("analytical mechanics displays canonical flow and area-preserving shear", a
     page.getByLabel("Phase position q", { exact: true }),
   ).toBeVisible();
 });
+
+test("astrophysics investigations respond to slab limits and direct distance dragging on mobile", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/lesson/AS2.3");
+  const slab = page.locator(".virtual-lab").filter({
+    has: page.getByRole("heading", {
+      name: "Move through an emitting and absorbing slab",
+    }),
+  });
+  await expect(slab.locator("output")).toHaveText(
+    "Emergent intensity (same units): 1.6321",
+  );
+  await page.getByLabel("Optical depth", { exact: true }).fill("0");
+  await expect(slab.locator("output")).toHaveText(
+    "Emergent intensity (same units): 1.0000",
+  );
+  await page.goto("/lesson/AS2.1");
+  const scene = page.getByLabel("Drag investigation point for AS2.1", {
+    exact: true,
+  });
+  await scene.scrollIntoViewIfNeeded();
+  const dot = await scene.locator("circle").boundingBox(),
+    box = await scene.boundingBox();
+  expect(dot && box).toBeTruthy();
+  await page.mouse.move(dot!.x + dot!.width / 2, dot!.y + dot!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(box!.x + box!.width * 0.8, dot!.y + dot!.height / 2, {
+    steps: 8,
+  });
+  await page.mouse.up();
+  expect(
+    Number(
+      await page
+        .getByLabel("Distance (model length)", { exact: true })
+        .inputValue(),
+    ),
+  ).toBeGreaterThan(5);
+  await page.getByLabel("Distance (model length)", { exact: true }).focus();
+  const before = Number(
+    await page
+      .getByLabel("Distance (model length)", { exact: true })
+      .inputValue(),
+  );
+  await page.keyboard.press("ArrowLeft");
+  expect(
+    Number(
+      await page
+        .getByLabel("Distance (model length)", { exact: true })
+        .inputValue(),
+    ),
+  ).toBeLessThan(before);
+});
+
+test("research investigations keep synthetic probabilities and integer trial counts explicit", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/AS10.3");
+  await page.getByLabel("Likelihood ratio", { exact: true }).fill("4");
+  await page.getByLabel("Prior probability", { exact: true }).fill("0.2");
+  await expect(page.getByText(/Posterior probability: 0.5000/)).toBeVisible();
+  await page.goto("/lesson/AS10.1");
+  await page
+    .getByLabel("Number of independent tests", { exact: true })
+    .fill("2");
+  await page
+    .getByLabel("Single-test false-positive rate", { exact: true })
+    .fill("0.05");
+  await expect(
+    page.getByText(/Probability of at least one false positive: 0.0975/),
+  ).toBeVisible();
+  await page.getByLabel("Number of independent tests", { exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(
+    page.getByLabel("Number of independent tests", { exact: true }),
+  ).toHaveValue("3");
+});
+
+test("multivariable investigations distinguish directional derivatives and oriented flux", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/lesson/MA2.2");
+  await expect(
+    page.getByText(/Directional derivative of x²\+2y²: 2.0000/),
+  ).toBeVisible();
+  await page
+    .getByLabel("Direction angle (degrees)", { exact: true })
+    .fill("90");
+  await expect(
+    page.getByText(/Directional derivative of x²\+2y²: 4.0000/),
+  ).toBeVisible();
+  await page.goto("/lesson/MA2.6");
+  await expect(
+    page.getByText(/Outward flux for F=a\(x,y,z\): 12.5664/),
+  ).toBeVisible();
+  await page
+    .getByLabel("Radial field coefficient a", { exact: true })
+    .fill("-1");
+  await expect(
+    page.getByText(/Outward flux for F=a\(x,y,z\): -12.5664/),
+  ).toBeVisible();
+});

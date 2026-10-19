@@ -1,5 +1,7 @@
 # Course depth, simulations and review: batch progress
 
+Latest release: [69-lesson astrophysics/multivariable expansion](ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md). Current partial mappings: 80; lessons without explicit widgets: 248. The counts below describe the earlier three-batch run.
+
 ## Completed in this run
 
 | Batch | Lessons deepened | Questions added | New interactive models |

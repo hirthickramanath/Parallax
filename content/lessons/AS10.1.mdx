@@ -77,6 +77,44 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For two independent null tests each with α=0.05, find the chance of at least one false positive.",
+      "answer": "0.0975",
+      "hint": "Use 1−0.95².",
+      "explanation": "Use 1−0.95². The value in the stated units is 0.0975.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "Ten disjoint analysis choices are tried and only the best is reported. How many choices must be disclosed in the toy trial count?",
+      "answer": "10",
+      "hint": "Count all attempted choices, not just the selected result.",
+      "explanation": "Count all attempted choices, not just the selected result. The value in the stated units is 10.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core",
+      "exact": true
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Can a paper abstract or citation count replace inspection of its methods and assumptions?",
+      "answer": "No; the underlying argument and evidence must be examined.",
+      "options": [
+        "Yes; popularity is a complete scientific verification.",
+        "No; the underlying argument and evidence must be examined."
+      ],
+      "explanation": "Literature discovery and evidence appraisal are distinct tasks.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; popularity is a complete scientific verification.": "Literature discovery and evidence appraisal are distinct tasks."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +191,19 @@ Read equations with definitions and unit conventions, then inspect selection, li
 
 Maintain a claim-to-evidence table distinguishing replicated results from plausible proposals. Record exact versions and access dates for dynamic resources. Do not invent quotations, page numbers or source verification; a pending source check is preferable to a fabricated precise reference.
 
+
+### Derive, test and transfer
+
+For N independent tests under a common null with per-test false-positive probability α, the probability none crosses its threshold is $(1-\alpha)^N$. Thus the probability of at least one crossing is $1-(1-\alpha)^N$, approximately Nα only when Nα is small. This is a simple illustration of selection and multiple testing, not a way to score scientific papers.
+
+A literature review should record the question, search date, queries, inclusion criteria and version of every preprint or publication. Read methods, assumptions, data access and later corrections rather than treating a title, citation count or abstract as proof. Search outcomes are not independent Bernoulli trials; the toy curve motivates careful selection accounting without pretending to model ADS or arXiv search behavior.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS10.1" />
+
 
 Choose a public paper only after recording its exact version. Extract one equation’s definitions and list which inputs are observed, calibrated or assumed. This lesson does not pretend an actual paper has already been independently replicated.
 

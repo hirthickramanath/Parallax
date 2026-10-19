@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "A purely absorbing slab has optical depth ln(4). Find transmitted fraction I/I₀.",
+      "answer": "0.25",
+      "hint": "Set source function to zero and use exponential attenuation.",
+      "explanation": "Set source function to zero and use exponential attenuation. The value in the stated units is 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For I₀=1, S=3 and optical depth ln(2), find emergent intensity.",
+      "answer": "2",
+      "hint": "The old intensity and source contribution each have weight one half.",
+      "explanation": "The old intensity and source contribution each have weight one half. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Must increasing optical depth always dim a ray when the slab also emits?",
+      "answer": "No; it brightens toward S if S exceeds the incident intensity.",
+      "options": [
+        "Yes; emission never changes the effect of optical depth.",
+        "No; it brightens toward S if S exceeds the incident intensity."
+      ],
+      "explanation": "The formal solution contains both attenuated input and local source terms.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; emission never changes the effect of optical depth.": "The formal solution contains both attenuated input and local source terms."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -159,9 +196,19 @@ For true thermal absorption/emission in local thermodynamic equilibrium, the cor
 
 A brightness measurement at one frequency can be degenerate between source function and optical depth. Multiple bands, line ratios, geometry or independent temperature information help break it. The slab formula does not by itself solve an atmosphere whose temperature, opacity and angular field vary with depth.
 
+
+### Derive, test and transfer
+
+Write absorption and emission along one ray as $dI/ds=-\alpha I+j$. For optical depth increasing along the path, $d\tau=\alpha ds$ and $dI/d\tau=-I+S$, with $S=j/\alpha$. Multiplication by the integrating factor eτ yields $I(\tau)=I_0e^{-\tau}+\int_0^\tau S(t)e^{-(\tau-t)}dt$. A constant source function reduces the integral to $S(1-e^{-\tau})$.
+
+An optically thick slab approaches its source function rather than becoming arbitrarily bright. An optically thin expansion gives $I\simeq I_0+(S-I_0)\tau$, making the sign of an emission or absorption contrast explicit. LTE can identify the thermal source function with a Planck function for the relevant process; scattering and non-LTE populations can invalidate that identification. A single-ray scalar model does not solve a full angular scattering field.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS2.3" />
+
 
 Use the radiation slab bench to hold optical depth fixed while changing the source function across the incoming brightness. Record incident, transmitted and emitted contributions separately. Then vary τ and test the thin and thick limits. These are synthetic transfer-model readings.
 

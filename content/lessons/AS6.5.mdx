@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At fixed diffusivity, magnetic structure size doubles. Find diffusion-timescale factor.",
+      "answer": "4",
+      "hint": "Diffusion time scales as L².",
+      "explanation": "Diffusion time scales as L². The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed size, magnetic diffusivity rises by 5. Find decay-timescale factor.",
+      "answer": "0.2",
+      "hint": "The timescale is inversely proportional to diffusivity.",
+      "explanation": "The timescale is inversely proportional to diffusivity. The value in the stated units is 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a long resistive-decay time alone establish a mechanism that amplifies magnetic fields?",
+      "answer": "No; amplification needs induction by a suitable powered flow.",
+      "options": [
+        "Yes; slow decay is itself a dynamo.",
+        "No; amplification needs induction by a suitable powered flow."
+      ],
+      "explanation": "Persistence and generation are different physical claims.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; slow decay is itself a dynamo.": "Persistence and generation are different physical claims."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Mean-field models split fields into averages and fluctuations; their electromoti
 
 Faraday rotation probes a signed electron-density-weighted line-of-sight field integral, while synchrotron polarization and dust polarization have different weights and directional ambiguities. Combining observables needs transport, electron and foreground models. A field-strength estimate is conditional inference, not a direct three-dimensional field map from one line of sight.
 
+
+### Derive, test and transfer
+
+With uniform magnetic diffusivity, the induction equation contains $\eta\nabla^2B$. A spatial Fourier mode with wavenumber k decays as $B_k(t)=B_k(0)e^{-\eta k^2t}$, so its timescale is $1/(\eta k^2)$. A structure of scale L therefore has diffusion time of order $L^2/\eta$, with geometry-dependent factors.
+
+Advection and stretching add the $\nabla\times(v\times B)$ term. A long decay time preserves a seed field but does not explain its amplification; a dynamo requires suitable flow and an energy source. The magnetic Reynolds number compares advection and diffusion, yet a large value alone does not prove a sustained dynamo. The investigation controls the decay scale while deliberately omitting the flow-generation problem.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS6.5" />
+
 
 Compare an imposed stretching flow with a purely diffusive decay model, recording boundary and divergence constraints. Plot amplitude and magnetic-energy growth separately. Explain which feedback is missing before extrapolating a kinematic exponential indefinitely.
 

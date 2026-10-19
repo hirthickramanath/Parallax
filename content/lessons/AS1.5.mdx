@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At unchanged perturber mass and body radius, by what factor does the leading tidal acceleration change when separation doubles?",
+      "answer": "0.125",
+      "hint": "The tide scales as r to power −3.",
+      "explanation": "The tide scales as r to power −3. The value in the stated units is 0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "With G=M=1, body radius R=0.2 and separation r=4, find the leading radial tidal acceleration.",
+      "answer": "0.00625",
+      "hint": "Use 2MR/r³ in the stated model units.",
+      "explanation": "Use 2MR/r³ in the stated model units. The value in the stated units is 0.00625.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Can the coefficient in a fluid Roche limit be derived just by equating two pointwise accelerations?",
+      "answer": "No; fluid shape and response determine the coefficient.",
+      "options": [
+        "Yes; the local linear tide determines every disruption detail.",
+        "No; fluid shape and response determine the coefficient."
+      ],
+      "explanation": "The local expansion establishes scaling while equilibrium/disruption physics supplies additional structure.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; the local linear tide determines every disruption detail.": "The local expansion establishes scaling while equilibrium/disruption physics supplies additional structure."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -175,9 +212,19 @@ Ocean tide amplitudes are not the static equilibrium bulge alone: coastlines, ba
 
 For radial gravity $a_r=-GM/r^2$, a small radial displacement changes acceleration by $\Delta a_r\simeq(2GM/r^3)\ell$. This is a first derivative of the field and explains the inverse-cube tide law. In an orthonormal local frame, point-source Newtonian tidal eigenvalues are proportional to $(2,-1,-1)GM/r^3$: stretching in one direction and compression in two. Their sum vanishes in vacuum even though each is nonzero. Roche estimates additionally compare tides with self-gravity and depend on rotation, structure and material strength; a fluid numerical coefficient cannot be universally applied to a cohesive solid.
 
+
+### Derive, test and transfer
+
+A differential gravitational acceleration is found by subtracting the center-of-mass acceleration before expanding the perturber's field. Along the radial direction, $g(r-R)-g(r)\simeq 2GMR/r^3$ for $R/r\ll1$. The leading tide is proportional to body size and to the inverse cube of separation, whereas the common acceleration of the whole body is proportional to the inverse square.
+
+Compare the tide to the body's own surface gravity, $Gm/R^2$. Equating orders gives a disruption separation proportional to $R(M/m)^{1/3}$, or to the cube root of a density ratio. The numerical Roche coefficient depends on fluid response, rotation and geometry; the simple differential-force balance does not supply it. Rigid material strength can support small objects beyond a fluid estimate. The investigation is therefore a local tide model, not a simulation of nonlinear disruption or ocean response.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="astro_AS1.5" />
+
 
 <Widget name="tidal_explorer" />
 

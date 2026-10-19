@@ -17,7 +17,7 @@
         "Constant downward gravity"
       ],
       "answer": "Inverse-square attraction",
-      "explanation": "The Binet equation has constant forcing for \u2212\u03bc/r\u00b2.",
+      "explanation": "The Binet equation has constant forcing for −μ/r².",
       "type": "mcq",
       "conceptual": true
     },
@@ -29,7 +29,7 @@
         "Speed is constant everywhere"
       ],
       "answer": "The central force has zero torque",
-      "explanation": "r \u00d7 F = 0 for a central force.",
+      "explanation": "r × F = 0 for a central force.",
       "type": "mcq",
       "conceptual": true
     },
@@ -42,26 +42,26 @@
         "Hyperbola"
       ],
       "answer": "Parabola",
-      "explanation": "e = 1 when \u03b5 = 0 and h \u2260 0.",
+      "explanation": "e = 1 when ε = 0 and h ≠ 0.",
       "type": "mcq",
       "conceptual": true
     },
     {
       "id": "speed",
-      "prompt": "Circular speed at \u03bc = 1 and r = 1?",
+      "prompt": "Circular speed at μ = 1 and r = 1?",
       "options": null,
       "answer": "1",
-      "explanation": "v_c = \u221a(\u03bc/r).",
+      "explanation": "v_c = √(μ/r).",
       "type": "numeric",
       "conceptual": false,
       "unit": "normalized"
     },
     {
       "id": "warmup",
-      "prompt": "Escape speed at \u03bc = r = 1?",
+      "prompt": "Escape speed at μ = r = 1?",
       "options": null,
       "answer": "1.41421356",
-      "explanation": "v_esc = \u221a2.",
+      "explanation": "v_esc = √2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -75,7 +75,44 @@
         "All orbits have equal period"
       ],
       "answer": "T scales with a^(3/2)",
-      "explanation": "Kepler\u2019s third law gives T\u00b2 = 4\u03c0\u00b2a\u00b3/\u03bc.",
+      "explanation": "Kepler’s third law gives T² = 4π²a³/μ.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "An ellipse has periapsis 2 AU and apoapsis 6 AU. Find semimajor axis in AU.",
+      "answer": "4",
+      "hint": "Average the turning-point radii.",
+      "explanation": "Average the turning-point radii. The value in the stated units is 4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For those turning points 2 and 6 AU, find eccentricity.",
+      "answer": "0.5",
+      "hint": "Use (r_apo−r_peri)/(r_apo+r_peri).",
+      "explanation": "Use (r_apo−r_peri)/(r_apo+r_peri). The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "At fixed semimajor axis and central mass, does increasing eccentricity increase the ideal Kepler period?",
+      "answer": "No; the period depends on a and total mass in this model.",
+      "options": [
+        "Yes; every longer-looking path has a longer Kepler period.",
+        "No; the period depends on a and total mass in this model."
+      ],
+      "explanation": "The speed distribution changes together with the ellipse geometry.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every longer-looking path has a longer Kepler period.": "The speed distribution changes together with the ellipse geometry."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -89,17 +126,17 @@
     },
     {
       "front": "What sets the conic type for a two-body orbit?",
-      "back": "Specific energy: negative for an ellipse, zero for a parabola, positive for a hyperbola (nondegenerate h \u2260 0).",
+      "back": "Specific energy: negative for an ellipse, zero for a parabola, positive for a hyperbola (nondegenerate h ≠ 0).",
       "concept": "orbital-energy"
     },
     {
       "front": "How does zero torque restrict two-body motion?",
-      "back": "It conserves angular momentum, fixing an orbital plane and r\u00b2\u03c6\u0307=h.",
+      "back": "It conserves angular momentum, fixing an orbital plane and r²φ̇=h.",
       "concept": "orbital-angular-momentum"
     },
     {
       "front": "What substitution turns the inverse-square orbit problem into a linear equation?",
-      "back": "u=1/r gives u\u2033+u=\u03bc/h\u00b2 for nonzero h.",
+      "back": "u=1/r gives u″+u=μ/h² for nonzero h.",
       "concept": "orbital-angular-momentum"
     },
     {
@@ -109,12 +146,12 @@
     },
     {
       "front": "How does specific energy distinguish bound and unbound conics?",
-      "back": "For nondegenerate two-body motion, \u03b5<0 is elliptic, \u03b5=0 parabolic and \u03b5>0 hyperbolic.",
+      "back": "For nondegenerate two-body motion, ε<0 is elliptic, ε=0 parabolic and ε>0 hyperbolic.",
       "concept": "orbital-energy"
     },
     {
       "front": "What is the vis-viva equation?",
-      "back": "v\u00b2=\u03bc(2/r\u22121/a), with a=\u2212\u03bc/(2\u03b5) for nonparabolic conics.",
+      "back": "v²=μ(2/r−1/a), with a=−μ/(2ε) for nonparabolic conics.",
       "concept": "orbital-energy"
     },
     {
@@ -195,9 +232,19 @@ $$T=\frac{2\pi a^2\sqrt{1-e^2}}h=2\pi\sqrt{\frac{a^3}\mu}.$$
 
 This two-body result neglects drag, additional bodies, finite-size perturbations and relativistic corrections.
 
+
+### Derive, test and transfer
+
+For a bound Kepler ellipse, $r=a(1-e^2)/(1+e\cos f)$. Evaluating at true anomalies zero and π gives $r_p=a(1-e)$ and $r_a=a(1+e)$. Their sum is 2a while their difference is 2ae. Thus changing eccentricity at fixed a moves both turning points without changing the Newtonian period for a fixed total central mass.
+
+The specific orbital energy is $\varepsilon=-\mu/(2a)$ and angular momentum satisfies $h^2=\mu a(1-e^2)$. High eccentricity at the same a therefore reduces h rather than changing binding energy. From vis-viva, $v^2=\mu(2/r-1/a)$, periapsis speed increases as the periapsis shrinks. These are osculating two-body relations when used inside a perturbed multi-body system; measured elements can evolve. Neither an ellipse drawing nor instantaneous element fitting proves long-term stability.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Launch an orbit" layer="interactive">
+
+<Widget name="astro_AS1.3" />
+
 
 <Widget name="orbit_explorer" />
 

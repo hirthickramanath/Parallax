@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At fixed density/composition, temperature rises by a factor of 4. Find the Jeans mass factor.",
+      "answer": "8",
+      "hint": "Use T^(3/2).",
+      "explanation": "Use T^(3/2). The value in the stated units is 8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed temperature/composition, density rises by a factor of 9. Find the Jeans mass factor.",
+      "answer": "0.3333333333333333",
+      "hint": "Use density to power −1/2.",
+      "explanation": "Use density to power −1/2. The value in the stated units is 0.333333333333.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a Jeans scaling by itself determine the final mass of every star formed in a turbulent magnetized cloud?",
+      "answer": "No; fragmentation, feedback and additional support matter.",
+      "options": [
+        "Yes; it gives an exact one-cloud-one-star mass.",
+        "No; fragmentation, feedback and additional support matter."
+      ],
+      "explanation": "A linear idealized instability scale is not a complete formation history.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; it gives an exact one-cloud-one-star mass.": "A linear idealized instability scale is not a complete formation history."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Angular momentum leads to discs, while magnetic stresses, turbulence and feedbac
 
 Protostellar radiation, outflows and the onset of nuclear burning affect accretion. Fragmentation requires thermodynamics and scale resolution; unresolved numerical fragmentation can be an artifact. An observed cold cloud is not necessarily a single isolated Jeans sphere, and model-generated core populations are not direct measurements of a stellar initial-mass function.
 
+
+### Derive, test and transfer
+
+A sound crossing time is proportional to R/c_s, while a gravitational collapse time is proportional to $(G\rho)^{-1/2}$. Equating scales yields a Jeans length proportional to $c_s/\sqrt{G\rho}$ and mass proportional to $c_s^3/(G^{3/2}\rho^{1/2})$. For fixed composition in an isothermal ideal gas, $c_s\propto\sqrt T$, so $M_J\propto T^{3/2}\rho^{-1/2}$.
+
+Cooling and compression can therefore lower the characteristic fragmentation mass, but a real cloud also has magnetic fields, turbulence, rotation and finite boundaries. The familiar uniform-medium derivation idealizes the background gravity and does not prove every cloud above one nominal mass will collapse unchanged into a single star. Compare pressure support, cooling time and gravitational time before extending the scaling into an evolutionary prediction.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS4.1" />
+
 
 Plot the ideal dispersion relation and separate oscillatory and growing modes. Compare isothermal and heated compression assumptions. For a cloud simulation, record gravity, cooling, boundary conditions and spatial resolution before interpreting fragments.
 

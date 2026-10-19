@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At unchanged opacity, black-hole mass triples. Find Eddington-luminosity factor.",
+      "answer": "3",
+      "hint": "The spherical scattering scale is linear in M.",
+      "explanation": "The spherical scattering scale is linear in M. The value in the stated units is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "A source radiates 0.2 times its Eddington luminosity, and its mass is 5 reference masses. Find L/LEdd,reference.",
+      "answer": "1",
+      "hint": "Multiply mass ratio by Eddington ratio.",
+      "explanation": "Multiply mass ratio by Eddington ratio. The value in the stated units is 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a black-hole–host correlation alone prove one unique feedback causal history?",
+      "answer": "No; competing models and selection effects require testing.",
+      "options": [
+        "Yes; a correlation establishes its unique cause.",
+        "No; competing models and selection effects require testing."
+      ],
+      "explanation": "Association and a specific causal explanation are different claims.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a correlation establishes its unique cause.": "Association and a specific causal explanation are different claims."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Broad-line, stellar/gas-dynamical, reverberation and other mass estimates have d
 
 Population inferences require flux limits, duty cycles, nondetections and redshift evolution. A fitted black-hole/host relation can be biased by which masses were measurable. Compare independent observables and simulations with their selection functions rather than claiming co-evolution from one scatter plot alone.
 
+
+### Derive, test and transfer
+
+Balance outward electron-scattering radiation force with inward gravity in a spherical ionized gas. Since both scale as inverse square radius, the limiting luminosity is $L_{Edd}=4\pi GMc/\kappa$ for an adopted opacity κ. The Eddington ratio λ=L/LEdd separates a luminosity scale from mass, but requires a bolometric correction and opacity convention.
+
+Observed black-hole/host correlations can be affected by selection, shared distance errors and how masses are measured. They motivate feedback and co-evolution models but do not alone establish a unique causal mechanism. Disc geometry, anisotropy and radiation trapping permit behavior outside a naive spherical balance. The display is a normalized budget, not an inference of a host's formation history.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS8.7" />
+
 
 Build a synthetic AGN/host population with a declared flux selection and compare fitted relations before/after selection. Track short-time luminosity variability separately from long-term host averages.
 

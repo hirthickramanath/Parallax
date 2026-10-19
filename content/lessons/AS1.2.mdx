@@ -12,7 +12,7 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Can Earth\u2013Sun distance alone explain opposite hemispheric summers?",
+      "prompt": "Can Earth–Sun distance alone explain opposite hemispheric summers?",
       "options": [
         "Yes",
         "No"
@@ -36,7 +36,7 @@
     },
     {
       "id": "q3",
-      "prompt": "What should be done if the sunrise equation gives |cos H\u2080|>1?",
+      "prompt": "What should be done if the sunrise equation gives |cos H₀|>1?",
       "options": [
         "Interpret polar day/night",
         "Ignore the invalid value"
@@ -51,7 +51,7 @@
       "prompt": "Ideal equinox day length in hours, away from polar singular cases?",
       "options": null,
       "answer": "12",
-      "explanation": "\u03b4=0 gives H\u2080=\u03c0/2.",
+      "explanation": "δ=0 gives H₀=π/2.",
       "type": "numeric",
       "conceptual": false,
       "unit": "as specified"
@@ -61,7 +61,7 @@
       "prompt": "For isotropic luminosity, doubling distance multiplies flux by what factor?",
       "options": null,
       "answer": "0.25",
-      "explanation": "Flux scales as r\u207b\u00b2.",
+      "explanation": "Flux scales as r⁻².",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -76,6 +76,43 @@
       ],
       "answer": "Torque on a nonspherical spinning body",
       "explanation": "The detailed rate requires rotational dynamics.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "Using obliquity 23.44 degrees, find June-solstice noon altitude at latitude 40 degrees north.",
+      "answer": "73.44",
+      "hint": "The northern solar declination is +23.44 degrees.",
+      "explanation": "The northern solar declination is +23.44 degrees. The value in the stated units is 73.44.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At an equinox and latitude 30 degrees north, find geometric solar-noon altitude in degrees.",
+      "answer": "60",
+      "hint": "Equinox declination is zero.",
+      "explanation": "Equinox declination is zero. The value in the stated units is 60.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Would a new Moon guarantee a solar eclipse if its orbit remains inclined to the ecliptic?",
+      "answer": "No; it must also lie sufficiently near a node.",
+      "options": [
+        "Yes; every new Moon produces an eclipse.",
+        "No; it must also lie sufficiently near a node."
+      ],
+      "explanation": "The shadow misses Earth for most new Moons because of the orbital inclination.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every new Moon produces an eclipse.": "The shadow misses Earth for most new Moons because of the orbital inclination."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -105,8 +142,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "Carroll & Ostlie, An Introduction to Modern Astrophysics \u2014 edition/section review pending",
-    "OpenStax Astronomy \u2014 chapter reference review pending"
+    "Carroll & Ostlie, An Introduction to Modern Astrophysics — edition/section review pending",
+    "OpenStax Astronomy — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -165,9 +202,19 @@ Orbital flux also scales as $F=L/(4\pi r^2)$ for an isotropic source. That share
 
 For eclipses, conjunction/opposition is necessary but not sufficient: the Moon must also be near a node so the three-dimensional alignment is close enough. Axial precession arises from torques on Earth’s nonspherical mass distribution; a full rate calculation requires rigid-body dynamics, not simply this geometric day-length model.
 
+
+### Derive, test and transfer
+
+Resolve the Sun's ecliptic position along the equatorial north axis. For obliquity $\epsilon$ and solar ecliptic longitude $\lambda$, $\sin\delta=\sin\epsilon\sin\lambda$. Substitution into the transit-altitude formula gives the seasonal solar-noon height. Declination changes sign at the equinoxes and reaches approximately ±23.44 degrees at the solstices. Obliquity, rather than the small annual distance variation, explains opposite seasons in the two hemispheres.
+
+The longitude parameter in the investigation is an angle, not a uniform date scale: eccentric orbital motion makes angular speed nonuniform. An eclipse additionally requires alignment near a node of the Moon's inclined orbit; a new or full Moon alone is insufficient. Axial precession changes the direction of Earth's axis over long times, while the annual changing solar direction occurs around that slowly moving reference. Keep these three geometries separate when predicting an observation.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="astro_AS1.2" />
+
 
 Compare φ = +45° and −45° at δ = +20°. Evaluate cos H₀ and the corresponding model day lengths. Then set δ=0 as a limiting check. Sketch why the same Earth–Sun distance does not erase this hemispheric difference.
 

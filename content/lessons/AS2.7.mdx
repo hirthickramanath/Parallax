@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "Under simultaneous emission, delay 2 s over travel time 10^15 s gives what speed-difference scale expressed in units of 10^−15?",
+      "answer": "2",
+      "hint": "Compute delay/travel time, then express the result as a multiple of 10^−15.",
+      "explanation": "2/10^15 = 2×10^−15, hence the requested coefficient is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "Two independent Gaussian timing errors have standard deviations 3 s and 4 s. Find standard deviation of their difference in seconds.",
+      "answer": "5",
+      "hint": "Add independent variances, then take the square root.",
+      "explanation": "Add independent variances, then take the square root. The value in the stated units is 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Can a measured messenger arrival delay always be interpreted entirely as different propagation speeds?",
+      "answer": "No; an intrinsic source emission delay may contribute.",
+      "options": [
+        "Yes; all messengers must be emitted simultaneously.",
+        "No; an intrinsic source emission delay may contribute."
+      ],
+      "explanation": "Source physics and propagation both enter the timing model.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; all messengers must be emitted simultaneously.": "Source physics and propagation both enter the timing model."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -155,9 +192,19 @@ Selection effects alter the observed population. A sample detected by two instru
 
 Gravitational waves constrain dynamical masses, orientations and distances through a waveform model; photons can constrain environment, host redshift and emission processes; neutrinos can probe particle acceleration or dense-core processes. None automatically supplies a complete mechanism alone. A joint interpretation should report model dependence, calibration errors, data provenance and alternative associations rather than converting temporal proximity into certainty.
 
+
+### Derive, test and transfer
+
+If two signals were emitted simultaneously and traversed the same effective path, a small travel-time difference gives an approximate fractional propagation-speed difference $|\Delta v|/c\sim|\Delta t|/T$. A long baseline can make a seconds-scale arrival difference constraining. However, an unknown source emission lag enters the same measured difference and must not be silently assigned to propagation.
+
+Combining messenger channels can break degeneracies only with an explicit association and joint likelihood. Independent noise probabilities can sometimes be multiplied conditional on a hypothesis; shared background, selection cuts and trial factors prevent automatic multiplication of reported significances. Timing can constrain models while spectra, localization and source physics provide complementary information. The investigation is a simultaneous-emission toy bound, not a reproduction of a real multi-messenger event analysis.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS2.7" />
+
 
 Create synthetic event lists with known background rates and explicitly chosen time windows. Count accidental matches as the window widens. Then add a simulated common-source population and compare recovery with false association, keeping the generated truth separate from the inferred probabilities.
 

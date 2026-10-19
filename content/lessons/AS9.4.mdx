@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For sound horizon 140 Mpc and comoving angular-diameter distance 14000 Mpc, find the small angle in radians.",
+      "answer": "0.01",
+      "hint": "Divide the two consistent comoving lengths.",
+      "explanation": "Divide the two consistent comoving lengths. The value in the stated units is 0.01.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For the same geometry θs=0.01 rad, find acoustic multipole scale ℓA.",
+      "answer": "314.1592653589793",
+      "hint": "Use π/θs, not a direct identification with the first peak.",
+      "explanation": "Use π/θs, not a direct identification with the first peak. The value in the stated units is 314.159265358979.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Is the first temperature-spectrum peak exactly at ℓA without any plasma phase-shift physics?",
+      "answer": "No; acoustic transfer effects shift the peak.",
+      "options": [
+        "Yes; projection alone fixes the exact first peak.",
+        "No; acoustic transfer effects shift the peak."
+      ],
+      "explanation": "The geometric acoustic scale and a particular observed peak are related but distinct.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; projection alone fixes the exact first peak.": "The geometric acoustic scale and a particular observed peak are related but distinct."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Baryon loading, gravitational driving, diffusion damping, optical depth and prim
 
 Parameter inference fits a correlated theoretical spectrum with calibration/foreground nuisance parameters and a chosen cosmological model. A good fit constrains that model; it does not independently measure every parameter without degeneracies. A plotted theoretical spectrum is not a newly observed all-sky map.
 
+
+### Derive, test and transfer
+
+A comoving sound horizon r_s projected at comoving angular-diameter distance D_M subtends $\theta_s\simeq r_s/D_M$. A useful acoustic scale is $\ell_A=\pi/\theta_s$. Both lengths must use compatible conventions; mixing proper and comoving lengths introduces a redshift factor.
+
+The first CMB temperature peak is not exactly ℓA because baryon loading, gravitational driving and phase shifts change the acoustic pattern. Peak positions and heights jointly constrain cosmological parameters only within a transfer/perturbation model and calibrated likelihood. A projected length scale alone is not a full angular power spectrum. The investigation separates geometric projection from the plasma and statistical inference.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS9.4" />
+
 
 Generate a synthetic sky or supplied angular spectrum with an explicit beam and mask. Compare the input Cℓ with the processed estimate. Keep cosmic variance, noise and foreground uncertainty separate.
 

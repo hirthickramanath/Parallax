@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For Γ=5 and β=sqrt(24/25), find the Doppler factor at viewing angle 90 degrees.",
+      "answer": "0.2",
+      "hint": "At a right angle cosθ=0, so δ=1/Γ.",
+      "explanation": "At a right angle cosθ=0, so δ=1/Γ. The value in the stated units is 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For a compact-source model Fν boost δ^(3+α), α=1 and δ=2, find the boost.",
+      "answer": "16",
+      "hint": "Use the stated geometric and spectral convention.",
+      "explanation": "Use the stated geometric and spectral convention. The value in the stated units is 16.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does an apparent superluminal transverse motion require matter to move locally faster than light?",
+      "answer": "No; light-arrival-time geometry can produce it.",
+      "options": [
+        "Yes; a sky-plane speed directly measures local material speed.",
+        "No; light-arrival-time geometry can produce it."
+      ],
+      "explanation": "Observed time intervals are affected by line-of-sight motion.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a sky-plane speed directly measures local material speed.": "Observed time intervals are affected by line-of-sight motion."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Jet launching/collimation involves angular momentum, magnetic stress and an accr
 
 Orientation selection strongly biases flux-limited jet samples. Variability time constraints depend on Doppler factor, emitting geometry and redshift; they are not universal direct source-radius measurements. Compare approaching/receding sides with obscuration and environment as additional possibilities rather than attributing every asymmetry solely to beaming.
 
+
+### Derive, test and transfer
+
+The Doppler factor for an emitting element is $\delta=[\Gamma(1-\beta\cos\theta)]^{-1}$. On-axis, relativistic motion can boost observed frequencies and shorten observed variability times. Off-axis, the same intrinsic jet may be much dimmer. The Lorentz factor and the Doppler factor are distinct quantities and need not be equal.
+
+For a moving compact source with spectral convention $F_\nu\propto\nu^{-\alpha}$, a commonly used ideal boost is $\delta^{3+\alpha}$, while continuous-flow geometry changes the exponent. Therefore an unqualified δ cubed rule is not universal. Apparent transverse speed can exceed c because arrival-time intervals differ from emission intervals; no material locally outruns light. Orientation-dependent selection can bias a flux-limited sample toward aligned jets.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS5.2" />
+
 
 Plot Doppler factor versus angle at fixed subluminal speed. Separately calculate apparent transverse motion and identify the light-travel-time denominator. Keep pattern and bulk velocities distinct in any data interpretation.
 

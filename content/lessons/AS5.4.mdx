@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "With |q|=1, transverse momentum 6 and magnetic field 3, find gyroradius in consistent units.",
+      "answer": "2",
+      "hint": "Use p/(|q|B).",
+      "explanation": "Use p/(|q|B). The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed charge and source size, the field doubles. Find the Hillas confinement energy-scale factor.",
+      "answer": "2",
+      "hint": "The scale is proportional to B R.",
+      "explanation": "The scale is proportional to B R. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does satisfying a gyroradius confinement inequality prove an accelerator reaches that energy?",
+      "answer": "No; acceleration, losses and escape times must also be checked.",
+      "options": [
+        "Yes; confinement guarantees acceleration efficiency.",
+        "No; acceleration, losses and escape times must also be checked."
+      ],
+      "explanation": "A necessary geometric condition is not a full dynamical mechanism.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; confinement guarantees acceleration efficiency.": "A necessary geometric condition is not a full dynamical mechanism."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A confinement argument requires a gyroradius not greatly exceeding an accelerati
 
 Galactic magnetic fields scramble charged-particle arrival directions; composition and secondary-to-primary ratios constrain propagation. Photons and neutrinos can test hadronic scenarios but carry their own source/interaction ambiguities. Solar modulation, detector response and energy calibration matter when comparing measured spectra. No synthetic power law in this exercise is an actual cosmic-ray measurement.
 
+
+### Derive, test and transfer
+
+The transverse Lorentz force bends a charged particle with gyroradius $r_L=p_\perp/(|q|B)$. A source of size R cannot easily confine particles whose gyro-orbits greatly exceed R. In relativistic units this yields a Hillas-type energy scale proportional to charge, field and size, but confinement alone supplies no acceleration mechanism.
+
+Acceleration time must be shorter than escape and loss times. Synchrotron radiation, interactions and finite shock lifetimes can impose stricter limits. A measured cosmic-ray energy is not proof of a unique source class from a point on a B–R plot. The display varies momentum and field independently, while an actual accelerator calculation must specify the electric fields, scattering and transport that change the particle energy.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS5.4" />
+
 
 Construct the explicit multiplicative survival toy model and compare cumulative with differential histograms using correct bin widths. Add a maximum energy from a supplied loss limit and distinguish that cutoff from the algebraic power law.
 

@@ -93,6 +93,43 @@
       "conceptual": false,
       "tier": "core",
       "unit": "as stated in question"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For a=3 model lengths and m/M=0.003, estimate Hill radius in model lengths.",
+      "answer": "0.3",
+      "hint": "Take the cube root of 0.003/3, then multiply by a.",
+      "explanation": "Take the cube root of 0.003/3, then multiply by a. The value in the stated units is 0.3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed separation, by what factor does Hill radius change if the small secondary mass increases by a factor of 8?",
+      "answer": "2",
+      "hint": "Hill radius scales as the cube root of mass.",
+      "explanation": "Hill radius scales as the cube root of mass. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does being inside a nominal Hill radius prove that every inclined eccentric satellite orbit is stable?",
+      "answer": "No; it is a scale estimate, not a universal stability theorem.",
+      "options": [
+        "Yes; the Hill sphere is an exact stability boundary.",
+        "No; it is a scale estimate, not a universal stability theorem."
+      ],
+      "explanation": "Long-term stability requires dynamics and the stated orbital assumptions.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; the Hill sphere is an exact stability boundary.": "Long-term stability requires dynamics and the stated orbital assumptions."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -173,9 +210,19 @@ A useful conserved quantity in the circular restricted model is $C=2\Omega-(\dot
 
 Near the smaller primary in the circular restricted problem, balance its attraction $Gm/r^2$ against the leading differential primary-plus-centrifugal term $3GM r/a^3$. This yields $r/a\simeq(m/(3M))^{1/3}$ for small mass ratio. It is a local approximation to the collinear distances, not an exact formula for all mass ratios or eccentric orbits. The L4/L5 equilateral geometry describes equilibria in a co-rotating frame. Existence does not by itself prove stability: perturbations must be inserted into the linearized rotating-frame equations.
 
+
+### Derive, test and transfer
+
+Near a light secondary on a circular orbit, expand the primary-plus-centrifugal acceleration relative to the secondary. Along the line of centers the leading differential acceleration is about $3\Omega^2r$. Balance it against the secondary attraction $Gm/r^2$ and use $\Omega^2\simeq GM/a^3$: $r_H\simeq a(m/(3M))^{1/3}$. This derives the cube-root scaling instead of assuming a fixed fraction of separation.
+
+The expansion requires $r_H\ll a$ and a small secondary mass ratio. The near-side and far-side collinear points need higher-order terms for accurate coordinates; they are not exactly symmetric at finite mass ratio. A radius inside this scale is not an unconditional stable satellite orbit: inclination, eccentricity, resonances and perturbations matter. The triangular points have a separate linear-stability criterion in the circular restricted problem. Do not infer their stability from the Hill-radius balance.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Apparatus and investigation" layer="interactive">
+
+<Widget name="astro_AS1.4" />
+
 
 Draw the two primaries and all five rotating equilibria. For a candidate collinear point sum both gravitational accelerations and the centrifugal acceleration using the same frame convention. Perturb its position slightly and distinguish equilibrium from stability. The two-body orbit explorer is useful for contrast but is not an N-body solver.
 

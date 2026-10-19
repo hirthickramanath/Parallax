@@ -84,3 +84,5 @@ React Router v6 retains its documented moderate advisories; the application uses
 See the [advanced mechanics batch](docs/ADVANCED-MECHANICS-BATCH.md) for the latest content, models, checks and review limits.
 
 The [batch progress report](docs/BATCH-PROGRESS.md) records the latest 21-lesson expansion, seven new models, source-review scope and remaining work.
+
+The [astrophysics and multivariable expansion](docs/ASTROPHYSICS-MULTIVARIABLE-EXPANSION.md) adds investigations and questions across 69 further lessons, with precise source-scope and validation notes.

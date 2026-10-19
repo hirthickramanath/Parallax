@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At fixed albedo and redistribution, incident flux increases by 16. Find equilibrium-temperature factor.",
+      "answer": "2",
+      "hint": "Use the fourth root of flux.",
+      "explanation": "Use the fourth root of flux. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed flux, absorbed fraction 1−A falls by a factor of 16. Find equilibrium-temperature factor.",
+      "answer": "0.5",
+      "hint": "Use the fourth root of the absorbed fraction.",
+      "explanation": "Use the fourth root of the absorbed fraction. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does an Earth-like equilibrium temperature prove a planet has a habitable surface or life?",
+      "answer": "No; atmosphere, climate and chemical context are also required.",
+      "options": [
+        "Yes; one thermal number establishes habitability.",
+        "No; atmosphere, climate and chemical context are also required."
+      ],
+      "explanation": "Radiative equilibrium is a simplified energy balance, not a biological diagnosis.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; one thermal number establishes habitability.": "Radiative equilibrium is a simplified energy balance, not a biological diagnosis."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A putative biosignature must be compared with abiotic production, sinks and atmo
 
 Population claims require selection and false-positive/false-negative analysis. Evidence for an atmospheric species, evidence for a habitable environment and evidence for biology are separate inference steps. This course adds prerequisite physical reasoning, not a broad biology curriculum or a claim that one observed molecule proves life.
 
+
+### Derive, test and transfer
+
+Absorbed stellar power for a spherical planet is $(1-A)\pi R^2F$, while uniform thermal reradiation is $4\pi R^2\sigma T_{eq}^4$ for unit emissivity. Balancing gives $T_{eq}=[(1-A)F/(4\sigma)]^{1/4}$. The planet radius cancels because interception and emission areas scale together.
+
+A surface temperature can differ greatly through greenhouse opacity, circulation, clouds and internal heat. A putative biosignature needs atmospheric context, chemical disequilibrium and abiotic alternatives; equilibrium temperature alone does not establish biology or liquid water. The display makes albedo–irradiation degeneracy visible while keeping the missing climate and chemistry assumptions explicit.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS7.5" />
+
 
 Compare equilibrium-temperature assumptions and then add a stated greenhouse toy model. For a hypothetical gas detection list at least one abiotic alternative and the observations needed to test it. Keep synthetic spectra and actual measurements explicitly separate.
 

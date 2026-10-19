@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "In the Eddington grey relation, find T/Teff at optical depth 2/3.",
+      "answer": "1",
+      "hint": "The factor (3/4)(τ+2/3) becomes one.",
+      "explanation": "The factor (3/4)(τ+2/3) becomes one. The value in the stated units is 1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "Find (T/Teff)^4 at the top boundary τ=0.",
+      "answer": "0.5",
+      "hint": "Substitute zero optical depth into the fourth-power relation.",
+      "explanation": "Substitute zero optical depth into the fourth-power relation. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a grey temperature profile determine every individual stellar absorption-line strength?",
+      "answer": "No; frequency-dependent opacity and level populations are also needed.",
+      "options": [
+        "Yes; one temperature curve determines all lines.",
+        "No; frequency-dependent opacity and level populations are also needed."
+      ],
+      "explanation": "Grey transfer averages away the wavelength dependence needed for a line calculation.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; one temperature curve determines all lines.": "Grey transfer averages away the wavelength dependence needed for a line calculation."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Boltzmann excitation and Saha ionization give level populations only in the appr
 
 Non-LTE, 3D motion, magnetic splitting, blends and instrumental response can bias a simplistic abundance fit. Continuum placement and extinction require uncertainties. A spectral match is an inference conditional on an atmosphere/atomic-data model, not a direct count of atoms from one dark pixel. Retain provenance for actual spectra; the lesson provides no new measured stellar observations.
 
+
+### Derive, test and transfer
+
+Integrating grey plane-parallel radiative equilibrium with the Eddington boundary approximation gives $T^4=(3/4)T_{eff}^4(\tau+2/3)$. At τ=2/3 this temperature equals Teff. At the boundary τ=0 it is finite, reflecting the approximate radiative boundary condition rather than a zero-temperature surface.
+
+A stellar spectrum samples a range of depths because opacity depends on wavelength. A line can form higher or lower than the nearby continuum, so a single photospheric radius and temperature do not describe every feature. LTE connects source functions and populations to local temperature only when collisions and other conditions justify it. The investigation is deliberately grey; using it to infer individual absorption-line strengths would exceed its assumptions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS3.7" />
+
 
 Compare synthetic continuum spectra with a stated line-opacity perturbation. Compute equivalent width relative to an explicitly chosen continuum, then vary broadening and abundance separately. Do not interpret the same fitted spectrum as an independent validation dataset.
 

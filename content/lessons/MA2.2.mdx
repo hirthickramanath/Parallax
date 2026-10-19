@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "multivariable-transfer-1",
+      "prompt": "For f=x²+2y² at (1,1), find the directional derivative along unit vector (3/5,4/5).",
+      "answer": "4.4",
+      "hint": "Dot gradient (2,4) with the stated unit vector.",
+      "explanation": "Dot gradient (2,4) with the stated unit vector. The value in the stated units is 4.4.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "multivariable-transfer-2",
+      "prompt": "For that quadratic at the origin, a displacement (1,2) has what exact function increase?",
+      "answer": "9",
+      "hint": "Evaluate x²+2y² or use half the Hessian quadratic form.",
+      "explanation": "Evaluate x²+2y² or use half the Hessian quadratic form. The value in the stated units is 9.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "multivariable-model-assumptions",
+      "prompt": "At a point where gradient is zero, does gradient direction still identify a unique steepest-ascent unit direction?",
+      "answer": "No; all first-order directional derivatives vanish.",
+      "options": [
+        "Yes; the zero vector defines a unique unit direction.",
+        "No; all first-order directional derivatives vanish."
+      ],
+      "explanation": "Higher-order terms must distinguish behavior when the linear term vanishes.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; the zero vector defines a unique unit direction.": "Higher-order terms must distinguish behavior when the linear term vanishes."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ A differentiable level surface f=c has tangent displacements satisfying ∇f·h=
 
 The identity “gradient equals partial-derivative components” uses an orthonormal Euclidean basis. With a general coordinate metric g, differential components ∂ᵢf are converted to gradient components by the inverse metric. Rescaling one coordinate changes a naive steepest-descent algorithm unless its notion of step size changes consistently. Physical optimization should state parameter scales and units rather than comparing one metre with one kelvin as equal coordinate lengths.
 
+
+### Derive, test and transfer
+
+For a differentiable scalar field, the directional derivative along unit u is $D_uf=\nabla f\cdot u$. Cauchy–Schwarz gives $|D_uf|\leq\|\nabla f\|$, with steepest ascent along the gradient when it is nonzero. This statement uses the specified Euclidean metric; coordinate components cannot be treated as physical lengths in an arbitrary chart.
+
+For $f=x^2+2y^2$, gradient is (2x,4y) and Hessian diag(2,4). Its exact quadratic expansion has linear term gradient dot displacement and quadratic term one half displacement-Hessian-displacement. Omitting the factor one half doubles the curvature contribution. A positive-definite Hessian at a stationary point proves a strict local minimum under the smoothness hypotheses, not a global minimum for every nonquadratic function.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="multivariable_MA2.2" />
+
 
 Draw contours of x²+3y² and gradient arrows, then evaluate equal-length steps in several directions. Repeat after measuring y in a differently scaled coordinate and explain which metric represents equal physical displacement. Record second-order predictions and actual residuals.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "multivariable-transfer-1",
+      "prompt": "Find the maximum of x+y on x²+y²=1.",
+      "answer": "1.4142135623730951",
+      "hint": "Use the unit vector parallel to (1,1).",
+      "explanation": "Use the unit vector parallel to (1,1). The value in the stated units is 1.414213562373.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "multivariable-transfer-2",
+      "prompt": "Find the minimum of x²+y² subject to x+y=4.",
+      "answer": "8",
+      "hint": "The equal split (2,2) minimizes the sum of squares.",
+      "explanation": "The equal split (2,2) minimizes the sum of squares. The value in the stated units is 8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "multivariable-model-assumptions",
+      "prompt": "Can a vanishing constraint gradient invalidate the ordinary Lagrange multiplier necessary condition?",
+      "answer": "Yes; regularity is a hypothesis of that condition.",
+      "options": [
+        "No; multiplier equations work unchanged at every singular constraint.",
+        "Yes; regularity is a hypothesis of that condition."
+      ],
+      "explanation": "A singleton constraint with zero gradient supplies a direct counterexample.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "No; multiplier equations work unchanged at every singular constraint.": "A singleton constraint with zero gradient supplies a direct counterexample."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -154,9 +191,19 @@ For f(x,y)=x+y on the unit circle, equations (1,1)=λ(2x,2y) give x=y and x²+y�
 
 At the singular equality g(x)=x²=0, the only feasible point is x=0. The objective f(x)=x has an extremum on that singleton, yet f′=1 cannot equal λg′=0. This is a direct warning against using multiplier equations without regularity. Inequality constraints lead to sign and complementarity conditions in the Karush–Kuhn–Tucker framework; those require additional hypotheses beyond this equality lesson.
 
+
+### Derive, test and transfer
+
+On the regular constraint $x^2+y^2=1$, optimizing f=x+y gives $(1,1)=\lambda(2x,2y)$ and hence x=y. The two candidates yield ±√2; compactness of the circle ensures extrema exist and comparison identifies the global maximum/minimum. The multiplier equations alone produce candidates, not their classification.
+
+Regularity matters: if the constraint gradient vanishes, its normal-space description can fail. The equation x²+y²=0 describes only the origin but has zero gradient there; for f=x the usual proportional-gradient equation has no solution even though the feasible singleton is an extremum. Inequality constraints additionally require boundary/active-set conditions rather than applying one unrestricted multiplier rule everywhere.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="multivariable_MA2.3" />
+
 
 Plot a constraint curve and objective contours. Move only along the allowed curve before comparing with free gradient steps. Test both the unit-circle example and the singular singleton constraint, recording which regularity hypothesis succeeds or fails.
 

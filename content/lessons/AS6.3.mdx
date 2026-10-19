@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At fixed density, field triples. Find the Alfvén-speed factor.",
+      "answer": "3",
+      "hint": "vA is proportional to B.",
+      "explanation": "vA is proportional to B. The value in the stated units is 3.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed field, density rises by 16. Find the Alfvén-speed factor.",
+      "answer": "0.25",
+      "hint": "Divide by the square root of the density factor.",
+      "explanation": "Divide by the square root of the density factor. The value in the stated units is 0.25.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Is the Alfvén speed the propagation speed of every possible plasma disturbance?",
+      "answer": "No; mode, direction and physical regime matter.",
+      "options": [
+        "Yes; every MHD and kinetic signal has that speed.",
+        "No; mode, direction and physical regime matter."
+      ],
+      "explanation": "The restoring forces and approximations differ among modes.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every MHD and kinetic signal has that speed.": "The restoring forces and approximations differ among modes."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A uniform background supports Alfvén disturbances with $v_A=B/\sqrt{\mu_0\rho}$
 
 With magnetic diffusivity η_m, a resistive induction term appears and the magnetic Reynolds number UL/η_m compares advection and diffusion at chosen scales. Reconnection can concentrate in thin regions even when a large-scale number is high. Collisionless plasma, Hall terms, anisotropic pressure and kinetic resonances can require a model beyond one-fluid ideal MHD.
 
+
+### Derive, test and transfer
+
+A bent magnetic field supplies a restoring tension per volume of order $B^2/(\mu_0L)$. Dividing by density yields an acceleration scale, giving the Alfvén wave speed $v_A=B/\sqrt{\mu_0\rho}$. Increasing field strengthens the restoring force, while increased mass density adds inertia.
+
+Ideal MHD treats the plasma as a conducting fluid with a common bulk description and approximately frozen magnetic flux. Resistive reconnection, ambipolar effects, kinetic scales and relativistic magnetization require extensions. Sound, fast and slow magnetosonic modes have different directional behavior; the Alfvén speed alone is not the speed of every disturbance. The display tests the field/density scaling with permeability fixed.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS6.3" />
+
 
 Linearize one transverse perturbation about a uniform field and identify its polarization. Compare magnetic pressure-only intuition with a bent-field tension example. Label ideal and resistive induction terms before discussing reconnection.
 

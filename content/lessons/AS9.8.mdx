@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "Two independent estimates each have standard uncertainty 2. Find standard uncertainty of their difference.",
+      "answer": "2.8284271247461903",
+      "hint": "Add variances rather than standard deviations.",
+      "explanation": "Add variances rather than standard deviations. The value in the stated units is 2.828427124746.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For those same uncertainties with correlation 0.5, find difference standard uncertainty.",
+      "answer": "2",
+      "hint": "Compute sqrt(4+4−2×0.5×2×2).",
+      "explanation": "Compute sqrt(4+4−2×0.5×2×2). The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a large standardized discrepancy alone establish a unique new-physics explanation?",
+      "answer": "No; calibration, model assumptions and alternative explanations must be examined.",
+      "options": [
+        "Yes; any discrepancy has exactly one physical cause.",
+        "No; calibration, model assumptions and alternative explanations must be examined."
+      ],
+      "explanation": "A tension quantifies inconsistency under assumptions, not a unique cause.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; any discrepancy has exactly one physical cause.": "A tension quantifies inconsistency under assumptions, not a unique cause."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ A common late-structure combination is $S_8=\sigma_8\sqrt{\Omega_m/0.3}$, but it
 
 Testing a proposed resolution requires joint consistency with other observables and a justified model-complexity comparison. Look-elsewhere effects and retrospective dataset selection can inflate surprise. Record paper versions, releases and dates when describing a live scientific status. The numbers below are hypothetical and do not claim the current observed significance of any tension.
 
+
+### Derive, test and transfer
+
+For two Gaussian estimates, $\mathrm{Var}(x_1-x_2)=\sigma_1^2+\sigma_2^2-2\rho\sigma_1\sigma_2$. A standardized difference uses this variance, not the sum of quoted standard deviations. Positive correlation reduces the difference variance when the same-sign systematic is shared; unknown covariance must not be invented to strengthen a tension claim.
+
+Real H₀ or S8 comparisons are conditional on datasets, calibration and cosmological model. Non-Gaussian posteriors and differing parameter definitions can make a one-number sigma summary incomplete. The investigation uses synthetic values, deliberately avoiding a claim about the current observational significance. A discrepancy motivates consistency checks and competing explanations, not an automatic proof of new physics.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS9.8" />
+
 
 Reproduce a supplied hypothetical difference calculation, then add positive and negative covariance to see how it changes. For a real literature comparison retain dated releases and model/prior definitions before quoting a tension.
 

@@ -1,3 +1,6 @@
+import { multivariableInvestigations } from "../../lib/multivariable-investigations";
+import { AstroInvestigation } from "./AstroInvestigation";
+import { astroInvestigations } from "../../lib/astro-investigations";
 import {
   HamiltonianPhaseExplorer,
   CanonicalShearExplorer,
@@ -83,6 +86,19 @@ export const widgets = {
   secant_explorer: SecantExplorer,
 };
 export function Widget({ name }: { name: string }) {
+  if (name.startsWith("astro_") && astroInvestigations[name.slice(6)])
+    return <AstroInvestigation key={name} lessonId={name.slice(6)} />;
+  if (
+    name.startsWith("multivariable_") &&
+    multivariableInvestigations[name.slice(14)]
+  )
+    return (
+      <AstroInvestigation
+        key={name}
+        lessonId={name.slice(14)}
+        model={multivariableInvestigations[name.slice(14)]}
+      />
+    );
   const Component = widgets[name as keyof typeof widgets];
   return Component ? <Component /> : null;
 }

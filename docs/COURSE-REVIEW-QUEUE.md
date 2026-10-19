@@ -2,71 +2,71 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 34 have current partial AI-assisted source mappings; 313 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 80 have current partial AI-assisted source mappings; 248 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
-| AS1.1 Celestial coordinates and time | 6 / 6 | 2 | 0 | pending |
-| AS1.2 Seasons, precession and eclipses | 6 / 6 | 2 | 0 | pending |
-| AS1.3 Orbits and orbital elements | 6 / 6 | 2 | 0 | orbit_explorer |
-| AS1.4 N-body problem and Lagrange points | 7 / 7 | 3 | 3 | pending |
-| AS1.5 Tides and the Roche limit | 7 / 7 | 3 | 3 | tidal_explorer |
-| AS10.1 Reading arXiv and NASA ADS | 6 / 6 | 2 | 0 | pending |
-| AS10.2 Analysing survey data (Gaia, TESS, SDSS) | 6 / 6 | 2 | 0 | pending |
-| AS10.3 Bayesian inference for astronomy | 6 / 6 | 2 | 0 | pending |
-| AS10.4 Capstone: reproduce a published result | 6 / 6 | 2 | 0 | pending |
-| AS2.1 Flux, luminosity and magnitudes | 6 / 6 | 2 | 0 | pending |
-| AS2.2 Blackbody radiation and spectral lines | 6 / 6 | 2 | 0 | pending |
-| AS2.3 Radiative transfer (optical depth, source function) | 6 / 6 | 2 | 0 | radiation_lab |
-| AS2.4 Doppler shift and redshift | 6 / 6 | 2 | 0 | radiation_lab |
-| AS2.5 Telescopes and detectors | 6 / 6 | 2 | 0 | pending |
-| AS2.6 Photometry and spectroscopy | 6 / 6 | 2 | 0 | pending |
-| AS2.7 Multi-messenger astronomy | 6 / 6 | 2 | 0 | pending |
-| AS3.1 Hydrostatic equilibrium and the virial theorem | 6 / 6 | 2 | 0 | pending |
-| AS3.2 Equations of state (ideal, degenerate, radiation) | 6 / 6 | 2 | 0 | pending |
-| AS3.3 Nuclear reactions and energy generation | 6 / 6 | 2 | 0 | pending |
-| AS3.4 Opacity and radiative transport | 6 / 6 | 2 | 0 | pending |
-| AS3.5 Convection and mixing-length theory | 6 / 6 | 2 | 0 | pending |
-| AS3.6 Structure equations and polytropes | 6 / 6 | 2 | 0 | pending |
-| AS3.7 Stellar atmospheres and spectra | 6 / 6 | 2 | 0 | pending |
-| AS4.1 Star formation and the Jeans mass | 6 / 6 | 2 | 0 | pending |
-| AS4.2 Main sequence and the HR diagram | 6 / 6 | 2 | 0 | pending |
-| AS4.3 Giants, AGB stars and mass loss | 6 / 6 | 2 | 0 | pending |
-| AS4.4 Variable stars and asteroseismology | 6 / 6 | 2 | 0 | pending |
-| AS4.5 Supernovae and nucleosynthesis | 6 / 6 | 2 | 0 | pending |
-| AS4.6 White dwarfs, neutron stars and pulsars | 6 / 6 | 2 | 0 | pending |
-| AS4.7 Binaries and mass transfer | 6 / 6 | 2 | 0 | pending |
-| AS5.1 Accretion discs | 6 / 6 | 2 | 0 | pending |
-| AS5.2 Jets and relativistic beaming | 6 / 6 | 2 | 0 | pending |
-| AS5.3 X-ray binaries and gamma-ray bursts | 6 / 6 | 2 | 0 | pending |
-| AS5.4 Cosmic rays and particle acceleration | 6 / 6 | 2 | 0 | pending |
-| AS5.5 Gravitational-wave astronomy | 6 / 6 | 2 | 0 | pending |
-| AS5.6 Neutrinos and multi-messenger events | 6 / 6 | 2 | 0 | pending |
-| AS6.1 Phases of the interstellar medium | 6 / 6 | 2 | 0 | pending |
-| AS6.2 HII regions and nebulae | 6 / 6 | 2 | 0 | pending |
-| AS6.3 Magnetohydrodynamics basics | 6 / 6 | 2 | 0 | pending |
-| AS6.4 Shocks and supernova remnants | 6 / 6 | 2 | 0 | pending |
-| AS6.5 Magnetic fields and dynamos | 6 / 6 | 2 | 0 | pending |
-| AS7.1 Solar System physics | 6 / 6 | 2 | 0 | pending |
-| AS7.2 Planetary interiors and atmospheres | 6 / 6 | 2 | 0 | pending |
-| AS7.3 Planet formation and discs | 6 / 6 | 2 | 0 | pending |
-| AS7.4 Exoplanet detection | 6 / 6 | 2 | 0 | pending |
-| AS7.5 Habitability and biosignatures | 6 / 6 | 2 | 0 | pending |
-| AS8.1 Milky Way structure | 6 / 6 | 2 | 0 | pending |
-| AS8.2 Stellar dynamics (Jeans equations, relaxation) | 6 / 6 | 2 | 0 | pending |
-| AS8.3 Rotation curves and dark matter | 6 / 6 | 2 | 0 | pending |
-| AS8.4 Galaxy morphology and scaling relations | 6 / 6 | 2 | 0 | pending |
-| AS8.5 Galaxy formation and mergers | 6 / 6 | 2 | 0 | pending |
-| AS8.6 Clusters and gravitational lensing | 6 / 6 | 2 | 0 | pending |
-| AS8.7 AGN and black-hole co-evolution | 6 / 6 | 2 | 0 | pending |
-| AS9.1 Hubble's law and the distance ladder | 6 / 6 | 2 | 0 | pending |
-| AS9.2 FLRW metric and Friedmann equations | 6 / 6 | 2 | 0 | pending |
-| AS9.3 Thermal history and nucleosynthesis | 6 / 6 | 2 | 0 | pending |
-| AS9.4 CMB physics and anisotropies | 6 / 6 | 2 | 0 | pending |
-| AS9.5 Structure formation and perturbation theory | 6 / 6 | 2 | 0 | pending |
-| AS9.6 Inflation | 6 / 6 | 2 | 0 | pending |
-| AS9.7 Dark matter and dark energy | 6 / 6 | 2 | 0 | pending |
-| AS9.8 Observational cosmology and tensions (H0, S8) | 6 / 6 | 2 | 0 | pending |
+| AS1.1 Celestial coordinates and time | 9 / 9 | 4 | 3 | astro_AS1.1 |
+| AS1.2 Seasons, precession and eclipses | 9 / 9 | 4 | 3 | astro_AS1.2 |
+| AS1.3 Orbits and orbital elements | 9 / 9 | 4 | 3 | astro_AS1.3, orbit_explorer |
+| AS1.4 N-body problem and Lagrange points | 10 / 10 | 5 | 6 | astro_AS1.4 |
+| AS1.5 Tides and the Roche limit | 10 / 10 | 5 | 6 | astro_AS1.5, tidal_explorer |
+| AS10.1 Reading arXiv and NASA ADS | 9 / 9 | 4 | 3 | astro_AS10.1 |
+| AS10.2 Analysing survey data (Gaia, TESS, SDSS) | 9 / 9 | 4 | 3 | astro_AS10.2 |
+| AS10.3 Bayesian inference for astronomy | 9 / 9 | 4 | 3 | astro_AS10.3 |
+| AS10.4 Capstone: reproduce a published result | 9 / 9 | 4 | 3 | astro_AS10.4 |
+| AS2.1 Flux, luminosity and magnitudes | 9 / 9 | 4 | 3 | astro_AS2.1 |
+| AS2.2 Blackbody radiation and spectral lines | 9 / 9 | 4 | 3 | astro_AS2.2 |
+| AS2.3 Radiative transfer (optical depth, source function) | 9 / 9 | 4 | 3 | astro_AS2.3, radiation_lab |
+| AS2.4 Doppler shift and redshift | 9 / 9 | 4 | 3 | astro_AS2.4, radiation_lab |
+| AS2.5 Telescopes and detectors | 9 / 9 | 4 | 3 | astro_AS2.5 |
+| AS2.6 Photometry and spectroscopy | 9 / 9 | 4 | 3 | astro_AS2.6 |
+| AS2.7 Multi-messenger astronomy | 9 / 9 | 4 | 3 | astro_AS2.7 |
+| AS3.1 Hydrostatic equilibrium and the virial theorem | 9 / 9 | 4 | 3 | astro_AS3.1 |
+| AS3.2 Equations of state (ideal, degenerate, radiation) | 9 / 9 | 4 | 3 | astro_AS3.2 |
+| AS3.3 Nuclear reactions and energy generation | 9 / 9 | 4 | 3 | astro_AS3.3 |
+| AS3.4 Opacity and radiative transport | 9 / 9 | 4 | 3 | astro_AS3.4 |
+| AS3.5 Convection and mixing-length theory | 9 / 9 | 4 | 3 | astro_AS3.5 |
+| AS3.6 Structure equations and polytropes | 9 / 9 | 4 | 3 | astro_AS3.6 |
+| AS3.7 Stellar atmospheres and spectra | 9 / 9 | 4 | 3 | astro_AS3.7 |
+| AS4.1 Star formation and the Jeans mass | 9 / 9 | 4 | 3 | astro_AS4.1 |
+| AS4.2 Main sequence and the HR diagram | 9 / 9 | 4 | 3 | astro_AS4.2 |
+| AS4.3 Giants, AGB stars and mass loss | 9 / 9 | 4 | 3 | astro_AS4.3 |
+| AS4.4 Variable stars and asteroseismology | 9 / 9 | 4 | 3 | astro_AS4.4 |
+| AS4.5 Supernovae and nucleosynthesis | 9 / 9 | 4 | 3 | astro_AS4.5 |
+| AS4.6 White dwarfs, neutron stars and pulsars | 9 / 9 | 4 | 3 | astro_AS4.6 |
+| AS4.7 Binaries and mass transfer | 9 / 9 | 4 | 3 | astro_AS4.7 |
+| AS5.1 Accretion discs | 9 / 9 | 4 | 3 | astro_AS5.1 |
+| AS5.2 Jets and relativistic beaming | 9 / 9 | 4 | 3 | astro_AS5.2 |
+| AS5.3 X-ray binaries and gamma-ray bursts | 9 / 9 | 4 | 3 | astro_AS5.3 |
+| AS5.4 Cosmic rays and particle acceleration | 9 / 9 | 4 | 3 | astro_AS5.4 |
+| AS5.5 Gravitational-wave astronomy | 9 / 9 | 4 | 3 | astro_AS5.5 |
+| AS5.6 Neutrinos and multi-messenger events | 9 / 9 | 4 | 3 | astro_AS5.6 |
+| AS6.1 Phases of the interstellar medium | 9 / 9 | 4 | 3 | astro_AS6.1 |
+| AS6.2 HII regions and nebulae | 9 / 9 | 4 | 3 | astro_AS6.2 |
+| AS6.3 Magnetohydrodynamics basics | 9 / 9 | 4 | 3 | astro_AS6.3 |
+| AS6.4 Shocks and supernova remnants | 9 / 9 | 4 | 3 | astro_AS6.4 |
+| AS6.5 Magnetic fields and dynamos | 9 / 9 | 4 | 3 | astro_AS6.5 |
+| AS7.1 Solar System physics | 9 / 9 | 4 | 3 | astro_AS7.1 |
+| AS7.2 Planetary interiors and atmospheres | 9 / 9 | 4 | 3 | astro_AS7.2 |
+| AS7.3 Planet formation and discs | 9 / 9 | 4 | 3 | astro_AS7.3 |
+| AS7.4 Exoplanet detection | 9 / 9 | 4 | 3 | astro_AS7.4 |
+| AS7.5 Habitability and biosignatures | 9 / 9 | 4 | 3 | astro_AS7.5 |
+| AS8.1 Milky Way structure | 9 / 9 | 4 | 3 | astro_AS8.1 |
+| AS8.2 Stellar dynamics (Jeans equations, relaxation) | 9 / 9 | 4 | 3 | astro_AS8.2 |
+| AS8.3 Rotation curves and dark matter | 9 / 9 | 4 | 3 | astro_AS8.3 |
+| AS8.4 Galaxy morphology and scaling relations | 9 / 9 | 4 | 3 | astro_AS8.4 |
+| AS8.5 Galaxy formation and mergers | 9 / 9 | 4 | 3 | astro_AS8.5 |
+| AS8.6 Clusters and gravitational lensing | 9 / 9 | 4 | 3 | astro_AS8.6 |
+| AS8.7 AGN and black-hole co-evolution | 9 / 9 | 4 | 3 | astro_AS8.7 |
+| AS9.1 Hubble's law and the distance ladder | 9 / 9 | 4 | 3 | astro_AS9.1 |
+| AS9.2 FLRW metric and Friedmann equations | 9 / 9 | 4 | 3 | astro_AS9.2 |
+| AS9.3 Thermal history and nucleosynthesis | 9 / 9 | 4 | 3 | astro_AS9.3 |
+| AS9.4 CMB physics and anisotropies | 9 / 9 | 4 | 3 | astro_AS9.4 |
+| AS9.5 Structure formation and perturbation theory | 9 / 9 | 4 | 3 | astro_AS9.5 |
+| AS9.6 Inflation | 9 / 9 | 4 | 3 | astro_AS9.6 |
+| AS9.7 Dark matter and dark energy | 9 / 9 | 4 | 3 | astro_AS9.7 |
+| AS9.8 Observational cosmology and tensions (H0, S8) | 9 / 9 | 4 | 3 | astro_AS9.8 |
 | CB.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | pending |
 | CB.2 Bonding and molecular shapes | 11 / 11 | 6 | 5 | molecular_geometry_explorer |
 | CB.3 Thermochemistry and equilibrium | 7 / 7 | 3 | 3 | pending |
@@ -157,14 +157,14 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA13.2 Stochastic differential equations and Fokker-Planck | 6 / 6 | 2 | 0 | pending |
 | MA13.3 Renormalisation group mathematics | 6 / 6 | 2 | 0 | pending |
 | MA13.4 Topology in physics (Berry phase, topological invariants) | 6 / 6 | 2 | 0 | pending |
-| MA2.1 Partial derivatives and chain rule | 6 / 6 | 2 | 0 | pending |
-| MA2.2 Gradient and multivariable Taylor expansion | 6 / 6 | 2 | 0 | pending |
-| MA2.3 Extrema and Lagrange multipliers | 6 / 6 | 2 | 0 | pending |
-| MA2.4 Multiple integrals and Jacobians | 6 / 6 | 2 | 0 | pending |
-| MA2.5 Line integrals | 6 / 6 | 2 | 0 | pending |
-| MA2.6 Surface integrals | 6 / 6 | 2 | 0 | pending |
-| MA2.7 Green, Stokes and divergence theorems | 6 / 6 | 2 | 0 | pending |
-| MA2.8 Div, grad, curl in curvilinear coordinates | 6 / 6 | 2 | 0 | pending |
+| MA2.1 Partial derivatives and chain rule | 9 / 9 | 4 | 3 | multivariable_MA2.1 |
+| MA2.2 Gradient and multivariable Taylor expansion | 9 / 9 | 4 | 3 | multivariable_MA2.2 |
+| MA2.3 Extrema and Lagrange multipliers | 9 / 9 | 4 | 3 | multivariable_MA2.3 |
+| MA2.4 Multiple integrals and Jacobians | 9 / 9 | 4 | 3 | multivariable_MA2.4 |
+| MA2.5 Line integrals | 9 / 9 | 4 | 3 | multivariable_MA2.5 |
+| MA2.6 Surface integrals | 9 / 9 | 4 | 3 | multivariable_MA2.6 |
+| MA2.7 Green, Stokes and divergence theorems | 9 / 9 | 4 | 3 | multivariable_MA2.7 |
+| MA2.8 Div, grad, curl in curvilinear coordinates | 9 / 9 | 4 | 3 | multivariable_MA2.8 |
 | MA3.1 Vector spaces and subspaces | 6 / 6 | 2 | 0 | pending |
 | MA3.2 Linear maps and matrices | 6 / 6 | 2 | 0 | pending |
 | MA3.3 Determinants | 6 / 6 | 2 | 0 | pending |

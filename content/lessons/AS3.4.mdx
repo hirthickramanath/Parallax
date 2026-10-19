@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At unchanged local T, density and gradient, opacity triples. Find radiative-flux ratio.",
+      "answer": "0.3333333333333333",
+      "hint": "The diffusion coefficient is inversely proportional to opacity.",
+      "explanation": "The diffusion coefficient is inversely proportional to opacity. The value in the stated units is 0.333333333333.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed opacity and density, temperature doubles while its spatial gradient is held fixed. Find diffusion-flux factor.",
+      "answer": "8",
+      "hint": "The conductivity contains T³.",
+      "explanation": "The conductivity contains T³. The value in the stated units is 8.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "When opacity rises at fixed required flux, must the temperature gradient remain unchanged?",
+      "answer": "No; a steeper gradient may be needed.",
+      "options": [
+        "Yes; opacity and gradient are unrelated in diffusion.",
+        "No; a steeper gradient may be needed."
+      ],
+      "explanation": "Specify which quantity is controlled before interpreting the diffusion relation.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; opacity and gradient are unrelated in diffusion.": "Specify which quantity is controlled before interpreting the diffusion relation."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Absorption, emission and scattering must satisfy the model’s energy balance. E
 
 Near a photosphere or optically thin region the diffusion approximation fails and an angle/frequency-dependent transfer treatment is needed. LTE itself requires sufficient local thermal coupling; radiation and particle temperatures need not coincide everywhere. A grey opacity can be a controlled simplification but cannot reproduce every spectral feature.
 
+
+### Derive, test and transfer
+
+In an optically thick medium, diffusion gives $F_{rad}=-(4acT^3/(3\kappa\rho))\,dT/dr$. At fixed local gradient, density and temperature, increasing opacity reduces flux. At fixed required luminosity it instead requires a steeper gradient. These are different controlled comparisons, so saying higher opacity always makes a star dimmer is incomplete.
+
+The photon mean free path is $\ell=(\kappa\rho)^{-1}$. A random walk over distance R takes order $(R/\ell)^2$ steps and time of order $R^2/(c\ell)$, up to transport/boundary factors. A single straight light-crossing time ignores repeated scattering. Near a photosphere, optical depth across the local scale is no longer large, so diffusion fails and transfer must be solved more directly. A Rosseland opacity average is weighted for diffusion and cannot replace every frequency-dependent opacity.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS3.4" />
+
 
 Use synthetic random walks with a stated step model to compare straight crossing and diffusion scales. Record that this is a transport analogy, not tracked real stellar photons. Test the optical-depth regime before using a diffusion temperature gradient.
 

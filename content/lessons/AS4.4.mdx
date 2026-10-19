@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For homologous stars of equal mass, radius doubles. Find dynamical-period ratio.",
+      "answer": "2.8284271247461903",
+      "hint": "Use R^(3/2).",
+      "explanation": "Use R^(3/2). The value in the stated units is 2.828427124746.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At unchanged structural factor, mean density increases by 25. Find period ratio.",
+      "answer": "0.2",
+      "hint": "Period scales as mean density to power −1/2.",
+      "explanation": "Period scales as mean density to power −1/2. The value in the stated units is 0.2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does one observed period uniquely identify every internal density and composition profile?",
+      "answer": "No; multiple modes and a stellar model are needed.",
+      "options": [
+        "Yes; a single period completely reconstructs the star.",
+        "No; multiple modes and a stellar model are needed."
+      ],
+      "explanation": "A global dynamical scale loses detailed internal structure.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a single period completely reconstructs the star.": "A global dynamical scale loses detailed internal structure."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Mode driving includes opacity-related heat-engine mechanisms and stochastic forc
 
 Asteroseismic inference compares mode frequencies, spacings and splittings with models. Cadence, gaps, aliases, finite duration and blended companions affect observed spectra. A peak can be an instrumental artifact or rotation signal, so mode identification needs diagnostics. Synthetic oscillation curves must not be relabelled as actual telescope observations.
 
+
+### Derive, test and transfer
+
+The restoring gravitational scale gives $\omega^2\sim GM/R^3$, hence a radial dynamical period proportional to $\sqrt{R^3/(GM)}$ times a structure-dependent factor. Homologous stars with the same factor obey $P/P_0=(R/R_0)^{3/2}(M/M_0)^{-1/2}$. Equivalently the period scales inversely with the square root of mean density.
+
+Asteroseismology uses multiple mode frequencies, not only one global density estimate. Pressure and buoyancy modes probe different interiors, and excitation/damping requires nonadiabatic physics. An observed oscillation need not be an unstable radial fundamental mode; rotation and mode identification matter. The investigation isolates one scale so you can test ratios, while the lesson's physical inference must retain the missing structure and mode assumptions.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS4.4" />
+
 
 Generate a synthetic multi-frequency light curve with recorded cadence and gaps, then compare its periodogram to the known inputs. Change the window and show aliases. Use model frequency ratios separately from an excitation/amplitude claim.
 

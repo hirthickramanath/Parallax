@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For a uniform sphere with G=ρ=R=1 and zero surface pressure, find central pressure in model units.",
+      "answer": "2.0943951023931953",
+      "hint": "Integrate the linear pressure gradient from center to surface.",
+      "explanation": "Integrate the linear pressure gradient from center to surface. The value in the stated units is 2.094395102393.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For that uniform sphere, find P(R/2)/P(0).",
+      "answer": "0.75",
+      "hint": "Use 1−(r/R)².",
+      "explanation": "Use 1−(r/R)². The value in the stated units is 0.75.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a hydrostatic pressure solution alone establish thermal equilibrium?",
+      "answer": "No; energy generation and transport impose separate conditions.",
+      "options": [
+        "Yes; mechanical balance guarantees a steady temperature profile.",
+        "No; energy generation and transport impose separate conditions."
+      ],
+      "explanation": "Hydrostatic and thermal timescale assumptions are different.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; mechanical balance guarantees a steady temperature profile.": "Hydrostatic and thermal timescale assumptions are different."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ In that ideal regime, losing total energy makes E more negative and U larger: co
 
 Hydrostatic balance is an instantaneous structural approximation when the evolution time is long compared with the dynamical time $t_{dyn}\sim\sqrt{R^3/(GM)}$. It does not ensure thermal equilibrium or nuclear stability. A model can be hydrostatic while slowly contracting or changing composition; violent collapse requires acceleration rather than a hydrostatic shortcut.
 
+
+### Derive, test and transfer
+
+A uniform-density sphere has enclosed mass $m(r)=4\pi\rho r^3/3$. Substitute into hydrostatic balance to obtain $dP/dr=-(4\pi/3)G\rho^2r$. Integration from r to the surface gives $P(r)-P(R)=(2\pi/3)G\rho^2(R^2-r^2)$. The center has a finite maximum pressure and the gradient vanishes there by symmetry.
+
+The uniform density is an imposed toy assumption, not an equation of state. An actual stellar model simultaneously solves mass, pressure, energy generation and transport with boundary data. Its dynamical time can be short even while thermal adjustment is slow. Comparing a computed pressure profile with a plausible equation of state is a consistency check; matching one central pressure value does not establish a stable or thermally equilibrated star.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS3.1" />
+
 
 Construct a uniform-density Newtonian sphere and integrate its pressure gradient with a stated surface pressure. Separately compare virial initial/final energy budgets. Identify where radiation, degeneracy or a rapid collapse invalidates the ideal-gas relation.
 

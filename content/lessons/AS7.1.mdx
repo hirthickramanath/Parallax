@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At fixed radius, planetary mass quadruples. Find escape-speed factor.",
+      "answer": "2",
+      "hint": "Use the square root of mass.",
+      "explanation": "Use the square root of mass. The value in the stated units is 2.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At the same spherical Newtonian radius, find escape speed divided by circular speed.",
+      "answer": "1.4142135623730951",
+      "hint": "Compare sqrt(2GM/R) with sqrt(GM/R).",
+      "explanation": "Compare sqrt(2GM/R) with sqrt(GM/R). The value in the stated units is 1.414213562373.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does escaping a planet automatically imply escaping the Solar System?",
+      "answer": "No; the solar gravitational energy and trajectory remain relevant.",
+      "options": [
+        "Yes; all gravitational escape conditions are identical.",
+        "No; the solar gravitational energy and trajectory remain relevant."
+      ],
+      "explanation": "The chosen gravitating system and asymptotic boundary must be specified.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; all gravitational escape conditions are identical.": "The chosen gravitating system and asymptotic boundary must be specified."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Tidal forces depend on spatial gradients of gravity and material response. Dissi
 
 Thermal histories, impacts and composition also shape planetary systems. A point-mass orbit model cannot predict geology or climate by itself. Numerical long-term trajectories need step-size and conserved-quantity checks, and chaotic sensitivity can limit precise far-future orbital phases.
 
+
+### Derive, test and transfer
+
+For an isolated spherical Newtonian mass, set the specific mechanical energy at launch to the zero-energy escape threshold: $v_{esc}^2/2-GM/R=0$. Thus $v_{esc}=\sqrt{2GM/R}$. Circular orbital speed at the same radius is lower by a factor √2, so orbiting and escaping are different energy requirements.
+
+A real launch can exploit rotation but must also pay atmospheric drag and propulsion losses. Within the Solar System, escaping a planet does not automatically escape the Sun; total multi-body energy and trajectory matter. Small bodies can also be nonspherical, rotating and strength-supported. Use the simple scale as an energy benchmark while retaining the actual boundary and reference frame for a mission.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS7.1" />
+
 
 Use the orbit explorer to compare semimajor axis, eccentricity and current radius. Verify period scaling under the same mass and unit convention. Add a perturbation only after validating the two-body reference.
 

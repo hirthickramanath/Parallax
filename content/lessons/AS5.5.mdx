@@ -48,12 +48,12 @@
     },
     {
       "id": "numeric",
-      "prompt": "Aligned ΔL scale for h=1e−6,L=4?",
-      "answer": "4e-06",
-      "explanation": "hL=4e−6.",
+      "prompt": "Define fractional arm response s=ΔL/L=10^−6. For L=4 metres, find ΔL in micrometres.",
+      "answer": "4",
+      "explanation": "By the stated response definition ΔL=sL=4×10^−6 m=4 micrometres. This is an effective arm response, not an unspecified metric-polarization amplitude.",
       "type": "numeric",
       "conceptual": false,
-      "unit": "as specified in the question"
+      "unit": "micrometres"
     },
     {
       "id": "warmup",
@@ -74,6 +74,43 @@
         "A geometry-dependent strain response through light measurements."
       ],
       "explanation": "The model regime, noise, calibration and parameter degeneracies.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At fixed chirp mass, GW frequency doubles. Find the leading frequency-derivative factor.",
+      "answer": "12.699208415745595",
+      "hint": "Use the power 11/3.",
+      "explanation": "Use the power 11/3. The value in the stated units is 12.699208415746.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "At fixed frequency, chirp mass increases by a factor of 8. Find the leading frequency-derivative factor.",
+      "answer": "32",
+      "hint": "Use 8^(5/3).",
+      "explanation": "Use 8^(5/3). The value in the stated units is 32.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Can the leading slow-inspiral frequency law be assumed exact through merger?",
+      "answer": "No; strong-field dynamics require a more complete waveform.",
+      "options": [
+        "Yes; the same lowest-order approximation is exact everywhere.",
+        "No; strong-field dynamics require a more complete waveform."
+      ],
+      "explanation": "An approximation must be checked against the frequency and velocity regime.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; the same lowest-order approximation is exact everywhere.": "An approximation must be checked against the frequency and velocity regime."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -153,9 +190,19 @@ Matched filtering compares calibrated strain against a waveform family using a n
 
 A detector network constrains sky location, polarization and consistency through time delays and response patterns. Distance inference is correlated with inclination and redshift/cosmology. Coalescence-waveform models must cover the regime being used; a Newtonian inspiral formula is not a full merger/ringdown solution. Keep public event data distinct from synthetic tutorial signals.
 
+
+### Derive, test and transfer
+
+At leading order a quasi-circular binary inspiral has $\dot f\propto\mathcal M^{5/3}f^{11/3}$, where $\mathcal M=(m_1m_2)^{3/5}/(m_1+m_2)^{1/5}$ is the chirp mass. A rising frequency speeds up the chirp sharply, giving a characteristic phase evolution that constrains the mass combination.
+
+Observed masses are redshifted relative to source-frame masses; distance and orientation affect amplitude, while spin and higher-order effects complicate inference. The leading power law fails near merger, where strong-field waveforms are required. A detection is based on calibrated strain and a statistical search, not on a plotted chirp resemblance alone. The investigation compares controlled ratios within the adiabatic approximation rather than generating a detector-ready template.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS5.5" />
+
 
 Generate a labelled synthetic chirp and add a declared noise model. Compare a time-domain amplitude plot with a noise-weighted detection statistic, then vary orientation to expose distance degeneracy. Do not report a tutorial match as a new event.
 
@@ -163,7 +210,7 @@ Generate a labelled synthetic chirp and add a declared noise model. Compare a ti
 
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
-For h=10⁻⁶ and arm length 4 in consistent units, the simple aligned displacement scale is 4×10⁻⁶. This deliberately exaggerated synthetic strain is not a detector sensitivity claim. Doubling the arm length doubles that scale at fixed h.
+Define the effective fractional arm response as s=ΔL/L. For s=10⁻⁶ and arm length 4 m, ΔL=4×10⁻⁶ m=4 micrometres. A metric polarization amplitude requires the separate antenna/projection convention. This deliberately exaggerated synthetic strain is not a detector sensitivity claim. Doubling the arm length doubles that scale at fixed h.
 
 </LessonSection>
 

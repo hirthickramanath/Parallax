@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "Find the remaining fraction of a single radioactive species after three half-lives.",
+      "answer": "0.125",
+      "hint": "Apply one factor of one half for each half-life.",
+      "explanation": "Apply one factor of one half for each half-life. The value in the stated units is 0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For half-life 10 days, find decay constant in inverse days.",
+      "answer": "0.06931471805599453",
+      "hint": "Use λ=ln2/t_half.",
+      "explanation": "Use λ=ln2/t_half. The value in the stated units is 0.069314718056.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Is an observed supernova light curve always identical to its instantaneous radioactive heating curve?",
+      "answer": "No; diffusion and deposition can change the observed light.",
+      "options": [
+        "Yes; radiation leaves immediately at all epochs.",
+        "No; diffusion and deposition can change the observed light."
+      ],
+      "explanation": "Source generation and emergent radiation are separate transport problems.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; radiation leaves immediately at all epochs.": "Source generation and emergent radiation are separate transport problems."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Nucleosynthesis depends on temperature, density, electron fraction and reaction/
 
 Radioactive decay can power late luminosity. For a single isolated decay population, $N(t)=N_0e^{-\lambda t}$ and activity λN, but a real light curve also depends on decay chains, energy deposition and escape. Dust, distance, extinction and asymmetry affect inferred yields. Distinguish observed spectral lines from model-derived ejecta masses.
 
+
+### Derive, test and transfer
+
+For an unstable species, $dN/dt=-\lambda N$ gives $N=N_0e^{-\lambda t}$ and instantaneous deposited heating proportional to λN times deposited decay energy. Half-life is $t_{1/2}=\ln2/\lambda$, so the single-species source declines as $2^{-t/t_{1/2}}$. A chain of parent and daughter decays requires coupled equations rather than one exponential.
+
+Observed supernova luminosity is not simply this instantaneous source at all times. Stored radiation diffuses through expanding material and gamma-ray deposition can fall as optical depth decreases. Explosion energy, nucleosynthetic yields and radioactive powering are related but distinct budgets. The toy heating curve cannot diagnose a unique explosion mechanism without spectra, timescales and a radiation-transport model.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS4.5" />
+
 
 Compute a labelled single-decay model and compare full trapping with a supplied time-dependent deposition fraction. Identify which light-curve changes come from nuclear decay and which from transport. Keep actual supernova data provenance separate from the synthetic exercise.
 

@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "In a matter-era growing mode, a rises by 5. Find the density-contrast factor.",
+      "answer": "5",
+      "hint": "The growing linear mode is proportional to a.",
+      "explanation": "The growing linear mode is proportional to a. The value in the stated units is 5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "An initial contrast 0.01 grows with scale factor by 8 in that regime. Find final contrast.",
+      "answer": "0.08",
+      "hint": "Multiply the initial contrast by the growth factor.",
+      "explanation": "Multiply the initial contrast by the growth factor. The value in the stated units is 0.08.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Can linear density-growth equations be assumed valid deep inside a collapsed halo?",
+      "answer": "No; order-unity and larger contrasts require nonlinear dynamics.",
+      "options": [
+        "Yes; linearity is independent of perturbation size.",
+        "No; order-unity and larger contrasts require nonlinear dynamics."
+      ],
+      "explanation": "The derivation neglects products of perturbations.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; linearity is independent of perturbation size.": "The derivation neglects products of perturbations."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The power spectrum P(k) describes a two-point statistic with a Fourier normaliza
 
 Galaxies are biased tracers of matter. Redshift-space distortions, survey windows and selection alter clustering estimates. Weak lensing probes differently weighted structure and has its own shape/redshift systematics. Compare multiple probes through consistent covariance rather than equating observed galaxy power with total matter power unconditionally.
 
+
+### Derive, test and transfer
+
+For pressureless subhorizon linear perturbations, gravity competes with expansion damping through $\ddot\delta+2H\dot\delta-4\pi G\rho\delta=0$ under the stated background approximation. In a matter-dominated flat background its growing solution is proportional to a, while a separate decaying mode also exists.
+
+Smallness is essential: when the density contrast approaches order unity, nonlinear mode coupling and collapse invalidate the linear superposition. Radiation pressure and dark energy alter growth, and the observed tracer field has its own bias and selection. The display chooses a pure growing matter-era mode rather than deriving a full late-time matter power spectrum.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS9.5" />
+
 
 Evolve a small-amplitude toy perturbation and mark when linearity fails. Apply a supplied tracer bias and survey window to a synthetic spectrum and compare with the original matter spectrum.
 

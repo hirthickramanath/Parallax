@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "Without entropy transfer, the scale factor doubles. Find photon-temperature ratio.",
+      "answer": "0.5",
+      "hint": "Each photon energy redshifts as a^−1.",
+      "explanation": "Each photon energy redshifts as a^−1. The value in the stated units is 0.5.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For freely redshifting radiation, scale factor doubles. Find energy-density ratio.",
+      "answer": "0.0625",
+      "hint": "Include both number dilution and photon-energy redshift.",
+      "explanation": "Include both number dilution and photon-energy redshift. The value in the stated units is 0.0625.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does photon T∝1/a alone compute primordial nuclear abundances?",
+      "answer": "No; reaction rates and the expansion/composition history are also needed.",
+      "options": [
+        "Yes; a temperature ratio is a complete nucleosynthesis network.",
+        "No; reaction rates and the expansion/composition history are also needed."
+      ],
+      "explanation": "Thermal scaling and reaction kinetics are distinct calculations.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; a temperature ratio is a complete nucleosynthesis network.": "Thermal scaling and reaction kinetics are distinct calculations."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ If most surviving neutrons end in helium-4, a simple estimate for helium mass fr
 
 Recombination is electron binding and reduced free-electron scattering, distinct from BBN nuclear synthesis. Neutrino decoupling and later photon last scattering are also different events. Constraints on extra radiation or new interactions are model comparisons with uncertainties, not direct readings of one primordial element ratio.
 
+
+### Derive, test and transfer
+
+A freely propagating photon wavelength stretches as a, so its energy scales as 1/a. Number density scales as a^−3 in a fixed comoving volume; radiation energy density therefore scales as a^−4. An equilibrium-shaped photon spectrum consequently retains its form with T proportional to 1/a when no entropy transfer changes the relation.
+
+Species decoupling and particle–antiparticle annihilation redistribute entropy, so distinct species need not share one temperature afterward. Primordial nucleosynthesis depends on expansion, nuclear reaction rates and baryon density, not merely on the photon temperature scaling. The investigation tests the clean redshifting limit and does not integrate a reaction network or infer abundances.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS9.3" />
+
 
 Compare a toy reaction rate with H and identify an approximate decoupling crossing, then list why a full nonequilibrium solution is more accurate. Propagate a supplied uncertainty in r into the helium estimate without calling it a precision BBN prediction.
 

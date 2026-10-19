@@ -7,7 +7,7 @@
     "Celestial coordinates and local horizon coordinates refer to different frames.",
     "Right ascension is an equatorial longitude; declination is latitude-like.",
     "Hour angle relates local sidereal time to right ascension.",
-    "Observer latitude and Earth\u2019s rotation determine a source\u2019s local altitude."
+    "Observer latitude and Earth’s rotation determine a source’s local altitude."
   ],
   "questions": [
     {
@@ -18,7 +18,7 @@
         "No"
       ],
       "answer": "Yes",
-      "explanation": "The local frame changes with latitude and Earth\u2019s rotation.",
+      "explanation": "The local frame changes with latitude and Earth’s rotation.",
       "type": "mcq",
       "conceptual": true
     },
@@ -42,7 +42,7 @@
         "No"
       ],
       "answer": "Yes",
-      "explanation": "The observer\u2019s frame rotates relative to the sky.",
+      "explanation": "The observer’s frame rotates relative to the sky.",
       "type": "mcq",
       "conceptual": true
     },
@@ -58,10 +58,10 @@
     },
     {
       "id": "q5",
-      "prompt": "Upper transit altitude for \u03c6=30\u00b0, \u03b4=20\u00b0, in degrees?",
+      "prompt": "Upper transit altitude for φ=30°, δ=20°, in degrees?",
       "options": null,
       "answer": "80",
-      "explanation": "90\u2212|\u03c6\u2212\u03b4|.",
+      "explanation": "90−|φ−δ|.",
       "type": "numeric",
       "conceptual": false,
       "tier": "warmup",
@@ -76,6 +76,43 @@
       ],
       "answer": "Catalogue directions evolve through several effects",
       "explanation": "Precession, proper motion and other corrections matter for precision.",
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "At latitude 30 degrees north, find the geometric upper-transit altitude of declination −20 degrees, in degrees.",
+      "answer": "40",
+      "hint": "Use 90−|latitude−declination|.",
+      "explanation": "Use 90−|latitude−declination|. The value in the stated units is 40.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "Local sidereal time is 10 hours and right ascension is 7 hours. Find the westward hour angle in degrees, using H=LST−RA.",
+      "answer": "45",
+      "hint": "Convert the three-hour angular difference at 15 degrees per hour.",
+      "explanation": "Convert the three-hour angular difference at 15 degrees per hour. The value in the stated units is 45.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does upper culmination above the horizon imply a star is visible at every hour angle?",
+      "answer": "No; its lower culmination may be below the horizon.",
+      "options": [
+        "Yes; one visible transit makes it circumpolar.",
+        "No; its lower culmination may be below the horizon."
+      ],
+      "explanation": "Visibility throughout a rotation requires a separate lower-transit test.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; one visible transit makes it circumpolar.": "Visibility throughout a rotation requires a separate lower-transit test."
+      },
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
@@ -98,15 +135,15 @@
       "concept": "as1-1-foundation"
     },
     {
-      "front": "What determines a catalogue source\u2019s local altitude?",
-      "back": "Observer latitude and Earth\u2019s rotation determine a source\u2019s local altitude.",
+      "front": "What determines a catalogue source’s local altitude?",
+      "back": "Observer latitude and Earth’s rotation determine a source’s local altitude.",
       "concept": "as1-1-foundation"
     }
   ],
   "status": "draft",
   "book_refs": [
-    "Carroll & Ostlie, An Introduction to Modern Astrophysics \u2014 edition/section review pending",
-    "OpenStax Astronomy \u2014 chapter reference review pending"
+    "Carroll & Ostlie, An Introduction to Modern Astrophysics — edition/section review pending",
+    "OpenStax Astronomy — chapter reference review pending"
   ],
   "verification": {
     "status": "pending",
@@ -165,9 +202,19 @@ At upper meridian transit H=0, the formula becomes sin h = cos(φ−δ), giving 
 
 Sidereal time tracks Earth’s orientation relative to the sky, whereas civil/solar time tracks the Sun and administrative conventions. A sidereal day is slightly shorter than a mean solar day because Earth also advances around the Sun. Precision conversion needs a date/time standard and Earth-orientation model; a fixed universal subtraction is not adequate for astrometry.
 
+
+### Derive, test and transfer
+
+At upper meridian transit the spherical altitude relation reduces to $\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta=\cos(\phi-\delta)$. Choosing the physical altitude in $[-90^\circ,90^\circ]$ gives $h=90^\circ-|\phi-\delta|$. This is a maximum altitude, not the altitude throughout the day. More generally $\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta\cos H$, with hour angle H measured from the local meridian.
+
+To test visibility, compare upper and lower culminations rather than treating right ascension as a clock time. At a northern latitude, a northern source is circumpolar when its declination exceeds $90^\circ-\phi$, ignoring refraction and horizon obstruction. Sidereal time advances relative to civil solar time because Earth also moves around the Sun. Precession changes the reference axes slowly; proper motion changes the star's direction. Neither is represented by a nightly rotation of the local horizon.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the assumptions" layer="interactive">
+
+<Widget name="astro_AS1.1" />
+
 
 Take latitude φ=30° and declination δ=20°. Calculate altitude at hour angles 0°, 60° and 180° using the same formula. A source may go below the horizon even though its catalogue coordinates have not changed. Label these as model calculations without atmospheric refraction.
 

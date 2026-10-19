@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For an exponential vertical profile, find density ratio at height z=2h.",
+      "answer": "0.1353352832366127",
+      "hint": "Use exp(−|z|/h).",
+      "explanation": "Use exp(−|z|/h). The value in the stated units is 0.135335283237.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For ρ₀=3 and h=2 in consistent model units, find total vertical column density.",
+      "answer": "12",
+      "hint": "Integrate symmetrically to obtain 2ρ₀h.",
+      "explanation": "Integrate symmetrically to obtain 2ρ₀h. The value in the stated units is 12.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a tracer-star density profile alone uniquely specify the total gravitational mass distribution?",
+      "answer": "No; tracer selection and dynamical/mass relations are needed.",
+      "options": [
+        "Yes; every star count is a direct total-mass measurement.",
+        "No; tracer selection and dynamical/mass relations are needed."
+      ],
+      "explanation": "Observed tracers and the gravitating distribution are distinct.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; every star count is a direct total-mass measurement.": "Observed tracers and the gravitating distribution are distinct."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ The thin/thick disc, bar, stellar halo and gaseous components are useful descrip
 
 Survey footprints, magnitude limits, completeness and astrometric/radial-velocity quality shape a catalogue. Correcting selection requires a model of what could enter the sample. Use multiple tracers and retain calibration/provenance rather than interpreting an apparent deficit as an empty galactic volume.
 
+
+### Derive, test and transfer
+
+An exponential tracer profile $\rho(z)=\rho_0e^{-|z|/h}$ has vertical column density $\Sigma=\int_{-\infty}^\infty\rho dz=2\rho_0h$. Increasing scale height at fixed midplane density increases the column; holding column fixed instead reduces the midplane density. Specify the controlled normalization before comparing discs.
+
+The Milky Way has multiple populations, gas, dust, a bulge and a halo; one exponential is not its complete mass distribution. A magnitude-limited sample also does not directly reveal volume density without completeness and extinction treatment. Converting a tracer distribution into gravitational mass needs dynamics and a mass-to-tracer relation. The investigation describes a geometric profile rather than solving vertical equilibrium.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS8.1" />
+
 
 Construct a synthetic disc and apply a magnitude/extinction selection. Compare the true simulation population with the selected catalogue, labelling both synthetic. State solar-motion/frame choices before plotting measured velocities.
 

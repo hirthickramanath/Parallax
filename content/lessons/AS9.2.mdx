@@ -77,6 +77,43 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "astro-transfer-1",
+      "prompt": "For Ωm=0.3 and a=0.5 in a flat matter-plus-Λ model, find H²/H₀².",
+      "answer": "3.1",
+      "hint": "Evaluate 0.3/(0.5³)+0.7.",
+      "explanation": "Evaluate 0.3/(0.5³)+0.7. The value in the stated units is 3.1.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-transfer-2",
+      "prompt": "For conserved pressureless matter, the scale factor doubles. Find the density ratio.",
+      "answer": "0.125",
+      "hint": "Matter density scales as a^−3.",
+      "explanation": "Matter density scales as a^−3. The value in the stated units is 0.125.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
+    },
+    {
+      "id": "astro-model-assumptions",
+      "prompt": "Does a matter-plus-Λ expression that neglects radiation remain adequate arbitrarily early?",
+      "answer": "No; radiation can dominate at early times.",
+      "options": [
+        "Yes; omitted components never change the regime.",
+        "No; radiation can dominate at early times."
+      ],
+      "explanation": "The energy budget evolves and the approximation must be checked.",
+      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "misconceptions": {
+        "Yes; omitted components never change the regime.": "The energy budget evolves and the approximation must be checked."
+      },
+      "type": "mcq",
+      "conceptual": true,
+      "tier": "core"
     }
   ],
   "review": [
@@ -153,9 +190,19 @@ Critical density is 3H²/(8πG), and density parameters compare components with 
 
 Bound structures can decouple from the simple background expansion; a local laboratory is not generally stretched by inserting H into every length equation. Perturbations, local dynamics and observational light-cone relations extend the background model. The equations require content, parameters and initial conditions before predicting a(t).
 
+
+### Derive, test and transfer
+
+For a homogeneous isotropic background, the Friedmann equation relates H² to energy density, curvature and the cosmological constant. Conserved pressureless matter dilutes as a^−3, while a cosmological constant has constant density. In a flat matter-plus-Λ toy model, $H^2/H_0^2=\Omega_m a^{-3}+1-\Omega_m$.
+
+The formula is normalized to one at a=1, but it omits radiation and assumes constant Λ. A realistic early-Universe calculation adds radiation, species evolution and the appropriate units. A background expansion curve also does not by itself determine perturbation growth or every observable distance; those require evolution and light propagation. The display lets you vary the density split while keeping the stated flatness constraint.
+
 </LessonSection>
 
 <LessonSection id="interactive" title="Investigate the claim" layer="interactive">
+
+<Widget name="astro_AS9.2" />
+
 
 Integrate a single-fluid flat toy model and check the conservation scaling before adding components. Keep coordinate distance, proper distance and Hubble radius separate. Label all chosen density parameters as model inputs.
 
