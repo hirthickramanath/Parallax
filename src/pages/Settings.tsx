@@ -1,12 +1,21 @@
+import {
+  MAX_BACKUP_BYTES,
+  parseProgressBackup,
+  type ProgressBackup,
+} from "../lib/progress-backup";
 import { BackgroundReminderSettings } from "../components/learning/BackgroundReminder";
 import { RestartJourney } from "../components/learning/RestartJourney";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLearning } from "../hooks/useLearning";
 import { useAuth } from "../hooks/useAuth";
 import { Button } from "../components/ui/button";
 export function Settings() {
   const { logout } = useAuth();
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [backup, setBackup] = useState<ProgressBackup | null>(null),
+    [importStatus, setImportStatus] = useState(""),
+    [includePreferences, setIncludePreferences] = useState(false);
   const store = useLearning();
   const [timezone, setTimezone] = useState(store.preferences.timezone),
     [error, setError] = useState(""),
@@ -27,7 +36,13 @@ export function Settings() {
       new Blob(
         [
           JSON.stringify(
-            { records: store.records, preferences: store.preferences },
+            {
+              format: "parallax-progress",
+              version: 1,
+              exportedAt: new Date().toISOString(),
+              records: store.records,
+              preferences: store.preferences,
+            },
             null,
             2,
           ),
@@ -177,8 +192,8 @@ export function Settings() {
         <p className="source-note">
           Notification permission: {notificationStatus}. Permission is requested
           only when you press the button. These are foreground notifications,
-          not server-push reminders: keep the site open. Background Web Push is
-          not configured.
+          not server-push reminders: keep the site open. Use the background
+          reminder settings above for notifications when the app is closed.
         </p>
       </section>
       <section className="settings-card">
@@ -217,11 +232,76 @@ export function Settings() {
         <Button variant="outline" onClick={exportData}>
           Export my progress
         </Button>
+        <Button variant="outline" onClick={() => fileInput.current?.click()}>
+          Import my progress
+        </Button>
+        <input
+          ref={fileInput}
+          type="file"
+          accept=".json,application/json"
+          aria-label="Progress backup file"
+          hidden
+          onChange={async (e) => {
+            const file = e.target.files?.[0];
+            e.target.value = "";
+            setBackup(null);
+            setImportStatus("");
+            if (!file) return;
+            try {
+              if (file.size > MAX_BACKUP_BYTES)
+                throw Error("Choose a progress backup smaller than 5 MB.");
+              setBackup(parseProgressBackup(await file.text()));
+            } catch (cause) {
+              setImportStatus(
+                cause instanceof Error
+                  ? cause.message
+                  : "Could not read the backup.",
+              );
+            }
+          }}
+        />
+        {backup && (
+          <div className="info-box" role="region" aria-label="Import preview">
+            <h3>Ready to merge your backup</h3>
+            <p>
+              {backup.count} saved records. Completed lessons and activity are
+              merged with this account. Newer changes and lesson resets are
+              preserved. Reimporting the same activity does not add XP twice.
+            </p>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={includePreferences}
+                onChange={(e) => setIncludePreferences(e.target.checked)}
+              />
+              Also restore study preferences
+            </label>
+            <p>
+              Notification permissions remain specific to this browser. Server
+              assessment sessions are excluded.
+            </p>
+            <Button
+              onClick={() => {
+                store.importProgress(backup, includePreferences);
+                setTimezone(store.preferences.timezone);
+                setBackup(null);
+                setImportStatus(
+                  "Progress imported on this device. Cloud sync will retry automatically if offline.",
+                );
+              }}
+            >
+              Merge progress
+            </Button>
+            <Button variant="outline" onClick={() => setBackup(null)}>
+              Cancel import
+            </Button>
+          </div>
+        )}
+        {importStatus && <p role="status">{importStatus}</p>}
         <p className="source-note">
           On shared devices, cached data remains in browser storage after
           sign-out. Export and clear site data from your browser when finished.
-          This app does not request notification permission or collect medical
-          data.
+          Notification permission is requested only when you enable reminders.
         </p>
         <Button
           variant="outline"

@@ -1,5 +1,5 @@
-import { TutorPanel } from "../components/learning/TutorPanel";
-import { lazy, Suspense, useMemo, useEffect, useState } from "react";
+import { useTutorDock, useTutorLesson } from "../components/learning/TutorDock";
+import { lazy, Suspense, useMemo, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useLearning } from "../hooks/useLearning";
 import { course } from "../lib/course";
@@ -120,11 +120,12 @@ function RevisionOverview() {
   );
 }
 function RevisionPlayer({ id }: { id: string }) {
-  const [showTutor, setShowTutor] = useState(false);
+  const { isOpen: showTutor, toggle: toggleTutor } = useTutorDock();
   const store = useLearning(),
     guide = revisionModules.find((m) => m.id === id),
     lesson = course.authored[id],
     p = foundationProgress(store.records, id);
+  useTutorLesson(id, "theory", "full", p.step);
   const Theory = useMemo(
     () =>
       modules[`../../content/lessons/${id}.mdx`]
@@ -459,20 +460,11 @@ function RevisionPlayer({ id }: { id: string }) {
           <Button
             variant="outline"
             aria-expanded={showTutor}
-            onClick={() => setShowTutor(!showTutor)}
+            onClick={toggleTutor}
           >
             {showTutor ? "Close AI tutor" : "Ask AI tutor"}
           </Button>
         </div>
-        {showTutor && (
-          <TutorPanel
-            key={id}
-            lessonId={id}
-            sectionId="theory"
-            depth="full"
-            revisionStep={p.step}
-          />
-        )}
       </div>
     </main>
   );

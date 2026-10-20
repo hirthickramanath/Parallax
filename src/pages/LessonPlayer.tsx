@@ -19,7 +19,7 @@ import {
   SymbolDefinition,
 } from "../components/learning/StoredSection";
 import { QuestionCard } from "../components/learning/QuestionCard";
-import { TutorPanel } from "../components/learning/TutorPanel";
+import { useTutorDock, useTutorLesson } from "../components/learning/TutorDock";
 import { Button } from "../components/ui/button";
 import type { LessonProgress } from "../types/progress";
 import "katex/dist/katex.min.css";
@@ -58,7 +58,6 @@ function Player({ id }: { id: string }) {
       );
     }),
     [finished, setFinished] = useState(false),
-    [showTutor, setShowTutor] = useState(false),
     [cardAdded, setCardAdded] = useState(false),
     [prediction, setPrediction] = useState(
       store.records.lessons[id]?.interaction?.responses?.["prediction-draft"]
@@ -81,6 +80,8 @@ function Player({ id }: { id: string }) {
     (s) => depth === "full" || !s.fullOnly,
   );
   const active = sections[Math.min(index, sections.length - 1)];
+  const { isOpen: showTutor, toggle: toggleTutor } = useTutorDock();
+  useTutorLesson(id, active.id, depth);
   const needs = missingNeeds(lesson, store.records);
   const MDX = useMemo(
     () => lazy(modules[`../../content/lessons/${id}.mdx`]),
@@ -291,7 +292,7 @@ function Player({ id }: { id: string }) {
         <LessonRecap lessonId={id} />
       )}
       <div
-        className={`lesson-layout ${showTutor ? "with-tutor" : ""} ${simulationNames(lesson).length ? "with-simulation" : ""}`}
+        className={`lesson-layout ${simulationNames(lesson).length ? "with-simulation" : ""}`}
       >
         <div>
           <div className="section-navigation">
@@ -457,10 +458,7 @@ function Player({ id }: { id: string }) {
             >
               Previous
             </Button>
-            <button
-              className="text-button"
-              onClick={() => setShowTutor(!showTutor)}
-            >
+            <button className="text-button" onClick={toggleTutor}>
               {showTutor
                 ? "Close tutor"
                 : tutorUrl
@@ -490,9 +488,6 @@ function Player({ id }: { id: string }) {
           </p>
         </div>
         <LessonSimulation lesson={lesson} />
-        {showTutor && (
-          <TutorPanel lessonId={id} sectionId={active.id} depth={depth} />
-        )}
       </div>
     </main>
   );

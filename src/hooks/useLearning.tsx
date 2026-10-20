@@ -1,3 +1,4 @@
+import type { ProgressBackup } from "../lib/progress-backup";
 import type { LessonInteraction } from "../types/progress";
 import { createEmptyCard, type Card } from "ts-fsrs";
 import { course, journeyLessons } from "../lib/course";
@@ -108,6 +109,27 @@ class LearningStore {
     this.status = "Saved on this device · syncing";
     if (this.batching) return;
     this.persist();
+    void this.sync();
+  }
+  importProgress(backup: ProgressBackup, includePreferences: boolean) {
+    if (includePreferences)
+      this.preferences = { ...this.preferences, ...backup.preferences };
+    this.batching = true;
+    try {
+      for (const kind of collections)
+        for (const [id, value] of Object.entries(backup.records[kind])) {
+          const merged = mergeDocument(
+            kind,
+            (this.records[kind] as Record<string, object>)[id],
+            value as object,
+            this.preferences.dailyGoal,
+          );
+          this.put(kind, id, merged as Records[typeof kind][string]);
+        }
+    } finally {
+      this.batching = false;
+      this.persist();
+    }
     void this.sync();
   }
   saveLessonInteraction(id: string, patch: LessonInteraction) {

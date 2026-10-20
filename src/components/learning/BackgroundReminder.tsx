@@ -5,7 +5,6 @@ import { dateKey } from "../../lib/learning-core";
 import {
   pushRequest,
   stopBackgroundReminders,
-  subscriptionId,
 } from "../../lib/background-reminders";
 import { Button } from "../ui/button";
 export function BackgroundReminderSync() {
@@ -69,7 +68,7 @@ export function BackgroundReminderSettings() {
       <h2>Remind me when the app is closed</h2>
       <p>
         {available
-          ? "Opt in on this browser. Uses the reminder time and timezone above. Delivery depends on browser support and the reminder service."
+          ? "Opt in on this browser. Uses the reminder time and timezone configured below. Delivery depends on browser support and the reminder service."
           : "Background reminders are not connected on this deployment. Foreground reminders remain available."}
       </p>
       <p className="source-note">
@@ -148,43 +147,6 @@ export function BackgroundReminderSettings() {
           ? "Disable background reminders"
           : "Enable background reminders"}
       </Button>
-      {available && store.preferences.backgroundReminders && (
-        <Button
-          variant="outline"
-          disabled={busy}
-          onClick={async () => {
-            setBusy(true);
-            setMessage("");
-            try {
-              const registration =
-                await navigator.serviceWorker.getRegistration();
-              const sub = await registration?.pushManager.getSubscription();
-              if (!sub)
-                throw Error(
-                  "Re-enable reminders for this browser before sending a test.",
-                );
-              await pushRequest(
-                "POST",
-                { id: await subscriptionId(sub.endpoint) },
-                "/test",
-              );
-              setMessage(
-                "Test reminder accepted by the push service. Check this device; browser delivery can be delayed.",
-              );
-            } catch (error) {
-              setMessage(
-                error instanceof Error
-                  ? error.message
-                  : "Test reminder failed.",
-              );
-            } finally {
-              setBusy(false);
-            }
-          }}
-        >
-          Send a test notification
-        </Button>
-      )}
       {message && <p role="status">{message}</p>}
     </section>
   );

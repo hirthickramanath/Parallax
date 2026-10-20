@@ -523,6 +523,9 @@ test("resistor apparatus changes topology and keeps measurements tied to one loa
 test("saved tutor messages restore per account even with live tutoring disabled", async ({
   page,
 }) => {
+  await page.route("**/services.json", (r) =>
+    r.fulfill({ json: { tutorUrl: "", pushUrl: "", pushPublicKey: "" } }),
+  );
   await signedIn(page);
   await page.evaluate(() =>
     localStorage.setItem(
@@ -2361,7 +2364,7 @@ test("revision AI tutor streams lesson-aware replies saves history and handles s
 });
 
 for (const permission of ["granted", "denied"] as const) {
-  test(`background reminders explicit opt-in ${permission}, test and unsubscribe`, async ({
+  test(`background reminders explicit opt-in ${permission} and unsubscribe`, async ({
     page,
   }) => {
     await page.addInitScript(
@@ -2458,13 +2461,9 @@ for (const permission of ["granted", "denied"] as const) {
         (c) => c.method === "POST" && c.path === "/test-push/subscription",
       ),
     ).toBe(true);
-    await page
-      .getByRole("button", { name: "Send a test notification" })
-      .click();
-    await expect(page.getByText(/Test reminder accepted/)).toBeVisible();
-    expect(calls.find((c) => c.path === "/test-push/test")?.body.id).toMatch(
-      /^[a-f0-9]{64}$/,
-    );
+    await expect(
+      page.getByRole("button", { name: "Send a test notification" }),
+    ).toHaveCount(0);
     await page
       .getByRole("button", {
         name: "Disable background reminders",
@@ -2479,3 +2478,145 @@ for (const permission of ["granted", "denied"] as const) {
     expect(calls.some((c) => c.method === "DELETE")).toBe(true);
   });
 }
+
+test("progress import previews merges and rejects invalid backups without losing newer notes", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/settings");
+  const downloaded = page.waitForEvent("download");
+  await page
+    .getByRole("button", { name: "Export my progress", exact: true })
+    .click();
+  const download = await downloaded;
+  const original = JSON.parse(readFileSync((await download.path())!, "utf8"));
+  original.records.notes["backup-note"] = {
+    bodyMd: "Restored note",
+    updatedAt: 100,
+  };
+  original.records.days["2026-10-20"] = {
+    xp: 20,
+    activities: [{ id: "backup-activity", xp: 20, track: "maths", at: 1 }],
+    goalMet: true,
+    xpByTrack: { maths: 20 },
+  };
+  const file = page.getByLabel("Progress backup file");
+  await file.setInputFiles({
+    name: "backup.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(original)),
+  });
+  await expect(
+    page.getByRole("region", { name: "Import preview" }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Progress imported on this device.", { exact: false }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("button", { name: "Merge progress", exact: true })
+    .click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Progress imported" }),
+  ).toBeVisible();
+  expect(
+    await page.evaluate(
+      () =>
+        JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+          .records.notes["backup-note"].bodyMd,
+    ),
+  ).toBe("Restored note");
+  original.records.notes["backup-note"] = {
+    bodyMd: "Older note",
+    updatedAt: 50,
+  };
+  await file.setInputFiles({
+    name: "again.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(original)),
+  });
+  await page
+    .getByRole("button", { name: "Merge progress", exact: true })
+    .click();
+  const merged = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+        .records,
+  );
+  expect(merged.notes["backup-note"].bodyMd).toBe("Restored note");
+  expect(merged.days["2026-10-20"].xp).toBe(20);
+  expect(merged.days["2026-10-20"].activities).toHaveLength(1);
+  await file.setInputFiles({
+    name: "invalid.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(
+      '{"records":{"lessons":{"bad":{"status":"done"}}},"preferences":{}}',
+    ),
+  });
+  await expect(page.getByText(/contains invalid progress/)).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Merge progress", exact: true }),
+  ).toHaveCount(0);
+  expect(
+    await page.evaluate(
+      () =>
+        JSON.parse(localStorage.getItem("parallax-learning-v1:test-learner")!)
+          .records.notes["backup-note"].bodyMd,
+    ),
+  ).toBe("Restored note");
+});
+
+test("floating tutor is reachable on mobile dashboard and uses the current lesson context", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.route("**/services.json", (r) =>
+    r.fulfill({
+      json: { tutorUrl: "/dock-tutor", pushUrl: "", pushPublicKey: "" },
+    }),
+  );
+  const requests: any[] = [];
+  await page.route("**/dock-tutor", (r) => {
+    requests.push(r.request().postDataJSON());
+    return r.fulfill({
+      contentType: "text/event-stream",
+      body: 'data: {"text":"Let us work through the reasoning."}\n\n',
+    });
+  });
+  await signedIn(page);
+  await page.goto("/dashboard");
+  const launcher = page.getByRole("button", {
+    name: "Open AI tutor",
+    exact: true,
+  });
+  await launcher.click();
+  const dialog = page.getByRole("dialog", { name: "Your AI tutor" });
+  await expect(dialog).toBeVisible();
+  await dialog.getByLabel("Study topic").selectOption("PB1.1");
+  await dialog
+    .getByLabel("Ask about this section")
+    .fill("Help me revise force");
+  await dialog.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(dialog.locator(".assistant")).toContainText("work through");
+  expect(requests[0].lessonId).toBe("PB1.1");
+  await page.screenshot({ path: "/tmp/parallax-tutor-mobile.png" });
+  await page.keyboard.press("Escape");
+  await expect(dialog).not.toBeVisible();
+  await expect(launcher).toBeFocused();
+  await page.goto("/lesson/PB1.2");
+  await launcher.click();
+  await expect(dialog.getByText(/Helping with/)).toBeVisible();
+  await dialog
+    .getByLabel("Ask about this section")
+    .fill("Explain this section");
+  await dialog.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(dialog.locator(".assistant")).toContainText("work through");
+  expect(requests.at(-1).lessonId).toBe("PB1.2");
+  expect(requests.at(-1).sectionId).toBeTruthy();
+  await page.setViewportSize({ width: 1366, height: 900 });
+  await page.screenshot({ path: "/tmp/parallax-tutor-desktop.png" });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+});
