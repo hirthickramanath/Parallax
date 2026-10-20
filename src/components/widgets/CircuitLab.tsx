@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { resistorCircuit } from "../../lib/circuit";
 import { Button } from "../ui/button";
@@ -35,9 +36,9 @@ export function CircuitLab() {
         </button>
       </div>
       <div className="lab-controls">
-        <label>
+        <div className="simulation-control-label">
           Supply: {voltage.toFixed(1)} V
-          <input
+          <SimulationSlider
             aria-label="Supply voltage"
             type="range"
             min=".5"
@@ -46,10 +47,10 @@ export function CircuitLab() {
             value={voltage}
             onChange={(e) => setVoltage(Number(e.target.value))}
           />
-        </label>
-        <label>
+        </div>
+        <div className="simulation-control-label">
           R₁: {r1} Ω
-          <input
+          <SimulationSlider
             aria-label="First resistance"
             type="range"
             min="50"
@@ -61,10 +62,10 @@ export function CircuitLab() {
               setReadings([]);
             }}
           />
-        </label>
-        <label>
+        </div>
+        <div className="simulation-control-label">
           R₂: {r2} Ω
-          <input
+          <SimulationSlider
             aria-label="Second resistance"
             type="range"
             min="50"
@@ -76,7 +77,7 @@ export function CircuitLab() {
               setReadings([]);
             }}
           />
-        </label>
+        </div>
       </div>
       <svg
         viewBox="0 0 600 300"

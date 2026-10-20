@@ -228,8 +228,19 @@ export function buildContent() {
       !authored[file.slice(0, -5)]
     )
       fs.unlinkSync(path.join("public/content", file));
-  for (const [id, lesson] of Object.entries(authored))
-    fs.writeFileSync(`public/content/${id}.json`, JSON.stringify(lesson));
+  const revisionModules = JSON.parse(
+    fs.readFileSync("content/revision/foundation.json", "utf8"),
+  ).modules;
+  for (const [id, lesson] of Object.entries(authored)) {
+    const revision = revisionModules.find((m) => m.id === id);
+    fs.writeFileSync(
+      `public/content/${id}.json`,
+      JSON.stringify({
+        ...lesson,
+        ...(revision ? { revisionGuide: revision } : {}),
+      }),
+    );
+  }
   console.log(
     `Validated ${curriculum.lessons.length} curriculum entries; ${Object.keys(authored).length} authored drafts`,
   );

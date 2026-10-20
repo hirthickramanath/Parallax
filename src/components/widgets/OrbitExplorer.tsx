@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useMemo, useState } from "react";
 import { orbitalElements } from "../../lib/lab-models";
 import { Button } from "../ui/button";
@@ -32,9 +33,9 @@ export function OrbitExplorer() {
         direction angle is tangential. Drag and other bodies are omitted.
       </p>
       <div className="lab-controls">
-        <label>
+        <div className="simulation-control-label">
           Launch speed: {speed.toFixed(3)}
-          <input
+          <SimulationSlider
             aria-label="Launch speed"
             type="range"
             min=".4"
@@ -43,10 +44,10 @@ export function OrbitExplorer() {
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
           />
-        </label>
-        <label>
+        </div>
+        <div className="simulation-control-label">
           Direction from tangent: {angle}°
-          <input
+          <SimulationSlider
             aria-label="Launch direction"
             type="range"
             min="-60"
@@ -55,7 +56,7 @@ export function OrbitExplorer() {
             value={angle}
             onChange={(e) => setAngle(Number(e.target.value))}
           />
-        </label>
+        </div>
       </div>
       <div className="lab-actions">
         <Button

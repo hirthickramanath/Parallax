@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { secantSlope } from "../../lib/experiments";
 import { MathText } from "../teaching/MathText";
@@ -51,9 +52,9 @@ export function SecantExplorer() {
             a.
           </p>
           <div className="lab-controls">
-            <label>
+            <div className="simulation-control-label">
               Point a: {a.toFixed(1)}
-              <input
+              <SimulationSlider
                 aria-label="Point a"
                 type="range"
                 min="-2"
@@ -62,10 +63,10 @@ export function SecantExplorer() {
                 value={a}
                 onChange={(e) => setA(Number(e.target.value))}
               />
-            </label>
-            <label>
+            </div>
+            <div className="simulation-control-label">
               Separation h: {h.toFixed(2)}
-              <input
+              <SimulationSlider
                 aria-label="Separation h"
                 type="range"
                 min="0.02"
@@ -74,7 +75,7 @@ export function SecantExplorer() {
                 value={h}
                 onChange={(e) => setH(Number(e.target.value))}
               />
-            </label>
+            </div>
           </div>
           <svg
             className="secant-figure"

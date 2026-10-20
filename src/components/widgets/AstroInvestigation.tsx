@@ -72,6 +72,9 @@ export function AstroInvestigation({
         onChange={setP}
       />
       <Scene
+        keyboardStepX={
+          model.xStep ? (310 * model.xStep) / (model.x[2] - model.x[1]) : 4
+        }
         label={`Drag investigation point for ${lessonId}`}
         x={plotX(x)}
         y={plotY(value)}

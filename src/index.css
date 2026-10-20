@@ -2632,3 +2632,21 @@ th {
 .revision-worked summary { cursor:pointer; font-weight:700; }
 .revision-player .question-card input[type=number] { max-width:100%; padding:12px; border:1px solid hsl(var(--border)); border-radius:10px; }
 @media(max-width:600px) { .foundation-chapter-list li a { flex-direction:column; gap:6px; } .revision-player-header .appearance-controls { max-width:100%; flex-wrap:wrap; } }
+
+/* Full-width, finger-sized native controls, including models outside .lab-controls. */
+.simulation-control-label { display:flex; flex-direction:column; min-width:0; gap:8px; font-size:13px; margin-block:12px; }
+.lab-controls .simulation-control-label { margin-block:0; }
+.simulation-slider { width:100%; min-width:0; }
+.simulation-slider input[type="range"] { display:block; width:100%; min-width:0; height:44px; margin:0; padding:0; cursor:ew-resize; accent-color:var(--primary-color); touch-action:pan-y; }
+.simulation-slider input[type="range"]:focus-visible { outline:3px solid var(--primary-color); outline-offset:3px; border-radius:8px; }
+.simulation-number-entry { font-size:12px; margin-bottom:8px; }
+.simulation-number-entry summary { cursor:pointer; padding:5px 0; }
+.simulation-number-entry label { display:block; margin:8px 0; }
+.simulation-number-row { display:flex; flex-wrap:wrap; gap:8px; }
+.simulation-number-row input { width:125px; max-width:100%; padding:10px; border:1px solid hsl(var(--border)); border-radius:8px; background:var(--app-bg); color:inherit; }
+.simulation-number-row button { padding:10px; border:1px solid hsl(var(--border)); border-radius:8px; background:var(--soft-green); color:inherit; }
+.revision-tutor-entry { grid-column:1 / -1; }
+.virtual-lab svg [role="button"] { cursor:grab; }
+.virtual-lab svg [role="button"]:active { cursor:grabbing; }
+.virtual-lab svg [role="button"]:focus-visible { outline:2px solid var(--primary-color); outline-offset:4px; }
+.virtual-lab svg circle[role="button"] { stroke:transparent; stroke-width:20px; vector-effect:non-scaling-stroke; pointer-events:all; }

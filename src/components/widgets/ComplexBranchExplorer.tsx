@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { branchCircle } from "../../lib/complex-branch";
 export function ComplexBranchExplorer() {
@@ -15,9 +16,9 @@ export function ComplexBranchExplorer() {
         principal root is evaluated separately at the endpoint, with argument in
         (−π, π) and the nonpositive real axis excluded.
       </p>
-      <label>
+      <div className="simulation-control-label">
         Path angle: {degrees}°
-        <input
+        <SimulationSlider
           aria-label="Complex path angle"
           type="range"
           min="0"
@@ -26,7 +27,7 @@ export function ComplexBranchExplorer() {
           value={degrees}
           onChange={(e) => setDegrees(Number(e.target.value))}
         />
-      </label>
+      </div>
       <div className="lab-subjects">
         {[0, 180, 360, 540, 720].map((value) => (
           <button key={value} onClick={() => setDegrees(value)}>

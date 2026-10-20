@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { legendre, zonalHarmonic } from "../../lib/legendre";
 export function LegendreExplorer() {
@@ -19,9 +20,9 @@ export function LegendreExplorer() {
         angular profile, not a complete spherical surface or a telescope
         measurement.
       </p>
-      <label>
+      <div className="simulation-control-label">
         Degree ℓ: {degree}
-        <input
+        <SimulationSlider
           aria-label="Legendre degree"
           type="range"
           min="0"
@@ -30,10 +31,10 @@ export function LegendreExplorer() {
           value={degree}
           onChange={(e) => setDegree(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Probe x = cosθ: {probe}
-        <input
+        <SimulationSlider
           aria-label="Legendre probe"
           type="range"
           min="-1"
@@ -42,7 +43,7 @@ export function LegendreExplorer() {
           value={probe}
           onChange={(e) => setProbe(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 600 260"
         role="img"

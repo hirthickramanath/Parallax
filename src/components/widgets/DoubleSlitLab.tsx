@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { doubleSlit } from "../../lib/foundation-labs";
 export function DoubleSlitLab() {
@@ -23,9 +24,9 @@ export function DoubleSlitLab() {
         noise or finite-slit envelope. Screen coordinates range from −10 to +10
         mm.
       </p>
-      <label>
+      <div className="simulation-control-label">
         Wavelength: {nm} nm
-        <input
+        <SimulationSlider
           aria-label="Light wavelength"
           type="range"
           min="400"
@@ -34,10 +35,10 @@ export function DoubleSlitLab() {
           value={nm}
           onChange={(e) => setNm(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Slit separation: {mm.toFixed(2)} mm
-        <input
+        <SimulationSlider
           aria-label="Slit separation"
           type="range"
           min=".2"
@@ -46,10 +47,10 @@ export function DoubleSlitLab() {
           value={mm}
           onChange={(e) => setMm(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Screen distance: {distance.toFixed(1)} m
-        <input
+        <SimulationSlider
           aria-label="Screen distance"
           type="range"
           min="1"
@@ -58,7 +59,7 @@ export function DoubleSlitLab() {
           value={distance}
           onChange={(e) => setDistance(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 620 220"
         role="img"

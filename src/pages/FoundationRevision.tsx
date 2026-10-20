@@ -1,4 +1,5 @@
-import { lazy, Suspense, useMemo, useEffect } from "react";
+import { TutorPanel } from "../components/learning/TutorPanel";
+import { lazy, Suspense, useMemo, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useLearning } from "../hooks/useLearning";
 import { course } from "../lib/course";
@@ -119,6 +120,7 @@ function RevisionOverview() {
   );
 }
 function RevisionPlayer({ id }: { id: string }) {
+  const [showTutor, setShowTutor] = useState(false);
   const store = useLearning(),
     guide = revisionModules.find((m) => m.id === id),
     lesson = course.authored[id],
@@ -453,6 +455,24 @@ function RevisionPlayer({ id }: { id: string }) {
           )}
         </article>
         <LessonSimulation lesson={lesson} />
+        <div className="revision-tutor-entry">
+          <Button
+            variant="outline"
+            aria-expanded={showTutor}
+            onClick={() => setShowTutor(!showTutor)}
+          >
+            {showTutor ? "Close AI tutor" : "Ask AI tutor"}
+          </Button>
+        </div>
+        {showTutor && (
+          <TutorPanel
+            key={id}
+            lessonId={id}
+            sectionId="theory"
+            depth="full"
+            revisionStep={p.step}
+          />
+        )}
       </div>
     </main>
   );

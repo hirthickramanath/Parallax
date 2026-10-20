@@ -1,3 +1,5 @@
+import { SimulationSlider } from "./SimulationSlider";
+import { formatControlValue } from "../../lib/simulation-controls";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -22,9 +24,9 @@ export function Control({
   onChange: (n: number) => void;
 }) {
   return (
-    <label>
-      {label}: {value.toFixed(step < 0.01 ? 3 : 2)}
-      <input
+    <div className="simulation-control-label">
+      {label}: {formatControlValue(value, step)}
+      <SimulationSlider
         aria-label={label}
         type="range"
         min={min}
@@ -33,7 +35,7 @@ export function Control({
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
       />
-    </label>
+    </div>
   );
 }
 export function Scene({
@@ -42,12 +44,14 @@ export function Scene({
   y,
   move,
   children,
+  keyboardStepX = 4,
 }: {
   label: string;
   x: number;
   y: number;
   move: (x: number, y: number) => void;
   children?: ReactNode;
+  keyboardStepX?: number;
 }) {
   const [drag, setDrag] = useState(false);
   return (
@@ -86,7 +90,26 @@ export function Scene({
         cy={y}
         r="9"
         fill="#2584d5"
-        stroke="currentColor"
+        stroke="transparent"
+        strokeWidth="22"
+        tabIndex={0}
+        role="button"
+        aria-label={`Move point: ${label}. Use arrow keys`}
+        onKeyDown={(e) => {
+          const delta: Record<string, [number, number]> = {
+            ArrowLeft: [-keyboardStepX, 0],
+            ArrowRight: [keyboardStepX, 0],
+            ArrowUp: [0, -4],
+            ArrowDown: [0, 4],
+          };
+          if (delta[e.key]) {
+            e.preventDefault();
+            move(
+              Math.max(0, Math.min(400, x + delta[e.key][0])),
+              Math.max(0, Math.min(260, y + delta[e.key][1])),
+            );
+          }
+        }}
         onPointerDown={(e) => {
           e.currentTarget.ownerSVGElement?.setPointerCapture(e.pointerId);
           setDrag(true);

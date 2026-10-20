@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { DROP_HEIGHT, GRAVITY, fallDistance } from "../../lib/experiments";
 import { Derivation } from "../teaching/Derivation";
@@ -48,9 +49,9 @@ export function FallingBodies() {
             Let’s investigate why, then change one assumption.
           </p>
           <div className="lab-controls">
-            <label>
+            <div className="simulation-control-label">
               Right-hand mass: {mass} kg
-              <input
+              <SimulationSlider
                 aria-label="Right-hand mass"
                 type="range"
                 min="1"
@@ -59,10 +60,10 @@ export function FallingBodies() {
                 value={mass}
                 onChange={(e) => setMass(Number(e.target.value))}
               />
-            </label>
-            <label>
+            </div>
+            <div className="simulation-control-label">
               Elapsed time: {time.toFixed(2)} s
-              <input
+              <SimulationSlider
                 aria-label="Elapsed time"
                 type="range"
                 min="0"
@@ -71,7 +72,7 @@ export function FallingBodies() {
                 value={time}
                 onChange={(e) => setTime(Number(e.target.value))}
               />
-            </label>
+            </div>
             <label className="checkbox-label">
               <input
                 type="checkbox"

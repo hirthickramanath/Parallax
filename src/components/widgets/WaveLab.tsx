@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { standingString } from "../../lib/foundation-labs";
 export function WaveLab() {
@@ -18,9 +19,9 @@ export function WaveLab() {
         is tuned to the selected normal mode. Synthetic small-amplitude motion;
         damping and finite resonance width are omitted.
       </p>
-      <label>
+      <div className="simulation-control-label">
         Harmonic: {harmonic}
-        <input
+        <SimulationSlider
           aria-label="String harmonic"
           type="range"
           min="1"
@@ -29,10 +30,10 @@ export function WaveLab() {
           value={harmonic}
           onChange={(e) => setHarmonic(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Tension: {tension} N
-        <input
+        <SimulationSlider
           aria-label="String tension"
           type="range"
           min="1"
@@ -41,10 +42,10 @@ export function WaveLab() {
           value={tension}
           onChange={(e) => setTension(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Scrub phase: {phase}°
-        <input
+        <SimulationSlider
           aria-label="String phase"
           type="range"
           min="0"
@@ -53,7 +54,7 @@ export function WaveLab() {
           value={phase}
           onChange={(e) => setPhase(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 600 270"
         role="img"

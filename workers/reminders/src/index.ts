@@ -17,6 +17,7 @@ interface Device {
   id: string;
   subscription: PushSubscription;
   lastSentDate?: string;
+  lastTestAt?: number;
   lastAttemptAt?: number;
   attemptDate?: string;
   attempts?: number;
@@ -175,6 +176,73 @@ export class ReminderRegistry {
     } catch {
       return json({ error: "Invalid request" }, 400);
     }
+    if (path === "/test") {
+      if (request.method !== "POST")
+        return json({ error: "Method not allowed" }, 405);
+      if (!/^[a-f0-9]{64}$/.test(body.id || ""))
+        return json({ error: "Choose a subscribed browser" }, 400);
+      if (
+        this.env.ENABLE_REMINDERS !== "true" ||
+        !this.env.VAPID_PRIVATE_KEY ||
+        !this.env.VAPID_PUBLIC_KEY ||
+        !this.env.VAPID_SUBJECT
+      )
+        return json({ error: "Background reminders are not activated" }, 503);
+      const item = await this.state.storage.transaction(async (tx) => {
+        const user = await tx.get<User>(key),
+          device = user?.devices.find((d) => d.id === body.id);
+        if (!user || !device) return { device: null, status: 404 };
+        if (device.lastTestAt && Date.now() - device.lastTestAt < 60000)
+          return { device: null, status: 429 };
+        device.lastTestAt = Date.now();
+        await tx.put(key, user);
+        return { device, status: 200 };
+      });
+      if (!item.device)
+        return json(
+          {
+            error:
+              item.status === 429
+                ? "Wait one minute before another test"
+                : "This browser is not subscribed",
+          },
+          item.status,
+        );
+      try {
+        const payload = await buildPushPayload(
+          {
+            data: {
+              title: "Parallax reminders are connected",
+              body: "This is your test notification. Your daily reminder follows your saved local time.",
+              url: "/dashboard",
+            },
+            options: { ttl: 120, urgency: "normal", topic: "parallax-test" },
+          },
+          item.device.subscription,
+          {
+            subject: this.env.VAPID_SUBJECT,
+            publicKey: this.env.VAPID_PUBLIC_KEY,
+            privateKey: this.env.VAPID_PRIVATE_KEY,
+          },
+        );
+        const result = await fetch(item.device.subscription.endpoint, {
+          ...payload,
+          redirect: "manual",
+          signal: AbortSignal.timeout(10000),
+        });
+        return result.ok
+          ? json({ accepted: true })
+          : json(
+              {
+                error:
+                  "Push service rejected the test. Re-enable reminders for this browser.",
+              },
+              502,
+            );
+      } catch {
+        return json({ error: "Test notification could not be sent" }, 503);
+      }
+    }
     if (request.method === "DELETE") {
       await this.state.storage.transaction(async (tx) => {
         const user = await tx.get<User>(key);
@@ -281,8 +349,13 @@ export default {
     });
     if (request.method === "OPTIONS")
       return new Response(null, { status: 204, headers });
-    if (new URL(request.url).pathname !== "/subscription")
+    if (!["/subscription", "/test"].includes(new URL(request.url).pathname))
       return Response.json({ error: "Not found" }, { status: 404, headers });
+    if (new URL(request.url).pathname === "/test" && request.method !== "POST")
+      return Response.json(
+        { error: "Method not allowed" },
+        { status: 405, headers },
+      );
     let uid: string;
     try {
       const bearer = request.headers.get("Authorization");
@@ -294,7 +367,12 @@ export default {
         { status: 401, headers },
       );
     }
-    if (env.ENABLE_REMINDERS !== "true" || !env.VAPID_PRIVATE_KEY)
+    if (
+      env.ENABLE_REMINDERS !== "true" ||
+      !env.VAPID_PRIVATE_KEY ||
+      !env.VAPID_PUBLIC_KEY ||
+      !env.VAPID_SUBJECT
+    )
       return Response.json(
         { error: "Background reminders are not activated" },
         { status: 503, headers },
@@ -302,7 +380,7 @@ export default {
     try {
       const registry = env.REMINDERS.get(env.REMINDERS.idFromName("registry"));
       const internal = new Request(
-        "https://registry.internal/subscription",
+        `https://registry.internal${new URL(request.url).pathname}`,
         request,
       );
       internal.headers.set("X-Account", uid);

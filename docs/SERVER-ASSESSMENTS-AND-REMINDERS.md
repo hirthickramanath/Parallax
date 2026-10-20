@@ -1,5 +1,7 @@
 # Server assessment and background reminder rollout
 
+For the current reminder test-send UI and Gemini/Workers AI activation path, see [SIMULATION-TUTOR-NOTIFICATION-RELEASE.md](SIMULATION-TUTOR-NOTIFICATION-RELEASE.md).
+
 Implementation is available; no cloud activation or live delivery is claimed. Both new Workers default to disabled. No payment or billing-card authorization is implied. Confirm the account's current free allocation and quotas before activation.
 
 ## Server-owned assessment

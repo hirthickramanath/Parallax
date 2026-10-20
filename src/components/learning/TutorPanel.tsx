@@ -1,3 +1,4 @@
+import { useServices } from "../../lib/services";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -9,10 +10,12 @@ export function TutorPanel({
   lessonId,
   sectionId,
   depth,
+  revisionStep,
 }: {
   lessonId: string;
   sectionId?: string;
   depth: "quick" | "full";
+  revisionStep?: number;
 }) {
   const chat = useConversation(lessonId);
   const [input, setInput] = useState(""),
@@ -21,7 +24,7 @@ export function TutorPanel({
     [remaining, setRemaining] = useState<number | null>(null);
   const controller = useRef<AbortController | null>(null),
     sending = useRef(false);
-  const endpoint = import.meta.env.VITE_TUTOR_URL as string | undefined;
+  const { tutorUrl: endpoint } = useServices();
   useEffect(() => () => controller.current?.abort(), []);
   async function send(text: string) {
     if (!endpoint || sending.current || !text.trim()) return;
@@ -46,6 +49,7 @@ export function TutorPanel({
         body: JSON.stringify({
           lessonId,
           sectionId,
+          revisionStep,
           depth,
           conversationId: chat.id,
           message: text,
@@ -105,6 +109,8 @@ export function TutorPanel({
         await reader.cancel().catch(() => {});
         reader.releaseLock();
       }
+      if (!reply.trim())
+        throw Error("No tutor explanation was received. Please try again.");
     } catch (cause) {
       const stopped = controller.current?.signal.aborted;
       setError(
@@ -130,13 +136,13 @@ export function TutorPanel({
     }
   }
   return (
-    <aside className="tutor-panel">
+    <aside className="tutor-panel" aria-label="AI lesson tutor">
       <p className="eyebrow">YOUR LESSON TUTOR</p>
       <h3>Ask a different question.</h3>
       {!endpoint && (
         <p className="info-box">
-          Tutor integration is not activated. An eligible provider and deployed
-          Worker are required. Previously saved conversations remain available.
+          The AI tutor is awaiting connection. You can keep studying with the
+          worked examples and hints. Saved conversations remain available.
         </p>
       )}
       {remaining !== null && (
@@ -161,6 +167,11 @@ export function TutorPanel({
           </button>
         ))}
       </div>
+      <p className="source-note">
+        AI explanations can make mistakes. Check reasoning, units and
+        assumptions against the lesson. Conversations are saved to your account;
+        don’t include private information.
+      </p>
       <div className="chat-messages" aria-live="polite">
         {chat.messages.slice(-100).map((message) => (
           <article key={message.id} className={message.role}>

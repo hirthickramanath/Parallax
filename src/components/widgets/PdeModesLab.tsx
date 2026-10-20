@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { pdeModes, type Evolution } from "../../lib/pde-modes";
 
@@ -64,9 +65,9 @@ export function PdeModesLab() {
           ))}
         </select>
       </label>
-      <label>
+      <div className="simulation-control-label">
         {kind === "heat" ? "Diffusivity D" : "Wave speed c"}: {coefficient}
-        <input
+        <SimulationSlider
           aria-label="PDE coefficient"
           type="range"
           min="0.25"
@@ -75,10 +76,10 @@ export function PdeModesLab() {
           value={coefficient}
           onChange={(e) => setCoefficient(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Time: {time}
-        <input
+        <SimulationSlider
           aria-label="PDE time"
           type="range"
           min="0"
@@ -87,7 +88,7 @@ export function PdeModesLab() {
           value={time}
           onChange={(e) => setTime(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 600 270"
         role="img"

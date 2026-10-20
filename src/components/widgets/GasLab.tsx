@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { gasPath, GAS_R } from "../../lib/foundation-labs";
 export function GasLab() {
@@ -37,9 +38,9 @@ export function GasLab() {
           <option value="isobaric">Isobaric · fixed external pressure</option>
         </select>
       </label>
-      <label>
+      <div className="simulation-control-label">
         Final volume ratio: {ratio.toFixed(2)}
-        <input
+        <SimulationSlider
           aria-label="Gas volume ratio"
           type="range"
           min=".5"
@@ -48,7 +49,7 @@ export function GasLab() {
           value={ratio}
           onChange={(e) => setRatio(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 600 230"
         role="img"

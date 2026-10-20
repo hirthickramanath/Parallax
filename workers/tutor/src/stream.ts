@@ -23,15 +23,23 @@ export function normalizeStream(
         const data = JSON.parse(cleaned.slice(6)) as {
           response?: string;
           error?: unknown;
+          candidates?: {
+            content?: { parts?: { text?: string; thought?: boolean }[] };
+          }[];
         };
         if (data.error) throw Error();
-        if (typeof data.response === "string") {
-          total += data.response.length;
+        const response =
+          typeof data.response === "string"
+            ? data.response
+            : data.candidates?.[0]?.content?.parts
+                ?.filter((p) => !p.thought)
+                .map((p) => p.text || "")
+                .join("");
+        if (typeof response === "string" && response) {
+          total += response.length;
           if (total > 20000) throw Error();
           controller.enqueue(
-            encoder.encode(
-              `data: ${JSON.stringify({ text: data.response })}\n\n`,
-            ),
+            encoder.encode(`data: ${JSON.stringify({ text: response })}\n\n`),
           );
         }
       }

@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { sphericalField, type SphereModel } from "../../lib/spherical-field";
 export function SphericalFieldLab() {
@@ -53,9 +54,9 @@ export function SphericalFieldLab() {
           Conducting shell
         </button>
       </div>
-      <label>
+      <div className="simulation-control-label">
         Sphere radius: {radius.toFixed(1)}
-        <input
+        <SimulationSlider
           aria-label="Charged sphere radius"
           type="range"
           min="1"
@@ -64,10 +65,10 @@ export function SphericalFieldLab() {
           value={radius}
           onChange={(e) => setRadius(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Total charge: {charge}
-        <input
+        <SimulationSlider
           aria-label="Total sphere charge"
           type="range"
           min="-4"
@@ -76,10 +77,10 @@ export function SphericalFieldLab() {
           value={charge}
           onChange={(e) => setCharge(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Probe radius: {probe.toFixed(1)}
-        <input
+        <SimulationSlider
           aria-label="Field probe radius"
           type="range"
           min="0"
@@ -88,7 +89,7 @@ export function SphericalFieldLab() {
           value={probe}
           onChange={(e) => setProbe(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 600 240"
         role="img"

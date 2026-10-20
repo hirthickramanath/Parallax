@@ -1,14 +1,15 @@
+import { useServices } from "../../lib/services";
 import { useEffect, useState } from "react";
 import { useLearning, useClock } from "../../hooks/useLearning";
 import { dateKey } from "../../lib/learning-core";
 import {
-  pushEndpoint,
-  pushPublicKey,
   pushRequest,
   stopBackgroundReminders,
+  subscriptionId,
 } from "../../lib/background-reminders";
 import { Button } from "../ui/button";
 export function BackgroundReminderSync() {
+  const { pushUrl: pushEndpoint } = useServices();
   const store = useLearning(),
     now = useClock(),
     date = dateKey(now, store.preferences.timezone),
@@ -21,6 +22,7 @@ export function BackgroundReminderSync() {
       goalMetDate: met ? date : "",
     }).catch(() => {});
   }, [
+    pushEndpoint,
     store.preferences.backgroundReminders,
     store.preferences.timezone,
     store.preferences.reminderTime,
@@ -30,6 +32,7 @@ export function BackgroundReminderSync() {
   return null;
 }
 export function BackgroundReminderSettings() {
+  const { pushUrl: pushEndpoint, pushPublicKey } = useServices();
   const store = useLearning(),
     [busy, setBusy] = useState(false),
     [message, setMessage] = useState("");
@@ -39,6 +42,28 @@ export function BackgroundReminderSettings() {
     "serviceWorker" in navigator &&
     "PushManager" in window &&
     "Notification" in window;
+  useEffect(() => {
+    if (!store.preferences.backgroundReminders || !available) return;
+    let cancelled = false;
+    void navigator.serviceWorker
+      .getRegistration()
+      .then((r) => r?.pushManager.getSubscription())
+      .then((sub) => {
+        if (!cancelled && (!sub || Notification.permission !== "granted")) {
+          store.setPreferences({ backgroundReminders: false });
+          setMessage("Reminders need to be enabled again on this browser.");
+        }
+      })
+      .catch(() => {
+        if (!cancelled)
+          setMessage(
+            "Could not check this browser’s subscription. Try enabling reminders again.",
+          );
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [available, store.uid, store.preferences.backgroundReminders]);
   return (
     <section className="settings-card">
       <h2>Remind me when the app is closed</h2>
@@ -47,8 +72,15 @@ export function BackgroundReminderSettings() {
           ? "Opt in on this browser. Uses the reminder time and timezone above. Delivery depends on browser support and the reminder service."
           : "Background reminders are not connected on this deployment. Foreground reminders remain available."}
       </p>
+      <p className="source-note">
+        On iPhone or iPad, add Parallax to the Home Screen and open it there
+        before enabling notifications. Notifications require your permission on
+        each browser.
+      </p>
       <Button
-        disabled={!available || busy}
+        disabled={
+          (!available && !store.preferences.backgroundReminders) || busy
+        }
         onClick={async () => {
           setBusy(true);
           setMessage("");
@@ -60,9 +92,22 @@ export function BackgroundReminderSettings() {
             } else {
               if ((await Notification.requestPermission()) !== "granted")
                 throw Error("Notification permission was not granted.");
-              const registration =
-                await navigator.serviceWorker.register("/sw.js");
-              await navigator.serviceWorker.ready;
+              await navigator.serviceWorker.register("/sw.js");
+              let timer: ReturnType<typeof setTimeout>;
+              const registration = await Promise.race([
+                navigator.serviceWorker.ready,
+                new Promise<ServiceWorkerRegistration>((_, reject) => {
+                  timer = setTimeout(
+                    () =>
+                      reject(
+                        Error(
+                          "Notification setup timed out. Refresh and try again.",
+                        ),
+                      ),
+                    12000,
+                  );
+                }),
+              ]).finally(() => clearTimeout(timer));
               const raw = atob(
                 pushPublicKey!.replace(/-/g, "+").replace(/_/g, "/"),
               );
@@ -103,6 +148,43 @@ export function BackgroundReminderSettings() {
           ? "Disable background reminders"
           : "Enable background reminders"}
       </Button>
+      {available && store.preferences.backgroundReminders && (
+        <Button
+          variant="outline"
+          disabled={busy}
+          onClick={async () => {
+            setBusy(true);
+            setMessage("");
+            try {
+              const registration =
+                await navigator.serviceWorker.getRegistration();
+              const sub = await registration?.pushManager.getSubscription();
+              if (!sub)
+                throw Error(
+                  "Re-enable reminders for this browser before sending a test.",
+                );
+              await pushRequest(
+                "POST",
+                { id: await subscriptionId(sub.endpoint) },
+                "/test",
+              );
+              setMessage(
+                "Test reminder accepted by the push service. Check this device; browser delivery can be delayed.",
+              );
+            } catch (error) {
+              setMessage(
+                error instanceof Error
+                  ? error.message
+                  : "Test reminder failed.",
+              );
+            } finally {
+              setBusy(false);
+            }
+          }}
+        >
+          Send a test notification
+        </Button>
+      )}
       {message && <p role="status">{message}</p>}
     </section>
   );

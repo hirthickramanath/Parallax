@@ -1,3 +1,4 @@
+import { useServices } from "../lib/services";
 import { LessonFeedback } from "../components/learning/LessonFeedback";
 import { TrustedAssessment } from "../components/learning/TrustedAssessment";
 import { questionLevel } from "../lib/journey";
@@ -44,6 +45,7 @@ export function LessonPlayer() {
   );
 }
 function Player({ id }: { id: string }) {
+  const { tutorUrl } = useServices();
   const store = useLearning(),
     lesson = course.authored[id];
   const [index, setIndex] = useState(() => {
@@ -461,7 +463,7 @@ function Player({ id }: { id: string }) {
             >
               {showTutor
                 ? "Close tutor"
-                : import.meta.env.VITE_TUTOR_URL
+                : tutorUrl
                   ? "Ask about this section"
                   : "Saved tutor conversations (live tutor unavailable)"}
             </button>

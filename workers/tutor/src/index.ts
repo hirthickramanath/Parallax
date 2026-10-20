@@ -1,3 +1,4 @@
+import { providerConfigured, tutorProvider } from "./provider";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { validateRequest, tutorPrompt, quotaDecision } from "./core";
 import { normalizeStream, providerDeadline } from "./stream";
@@ -7,6 +8,9 @@ interface Env {
   ENABLE_TUTOR: string;
   AI_MODEL: string;
   DAILY_LIMIT?: string;
+  TUTOR_PROVIDER?: string;
+  GEMINI_MODEL?: string;
+  GEMINI_API_KEY?: string;
   COUNTERS: DurableObjectNamespace;
   AI?: {
     run: (
@@ -103,7 +107,7 @@ export default {
         { status: 401, headers },
       );
     }
-    if (env.ENABLE_TUTOR !== "true" || !env.AI || !env.AI_MODEL)
+    if (env.ENABLE_TUTOR !== "true" || !providerConfigured(env))
       return Response.json(
         { error: "Tutor integration has not been activated" },
         { status: 503, headers },
@@ -162,14 +166,10 @@ export default {
       );
     try {
       const provider = await providerDeadline(
-        env.AI.run(env.AI_MODEL, {
-          messages: [
-            { role: "system", content: tutorPrompt(lesson, body) },
-            ...body.history,
-            { role: "user", content: body.message },
-          ],
-          stream: true,
-        }),
+        tutorProvider(env, tutorPrompt(lesson, body), [
+          ...body.history,
+          { role: "user", content: body.message },
+        ]),
       );
       const stream = normalizeStream(provider);
       return new Response(stream, {

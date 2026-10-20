@@ -516,7 +516,7 @@ test("resistor apparatus changes topology and keeps measurements tied to one loa
   await expect(
     page.getByRole("cell", { name: "90.00", exact: true }),
   ).toBeVisible();
-  await page.getByLabel("First resistance").focus();
+  await page.getByLabel("First resistance", { exact: true }).focus();
   await page.keyboard.press("ArrowRight");
   await expect(page.getByRole("table")).toHaveCount(0);
 });
@@ -622,13 +622,15 @@ test("gas, wave and interference benches expose model controls and reproducible 
   await page.setViewportSize({ width: 390, height: 900 });
   await openSimulation(page, "Pendulum & gravity");
   await openSimulation(page, "Gas piston");
-  await page.getByLabel("Gas volume ratio").fill("2");
+  await page.getByLabel("Gas volume ratio", { exact: true }).fill("2");
   await expect(page.getByText(/Temperature: 300.0 K/)).toBeVisible();
   await page
     .getByRole("button", { name: "Record gas reading", exact: true })
     .click();
   await expect(page.getByRole("table")).toBeVisible();
-  await page.getByLabel("Thermodynamic path").selectOption("adiabatic");
+  await page
+    .getByLabel("Thermodynamic path", { exact: true })
+    .selectOption("adiabatic");
   await expect(page.getByRole("table")).toHaveCount(0);
   await expect(page.getByText(/Q = 0.0 J/)).toBeVisible();
   await expect(page.getByText(/Temperature: 189.0 K/)).toBeVisible();
@@ -639,7 +641,7 @@ test("gas, wave and interference benches expose model controls and reproducible 
   await expect(
     page.getByText("Node positions (m): 0.000, 0.500, 1.000"),
   ).toBeVisible();
-  await page.getByLabel("String phase").fill("0");
+  await page.getByLabel("String phase", { exact: true }).fill("0");
   await expect(
     page.getByRole("img", {
       name: "Standing string harmonic 2 with 3 fixed nodes",
@@ -649,7 +651,7 @@ test("gas, wave and interference benches expose model controls and reproducible 
   await expect(
     page.getByText(/Predicted small-angle fringe spacing: 2.000 mm/),
   ).toBeVisible();
-  await page.getByLabel("Slit separation").fill("1");
+  await page.getByLabel("Slit separation", { exact: true }).fill("1");
   await expect(
     page.getByText(/Predicted small-angle fringe spacing: 1.000 mm/),
   ).toBeVisible();
@@ -735,17 +737,17 @@ test("radiation apparatus separates extinction, emission and radial Doppler inte
   await page
     .getByRole("button", { name: "Record slab reading", exact: true })
     .click();
-  await page.getByLabel("Slab source function").fill("20");
+  await page.getByLabel("Slab source function", { exact: true }).fill("20");
   await expect(page.getByText(/Output: 15.000/)).toBeVisible();
   await page
     .getByRole("button", { name: "Record slab reading", exact: true })
     .click();
   await expect(page.getByRole("table").getByRole("row")).toHaveCount(3);
-  await page.getByLabel("Slab optical depth").fill("");
+  await page.getByLabel("Slab optical depth", { exact: true }).fill("");
   await expect(page.getByRole("alert")).toHaveText(
     "Enter a finite optical depth from 0 to 10.",
   );
-  await page.getByLabel("Slab optical depth").fill("0");
+  await page.getByLabel("Slab optical depth", { exact: true }).fill("0");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -756,9 +758,9 @@ test("radiation apparatus separates extinction, emission and radial Doppler inte
     .getByRole("button", { name: "Doppler markers", exact: true })
     .click();
   await expect(page.getByText(/Observed wavelength: 1000.00 nm/)).toBeVisible();
-  await page.getByLabel("Radial speed beta").fill("0");
+  await page.getByLabel("Radial speed beta", { exact: true }).fill("0");
   await expect(page.getByText(/Observed wavelength: 500.00 nm/)).toBeVisible();
-  await page.getByLabel("Radial speed beta").fill("-0.6");
+  await page.getByLabel("Radial speed beta", { exact: true }).fill("-0.6");
   await expect(page.getByText(/Observed wavelength: 250.00 nm/)).toBeVisible();
   expect(
     await page.evaluate(
@@ -787,16 +789,16 @@ test("spherical apparatus distinguishes volume charge, conductor interior and an
     .getByRole("button", { name: "Conducting shell", exact: true })
     .click();
   await expect(page.getByText(/Radial field: 0.0000/)).toBeVisible();
-  await page.getByLabel("Field probe radius").fill("2");
+  await page.getByLabel("Field probe radius", { exact: true }).fill("2");
   await expect(
     page.getByText(/field has no single assigned value/),
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Record spherical reading", exact: true }),
   ).toBeDisabled();
-  await page.getByLabel("Field probe radius").fill("4");
+  await page.getByLabel("Field probe radius", { exact: true }).fill("4");
   await expect(page.getByText(/Radial field: 0.0625/)).toBeVisible();
-  await page.getByLabel("Total sphere charge").fill("-1");
+  await page.getByLabel("Total sphere charge", { exact: true }).fill("-1");
   await expect(page.getByText(/Radial field: -0.0625/)).toBeVisible();
   await page
     .getByRole("button", { name: "Record spherical reading", exact: true })
@@ -821,13 +823,19 @@ test("coupled oscillator bench exposes normal modes, conserved energy and tracea
   await openSimulation(page, "Pendulum & gravity");
   await openSimulation(page, "Coupled oscillators");
   await page.getByRole("button", { name: "In phase", exact: true }).click();
-  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
+  await expect(
+    page.getByLabel("Total oscillator energy", { exact: true }),
+  ).toHaveText("0.0400");
   await page.getByLabel("Time (s)", { exact: true }).fill("7");
-  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.0400");
+  await expect(
+    page.getByLabel("Total oscillator energy", { exact: true }),
+  ).toHaveText("0.0400");
   await page
     .getByRole("button", { name: "Opposite phase", exact: true })
     .click();
-  await expect(page.getByLabel("Total oscillator energy")).toHaveText("0.1200");
+  await expect(
+    page.getByLabel("Total oscillator energy", { exact: true }),
+  ).toHaveText("0.1200");
   await page.getByRole("button", { name: "Record oscillator reading" }).click();
   await expect(
     page
@@ -858,24 +866,36 @@ test("Fourier evolution bench distinguishes heat decay from conserved wave energ
   await page.setViewportSize({ width: 390, height: 900 });
   await openSimulation(page, "Pendulum & gravity");
   await openSimulation(page, "Heat flow and waves");
-  await page.getByLabel("PDE initial shape").selectOption("First mode");
+  await page
+    .getByLabel("PDE initial shape", { exact: true })
+    .selectOption("First mode");
   const initial = Number(
-    await page.getByLabel("PDE squared norm").textContent(),
+    await page.getByLabel("PDE squared norm", { exact: true }).textContent(),
   );
   expect(initial).toBeCloseTo(Math.PI / 2, 5);
   await page.getByLabel("PDE time", { exact: true }).fill("1");
   expect(
-    Number(await page.getByLabel("PDE squared norm").textContent()),
+    Number(
+      await page.getByLabel("PDE squared norm", { exact: true }).textContent(),
+    ),
   ).toBeCloseTo((Math.PI / 2) * Math.exp(-2), 5);
   await page.getByRole("button", { name: "Record PDE reading" }).click();
   await page.getByRole("button", { name: "Wave motion", exact: true }).click();
-  const energy = await page.getByLabel("PDE wave energy").textContent();
+  const energy = await page
+    .getByLabel("PDE wave energy", { exact: true })
+    .textContent();
   await page.getByLabel("PDE time", { exact: true }).fill("1.5");
-  await expect(page.getByLabel("PDE wave energy")).toHaveText(energy!);
+  await expect(page.getByLabel("PDE wave energy", { exact: true })).toHaveText(
+    energy!,
+  );
   expect(
-    Number(await page.getByLabel("PDE squared norm").textContent()),
+    Number(
+      await page.getByLabel("PDE squared norm", { exact: true }).textContent(),
+    ),
   ).toBeLessThan(0.01);
-  await page.getByLabel("PDE initial shape").selectOption("Third mode");
+  await page
+    .getByLabel("PDE initial shape", { exact: true })
+    .selectOption("Third mode");
   await expect(page.getByRole("table").getByRole("row").nth(3)).toContainText(
     "3.000",
   );
@@ -932,7 +952,7 @@ test("complex branch explorer tracks monodromy and excludes its principal cut on
   await expect(
     page.getByText(/Continued logarithm imaginary part: 4.000π/),
   ).toBeVisible();
-  await page.getByLabel("Complex path angle").fill("270");
+  await page.getByLabel("Complex path angle", { exact: true }).fill("270");
   await expect(
     page.getByLabel("Principal square root", { exact: true }),
   ).toContainText("− 0.707i");
@@ -1392,9 +1412,10 @@ test("fluids heat conics and spatial projection are embedded and respond to keyb
     "2.9",
   );
   const probe = page.getByLabel("Drag pressure probe", { exact: true });
+  await probe.locator("circle").hover();
+  // Hover can scroll the sticky apparatus pane; measure the resulting viewport position.
   const box = (await probe.boundingBox())!;
   const scale = Math.min(box.width / 400, box.height / 260);
-  await probe.locator("circle").hover();
   await page.mouse.down();
   await page.mouse.move(
     box.x + box.width / 2,
@@ -2169,3 +2190,292 @@ test("all foundation revision chapters load real theory and mobile interactive m
   }
   expect(errors).toEqual([]);
 });
+
+for (const device of ["desktop", "touch"] as const) {
+  test(`simulation slider physical drag on ${device}`, async ({ page }) => {
+    test.setTimeout(180000);
+    await page.setViewportSize(
+      device === "touch"
+        ? { width: 390, height: 844 }
+        : { width: 1280, height: 900 },
+    );
+    await signedIn(page);
+    const cdp = await page.context().newCDPSession(page);
+    if (device === "touch")
+      await cdp.send("Emulation.setTouchEmulationEnabled", { enabled: true });
+    const ids = [
+      "MB1.1",
+      "MB1.2",
+      "MB2.3",
+      "MB4.2",
+      "PB1.1",
+      "PB1.3",
+      "PB1.4",
+      "PB2.1",
+      "PB2.2",
+      "PB3.1",
+      "PB3.3",
+      "PB4.2",
+      "AS1.3",
+      "AS2.3",
+      "PH4.1",
+      "PH2.7",
+      "MA5.4",
+    ];
+    for (const id of ids) {
+      await page.goto(`/lesson/${id}`);
+      const panel = page.getByRole("complementary", {
+        name: "Lesson simulation",
+      });
+      await expect(panel).toBeVisible();
+      const inputs = panel.locator('input[type="range"]');
+      for (let i = 0; i < (await inputs.count()); i++) {
+        const input = inputs.nth(i);
+        await input.scrollIntoViewIfNeeded();
+        const box = (await input.boundingBox())!;
+        const current = await input.evaluate(
+          (e: HTMLInputElement) =>
+            (Number(e.value) - Number(e.min)) / (Number(e.max) - Number(e.min)),
+        );
+        const y = box.y + box.height / 2,
+          from = box.x + 8 + (box.width - 16) * current,
+          to = box.x + 8 + (box.width - 16) * 0.8;
+        if (device === "touch") {
+          await cdp.send("Input.dispatchTouchEvent", {
+            type: "touchStart",
+            touchPoints: [{ x: from, y }],
+          });
+          for (let j = 1; j <= 8; j++)
+            await cdp.send("Input.dispatchTouchEvent", {
+              type: "touchMove",
+              touchPoints: [{ x: from + ((to - from) * j) / 8, y }],
+            });
+          await cdp.send("Input.dispatchTouchEvent", {
+            type: "touchEnd",
+            touchPoints: [],
+          });
+        } else {
+          await page.mouse.move(from, y);
+          await page.mouse.down();
+          await page.mouse.move(to, y, { steps: 8 });
+          await page.mouse.up();
+        }
+        const actual = await input.evaluate((el: HTMLInputElement) => ({
+          value: Number(el.value),
+          min: Number(el.min),
+          max: Number(el.max),
+          label: el.getAttribute("aria-label"),
+        }));
+        expect(
+          (actual.value - actual.min) / (actual.max - actual.min),
+          `${device} ${id}: ${actual.label}`,
+        ).toBeGreaterThan(0.6);
+      }
+    }
+    await cdp.detach();
+  });
+}
+
+test("simulation direct number entry clamps safely and supports keyboard adjustment", async ({
+  page,
+}) => {
+  await signedIn(page);
+  await page.goto("/foundation-revision/MB2.3");
+  const control = page.locator(".simulation-slider").first();
+  await control.getByText("Type a value", { exact: true }).click();
+  const input = control.getByRole("spinbutton");
+  await input.fill("99999");
+  await control.getByRole("button", { name: "Apply value" }).click();
+  const slider = control.getByRole("slider");
+  const max = await slider.getAttribute("max");
+  await expect(slider).toHaveValue(max!);
+  await slider.focus();
+  await page.keyboard.press("Home");
+  const min = await slider.getAttribute("min");
+  await expect(slider).toHaveValue(min!);
+  await input.fill("");
+  await control.getByRole("button", { name: "Apply value" }).click();
+  await expect(control.getByRole("alert")).toBeVisible();
+});
+
+test("revision AI tutor streams lesson-aware replies saves history and handles service errors", async ({
+  page,
+}) => {
+  await page.route("**/services.json", (r) =>
+    r.fulfill({
+      json: { tutorUrl: "/test-tutor", pushUrl: "", pushPublicKey: "" },
+    }),
+  );
+  let count = 0;
+  await page.route("**/test-tutor", async (r) => {
+    const body = r.request().postDataJSON();
+    expect(body.lessonId).toBe("MB2.3");
+    expect(body.revisionStep).toBe(0);
+    expect(r.request().headers().authorization).toMatch(/^Bearer /);
+    count++;
+    await r.fulfill(
+      count === 1
+        ? {
+            status: 200,
+            headers: {
+              "Content-Type": "text/event-stream",
+              "X-Tutor-Remaining": "49",
+            },
+            body:
+              "data: " +
+              JSON.stringify({
+                text: "Normalize by dividing the normal vector by its length. Check the units.",
+              }) +
+              "\n\n",
+          }
+        : { status: 429, json: { error: "Daily limit" } },
+    );
+  });
+  await signedIn(page);
+  await page.goto("/foundation-revision/MB2.3");
+  await page.getByRole("button", { name: "Ask AI tutor", exact: true }).click();
+  const tutor = page.getByRole("complementary", { name: "AI lesson tutor" });
+  await tutor
+    .getByLabel("Ask about this section")
+    .fill("What is normalization?");
+  await tutor.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(tutor.locator(".assistant")).toContainText(
+    "dividing the normal vector",
+  );
+  await expect(tutor).toContainText("49 requests remaining");
+  await page.reload();
+  await page.getByRole("button", { name: "Ask AI tutor", exact: true }).click();
+  await expect(tutor.locator(".assistant")).toContainText(
+    "dividing the normal vector",
+  );
+  await tutor.getByLabel("Ask about this section").fill("Another question");
+  await tutor.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(tutor.getByRole("alert")).toContainText("Daily tutor limit");
+  await expect(
+    tutor.getByRole("button", { name: "Ask tutor", exact: true }),
+  ).toBeDisabled();
+  await signedIn(page, "separate-tutor-learner");
+  await page.goto("/foundation-revision/MB2.3");
+  await page.getByRole("button", { name: "Ask AI tutor", exact: true }).click();
+  await expect(tutor.locator(".assistant")).toHaveCount(0);
+});
+
+for (const permission of ["granted", "denied"] as const) {
+  test(`background reminders explicit opt-in ${permission}, test and unsubscribe`, async ({
+    page,
+  }) => {
+    await page.addInitScript(
+      ({ permission }) => {
+        (window as any).__notificationRequests = 0;
+        Object.defineProperty(window, "Notification", {
+          configurable: true,
+          value: class {
+            static permission = "default";
+            static async requestPermission() {
+              (window as any).__notificationRequests++;
+              this.permission = permission;
+              return permission;
+            }
+          },
+        });
+        if (!("PushManager" in window)) (window as any).PushManager = class {};
+        let subscribed = false;
+        const data = {
+          endpoint: "https://fcm.googleapis.com/fcm/send/browser-test",
+          keys: { p256dh: "A".repeat(87), auth: "A".repeat(22) },
+        };
+        const subscription = {
+          ...data,
+          toJSON: () => data,
+          unsubscribe: async () => {
+            subscribed = false;
+            return true;
+          },
+        };
+        const registration = {
+          pushManager: {
+            getSubscription: async () => (subscribed ? subscription : null),
+            subscribe: async () => {
+              subscribed = true;
+              return subscription;
+            },
+          },
+          unregister: async () => true,
+        };
+        Object.defineProperty(navigator, "serviceWorker", {
+          configurable: true,
+          value: {
+            register: async () => registration,
+            ready: Promise.resolve(registration),
+            getRegistration: async () => registration,
+            getRegistrations: async () => [],
+            addEventListener: () => {},
+          },
+        });
+      },
+      { permission },
+    );
+    await page.route("**/services.json", (r) =>
+      r.fulfill({
+        json: {
+          tutorUrl: "",
+          pushUrl: "/test-push",
+          pushPublicKey: "A".repeat(87),
+        },
+      }),
+    );
+    const calls: { method: string; path: string; body: any }[] = [];
+    await page.route("**/test-push/**", async (r) => {
+      calls.push({
+        method: r.request().method(),
+        path: new URL(r.request().url()).pathname,
+        body: r.request().postDataJSON(),
+      });
+      await r.fulfill({ json: { updated: true, accepted: true } });
+    });
+    await signedIn(page);
+    await page.goto("/settings");
+    expect(
+      await page.evaluate(() => (window as any).__notificationRequests),
+    ).toBe(0);
+    await page
+      .getByRole("button", { name: "Enable background reminders", exact: true })
+      .click();
+    if (permission === "denied") {
+      await expect(
+        page.getByText("Notification permission was not granted.", {
+          exact: true,
+        }),
+      ).toBeVisible();
+      expect(calls.filter((c) => c.method === "POST")).toHaveLength(0);
+      return;
+    }
+    await expect(
+      page.getByText("Background reminders enabled.", { exact: true }),
+    ).toBeVisible();
+    expect(
+      calls.some(
+        (c) => c.method === "POST" && c.path === "/test-push/subscription",
+      ),
+    ).toBe(true);
+    await page
+      .getByRole("button", { name: "Send a test notification" })
+      .click();
+    await expect(page.getByText(/Test reminder accepted/)).toBeVisible();
+    expect(calls.find((c) => c.path === "/test-push/test")?.body.id).toMatch(
+      /^[a-f0-9]{64}$/,
+    );
+    await page
+      .getByRole("button", {
+        name: "Disable background reminders",
+        exact: true,
+      })
+      .click();
+    await expect(
+      page.getByText("Background reminders disabled for this browser.", {
+        exact: true,
+      }),
+    ).toBeVisible();
+    expect(calls.some((c) => c.method === "DELETE")).toBe(true);
+  });
+}

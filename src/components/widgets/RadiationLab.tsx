@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { radialShift, slabTransfer } from "../../lib/radiation";
@@ -41,9 +42,9 @@ export function RadiationLab() {
             Intensities use shared arbitrary units. These are computed values,
             not measured photons or a global energy budget.
           </p>
-          <label>
+          <div className="simulation-control-label">
             Incident intensity: {incident}
-            <input
+            <SimulationSlider
               aria-label="Incident intensity"
               type="range"
               min="0"
@@ -52,10 +53,10 @@ export function RadiationLab() {
               value={incident}
               onChange={(e) => setIncident(Number(e.target.value))}
             />
-          </label>
-          <label>
+          </div>
+          <div className="simulation-control-label">
             Source function: {source}
-            <input
+            <SimulationSlider
               aria-label="Slab source function"
               type="range"
               min="0"
@@ -64,7 +65,7 @@ export function RadiationLab() {
               value={source}
               onChange={(e) => setSource(Number(e.target.value))}
             />
-          </label>
+          </div>
           <label>
             Optical depth (0–10)
             <input
@@ -187,9 +188,9 @@ export function RadiationLab() {
             model does not convert cosmological redshift into a global recession
             velocity. No line-width or continuum model is implied.
           </p>
-          <label>
+          <div className="simulation-control-label">
             Rest wavelength: {rest} nm
-            <input
+            <SimulationSlider
               aria-label="Rest wavelength"
               type="range"
               min="400"
@@ -198,10 +199,10 @@ export function RadiationLab() {
               value={rest}
               onChange={(e) => setRest(Number(e.target.value))}
             />
-          </label>
-          <label>
+          </div>
+          <div className="simulation-control-label">
             Radial speed β: {beta.toFixed(2)}
-            <input
+            <SimulationSlider
               aria-label="Radial speed beta"
               type="range"
               min="-.8"
@@ -210,7 +211,7 @@ export function RadiationLab() {
               value={beta}
               onChange={(e) => setBeta(Number(e.target.value))}
             />
-          </label>
+          </div>
           <svg
             viewBox="0 0 600 230"
             role="img"

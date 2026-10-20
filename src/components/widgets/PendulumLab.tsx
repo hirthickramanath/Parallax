@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useEffect, useRef, useState } from "react";
 import { pendulumPeriod } from "../../lib/lab-models";
 import { Button } from "../ui/button";
@@ -45,9 +46,9 @@ export function PendulumLab() {
         gravity. No real measurements are being collected.
       </p>
       <div className="lab-controls">
-        <label>
+        <div className="simulation-control-label">
           String length: {length.toFixed(2)} m
-          <input
+          <SimulationSlider
             aria-label="Pendulum length"
             type="range"
             min=".3"
@@ -59,10 +60,10 @@ export function PendulumLab() {
               reset();
             }}
           />
-        </label>
-        <label>
+        </div>
+        <div className="simulation-control-label">
           Release angle: {angle}°
-          <input
+          <SimulationSlider
             aria-label="Release angle"
             type="range"
             min="5"
@@ -74,7 +75,7 @@ export function PendulumLab() {
               reset();
             }}
           />
-        </label>
+        </div>
       </div>
       <svg
         viewBox="0 0 400 260"

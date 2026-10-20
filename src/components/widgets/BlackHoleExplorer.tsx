@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useMemo, useState } from "react";
 import { photonPath } from "../../lib/black-hole";
 export function BlackHoleExplorer() {
@@ -11,9 +12,9 @@ export function BlackHoleExplorer() {
         Drag the launch handle or use the slider. Watch the path bend, escape or
         cross the horizon. Schwarzschild, nonrotating black hole; G = M = c = 1.
       </p>
-      <label>
+      <div className="simulation-control-label">
         Photon impact parameter: {impact.toFixed(2)}
-        <input
+        <SimulationSlider
           aria-label="Photon impact parameter"
           type="range"
           min="3"
@@ -22,7 +23,7 @@ export function BlackHoleExplorer() {
           value={impact}
           onChange={(e) => setImpact(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="-26 -26 52 55"
         aria-label="Interactive black hole light trajectory"

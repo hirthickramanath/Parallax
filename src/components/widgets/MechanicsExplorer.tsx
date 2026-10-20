@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { collision, rolling } from "../../lib/mechanics";
 export function CollisionExplorer() {
@@ -15,9 +16,9 @@ export function CollisionExplorer() {
         velocity handle or use the controls. This is an isolated one-dimensional
         impact with a stationary second cart.
       </p>
-      <label>
+      <div className="simulation-control-label">
         First cart mass (kg)
-        <input
+        <SimulationSlider
           aria-label="Collision first mass"
           type="range"
           min="1"
@@ -26,10 +27,10 @@ export function CollisionExplorer() {
           value={m}
           onChange={(e) => setM(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         First velocity (m/s)
-        <input
+        <SimulationSlider
           aria-label="Collision first velocity"
           type="range"
           min="0"
@@ -38,10 +39,10 @@ export function CollisionExplorer() {
           value={u}
           onChange={(e) => setU(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Restitution
-        <input
+        <SimulationSlider
           aria-label="Collision restitution"
           type="range"
           min="0"
@@ -50,10 +51,10 @@ export function CollisionExplorer() {
           value={e}
           onChange={(e) => setE(Number(e.target.value))}
         />
-      </label>
-      <label>
+      </div>
+      <div className="simulation-control-label">
         Time after impact (s)
-        <input
+        <SimulationSlider
           aria-label="Collision time"
           type="range"
           min="0"
@@ -62,7 +63,7 @@ export function CollisionExplorer() {
           value={time}
           onChange={(e) => setTime(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 400 180"
         aria-label="Drag collision velocity handle"
@@ -164,9 +165,9 @@ export function RollingExplorer() {
           <option value="1">Thin hoop · 1</option>
         </select>
       </label>
-      <label>
+      <div className="simulation-control-label">
         Fraction of ramp travelled
-        <input
+        <SimulationSlider
           aria-label="Ramp travel"
           type="range"
           min="0"
@@ -175,7 +176,7 @@ export function RollingExplorer() {
           value={fraction}
           onChange={(e) => setFraction(Number(e.target.value))}
         />
-      </label>
+      </div>
       <svg
         viewBox="0 0 400 250"
         aria-label="Drag rolling body down the ramp"

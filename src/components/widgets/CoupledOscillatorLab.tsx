@@ -1,3 +1,4 @@
+import { SimulationSlider } from "./SimulationSlider";
 import { useState } from "react";
 import { coupledOscillator } from "../../lib/coupled-oscillator";
 
@@ -60,9 +61,9 @@ export function CoupledOscillatorLab() {
         ))}
       </div>
       {controls.map(([label, value, setter, min, max, step]) => (
-        <label key={label} style={{ display: "block" }}>
+        <div className="simulation-control-label">
           {label}: {value}
-          <input
+          <SimulationSlider
             aria-label={label}
             type="range"
             min={min}
@@ -71,7 +72,7 @@ export function CoupledOscillatorLab() {
             value={value}
             onChange={(e) => setter(Number(e.target.value))}
           />
-        </label>
+        </div>
       ))}
       <svg
         viewBox="0 0 600 180"
