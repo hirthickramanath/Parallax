@@ -85,6 +85,17 @@ export function Settings() {
           Open the 38-chapter revision path →
         </Link>
       </section>
+      <section className="settings-card">
+        <h2>Voluntary learner pilot</h2>
+        <p>
+          Record a before-study check, a check after revision and a delayed
+          follow-up. Your answers stay in this browser until you choose to
+          export them.
+        </p>
+        <Link className="text-button" to="/learner-pilot">
+          Open learner pilot →
+        </Link>
+      </section>
       <RestartJourney />
       <BackgroundReminderSettings />
       <section className="settings-card">

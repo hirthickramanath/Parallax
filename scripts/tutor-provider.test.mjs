@@ -197,6 +197,7 @@ test("provider failures expose only safe actionable categories", async () => {
     ["quota exceeded private-data", "provider_capacity"],
     ["input context too long", "provider_context"],
     ["model not found", "provider_model"],
+    ["This model has been deprecated", "provider_model"],
     ["403 unauthorized", "provider_access"],
     ["Provider deadline exceeded", "provider_timeout"],
     ["some private payload", "provider_unavailable"],
@@ -240,4 +241,13 @@ test("provider diagnostics preserve service codes without logging private except
     reason: "unclassified",
     upstreamCodes: [],
   });
+});
+
+test("production tutor uses an active streaming model rather than the retired base model", async () => {
+  const fs = await import("node:fs");
+  const config = JSON.parse(
+    fs.readFileSync("workers/tutor/wrangler.jsonc", "utf8"),
+  );
+  assert.equal(config.vars.AI_MODEL, "@cf/meta/llama-3.1-8b-instruct-fp8");
+  assert.equal(config.ai.binding, "AI");
 });

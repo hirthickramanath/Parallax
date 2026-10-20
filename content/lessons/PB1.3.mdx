@@ -165,6 +165,17 @@
         "Assume no slip anyway": "The proposed no-slip solution requires a friction force that the surface cannot supply.",
         "Energy is no longer conserved in the entire universe": "The proposed no-slip solution requires a friction force that the surface cannot supply."
       }
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "A uniform solid sphere with I=2mR²/5 rolls without slipping from rest through a drop 1.4 m. Use g=10 m/s². Find its final speed squared in m²/s².",
+      "answer": "20",
+      "unit": "m²/s²",
+      "hint": "Include both translation and rotation, then use omega=v/R.",
+      "explanation": "Energy gives mgh=(7/10)mv², hence v²=(10/7)×10×1.4=20. Ignoring the rotational term would give the wrong point-mass value."
     }
   ],
   "review": [
@@ -192,7 +203,8 @@
   "status": "draft",
   "book_refs": [
     "Taylor, Classical Mechanics — edition/section review pending",
-    "OpenStax University Physics Volume 1 — chapter reference review pending"
+    "OpenStax University Physics Volume 1 — chapter reference review pending",
+    "https://github.com/openstax/osbooks-university-physics-bundle/blob/2300d5b8ca2571dacc6ec25ebef56ba8d49000a2/modules/m58335/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -273,6 +285,16 @@ Compare an ideal disk and hoop released through the same height. Predict which a
 <LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
 
 For a uniform disk descending h=1 m at g=9.81 m/s², v=√(4gh/3)≈3.62 m/s. The corresponding hoop reaches √(gh)≈3.13 m/s. The disk has less rotational inertia relative to MR².
+
+
+
+### Worked investigation: Rolling without hiding rotational energy
+
+A solid uniform sphere rolls down a vertical drop h without slipping, starting at rest. With I=2mR²/5 and omega=v/R, mgh=mv²/2+I*omega²/2=7mv²/10, so v²=10gh/7. With h=1.4 m and g=10 m/s², v²=20 m²/s². A sliding frictionless point mass would have v²=28 instead.
+
+For an ideal rigid sphere on a fixed surface, static friction enforces rolling and does no work at the instantaneous contact point. Energy remains mechanical under these assumptions; rolling resistance and deformation change the budget. Enough static friction must be available, so the no-slip condition cannot be asserted on every slope.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

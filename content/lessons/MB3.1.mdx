@@ -140,6 +140,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Define f(x)=(x²-4)/(x-2) for x≠2 and f(2)=7. Find the limit as x tends to 2.",
+      "answer": "4",
+      "unit": "dimensionless",
+      "hint": "The limit uses nearby points, not the assigned value at the point.",
+      "explanation": "For every nearby x≠2 the quotient equals x+2, tending to 4. The separately assigned value 7 makes f discontinuous but cannot change this limit."
     }
   ],
   "review": [
@@ -167,7 +178,8 @@
   "status": "draft",
   "book_refs": [
     "Spivak, Calculus — exact edition/section review pending",
-    "OpenStax Calculus Volume 1 — chapter reference review pending"
+    "OpenStax Calculus Volume 1 — chapter reference review pending",
+    "https://github.com/openstax/osbooks-calculus-bundle/blob/520f373e48042a878374ccb3ea757937a28a03b6/modules/m53491/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -244,6 +256,16 @@ In your notebook, tabulate (x²−1)/(x−1) at x = 0.9, 0.99, 1.01, and 1.1. Re
 <LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
 
 For f(x) = 3x + 2 near a = 4, the proposed limit is 14. To ensure output error below 0.03, take δ = 0.01. If 0 < |x−4| < 0.01, then |f(x)−14| = 3|x−4| < 0.03. The strict inequality matters.
+
+
+
+### Worked investigation: A removable discontinuity versus a missing limit
+
+For x≠2, (x²-4)/(x-2)=x+2, so the limit at x=2 is 4. The original expression is undefined at 2; cancellation proves the nearby limit, not a value there. Defining f(2)=4 creates a continuous extension, while defining f(2)=7 leaves the same limit but a discontinuity.
+
+By contrast |x|/x approaches -1 from the left and +1 from the right at zero, so no two-sided limit exists. To justify the first limit quantitatively, |(x+2)-4|=|x-2|; choose delta=epsilon with 0&lt;|x-2|&lt;delta. A graph or a few decimal samples can suggest this argument but cannot replace its quantifiers.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

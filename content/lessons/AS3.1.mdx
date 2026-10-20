@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "An ideal virialized uniform sphere initially has W=-120 J. It contracts to half its radius at fixed mass and re-equilibrates with negligible surface pressure. How much energy is radiated, in J?",
+      "answer": "60",
+      "unit": "J",
+      "hint": "Use W proportional to -1/R and E=W/2; radiated energy is initial E minus final E.",
+      "explanation": "The final E is -120 J and initial E is -60 J. The system loses 60 J even though its thermal energy increases by 60 J."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59887/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Construct a uniform-density Newtonian sphere and integrate its pressure gradient
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 For an ideal virialized configuration with W=−20 in energy units, U=10 and total E=−10. If it loses total energy 2 and re-equilibrates in the same regime, E=−12 and U=12. The heating follows a changed gravitational configuration, not energy creation.
+
+
+
+### Worked investigation: A contracting ideal star
+
+For a uniform-density sphere of mass M and radius R, a shell contributes dW=-Gm(r)dm/r. With m(r)=M(r/R)^3 and dm=3Mr²dr/R³, integration gives W=-3GM²/(5R). In the isolated, nonrotating, monatomic ideal-gas regime with negligible surface pressure, 2U+W=0 and E=W/2. If R halves at fixed M and the star re-equilibrates, W, U and the magnitude of E double. The extra thermal energy comes from gravitational contraction; half the released gravitational energy is radiated.
+
+For initial W=-120 J, U=60 J and E=-60 J. At half radius these are -240 J, 120 J and -120 J, so the radiated energy is 60 J. These tiny numbers are an energy-bookkeeping model, not a realistic stellar energy scale. Radiation pressure, degeneracy, mass loss and rapid collapse can invalidate the ideal relation.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

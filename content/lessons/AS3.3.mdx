@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Assume fusion releases 0.007 of participating rest mass, c=3.0e8 m/s and luminosity 6.3e26 W. Ignoring neutrino losses, find the consumed fuel mass rate in kg/s.",
+      "answer": "1000000000000",
+      "unit": "kg/s",
+      "hint": "Divide power by the energy released per kilogram, 0.007c².",
+      "explanation": "The denominator is 6.3e14 J/kg, giving 1e12 kg/s. L/c² instead measures the mass equivalent of the emitted energy, a different quantity."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59886/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Compute pair counts for identical versus distinct populations before evaluating 
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 If identical reactants have n=4 and ⟨σv⟩=2 in consistent units, the rate density is 16. A local T⁴ fit predicts a factor 16 after doubling T only if both temperatures remain inside that fit regime.
+
+
+
+### Worked investigation: Energy generation versus mass consumption
+
+The net conversion of hydrogen into helium releases approximately 0.007 of the participating rest mass as energy; neutrino losses reduce what heats the star. With the pedagogical approximation c=3.0×10^8 m/s, a luminosity 6.3×10^26 W supplied entirely by this conversion requires participating mass rate L/(0.007c²)=10^12 kg/s. That is consumed hydrogen, not the mass-equivalent loss L/c²=7×10^9 kg/s.
+
+A fuel lifetime estimate eta*f*M*c²/L also requires a specified accessible fuel fraction f and assumes roughly steady L. It is not the age of every star: mixing, composition and a changing luminosity matter. Reaction-rate temperature sensitivity and the available reaction chain are separate from the mass-energy budget.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

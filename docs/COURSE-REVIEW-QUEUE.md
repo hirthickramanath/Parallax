@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 195 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 197 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -22,22 +22,22 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS2.5 Telescopes and detectors | 9 / 9 | 4 | 3 | astro_AS2.5 |
 | AS2.6 Photometry and spectroscopy | 9 / 9 | 4 | 3 | astro_AS2.6 |
 | AS2.7 Multi-messenger astronomy | 9 / 9 | 4 | 3 | astro_AS2.7 |
-| AS3.1 Hydrostatic equilibrium and the virial theorem | 9 / 9 | 4 | 3 | astro_AS3.1 |
-| AS3.2 Equations of state (ideal, degenerate, radiation) | 9 / 9 | 4 | 3 | astro_AS3.2 |
-| AS3.3 Nuclear reactions and energy generation | 9 / 9 | 4 | 3 | astro_AS3.3 |
-| AS3.4 Opacity and radiative transport | 9 / 9 | 4 | 3 | astro_AS3.4 |
+| AS3.1 Hydrostatic equilibrium and the virial theorem | 10 / 10 | 5 | 4 | astro_AS3.1 |
+| AS3.2 Equations of state (ideal, degenerate, radiation) | 10 / 10 | 5 | 4 | astro_AS3.2 |
+| AS3.3 Nuclear reactions and energy generation | 10 / 10 | 5 | 4 | astro_AS3.3 |
+| AS3.4 Opacity and radiative transport | 10 / 10 | 5 | 4 | astro_AS3.4 |
 | AS3.5 Convection and mixing-length theory | 9 / 9 | 4 | 3 | astro_AS3.5 |
 | AS3.6 Structure equations and polytropes | 9 / 9 | 4 | 3 | astro_AS3.6 |
 | AS3.7 Stellar atmospheres and spectra | 9 / 9 | 4 | 3 | astro_AS3.7 |
-| AS4.1 Star formation and the Jeans mass | 9 / 9 | 4 | 3 | astro_AS4.1 |
-| AS4.2 Main sequence and the HR diagram | 9 / 9 | 4 | 3 | astro_AS4.2 |
+| AS4.1 Star formation and the Jeans mass | 10 / 10 | 5 | 4 | astro_AS4.1 |
+| AS4.2 Main sequence and the HR diagram | 10 / 10 | 5 | 4 | astro_AS4.2 |
 | AS4.3 Giants, AGB stars and mass loss | 9 / 9 | 4 | 3 | astro_AS4.3 |
 | AS4.4 Variable stars and asteroseismology | 9 / 9 | 4 | 3 | astro_AS4.4 |
-| AS4.5 Supernovae and nucleosynthesis | 9 / 9 | 4 | 3 | astro_AS4.5 |
-| AS4.6 White dwarfs, neutron stars and pulsars | 9 / 9 | 4 | 3 | astro_AS4.6 |
+| AS4.5 Supernovae and nucleosynthesis | 10 / 10 | 5 | 4 | astro_AS4.5 |
+| AS4.6 White dwarfs, neutron stars and pulsars | 10 / 10 | 5 | 4 | astro_AS4.6 |
 | AS4.7 Binaries and mass transfer | 9 / 9 | 4 | 3 | astro_AS4.7 |
-| AS5.1 Accretion discs | 9 / 9 | 4 | 3 | astro_AS5.1 |
-| AS5.2 Jets and relativistic beaming | 9 / 9 | 4 | 3 | astro_AS5.2 |
+| AS5.1 Accretion discs | 10 / 10 | 5 | 4 | astro_AS5.1 |
+| AS5.2 Jets and relativistic beaming | 10 / 10 | 5 | 4 | astro_AS5.2 |
 | AS5.3 X-ray binaries and gamma-ray bursts | 9 / 9 | 4 | 3 | astro_AS5.3 |
 | AS5.4 Cosmic rays and particle acceleration | 9 / 9 | 4 | 3 | astro_AS5.4 |
 | AS5.5 Gravitational-wave astronomy | 9 / 9 | 4 | 3 | astro_AS5.5 |
@@ -54,13 +54,13 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS7.5 Habitability and biosignatures | 9 / 9 | 4 | 3 | astro_AS7.5 |
 | AS8.1 Milky Way structure | 9 / 9 | 4 | 3 | astro_AS8.1 |
 | AS8.2 Stellar dynamics (Jeans equations, relaxation) | 9 / 9 | 4 | 3 | astro_AS8.2 |
-| AS8.3 Rotation curves and dark matter | 9 / 9 | 4 | 3 | astro_AS8.3 |
+| AS8.3 Rotation curves and dark matter | 10 / 10 | 5 | 4 | astro_AS8.3 |
 | AS8.4 Galaxy morphology and scaling relations | 9 / 9 | 4 | 3 | astro_AS8.4 |
 | AS8.5 Galaxy formation and mergers | 9 / 9 | 4 | 3 | astro_AS8.5 |
 | AS8.6 Clusters and gravitational lensing | 9 / 9 | 4 | 3 | astro_AS8.6 |
 | AS8.7 AGN and black-hole co-evolution | 9 / 9 | 4 | 3 | astro_AS8.7 |
 | AS9.1 Hubble's law and the distance ladder | 10 / 10 | 5 | 4 | astro_AS9.1 |
-| AS9.2 FLRW metric and Friedmann equations | 9 / 9 | 4 | 3 | astro_AS9.2 |
+| AS9.2 FLRW metric and Friedmann equations | 10 / 10 | 5 | 4 | astro_AS9.2 |
 | AS9.3 Thermal history and nucleosynthesis | 9 / 9 | 4 | 3 | astro_AS9.3 |
 | AS9.4 CMB physics and anisotropies | 9 / 9 | 4 | 3 | astro_AS9.4 |
 | AS9.5 Structure formation and perturbation theory | 9 / 9 | 4 | 3 | astro_AS9.5 |
@@ -214,28 +214,28 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MB2.1 Trig identities and equations | 10 / 10 | 5 | 6 | foundation_next_MB2.1 |
 | MB2.2 Conic sections | 12 / 12 | 8 | 8 | conic_explorer |
 | MB2.3 3D geometry and vectors | 12 / 12 | 8 | 8 | plane_distance_explorer |
-| MB3.1 Limits and continuity | 11 / 11 | 6 | 5 | limit_band_explorer |
-| MB3.2 Differentiation | 11 / 11 | 6 | 5 | secant_explorer |
-| MB3.3 Integration techniques | 11 / 11 | 6 | 5 | signed_area_explorer |
+| MB3.1 Limits and continuity | 12 / 12 | 7 | 6 | limit_band_explorer |
+| MB3.2 Differentiation | 12 / 12 | 7 | 6 | secant_explorer |
+| MB3.3 Integration techniques | 12 / 12 | 7 | 6 | signed_area_explorer |
 | MB3.4 Applications: areas, extrema and rates | 11 / 11 | 7 | 5 | signed_area_explorer |
-| MB3.5 Basic ordinary differential equations | 11 / 11 | 6 | 5 | ode_accuracy_explorer |
+| MB3.5 Basic ordinary differential equations | 12 / 12 | 7 | 6 | ode_accuracy_explorer |
 | MB4.1 Matrices and determinants | 10 / 10 | 5 | 6 | foundation_next_MB4.1 |
 | MB4.2 Vector algebra | 10 / 10 | 5 | 6 | foundation_next_MB4.2 |
 | MB4.3 Probability and conditional probability | 10 / 10 | 5 | 6 | foundation_next_MB4.3, bayes_explorer |
 | MB4.4 Distributions and expectation | 10 / 10 | 5 | 6 | foundation_next_MB4.4 |
 | PB1.1 Kinematics and Newton’s laws | 13 / 13 | 7 | 8 | falling_bodies |
 | PB1.2 Work, energy and momentum | 13 / 13 | 9 | 8 | collision_explorer |
-| PB1.3 Rotation and rolling | 13 / 13 | 8 | 8 | rolling_explorer |
+| PB1.3 Rotation and rolling | 14 / 14 | 9 | 9 | rolling_explorer |
 | PB1.4 Gravitation and SHM | 13 / 13 | 8 | 7 | pendulum_lab |
 | PB2.1 Fluid mechanics | 12 / 12 | 8 | 8 | hydrostatic_explorer |
 | PB2.2 Thermodynamics | 12 / 12 | 8 | 8 | gas_lab, thermal_path_explorer |
 | PB2.3 Kinetic theory | 10 / 10 | 5 | 6 | foundation_next_PB2.3 |
 | PB3.1 Waves and sound | 10 / 10 | 5 | 6 | foundation_next_PB3.1, wave_lab |
-| PB3.2 Geometric optics | 10 / 10 | 5 | 6 | foundation_next_PB3.2, thin_lens_explorer |
+| PB3.2 Geometric optics | 11 / 11 | 6 | 7 | foundation_next_PB3.2, thin_lens_explorer |
 | PB3.3 Wave optics | 10 / 10 | 5 | 6 | foundation_next_PB3.3, double_slit_lab |
-| PB4.1 Electrostatics | 10 / 10 | 5 | 6 | foundation_next_PB4.1 |
+| PB4.1 Electrostatics | 11 / 11 | 6 | 7 | foundation_next_PB4.1 |
 | PB4.2 Current electricity | 11 / 11 | 7 | 5 | circuit_lab |
-| PB4.3 Magnetism and induction | 10 / 10 | 5 | 6 | foundation_next_PB4.3, induction_explorer |
+| PB4.3 Magnetism and induction | 11 / 11 | 6 | 7 | foundation_next_PB4.3, induction_explorer |
 | PB4.4 AC and EM waves | 10 / 10 | 5 | 6 | foundation_next_PB4.4 |
 | PB5.1 Photoelectric effect and Bohr model | 10 / 10 | 5 | 6 | foundation_next_PB5.1 |
 | PB5.2 Nuclei and radioactivity | 10 / 10 | 5 | 6 | foundation_next_PB5.2 |

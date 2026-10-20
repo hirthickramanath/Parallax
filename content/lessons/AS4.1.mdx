@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "For fixed composition M_J scales as T^(3/2)/sqrt(rho). Temperature rises by a factor 4 and density by a factor 16. Find final Jeans mass divided by initial Jeans mass.",
+      "answer": "2",
+      "unit": "dimensionless",
+      "hint": "Track temperature and density factors separately before combining.",
+      "explanation": "The temperature factor is 8 and density factor is 1/4, giving 2. The toy threshold increases despite the higher density; this alone does not establish whether a real cloud collapses."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59923/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Plot the ideal dispersion relation and separate oscillatory and growing modes. C
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 In normalized dispersion units with c_s²k²=3 and 4πGρ=7, ω²=−4, giving an ideal exponential growth rate 2. At fixed sound speed, quadrupling density halves the Jeans mass scaling.
+
+
+
+### Worked investigation: A Jeans-scale sensitivity test
+
+A pressure-restored perturbation has a sound-crossing time of order lambda/c_s, while self-gravity acts on a time of order 1/sqrt(G*rho). Equating scales suggests lambda_J proportional to c_s/sqrt(G*rho) and M_J proportional to c_s³/(G^(3/2)*sqrt(rho)). For an isothermal ideal gas at fixed composition, c_s is proportional to sqrt(T), so M_J scales as T^(3/2)*rho^(-1/2).
+
+If T increases by four and density by sixteen, the Jeans mass changes by 4^(3/2)/sqrt(16)=2. Increased density alone would lower the threshold, but heating can reverse that tendency. This is a linear, uniform-medium diagnostic; turbulence, magnetic fields, boundaries, rotation and cooling require more than one critical number. Numerical prefactors depend on the defined geometry and wavelength convention.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

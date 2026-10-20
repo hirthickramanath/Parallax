@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "An emitter approaches directly at beta=0.6. With gamma=1.25 and delta=1/[gamma(1-beta)], find the Doppler factor.",
+      "answer": "2",
+      "unit": "dimensionless",
+      "hint": "Multiply gamma by 1-beta in the denominator before taking the reciprocal.",
+      "explanation": "The denominator is 1.25×0.4=0.5, so delta=2. A frequency increase from beaming is not evidence that the source itself moves faster than light."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Frank, King and Raine, Accretion Power in Astrophysics — edition and exact section verification pending",
-    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending"
+    "Rybicki and Lightman, Radiative Processes in Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59965/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Plot Doppler factor versus angle at fixed subluminal speed. Separately calculate
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 For β=.6, γ=1.25 and θ=0, δ=1/[1.25(.4)]=2. At θ=90°, δ=.8. A local frequency of 3 is therefore observed at 6 in the approaching axial example before cosmological redshift.
+
+
+
+### Worked investigation: Beaming changes observed frequency
+
+For an emitting element moving with speed beta*c at angle theta to the line of sight, delta=1/[gamma*(1-beta*cos(theta))], gamma=1/sqrt(1-beta²). For beta=0.6, gamma=1.25. Directly approaching motion gives delta=2, transverse motion delta=0.8 and directly receding motion delta=0.5. Even transverse emission has a relativistic frequency shift.
+
+Ignoring cosmological and gravitational shifts, nu_obs=delta*nu_em in this convention. Flux boosting depends on geometry, spectrum and whether the source is a moving blob or a continuous jet; there is no single exponent for every observation. Apparent superluminal transverse motion is a light-travel-time effect and does not require matter to exceed c.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

@@ -130,6 +130,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "A fixed loop has outward positive normal, area 0.020 m² and R=2 ohm. An inward field grows at 3 T/s. Neglect inductance. Find signed current, positive counterclockwise, in A.",
+      "answer": "0.03",
+      "unit": "A",
+      "hint": "The signed flux derivative is negative; apply emf=-dPhi/dt before Ohm law.",
+      "explanation": "dPhi/dt=-0.060 Wb/s, hence emf=+0.060 V and I=+0.030 A. The positive circulation produces an outward induced field opposing the inward flux increase."
     }
   ],
   "review": [
@@ -156,7 +167,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "OpenStax University Physics — volume, topic and section verification pending"
+    "OpenStax University Physics — volume, topic and section verification pending",
+    "https://github.com/openstax/osbooks-university-physics-bundle/blob/2300d5b8ca2571dacc6ec25ebef56ba8d49000a2/modules/m58476/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -235,6 +247,16 @@ Move a bar magnet relative to a closed coil connected to a suitable classroom ga
 <LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
 
 A nonrelativistic particle with mass 2×10⁻⁶ kg, charge 10⁻³ C and perpendicular speed 3 m/s in B=2 T has radius 0.003 m. The magnetic force changes direction, while kinetic energy stays constant in this ideal field.
+
+
+
+### Worked investigation: Lenz law with a fixed orientation
+
+Choose a circular loop normal pointing out of the page and positive current counterclockwise by the right-hand rule. An inward uniform magnetic field has B_n&lt;0. If its inward magnitude rises at 3 T/s through fixed area 0.020 m², dPhi/dt=-0.060 Wb/s, so emf=-dPhi/dt=+0.060 V. In a resistive loop with R=2 ohm and negligible self-inductance, positive current is 0.030 A, counterclockwise.
+
+The induced field opposes the increase of inward flux; it does not necessarily oppose the original field in every process. Reversing the selected normal reverses the signed emf and current coordinate while leaving the physical circulation unchanged. A moving or deforming circuit requires the flux rule with its motion and orientation handled consistently.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

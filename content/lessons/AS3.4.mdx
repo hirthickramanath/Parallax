@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "A constant opacity is 0.20 m²/kg and the ray crosses a mass column of 15 kg/m². Find the optical depth.",
+      "answer": "3",
+      "unit": "dimensionless",
+      "hint": "Multiply opacity by mass column; the area and mass units cancel.",
+      "explanation": "tau=0.20×15=3. Optical depth is dimensionless. The direct beam fraction is exp(-3), not 1-3; the latter linearization only works for small tau."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59887/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Use synthetic random walks with a stated step model to compare straight crossing
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 For κρ=4 in inverse-length units, the local mean free path is .25. With R=2 and c=1, the rough random-walk escape scale R²/(cℓ)=16, compared with crossing time 2. Numerical factors depend on the geometry and transport definition.
+
+
+
+### Worked investigation: Optical depth is a column integral
+
+For constant opacity kappa, optical depth along a ray is tau=integral(kappa*rho*ds)=kappa*Sigma, where Sigma is mass per area. If kappa=0.20 m²/kg and Sigma=15 kg/m², tau=3 and an unscattered direct beam is reduced by exp(-3), about 0.050. Absorbed energy need not vanish: material may emit again, and scattering can redirect photons into other rays.
+
+In an optically thick, nearly isotropic local-thermal-equilibrium radiation field, diffusion gives F_rad=-(4*a_rad*c*T³)/(3*kappa*rho) dT/dr. For fixed density, temperature and gradient, doubling opacity halves the diffusive flux. The approximation fails in optically thin regions; direct attenuation and the total emerging flux are different observables.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

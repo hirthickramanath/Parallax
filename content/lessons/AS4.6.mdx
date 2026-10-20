@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Using Newtonian gravity with G=6.67e-11 SI, M=2e30 kg and R=1e7 m, find surface gravity in m/s².",
+      "answer": "1334000",
+      "unit": "m/s²",
+      "hint": "Square the radius before dividing GM by it.",
+      "explanation": "GM=1.334e20 m³/s² and R²=1e14 m², giving 1.334e6 m/s². For more compact objects this estimate must be checked against relativistic corrections."
     }
   ],
   "review": [
@@ -141,7 +152,9 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59932/index.cnxml",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59935/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +224,16 @@ Compare labelled cold white-dwarf scaling curves with a hypothetical finite-temp
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 In the nonrelativistic white-dwarf scaling, increasing mass by eight reduces radius by two. A pulsar with P=2 and Ṗ=.01 in consistent units has characteristic age 100 under the stated formula, not an independently measured true age.
+
+
+
+### Worked investigation: A compact object surface scale
+
+Newtonian surface gravity is g=GM/R². For G=6.67×10^-11 SI, M=2×10^30 kg and R=10^7 m, g=1.334×10^6 m/s². Reducing R by a factor ten at fixed M increases this estimate one hundredfold. Compactness GM/(Rc²), not gravity alone, indicates when Newtonian reasoning is suspect.
+
+For cold nonrelativistic electron degeneracy, hydrostatic scaling gives R proportional to M^(-1/3) for fixed composition. Extrapolating this indefinitely is wrong: relativistic electrons change the pressure-density exponent and introduce a limiting mass scale. Neutron stars need a nuclear equation of state and relativistic structure; a white-dwarf mass-radius law is not a neutron-star law.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

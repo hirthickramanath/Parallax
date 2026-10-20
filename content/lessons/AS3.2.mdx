@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "At fixed composition, radiation-to-gas pressure is initially 0.10. Temperature and density both double while the gas remains classical and radiation remains thermalized. Find the new pressure ratio.",
+      "answer": "0.4",
+      "unit": "dimensionless",
+      "hint": "The ratio scales as T³/rho, so multiply by 2³/2.",
+      "explanation": "The factor is four, hence the ratio is 0.40. Applying the T^4 radiation scaling alone would miss the changing gas pressure."
     }
   ],
   "review": [
@@ -141,7 +152,9 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-university-physics-bundle/blob/2300d5b8ca2571dacc6ec25ebef56ba8d49000a2/modules/m58391/index.cnxml",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59932/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +224,16 @@ Compare log pressure versus log density for fixed-temperature ideal gas and the 
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 In normalized units k_B/m_u=1, ρ=6,T=4 and μ=2 give gas pressure 12. If a=3 at T=2, radiation pressure is aT⁴/3=16. These are separate example states, not one combined pressure at inconsistent temperatures.
+
+
+
+### Worked investigation: When radiation pressure becomes important
+
+Compare P_gas=rho*k_B*T/(mu*m_u) with P_rad=a_rad*T^4/3. Their ratio is a_rad*mu*m_u*T³/(3*rho*k_B): at fixed composition it grows as T³/rho, rather than merely with temperature. If the initial ratio is 0.10, doubling T at fixed density makes it 0.80. Doubling both T and rho makes it 0.40. This comparison assumes local thermal equilibrium and a classical nondegenerate gas.
+
+Nonrelativistic electron degeneracy gives P proportional to rho^(5/3) at fixed composition, while the ultrarelativistic limit gives rho^(4/3). Neither is obtained by setting an ideal-gas temperature to zero. A real equation of state must connect regimes and include composition and interactions.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

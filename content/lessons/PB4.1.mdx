@@ -130,6 +130,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Charges +q at x=-3 m and -q at x=+3 m have kq=9 N*m²/C. Find the x-component of electric field at the origin in N/C.",
+      "answer": "2",
+      "unit": "N/C",
+      "hint": "Each field has magnitude kq/a² and points toward positive x at the midpoint.",
+      "explanation": "Each charge contributes +1 N/C along x, so the total is +2 N/C. The two potentials cancel but the two fields reinforce."
     }
   ],
   "review": [
@@ -156,7 +167,8 @@
   ],
   "status": "draft",
   "book_refs": [
-    "OpenStax University Physics — volume, topic and section verification pending"
+    "OpenStax University Physics — volume, topic and section verification pending",
+    "https://github.com/openstax/osbooks-university-physics-bundle/blob/2300d5b8ca2571dacc6ec25ebef56ba8d49000a2/modules/m58431/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -233,6 +245,16 @@ Draw field and equipotential maps for two point charges using vector addition at
 <LessonSection id="worked" title="A worked example" layer="worked" fullOnly>
 
 Between plates at separation 0.01 m and potential difference 100 V, the ideal field magnitude is 10,000 V/m. A +2 μC charge experiences 0.02 N. Its potential-energy change across a +100 V rise is +2×10⁻⁴ J, while field work is the negative of that change.
+
+
+
+### Worked investigation: Potential zero does not imply field zero
+
+Put +q at x=-a and -q at x=+a. The electric potential at the midpoint is kq/a-kq/a=0 relative to infinity. The fields both point from the positive charge toward the negative one, so E_x=2kq/a² there, not zero. Potential is a scalar superposition; field is a vector and also equals minus the spatial gradient of potential.
+
+For kq=9 N*m²/C and a=3 m, E_x=2 N/C. A single zero value of a function cannot determine its derivative. The reference chosen for potential changes all potential values by a constant while leaving the field unchanged; absolute potential zero is therefore not a force criterion.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

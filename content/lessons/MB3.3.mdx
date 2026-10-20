@@ -140,6 +140,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Velocity is v(t)=2t-2 m/s from t=0 to t=2 s. Find the total distance travelled in m.",
+      "answer": "2",
+      "unit": "m",
+      "hint": "Split the integral of |v| at t=1 s, where velocity reverses.",
+      "explanation": "The negative-velocity interval contributes distance 1 m and the positive interval another 1 m. Signed displacement is zero, but total distance is 2 m."
     }
   ],
   "review": [
@@ -167,7 +178,8 @@
   "status": "draft",
   "book_refs": [
     "Spivak, Calculus — exact edition/section review pending",
-    "OpenStax Calculus Volume 1 — chapter reference review pending"
+    "OpenStax Calculus Volume 1 — chapter reference review pending",
+    "https://github.com/openstax/osbooks-calculus-bundle/blob/520f373e48042a878374ccb3ea757937a28a03b6/modules/m53633/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -250,6 +262,16 @@ Approximate the integral of x² from 0 to 1 using n equal-width rectangles with 
 <LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
 
 For ∫₀¹2x cos(x²) dx, set u = x² so du = 2x dx and bounds remain 0 to 1. The integral becomes ∫₀¹cos u du = sin 1. The angle is in radians. Differentiating sin(x²) returns the original integrand.
+
+
+
+### Worked investigation: Signed integral versus travelled distance
+
+A one-dimensional velocity v(t)=2t-2 m/s on 0≤t≤2 s changes sign at t=1 s. Its signed displacement is the integral [t²-2t]_0^2=0. The travelled distance is integral |v| dt: each of the two triangular speed-time regions has area 1 m, giving 2 m. Cancellation in displacement is physical direction information, not a missing path.
+
+Split at every sign change before removing an absolute value. An antiderivative determines a signed accumulation; the quantity being accumulated decides whether absolute values are required. The average velocity is zero while average speed is 1 m/s, so these two averages answer different questions.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

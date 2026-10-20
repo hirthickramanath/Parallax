@@ -167,7 +167,7 @@ export function providerFailure(cause: unknown) {
         "The AI service could not fit this conversation. Try a shorter question or another lesson.",
     };
   if (
-    /model.*not found|unknown model|model.*unavailable|model.*not available/i.test(
+    /model.*not found|unknown model|model.*unavailable|model.*not available|deprecated|retired/i.test(
       message,
     )
   )

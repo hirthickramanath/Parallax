@@ -140,6 +140,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "y satisfies y_prime=-ln(2)*(y-3) with time in seconds and y(0)=11. Find y(2).",
+      "answer": "5",
+      "unit": "same units as y",
+      "hint": "The deviation y-3 starts at 8 and halves each second.",
+      "explanation": "After two seconds the deviation is 8/4=2, so y=3+2=5. Halving the total y instead of its excess would violate the nonzero equilibrium."
     }
   ],
   "review": [
@@ -167,7 +178,8 @@
   "status": "draft",
   "book_refs": [
     "Spivak, Calculus — exact edition/section review pending",
-    "OpenStax Calculus Volume 1 — chapter reference review pending"
+    "OpenStax Calculus Volume 1 — chapter reference review pending",
+    "https://github.com/openstax/osbooks-calculus-bundle/blob/520f373e48042a878374ccb3ea757937a28a03b6/modules/m53651/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -242,6 +254,16 @@ For y′ = −y with y(0)=1, compute Euler steps with Δt = 1 and Δt = 0.5, the
 <LessonSection id="worked" title="Work through an example" layer="worked" fullOnly>
 
 If a cooling model has T′ = −0.1(T−20) in °C per minute and T(0)=80°C, then $T(t)=20+60e^{-0.1t}$. At t=10 min, T≈42.1°C. The model assumes a fixed ambient temperature and a rate proportional to the temperature difference.
+
+
+
+### Worked investigation: Relaxation and a stability check
+
+For y'=-k(y-y_eq) with k>0 and constant equilibrium, write z=y-y_eq. Separation gives z(t)=z(0)exp(-kt), so perturbations decay without a finite-time crossing. If y_eq=3, y(0)=11 and k=ln(2) per second, then y(1)=7 and y(2)=5. The excess halves each second; the whole value y does not halve.
+
+The limiting value is 3, consistent with setting y'=0. Units require k to be inverse time. If k were negative the same formula would amplify perturbations, and the equilibrium would be unstable. A real cooling or population model may lose this constant-coefficient form when its environment or response coefficient changes.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

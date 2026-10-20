@@ -2,6 +2,7 @@
 export function normalizeStream(
   provider: ReadableStream<Uint8Array>,
   timeoutMs = 45000,
+  onComplete?: (characters: number) => void,
 ) {
   const encoder = new TextEncoder(),
     reader = provider.getReader();
@@ -56,6 +57,7 @@ export function normalizeStream(
           }
         }
         if (buffer.trim()) line(buffer);
+        if (!timedOut && !cancelled && total > 0) onComplete?.(total);
         if (timedOut && !cancelled)
           controller.enqueue(
             encoder.encode(

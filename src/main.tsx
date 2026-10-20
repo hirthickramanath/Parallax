@@ -43,6 +43,9 @@ const Revise = lazy(() =>
 const Stats = lazy(() =>
   import("./pages/Stats").then((m) => ({ default: m.Stats })),
 );
+const LearnerPilot = lazy(() =>
+  import("./pages/LearnerPilot").then((m) => ({ default: m.LearnerPilot })),
+);
 const Settings = lazy(() =>
   import("./pages/Settings").then((m) => ({ default: m.Settings })),
 );
@@ -122,6 +125,7 @@ function App() {
           <Route path="/stats" element={<Stats />} />
           <Route path="/author" element={<Author />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/learner-pilot" element={<LearnerPilot />} />
           <Route path="/plan" element={<WeeklyPlan />} />
           <Route path="/revision-plan" element={<RevisionPlan />} />
           <Route path="/foundation-revision" element={<FoundationRevision />} />

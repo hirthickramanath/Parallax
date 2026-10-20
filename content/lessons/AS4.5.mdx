@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "For a toy shell of mass 2e30 kg expanding at 1e7 m/s, find its nonrelativistic kinetic energy in J.",
+      "answer": "1e+44",
+      "unit": "J",
+      "hint": "Use E=Mv²/2, keeping powers of ten separate.",
+      "explanation": "One half times 2e30 times 1e14 gives 1e44 J. This single-speed estimate omits the real velocity distribution and any energy already radiated or transferred to swept-up gas."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59934/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Compute a labelled single-decay model and compare full trapping with a supplied 
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 After one half-life a single radioactive population has half its nuclei; after three it has one eighth. If initial count is 80, the remaining count after three half-lives is 10. This does not automatically make bolometric luminosity proportional to the remaining count if trapping changes.
+
+
+
+### Worked investigation: An expanding supernova shell
+
+For a nonrelativistic shell approximated by one speed, E_k=M*v²/2. With M=2×10^30 kg and v=10^7 m/s, E_k=10^44 J. At the same kinetic energy, doubling the ejected mass changes v by 1/sqrt(2), rather than by one half. The estimate is a bulk energy scale: real ejecta have a velocity distribution, swept-up material and radiative losses.
+
+The light curve does not directly equal the original kinetic-energy history. Radioactive deposition, photon diffusion and interaction with surrounding gas can contribute at different times. A remnant measurement of radius and expansion speed is not a universal clock when the blast has decelerated. Distinguish a measured observable from the explosion-model inference.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

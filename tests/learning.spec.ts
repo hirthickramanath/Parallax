@@ -2711,3 +2711,34 @@ test("revision transfer challenges add depth without blocking completed core che
     "Cloudflare AI access needs attention",
   );
 });
+
+for (const mobile of [false, true]) {
+  test(`voluntary learner pilot keeps real answers and gates follow-up ${mobile ? "mobile" : "desktop"}`, async ({ page }) => {
+    if (mobile) await page.setViewportSize({ width: 390, height: 844 });
+    await signedIn(page);
+    await page.goto("/settings");
+    await page.getByRole("link", { name: "Open learner pilot" }).click();
+    await expect(page.getByRole("button", { name: "Save this check" })).toBeDisabled();
+    await page.getByLabel("I choose to take part").check();
+    await page.getByLabel("Did you use help or previously see these questions?").selectOption("no");
+    await page.getByLabel("Answer (Pa;").fill("16000");
+    await page.getByRole("button", { name: "Save this check" }).click();
+    await expect(page.getByRole("heading", { name: "2. After studying" })).toBeVisible();
+    await page.reload();
+    await expect(page.getByRole("heading", { name: "2. After studying" })).toBeVisible();
+    await page.getByLabel("I choose to take part").check();
+    await page.getByLabel("I have studied these topics after the baseline.").check();
+    await page.getByLabel("Did you use help or previously see these questions?").selectOption("yes");
+    await page.getByRole("button", { name: "Save this check" }).click();
+    await expect(page.getByRole("heading", { name: "Let the learning settle" })).toBeVisible();
+    const data = await page.evaluate(() => JSON.parse(localStorage.getItem("parallax-pilot-v1:test-learner")!));
+    expect(data.baseline.responses.fluid.value).toBe(16000);
+    expect(data.baseline.responses.heat.value).toBeNull();
+    expect(data.immediate.assisted).toBe(true);
+    expect(data.baseline.responses.fluid.reasoningScore).toBeUndefined();
+    const download = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Export pilot answers" }).click();
+    expect((await download).suggestedFilename()).toBe("parallax-learner-pilot.json");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  });
+}

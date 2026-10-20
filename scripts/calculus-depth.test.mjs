@@ -56,7 +56,10 @@ for (const [id, values] of Object.entries(answers))
       assert.ok(q?.hint);
       close(Number(q.answer), expected);
     });
-    assert.equal(d.questions.length, 11);
+    assert.equal(
+      d.questions.length,
+      ["MB3.1", "MB3.2", "MB3.3", "MB3.5"].includes(id) ? 12 : 11,
+    );
   });
 test("quadratic epsilon bound agrees with extrema and sufficient open-interval proof", () => {
   for (const eps of [0.02, 0.1, 1, 3, 4]) {

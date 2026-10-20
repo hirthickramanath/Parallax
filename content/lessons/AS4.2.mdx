@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "A star has bolometric L/L_sun=100 and T_eff/T_sun=0.5. Under the effective-temperature luminosity relation, find R/R_sun.",
+      "answer": "40",
+      "unit": "dimensionless",
+      "hint": "Solve for R/R_sun as sqrt(L/L_sun)/(T_eff/T_sun)².",
+      "explanation": "sqrt(100)/(0.5)²=10/0.25=40. A temperature ratio enters to the fourth power in luminosity but to the second power after solving for radius."
     }
   ],
   "review": [
@@ -141,7 +152,9 @@
   "status": "draft",
   "book_refs": [
     "Kippenhahn, Weigert and Weiss, Stellar Structure and Evolution — edition and exact section verification pending",
-    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending"
+    "Carroll and Ostlie, An Introduction to Modern Astrophysics — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59901/index.cnxml",
+    "https://github.com/openstax/osbooks-university-physics-bundle/blob/2300d5b8ca2571dacc6ec25ebef56ba8d49000a2/modules/m58761/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +224,16 @@ Plot synthetic stars in luminosity-temperature and colour-magnitude coordinates 
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 At equal effective temperature a star with twice the radius is four times as luminous. In a local L∝M³ model with fixed fuel fraction, doubling mass gives eight times luminosity and one quarter of the lifetime.
+
+
+
+### Worked investigation: Read radius from the HR diagram
+
+For a thermal photosphere, L=4*pi*R²*sigma*T_eff^4, so L/L_sun=(R/R_sun)²(T_eff/T_sun)^4. A star at half the solar effective temperature but 100 times the solar luminosity has (R/R_sun)²=100/(1/2)^4=1600, hence R=40R_sun. A cool star can be very luminous if its emitting surface is sufficiently large.
+
+This inference uses bolometric luminosity and effective temperature, not a single filtered brightness and color without corrections. Distance, extinction and unresolved companions can bias the inferred location. An HR position alone does not uniquely determine age or evolutionary history; composition and stellar-model assumptions still enter.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

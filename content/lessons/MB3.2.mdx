@@ -139,6 +139,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "R(t)=2+t² in metres for t in seconds and V=4*pi*R³/3. At t=1 s, find (dV/dt)/pi in m³/s.",
+      "answer": "72",
+      "unit": "m³/s",
+      "hint": "Apply the chain rule: 4R²*dR/dt after dividing by pi.",
+      "explanation": "At t=1, R=3 and dR/dt=2, so 4×9×2=72. Volume changes in cubic metres per second; the derivative is not the volume itself."
     }
   ],
   "review": [
@@ -166,7 +177,8 @@
   "status": "draft",
   "book_refs": [
     "Taylor, Classical Mechanics (edition and section review pending)",
-    "Spivak, Calculus (edition and section review pending)"
+    "Spivak, Calculus (edition and section review pending)",
+    "https://github.com/openstax/osbooks-calculus-bundle/blob/520f373e48042a878374ccb3ea757937a28a03b6/modules/m53581/index.cnxml"
   ]
 }
 ---
@@ -233,6 +245,16 @@ If the difference quotient tends to a finite derivative, then $f(a+h)-f(a)=h[(f(
 <LessonSection id="worked" title="Position and velocity" layer="worked" fullOnly>
 
 If $s(t)=ct^2$ with c in m/s², then $s\prime(t)=2ct$ in m/s. At c = 2 m/s² and t = 3 s, velocity is 12 m/s. This parameter c is half the constant acceleration.
+
+
+
+### Worked investigation: A derivative with a physical constraint
+
+Let a positive radius R(t)=2+t² metres with t in seconds and V=4*pi*R³/3. The chain rule gives dV/dt=4*pi*R²*dR/dt. At t=1 s, R=3 m and dR/dt=2 m/s, hence dV/dt=72*pi m³/s. Differentiating only the outer cubic and forgetting the changing radius loses the time scale.
+
+The derivative is an instantaneous rate, not a finite change in volume over the next second. A tangent approximation over delta t has error controlled by higher derivatives. If R is constrained to stay nonnegative, an algebraic time law must also be checked on its intended domain before assigning physical meaning.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

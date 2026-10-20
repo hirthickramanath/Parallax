@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Critical density is 3H²/(8*pi*G). If H doubles with G fixed, find final critical density divided by initial critical density.",
+      "answer": "4",
+      "unit": "dimensionless",
+      "hint": "Critical density depends on H squared rather than H.",
+      "explanation": "The ratio is (2H)²/H²=4. This scaling does not tell us the separate density fractions or whether the spatial curvature is zero."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Ryden, Introduction to Cosmology — edition and exact section verification pending",
-    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending"
+    "Dodelson and Schmidt, Modern Cosmology — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59977/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Integrate a single-fluid flat toy model and check the conservation scaling befor
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 If the scale factor doubles, separately conserved pressureless matter density falls to one eighth and radiation density to one sixteenth. These scalings assume no relevant energy exchange or equation-of-state transition over the interval.
+
+
+
+### Worked investigation: Critical density and a factor-of-two test
+
+For a homogeneous isotropic universe in general relativity, H²=8*pi*G*rho/3-k*c²/a²+Lambda*c²/3 when rho is mass-equivalent matter/radiation density. Defining rho_c=3H²/(8*pi*G) makes the critical density scale with H². If H doubles, rho_c quadruples. A critical-density calculation alone does not isolate matter from radiation or dark energy.
+
+With H=2×10^-18 s^-1 and G≈6.67×10^-11 SI, rho_c≈7.16×10^-27 kg/m³. Units follow from H²/G. The normalization of the scale factor is conventional; measured redshift gives 1+z=a_now/a_emit. Local gravitationally bound objects do not simply expand at the background Hubble rate.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 

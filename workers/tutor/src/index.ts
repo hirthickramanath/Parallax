@@ -133,7 +133,15 @@ export default {
         35000,
       );
       stage = "stream_setup";
-      const stream = normalizeStream(provider);
+      const stream = normalizeStream(provider, 45000, (characters) => {
+        console.log(
+          JSON.stringify({
+            event: "tutor_reply_completed",
+            provider: env.TUTOR_PROVIDER || "workers-ai",
+            characters,
+          }),
+        );
+      });
       return new Response(stream, {
         headers: { ...headers, "Content-Type": "text/event-stream" },
       });

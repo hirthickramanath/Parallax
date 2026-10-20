@@ -82,3 +82,32 @@ test("provider connection deadline rejects and cancels a late stream", async () 
   await new Promise((resolve) => setTimeout(resolve, 30));
   assert.ok(cancelled);
 });
+
+test("completion diagnostics fire only after a successful nonempty stream", async () => {
+  const { normalizeStream } = await import("../workers/tutor/src/stream.ts");
+  let count = 0;
+  const input = new ReadableStream({
+    start(c) {
+      c.enqueue(new TextEncoder().encode('data: {"response":"hello"}\n\n'));
+      c.close();
+    },
+  });
+  await new Response(
+    normalizeStream(input, 1000, (n) => {
+      count = n;
+    }),
+  ).text();
+  assert.equal(count, 5);
+  count = 0;
+  const failed = new ReadableStream({
+    start(c) {
+      c.error(Error("private failure"));
+    },
+  });
+  await new Response(
+    normalizeStream(failed, 1000, (n) => {
+      count = n;
+    }),
+  ).text();
+  assert.equal(count, 0);
+});

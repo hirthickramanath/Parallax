@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "depth-transfer-20261020",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "stretch",
+      "prompt": "Under the spherical circular-orbit approximation, speed is flat from r to 2r. Find M(<2r)/M(<r).",
+      "answer": "2",
+      "unit": "dimensionless",
+      "hint": "Rearrange v²=GM/r; hold v fixed and vary r.",
+      "explanation": "M=v²r/G is proportional to radius for fixed speed, so the mass ratio is 2. This is an enclosed-mass inference, not the mass of a shell or proof of a dark-matter particle identity."
     }
   ],
   "review": [
@@ -141,7 +152,8 @@
   "status": "draft",
   "book_refs": [
     "Binney and Tremaine, Galactic Dynamics — edition and exact section verification pending",
-    "Mo, van den Bosch and White, Galaxy Formation and Evolution — edition and exact section verification pending"
+    "Mo, van den Bosch and White, Galaxy Formation and Evolution — edition and exact section verification pending",
+    "https://github.com/openstax/osbooks-astronomy/blob/dff6acf8df597ceda73985308f838ed38417a606/modules/m59959/index.cnxml"
   ],
   "verification": {
     "status": "pending",
@@ -211,6 +223,16 @@ Generate rotation curves for a point mass and a supplied extended spherical prof
 <LessonSection id="worked" title="A worked argument" layer="worked" fullOnly>
 
 For a spherical circular-speed model with v=4,r=3,G=2, enclosed mass is 24. If r doubles while v stays flat, the inferred enclosed mass doubles. This is an explicitly spherical inference, not a literal thin-disc inversion.
+
+
+
+### Worked investigation: A flat rotation curve implies a mass profile
+
+For a circular test-particle orbit in a spherical Newtonian mass distribution, v_c²=GM(&lt;r)/r. If v_c stays at 200 km/s between radii 10 and 20 kpc, inferred enclosed mass doubles. A point-mass Keplerian decline would instead give v proportional to r^(-1/2). A locally flat curve corresponds to M(&lt;r) proportional to r and, within the spherical approximation, rho proportional to r^(-2).
+
+The inference requires a geometry and a dynamical model. Inclination errors, pressure support and noncircular streaming can bias the measured circular speed. A flat curve motivates additional gravitating mass within a specified theory; it does not by itself identify a particle species or prove the same profile extends to infinite radius.
+
+**Investigate in the embedded model.** Predict which output changes and its direction before moving a relevant control. Compare the observed trend with this derivation; if the widget does not implement this quantity or regime, record that limitation rather than treating the animation as evidence. State one assumption whose failure would change your prediction.
 
 </LessonSection>
 
