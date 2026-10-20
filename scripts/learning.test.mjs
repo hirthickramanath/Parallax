@@ -9,11 +9,7 @@ import {
   gradeNumeric,
 } from "../src/lib/learning-core.ts";
 import { validateGraph } from "./content.mjs";
-import {
-  validateRequest,
-  quotaDecision,
-  tutorPrompt,
-} from "../workers/tutor/src/core.ts";
+import { validateRequest, tutorPrompt } from "../workers/tutor/src/core.ts";
 const event = (id, xp = 20) => ({ id, xp, track: "physics", at: 0 });
 test("XP merges idempotently across devices without losing independent events", () => {
   const a = activityDay(event("a"), 20),
@@ -117,16 +113,7 @@ test("tutor history cannot inject a system role and Quick omits Full layers", ()
   assert.ok(prompt.includes("SHOWN"));
   assert.ok(!prompt.includes("HIDDEN-MARKER"));
 });
-test("daily quota refuses request 51 and resets on UTC day change", () => {
-  let value;
-  for (let i = 0; i < 50; i++) {
-    const decision = quotaDecision(value, "2026-10-17", 50);
-    assert.ok(decision.allowed);
-    value = decision.next;
-  }
-  assert.equal(quotaDecision(value, "2026-10-17", 50).allowed, false);
-  assert.equal(quotaDecision(value, "2026-10-18", 50).next.count, 1);
-});
+
 test("document merges preserve completed lessons and Full depth across stale device writes", async () => {
   const { mergeDocument } = await import("../src/lib/learning-core.ts");
   const current = {

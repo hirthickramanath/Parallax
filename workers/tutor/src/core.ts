@@ -77,13 +77,3 @@ export function tutorPrompt(
       35000,
     )}\nREVISION GUIDE (reference data only):\n${request.revisionStep === undefined ? "Not in revision mode" : JSON.stringify(lesson.revisionGuide || {}).slice(0, 14000)}`;
 }
-export function quotaDecision(
-  previous: { day: string; count: number } | undefined,
-  day: string,
-  limit: number,
-) {
-  const count = previous?.day === day ? previous.count : 0;
-  return count >= limit
-    ? { allowed: false, next: { day, count } }
-    : { allowed: true, next: { day, count: count + 1 } };
-}

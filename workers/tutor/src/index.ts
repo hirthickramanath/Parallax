@@ -1,13 +1,12 @@
 import { providerConfigured, tutorProvider } from "./provider";
 import { createRemoteJWKSet, jwtVerify } from "jose";
-import { validateRequest, tutorPrompt, quotaDecision } from "./core";
+import { validateRequest, tutorPrompt } from "./core";
 import { normalizeStream, providerDeadline } from "./stream";
 interface Env {
   SITE_ORIGIN: string;
   FIREBASE_PROJECT_ID: string;
   ENABLE_TUTOR: string;
   AI_MODEL: string;
-  DAILY_LIMIT?: string;
   TUTOR_PROVIDER?: string;
   GEMINI_MODEL?: string;
   GEMINI_API_KEY?: string;
@@ -24,33 +23,10 @@ const keys = createRemoteJWKSet(
     "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com",
   ),
 );
+// Retain the class for the deployed v1 migration. Requests no longer use a daily quota.
 export class DailyCounter {
-  constructor(private state: DurableObjectState) {}
-  async fetch(request: Request) {
-    const { day, limit } = (await request.json()) as {
-      day: string;
-      limit: number;
-    };
-    if (
-      !/^\d{4}-\d{2}-\d{2}$/.test(day) ||
-      !Number.isInteger(limit) ||
-      limit < 1 ||
-      limit > 100
-    )
-      return new Response("Invalid counter input", { status: 400 });
-    const decision = await this.state.storage.transaction(async (tx) => {
-      const decision = quotaDecision(
-        await tx.get<{ day: string; count: number }>("usage"),
-        day,
-        limit,
-      );
-      if (decision.allowed) await tx.put("usage", decision.next);
-      return decision;
-    });
-    return Response.json({
-      allowed: decision.allowed,
-      remaining: Math.max(0, limit - decision.next.count),
-    });
+  async fetch() {
+    return new Response("Daily quotas have been removed", { status: 410 });
   }
 }
 export default {
@@ -70,7 +46,6 @@ export default {
       "Access-Control-Allow-Origin": env.SITE_ORIGIN,
       "Access-Control-Allow-Headers": "Authorization, Content-Type",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Expose-Headers": "X-Tutor-Remaining",
     });
     if (request.method === "OPTIONS")
       return new Response(null, { status: 204, headers });
@@ -140,30 +115,6 @@ export default {
         { status: 404, headers },
       );
     }
-    const limit = Math.max(1, Math.min(100, Number(env.DAILY_LIMIT) || 50));
-    const counter = env.COUNTERS.get(env.COUNTERS.idFromName(uid));
-    let quota: { allowed: boolean; remaining: number };
-    try {
-      const response = await counter.fetch("https://counter.internal", {
-        method: "POST",
-        body: JSON.stringify({
-          day: new Date().toISOString().slice(0, 10),
-          limit,
-        }),
-      });
-      quota = await response.json();
-    } catch {
-      return Response.json(
-        { error: "Tutor usage check unavailable" },
-        { status: 503, headers },
-      );
-    }
-    headers["X-Tutor-Remaining"] = String(quota.remaining);
-    if (!quota.allowed)
-      return Response.json(
-        { error: "Daily tutor limit reached, come back tomorrow" },
-        { status: 429, headers },
-      );
     try {
       const provider = await providerDeadline(
         tutorProvider(env, tutorPrompt(lesson, body), [
@@ -177,7 +128,10 @@ export default {
       });
     } catch {
       return Response.json(
-        { error: "Tutor resting until tomorrow" },
+        {
+          error:
+            "AI provider is temporarily unavailable. Please try again shortly.",
+        },
         { status: 503, headers },
       );
     }

@@ -1,4 +1,4 @@
-import { useServices } from "../../lib/services";
+import { loadServices, useServices } from "../../lib/services";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -20,11 +20,10 @@ export function TutorPanel({
   const chat = useConversation(lessonId);
   const [input, setInput] = useState(""),
     [busy, setBusy] = useState(false),
-    [error, setError] = useState(""),
-    [remaining, setRemaining] = useState<number | null>(null);
+    [error, setError] = useState("");
   const controller = useRef<AbortController | null>(null),
     sending = useRef(false);
-  const { tutorUrl: endpoint } = useServices();
+  const { tutorUrl: endpoint, error: connectionError } = useServices();
   useEffect(() => () => controller.current?.abort(), []);
   async function send(text: string) {
     if (!endpoint || sending.current || !text.trim()) return;
@@ -63,15 +62,12 @@ export function TutorPanel({
           AbortSignal.timeout(60000),
         ]),
       });
-      const allowance = result.headers.get("X-Tutor-Remaining");
-      if (allowance !== null && Number.isFinite(Number(allowance)))
-        setRemaining(Number(allowance));
       if (!result.ok)
         throw Error(
           result.status === 429
-            ? "Daily tutor limit reached. Come back tomorrow."
+            ? "The AI provider is busy. Please try again shortly."
             : result.status === 503
-              ? "Tutor resting. Please try later."
+              ? "The AI service is temporarily unavailable. Please try again shortly."
               : "Tutor could not connect. Please try later.",
         );
       if (!result.body) throw Error("No streamed response");
@@ -145,11 +141,6 @@ export function TutorPanel({
           worked examples and hints. Saved conversations remain available.
         </p>
       )}
-      {remaining !== null && (
-        <p className="source-note" role="status">
-          {remaining} requests remaining today · resets at 00:00 UTC.
-        </p>
-      )}
       <div className="tutor-actions">
         {[
           "Explain differently",
@@ -214,6 +205,23 @@ export function TutorPanel({
         {chat.status}
       </p>
       {error && <p role="alert">{error}</p>}
+      {connectionError && (
+        <p role="status">
+          Could not refresh the connection. You can still try the tutor or
+          reconnect below.
+        </p>
+      )}
+      {(!endpoint || error || connectionError) && (
+        <Button
+          variant="outline"
+          onClick={() => {
+            void loadServices(true);
+            setError("");
+          }}
+        >
+          Retry tutor connection
+        </Button>
+      )}
     </aside>
   );
 }

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { build } from "esbuild";
 import { Miniflare, convertV4MiniflareOptions } from "miniflare";
-test("Worker rejects untrusted origins and missing authentication; atomic counter permits exactly 50 concurrent calls", async () => {
+test("Worker rejects untrusted origins and missing authentication without exposing a daily cap", async () => {
   const bundle = await build({
     entryPoints: ["workers/tutor/src/index.ts"],
     bundle: true,
@@ -51,34 +51,12 @@ test("Worker rejects untrusted origins and missing authentication; atomic counte
       options.headers.get("access-control-allow-origin"),
       "https://parallax-science.pages.dev",
     );
-    const namespace = await mf.getDurableObjectNamespace("COUNTERS", "tutor"),
-      counter = namespace.get(namespace.idFromName("test-user"));
-    const results = await Promise.all(
-      Array.from({ length: 75 }, () =>
-        counter
-          .fetch("https://counter.test", {
-            method: "POST",
-            body: JSON.stringify({ day: "2026-10-17", limit: 50 }),
-          })
-          .then((r) => r.json()),
-      ),
-    );
-    assert.equal(results.filter((r) => r.allowed).length, 50);
-    assert.equal(results.filter((r) => !r.allowed).length, 25);
-    const next = await counter
-      .fetch("https://counter.test", {
-        method: "POST",
-        body: JSON.stringify({ day: "2026-10-18", limit: 50 }),
-      })
-      .then((r) => r.json());
-    assert.equal(next.allowed, true);
-    assert.equal(next.remaining, 49);
   } finally {
     await mf.dispose();
   }
 });
 
-test("authenticated Gemini tutoring grounds revision, streams safely and enforces server quota", async () => {
+test("authenticated tutoring grounds revision and continues past fifty requests without a daily quota", async () => {
   const { generateKeyPair, exportJWK, SignJWT } = await import("jose");
   const { publicKey, privateKey } = await generateKeyPair("RS256", {
     extractable: true,
@@ -124,7 +102,6 @@ test("authenticated Gemini tutoring grounds revision, streams safely and enforce
             AI_MODEL: "",
             GEMINI_MODEL: "test-model",
             GEMINI_API_KEY: "test-only",
-            DAILY_LIMIT: "1",
           },
           outboundService: async (request) => {
             const u = new URL(request.url);
@@ -198,9 +175,13 @@ test("authenticated Gemini tutoring grounds revision, streams safely and enforce
     const first = await call(body);
     assert.equal(first.status, 200);
     assert.match(await first.text(), /vector length/);
-    assert.equal(first.headers.get("x-tutor-remaining"), "0");
-    assert.equal((await call(body)).status, 429);
-    assert.equal(providerCalls, 1);
+    assert.equal(first.headers.get("x-tutor-remaining"), null);
+    for (let i = 1; i < 55; i++) {
+      const result = await call(body);
+      assert.equal(result.status, 200);
+      await result.text();
+    }
+    assert.equal(providerCalls, 55);
   } finally {
     await mf.dispose();
   }

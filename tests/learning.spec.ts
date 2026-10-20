@@ -2345,7 +2345,7 @@ test("revision AI tutor streams lesson-aware replies saves history and handles s
   await expect(tutor.locator(".assistant")).toContainText(
     "dividing the normal vector",
   );
-  await expect(tutor).toContainText("49 requests remaining");
+  await expect(tutor).not.toContainText("requests remaining");
   await page.reload();
   await page.getByRole("button", { name: "Ask AI tutor", exact: true }).click();
   await expect(tutor.locator(".assistant")).toContainText(
@@ -2353,7 +2353,7 @@ test("revision AI tutor streams lesson-aware replies saves history and handles s
   );
   await tutor.getByLabel("Ask about this section").fill("Another question");
   await tutor.getByRole("button", { name: "Ask tutor", exact: true }).click();
-  await expect(tutor.getByRole("alert")).toContainText("Daily tutor limit");
+  await expect(tutor.getByRole("alert")).toContainText("AI provider is busy");
   await expect(
     tutor.getByRole("button", { name: "Ask tutor", exact: true }),
   ).toBeDisabled();
@@ -2619,4 +2619,58 @@ test("floating tutor is reachable on mobile dashboard and uses the current lesso
       () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
   ).toBe(true);
+});
+
+test("tutor keeps its deployment connection when settings fail and can retry without reloading", async ({
+  page,
+}) => {
+  let configCalls = 0;
+  await page.route("**/services.json", (r) => {
+    configCalls++;
+    return configCalls === 1
+      ? r.abort()
+      : r.fulfill({
+          json: {
+            tutorUrl: "/reconnected-tutor",
+            pushUrl: "",
+            pushPublicKey: "",
+          },
+        });
+  });
+  let replies = 0;
+  const reply = (r: import("@playwright/test").Route) => {
+    replies++;
+    return r.fulfill({
+      contentType: "text/event-stream",
+      body: 'data: {"text":"Connection recovered."}\n\n',
+    });
+  };
+  await page.route("https://parallax-tutor.hirthick-ram17.workers.dev/", reply);
+  await page.route("**/reconnected-tutor", reply);
+  await signedIn(page);
+  await page
+    .getByRole("button", { name: "Open AI tutor", exact: true })
+    .click();
+  const dialog = page.getByRole("dialog");
+  await expect(
+    dialog.getByText(/Could not refresh the connection/),
+  ).toBeVisible();
+  await expect(dialog.getByText(/awaiting connection/)).toHaveCount(0);
+  await dialog.getByLabel("Ask about this section").fill("Explain force");
+  await dialog.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(dialog.locator(".assistant")).toContainText(
+    "Connection recovered",
+  );
+  await dialog
+    .getByRole("button", { name: "Retry tutor connection", exact: true })
+    .click();
+  await expect(
+    dialog.getByText(/Could not refresh the connection/),
+  ).toHaveCount(0);
+  await dialog
+    .getByLabel("Ask about this section")
+    .fill("Try the refreshed connection");
+  await dialog.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(dialog.locator(".assistant")).toHaveCount(2);
+  expect(replies).toBe(2);
 });
