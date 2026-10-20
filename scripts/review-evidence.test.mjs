@@ -102,7 +102,11 @@ test("actual partial source ledger matches current drafts and immutable official
   const ledger = JSON.parse(
     fs.readFileSync("content/review/source-inspections.json", "utf8"),
   );
-  assert.equal(ledger.inspections.length, 181);
+  assert.ok(ledger.inspections.length >= 195);
+  assert.equal(
+    new Set(ledger.inspections.map((r) => r.lessonId)).size,
+    ledger.inspections.length,
+  );
   for (const r of ledger.inspections) {
     const source = fs.readFileSync(`content/lessons/${r.lessonId}.mdx`, "utf8");
     assert.equal(r.lessonSha256, sourceFingerprint(source));

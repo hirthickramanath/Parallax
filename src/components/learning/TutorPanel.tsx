@@ -59,17 +59,29 @@ export function TutorPanel({
         }),
         signal: AbortSignal.any([
           controller.current.signal,
-          AbortSignal.timeout(60000),
+          AbortSignal.timeout(90000),
         ]),
       });
-      if (!result.ok)
+      if (!result.ok) {
+        const detail = (await result.json().catch(() => null)) as {
+          error?: unknown;
+          code?: unknown;
+        } | null;
+        const specific =
+          result.status === 503 &&
+          typeof detail?.code === "string" &&
+          typeof detail.error === "string"
+            ? detail.error.slice(0, 400)
+            : "";
         throw Error(
-          result.status === 429
-            ? "The AI provider is busy. Please try again shortly."
-            : result.status === 503
-              ? "The AI service is temporarily unavailable. Please try again shortly."
-              : "Tutor could not connect. Please try later.",
+          specific ||
+            (result.status === 429
+              ? "The AI provider is busy. Please try again shortly."
+              : result.status === 503
+                ? "The AI service is temporarily unavailable. Please try again shortly."
+                : "Tutor could not connect. Please try later."),
         );
+      }
       if (!result.body) throw Error("No streamed response");
       const reader = result.body.getReader(),
         decoder = new TextDecoder();

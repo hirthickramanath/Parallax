@@ -2,23 +2,23 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 181 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 195 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
-| AS1.1 Celestial coordinates and time | 9 / 9 | 4 | 3 | astro_AS1.1 |
-| AS1.2 Seasons, precession and eclipses | 9 / 9 | 4 | 3 | astro_AS1.2 |
-| AS1.3 Orbits and orbital elements | 9 / 9 | 4 | 3 | astro_AS1.3, orbit_explorer |
+| AS1.1 Celestial coordinates and time | 10 / 10 | 5 | 4 | astro_AS1.1 |
+| AS1.2 Seasons, precession and eclipses | 10 / 10 | 5 | 4 | astro_AS1.2 |
+| AS1.3 Orbits and orbital elements | 10 / 10 | 5 | 4 | astro_AS1.3, orbit_explorer |
 | AS1.4 N-body problem and Lagrange points | 10 / 10 | 5 | 6 | astro_AS1.4 |
 | AS1.5 Tides and the Roche limit | 10 / 10 | 5 | 6 | astro_AS1.5, tidal_explorer |
 | AS10.1 Reading arXiv and NASA ADS | 9 / 9 | 4 | 3 | astro_AS10.1 |
 | AS10.2 Analysing survey data (Gaia, TESS, SDSS) | 9 / 9 | 4 | 3 | astro_AS10.2 |
 | AS10.3 Bayesian inference for astronomy | 9 / 9 | 4 | 3 | astro_AS10.3 |
 | AS10.4 Capstone: reproduce a published result | 9 / 9 | 4 | 3 | astro_AS10.4 |
-| AS2.1 Flux, luminosity and magnitudes | 9 / 9 | 4 | 3 | astro_AS2.1 |
-| AS2.2 Blackbody radiation and spectral lines | 9 / 9 | 4 | 3 | astro_AS2.2 |
+| AS2.1 Flux, luminosity and magnitudes | 10 / 10 | 5 | 4 | astro_AS2.1 |
+| AS2.2 Blackbody radiation and spectral lines | 10 / 10 | 5 | 4 | astro_AS2.2 |
 | AS2.3 Radiative transfer (optical depth, source function) | 9 / 9 | 4 | 3 | astro_AS2.3, radiation_lab |
-| AS2.4 Doppler shift and redshift | 9 / 9 | 4 | 3 | astro_AS2.4, radiation_lab |
+| AS2.4 Doppler shift and redshift | 10 / 10 | 5 | 4 | astro_AS2.4, radiation_lab |
 | AS2.5 Telescopes and detectors | 9 / 9 | 4 | 3 | astro_AS2.5 |
 | AS2.6 Photometry and spectroscopy | 9 / 9 | 4 | 3 | astro_AS2.6 |
 | AS2.7 Multi-messenger astronomy | 9 / 9 | 4 | 3 | astro_AS2.7 |
@@ -50,7 +50,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS7.1 Solar System physics | 9 / 9 | 4 | 3 | astro_AS7.1 |
 | AS7.2 Planetary interiors and atmospheres | 9 / 9 | 4 | 3 | astro_AS7.2 |
 | AS7.3 Planet formation and discs | 9 / 9 | 4 | 3 | astro_AS7.3 |
-| AS7.4 Exoplanet detection | 9 / 9 | 4 | 3 | astro_AS7.4 |
+| AS7.4 Exoplanet detection | 10 / 10 | 5 | 4 | astro_AS7.4 |
 | AS7.5 Habitability and biosignatures | 9 / 9 | 4 | 3 | astro_AS7.5 |
 | AS8.1 Milky Way structure | 9 / 9 | 4 | 3 | astro_AS8.1 |
 | AS8.2 Stellar dynamics (Jeans equations, relaxation) | 9 / 9 | 4 | 3 | astro_AS8.2 |
@@ -59,7 +59,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS8.5 Galaxy formation and mergers | 9 / 9 | 4 | 3 | astro_AS8.5 |
 | AS8.6 Clusters and gravitational lensing | 9 / 9 | 4 | 3 | astro_AS8.6 |
 | AS8.7 AGN and black-hole co-evolution | 9 / 9 | 4 | 3 | astro_AS8.7 |
-| AS9.1 Hubble's law and the distance ladder | 9 / 9 | 4 | 3 | astro_AS9.1 |
+| AS9.1 Hubble's law and the distance ladder | 10 / 10 | 5 | 4 | astro_AS9.1 |
 | AS9.2 FLRW metric and Friedmann equations | 9 / 9 | 4 | 3 | astro_AS9.2 |
 | AS9.3 Thermal history and nucleosynthesis | 9 / 9 | 4 | 3 | astro_AS9.3 |
 | AS9.4 CMB physics and anisotropies | 9 / 9 | 4 | 3 | astro_AS9.4 |

@@ -300,6 +300,11 @@ function RevisionPlayer({ id }: { id: string }) {
                       });
                     }}
                   >
+                    {q.optional && (
+                      <p className="eyebrow">
+                        OPTIONAL TRANSFER · TRY A NEW SITUATION
+                      </p>
+                    )}
                     <h3>{q.prompt}</h3>
                     {q.options ? (
                       <fieldset disabled={a.correct === true}>
@@ -394,8 +399,8 @@ function RevisionPlayer({ id }: { id: string }) {
               {!ready && (
                 <p className="info-box">
                   Finish the three reading steps and all three practice checks
-                  before closing this revision chapter. You can revisit any
-                  step.
+                  before closing this revision chapter. The transfer challenge
+                  is optional. You can revisit any step.
                 </p>
               )}
               <Button

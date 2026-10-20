@@ -78,3 +78,27 @@ test("cosmology normalizations and synthetic inference respect probability bound
         models["AS10.3"].value(L, p) > 0 && models["AS10.3"].value(L, p) < 1,
       );
 });
+
+test("core astronomy inference extensions preserve units and numerical relationships", () => {
+  const expected = {
+    "AS1.1": 90 - Math.abs(-25 - 10),
+    "AS1.2": 90 - Math.abs(35 + 23.44),
+    "AS1.3": Math.sqrt(9 ** 3),
+    "AS2.1": 0.5 * 3 ** 2,
+    "AS2.2": (2.9e-3 / 7250) * 1e9,
+    "AS2.4": (603 / 600 - 1) * 300000,
+    "AS7.4": 1.5 * Math.sqrt(0.0009),
+    "AS9.1": 6000 / 75,
+  };
+  for (const [id, value] of Object.entries(expected)) {
+    const source = fs.readFileSync(`content/lessons/${id}.mdx`, "utf8");
+    const data = parse(/^---\n([\s\S]*?)\n---/.exec(source)[1]);
+    const question = data.questions.find(
+      (q) => q.id === "worked-inference-transfer",
+    );
+    close(Number(question.answer), value);
+    assert.ok(question.unit && question.hint && question.explanation);
+    assert.match(source, /### Worked inference:/);
+    assert.equal(data.status, "draft");
+  }
+});

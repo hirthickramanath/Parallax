@@ -10,6 +10,7 @@ export interface RevisionCheck {
   type: "mcq" | "numeric";
   options?: string[];
   exact?: boolean;
+  optional?: boolean;
 }
 export interface RevisionModule {
   id: string;

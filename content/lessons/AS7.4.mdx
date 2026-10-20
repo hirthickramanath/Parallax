@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "worked-inference-transfer",
+      "prompt": "In that uniform, unblended, fully overlapping transit model, δ=0.0009 and stellar radius is 1.5 solar radii. Find planet radius in solar radii.",
+      "answer": "0.045",
+      "unit": "solar radii",
+      "hint": "Take the square root of depth before multiplying by stellar radius.",
+      "explanation": "Rp=Rstar sqrt(δ)=1.5·0.03=0.045 solar radii.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -196,6 +207,16 @@ Astrometry, microlensing, direct imaging and timing probe other parameter regime
 For a small opaque planet crossing a uniform non-grazing stellar disc, blocked area divided by stellar area gives $\delta\simeq(R_p/R_\star)^2$. Additional unresolved light dilutes the relative drop: $\delta_{obs}=\delta/(1+f)$ when f is contaminant flux divided by target-star flux. Ignoring dilution can underestimate the planet radius.
 
 Limb darkening, grazing geometry, spots and finite exposure integration change the transit shape. Radial velocity instead measures a projected orbital reflex signal, retaining an inclination degeneracy without other geometry. Combining techniques can infer bulk density, but each adds systematics and selection effects. A shallow transit is not by itself proof of an Earth-like planet or a habitable surface.
+
+
+
+### Worked inference: A transit measures a radius ratio before an absolute size
+
+1. For a small dark planet fully crossing a uniform-brightness stellar disc without blending, depth δ=(Rp/Rstar)². A depth of 0.01 gives Rp/Rstar=0.1.
+
+2. A star of radius 1 solar radius then implies planet radius 0.1 solar radius. If the star were twice as large, the same depth would imply twice that planet radius.
+
+3. Limb darkening, grazing geometry, starspots and contaminating light alter this simplified inference. A shallow dip alone neither determines a unique planet radius nor proves the object is a planet.
 
 </LessonSection>
 

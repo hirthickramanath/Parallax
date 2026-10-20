@@ -2054,7 +2054,7 @@ test("foundation revision begins from dashboard and saves a separate progressive
   await page
     .getByRole("button", { name: "Continue revision", exact: true })
     .click();
-  await expect(page.locator(".revision-worked")).toHaveCount(2);
+  await expect(page.locator(".revision-worked")).toHaveCount(3);
   await page
     .getByRole("button", { name: "Continue revision", exact: true })
     .click();
@@ -2082,7 +2082,9 @@ test("foundation revision begins from dashboard and saves a separate progressive
     .getByRole("button", { name: "Help me take a smaller step" })
     .click();
   await expect(first.locator(".info-box")).toBeVisible();
-  for (const q of guide.checks) {
+  for (const q of guide.checks.filter(
+    (q: { optional?: boolean }) => !q.optional,
+  )) {
     const form = page.locator(`form[data-question-id='revision-${q.id}']`);
     if (q.type === "mcq")
       await form.getByRole("radio", { name: q.answer, exact: true }).check();
@@ -2673,4 +2675,39 @@ test("tutor keeps its deployment connection when settings fail and can retry wit
   await dialog.getByRole("button", { name: "Ask tutor", exact: true }).click();
   await expect(dialog.locator(".assistant")).toHaveCount(2);
   expect(replies).toBe(2);
+});
+
+test("revision transfer challenges add depth without blocking completed core checks and provider errors are actionable", async ({
+  page,
+}) => {
+  await page.route("**/services.json", (r) =>
+    r.fulfill({
+      json: { tutorUrl: "/provider-error", pushUrl: "", pushPublicKey: "" },
+    }),
+  );
+  await page.route("**/provider-error", (r) =>
+    r.fulfill({
+      status: 503,
+      json: {
+        code: "provider_access",
+        error: "Cloudflare AI access needs attention in the project account.",
+      },
+    }),
+  );
+  await signedIn(page);
+  await page.goto("/foundation-revision/MB2.3");
+  await page.getByLabel("Revision step").selectOption("3");
+  await expect(
+    page.getByText("OPTIONAL TRANSFER · TRY A NEW SITUATION"),
+  ).toBeVisible();
+  await expect(page.getByLabel("Answer transfer-1")).toBeVisible();
+  await page
+    .getByRole("button", { name: "Open AI tutor", exact: true })
+    .click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByLabel("Ask about this section").fill("Explain the sign");
+  await dialog.getByRole("button", { name: "Ask tutor", exact: true }).click();
+  await expect(dialog.getByRole("alert")).toContainText(
+    "Cloudflare AI access needs attention",
+  );
 });

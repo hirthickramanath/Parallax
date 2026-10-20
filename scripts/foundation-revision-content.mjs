@@ -30,13 +30,16 @@ export function validateFoundationRevision(data, curriculum) {
     )
       throw Error("Two worked examples required " + m.id);
     if (
-      m.checks.length !== 3 ||
-      new Set(m.checks.map((q) => q.prompt.trim().toLowerCase())).size !== 3
+      m.checks.length !== 4 ||
+      new Set(m.checks.map((q) => q.prompt.trim().toLowerCase())).size !== 4
     )
-      throw Error("Distinct three-step practice required " + m.id);
+      throw Error(
+        "Three foundation checks and an optional transfer required " + m.id,
+      );
     for (const [i, q] of m.checks.entries()) {
       if (
-        q.id !== `rebuild-${i + 1}` ||
+        q.id !== (i < 3 ? `rebuild-${i + 1}` : "transfer-1") ||
+        (i === 3 && q.optional !== true) ||
         !text(q.prompt) ||
         !text(q.explanation) ||
         !text(q.hint)

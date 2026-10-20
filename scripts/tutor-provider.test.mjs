@@ -145,3 +145,64 @@ test("Gemini header deadline is cleared once streaming starts", async () => {
   assert.equal(await new Response(body).text(), "late body");
   assert.equal(signal.aborted, false);
 });
+
+test("Workers AI receives bounded context and preserves the latest question", async () => {
+  const { boundedMessages } = await import("../workers/tutor/src/provider.ts");
+  const messages = boundedMessages(
+    "Trusted instructions. " + "reference ".repeat(10000),
+    [
+      ...Array.from({ length: 10 }, (_, i) => ({
+        role: i % 2 ? "assistant" : "user",
+        content: "old λ ".repeat(2000),
+      })),
+      { role: "user", content: "Why is the normalization negative?" },
+    ],
+  );
+  assert.ok(
+    messages.reduce(
+      (n, m) => n + new TextEncoder().encode(m.content).length,
+      0,
+    ) <= 12000,
+  );
+  assert.equal(messages.at(-1).content, "Why is the normalization negative?");
+  assert.match(messages[0].content, /Trusted instructions/);
+  assert.match(messages[0].content, /truncated/);
+  let called = false;
+  await tutorProvider(
+    {
+      AI_MODEL: "test",
+      AI: {
+        run: async (model, input) => {
+          called = true;
+          assert.equal(input.max_tokens, 1024);
+          assert.ok(
+            input.messages.reduce((n, m) => n + m.content.length, 0) <= 12000,
+          );
+          return new ReadableStream({
+            start(c) {
+              c.close();
+            },
+          });
+        },
+      },
+    },
+    "reference ".repeat(10000),
+    [{ role: "user", content: "latest" }],
+  );
+  assert.equal(called, true);
+});
+test("provider failures expose only safe actionable categories", async () => {
+  const { providerFailure } = await import("../workers/tutor/src/provider.ts");
+  for (const [message, code] of [
+    ["quota exceeded private-data", "provider_capacity"],
+    ["input context too long", "provider_context"],
+    ["model not found", "provider_model"],
+    ["403 unauthorized", "provider_access"],
+    ["Provider deadline exceeded", "provider_timeout"],
+    ["some private payload", "provider_unavailable"],
+  ]) {
+    const failure = providerFailure(Error(message));
+    assert.equal(failure.code, code);
+    assert.ok(!failure.error.includes("private"));
+  }
+});

@@ -1,4 +1,4 @@
-import { providerConfigured, tutorProvider } from "./provider";
+import { providerConfigured, tutorProvider, providerFailure } from "./provider";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { validateRequest, tutorPrompt } from "./core";
 import { normalizeStream, providerDeadline } from "./stream";
@@ -84,7 +84,10 @@ export default {
     }
     if (env.ENABLE_TUTOR !== "true" || !providerConfigured(env))
       return Response.json(
-        { error: "Tutor integration has not been activated" },
+        {
+          code: "configuration_missing",
+          error: "The tutor service is not activated for this deployment.",
+        },
         { status: 503, headers },
       );
     let body;
@@ -121,19 +124,22 @@ export default {
           ...body.history,
           { role: "user", content: body.message },
         ]),
+        35000,
       );
       const stream = normalizeStream(provider);
       return new Response(stream, {
         headers: { ...headers, "Content-Type": "text/event-stream" },
       });
-    } catch {
-      return Response.json(
-        {
-          error:
-            "AI provider is temporarily unavailable. Please try again shortly.",
-        },
-        { status: 503, headers },
+    } catch (cause) {
+      const failure = providerFailure(cause);
+      console.error(
+        JSON.stringify({
+          event: "tutor_provider_failure",
+          code: failure.code,
+          provider: env.TUTOR_PROVIDER || "workers-ai",
+        }),
       );
+      return Response.json(failure, { status: 503, headers });
     }
   },
 };

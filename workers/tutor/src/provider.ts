@@ -7,7 +7,11 @@ export interface ProviderEnv {
   AI?: {
     run: (
       model: string,
-      input: { messages: { role: string; content: string }[]; stream: boolean },
+      input: {
+        messages: { role: string; content: string }[];
+        stream: boolean;
+        max_tokens?: number;
+      },
     ) => Promise<ReadableStream<Uint8Array>>;
   };
 }
@@ -30,8 +34,9 @@ export async function tutorProvider(
   if (!providerConfigured(env)) throw Error("Tutor provider is not configured");
   if (env.TUTOR_PROVIDER !== "gemini")
     return env.AI!.run(env.AI_MODEL, {
-      messages: [{ role: "system", content: system }, ...messages],
+      messages: boundedMessages(system, messages),
       stream: true,
+      max_tokens: 1024,
     });
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), headerTimeoutMs);
@@ -64,4 +69,79 @@ export async function tutorProvider(
     throw Error("Tutor provider unavailable");
   }
   return r.body;
+}
+
+function clipBytes(text: string, budget: number) {
+  const bytes = new TextEncoder().encode(text);
+  return bytes.length <= budget
+    ? text
+    : new TextDecoder().decode(bytes.slice(0, Math.max(0, budget - 80))) +
+        "\n[Reference excerpt truncated; ask for missing context when needed.]";
+}
+/** Bound upstream context; a long saved conversation must not exhaust the model window. */
+export function boundedMessages(system: string, messages: TutorMessage[]) {
+  const last = messages.at(-1);
+  const latest = last
+    ? { ...last, content: clipBytes(last.content, 8000) }
+    : null;
+  const length = (s: string) => new TextEncoder().encode(s).length;
+  let remaining = 12000 - (latest ? length(latest.content) : 0);
+  const prompt = clipBytes(system, Math.min(8000, remaining));
+  remaining -= length(prompt);
+  const history: TutorMessage[] = [];
+  for (const message of messages.slice(0, -1).reverse()) {
+    if (remaining < 100) break;
+    const content = clipBytes(message.content, Math.min(1500, remaining));
+    history.unshift({ ...message, content });
+    remaining -= length(content);
+  }
+  return [
+    { role: "system" as const, content: prompt },
+    ...history,
+    ...(latest ? [latest] : []),
+  ];
+}
+export function providerFailure(cause: unknown) {
+  const message = cause instanceof Error ? cause.message : "";
+  if (/quota|neurons|credits|capacity|rate.?limit|429/i.test(message))
+    return {
+      code: "provider_capacity",
+      error:
+        "Cloudflare AI capacity is currently unavailable. Parallax has no daily question cap; please try again later.",
+    };
+  if (/context|too many tokens|input.*long|token.*limit/i.test(message))
+    return {
+      code: "provider_context",
+      error:
+        "The AI service could not fit this conversation. Try a shorter question or another lesson.",
+    };
+  if (
+    /model.*not found|unknown model|model.*unavailable|model.*not available/i.test(
+      message,
+    )
+  )
+    return {
+      code: "provider_model",
+      error:
+        "The configured AI model is unavailable. Its Cloudflare configuration needs attention.",
+    };
+  if (
+    /unauthori|permission|forbidden|403|authentication|access.denied|not.allowed/i.test(
+      message,
+    )
+  )
+    return {
+      code: "provider_access",
+      error: "Cloudflare AI access needs attention in the project account.",
+    };
+  if (/deadline|timeout|timed out/i.test(message))
+    return {
+      code: "provider_timeout",
+      error: "The AI service took too long to start. Please try again.",
+    };
+  return {
+    code: "provider_unavailable",
+    error:
+      "The AI service is temporarily unavailable. Please try again shortly.",
+  };
 }

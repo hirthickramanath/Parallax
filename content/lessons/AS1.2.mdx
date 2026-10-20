@@ -116,6 +116,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "worked-inference-transfer",
+      "prompt": "At latitude +35° and solar declination −23.44°, find geometric solar noon altitude. Ignore refraction.",
+      "answer": "31.56",
+      "unit": "degrees",
+      "hint": "Keep the declination negative inside the latitude difference.",
+      "explanation": "h=90−|35−(−23.44)|=90−58.44=31.56°.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -188,11 +199,11 @@ A surface patch receiving parallel sunlight has projected collecting area A cos 
 
 For latitude φ and solar declination δ, the coordinate transformation gives
 
-$$\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta\cos H.$$
+$\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta\cos H.$
 
 At geometric sunrise/sunset, h=0, so
 
-$$\cos H_0=-\tan\phi\tan\delta.$$
+$\cos H_0=-\tan\phi\tan\delta.$
 
 When a crossing exists, day length in solar-hour-angle units is $D=24H_0/\pi$ hours with H₀ in radians. If the right side lies outside [−1,1], interpret polar day/night rather than taking an impossible arccos. Refraction and the finite solar disk shift actual observed sunrise times.
 
@@ -208,6 +219,16 @@ For eclipses, conjunction/opposition is necessary but not sufficient: the Moon m
 Resolve the Sun's ecliptic position along the equatorial north axis. For obliquity $\epsilon$ and solar ecliptic longitude $\lambda$, $\sin\delta=\sin\epsilon\sin\lambda$. Substitution into the transit-altitude formula gives the seasonal solar-noon height. Declination changes sign at the equinoxes and reaches approximately ±23.44 degrees at the solstices. Obliquity, rather than the small annual distance variation, explains opposite seasons in the two hemispheres.
 
 The longitude parameter in the investigation is an angle, not a uniform date scale: eccentric orbital motion makes angular speed nonuniform. An eclipse additionally requires alignment near a node of the Moon's inclined orbit; a new or full Moon alone is insufficient. Axial precession changes the direction of Earth's axis over long times, while the annual changing solar direction occurs around that slowly moving reference. Keep these three geometries separate when predicting an observation.
+
+
+
+### Worked inference: Calculate a seasonal angle without a distance explanation
+
+1. At latitude +40°, take solar declination to be +23.44° at the northern summer solstice. Geometric noon altitude is 90°−|40°−23.44°|=73.44°.
+
+2. At the northern winter solstice, use declination −23.44°. The same expression gives 26.56°, even though Earth is near perihelion in this season.
+
+3. The calculation isolates obliquity and incidence angle. Day length also affects daily heating; noon altitude alone does not predict surface temperature or weather.
 
 </LessonSection>
 

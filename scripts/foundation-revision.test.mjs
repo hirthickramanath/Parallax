@@ -16,11 +16,11 @@ const data = JSON.parse(
     fs.readFileSync("content/revision/foundation.json", "utf8"),
   ),
   curriculum = JSON.parse(fs.readFileSync("content/curriculum.json", "utf8"));
-test("every bridge chapter has a specific primer two worked examples complete theory counterpart and graduated practice", () => {
+test("every bridge chapter has a specific primer three worked examples complete theory counterpart and optional transfer practice", () => {
   assert.deepEqual(validateFoundationRevision(data, curriculum), {
     chapters: 38,
-    workedExamples: 76,
-    practiceQuestions: 114,
+    workedExamples: 114,
+    practiceQuestions: 152,
     status: "draft",
   });
   assert.deepEqual(
@@ -100,4 +100,74 @@ test("learner pain-point calculations agree with independent pressure heat focus
   }
   const count = data.modules.find((m) => m.id === "CB.1").checks[0];
   assert.equal(gradeNumeric("10.01", Number(count.answer), count.exact), false);
+});
+
+test("all optional transfer answers follow independent calculations without changing the three-check gate", () => {
+  const expected = {
+    "MB1.1": 1 + 2,
+    "MB1.2": Math.log10(0.001),
+    "MB1.3": 6 / (1 - 1 / 3),
+    "MB1.4": 20 ** 2,
+    "MB2.1": Math.sqrt(1 - 0.6 ** 2),
+    "MB2.2": (12 - 4) / (12 + 4),
+    "MB2.3": -9 / Math.hypot(1, 2, 2),
+    "MB3.1": 3,
+    "MB3.2": 6 * 2 - 2,
+    "MB3.3": 2 ** 3,
+    "MB3.4": 6 * (12 - 6),
+    "MB3.5": 3 * Math.exp(2 * Math.log(2)),
+    "MB4.1": 3 * 4 - 2 * 1,
+    "MB4.2": Math.hypot(2 + 1, -1 + 3, 2 - 2),
+    "MB4.3": ((3 / 5) * 2) / 4,
+    "MB4.4": 5 * 0.2 * 0.8,
+    "PB1.1": 0.5 * 2 * 3 ** 2 + 2 * 3 * 2,
+    "PB1.2": Math.sqrt((2 * 18) / 4),
+    "PB1.3": 2 / (2 * 0.5 ** 2),
+    "PB1.4": 2 * Math.PI * Math.sqrt(2 / 200),
+    "PB2.1": 800 * 10 * 2.5,
+    "PB2.2": -40 - -150,
+    "PB2.3": (1 * 8 * 300) / 0.06,
+    "PB3.1": 90 / (2 * 0.75),
+    "PB3.2": 1 / (1 / 0.2 - 1 / 0.6),
+    "PB3.3": (Math.sqrt(3) + Math.sqrt(3)) ** 2,
+    "PB4.1": (9e9 * 2e-9) / 0.3,
+    "PB4.2": (12 / (1 + 5)) * 5,
+    "PB4.3": 2e-6 * 3e4 * 0.2,
+    "PB4.4": (20 * Math.abs(0.005 - 0.02)) / 0.03,
+    "PB5.1": 1240 / 400 - 2.2,
+    "PB5.2": 200 * 2 ** (-12 / 4),
+    "PB5.3": ((3.3 - 0.7) / 1300) * 1000,
+    "CB.1": 35 - 17,
+    "CB.2": 4 + 2 * 6,
+    "CB.3": 4 / 5,
+    "CB.4": 1930 / 96500 / 2,
+    "CB.5": (2 * 3 + 2 - 6) / 2,
+  };
+  assert.equal(Object.keys(expected).length, 38);
+  for (const m of data.modules) {
+    assert.equal(m.examples.length, 3);
+    const q = m.checks.find((q) => q.id === "transfer-1");
+    assert.equal(q.optional, true, m.id);
+    assert.ok(Math.abs(Number(q.answer) - expected[m.id]) < 1e-10, m.id);
+    const state = {
+      version: FOUNDATION_VERSION,
+      step: 3,
+      visited: [0, 1, 2],
+      answers: Object.fromEntries(
+        [1, 2, 3].map((i) => [
+          `rebuild-${i}`,
+          { response: "a", submitted: "a", correct: true },
+        ]),
+      ),
+      updatedAt: 1,
+      completedAt: null,
+    };
+    assert.equal(revisionPracticeReady(state), true);
+    state.answers["transfer-1"] = {
+      response: "wrong",
+      submitted: "wrong",
+      correct: false,
+    };
+    assert.equal(revisionPracticeReady(state), true);
+  }
 });

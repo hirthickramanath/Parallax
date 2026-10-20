@@ -38,6 +38,14 @@
             "−2x<6. Dividing by −2 reverses the sign, giving x>−3.",
             "Test x=0: the original inequality is true. Test x=−4: it is false."
           ]
+        },
+        {
+          "title": "Cancellation does not restore a missing input",
+          "steps": [
+            "For (x²−4)/(x−2)=0, first exclude x=2 because the original denominator is zero.",
+            "Factor the numerator as (x−2)(x+2). For allowed inputs the quotient equals x+2.",
+            "The only solution is x=−2. Substitution gives 0/(−4)=0; x=2 remains excluded."
+          ]
         }
       ],
       "pitfall": "A graph helps you predict a solution; exact algebra and a domain check establish it.",
@@ -74,6 +82,16 @@
           "explanation": "Δx=3; Δy=3×3=9.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Solve 2/(x−1)=1 over real numbers. What is x?",
+          "answer": "3",
+          "unit": "",
+          "hint": "Exclude x=1, then multiply by the nonzero denominator.",
+          "explanation": "2=x−1 gives x=3. The original expression is defined there and equals 1.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -113,6 +131,14 @@
             "For z=5+12i, |z|²=25+144=169.",
             "Thus |z|=13. Squaring the complex number itself would be a different operation."
           ]
+        },
+        {
+          "title": "Separate an exponential from a complex magnitude",
+          "steps": [
+            "From 10^y=0.01, rewrite 0.01=10^(−2), so y=−2. A logarithm asks for this exponent.",
+            "For z=−3+4i, the modulus is sqrt((−3)²+4²)=5, not −3+4=1.",
+            "Logarithms need a positive real argument; the complex modulus is always a nonnegative real length. These are different operations."
+          ]
         }
       ],
       "pitfall": "ln(x+y) is generally not ln x+ln y. Complex logarithms also need a branch convention.",
@@ -149,6 +175,16 @@
           "explanation": "sqrt(8²+6²)=10.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "What is log10(0.001)?",
+          "answer": "-3",
+          "unit": "",
+          "hint": "Write 0.001 as an integer power of ten.",
+          "explanation": "0.001=10^(−3), so its base-ten logarithm is −3.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -188,6 +224,14 @@
             "The x² term in (1+x)^4 comes from choosing two of four factors to supply x.",
             "There are 4×3/2=6 choices, so the coefficient is 6."
           ]
+        },
+        {
+          "title": "Check convergence before summing",
+          "steps": [
+            "The series 2+1+1/2+… has first term 2 and ratio r=1/2. Since |r|<1, it converges.",
+            "Its first N terms sum to 2(1−(1/2)^N)/(1−1/2)=4(1−2^(−N)).",
+            "As N tends to infinity the remaining term tends to zero, giving a sum of 4. The same argument fails for a ratio with magnitude at least 1."
+          ]
         }
       ],
       "pitfall": "Terms tending to zero are necessary for convergence, but the harmonic series shows this condition is not sufficient.",
@@ -223,6 +267,16 @@
           "explanation": "6×5/2=15.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Find the infinite sum 6+2+2/3+2/9+… .",
+          "answer": "9",
+          "unit": "",
+          "hint": "Identify the first term and the common ratio, then check |r|<1.",
+          "explanation": "The ratio is 1/3, so S=6/(1−1/3)=9.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -262,6 +316,14 @@
             "The formula gives 1+…+12=12×13/2=78.",
             "Adding the next term, 13, gives 91, agreeing with 13×14/2."
           ]
+        },
+        {
+          "title": "Make the induction step use the hypothesis",
+          "steps": [
+            "The first n positive odd numbers are 1,3,…,2n−1. For n=1 their sum is 1=1².",
+            "Assume their sum through n is n². The next term is 2(n+1)−1=2n+1.",
+            "The next sum is n²+2n+1=(n+1)². The base case and implication together prove the statement for positive integers."
+          ]
         }
       ],
       "pitfall": "An induction assumption is a temporary premise for proving the next case, not permission to assume the conclusion for all n.",
@@ -298,6 +360,16 @@
           "explanation": "Two independent choices for each of three elements give 2³=8.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Using the proved odd-number identity, find the sum of the first 20 positive odd numbers.",
+          "answer": "400",
+          "unit": "",
+          "hint": "Use n², not the formula for the first n consecutive integers.",
+          "explanation": "For n=20, 1+3+…+39=20²=400.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -337,6 +409,14 @@
             "sinθ=1/2 on 0≤θ<2π has θ=π/6 and θ=5π/6.",
             "Both unit-circle points have the same vertical coordinate."
           ]
+        },
+        {
+          "title": "Use a reference angle and a sign",
+          "steps": [
+            "150°=180°−30° lies in quadrant II. Its reference angle is 30°.",
+            "sin(150°)=sin(30°)=1/2, while cos(150°)=−cos(30°)=−sqrt(3)/2.",
+            "Squaring and adding gives 1/4+3/4=1. A positive reference-angle value alone does not determine the quadrant sign."
+          ]
         }
       ],
       "pitfall": "Do not pass degrees into a formula written for radians, or treat an inverse-function output as every solution.",
@@ -373,6 +453,16 @@
           "explanation": "The unit-circle identity makes the sum exactly one.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "An acute angle has cos θ=0.6. Find sin θ.",
+          "answer": "0.8",
+          "unit": "",
+          "hint": "Use sin²θ+cos²θ=1, then use the acute-angle sign.",
+          "explanation": "sin²θ=1−0.36=0.64. The positive root is 0.8 because θ is acute.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -412,6 +502,14 @@
             "If r_peri=3 and r_apo=9, then a=(3+9)/2=6.",
             "The focus offset is (9−3)/2=3, hence e=c/a=0.5."
           ]
+        },
+        {
+          "title": "Locate the focus before measuring radius",
+          "steps": [
+            "For an ellipse with a=10 AU and e=0.4, the center-to-focus offset is c=ae=4 AU.",
+            "The nearer vertex is a−c=6 AU from that focus; the farther vertex is a+c=14 AU away.",
+            "These are periapsis and apoapsis distances from the occupied focus. Neither is measured from the center, and they sum to 2a=20 AU."
+          ]
         }
       ],
       "pitfall": "The semimajor axis starts at the center; periapsis and apoapsis distances start at the focus. They coincide only in a circle.",
@@ -447,6 +545,16 @@
           "hint": "Use (far−near)/(far+near).",
           "explanation": "(8−2)/(8+2)=0.6.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "An elliptical orbit has periapsis 4 AU and apoapsis 12 AU. Find its eccentricity.",
+          "answer": "0.5",
+          "unit": "",
+          "hint": "Divide the difference of the two distances by their sum.",
+          "explanation": "a=(4+12)/2=8 AU and c=(12−4)/2=4 AU. Thus e=c/a=0.5.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -486,6 +594,14 @@
             "For 2x+2y+z=0 and point (3,0,0), the residual is 6.",
             "The normal has length 3, so signed distance is 6/3=2. Multiplying the whole equation by −1 reverses orientation and sign, not physical distance."
           ]
+        },
+        {
+          "title": "A signed distance needs a unit normal",
+          "steps": [
+            "For 2x−y+2z=6, n=(2,−1,2) has length 3, so the oriented unit normal is n/3.",
+            "At the origin the plane expression is −6. Dividing by 3 gives signed distance −2.",
+            "Subtracting signed-distance times unit-normal gives the foot (4/3,−2/3,4/3). Its coordinates satisfy the plane equation, and the displacement is normal to the plane."
+          ]
         }
       ],
       "pitfall": "An unnormalized plane residual is not a distance: scaling the equation would change it even though the plane stays fixed.",
@@ -522,6 +638,16 @@
           "explanation": "(2×5−4)/2=3.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "For x+2y+2z=9 with oriented normal (1,2,2), find the signed distance of the origin.",
+          "answer": "-3",
+          "unit": "length units",
+          "hint": "Evaluate n·P−9 and divide by the length of n.",
+          "explanation": "The numerator is −9 and ||n||=sqrt(1+4+4)=3, so signed distance is −3.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -561,6 +687,14 @@
             "For f(x)=2x near x=1, output error is |2x−2|=2|x−1|.",
             "Keeping input error below 0.005 guarantees output error below 0.01."
           ]
+        },
+        {
+          "title": "A limit can exist where the function does not",
+          "steps": [
+            "For x≠3, (x²−9)/(x−3)=(x−3)(x+3)/(x−3)=x+3.",
+            "Approaching 3 through allowed inputs makes x+3 approach 6. Therefore the limit is 6.",
+            "The original fraction at 3 is still undefined. Defining a new value 6 at that point makes a continuous extension; it does not change the original domain."
+          ]
         }
       ],
       "pitfall": "0/0 is an indeterminate expression, not zero. Cancellation must preserve the original domain.",
@@ -596,6 +730,16 @@
           "hint": "The output error is three times the input error.",
           "explanation": "0.03/3=0.01.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "In radians, find lim as x→0 of sin(3x)/x.",
+          "answer": "3",
+          "unit": "",
+          "hint": "Multiply and divide by 3 to obtain sin(3x)/(3x).",
+          "explanation": "sin(3x)/x=3 sin(3x)/(3x). The bracket tends to 1, so the limit is 3.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -635,6 +779,14 @@
             "For y=(3x+1)², the outside derivative is 2(3x+1), and the inside derivative is 3.",
             "Thus y′=6(3x+1), not just 2(3x+1)."
           ]
+        },
+        {
+          "title": "Keep the inner derivative in a chain rule",
+          "steps": [
+            "Let s(t)=(2t+1)³ in consistent units. Think of s=u³ with u=2t+1.",
+            "The chain rule gives ds/dt=3u²·du/dt=6(2t+1)².",
+            "At t=1 the derivative is 6·9=54 in the corresponding rate units. Omitting du/dt would give half this value."
+          ]
         }
       ],
       "pitfall": "A derivative is a signed rate with units. It is not generally the function divided by the input.",
@@ -671,6 +823,16 @@
           "explanation": "2(2x+1)×2 gives 12 at x=1.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A position is x(t)=3t²−2t+4 metres with t in seconds. Find velocity at t=2 s.",
+          "answer": "10",
+          "unit": "m/s",
+          "hint": "Differentiate position before substituting the time.",
+          "explanation": "v(t)=6t−2, so v(2)=12−2=10 m/s. Position and velocity have different units.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -710,6 +872,14 @@
             "For ∫2x cos(x²)dx, take u=x² so du=2x dx.",
             "The integral becomes ∫cos u du=sin u+C=sin(x²)+C. Check by differentiation."
           ]
+        },
+        {
+          "title": "Integrate the rate rather than multiplying its final value",
+          "steps": [
+            "A particle has v(t)=2t m/s for 0≤t≤3 s. The velocity-time graph is a triangle.",
+            "Its displacement is the area (1/2)·3 s·6 m/s=9 m, agreeing with ∫0³2t dt=[t²]0³.",
+            "Using the final velocity throughout would give 18 m. That replaces an increasing rate with the wrong constant rate."
+          ]
         }
       ],
       "pitfall": "A signed integral and a geometric area are not always the same; negative portions cancel in the signed total.",
@@ -745,6 +915,16 @@
           "hint": "Use u=x² and transform endpoints to zero and one.",
           "explanation": "The result is exp(1)−exp(0)=e−1.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Evaluate the definite integral of 3x² from x=0 to x=2.",
+          "answer": "8",
+          "unit": "",
+          "hint": "An antiderivative of 3x² is x³.",
+          "explanation": "The fundamental theorem gives [x³]0²=8−0=8.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -784,6 +964,14 @@
             "Move at +2 m/s for 3 seconds, then −2 m/s for 3 seconds.",
             "Displacement is 6−6=0 m; distance is 6+6=12 m."
           ]
+        },
+        {
+          "title": "An optimum must respect the allowed interval",
+          "steps": [
+            "A rectangle with perimeter 20 m has side lengths x and 10−x, with 0<x<10 m.",
+            "Its area is A=10x−x²; A′=10−2x vanishes at x=5 m.",
+            "The second derivative is −2, and the area tends to zero at both boundary limits. The global maximum is 25 m² at a square."
+          ]
         }
       ],
       "pitfall": "A stationary point can be a minimum or neither; a net displacement can be zero after considerable travel.",
@@ -820,6 +1008,16 @@
           "explanation": "Distance is 6+2=8 m; displacement would be 4 m.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "For 0≤x≤12, what is the maximum value of x(12−x)?",
+          "answer": "36",
+          "unit": "",
+          "hint": "Complete the square or compare the stationary point and endpoints.",
+          "explanation": "x(12−x)=36−(x−6)². Its maximum is 36 at x=6, while both endpoints give zero.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -859,6 +1057,14 @@
             "If the half-life is 3 hours, after 6 hours two halvings leave one quarter.",
             "This is an ensemble/continuous decay relation, not a fixed disappearance time for every individual object."
           ]
+        },
+        {
+          "title": "Apply an initial condition after separating variables",
+          "steps": [
+            "A temperature excess θ=T−Tenv obeys dθ/dt=−kθ with k>0 in a constant environment.",
+            "Integration gives θ=C exp(−kt). If θ(0)=20 K, then C=20 K.",
+            "After two half-lives the excess is 20/4=5 K; it is the excess, not the absolute Celsius or Kelvin temperature, that halves."
+          ]
         }
       ],
       "pitfall": "Solving an equation without applying its initial condition leaves an undetermined family, not the requested prediction.",
@@ -894,6 +1100,16 @@
           "hint": "Count four half-lives.",
           "explanation": "(1/2)⁴=1/16=0.0625.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Solve dy/dt=2y with y(0)=3. What is y at t=ln 2 in the stated time units?",
+          "answer": "12",
+          "unit": "",
+          "hint": "First find the exponential solution and its initial multiplier.",
+          "explanation": "y=3 exp(2t), so y(ln 2)=3 exp(ln 4)=12.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -933,6 +1149,14 @@
             "For [[2,1],[1,3]], det=2×3−1×1=5.",
             "Oriented area is multiplied by 5; this is not the same as multiplying every vector length by 5."
           ]
+        },
+        {
+          "title": "Check a linear solution in both equations",
+          "steps": [
+            "Solve 2x+y=5 and x+y=3. Subtract the second equation from the first to get x=2.",
+            "Then y=1. Substitution gives 2·2+1=5 and 2+1=3.",
+            "The coefficient determinant is 2·1−1·1=1, which is nonzero; the unique solution is consistent with invertibility."
+          ]
         }
       ],
       "pitfall": "Matrix multiplication generally depends on order; entrywise multiplication is a different operation.",
@@ -969,6 +1193,16 @@
           "explanation": "1×2+2×1=4.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Find the determinant of the matrix with rows (3,2) and (1,4).",
+          "answer": "10",
+          "unit": "",
+          "hint": "For a 2×2 matrix, use ad−bc.",
+          "explanation": "The determinant is 3·4−2·1=12−2=10.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1008,6 +1242,14 @@
             "For a=(2,3) and unit x direction (1,0), a·ex=2.",
             "Its y component does not contribute to the x projection."
           ]
+        },
+        {
+          "title": "Orthogonality is a dot-product statement",
+          "steps": [
+            "Let a=(3,4) and b=(4,−3). Their dot product is 3·4+4·(−3)=0.",
+            "Both vectors have length 5, so a·b=||a||||b||cos θ implies cos θ=0: they are perpendicular.",
+            "Their sum (7,1) has length sqrt(50), not 10. Vector lengths add only in special aligned cases."
+          ]
         }
       ],
       "pitfall": "A dot product can be negative. The cross product changes sign when the order of its inputs is reversed.",
@@ -1044,6 +1286,16 @@
           "explanation": "2×5×sin(π/2)=10.",
           "type": "numeric",
           "exact": true
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Add vectors (2,−1,2) and (1,3,−2), then find the magnitude of their sum.",
+          "answer": "3.605551275463989",
+          "unit": "vector units",
+          "hint": "Add components first, then take a Euclidean norm.",
+          "explanation": "The sum is (3,2,0), whose magnitude is sqrt(3²+2²)=sqrt(13)≈3.60555.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1083,6 +1335,14 @@
             "Out of 1000 people, suppose 10 have a condition and all test positive; 99 of the other 990 also test positive.",
             "Only 10 of 109 positive results are true positives. A sensitive test does not erase the base rate."
           ]
+        },
+        {
+          "title": "Conditioning changes the denominator",
+          "steps": [
+            "Among 40 students, 12 study astronomy, 8 study physics and 4 study both.",
+            "P(physics | astronomy)=4/12=1/3 because the conditioning group contains 12 people.",
+            "The joint probability is 4/40=1/10. These differ because the question chooses a different reference population."
+          ]
         }
       ],
       "pitfall": "Mutually exclusive and independent describe different relationships. Reversing a condition needs a new calculation.",
@@ -1117,6 +1377,16 @@
           "hint": "Use independence to multiply.",
           "explanation": "0.3×0.4=0.12.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A bag contains 3 red and 2 blue balls. Two draws are made without replacement. Find the probability that both are red.",
+          "answer": "0.3",
+          "unit": "",
+          "hint": "The second draw has a changed numerator and denominator after a red first draw.",
+          "explanation": "P(both red)=(3/5)(2/4)=6/20=0.3. Independence would incorrectly keep the second factor at 3/5.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1156,6 +1426,14 @@
             "For the same variable, E[X²]=16×0.25=4.",
             "Variance is 4−1²=3; standard deviation is sqrt3."
           ]
+        },
+        {
+          "title": "Compute variation around the mean",
+          "steps": [
+            "Let X take 0,1,2 with probabilities 1/4,1/2,1/4. Its mean is 0+1/2+1/2=1.",
+            "E[X²]=0+1/2+1=3/2. Thus Var(X)=E[X²]−E[X]²=1/2.",
+            "The variance is not the standard deviation: the latter is sqrt(1/2). Squared units belong to variance."
+          ]
         }
       ],
       "pitfall": "Averages are linear even without independence; variance additivity without covariance is not.",
@@ -1191,6 +1469,16 @@
           "hint": "Add variances, then take the square root.",
           "explanation": "Variance is 13, so standard deviation is sqrt13.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "For five independent Bernoulli trials with success probability 0.2, find the variance of the number of successes.",
+          "answer": "0.8",
+          "unit": "",
+          "hint": "Use np(1−p), which requires independent trials with the same p.",
+          "explanation": "Var(X)=5·0.2·0.8=0.8. The mean is 1, a different quantity.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1230,6 +1518,14 @@
             "A 2 kg body has forces +10 N and −4 N. Net force is +6 N.",
             "Its acceleration is +3 m/s². Equal and opposite third-law forces on different bodies do not cancel on this single-body diagram."
           ]
+        },
+        {
+          "title": "A negative velocity does not mean a negative position",
+          "steps": [
+            "Let x(t)=2+3t−t² m. Then v=3−2t m/s and a=−2 m/s².",
+            "At t=2 s, x=4 m and v=−1 m/s. The particle is to the positive side of the origin but moving in the negative direction.",
+            "The turning time is v=0 at t=1.5 s. A signed displacement need not equal the total distance travelled."
+          ]
         }
       ],
       "pitfall": "A moving object need not have a nonzero net force; constant velocity requires zero acceleration.",
@@ -1264,6 +1560,16 @@
           "hint": "Use at²/2.",
           "explanation": "3×16/2=24 m.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A particle starts from rest, accelerates at 2 m/s² for 3 s, then moves at the resulting constant velocity for 2 s. Find its total distance.",
+          "answer": "21",
+          "unit": "m",
+          "hint": "Split the motion into the accelerating and constant-velocity intervals.",
+          "explanation": "The first distance is (1/2)·2·3²=9 m and the attained speed is 6 m/s. The next distance is 6·2=12 m; total 21 m.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1303,6 +1609,14 @@
             "A 1 kg body at 4 m/s sticks to an initially stationary 1 kg body.",
             "Momentum 4 kg m/s gives combined velocity 2 m/s. Kinetic energy falls from 8 J to 4 J; it was not conserved as kinetic energy."
           ]
+        },
+        {
+          "title": "Conserve momentum without assuming kinetic energy survives",
+          "steps": [
+            "A 2 kg cart at 3 m/s sticks to a stationary 1 kg cart on an isolated horizontal track. Initial momentum is 6 kg m/s.",
+            "The common final velocity is 6/(2+1)=2 m/s.",
+            "Initial kinetic energy is 9 J and final kinetic energy is 6 J. The missing 3 J becomes internal energy; momentum conservation did not imply conservation of kinetic energy."
+          ]
         }
       ],
       "pitfall": "Energy conservation does not mean kinetic energy alone stays constant, and internal forces do not imply zero force on each body.",
@@ -1337,6 +1651,16 @@
           "hint": "Conserve total momentum with negligible external impulse.",
           "explanation": "6/(2+1)=2 m/s.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A net work of 18 J is done on a 4 kg particle initially at rest. Find its final speed.",
+          "answer": "3",
+          "unit": "m/s",
+          "hint": "Use net work as the change in kinetic energy.",
+          "explanation": "18=(1/2)·4·v² gives v²=9 and speed v=3 m/s.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1376,6 +1700,14 @@
             "A solid cylinder has I=MR²/2. For no-slip rolling, rotational energy is Mv²/4.",
             "Total energy is 3Mv²/4, greater than the translational contribution alone."
           ]
+        },
+        {
+          "title": "Include rotational energy during rolling",
+          "steps": [
+            "A solid cylinder rolls without slipping from height 1.5 m. Take g=10 m/s² and neglect dissipation.",
+            "With I=(1/2)mr² and ω=v/r, mgh=(1/2)mv²+(1/2)Iω²=(3/4)mv².",
+            "Hence v²=(4/3)gh=20 m²/s² and v≈4.472 m/s. A sliding point-mass formula would omit rotational kinetic energy."
+          ]
         }
       ],
       "pitfall": "Do not apply v=ωR to a slipping contact, or use an inertia formula for the wrong axis.",
@@ -1410,6 +1742,16 @@
           "hint": "Use Iω²/2.",
           "explanation": "2×9/2=9 J.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A thin ring of mass 2 kg and radius 0.5 m rotates about its symmetry axis. A net torque of 2 N m acts. Find angular acceleration.",
+          "answer": "4",
+          "unit": "rad/s²",
+          "hint": "Use the ring inertia mr² and the fixed-axis torque law.",
+          "explanation": "I=2·0.5²=0.5 kg m². Thus α=τ/I=2/0.5=4 rad/s².",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1449,6 +1791,14 @@
             "For k=4 N/m and m=1 kg, ω=2 rad/s.",
             "The period is 2π/2=π s; angular frequency and ordinary frequency differ by 2π."
           ]
+        },
+        {
+          "title": "Compare orbital changes without substituting a planet mass",
+          "steps": [
+            "For Newtonian circular orbits around the same central mass, v²=GM/r and T=2π sqrt(r³/GM).",
+            "Increasing orbital radius from r to 4r makes the speed half as large.",
+            "The period grows by 4^(3/2)=8. Radius, speed and period do not scale with the same power; these relations assume gravity dominates and orbits are circular."
+          ]
         }
       ],
       "pitfall": "A restoring force is not automatically exactly linear. Check the small-displacement or small-angle approximation.",
@@ -1483,6 +1833,16 @@
           "hint": "Use sqrt(k/m).",
           "explanation": "sqrt9=3 rad/s.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "An ideal mass-spring oscillator has mass 2 kg and spring constant 200 N/m. Find its period.",
+          "answer": "0.6283185307179586",
+          "unit": "s",
+          "hint": "Use T=2π sqrt(m/k), not the circular-orbit radius relation.",
+          "explanation": "m/k=0.01 s², so T=2π·0.1=0.2π≈0.628319 s.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1522,6 +1882,14 @@
             "At the same depth in the same stationary liquid with the same surface pressure, a wider vessel has the same pressure.",
             "It contains more liquid and has more total bottom force, but pressure remains force divided by area."
           ]
+        },
+        {
+          "title": "A floating fraction is a density ratio",
+          "steps": [
+            "A uniform object of density 600 kg/m³ floats in liquid of density 1000 kg/m³. Weight equals buoyancy.",
+            "ρbody Vg=ρliquid Vsub g gives Vsub/V=600/1000=0.6.",
+            "In liquid of density 1200 kg/m³ the fraction becomes 0.5. The calculation assumes floating equilibrium without a separate supporting force."
+          ]
         }
       ],
       "pitfall": "The static uniform-density formula does not automatically describe accelerating liquids, compressible density profiles or a Bernoulli flow.",
@@ -1556,6 +1924,16 @@
           "hint": "Rearrange Δp=ρgh.",
           "explanation": "24000/(10×3)=800 kg/m³.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A uniform liquid has density 800 kg/m³. At 2.5 m depth with g=10 m/s², find gauge pressure.",
+          "answer": "20000",
+          "unit": "Pa",
+          "hint": "Gauge pressure excludes the pressure on the liquid surface.",
+          "explanation": "p_gauge=ρgh=800·10·2.5=20000 Pa. The vessel width does not enter this local hydrostatic relation.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1595,6 +1973,14 @@
             "A gas releases 50 J while 140 J is done on it. Q=−50,W_by=−140.",
             "ΔU=−50−(−140)=+90 J. The incoming work more than offsets the heat loss."
           ]
+        },
+        {
+          "title": "A complete cycle has no net internal-energy change",
+          "steps": [
+            "An engine absorbs 300 J of heat per cycle and delivers 120 J of work per cycle.",
+            "Because the system returns to its initial state, ΔU=0=Qnet−Wout, so 180 J must be rejected as heat.",
+            "Efficiency is Wout/Qin=120/300=0.4. It is not Wout divided by the net heat, which would obscure the rejected heat."
+          ]
         }
       ],
       "pitfall": "“Work done on” and “work done by” have opposite signs. Keep the convention rather than memorizing an isolated plus or minus.",
@@ -1629,6 +2015,16 @@
           "hint": "Use Q=−60 and W_by=−180.",
           "explanation": "−60−(−180)=120 J.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A gas releases 40 J of heat while 150 J of work is done on it. Find ΔU using work-by-system as positive.",
+          "answer": "110",
+          "unit": "J",
+          "hint": "Q is negative; work done on the gas makes Wby negative.",
+          "explanation": "ΔU=Q−Wby=(−40)−(−150)=110 J.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1668,6 +2064,14 @@
             "At fixed particle count and temperature, halving volume doubles pressure in the ideal model.",
             "It does not double the temperature unless an additional process relation requires it."
           ]
+        },
+        {
+          "title": "Use Kelvin inside a speed ratio",
+          "steps": [
+            "For the same ideal gas, vrms=sqrt(3RT/M), so vrms scales as sqrt(T).",
+            "Raising temperature from 300 K to 1200 K gives a temperature ratio of 4 and a speed ratio of 2.",
+            "The ratio requires absolute temperature and unchanged molar mass; Celsius values cannot be substituted into it."
+          ]
         }
       ],
       "pitfall": "Rms speed is not mean speed, and a classical monatomic heat-capacity formula is not universal for all molecules and temperatures.",
@@ -1702,6 +2106,16 @@
           "hint": "Use sqrt(3kT/m).",
           "explanation": "sqrt(3×3)=3.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "One mole of an ideal gas occupies 0.06 m³ at 300 K. Use R=8 J/(mol K). Find its pressure.",
+          "answer": "40000",
+          "unit": "Pa",
+          "hint": "Solve pV=nRT and use the specified rounded value of R.",
+          "explanation": "p=(1·8·300)/0.06=40000 Pa.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1741,6 +2155,14 @@
             "For L=2 m and v=20 m/s, f1=v/(2L)=5 Hz.",
             "The second harmonic is 10 Hz; the boundary condition selects this sequence."
           ]
+        },
+        {
+          "title": "A boundary condition selects a harmonic",
+          "steps": [
+            "A string of length 1.2 m is fixed at both ends and has wave speed 120 m/s.",
+            "Allowed frequencies are fn=nv/(2L). For n=3, f3=3·120/(2·1.2)=150 Hz.",
+            "There are three half-wavelengths along the string. A free end would impose a different boundary condition and change the allowed patterns."
+          ]
         }
       ],
       "pitfall": "The phase speed is not generally a medium particle’s speed or a pulse’s group speed in a dispersive medium.",
@@ -1775,6 +2197,16 @@
           "hint": "Use v/(2L).",
           "explanation": "30/2=15 Hz.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A string fixed at both ends has length 0.75 m and wave speed 90 m/s. Find its fundamental frequency.",
+          "answer": "60",
+          "unit": "Hz",
+          "hint": "The fundamental wavelength is twice the length.",
+          "explanation": "f1=v/(2L)=90/1.5=60 Hz.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1814,6 +2246,14 @@
             "Magnification is −4.5/9=−0.5.",
             "The negative sign means inverted, while its magnitude means half the object height."
           ]
+        },
+        {
+          "title": "Specify a lens sign convention",
+          "steps": [
+            "Use the real-is-positive thin-lens convention with a converging lens f=10 cm and a real object at u=15 cm.",
+            "1/v=1/f−1/u=1/10−1/15=1/30 cm⁻¹, so the real image distance is 30 cm.",
+            "The transverse magnification is −v/u=−2. Its negative sign indicates an inverted image; changing conventions requires changing the equations consistently."
+          ]
         }
       ],
       "pitfall": "A negative magnification is not a negative physical size; it specifies image orientation.",
@@ -1848,6 +2288,16 @@
           "hint": "Use −v/u.",
           "explanation": "−6/12=−0.5.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "In the same real-is-positive thin-lens convention, f=0.2 m and a real object is 0.6 m away. Find the image distance.",
+          "answer": "0.3",
+          "unit": "m",
+          "hint": "Find 1/v by subtraction before taking the reciprocal.",
+          "explanation": "1/v=5−5/3=10/3 m⁻¹, so v=0.3 m.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1887,6 +2337,14 @@
             "Doubling slit separation d at fixed wavelength and screen distance halves β.",
             "This is a controlled geometry change, not a change in light frequency."
           ]
+        },
+        {
+          "title": "Distinguish a fringe spacing from a first dark fringe",
+          "steps": [
+            "In the small-angle double-slit model, take λ=500 nm, D=2 m and slit separation d=0.5 mm.",
+            "The bright-to-bright spacing is β=λD/d=0.002 m=2 mm.",
+            "The first dark fringe is β/2=1 mm from the central bright fringe. This assumes coherent illumination and neglects the single-slit envelope when locating interference zeros."
+          ]
         }
       ],
       "pitfall": "Adding the two separate intensities omits the interference cross term; independent incoherent sources average differently.",
@@ -1921,6 +2379,16 @@
           "hint": "Spacing is inversely proportional to separation.",
           "explanation": "The new spacing is one half.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Two equal coherent waves each produce intensity 3 units alone. If they arrive in phase, find the combined intensity.",
+          "answer": "12",
+          "unit": "intensity units",
+          "hint": "Add amplitudes first; intensity is proportional to squared amplitude.",
+          "explanation": "Doubling the amplitude multiplies the single-wave intensity by four: I=4·3=12 units.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -1960,6 +2428,14 @@
             "For k=q=1 and r=2, E_radial=1/4 and V=1/2.",
             "Doubling r quarters field but only halves potential."
           ]
+        },
+        {
+          "title": "Keep field direction separate from potential sign",
+          "steps": [
+            "A point charge Q=−2 nC is at the origin. At x=+0.3 m, use k=9×10⁹ N m²/C².",
+            "The field component is kQ/r²=(9×10⁹)(−2×10⁻⁹)/0.09=−200 N/C: it points toward the charge.",
+            "Potential with zero at infinity is kQ/r=−60 V. A scalar potential and a vector field have different units and meanings."
+          ]
         }
       ],
       "pitfall": "Zero potential is reference-dependent; a force or field cannot be inferred solely from that one scalar value.",
@@ -1994,6 +2470,16 @@
           "hint": "Multiply charge and field, retaining sign.",
           "explanation": "−3×2=−6 N.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Using k=9×10⁹ N m²/C², find the potential 0.3 m from a +2 nC point charge, relative to infinity.",
+          "answer": "60",
+          "unit": "V",
+          "hint": "Potential uses one power of distance in the denominator.",
+          "explanation": "V=kQ/r=18/0.3=60 V. This is not the electric-field magnitude.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2033,6 +2519,14 @@
             "Two 6 Ω resistors in parallel have conductance 1/6+1/6=1/3.",
             "Their equivalent resistance is 3 Ω, smaller than either branch alone."
           ]
+        },
+        {
+          "title": "Parallel branches share voltage",
+          "steps": [
+            "Connect ideal resistors 6 Ω and 3 Ω in parallel across an ideal 12 V source.",
+            "Their currents are 12/6=2 A and 12/3=4 A. Total current is 6 A, so equivalent resistance is 12/6=2 Ω.",
+            "The resistance is smaller than either branch resistance. Current is conserved at the junction; it is not the same through each parallel branch."
+          ]
         }
       ],
       "pitfall": "The current is not necessarily the same in parallel branches; the voltage is shared across their common nodes.",
@@ -2067,6 +2561,16 @@
           "hint": "Add reciprocal resistances.",
           "explanation": "1/R=1/4+1/4=1/2, so R=2 Ω.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A 12 V emf source has internal resistance 1 Ω and supplies a 5 Ω load. Find the terminal voltage across the load.",
+          "answer": "10",
+          "unit": "V",
+          "hint": "First find current through the combined internal and load resistance.",
+          "explanation": "I=12/(1+5)=2 A. Terminal voltage is IRload=2·5=10 V, also emf−Ir=12−2.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2106,6 +2610,14 @@
             "Positive loop flux rises by 0.6 Wb in 0.2 s at a constant rate.",
             "The signed emf is −0.6/0.2=−3 V for that loop orientation."
           ]
+        },
+        {
+          "title": "A sine factor encodes orientation",
+          "steps": [
+            "A straight 0.3 m wire carries 4 A in a uniform 0.5 T field perpendicular to the current.",
+            "The magnetic force magnitude is BIL sin θ=0.5·4·0.3·1=0.6 N.",
+            "If the wire is parallel to the field, the force is zero. The right-hand rule determines direction; the magnitude formula alone does not."
+          ]
         }
       ],
       "pitfall": "A steady nonzero flux need not induce emf; the time derivative, moving-loop geometry and chosen orientation matter.",
@@ -2140,6 +2652,16 @@
           "hint": "Use minus the flux-change rate.",
           "explanation": "−0.8/0.2=−4 V.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A charge of magnitude 2 μC travels at 3×10⁴ m/s perpendicular to a 0.2 T field. Find magnetic force magnitude.",
+          "answer": "0.012",
+          "unit": "N",
+          "hint": "Convert microcoulombs to coulombs, then use |q|vB.",
+          "explanation": "|F|=(2×10⁻⁶)(3×10⁴)(0.2)=0.012 N.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2179,6 +2701,14 @@
             "For L=1 H,C=0.25 F, ω0=2 rad/s.",
             "Its ordinary frequency is ω0/(2π), not 2 Hz."
           ]
+        },
+        {
+          "title": "RMS is not the peak value",
+          "steps": [
+            "A resistor of 50 Ω is driven by a sinusoidal voltage with peak 100sqrt(2) V.",
+            "Its RMS voltage is Vpeak/sqrt(2)=100 V. Mean heating power is Vrms²/R=10000/50=200 W.",
+            "Using peak voltage in the DC heating formula would overestimate mean power by a factor of two. This result assumes an ideal resistor and a sinusoid."
+          ]
         }
       ],
       "pitfall": "Do not use peak voltage in a formula requiring rms voltage, or omit phase in a reactive circuit.",
@@ -2213,6 +2743,16 @@
           "hint": "Use V_rms²/R.",
           "explanation": "64/4=16 W.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Flux per turn in a 20-turn coil falls from 0.020 Wb to 0.005 Wb in 0.030 s. Find the magnitude of average induced emf.",
+          "answer": "10",
+          "unit": "V",
+          "hint": "Use the change in flux per turn, multiply by turns, then divide by elapsed time.",
+          "explanation": "|emf|=20·|0.005−0.020|/0.030=10 V. Lenz’s law fixes the polarity after a winding orientation is specified.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2252,6 +2792,14 @@
             "A transition from −2 to −8 energy units releases 6 units.",
             "The final state is lower; the emitted photon energy is E_initial−E_final=6."
           ]
+        },
+        {
+          "title": "Photoelectric energy is an energy balance",
+          "steps": [
+            "A photon has energy 3 eV and the surface work function is 2 eV.",
+            "The maximum photoelectron kinetic energy is Kmax=3−2=1 eV.",
+            "The stopping-potential magnitude is 1 V because an electron loses 1 eV across 1 V. Increasing intensity at this fixed frequency changes the ideal count rate, not Kmax."
+          ]
         }
       ],
       "pitfall": "Intensity and photon energy are different. A negative bound-state energy does not mean a photon has negative energy.",
@@ -2286,6 +2834,16 @@
           "hint": "Subtract final from initial.",
           "explanation": "−1−(−4)=3.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Use hc=1240 eV nm. Light of wavelength 400 nm hits a surface with work function 2.2 eV. Find maximum photoelectron kinetic energy.",
+          "answer": "0.9",
+          "unit": "eV",
+          "hint": "Convert wavelength to photon energy before subtracting the work function.",
+          "explanation": "E=1240/400=3.1 eV, so Kmax=3.1−2.2=0.9 eV.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2325,6 +2883,14 @@
             "If λ=0.1 s⁻¹ and N=200, activity is 20 decays/s.",
             "As N decreases, activity decreases even though λ stays fixed in this model."
           ]
+        },
+        {
+          "title": "Count half-lives before exponentiating",
+          "steps": [
+            "A single radioactive parent has half-life 5 days and initially contains 80 arbitrary count units.",
+            "After 15 days, three half-lives have elapsed, so N=80·(1/2)³=10 units.",
+            "The remaining-parent activity is λN and has the same fraction. Daughter activity or a measured background would need a separate model."
+          ]
         }
       ],
       "pitfall": "Half-life is not the exact time at which each nucleus decays, and activity has units of events per time.",
@@ -2359,6 +2925,16 @@
           "hint": "Activity is decay constant times the number of undecayed nuclei: A = λN.",
           "explanation": "0.2×50=10 decays/s.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A radioactive parent has half-life 4 h and initially 200 count units. Find the remaining parent count after 12 h.",
+          "answer": "25",
+          "unit": "count units",
+          "hint": "Divide elapsed time by the half-life before applying a factor of one-half.",
+          "explanation": "There are 12/4=3 half-lives, so N=200/8=25 count units.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2398,6 +2974,14 @@
             "For ideality n=1 and V/V_T=ln2, I/I_s=exp(ln2)−1=1.",
             "At V=0, net ideal current is zero."
           ]
+        },
+        {
+          "title": "State an approximation for a diode before calculating current",
+          "steps": [
+            "In a constant-drop circuit model, a forward-biased diode drops 0.7 V and is in series with a 1 kΩ resistor and 5 V source.",
+            "The resistor voltage is 5−0.7=4.3 V, so current is 4.3/1000=0.0043 A=4.3 mA.",
+            "The 0.7 V drop is a stated approximation, not a universal semiconductor constant. Temperature and current change a real diode’s characteristic."
+          ]
         }
       ],
       "pitfall": "A band gap alone does not fix an entire device current, and the ideal diode exponential is not valid at unlimited current.",
@@ -2432,6 +3016,16 @@
           "hint": "Use σ proportional to mobility.",
           "explanation": "The conductivity doubles in the specified model.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Using a fixed 0.7 V forward-drop model, a diode is in series with a 1.3 kΩ resistor and a 3.3 V source. Find current in mA.",
+          "answer": "2",
+          "unit": "mA",
+          "hint": "Find the resistor voltage, use amperes in Ohm’s law, then convert to mA.",
+          "explanation": "IR=3.3−0.7=2.6 V, so I=2.6/1300 A=0.002 A=2 mA.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2471,6 +3065,14 @@
             "For a one-electron ion with Z=2, the energy scale at fixed n is four times the Z=1 magnitude.",
             "The negative sign still identifies a bound level relative to its continuum reference."
           ]
+        },
+        {
+          "title": "Separate isotope labels from ion charge",
+          "steps": [
+            "A magnesium isotope has mass number 26 and atomic number 12. It has 12 protons and 26−12=14 neutrons.",
+            "A Mg²⁺ ion has lost two electrons, leaving 12−2=10 electrons.",
+            "Ionization changes electron count, not the nuclear proton or neutron numbers. The mass number counts nucleons rather than charge."
+          ]
         }
       ],
       "pitfall": "Do not apply the bare hydrogenic Z² energy rule to every electron in a many-electron atom.",
@@ -2506,6 +3108,16 @@
           "hint": "Use the stated Z² scaling.",
           "explanation": "2²=4, within the one-electron approximation.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "A chlorine isotope has mass number 35 and atomic number 17. How many neutrons does a chloride ion of this isotope have?",
+          "answer": "18",
+          "unit": "neutrons",
+          "hint": "Subtract atomic number from mass number; ion charge affects only electron count here.",
+          "explanation": "N=A−Z=35−17=18 neutrons. The extra electron in chloride does not alter the nucleus.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2545,6 +3157,14 @@
             "Water has four electron domains around oxygen, two of them lone pairs.",
             "The ideal domain arrangement is tetrahedral, while the three nuclei form a bent molecular shape."
           ]
+        },
+        {
+          "title": "Formal charge is a bookkeeping convention",
+          "steps": [
+            "An oxygen atom in a Lewis structure has three lone pairs and one single bond. Its free-atom valence count is 6.",
+            "Assign all 6 nonbonding electrons and half of the 2 bonding electrons to oxygen. Formal charge is 6−6−1=−1.",
+            "This bookkeeping charge does not directly equal an atom’s measured partial charge; electron density depends on the bonding environment."
+          ]
         }
       ],
       "pitfall": "Formal charge is bookkeeping, not a direct measurement of the actual partial charge on an atom.",
@@ -2579,6 +3199,16 @@
           "hint": "Use half of bonding minus antibonding occupancy.",
           "explanation": "(6−2)/2=2.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "How many total valence electrons does a neutral CO₂ molecule contain?",
+          "answer": "16",
+          "unit": "electrons",
+          "hint": "Add the free-atom valence contributions before drawing bonds.",
+          "explanation": "Carbon contributes 4 and two oxygens contribute 2·6=12, giving 16 valence electrons.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2618,6 +3248,14 @@
             "If RT=1 and K=e², the standard Gibbs change is −2.",
             "Actual reaction Gibbs change can differ because RT lnQ also depends on the present composition."
           ]
+        },
+        {
+          "title": "Convert entropy units before using free energy",
+          "steps": [
+            "Suppose ΔH=−20 kJ/mol and ΔS=−50 J/(mol K), approximately constant over the temperature range.",
+            "At 400 K, TΔS=−20000 J/mol=−20 kJ/mol. Thus ΔG=ΔH−TΔS=0.",
+            "The crossover is T=ΔH/ΔS=400 K. Equilibrium driving force is not the same as reaction speed; this estimate also neglects temperature variation of ΔH and ΔS."
+          ]
         }
       ],
       "pitfall": "Equilibrium is not a rate statement: a favorable reaction can still be very slow.",
@@ -2652,6 +3290,16 @@
           "hint": "Use −RT lnK.",
           "explanation": "Use ΔG° = −RT lnK. Here RT=1 and lnK=3, giving −3 in the stated energy units.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "For ideal A⇌B at fixed volume with equilibrium ratio [B]/[A]=4, start with 1 mol A and no B. Find equilibrium moles of B.",
+          "answer": "0.8",
+          "unit": "mol",
+          "hint": "Use nA+nB=1 along with the ratio; the stoichiometry is one-to-one.",
+          "explanation": "Set nB=x and nA=1−x. x/(1−x)=4 gives 5x=4, so x=0.8 mol.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2691,6 +3339,14 @@
             "For ΔG=−12,n=2,F=1 in model units, E=6.",
             "A positive reversible voltage does not alone establish a high operating current."
           ]
+        },
+        {
+          "title": "Use the integrated law for a half-life comparison",
+          "steps": [
+            "A first-order reactant has half-life 10 s, so k=ln 2/(10 s).",
+            "After 30 s, [A]/[A]0=exp(−k·30)=exp(−3ln 2)=1/8.",
+            "The remaining fraction is 0.125. A zero-order or second-order law would not generally have the same concentration-independent half-life."
+          ]
         }
       ],
       "pitfall": "A catalyst can speed equilibrium approach without changing the equilibrium constant for the same temperature and reaction definition.",
@@ -2725,6 +3381,16 @@
           "hint": "Use E=−ΔG/(nF).",
           "explanation": "Use ΔG = −nFE, so E = −ΔG/(nF) = −(−8)/(2×1) = 4 in the stated voltage units.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "During ideal Cu²⁺+2e⁻→Cu electrolysis, charge 1930 C passes with 100% current efficiency. Use F=96500 C/mol. Find deposited copper in moles.",
+          "answer": "0.01",
+          "unit": "mol",
+          "hint": "Convert charge to moles of electrons, then apply two electrons per copper.",
+          "explanation": "n(e⁻)=1930/96500=0.020 mol. Hence n(Cu)=0.020/2=0.010 mol.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     },
@@ -2764,6 +3430,14 @@
             "Ethanol and dimethyl ether both have formula C2H6O.",
             "Their connectivity and functional groups differ, so formula counting alone cannot distinguish them."
           ]
+        },
+        {
+          "title": "An unsaturation count does not identify a unique structure",
+          "steps": [
+            "For a neutral closed-shell formula containing only C,H and O, IHD=(2C+2−H)/2. Oxygen does not enter this count.",
+            "For C₄H₈, IHD=(10−8)/2=1. A ring or a double bond can supply this one degree.",
+            "The formula alone therefore does not distinguish cyclobutane from a butene. Bonding pattern and spectroscopy supply additional information."
+          ]
         }
       ],
       "pitfall": "Do not treat resonance drawings as rapidly switching distinct molecules, or a single spectral peak as complete identification.",
@@ -2798,6 +3472,16 @@
           "hint": "Frequency scales as inverse square root of mass.",
           "explanation": "1/sqrt4=1/2.",
           "type": "numeric"
+        },
+        {
+          "id": "transfer-1",
+          "prompt": "Find the degree of unsaturation of neutral closed-shell C₃H₆O₂.",
+          "answer": "1",
+          "unit": "",
+          "hint": "Use (2C+2−H)/2; oxygen does not change this count.",
+          "explanation": "IHD=(2·3+2−6)/2=1. This constrains possible structures without uniquely identifying a functional group.",
+          "type": "numeric",
+          "optional": true
         }
       ]
     }

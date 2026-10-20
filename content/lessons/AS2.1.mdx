@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "worked-inference-transfer",
+      "prompt": "Two isotropic, unattenuated sources have FB/FA=0.5 and dB/dA=3. Find LB/LA.",
+      "answer": "4.5",
+      "unit": "dimensionless ratio",
+      "hint": "Luminosity scales as flux times distance squared, with the same measurement convention.",
+      "explanation": "LB/LA=(FB/FA)(dB/dA)²=0.5·9=4.5. The fainter source is more luminous in this model.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -198,6 +209,16 @@ A parallax p in arcseconds gives d in parsecs as 1/p for a positive geometric pa
 Integrate the outgoing energy crossing a sphere: $L=\int F\,dA=4\pi d^2F$ for isotropic radiation in Euclidean space. Therefore doubling distance quarters flux, while doubling luminosity doubles it. Apparent brightness alone cannot distinguish a luminous distant source from a dim nearby one. With absorption, add a transmission factor rather than redefining intrinsic luminosity.
 
 The magnitude difference is $m_2-m_1=-2.5\log_{10}(F_2/F_1)$ for the same photometric convention. Combining inverse-square dilution with the definition of absolute magnitude yields $m-M=5\log_{10}(d/10\,\mathrm{pc})$ in the extinction-free nearby limit. A band-limited magnitude requires a specified filter and zero point; bolometric luminosity cannot be substituted silently. For cosmological distances, luminosity distance packages redshift effects and differs from angular-diameter distance.
+
+
+
+### Worked inference: Infer luminosity from both flux and distance
+
+1. Two transparent, isotropic sources have measured fluxes FA=8 and FB=2 in the same bolometric units, with distances dA=10 pc and dB=20 pc.
+
+2. Since L=4πd²F, LB/LA=(2/8)(20/10)²=1. The fainter source can have the same luminosity.
+
+3. The ratio calculation cancels the common distance units and 4π. Extinction, anisotropy and unmatched bandpasses would require corrections before making this inference.
 
 </LessonSection>
 

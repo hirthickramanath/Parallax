@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "worked-inference-transfer",
+      "prompt": "Ignoring peculiar motion and using the stipulated local relation v=H0 d, take H0=75 km/s/Mpc and v=6000 km/s. Find d.",
+      "answer": "80",
+      "unit": "Mpc",
+      "hint": "Divide velocity by H0 and check that the velocity units cancel.",
+      "explanation": "d=6000/75=80 Mpc under the stated local linear approximation.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -196,6 +207,16 @@ Peculiar velocities strongly affect nearby redshifts, whereas higher-redshift fi
 For nearby sources dominated by expansion, v≈H₀d is the first-order distance–redshift relation. A peculiar velocity adds to the measured low-redshift motion, so fractional distance inference is especially noisy nearby. A slope fit must propagate errors and account for calibration; fitting v/d for each noisy point is not always equivalent to an appropriate regression.
 
 Distance-ladder steps transfer calibration through geometric anchors, standardizable objects and more distant samples. Shared zero-point uncertainties correlate the steps rather than averaging away independently. At high redshift, a cosmological distance integral replaces the nearby linear approximation. The investigation changes a chosen H₀ and distance; it does not claim a new measurement.
+
+
+
+### Worked inference: Keep a local expansion estimate separate from peculiar motion
+
+1. Take the local linear model vcos=H0 d with H0=70 km/s/Mpc. A galaxy at 40 Mpc has model expansion velocity 2800 km/s.
+
+2. If it also has a +300 km/s line-of-sight peculiar velocity in the same frame, the observed estimate is 3100 km/s. Ignoring the peculiar part gives d≈44.29 Mpc rather than 40 Mpc.
+
+3. This illustrates an inference bias, not a universal correction. High-redshift observations require a cosmological distance relation, and nearby bound systems need not follow a simple Hubble flow.
 
 </LessonSection>
 

@@ -116,6 +116,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "worked-inference-transfer",
+      "prompt": "In the same ideal one-solar-mass model P²=a³ (years and AU), find the period for semimajor axis 9 AU.",
+      "answer": "27",
+      "unit": "years",
+      "hint": "Cube the semimajor axis, then take a square root.",
+      "explanation": "P=sqrt(9³)=sqrt(729)=27 yr. The supplied quantity is the semimajor axis, not periapsis distance.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -204,31 +215,31 @@ For an ideal two-body relative orbit let μ = G(M + m). Shape and size use eccen
 
 Work in the orbital plane with specific angular momentum $h=r^2\dot\phi$. Central force gives zero torque, so h is constant. Assume h ≠ 0; radial collision orbits need separate treatment. Radial acceleration obeys
 
-$$\ddot r-r\dot\phi^2=-\frac\mu{r^2}.$$
+$\ddot r-r\dot\phi^2=-\frac\mu{r^2}.$
 
 Set $u=1/r$. Since $\dot\phi=hu^2$, chain differentiation gives $\dot r=-hu'$ and $\ddot r=-h^2u^2u''$, where primes denote differentiation with respect to φ. Substitute into the radial equation and divide by $-h^2u^2$:
 
-$$u''+u=\frac\mu{h^2}.$$
+$u''+u=\frac\mu{h^2}.$
 
 The constant particular solution plus the homogeneous sinusoid gives
 
-$$u=\frac\mu{h^2}[1+e\cos(\phi-\omega)],\qquad r=\frac p{1+e\cos\nu},\quad p=\frac{h^2}\mu.$$
+$u=\frac\mu{h^2}[1+e\cos(\phi-\omega)],\qquad r=\frac p{1+e\cos\nu},\quad p=\frac{h^2}\mu.$
 
 Here ν = φ − ω measures angle from periapsis and e ≥ 0 sets the shape. Specific energy is
 
-$$\epsilon=\frac12(\dot r^2+r^2\dot\phi^2)-\frac\mu r.$$
+$\epsilon=\frac12(\dot r^2+r^2\dot\phi^2)-\frac\mu r.$
 
 Use $\dot r=(\mu e/h)\sin\nu$ and $r\dot\phi=(\mu/h)(1+e\cos\nu)$. Squaring and adding, then subtracting μ/r, cancels the cosine terms:
 
-$$\epsilon=\frac{\mu^2}{2h^2}(e^2-1),\qquad e^2=1+\frac{2\epsilon h^2}{\mu^2}.$$
+$\epsilon=\frac{\mu^2}{2h^2}(e^2-1),\qquad e^2=1+\frac{2\epsilon h^2}{\mu^2}.$
 
 Thus ε < 0 gives an ellipse (e < 1), ε = 0 a parabola, and ε > 0 a hyperbola. For the circular special case e = 0. For nonparabolic orbits define $a=-\mu/(2\epsilon)$ and obtain the vis-viva equation
 
-$$v^2=\mu\left(\frac2r-\frac1a\right).$$
+$v^2=\mu\left(\frac2r-\frac1a\right).$
 
 For a bound ellipse, $h^2=\mu a(1-e^2)$ and its area is $\pi a^2\sqrt{1-e^2}$. Areal velocity is h/2, hence
 
-$$T=\frac{2\pi a^2\sqrt{1-e^2}}h=2\pi\sqrt{\frac{a^3}\mu}.$$
+$T=\frac{2\pi a^2\sqrt{1-e^2}}h=2\pi\sqrt{\frac{a^3}\mu}.$
 
 This two-body result neglects drag, additional bodies, finite-size perturbations and relativistic corrections.
 
@@ -238,6 +249,16 @@ This two-body result neglects drag, additional bodies, finite-size perturbations
 For a bound Kepler ellipse, $r=a(1-e^2)/(1+e\cos f)$. Evaluating at true anomalies zero and π gives $r_p=a(1-e)$ and $r_a=a(1+e)$. Their sum is 2a while their difference is 2ae. Thus changing eccentricity at fixed a moves both turning points without changing the Newtonian period for a fixed total central mass.
 
 The specific orbital energy is $\varepsilon=-\mu/(2a)$ and angular momentum satisfies $h^2=\mu a(1-e^2)$. High eccentricity at the same a therefore reduces h rather than changing binding energy. From vis-viva, $v^2=\mu(2/r-1/a)$, periapsis speed increases as the periapsis shrinks. These are osculating two-body relations when used inside a perturbed multi-body system; measured elements can evolve. Neither an ellipse drawing nor instantaneous element fitting proves long-term stability.
+
+
+
+### Worked inference: Use a semimajor axis rather than an instantaneous radius
+
+1. For a negligible-mass body orbiting a one-solar-mass primary, adopt P²=a³ with P in years and a in AU. At a=4 AU, P=sqrt(64)=8 yr.
+
+2. An eccentric orbit with the same semimajor axis has the same period in this ideal two-body model. Its instantaneous speed and distance still vary.
+
+3. For other total masses, use P² proportional to a³ divided by total mass. Perturbations and extended mass distributions can invalidate the two-body approximation.
 
 </LessonSection>
 

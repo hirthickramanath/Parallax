@@ -114,6 +114,17 @@
       "type": "mcq",
       "conceptual": true,
       "tier": "core"
+    },
+    {
+      "id": "worked-inference-transfer",
+      "prompt": "Using λmax T=2.90×10⁻³ m K for Bλ, find the peak wavelength in nm of a 7250 K blackbody.",
+      "answer": "400",
+      "unit": "nm",
+      "hint": "Divide the stated Wien constant by temperature, then convert metres to nanometres.",
+      "explanation": "λmax=2.90×10⁻³/7250=4.00×10⁻⁷ m=400 nm.",
+      "type": "numeric",
+      "conceptual": false,
+      "tier": "core"
     }
   ],
   "review": [
@@ -198,6 +209,16 @@ Thermal motion broadens lines through a line-of-sight velocity distribution; nat
 For equilibrium blackbody radiation, the wavelength spectral density is $B_\lambda=2hc^2/[\lambda^5(\exp(hc/(\lambda kT))-1)]$. At long wavelengths expand $e^x-1\simeq x$ to obtain the Rayleigh–Jeans form $B_\lambda\propto T/\lambda^4$. At short wavelengths the exponential suppresses the spectrum; extending the long-wavelength approximation there creates a false divergence.
 
 Differentiating at fixed T gives the wavelength peak relation $\lambda_{max}T\simeq2898\,\mu\mathrm m\,K$. A density per frequency transforms with a Jacobian: $B_\nu d\nu=|B_\lambda d\lambda|$. Consequently the peak of Bν cannot be found by merely substituting c/λ at the Bλ peak. Real stellar spectra carry absorption lines and atmospheric continua; a fitted color temperature is model-dependent and is not always the effective temperature defined by integrated flux.
+
+
+
+### Worked inference: Specify which spectral density has a peak
+
+1. For the wavelength-density blackbody spectrum Bλ, adopt λmax T=2.90×10⁻³ m K. A temperature of 5800 K gives λmax=5.00×10⁻⁷ m=500 nm.
+
+2. Halving temperature doubles this peak wavelength. At unchanged surface area, total blackbody luminosity also falls by a factor 16 because it scales as T⁴.
+
+3. The peak of Bν is not obtained by simply replacing its frequency with c/λ at the Bλ maximum: spectral densities have different Jacobians. Real stellar spectra also contain absorption features and need not be perfect blackbodies.
 
 </LessonSection>
 

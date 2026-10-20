@@ -160,8 +160,8 @@ test("foundation handoff includes separately unapproved revision content and gra
     );
     assert.equal(packet.foundationRevision.status, "draft");
     assert.equal(packet.foundationRevision.independentReviewCompleted, false);
-    assert.equal(packet.foundationRevision.module.examples.length, 2);
-    assert.equal(packet.foundationRevision.module.checks.length, 3);
+    assert.equal(packet.foundationRevision.module.examples.length, 3);
+    assert.equal(packet.foundationRevision.module.checks.length, 4);
     assert.ok(packet.foundationRevision.artifacts["src/lib/learning-core.ts"]);
     assert.equal(verifyReviewHandoff(out).integrity, "matched");
     fs.appendFileSync(
