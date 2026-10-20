@@ -101,8 +101,59 @@ export function boundedMessages(system: string, messages: TutorMessage[]) {
     ...(latest ? [latest] : []),
   ];
 }
+function errorMessage(cause: unknown) {
+  if (
+    cause &&
+    typeof cause === "object" &&
+    "message" in cause &&
+    typeof cause.message === "string"
+  )
+    return cause.message;
+  return typeof cause === "string" ? cause : "";
+}
+/** Log only fixed labels and numeric service codes; never raw exception text or prompts. */
+export function providerDiagnostic(cause: unknown) {
+  const message = errorMessage(cause);
+  const value =
+    cause && typeof cause === "object"
+      ? (cause as { name?: unknown; code?: unknown })
+      : {};
+  const knownNames = [
+    "Error",
+    "TypeError",
+    "RangeError",
+    "AiError",
+    "InferenceUpstreamError",
+    "AbortError",
+  ];
+  const name =
+    typeof value.name === "string" && knownNames.includes(value.name)
+      ? value.name
+      : "unknown";
+  const codes = [
+    ...message.matchAll(/(?:code|error|status)[\s:=[\]()_-]*(\d{3,6})\b/gi),
+  ].map((match) => Number(match[1]));
+  if (typeof value.code === "number" && Number.isSafeInteger(value.code))
+    codes.push(value.code);
+  const reason = /getReader.*not a function/i.test(message)
+    ? "invalid_stream"
+    : /run.*not a function/i.test(message)
+      ? "invalid_ai_binding"
+      : /internal.*error|internal.*server/i.test(message)
+        ? "upstream_internal"
+        : /invalid.*input|invalid.*argument|validation/i.test(message)
+          ? "invalid_input"
+          : /deprecated|retired/i.test(message)
+            ? "model_retired"
+            : /unsupported|not supported/i.test(message)
+              ? "unsupported_operation"
+              : /fetch failed|network|connection/i.test(message)
+                ? "upstream_network"
+                : "unclassified";
+  return { name, reason, upstreamCodes: [...new Set(codes)].slice(0, 5) };
+}
 export function providerFailure(cause: unknown) {
-  const message = cause instanceof Error ? cause.message : "";
+  const message = errorMessage(cause);
   if (/quota|neurons|credits|capacity|rate.?limit|429/i.test(message))
     return {
       code: "provider_capacity",

@@ -9,3 +9,17 @@ The frontend keeps deployment endpoints if its runtime config request fails, and
 These changes address concrete failure paths but are not proof of an authenticated live model response. If the next real request fails, its new error category identifies the account/provider work needed.
 
 See CURRENT-REVIEW-STATUS.md for the current source review and enrichment counts. That generated report supersedes old release snapshots; historical documents describe the state at their release date.
+
+## Live diagnostics follow-up (2026-10-20)
+
+Workers Observability access is now verified. The two recorded production failures
+came from the current tutor Worker and were categorized `provider_unavailable`;
+the earlier log format did not retain enough information to identify their cause.
+The Worker now records a fixed failure stage, an allowlisted error class, fixed
+reason labels and numeric upstream error codes. It never records raw exception
+messages, learner questions, chat history or credentials. Plain-object service
+errors now receive the same safe public classification as native Error objects.
+This is diagnostic instrumentation, not evidence that inference has recovered.
+A new authenticated tutor request is needed to capture the actionable failure.
+Validation: Worker typecheck, 12 provider/stream tests and Worker integration tests
+passed. The application daily question cap remains removed.

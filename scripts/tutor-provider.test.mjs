@@ -206,3 +206,38 @@ test("provider failures expose only safe actionable categories", async () => {
     assert.ok(!failure.error.includes("private"));
   }
 });
+
+test("provider diagnostics preserve service codes without logging private exception text", async () => {
+  const { providerDiagnostic, providerFailure } =
+    await import("../workers/tutor/src/provider.ts");
+  assert.deepEqual(
+    providerDiagnostic({
+      name: "AiError",
+      message: "Error 5007: internal server error with private question",
+      code: 5007,
+    }),
+    { name: "AiError", reason: "upstream_internal", upstreamCodes: [5007] },
+  );
+  assert.equal(
+    providerDiagnostic(new TypeError("provider.getReader is not a function"))
+      .reason,
+    "invalid_stream",
+  );
+  assert.equal(
+    providerFailure({ message: "403 forbidden private question" }).code,
+    "provider_access",
+  );
+  assert.ok(
+    !JSON.stringify(
+      providerDiagnostic({
+        name: "private question",
+        message: "secret payload",
+      }),
+    ).includes("secret"),
+  );
+  assert.deepEqual(providerDiagnostic(null), {
+    name: "unknown",
+    reason: "unclassified",
+    upstreamCodes: [],
+  });
+});

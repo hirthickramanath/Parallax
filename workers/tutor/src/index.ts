@@ -1,4 +1,9 @@
-import { providerConfigured, tutorProvider, providerFailure } from "./provider";
+import {
+  providerConfigured,
+  tutorProvider,
+  providerFailure,
+  providerDiagnostic,
+} from "./provider";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { validateRequest, tutorPrompt } from "./core";
 import { normalizeStream, providerDeadline } from "./stream";
@@ -118,6 +123,7 @@ export default {
         { status: 404, headers },
       );
     }
+    let stage = "inference";
     try {
       const provider = await providerDeadline(
         tutorProvider(env, tutorPrompt(lesson, body), [
@@ -126,6 +132,7 @@ export default {
         ]),
         35000,
       );
+      stage = "stream_setup";
       const stream = normalizeStream(provider);
       return new Response(stream, {
         headers: { ...headers, "Content-Type": "text/event-stream" },
@@ -135,6 +142,8 @@ export default {
       console.error(
         JSON.stringify({
           event: "tutor_provider_failure",
+          stage,
+          diagnostic: providerDiagnostic(cause),
           code: failure.code,
           provider: env.TUTOR_PROVIDER || "workers-ai",
         }),
