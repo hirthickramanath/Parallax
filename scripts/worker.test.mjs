@@ -56,7 +56,7 @@ test("Worker rejects untrusted origins and missing authentication without exposi
   }
 });
 
-test("authenticated tutoring grounds revision and continues past fifty requests without a daily quota", async () => {
+test("authenticated tutoring grounds revision and enforces a per-learner burst limit without a fixed daily quota", async () => {
   const { generateKeyPair, exportJWK, SignJWT } = await import("jose");
   const { publicKey, privateKey } = await generateKeyPair("RS256", {
     extractable: true,
@@ -67,14 +67,16 @@ test("authenticated tutoring grounds revision and continues past fifty requests 
     alg: "RS256",
     use: "sig",
   };
-  const token = await new SignJWT({ auth_time: Math.floor(Date.now() / 1000) })
-    .setProtectedHeader({ alg: "RS256", kid: "tutor-test" })
-    .setSubject("learner")
-    .setAudience("parallax-73")
-    .setIssuer("https://securetoken.google.com/parallax-73")
-    .setIssuedAt()
-    .setExpirationTime("5m")
-    .sign(privateKey);
+  const sign = (subject) =>
+    new SignJWT({ auth_time: Math.floor(Date.now() / 1000) })
+      .setProtectedHeader({ alg: "RS256", kid: "tutor-test" })
+      .setSubject(subject)
+      .setAudience("parallax-73")
+      .setIssuer("https://securetoken.google.com/parallax-73")
+      .setIssuedAt()
+      .setExpirationTime("5m")
+      .sign(privateKey);
+  const token = await sign("learner");
   const bundle = await build({
     entryPoints: ["workers/tutor/src/index.ts"],
     bundle: true,
@@ -155,12 +157,12 @@ test("authenticated tutoring grounds revision and continues past fifty requests 
     }),
   );
   try {
-    const call = (body) =>
+    const call = (body, bearer = token) =>
       mf.dispatchFetch("https://worker.test", {
         method: "POST",
         headers: {
           Origin: "https://parallax-science.pages.dev",
-          Authorization: "Bearer " + token,
+          Authorization: "Bearer " + bearer,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
@@ -176,12 +178,25 @@ test("authenticated tutoring grounds revision and continues past fifty requests 
     assert.equal(first.status, 200);
     assert.match(await first.text(), /vector length/);
     assert.equal(first.headers.get("x-tutor-remaining"), null);
-    for (let i = 1; i < 55; i++) {
+    // Ten requests per minute per learner are allowed; invalid requests are not counted.
+    for (let i = 1; i < 10; i++) {
       const result = await call(body);
       assert.equal(result.status, 200);
       await result.text();
     }
-    assert.equal(providerCalls, 55);
+    assert.equal(providerCalls, 10);
+    const limited = await call(body);
+    assert.equal(limited.status, 429);
+    assert.ok(Number(limited.headers.get("retry-after")) >= 1);
+    const detail = await limited.json();
+    assert.equal(detail.code, "rate_limited");
+    assert.match(detail.error, /usage limit/);
+    assert.equal(providerCalls, 10, "a limited request must not reach the provider");
+    // The limit is per learner: another account is unaffected.
+    const other = await call(body, await sign("other-learner"));
+    assert.equal(other.status, 200);
+    await other.text();
+    assert.equal(providerCalls, 11);
   } finally {
     await mf.dispose();
   }

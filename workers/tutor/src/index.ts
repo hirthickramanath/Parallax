@@ -7,6 +7,7 @@ import {
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { validateRequest, tutorPrompt } from "./core";
 import { normalizeStream, providerDeadline } from "./stream";
+import { decide, waitText } from "./limiter";
 interface Env {
   SITE_ORIGIN: string;
   FIREBASE_PROJECT_ID: string;
@@ -28,10 +29,23 @@ const keys = createRemoteJWKSet(
     "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com",
   ),
 );
-// Retain the class for the deployed v1 migration. Requests no longer use a daily quota.
+// The class name and COUNTERS binding are kept so the deployed v1 Durable Object
+// migration stays valid. Each learner's object now records recent request times
+// and enforces a sliding-window limit (see limiter.ts). There is no fixed daily quota.
 export class DailyCounter {
-  async fetch() {
-    return new Response("Daily quotas have been removed", { status: 410 });
+  constructor(private state: DurableObjectState) {}
+  async fetch(request: Request) {
+    if (request.method !== "POST")
+      return Response.json({ error: "Method not allowed" }, { status: 405 });
+    const verdict = await this.state.storage.transaction(async (tx) => {
+      const result = decide(await tx.get("hits"), Date.now());
+      await tx.put("hits", result.history);
+      return {
+        allowed: result.allowed,
+        retryAfterSeconds: result.retryAfterSeconds,
+      };
+    });
+    return Response.json(verdict, { status: verdict.allowed ? 200 : 429 });
   }
 }
 export default {
@@ -106,6 +120,39 @@ export default {
       return Response.json(
         { error: "Invalid request body" },
         { status: 400, headers },
+      );
+    }
+    // Count only valid, configured requests. Fail closed if the limiter is unreachable.
+    let verdict: { allowed: boolean; retryAfterSeconds: number };
+    try {
+      const limiter = env.COUNTERS.get(env.COUNTERS.idFromName(uid));
+      const reply = await limiter.fetch("https://limiter.internal/hit", {
+        method: "POST",
+      });
+      verdict = (await reply.json()) as typeof verdict;
+      if (typeof verdict.allowed !== "boolean") throw Error();
+    } catch {
+      return Response.json(
+        {
+          code: "rate_limit_unavailable",
+          error:
+            "The tutor could not check its usage limit. Please try again shortly.",
+        },
+        { status: 503, headers },
+      );
+    }
+    if (!verdict.allowed) {
+      const wait = Math.min(
+        86400,
+        Math.max(1, Math.ceil(Number(verdict.retryAfterSeconds) || 60)),
+      );
+      return Response.json(
+        {
+          code: "rate_limited",
+          error: `You have reached the tutor's usage limit. Please try again in ${waitText(wait)}.`,
+          retryAfterSeconds: wait,
+        },
+        { status: 429, headers: { ...headers, "Retry-After": String(wait) } },
       );
     }
     let lesson;
