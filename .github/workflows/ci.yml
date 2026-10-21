@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build, tests and audits
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      # `build` runs tsc --noEmit, generates lesson JSON, then vite build.
+      - run: npm run build
+      - run: npm test
+      - run: npm run typecheck:worker
+      - run: npm run typecheck:assessment
+      - run: npm run typecheck:reminders
+      - run: npm run test:worker
+      - run: npm run test:assessment
+      - run: npm run test:reminders
+      - run: npm run content:audit
+      - run: npm run review:audit
+
+  workers-bundle:
+    name: Worker bundle dry-runs
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      XDG_CONFIG_HOME: ${{ runner.temp }}/wrangler-config
+      WRANGLER_LOG_PATH: ${{ runner.temp }}/wrangler-logs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: mkdir -p "$XDG_CONFIG_HOME" "$WRANGLER_LOG_PATH"
+      - run: npm run worker:check
+      - run: npm run assessment:check
+      - run: npm run reminders:check
+
+  browser:
+    name: Browser tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
