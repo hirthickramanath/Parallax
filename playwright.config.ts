@@ -9,7 +9,9 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:4183",
     headless: true,
-    launchOptions: existsSync("/usr/bin/chromium")
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH, args: ["--no-sandbox"] }
+      : existsSync("/usr/bin/chromium")
       ? { executablePath: "/usr/bin/chromium", args: ["--no-sandbox"] }
       : {},
   },
