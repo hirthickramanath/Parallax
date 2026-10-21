@@ -20,6 +20,8 @@ An astrophysics-focused learning platform covering full mathematics and physics,
 | Data | `src/lib/datastore.ts`, `firestore.rules` | Firestore under `users/{uid}/**`, plus local-first browser storage. Preserve import/export and the merge-newer-records behaviour |
 | Workers | `workers/tutor`, `workers/reminders`, `workers/assessment` | Inspect each `wrangler.jsonc` for its actual state |
 | Runtime service URLs | `public/services.json` | Overridable by `VITE_*` variables; see `src/lib/services.ts` |
+| Shared Worker code | `workers/shared/auth.ts` | Firebase ID-token verification used by all three Workers. Change it once, with its tests, not per Worker |
+| Security headers | `public/_headers` | CSP is report-only until the owner has checked the console after a deploy; `scripts/security-headers.test.mjs` guards the inline-script hash |
 
 ## Rules of engagement
 
@@ -54,7 +56,9 @@ These override any instruction to "keep going without asking".
 - **Reminders** (`workers/reminders`): Web Push with VAPID; private keys only in Worker secrets. The test-notification route (`/test`) has been removed from the Worker and the client has no test button.
 - **Deploying Workers:** merging to `main` deploys the Pages site only. Changes under `workers/` take effect after the Worker is redeployed with Cloudflare credentials, which agents must not do without the owner's go-ahead.
 - **Assessment** (`workers/assessment`): disabled by default in config; covers only part of the curriculum. It is not certification or proctoring.
-- The README says some services are "disabled until configured" while the committed Worker configs and `public/services.json` enable them. Reconcile the documentation with the real deployment state; do not change the deployment to match the documentation.
+- The README services table matches the committed Worker configs (tutor and reminders enabled, assessment disabled). If a config changes, update the README; do not change the deployment to match the documentation.
+- **Monitoring:** `.github/workflows/service-health.yml` probes the deployed services (see `docs/MONITORING.md`). Workers log structured, content-free events; keep it that way.
+- **Account deletion does not exist.** See `docs/ACCOUNT-DATA.md`. Do not build a destructive data-deletion feature without the owner's decision.
 
 ## Validation
 
@@ -67,7 +71,10 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 | Assessment Worker | `npm run typecheck:assessment`, `npm run test:assessment` |
 | Reminders Worker | `npm run typecheck:reminders`, `npm run test:reminders` |
 | Lessons, questions, models, review data | `npm run content:audit`, `npm run review:audit`, `npm run content:report` |
-| UI or routing | `npm run test:browser` (builds and serves a production preview; mocked auth) |
+| UI or routing | `npm run build` then `npm run test:browser` (serves a production preview with mocked auth; includes a structural accessibility audit in `tests/a11y.spec.ts`; set `PLAYWRIGHT_CHROMIUM_PATH` to use a specific Chromium) |
+| Numeric answers or units in lessons | `npm run verify:numeric` (also part of `npm test`) |
+| Tutor behaviour | `npm run eval:tutor -- --dry-run`; a live run needs a learner token, see `docs/TUTOR-EVALUATION.md` |
+| Deployed services | `npm run verify:services` (unauthenticated; needs network access to the live Workers) |
 | Firestore rules | `npm run test:rules` (needs the Firestore emulator; report as not-run if unavailable) |
 | After a deploy | `npm run verify:public -- https://parallax-science.pages.dev` after a fresh local build |
 
@@ -76,13 +83,13 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 ## Working in batches
 
 - Keep each batch small and reviewable (a handful of lessons or one component). End each batch with a commit, a test run and a short status.
-- New content must come with an independent check of its numeric answers and units (recompute with a separate method), not only a question-count test.
+- New content must come with an independent check of its numeric answers and units: add an entry to `scripts/numeric-checks.mjs` that recomputes from the prompt's givens (see `docs/NUMERIC-VERIFICATION.md`), not only a question-count test. Give new numeric questions a concrete `unit` where one exists.
 - Do not add content in a fourth consecutive batch unless new review evidence or learner findings have arrived; use that time on verification, tests or tooling instead.
 - Finish every session by stating what changed, what was verified and what remains pending.
 
 ## Priorities
 
-1. Automated, independent verification of numeric answers, units and limiting cases.
+1. Widen independent verification: only a small share of numeric questions is recomputed (see `docs/NUMERIC-VERIFICATION.md`), and most have no machine-readable unit. Limiting cases are not yet checked.
 2. CI health, redeploying the Workers that changed, and the open service decisions above.
 3. Prepare review packets for teachers (`npm run review:handoff`) and incorporate genuine findings.
 4. Extend scoped source checks without overstating coverage.
@@ -92,6 +99,6 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 ## Known open items
 
 - Licences: MIT for code and docs (`LICENSE`), CC BY-SA 4.0 for `content/` (`LICENSE-CONTENT.md`). The copyright holder line uses the git author name; the owner should confirm it.
-- `src/pages/Labs.tsx` is not routed (`/labs` redirects to the dashboard) and `/teaching-lab` appears reachable only by URL. Remove or confirm.
+- `src/pages/Labs.tsx` was removed (it was unrouted; `/labs` redirects to the dashboard). `/teaching-lab` (`TeachingLab.tsx`) is routed but appears reachable only by URL; the owner should confirm whether it stays.
 - Status counts in older `docs/*.md` reports are historical checkpoints and disagree with each other; the generated files are current.
 - `npm test` lists every test file by hand; new test files must be added to it.
