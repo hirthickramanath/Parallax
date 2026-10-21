@@ -2,6 +2,8 @@
 
 An astrophysics-focused science learning website: full maths and physics, supporting chemistry and computing, stored lessons, virtual labs and rigorous theory.
 
+Contributors and AI agents: read [AGENTS.md](AGENTS.md) first. It sets the branch, deployment, secrets and validation rules.
+
 ## Run locally
 
 The repository pins Node.js 24.19.0 in `.node-version` for Cloudflare Pages and requires Node >=24.12.0. If Pages has a `NODE_VERSION` environment variable, remove the old override or set it to `24.19.0` for production and previews. Keep the build command `npm run build` and output directory `dist`.
