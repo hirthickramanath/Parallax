@@ -138,15 +138,17 @@ test("push registry scopes account subscriptions, rejects unsafe endpoints and e
       ).status,
       404,
     );
-    assert.equal(
-      (
-        await mf.dispatchFetch("https://reminders.test/test", {
-          method: "GET",
-          headers: { Origin: "https://parallax-science.pages.dev" },
-        })
-      ).status,
-      405,
-    );
+    // The test-notification route was removed; it must not exist at the public Worker.
+    for (const method of ["GET", "POST"])
+      assert.equal(
+        (
+          await mf.dispatchFetch("https://reminders.test/test", {
+            method,
+            headers: { Origin: "https://parallax-science.pages.dev" },
+          })
+        ).status,
+        404,
+      );
     const ns = await mf.getDurableObjectNamespace("REMINDERS", "reminders"),
       registry = ns.get(ns.idFromName("registry"));
     const call = (uid, method, body, path = "subscription") =>
@@ -186,11 +188,9 @@ test("push registry scopes account subscriptions, rejects unsafe endpoints and e
         .sent,
       0,
     );
-    assert.equal((await call("other", "POST", { id }, "test")).status, 404);
-    assert.equal((await call("owner", "POST", { id }, "test")).status, 200);
-    assert.equal(deliveries, 2);
-    assert.equal((await call("owner", "POST", { id }, "test")).status, 429);
-    assert.equal(deliveries, 2);
+    // The registry also refuses the removed route and sends nothing.
+    assert.equal((await call("owner", "POST", { id }, "test")).status, 404);
+    assert.equal(deliveries, 1);
     await call("other", "DELETE", { id });
     assert.equal((await (await call("owner", "GET")).json()).devices.length, 1);
     await call("owner", "DELETE", { id });

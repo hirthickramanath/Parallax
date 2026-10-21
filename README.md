@@ -79,6 +79,10 @@ No billing account or card is required by the intended setup. Confirm current pr
 
 The companion websites are plans only, not additional projects implemented here. Physics/maths experiments motivate and test models; they never replace complete derivations or proofs.
 
+## Licence
+
+Code and documentation are released under the [MIT licence](LICENSE). Lesson and curriculum content under `content/` is released under [CC BY-SA 4.0](LICENSE-CONTENT.md). All lessons are drafts; the content licence does not imply independent verification.
+
 ## Dependency notes
 
 React Router v6 retains its documented moderate advisories; the application uses safe internal destinations and no SSR hydration. Upgrading to v7 is a separate stack decision. A patched gRPC 1.x override resolves earlier Firebase transitive high-severity findings. Run `npm audit` for the current full report rather than assuming the dependency tree is advisory-free.

@@ -68,7 +68,8 @@ export function TutorPanel({
           code?: unknown;
         } | null;
         const specific =
-          result.status === 503 &&
+          (result.status === 503 ||
+            (result.status === 429 && detail?.code === "rate_limited")) &&
           typeof detail?.code === "string" &&
           typeof detail.error === "string"
             ? detail.error.slice(0, 400)

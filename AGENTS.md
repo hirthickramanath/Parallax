@@ -50,8 +50,9 @@ These override any instruction to "keep going without asking".
 
 ## Services: current state and open decisions
 
-- **Tutor** (`workers/tutor`): Workers AI binding `AI`. It verifies Firebase ID tokens and the allowed origin, fetches lesson content server-side and streams normalised replies. **There is currently no application-level per-user limit.** Any signed-in user can call it; only Cloudflare platform limits apply. Propose a per-user limit before adding traffic or enabling anything similar. Keep bounded context, timeouts and cancellation.
-- **Reminders** (`workers/reminders`): Web Push with VAPID; private keys only in Worker secrets. The client no longer has a test button, but the Worker still exposes `POST /test`. Either remove it (and its tests) or record why it stays.
+- **Tutor** (`workers/tutor`): Workers AI binding `AI`. It verifies Firebase ID tokens and the allowed origin, fetches lesson content server-side and streams normalised replies. **Per-learner limit:** 10 requests per minute and 200 per day, as sliding windows (`workers/tutor/src/limiter.ts`, stored per user in the `COUNTERS` Durable Object, whose class keeps the old name `DailyCounter` so the deployed migration stays valid). Invalid requests are not counted, and the limiter fails closed (503) if it cannot be reached. Changing the numbers or removing the limit needs the owner's approval. Cloudflare platform limits still apply. Keep bounded context, timeouts and cancellation.
+- **Reminders** (`workers/reminders`): Web Push with VAPID; private keys only in Worker secrets. The test-notification route (`/test`) has been removed from the Worker and the client has no test button.
+- **Deploying Workers:** merging to `main` deploys the Pages site only. Changes under `workers/` take effect after the Worker is redeployed with Cloudflare credentials, which agents must not do without the owner's go-ahead.
 - **Assessment** (`workers/assessment`): disabled by default in config; covers only part of the curriculum. It is not certification or proctoring.
 - The README says some services are "disabled until configured" while the committed Worker configs and `public/services.json` enable them. Reconcile the documentation with the real deployment state; do not change the deployment to match the documentation.
 
@@ -82,7 +83,7 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 ## Priorities
 
 1. Automated, independent verification of numeric answers, units and limiting cases.
-2. CI health, tutor per-user limiting, and the open service decisions above.
+2. CI health, redeploying the Workers that changed, and the open service decisions above.
 3. Prepare review packets for teachers (`npm run review:handoff`) and incorporate genuine findings.
 4. Extend scoped source checks without overstating coverage.
 5. Depth, question-bank and simulation enrichment, guided by review and learner findings.
@@ -90,7 +91,7 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 
 ## Known open items
 
-- No `LICENSE` file. The owner must choose code and content licences.
+- Licences: MIT for code and docs (`LICENSE`), CC BY-SA 4.0 for `content/` (`LICENSE-CONTENT.md`). The copyright holder line uses the git author name; the owner should confirm it.
 - `src/pages/Labs.tsx` is not routed (`/labs` redirects to the dashboard) and `/teaching-lab` appears reachable only by URL. Remove or confirm.
 - Status counts in older `docs/*.md` reports are historical checkpoints and disagree with each other; the generated files are current.
 - `npm test` lists every test file by hand; new test files must be added to it.
