@@ -4,7 +4,12 @@ const keys = createRemoteJWKSet(
     "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com",
   ),
 );
-export async function assessmentUser(
+/**
+ * Verify a Firebase ID token for `project` and return the account's uid.
+ * Shared by the tutor, assessment and reminders Workers so token rules stay identical.
+ * Throws on any failure; callers must answer 401 without revealing the reason.
+ */
+export async function firebaseUser(
   token: string,
   project: string,
   resolver: Parameters<typeof jwtVerify>[1] = keys,

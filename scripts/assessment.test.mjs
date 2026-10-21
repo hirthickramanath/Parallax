@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { build } from "esbuild";
 import { Miniflare, convertV4MiniflareOptions } from "miniflare";
 import { generateKeyPair, exportJWK, SignJWT, createLocalJWKSet } from "jose";
-import { assessmentUser } from "../workers/assessment/src/auth.ts";
+import { firebaseUser as assessmentUser } from "../workers/shared/auth.ts";
 import {
   assessmentItems,
   gradeItem,
