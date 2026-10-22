@@ -2,7 +2,7 @@ import {
   buildPushPayload,
   type PushSubscription,
 } from "@block65/webcrypto-web-push";
-import { assessmentUser } from "../../assessment/src/auth";
+import { firebaseUser } from "../../shared/auth";
 import { allowedPushEndpoint, reminderDate } from "./core";
 interface Env {
   SITE_ORIGIN: string;
@@ -150,6 +150,16 @@ export class ReminderRegistry {
             await tx.put(key, latest);
           });
         }
+        if (attempted > 0)
+          console.log(
+            JSON.stringify({
+              event: "reminders_dispatch",
+              attempted,
+              sent,
+              failed,
+              lastError,
+            }),
+          );
         return json({ sent, attempted, failed, lastError });
       } finally {
         await this.state.storage.transaction(async (tx) => {
@@ -289,7 +299,7 @@ export default {
     try {
       const bearer = request.headers.get("Authorization");
       if (!bearer?.startsWith("Bearer ")) throw Error();
-      uid = await assessmentUser(bearer.slice(7), env.FIREBASE_PROJECT_ID);
+      uid = await firebaseUser(bearer.slice(7), env.FIREBASE_PROJECT_ID);
     } catch {
       return Response.json(
         { error: "Invalid session" },

@@ -104,6 +104,7 @@ function PlacementTest({ unit }: { unit: string | null }) {
             value={index + 1}
             max={questions.length}
           />
+          <h2 className="sr-only">Question {index + 1}</h2>
           <p>
             {index + 1} of {questions.length} · {q.unitId}
           </p>

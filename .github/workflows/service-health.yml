@@ -1,0 +1,22 @@
+name: Service health
+
+# Unauthenticated probe of the deployed site and Workers (scripts/verify-services.mjs).
+# A failed run is reported by GitHub to the repository's watchers. It needs no secrets and uses no learner quota.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: node scripts/verify-services.mjs

@@ -4,7 +4,7 @@ import {
   providerFailure,
   providerDiagnostic,
 } from "./provider";
-import { createRemoteJWKSet, jwtVerify } from "jose";
+import { firebaseUser } from "../../shared/auth";
 import { validateRequest, tutorPrompt } from "./core";
 import { normalizeStream, providerDeadline } from "./stream";
 import { decide, waitText } from "./limiter";
@@ -24,11 +24,6 @@ interface Env {
     ) => Promise<ReadableStream<Uint8Array>>;
   };
 }
-const keys = createRemoteJWKSet(
-  new URL(
-    "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com",
-  ),
-);
 // The class name and COUNTERS binding are kept so the deployed v1 Durable Object
 // migration stays valid. Each learner's object now records recent request times
 // and enforces a sliding-window limit (see limiter.ts). There is no fixed daily quota.
@@ -81,20 +76,7 @@ export default {
       );
     let uid: string;
     try {
-      const { payload } = await jwtVerify(bearer.slice(7), keys, {
-        issuer: `https://securetoken.google.com/${env.FIREBASE_PROJECT_ID}`,
-        audience: env.FIREBASE_PROJECT_ID,
-        algorithms: ["RS256"],
-        requiredClaims: ["sub", "iat", "exp", "auth_time"],
-      });
-      if (
-        !payload.sub ||
-        payload.sub.length > 128 ||
-        Number(payload.iat) > Date.now() / 1000 ||
-        Number(payload.auth_time) > Date.now() / 1000
-      )
-        throw Error();
-      uid = payload.sub;
+      uid = await firebaseUser(bearer.slice(7), env.FIREBASE_PROJECT_ID);
     } catch {
       return Response.json(
         { error: "Invalid session" },
@@ -132,6 +114,7 @@ export default {
       verdict = (await reply.json()) as typeof verdict;
       if (typeof verdict.allowed !== "boolean") throw Error();
     } catch {
+      console.error(JSON.stringify({ event: "tutor_limiter_unavailable" }));
       return Response.json(
         {
           code: "rate_limit_unavailable",
@@ -145,6 +128,10 @@ export default {
       const wait = Math.min(
         86400,
         Math.max(1, Math.ceil(Number(verdict.retryAfterSeconds) || 60)),
+      );
+      // No account identifier or message content is logged.
+      console.log(
+        JSON.stringify({ event: "tutor_rate_limited", retryAfterSeconds: wait }),
       );
       return Response.json(
         {

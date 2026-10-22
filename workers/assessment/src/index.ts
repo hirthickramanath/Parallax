@@ -1,4 +1,4 @@
-import { assessmentUser } from "./auth";
+import { firebaseUser } from "../../shared/auth";
 import {
   assessmentItems,
   gradeItem,
@@ -210,7 +210,7 @@ export default {
       );
     let uid: string;
     try {
-      uid = await assessmentUser(token.slice(7), env.FIREBASE_PROJECT_ID);
+      uid = await firebaseUser(token.slice(7), env.FIREBASE_PROJECT_ID);
     } catch {
       return Response.json(
         { error: "Invalid session" },
