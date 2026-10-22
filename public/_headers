@@ -4,14 +4,14 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  # Content-Security-Policy is deliberately REPORT-ONLY for now: a wrong rule would break Google sign-in.
-  # Rollout: deploy, then sign in (Google popup and email link), open a lesson, the tutor and Settings
-  # with the browser console open. If no "Content-Security-Policy-Report-Only" violations appear,
-  # rename this header to Content-Security-Policy to enforce it.
+  # Content-Security-Policy is ENFORCED. It was report-only first; the owner reported checking sign-in (Google popup),
+  # a lesson, the tutor and Settings with the console open and saw no violations.
+  # If a legitimate feature is blocked, temporarily rename this header back to
+  # Content-Security-Policy-Report-Only, find the blocked source in the console, add it, then re-enforce.
   # The sha256 allows the inline theme script in index.html; scripts/security-headers.test.mjs
   # fails if that script changes without this hash being updated.
   # frame-ancestors is not listed: X-Frame-Options above blocks framing.
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'sha256-K9fwTLsEj8DU4O6MtIUUq/A5V4NxaBPNONzY7mjsOWM=' https://apis.google.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.googleusercontent.com; font-src 'self' data:; connect-src 'self' https://*.googleapis.com https://*.hirthick-ram17.workers.dev; frame-src https://parallax-73.firebaseapp.com https://accounts.google.com https://www.google.com/recaptcha/; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-K9fwTLsEj8DU4O6MtIUUq/A5V4NxaBPNONzY7mjsOWM=' https://apis.google.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.googleusercontent.com; font-src 'self' data:; connect-src 'self' https://*.googleapis.com https://*.hirthick-ram17.workers.dev; frame-src https://parallax-73.firebaseapp.com https://accounts.google.com https://www.google.com/recaptcha/; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
 /sw.js
   Cache-Control: no-cache
 /services.json

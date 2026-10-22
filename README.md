@@ -71,7 +71,7 @@ An old "Workers Builds: parallax" connection may refer to a deleted Worker. Read
 
 `.env.example` lists optional public Firebase overrides. The supplied public Firebase project identifiers work as defaults; they are not secret database authorization. Never put an AI key or service-account credential in source or a `VITE_` variable: all such Vite variables enter the browser bundle. Private environment files are ignored; verify with `git check-ignore .env.local`.
 
-`public/_headers` sets security headers. The Content-Security-Policy is currently **report-only**; the rollout steps to enforce it are in that file.
+`public/_headers` sets security headers. The Content-Security-Policy is enforced; how to relax it safely if a feature is blocked is described in that file.
 
 Preferences stay local per account because no concrete cloud profile path has been approved. Progress uses existing user-scoped Firestore collections with local pending writes. Export it in Settings. On a shared device, cached data remains in site storage after sign-out; clear site data in your browser when finished. Visited lesson JSON refreshes from the network online and falls back to its saved public copy offline; hashed build assets remain cache-first.
 

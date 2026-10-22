@@ -21,7 +21,7 @@ An astrophysics-focused learning platform covering full mathematics and physics,
 | Workers | `workers/tutor`, `workers/reminders`, `workers/assessment` | Inspect each `wrangler.jsonc` for its actual state |
 | Runtime service URLs | `public/services.json` | Overridable by `VITE_*` variables; see `src/lib/services.ts` |
 | Shared Worker code | `workers/shared/auth.ts` | Firebase ID-token verification used by all three Workers. Change it once, with its tests, not per Worker |
-| Security headers | `public/_headers` | CSP is report-only until the owner has checked the console after a deploy; `scripts/security-headers.test.mjs` guards the inline-script hash |
+| Security headers | `public/_headers` | CSP is enforced (it ran report-only first); relax it only after reading the console; `scripts/security-headers.test.mjs` guards the inline-script hash |
 
 ## Rules of engagement
 
