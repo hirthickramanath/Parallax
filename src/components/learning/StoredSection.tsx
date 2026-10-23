@@ -86,7 +86,7 @@ export function StoredSection({
   const active = useContext(SectionContext);
   if (id !== active.activeId) return null;
   return (
-    <section className="lesson-prose">
+    <section className="lesson-prose" data-layer={layer}>
       <h2>{title}</h2>
       {layer === "theory" ? (
         <TheoryReveal onComplete={active.onTheoryComplete}>

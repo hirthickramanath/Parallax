@@ -31,6 +31,14 @@ const mdxComponents = {
 const modules = import.meta.glob<{
   default: React.ComponentType<{ components: Record<string, unknown> }>;
 }>("../../content/lessons/*.mdx");
+// Content types share a colour with their section card: explain, theory, worked example, practice.
+function layerFamily(layer: string) {
+  if (layer === "theory") return "theory";
+  if (layer === "worked") return "worked";
+  if (["puzzle", "interactive", "check", "problems"].includes(layer))
+    return "practice";
+  return "explain";
+}
 export function LessonPlayer() {
   const { id = "" } = useParams();
   const lesson = course.authored[id];
@@ -80,6 +88,11 @@ function Player({ id }: { id: string }) {
     (s) => depth === "full" || !s.fullOnly,
   );
   const active = sections[Math.min(index, sections.length - 1)];
+  // The prediction must be committed before later sections open, whichever control is used.
+  const goTo = (target: number) => {
+    const puzzle = sections.findIndex((s) => s.layer === "puzzle");
+    setIndex(!reveal && target > puzzle ? puzzle : target);
+  };
   const { isOpen: showTutor, toggle: toggleTutor } = useTutorDock();
   useTutorLesson(id, active.id, depth);
   const needs = missingNeeds(lesson, store.records);
@@ -276,6 +289,20 @@ function Player({ id }: { id: string }) {
         value={index + 1}
         max={sections.length}
       />
+      <ol className="lesson-steps" aria-label="Lesson sections">
+        {sections.map((s, i) => (
+          <li key={s.id}>
+            <button
+              type="button"
+              className={`lesson-step step-${layerFamily(s.layer)}${i < index ? " passed" : ""}`}
+              aria-current={i === index ? "step" : undefined}
+              aria-label={`Section ${i + 1} of ${sections.length}: ${s.title}`}
+              title={s.title}
+              onClick={() => goTo(i)}
+            />
+          </li>
+        ))}
+      </ol>
       <div className="lesson-heading">
         <p className="eyebrow">
           {lesson.track} / {index + 1} OF {sections.length}
@@ -301,15 +328,9 @@ function Player({ id }: { id: string }) {
               <select
                 aria-label="Lesson section"
                 value={active.id}
-                onChange={(e) => {
-                  const target = sections.findIndex(
-                    (s) => s.id === e.target.value,
-                  );
-                  const puzzle = sections.findIndex(
-                    (s) => s.layer === "puzzle",
-                  );
-                  setIndex(!reveal && target > puzzle ? puzzle : target);
-                }}
+                onChange={(e) =>
+                  goTo(sections.findIndex((s) => s.id === e.target.value))
+                }
               >
                 {sections.map((s) => (
                   <option key={s.id} value={s.id}>

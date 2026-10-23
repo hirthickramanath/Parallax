@@ -155,11 +155,11 @@ export function Dashboard() {
               <strong>{stats.totalXp}</strong>
               <span>Total XP</span>
             </div>
-            <div>
+            <Link to="/review" className="stat-link">
               <BookOpen />
               <strong>{due}</strong>
               <span>Cards due</span>
-            </div>
+            </Link>
           </section>
 
           <JourneyMap />

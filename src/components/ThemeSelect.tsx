@@ -32,7 +32,7 @@ export function ThemeSelect() {
       read("parallax-theme", "system"),
     ),
     palette = useSyncExternalStore(subscribe, () =>
-      read("parallax-palette", "forest"),
+      read("parallax-palette", "ink"),
     );
   return (
     <div className="appearance-controls">
@@ -55,6 +55,7 @@ export function ThemeSelect() {
           value={palette}
           onChange={(e) => save("parallax-palette", e.target.value)}
         >
+          <option value="ink">Ink blue</option>
           <option value="forest">Forest</option>
           <option value="cosmic">Cosmic violet</option>
           <option value="ocean">Ocean blue</option>
@@ -70,7 +71,7 @@ export function AppearanceSync() {
       read("parallax-theme", "system"),
     ),
     palette = useSyncExternalStore(subscribe, () =>
-      read("parallax-palette", "forest"),
+      read("parallax-palette", "ink"),
     );
   useEffect(() => {
     const media = matchMedia("(prefers-color-scheme: dark)");
