@@ -83,11 +83,12 @@ export function Home() {
             <circle cx="416" cy="112" r="9" fill="#a8cfc5" />
             <path d="M425 103l24-24h25" fill="none" stroke="currentColor" />
             <text
-              x="432"
+              x="474"
               y="65"
+              textAnchor="end"
               fill="currentColor"
               fontSize="11"
-              letterSpacing="2"
+              letterSpacing="1.5"
             >
               YOU ARE HERE
             </text>

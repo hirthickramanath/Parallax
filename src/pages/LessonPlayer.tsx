@@ -289,7 +289,7 @@ function Player({ id }: { id: string }) {
         value={index + 1}
         max={sections.length}
       />
-      <ol className="lesson-steps" aria-label="Lesson sections">
+      <ol className="lesson-steps" aria-label="Lesson contents">
         {sections.map((s, i) => (
           <li key={s.id}>
             <button
