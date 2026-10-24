@@ -862,3 +862,337 @@
     padding-top: 0;
   }
 }
+
+/* ---------- Journey path: a winding trail of lessons, one unit banner at a time ---------- */
+[data-track="maths"] {
+  --trk: var(--tb-trk-maths);
+}
+[data-track="physics"] {
+  --trk: var(--tb-trk-physics);
+}
+[data-track="chemistry"] {
+  --trk: var(--tb-trk-chemistry);
+}
+[data-track="computing"] {
+  --trk: var(--tb-trk-computing);
+}
+[data-track="astro"] {
+  --trk: var(--tb-trk-astro);
+}
+.journey-map .chapter-panel {
+  max-width: 36rem;
+  margin: 40px auto 0;
+}
+.journey-map .chapter-panel > h3 {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.journey-map .path-unit,
+.journey-map .path-unit:last-of-type {
+  border: 0;
+  margin: 0 0 18px;
+}
+.journey-map .path-unit > summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--trk, var(--tb-ink));
+  color: var(--tb-on-track);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--trk, var(--tb-ink)) 65%, #000);
+}
+.journey-map .path-unit > summary:hover {
+  background: var(--trk, var(--tb-ink));
+  filter: brightness(1.06);
+}
+.journey-map .path-unit > summary::after {
+  color: inherit;
+  font-weight: 700;
+}
+.banner-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.2);
+}
+:root[data-theme="dark"] .banner-icon {
+  background: rgb(0 0 0 / 0.14);
+}
+.banner-text {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.journey-map .path-track,
+.journey-map .path-unit-title,
+.journey-map .path-unit-count {
+  color: inherit;
+}
+.journey-map .path-unit-title {
+  font: 600 19px/1.25 var(--tb-sans);
+}
+.journey-map .path-unit-count {
+  font-weight: 700;
+}
+.node-path {
+  list-style: none;
+  margin: 0;
+  padding: 18px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.node-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-left: calc(4.5rem + var(--bend) * 1px);
+}
+.node-row.current-level {
+  padding-top: 40px;
+  background: none;
+  box-shadow: none;
+}
+.node {
+  position: relative;
+  flex: none;
+  display: block;
+  width: 78px;
+  height: 78px;
+  padding: 5px;
+  border-radius: 50%;
+  background: conic-gradient(var(--tb-gold) var(--ring, 0deg), var(--tb-rule) 0);
+  text-decoration: none;
+}
+.node-face {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--trk);
+  color: var(--tb-on-track);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--trk) 62%, #000);
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+.node:hover .node-face {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--trk) 62%, #000);
+}
+.node:active .node-face {
+  transform: translateY(5px);
+  box-shadow: 0 0 0 color-mix(in srgb, var(--trk) 62%, #000);
+}
+.node-row.is-needs .node-face {
+  background: var(--tb-sunken);
+  color: var(--tb-muted);
+  box-shadow: 0 5px 0 var(--tb-rule);
+  border: 2px solid var(--tb-rule);
+}
+.node-row.current-level .node {
+  box-shadow:
+    0 0 0 3px var(--tb-paper),
+    0 0 0 5px var(--tb-ink);
+}
+.node-star {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--tb-gold);
+  color: var(--tb-paper);
+  border: 2px solid var(--tb-paper);
+}
+.node-bubble {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border: 2px solid var(--tb-ink);
+  border-radius: 10px;
+  background: var(--tb-surface);
+  color: var(--tb-ink);
+  font: 700 12px/1.2 var(--tb-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: bubble-bob 1.6s ease-in-out infinite;
+}
+.node-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--tb-surface);
+  border-right: 2px solid var(--tb-ink);
+  border-bottom: 2px solid var(--tb-ink);
+  transform: translate(-50%, -6px) rotate(45deg);
+}
+@keyframes bubble-bob {
+  50% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+.node-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.node-text strong {
+  font: 500 19px/1.25 var(--tb-serif);
+  color: var(--tb-ink);
+}
+.node-row.is-needs .node-text strong {
+  color: var(--tb-ink-2);
+}
+.node-text .path-note {
+  white-space: normal;
+}
+.node-row.current-level .node-text .path-note {
+  color: var(--tb-accent);
+  font-weight: 700;
+}
+.journey-map .path-legend {
+  justify-content: center;
+}
+@media (max-width: 760px) {
+  .node-row {
+    padding-left: calc(1.5rem + var(--bend) * 0.5px + 20px);
+    gap: 14px;
+  }
+  .node {
+    width: 68px;
+    height: 68px;
+  }
+  .journey-map .path-unit > summary {
+    padding: 14px;
+    gap: 12px;
+  }
+  .journey-map .path-unit > summary .path-unit-count {
+    grid-column: auto;
+  }
+}
+
+/* ---------- Doing screens: friendlier, chunkier controls ----------
+   Reading stays quiet (flat paper, serif). Controls and navigation are rounder and tactile
+   so that the next action is the most obvious thing on screen. */
+.learning-app .button {
+  border-radius: 12px;
+}
+.learning-app .button-primary {
+  background: var(--tb-accent);
+  color: var(--tb-on-accent);
+  border: 0;
+  padding: 14px 26px;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--tb-accent) 58%, #000);
+}
+.learning-app .button-primary:hover:not(:disabled) {
+  background: var(--tb-accent-hover);
+  color: var(--tb-on-accent);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--tb-accent-hover) 58%, #000);
+}
+.learning-app .button-primary:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--tb-accent) 58%, #000);
+}
+.learning-app .button-outline {
+  border: 2px solid var(--tb-rule);
+  box-shadow: 0 3px 0 var(--tb-rule);
+}
+.question-card,
+.recap-card,
+.prediction-card {
+  border-radius: 14px;
+}
+
+.session-step {
+  border-top: 0;
+  padding-left: 68px;
+}
+.session-step::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 64px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--tb-rule);
+}
+.session-step:last-child::before {
+  display: none;
+}
+.step-no {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  top: 18px;
+  border-radius: 50%;
+  background: var(--tb-accent);
+  color: var(--tb-on-accent);
+  font: 700 20px/1 var(--tb-sans);
+  letter-spacing: 0;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--tb-accent) 58%, #000);
+}
+.today-head .goal-card {
+  border: 2px solid var(--tb-rule);
+  border-radius: 16px;
+  background: var(--tb-surface);
+  padding: 16px 18px 18px;
+  box-shadow: 0 4px 0 var(--tb-rule);
+}
+.today-rail .stat-strip {
+  border: 2px solid var(--tb-rule);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--tb-rule);
+  overflow: hidden;
+}
+.chapter-tiles {
+  gap: 10px;
+  border: 0;
+}
+.chapter-tile {
+  border: 2px solid var(--tb-rule);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 var(--tb-rule);
+}
+.chapter-tile[aria-pressed="true"] {
+  border-color: var(--tb-accent);
+  box-shadow: 0 3px 0 var(--tb-accent);
+}
+.chapter-bar {
+  border-radius: 3px;
+  overflow: hidden;
+}
+@media (max-width: 760px) {
+  .session-step {
+    padding-left: 0;
+  }
+  .session-step::before {
+    display: none;
+  }
+  .step-no {
+    position: static;
+    margin-bottom: 8px;
+  }
+}
+.workspace-page h2.path-unit-title {
+  font: 500 19px/1.3 var(--tb-serif);
+  letter-spacing: 0;
+  margin: 0;
+}

@@ -64,12 +64,24 @@ const textPairs = [
   ["bad", "bad-bg", 4.5, "wrong label"],
   ["ink", "bad-bg", 4.5, "wrong explanation"],
   ["gold", "paper", 3, "streak and star icons"],
+  ...["maths", "physics", "chemistry", "computing", "astro"].map((k) => [
+    "on-track",
+    `trk-${k}`,
+    4.5,
+    `text on the ${k} unit banner`,
+  ]),
 ];
 const uiPairs = [
   ["line", "paper", 3, "input and button borders"],
   ["line", "surface", 3, "input borders on cards"],
   ["accent", "paper", 3, "focus ring"],
   ["accent", "surface", 3, "focus ring on cards"],
+  ...["maths", "physics", "chemistry", "computing", "astro"].map((k) => [
+    `trk-${k}`,
+    "paper",
+    3,
+    `${k} lesson node against the page`,
+  ]),
 ];
 
 for (const theme of ["light", "dark"]) {

@@ -69,7 +69,7 @@ export function Learn() {
                 <span className="path-track">
                   {unit.track} · {unit.id}
                 </span>
-                <span className="path-unit-title">{unit.title}</span>
+                <h2 className="path-unit-title">{unit.title}</h2>
                 <span className="path-unit-count">
                   {read} / {lessons.length}
                 </span>

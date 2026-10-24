@@ -6,7 +6,20 @@ import {
 import { demonstratedMastery } from "../../lib/mastery";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, Circle, Diamond, ArrowRight } from "lucide-react";
+import {
+  Check,
+  Circle,
+  Diamond,
+  ArrowRight,
+  Sigma,
+  Atom,
+  FlaskConical,
+  Cpu,
+  Telescope,
+  Lock,
+  Star,
+  type LucideIcon,
+} from "lucide-react";
 import {
   course,
   missingNeeds,
@@ -15,6 +28,14 @@ import {
   type Lesson,
 } from "../../lib/course";
 import { useLearning } from "../../hooks/useLearning";
+
+const trackIcon: Record<string, LucideIcon> = {
+  maths: Sigma,
+  physics: Atom,
+  chemistry: FlaskConical,
+  computing: Cpu,
+  astro: Telescope,
+};
 
 type State = "mastered" | "read" | "next" | "needs" | "open";
 
@@ -60,6 +81,73 @@ function PathRow({
   );
 }
 
+/** A lesson on the winding path. The node is the link; the label sits beside it. */
+function PathNode({
+  lesson,
+  index,
+  state,
+  current,
+  note,
+  label,
+  mastery,
+}: {
+  lesson: Lesson;
+  index: number;
+  state: State;
+  current: boolean;
+  note: string;
+  label: string;
+  mastery: number;
+}) {
+  const Icon = trackIcon[lesson.track] || Atom;
+  // The path winds: each node shifts sideways along a sine curve (less on narrow screens, see CSS).
+  const bend = Math.round(Math.sin(index * 1.15) * 50);
+  return (
+    <li
+      className={`node-row is-${state}${current ? " current-level" : ""}`}
+      data-track={lesson.track}
+      style={{ "--bend": bend } as React.CSSProperties}
+    >
+      <Link
+        to={`/lesson/${lesson.id}`}
+        className="node"
+        aria-label={label}
+        style={
+          {
+            "--ring": `${Math.round(Math.max(0, Math.min(1, mastery)) * 360)}deg`,
+          } as React.CSSProperties
+        }
+      >
+        {current && (
+          <span className="node-bubble" aria-hidden="true">
+            Continue here
+          </span>
+        )}
+        <span className="node-face" aria-hidden="true">
+          {state === "needs" ? (
+            <Lock size={26} strokeWidth={2.5} />
+          ) : state === "mastered" || state === "read" ? (
+            <Check size={30} strokeWidth={3.5} />
+          ) : (
+            <Icon size={28} strokeWidth={2.2} />
+          )}
+        </span>
+        {state === "mastered" && (
+          <span className="node-star" aria-hidden="true">
+            <Star size={14} fill="currentColor" />
+          </span>
+        )}
+      </Link>
+      <span className="node-text" aria-hidden="true">
+        <span className="path-id">{lesson.id}</span>
+        <strong>{lesson.title}</strong>
+        <span className="path-note">
+          {current ? "Up next" : note || lesson.level}
+        </span>
+      </span>
+    </li>
+  );
+}
 
 export function usePhaseProgress() {
   const store = useLearning();
@@ -200,12 +288,22 @@ export function JourneyMap() {
   const isRead = (id: string) =>
     ["done", "skipped"].includes(store.records.lessons[id]?.status);
   // Open the unit that holds the current lesson, else the first unit with unread lessons.
-  const focusUnit =
-    units.find((u) => u.lessons.includes(currentId || ""))?.id ||
-    units.find((u) => u.lessons.some((id) => !isRead(id)))?.id ||
-    units[0]?.id;
+  const recentId = Object.entries(store.records.lessons).sort(
+    (a, b) => b[1].updatedAt - a[1].updatedAt,
+  )[0]?.[0];
+  const focusUnits = new Set(
+    [currentId, recentId]
+      .map((id) => units.find((u) => u.lessons.includes(id || ""))?.id)
+      .filter(Boolean),
+  );
+  if (!focusUnits.size) {
+    const first =
+      units.find((u) => u.lessons.some((id) => !isRead(id)))?.id ||
+      units[0]?.id;
+    if (first) focusUnits.add(first);
+  }
 
-  const rowFor = (l: Lesson) => {
+  const nodeFor = (l: Lesson, i: number) => {
     const rec = store.records.lessons[l.id];
     const mastered = demonstratedMastery(rec),
       read = isRead(l.id),
@@ -215,7 +313,7 @@ export function JourneyMap() {
       ? "mastered"
       : read
         ? "read"
-        : missing.length
+        : missing.length && !current
           ? "needs"
           : current
             ? "next"
@@ -223,19 +321,19 @@ export function JourneyMap() {
     const note = mastered
       ? "Mastered"
       : read
-        ? "Read"
+        ? "Read · mastery separate"
         : missing.length
           ? `Needs ${missing.slice(0, 2).join(", ")}${missing.length > 2 ? "…" : ""}`
           : "";
     return (
-      <PathRow
+      <PathNode
         key={l.id}
-        to={`/lesson/${l.id}`}
-        id={l.id}
-        title={l.title}
+        lesson={l}
+        index={i}
         state={state}
         current={current}
         note={note}
+        mastery={rec?.mastery || 0}
         label={`${l.title}${mastered ? " · practice mastery demonstrated" : read ? " · reading complete; mastery separate" : missing.length ? " · prerequisites recommended" : ""}`}
       />
     );
@@ -273,16 +371,26 @@ export function JourneyMap() {
             <details
               className="path-unit"
               key={`${phase}-${u.id}`}
-              open={u.id === focusUnit}
+              open={focusUnits.has(u.id)}
             >
-              <summary>
-                <span className="path-track">{u.track}</span>
-                <span className="path-unit-title">{u.title}</span>
+              <summary data-track={u.track}>
+                <span className="banner-icon" aria-hidden="true">
+                  {(() => {
+                    const I = trackIcon[u.track] || Atom;
+                    return <I size={22} />;
+                  })()}
+                </span>
+                <span className="banner-text">
+                  <span className="path-track">
+                    {u.track} · {u.id}
+                  </span>
+                  <span className="path-unit-title">{u.title}</span>
+                </span>
                 <span className="path-unit-count">
                   {read} / {lessons.length}
                 </span>
               </summary>
-              <ol className="path-list">{lessons.map(rowFor)}</ol>
+              <ol className="node-path">{lessons.map(nodeFor)}</ol>
             </details>
           );
         })}
@@ -295,7 +403,7 @@ export function JourneyMap() {
           <Circle size={12} strokeWidth={2.5} /> Read
         </span>
         <span>
-          <Diamond size={12} /> Prerequisites first (you can still open it)
+          <Lock size={12} /> Prerequisites first (you can still open it)
         </span>
       </p>
     </section>
