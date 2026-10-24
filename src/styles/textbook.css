@@ -295,124 +295,12 @@ hr {
 .learning-app {
   background: var(--tb-paper);
 }
-.app-sidebar {
-  width: 232px;
-  padding: 36px 28px 28px;
-  background: var(--tb-paper);
-  border-right: 1px solid var(--tb-ink);
-}
-.app-brand {
-  font-family: var(--tb-serif);
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  padding: 0 0 30px;
-}
-.app-brand svg {
-  display: none;
-}
-.app-brand > span {
-  color: var(--tb-accent);
-  font-size: 14px;
-  align-self: flex-start;
-  margin-left: -4px;
-}
-.app-sidebar nav {
-  gap: 0;
-  counter-reset: nav-item;
-}
-.app-sidebar nav a {
-  counter-increment: nav-item;
-  justify-content: space-between;
-  gap: 0;
-  padding: 13px 0;
-  border: 0;
-  border-top: 1px solid var(--tb-rule);
-  border-radius: 0;
-  color: var(--tb-ink);
-  font-size: 15px;
-  font-weight: 500;
-  background: none;
-}
-.app-sidebar nav a:last-child {
-  border-bottom: 1px solid var(--tb-rule);
-}
-.app-sidebar nav a:first-child {
-  border-top-color: var(--tb-ink);
-}
-.app-sidebar nav a svg {
-  display: none;
-}
-.app-sidebar nav a::after {
-  content: counter(nav-item, lower-roman);
-  color: var(--tb-muted);
-  font-family: var(--tb-serif);
-  font-style: italic;
-  font-size: 15px;
-  font-weight: 400;
-}
-.app-sidebar nav a:hover {
-  background: none;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.app-sidebar nav a.active {
-  color: var(--tb-accent);
-  font-weight: 600;
-  background: none;
-  border-top-color: var(--tb-ink);
-}
-.sidebar-note {
-  display: block;
-  padding: 0 0 24px;
-  background: none;
-  font-family: var(--tb-serif);
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.4;
-  color: var(--tb-ink-2);
-}
-.sidebar-note span,
-.sidebar-note strong {
-  display: inline;
-  font-size: inherit;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: inherit;
-  color: inherit;
-}
-.sidebar-note span {
-  display: inline-block;
-  text-transform: lowercase;
-}
-.sidebar-note span::first-letter {
-  text-transform: uppercase;
-}
-.sidebar-note span {
-  margin-right: 0.3em;
-}
-.sidebar-bottom > button {
-  color: var(--tb-muted);
-  font-family: var(--tb-sans);
-  padding: 8px 0;
-  margin-top: 4px;
-}
-.sidebar-bottom > button:hover {
-  color: var(--tb-ink);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.app-topbar {
-  background: var(--tb-paper);
-  border-bottom: 1px solid var(--tb-ink);
-  padding-inline: 40px;
-}
-.topbar-stats > span {
+.topbar-stats > span,
+.site-stats > span {
   font-family: var(--tb-sans);
   font-weight: 600;
 }
-.topbar-stats svg {
+.site-stats svg {
   color: var(--tb-gold);
 }
 .xp-badge {
@@ -426,14 +314,7 @@ hr {
   font-family: var(--tb-serif);
   font-size: 16px;
 }
-.appearance-controls select {
-  max-width: 150px;
-}
 .theme-label {
-  color: var(--tb-muted);
-}
-.app-footer {
-  border-top: 1px solid var(--tb-rule);
   color: var(--tb-muted);
 }
 .study-reminder {
@@ -739,34 +620,6 @@ progress::-moz-progress-bar {
 .available .lesson-status {
   color: var(--tb-accent);
 }
-.level-path li::before {
-  background: var(--tb-rule);
-  border-radius: 0;
-  width: 3px;
-  left: calc(50% - 1.5px);
-}
-.level-node {
-  border: 2px solid var(--tb-accent);
-  box-shadow: none;
-  background: var(--tb-paper);
-  color: var(--tb-accent);
-  font-family: var(--tb-serif);
-  font-weight: 500;
-}
-.complete .level-node {
-  background: var(--tb-accent);
-  color: var(--tb-on-accent);
-}
-.waiting .level-node {
-  border-color: var(--tb-line);
-  color: var(--tb-muted);
-  background: var(--tb-paper);
-}
-.current-level .level-node {
-  outline: 2px solid var(--tb-ink);
-  outline-offset: 4px;
-}
-
 /* ---------- Lesson ---------- */
 .focused-study .lesson-player {
   padding: 24px 32px 64px;
@@ -1351,23 +1204,6 @@ footer {
 
 /* ---------- Small screens ---------- */
 @media (max-width: 760px) {
-  .app-topbar {
-    border-bottom-color: var(--tb-ink);
-  }
-  .mobile-brand {
-    font-family: var(--tb-serif);
-    font-weight: 600;
-  }
-  .mobile-nav {
-    background: var(--tb-paper);
-    border-top: 1px solid var(--tb-ink);
-  }
-  .mobile-nav a {
-    font-size: 12px;
-  }
-  .mobile-nav a.active {
-    color: var(--tb-accent);
-  }
   .page-description,
   .workspace-page > p {
     font-size: 18px;

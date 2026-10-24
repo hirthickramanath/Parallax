@@ -21,6 +21,7 @@ import "@fontsource-variable/newsreader/wght-italic.css";
 import "@fontsource-variable/inter-tight/wght.css";
 import "./index.css";
 import "./styles/textbook.css";
+import "./styles/layout.css";
 const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,
