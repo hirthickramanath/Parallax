@@ -985,11 +985,13 @@ test("journey dashboard integrates the weekly plan, level map and appearance wit
     localStorage.setItem(key, JSON.stringify(data));
   }, bridgeMath);
   await page.reload();
-  await expect(page.locator(".journey-map select")).toHaveValue("0");
+  await expect(
+    page.getByRole("button", { name: /Bridge refresher/, pressed: true }),
+  ).toBeVisible();
   await expect(page.locator(".current-level")).toContainText("PB1.1");
   await page.goto("/lesson/PB1.1");
   await expect(
-    page.locator(".app-sidebar,.app-topbar,.mobile-nav"),
+    page.locator(".site-header,.site-footer,.tab-bar"),
   ).toHaveCount(0);
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
@@ -1922,7 +1924,7 @@ test("foundation revision begins from dashboard and saves a separate progressive
   await page.getByRole("button", { name: "Begin guided revision" }).click();
   await expect(page).toHaveURL(/foundation-revision\/MB1.1$/);
   await expect(
-    page.locator(".app-sidebar,.app-topbar,.mobile-nav"),
+    page.locator(".site-header,.site-footer,.tab-bar"),
   ).toHaveCount(0);
   await expect(page.locator(".revision-glossary dt")).toHaveCount(3);
   await page

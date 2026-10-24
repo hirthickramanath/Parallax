@@ -71,6 +71,7 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 | Assessment Worker | `npm run typecheck:assessment`, `npm run test:assessment` |
 | Reminders Worker | `npm run typecheck:reminders`, `npm run test:reminders` |
 | Lessons, questions, models, review data | `npm run content:audit`, `npm run review:audit`, `npm run content:report` |
+| Colours, themes or palettes | `npm test` (includes `scripts/theme-contrast.test.mjs`); see `docs/DESIGN.md` |
 | UI or routing | `npm run build` then `npm run test:browser` (serves a production preview with mocked auth; includes a structural accessibility audit in `tests/a11y.spec.ts`; set `PLAYWRIGHT_CHROMIUM_PATH` to use a specific Chromium) |
 | Numeric answers or units in lessons | `npm run verify:numeric` (also part of `npm test`) |
 | Tutor behaviour | `npm run eval:tutor -- --dry-run`; a live run needs a learner token, see `docs/TUTOR-EVALUATION.md` |

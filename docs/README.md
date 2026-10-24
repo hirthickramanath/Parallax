@@ -34,6 +34,7 @@ Counts inside these documents are **snapshots from the date each was written** a
 - [FOUNDATION-REVISION-PATH.md](FOUNDATION-REVISION-PATH.md)
 - [LEARNING-FLOW-REDESIGN.md](LEARNING-FLOW-REDESIGN.md)
 - [BUTTON-BY-BUTTON-UX-AUDIT.md](BUTTON-BY-BUTTON-UX-AUDIT.md)
+- [DESIGN.md](DESIGN.md): the textbook theme, its tokens and the contrast test
 
 ## Plans and briefs (not implemented unless stated)
 

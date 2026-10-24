@@ -3,7 +3,7 @@ import { nextFoundation } from "../lib/foundation-path";
 import { WeekOverview } from "../components/learning/WeekOverview";
 import { JourneyMap } from "../components/learning/JourneyMap";
 import { Link } from "react-router-dom";
-import { Flame, ArrowRight, Telescope, BookOpen, Target } from "lucide-react";
+import { Flame, ArrowRight, BookOpen, Target } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
 import { useClock, useLearning } from "../hooks/useLearning";
 import { dateKey, streakStats } from "../lib/learning-core";
@@ -45,11 +45,20 @@ export function Dashboard() {
   const due = Object.values(store.records.reviewCards).filter(
     (c) => new Date(c.fsrs.due).getTime() <= now,
   ).length;
+  const goal = store.preferences.dailyGoal;
+  const goalMet = xp >= goal;
+  const dateLabel = new Intl.DateTimeFormat(undefined, {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    timeZone: store.preferences.timezone,
+  }).format(now);
+  const revisionOn = !!store.preferences.foundationRevision;
   return (
-    <main id="main" className="workspace-page">
-      <div className="page-heading">
+    <main id="main" className="workspace-page today">
+      <header className="today-head">
         <div>
-          <p className="eyebrow">A LITTLE CURIOSITY, EVERY DAY</p>
+          <p className="eyebrow">{dateLabel}</p>
           <h1>
             {user?.displayName
               ? `Ready, ${user.displayName.split(" ")[0]}?`
@@ -59,117 +68,47 @@ export function Dashboard() {
             Build the intuition. Keep the theory. Follow the evidence.
           </p>
         </div>
-        <span className="daily-date">
-          {new Intl.DateTimeFormat(undefined, {
-            weekday: "long",
-            month: "short",
-            day: "numeric",
-            timeZone: store.preferences.timezone,
-          }).format(now)}
-        </span>
-      </div>
-      <div className="dashboard-columns">
-        <div className="dashboard-primary">
-          <FoundationRevisionCard />
-          <WeekOverview />
-          <div className="dashboard-grid">
-            {!store.preferences.foundationRevision && (
-              <section className="continue-card">
-                <div className="continue-copy">
-                  <span className="pill">
-                    {last ? "CONTINUE YOUR JOURNEY" : "START EXPLORING"} ·{" "}
-                    {lesson?.id || "COURSE"}
-                  </span>
-                  <h2>{lesson?.title || "Every question opens a door."}</h2>
-                  <p>{lesson?.hook || "Your next lesson is waiting."}</p>
-                  {last && (
-                    <details className="recap-card" open>
-                      <summary>
-                        Your 30-second recap{last ? ` · ${last[0]}` : ""}
-                      </summary>
-                      <ul>
-                        {recap.map((text) => (
-                          <li key={text}>{text}</li>
-                        ))}
-                      </ul>
-                      <p>
-                        Before you continue: can you explain one of these ideas
-                        without looking?
-                      </p>
-                    </details>
-                  )}
-                  {lesson && missingNeeds(lesson, store.records).length > 0 && (
-                    <small>
-                      Soft-lock preview · prerequisites recommended.
-                    </small>
-                  )}
-                  <Button asChild>
-                    <Link to={lesson ? `/lesson/${lesson.id}` : "/learn"}>
-                      {resuming ? "Recap & resume" : "Start this lesson"}
-                      <ArrowRight size={18} />
-                    </Link>
-                  </Button>
-                </div>
-                <div className="planet-emblem" aria-hidden="true">
-                  <Telescope size={70} />
-                  <span>LOOK CLOSER</span>
-                </div>
-              </section>
-            )}
-            <section className="goal-card">
-              <div className="goal-heading">
-                <Flame />
-                <span>Keep your spark</span>
-              </div>
-              <strong className="streak-number">
-                {stats.current}
-                <span> day streak</span>
-              </strong>
-              <label htmlFor="daily-progress">
-                Daily goal{" "}
-                <span>
-                  {xp}/{store.preferences.dailyGoal} XP
-                </span>
-              </label>
-              <progress
-                id="daily-progress"
-                max={store.preferences.dailyGoal}
-                value={Math.min(xp, store.preferences.dailyGoal)}
-              />
-              <p>
-                {xp >= store.preferences.dailyGoal
-                  ? "Goal reached. A little progress goes a long way."
-                  : "A day counts when you reach your goal. Every meaningful step helps."}
-              </p>
-              <Link to="/stats">Your activity →</Link>
-            </section>
+        <section className="goal-card" aria-label="Daily goal">
+          <div className="goal-heading">
+            <Flame aria-hidden="true" />
+            <span>Keep your spark</span>
           </div>
-          <section className="stat-strip">
-            <div>
-              <Target />
-              <strong>{done}</strong>
-              <span>Lessons read</span>
-            </div>
-            <div>
-              <Flame />
-              <strong>{stats.totalXp}</strong>
-              <span>Total XP</span>
-            </div>
-            <div>
-              <BookOpen />
-              <strong>{due}</strong>
-              <span>Cards due</span>
-            </div>
-          </section>
+          <strong className="streak-number">
+            {stats.current}
+            <span> day streak</span>
+          </strong>
+          <label htmlFor="daily-progress">
+            Daily goal{" "}
+            <span>
+              {xp}/{goal} XP
+            </span>
+          </label>
+          <progress
+            id="daily-progress"
+            max={goal}
+            value={Math.min(xp, goal)}
+          />
+          <p>
+            {goalMet
+              ? "Goal reached. A little progress goes a long way."
+              : "A day counts when you reach your goal."}
+          </p>
+        </section>
+      </header>
 
-          <JourneyMap />
-        </div>
-        <aside className="dashboard-aside" aria-label="Problem of the day">
-          {" "}
-          <section className="daily-puzzle">
+      <div className="today-layout">
+        <div className="today-session">
+          <section
+            className="session-step daily-puzzle"
+            id="daily"
+            aria-label="Problem of the day"
+          >
+            <span className="step-no" aria-hidden="true">
+              1
+            </span>
             <span className="pill">
-              PROBLEM OF THE DAY ·{" "}
-              {dailyQuestion.conceptual ? "CONCEPTUAL WHY" : "SHORT PROBLEM"}
+              Warm up · problem of the day ·{" "}
+              {dailyQuestion.conceptual ? "conceptual why" : "short problem"}
             </span>
             <h2>A small question. A useful habit.</h2>
             <p>
@@ -190,8 +129,103 @@ export function Dashboard() {
               }}
             />
           </section>
+
+          <section className="session-step review-step" aria-label="Review">
+            <span className="step-no" aria-hidden="true">
+              2
+            </span>
+            <span className="pill">Recall · spaced review</span>
+            <h2>
+              {due > 0
+                ? `${due} ${due === 1 ? "card is" : "cards are"} ready to review.`
+                : "No cards due today."}
+            </h2>
+            <p>
+              {due > 0
+                ? "Pulling an idea from memory just as it begins to fade is what makes it last. Five minutes is enough."
+                : "Cards you finish in lessons come back here on a schedule, just before you would forget them."}
+            </p>
+            {due > 0 && (
+              <Button asChild>
+                <Link to="/review">
+                  Review now
+                  <ArrowRight size={18} aria-hidden="true" />
+                </Link>
+              </Button>
+            )}
+          </section>
+
+          {revisionOn ? (
+            <div className="session-step">
+              <span className="step-no" aria-hidden="true">
+                3
+              </span>
+              <FoundationRevisionCard />
+            </div>
+          ) : (
+            <section className="session-step continue-card">
+              <span className="step-no" aria-hidden="true">
+                3
+              </span>
+              <span className="pill">
+                {last ? "CONTINUE YOUR JOURNEY" : "START EXPLORING"} ·{" "}
+                {lesson?.id || "COURSE"}
+              </span>
+              <h2>{lesson?.title || "Every question opens a door."}</h2>
+              <p>{lesson?.hook || "Your next lesson is waiting."}</p>
+              {last && (
+                <details className="recap-card" open>
+                  <summary>
+                    Your 30-second recap{last ? ` · ${last[0]}` : ""}
+                  </summary>
+                  <ul>
+                    {recap.map((text) => (
+                      <li key={text}>{text}</li>
+                    ))}
+                  </ul>
+                  <p>
+                    Before you continue: can you explain one of these ideas
+                    without looking?
+                  </p>
+                </details>
+              )}
+              {lesson && missingNeeds(lesson, store.records).length > 0 && (
+                <small>Soft-lock preview · prerequisites recommended.</small>
+              )}
+              <Button asChild>
+                <Link to={lesson ? `/lesson/${lesson.id}` : "/learn"}>
+                  {resuming ? "Recap & resume" : "Start this lesson"}
+                  <ArrowRight size={18} aria-hidden="true" />
+                </Link>
+              </Button>
+            </section>
+          )}
+        </div>
+
+        <aside className="today-rail" aria-label="This week">
+          <section className="stat-strip">
+            <div>
+              <Target aria-hidden="true" />
+              <strong>{done}</strong>
+              <span>Lessons read</span>
+            </div>
+            <div>
+              <Flame aria-hidden="true" />
+              <strong>{stats.totalXp}</strong>
+              <span>Total XP</span>
+            </div>
+            <Link to="/review" className="stat-link">
+              <BookOpen aria-hidden="true" />
+              <strong>{due}</strong>
+              <span>Cards due</span>
+            </Link>
+          </section>
+          <WeekOverview />
+          {!revisionOn && <FoundationRevisionCard />}
         </aside>
       </div>
+
+      <JourneyMap />
     </main>
   );
 }

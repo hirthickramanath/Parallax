@@ -4,12 +4,219 @@ import {
   nextFoundation,
 } from "../../lib/foundation-path";
 import { demonstratedMastery } from "../../lib/mastery";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { course, missingNeeds, phases, nextLesson } from "../../lib/course";
+import {
+  Check,
+  Circle,
+  Diamond,
+  ArrowRight,
+  Sigma,
+  Atom,
+  FlaskConical,
+  Cpu,
+  Telescope,
+  Lock,
+  Star,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  course,
+  missingNeeds,
+  phases,
+  nextLesson,
+  type Lesson,
+} from "../../lib/course";
 import { useLearning } from "../../hooks/useLearning";
+
+const trackIcon: Record<string, LucideIcon> = {
+  maths: Sigma,
+  physics: Atom,
+  chemistry: FlaskConical,
+  computing: Cpu,
+  astro: Telescope,
+};
+
+type State = "mastered" | "read" | "next" | "needs" | "open";
+
+/** One lesson row. The whole row is the tap target (see .path-row a::after). */
+function PathRow({
+  to,
+  id,
+  title,
+  state,
+  current,
+  note,
+  label,
+}: {
+  to: string;
+  id: string;
+  title: string;
+  state: State;
+  current: boolean;
+  note: string;
+  label: string;
+}) {
+  return (
+    <li className={`path-row is-${state}${current ? " current-level" : ""}`}>
+      <span className="path-status" aria-hidden="true">
+        {state === "mastered" ? (
+          <Check size={15} strokeWidth={3} />
+        ) : state === "read" ? (
+          <Circle size={13} strokeWidth={2.5} />
+        ) : state === "needs" ? (
+          <Diamond size={13} strokeWidth={2} />
+        ) : (
+          <ArrowRight size={15} strokeWidth={2.5} />
+        )}
+      </span>
+      <span className="path-id">{id}</span>
+      <Link to={to} aria-label={label}>
+        {title}
+      </Link>
+      <span className="path-note" aria-hidden="true">
+        {current ? "Continue here" : note}
+      </span>
+    </li>
+  );
+}
+
+/** A lesson on the winding path. The node is the link; the label sits beside it. */
+function PathNode({
+  lesson,
+  index,
+  state,
+  current,
+  note,
+  label,
+  mastery,
+}: {
+  lesson: Lesson;
+  index: number;
+  state: State;
+  current: boolean;
+  note: string;
+  label: string;
+  mastery: number;
+}) {
+  const Icon = trackIcon[lesson.track] || Atom;
+  // The path winds: each node shifts sideways along a sine curve (less on narrow screens, see CSS).
+  const bend = Math.round(Math.sin(index * 1.15) * 50);
+  return (
+    <li
+      className={`node-row is-${state}${current ? " current-level" : ""}`}
+      data-track={lesson.track}
+      style={{ "--bend": bend } as React.CSSProperties}
+    >
+      <Link
+        to={`/lesson/${lesson.id}`}
+        className="node"
+        aria-label={label}
+        style={
+          {
+            "--ring": `${Math.round(Math.max(0, Math.min(1, mastery)) * 360)}deg`,
+          } as React.CSSProperties
+        }
+      >
+        {current && (
+          <span className="node-bubble" aria-hidden="true">
+            Continue here
+          </span>
+        )}
+        <span className="node-face" aria-hidden="true">
+          {state === "needs" ? (
+            <Lock size={26} strokeWidth={2.5} />
+          ) : state === "mastered" || state === "read" ? (
+            <Check size={30} strokeWidth={3.5} />
+          ) : (
+            <Icon size={28} strokeWidth={2.2} />
+          )}
+        </span>
+        {state === "mastered" && (
+          <span className="node-star" aria-hidden="true">
+            <Star size={14} fill="currentColor" />
+          </span>
+        )}
+      </Link>
+      <span className="node-text" aria-hidden="true">
+        <span className="path-id">{lesson.id}</span>
+        <strong>{lesson.title}</strong>
+        <span className="path-note">
+          {current ? "Up next" : note || lesson.level}
+        </span>
+      </span>
+    </li>
+  );
+}
+
+export function usePhaseProgress() {
+  const store = useLearning();
+  // Progress per chapter, computed once per change of records. No prerequisite checks here.
+  return useMemo(
+    () =>
+      phases.map((_, p) => {
+        const lessons = course.lessons.filter((l) => l.phase === p);
+        let read = 0,
+          mastered = 0;
+        for (const l of lessons) {
+          const rec = store.records.lessons[l.id];
+          if (["done", "skipped"].includes(rec?.status)) read++;
+          if (demonstratedMastery(rec)) mastered++;
+        }
+        return { total: lessons.length, read, mastered };
+      }),
+    [store.records.lessons],
+  );
+}
+
+export function ChapterTiles({
+  progress,
+  phase,
+  onSelect,
+}: {
+  progress: { total: number; read: number; mastered: number }[];
+  phase: number;
+  onSelect: (i: number) => void;
+}) {
+  return (
+    <div className="chapter-tiles" role="group" aria-label="Journey chapter">
+      {phases.map((name, i) => {
+        const p = progress[i];
+        return (
+          <button
+            key={name}
+            type="button"
+            className="chapter-tile"
+            aria-pressed={phase === i}
+            onClick={() => onSelect(i)}
+          >
+            <span className="chapter-no">{i + 1}</span>
+            <span className="chapter-name">{name}</span>
+            <span className="chapter-count">
+              {p.read} / {p.total} read
+            </span>
+            <span className="chapter-bar" aria-hidden="true">
+              <i
+                className="bar-mastered"
+                style={{ width: `${(p.mastered / p.total) * 100}%` }}
+              />
+              <i
+                className="bar-read"
+                style={{
+                  width: `${((p.read - p.mastered) / p.total) * 100}%`,
+                }}
+              />
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function JourneyMap() {
   const store = useLearning();
+  const revisionMode = !!store.preferences.foundationRevision;
   const next = nextLesson(store.records);
   const currentId =
     Object.entries(store.records.lessons)
@@ -18,100 +225,187 @@ export function JourneyMap() {
   const [phase, setPhase] = useState(
     course.lessons.find((l) => l.id === currentId)?.phase || 0,
   );
-  if (store.preferences.foundationRevision)
+
+  const progress = usePhaseProgress();
+
+  if (revisionMode) {
+    const nextRev = nextFoundation(store.records);
+    const doneCount = FOUNDATION_ORDER.filter((id) =>
+      foundationRevised(store.records, id),
+    ).length;
     return (
       <section className="journey-map" aria-label="Learning level map">
         <p className="eyebrow">REBUILD BEFORE THE FRONTIER</p>
         <h2>Your foundation revision path</h2>
-        <p>
-          Each node revisits vocabulary, worked examples, full theory and guided
-          practice. Revision practice is separate from course mastery.
+        <p className="journey-lede">
+          Each chapter revisits vocabulary, worked examples, full theory and
+          guided practice. Revision practice is separate from course mastery.
         </p>
-        <ol className="level-path">
-          {FOUNDATION_ORDER.map((id, i) => {
+        <div className="journey-total">
+          <span>
+            <strong>{doneCount}</strong> of {FOUNDATION_ORDER.length} chapters
+            revised
+          </span>
+          <progress
+            max={FOUNDATION_ORDER.length}
+            value={doneCount}
+            aria-label="Foundation chapters revised"
+          />
+        </div>
+        <ol className="path-list">
+          {FOUNDATION_ORDER.map((id) => {
             const done = foundationRevised(store.records, id),
-              current = id === nextFoundation(store.records);
+              current = id === nextRev,
+              title = course.authored[id].title;
             return (
-              <li
+              <PathRow
                 key={id}
-                className={`${done ? "complete" : "available"} ${current ? "current-level" : ""}`}
-                style={
-                  {
-                    "--bend": `${Math.sin(i * 1.2) * 60}px`,
-                  } as React.CSSProperties
-                }
-              >
-                <Link
-                  to={`/foundation-revision/${id}`}
-                  aria-label={`${course.authored[id].title} · ${done ? "revision practice complete" : "foundation revision"}`}
-                >
-                  <span className="level-node">{done ? "✓" : i + 1}</span>
-                  <strong>{course.authored[id].title}</strong>
-                  <small>
-                    {id}
-                    {current ? " · Continue here" : ""}
-                  </small>
-                </Link>
-              </li>
+                to={`/foundation-revision/${id}`}
+                id={id}
+                title={title}
+                state={done ? "mastered" : current ? "next" : "open"}
+                current={current}
+                note={done ? "Revised" : ""}
+                label={`${title} · ${done ? "revision practice complete" : "foundation revision"}`}
+              />
             );
           })}
         </ol>
       </section>
     );
+  }
+
+  const totals = progress.reduce(
+    (a, p) => ({
+      total: a.total + p.total,
+      read: a.read + p.read,
+      mastered: a.mastered + p.mastered,
+    }),
+    { total: 0, read: 0, mastered: 0 },
+  );
+  const units = course.units.filter((u) => u.phase === phase);
+  const lessonOf = (id: string) => course.lessons.find((l) => l.id === id)!;
+  const isRead = (id: string) =>
+    ["done", "skipped"].includes(store.records.lessons[id]?.status);
+  // Open the unit that holds the current lesson, else the first unit with unread lessons.
+  const recentId = Object.entries(store.records.lessons).sort(
+    (a, b) => b[1].updatedAt - a[1].updatedAt,
+  )[0]?.[0];
+  const focusUnits = new Set(
+    [currentId, recentId]
+      .map((id) => units.find((u) => u.lessons.includes(id || ""))?.id)
+      .filter(Boolean),
+  );
+  if (!focusUnits.size) {
+    const first =
+      units.find((u) => u.lessons.some((id) => !isRead(id)))?.id ||
+      units[0]?.id;
+    if (first) focusUnits.add(first);
+  }
+
+  const nodeFor = (l: Lesson, i: number) => {
+    const rec = store.records.lessons[l.id];
+    const mastered = demonstratedMastery(rec),
+      read = isRead(l.id),
+      missing = missingNeeds(l, store.records),
+      current = l.id === currentId;
+    const state: State = mastered
+      ? "mastered"
+      : read
+        ? "read"
+        : missing.length && !current
+          ? "needs"
+          : current
+            ? "next"
+            : "open";
+    const note = mastered
+      ? "Mastered"
+      : read
+        ? "Read · mastery separate"
+        : missing.length
+          ? `Needs ${missing.slice(0, 2).join(", ")}${missing.length > 2 ? "…" : ""}`
+          : "";
+    return (
+      <PathNode
+        key={l.id}
+        lesson={l}
+        index={i}
+        state={state}
+        current={current}
+        note={note}
+        mastery={rec?.mastery || 0}
+        label={`${l.title}${mastered ? " · practice mastery demonstrated" : read ? " · reading complete; mastery separate" : missing.length ? " · prerequisites recommended" : ""}`}
+      />
+    );
+  };
+
   return (
     <section className="journey-map" aria-label="Learning level map">
       <p className="eyebrow">ONE IDEA LEADS TO ANOTHER</p>
-      <h2>Your path to the universe</h2>
-      <label>
-        Journey chapter
-        <select
-          value={phase}
-          onChange={(e) => setPhase(Number(e.target.value))}
-        >
-          {phases.map((name, i) => (
-            <option value={i} key={name}>
-              {i + 1} · {name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <ol className="level-path">
-        {course.lessons
-          .filter((l) => l.phase === phase)
-          .map((l, i) => {
-            const done = ["done", "skipped"].includes(
-                store.records.lessons[l.id]?.status,
-              ),
-              locked = missingNeeds(l, store.records).length > 0;
-            const mastered = demonstratedMastery(store.records.lessons[l.id]);
-            return (
-              <li
-                key={l.id}
-                style={
-                  {
-                    "--bend": `${Math.sin(i * 1.2) * 60}px`,
-                  } as React.CSSProperties
-                }
-                className={`${mastered ? "complete" : done ? "read-level" : locked ? "waiting" : "available"} ${l.id === currentId ? "current-level" : ""}`}
-              >
-                <Link
-                  to={`/lesson/${l.id}`}
-                  aria-label={`${l.title}${mastered ? " · practice mastery demonstrated" : done ? " · reading complete; mastery separate" : locked ? " · prerequisites recommended" : ""}`}
-                >
-                  <span className="level-node">
-                    {mastered ? "✓" : done ? "○" : locked ? "◇" : i + 1}
+      <div className="journey-head">
+        <h2>Your path to the universe</h2>
+        <Link className="journey-all" to="/learn">
+          Full course map <ArrowRight size={15} aria-hidden="true" />
+        </Link>
+      </div>
+      <div className="journey-total">
+        <span>
+          <strong>{totals.read}</strong> of {totals.total} lessons read ·{" "}
+          <strong>{totals.mastered}</strong> mastered
+        </span>
+        <progress
+          max={totals.total}
+          value={totals.read}
+          aria-label="Lessons read"
+        />
+      </div>
+      <ChapterTiles progress={progress} phase={phase} onSelect={setPhase} />
+      <div className="chapter-panel">
+        <h3>
+          {phase + 1} · {phases[phase]}
+        </h3>
+        {units.map((u) => {
+          const lessons = u.lessons.map(lessonOf);
+          const read = lessons.filter((l) => isRead(l.id)).length;
+          return (
+            <details
+              className="path-unit"
+              key={`${phase}-${u.id}`}
+              open={focusUnits.has(u.id)}
+            >
+              <summary data-track={u.track}>
+                <span className="banner-icon" aria-hidden="true">
+                  {(() => {
+                    const I = trackIcon[u.track] || Atom;
+                    return <I size={22} />;
+                  })()}
+                </span>
+                <span className="banner-text">
+                  <span className="path-track">
+                    {u.track} · {u.id}
                   </span>
-                  <strong>{l.title}</strong>
-                  <small>
-                    {l.id}
-                    {l.id === currentId ? " · Continue here" : ""}
-                    {locked ? " · prerequisites first" : ""}
-                  </small>
-                </Link>
-              </li>
-            );
-          })}
-      </ol>
+                  <span className="path-unit-title">{u.title}</span>
+                </span>
+                <span className="path-unit-count">
+                  {read} / {lessons.length}
+                </span>
+              </summary>
+              <ol className="node-path">{lessons.map(nodeFor)}</ol>
+            </details>
+          );
+        })}
+      </div>
+      <p className="path-legend" aria-hidden="true">
+        <span>
+          <Check size={14} strokeWidth={3} /> Mastered
+        </span>
+        <span>
+          <Circle size={12} strokeWidth={2.5} /> Read
+        </span>
+        <span>
+          <Lock size={12} /> Prerequisites first (you can still open it)
+        </span>
+      </p>
     </section>
   );
 }
