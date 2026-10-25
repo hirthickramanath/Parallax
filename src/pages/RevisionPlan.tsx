@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { conceptLabel } from "../lib/labels";
 import { Link } from "react-router-dom";
 import { fsrs } from "ts-fsrs";
 import { course } from "../lib/course";
@@ -125,7 +126,7 @@ export function RevisionPlan() {
         {schedule.map((item, i) => (
           <article key={`${item.lessonId}-${item.id}-${i}`}>
             <span className="pill">{item.date}</span>
-            <h2>{item.id.replaceAll("-", " ")}</h2>
+            <h2>{conceptLabel(item.id)}</h2>
             <p>
               {item.strength === null
                 ? "Not reviewed yet"

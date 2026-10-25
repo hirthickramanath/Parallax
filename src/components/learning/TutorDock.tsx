@@ -53,7 +53,14 @@ export function useTutorLesson(
     return () => setLesson(null);
   }, [lessonId, sectionId, depth, revisionStep, setLesson]);
 }
-export function TutorDockProvider({ children }: { children: ReactNode }) {
+export function TutorDockProvider({
+  children,
+  focused = false,
+}: {
+  children: ReactNode;
+  /** Lesson pages carry their own tutor button, so the floating one steps aside on phones. */
+  focused?: boolean;
+}) {
   const store = useLearning();
   const [isOpen, setOpen] = useState(false),
     [lesson, setLesson] = useState<LessonContext | null>(null),
@@ -74,7 +81,7 @@ export function TutorDockProvider({ children }: { children: ReactNode }) {
     >
       {children}
       <button
-        className="tutor-launcher"
+        className={`tutor-launcher${focused ? " tutor-launcher-focused" : ""}`}
         aria-label="Open AI tutor"
         aria-haspopup="dialog"
         aria-expanded={isOpen}

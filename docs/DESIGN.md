@@ -2,7 +2,7 @@
 
 The interface looks like a field notebook from an observatory: bone paper, graphite ink, one brass accent, a serif made for long reading, and a monospace for the labels an instrument would carry. In dark mode it becomes the observatory at night: near-black with amber, the colour of an instrument lamp.
 
-The idea comes from the name. Parallax measures a distance by looking from two places, so the landing page is built around the real parallax diagram and a slider that works, and the course map and lessons borrow the same plain, plate-like layout.
+The idea comes from the name. Parallax measures a distance by looking from two places, so the landing page pairs a night-sky picture with the real parallax idea as a slider that works, and the course map and lessons borrow the same plain, plate-like layout.
 
 Eight stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in), `src/styles/lesson.css` (lesson page) and `src/styles/glass.css` (the glass and desktop-window layer, which restyles the others) `src/styles/sky.css` (startup animation, loader and sign-in backdrop) and `src/styles/chat.css` (the AI tutor chat).
 

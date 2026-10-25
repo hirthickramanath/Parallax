@@ -246,6 +246,9 @@
   background: var(--tb-surface);
   box-shadow: var(--float);
 }
+.l-plate figcaption {
+  max-width: none;
+}
 
 /* ---------- Controls: macOS push buttons and fields ---------- */
 .learning-app .button,
@@ -305,6 +308,30 @@
 /* ---------- Lesson controls ---------- */
 .focused-study .lesson-controls {
   border-top: 1px solid var(--hair-solid);
+}
+/* Phone: the lesson pages have no tab bar, so the controls sit on the bottom edge. The tutor button
+   in the controls replaces the floating launcher, which would otherwise cover them. */
+@media (max-width: 760px) {
+  .focused-study .lesson-controls {
+    bottom: 0;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+  }
+  .focused-study .lesson-controls .button {
+    flex: 1 1 0;
+    min-height: 44px;
+  }
+  .focused-study .lesson-controls .text-button {
+    order: 3;
+    flex: 1 1 100%;
+    max-width: none;
+    min-height: 32px;
+    text-align: center;
+  }
+  .tutor-launcher-focused:not([aria-expanded="true"]) {
+    display: none;
+  }
 }
 
 /* ---------- Glass, where the browser can draw it ---------- */

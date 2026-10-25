@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ParallaxPlate } from "../components/ParallaxPlate";
+import { SkyPlate } from "../components/SkyPlate";
 import { ParallaxTry } from "../components/ParallaxTry";
 
 const subjects: [string, string][] = [
@@ -45,26 +45,24 @@ export function Home() {
         <div className="l-hero-copy">
           <p className="mono">Astrophysics, from the first question</p>
           <h1>
-            Two views.
+            Look up.
             <br />
-            One distance.
+            Ask why.
           </h1>
           <p className="l-lede">
-            Astronomers measure the sky by looking from two places and
-            comparing. This course does the same with ideas: start with a
-            question, look at it from the physics and from the mathematics, and
-            keep what holds up.
+            Every planet, star and galaxy began as a question. This course
+            starts there: look at an idea from the physics and from the
+            mathematics, check it against the numbers, and keep what holds up.
           </p>
           <Link className="l-cta" to="/learn">
             Explore the course <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>
         <figure className="l-plate">
-          <ParallaxPlate />
+          <SkyPlate />
           <figcaption>
-            <span className="mono">Fig. 1</span> A nearby star shifts against
-            distant stars as Earth moves. Half the shift is the angle p, and the
-            distance is d = 1 / p.
+            <span className="mono">Fig. 1</span> A ringed planet, its moon and a
+            distant galaxy: three of the questions this course helps you answer.
           </figcaption>
         </figure>
       </section>
@@ -73,8 +71,9 @@ export function Home() {
         <div className="l-band-head">
           <h2 id="try-title">Try the idea</h2>
           <p>
-            That is a whole lesson in miniature: a picture, one equation, and
-            something to move.
+            Astronomers measure how far away a star is by looking from two
+            places and comparing. Here is that lesson in miniature: a picture,
+            one equation, and something to move.
           </p>
         </div>
         <ParallaxTry />

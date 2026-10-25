@@ -36,7 +36,7 @@ export function AppLayout() {
     pathname.startsWith("/foundation-revision/");
   if (focused)
     return (
-      <TutorDockProvider>
+      <TutorDockProvider focused>
         <div className="learning-app focused-study">
           <a className="skip-link" href="#main">
             Skip to content

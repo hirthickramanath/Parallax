@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { conceptLabel } from "../lib/labels";
 import { Link, useSearchParams } from "react-router-dom";
 import { createEmptyCard, fsrs, type Card } from "ts-fsrs";
 import { useLearning } from "../hooks/useLearning";
@@ -123,7 +124,7 @@ export function Revise() {
     return (
       <main id="main" className="workspace-page">
         <p className="eyebrow">
-          FOCUSED CONCEPT REVISION · {active.concept.replaceAll("-", " ")}
+          FOCUSED CONCEPT REVISION · {conceptLabel(active.concept)}
         </p>
         <h1>Reconnect the idea.</h1>
         <progress
@@ -269,7 +270,7 @@ export function Revise() {
             const value = strength(c.id);
             return (
               <article className="concept-card" key={c.id}>
-                <span className="pill">{c.concept.replaceAll("-", " ")}</span>
+                <span className="pill">{conceptLabel(c.concept)}</span>
                 <h2>{c.front}</h2>
                 <p>
                   {value === null

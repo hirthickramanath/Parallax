@@ -8,7 +8,7 @@ test.describe("startup animation", () => {
     await page.goto("/login");
     const intro = page.getByRole("dialog", { name: "Parallax is starting" });
     await expect(intro).toBeVisible();
-    await expect(intro.getByText("Two views. One distance.")).toBeAttached();
+    await expect(intro.getByText("Every star is a question.")).toBeAttached();
     await page.keyboard.press("Escape");
     await expect(intro).toBeHidden();
     await expect(
