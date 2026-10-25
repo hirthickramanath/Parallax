@@ -39,7 +39,7 @@ const UNITS = {
 };
 
 /** Strings that mean "no concrete unit": the question text carries the unit. */
-export const PLACEHOLDER_UNITS = new Set([
+const PLACEHOLDER_UNITS = new Set([
   "as specified in the question",
   "as stated in question",
   "as stated",
@@ -51,7 +51,7 @@ export const PLACEHOLDER_UNITS = new Set([
   "occupation squared",
 ]);
 /** Strings that mean the answer is a pure number. */
-export const DIMENSIONLESS_UNITS = new Set(["dimensionless", "dimensionless ratio", "ratio", "fraction", "normalized", "probability"]);
+const DIMENSIONLESS_UNITS = new Set(["dimensionless", "dimensionless ratio", "ratio", "fraction", "normalized", "probability"]);
 
 const SUPERSCRIPT = { "²": 2, "³": 3 };
 

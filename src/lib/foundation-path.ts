@@ -40,7 +40,7 @@ export const FOUNDATION_ORDER = [
   "CB1.4",
   "CB1.5",
 ] as const;
-export interface RevisionAnswer {
+interface RevisionAnswer {
   response: string;
   submitted: string | null;
   correct: boolean | null;

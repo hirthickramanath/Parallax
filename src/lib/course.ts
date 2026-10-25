@@ -21,7 +21,7 @@ export interface Unit {
   lessons: string[];
   anyTwoPhase6?: boolean;
 }
-export interface SectionMeta {
+interface SectionMeta {
   id: string;
   title: string;
   layer: string;
