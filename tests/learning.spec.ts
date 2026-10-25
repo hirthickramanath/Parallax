@@ -2491,7 +2491,11 @@ test("floating tutor is reachable on mobile dashboard and uses the current lesso
   await expect(dialog).not.toBeVisible();
   await expect(launcher).toBeFocused();
   await page.goto("/lesson/PB1.2");
-  await launcher.click();
+  // On phones the lesson page's own tutor button replaces the floating one.
+  await expect(launcher).toBeHidden();
+  await page
+    .getByRole("button", { name: "Ask about this section", exact: true })
+    .click();
   await expect(dialog.getByText(/Helping with/)).toBeVisible();
   await dialog
     .getByLabel("Ask about this section")
