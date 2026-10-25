@@ -157,12 +157,18 @@ const learnerPages = [
   "/lesson/PB1.4",
 ];
 
+// The session check shows a loader until Firebase answers, so wait for the page itself before auditing.
+async function pageReady(page: Page) {
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator("h1:visible").first()).toBeVisible();
+}
+
 for (const path of publicPages) {
   test(`structural accessibility audit: ${path} (signed out)`, async ({
     page,
   }) => {
     await page.goto(path);
-    await page.waitForLoadState("networkidle");
+    await pageReady(page);
     expect(await audit(page)).toEqual([]);
   });
 }
@@ -172,7 +178,7 @@ test("structural accessibility audit: signed-in pages", async ({ page }) => {
   const failures: Record<string, Violation[]> = {};
   for (const path of learnerPages) {
     await page.goto(path);
-    await page.waitForLoadState("networkidle");
+    await pageReady(page);
     const found = await audit(page);
     if (found.length) failures[path] = found;
   }
