@@ -22,5 +22,6 @@ export default defineConfig({
     url: "http://127.0.0.1:4183",
     reuseExistingServer: false,
   },
-  reporter: "list",
+  // On GitHub, also annotate the failing test names on the run page.
+  reporter: process.env.CI ? [["list"], ["github"]] : "list",
 });
