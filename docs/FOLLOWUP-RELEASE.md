@@ -12,7 +12,7 @@ This is the current status after the first integrated release. It supersedes tha
 - Added eleven substantive draft lessons, bringing the total to **15 playable drafts** and **65 authored recall cards**:
   - MB3.1, MB3.3, MB3.4, MB3.5: limits/continuity, integration, applications and ODEs. Together with MB3.2, the calculus Bridge now has content for every lesson.
   - PB1.2, PB1.3: energy/momentum and rotation/rolling. Together with PB1.1 and PB1.4, the mechanics Bridge now has content for every lesson.
-  - CB.1, CB.2: atomic structure/periodicity and bonding/shapes.
+  - CB1.1, CB1.2: atomic structure/periodicity and bonding/shapes.
   - AS1.1, AS1.2: celestial coordinates/time and seasons/precession/eclipses.
   - PB4.2: current electricity, connected to a new resistor bench.
 - Replaced answer-like recall prompts with genuine retrieval questions, and expanded the original lessons' review sets.
@@ -58,7 +58,7 @@ This joins the pendulum apparatus, orbit explorer and earlier intuition demonstr
 
 1. Open the supplied GitHub comparison link and create a pull request into `main`.
 2. Review and merge it. Cloudflare Pages builds `main` automatically with `npm run build`, output `dist`.
-3. Open the deployed site. Check `/learn` shows 354 entries and 15 playable drafts. Try `/lesson/MB3.1`, `/lesson/CB.2` and `/labs` → Circuit bench.
+3. Open the deployed site. Check `/learn` shows 354 entries and 15 playable drafts. Try `/lesson/MB3.1`, `/lesson/CB1.2` and `/labs` → Circuit bench.
 4. For cloud sync, open https://console.firebase.google.com/project/parallax-73/firestore → **Rules**, replace the editor with the complete current `firestore.rules`, and click **Publish**. Do not enable publicly writable test rules.
 5. Sign in on the production website, add a notebook entry and check Settings → cloud status. Confirm it appears on another device signed into the same account. Then verify another account cannot read it.
 6. Leave live tutoring off until provider eligibility and the Worker setup steps in `INTEGRATED-RELEASE.md` are completed. No AI credential is needed for the rest of the app.

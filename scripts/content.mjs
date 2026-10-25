@@ -224,7 +224,7 @@ export function buildContent() {
   );
   for (const file of fs.readdirSync("public/content"))
     if (
-      /^(?:[A-Z]{2}\d*|CB)\.\d+\.json$/.test(file) &&
+      /^[A-Z]{2}\d*\.\d+\.json$/.test(file) &&
       !authored[file.slice(0, -5)]
     )
       fs.unlinkSync(path.join("public/content", file));

@@ -6,9 +6,9 @@ import { chemistryInvestigations as m } from "../src/lib/chemistry-investigation
 const close = (a, b, t = 1e-9) =>
   assert.ok(Math.abs(a - b) < t, `${a} != ${b}`);
 const values = {
-  "CB.3": [6, -Math.log(4)],
-  "CB.4": [2, 5],
-  "CB.5": [0.5, 3],
+  "CB1.3": [6, -Math.log(4)],
+  "CB1.4": [2, 5],
+  "CB1.5": [0.5, 3],
   "CH3.1": [0.5, 2],
   "CH3.2": [4, 3],
   "CH3.3": [16, 50],

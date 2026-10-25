@@ -489,7 +489,7 @@ test("weekly planning persists only authored unlocked lessons grouped by track",
   const ids = Object.values(plan.items).flat();
   expect(new Set(ids).size).toBe(ids.length);
   expect(new Set(ids)).toEqual(
-    new Set(["PB1.1", "PB2.1", "PB3.1", "PB4.1", "MB1.1", "MB2.1", "CB.1"]),
+    new Set(["PB1.1", "PB2.1", "PB3.1", "PB4.1", "MB1.1", "MB2.1", "CB1.1"]),
   );
   await page.reload();
   await expect(page.locator(".plan-list article")).toHaveCount(7);
@@ -1411,7 +1411,7 @@ test("calculus and molecular models expose proof bounds area cancellation and nu
   await expect(page.getByText(/Euler value: -9.00000/)).toBeVisible();
   await page.getByLabel("ODE Euler steps", { exact: true }).fill("40");
   await expect(page.getByText(/Euler value: 0.04434/)).toBeVisible();
-  await page.goto("/lesson/CB.2");
+  await page.goto("/lesson/CB1.2");
   await page.getByLabel("Lone-pair domains", { exact: true }).selectOption("2");
   await expect(
     page.getByText(

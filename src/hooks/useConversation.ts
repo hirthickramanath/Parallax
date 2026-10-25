@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useSyncExternalStore } from "react";
 import { useAuth } from "./useAuth";
+/** Chemistry bridge lessons were CB.n before they became CB1.n. */
+const retiredId = (id: string) => id.replace(/^CB1\.(\d+)$/, "CB.$1");
 export interface ChatMessage {
   id: string;
   lessonId: string;
@@ -19,7 +21,13 @@ class Conversation {
     readonly lessonId: string,
   ) {
     try {
-      const value = JSON.parse(localStorage.getItem(this.key) || "null");
+      const value = JSON.parse(
+        localStorage.getItem(this.key) ||
+          localStorage.getItem(
+            `parallax-chat-v1:${this.uid}:${retiredId(this.lessonId)}`,
+          ) ||
+          "null",
+      );
       if (value) {
         this.messages = value.messages || [];
         this.pending = new Set(value.pending || []);
@@ -77,7 +85,15 @@ class Conversation {
   async load() {
     try {
       const { dataStore } = await import("../lib/datastore");
-      const remote = await dataStore.loadConversation(this.uid, this.id);
+      const earlier = retiredId(this.lessonId);
+      const remote = [
+        ...(earlier === this.lessonId
+          ? []
+          : (
+              await dataStore.loadConversation(this.uid, `lesson-${earlier}`)
+            ).map((m) => ({ ...m, lessonId: this.lessonId }))),
+        ...(await dataStore.loadConversation(this.uid, this.id)),
+      ];
       const byId = new Map(remote.map((m) => [m.id, m]));
       for (const message of this.messages)
         if (this.pending.has(message.id) || !byId.has(message.id))

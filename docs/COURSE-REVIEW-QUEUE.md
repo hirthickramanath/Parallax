@@ -2,7 +2,7 @@
 
 Generated with `node scripts/content-audit.mjs`. This is editorial triage, not verification. Sources need exact edition/section inspection and independent reviewers. Implicit vector/black-hole widgets are excluded from explicit-widget counts.
 
-354 lessons; 0 marked verified; 197 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
+354 lessons; 0 marked verified; 192 have current partial AI-assisted source mappings; 0 without explicit widgets; 0 contain repeated prompts. Repeated warm-up/check prompts are flagged for replacement with distinct transfer items. Counts do not measure scientific correctness.
 
 | Lesson | Questions / unique | Numeric | Hints | Explicit widgets |
 | --- | --- | --- | --- | --- |
@@ -67,11 +67,11 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS9.6 Inflation | 9 / 9 | 4 | 3 | astro_AS9.6 |
 | AS9.7 Dark matter and dark energy | 9 / 9 | 4 | 3 | astro_AS9.7 |
 | AS9.8 Observational cosmology and tensions (H0, S8) | 9 / 9 | 4 | 3 | astro_AS9.8 |
-| CB.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | chemistry_CH5.1 |
-| CB.2 Bonding and molecular shapes | 11 / 11 | 6 | 5 | molecular_geometry_explorer |
-| CB.3 Thermochemistry and equilibrium | 10 / 10 | 5 | 6 | chemistry_CB.3 |
-| CB.4 Kinetics and electrochemistry | 10 / 10 | 5 | 6 | chemistry_CB.4 |
-| CB.5 Organic functional groups overview | 10 / 10 | 5 | 6 | chemistry_CB.5 |
+| CB1.1 Atomic structure and periodic trends | 11 / 11 | 6 | 5 | chemistry_CH5.1 |
+| CB1.2 Bonding and molecular shapes | 11 / 11 | 6 | 5 | molecular_geometry_explorer |
+| CB1.3 Thermochemistry and equilibrium | 10 / 10 | 5 | 6 | chemistry_CB1.3 |
+| CB1.4 Kinetics and electrochemistry | 10 / 10 | 5 | 6 | chemistry_CB1.4 |
+| CB1.5 Organic functional groups overview | 10 / 10 | 5 | 6 | chemistry_CB1.5 |
 | CH1.1 Chemical thermodynamics and chemical potential | 9 / 9 | 4 | 3 | physical_chemistry_CH1.1 |
 | CH1.10 Ionic solutions and conductivity | 9 / 9 | 4 | 3 | physical_chemistry_CH1.10 |
 | CH1.11 Transport: diffusion, viscosity and thermal conduction | 9 / 9 | 4 | 3 | physical_chemistry_CH1.11 |

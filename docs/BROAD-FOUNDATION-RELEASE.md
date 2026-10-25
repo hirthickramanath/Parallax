@@ -6,7 +6,7 @@ This release progresses the remaining course, simulation, review and service wor
 
 Thirty lessons across foundation maths/physics, introductory astrophysics, chemistry and scientific computing now have rewritten warm-up/Core prompts, a distinct numerical transfer problem and a derivation/failure-case extension. Original theory and existing apparatus remain. This replaces 60 repeated prompts and adds 30 questions. Each affected bank now contains seven unique prompts. The full 354-lesson set has zero normalized repeated prompts, enforced by both content validation and regression tests. Uniqueness is a quality check, not proof of sufficient depth or calibrated difficulty.
 
-Affected IDs: MB1.1–MB1.4, MB2.1, MB4.1–MB4.4, PB2.3, PB3.1–PB3.3, PB4.1, PB4.3–PB4.4, PB5.1–PB5.3, AS1.4–AS1.5, CB.3–CB.5 and CP1.1–CP1.6.
+Affected IDs: MB1.1–MB1.4, MB2.1, MB4.1–MB4.4, PB2.3, PB3.1–PB3.3, PB4.1, PB4.3–PB4.4, PB5.1–PB5.3, AS1.4–AS1.5, CB1.3–CB1.5 and CP1.1–CP1.6.
 
 ## Models
 

@@ -25,6 +25,57 @@ export function emptyRecords(): Records {
     plan: {},
   };
 }
+const legacyChemistryId = /(^|[^A-Za-z0-9])CB\.(\d+)(?![0-9])/g;
+/** Chemistry bridge lessons were CB.1–CB.5 and are now CB1.1–CB1.5. */
+export function upgradeId(id: string): string {
+  return id === "CB" ? "CB1" : id.replace(legacyChemistryId, "$1CB1.$2");
+}
+function upgradeValue(kind: string, value: unknown): unknown {
+  if (!value || typeof value !== "object") return value;
+  const v = { ...(value as Record<string, unknown>) };
+  if (kind === "reviewCards" && typeof v.lessonId === "string")
+    v.lessonId = upgradeId(v.lessonId);
+  if (kind === "attempts" && typeof v.questionId === "string")
+    v.questionId = upgradeId(v.questionId);
+  if (kind === "reviewLog" && typeof v.cardId === "string")
+    v.cardId = upgradeId(v.cardId);
+  if (kind === "plan" && typeof v.lessonId === "string")
+    v.lessonId = upgradeId(v.lessonId);
+  if (kind === "days" && Array.isArray(v.activities))
+    v.activities = (v.activities as Activity[]).map((a) => ({
+      ...a,
+      id: upgradeId(a.id),
+    }));
+  return v;
+}
+/**
+ * Rewrites records saved under the old chemistry ids. Returns the keys that were
+ * renamed so the caller can queue them for sync; idempotent for upgraded data.
+ */
+export function upgradeRecords(records: Records): string[] {
+  const renamed: string[] = [];
+  for (const kind of collections) {
+    const bucket = records[kind] as Record<string, unknown> | undefined;
+    if (!bucket) continue;
+    for (const [id, value] of Object.entries(bucket)) {
+      const next = upgradeId(id);
+      const upgraded = upgradeValue(kind, value);
+      if (next === id) {
+        if (JSON.stringify(upgraded) !== JSON.stringify(value)) {
+          bucket[id] = upgraded;
+          renamed.push(`${kind}/${id}`);
+        }
+        continue;
+      }
+      delete bucket[id];
+      bucket[next] = bucket[next]
+        ? mergeDocument(kind, bucket[next] as object, upgraded as object, 20)
+        : upgraded;
+      renamed.push(`${kind}/${next}`);
+    }
+  }
+  return renamed;
+}
 export function dateKey(time: number, timezone: string): string {
   const p = new Intl.DateTimeFormat("en-CA", {
     timeZone: timezone,

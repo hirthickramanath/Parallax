@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { sourceFingerprint } from "./review-evidence.mjs";
 export function expectedPublicBuild(
   root,
-  ids = ["CB.3", "MA10.1", "PH16.4", "PH18.4"],
+  ids = ["CB1.3", "MA10.1", "PH16.4", "PH18.4"],
 ) {
   const html = fs.readFileSync(path.join(root, "dist/index.html"), "utf8");
   const assets = [

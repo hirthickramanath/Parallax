@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, type ReactElement } from "react";
 import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
@@ -7,7 +7,9 @@ import {
   Outlet,
   Route,
   Routes,
+  useParams,
 } from "react-router-dom";
+import { upgradeId } from "./lib/learning-core";
 import { SkyLoader, Startup } from "./components/Sky";
 import { AppearanceToggles, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
@@ -103,6 +105,12 @@ function PublicLayout() {
     </>
   );
 }
+/** Old links to chemistry bridge lessons (CB.n) now point at CB1.n. */
+function Renamed({ children }: { children: ReactElement }) {
+  const { id = "" } = useParams();
+  const next = upgradeId(id);
+  return next === id ? children : <Navigate to={`/lesson/${next}`} replace />;
+}
 function App() {
   return (
     <Suspense fallback={<SkyLoader />}>
@@ -138,7 +146,11 @@ function App() {
             element={<FoundationRevision />}
           />
           <Route path="/placement" element={<Placement />} />
-          <Route path="/lesson/:id" element={<LessonPlayer />} />
+          <Route path="/lesson/:id" element={
+              <Renamed>
+                <LessonPlayer />
+              </Renamed>
+            } />
           <Route path="/teaching-lab" element={<TeachingLab />} />
         </Route>
         <Route

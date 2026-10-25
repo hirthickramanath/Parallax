@@ -222,11 +222,11 @@ export const foundationProjects: FoundationProject[] = [
       "A 3 eV photon yields maximum kinetic energy 1 eV and stopping potential 1 V for work function 2 eV. At 1 eV there is no single-photon emission in this model.",
   },
   {
-    unit: "CB",
+    unit: "CB1",
     title: "Separate equilibrium, kinetics and structure",
     question:
       "What can a chemical formula, an equilibrium constant and a rate constant each tell us?",
-    lessons: ["CB.1", "CB.2", "CB.3", "CB.4", "CB.5"],
+    lessons: ["CB1.1", "CB1.2", "CB1.3", "CB1.4", "CB1.5"],
     method: [
       "For ideal A⇌B with total amount 10 mol, calculate equilibrium composition at K=1 and K=4.",
       "Choose two first-order forward/reverse rate pairs with the same ratio and compare their approach times to the same equilibrium.",
