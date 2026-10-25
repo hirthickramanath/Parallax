@@ -76,10 +76,10 @@ export function TwoViewsPlate() {
         <text x="360" y="558" textAnchor="middle">
           baseline b
         </text>
-        <text x="200" y="572" textAnchor="middle">
+        <text x="166" y="562" textAnchor="end">
           observer A
         </text>
-        <text x="520" y="572" textAnchor="middle">
+        <text x="554" y="562" textAnchor="start">
           observer B
         </text>
       </g>
