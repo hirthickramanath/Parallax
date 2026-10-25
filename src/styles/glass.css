@@ -1,0 +1,383 @@
+/*
+  Glass and desktop-window layer. Loaded last, so it restyles the shell, controls and cards that the
+  earlier sheets define. Three rules keep it readable:
+  1. Glass is only used for bars that float over scrolling content (header, tab bar, lesson controls).
+     Text on it always sits on at least 72% of the page colour, so contrast does not depend on what
+     scrolls underneath.
+  2. Every glass surface has a solid fallback declared first. Browsers without backdrop-filter or
+     color-mix keep the solid colour, and so does anyone who asks for reduced transparency.
+  3. Colours come from the --tb-* tokens (via color-mix), so every palette and dark mode follows.
+*/
+
+.learning-app,
+.pub-header {
+  --hair: color-mix(in srgb, var(--tb-ink) 14%, transparent);
+  --hair-solid: color-mix(in srgb, var(--tb-ink) 14%, var(--tb-paper));
+  --raise: 0 1px 2px rgb(0 0 0 / 0.1), 0 0 0 0.5px rgb(0 0 0 / 0.08);
+  --float: 0 1px 2px rgb(0 0 0 / 0.06), 0 10px 30px rgb(0 0 0 / 0.08);
+}
+
+/* ---------- Ambient colour behind the glass ---------- */
+.learning-app.shell {
+  background:
+    radial-gradient(
+      60rem 36rem at 88% -8%,
+      color-mix(in srgb, var(--tb-accent) 13%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      50rem 34rem at -6% 96%,
+      color-mix(in srgb, var(--tb-trk-maths) 10%, transparent),
+      transparent 70%
+    ),
+    var(--tb-paper);
+  background-attachment: fixed;
+}
+
+/* ---------- Header: a frosted toolbar ---------- */
+.learning-app .site-header {
+  border-bottom: 1px solid var(--hair-solid);
+}
+.learning-app .site-header-inner {
+  gap: 16px;
+}
+.learning-app .site-nav {
+  align-self: center;
+  margin: 0 auto;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--tb-ink) 7%, transparent);
+}
+.learning-app .site-nav a {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 7px;
+  font-size: 14px;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s;
+}
+.learning-app .site-nav a:hover {
+  background: color-mix(in srgb, var(--tb-ink) 7%, transparent);
+}
+.learning-app .site-nav a.active {
+  background: var(--tb-surface);
+  box-shadow: var(--raise);
+}
+:root[data-theme="dark"] .learning-app .site-nav a.active {
+  background: color-mix(in srgb, var(--tb-ink) 17%, var(--tb-paper));
+}
+.learning-app .site-stats {
+  gap: 14px;
+}
+
+/* Profile: a circle */
+.learning-app .site-stats .avatar,
+.learning-app .avatar {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--tb-ink);
+  color: var(--tb-paper);
+  font: 600 15px/1 var(--tb-sans);
+  box-shadow:
+    0 0 0 2px var(--tb-paper),
+    0 0 0 3.5px color-mix(in srgb, var(--tb-accent) 55%, transparent);
+}
+
+/* ---------- Appearance toggles ---------- */
+.appearance-toggles {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.mode-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--tb-ink) 20%, var(--tb-paper));
+  color: var(--tb-ink);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mode-switch[aria-checked="true"] {
+  background: var(--tb-accent);
+  color: var(--tb-on-accent);
+}
+.mode-switch svg {
+  position: absolute;
+  top: 7.5px;
+}
+.mode-switch svg:nth-of-type(1) {
+  left: 8px;
+}
+.mode-switch svg:nth-of-type(2) {
+  right: 8px;
+}
+.mode-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 0.3),
+    0 0 0 0.5px rgb(0 0 0 / 0.1);
+  transition: transform 0.2s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+.mode-switch[aria-checked="true"] .mode-knob {
+  transform: translateX(24px);
+}
+.palette-button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--hair-solid);
+  border-radius: 50%;
+  background: var(--tb-surface);
+  box-shadow: var(--raise);
+  cursor: pointer;
+}
+.palette-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--tb-accent);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.18);
+  transition: transform 0.15s;
+}
+.palette-button:hover .palette-dot {
+  transform: scale(1.15);
+}
+.pub-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ---------- Phone: a floating dock ---------- */
+@media (max-width: 760px) {
+  .learning-app.shell {
+    padding-bottom: 92px;
+  }
+  .learning-app .site-header-inner {
+    gap: 10px;
+  }
+  .learning-app .site-stats {
+    gap: 10px;
+  }
+  .learning-app .tab-bar {
+    inset: auto 10px calc(10px + env(safe-area-inset-bottom)) 10px;
+    padding: 4px;
+    gap: 2px;
+    border: 1px solid var(--hair-solid);
+    border-radius: 22px;
+    box-shadow: var(--float);
+  }
+  .learning-app .tab-bar a {
+    margin: 0;
+    padding: 7px 2px 6px;
+    border-top: 0;
+    border-radius: 18px;
+  }
+  .learning-app .tab-bar a.active {
+    background: color-mix(in srgb, var(--tb-accent) 17%, transparent);
+  }
+}
+@media (max-width: 480px) {
+  .learning-app .xp-badge {
+    display: none;
+  }
+}
+
+/* ---------- Windows: rounded, hairline, softly lifted ---------- */
+.learning-app .question-card,
+.learning-app .stat-strip,
+.learning-app .foundation-revision-card,
+.learning-app .chapter-tile {
+  border: 1px solid var(--hair-solid);
+  border-radius: 12px;
+  background: var(--tb-surface);
+  box-shadow: var(--float);
+}
+.learning-app .today-rail .stat-strip {
+  overflow: hidden;
+}
+.learning-app .chapter-tiles {
+  gap: 8px;
+  border: 0;
+}
+.learning-app .chapter-tile {
+  border: 1px solid var(--hair-solid);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.learning-app .chapter-tile:hover {
+  transform: translateY(-1px);
+}
+.learning-app .chapter-tile[aria-pressed="true"] {
+  background: var(--tb-accent-soft);
+  border-color: var(--tb-accent);
+  box-shadow: 0 0 0 1px var(--tb-accent);
+}
+.learning-app .path-unit > summary {
+  border-radius: 12px;
+}
+.learning-app .path-unit[open] > summary {
+  border-radius: 12px 12px 0 0;
+}
+
+/* The title bar on landing and sign-in. Dots are grey, as in an inactive window. */
+.window-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--hair-solid);
+  font: 400 12px var(--tb-mono);
+  color: var(--tb-muted);
+}
+.window-bar i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--tb-ink) 22%, var(--tb-paper));
+}
+.window-bar span {
+  margin-left: 8px;
+}
+.l-plate {
+  border: 1px solid var(--hair-solid);
+  border-radius: 12px;
+  background: var(--tb-surface);
+  box-shadow: var(--float);
+  overflow: hidden;
+}
+.l-plate > svg,
+.l-plate > .plate,
+.l-plate > figcaption {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.l-plate > .plate {
+  width: calc(100% - 32px);
+  margin-top: 12px;
+}
+.l-plate > figcaption {
+  padding-bottom: 14px;
+}
+
+/* ---------- Controls: macOS push buttons and fields ---------- */
+.learning-app .button,
+.pub-header ~ * .button {
+  border-radius: 7px;
+}
+.learning-app .button-primary {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    0 1px 2px rgb(0 0 0 / 0.25);
+}
+.learning-app .button-outline {
+  background: var(--tb-surface);
+  border-color: var(--hair-solid);
+  box-shadow: var(--raise);
+}
+.learning-app .button-outline:hover:not(:disabled) {
+  background: var(--tb-sunken);
+}
+.learning-app input[type="text"],
+.learning-app input[type="email"],
+.learning-app input[type="number"],
+.learning-app input[type="search"],
+.learning-app input:not([type]),
+.learning-app textarea,
+.learning-app select,
+.login-card input,
+.login-card .button {
+  border-radius: 7px;
+}
+.learning-app input[type="text"]:focus,
+.learning-app input[type="email"]:focus,
+.learning-app input[type="number"]:focus,
+.learning-app input[type="search"]:focus,
+.learning-app textarea:focus,
+.login-card input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tb-accent) 32%, transparent);
+}
+.learning-app progress,
+.learning-app progress::-webkit-progress-bar,
+.learning-app progress::-webkit-progress-value {
+  border-radius: 99px;
+}
+.learning-app progress::-moz-progress-bar {
+  border-radius: 99px;
+}
+
+/* ---------- Public header ---------- */
+.pub-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--hair-solid);
+  background: var(--tb-paper);
+}
+
+/* ---------- Lesson controls ---------- */
+.focused-study .lesson-controls {
+  border-top: 1px solid var(--hair-solid);
+}
+
+/* ---------- Glass, where the browser can draw it ---------- */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))
+  and (background: color-mix(in srgb, red, blue)) {
+  .learning-app .site-header,
+  .pub-header,
+  .learning-app .tab-bar,
+  .focused-study .lesson-controls {
+    background: color-mix(in srgb, var(--tb-paper) 74%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(22px);
+    backdrop-filter: saturate(180%) blur(22px);
+  }
+  .learning-app .tab-bar {
+    background: color-mix(in srgb, var(--tb-paper) 78%, transparent);
+  }
+  .learning-app .palette-button,
+  .learning-app .question-card,
+  .learning-app .stat-strip,
+  .learning-app .chapter-tile:not([aria-pressed="true"]) {
+    background: color-mix(in srgb, var(--tb-surface) 82%, transparent);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .learning-app .site-header,
+  .pub-header,
+  .learning-app .tab-bar,
+  .focused-study .lesson-controls {
+    background: var(--tb-paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .learning-app .palette-button,
+  .learning-app .question-card,
+  .learning-app .stat-strip,
+  .learning-app .chapter-tile:not([aria-pressed="true"]) {
+    background: var(--tb-surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

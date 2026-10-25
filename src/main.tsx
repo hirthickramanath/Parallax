@@ -8,7 +8,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { ThemeSelect, AppearanceSync } from "./components/ThemeSelect";
+import { AppearanceToggles, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
 import { LearningProvider } from "./hooks/useLearning";
@@ -25,6 +25,7 @@ import "./styles/textbook.css";
 import "./styles/layout.css";
 import "./styles/public.css";
 import "./styles/lesson.css";
+import "./styles/glass.css";
 const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,
@@ -88,12 +89,12 @@ function PublicLayout() {
           parallax
         </Link>
         <div className="pub-actions">
+          <AppearanceToggles />
           <AccountMenu />
         </div>
       </header>
       <Outlet />
       <footer className="pub-footer">
-        <ThemeSelect />
         <span>Look closer. Think deeper.</span>
       </footer>
     </>

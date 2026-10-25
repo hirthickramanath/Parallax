@@ -1,6 +1,6 @@
 import { TutorDockProvider } from "./TutorDock";
 import { BackgroundReminderSync } from "./BackgroundReminder";
-import { ThemeSelect } from "../ThemeSelect";
+import { AppearanceToggles } from "../ThemeSelect";
 import { NavLink, Link, Outlet, useLocation } from "react-router-dom";
 import {
   CalendarCheck,
@@ -72,6 +72,7 @@ export function AppLayout() {
                 <span className="visually-hidden"> day streak</span>
               </span>
               <span className="xp-badge">✦ {stats.totalXp} XP</span>
+              <AppearanceToggles />
               <Link
                 to="/settings"
                 className="avatar"
@@ -89,7 +90,6 @@ export function AppLayout() {
         </div>
         <footer className="site-footer">
           <div className="site-footer-inner">
-            <ThemeSelect />
             <span className="sync-status" role="status">
               {store.storageError
                 ? "Browser storage unavailable"

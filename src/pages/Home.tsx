@@ -60,6 +60,12 @@ export function Home() {
           </Link>
         </div>
         <figure className="l-plate">
+          <div className="window-bar" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <span>parallax.plate</span>
+          </div>
           <ParallaxPlate />
           <figcaption>
             <span className="mono">Fig. 1</span> A nearby star shifts against

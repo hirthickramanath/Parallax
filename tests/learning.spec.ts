@@ -69,10 +69,13 @@ test("all workspace screens, apparatus and themes work at phone and desktop widt
     await expect(page.getByText("Parabola", { exact: true })).toBeVisible();
   }
   await page.goto("/settings");
-  await page.getByLabel("Appearance").selectOption("dark");
+  const mode = page.getByRole("switch", { name: "Dark mode" });
+  await mode.click();
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await page.getByLabel("Appearance").selectOption("light");
+  await expect(mode).toHaveAttribute("aria-checked", "true");
+  await mode.click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 });
 test("lesson prediction, equations, checks, notes, completion, recap and FSRS work locally", async ({
   page,
@@ -956,8 +959,11 @@ test("journey dashboard integrates the weekly plan, level map and appearance wit
       .getByRole("navigation", { name: "Study navigation" })
       .getByRole("link", { name: "Lab", exact: true }),
   ).toHaveCount(0);
-  await page.getByLabel("Appearance", { exact: true }).selectOption("dark");
-  await page.getByLabel("Color theme", { exact: true }).selectOption("madder");
+  await page.getByRole("switch", { name: "Dark mode" }).click();
+  // Brass -> Cyanotype -> Madder: the colour button steps through the palettes.
+  const colour = page.getByRole("button", { name: /^Color theme:/ });
+  await colour.click();
+  await colour.click();
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await expect(page.locator("html")).toHaveAttribute("data-palette", "madder");

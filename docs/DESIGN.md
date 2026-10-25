@@ -4,14 +4,14 @@ The interface looks like a field notebook from an observatory: bone paper, graph
 
 The idea comes from the name. Parallax measures a distance by looking from two places, so the landing page is built around the real parallax diagram and a slider that works, and the course map and lessons borrow the same plain, plate-like layout.
 
-Five stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in) and `src/styles/lesson.css` (lesson page).
+Six stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in), `src/styles/lesson.css` (lesson page) and `src/styles/glass.css` (the glass and desktop-window layer, which restyles the others).
 
 ## What was avoided on purpose
 
 Research on generic-looking pages (the `taste-skill` notes) lists the usual tells: tiny uppercase letter-spaced labels, pill badges, rows of icon cards, gradients, resting shadows, centred text over a screenshot, and a stock accent colour. This design avoids them:
 
 - Labels are sentence-case monospace, not uppercase tracking.
-- No gradients and no resting shadows. The only raised elements are the lesson nodes on the course path, which are meant to feel pressable.
+- No decorative gradients. The one exception is a faint accent glow fixed behind the signed-in shell, which gives the glass something to blur. Shadows are soft and used only on floating or window-like surfaces (dock, cards, switches, lesson nodes).
 - The landing page uses ruled lists and one working example instead of feature cards.
 - The accent is brass, not blue, indigo, violet or green. It is also not red, because red reads as "wrong answer" in a learning product.
 
@@ -36,7 +36,8 @@ Research on generic-looking pages (the `taste-skill` notes) lists the usual tell
 | Course map shows one chapter at a time, as nine tiles with counts | Nine chunks fit in working memory; counts and bars show distance travelled and left (goal gradient). | Modest. |
 | Lessons are nodes on a winding path under coloured unit banners; the unit holding the current lesson is open | Keeps the next step visible and makes progress feel physical. A lock, check or star plus a written state (Needs MB1.3, Read, Mastered) means colour is never the only signal. | Design practice for the form, strong for the accessibility rule. |
 | Lesson page: contents rail, reading column, simulation | The rail names every section with its type so the learner knows where they are and what comes next; the simulation stays beside the text it belongs to. On phones it collapses to a thin strip. | Design practice. |
-| Appearance and sign-out live in the footer | Rarely used controls stay out of the working area. | Design practice. |
+| Light/dark switch and colour-theme button sit in the header beside the circular profile button; sign-out stays in the footer | Appearance is changed rarely but should be one tap away and visible on every screen. The switch shows state with position and with sun and moon glyphs. | Design practice. |
+| Glass and macOS-style elements: frosted header and phone dock, segmented navigation, switch, push buttons, rounded hairline cards | Familiar desktop controls need no learning. Glass is only used on bars that float over content, with at least 72% opaque page colour behind the text so contrast does not depend on what scrolls underneath. | Design practice; contrast kept by construction. |
 
 Visual style moves retention far less than what the learner is asked to do (retrieving answers, spacing, worked examples). The interface should get out of the way of those, not replace them.
 
@@ -44,11 +45,12 @@ Visual style moves retention far less than what the learner is asked to do (retr
 
 All colours are `--tb-*` custom properties declared as hex values in `textbook.css`, in a light block (`:root`) and a dark block (`:root[data-theme="dark"]`). The legacy variables that `index.css` still reads (`--app-bg`, `--primary-color`, and so on) are aliases of these tokens. Subject colours are `--tb-trk-*` with `--tb-on-track` for text on them.
 
+Appearance is changed with `AppearanceToggles` (a `role="switch"` for dark mode, and a button that steps through the palettes). The stored values are `parallax-theme` (`system`, `light` or `dark`; the switch writes `light` or `dark`) and `parallax-palette`.
+
 Palettes change the accent only. The default is Brass. Cyanotype, Madder, Lichen and Graphite each have a light and a dark accent. To add a palette:
 
 1. Add `:root[data-palette="name"]` and `:root[data-theme="dark"][data-palette="name"]` blocks with `--tb-accent`, `--tb-accent-hover`, `--tb-accent-soft`, `--tb-accent-hsl` and `--tb-gold`.
 2. Add the name to the `palettes` list in `scripts/theme-contrast.test.mjs` and in `src/components/ThemeSelect.tsx`.
-3. Add an `<option>` in `src/components/ThemeSelect.tsx`.
 
 A stored palette name that is no longer valid falls back to Brass.
 
@@ -64,7 +66,8 @@ Literata and IBM Plex Sans (variable) and IBM Plex Mono (400 and 500, Latin) are
 
 - Reading text uses the serif face. Controls, buttons and navigation use the sans face. Ids, figure labels and small captions use the monospace face, in sentence case.
 - Do not use a size below 12px.
-- Panels (questions, figures, the tutor) are flat, with a 1px rule border and square or near-square corners.
+- Panels (questions, stat strip, chapter tiles, figures) are rounded (12px) with a hairline border and a soft lift. Controls use 7px corners. Glass surfaces declare a solid colour first and add `backdrop-filter` inside `@supports`; `prefers-reduced-transparency` returns them to solid. Window title-bar dots are grey (an inactive window), because red and green mean wrong and correct here.
+- The UI font stack starts with the system font (San Francisco on Apple devices) and falls back to the bundled IBM Plex Sans.
 - Content-type colours apply to lesson sections through `data-layer` on `.lesson-prose`. Add a layer to the mapping in `textbook.css` and `layerFamily()` in `LessonPlayer.tsx`.
 - Respect `prefers-reduced-motion`. The stylesheet turns transitions and animation off for it.
 - Remove dead CSS when you remove a component. `index.css` was pruned of rules for classes that no longer appear in the source; check a class is unused (search `src/`, `content/lessons/` and `index.html`) before deleting.

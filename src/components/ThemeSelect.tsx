@@ -1,4 +1,5 @@
 import { useEffect, useSyncExternalStore } from "react";
+import { Moon, Sun } from "lucide-react";
 const transient: Record<string, string> = {};
 const palettes = ["brass", "cyanotype", "madder", "lichen", "graphite"];
 /** An unknown stored palette (for example one from an earlier version) falls back to the default. */
@@ -32,41 +33,54 @@ function save(key: string, value: string) {
   ] = value;
   window.dispatchEvent(new Event(event));
 }
-export function ThemeSelect() {
+function useResolvedDark() {
   const theme = useSyncExternalStore(subscribe, () =>
-      read("parallax-theme", "system"),
-    ),
+    read("parallax-theme", "system"),
+  );
+  const systemDark = useSyncExternalStore(
+    (fn) => {
+      const media = matchMedia("(prefers-color-scheme: dark)");
+      media.addEventListener("change", fn);
+      return () => media.removeEventListener("change", fn);
+    },
+    () => matchMedia("(prefers-color-scheme: dark)").matches,
+    () => false,
+  );
+  return theme === "system" ? systemDark : theme === "dark";
+}
+
+/** Light/dark switch and a colour-theme button, sized for the header beside the profile button. */
+export function AppearanceToggles() {
+  const dark = useResolvedDark(),
     palette = validPalette(
       useSyncExternalStore(subscribe, () => read("parallax-palette", "brass")),
-    );
+    ),
+    next = palettes[(palettes.indexOf(palette) + 1) % palettes.length],
+    name = (id: string) => id[0].toUpperCase() + id.slice(1);
   return (
-    <div className="appearance-controls">
-      <label className="theme-label">
-        <span>Appearance</span>
-        <select
-          aria-label="Appearance"
-          value={theme}
-          onChange={(e) => save("parallax-theme", e.target.value)}
-        >
-          <option value="system">System</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-      </label>
-      <label className="theme-label">
-        <span>Color theme</span>
-        <select
-          aria-label="Color theme"
-          value={palette}
-          onChange={(e) => save("parallax-palette", e.target.value)}
-        >
-          <option value="brass">Brass</option>
-          <option value="cyanotype">Cyanotype</option>
-          <option value="madder">Madder</option>
-          <option value="lichen">Lichen</option>
-          <option value="graphite">Graphite</option>
-        </select>
-      </label>
+    <div className="appearance-toggles">
+      <button
+        type="button"
+        role="switch"
+        aria-checked={dark}
+        aria-label="Dark mode"
+        className="mode-switch"
+        onClick={() => save("parallax-theme", dark ? "light" : "dark")}
+      >
+        <Sun size={13} aria-hidden="true" />
+        <Moon size={13} aria-hidden="true" />
+        <span className="mode-knob" aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        className="palette-button"
+        data-palette-name={palette}
+        aria-label={`Color theme: ${name(palette)}. Switch to ${name(next)}`}
+        title={`Color theme: ${name(palette)}`}
+        onClick={() => save("parallax-palette", next)}
+      >
+        <span className="palette-dot" aria-hidden="true" />
+      </button>
     </div>
   );
 }
