@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { SkyPlate } from "../components/SkyPlate";
+import { TwoViewsPlate } from "../components/TwoViewsPlate";
 import { ParallaxTry } from "../components/ParallaxTry";
 
 const subjects: [string, string][] = [
@@ -59,10 +59,11 @@ export function Home() {
           </Link>
         </div>
         <figure className="l-plate">
-          <SkyPlate />
+          <TwoViewsPlate />
           <figcaption>
-            <span className="mono">Fig. 1</span> A ringed planet, its moon and a
-            distant galaxy: three of the questions this course helps you answer.
+            <span className="mono">Fig. 1</span> Two observers see the Moon
+            against different stars. The angle between their views, and the
+            distance between them, give the distance to the Moon.
           </figcaption>
         </figure>
       </section>

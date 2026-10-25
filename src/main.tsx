@@ -7,6 +7,7 @@ import {
   Outlet,
   Route,
   Routes,
+  useLocation,
   useParams,
 } from "react-router-dom";
 import { upgradeId } from "./lib/learning-core";
@@ -14,7 +15,6 @@ import { SkyLoader, Startup } from "./components/Sky";
 import { AppearanceToggles, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
-import { LearningProvider } from "./hooks/useLearning";
 import { AccountMenu } from "./components/AccountMenu";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./pages/Login";
@@ -35,6 +35,10 @@ const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,
   })),
+);
+// The learning provider pulls in the whole course (about 2 MB), so signed-out visitors never download it.
+const LearningProvider = lazy(() =>
+  import("./hooks/useLearning").then((m) => ({ default: m.LearningProvider })),
 );
 const Projects = lazy(() =>
   import("./pages/Projects").then((m) => ({ default: m.Projects })),
@@ -84,6 +88,7 @@ const TeachingLab = lazy(() =>
   import("./pages/TeachingLab").then((m) => ({ default: m.TeachingLab })),
 );
 function PublicLayout() {
+  const onLogin = useLocation().pathname === "/login";
   return (
     <>
       <a className="skip-link" href="#main">
@@ -95,7 +100,7 @@ function PublicLayout() {
         </Link>
         <div className="pub-actions">
           <AppearanceToggles />
-          <AccountMenu />
+          {!onLogin && <AccountMenu />}
         </div>
       </header>
       <Outlet />

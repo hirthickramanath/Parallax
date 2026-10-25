@@ -111,7 +111,7 @@ function PathNode({
       <Link
         to={`/lesson/${lesson.id}`}
         className="node"
-        aria-label={label}
+        aria-label={current ? `Continue here: ${label}` : label}
         style={
           {
             "--ring": `${Math.round(Math.max(0, Math.min(1, mastery)) * 360)}deg`,

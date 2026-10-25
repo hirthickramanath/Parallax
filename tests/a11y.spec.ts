@@ -4,7 +4,7 @@ import { signedIn } from "./helpers";
 // A dependency-free structural accessibility audit of rendered pages. It catches missing names, labels,
 // alt text, landmarks and broken ARIA references. It does NOT check colour contrast, keyboard operation,
 // focus order, screen-reader output or zoom/reflow: those still need a manual pass or axe-core.
-// (axe-core is not added because it would change package-lock.json, which CI installs with `npm ci`.)
+// Colour contrast and ARIA validity are covered by axe-core in axe.spec.ts.
 
 interface Violation {
   rule: string;

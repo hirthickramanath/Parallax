@@ -127,7 +127,7 @@ export function Learn() {
                         <Link
                           className="lesson-start"
                           to={`/lesson/${id}`}
-                          aria-label={`Open ${id}`}
+                          aria-label={`${store.records.lessons[id] ? "Resume" : "Explore"} ${id}`}
                         >
                           {store.records.lessons[id] ? "Resume" : "Explore"}
                           <ArrowRight size={17} aria-hidden="true" />
