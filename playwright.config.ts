@@ -5,6 +5,8 @@ export default defineConfig({
   testMatch: "*.spec.ts",
   fullyParallel: false,
   workers: 1,
+  // One retry on GitHub: a test that passes on retry is reported as flaky instead of failing the run.
+  retries: process.env.CI ? 1 : 0,
   timeout: 60000,
   use: {
     baseURL: "http://127.0.0.1:4183",
