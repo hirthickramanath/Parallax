@@ -38,7 +38,7 @@ export function contrast(a, b) {
   return (hi + 0.05) / (lo + 0.05);
 }
 
-const palettes = ["ink", "forest", "cosmic", "ocean", "ember"];
+const palettes = ["brass", "cyanotype", "madder", "lichen", "graphite"];
 // [foreground, background, minimum ratio, what it is]
 const textPairs = [
   ["ink", "paper", 4.5, "body text"],
@@ -89,10 +89,10 @@ for (const theme of ["light", "dark"]) {
     test(`${theme} theme, ${palette} palette meets WCAG AA contrast`, () => {
       const base = tokens(theme === "light" ? ":root" : ':root[data-theme="dark"]');
       const lightOverride =
-        palette === "ink" ? {} : tokens(`:root[data-palette="${palette}"]`);
+        palette === "brass" ? {} : tokens(`:root[data-palette="${palette}"]`);
       const resolved = { ...base };
       if (theme === "light") Object.assign(resolved, lightOverride);
-      else if (palette !== "ink")
+      else if (palette !== "brass")
         Object.assign(
           resolved,
           tokens(`:root[data-theme="dark"][data-palette="${palette}"]`),

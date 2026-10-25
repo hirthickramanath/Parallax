@@ -1,5 +1,10 @@
 import { useEffect, useSyncExternalStore } from "react";
 const transient: Record<string, string> = {};
+const palettes = ["brass", "cyanotype", "madder", "lichen", "graphite"];
+/** An unknown stored palette (for example one from an earlier version) falls back to the default. */
+function validPalette(value: string) {
+  return palettes.includes(value) ? value : "brass";
+}
 const event = "parallax-appearance";
 function read(key: string, fallback: string) {
   try {
@@ -31,8 +36,8 @@ export function ThemeSelect() {
   const theme = useSyncExternalStore(subscribe, () =>
       read("parallax-theme", "system"),
     ),
-    palette = useSyncExternalStore(subscribe, () =>
-      read("parallax-palette", "ink"),
+    palette = validPalette(
+      useSyncExternalStore(subscribe, () => read("parallax-palette", "brass")),
     );
   return (
     <div className="appearance-controls">
@@ -55,11 +60,11 @@ export function ThemeSelect() {
           value={palette}
           onChange={(e) => save("parallax-palette", e.target.value)}
         >
-          <option value="ink">Ink blue</option>
-          <option value="forest">Forest</option>
-          <option value="cosmic">Cosmic violet</option>
-          <option value="ocean">Ocean blue</option>
-          <option value="ember">Ember</option>
+          <option value="brass">Brass</option>
+          <option value="cyanotype">Cyanotype</option>
+          <option value="madder">Madder</option>
+          <option value="lichen">Lichen</option>
+          <option value="graphite">Graphite</option>
         </select>
       </label>
     </div>
@@ -70,8 +75,8 @@ export function AppearanceSync() {
   const theme = useSyncExternalStore(subscribe, () =>
       read("parallax-theme", "system"),
     ),
-    palette = useSyncExternalStore(subscribe, () =>
-      read("parallax-palette", "ink"),
+    palette = validPalette(
+      useSyncExternalStore(subscribe, () => read("parallax-palette", "brass")),
     );
   useEffect(() => {
     const media = matchMedia("(prefers-color-scheme: dark)");

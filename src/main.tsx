@@ -8,7 +8,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Orbit } from "lucide-react";
 import { ThemeSelect, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
@@ -16,12 +15,16 @@ import { LearningProvider } from "./hooks/useLearning";
 import { AccountMenu } from "./components/AccountMenu";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./pages/Login";
-import "@fontsource-variable/newsreader/wght.css";
-import "@fontsource-variable/newsreader/wght-italic.css";
-import "@fontsource-variable/inter-tight/wght.css";
+import "@fontsource-variable/literata/wght.css";
+import "@fontsource-variable/literata/wght-italic.css";
+import "@fontsource-variable/ibm-plex-sans/wght.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
 import "./index.css";
 import "./styles/textbook.css";
 import "./styles/layout.css";
+import "./styles/public.css";
+import "./styles/lesson.css";
 const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,
@@ -80,19 +83,17 @@ function PublicLayout() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="header">
-        <Link to="/" className="brand">
-          <Orbit />
-          parallax.
+      <header className="pub-header">
+        <Link to="/" className="pub-brand">
+          parallax
         </Link>
-        <div className="header-controls">
-          <ThemeSelect />
+        <div className="pub-actions">
           <AccountMenu />
         </div>
       </header>
       <Outlet />
-      <footer>
-        <span className="footer-brand">parallax.</span>
+      <footer className="pub-footer">
+        <ThemeSelect />
         <span>Look closer. Think deeper.</span>
       </footer>
     </>

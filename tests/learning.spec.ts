@@ -957,10 +957,10 @@ test("journey dashboard integrates the weekly plan, level map and appearance wit
       .getByRole("link", { name: "Lab", exact: true }),
   ).toHaveCount(0);
   await page.getByLabel("Appearance", { exact: true }).selectOption("dark");
-  await page.getByLabel("Color theme", { exact: true }).selectOption("cosmic");
+  await page.getByLabel("Color theme", { exact: true }).selectOption("madder");
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await expect(page.locator("html")).toHaveAttribute("data-palette", "cosmic");
+  await expect(page.locator("html")).toHaveAttribute("data-palette", "madder");
   const bridgeMath = JSON.parse(
     readFileSync("src/generated/course.json", "utf8"),
   )

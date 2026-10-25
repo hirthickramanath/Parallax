@@ -289,23 +289,9 @@ function Player({ id }: { id: string }) {
         value={index + 1}
         max={sections.length}
       />
-      <ol className="lesson-steps" aria-label="Lesson contents">
-        {sections.map((s, i) => (
-          <li key={s.id}>
-            <button
-              type="button"
-              className={`lesson-step step-${layerFamily(s.layer)}${i < index ? " passed" : ""}`}
-              aria-current={i === index ? "step" : undefined}
-              aria-label={`Section ${i + 1} of ${sections.length}: ${s.title}`}
-              title={s.title}
-              onClick={() => goTo(i)}
-            />
-          </li>
-        ))}
-      </ol>
       <div className="lesson-heading">
         <p className="eyebrow">
-          {lesson.track} / {index + 1} OF {sections.length}
+          {lesson.track} · section {index + 1} of {sections.length}
         </p>
         <h1>{lesson.title}</h1>
         {needs.length > 0 && (
@@ -321,7 +307,26 @@ function Player({ id }: { id: string }) {
       <div
         className={`lesson-layout ${simulationNames(lesson).length ? "with-simulation" : ""}`}
       >
-        <div>
+        <ol className="lesson-steps" aria-label="Lesson contents">
+          {sections.map((s, i) => (
+            <li key={s.id}>
+              <button
+                type="button"
+                className={`lesson-step step-${layerFamily(s.layer)}${i < index ? " passed" : ""}`}
+                aria-current={i === index ? "step" : undefined}
+                aria-label={`Section ${i + 1} of ${sections.length}: ${s.title}`}
+                title={s.title}
+                onClick={() => goTo(i)}
+              >
+                <span className="step-mark" aria-hidden="true" />
+                <span className="step-title" aria-hidden="true">
+                  {s.title}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ol>
+        <div className="lesson-body">
           <div className="section-navigation">
             <label>
               Section{" "}

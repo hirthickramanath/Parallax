@@ -11,6 +11,7 @@ import { auth } from "../lib/firebase";
 import { authError } from "../lib/auth-errors";
 import { useAuth } from "../hooks/useAuth";
 import { Button } from "../components/ui/button";
+import { ParallaxPlate } from "../components/ParallaxPlate";
 const EMAIL_KEY = "parallax-sign-in-email";
 export function Login() {
   const { user, loading } = useAuth();
@@ -110,15 +111,18 @@ export function Login() {
   }
   return (
     <main id="main" className="login-page">
+      <aside className="login-art" aria-hidden="true">
+        <ParallaxPlate labelled={false} />
+        <p className="mono">One account for your journey through science.</p>
+      </aside>
       <section className="login-card">
-        <p className="eyebrow">YOUR NEXT PERSPECTIVE</p>
         <h1>
           Welcome
           <br />
-          <em>to Parallax.</em>
+          to Parallax.
         </h1>
         <p className="login-description">
-          One account for your journey through science.
+          Sign in to keep your progress, streak and review cards.
         </p>
         {!emailLink && (
           <>
