@@ -12,8 +12,7 @@
 }
 
 /* Colours for the dark band and the sign-in panel. Fixed on purpose: they read the same in light and dark. */
-.landing,
-.login-page {
+.landing {
   --band-bg: #1c1d21;
   --band-ink: #ece6d6;
   --band-muted: #a8a493;
@@ -117,8 +116,7 @@
 }
 
 /* ---------- Landing ---------- */
-.landing,
-.login-page {
+.landing {
   max-width: none;
   margin: 0;
 }
@@ -344,65 +342,10 @@
   user-select: none;
 }
 
-/* ---------- Sign in ---------- */
-.login-page {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  min-height: calc(100vh - 64px - 62px);
-  padding: 0;
-}
-.login-art {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  padding: clamp(24px, 4vw, 56px) clamp(20px, 3vw, 48px);
-  background: var(--band-bg);
-  color: var(--band-ink);
-  --plate-ink: var(--band-ink);
-  --plate-bg: var(--band-bg);
-}
-.login-art .plate {
-  --plate-accent: var(--band-accent);
-  --plate-sun: var(--band-accent);
-  --plate-bg: var(--band-bg);
-}
-.login-art .mono {
-  margin: 0;
-  color: var(--band-muted);
-}
-.login-page .login-card {
-  align-self: center;
-  width: 100%;
-  max-width: 28rem;
-  margin: 0;
-  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 64px);
-  background: none;
-  border: 0;
-}
-.login-page .login-card h1 {
-  font: 500 clamp(2.6rem, 5vw, 4.4rem) / 1 var(--tb-serif);
-  letter-spacing: -0.035em;
-  margin: 0 0 16px;
-}
-.login-page .login-description {
-  margin: 0 0 28px;
-}
-.login-page .login-error {
-  border-left-color: var(--tb-bad);
-  background: var(--tb-bad-bg);
-  color: var(--tb-ink);
-}
-.login-page .login-message {
-  background: var(--tb-accent-soft);
-  border-color: var(--tb-rule);
-}
-
 @media (max-width: 860px) {
   .l-hero,
   .l-band,
-  .l-index,
-  .login-page {
+  .l-index {
     grid-template-columns: minmax(0, 1fr);
   }
   .l-hero {
@@ -414,15 +357,6 @@
   .l-index dl > div,
   .l-index li {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .login-art {
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-  }
-  .login-art .plate {
-    width: 38%;
-    flex: none;
   }
 }
 

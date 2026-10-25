@@ -1,14 +1,11 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { SkyLoader } from "./Sky";
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, error } = useAuth();
   const location = useLocation();
   if (loading)
-    return (
-      <main id="main" className="placeholder" role="status">
-        Restoring your session…
-      </main>
-    );
+    return <SkyLoader label="Restoring your session" />;
   if (error)
     return (
       <main id="main" className="placeholder" role="alert">

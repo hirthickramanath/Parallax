@@ -4,7 +4,7 @@ The interface looks like a field notebook from an observatory: bone paper, graph
 
 The idea comes from the name. Parallax measures a distance by looking from two places, so the landing page is built around the real parallax diagram and a slider that works, and the course map and lessons borrow the same plain, plate-like layout.
 
-Six stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in), `src/styles/lesson.css` (lesson page) and `src/styles/glass.css` (the glass and desktop-window layer, which restyles the others).
+Seven stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in), `src/styles/lesson.css` (lesson page) and `src/styles/glass.css` (the glass and desktop-window layer, which restyles the others) and `src/styles/sky.css` (startup animation, loader and sign-in backdrop).
 
 ## What was avoided on purpose
 
@@ -17,27 +17,27 @@ Research on generic-looking pages (the `taste-skill` notes) lists the usual tell
 
 ## Why it looks this way
 
-| Choice | Reason | How strong the evidence is |
-| --- | --- | --- |
-| Light "bone paper" default, dark as an option | Dark text on a light ground is generally easier for long reading in a lit room. Dark helps at night, and amber on near-black is gentle on the eyes. | Moderate. Preference and conditions vary. |
-| Literata for reading and headings | Designed for long on-screen reading. Body at about 20px with a 40rem measure (roughly 70 characters). | Moderate for line length, weak for any one typeface. |
-| IBM Plex Sans for controls, Plex Mono for ids and figure labels | A clear working face for controls and a monospace that reads as instrument labelling. | Design practice. |
-| One accent (brass); ink for the primary action | Fewer competing colours means a clearer main action on each screen. | Design practice. |
-| Green and red only for correct and wrong, always with an icon and text | Colour must not be the only signal (about 1 in 12 men are colour-blind), and the accent must never be read as feedback. | Strong for the accessibility rule. |
-| Section tint plus label: Explain, Theory, Worked example (cool grey), Practice (brass tint) | A consistent code for content type helps learners find material when revising. One cool tint against warm paper separates worked examples at a glance. | Modest. A navigation aid, not a memory technique. |
-| Unit colours by subject (Prussian blue, madder, lichen, graphite, sienna), each with an icon | Colour groups units for wayfinding, and the icon and the written subject name carry the same information for colour-blind learners. | Modest. |
+| Choice                                                                                       | Reason                                                                                                                                                 | How strong the evidence is                           |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| Light "bone paper" default, dark as an option                                                | Dark text on a light ground is generally easier for long reading in a lit room. Dark helps at night, and amber on near-black is gentle on the eyes.    | Moderate. Preference and conditions vary.            |
+| Literata for reading and headings                                                            | Designed for long on-screen reading. Body at about 20px with a 40rem measure (roughly 70 characters).                                                  | Moderate for line length, weak for any one typeface. |
+| IBM Plex Sans for controls, Plex Mono for ids and figure labels                              | A clear working face for controls and a monospace that reads as instrument labelling.                                                                  | Design practice.                                     |
+| One accent (brass); ink for the primary action                                               | Fewer competing colours means a clearer main action on each screen.                                                                                    | Design practice.                                     |
+| Green and red only for correct and wrong, always with an icon and text                       | Colour must not be the only signal (about 1 in 12 men are colour-blind), and the accent must never be read as feedback.                                | Strong for the accessibility rule.                   |
+| Section tint plus label: Explain, Theory, Worked example (cool grey), Practice (brass tint)  | A consistent code for content type helps learners find material when revising. One cool tint against warm paper separates worked examples at a glance. | Modest. A navigation aid, not a memory technique.    |
+| Unit colours by subject (Prussian blue, madder, lichen, graphite, sienna), each with an icon | Colour groups units for wayfinding, and the icon and the written subject name carry the same information for colour-blind learners.                    | Modest.                                              |
 
 ## Layout
 
-| Choice | Reason | How strong the evidence is |
-| --- | --- | --- |
-| Top navigation instead of a sidebar; phone tab bar | Gives lessons and questions a full-width column; five destinations fit a tab bar without a menu. | Design practice. |
-| Today is a numbered sequence: warm-up question, spaced review, then the next lesson | Retrieval before new material is the best-supported ordering (testing effect, spacing). A fixed order removes the decision of where to start. | Strong for retrieval and spacing, modest for the specific order. |
-| Course map shows one chapter at a time, as nine tiles with counts | Nine chunks fit in working memory; counts and bars show distance travelled and left (goal gradient). | Modest. |
-| Lessons are nodes on a winding path under coloured unit banners; the unit holding the current lesson is open | Keeps the next step visible and makes progress feel physical. A lock, check or star plus a written state (Needs MB1.3, Read, Mastered) means colour is never the only signal. | Design practice for the form, strong for the accessibility rule. |
-| Lesson page: contents rail, reading column, simulation | The rail names every section with its type so the learner knows where they are and what comes next; the simulation stays beside the text it belongs to. On phones it collapses to a thin strip. | Design practice. |
-| Light/dark switch and colour-theme button sit in the header beside the circular profile button; sign-out stays in the footer | Appearance is changed rarely but should be one tap away and visible on every screen. The switch shows state with position and with sun and moon glyphs. | Design practice. |
-| Glass and macOS-style elements: frosted header and phone dock, segmented navigation, switch, push buttons, rounded hairline cards | Familiar desktop controls need no learning. Glass is only used on bars that float over content, with at least 72% opaque page colour behind the text so contrast does not depend on what scrolls underneath. | Design practice; contrast kept by construction. |
+| Choice                                                                                                                            | Reason                                                                                                                                                                                                       | How strong the evidence is                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| Top navigation instead of a sidebar; phone tab bar                                                                                | Gives lessons and questions a full-width column; five destinations fit a tab bar without a menu.                                                                                                             | Design practice.                                                 |
+| Today is a numbered sequence: warm-up question, spaced review, then the next lesson                                               | Retrieval before new material is the best-supported ordering (testing effect, spacing). A fixed order removes the decision of where to start.                                                                | Strong for retrieval and spacing, modest for the specific order. |
+| Course map shows one chapter at a time, as nine tiles with counts                                                                 | Nine chunks fit in working memory; counts and bars show distance travelled and left (goal gradient).                                                                                                         | Modest.                                                          |
+| Lessons are nodes on a winding path under coloured unit banners; the unit holding the current lesson is open                      | Keeps the next step visible and makes progress feel physical. A lock, check or star plus a written state (Needs MB1.3, Read, Mastered) means colour is never the only signal.                                | Design practice for the form, strong for the accessibility rule. |
+| Lesson page: contents rail, reading column, simulation                                                                            | The rail names every section with its type so the learner knows where they are and what comes next; the simulation stays beside the text it belongs to. On phones it collapses to a thin strip.              | Design practice.                                                 |
+| Light/dark switch and colour-theme button sit in the header beside the circular profile button; sign-out stays in the footer      | Appearance is changed rarely but should be one tap away and visible on every screen. The switch shows state with position and with sun and moon glyphs.                                                      | Design practice.                                                 |
+| Glass and macOS-style elements: frosted header and phone dock, segmented navigation, switch, push buttons, rounded hairline cards | Familiar desktop controls need no learning. Glass is only used on bars that float over content, with at least 72% opaque page colour behind the text so contrast does not depend on what scrolls underneath. | Design practice; contrast kept by construction.                  |
 
 Visual style moves retention far less than what the learner is asked to do (retrieving answers, spacing, worked examples). The interface should get out of the way of those, not replace them.
 
@@ -61,6 +61,14 @@ A stored palette name that is no longer valid falls back to Brass.
 ## Fonts
 
 Literata and IBM Plex Sans (variable) and IBM Plex Mono (400 and 500, Latin) are bundled from `@fontsource*` packages, so they are served from the same origin and need no change to the Content Security Policy (`font-src 'self'`). Only the unicode subsets a page uses are downloaded.
+
+## The night sky: startup, loader, sign-in
+
+`src/components/Sky.tsx` draws a seeded starfield and a spiral galaxy (decorative, `aria-hidden`) and builds three things from them. The sky is dark in light and dark mode alike, so `sky.css` fixes its own colours instead of using the theme tokens.
+
+- **Startup (`Startup`)**: plays on every full page load, about 3.8 seconds: stars appear, the galaxy blooms, two amber sight lines (the two views of a parallax) run in from the corners, then the wordmark and "Two views. One distance." Escape or the Skip button ends it at once, and it ends by itself. It is a modal dialog with the Skip button focused. It is not shown when the visitor prefers reduced motion, and `playwright.config.ts` turns reduced motion on so tests are not slowed; `tests/startup.spec.ts` turns it back on to test the animation.
+- **Loader (`SkyLoader`)**: replaces the old "Opening your observatory…" and "Restoring your session…" text while the app or a session loads: the galaxy and a button-shaped "Loading…" with a spinner, announced as a status.
+- **Sign-in**: a window-style card (title bar with grey dots) over the night sky with the galaxy behind it. The card follows the theme, so it is paper-coloured in light mode and dark in dark mode.
 
 ## Conventions
 

@@ -8,6 +8,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { SkyLoader, Startup } from "./components/Sky";
 import { AppearanceToggles, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
@@ -26,6 +27,7 @@ import "./styles/layout.css";
 import "./styles/public.css";
 import "./styles/lesson.css";
 import "./styles/glass.css";
+import "./styles/sky.css";
 const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,
@@ -102,13 +104,7 @@ function PublicLayout() {
 }
 function App() {
   return (
-    <Suspense
-      fallback={
-        <main className="workspace-page" role="status">
-          Opening your observatory…
-        </main>
-      }
-    >
+    <Suspense fallback={<SkyLoader />}>
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Entry />} />
@@ -161,6 +157,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <AppearanceSync />
+      <Startup />
       <AuthProvider>
         <App />
       </AuthProvider>

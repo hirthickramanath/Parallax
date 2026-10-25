@@ -11,7 +11,7 @@ import { auth } from "../lib/firebase";
 import { authError } from "../lib/auth-errors";
 import { useAuth } from "../hooks/useAuth";
 import { Button } from "../components/ui/button";
-import { ParallaxPlate } from "../components/ParallaxPlate";
+import { Galaxy, SkyLoader, Starfield } from "../components/Sky";
 const EMAIL_KEY = "parallax-sign-in-email";
 export function Login() {
   const { user, loading } = useAuth();
@@ -62,12 +62,7 @@ export function Login() {
         "Confirm the email address that received this link to finish signing in.",
       );
   }, [emailLink]);
-  if (loading)
-    return (
-      <main id="main" className="placeholder" role="status">
-        Restoring your session…
-      </main>
-    );
+  if (loading) return <SkyLoader label="Restoring your session" />;
   if (user) return <Navigate to={destination} replace />;
   async function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -111,78 +106,80 @@ export function Login() {
   }
   return (
     <main id="main" className="login-page">
-      <aside className="login-art" aria-hidden="true">
-        <ParallaxPlate labelled={false} />
-        <p className="mono">One account for your journey through science.</p>
-      </aside>
-      <section className="login-card">
-        <h1>
-          Welcome
-          <br />
-          to Parallax.
-        </h1>
-        <p className="login-description">
-          Sign in to keep your progress, streak and review cards.
-        </p>
-        {!emailLink && (
-          <>
-            <Button
-              variant="outline"
-              onClick={() => void google()}
+      <Starfield />
+      <Galaxy className="login-galaxy" />
+      <section className="login-card" aria-labelledby="login-title">
+        <div className="window-bar" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <span>Sign in</span>
+        </div>
+        <div className="login-body">
+          <h1 id="login-title">Welcome to Parallax.</h1>
+          <p className="login-description">
+            Sign in to keep your progress, streak and review cards.
+          </p>
+          {!emailLink && (
+            <>
+              <Button
+                variant="outline"
+                onClick={() => void google()}
+                disabled={busy}
+              >
+                Continue with Google
+              </Button>
+              <div className="login-divider">or use an email link</div>
+            </>
+          )}
+          <form onSubmit={(event) => void submit(event)}>
+            <label htmlFor="email">Your email address</label>
+            <input
+              id="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               disabled={busy}
-            >
-              Continue with Google
+            />
+            <Button type="submit" disabled={busy}>
+              {busy
+                ? "Please wait…"
+                : emailLink
+                  ? "Finish signing in"
+                  : "Send sign-in link"}
             </Button>
-            <div className="login-divider">or use an email link</div>
-          </>
-        )}
-        <form onSubmit={(event) => void submit(event)}>
-          <label htmlFor="email">Your email address</label>
-          <input
-            id="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            disabled={busy}
-          />
-          <Button type="submit" disabled={busy}>
-            {busy
-              ? "Please wait…"
-              : emailLink
-                ? "Finish signing in"
-                : "Send sign-in link"}
-          </Button>
-        </form>
-        {message && (
-          <p role="status" className="login-message">
-            {message}
+          </form>
+          {message && (
+            <p role="status" className="login-message">
+              {message}
+            </p>
+          )}
+          {error && (
+            <p role="alert" className="login-error">
+              {error}
+            </p>
+          )}
+          {emailLink && (
+            <button
+              className="text-button"
+              disabled={busy}
+              onClick={() => {
+                window.history.replaceState(null, "", "/login");
+                setEmailLink(false);
+                setMessage("");
+                setError("");
+              }}
+            >
+              Request a new link instead
+            </button>
+          )}
+          <p className="login-footnote">
+            No password to remember. On a shared device, sign out when you’re
+            finished.
           </p>
-        )}
-        {error && (
-          <p role="alert" className="login-error">
-            {error}
-          </p>
-        )}
-        {emailLink && (
-          <button
-            className="text-button"
-            disabled={busy}
-            onClick={() => {
-              window.history.replaceState(null, "", "/login");
-              setEmailLink(false);
-              setMessage("");
-              setError("");
-            }}
-          >
-            Request a new link instead
-          </button>
-        )}
-        <p className="login-footnote">
-          No password to remember. On a shared device, sign out when you’re
-          finished.
-        </p>
+        </div>
       </section>
     </main>
   );
