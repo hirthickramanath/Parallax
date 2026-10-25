@@ -2005,6 +2005,10 @@ test("foundation revision retains original history can be paused and remains acc
 }) => {
   await signedIn(page);
   await page.goto("/dashboard");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await page.waitForFunction(
+    () => !!localStorage.getItem("parallax-learning-v1:test-learner"),
+  );
   await page.evaluate(() => {
     const key = "parallax-learning-v1:test-learner",
       d = JSON.parse(localStorage.getItem(key)!);
