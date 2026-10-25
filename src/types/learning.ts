@@ -12,7 +12,7 @@ export interface Day {
   goalMet: boolean;
   xpByTrack: Record<string, number>;
 }
-export interface Attempt {
+interface Attempt {
   resetAt?: number;
   questionId: string;
   tier: string;
@@ -21,7 +21,7 @@ export interface Attempt {
   aiFeedback: string;
   createdAt: number;
 }
-export interface ReviewCard {
+interface ReviewCard {
   resetAt?: number;
   type: string;
   front: string;
@@ -30,11 +30,11 @@ export interface ReviewCard {
   conceptIds: string[];
   fsrs: Card;
 }
-export interface Note {
+interface Note {
   bodyMd: string;
   updatedAt: number;
 }
-export interface UnitProgress {
+interface UnitProgress {
   resetAt?: number;
   skipTestScore: number;
   skippedWithCredit: boolean;

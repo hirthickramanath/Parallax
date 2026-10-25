@@ -1,5 +1,5 @@
-export type PilotStage = "baseline" | "immediate" | "delayed";
-export interface PilotEntry {
+type PilotStage = "baseline" | "immediate" | "delayed";
+interface PilotEntry {
   completedAt: string;
   assisted: boolean;
   helpUsed: string;

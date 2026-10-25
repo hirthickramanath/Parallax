@@ -1,7 +1,7 @@
 // Shared helpers for the tutor evaluation set: case validation, SSE parsing and heuristic screening.
 import fs from "node:fs";
 
-export const CASES_FILE = "content/evaluation/tutor-cases.json";
+const CASES_FILE = "content/evaluation/tutor-cases.json";
 const CATEGORIES = ["known-answer", "false-premise", "injection", "honesty", "scope", "pedagogy"];
 const LESSON_ID = /^[A-Z]{2}\d*\.\d+$/; // same rule as workers/tutor/src/core.ts
 
@@ -9,7 +9,7 @@ export function loadCases(file = CASES_FILE) {
   return JSON.parse(fs.readFileSync(file, "utf8")).cases;
 }
 
-export const compile = (pattern) => new RegExp(pattern, "i");
+const compile = (pattern) => new RegExp(pattern, "i");
 
 /** Returns a list of problems with the case file (empty when valid). */
 export function validateCases(cases, lessonExists = (id) => fs.existsSync(`content/lessons/${id}.mdx`)) {
