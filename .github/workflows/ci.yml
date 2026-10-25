@@ -40,9 +40,6 @@ jobs:
     name: Worker bundle dry-runs
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      XDG_CONFIG_HOME: ${{ runner.temp }}/wrangler-config
-      WRANGLER_LOG_PATH: ${{ runner.temp }}/wrangler-logs
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v7
@@ -50,7 +47,12 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
-      - run: mkdir -p "$XDG_CONFIG_HOME" "$WRANGLER_LOG_PATH"
+      # The runner context is not available in job-level env, so these are set from a step.
+      - name: Keep Wrangler config and logs in the runner temp directory
+        run: |
+          echo "XDG_CONFIG_HOME=$RUNNER_TEMP/wrangler-config" >> "$GITHUB_ENV"
+          echo "WRANGLER_LOG_PATH=$RUNNER_TEMP/wrangler-logs" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/wrangler-config" "$RUNNER_TEMP/wrangler-logs"
       - run: npm run worker:check
       - run: npm run assessment:check
       - run: npm run reminders:check
