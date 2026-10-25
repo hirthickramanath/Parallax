@@ -28,6 +28,7 @@ import "./styles/public.css";
 import "./styles/lesson.css";
 import "./styles/glass.css";
 import "./styles/sky.css";
+import "./styles/chat.css";
 const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,

@@ -100,7 +100,10 @@ export function Settings() {
       <BackgroundReminderSettings />
       <section className="settings-card">
         <h2>Appearance & study</h2>
-        <p>Use the light/dark switch and the colour button at the top of every page.</p>
+        <p>
+          Use the light/dark switch and the colour button at the top of every
+          page.
+        </p>
         <label>
           Default lesson depth
           <select

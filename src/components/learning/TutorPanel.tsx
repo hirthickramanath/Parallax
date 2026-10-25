@@ -1,11 +1,13 @@
 import { loadServices, useServices } from "../../lib/services";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import "katex/dist/katex.min.css";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import { auth } from "../../lib/firebase";
 import { useConversation } from "../../hooks/useConversation";
-import { Button } from "../ui/button";
+import { ArrowUp, Sparkles, Square } from "lucide-react";
+import { course } from "../../lib/course";
 export function TutorPanel({
   lessonId,
   sectionId,
@@ -144,97 +146,162 @@ export function TutorPanel({
       void chat.flush();
     }
   }
+  const log = useRef<HTMLDivElement>(null),
+    field = useRef<HTMLTextAreaElement>(null);
+  const messages = chat.messages.slice(-100);
+  const last = messages.at(-1)?.content;
+  useEffect(() => {
+    const el = log.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [messages.length, last]);
+  useEffect(() => {
+    const el = field.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 160)}px`;
+  }, [input]);
+  const title = course.authored[lessonId]?.title || lessonId;
   return (
-    <aside className="tutor-panel" aria-label="AI lesson tutor">
-      <p className="eyebrow">YOUR LESSON TUTOR</p>
-      <h3>Ask a different question.</h3>
-      {!endpoint && (
-        <p className="info-box">
-          The AI tutor is awaiting connection. You can keep studying with the
-          worked examples and hints. Saved conversations remain available.
+    <aside className="chat" aria-label="AI lesson tutor">
+      <div className="chat-log" ref={log} role="log" aria-live="polite">
+        {!endpoint && (
+          <p className="chat-note">
+            The AI tutor is awaiting connection. You can keep studying with the
+            worked examples and hints. Saved conversations remain available.
+          </p>
+        )}
+        {messages.length === 0 ? (
+          <div className="chat-empty">
+            <span className="chat-mark chat-mark-large" aria-hidden="true">
+              <Sparkles size={22} />
+            </span>
+            <p className="chat-empty-title">What would you like to work on?</p>
+            <p className="chat-empty-sub">
+              {lessonId} · {title}
+            </p>
+            <div className="chat-starters">
+              {[
+                "Explain differently",
+                "I’m stuck on this step",
+                "Why does this work?",
+                "Give me a practice problem",
+                "Check my answer",
+              ].map((action) => (
+                <button
+                  key={action}
+                  type="button"
+                  disabled={!endpoint || busy}
+                  onClick={() => void send(action)}
+                >
+                  {action}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          messages.map((message) => (
+            <article key={message.id} className={`msg ${message.role}`}>
+              <span className="visually-hidden">
+                {message.role === "user" ? "You" : "Tutor"}
+              </span>
+              {message.role === "assistant" && (
+                <span className="chat-mark" aria-hidden="true">
+                  <Sparkles size={14} />
+                </span>
+              )}
+              <div className="msg-body">
+                <ReactMarkdown
+                  remarkPlugins={[remarkMath]}
+                  rehypePlugins={[rehypeKatex]}
+                >
+                  {message.content}
+                </ReactMarkdown>
+              </div>
+            </article>
+          ))
+        )}
+      </div>
+      {error && (
+        <p className="chat-error" role="alert">
+          {error}
         </p>
       )}
-      <div className="tutor-actions">
-        {[
-          "Explain differently",
-          "I’m stuck on this step",
-          "Why does this work?",
-          "Give me a practice problem",
-          "Check my answer",
-        ].map((action) => (
-          <button
-            key={action}
-            disabled={!endpoint || busy}
-            onClick={() => void send(action)}
-          >
-            {action}
-          </button>
-        ))}
-      </div>
-      <p className="source-note">
-        AI explanations can make mistakes. Check reasoning, units and
-        assumptions against the lesson. Conversations are saved to your account;
-        don’t include private information.
-      </p>
-      <div className="chat-messages" aria-live="polite">
-        {chat.messages.slice(-100).map((message) => (
-          <article key={message.id} className={message.role}>
-            <strong>{message.role === "user" ? "You" : "Tutor"}</strong>
-            <ReactMarkdown
-              remarkPlugins={[remarkMath]}
-              rehypePlugins={[rehypeKatex]}
-            >
-              {message.content}
-            </ReactMarkdown>
-          </article>
-        ))}
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          void send(input);
-        }}
-      >
-        <label htmlFor="tutor-question">Ask about this section</label>
-        <textarea
-          id="tutor-question"
-          value={input}
-          maxLength={2000}
-          onChange={(e) => setInput(e.target.value)}
-          disabled={!endpoint || busy}
-        />
-        <Button disabled={!endpoint || busy || !input.trim()}>Ask tutor</Button>
-        {busy && (
-          <button
-            type="button"
-            className="text-button"
-            onClick={() => controller.current?.abort()}
-          >
-            Stop reply
-          </button>
-        )}
-      </form>
-      <p className="source-note" role="status">
-        {chat.status}
-      </p>
-      {error && <p role="alert">{error}</p>}
       {connectionError && (
-        <p role="status">
+        <p className="chat-note" role="status">
           Could not refresh the connection. You can still try the tutor or
           reconnect below.
         </p>
       )}
       {(!endpoint || error || connectionError) && (
-        <Button
-          variant="outline"
+        <button
+          type="button"
+          className="chat-retry"
           onClick={() => {
             void loadServices(true);
             setError("");
           }}
         >
           Retry tutor connection
-        </Button>
+        </button>
       )}
+      <form
+        className="composer"
+        onSubmit={(e) => {
+          e.preventDefault();
+          void send(input);
+        }}
+      >
+        <label htmlFor="tutor-question" className="visually-hidden">
+          Ask about this section
+        </label>
+        <textarea
+          id="tutor-question"
+          ref={field}
+          rows={1}
+          value={input}
+          maxLength={2000}
+          placeholder="Ask about this section…"
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (
+              e.key === "Enter" &&
+              !e.shiftKey &&
+              !e.nativeEvent.isComposing
+            ) {
+              e.preventDefault();
+              void send(input);
+            }
+          }}
+          disabled={!endpoint || busy}
+        />
+        {busy ? (
+          <button
+            type="button"
+            className="composer-send"
+            aria-label="Stop reply"
+            onClick={() => controller.current?.abort()}
+          >
+            <Square size={14} fill="currentColor" aria-hidden="true" />
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="composer-send"
+            aria-label="Ask tutor"
+            disabled={!endpoint || !input.trim()}
+          >
+            <ArrowUp size={18} aria-hidden="true" />
+          </button>
+        )}
+      </form>
+      <p className="chat-foot">
+        AI can make mistakes. Check reasoning, units and assumptions against the
+        lesson. Chats are saved to your account; don’t include private
+        information.
+        <span className="visually-hidden" role="status">
+          {chat.status}
+        </span>
+      </p>
     </aside>
   );
 }

@@ -40,10 +40,10 @@ export function ParallaxTry() {
       <p className="try-note">
         The two marks are where the star appears in January and in July against
         the distant background. Proxima Centauri, the nearest star, is about 1.3
-        parsecs away, so its parallax angle is about 0.77 arcseconds, and the shift
-        between January and July is twice that. Move the slider out and the
-        shift nearly vanishes, which is why measuring distance this way takes
-        careful instruments.
+        parsecs away, so its parallax angle is about 0.77 arcseconds, and the
+        shift between January and July is twice that. Move the slider out and
+        the shift nearly vanishes, which is why measuring distance this way
+        takes careful instruments.
       </p>
     </div>
   );

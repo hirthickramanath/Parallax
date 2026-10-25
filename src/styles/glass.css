@@ -238,44 +238,13 @@
   border-radius: 12px 12px 0 0;
 }
 
-/* The title bar on landing and sign-in. Dots are grey, as in an inactive window. */
-.window-bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--hair-solid);
-  font: 400 12px var(--tb-mono);
-  color: var(--tb-muted);
-}
-.window-bar i {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--tb-ink) 22%, var(--tb-paper));
-}
-.window-bar span {
-  margin-left: 8px;
-}
+/* The landing figure sits in a rounded, hairline card. */
 .l-plate {
+  padding: 16px;
   border: 1px solid var(--hair-solid);
   border-radius: 12px;
   background: var(--tb-surface);
   box-shadow: var(--float);
-  overflow: hidden;
-}
-.l-plate > svg,
-.l-plate > .plate,
-.l-plate > figcaption {
-  margin-left: 16px;
-  margin-right: 16px;
-}
-.l-plate > .plate {
-  width: calc(100% - 32px);
-  margin-top: 12px;
-}
-.l-plate > figcaption {
-  padding-bottom: 14px;
 }
 
 /* ---------- Controls: macOS push buttons and fields ---------- */
@@ -378,5 +347,37 @@
     background: var(--tb-surface);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+  }
+}
+
+/* ---------- Scroll bars: thin, rounded, quiet until used ---------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tb-line) transparent;
+}
+@supports (background: color-mix(in srgb, red, blue)) {
+  * {
+    scrollbar-color: color-mix(in srgb, var(--tb-ink) 34%, transparent)
+      transparent;
+  }
+}
+/* Older Safari and Chrome ignore scrollbar-color and use these instead. */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--tb-ink) 34%, transparent);
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--tb-ink) 55%, transparent);
+    background-clip: content-box;
   }
 }

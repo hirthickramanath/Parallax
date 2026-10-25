@@ -996,9 +996,9 @@ test("journey dashboard integrates the weekly plan, level map and appearance wit
   ).toBeVisible();
   await expect(page.locator(".current-level")).toContainText("PB1.1");
   await page.goto("/lesson/PB1.1");
-  await expect(
-    page.locator(".site-header,.site-footer,.tab-bar"),
-  ).toHaveCount(0);
+  await expect(page.locator(".site-header,.site-footer,.tab-bar")).toHaveCount(
+    0,
+  );
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
 
@@ -1929,9 +1929,9 @@ test("foundation revision begins from dashboard and saves a separate progressive
   await expect(page.locator(".foundation-chapter-list li")).toHaveCount(38);
   await page.getByRole("button", { name: "Begin guided revision" }).click();
   await expect(page).toHaveURL(/foundation-revision\/MB1.1$/);
-  await expect(
-    page.locator(".site-header,.site-footer,.tab-bar"),
-  ).toHaveCount(0);
+  await expect(page.locator(".site-header,.site-footer,.tab-bar")).toHaveCount(
+    0,
+  );
   await expect(page.locator(".revision-glossary dt")).toHaveCount(3);
   await page
     .getByRole("button", { name: "Continue revision", exact: true })
@@ -2477,7 +2477,7 @@ test("floating tutor is reachable on mobile dashboard and uses the current lesso
     exact: true,
   });
   await launcher.click();
-  const dialog = page.getByRole("dialog", { name: "Your AI tutor" });
+  const dialog = page.getByRole("dialog", { name: "AI tutor" });
   await expect(dialog).toBeVisible();
   await dialog.getByLabel("Study topic").selectOption("PB1.1");
   await dialog
@@ -2599,32 +2599,56 @@ test("revision transfer challenges add depth without blocking completed core che
 });
 
 for (const mobile of [false, true]) {
-  test(`voluntary learner pilot keeps real answers and gates follow-up ${mobile ? "mobile" : "desktop"}`, async ({ page }) => {
+  test(`voluntary learner pilot keeps real answers and gates follow-up ${mobile ? "mobile" : "desktop"}`, async ({
+    page,
+  }) => {
     if (mobile) await page.setViewportSize({ width: 390, height: 844 });
     await signedIn(page);
     await page.goto("/settings");
     await page.getByRole("link", { name: "Open learner pilot" }).click();
-    await expect(page.getByRole("button", { name: "Save this check" })).toBeDisabled();
+    await expect(
+      page.getByRole("button", { name: "Save this check" }),
+    ).toBeDisabled();
     await page.getByLabel("I choose to take part").check();
-    await page.getByLabel("Did you use help or previously see these questions?").selectOption("no");
+    await page
+      .getByLabel("Did you use help or previously see these questions?")
+      .selectOption("no");
     await page.getByLabel("Answer (Pa;").fill("16000");
     await page.getByRole("button", { name: "Save this check" }).click();
-    await expect(page.getByRole("heading", { name: "2. After studying" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "2. After studying" }),
+    ).toBeVisible();
     await page.reload();
-    await expect(page.getByRole("heading", { name: "2. After studying" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "2. After studying" }),
+    ).toBeVisible();
     await page.getByLabel("I choose to take part").check();
-    await page.getByLabel("I have studied these topics after the baseline.").check();
-    await page.getByLabel("Did you use help or previously see these questions?").selectOption("yes");
+    await page
+      .getByLabel("I have studied these topics after the baseline.")
+      .check();
+    await page
+      .getByLabel("Did you use help or previously see these questions?")
+      .selectOption("yes");
     await page.getByRole("button", { name: "Save this check" }).click();
-    await expect(page.getByRole("heading", { name: "Let the learning settle" })).toBeVisible();
-    const data = await page.evaluate(() => JSON.parse(localStorage.getItem("parallax-pilot-v1:test-learner")!));
+    await expect(
+      page.getByRole("heading", { name: "Let the learning settle" }),
+    ).toBeVisible();
+    const data = await page.evaluate(() =>
+      JSON.parse(localStorage.getItem("parallax-pilot-v1:test-learner")!),
+    );
     expect(data.baseline.responses.fluid.value).toBe(16000);
     expect(data.baseline.responses.heat.value).toBeNull();
     expect(data.immediate.assisted).toBe(true);
     expect(data.baseline.responses.fluid.reasoningScore).toBeUndefined();
     const download = page.waitForEvent("download");
     await page.getByRole("button", { name: "Export pilot answers" }).click();
-    expect((await download).suggestedFilename()).toBe("parallax-learner-pilot.json");
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect((await download).suggestedFilename()).toBe(
+      "parallax-learner-pilot.json",
+    );
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
   });
 }

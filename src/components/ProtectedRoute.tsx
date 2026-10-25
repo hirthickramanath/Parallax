@@ -4,8 +4,7 @@ import { SkyLoader } from "./Sky";
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, error } = useAuth();
   const location = useLocation();
-  if (loading)
-    return <SkyLoader label="Restoring your session" />;
+  if (loading) return <SkyLoader label="Restoring your session" />;
   if (error)
     return (
       <main id="main" className="placeholder" role="alert">

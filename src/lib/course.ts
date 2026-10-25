@@ -76,7 +76,7 @@ export const phases = [
   "The universe",
   "Research",
 ];
-export function unitMet(id: string, records: Records) {
+function unitMet(id: string, records: Records) {
   const unit = course.units.find((u) => u.id === id);
   return (
     !!records.units[id]?.skippedWithCredit ||

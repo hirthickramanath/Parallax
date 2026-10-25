@@ -242,68 +242,97 @@
   outline-offset: 3px;
 }
 
-/* ---------- Sign in ---------- */
+/* ---------- Sign in: a frosted pane over the night sky ---------- */
 .login-page {
   max-width: none;
   margin: 0;
   position: relative;
   display: grid;
   place-items: center;
-  min-height: calc(100vh - 64px - 62px);
-  padding: clamp(24px, 6vw, 72px) 16px;
+  min-height: calc(100vh - 62px);
+  padding: 96px 16px 48px;
   overflow: hidden;
   background: radial-gradient(
     70rem 44rem at 50% 30%,
     var(--sky-1),
     var(--sky-0)
   );
-  color: var(--tb-ink);
+  color: var(--sky-ink);
+}
+/* On this page the header floats over the sky and the footer joins it. */
+.pub-header:has(~ .login-page) {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  background: transparent;
+  border-bottom: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.pub-header:has(~ .login-page) .pub-brand,
+.pub-header:has(~ .login-page) .account-link {
+  color: var(--sky-ink);
+}
+.login-page ~ .pub-footer {
+  background: var(--sky-0);
+  border-top: 1px solid rgb(236 230 214 / 0.1);
+  color: var(--sky-muted);
 }
 .login-galaxy {
-  --galaxy: min(95vmin, 760px);
+  --galaxy: min(110vmin, 920px);
   position: absolute;
-  left: 4%;
-  top: 78%;
+  left: 62%;
+  top: 60%;
   margin: 0;
-  translate: -30% -50%;
-  opacity: 0.8;
+  translate: -50% -50%;
+  opacity: 0.9;
 }
 .login-card {
   position: relative;
-  width: min(100%, 26rem);
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid rgb(236 230 214 / 0.18);
-  border-radius: 14px;
-  background: var(--tb-surface);
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.06) inset,
-    0 24px 64px rgb(0 0 0 / 0.5);
-}
-.login-card .window-bar {
-  border-bottom-color: var(--hair-solid, var(--tb-rule));
-}
-.login-body {
   display: grid;
   gap: 14px;
-  padding: clamp(22px, 5vw, 32px);
-}
-.login-card h1 {
+  width: min(100%, 27rem);
   margin: 0;
-  font: 500 clamp(1.9rem, 6vw, 2.35rem) / 1.05 var(--tb-serif);
+  padding: clamp(26px, 6vw, 40px);
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 28px;
+  background: rgb(18 19 26 / 0.9);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    0 30px 80px rgb(0 0 0 / 0.55);
+  color: var(--sky-ink);
+}
+.login-page .login-card h1 {
+  margin: 0;
+  color: var(--sky-ink);
+  font: 500 clamp(2rem, 7vw, 2.5rem) / 1.05 var(--tb-serif);
   letter-spacing: -0.03em;
 }
 .login-card .login-description {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   font: 400 16px/1.5 var(--tb-sans);
-  color: var(--tb-ink-2);
+  color: #cdc7b6;
 }
 .login-card .button {
   width: 100%;
-  min-height: 44px;
+  min-height: 50px;
   justify-content: center;
-  padding: 10px 16px;
+  padding: 10px 18px;
+  border-radius: 16px;
+  font: 600 15px var(--tb-sans);
+}
+.login-card .google-button {
+  gap: 12px;
+  border: 1px solid #dadce0;
+  background: #fff;
+  color: #1f1f1f;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+}
+.login-card .google-button:hover:not(:disabled) {
+  background: #f1f3f4;
+}
+.google-mark {
+  flex: none;
 }
 .login-card form {
   display: grid;
@@ -311,20 +340,36 @@
 }
 .login-card form label {
   font: 600 14px var(--tb-sans);
-  color: var(--tb-ink);
+  color: var(--sky-ink);
 }
-.login-card input[type="email"] {
+.login-page .login-card input[type="email"] {
   width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid var(--tb-line);
-  border-radius: 8px;
-  background: var(--tb-paper);
-  color: var(--tb-ink);
+  min-height: 50px;
+  padding: 10px 16px;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.07);
+  color: var(--sky-ink);
   font: 400 16px var(--tb-sans);
+}
+.login-page .login-card input[type="email"]:focus {
+  outline: 0;
+  border-color: var(--sky-amber);
+  box-shadow: 0 0 0 3px rgb(240 184 74 / 0.3);
 }
 .login-card form .button {
   margin-top: 6px;
+  border: 0;
+  background: var(--sky-ink);
+  color: var(--sky-0);
+  box-shadow: none;
+}
+.login-card form .button:hover:not(:disabled) {
+  background: var(--sky-amber);
+  color: var(--sky-0);
+}
+.login-card .button:disabled {
+  opacity: 0.55;
 }
 .login-divider {
   display: flex;
@@ -332,53 +377,54 @@
   gap: 12px;
   margin: 4px 0;
   font: 400 13px var(--tb-mono);
-  color: var(--tb-muted);
-  text-align: center;
+  color: var(--sky-muted);
 }
 .login-divider::before,
 .login-divider::after {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--tb-rule);
+  background: rgb(255 255 255 / 0.16);
 }
 .login-card .login-message,
 .login-card .login-error {
   margin: 0;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 14px;
   font: 400 14px/1.5 var(--tb-sans);
 }
 .login-card .login-message {
-  background: var(--tb-accent-soft);
-  border: 1px solid var(--tb-rule);
+  border: 1px solid rgb(240 184 74 / 0.35);
+  background: rgb(240 184 74 / 0.12);
+  color: var(--sky-ink);
 }
 .login-card .login-error {
-  background: var(--tb-bad-bg);
-  border: 1px solid var(--tb-bad);
-  color: var(--tb-ink);
+  border: 1px solid rgb(240 152 139 / 0.4);
+  background: rgb(240 152 139 / 0.12);
+  color: #f6c3ba;
 }
 .login-card .login-footnote {
   margin: 4px 0 0;
   font: 400 13px/1.5 var(--tb-sans);
-  color: var(--tb-muted);
+  color: var(--sky-muted);
 }
 .login-card .text-button {
   justify-self: start;
+  color: var(--sky-amber);
 }
 
-@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))
-  and (background: color-mix(in srgb, red, blue)) {
+@supports (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
   .login-card {
-    background: color-mix(in srgb, var(--tb-surface) 90%, transparent);
-    -webkit-backdrop-filter: saturate(160%) blur(24px);
-    backdrop-filter: saturate(160%) blur(24px);
+    background: rgb(18 19 26 / 0.56);
+    -webkit-backdrop-filter: saturate(170%) blur(30px);
+    backdrop-filter: saturate(170%) blur(30px);
   }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .login-card,
-  .loader-button {
-    background: var(--tb-surface);
+  .login-card {
+    background: rgb(18 19 26 / 0.96);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

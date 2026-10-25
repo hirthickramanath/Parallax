@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { LockKeyhole, CheckCircle2, ArrowRight } from "lucide-react";
 import { course, missingNeeds } from "../lib/course";
-import { ChapterTiles, usePhaseProgress } from "../components/learning/JourneyMap";
+import {
+  ChapterTiles,
+  usePhaseProgress,
+} from "../components/learning/JourneyMap";
 import { useLearning } from "../hooks/useLearning";
 export function Learn() {
   const store = useLearning();
@@ -53,8 +56,8 @@ export function Learn() {
       />
       <div className="course-units">
         {units.map((unit) => {
-          const lessons = unit.lessons.map(
-            (id) => course.lessons.find((l) => l.id === id)!,
+          const lessons = unit.lessons.map((id) =>
+            course.lessons.find((l) => l.id === id)!,
           );
           const read = lessons.filter((l) =>
             ["done", "skipped"].includes(store.records.lessons[l.id]?.status),

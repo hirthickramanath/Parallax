@@ -83,11 +83,7 @@ export function Dashboard() {
               {xp}/{goal} XP
             </span>
           </label>
-          <progress
-            id="daily-progress"
-            max={goal}
-            value={Math.min(xp, goal)}
-          />
+          <progress id="daily-progress" max={goal} value={Math.min(xp, goal)} />
           <p>
             {goalMet
               ? "Goal reached. A little progress goes a long way."

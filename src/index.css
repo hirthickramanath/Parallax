@@ -1068,8 +1068,7 @@ progress::-moz-progress-bar {
   margin-bottom: 20px;
 }
 .prediction-card label,
-.lesson-notes label,
-.tutor-panel label {
+.lesson-notes label {
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -1077,8 +1076,7 @@ progress::-moz-progress-bar {
   margin: 20px 0;
 }
 .prediction-card textarea,
-.lesson-notes textarea,
-.tutor-panel textarea {
+.lesson-notes textarea {
   display: block;
   width: 100%;
   padding: 14px;
@@ -1228,48 +1226,6 @@ th {
   padding: 12px;
   border-bottom: 1px solid hsl(var(--border));
   text-align: left;
-}
-.tutor-panel {
-  align-self: start;
-  position: sticky;
-  top: 20px;
-  background: var(--app-card);
-  padding: 20px;
-  border-radius: 18px;
-  border: 1px solid hsl(var(--border));
-  max-height: 85vh;
-  overflow-y: auto;
-}
-.tutor-panel h3 {
-  font-size: 17px;
-}
-.tutor-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.tutor-actions button {
-  background: var(--soft-green);
-  border: 1px solid hsl(var(--border));
-  padding: 8px;
-  border-radius: 8px;
-  color: hsl(var(--foreground));
-  font-size: 12px;
-  cursor: pointer;
-}
-.tutor-panel button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.chat-messages article {
-  font-size: 14px;
-  line-height: 1.8;
-  border-bottom: 1px solid hsl(var(--border));
-  padding: 15px 0;
-  overflow-wrap: anywhere;
-}
-.chat-messages .katex-display {
-  overflow: auto;
 }
 .review-card {
   max-width: 700px;
@@ -1494,10 +1450,6 @@ th {
   .continue-card,
   .goal-card {
     padding: 24px;
-  }
-  .tutor-panel {
-    position: relative;
-    max-height: none;
   }
 }
 @media (max-width: 760px) {
@@ -1961,9 +1913,6 @@ th {
   width: 100%;
   max-height: 460px;
 }
-.lesson-layout .tutor-panel {
-  grid-column: 1 / -1;
-}
 .restart-controls label {
   display: block;
   margin: 14px 0;
@@ -2169,90 +2118,4 @@ th {
   stroke-width: 20px;
   vector-effect: non-scaling-stroke;
   pointer-events: all;
-}
-
-.tutor-launcher {
-  position: fixed;
-  right: 22px;
-  bottom: 24px;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 52px;
-  padding: 12px 18px;
-  border-radius: 28px;
-  background: hsl(var(--primary));
-  color: hsl(var(--background));
-  border: 1px solid currentColor;
-  box-shadow: 0 6px 22px #0003;
-  font-weight: 700;
-}
-.tutor-dock {
-  position: fixed;
-  inset: auto 20px 20px auto;
-  margin: 0;
-  width: min(440px, calc(100vw - 24px));
-  max-height: min(780px, calc(100dvh - 40px));
-  overflow-y: auto;
-  border: 1px solid hsl(var(--border));
-  border-radius: 22px;
-  padding: 20px;
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
-.tutor-dock::backdrop {
-  background: #0005;
-}
-.tutor-dock-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.tutor-dock-header h2 {
-  font-size: 1.2rem;
-}
-.tutor-dock-header button {
-  min-width: 44px;
-  min-height: 44px;
-  display: grid;
-  place-items: center;
-}
-.tutor-topic {
-  display: grid;
-  gap: 8px;
-  margin: 12px 0;
-}
-.tutor-topic select {
-  max-width: 100%;
-  width: 100%;
-}
-.tutor-dock .tutor-panel {
-  position: static;
-  max-height: none;
-  overflow: visible;
-  padding: 12px 0;
-  border: 0;
-  background: transparent;
-}
-.tutor-dock .chat-messages {
-  max-height: 38dvh;
-  overflow-y: auto;
-  overflow-wrap: anywhere;
-}
-@media (max-width: 760px) {
-  .tutor-launcher {
-    bottom: calc(82px + env(safe-area-inset-bottom));
-    right: 14px;
-  }
-  .focused-study .tutor-launcher {
-    bottom: 18px;
-  }
-  .tutor-dock {
-    right: 12px;
-    bottom: 12px;
-    padding: 16px;
-    max-height: calc(100dvh - 24px);
-  }
 }

@@ -6,10 +6,25 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { MessageCircle, Sparkles, X } from "lucide-react";
 import { course, nextLesson, journeyLessons } from "../../lib/course";
 import { useLearning } from "../../hooks/useLearning";
 import { TutorPanel } from "./TutorPanel";
+const trackNames: [string, string][] = [
+  ["maths", "Maths"],
+  ["physics", "Physics"],
+  ["chemistry", "Chemistry"],
+  ["computing", "Computing"],
+  ["astro", "Astrophysics"],
+];
+const trackGroups = trackNames
+  .map(([track, label]) => {
+    const items = journeyLessons.filter(
+      (l) => l.track === track && course.authored[l.id],
+    );
+    return [track, label, items] as const;
+  })
+  .filter(([, , items]) => items.length);
 type LessonContext = {
   lessonId: string;
   sectionId?: string;
@@ -76,37 +91,49 @@ export function TutorDockProvider({ children }: { children: ReactNode }) {
         onClose={() => setOpen(false)}
       >
         <header className="tutor-dock-header">
-          <h2 id="tutor-dock-title">Your AI tutor</h2>
+          <span className="chat-mark" aria-hidden="true">
+            <Sparkles size={16} />
+          </span>
+          <div className="chat-title">
+            <h2 id="tutor-dock-title">AI tutor</h2>
+            <p>
+              {lesson
+                ? `Helping with ${course.authored[lesson.lessonId]?.title || lesson.lessonId}`
+                : course.authored[current.lessonId]?.title || ""}
+            </p>
+          </div>
+          {lesson ? (
+            <span className="topic-chip" title="Lesson for this chat">
+              {lesson.lessonId}
+            </span>
+          ) : (
+            <label className="topic-picker">
+              <span className="visually-hidden">Study topic</span>
+              <select
+                value={current.lessonId}
+                onChange={(e) => setSelected(e.target.value)}
+              >
+                {trackGroups.map(([track, label, items]) => (
+                  <optgroup key={track} label={label}>
+                    {items.map((l) => (
+                      <option key={l.id} value={l.id}>
+                        {l.id}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </label>
+          )}
           <button
             autoFocus
+            className="chat-close"
             aria-label="Close AI tutor"
             onClick={() => setOpen(false)}
           >
-            <X />
+            <X size={18} />
           </button>
         </header>
-        {lesson ? (
-          <p className="source-note">
-            Helping with{" "}
-            {course.authored[lesson.lessonId]?.title || lesson.lessonId}
-          </p>
-        ) : (
-          <label className="tutor-topic">
-            Study topic
-            <select
-              value={current.lessonId}
-              onChange={(e) => setSelected(e.target.value)}
-            >
-              {journeyLessons
-                .filter((l) => course.authored[l.id])
-                .map((l) => (
-                  <option key={l.id} value={l.id}>
-                    {l.id} · {l.title}
-                  </option>
-                ))}
-            </select>
-          </label>
-        )}
         <TutorPanel key={`${store.uid}:${current.lessonId}`} {...current} />
       </dialog>
     </Context.Provider>

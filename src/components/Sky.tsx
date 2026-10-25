@@ -175,7 +175,7 @@ export function Startup() {
       <div className="startup-stage">
         <Galaxy className="startup-galaxy" />
         <p className="startup-word">parallax</p>
-        <p className="startup-tag">Two views. One distance.</p>
+        <p className="startup-tag">Every star is a question.</p>
       </div>
       <button ref={skip} type="button" className="startup-skip" onClick={leave}>
         Skip <kbd>Esc</kbd>

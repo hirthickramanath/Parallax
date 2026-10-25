@@ -90,10 +90,10 @@ export function InertiaTensorExplorer() {
     <section className="virtual-lab">
       <h3>Angular momentum need not point along angular velocity</h3>
       <p>
-        For principal moments (2,3,4) kg m² and angular-velocity components in rad/s, drag the x-y angular-velocity tip
-        and vary its third component. Arrows show x-y projections at separate
-        scales; full-vector quantities are reported below. No orientation
-        trajectory is integrated.
+        For principal moments (2,3,4) kg m² and angular-velocity components in
+        rad/s, drag the x-y angular-velocity tip and vary its third component.
+        Arrows show x-y projections at separate scales; full-vector quantities
+        are reported below. No orientation trajectory is integrated.
       </p>
       <Control
         label="Body omega 1"

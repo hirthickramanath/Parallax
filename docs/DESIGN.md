@@ -4,7 +4,7 @@ The interface looks like a field notebook from an observatory: bone paper, graph
 
 The idea comes from the name. Parallax measures a distance by looking from two places, so the landing page is built around the real parallax diagram and a slider that works, and the course map and lessons borrow the same plain, plate-like layout.
 
-Seven stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in), `src/styles/lesson.css` (lesson page) and `src/styles/glass.css` (the glass and desktop-window layer, which restyles the others) and `src/styles/sky.css` (startup animation, loader and sign-in backdrop).
+Eight stylesheets load in order: `src/index.css` (legacy base), `src/styles/textbook.css` (tokens, colour, type, component appearance), `src/styles/layout.css` (signed-in shell, Today, course map), `src/styles/public.css` (landing and sign-in), `src/styles/lesson.css` (lesson page) and `src/styles/glass.css` (the glass and desktop-window layer, which restyles the others) `src/styles/sky.css` (startup animation, loader and sign-in backdrop) and `src/styles/chat.css` (the AI tutor chat).
 
 ## What was avoided on purpose
 
@@ -66,15 +66,23 @@ Literata and IBM Plex Sans (variable) and IBM Plex Mono (400 and 500, Latin) are
 
 `src/components/Sky.tsx` draws a seeded starfield and a spiral galaxy (decorative, `aria-hidden`) and builds three things from them. The sky is dark in light and dark mode alike, so `sky.css` fixes its own colours instead of using the theme tokens.
 
-- **Startup (`Startup`)**: plays on every full page load, about 3.8 seconds: stars appear, the galaxy blooms, two amber sight lines (the two views of a parallax) run in from the corners, then the wordmark and "Two views. One distance." Escape or the Skip button ends it at once, and it ends by itself. It is a modal dialog with the Skip button focused. It is not shown when the visitor prefers reduced motion, and `playwright.config.ts` turns reduced motion on so tests are not slowed; `tests/startup.spec.ts` turns it back on to test the animation.
+- **Startup (`Startup`)**: plays on every full page load, about 3.8 seconds: stars appear, the galaxy blooms, two amber sight lines (the two views of a parallax) run in from the corners, then the wordmark and "Every star is a question." Escape or the Skip button ends it at once, and it ends by itself. It is a modal dialog with the Skip button focused. It is not shown when the visitor prefers reduced motion, and `playwright.config.ts` turns reduced motion on so tests are not slowed; `tests/startup.spec.ts` turns it back on to test the animation.
 - **Loader (`SkyLoader`)**: replaces the old "Opening your observatory…" and "Restoring your session…" text while the app or a session loads: the galaxy and a button-shaped "Loading…" with a spinner, announced as a status.
-- **Sign-in**: a window-style card (title bar with grey dots) over the night sky with the galaxy behind it. The card follows the theme, so it is paper-coloured in light mode and dark in dark mode.
+- **Sign-in**: a frosted dark-glass pane over the night sky, with the galaxy glowing behind it so the blur shows. The header floats over the sky and the footer joins it. The pane uses fixed colours (it is the same in light and dark mode); text on it is about 12:1 and the pane keeps at least 56% dark colour so a bright galaxy core behind it cannot lower contrast. The Google button carries the four-colour Google mark.
+
+## The AI tutor chat
+
+`TutorDock.tsx` (the window and its header) and `TutorPanel.tsx` (messages and composer) follow the usual chat layout, styled in `chat.css`. The learner's messages are soft bubbles on the right; the tutor's are open text with a small mark on the left, with Markdown and maths. The header has the title, the lesson's id only (a compact picker, grouped by subject, or a fixed chip when the tutor was opened from a lesson) and a close button; the lesson title is the grey line under "AI tutor". An empty chat shows starter prompts. The composer grows with the text; Enter sends and Shift+Enter starts a new line. On phones the window fills the screen. Conversations are stored per lesson, as before.
+
+## Scroll bars
+
+`glass.css` styles every scroll bar with the standard `scrollbar-width: thin` and `scrollbar-color` (a translucent ink thumb on a clear track, so it follows the theme). Browsers without those properties get a rounded `::-webkit-scrollbar` equivalent.
 
 ## Conventions
 
 - Reading text uses the serif face. Controls, buttons and navigation use the sans face. Ids, figure labels and small captions use the monospace face, in sentence case.
 - Do not use a size below 12px.
-- Panels (questions, stat strip, chapter tiles, figures) are rounded (12px) with a hairline border and a soft lift. Controls use 7px corners. Glass surfaces declare a solid colour first and add `backdrop-filter` inside `@supports`; `prefers-reduced-transparency` returns them to solid. Window title-bar dots are grey (an inactive window), because red and green mean wrong and correct here.
+- Panels (questions, stat strip, chapter tiles, figures) are rounded (12px) with a hairline border and a soft lift. Controls use 7px corners. Glass surfaces declare a solid colour first and add `backdrop-filter` inside `@supports`; `prefers-reduced-transparency` returns them to solid.
 - The UI font stack starts with the system font (San Francisco on Apple devices) and falls back to the bundled IBM Plex Sans.
 - Content-type colours apply to lesson sections through `data-layer` on `.lesson-prose`. Add a layer to the mapping in `textbook.css` and `layerFamily()` in `LessonPlayer.tsx`.
 - Respect `prefers-reduced-motion`. The stylesheet turns transitions and animation off for it.
