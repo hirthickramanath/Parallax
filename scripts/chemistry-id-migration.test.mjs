@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { emptyRecords, upgradeId, upgradeRecords } from "../src/lib/learning-core.ts";
+import {
+  emptyRecords,
+  upgradeId,
+  upgradeRecords,
+} from "../src/lib/learning-core.ts";
 
 test("chemistry bridge ids move from CB.n to CB1.n only", () => {
   assert.equal(upgradeId("CB.3"), "CB1.3");
@@ -8,7 +12,14 @@ test("chemistry bridge ids move from CB.n to CB1.n only", () => {
   assert.equal(upgradeId("prediction-CB.1"), "prediction-CB1.1");
   assert.equal(upgradeId("CB.2:q1"), "CB1.2:q1");
   assert.equal(upgradeId("CB"), "CB1");
-  for (const kept of ["CB1.1", "CH1.1", "MB1.1", "CB-concept-3", "ACB.1", "PH1.1"])
+  for (const kept of [
+    "CB1.1",
+    "CH1.1",
+    "MB1.1",
+    "CB-concept-3",
+    "ACB.1",
+    "PH1.1",
+  ])
     assert.equal(upgradeId(kept), kept);
 });
 

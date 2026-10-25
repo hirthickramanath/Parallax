@@ -146,11 +146,14 @@ function App() {
             element={<FoundationRevision />}
           />
           <Route path="/placement" element={<Placement />} />
-          <Route path="/lesson/:id" element={
+          <Route
+            path="/lesson/:id"
+            element={
               <Renamed>
                 <LessonPlayer />
               </Renamed>
-            } />
+            }
+          />
           <Route path="/teaching-lab" element={<TeachingLab />} />
         </Route>
         <Route
