@@ -41,8 +41,8 @@ const answers = {
     9 / (1 + 8),
     1 / (1 / 1000 + 1 / 1000),
   ],
-  "CB.1": [13 - 3, 2 * 1 + 1, 2 * (2 * 2 + 1), 13.6 / 4],
-  "CB.2": [4 + 2 * 6, 5 - 0 - 8 / 2, 2, (Math.acos(-1 / 3) * 180) / Math.PI],
+  "CB1.1": [13 - 3, 2 * 1 + 1, 2 * (2 * 2 + 1), 13.6 / 4],
+  "CB1.2": [4 + 2 * 6, 5 - 0 - 8 / 2, 2, (Math.acos(-1 / 3) * 180) / Math.PI],
 };
 for (const [id, values] of Object.entries(answers))
   test(`${id} four transfer answers match separate calculations`, () => {

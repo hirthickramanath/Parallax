@@ -1,6 +1,6 @@
 import type { AstroInvestigation } from "./astro-investigations";
 export const chemistryInvestigations: Record<string, AstroInvestigation> = {
-  "CB.3": {
+  "CB1.3": {
     title: "Combine equilibrium preference with a conserved amount",
     x: ["Reduced standard reaction Gibbs energy", -3, 3, 0],
     parameter: ["Total A+B amount (model amount)", 1, 3, 1],
@@ -10,7 +10,7 @@ export const chemistryInvestigations: Record<string, AstroInvestigation> = {
       "Ideal two-species interconversion at fixed temperature and volume, with conserved total amount. This is an equilibrium balance, not a kinetic mechanism or a complete nonideal reaction network.",
     value: (g, N) => N / (1 + Math.exp(g)),
   },
-  "CB.4": {
+  "CB1.4": {
     title: "Compare a reduced barrier at fixed Arrhenius prefactor",
     x: ["Reduced activation energy Ea/(RT)", 0, 10, 2],
     parameter: ["Rate prefactor A (model units)", 0.2, 3, 1],
@@ -20,7 +20,7 @@ export const chemistryInvestigations: Record<string, AstroInvestigation> = {
       "A chosen effective Arrhenius model. Changing a barrier does not automatically change equilibrium free energy or determine the voltage/power of an operating electrochemical cell.",
     value: (g, A) => A * Math.exp(-g),
   },
-  "CB.5": {
+  "CB1.5": {
     title: "Probe a characteristic harmonic bond-stretch scale",
     x: ["Reduced mass (model mass)", 0.5, 5, 1],
     parameter: ["Effective restoring coefficient", 0.2, 5, 1],

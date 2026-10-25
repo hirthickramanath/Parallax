@@ -1,0 +1,438 @@
+/*
+  The night sky: startup animation, loader and sign-in backdrop. These screens are always dark, in light
+  and dark mode alike, so their colours are fixed here rather than taken from the theme tokens.
+  Text colours: #ece6d6 on #0a0b0f is about 15:1; #a8a291 on #0a0b0f is about 7.4:1.
+*/
+:root {
+  --sky-0: #0a0b0f;
+  --sky-1: #12141c;
+  --sky-ink: #ece6d6;
+  --sky-muted: #a8a291;
+  --sky-amber: #f0b84a;
+}
+
+/* ---------- Stars and galaxy ---------- */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.stars-1 {
+  width: 1px;
+  height: 1px;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+.stars-2 {
+  width: 2px;
+  height: 2px;
+  animation: twinkle 4.5s ease-in-out -2s infinite alternate;
+}
+.stars-3 {
+  width: 3px;
+  height: 3px;
+  animation: twinkle 3.2s ease-in-out -1s infinite alternate;
+}
+@keyframes twinkle {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.galaxy {
+  --galaxy: 320px;
+  width: var(--galaxy);
+  height: var(--galaxy);
+  margin-block: calc(var(--galaxy) * -0.18);
+  flex: none;
+  transform: rotate(-24deg) scaleY(0.62);
+  pointer-events: none;
+}
+.galaxy svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: spin 160s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Loader ---------- */
+.sky-loader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 24px;
+  overflow: hidden;
+  background: radial-gradient(
+    60rem 40rem at 50% 40%,
+    var(--sky-1),
+    var(--sky-0)
+  );
+  color: var(--sky-ink);
+}
+.shell .sky-loader,
+.pub-header ~ .sky-loader {
+  min-height: 70vh;
+}
+.loader-galaxy {
+  --galaxy: min(240px, 60vw);
+  position: relative;
+}
+.loader-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid rgb(236 230 214 / 0.22);
+  border-radius: 8px;
+  background: rgb(236 230 214 / 0.08);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  font: 500 15px var(--tb-sans);
+  color: var(--sky-ink);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.loader-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgb(236 230 214 / 0.25);
+  border-top-color: var(--sky-amber);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+/* ---------- Startup ---------- */
+.startup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(
+    60rem 40rem at 50% 42%,
+    var(--sky-1),
+    var(--sky-0)
+  );
+  color: var(--sky-ink);
+}
+.startup.is-leaving {
+  animation: startup-out 0.45s ease forwards;
+  pointer-events: none;
+}
+@keyframes startup-out {
+  to {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+}
+.startup .starfield {
+  animation: fade-in 0.8s ease both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.startup-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.startup-galaxy {
+  --galaxy: min(440px, 78vw);
+  animation: bloom 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+}
+@keyframes bloom {
+  from {
+    opacity: 0;
+    transform: rotate(-70deg) scaleY(0.62) scale(0.5);
+  }
+}
+.startup-sight {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.startup-sight path {
+  fill: none;
+  stroke: var(--sky-amber);
+  stroke-width: 1.25;
+  stroke-opacity: 0.8;
+  /* Dashes are in screen pixels because of non-scaling-stroke; 4000 is longer than any line. */
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+  vector-effect: non-scaling-stroke;
+  animation: draw 1.3s ease-in-out 1.2s forwards;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0.25;
+  }
+}
+.startup-word {
+  margin: 0;
+  font: 500 clamp(2.6rem, 9vw, 5rem) / 1 var(--tb-serif);
+  letter-spacing: -0.03em;
+  animation: rise 0.9s ease 2.1s both;
+}
+.startup-tag {
+  margin: 14px 0 0;
+  font: 400 14px var(--tb-mono);
+  color: var(--sky-muted);
+  animation: rise 0.8s ease 2.6s both;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.startup-skip {
+  position: absolute;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid rgb(236 230 214 / 0.25);
+  border-radius: 8px;
+  background: rgb(236 230 214 / 0.08);
+  color: var(--sky-ink);
+  font: 500 14px var(--tb-sans);
+  cursor: pointer;
+  animation: fade-in 0.6s ease 0.8s both;
+}
+.startup-skip:hover {
+  background: rgb(236 230 214 / 0.16);
+}
+.startup-skip kbd {
+  padding: 1px 6px;
+  border: 1px solid rgb(236 230 214 / 0.3);
+  border-radius: 4px;
+  font: 400 12px var(--tb-mono);
+  color: var(--sky-muted);
+}
+.startup-skip:focus-visible {
+  outline: 2px solid var(--sky-amber);
+  outline-offset: 3px;
+}
+
+/* ---------- Sign in: a frosted pane over the night sky ---------- */
+.login-page {
+  max-width: none;
+  margin: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 62px);
+  padding: 96px 16px 48px;
+  overflow: hidden;
+  background: radial-gradient(
+    70rem 44rem at 50% 30%,
+    var(--sky-1),
+    var(--sky-0)
+  );
+  color: var(--sky-ink);
+}
+/* On this page the header floats over the sky and the footer joins it. */
+.pub-header:has(~ .login-page) {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  background: transparent;
+  border-bottom: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.pub-header:has(~ .login-page) .pub-brand,
+.pub-header:has(~ .login-page) .account-link {
+  color: var(--sky-ink);
+}
+.login-page ~ .pub-footer {
+  background: var(--sky-0);
+  border-top: 1px solid rgb(236 230 214 / 0.1);
+  color: var(--sky-muted);
+}
+.login-galaxy {
+  --galaxy: min(110vmin, 920px);
+  position: absolute;
+  left: 62%;
+  top: 60%;
+  margin: 0;
+  translate: -50% -50%;
+  opacity: 0.9;
+}
+.login-card {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 27rem);
+  margin: 0;
+  padding: clamp(26px, 6vw, 40px);
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 28px;
+  background: rgb(18 19 26 / 0.9);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    0 30px 80px rgb(0 0 0 / 0.55);
+  color: var(--sky-ink);
+}
+.login-page .login-card h1 {
+  margin: 0;
+  color: var(--sky-ink);
+  font: 500 clamp(2rem, 7vw, 2.5rem) / 1.05 var(--tb-serif);
+  letter-spacing: -0.03em;
+}
+.login-card .login-description {
+  margin: 0 0 8px;
+  font: 400 16px/1.5 var(--tb-sans);
+  color: #cdc7b6;
+}
+.login-card .button {
+  width: 100%;
+  min-height: 50px;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 16px;
+  font: 600 15px var(--tb-sans);
+}
+.login-card .google-button {
+  gap: 12px;
+  border: 1px solid #dadce0;
+  background: #fff;
+  color: #1f1f1f;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+}
+.login-card .google-button:hover:not(:disabled) {
+  background: #f1f3f4;
+}
+.google-mark {
+  flex: none;
+}
+.login-card form {
+  display: grid;
+  gap: 8px;
+}
+.login-card form label {
+  font: 600 14px var(--tb-sans);
+  color: var(--sky-ink);
+}
+.login-page .login-card input[type="email"] {
+  width: 100%;
+  min-height: 50px;
+  padding: 10px 16px;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.07);
+  color: var(--sky-ink);
+  font: 400 16px var(--tb-sans);
+}
+.login-page .login-card input[type="email"]:focus {
+  outline: 0;
+  border-color: var(--sky-amber);
+  box-shadow: 0 0 0 3px rgb(240 184 74 / 0.3);
+}
+.login-card form .button {
+  margin-top: 6px;
+  border: 0;
+  background: var(--sky-ink);
+  color: var(--sky-0);
+  box-shadow: none;
+}
+.login-card form .button:hover:not(:disabled) {
+  background: var(--sky-amber);
+  color: var(--sky-0);
+}
+.login-card .button:disabled {
+  opacity: 0.55;
+}
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+  font: 400 13px var(--tb-mono);
+  color: var(--sky-muted);
+}
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgb(255 255 255 / 0.16);
+}
+.login-card .login-message,
+.login-card .login-error {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font: 400 14px/1.5 var(--tb-sans);
+}
+.login-card .login-message {
+  border: 1px solid rgb(240 184 74 / 0.35);
+  background: rgb(240 184 74 / 0.12);
+  color: var(--sky-ink);
+}
+.login-card .login-error {
+  border: 1px solid rgb(240 152 139 / 0.4);
+  background: rgb(240 152 139 / 0.12);
+  color: #f6c3ba;
+}
+.login-card .login-footnote {
+  margin: 4px 0 0;
+  font: 400 13px/1.5 var(--tb-sans);
+  color: var(--sky-muted);
+}
+.login-card .text-button {
+  justify-self: start;
+  color: var(--sky-amber);
+}
+
+@supports (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .login-card {
+    background: rgb(18 19 26 / 0.56);
+    -webkit-backdrop-filter: saturate(170%) blur(30px);
+    backdrop-filter: saturate(170%) blur(30px);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .login-card {
+    background: rgb(18 19 26 / 0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .galaxy svg,
+  .stars,
+  .loader-spinner {
+    animation: none;
+  }
+}

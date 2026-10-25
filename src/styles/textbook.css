@@ -1,0 +1,1064 @@
+/*
+  Textbook theme: paper, ink, one accent.
+
+  Loaded after index.css and layered over it: tokens first, then the legacy variable aliases
+  that index.css still reads, then component styles. Design rules, in order of priority:
+  1. Reading comes first: a serif reading face, a 40rem measure and a light "paper" default.
+  2. Colour carries meaning: green and red are reserved for correct and wrong, never the accent.
+  3. One accent, used for links, progress and the active place. The primary action is ink.
+  4. Content type is shown by a tint and a text label: Explain, Theory, Worked example, Practice.
+  scripts/theme-contrast.test.mjs checks every colour pair in this file against WCAG 2.2 AA.
+  Keep the token declarations in the `--tb-name: #hex;` form so that test can read them.
+*/
+
+/* ---------- Tokens ---------- */
+:root {
+  --tb-sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "IBM Plex Sans Variable",
+    "IBM Plex Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+  --tb-serif:
+    "Literata Variable", "Literata", Georgia, "Times New Roman", serif;
+  --tb-mono:
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --tb-paper: #ebe6d8;
+  --tb-surface: #f4f0e5;
+  --tb-sunken: #e0d9c6;
+  --tb-ink: #17171b;
+  --tb-ink-2: #2f2d29;
+  --tb-muted: #5a5547;
+  --tb-rule: #cbc3ac;
+  --tb-line: #7e775f;
+  --tb-accent: #7b5200;
+  --tb-accent-hover: #5c3d00;
+  --tb-accent-soft: #efe2bd;
+  --tb-on-accent: #ffffff;
+  --tb-ok: #1c6b3b;
+  --tb-ok-bg: #dde9d8;
+  --tb-bad: #a1291c;
+  --tb-bad-bg: #f3ddd4;
+  --tb-worked: #dfe5e6;
+  --tb-worked-edge: #aebdc0;
+  --tb-gold: #7b5200;
+  --tb-on-track: #ffffff;
+  --tb-trk-maths: #20588a;
+  --tb-trk-physics: #983a5c;
+  --tb-trk-chemistry: #67661c;
+  --tb-trk-computing: #4b5461;
+  --tb-trk-astro: #9c4a1e;
+  --tb-paper-hsl: 44 32% 88%;
+  --tb-ink-hsl: 240 8% 10%;
+  --tb-rule-hsl: 45 23% 74%;
+  --tb-accent-hsl: 40 100% 24%;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --tb-paper: #121316;
+  --tb-surface: #1b1c20;
+  --tb-sunken: #0d0e10;
+  --tb-ink: #ece6d6;
+  --tb-ink-2: #cfc9b9;
+  --tb-muted: #a8a493;
+  --tb-rule: #37352c;
+  --tb-line: #7d7a6e;
+  --tb-accent: #f0b84a;
+  --tb-accent-hover: #ffd27a;
+  --tb-accent-soft: #2e2614;
+  --tb-on-accent: #1a1405;
+  --tb-ok: #7fd2a0;
+  --tb-ok-bg: #17301f;
+  --tb-bad: #f0988b;
+  --tb-bad-bg: #3a1f1b;
+  --tb-worked: #18262a;
+  --tb-worked-edge: #3a5258;
+  --tb-gold: #f0b84a;
+  --tb-on-track: #101114;
+  --tb-trk-maths: #8ab6e0;
+  --tb-trk-physics: #e39ab5;
+  --tb-trk-chemistry: #c9c76a;
+  --tb-trk-computing: #aab3c0;
+  --tb-trk-astro: #e5a273;
+  --tb-paper-hsl: 225 10% 8%;
+  --tb-ink-hsl: 44 37% 88%;
+  --tb-rule-hsl: 49 11% 19%;
+  --tb-accent-hsl: 40 85% 62%;
+  color-scheme: dark;
+}
+
+/* Palettes change the accent only (brass is the default). Every palette is checked in light and dark. */
+:root[data-palette="cyanotype"] {
+  --tb-accent: #1f5a8a;
+  --tb-accent-hover: #17446a;
+  --tb-accent-soft: #dce7f1;
+  --tb-accent-hsl: 207 63% 33%;
+  --tb-gold: #1f5a8a;
+}
+:root[data-palette="madder"] {
+  --tb-accent: #983a5c;
+  --tb-accent-hover: #782c47;
+  --tb-accent-soft: #f1dde4;
+  --tb-accent-hsl: 338 45% 41%;
+  --tb-gold: #983a5c;
+}
+:root[data-palette="lichen"] {
+  --tb-accent: #575a12;
+  --tb-accent-hover: #40420c;
+  --tb-accent-soft: #e6e6c3;
+  --tb-accent-hsl: 62 67% 21%;
+  --tb-gold: #575a12;
+}
+:root[data-palette="graphite"] {
+  --tb-accent: #2f3944;
+  --tb-accent-hover: #1d242c;
+  --tb-accent-soft: #dadcdc;
+  --tb-accent-hsl: 211 18% 23%;
+  --tb-gold: #2f3944;
+}
+:root[data-theme="dark"][data-palette="cyanotype"] {
+  --tb-accent: #8ab6e0;
+  --tb-accent-hover: #b0d0ee;
+  --tb-accent-soft: #1a2a38;
+  --tb-accent-hsl: 209 58% 71%;
+  --tb-gold: #8ab6e0;
+}
+:root[data-theme="dark"][data-palette="madder"] {
+  --tb-accent: #e39ab5;
+  --tb-accent-hover: #f0bacd;
+  --tb-accent-soft: #37202a;
+  --tb-accent-hsl: 338 57% 75%;
+  --tb-gold: #e39ab5;
+}
+:root[data-theme="dark"][data-palette="lichen"] {
+  --tb-accent: #c9c76a;
+  --tb-accent-hover: #dddb8f;
+  --tb-accent-soft: #2a2a14;
+  --tb-accent-hsl: 59 47% 60%;
+  --tb-gold: #c9c76a;
+}
+:root[data-theme="dark"][data-palette="graphite"] {
+  --tb-accent: #cdd3dc;
+  --tb-accent-hover: #e6eaf0;
+  --tb-accent-soft: #262a30;
+  --tb-accent-hsl: 216 18% 83%;
+  --tb-gold: #cdd3dc;
+}
+
+/* Legacy variables that index.css still reads, resolved from the tokens above. The longer
+   selectors out-rank the palette rules at the bottom of index.css. */
+:root,
+:root[data-theme],
+:root[data-palette],
+:root[data-theme][data-palette] {
+  --background: var(--tb-paper-hsl);
+  --foreground: var(--tb-ink-hsl);
+  --border: var(--tb-rule-hsl);
+  --primary: var(--tb-accent-hsl);
+  --primary-color: var(--tb-accent);
+  --accent: var(--tb-accent);
+  --muted: var(--tb-muted);
+  --panel: var(--tb-surface);
+  --gold: var(--tb-gold);
+  --app-bg: var(--tb-paper);
+  --app-card: var(--tb-surface);
+  --soft-green: var(--tb-accent-soft);
+  --app-shadow: none;
+}
+
+/* ---------- Base ---------- */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: var(--tb-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--tb-paper);
+  color: var(--tb-ink);
+}
+:focus-visible {
+  outline: 2px solid var(--tb-accent);
+  outline-offset: 3px;
+}
+::selection {
+  background: var(--tb-accent-soft);
+  color: var(--tb-ink);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--tb-serif);
+  font-weight: 500;
+  color: var(--tb-ink);
+  text-wrap: balance;
+}
+h1,
+h2 {
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+h1 em {
+  font-style: italic;
+  color: var(--tb-accent);
+}
+a {
+  color: inherit;
+}
+p a,
+li a,
+.info-box a,
+.source-note a {
+  color: var(--tb-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+p a:hover,
+li a:hover {
+  color: var(--tb-accent-hover);
+}
+select,
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+textarea {
+  font-family: var(--tb-sans);
+  background: var(--tb-surface);
+  color: var(--tb-ink);
+  border: 1px solid var(--tb-line);
+  border-radius: 2px;
+}
+select {
+  padding: 8px 10px;
+  font-size: 14px;
+}
+input[type="range"],
+input[type="radio"],
+input[type="checkbox"],
+progress {
+  accent-color: var(--tb-accent);
+}
+hr {
+  border: 0;
+  border-top: 1px solid var(--tb-rule);
+}
+.eyebrow,
+.pill,
+.lab-label,
+.lesson-id {
+  font-family: var(--tb-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.eyebrow {
+  color: var(--tb-accent);
+  margin: 0 0 14px;
+}
+.pill {
+  color: var(--tb-muted);
+}
+.accent-dot {
+  background: var(--tb-accent);
+}
+.source-note,
+.sync-status {
+  color: var(--tb-muted);
+}
+.text-button {
+  color: var(--tb-accent);
+}
+
+/* ---------- Buttons ---------- */
+.button,
+.learning-app .button {
+  border-radius: 2px;
+  box-shadow: none;
+  font-family: var(--tb-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  padding: 13px 22px;
+  gap: 14px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.button:hover,
+.learning-app .button:hover {
+  transform: none;
+  opacity: 1;
+}
+.button-primary,
+.learning-app .button-primary {
+  background: var(--tb-ink);
+  color: var(--tb-paper);
+  border: 1px solid var(--tb-ink);
+}
+.button-primary:hover:not(:disabled),
+.learning-app .button-primary:hover:not(:disabled) {
+  background: var(--tb-accent);
+  border-color: var(--tb-accent);
+  color: var(--tb-on-accent);
+}
+.button-outline,
+.learning-app .button-outline {
+  background: transparent;
+  color: var(--tb-ink);
+  border: 1px solid var(--tb-ink);
+}
+.button-outline:hover:not(:disabled),
+.learning-app .button-outline:hover:not(:disabled) {
+  background: var(--tb-sunken);
+}
+.button:disabled,
+.learning-app .button:disabled {
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+/* ---------- App shell ---------- */
+.learning-app {
+  background: var(--tb-paper);
+}
+.site-stats > span {
+  font-family: var(--tb-sans);
+  font-weight: 600;
+}
+.site-stats svg {
+  color: var(--tb-gold);
+}
+.xp-badge {
+  color: var(--tb-accent);
+}
+.avatar {
+  border-radius: 2px;
+  background: transparent;
+  border: 1px solid var(--tb-ink);
+  color: var(--tb-ink);
+  font-family: var(--tb-serif);
+  font-size: 16px;
+}
+.study-reminder {
+  background: var(--tb-accent-soft);
+  border: 0;
+  border-left: 3px solid var(--tb-accent);
+  border-radius: 0;
+}
+.study-reminder p {
+  color: var(--tb-ink-2);
+}
+.study-reminder a {
+  color: var(--tb-accent);
+}
+
+/* ---------- Pages ---------- */
+.workspace-page h1,
+.lesson-player h1 {
+  font: 500 clamp(38px, 4.6vw, 60px) / 1.04 var(--tb-serif);
+  letter-spacing: -0.025em;
+  margin: 0 0 18px;
+}
+.workspace-page h2,
+.lesson-player h2 {
+  font: 500 clamp(24px, 2.4vw, 30px) / 1.18 var(--tb-serif);
+  letter-spacing: -0.015em;
+}
+.workspace-page h3,
+.lesson-player h3 {
+  font-family: var(--tb-sans);
+  font-weight: 600;
+}
+.page-description,
+.workspace-page > p {
+  font-family: var(--tb-serif);
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--tb-ink-2);
+  max-width: 40rem;
+}
+
+/* Flat sections: a double rule opens each one, as in a textbook. */
+.continue-card,
+.goal-card,
+.daily-puzzle,
+.settings-card,
+.empty-card,
+.concept-card,
+.activity-panel,
+.weekly-overview,
+.journey-map,
+.adaptive-check,
+.lesson-recap {
+  background: transparent;
+  border: 0;
+  border-top: 3px double var(--tb-ink);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 20px 0 0;
+}
+.stats-cards article,
+.plan-list article {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--tb-ink);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 12px 0 0;
+}
+.foundation-revision-card {
+  border-left: 0;
+  margin-bottom: 40px;
+}
+.weekly-overview,
+.journey-map {
+  margin-bottom: 40px;
+}
+.daily-puzzle {
+  border-top-color: var(--tb-accent);
+}
+.continue-card {
+  gap: 28px;
+}
+.continue-card h2,
+.daily-puzzle h2,
+.settings-card h2,
+.activity-panel h2,
+.concept-card h2,
+.weekly-overview h2,
+.empty-card h2 {
+  font-family: var(--tb-serif);
+  font-size: clamp(26px, 2.6vw, 32px);
+  line-height: 1.15;
+  margin: 12px 0;
+}
+.continue-card p,
+.daily-puzzle p,
+.settings-card p,
+.activity-panel p,
+.concept-card p,
+.weekly-overview p,
+.empty-card p,
+.goal-card p {
+  font-family: var(--tb-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--tb-ink-2);
+}
+.settings-card > label,
+.goal-card label,
+.settings-card .checkbox-label {
+  font-family: var(--tb-sans);
+  font-size: 15px;
+}
+.weekly-overview > summary,
+.recap-card > summary {
+  font-family: var(--tb-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tb-muted);
+  cursor: pointer;
+}
+.weekly-overview > summary {
+  margin-bottom: 10px;
+}
+.recap-card {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-rule);
+  border-radius: 2px;
+  font-size: 16px;
+}
+.recap-card ul {
+  font-family: var(--tb-serif);
+  font-size: 18px;
+}
+.plan-list a,
+.goal-card > a,
+.revision-schedule a,
+.empty-card a,
+.skip-test-link {
+  color: var(--tb-accent);
+}
+.streak-number {
+  font-family: var(--tb-serif);
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.streak-number span {
+  font-family: var(--tb-sans);
+  font-size: 15px;
+}
+.goal-heading svg,
+.stats-cards svg {
+  color: var(--tb-gold);
+}
+progress,
+progress::-webkit-progress-bar {
+  border-radius: 0;
+  background: var(--tb-rule);
+}
+progress::-webkit-progress-value {
+  border-radius: 0;
+  background: var(--tb-accent);
+}
+progress::-moz-progress-bar {
+  background: var(--tb-accent);
+}
+.goal-card progress {
+  height: 8px;
+}
+.stat-strip {
+  border-top: 1px solid var(--tb-ink);
+  border-bottom: 1px solid var(--tb-rule);
+  gap: 0;
+}
+.stat-strip > div {
+  border-right-color: var(--tb-rule);
+}
+.stat-strip > div:last-child,
+.stat-strip > a:last-child {
+  border-right: 0;
+}
+.stat-strip > a {
+  display: grid;
+  grid-template-columns: 30px auto;
+  gap: 5px 12px;
+  padding: 15px 20px;
+  border-right: 1px solid var(--tb-rule);
+}
+.stat-strip > a:hover {
+  background: var(--tb-sunken);
+}
+.stat-strip > a span::after {
+  content: " \2192";
+}
+.stat-strip svg {
+  color: var(--tb-accent);
+}
+.stat-strip strong,
+.stats-cards strong {
+  font-family: var(--tb-serif);
+  font-weight: 500;
+}
+
+/* Learn */
+.search-input {
+  border: 1px solid var(--tb-line);
+  border-radius: 2px;
+  background: var(--tb-surface);
+  font-size: 16px;
+}
+.lesson-start,
+.available .lesson-status {
+  color: var(--tb-accent);
+}
+/* ---------- Lesson ---------- */
+.focused-study .lesson-player {
+  padding: 24px 32px 64px;
+}
+.lesson-toolbar {
+  font-size: 14px;
+  color: var(--tb-muted);
+  padding-bottom: 12px;
+  margin-bottom: 0;
+}
+.lesson-toolbar a {
+  color: var(--tb-ink);
+}
+.lesson-toolbar a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.lesson-toolbar select {
+  font-size: 14px;
+}
+/* The steps strip is the visible progress; the native element stays for assistive technology. */
+.lesson-player > progress {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.lesson-heading h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  letter-spacing: -0.03em;
+}
+.lesson-heading,
+.lesson-player > .lesson-layout {
+  max-width: 1400px;
+}
+.info-box {
+  background: var(--tb-accent-soft);
+  border: 0;
+  border-left: 3px solid var(--tb-accent);
+  border-radius: 0;
+  font-family: var(--tb-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--tb-ink);
+  padding: 14px 18px;
+}
+.section-navigation {
+  font-size: 14px;
+  color: var(--tb-muted);
+  margin: 0 0 28px;
+}
+.section-navigation select {
+  max-width: 100%;
+}
+.lesson-prose {
+  --layer-label: "Explain";
+  background: transparent;
+  border: 0;
+  border-top: 3px double var(--tb-ink);
+  border-radius: 0;
+  padding: 20px 0 8px;
+  font-family: var(--tb-serif);
+  font-size: 20px;
+  line-height: 1.65;
+  color: var(--tb-ink);
+  hanging-punctuation: first;
+}
+.lesson-prose::before {
+  content: var(--layer-label);
+  display: block;
+  margin-bottom: 12px;
+  font: 500 13px/1 var(--tb-mono);
+  color: var(--tb-muted);
+}
+.lesson-prose h2 {
+  font-size: clamp(28px, 3vw, 36px);
+  letter-spacing: -0.02em;
+  margin: 0 0 22px;
+}
+.lesson-prose p {
+  margin: 0 0 20px;
+}
+.lesson-prose ul,
+.lesson-prose ol {
+  padding-left: 1.3em;
+}
+.lesson-prose li {
+  margin: 0 0 8px;
+}
+.lesson-prose .katex {
+  font-size: 1.08em;
+}
+.lesson-prose .katex-display {
+  margin: 1.1em 0;
+}
+.lesson-prose a {
+  color: var(--tb-accent);
+}
+.lesson-prose[data-layer="theory"] {
+  --layer-label: "Theory";
+}
+.lesson-prose[data-layer="worked"] {
+  --layer-label: "Worked example";
+  background: var(--tb-worked);
+  border: 1px solid var(--tb-worked-edge);
+  border-top: 3px double var(--tb-ink);
+  padding: 20px 24px 8px;
+}
+.lesson-prose[data-layer="puzzle"],
+.lesson-prose[data-layer="interactive"],
+.lesson-prose[data-layer="check"],
+.lesson-prose[data-layer="problems"] {
+  --layer-label: "Practice";
+  background: var(--tb-accent-soft);
+  border: 1px solid var(--tb-rule);
+  border-top: 3px double var(--tb-accent);
+  padding: 20px 24px 8px;
+}
+.lesson-prose[data-layer="worked"]::before,
+.lesson-prose[data-layer="puzzle"]::before,
+.lesson-prose[data-layer="interactive"]::before,
+.lesson-prose[data-layer="check"]::before,
+.lesson-prose[data-layer="problems"]::before {
+  color: var(--tb-ink-2);
+}
+.symbol-definition > button {
+  font-family: var(--tb-serif);
+  color: var(--tb-accent);
+  border-bottom-color: var(--tb-accent);
+}
+.symbol-definition > span {
+  background: var(--tb-surface);
+  border-radius: 2px;
+  font: 400 15px/1.6 var(--tb-sans);
+}
+.prediction-card {
+  background: var(--tb-accent-soft);
+  border: 1px solid var(--tb-rule);
+  border-top: 3px double var(--tb-accent);
+  border-radius: 0;
+  padding: 24px;
+}
+.prediction-card p {
+  font-family: var(--tb-serif);
+  font-size: 19px;
+  line-height: 1.6;
+}
+.prediction-card textarea,
+.lesson-notes textarea {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-line);
+  border-radius: 2px;
+  font-family: var(--tb-serif);
+  font-size: 18px;
+  line-height: 1.5;
+}
+.prediction-card label,
+.lesson-notes label {
+  font-family: var(--tb-sans);
+  font-size: 14px;
+  font-weight: 600;
+}
+.lesson-notes {
+  margin: 36px 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--tb-rule);
+}
+.lesson-controls {
+  background: var(--tb-paper);
+  border-top: 1px solid var(--tb-ink);
+}
+.lesson-controls .text-button {
+  color: var(--tb-accent);
+}
+
+/* Questions */
+.question-card {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-rule);
+  border-top: 3px double var(--tb-ink);
+  border-radius: 0;
+  padding: 24px;
+  margin: 28px 0;
+}
+.question-card h3 {
+  font-family: var(--tb-serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 12px 0 18px;
+}
+.question-card fieldset {
+  margin: 0 0 22px;
+}
+.answer-choice {
+  gap: 14px;
+  align-items: baseline;
+  margin: 0;
+  padding: 14px 10px;
+  border: 0;
+  border-top: 1px solid var(--tb-rule);
+  border-radius: 0;
+  font-family: var(--tb-serif);
+  font-size: 19px;
+  line-height: 1.4;
+}
+.question-card fieldset .answer-choice:last-of-type {
+  border-bottom: 1px solid var(--tb-rule);
+}
+.answer-choice:hover {
+  background: var(--tb-sunken);
+}
+.answer-choice.selected {
+  background: var(--tb-accent-soft);
+  border-color: var(--tb-rule);
+  box-shadow: inset 3px 0 0 var(--tb-accent);
+}
+.answer-choice input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+}
+.numeric-answer {
+  font-family: var(--tb-sans);
+  font-size: 15px;
+  font-weight: 600;
+}
+.numeric-answer input {
+  font-family: var(--tb-serif);
+  font-size: 20px;
+  padding: 12px 14px;
+  border-radius: 2px;
+  max-width: 260px;
+}
+.numeric-answer small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--tb-muted);
+}
+.question-card .button {
+  margin: 0 10px 10px 0;
+}
+.answer-feedback {
+  background: var(--tb-ok-bg);
+  border: 0;
+  border-left: 4px solid var(--tb-ok);
+  border-radius: 0;
+  padding: 16px 18px;
+  color: var(--tb-ink);
+}
+.answer-feedback svg {
+  color: var(--tb-ok);
+}
+.answer-feedback p {
+  font-family: var(--tb-serif);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.answer-feedback strong {
+  font-family: var(--tb-sans);
+  font-size: 15px;
+  color: var(--tb-ok);
+}
+.answer-feedback.incorrect {
+  background: var(--tb-bad-bg);
+  border-left-color: var(--tb-bad);
+}
+.answer-feedback.incorrect svg,
+.answer-feedback.incorrect strong {
+  color: var(--tb-bad);
+}
+
+/* Figures: the virtual lab and the simulation column */
+.virtual-lab,
+.lesson-simulation {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-rule);
+  border-top: 3px double var(--tb-accent);
+  border-radius: 0;
+  box-shadow: none;
+}
+.lesson-simulation {
+  padding: 20px;
+}
+.virtual-lab > svg {
+  background: var(--tb-paper);
+  border: 1px solid var(--tb-rule);
+  border-radius: 0;
+}
+.virtual-lab p {
+  font-family: var(--tb-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--tb-ink-2);
+}
+.lab-label {
+  color: var(--tb-accent);
+}
+.simulation-control-label {
+  font-family: var(--tb-sans);
+  font-size: 15px;
+  font-weight: 500;
+}
+.simulation-number-row input,
+.simulation-number-row button {
+  border-radius: 2px;
+  border: 1px solid var(--tb-line);
+  background: var(--tb-surface);
+  color: var(--tb-ink);
+}
+table {
+  font-family: var(--tb-sans);
+  font-size: 15px;
+}
+th {
+  font-weight: 600;
+  border-bottom: 1px solid var(--tb-ink);
+}
+td,
+th {
+  border-bottom-color: var(--tb-rule);
+}
+caption {
+  color: var(--tb-muted);
+}
+
+/* Tutor */
+
+/* Review, stats, settings */
+.review-card {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-rule);
+  border-top: 3px double var(--tb-ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+.review-card h2 {
+  font-family: var(--tb-serif);
+}
+.review-answer {
+  background: var(--tb-accent-soft);
+  border-radius: 0;
+  font-family: var(--tb-serif);
+  font-size: 19px;
+}
+.heatmap > div {
+  border-radius: 1px;
+  border-color: var(--tb-rule);
+}
+.badges span {
+  border-radius: 2px;
+  color: var(--tb-muted);
+}
+.badges .earned {
+  background: var(--tb-accent-soft);
+  color: var(--tb-accent);
+}
+.revision-schedule article,
+.author-audit article,
+.revision-worked,
+.foundation-chapter-list li a {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-rule);
+  border-radius: 0;
+}
+.revision-glossary div {
+  border-left-color: var(--tb-accent);
+  background: var(--tb-surface);
+  border-radius: 0;
+}
+.settings-card input:not([type="checkbox"]),
+.settings-card select,
+.revision-step-select select {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-line);
+  border-radius: 2px;
+}
+.finish-star {
+  color: var(--tb-gold);
+}
+.finish-screen li {
+  font-family: var(--tb-serif);
+  font-size: 19px;
+}
+
+/* ---------- Public pages ---------- */
+.header {
+  border-bottom: 1px solid var(--tb-ink);
+  min-height: 84px;
+}
+.brand {
+  font-family: var(--tb-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.login-card {
+  background: var(--tb-surface);
+  border: 1px solid var(--tb-rule);
+  border-top: 3px double var(--tb-ink);
+  border-radius: 0;
+  padding: 32px 36px 28px;
+}
+.login-card h1 {
+  font-size: clamp(36px, 8vw, 52px);
+  margin-bottom: 14px;
+}
+.login-description {
+  font-family: var(--tb-serif);
+  font-size: 18px;
+  color: var(--tb-ink-2);
+}
+@media (max-width: 480px) {
+  .login-card {
+    padding: 24px 20px 20px;
+  }
+}
+footer {
+  border-top: 1px solid var(--tb-rule);
+}
+
+/* Labels keep the sans face wherever they sit (paragraph rules above are more specific). */
+.learning-app .eyebrow,
+.learning-app .pill,
+.learning-app .lab-label,
+.learning-app .lesson-id {
+  font-family: var(--tb-mono);
+  font-size: 13px !important;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-transform: none;
+  color: var(--tb-muted);
+}
+.learning-app .eyebrow,
+.learning-app .lab-label {
+  color: var(--tb-accent);
+}
+.learning-app .settings-card > p:not(.source-note),
+.learning-app .settings-card > p {
+  font-family: var(--tb-serif);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.lesson-simulation > .pill {
+  display: block;
+  margin-bottom: 18px;
+}
+.virtual-lab .lab-label {
+  margin: 0 0 10px;
+}
+.workspace-page > .text-button {
+  display: inline-block;
+  margin: 0 28px 6px 0;
+  font-size: 15px;
+}
+.lesson-simulation .virtual-lab {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  .page-description,
+  .workspace-page > p {
+    font-size: 18px;
+  }
+  .stat-strip > a {
+    padding: 10px;
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 8px;
+  }
+  .stat-strip > a svg {
+    display: none;
+  }
+  .stat-strip > a strong {
+    font-size: 23px;
+  }
+  .lesson-prose {
+    font-size: 19px;
+    padding: 18px 0 8px;
+  }
+  .lesson-prose[data-layer="worked"],
+  .lesson-prose[data-layer="puzzle"],
+  .lesson-prose[data-layer="interactive"],
+  .lesson-prose[data-layer="check"],
+  .lesson-prose[data-layer="problems"] {
+    padding: 18px 16px 8px;
+  }
+  .question-card {
+    padding: 18px 16px;
+  }
+  .answer-choice {
+    font-size: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -18,7 +18,7 @@ import {
 } from "../lib/foundation-revision";
 import { LessonSimulation } from "../components/learning/LessonSimulation";
 import { SymbolDefinition } from "../components/learning/StoredSection";
-import { ThemeSelect } from "../components/ThemeSelect";
+import { AppearanceToggles } from "../components/ThemeSelect";
 import { Button } from "../components/ui/button";
 import "katex/dist/katex.min.css";
 const modules = import.meta.glob<{
@@ -171,7 +171,7 @@ function RevisionPlayer({ id }: { id: string }) {
     <main id="main" className="lesson-player revision-player">
       <header className="revision-player-header">
         <Link to="/foundation-revision">← Revision path</Link>
-        <ThemeSelect />
+        <AppearanceToggles />
         <Link to="/dashboard">Dashboard</Link>
       </header>
       <p className="eyebrow">

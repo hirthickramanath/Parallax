@@ -1,0 +1,365 @@
+/*
+  Public pages: the landing page and sign-in.
+
+  The idea is the name. Parallax measures a distance by looking from two places, so the page is built
+  around one real diagram and one working example instead of feature cards. Layout rules:
+  tight outer margins, text anchored to the left, a dark band as a second ground, one large word to close.
+*/
+
+.mono {
+  font: 500 13px/1.4 var(--tb-mono);
+  color: var(--tb-muted);
+}
+
+/* Colours for the dark band and the sign-in panel. Fixed on purpose: they read the same in light and dark. */
+.landing {
+  --band-bg: #1c1d21;
+  --band-ink: #ece6d6;
+  --band-muted: #a8a493;
+  --band-accent: #f0b84a;
+}
+
+/* ---------- Header and footer ---------- */
+.pub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 64px;
+  padding: 0 clamp(16px, 3vw, 40px);
+  border-bottom: 1px solid var(--tb-ink);
+}
+.pub-brand {
+  font: 600 27px/1 var(--tb-serif);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--tb-ink);
+}
+.pub-actions .account-link {
+  font: 500 14px var(--tb-mono);
+  color: var(--tb-ink);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.pub-actions .account-menu {
+  font: 500 14px var(--tb-sans);
+}
+.pub-footer {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  max-width: none;
+  margin: 0;
+  padding: 18px clamp(16px, 3vw, 40px) 22px;
+  border-top: 1px solid var(--tb-rule);
+  font: 400 13px var(--tb-mono);
+  color: var(--tb-muted);
+}
+
+/* ---------- The landing figure: two views of the Moon ---------- */
+.two-views {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--tb-ink);
+}
+.tv-backdrop circle {
+  fill: currentColor;
+  opacity: 0.55;
+}
+.tv-axis {
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+  opacity: 0.5;
+}
+.tv-sight {
+  stroke: var(--tb-accent);
+  stroke-width: 1.6;
+}
+.tv-ghost {
+  fill: var(--tb-paper);
+  stroke: var(--tb-accent);
+  stroke-width: 1.6;
+}
+.tv-moon {
+  fill: currentColor;
+}
+.tv-arc {
+  fill: none;
+  stroke: var(--tb-accent);
+  stroke-width: 1.6;
+}
+.tv-earth {
+  fill: var(--tb-surface);
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+.tv-observer {
+  fill: var(--tb-gold);
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+.tv-text text {
+  font: 400 13px var(--tb-mono);
+  fill: currentColor;
+}
+@media (max-width: 600px) {
+  .tv-text text {
+    font-size: 19px;
+  }
+}
+
+/* ---------- Landing ---------- */
+.landing {
+  max-width: none;
+  margin: 0;
+}
+.landing {
+  overflow: hidden;
+}
+.l-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: end;
+  padding: clamp(32px, 6vw, 72px) clamp(16px, 3vw, 40px) clamp(40px, 6vw, 80px);
+}
+.l-hero-copy h1 {
+  font: 500 clamp(2.8rem, 5.8vw, 6rem) / 0.98 var(--tb-serif);
+  letter-spacing: -0.035em;
+  margin: 18px 0 28px;
+}
+.l-lede {
+  max-width: 30rem;
+  margin: 0 0 32px;
+  font: 400 clamp(18px, 1.5vw, 21px) / 1.6 var(--tb-serif);
+  color: var(--tb-ink-2);
+}
+.l-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 26px;
+  border: 1px solid var(--tb-ink);
+  border-radius: 3px;
+  background: var(--tb-ink);
+  color: var(--tb-paper);
+  font: 600 15px var(--tb-sans);
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.l-cta:hover {
+  background: var(--tb-accent);
+  border-color: var(--tb-accent);
+  color: var(--tb-on-accent);
+}
+.l-plate {
+  margin: 0;
+}
+.l-plate figcaption {
+  max-width: 34rem;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--tb-ink);
+  font: 400 15px/1.55 var(--tb-sans);
+  color: var(--tb-ink-2);
+}
+.l-plate figcaption .mono {
+  margin-right: 8px;
+  color: var(--tb-ink);
+}
+
+.l-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 3vw, 40px);
+  background: var(--band-bg);
+  color: var(--band-ink);
+}
+.l-band-head h2 {
+  font: 500 clamp(2.2rem, 4.4vw, 4rem) / 1 var(--tb-serif);
+  letter-spacing: -0.03em;
+  color: var(--band-ink);
+  margin: 0 0 18px;
+}
+.l-band-head p {
+  max-width: 24rem;
+  margin: 0;
+  font: 400 19px/1.55 var(--tb-serif);
+  color: var(--band-muted);
+}
+.try {
+  max-width: 40rem;
+}
+.try label {
+  display: block;
+  margin-bottom: 10px;
+  font: 500 15px var(--tb-sans);
+}
+.try input[type="range"] {
+  width: 100%;
+  accent-color: var(--band-accent);
+}
+.try-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 22px 0;
+}
+.try-readout div {
+  padding-top: 10px;
+  border-top: 1px solid var(--band-muted);
+}
+.try-readout dt {
+  font: 400 13px var(--tb-mono);
+  color: var(--band-muted);
+}
+.try-readout dd {
+  margin: 6px 0 0;
+  font: 500 clamp(22px, 2.4vw, 30px) / 1.1 var(--tb-serif);
+  font-variant-numeric: tabular-nums;
+}
+.try-strip {
+  position: relative;
+  height: 44px;
+  margin: 8px 0 20px;
+  border-bottom: 1px solid var(--band-muted);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--band-muted) 0 1px,
+    transparent 1px 10%
+  );
+  background-size: 100% 10px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+.try-mark {
+  position: absolute;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--band-accent);
+  transition: left 0.2s;
+}
+.try-span {
+  position: absolute;
+  top: 10px;
+  height: 1px;
+  background: var(--band-accent);
+  transition:
+    left 0.2s,
+    width 0.2s;
+}
+.try-note {
+  margin: 0;
+  font: 400 16px/1.6 var(--tb-sans);
+  color: var(--band-muted);
+}
+
+.l-index {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 3vw, 40px) 0;
+}
+.l-index h2 {
+  font: 500 clamp(2rem, 3.6vw, 3.2rem) / 1.02 var(--tb-serif);
+  letter-spacing: -0.03em;
+  margin: 0;
+  align-self: start;
+  position: sticky;
+  top: 24px;
+}
+.l-index dl,
+.l-index ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--tb-ink);
+}
+.l-index dl > div,
+.l-index li {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 8px 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--tb-rule);
+}
+.l-index dt,
+.l-index li strong {
+  font: 500 clamp(20px, 2vw, 26px) / 1.2 var(--tb-serif);
+}
+.l-index dd,
+.l-index li span {
+  margin: 0;
+  font: 400 16px/1.55 var(--tb-sans);
+  color: var(--tb-ink-2);
+}
+.l-steps ol {
+  counter-reset: step;
+}
+.l-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.2rem;
+}
+.l-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 22px;
+  font: 400 13px var(--tb-mono);
+  color: var(--tb-muted);
+}
+
+.l-close {
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 3vw, 40px) 0;
+}
+.l-close > p:first-child {
+  max-width: 34rem;
+  margin: 0 0 24px;
+  font: 400 19px/1.55 var(--tb-serif);
+  color: var(--tb-ink-2);
+}
+.l-wordmark {
+  margin: clamp(32px, 5vw, 64px) 0 -0.1em -0.04em;
+  font: 500 clamp(5rem, 25vw, 26rem) / 0.8 var(--tb-serif);
+  letter-spacing: -0.05em;
+  color: var(--tb-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+}
+
+@media (max-width: 860px) {
+  .l-hero,
+  .l-band,
+  .l-index {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .l-hero {
+    align-items: start;
+  }
+  .l-index h2 {
+    position: static;
+  }
+  .l-index dl > div,
+  .l-index li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .plate-text {
+    display: none;
+  }
+}

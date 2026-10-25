@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, type ReactElement } from "react";
 import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
@@ -7,20 +7,38 @@ import {
   Outlet,
   Route,
   Routes,
+  useLocation,
+  useParams,
 } from "react-router-dom";
-import { Orbit } from "lucide-react";
-import { ThemeSelect, AppearanceSync } from "./components/ThemeSelect";
+import { upgradeId } from "./lib/learning-core";
+import { SkyLoader, Startup } from "./components/Sky";
+import { AppearanceToggles, AppearanceSync } from "./components/ThemeSelect";
 import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
-import { LearningProvider } from "./hooks/useLearning";
 import { AccountMenu } from "./components/AccountMenu";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./pages/Login";
+import "@fontsource-variable/literata/wght.css";
+import "@fontsource-variable/literata/wght-italic.css";
+import "@fontsource-variable/ibm-plex-sans/wght.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
 import "./index.css";
+import "./styles/textbook.css";
+import "./styles/layout.css";
+import "./styles/public.css";
+import "./styles/lesson.css";
+import "./styles/glass.css";
+import "./styles/sky.css";
+import "./styles/chat.css";
 const AppLayout = lazy(() =>
   import("./components/learning/AppLayout").then((m) => ({
     default: m.AppLayout,
   })),
+);
+// The learning provider pulls in the whole course (about 2 MB), so signed-out visitors never download it.
+const LearningProvider = lazy(() =>
+  import("./hooks/useLearning").then((m) => ({ default: m.LearningProvider })),
 );
 const Projects = lazy(() =>
   import("./pages/Projects").then((m) => ({ default: m.Projects })),
@@ -70,38 +88,37 @@ const TeachingLab = lazy(() =>
   import("./pages/TeachingLab").then((m) => ({ default: m.TeachingLab })),
 );
 function PublicLayout() {
+  const onLogin = useLocation().pathname === "/login";
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="header">
-        <Link to="/" className="brand">
-          <Orbit />
-          parallax.
+      <header className="pub-header">
+        <Link to="/" className="pub-brand">
+          parallax
         </Link>
-        <div className="header-controls">
-          <ThemeSelect />
-          <AccountMenu />
+        <div className="pub-actions">
+          <AppearanceToggles />
+          {!onLogin && <AccountMenu />}
         </div>
       </header>
       <Outlet />
-      <footer>
-        <span className="footer-brand">parallax.</span>
+      <footer className="pub-footer">
         <span>Look closer. Think deeper.</span>
       </footer>
     </>
   );
 }
+/** Old links to chemistry bridge lessons (CB.n) now point at CB1.n. */
+function Renamed({ children }: { children: ReactElement }) {
+  const { id = "" } = useParams();
+  const next = upgradeId(id);
+  return next === id ? children : <Navigate to={`/lesson/${next}`} replace />;
+}
 function App() {
   return (
-    <Suspense
-      fallback={
-        <main className="workspace-page" role="status">
-          Opening your observatory…
-        </main>
-      }
-    >
+    <Suspense fallback={<SkyLoader />}>
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Entry />} />
@@ -134,7 +151,14 @@ function App() {
             element={<FoundationRevision />}
           />
           <Route path="/placement" element={<Placement />} />
-          <Route path="/lesson/:id" element={<LessonPlayer />} />
+          <Route
+            path="/lesson/:id"
+            element={
+              <Renamed>
+                <LessonPlayer />
+              </Renamed>
+            }
+          />
           <Route path="/teaching-lab" element={<TeachingLab />} />
         </Route>
         <Route
@@ -154,6 +178,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <AppearanceSync />
+      <Startup />
       <AuthProvider>
         <App />
       </AuthProvider>

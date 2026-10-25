@@ -16,7 +16,7 @@ Thirty additional banks have distinct warm-up/Core prompts, a new numeric transf
 
 ## Calculus and bonding follow-up
 
-MB3.1–MB3.5, PB4.2, CB.1 and CB.2 now have 40 added problems/checks and theory extensions. Four models support limit bounds, signed/geometric area, ODE accuracy and ideal molecular geometry. [Additional source inspection](CALCULUS-CHEMISTRY-SOURCE-INSPECTION.md) extends current partial source mappings to 21 lessons; it is not independent verification. The pilot reporter also tracks optional second-marker agreement and matched immediate/delayed outcomes without equating forms or claiming a real trial.
+MB3.1–MB3.5, PB4.2, CB1.1 and CB1.2 now have 40 added problems/checks and theory extensions. Four models support limit bounds, signed/geometric area, ODE accuracy and ideal molecular geometry. [Additional source inspection](CALCULUS-CHEMISTRY-SOURCE-INSPECTION.md) extends current partial source mappings to 21 lessons; it is not independent verification. The pilot reporter also tracks optional second-marker agreement and matched immediate/delayed outcomes without equating forms or claiming a real trial.
 
 ## Real-analysis follow-up
 

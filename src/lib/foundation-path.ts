@@ -34,11 +34,11 @@ export const FOUNDATION_ORDER = [
   "PB5.1",
   "PB5.2",
   "PB5.3",
-  "CB.1",
-  "CB.2",
-  "CB.3",
-  "CB.4",
-  "CB.5",
+  "CB1.1",
+  "CB1.2",
+  "CB1.3",
+  "CB1.4",
+  "CB1.5",
 ] as const;
 export interface RevisionAnswer {
   response: string;

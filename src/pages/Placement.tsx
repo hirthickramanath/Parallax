@@ -8,7 +8,7 @@ import { useLearning } from "../hooks/useLearning";
 import { Button } from "../components/ui/button";
 export function Placement() {
   const [params] = useSearchParams();
-  const unit = params.get("unit");
+  const unit = params.get("unit") === "CB" ? "CB1" : params.get("unit");
   return <PlacementTest key={unit || "diagnostic"} unit={unit} />;
 }
 function PlacementTest({ unit }: { unit: string | null }) {

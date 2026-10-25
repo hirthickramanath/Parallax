@@ -98,7 +98,7 @@ test("learner pain-point calculations agree with independent pressure heat focus
       .checks.filter((q) => q.type === "numeric");
     values.forEach((v, i) => assert.equal(Number(qs[i].answer), v));
   }
-  const count = data.modules.find((m) => m.id === "CB.1").checks[0];
+  const count = data.modules.find((m) => m.id === "CB1.1").checks[0];
   assert.equal(gradeNumeric("10.01", Number(count.answer), count.exact), false);
 });
 
@@ -137,11 +137,11 @@ test("all optional transfer answers follow independent calculations without chan
     "PB5.1": 1240 / 400 - 2.2,
     "PB5.2": 200 * 2 ** (-12 / 4),
     "PB5.3": ((3.3 - 0.7) / 1300) * 1000,
-    "CB.1": 35 - 17,
-    "CB.2": 4 + 2 * 6,
-    "CB.3": 4 / 5,
-    "CB.4": 1930 / 96500 / 2,
-    "CB.5": (2 * 3 + 2 - 6) / 2,
+    "CB1.1": 35 - 17,
+    "CB1.2": 4 + 2 * 6,
+    "CB1.3": 4 / 5,
+    "CB1.4": 1930 / 96500 / 2,
+    "CB1.5": (2 * 3 + 2 - 6) / 2,
   };
   assert.equal(Object.keys(expected).length, 38);
   for (const m of data.modules) {

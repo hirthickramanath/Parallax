@@ -69,10 +69,13 @@ test("all workspace screens, apparatus and themes work at phone and desktop widt
     await expect(page.getByText("Parabola", { exact: true })).toBeVisible();
   }
   await page.goto("/settings");
-  await page.getByLabel("Appearance").selectOption("dark");
+  const mode = page.getByRole("switch", { name: "Dark mode" });
+  await mode.click();
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await page.getByLabel("Appearance").selectOption("light");
+  await expect(mode).toHaveAttribute("aria-checked", "true");
+  await mode.click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 });
 test("lesson prediction, equations, checks, notes, completion, recap and FSRS work locally", async ({
   page,
@@ -486,7 +489,7 @@ test("weekly planning persists only authored unlocked lessons grouped by track",
   const ids = Object.values(plan.items).flat();
   expect(new Set(ids).size).toBe(ids.length);
   expect(new Set(ids)).toEqual(
-    new Set(["PB1.1", "PB2.1", "PB3.1", "PB4.1", "MB1.1", "MB2.1", "CB.1"]),
+    new Set(["PB1.1", "PB2.1", "PB3.1", "PB4.1", "MB1.1", "MB2.1", "CB1.1"]),
   );
   await page.reload();
   await expect(page.locator(".plan-list article")).toHaveCount(7);
@@ -956,11 +959,14 @@ test("journey dashboard integrates the weekly plan, level map and appearance wit
       .getByRole("navigation", { name: "Study navigation" })
       .getByRole("link", { name: "Lab", exact: true }),
   ).toHaveCount(0);
-  await page.getByLabel("Appearance", { exact: true }).selectOption("dark");
-  await page.getByLabel("Color theme", { exact: true }).selectOption("cosmic");
+  await page.getByRole("switch", { name: "Dark mode" }).click();
+  // Brass -> Cyanotype -> Madder: the colour button steps through the palettes.
+  const colour = page.getByRole("button", { name: /^Color theme:/ });
+  await colour.click();
+  await colour.click();
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await expect(page.locator("html")).toHaveAttribute("data-palette", "cosmic");
+  await expect(page.locator("html")).toHaveAttribute("data-palette", "madder");
   const bridgeMath = JSON.parse(
     readFileSync("src/generated/course.json", "utf8"),
   )
@@ -985,12 +991,14 @@ test("journey dashboard integrates the weekly plan, level map and appearance wit
     localStorage.setItem(key, JSON.stringify(data));
   }, bridgeMath);
   await page.reload();
-  await expect(page.locator(".journey-map select")).toHaveValue("0");
+  await expect(
+    page.getByRole("button", { name: /Bridge refresher/, pressed: true }),
+  ).toBeVisible();
   await expect(page.locator(".current-level")).toContainText("PB1.1");
   await page.goto("/lesson/PB1.1");
-  await expect(
-    page.locator(".app-sidebar,.app-topbar,.mobile-nav"),
-  ).toHaveCount(0);
+  await expect(page.locator(".site-header,.site-footer,.tab-bar")).toHaveCount(
+    0,
+  );
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
 
@@ -1403,7 +1411,7 @@ test("calculus and molecular models expose proof bounds area cancellation and nu
   await expect(page.getByText(/Euler value: -9.00000/)).toBeVisible();
   await page.getByLabel("ODE Euler steps", { exact: true }).fill("40");
   await expect(page.getByText(/Euler value: 0.04434/)).toBeVisible();
-  await page.goto("/lesson/CB.2");
+  await page.goto("/lesson/CB1.2");
   await page.getByLabel("Lone-pair domains", { exact: true }).selectOption("2");
   await expect(
     page.getByText(
@@ -1921,9 +1929,9 @@ test("foundation revision begins from dashboard and saves a separate progressive
   await expect(page.locator(".foundation-chapter-list li")).toHaveCount(38);
   await page.getByRole("button", { name: "Begin guided revision" }).click();
   await expect(page).toHaveURL(/foundation-revision\/MB1.1$/);
-  await expect(
-    page.locator(".app-sidebar,.app-topbar,.mobile-nav"),
-  ).toHaveCount(0);
+  await expect(page.locator(".site-header,.site-footer,.tab-bar")).toHaveCount(
+    0,
+  );
   await expect(page.locator(".revision-glossary dt")).toHaveCount(3);
   await page
     .getByRole("button", { name: "Continue revision", exact: true })
@@ -2003,6 +2011,10 @@ test("foundation revision retains original history can be paused and remains acc
 }) => {
   await signedIn(page);
   await page.goto("/dashboard");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await page.waitForFunction(
+    () => !!localStorage.getItem("parallax-learning-v1:test-learner"),
+  );
   await page.evaluate(() => {
     const key = "parallax-learning-v1:test-learner",
       d = JSON.parse(localStorage.getItem(key)!);
@@ -2465,7 +2477,7 @@ test("floating tutor is reachable on mobile dashboard and uses the current lesso
     exact: true,
   });
   await launcher.click();
-  const dialog = page.getByRole("dialog", { name: "Your AI tutor" });
+  const dialog = page.getByRole("dialog", { name: "AI tutor" });
   await expect(dialog).toBeVisible();
   await dialog.getByLabel("Study topic").selectOption("PB1.1");
   await dialog
@@ -2479,7 +2491,11 @@ test("floating tutor is reachable on mobile dashboard and uses the current lesso
   await expect(dialog).not.toBeVisible();
   await expect(launcher).toBeFocused();
   await page.goto("/lesson/PB1.2");
-  await launcher.click();
+  // On phones the lesson page's own tutor button replaces the floating one.
+  await expect(launcher).toBeHidden();
+  await page
+    .getByRole("button", { name: "Ask about this section", exact: true })
+    .click();
   await expect(dialog.getByText(/Helping with/)).toBeVisible();
   await dialog
     .getByLabel("Ask about this section")
@@ -2587,32 +2603,56 @@ test("revision transfer challenges add depth without blocking completed core che
 });
 
 for (const mobile of [false, true]) {
-  test(`voluntary learner pilot keeps real answers and gates follow-up ${mobile ? "mobile" : "desktop"}`, async ({ page }) => {
+  test(`voluntary learner pilot keeps real answers and gates follow-up ${mobile ? "mobile" : "desktop"}`, async ({
+    page,
+  }) => {
     if (mobile) await page.setViewportSize({ width: 390, height: 844 });
     await signedIn(page);
     await page.goto("/settings");
     await page.getByRole("link", { name: "Open learner pilot" }).click();
-    await expect(page.getByRole("button", { name: "Save this check" })).toBeDisabled();
+    await expect(
+      page.getByRole("button", { name: "Save this check" }),
+    ).toBeDisabled();
     await page.getByLabel("I choose to take part").check();
-    await page.getByLabel("Did you use help or previously see these questions?").selectOption("no");
+    await page
+      .getByLabel("Did you use help or previously see these questions?")
+      .selectOption("no");
     await page.getByLabel("Answer (Pa;").fill("16000");
     await page.getByRole("button", { name: "Save this check" }).click();
-    await expect(page.getByRole("heading", { name: "2. After studying" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "2. After studying" }),
+    ).toBeVisible();
     await page.reload();
-    await expect(page.getByRole("heading", { name: "2. After studying" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "2. After studying" }),
+    ).toBeVisible();
     await page.getByLabel("I choose to take part").check();
-    await page.getByLabel("I have studied these topics after the baseline.").check();
-    await page.getByLabel("Did you use help or previously see these questions?").selectOption("yes");
+    await page
+      .getByLabel("I have studied these topics after the baseline.")
+      .check();
+    await page
+      .getByLabel("Did you use help or previously see these questions?")
+      .selectOption("yes");
     await page.getByRole("button", { name: "Save this check" }).click();
-    await expect(page.getByRole("heading", { name: "Let the learning settle" })).toBeVisible();
-    const data = await page.evaluate(() => JSON.parse(localStorage.getItem("parallax-pilot-v1:test-learner")!));
+    await expect(
+      page.getByRole("heading", { name: "Let the learning settle" }),
+    ).toBeVisible();
+    const data = await page.evaluate(() =>
+      JSON.parse(localStorage.getItem("parallax-pilot-v1:test-learner")!),
+    );
     expect(data.baseline.responses.fluid.value).toBe(16000);
     expect(data.baseline.responses.heat.value).toBeNull();
     expect(data.immediate.assisted).toBe(true);
     expect(data.baseline.responses.fluid.reasoningScore).toBeUndefined();
     const download = page.waitForEvent("download");
     await page.getByRole("button", { name: "Export pilot answers" }).click();
-    expect((await download).suggestedFilename()).toBe("parallax-learner-pilot.json");
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect((await download).suggestedFilename()).toBe(
+      "parallax-learner-pilot.json",
+    );
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
   });
 }

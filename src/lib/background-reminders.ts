@@ -22,7 +22,7 @@ export async function pushRequest(
   if (!result.ok) throw Error(data.error || "Reminder service unavailable");
   return data;
 }
-export async function subscriptionId(endpoint: string) {
+async function subscriptionId(endpoint: string) {
   return Array.from(
     new Uint8Array(
       await crypto.subtle.digest("SHA-256", new TextEncoder().encode(endpoint)),

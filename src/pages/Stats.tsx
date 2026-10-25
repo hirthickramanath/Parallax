@@ -60,10 +60,15 @@ export function Stats() {
           {stats.activeDays} goal days · {stats.totalXp} XP ·{" "}
           {store.preferences.timezone}
         </p>
-        <div className="heatmap" aria-label="365-day activity calendar">
+        <div
+          className="heatmap"
+          role="group"
+          aria-label="365-day activity calendar"
+        >
           {dates.map((date) => (
             <div
               key={date}
+              role="img"
               tabIndex={0}
               className={
                 store.records.days[date]?.goalMet

@@ -1,6 +1,6 @@
 # Calculus, circuits, atoms and bonding follow-up
 
-This batch expands MB3.1–MB3.5, PB4.2, CB.1 and CB.2. Each retains its previous theory and questions and adds four graduated numeric problems, one conceptual model-limit question with misconception feedback, and a derivation/transfer extension. That is 32 numeric additions and eight conceptual checks; each of these eight banks now has 11 unique prompts. Scope includes explicit epsilon/delta bounds, derivative error, signed versus geometric area, interval extrema and moments, ODE solution branches, meter loading, subshell capacity and formal-charge/domain reasoning.
+This batch expands MB3.1–MB3.5, PB4.2, CB1.1 and CB1.2. Each retains its previous theory and questions and adds four graduated numeric problems, one conceptual model-limit question with misconception feedback, and a derivation/transfer extension. That is 32 numeric additions and eight conceptual checks; each of these eight banks now has 11 unique prompts. Scope includes explicit epsilon/delta bounds, derivative error, signed versus geometric area, interval extrema and moments, ODE solution branches, meter loading, subshell capacity and formal-charge/domain reasoning.
 
 ## Connected models
 

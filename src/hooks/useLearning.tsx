@@ -19,6 +19,8 @@ import {
   mergeDay,
   collections,
   mergeDocument,
+  upgradeRecords,
+  upgradeId,
 } from "../lib/learning-core";
 import type { Collection, Preferences, Records } from "../types/learning";
 interface Pending {
@@ -56,6 +58,7 @@ class LearningStore {
         this.records = { ...emptyRecords(), ...data.records };
         this.pending = data.pending || {};
         this.preferences = { ...this.preferences, ...data.preferences };
+        this.upgrade();
       }
     } catch {
       this.storageError = true;
@@ -65,6 +68,25 @@ class LearningStore {
       : Object.keys(this.pending).length
         ? "Saved on this device · waiting to sync"
         : "Saved on this device";
+  }
+  /** Moves progress saved under retired ids to the current ones and queues it for sync. */
+  upgrade() {
+    for (const [key, entry] of Object.entries(this.pending)) {
+      const id = upgradeId(entry.id);
+      if (id === entry.id) continue;
+      delete this.pending[key];
+      this.pending[`${entry.kind}/${id}`] = { ...entry, id };
+    }
+    for (const path of upgradeRecords(this.records)) {
+      const [kind, ...rest] = path.split("/");
+      const id = rest.join("/");
+      this.pending[path] = {
+        kind: kind as Collection,
+        id,
+        value: (this.records[kind as Collection] as Record<string, object>)[id],
+        version: Date.now() + Math.random(),
+      };
+    }
   }
   get key() {
     return `parallax-learning-v1:${this.uid}`;
@@ -116,8 +138,10 @@ class LearningStore {
       this.preferences = { ...this.preferences, ...backup.preferences };
     this.batching = true;
     try {
+      const incoming = structuredClone(backup.records) as Records;
+      upgradeRecords(incoming);
       for (const kind of collections)
-        for (const [id, value] of Object.entries(backup.records[kind])) {
+        for (const [id, value] of Object.entries(incoming[kind])) {
           const merged = mergeDocument(
             kind,
             (this.records[kind] as Record<string, object>)[id],
@@ -224,6 +248,7 @@ class LearningStore {
         pending: Record<string, Pending>;
         preferences: Preferences;
       };
+      upgradeRecords(other.records);
       for (const kind of collections)
         for (const [id, value] of Object.entries(other.records[kind] || {}))
           (this.records[kind] as Record<string, unknown>)[id] = mergeDocument(
@@ -250,6 +275,7 @@ class LearningStore {
     try {
       const { dataStore } = await import("../lib/datastore");
       const remote = await dataStore.load(this.uid);
+      upgradeRecords(remote);
       for (const kind of collections)
         for (const [id, value] of Object.entries(remote[kind])) {
           if (this.pending[`${kind}/${id}`]) {

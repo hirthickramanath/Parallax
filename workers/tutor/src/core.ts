@@ -15,7 +15,7 @@ export function validateRequest(value: unknown): TutorRequest {
   const v = value as Record<string, unknown>;
   if (
     typeof v.lessonId !== "string" ||
-    !/^([A-Z]{2}\d*|CB)\.\d+$/.test(v.lessonId)
+    !/^[A-Z]{2}\d*\.\d+$/.test(v.lessonId)
   )
     throw Error("Invalid lesson");
   if (v.depth !== "quick" && v.depth !== "full") throw Error("Invalid depth");

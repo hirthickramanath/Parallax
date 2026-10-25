@@ -1,186 +1,121 @@
-import { ArrowUpRight, ArrowRight, Orbit, MoveUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "../components/ui/button";
+import { TwoViewsPlate } from "../components/TwoViewsPlate";
+import { ParallaxTry } from "../components/ParallaxTry";
+
+const subjects: [string, string][] = [
+  [
+    "Mathematics",
+    "Algebra and functions, trigonometry, calculus, matrices, vectors and probability, taught as the language the physics is written in.",
+  ],
+  [
+    "Physics",
+    "Mechanics, fluids and heat, waves and optics, electricity and magnetism, then modern physics, relativity and quantum theory.",
+  ],
+  [
+    "Chemistry",
+    "Atomic structure, bonding, thermochemistry, kinetics and organic chemistry, as far as the physics needs it.",
+  ],
+  [
+    "Scientific computing",
+    "Enough programming to run the numbers: simulate an orbit, fit a curve, test an idea.",
+  ],
+  [
+    "Astrophysics",
+    "Stars and molecules, the universe, and a research chapter, reached once the foundations are in place.",
+  ],
+];
+
+const steps: [string, string][] = [
+  ["Recap", "A short reminder of what the last lesson left you with."],
+  [
+    "Predict",
+    "Commit to an answer before the explanation. Being wrong first helps it stick.",
+  ],
+  ["Theory", "The full derivation, revealed one step at a time."],
+  ["Worked example", "A solved problem to study before you try your own."],
+  ["Practice", "Questions that adjust to how you are doing."],
+  ["Review cards", "The ideas come back just before you would forget them."],
+];
+
 export function Home() {
   return (
-    <main id="main">
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="accent-dot" /> ASTROPHYSICS, SEEN DIFFERENTLY
-          </p>
+    <main id="main" className="landing">
+      <section className="l-hero">
+        <div className="l-hero-copy">
+          <p className="mono">Astrophysics, from the first question</p>
           <h1>
-            Start with
-            <br />a question.
+            Look up.
             <br />
-            <em>See a universe.</em>
+            Ask why.
           </h1>
-          <p className="hero-description">
-            The stories behind the science. The theory behind the wonder. A
-            personal journey through astrophysics, built on the full depth of
-            mathematics and physics.
+          <p className="l-lede">
+            Every planet, star and galaxy began as a question. This course
+            starts there: look at an idea from the physics and from the
+            mathematics, check it against the numbers, and keep what holds up.
           </p>
-          <Button asChild>
-            <Link to="/learn">
-              Explore the course <ArrowRight size={18} />
-            </Link>
-          </Button>
-          <p className="hero-note">
-            Astrophysics at the centre. Strong foundations beneath.
-          </p>
+          <Link className="l-cta" to="/learn">
+            Explore the course <ArrowRight size={18} aria-hidden="true" />
+          </Link>
         </div>
-        <div className="orbit-panel">
-          <div className="figure-top">
-            <span>FIELD NOTES / 001</span>
-            <Orbit size={19} />
-          </div>
-          <svg
-            className="orbit-art"
-            viewBox="0 0 500 440"
-            role="img"
-            aria-labelledby="orbit-title orbit-desc"
-          >
-            <title id="orbit-title">A different perspective on an orbit</title>
-            <desc id="orbit-desc">
-              Three inclined elliptical paths surround a central star. A planet
-              is marked on the outer path.
-            </desc>
-            <defs>
-              <radialGradient id="star">
-                <stop stopColor="#ffe6a0" />
-                <stop offset="1" stopColor="#d19a36" />
-              </radialGradient>
-            </defs>
-            <g fill="none" stroke="currentColor">
-              <ellipse
-                cx="250"
-                cy="220"
-                rx="202"
-                ry="116"
-                transform="rotate(-34 250 220)"
-              />
-              <ellipse
-                cx="250"
-                cy="220"
-                rx="170"
-                ry="88"
-                transform="rotate(36 250 220)"
-              />
-              <ellipse
-                cx="250"
-                cy="220"
-                rx="130"
-                ry="62"
-                transform="rotate(-12 250 220)"
-              />
-              <path
-                d="M250 30v380M40 220h420"
-                strokeDasharray="3 8"
-                opacity=".25"
-              />
-            </g>
-            <circle cx="250" cy="220" r="28" fill="url(#star)" />
-            <circle cx="416" cy="112" r="9" fill="#a8cfc5" />
-            <path d="M425 103l24-24h25" fill="none" stroke="currentColor" />
-            <text
-              x="432"
-              y="65"
-              fill="currentColor"
-              fontSize="11"
-              letterSpacing="2"
-            >
-              YOU ARE HERE
-            </text>
-          </svg>
-          <div className="figure-caption">
-            <span className="figure-number">01 — THE QUESTION</span>
-            <p>
-              To catch a spacecraft ahead of you,
-              <br />
-              would you speed up or slow down?
-            </p>
-            <span className="caption-note">
-              A puzzle waiting in Sky & orbits
-            </span>
-          </div>
-        </div>
+        <figure className="l-plate">
+          <TwoViewsPlate />
+          <figcaption>
+            <span className="mono">Fig. 1</span> Two observers see the Moon
+            against different stars. The angle between their views, and the
+            distance between them, give the distance to the Moon.
+          </figcaption>
+        </figure>
       </section>
-      <section className="approach">
-        <div>
-          <p className="eyebrow">A NEW POINT OF VIEW</p>
-          <h2>
-            Understanding changes
-            <br />
-            everything.
-          </h2>
-        </div>
-        <p>
-          Not a collection of facts to memorise. A connected course that asks
-          you to predict, lets you explore, and shows you why the answer makes
-          sense.
-        </p>
-      </section>
-      <section className="features" aria-label="How you will learn">
-        {[
-          [
-            "01",
-            "Follow your curiosity",
-            "Every lesson begins with a puzzle. Make a prediction before the explanation unfolds.",
-          ],
-          [
-            "02",
-            "Go beneath the surface",
-            "Move from the discovery story to the intuition, then reveal the mathematics one step at a time.",
-          ],
-          [
-            "03",
-            "Connect the dots",
-            "Follow a prerequisite-aware path through mathematics, physics, chemistry, and the science of our universe.",
-          ],
-        ].map(([number, title, copy]) => (
-          <article key={number}>
-            <span className="feature-number">{number}</span>
-            <h3>{title}</h3>
-            <p>{copy}</p>
-          </article>
-        ))}
-      </section>
-      <section className="journey">
-        <div>
-          <p className="eyebrow">THE JOURNEY AHEAD</p>
-          <h2>
-            Small questions.
-            <br />
-            Extraordinary connections.
-          </h2>
+
+      <section className="l-band" aria-labelledby="try-title">
+        <div className="l-band-head">
+          <h2 id="try-title">Try the idea</h2>
           <p>
-            Physics at the heart. Mathematics as the language.
-            <br />
-            Chemistry and scientific tools to connect them.
+            Astronomers measure how far away a star is by looking from two
+            places and comparing. Here is that lesson in miniature: a picture,
+            one equation, and something to move.
           </p>
         </div>
-        <div className="track-list">
-          {[
-            "Astrophysics",
-            "Mathematics",
-            "Physics",
-            "Chemistry",
-            "Scientific computing",
-          ].map((track, i) => (
-            <div key={track}>
-              <span className="track-number">0{i + 1}</span>
-              <span>{track}</span>
-              <MoveUpRight size={16} aria-hidden="true" />
+        <ParallaxTry />
+      </section>
+
+      <section className="l-index" aria-labelledby="index-title">
+        <h2 id="index-title">What you will study</h2>
+        <dl>
+          {subjects.map(([name, text]) => (
+            <div key={name}>
+              <dt>{name}</dt>
+              <dd>{text}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </section>
-      <div className="closing">
-        <span>Curiosity is a good place to begin.</span>
-        <Link to="/learn">
-          See what’s ahead <ArrowUpRight size={18} />
+
+      <section className="l-index l-steps" aria-labelledby="steps-title">
+        <h2 id="steps-title">A lesson, in order</h2>
+        <ol>
+          {steps.map(([name, text]) => (
+            <li key={name}>
+              <strong>{name}</strong>
+              <span>{text}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="l-close">
+        <p>
+          Full theory. Real questions. Draft lessons, openly marked as drafts
+          until independent review.
+        </p>
+        <Link className="l-cta" to="/learn">
+          Start with one question <ArrowRight size={18} aria-hidden="true" />
         </Link>
-      </div>
+        <p className="l-wordmark" aria-hidden="true">
+          parallax
+        </p>
+      </section>
     </main>
   );
 }

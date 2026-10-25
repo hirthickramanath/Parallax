@@ -54,7 +54,7 @@ All lesson drafts require source and scientific review. A filled foundation unit
 | 6 | PH16 | General relativity | 8 / 8 | None |
 | 5 | PH17 | Experimental and computational physics | 5 / 5 | None |
 | 8 | PH18 | Research readiness | 4 / 4 | None |
-| 0 | CB | Bridge | 5 / 5 | None |
+| 0 | CB1 | Bridge | 5 / 5 | None |
 | 4 | CH1 | Physical chemistry | 13 / 13 | None |
 | 4 | CH2 | Quantum chemistry and spectroscopy | 6 / 6 | None |
 | 6 | CH3 | Research and astrochemistry | 5 / 5 | None |

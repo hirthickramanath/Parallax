@@ -3,7 +3,7 @@ import fs from "node:fs";
 
 export const CASES_FILE = "content/evaluation/tutor-cases.json";
 const CATEGORIES = ["known-answer", "false-premise", "injection", "honesty", "scope", "pedagogy"];
-const LESSON_ID = /^([A-Z]{2}\d*|CB)\.\d+$/; // same rule as workers/tutor/src/core.ts
+const LESSON_ID = /^[A-Z]{2}\d*\.\d+$/; // same rule as workers/tutor/src/core.ts
 
 export function loadCases(file = CASES_FILE) {
   return JSON.parse(fs.readFileSync(file, "utf8")).cases;

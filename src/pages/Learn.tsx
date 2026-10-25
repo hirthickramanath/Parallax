@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { LockKeyhole, CheckCircle2, ArrowRight } from "lucide-react";
-import { course, phases, missingNeeds } from "../lib/course";
+import { course, missingNeeds } from "../lib/course";
+import {
+  ChapterTiles,
+  usePhaseProgress,
+} from "../components/learning/JourneyMap";
 import { useLearning } from "../hooks/useLearning";
 export function Learn() {
   const store = useLearning();
@@ -16,8 +20,12 @@ export function Learn() {
           .toLowerCase()
           .includes(search.toLowerCase())),
   );
+  const progress = usePhaseProgress();
+  const isRead = (id: string) =>
+    ["done", "skipped"].includes(store.records.lessons[id]?.status);
+  const focusUnit = units.find((u) => u.lessons.some((id) => !isRead(id)))?.id;
   return (
-    <main id="main" className="workspace-page">
+    <main id="main" className="workspace-page course-page">
       <p className="eyebrow">YOUR PATH TO THE UNIVERSE</p>
       <h1>One idea builds the next.</h1>
       <p className="page-description">
@@ -38,65 +46,69 @@ export function Learn() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <div className="phase-tabs" role="group" aria-label="Course phases">
-        {phases.map((name, i) => (
-          <button
-            key={name}
-            aria-pressed={phase === i}
-            onClick={() => {
-              setPhase(i);
-              setSearch("");
-            }}
-          >
-            Phase {i}
-            <span>{name}</span>
-          </button>
-        ))}
-      </div>
-      <div className="unit-timeline">
-        {units.map((unit) => (
-          <section className="unit-chapter" key={unit.id}>
-            <div className="chapter-marker">{unit.phase}</div>
+      <ChapterTiles
+        progress={progress}
+        phase={phase}
+        onSelect={(i) => {
+          setPhase(i);
+          setSearch("");
+        }}
+      />
+      <div className="course-units">
+        {units.map((unit) => {
+          const lessons = unit.lessons.map((id) =>
+            course.lessons.find((l) => l.id === id)!,
+          );
+          const read = lessons.filter((l) =>
+            ["done", "skipped"].includes(store.records.lessons[l.id]?.status),
+          ).length;
+          return (
             <details
-              open={!!search || unit.lessons.some((id) => course.authored[id])}
+              className="path-unit course-unit"
+              key={`${phase}-${unit.id}-${search}`}
+              open={!!search || unit.id === focusUnit}
             >
               <summary>
-                <span className="pill">
+                <span className="path-track">
                   {unit.track} · {unit.id}
                 </span>
-                <h2>{unit.title}</h2>
-                <span>
-                  {unit.lessons.length} lessons
-                  {unit.needs.length ? " · Needs " + unit.needs.join(", ") : ""}
+                <h2 className="path-unit-title">{unit.title}</h2>
+                <span className="path-unit-count">
+                  {read} / {lessons.length}
                 </span>
               </summary>
-              {unit.phase === 0 && (
-                <Link
-                  className="skip-test-link"
-                  to={`/placement?unit=${unit.id}`}
-                >
-                  Take {unit.id} skip test →
-                </Link>
-              )}
-              <div className="lesson-cards">
-                {unit.lessons.map((id) => {
-                  const lesson = course.lessons.find((l) => l.id === id)!;
+              <p className="unit-meta">
+                {unit.needs.length ? `Needs ${unit.needs.join(", ")}. ` : ""}
+                {unit.phase === 0 && (
+                  <Link
+                    className="skip-test-link"
+                    to={`/placement?unit=${unit.id}`}
+                  >
+                    Take {unit.id} skip test →
+                  </Link>
+                )}
+              </p>
+              <ol className="course-rows">
+                {lessons.map((lesson) => {
+                  const id = lesson.id;
                   const needs = missingNeeds(lesson, store.records);
+                  const status = store.records.lessons[id]?.status;
                   return (
-                    <article
-                      className={`course-lesson ${lesson.available ? "available" : ""}`}
+                    <li
+                      className={`course-row ${lesson.available ? "available" : ""}`}
                       key={id}
                     >
-                      <div>
-                        <span className="lesson-id">
-                          {id} · {lesson.level}
-                        </span>
+                      <span className="lesson-id">
+                        {id} · {lesson.level}
+                      </span>
+                      <div className="course-row-main">
                         <h3>{lesson.title}</h3>
                         <p>{lesson.hook}</p>
                         <span className="lesson-status">
-                          {store.records.lessons[id]?.status === "done" ? (
+                          {status === "done" ? (
                             <>
-                              <CheckCircle2 size={14} /> Completed
+                              <CheckCircle2 size={14} aria-hidden="true" />{" "}
+                              Completed
                             </>
                           ) : lesson.available ? (
                             "Playable draft"
@@ -106,8 +118,8 @@ export function Learn() {
                         </span>
                         {needs.length > 0 && (
                           <small className="needs-label">
-                            <LockKeyhole size={12} /> Recommended first:{" "}
-                            {needs.join(", ")}
+                            <LockKeyhole size={12} aria-hidden="true" />{" "}
+                            Recommended first: {needs.join(", ")}
                           </small>
                         )}
                       </div>
@@ -115,21 +127,21 @@ export function Learn() {
                         <Link
                           className="lesson-start"
                           to={`/lesson/${id}`}
-                          aria-label={`Open ${id}`}
+                          aria-label={`${store.records.lessons[id] ? "Resume" : "Explore"} ${id}`}
                         >
                           {store.records.lessons[id] ? "Resume" : "Explore"}
-                          <ArrowRight size={17} />
+                          <ArrowRight size={17} aria-hidden="true" />
                         </Link>
                       ) : (
                         <span className="pill">Draft stub</span>
                       )}
-                    </article>
+                    </li>
                   );
                 })}
-              </div>
+              </ol>
             </details>
-          </section>
-        ))}
+          );
+        })}
       </div>
       {!units.length && <p>No matching curriculum entries.</p>}
     </main>

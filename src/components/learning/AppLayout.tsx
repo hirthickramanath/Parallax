@@ -1,11 +1,12 @@
 import { TutorDockProvider } from "./TutorDock";
 import { BackgroundReminderSync } from "./BackgroundReminder";
-import { ThemeSelect } from "../ThemeSelect";
+import { AppearanceToggles } from "../ThemeSelect";
 import { NavLink, Link, Outlet, useLocation } from "react-router-dom";
 import {
-  Orbit,
-  LayoutDashboard,
+  CalendarCheck,
   Map,
+  Layers,
+  Activity,
   Flame,
   Settings,
   LogOut,
@@ -15,9 +16,10 @@ import { useLearning, useClock } from "../../hooks/useLearning";
 import { dateKey, streakStats } from "../../lib/learning-core";
 import { StudyReminder } from "./StudyReminder";
 const links = [
-  ["/dashboard", "Dashboard", LayoutDashboard],
-  ["/learn", "Learn", Map],
-  ["/stats", "Activity", Flame],
+  ["/dashboard", "Today", CalendarCheck],
+  ["/learn", "Course", Map],
+  ["/review", "Review", Layers],
+  ["/stats", "Activity", Activity],
   ["/settings", "Settings", Settings],
 ] as const;
 export function AppLayout() {
@@ -34,7 +36,7 @@ export function AppLayout() {
     pathname.startsWith("/foundation-revision/");
   if (focused)
     return (
-      <TutorDockProvider>
+      <TutorDockProvider focused>
         <div className="learning-app focused-study">
           <a className="skip-link" href="#main">
             Skip to content
@@ -46,55 +48,31 @@ export function AppLayout() {
     );
   return (
     <TutorDockProvider>
-      <div className="learning-app">
+      <div className="learning-app shell">
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <aside className="app-sidebar">
-          <Link className="app-brand" to="/dashboard">
-            <Orbit />
-            parallax<span>✦</span>
-          </Link>
-          <nav aria-label="Study navigation">
-            {links.map(([to, label, Icon]) => (
-              <NavLink key={to} to={to}>
-                <Icon size={20} />
-                {label}
-              </NavLink>
-            ))}
-          </nav>
-          <div className="sidebar-bottom">
-            <div className="sidebar-note">
-              <span>THE UNIVERSE IS BIG.</span>
-              <strong>Start with one question.</strong>
-            </div>
-            <button
-              onClick={() =>
-                void logout().catch(() =>
-                  window.alert("Sign-out failed. Please retry."),
-                )
-              }
-            >
-              <LogOut size={18} />
-              Sign out
-            </button>
-          </div>
-        </aside>
-        <div className="app-main">
-          <header className="app-topbar">
-            <span className="mobile-brand">parallax✦</span>
-            <span className="sync-status" role="status">
-              {store.storageError
-                ? "Browser storage unavailable"
-                : store.status}
-            </span>
-            <ThemeSelect />
-            <div className="topbar-stats">
-              <span>
-                <Flame size={19} />
+        <header className="site-header">
+          <div className="site-header-inner">
+            <Link className="site-brand" to="/dashboard">
+              parallax<span aria-hidden="true">✦</span>
+            </Link>
+            <nav className="site-nav" aria-label="Study navigation">
+              {links.map(([to, label, Icon]) => (
+                <NavLink key={to} to={to}>
+                  <Icon size={18} aria-hidden="true" />
+                  {label}
+                </NavLink>
+              ))}
+            </nav>
+            <div className="site-stats">
+              <span title="Day streak">
+                <Flame size={18} aria-hidden="true" />
                 {stats.current}
+                <span className="visually-hidden"> day streak</span>
               </span>
               <span className="xp-badge">✦ {stats.totalXp} XP</span>
+              <AppearanceToggles />
               <Link
                 to="/settings"
                 className="avatar"
@@ -103,27 +81,44 @@ export function AppLayout() {
                 {(user?.displayName || user?.email || "P")[0].toUpperCase()}
               </Link>
             </div>
-          </header>
+          </div>
+        </header>
+        <div className="shell-body">
           <StudyReminder />
           <BackgroundReminderSync />
           <Outlet />
-          <footer className="app-footer">
-            Draft lessons · Full theory · Real questions
-            <br />
-            Your progress belongs to you.
-          </footer>
         </div>
-        <nav className="mobile-nav" aria-label="Mobile study navigation">
-          {links
-            .filter(([to]) =>
-              ["/dashboard", "/learn", "/stats", "/settings"].includes(to),
-            )
-            .map(([to, label, Icon]) => (
-              <NavLink key={to} to={to}>
-                <Icon size={20} />
-                <span>{label}</span>
-              </NavLink>
-            ))}
+        <footer className="site-footer">
+          <div className="site-footer-inner">
+            <span className="sync-status" role="status">
+              {store.storageError
+                ? "Browser storage unavailable"
+                : store.status}
+            </span>
+            <button
+              className="signout"
+              onClick={() =>
+                void logout().catch(() =>
+                  window.alert("Sign-out failed. Please retry."),
+                )
+              }
+            >
+              <LogOut size={16} aria-hidden="true" />
+              Sign out
+            </button>
+          </div>
+          <p>
+            Draft lessons · Full theory · Real questions. Your progress belongs
+            to you.
+          </p>
+        </footer>
+        <nav className="tab-bar" aria-label="Mobile study navigation">
+          {links.map(([to, label, Icon]) => (
+            <NavLink key={to} to={to}>
+              <Icon size={20} aria-hidden="true" />
+              <span>{label}</span>
+            </NavLink>
+          ))}
         </nav>
       </div>
     </TutorDockProvider>
