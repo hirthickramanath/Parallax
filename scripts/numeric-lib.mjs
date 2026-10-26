@@ -16,6 +16,7 @@ const UNITS = {
   m: [1, D(0, 1)],
   km: [1e3, D(0, 1)],
   cm: [1e-2, D(0, 1)],
+  mm: [1e-3, D(0, 1)],
   nm: [1e-9, D(0, 1)],
   micrometres: [1e-6, D(0, 1)],
   micrometre: [1e-6, D(0, 1)],
@@ -24,8 +25,13 @@ const UNITS = {
   "solar radii": [6.957e8, D(0, 1)],
   s: [1, D(0, 0, 1)],
   years: [3.15576e7, D(0, 0, 1)],
+  hours: [3600, D(0, 0, 1)],
+  days: [86400, D(0, 0, 1)],
+  pc: [3.0856775814913673e16, D(0, 1)],
+  parsecs: [3.0856775814913673e16, D(0, 1)],
   kg: [1, D(1)],
   K: [1, D(0, 0, 0, 1)],
+  mol: [1, D(0, 0, 0, 0, 0, 1)],
   A: [1, D(0, 0, 0, 0, 1)],
   C: [1, D(0, 0, 1, 0, 1)],
   N: [1, D(1, 1, -2)],
@@ -33,6 +39,12 @@ const UNITS = {
   W: [1, D(1, 2, -3)],
   Pa: [1, D(1, -1, -2)],
   Hz: [1, D(0, 0, -1)],
+  V: [1, D(1, 2, -3, 0, -1)],
+  ohm: [1, D(1, 2, -3, 0, -2)],
+  "Ω": [1, D(1, 2, -3, 0, -2)],
+  S: [1, D(-1, -2, 3, 0, 2)],
+  H: [1, D(1, 2, -2, 0, -2)],
+  eV: [1.602176634e-19, D(1, 2, -2)],
   degrees: [Math.PI / 180, NONE],
   radians: [1, NONE],
   rad: [1, NONE],
@@ -78,6 +90,7 @@ function parseProduct(text) {
     }
   }
   for (const token of rest.split(/[\s·*]+/).filter(Boolean)) {
+    if (token === "1") continue; // "1/days"
     const t = parseToken(token);
     if (!t) return null;
     factor *= t.factor;

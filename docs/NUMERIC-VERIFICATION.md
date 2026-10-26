@@ -9,14 +9,15 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 70 (4.5%) |
+| Independently recomputed and passing | 516 (33.2%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 35 |
+| Lessons with at least one recomputed question | 111 |
 | Questions with a concrete physical unit | 57 (57 recomputed) |
+| Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 85 |
 | Questions marked dimensionless | 19 |
 | Questions whose unit field is a placeholder ("as stated in the question" and similar) | 844 |
 | Questions with no unit field | 634 |
-| Prompts that ask for a unit but have no concrete stored unit | 46 |
+| Prompts that ask for a unit but have no concrete stored unit | 59 |
 
 The majority of numeric questions carry no machine-readable unit, so their units cannot be checked automatically. Adding concrete `unit` values to those questions is a content task; each one then becomes checkable.
 
@@ -25,6 +26,7 @@ The majority of numeric questions carry no machine-readable unit, so their units
 1. **Every numeric question (lints):** the answer is a finite number; the unit string is a concrete unit, a known placeholder or a dimensionless label; if a prompt ends "in <unit>" and the stored unit is concrete, the two agree.
 2. **Registry (`scripts/numeric-checks.mjs`):** each entry recomputes the answer from the prompt's givens with unit-carrying arithmetic (`scripts/numeric-lib.mjs`). The result's dimensions must match the stored unit and its value must equal the stored answer (relative tolerance 1e-9 unless the entry says otherwise).
 3. **Staleness:** each entry stores a fingerprint of the prompt and stored answer. If either changes, the entry fails as *stale* until a person re-reads the question and refreshes it. A check therefore never keeps its tick after the question is edited.
+4. **Declared units:** where the stored unit is a placeholder, an entry may state the unit the prompt asks for (fourth element, `{ unit: "m/s" }`). The recomputed quantity must have those dimensions. This checks the prompt, not the stored field; the stored unit stays a placeholder until the lesson is edited.
 
 ## Adding a check
 
@@ -106,3 +108,449 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PB4.3:depth-transfer-20261020` | A | ok |
 | `PH16.1:review-core-transfer` | m/s² | ok |
 | `PH18.1:review-core-transfer` | dimensionless | ok |
+| `PB1.2:q4` | kg m/s (declared in registry) | ok |
+| `PB1.2:q5` | J (declared in registry) | ok |
+| `PB1.2:q6` | m/s (declared in registry) | ok |
+| `PB1.3:q4` | kg m² (declared in registry) | ok |
+| `PB1.3:q5` | m/s (declared in registry) | ok |
+| `PB2.1:n1` | Pa (declared in registry) | ok |
+| `PB2.1:warmup` | Pa (declared in registry) | ok |
+| `PB2.1:floating-transfer` | as stated | ok |
+| `PB2.2:n1` | as stated in question | ok |
+| `PB2.2:warmup` | J (declared in registry) | ok |
+| `PB2.3:n1` | as stated in question | ok |
+| `PB2.3:warmup` | as stated in question | ok |
+| `PB2.3:transfer-model-check` | Pa (declared in registry) | ok |
+| `PB2.3:foundation_next-transfer-1` | none | ok |
+| `PB2.3:foundation_next-transfer-2` | none | ok |
+| `PB3.1:n1` | m (declared in registry) | ok |
+| `PB3.1:warmup` | m (declared in registry) | ok |
+| `PB3.1:transfer-model-check` | Hz (declared in registry) | ok |
+| `PB3.1:foundation_next-transfer-1` | none | ok |
+| `PB3.1:foundation_next-transfer-2` | none | ok |
+| `PB3.2:n1` | cm (declared in registry) | ok |
+| `PB3.2:warmup` | cm (declared in registry) | ok |
+| `PB3.2:transfer-model-check` | cm (declared in registry) | ok |
+| `PB3.2:foundation_next-transfer-1` | none | ok |
+| `PB3.2:foundation_next-transfer-2` | none | ok |
+| `PB3.3:n1` | mm (declared in registry) | ok |
+| `PB3.3:warmup` | mm (declared in registry) | ok |
+| `PB3.3:transfer-model-check` | nm (declared in registry) | ok |
+| `PB3.3:foundation_next-transfer-1` | none | ok |
+| `PB3.3:foundation_next-transfer-2` | none | ok |
+| `PB4.1:n1` | V/m (declared in registry) | ok |
+| `PB4.1:warmup` | V/m (declared in registry) | ok |
+| `PB4.1:transfer-model-check` | eV (declared in registry) | ok |
+| `PB4.1:foundation_next-transfer-1` | none | ok |
+| `PB4.1:foundation_next-transfer-2` | none | ok |
+| `PB4.2:q4` | A (declared in registry) | ok |
+| `PB4.2:q5` | ohm (declared in registry) | ok |
+| `PB4.2:q6` | as specified | ok |
+| `PB4.2:depth-transfer-1` | A (declared in registry) | ok |
+| `PB4.2:depth-transfer-2` | ohm (declared in registry) | ok |
+| `PB4.2:depth-transfer-3` | A (declared in registry) | ok |
+| `PB4.2:depth-transfer-4` | ohm (declared in registry) | ok |
+| `PB4.3:n1` | s (declared in registry) | ok |
+| `PB4.3:warmup` | s (declared in registry) | ok |
+| `PB4.3:transfer-model-check` | V (declared in registry) | ok |
+| `PB4.3:foundation_next-transfer-1` | none | ok |
+| `PB4.3:foundation_next-transfer-2` | none | ok |
+| `PB4.4:n1` | W (declared in registry) | ok |
+| `PB4.4:warmup` | W (declared in registry) | ok |
+| `PB4.4:transfer-model-check` | rad/s (declared in registry) | ok |
+| `PB4.4:foundation_next-transfer-1` | none | ok |
+| `PB4.4:foundation_next-transfer-2` | none | ok |
+| `PB5.1:n1` | V (declared in registry) | ok |
+| `PB5.1:warmup` | V (declared in registry) | ok |
+| `PB5.1:transfer-model-check` | eV (declared in registry) | ok |
+| `PB5.1:foundation_next-transfer-1` | none | ok |
+| `PB5.1:foundation_next-transfer-2` | none | ok |
+| `PB5.2:n1` | as stated in question | ok |
+| `PB5.2:warmup` | as stated in question | ok |
+| `PB5.2:transfer-model-check` | as stated in question | ok |
+| `PB5.2:foundation_next-transfer-1` | none | ok |
+| `PB5.2:foundation_next-transfer-2` | none | ok |
+| `PB5.3:n1` | as stated in question | ok |
+| `PB5.3:warmup` | S/m (declared in registry) | ok |
+| `PB5.3:transfer-model-check` | as stated in question | ok |
+| `PB5.3:foundation_next-transfer-1` | none | ok |
+| `PB5.3:foundation_next-transfer-2` | none | ok |
+| `MB1.1:n1` | as stated in question | ok |
+| `MB1.1:warmup` | as stated in question | ok |
+| `MB1.1:transfer-model-check` | as stated in question | ok |
+| `MB1.1:foundation_next-transfer-1` | none | ok |
+| `MB1.1:foundation_next-transfer-2` | none | ok |
+| `MB1.2:n1` | as stated in question | ok |
+| `MB1.2:warmup` | as stated in question | ok |
+| `MB1.2:transfer-model-check` | as stated in question | ok |
+| `MB1.2:foundation_next-transfer-1` | none | ok |
+| `MB1.2:foundation_next-transfer-2` | none | ok |
+| `MB1.3:n1` | as stated in question | ok |
+| `MB1.3:warmup` | as stated in question | ok |
+| `MB1.3:transfer-model-check` | as stated in question | ok |
+| `MB1.3:foundation_next-transfer-1` | none | ok |
+| `MB1.3:foundation_next-transfer-2` | none | ok |
+| `MB1.4:n1` | as stated in question | ok |
+| `MB1.4:warmup` | as stated in question | ok |
+| `MB1.4:transfer-model-check` | as stated in question | ok |
+| `MB1.4:foundation_next-transfer-1` | none | ok |
+| `MB1.4:foundation_next-transfer-2` | none | ok |
+| `MB2.1:n1` | degrees (declared in registry) | ok |
+| `MB2.1:warmup` | degrees (declared in registry) | ok |
+| `MB2.1:transfer-model-check` | as stated in question | ok |
+| `MB2.1:foundation_next-transfer-1` | none | ok |
+| `MB2.1:foundation_next-transfer-2` | none | ok |
+| `MB2.2:n1` | as stated in question | ok |
+| `MB2.2:warmup` | as stated in question | ok |
+| `MB2.2:ellipse-minor` | as stated | ok |
+| `MB2.2:ellipse-eccentricity` | as stated | ok |
+| `MB2.2:hyperbola-transfer` | as stated | ok |
+| `MB2.3:n1` | as stated in question | ok |
+| `MB2.3:warmup` | as stated in question | ok |
+| `MB2.3:normal-length` | as stated | ok |
+| `MB2.3:signed-distance` | as stated | ok |
+| `MB2.3:normal-rescale` | as stated | ok |
+| `MB2.3:projection-x` | as stated | ok |
+| `MB2.3:line-plane` | as stated | ok |
+| `MB2.3:skew-distance` | as stated | ok |
+| `MB3.1:q4` | as specified | ok |
+| `MB3.1:q5` | as specified | ok |
+| `MB3.1:depth-transfer-1` | as stated in question | ok |
+| `MB3.1:depth-transfer-2` | as stated in question | ok |
+| `MB3.1:depth-transfer-3` | as stated in question | ok |
+| `MB3.1:depth-transfer-4` | as stated in question | ok |
+| `MB3.2:value` | dimensionless | ok |
+| `MB3.2:depth-transfer-1` | as stated in question | ok |
+| `MB3.2:depth-transfer-2` | as stated in question | ok |
+| `MB3.2:depth-transfer-3` | as stated in question | ok |
+| `MB3.2:depth-transfer-4` | as stated in question | ok |
+| `MB3.3:q4` | as specified | ok |
+| `MB3.3:q5` | as specified | ok |
+| `MB3.3:depth-transfer-1` | as stated in question | ok |
+| `MB3.3:depth-transfer-2` | as stated in question | ok |
+| `MB3.3:depth-transfer-3` | as stated in question | ok |
+| `MB3.3:depth-transfer-4` | as stated in question | ok |
+| `MB3.4:q4` | as specified | ok |
+| `MB3.4:q5` | m³/s (declared in registry) | ok |
+| `MB3.4:q6` | as specified | ok |
+| `MB3.4:depth-transfer-1` | as stated in question | ok |
+| `MB3.4:depth-transfer-2` | as stated in question | ok |
+| `MB3.4:depth-transfer-3` | m (declared in registry) | ok |
+| `MB3.4:depth-transfer-4` | m³/s (declared in registry) | ok |
+| `MB3.5:q4` | as specified | ok |
+| `MB3.5:q5` | as specified | ok |
+| `MB3.5:depth-transfer-1` | as stated in question | ok |
+| `MB3.5:depth-transfer-2` | as stated in question | ok |
+| `MB3.5:depth-transfer-3` | as stated in question | ok |
+| `MB3.5:depth-transfer-4` | as stated in question | ok |
+| `MB4.1:n1` | as stated in question | ok |
+| `MB4.1:warmup` | as stated in question | ok |
+| `MB4.1:transfer-model-check` | as stated in question | ok |
+| `MB4.1:foundation_next-transfer-1` | none | ok |
+| `MB4.1:foundation_next-transfer-2` | none | ok |
+| `MB4.2:n1` | as stated in question | ok |
+| `MB4.2:warmup` | as stated in question | ok |
+| `MB4.2:transfer-model-check` | as stated in question | ok |
+| `MB4.2:foundation_next-transfer-1` | none | ok |
+| `MB4.2:foundation_next-transfer-2` | none | ok |
+| `MB4.3:n1` | as stated in question | ok |
+| `MB4.3:warmup` | as stated in question | ok |
+| `MB4.3:transfer-model-check` | as stated in question | ok |
+| `MB4.3:foundation_next-transfer-1` | none | ok |
+| `MB4.3:foundation_next-transfer-2` | none | ok |
+| `MB4.4:n1` | as stated in question | ok |
+| `MB4.4:warmup` | as stated in question | ok |
+| `MB4.4:transfer-model-check` | as stated in question | ok |
+| `MB4.4:foundation_next-transfer-1` | none | ok |
+| `MB4.4:foundation_next-transfer-2` | none | ok |
+| `CB1.1:q4` | as specified | ok |
+| `CB1.1:q5` | as specified | ok |
+| `CB1.1:depth-transfer-1` | as stated in question | ok |
+| `CB1.1:depth-transfer-2` | as stated in question | ok |
+| `CB1.1:depth-transfer-3` | as stated in question | ok |
+| `CB1.1:depth-transfer-4` | eV (declared in registry) | ok |
+| `CB1.2:q4` | as specified | ok |
+| `CB1.2:q5` | as specified | ok |
+| `CB1.2:depth-transfer-1` | as stated in question | ok |
+| `CB1.2:depth-transfer-2` | as stated in question | ok |
+| `CB1.2:depth-transfer-3` | as stated in question | ok |
+| `CB1.2:depth-transfer-4` | degrees (declared in registry) | ok |
+| `CB1.3:n1` | mol (declared in registry) | ok |
+| `CB1.3:warmup` | mol (declared in registry) | ok |
+| `CB1.3:transfer-model-check` | J/mol (declared in registry) | ok |
+| `CB1.3:chemistry-transfer-1` | none | ok |
+| `CB1.3:chemistry-transfer-2` | none | ok |
+| `CB1.4:n1` | s (declared in registry) | ok |
+| `CB1.4:warmup` | s (declared in registry) | ok |
+| `CB1.4:transfer-model-check` | as stated in question | ok |
+| `CB1.4:chemistry-transfer-1` | none | ok |
+| `CB1.4:chemistry-transfer-2` | none | ok |
+| `CB1.5:n1` | as stated in question | ok |
+| `CB1.5:warmup` | as stated in question | ok |
+| `CB1.5:transfer-model-check` | as stated in question | ok |
+| `CB1.5:chemistry-transfer-1` | none | ok |
+| `CB1.5:chemistry-transfer-2` | none | ok |
+| `AS1.1:q4` | degrees (declared in registry) | ok |
+| `AS1.1:q5` | degrees (declared in registry) | ok |
+| `AS1.1:astro-transfer-1` | degrees (declared in registry) | ok |
+| `AS1.1:astro-transfer-2` | degrees (declared in registry) | ok |
+| `AS1.2:q4` | hours (declared in registry) | ok |
+| `AS1.2:q5` | as specified | ok |
+| `AS1.2:astro-transfer-1` | degrees (declared in registry) | ok |
+| `AS1.2:astro-transfer-2` | degrees (declared in registry) | ok |
+| `AS1.3:speed` | normalized | ok |
+| `AS1.3:warmup` | normalized | ok |
+| `AS1.3:astro-transfer-1` | AU (declared in registry) | ok |
+| `AS1.3:astro-transfer-2` | none | ok |
+| `AS1.4:n1` | AU (declared in registry) | ok |
+| `AS1.4:warmup` | AU (declared in registry) | ok |
+| `AS1.4:transfer-model-check` | as stated in question | ok |
+| `AS1.4:astro-transfer-1` | none | ok |
+| `AS1.4:astro-transfer-2` | none | ok |
+| `AS1.5:n1` | as stated in question | ok |
+| `AS1.5:warmup` | as stated in question | ok |
+| `AS1.5:transfer-model-check` | m/s² (declared in registry) | ok |
+| `AS1.5:astro-transfer-1` | none | ok |
+| `AS1.5:astro-transfer-2` | none | ok |
+| `AS2.1:numeric` | as specified in the question | ok |
+| `AS2.1:warmup` | as specified in the question | ok |
+| `AS2.1:astro-transfer-1` | none | ok |
+| `AS2.1:astro-transfer-2` | pc (declared in registry) | ok |
+| `AS2.1:worked-inference-transfer` | dimensionless ratio | ok |
+| `AS2.2:numeric` | as specified in the question | ok |
+| `AS2.2:warmup` | nm (declared in registry) | ok |
+| `AS2.2:astro-transfer-1` | micrometres (declared in registry) | ok |
+| `AS2.2:astro-transfer-2` | none | ok |
+| `AS2.3:numeric` | as specified in the question | ok |
+| `AS2.3:warmup` | as specified in the question | ok |
+| `AS2.3:astro-transfer-1` | none | ok |
+| `AS2.3:astro-transfer-2` | none | ok |
+| `AS2.4:numeric` | as specified in the question | ok |
+| `AS2.4:warmup` | as specified in the question | ok |
+| `AS2.4:astro-transfer-1` | none | ok |
+| `AS2.4:astro-transfer-2` | none | ok |
+| `AS2.5:numeric` | as specified in the question | ok |
+| `AS2.5:warmup` | as specified in the question | ok |
+| `AS2.5:astro-transfer-1` | none | ok |
+| `AS2.5:astro-transfer-2` | none | ok |
+| `AS2.6:warmup` | as specified in the question | ok |
+| `AS2.6:astro-transfer-1` | none | ok |
+| `AS2.6:astro-transfer-2` | none | ok |
+| `AS2.7:numeric` | as specified in the question | ok |
+| `AS2.7:warmup` | as specified in the question | ok |
+| `AS2.7:astro-transfer-1` | none | ok |
+| `AS2.7:astro-transfer-2` | none | ok |
+| `AS3.1:numeric` | as specified in the question | ok |
+| `AS3.1:warmup` | as specified in the question | ok |
+| `AS3.1:astro-transfer-1` | none | ok |
+| `AS3.1:astro-transfer-2` | none | ok |
+| `AS3.2:numeric` | as specified in the question | ok |
+| `AS3.2:warmup` | as specified in the question | ok |
+| `AS3.2:astro-transfer-1` | none | ok |
+| `AS3.2:astro-transfer-2` | none | ok |
+| `AS3.3:numeric` | as specified in the question | ok |
+| `AS3.3:warmup` | as specified in the question | ok |
+| `AS3.3:astro-transfer-1` | none | ok |
+| `AS3.3:astro-transfer-2` | none | ok |
+| `AS3.4:numeric` | as specified in the question | ok |
+| `AS3.4:astro-transfer-1` | none | ok |
+| `AS3.4:astro-transfer-2` | none | ok |
+| `AS3.5:numeric` | as specified in the question | ok |
+| `AS3.5:warmup` | as specified in the question | ok |
+| `AS3.5:astro-transfer-1` | none | ok |
+| `AS3.5:astro-transfer-2` | none | ok |
+| `AS3.6:numeric` | as specified in the question | ok |
+| `AS3.6:warmup` | as specified in the question | ok |
+| `AS3.6:astro-transfer-1` | none | ok |
+| `AS3.6:astro-transfer-2` | none | ok |
+| `AS3.7:numeric` | as specified in the question | ok |
+| `AS3.7:warmup` | as specified in the question | ok |
+| `AS3.7:astro-transfer-1` | none | ok |
+| `AS3.7:astro-transfer-2` | none | ok |
+| `AS4.1:numeric` | as specified in the question | ok |
+| `AS4.1:warmup` | as specified in the question | ok |
+| `AS4.1:astro-transfer-1` | none | ok |
+| `AS4.1:astro-transfer-2` | none | ok |
+| `AS4.2:numeric` | as specified in the question | ok |
+| `AS4.2:warmup` | as specified in the question | ok |
+| `AS4.2:astro-transfer-1` | none | ok |
+| `AS4.2:astro-transfer-2` | none | ok |
+| `AS4.3:numeric` | as specified in the question | ok |
+| `AS4.3:warmup` | as specified in the question | ok |
+| `AS4.3:astro-transfer-1` | none | ok |
+| `AS4.3:astro-transfer-2` | none | ok |
+| `AS4.4:numeric` | as specified in the question | ok |
+| `AS4.4:astro-transfer-1` | none | ok |
+| `AS4.4:astro-transfer-2` | none | ok |
+| `AS4.5:numeric` | as specified in the question | ok |
+| `AS4.5:warmup` | as specified in the question | ok |
+| `AS4.5:astro-transfer-1` | none | ok |
+| `AS4.5:astro-transfer-2` | 1/days (declared in registry) | ok |
+| `AS4.6:numeric` | as specified in the question | ok |
+| `AS4.6:warmup` | as specified in the question | ok |
+| `AS4.6:astro-transfer-1` | none | ok |
+| `AS4.6:astro-transfer-2` | Hz (declared in registry) | ok |
+| `AS4.7:numeric` | as specified in the question | ok |
+| `AS4.7:warmup` | as specified in the question | ok |
+| `AS4.7:astro-transfer-1` | none | ok |
+| `AS4.7:astro-transfer-2` | none | ok |
+| `AS5.1:numeric` | as specified in the question | ok |
+| `AS5.1:warmup` | as specified in the question | ok |
+| `AS5.1:astro-transfer-1` | none | ok |
+| `AS5.1:astro-transfer-2` | none | ok |
+| `AS5.2:numeric` | as specified in the question | ok |
+| `AS5.2:warmup` | as specified in the question | ok |
+| `AS5.2:astro-transfer-1` | none | ok |
+| `PH1.1:numeric` | m/s (declared in registry) | ok |
+| `PH1.1:warmup` | s (declared in registry) | ok |
+| `PH1.1:mechanics-transfer-1` | s (declared in registry) | ok |
+| `PH1.1:mechanics-transfer-2` | m/s (declared in registry) | ok |
+| `PH1.1:mechanics-transfer-3` | m/s (declared in registry) | ok |
+| `PH1.2:numeric` | m/s² (declared in registry) | ok |
+| `PH1.2:warmup` | m/s² (declared in registry) | ok |
+| `PH1.2:mechanics-transfer-1` | N (declared in registry) | ok |
+| `PH1.2:mechanics-transfer-2` | N (declared in registry) | ok |
+| `PH1.2:mechanics-transfer-3` | N (declared in registry) | ok |
+| `PH1.3:numeric` | as specified in the question | ok |
+| `PH1.3:warmup` | as specified in the question | ok |
+| `PH1.3:mechanics-transfer-1` | as stated | ok |
+| `PH1.3:mechanics-transfer-2` | as stated | ok |
+| `PH1.3:mechanics-transfer-3` | as stated | ok |
+| `PH1.4:numeric` | as specified in the question | ok |
+| `PH1.4:warmup` | as specified in the question | ok |
+| `PH1.4:mechanics-transfer-1` | as stated | ok |
+| `PH1.4:mechanics-transfer-2` | as stated | ok |
+| `PH1.4:mechanics-transfer-3` | as stated | ok |
+| `PH1.5:numeric` | m/s (declared in registry) | ok |
+| `PH1.5:warmup` | rad/s (declared in registry) | ok |
+| `PH1.5:mechanics-transfer-1` | m (declared in registry) | ok |
+| `PH1.5:mechanics-transfer-2` | m/s (declared in registry) | ok |
+| `PH1.5:mechanics-transfer-3` | kg m²/s (declared in registry) | ok |
+| `PH1.6:numeric` | J (declared in registry) | ok |
+| `PH1.6:warmup` | kg m²/s (declared in registry) | ok |
+| `PH1.6:mechanics-transfer-1` | J (declared in registry) | ok |
+| `PH1.6:mechanics-transfer-2` | as stated | ok |
+| `PH1.6:mechanics-transfer-3` | as stated | ok |
+| `PH10.1:numeric` | as specified in the question | ok |
+| `PH10.1:warmup` | as specified in the question | ok |
+| `PH10.1:quantum-transfer-1` | none | ok |
+| `PH10.1:quantum-transfer-2` | none | ok |
+| `PH10.2:numeric` | as specified in the question | ok |
+| `PH10.2:warmup` | as specified in the question | ok |
+| `PH10.2:quantum-transfer-1` | none | ok |
+| `PH10.2:quantum-transfer-2` | none | ok |
+| `PH10.3:numeric` | as specified in the question | ok |
+| `PH10.3:warmup` | as specified in the question | ok |
+| `PH10.3:quantum-transfer-1` | none | ok |
+| `PH10.3:quantum-transfer-2` | none | ok |
+| `PH10.4:numeric` | as specified in the question | ok |
+| `PH10.4:warmup` | as specified in the question | ok |
+| `PH10.4:quantum-transfer-1` | none | ok |
+| `PH10.4:quantum-transfer-2` | none | ok |
+| `PH10.5:numeric` | as specified in the question | ok |
+| `PH10.5:warmup` | as specified in the question | ok |
+| `PH10.5:quantum-transfer-1` | none | ok |
+| `PH10.5:quantum-transfer-2` | none | ok |
+| `PH10.6:numeric` | as specified in the question | ok |
+| `PH10.6:warmup` | as specified in the question | ok |
+| `PH10.6:quantum-transfer-1` | none | ok |
+| `PH10.6:quantum-transfer-2` | none | ok |
+| `PH11.1:numeric` | as specified in the question | ok |
+| `PH11.1:warmup` | m (declared in registry) | ok |
+| `PH11.1:matter-transfer-1` | none | ok |
+| `PH11.1:matter-transfer-2` | none | ok |
+| `PH11.2:numeric` | as specified in the question | ok |
+| `PH11.2:warmup` | as specified in the question | ok |
+| `PH11.2:matter-transfer-1` | none | ok |
+| `PH11.2:matter-transfer-2` | none | ok |
+| `PH11.3:numeric` | as specified in the question | ok |
+| `PH11.3:warmup` | as specified in the question | ok |
+| `PH11.3:matter-transfer-1` | none | ok |
+| `PH11.3:matter-transfer-2` | none | ok |
+| `PH11.4:numeric` | as specified in the question | ok |
+| `PH11.4:warmup` | as specified in the question | ok |
+| `PH11.4:matter-transfer-1` | none | ok |
+| `PH11.4:matter-transfer-2` | none | ok |
+| `PH15.1:numeric` | as specified in the question | ok |
+| `PH15.1:warmup` | as specified in the question | ok |
+| `PH15.1:fields-transfer-1` | none | ok |
+| `PH15.1:fields-transfer-2` | none | ok |
+| `PH15.3:numeric` | as specified in the question | ok |
+| `PH15.3:warmup` | as specified in the question | ok |
+| `PH15.3:review-core-transfer` | in the stated convention and units | ok |
+| `PH15.3:fields-transfer-1` | none | ok |
+| `PH15.3:fields-transfer-2` | none | ok |
+| `PH15.4:numeric` | as specified in the question | ok |
+| `PH15.4:warmup` | as specified in the question | ok |
+| `PH15.4:fields-transfer-1` | none | ok |
+| `PH15.4:fields-transfer-2` | none | ok |
+| `PH15.5:warmup` | as specified in the question | ok |
+| `PH15.5:fields-transfer-1` | none | ok |
+| `PH15.6:warmup` | as specified in the question | ok |
+| `PH15.7:fields-transfer-1` | none | ok |
+| `PH15.7:fields-transfer-2` | none | ok |
+| `PH15.8:fields-transfer-1` | none | ok |
+| `PH16.1:fields-transfer-1` | none | ok |
+| `PH16.1:fields-transfer-2` | none | ok |
+| `PH16.2:fields-transfer-1` | none | ok |
+| `PH16.2:fields-transfer-2` | none | ok |
+| `PH16.3:numeric` | as specified in the question | ok |
+| `PH16.3:warmup` | as specified in the question | ok |
+| `PH16.3:fields-transfer-1` | none | ok |
+| `PH16.3:fields-transfer-2` | none | ok |
+| `PH16.4:numeric` | as specified in the question | ok |
+| `PH16.4:warmup` | as specified in the question | ok |
+| `PH16.4:fields-transfer-1` | none | ok |
+| `PH16.4:fields-transfer-2` | none | ok |
+| `PH16.5:numeric` | as specified in the question | ok |
+| `PH16.5:warmup` | as specified in the question | ok |
+| `PH16.5:fields-transfer-1` | none | ok |
+| `PH16.5:fields-transfer-2` | none | ok |
+| `PH16.6:numeric` | as specified in the question | ok |
+| `PH16.6:warmup` | as specified in the question | ok |
+| `PH16.6:fields-transfer-1` | none | ok |
+| `PH16.6:fields-transfer-2` | none | ok |
+| `PH16.7:numeric` | as specified in the question | ok |
+| `PH16.7:warmup` | as specified in the question | ok |
+| `PH16.7:fields-transfer-1` | none | ok |
+| `PH16.7:fields-transfer-2` | none | ok |
+| `PH16.8:numeric` | as specified in the question | ok |
+| `PH16.8:warmup` | as specified in the question | ok |
+| `PH16.8:fields-transfer-1` | none | ok |
+| `PH16.8:fields-transfer-2` | none | ok |
+| `PH17.1:numeric` | as specified in the question | ok |
+| `PH17.1:warmup` | as specified in the question | ok |
+| `PH17.1:fields-transfer-1` | none | ok |
+| `PH17.1:fields-transfer-2` | none | ok |
+| `PH17.2:numeric` | V (declared in registry) | ok |
+| `PH17.2:warmup` | as specified in the question | ok |
+| `PH17.2:fields-transfer-1` | none | ok |
+| `PH17.2:fields-transfer-2` | none | ok |
+| `PH17.3:numeric` | as specified in the question | ok |
+| `PH17.3:warmup` | as specified in the question | ok |
+| `PH17.3:fields-transfer-1` | none | ok |
+| `PH17.3:fields-transfer-2` | none | ok |
+| `PH17.4:numeric` | as specified in the question | ok |
+| `PH17.4:warmup` | as specified in the question | ok |
+| `PH17.4:fields-transfer-1` | none | ok |
+| `PH17.4:fields-transfer-2` | none | ok |
+| `PH17.5:numeric` | as specified in the question | ok |
+| `PH17.5:warmup` | as specified in the question | ok |
+| `PH17.5:fields-transfer-1` | none | ok |
+| `PH17.5:fields-transfer-2` | none | ok |
+| `PH18.1:numeric` | as specified in the question | ok |
+| `PH18.1:warmup` | as specified in the question | ok |
+| `PH18.1:fields-transfer-1` | none | ok |
+| `PH18.1:fields-transfer-2` | none | ok |
+| `PH18.2:numeric` | as specified in the question | ok |
+| `PH18.2:warmup` | as specified in the question | ok |
+| `PH18.2:fields-transfer-1` | none | ok |
+| `PH18.2:fields-transfer-2` | none | ok |
+| `PH18.3:numeric` | as specified in the question | ok |
+| `PH18.3:warmup` | as specified in the question | ok |
+| `PH18.3:fields-transfer-1` | none | ok |
+| `PH18.3:fields-transfer-2` | none | ok |
+| `PH18.4:numeric` | as specified in the question | ok |
+| `PH18.4:warmup` | as specified in the question | ok |
+| `PH18.4:fields-transfer-1` | none | ok |
+| `PH18.4:fields-transfer-2` | none | ok |
