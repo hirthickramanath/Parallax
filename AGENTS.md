@@ -73,6 +73,7 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 | Lessons, questions, models, review data | `npm run content:audit`, `npm run review:audit`, `npm run content:report` |
 | Colours, themes or palettes | `npm test` (includes `scripts/theme-contrast.test.mjs`); see `docs/DESIGN.md` |
 | UI or routing | `npm run build` then `npm run test:browser` (serves a production preview with mocked auth; includes a structural accessibility audit in `tests/a11y.spec.ts`; set `PLAYWRIGHT_CHROMIUM_PATH` to use a specific Chromium) |
+| Simulation controls | `npm run build`, then `WIDGET_SWEEP=1 npx playwright test tests/widget-limits.spec.ts` for every lesson (about 7 minutes; a six-lesson sample runs with `npm run test:browser`). Checks keyboard and typed input at the ends of each range, clamping and NaN/Infinity text. It does not validate the physics; see `test-results/widget-limits.json` |
 | Numeric answers or units in lessons | `npm run verify:numeric` (also part of `npm test`) |
 | Tutor behaviour | `npm run eval:tutor -- --dry-run`; a live run needs a learner token, see `docs/TUTOR-EVALUATION.md` |
 | Deployed services | `npm run verify:services` (unauthenticated; needs network access to the live Workers) |
