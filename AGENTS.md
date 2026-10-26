@@ -99,7 +99,7 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 
 ## Known open items
 
-- Licences: MIT for code and docs (`LICENSE`), CC BY-SA 4.0 for `content/` (`LICENSE-CONTENT.md`). The copyright holder line uses the git author name; the owner should confirm it.
+- Licences: MIT for code and docs (`LICENSE`), CC BY-SA 4.0 for `content/` (`LICENSE-CONTENT.md`). The copyright holder is the repository owner, P L Hirthick Ramanath.
 - `src/pages/Labs.tsx` was removed (it was unrouted; `/labs` redirects to the dashboard). `/teaching-lab` (`TeachingLab.tsx`) is routed but appears reachable only by URL; the owner should confirm whether it stays.
 - Status counts in older `docs/*.md` reports are historical checkpoints and disagree with each other; the generated files are current.
 - `npm test` lists every test file by hand; new test files must be added to it.
