@@ -1,7 +1,9 @@
-/** Per-learner sliding-window limits for tutor requests. Pure functions; no I/O. */
-export const LIMITS = { perMinute: 10, perDay: 200 } as const;
+/**
+ * Per-learner sliding-window limit for tutor requests. Pure functions; no I/O.
+ * There is deliberately no daily cap: the owner asked for it to be removed.
+ */
+export const LIMITS = { perMinute: 10 } as const;
 const MINUTE_MS = 60_000;
-const DAY_MS = 86_400_000;
 
 export interface LimitVerdict {
   allowed: boolean;
@@ -13,30 +15,21 @@ export interface LimitVerdict {
 
 /**
  * Decide whether a request at `now` is allowed, given earlier request times.
- * Both windows slide: a request is allowed only while fewer than the limit
- * of accepted requests fall inside the window.
+ * The window slides: a request is allowed only while fewer than the limit
+ * of accepted requests fall inside the last minute.
  */
 export function decide(
   stored: unknown,
   now: number,
-  limits: { perMinute: number; perDay: number } = LIMITS,
+  limits: { perMinute: number } = LIMITS,
 ): LimitVerdict {
   const recent = (Array.isArray(stored) ? stored : [])
     .filter((t): t is number => typeof t === "number" && Number.isFinite(t))
-    .filter((t) => t > now - DAY_MS && t <= now)
+    .filter((t) => t > now - MINUTE_MS && t <= now)
     .sort((a, b) => a - b);
-  const inMinute = recent.filter((t) => t > now - MINUTE_MS);
   let wait = 0;
-  if (inMinute.length >= limits.perMinute)
-    wait = Math.max(
-      wait,
-      inMinute[inMinute.length - limits.perMinute] + MINUTE_MS - now,
-    );
-  if (recent.length >= limits.perDay)
-    wait = Math.max(
-      wait,
-      recent[recent.length - limits.perDay] + DAY_MS - now,
-    );
+  if (recent.length >= limits.perMinute)
+    wait = recent[recent.length - limits.perMinute] + MINUTE_MS - now;
   if (wait > 0)
     return {
       allowed: false,

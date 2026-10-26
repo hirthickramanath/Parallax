@@ -10,11 +10,11 @@ const T0 = Date.parse("2026-10-22T00:00:00Z");
 const hits = (count, start = T0, step = 1000) =>
   Array.from({ length: count }, (_, i) => start + i * step);
 
-test("limits are ten per minute and two hundred per day", () => {
-  assert.deepEqual({ ...LIMITS }, { perMinute: 10, perDay: 200 });
+test("the only limit is ten requests per minute; there is no daily cap", () => {
+  assert.deepEqual({ ...LIMITS }, { perMinute: 10 });
 });
 
-test("requests under both limits are allowed and recorded", () => {
+test("requests under the limit are allowed and recorded", () => {
   const first = decide([], T0);
   assert.equal(first.allowed, true);
   assert.equal(first.retryAfterSeconds, 0);
@@ -43,23 +43,21 @@ test("the minute window slides: the first hit expiring frees exactly one slot", 
   assert.equal(decide(after.history, T0 + 60002).allowed, false);
 });
 
-test("the daily limit applies across minutes and reports when the oldest hit expires", () => {
-  // Exactly 200 hits spread one per minute, none inside the last minute.
-  const day = Array.from({ length: 200 }, (_, i) => T0 + i * 60_000);
-  const at = T0 + 200 * 60_000 + 30_000;
-  const refused = decide(day, at);
-  assert.equal(refused.allowed, false);
-  assert.equal(
-    refused.retryAfterSeconds,
-    Math.ceil((T0 + 86_400_000 - at) / 1000),
-  );
-  assert.equal(refused.history.length, 200);
-  // One fewer hit in the day leaves room.
-  assert.equal(decide(day.slice(1), at).allowed, true);
+test("a long day of steady use is never refused, and stored history stays bounded", () => {
+  // One request every 7 seconds for 24 hours: 12,342 requests, none refused.
+  let history = [];
+  let refused = 0;
+  for (let i = 0; i < 12_342; i++) {
+    const verdict = decide(history, T0 + i * 7000);
+    if (!verdict.allowed) refused++;
+    history = verdict.history;
+  }
+  assert.equal(refused, 0);
+  assert.ok(history.length <= 10);
 });
 
 test("old hits are pruned and malformed stored data is ignored", () => {
-  const old = [T0 - 2 * 86_400_000, T0 - 86_400_000 - 1];
+  const old = [T0 - 2 * 86_400_000, T0 - 60_000 - 1];
   const verdict = decide(old, T0);
   assert.equal(verdict.allowed, true);
   assert.deepEqual(verdict.history, [T0]);

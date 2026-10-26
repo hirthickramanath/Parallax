@@ -37,7 +37,7 @@ node scripts/tutor-eval.mjs --only known-force,inject-ignore
 
 Options: `--url` (defaults to `tutorUrl` in `public/services.json`), `--out` (defaults to a file in the system temporary directory, outside the repository), `--delay-ms` (default 7000). `PARALLAX_ORIGIN` overrides the `Origin` header, which must equal the Worker's `SITE_ORIGIN`.
 
-The run sends 24 requests, spaced 7 seconds apart to stay under the per-learner limit of 10 a minute, and uses 24 of the 200 daily requests for that account. A 429 response is waited out once. The token is never printed or written to the output file. The output file contains the questions and the model's replies only.
+The run sends 24 requests, spaced 7 seconds apart to stay under the per-learner limit of 10 a minute. There is no daily cap. A 429 response is waited out once. The token is never printed or written to the output file. The output file contains the questions and the model's replies only.
 
 ## Reading the results
 

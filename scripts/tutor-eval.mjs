@@ -5,7 +5,7 @@
 //
 // The token is a Firebase ID token of a signed-in learner (see docs/TUTOR-EVALUATION.md). It is read
 // from the environment, sent only to the tutor URL and never printed or written. Requests are spaced
-// to stay under the Worker's per-learner limit (10 a minute, 200 a day). Replies are written OUTSIDE
+// to stay under the Worker's per-learner limit (10 a minute; there is no daily cap). Replies are written OUTSIDE
 // the repository by default; read them: the screen below is a smoke test, not a quality grade.
 import fs from "node:fs";
 import os from "node:os";

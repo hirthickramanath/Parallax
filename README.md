@@ -50,7 +50,7 @@ Three Cloudflare Workers sit beside the Pages site. Each is configured in `worke
 
 | Worker | Purpose | State in this repository |
 | --- | --- | --- |
-| `workers/tutor` | Authenticated lesson tutor on Workers AI | Enabled (`ENABLE_TUTOR: "true"`). Per-learner limit of 10 requests a minute and 200 a day. The owner reports it working; this repository's tests use mocks. |
+| `workers/tutor` | Authenticated lesson tutor on Workers AI | Enabled (`ENABLE_TUTOR: "true"`). Per-learner limit of 10 requests a minute; there is no daily cap. The owner reports it working; this repository's tests use mocks. |
 | `workers/reminders` | Opt-in background study reminders (Web Push, VAPID) | Enabled (`ENABLE_REMINDERS: "true"`), runs every five minutes, bounded pilot capacity. The owner reports it working. The VAPID private key is a Worker secret, never in the repository. |
 | `workers/assessment` | Server-graded assessments for a subset of lessons | **Disabled** (`ENABLE_ASSESSMENTS: "false"`). It is not certification or proctoring. |
 
