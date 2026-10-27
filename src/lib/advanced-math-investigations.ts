@@ -60,11 +60,11 @@ export const advancedMathInvestigations: Record<string, AstroInvestigation> = {
       12.566370614359172,
       0,
     ],
-    parameter: ["Positive radius", 0.2, 3, 1],
+    parameter: ["Positive radius (changes Re log only)", 0.2, 3, 1],
     y: "Imaginary part of continued log",
     equation: "log(re^{it})=ln r+it along the path",
     assumptions:
-      "Unwrapped continuation, not the principal branch; the radius never crosses zero.",
+      "Unwrapped continuation, not the principal branch; the radius never crosses zero. The radius sets only the real part ln r, so moving it leaves the plotted imaginary part unchanged: that independence is what the control shows.",
     value: (t, _r) => t,
   },
   "MA7.1": {
