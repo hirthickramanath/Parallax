@@ -42,7 +42,7 @@ Suggested alert rules, if you set up Cloudflare notifications or a log search: a
 - **Probe fails on a Worker:** open the Worker in the Cloudflare dashboard, check Logs and the latest deployment. Redeploy the last good commit with `wrangler deploy --config workers/<name>/wrangler.jsonc`.
 - **Tutor returns 503 `rate_limit_unavailable`:** the `COUNTERS` Durable Object binding or its `v1` migration is broken. Do not rename the `DailyCounter` class or the `COUNTERS` binding.
 - **Tutor returns 503 `configuration_missing`:** `ENABLE_TUTOR` is not `"true"` or the model binding is missing in the deployed Worker.
-- **Learners report 429 early:** the limit is 10 requests a minute and 200 a day per learner (`workers/tutor/src/limiter.ts`). Change the constants there and redeploy; the tests encode the current numbers.
+- **Learners report 429 early:** the limit is 10 requests a minute per learner, with no daily cap (`workers/tutor/src/limiter.ts`). Change the constants there and redeploy; the tests encode the current numbers.
 
 ## 4. Limits of this monitoring
 
