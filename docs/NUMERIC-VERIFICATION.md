@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1059 (68.1%) |
+| Independently recomputed and passing | 1193 (76.8%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 245 |
+| Lessons with at least one recomputed question | 273 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -1097,3 +1097,137 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `CH6.8:numeric` | as specified in the question | ok |
 | `CH6.8:warmup` | as specified in the question | ok |
 | `CH6.8:chemistry-transfer-2` | none | ok |
+| `AS10.1:numeric` | as specified in the question | ok |
+| `AS10.1:warmup` | as specified in the question | ok |
+| `AS10.1:astro-transfer-1` | none | ok |
+| `AS10.1:astro-transfer-2` | none | ok |
+| `AS10.2:numeric` | as specified in the question | ok |
+| `AS10.2:warmup` | as specified in the question | ok |
+| `AS10.2:astro-transfer-1` | none | ok |
+| `AS10.2:astro-transfer-2` | none | ok |
+| `AS10.3:numeric` | as specified in the question | ok |
+| `AS10.3:warmup` | as specified in the question | ok |
+| `AS10.3:astro-transfer-1` | none | ok |
+| `AS10.3:astro-transfer-2` | none | ok |
+| `AS10.4:numeric` | as specified in the question | ok |
+| `AS10.4:warmup` | as specified in the question | ok |
+| `AS10.4:astro-transfer-1` | none | ok |
+| `AS10.4:astro-transfer-2` | none | ok |
+| `AS2.6:numeric` | as specified in the question | ok |
+| `AS3.4:warmup` | as specified in the question | ok |
+| `AS4.4:warmup` | as specified in the question | ok |
+| `AS5.2:astro-transfer-2` | none | ok |
+| `AS5.3:numeric` | as specified in the question | ok |
+| `AS5.3:warmup` | as specified in the question | ok |
+| `AS5.3:astro-transfer-1` | none | ok |
+| `AS5.3:astro-transfer-2` | none | ok |
+| `AS5.4:numeric` | as specified in the question | ok |
+| `AS5.4:warmup` | as specified in the question | ok |
+| `AS5.4:astro-transfer-1` | none | ok |
+| `AS5.4:astro-transfer-2` | none | ok |
+| `AS5.5:warmup` | as specified in the question | ok |
+| `AS5.5:astro-transfer-1` | none | ok |
+| `AS5.5:astro-transfer-2` | none | ok |
+| `AS5.6:numeric` | as specified in the question | ok |
+| `AS5.6:warmup` | as specified in the question | ok |
+| `AS5.6:astro-transfer-1` | none | ok |
+| `AS5.6:astro-transfer-2` | none | ok |
+| `AS6.1:numeric` | as specified in the question | ok |
+| `AS6.1:warmup` | as specified in the question | ok |
+| `AS6.1:astro-transfer-1` | none | ok |
+| `AS6.1:astro-transfer-2` | none | ok |
+| `AS6.2:numeric` | as specified in the question | ok |
+| `AS6.2:warmup` | as specified in the question | ok |
+| `AS6.2:astro-transfer-1` | none | ok |
+| `AS6.2:astro-transfer-2` | none | ok |
+| `AS6.3:numeric` | as specified in the question | ok |
+| `AS6.3:warmup` | as specified in the question | ok |
+| `AS6.3:astro-transfer-1` | none | ok |
+| `AS6.3:astro-transfer-2` | none | ok |
+| `AS6.4:numeric` | as specified in the question | ok |
+| `AS6.4:warmup` | as specified in the question | ok |
+| `AS6.4:astro-transfer-1` | none | ok |
+| `AS6.4:astro-transfer-2` | none | ok |
+| `AS6.5:numeric` | as specified in the question | ok |
+| `AS6.5:warmup` | as specified in the question | ok |
+| `AS6.5:astro-transfer-1` | none | ok |
+| `AS6.5:astro-transfer-2` | none | ok |
+| `AS7.1:numeric` | as specified in the question | ok |
+| `AS7.1:warmup` | as specified in the question | ok |
+| `AS7.1:astro-transfer-1` | none | ok |
+| `AS7.1:astro-transfer-2` | none | ok |
+| `AS7.2:numeric` | as specified in the question | ok |
+| `AS7.2:warmup` | as specified in the question | ok |
+| `AS7.2:astro-transfer-1` | none | ok |
+| `AS7.2:astro-transfer-2` | none | ok |
+| `AS7.3:numeric` | as specified in the question | ok |
+| `AS7.3:warmup` | as specified in the question | ok |
+| `AS7.3:astro-transfer-1` | none | ok |
+| `AS7.3:astro-transfer-2` | none | ok |
+| `AS7.4:numeric` | as specified in the question | ok |
+| `AS7.4:warmup` | as specified in the question | ok |
+| `AS7.4:astro-transfer-1` | none | ok |
+| `AS7.4:astro-transfer-2` | none | ok |
+| `AS7.5:numeric` | as specified in the question | ok |
+| `AS7.5:warmup` | as specified in the question | ok |
+| `AS7.5:astro-transfer-1` | none | ok |
+| `AS7.5:astro-transfer-2` | none | ok |
+| `AS8.1:numeric` | as specified in the question | ok |
+| `AS8.1:warmup` | as specified in the question | ok |
+| `AS8.1:astro-transfer-1` | none | ok |
+| `AS8.2:numeric` | as specified in the question | ok |
+| `AS8.2:warmup` | as specified in the question | ok |
+| `AS8.2:astro-transfer-1` | none | ok |
+| `AS8.2:astro-transfer-2` | none | ok |
+| `AS8.3:numeric` | as specified in the question | ok |
+| `AS8.3:warmup` | as specified in the question | ok |
+| `AS8.3:astro-transfer-1` | none | ok |
+| `AS8.3:astro-transfer-2` | none | ok |
+| `AS8.4:numeric` | as specified in the question | ok |
+| `AS8.4:warmup` | as specified in the question | ok |
+| `AS8.4:astro-transfer-1` | none | ok |
+| `AS8.4:astro-transfer-2` | none | ok |
+| `AS8.5:numeric` | as specified in the question | ok |
+| `AS8.5:warmup` | as specified in the question | ok |
+| `AS8.5:astro-transfer-1` | none | ok |
+| `AS8.5:astro-transfer-2` | none | ok |
+| `AS8.6:numeric` | as specified in the question | ok |
+| `AS8.6:warmup` | as specified in the question | ok |
+| `AS8.6:astro-transfer-1` | none | ok |
+| `AS8.6:astro-transfer-2` | none | ok |
+| `AS8.7:numeric` | as specified in the question | ok |
+| `AS8.7:warmup` | as specified in the question | ok |
+| `AS8.7:astro-transfer-1` | none | ok |
+| `AS8.7:astro-transfer-2` | none | ok |
+| `AS9.1:numeric` | as specified in the question | ok |
+| `AS9.1:warmup` | as specified in the question | ok |
+| `AS9.1:astro-transfer-1` | none | ok |
+| `AS9.1:astro-transfer-2` | none | ok |
+| `AS9.2:numeric` | as specified in the question | ok |
+| `AS9.2:warmup` | as specified in the question | ok |
+| `AS9.2:astro-transfer-1` | none | ok |
+| `AS9.2:astro-transfer-2` | none | ok |
+| `AS9.3:numeric` | as specified in the question | ok |
+| `AS9.3:warmup` | as specified in the question | ok |
+| `AS9.3:astro-transfer-1` | none | ok |
+| `AS9.3:astro-transfer-2` | none | ok |
+| `AS9.4:numeric` | as specified in the question | ok |
+| `AS9.4:warmup` | as specified in the question | ok |
+| `AS9.4:astro-transfer-1` | none | ok |
+| `AS9.4:astro-transfer-2` | none | ok |
+| `AS9.5:numeric` | as specified in the question | ok |
+| `AS9.5:warmup` | as specified in the question | ok |
+| `AS9.5:astro-transfer-1` | none | ok |
+| `AS9.5:astro-transfer-2` | none | ok |
+| `AS9.6:numeric` | as specified in the question | ok |
+| `AS9.6:warmup` | as specified in the question | ok |
+| `AS9.6:astro-transfer-1` | none | ok |
+| `AS9.6:astro-transfer-2` | none | ok |
+| `AS9.7:numeric` | as specified in the question | ok |
+| `AS9.7:warmup` | as specified in the question | ok |
+| `AS9.7:astro-transfer-1` | none | ok |
+| `AS9.7:astro-transfer-2` | none | ok |
+| `AS9.8:numeric` | as specified in the question | ok |
+| `AS9.8:warmup` | as specified in the question | ok |
+| `AS9.8:astro-transfer-1` | none | ok |
+| `AS9.8:astro-transfer-2` | none | ok |
