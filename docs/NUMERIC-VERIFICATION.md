@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 855 (55.0%) |
+| Independently recomputed and passing | 954 (61.4%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 194 |
+| Lessons with at least one recomputed question | 219 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -893,3 +893,102 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `MA5.7:warmup` | as specified in the question | ok |
 | `MA5.7:linear-ode-transfer-1` | none | ok |
 | `MA5.7:linear-ode-transfer-2` | none | ok |
+| `MA6.1:numeric` | as specified in the question | ok |
+| `MA6.1:warmup` | as specified in the question | ok |
+| `MA6.1:advanced-math-transfer-1` | none | ok |
+| `MA6.1:advanced-math-transfer-2` | none | ok |
+| `MA6.2:numeric` | as specified in the question | ok |
+| `MA6.2:warmup` | as specified in the question | ok |
+| `MA6.2:advanced-math-transfer-1` | none | ok |
+| `MA6.2:advanced-math-transfer-2` | none | ok |
+| `MA6.3:numeric` | as specified in the question | ok |
+| `MA6.3:warmup` | as specified in the question | ok |
+| `MA6.3:advanced-math-transfer-1` | none | ok |
+| `MA6.3:advanced-math-transfer-2` | none | ok |
+| `MA6.4:numeric` | as specified in the question | ok |
+| `MA6.4:warmup` | as specified in the question | ok |
+| `MA6.4:advanced-math-transfer-1` | none | ok |
+| `MA6.4:advanced-math-transfer-2` | none | ok |
+| `MA6.5:numeric` | as specified in the question | ok |
+| `MA6.5:warmup` | as specified in the question | ok |
+| `MA6.5:advanced-math-transfer-1` | none | ok |
+| `MA6.5:advanced-math-transfer-2` | none | ok |
+| `MA6.6:numeric` | as specified in the question | ok |
+| `MA6.6:warmup` | as specified in the question | ok |
+| `MA6.6:advanced-math-transfer-1` | none | ok |
+| `MA6.6:advanced-math-transfer-2` | none | ok |
+| `MA7.1:numeric` | as specified in the question | ok |
+| `MA7.1:warmup` | as specified in the question | ok |
+| `MA7.1:advanced-math-transfer-1` | none | ok |
+| `MA7.1:advanced-math-transfer-2` | none | ok |
+| `MA7.2:numeric` | as specified in the question | ok |
+| `MA7.2:warmup` | as specified in the question | ok |
+| `MA7.2:advanced-math-transfer-1` | none | ok |
+| `MA7.2:advanced-math-transfer-2` | none | ok |
+| `MA7.3:numeric` | as specified in the question | ok |
+| `MA7.3:warmup` | as specified in the question | ok |
+| `MA7.3:advanced-math-transfer-1` | none | ok |
+| `MA7.3:advanced-math-transfer-2` | none | ok |
+| `MA7.4:numeric` | as specified in the question | ok |
+| `MA7.4:warmup` | as specified in the question | ok |
+| `MA7.4:advanced-math-transfer-1` | none | ok |
+| `MA7.4:advanced-math-transfer-2` | none | ok |
+| `MA7.5:numeric` | as specified in the question | ok |
+| `MA7.5:warmup` | as specified in the question | ok |
+| `MA7.5:advanced-math-transfer-1` | none | ok |
+| `MA7.5:advanced-math-transfer-2` | none | ok |
+| `MA8.1:numeric` | as specified in the question | ok |
+| `MA8.1:warmup` | as specified in the question | ok |
+| `MA8.1:advanced-math-transfer-1` | none | ok |
+| `MA8.1:advanced-math-transfer-2` | none | ok |
+| `MA8.2:numeric` | as specified in the question | ok |
+| `MA8.2:warmup` | as specified in the question | ok |
+| `MA8.2:advanced-math-transfer-1` | none | ok |
+| `MA8.2:advanced-math-transfer-2` | none | ok |
+| `MA8.3:numeric` | as specified in the question | ok |
+| `MA8.3:warmup` | as specified in the question | ok |
+| `MA8.3:advanced-math-transfer-1` | none | ok |
+| `MA8.3:advanced-math-transfer-2` | none | ok |
+| `MA8.4:numeric` | as specified in the question | ok |
+| `MA8.4:warmup` | as specified in the question | ok |
+| `MA8.4:advanced-math-transfer-1` | none | ok |
+| `MA8.4:advanced-math-transfer-2` | none | ok |
+| `MA8.5:numeric` | as specified in the question | ok |
+| `MA8.5:warmup` | as specified in the question | ok |
+| `MA8.5:advanced-math-transfer-1` | none | ok |
+| `MA8.5:advanced-math-transfer-2` | none | ok |
+| `MA8.6:numeric` | as specified in the question | ok |
+| `MA8.6:warmup` | as specified in the question | ok |
+| `MA8.6:advanced-math-transfer-1` | none | ok |
+| `MA8.6:advanced-math-transfer-2` | none | ok |
+| `MA8.7:numeric` | as specified in the question | ok |
+| `MA8.7:warmup` | as specified in the question | ok |
+| `MA8.7:advanced-math-transfer-1` | none | ok |
+| `MA8.7:advanced-math-transfer-2` | none | ok |
+| `MA9.1:numeric` | as specified in the question | ok |
+| `MA9.1:warmup` | as specified in the question | ok |
+| `MA9.1:advanced-math-transfer-1` | none | ok |
+| `MA9.1:advanced-math-transfer-2` | none | ok |
+| `MA9.2:warmup` | as specified in the question | ok |
+| `MA9.2:advanced-math-transfer-1` | none | ok |
+| `MA9.2:advanced-math-transfer-2` | none | ok |
+| `MA9.3:numeric` | as specified in the question | ok |
+| `MA9.3:warmup` | as specified in the question | ok |
+| `MA9.3:advanced-math-transfer-1` | none | ok |
+| `MA9.3:advanced-math-transfer-2` | none | ok |
+| `MA13.1:numeric` | as specified in the question | ok |
+| `MA13.1:warmup` | as specified in the question | ok |
+| `MA13.1:structure-transfer-1` | none | ok |
+| `MA13.1:structure-transfer-2` | none | ok |
+| `MA13.2:numeric` | as specified in the question | ok |
+| `MA13.2:warmup` | as specified in the question | ok |
+| `MA13.2:structure-transfer-1` | none | ok |
+| `MA13.2:structure-transfer-2` | none | ok |
+| `MA13.3:numeric` | as specified in the question | ok |
+| `MA13.3:warmup` | as specified in the question | ok |
+| `MA13.3:structure-transfer-1` | none | ok |
+| `MA13.3:structure-transfer-2` | none | ok |
+| `MA13.4:numeric` | as specified in the question | ok |
+| `MA13.4:warmup` | as specified in the question | ok |
+| `MA13.4:structure-transfer-1` | none | ok |
+| `MA13.4:structure-transfer-2` | none | ok |

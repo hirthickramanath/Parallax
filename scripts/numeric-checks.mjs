@@ -987,4 +987,105 @@ export const CHECKS = [
   ["MA5.7:warmup", "85280bbc", () => q(-0.5 - 0.5)], // values listed in the order right, left,
   ["MA5.7:linear-ode-transfer-1", "0af8aa3c", () => q(0.25 * (1 - 0.5))],
   ["MA5.7:linear-ode-transfer-2", "7f6fe6c2", () => q((0.5 * (1 - 0.5)) / 2)],
+
+  // --- MA6–MA9, MA13: complex analysis, special functions, probability, variational methods, dynamics (batch 4) ---
+  ["MA6.1:numeric", "ed4aff56", () => q(2 * 1)], // Re(2z) at 1+2i
+  ["MA6.1:warmup", "1d4e3966", () => q(2 * 3)],
+  ["MA6.1:advanced-math-transfer-1", "6d5db0ee", () => q(2 * 2)],
+  ["MA6.1:advanced-math-transfer-2", "0a3223e3", () => q(2 ** 2 - 3 ** 2)],
+  ["MA6.2:numeric", "a322bbcc", () => q(1)], // z^2/z^3 = 1/z
+  ["MA6.2:warmup", "c6de4b97", () => q(-1)],
+  ["MA6.2:advanced-math-transfer-1", "275856ec", () => q(2 * PI)],
+  ["MA6.2:advanced-math-transfer-2", "897e9e45", () => q(-2 * PI)],
+  ["MA6.3:numeric", "2b42063b", () => q(PI / 2 / PI)], // ∫dx/(x²+a²) = π/a
+  ["MA6.3:warmup", "c51a8e04", () => q(3)],
+  ["MA6.3:advanced-math-transfer-1", "b7fbfd5f", () => q(Math.exp(Math.log(2)))],
+  ["MA6.3:advanced-math-transfer-2", "13f5378f", () => q(PI / 2)],
+  ["MA6.4:numeric", "dc4ddcb7", () => q(1 / (1 - 2 * 0) + 1 / (1 - 2 * 1))], // residues 1 and -1
+  ["MA6.4:warmup", "12f71e4b", () => q(3)],
+  ["MA6.4:advanced-math-transfer-1", "62d72809", () => q(1 / (0 - 1))],
+  ["MA6.4:advanced-math-transfer-2", "37e951e2", () => q(-1)], // -(1/z)(1 + z + z^2 + z^3 ...)
+  ["MA6.5:numeric", "b84a2caf", () => q((2 - 1) / (2 + 1))], // (i)/(3i)
+  ["MA6.5:warmup", "5169a562", () => q(Math.hypot(2, 2) ** 2)], // |2(1+i)|^2
+  ["MA6.5:advanced-math-transfer-1", "c20c4898", () => q(2 * 3)],
+  ["MA6.5:advanced-math-transfer-2", "680ca801", () => q((2 * 2) ** 2)],
+  ["MA6.6:numeric", "c7bc690a", () => q(Math.cos(PI))], // sqrt turns by half the angle: e^{i pi}
+  ["MA6.6:warmup", "8aeab502", () => q((2 * PI) / PI)],
+  ["MA6.6:advanced-math-transfer-1", "e460c796", () => q(2 * 2 * PI)],
+  ["MA6.6:advanced-math-transfer-2", "0728b8e6", () => q(Math.log(Math.exp(3)))],
+  ["MA7.1:numeric", "a529e134", () => q(4 * 3 * 2 * 1)],
+  ["MA7.1:warmup", "21dcb5dc", () => q((1 * 2) / (4 * 3 * 2 * 1))], // Γ(2)Γ(3)/Γ(5)
+  ["MA7.1:advanced-math-transfer-1", "2067e3ac", () => q(5 * 4 * 3 * 2 * 1)],
+  ["MA7.1:advanced-math-transfer-2", "f52aeea0", () => q((1 * 2) / 24)],
+  ["MA7.2:numeric", "de4f5707", () => q((3 * 0 ** 2 - 1) / 2)],
+  ["MA7.2:warmup", "02dad7d3", () => q(2 * 2 + 1)],
+  ["MA7.2:advanced-math-transfer-1", "ea23f5f2", () => q((3 * 0 ** 2 - 1) / 2)],
+  ["MA7.2:advanced-math-transfer-2", "49f6981a", () => q((2 * 1 ** 3 - 2 * 1) / 2)], // ∫(3x²-1)/2 = [x³/2 - x/2]
+  ["MA7.3:numeric", "c4bf5df7", () => q((3 * 2.4) / 2)], // ω = c x / a
+  ["MA7.3:warmup", "8d9736d4", () => q(1)],
+  ["MA7.3:advanced-math-transfer-1", "5345e1b8", () => q(1)],
+  ["MA7.3:advanced-math-transfer-2", "067ba2c2", () => q(-1 / 4)], // J0 = 1 - x²/4 + ...
+  ["MA7.4:numeric", "d5800bc4", () => q(4 * 0 ** 2 - 2)],
+  ["MA7.4:warmup", "82d3276e", () => q(1 + 2 - 1)], // L_1^(α)(x) = 1 + α - x
+  ["MA7.4:advanced-math-transfer-1", "7fceb784", () => q(4 * 1 ** 2 - 2)],
+  ["MA7.4:advanced-math-transfer-2", "b05b0f8b", () => q(Math.sqrt(2 / 4))],
+  ["MA7.5:numeric", "8bd0385b", () => q(Math.sqrt(PI / 4) / Math.sqrt(PI))],
+  ["MA7.5:warmup", "a0ffc726", () => q(16 ** -0.25)],
+  ["MA7.5:advanced-math-transfer-1", "1e1e9f0c", () => q(Math.sqrt((2 * PI) / 2))],
+  ["MA7.5:advanced-math-transfer-2", "23bc3718", () => q(Math.sqrt(1 / 4))],
+  ["MA8.1:numeric", "3594960d", () => q(1 / 0.2)],
+  ["MA8.1:warmup", "95e7bf03", () => q((0.1 - 0.05) / 0.2)],
+  ["MA8.1:advanced-math-transfer-1", "dfcc14a1", () => q(0.4 * 0.5)],
+  ["MA8.1:advanced-math-transfer-2", "c5dde2cb", () => q(0.1 / 0.25)],
+  ["MA8.2:numeric", "7d795172", () => q(2 / Math.sqrt(100))],
+  ["MA8.2:warmup", "10f7b70b", () => q(4 / 100 / 1 ** 2)], // Var(mean)/ε²
+  ["MA8.2:advanced-math-transfer-1", "f28bb0a8", () => q(3 / Math.sqrt(36))],
+  ["MA8.2:advanced-math-transfer-2", "910d0cad", () => q(2 ** 2)],
+  ["MA8.3:numeric", "5995b2ee", () => q(3 * 2)],
+  ["MA8.3:warmup", "872f0b2a", () => q(1 / 4)],
+  ["MA8.3:advanced-math-transfer-1", "a5c42baf", () => q(Math.exp(-2))],
+  ["MA8.3:advanced-math-transfer-2", "a03f35fa", () => q(3 * 2)],
+  ["MA8.4:numeric", "32b05ab3", () => q(4 + 3 ** 2)],
+  ["MA8.4:warmup", "20759e24", () => q((1.96 * 2) / Math.sqrt(100))],
+  ["MA8.4:advanced-math-transfer-1", "3a5928c9", () => q((12 - 10) / (4 / Math.sqrt(16)))],
+  ["MA8.4:advanced-math-transfer-2", "f3b562d8", () => q(1.96 * 0.5)],
+  ["MA8.5:numeric", "a6757a77", () => q(1 + 3)],
+  ["MA8.5:warmup", "4d443fd7", () => q((1 + 3) / (1 + 3 + 1 + 1))],
+  ["MA8.5:advanced-math-transfer-1", "a5695ffb", () => q((1 + 3) / (1 + 3 + 1 + 1))],
+  ["MA8.5:advanced-math-transfer-2", "3758d0d4", () => q(3 + 2)],
+  ["MA8.6:numeric", "6115e145", () => q(Math.min(1, 0.25))],
+  ["MA8.6:warmup", "197f2c86", () => q(1000 / 5)],
+  ["MA8.6:advanced-math-transfer-1", "ad05c5f2", () => q(Math.min(1, 0.25))],
+  ["MA8.6:advanced-math-transfer-2", "1241d131", () => q(Math.min(1, 4))],
+  ["MA8.7:numeric", "019c73d3", () => q(2 * 3 * Math.hypot(0.1 / 2, 0.2 / 3))],
+  ["MA8.7:warmup", "53d6718c", () => q(2 * 3)],
+  ["MA8.7:advanced-math-transfer-1", "71d34f91", () => q(2 / Math.sqrt(2))],
+  ["MA8.7:advanced-math-transfer-2", "85254e79", () => q(1 / 1 / (1 / 1 + 1 / 4))],
+  ["MA9.1:numeric", "e8a0bcae", () => q((2 * 2) / 2)],
+  ["MA9.1:warmup", "bf0f9275", () => q((3 - 0) / (1 - 0))],
+  ["MA9.1:advanced-math-transfer-1", "69d7f5ef", () => q(-4 * 3)], // q'' = -4q
+  ["MA9.1:advanced-math-transfer-2", "70572a41", () => q(0)],
+  ["MA9.2:warmup", "9f75b340", () => q(6 * 0.5 * (1 - 0.5))],
+  ["MA9.2:advanced-math-transfer-1", "dfb43187", () => q(4 / 2)],
+  ["MA9.2:advanced-math-transfer-2", "abac0b36", () => q(2 ** 2 + 2 ** 2)],
+  ["MA9.3:numeric", "de066a4d", () => q(2 * (3 * 4 - 0 * 0))],
+  ["MA9.3:warmup", "79157d11", () => q(3 * 2)],
+  ["MA9.3:advanced-math-transfer-1", "c2a575e4", () => q(0.5 * 3 ** 2 * 2 ** 2)], // ω²A²/2 at t=0
+  ["MA9.3:advanced-math-transfer-2", "df897383", () => q(2 * 3)],
+  ["MA13.1:numeric", "ba4b883f", () => q(3)],
+  ["MA13.1:warmup", "3787c688", () => q(1)],
+  ["MA13.1:structure-transfer-1", "c3a19e46", () => q(1 - 1 / 2)],
+  ["MA13.1:structure-transfer-2", "54c0fef5", () => q(2 - 2)], // f' = 2 - r
+  ["MA13.2:numeric", "305b7022", () => q(3 - 2 ** 2 / 2)],
+  ["MA13.2:warmup", "896b6c96", () => q(2 ** 2 / 2)],
+  ["MA13.2:structure-transfer-1", "e2f77950", () => q(3 / 2)], // D/κ
+  ["MA13.2:structure-transfer-2", "a92bc2db", () => q(Math.sqrt(0.25))],
+  ["MA13.3:numeric", "3628478b", () => q(2 ** 3)],
+  ["MA13.3:warmup", "4c570429", () => q(1 / 2)],
+  ["MA13.3:structure-transfer-1", "7572d8a6", () => q(Math.exp(2 * Math.log(2)))],
+  ["MA13.3:structure-transfer-2", "7b7d7cbb", () => q(Math.exp(-1 * Math.log(3)))],
+  ["MA13.4:numeric", "49dfeb07", () => q((-PI / 2) / PI)],
+  ["MA13.4:warmup", "4307588f", () => q((4 * PI) / (2 * PI))],
+  ["MA13.4:structure-transfer-1", "7ae4bdc8", () => q(-PI / 2)],
+  ["MA13.4:structure-transfer-2", "15c8f2c4", () => q(2 * PI)],
 ];
