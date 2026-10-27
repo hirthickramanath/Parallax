@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1369 (88.1%) |
+| Independently recomputed and passing | 1433 (92.2%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 315 |
+| Lessons with at least one recomputed question | 331 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -1407,3 +1407,67 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH7.9:warmup` | as specified in the question | ok |
 | `PH7.9:thermal-optics-transfer-1` | none | ok |
 | `PH7.9:thermal-optics-transfer-2` | none | ok |
+| `PH8.1:numeric` | as specified in the question | ok |
+| `PH8.1:warmup` | as specified in the question | ok |
+| `PH8.1:quantum-transfer-1` | none | ok |
+| `PH8.1:quantum-transfer-2` | none | ok |
+| `PH8.2:numeric` | as specified in the question | ok |
+| `PH8.2:warmup` | as specified in the question | ok |
+| `PH8.2:quantum-transfer-1` | none | ok |
+| `PH8.2:quantum-transfer-2` | none | ok |
+| `PH8.3:numeric` | as specified in the question | ok |
+| `PH8.3:warmup` | as specified in the question | ok |
+| `PH8.3:quantum-transfer-1` | none | ok |
+| `PH8.3:quantum-transfer-2` | none | ok |
+| `PH8.4:numeric` | as specified in the question | ok |
+| `PH8.4:warmup` | as specified in the question | ok |
+| `PH8.4:quantum-transfer-1` | none | ok |
+| `PH8.4:quantum-transfer-2` | none | ok |
+| `PH8.5:numeric` | as specified in the question | ok |
+| `PH8.5:warmup` | as specified in the question | ok |
+| `PH8.5:quantum-transfer-1` | none | ok |
+| `PH8.5:quantum-transfer-2` | none | ok |
+| `PH8.6:numeric` | as specified in the question | ok |
+| `PH8.6:warmup` | as specified in the question | ok |
+| `PH8.6:quantum-transfer-1` | none | ok |
+| `PH8.6:quantum-transfer-2` | none | ok |
+| `PH8.7:numeric` | as specified in the question | ok |
+| `PH8.7:warmup` | as specified in the question | ok |
+| `PH8.7:quantum-transfer-1` | none | ok |
+| `PH8.7:quantum-transfer-2` | none | ok |
+| `PH8.8:numeric` | as specified in the question | ok |
+| `PH8.8:warmup` | as specified in the question | ok |
+| `PH8.8:quantum-transfer-1` | none | ok |
+| `PH8.8:quantum-transfer-2` | none | ok |
+| `PH9.1:numeric` | as specified in the question | ok |
+| `PH9.1:warmup` | as specified in the question | ok |
+| `PH9.1:quantum-transfer-1` | none | ok |
+| `PH9.1:quantum-transfer-2` | none | ok |
+| `PH9.2:numeric` | as specified in the question | ok |
+| `PH9.2:warmup` | as specified in the question | ok |
+| `PH9.2:quantum-transfer-1` | none | ok |
+| `PH9.2:quantum-transfer-2` | none | ok |
+| `PH9.3:numeric` | as specified in the question | ok |
+| `PH9.3:warmup` | as specified in the question | ok |
+| `PH9.3:quantum-transfer-1` | none | ok |
+| `PH9.3:quantum-transfer-2` | none | ok |
+| `PH9.4:numeric` | as specified in the question | ok |
+| `PH9.4:warmup` | as specified in the question | ok |
+| `PH9.4:quantum-transfer-1` | none | ok |
+| `PH9.4:quantum-transfer-2` | none | ok |
+| `PH9.5:numeric` | as specified in the question | ok |
+| `PH9.5:warmup` | as specified in the question | ok |
+| `PH9.5:quantum-transfer-1` | none | ok |
+| `PH9.5:quantum-transfer-2` | none | ok |
+| `PH9.6:numeric` | as specified in the question | ok |
+| `PH9.6:warmup` | as specified in the question | ok |
+| `PH9.6:quantum-transfer-1` | none | ok |
+| `PH9.6:quantum-transfer-2` | none | ok |
+| `PH9.7:numeric` | as specified in the question | ok |
+| `PH9.7:warmup` | as specified in the question | ok |
+| `PH9.7:quantum-transfer-1` | none | ok |
+| `PH9.7:quantum-transfer-2` | none | ok |
+| `PH9.8:numeric` | as specified in the question | ok |
+| `PH9.8:warmup` | as specified in the question | ok |
+| `PH9.8:quantum-transfer-1` | none | ok |
+| `PH9.8:quantum-transfer-2` | none | ok |
