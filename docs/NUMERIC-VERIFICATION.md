@@ -9,15 +9,15 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 516 (33.2%) |
+| Independently recomputed and passing | 740 (47.6%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 111 |
-| Questions with a concrete physical unit | 57 (57 recomputed) |
-| Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 85 |
+| Lessons with at least one recomputed question | 165 |
+| Questions with a concrete physical unit | 68 (68 recomputed) |
+| Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
-| Questions whose unit field is a placeholder ("as stated in the question" and similar) | 844 |
+| Questions whose unit field is a placeholder ("as stated in the question" and similar) | 833 |
 | Questions with no unit field | 634 |
-| Prompts that ask for a unit but have no concrete stored unit | 59 |
+| Prompts that ask for a unit but have no concrete stored unit | 53 |
 
 The majority of numeric questions carry no machine-readable unit, so their units cannot be checked automatically. Adding concrete `unit` values to those questions is a content task; each one then becomes checkable.
 
@@ -302,8 +302,8 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `AS1.3:warmup` | normalized | ok |
 | `AS1.3:astro-transfer-1` | AU (declared in registry) | ok |
 | `AS1.3:astro-transfer-2` | none | ok |
-| `AS1.4:n1` | AU (declared in registry) | ok |
-| `AS1.4:warmup` | AU (declared in registry) | ok |
+| `AS1.4:n1` | AU | ok |
+| `AS1.4:warmup` | AU | ok |
 | `AS1.4:transfer-model-check` | as stated in question | ok |
 | `AS1.4:astro-transfer-1` | none | ok |
 | `AS1.4:astro-transfer-2` | none | ok |
@@ -406,11 +406,11 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH1.1:mechanics-transfer-1` | s (declared in registry) | ok |
 | `PH1.1:mechanics-transfer-2` | m/s (declared in registry) | ok |
 | `PH1.1:mechanics-transfer-3` | m/s (declared in registry) | ok |
-| `PH1.2:numeric` | m/s² (declared in registry) | ok |
-| `PH1.2:warmup` | m/s² (declared in registry) | ok |
-| `PH1.2:mechanics-transfer-1` | N (declared in registry) | ok |
-| `PH1.2:mechanics-transfer-2` | N (declared in registry) | ok |
-| `PH1.2:mechanics-transfer-3` | N (declared in registry) | ok |
+| `PH1.2:numeric` | m/s² | ok |
+| `PH1.2:warmup` | m/s² | ok |
+| `PH1.2:mechanics-transfer-1` | N | ok |
+| `PH1.2:mechanics-transfer-2` | N | ok |
+| `PH1.2:mechanics-transfer-3` | N | ok |
 | `PH1.3:numeric` | as specified in the question | ok |
 | `PH1.3:warmup` | as specified in the question | ok |
 | `PH1.3:mechanics-transfer-1` | as stated | ok |
@@ -426,9 +426,9 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH1.5:mechanics-transfer-1` | m (declared in registry) | ok |
 | `PH1.5:mechanics-transfer-2` | m/s (declared in registry) | ok |
 | `PH1.5:mechanics-transfer-3` | kg m²/s (declared in registry) | ok |
-| `PH1.6:numeric` | J (declared in registry) | ok |
-| `PH1.6:warmup` | kg m²/s (declared in registry) | ok |
-| `PH1.6:mechanics-transfer-1` | J (declared in registry) | ok |
+| `PH1.6:numeric` | J | ok |
+| `PH1.6:warmup` | kg m²/s | ok |
+| `PH1.6:mechanics-transfer-1` | J | ok |
 | `PH1.6:mechanics-transfer-2` | as stated | ok |
 | `PH1.6:mechanics-transfer-3` | as stated | ok |
 | `PH10.1:numeric` | as specified in the question | ok |
@@ -522,7 +522,7 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH17.1:warmup` | as specified in the question | ok |
 | `PH17.1:fields-transfer-1` | none | ok |
 | `PH17.1:fields-transfer-2` | none | ok |
-| `PH17.2:numeric` | V (declared in registry) | ok |
+| `PH17.2:numeric` | V | ok |
 | `PH17.2:warmup` | as specified in the question | ok |
 | `PH17.2:fields-transfer-1` | none | ok |
 | `PH17.2:fields-transfer-2` | none | ok |
@@ -554,3 +554,227 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH18.4:warmup` | as specified in the question | ok |
 | `PH18.4:fields-transfer-1` | none | ok |
 | `PH18.4:fields-transfer-2` | none | ok |
+| `CH1.1:numeric` | as specified in the question | ok |
+| `CH1.1:warmup` | as specified in the question | ok |
+| `CH1.1:physical-chemistry-transfer-1` | none | ok |
+| `CH1.1:physical-chemistry-transfer-2` | none | ok |
+| `CH1.10:numeric` | as specified in the question | ok |
+| `CH1.10:warmup` | as specified in the question | ok |
+| `CH1.10:physical-chemistry-transfer-1` | none | ok |
+| `CH1.10:physical-chemistry-transfer-2` | none | ok |
+| `CH1.11:numeric` | as specified in the question | ok |
+| `CH1.11:warmup` | as specified in the question | ok |
+| `CH1.11:physical-chemistry-transfer-1` | none | ok |
+| `CH1.11:physical-chemistry-transfer-2` | none | ok |
+| `CH1.12:numeric` | as specified in the question | ok |
+| `CH1.12:warmup` | as specified in the question | ok |
+| `CH1.12:physical-chemistry-transfer-1` | none | ok |
+| `CH1.12:physical-chemistry-transfer-2` | none | ok |
+| `CH1.13:numeric` | as specified in the question | ok |
+| `CH1.13:warmup` | as specified in the question | ok |
+| `CH1.13:physical-chemistry-transfer-1` | none | ok |
+| `CH1.13:physical-chemistry-transfer-2` | eV (declared in registry) | ok |
+| `CH1.2:numeric` | as specified in the question | ok |
+| `CH1.2:warmup` | as specified in the question | ok |
+| `CH1.2:physical-chemistry-transfer-1` | none | ok |
+| `CH1.2:physical-chemistry-transfer-2` | none | ok |
+| `CH1.3:numeric` | as specified in the question | ok |
+| `CH1.3:warmup` | as specified in the question | ok |
+| `CH1.3:physical-chemistry-transfer-1` | none | ok |
+| `CH1.3:physical-chemistry-transfer-2` | none | ok |
+| `CH1.4:numeric` | as specified in the question | ok |
+| `CH1.4:warmup` | as specified in the question | ok |
+| `CH1.4:physical-chemistry-transfer-1` | none | ok |
+| `CH1.4:physical-chemistry-transfer-2` | none | ok |
+| `CH1.5:numeric` | as specified in the question | ok |
+| `CH1.5:warmup` | as specified in the question | ok |
+| `CH1.5:physical-chemistry-transfer-1` | none | ok |
+| `CH1.5:physical-chemistry-transfer-2` | none | ok |
+| `CH1.6:numeric` | as specified in the question | ok |
+| `CH1.6:warmup` | as specified in the question | ok |
+| `CH1.6:physical-chemistry-transfer-1` | none | ok |
+| `CH1.6:physical-chemistry-transfer-2` | none | ok |
+| `CH1.7:numeric` | as specified in the question | ok |
+| `CH1.7:warmup` | as specified in the question | ok |
+| `CH1.7:physical-chemistry-transfer-1` | none | ok |
+| `CH1.7:physical-chemistry-transfer-2` | none | ok |
+| `CH1.8:numeric` | as specified in the question | ok |
+| `CH1.8:warmup` | as specified in the question | ok |
+| `CH1.8:physical-chemistry-transfer-1` | K (declared in registry) | ok |
+| `CH1.8:physical-chemistry-transfer-2` | none | ok |
+| `CH1.9:numeric` | as specified in the question | ok |
+| `CH1.9:warmup` | as specified in the question | ok |
+| `CH1.9:physical-chemistry-transfer-1` | none | ok |
+| `CH1.9:physical-chemistry-transfer-2` | none | ok |
+| `CH2.2:numeric` | as specified in the question | ok |
+| `CH2.2:warmup` | as specified in the question | ok |
+| `CH2.2:physical-chemistry-transfer-1` | none | ok |
+| `CH2.2:physical-chemistry-transfer-2` | none | ok |
+| `CH2.3:numeric` | as specified in the question | ok |
+| `CH2.3:warmup` | as specified in the question | ok |
+| `CH2.3:physical-chemistry-transfer-1` | none | ok |
+| `CH2.3:physical-chemistry-transfer-2` | none | ok |
+| `CH2.4:numeric` | as specified in the question | ok |
+| `CH2.4:warmup` | as specified in the question | ok |
+| `CH2.4:physical-chemistry-transfer-1` | none | ok |
+| `CH2.4:physical-chemistry-transfer-2` | none | ok |
+| `CH2.5:numeric` | as specified in the question | ok |
+| `CH2.5:warmup` | as specified in the question | ok |
+| `CH2.5:physical-chemistry-transfer-1` | eV (declared in registry) | ok |
+| `CH2.5:physical-chemistry-transfer-2` | none | ok |
+| `CH2.6:numeric` | as specified in the question | ok |
+| `CH2.6:warmup` | as specified in the question | ok |
+| `CH2.6:physical-chemistry-transfer-1` | none | ok |
+| `CH2.6:physical-chemistry-transfer-2` | none | ok |
+| `CH3.1:numeric` | as specified in the question | ok |
+| `CH3.1:warmup` | as specified in the question | ok |
+| `CH3.1:chemistry-transfer-1` | none | ok |
+| `CH3.1:chemistry-transfer-2` | none | ok |
+| `CH3.2:numeric` | as specified in the question | ok |
+| `CH3.2:warmup` | as specified in the question | ok |
+| `CH3.2:chemistry-transfer-1` | none | ok |
+| `CH3.2:chemistry-transfer-2` | none | ok |
+| `CH3.3:warmup` | as specified in the question | ok |
+| `CH3.3:chemistry-transfer-1` | none | ok |
+| `CH3.3:chemistry-transfer-2` | none | ok |
+| `CH3.4:numeric` | as specified in the question | ok |
+| `CH3.4:warmup` | as specified in the question | ok |
+| `CH3.4:chemistry-transfer-1` | none | ok |
+| `CH3.4:chemistry-transfer-2` | none | ok |
+| `CH3.5:numeric` | as specified in the question | ok |
+| `CH3.5:warmup` | as specified in the question | ok |
+| `CH3.5:chemistry-transfer-1` | none | ok |
+| `CH3.5:chemistry-transfer-2` | none | ok |
+| `CH4.1:numeric` | as specified in the question | ok |
+| `CH4.1:warmup` | as specified in the question | ok |
+| `CH4.1:chemistry-transfer-1` | none | ok |
+| `CH4.1:chemistry-transfer-2` | none | ok |
+| `CH4.2:numeric` | as specified in the question | ok |
+| `CH4.2:warmup` | as specified in the question | ok |
+| `CH4.2:chemistry-transfer-1` | degrees (declared in registry) | ok |
+| `CH4.2:chemistry-transfer-2` | none | ok |
+| `CH4.3:numeric` | as specified in the question | ok |
+| `CH4.3:warmup` | as specified in the question | ok |
+| `CH4.3:chemistry-transfer-1` | none | ok |
+| `CH4.3:chemistry-transfer-2` | none | ok |
+| `CH4.4:numeric` | as specified in the question | ok |
+| `CH4.4:warmup` | as specified in the question | ok |
+| `CH4.4:chemistry-transfer-1` | none | ok |
+| `CH4.4:chemistry-transfer-2` | none | ok |
+| `CH4.5:numeric` | as specified in the question | ok |
+| `CH4.5:warmup` | as specified in the question | ok |
+| `CH4.5:chemistry-transfer-1` | none | ok |
+| `CH4.5:chemistry-transfer-2` | none | ok |
+| `CH4.6:numeric` | as specified in the question | ok |
+| `CH4.6:warmup` | as specified in the question | ok |
+| `CH4.6:chemistry-transfer-1` | none | ok |
+| `CH4.6:chemistry-transfer-2` | none | ok |
+| `MA1.1:numeric` | as specified in the question | ok |
+| `MA1.1:warmup` | as specified in the question | ok |
+| `MA1.1:analysis-transfer-1` | as stated | ok |
+| `MA1.1:analysis-transfer-2` | as stated | ok |
+| `MA1.1:analysis-transfer-3` | as stated | ok |
+| `MA1.2:numeric` | as specified in the question | ok |
+| `MA1.2:warmup` | as specified in the question | ok |
+| `MA1.2:analysis-transfer-1` | as stated | ok |
+| `MA1.2:analysis-transfer-2` | as stated | ok |
+| `MA1.2:analysis-transfer-3` | as stated | ok |
+| `MA1.3:numeric` | as specified in the question | ok |
+| `MA1.3:warmup` | as specified in the question | ok |
+| `MA1.3:analysis-transfer-1` | as stated | ok |
+| `MA1.3:analysis-transfer-2` | as stated | ok |
+| `MA1.3:analysis-transfer-3` | as stated | ok |
+| `MA1.4:numeric` | as specified in the question | ok |
+| `MA1.4:warmup` | as specified in the question | ok |
+| `MA1.4:analysis-transfer-1` | as stated | ok |
+| `MA1.4:analysis-transfer-2` | as stated | ok |
+| `MA1.4:analysis-transfer-3` | as stated | ok |
+| `MA1.5:numeric` | as specified in the question | ok |
+| `MA1.5:warmup` | as specified in the question | ok |
+| `MA1.5:analysis-transfer-1` | as stated | ok |
+| `MA1.5:analysis-transfer-2` | as stated | ok |
+| `MA1.5:analysis-transfer-3` | as stated | ok |
+| `MA1.6:numeric` | as specified in the question | ok |
+| `MA1.6:warmup` | as specified in the question | ok |
+| `MA1.6:analysis-transfer-1` | as stated | ok |
+| `MA1.6:analysis-transfer-2` | as stated | ok |
+| `MA1.6:analysis-transfer-3` | as stated | ok |
+| `MA1.7:numeric` | as specified in the question | ok |
+| `MA1.7:warmup` | as specified in the question | ok |
+| `MA1.7:analysis-transfer-1` | as stated | ok |
+| `MA1.7:analysis-transfer-2` | as stated | ok |
+| `MA1.7:analysis-transfer-3` | as stated | ok |
+| `MA1.8:numeric` | as specified in the question | ok |
+| `MA1.8:warmup` | as specified in the question | ok |
+| `MA1.8:analysis-transfer-1` | as stated | ok |
+| `MA1.8:analysis-transfer-2` | as stated | ok |
+| `MA1.8:analysis-transfer-3` | as stated | ok |
+| `MA10.1:numeric` | as specified in the question | ok |
+| `MA10.1:warmup` | as specified in the question | ok |
+| `MA10.1:structure-transfer-1` | none | ok |
+| `MA10.1:structure-transfer-2` | none | ok |
+| `MA10.2:numeric` | as specified in the question | ok |
+| `MA10.2:warmup` | as specified in the question | ok |
+| `MA10.2:structure-transfer-1` | none | ok |
+| `MA10.2:structure-transfer-2` | none | ok |
+| `MA10.3:numeric` | as specified in the question | ok |
+| `MA10.3:warmup` | as specified in the question | ok |
+| `MA10.3:structure-transfer-1` | none | ok |
+| `MA10.3:structure-transfer-2` | none | ok |
+| `MA10.4:numeric` | as specified in the question | ok |
+| `MA10.4:warmup` | as specified in the question | ok |
+| `MA10.4:structure-transfer-1` | none | ok |
+| `MA10.4:structure-transfer-2` | none | ok |
+| `MA10.5:numeric` | as specified in the question | ok |
+| `MA10.5:warmup` | as specified in the question | ok |
+| `MA10.5:structure-transfer-1` | none | ok |
+| `MA10.5:structure-transfer-2` | none | ok |
+| `MA10.6:numeric` | as specified in the question | ok |
+| `MA10.6:warmup` | as specified in the question | ok |
+| `MA10.6:structure-transfer-1` | none | ok |
+| `MA10.6:structure-transfer-2` | none | ok |
+| `MA11.1:numeric` | as specified in the question | ok |
+| `MA11.1:warmup` | as specified in the question | ok |
+| `MA11.1:structure-transfer-1` | none | ok |
+| `MA11.1:structure-transfer-2` | none | ok |
+| `MA11.2:numeric` | as specified in the question | ok |
+| `MA11.2:warmup` | as specified in the question | ok |
+| `MA11.2:structure-transfer-1` | none | ok |
+| `MA11.2:structure-transfer-2` | none | ok |
+| `MA11.3:numeric` | as specified in the question | ok |
+| `MA11.3:warmup` | as specified in the question | ok |
+| `MA11.3:structure-transfer-1` | none | ok |
+| `MA11.3:structure-transfer-2` | none | ok |
+| `MA11.4:numeric` | as specified in the question | ok |
+| `MA11.4:warmup` | as specified in the question | ok |
+| `MA11.4:review-core-transfer` | in the stated coordinate units | ok |
+| `MA11.4:structure-transfer-1` | none | ok |
+| `MA11.4:structure-transfer-2` | none | ok |
+| `MA11.5:numeric` | as specified in the question | ok |
+| `MA11.5:warmup` | as specified in the question | ok |
+| `MA11.5:structure-transfer-1` | none | ok |
+| `MA11.5:structure-transfer-2` | none | ok |
+| `MA11.6:numeric` | as specified in the question | ok |
+| `MA11.6:warmup` | as specified in the question | ok |
+| `MA11.6:structure-transfer-1` | none | ok |
+| `MA11.6:structure-transfer-2` | none | ok |
+| `MA11.7:numeric` | as specified in the question | ok |
+| `MA11.7:warmup` | as specified in the question | ok |
+| `MA11.7:structure-transfer-1` | none | ok |
+| `MA11.7:structure-transfer-2` | none | ok |
+| `MA12.1:numeric` | as specified in the question | ok |
+| `MA12.1:warmup` | as specified in the question | ok |
+| `MA12.1:structure-transfer-1` | none | ok |
+| `MA12.1:structure-transfer-2` | none | ok |
+| `MA12.2:numeric` | as specified in the question | ok |
+| `MA12.2:warmup` | as specified in the question | ok |
+| `MA12.2:structure-transfer-1` | none | ok |
+| `MA12.2:structure-transfer-2` | none | ok |
+| `MA12.3:numeric` | as specified in the question | ok |
+| `MA12.3:warmup` | as specified in the question | ok |
+| `MA12.3:structure-transfer-1` | none | ok |
+| `MA12.3:structure-transfer-2` | none | ok |
+| `MA12.4:numeric` | as specified in the question | ok |
+| `MA12.4:warmup` | as specified in the question | ok |
+| `MA12.4:structure-transfer-1` | none | ok |
+| `MA12.4:structure-transfer-2` | none | ok |
