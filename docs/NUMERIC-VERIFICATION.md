@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 954 (61.4%) |
+| Independently recomputed and passing | 1058 (68.1%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 219 |
+| Lessons with at least one recomputed question | 245 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -992,3 +992,108 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `MA13.4:warmup` | as specified in the question | ok |
 | `MA13.4:structure-transfer-1` | none | ok |
 | `MA13.4:structure-transfer-2` | none | ok |
+| `CP1.1:n1` | as stated in question | ok |
+| `CP1.1:warmup` | as stated in question | ok |
+| `CP1.1:transfer-model-check` | as stated in question | ok |
+| `CP1.1:computing-transfer-1` | none | ok |
+| `CP1.1:computing-transfer-2` | none | ok |
+| `CP1.2:n1` | as stated in question | ok |
+| `CP1.2:warmup` | as stated in question | ok |
+| `CP1.2:transfer-model-check` | as stated in question | ok |
+| `CP1.2:computing-transfer-1` | none | ok |
+| `CP1.2:computing-transfer-2` | none | ok |
+| `CP1.3:n1` | as stated in question | ok |
+| `CP1.3:warmup` | as stated in question | ok |
+| `CP1.3:transfer-model-check` | as stated in question | ok |
+| `CP1.3:computing-transfer-1` | none | ok |
+| `CP1.3:computing-transfer-2` | none | ok |
+| `CP1.4:n1` | as stated in question | ok |
+| `CP1.4:warmup` | as stated in question | ok |
+| `CP1.4:transfer-model-check` | as stated in question | ok |
+| `CP1.4:computing-transfer-1` | none | ok |
+| `CP1.4:computing-transfer-2` | none | ok |
+| `CP1.5:n1` | as stated in question | ok |
+| `CP1.5:warmup` | as stated in question | ok |
+| `CP1.5:transfer-model-check` | as stated in question | ok |
+| `CP1.5:computing-transfer-1` | none | ok |
+| `CP1.5:computing-transfer-2` | none | ok |
+| `CP1.6:n1` | as stated in question | ok |
+| `CP1.6:warmup` | as stated in question | ok |
+| `CP1.6:transfer-model-check` | as stated in question | ok |
+| `CP1.6:computing-transfer-1` | none | ok |
+| `CP1.6:computing-transfer-2` | none | ok |
+| `CP2.1:numeric` | as specified in the question | ok |
+| `CP2.1:warmup` | as specified in the question | ok |
+| `CP2.1:computing-transfer-1` | none | ok |
+| `CP2.1:computing-transfer-2` | none | ok |
+| `CP2.2:numeric` | as specified in the question | ok |
+| `CP2.2:warmup` | as specified in the question | ok |
+| `CP2.2:computing-transfer-1` | none | ok |
+| `CP2.2:computing-transfer-2` | none | ok |
+| `CP2.3:numeric` | as specified in the question | ok |
+| `CP2.3:warmup` | as specified in the question | ok |
+| `CP2.3:computing-transfer-1` | none | ok |
+| `CP2.3:computing-transfer-2` | none | ok |
+| `CP2.4:numeric` | as specified in the question | ok |
+| `CP2.4:warmup` | as specified in the question | ok |
+| `CP2.4:computing-transfer-1` | none | ok |
+| `CP2.4:computing-transfer-2` | none | ok |
+| `CP2.5:numeric` | as specified in the question | ok |
+| `CP2.5:warmup` | as specified in the question | ok |
+| `CP2.5:computing-transfer-1` | none | ok |
+| `CP2.5:computing-transfer-2` | none | ok |
+| `CH2.1:physical-chemistry-transfer-1` | none | ok |
+| `CH2.1:physical-chemistry-transfer-2` | none | ok |
+| `CH4.7:numeric` | as specified in the question | ok |
+| `CH4.7:warmup` | as specified in the question | ok |
+| `CH4.7:chemistry-transfer-1` | none | ok |
+| `CH4.7:chemistry-transfer-2` | none | ok |
+| `CH4.8:numeric` | as specified in the question | ok |
+| `CH4.8:warmup` | as specified in the question | ok |
+| `CH4.8:chemistry-transfer-1` | none | ok |
+| `CH4.8:chemistry-transfer-2` | none | ok |
+| `CH5.1:numeric` | as specified in the question | ok |
+| `CH5.1:warmup` | as specified in the question | ok |
+| `CH5.1:chemistry-transfer-1` | none | ok |
+| `CH5.1:chemistry-transfer-2` | none | ok |
+| `CH5.2:numeric` | as specified in the question | ok |
+| `CH5.2:warmup` | as specified in the question | ok |
+| `CH5.2:chemistry-transfer-1` | none | ok |
+| `CH5.2:chemistry-transfer-2` | none | ok |
+| `CH5.3:numeric` | as specified in the question | ok |
+| `CH5.3:warmup` | as specified in the question | ok |
+| `CH5.3:chemistry-transfer-1` | none | ok |
+| `CH5.3:chemistry-transfer-2` | none | ok |
+| `CH5.4:numeric` | as specified in the question | ok |
+| `CH5.4:warmup` | as specified in the question | ok |
+| `CH5.4:chemistry-transfer-1` | none | ok |
+| `CH5.4:chemistry-transfer-2` | none | ok |
+| `CH6.1:numeric` | as specified in the question | ok |
+| `CH6.1:warmup` | as specified in the question | stale |
+| `CH6.1:chemistry-transfer-1` | none | ok |
+| `CH6.1:chemistry-transfer-2` | none | ok |
+| `CH6.2:numeric` | as specified in the question | ok |
+| `CH6.2:warmup` | as specified in the question | ok |
+| `CH6.3:numeric` | as specified in the question | ok |
+| `CH6.3:warmup` | as specified in the question | ok |
+| `CH6.3:chemistry-transfer-1` | none | ok |
+| `CH6.3:chemistry-transfer-2` | none | ok |
+| `CH6.4:numeric` | as specified in the question | ok |
+| `CH6.4:warmup` | as specified in the question | ok |
+| `CH6.4:chemistry-transfer-1` | none | ok |
+| `CH6.4:chemistry-transfer-2` | none | ok |
+| `CH6.5:numeric` | as specified in the question | ok |
+| `CH6.5:warmup` | as specified in the question | ok |
+| `CH6.5:chemistry-transfer-1` | none | ok |
+| `CH6.5:chemistry-transfer-2` | none | ok |
+| `CH6.6:numeric` | as specified in the question | ok |
+| `CH6.6:warmup` | as specified in the question | ok |
+| `CH6.6:chemistry-transfer-1` | none | ok |
+| `CH6.6:chemistry-transfer-2` | none | ok |
+| `CH6.7:numeric` | as specified in the question | ok |
+| `CH6.7:warmup` | as specified in the question | ok |
+| `CH6.7:chemistry-transfer-1` | none | ok |
+| `CH6.7:chemistry-transfer-2` | none | ok |
+| `CH6.8:numeric` | as specified in the question | ok |
+| `CH6.8:warmup` | as specified in the question | ok |
+| `CH6.8:chemistry-transfer-2` | none | ok |
