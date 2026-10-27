@@ -27,3 +27,17 @@ Official repository: https://github.com/openstax/osbooks-university-physics-bund
 | AS1.5 | [University Physics Volume 1 — Tidal Forces](https://github.com/openstax/osbooks-university-physics-bundle/blob/2300d5b8ca2571dacc6ec25ebef56ba8d49000a2/modules/m58351/index.cnxml) | Exact near/far inverse-square force difference as the origin of tides. Linear derivative checked internally; Roche coefficients and tensor claims are not independently source-reviewed here. |
 
 The JSON ledger records source and lesson SHA-256 fingerprints so later edits can invalidate the mapping. Source inspection can support review, but cannot upgrade a lesson to verified without the separately required independent evidence record.
+
+## Astronomy additions (second pass)
+
+AI-assisted inspection (Claude Sonnet 5.5) of OpenStax Astronomy modules at commit `dff6acf8df597ceda73985308f838ed38417a606`; each source file's SHA-256 is recorded in the ledger and matches the file at that commit. These are introductory-textbook checks of the elementary claims only. The advanced material in each lesson (listed per row) is **not** covered, and none of this is independent review.
+
+| Lesson | Source module | Inspected scope / limits |
+| --- | --- | --- |
+| AS7.1 | Newton’s Universal Law of Gravitation (`m59777`) | Inverse-square gravity and Newton’s form of Kepler’s third law in solar units. |
+| AS7.1 | Orbits in the Solar System (`m59778`) | Nearly circular coplanar orbits; shorter periods mean higher speeds. Resonances, tides and chaos not covered. |
+| AS3.7 | The Electromagnetic Spectrum (`m59798`) | Stefan–Boltzmann law and L = 4πR²F. |
+| AS3.7 | The Spectra of Stars (`m59892`) | Line appearance depends on temperature and ionization stage. |
+| AS3.7 | Using Spectra to Measure Stellar Radius, Composition, and Motion (`m59896`) | Line strength and abundance at equal temperature and pressure; amounts need model calculations. LTE, curve of growth and the grey-atmosphere derivation not covered. |
+| AS9.6 | The Inflationary Universe (`m59981`) | Flatness and uniformity problems; inflation as a hypothesis. Specific models and constraints not covered. |
+| AS9.8 | The Expanding Universe (`m62195`) | Hubble’s law and the unit of H. Modern H₀ and S₈ measurements and any tension not covered. |
