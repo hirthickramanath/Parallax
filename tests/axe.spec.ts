@@ -18,6 +18,9 @@ const learnerPages = [
 ];
 
 async function violations(page: Page) {
+  // The session check shows a loader until Firebase answers; audit the page, not the loader.
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator("h1:visible").first()).toBeVisible();
   const result = await new AxeBuilder({ page }).withTags(tags).analyze();
   return result.violations.map((v) => ({
     rule: v.id,
@@ -32,7 +35,6 @@ for (const scheme of ["light", "dark"] as const) {
     const found: Record<string, unknown> = {};
     for (const path of publicPages) {
       await page.goto(path);
-      await page.waitForLoadState("networkidle");
       const v = await violations(page);
       if (v.length) found[path] = v;
     }
@@ -46,7 +48,6 @@ for (const scheme of ["light", "dark"] as const) {
     const found: Record<string, unknown> = {};
     for (const path of learnerPages) {
       await page.goto(path);
-      await page.waitForLoadState("networkidle");
       const v = await violations(page);
       if (v.length) found[path] = v;
     }
