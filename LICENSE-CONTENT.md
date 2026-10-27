@@ -1,6 +1,6 @@
 # Content licence
 
-Copyright (c) 2026 Hirthick Ramanath P L
+Copyright (c) 2026 P L Hirthick Ramanath
 
 The lesson text, questions, worked examples, curriculum data and review
 records under `content/` are licensed under the
