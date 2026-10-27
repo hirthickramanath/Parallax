@@ -12,7 +12,7 @@
 import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import { CHECKS } from "./numeric-checks.mjs";
-import { Quantity, classifyUnit, fingerprint, loadNumericQuestions, parseUnit } from "./numeric-lib.mjs";
+import { Quantity, classifyUnit, loadNumericQuestions, parseUnit } from "./numeric-lib.mjs";
 
 const CHECKS_FILE = "scripts/numeric-checks.mjs";
 const DOC_FILE = "docs/NUMERIC-VERIFICATION.md";
@@ -136,7 +136,7 @@ function refreshFingerprints(questions, results) {
     if (!["ok", "unrecorded", "stale"].includes(result.status)) continue;
     const item = byKey.get(result.key);
     const re = new RegExp(`(\\["${result.key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}", ")[0-9a-f]*(")`);
-    const fp = fingerprint(item.prompt, item.answer);
+    const fp = item.fingerprint; // same value the check compares against; answers such as "1e-05" differ once parsed
     const next = source.replace(re, (_m, a, b) => a + fp + b);
     if (next !== source) changed += 1;
     source = next;

@@ -9,7 +9,7 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1058 (68.1%) |
+| Independently recomputed and passing | 1059 (68.1%) |
 | Lessons with at least one numeric question | 354 |
 | Lessons with at least one recomputed question | 245 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
@@ -1069,7 +1069,7 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `CH5.4:chemistry-transfer-1` | none | ok |
 | `CH5.4:chemistry-transfer-2` | none | ok |
 | `CH6.1:numeric` | as specified in the question | ok |
-| `CH6.1:warmup` | as specified in the question | stale |
+| `CH6.1:warmup` | as specified in the question | ok |
 | `CH6.1:chemistry-transfer-1` | none | ok |
 | `CH6.1:chemistry-transfer-2` | none | ok |
 | `CH6.2:numeric` | as specified in the question | ok |
