@@ -91,7 +91,7 @@ Run what matches your change; report passed, failed and not-run separately. A mo
 
 ## Priorities
 
-1. Widen independent verification: only a small share of numeric questions is recomputed (see `docs/NUMERIC-VERIFICATION.md`), and most have no machine-readable unit. Limiting cases are not yet checked.
+1. Widen independent verification: nearly every numeric answer is now recomputed (see `docs/NUMERIC-VERIFICATION.md`), but most questions still have no machine-readable unit, and limiting cases are not yet checked. Recomputation shows an answer follows from its prompt, not that the prompt or lesson is scientifically right.
 2. CI health, redeploying the Workers that changed, and the open service decisions above.
 3. Prepare review packets for teachers (`npm run review:handoff`) and incorporate genuine findings.
 4. Extend scoped source checks without overstating coverage.
