@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1530 (98.5%) |
+| Independently recomputed and passing | 1551 (99.8%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 353 |
+| Lessons with at least one recomputed question | 354 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -1568,3 +1568,24 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH16.1:numeric` | as specified in the question | ok |
 | `PH16.1:warmup` | as specified in the question | ok |
 | `PH16.2:warmup` | as specified in the question | ok |
+| `AS8.1:astro-transfer-2` | none | ok |
+| `CH2.1:numeric` | as specified in the question | ok |
+| `CH2.1:warmup` | as specified in the question | ok |
+| `CH3.3:numeric` | as specified in the question | ok |
+| `CH6.2:chemistry-transfer-1` | none | ok |
+| `CH6.2:chemistry-transfer-2` | none | ok |
+| `MA11.5:review-core-transfer` | in the stated convention and units | ok |
+| `MA12.5:numeric` | as specified in the question | ok |
+| `MA12.5:warmup` | as specified in the question | ok |
+| `MA12.5:structure-transfer-1` | none | ok |
+| `MA12.5:structure-transfer-2` | none | ok |
+| `MA5.1:warmup` | as specified in the question | ok |
+| `MB3.5:depth-transfer-20261020` | same units as y | ok |
+| `PH15.5:numeric` | as specified in the question | ok |
+| `PH15.5:fields-transfer-2` | none | ok |
+| `PH15.6:fields-transfer-1` | none | ok |
+| `PH15.8:numeric` | as specified in the question | ok |
+| `PH15.8:warmup` | as specified in the question | ok |
+| `PH15.8:fields-transfer-2` | none | ok |
+| `PH16.2:numeric` | as specified in the question | ok |
+| `PH6.5:thermal-optics-transfer-1` | none | ok |

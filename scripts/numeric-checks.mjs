@@ -1678,4 +1678,28 @@ export const CHECKS = [
   ["PH16.1:numeric", "9cfd4966", () => q(-6 / 2)],
   ["PH16.1:warmup", "fb83b6e6", () => q(-3 * 4)],
   ["PH16.2:warmup", "2b15bffd", () => q(1 - 4 / 2)], // trace of G = R - (4/2) R
+
+  // --- Remaining prompts that name a standard result without restating it (batch 11) ---
+  // The formula is a textbook one; each is noted so a reviewer can see what was assumed.
+  ["AS8.1:astro-transfer-2", "bcc925b1", () => q(2 * 3 * 2)], // ∫ρ0 e^{-|z|/h} dz over both sides = 2 ρ0 h
+  ["CH2.1:numeric", "534b0f66", () => q((2 + -1) / (1 + 0))], // E± = (α ± β)/(1 ± S)
+  ["CH2.1:warmup", "2d91b61a", () => q((2 - -1) / (1 - 0))],
+  ["CH3.3:numeric", "7429c314", () => q(-(-0.01) / 100)], // v/c = -Δν/ν0 for a small recession
+  ["CH6.2:chemistry-transfer-1", "1971214a", () => q((2 / 2) * (1 + Math.cos(3 * 0)))], // U = V3/2 (1 + cos 3φ)
+  ["CH6.2:chemistry-transfer-2", "f1755f65", () => q(Math.round((2 / 2) * (1 + Math.cos(3 * (PI / 3))) * 1e12) / 1e12)],
+  ["MA11.5:review-core-transfer", "61c671d5", () => q(2 ** 2 * Math.sin(PI / 6) ** 2)], // R_θφθφ = r² sin²θ
+  ["MA12.5:numeric", "a3f02744", () => q(2 * 0.6 + 5 * 0.4)],
+  ["MA12.5:warmup", "b26adc8b", () => q(0.4)], // only the eigenvalue 5 lies in [4,6]
+  ["MA12.5:structure-transfer-1", "cb2434c5", () => q(Math.max(-1, 2))],
+  ["MA12.5:structure-transfer-2", "6761fd34", () => q(1 / (2 - 0))],
+  ["MA5.1:warmup", "efbd9dee", () => q(2 * 3)], // f = a0/2 + Σ...
+  ["MB3.5:depth-transfer-20261020", "2ae84263", () => q(3 + (11 - 3) * Math.exp(-Math.log(2) * 2))],
+  ["PH15.5:numeric", "d36b632c", () => q(0.2 ** 2 / 1)],
+  ["PH15.5:fields-transfer-2", "f64f65b6", () => q(0.01 ** 2)],
+  ["PH15.6:fields-transfer-1", "cb9bb61e", () => q(0.1 / (1 - 1 * 0.1 * 2))], // α0 / (1 - b α0 ln(μ/μ0))
+  ["PH15.8:numeric", "987c3b18", () => q(4 / (2 * 2))], // V = -μ²|φ|² + λ|φ|⁴
+  ["PH15.8:warmup", "2013237e", () => q(8 / (2 * 2))],
+  ["PH15.8:fields-transfer-2", "ada4b9ca", () => q(0)],
+  ["PH16.2:numeric", "06586f14", () => q(-2 * 3)], // trace of G + Λg = κT gives R = -κT
+  ["PH6.5:thermal-optics-transfer-1", "0c2d45b7", () => q(1 / (2 * 1 + 1))], // R/(2R+Γ)
 ];
