@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1433 (92.2%) |
+| Independently recomputed and passing | 1530 (98.5%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 331 |
+| Lessons with at least one recomputed question | 353 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -1471,3 +1471,100 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `PH9.8:warmup` | as specified in the question | ok |
 | `PH9.8:quantum-transfer-1` | none | ok |
 | `PH9.8:quantum-transfer-2` | none | ok |
+| `PH12.1:numeric` | as specified in the question | ok |
+| `PH12.1:warmup` | as specified in the question | ok |
+| `PH12.1:matter-transfer-1` | none | ok |
+| `PH12.1:matter-transfer-2` | none | ok |
+| `PH12.2:numeric` | as specified in the question | ok |
+| `PH12.2:warmup` | as specified in the question | ok |
+| `PH12.2:matter-transfer-1` | none | ok |
+| `PH12.2:matter-transfer-2` | none | ok |
+| `PH12.3:numeric` | as specified in the question | ok |
+| `PH12.3:warmup` | as specified in the question | ok |
+| `PH12.3:matter-transfer-1` | none | ok |
+| `PH12.3:matter-transfer-2` | none | ok |
+| `PH12.4:numeric` | as specified in the question | ok |
+| `PH12.4:warmup` | as specified in the question | ok |
+| `PH12.4:matter-transfer-1` | none | ok |
+| `PH12.4:matter-transfer-2` | none | ok |
+| `PH12.5:numeric` | as specified in the question | ok |
+| `PH12.5:warmup` | as specified in the question | ok |
+| `PH12.5:matter-transfer-1` | none | ok |
+| `PH12.5:matter-transfer-2` | none | ok |
+| `PH12.6:numeric` | as specified in the question | ok |
+| `PH12.6:warmup` | as specified in the question | ok |
+| `PH12.6:matter-transfer-1` | none | ok |
+| `PH12.6:matter-transfer-2` | none | ok |
+| `PH13.1:numeric` | as specified in the question | ok |
+| `PH13.1:warmup` | as specified in the question | ok |
+| `PH13.1:matter-transfer-1` | none | ok |
+| `PH13.1:matter-transfer-2` | none | ok |
+| `PH13.2:numeric` | as specified in the question | ok |
+| `PH13.2:warmup` | as specified in the question | ok |
+| `PH13.2:matter-transfer-1` | none | ok |
+| `PH13.2:matter-transfer-2` | none | ok |
+| `PH13.3:numeric` | as specified in the question | ok |
+| `PH13.3:warmup` | as specified in the question | ok |
+| `PH13.3:matter-transfer-1` | none | ok |
+| `PH13.3:matter-transfer-2` | none | ok |
+| `PH13.4:numeric` | as specified in the question | ok |
+| `PH13.4:warmup` | as specified in the question | ok |
+| `PH13.4:matter-transfer-1` | none | ok |
+| `PH13.4:matter-transfer-2` | none | ok |
+| `PH13.5:numeric` | as specified in the question | ok |
+| `PH13.5:warmup` | as specified in the question | ok |
+| `PH13.5:matter-transfer-1` | none | ok |
+| `PH13.5:matter-transfer-2` | none | ok |
+| `PH13.6:numeric` | as specified in the question | ok |
+| `PH13.6:warmup` | as specified in the question | ok |
+| `PH13.6:matter-transfer-1` | none | ok |
+| `PH13.6:matter-transfer-2` | none | ok |
+| `PH13.7:numeric` | as specified in the question | ok |
+| `PH13.7:warmup` | as specified in the question | ok |
+| `PH13.7:matter-transfer-1` | none | ok |
+| `PH13.7:matter-transfer-2` | none | ok |
+| `PH14.1:numeric` | as specified in the question | ok |
+| `PH14.1:warmup` | as specified in the question | ok |
+| `PH14.1:matter-transfer-1` | none | ok |
+| `PH14.1:matter-transfer-2` | none | ok |
+| `PH14.2:numeric` | as specified in the question | ok |
+| `PH14.2:warmup` | as specified in the question | ok |
+| `PH14.2:matter-transfer-1` | none | ok |
+| `PH14.2:matter-transfer-2` | none | ok |
+| `PH14.3:numeric` | as specified in the question | ok |
+| `PH14.3:warmup` | as specified in the question | ok |
+| `PH14.3:matter-transfer-1` | none | ok |
+| `PH14.3:matter-transfer-2` | none | ok |
+| `PH14.4:numeric` | as specified in the question | ok |
+| `PH14.4:warmup` | as specified in the question | ok |
+| `PH14.4:matter-transfer-1` | none | ok |
+| `PH14.4:matter-transfer-2` | none | ok |
+| `PH14.5:numeric` | as specified in the question | ok |
+| `PH14.5:warmup` | as specified in the question | ok |
+| `PH14.5:matter-transfer-1` | none | ok |
+| `PH14.5:matter-transfer-2` | none | ok |
+| `PH14.6:numeric` | as specified in the question | ok |
+| `PH14.6:warmup` | as specified in the question | ok |
+| `PH14.6:matter-transfer-1` | none | ok |
+| `PH14.6:matter-transfer-2` | none | ok |
+| `PH14.7:numeric` | as specified in the question | ok |
+| `PH14.7:warmup` | as specified in the question | ok |
+| `PH14.7:matter-transfer-1` | none | ok |
+| `PH14.7:matter-transfer-2` | none | ok |
+| `PH14.8:numeric` | as specified in the question | ok |
+| `PH14.8:warmup` | as specified in the question | ok |
+| `PH14.8:matter-transfer-1` | none | ok |
+| `PH14.8:matter-transfer-2` | none | ok |
+| `PH15.2:numeric` | as specified in the question | ok |
+| `PH15.2:warmup` | as specified in the question | ok |
+| `PH15.2:review-core-transfer` | natural energy-density units | ok |
+| `PH15.2:fields-transfer-1` | none | ok |
+| `PH15.2:fields-transfer-2` | none | ok |
+| `PH15.6:numeric` | as specified in the question | ok |
+| `PH15.6:review-core-transfer` | in the stated convention and units | ok |
+| `PH15.6:fields-transfer-2` | none | ok |
+| `PH15.7:numeric` | as specified in the question | ok |
+| `PH15.7:warmup` | as specified in the question | ok |
+| `PH16.1:numeric` | as specified in the question | ok |
+| `PH16.1:warmup` | as specified in the question | ok |
+| `PH16.2:warmup` | as specified in the question | ok |
