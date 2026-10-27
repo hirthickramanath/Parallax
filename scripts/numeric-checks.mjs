@@ -870,4 +870,121 @@ export const CHECKS = [
   ["MA12.4:warmup", "60732297", () => q(2)], // |x|'' = 2δ
   ["MA12.4:structure-transfer-1", "0965c612", () => q(Math.exp(-0))],
   ["MA12.4:structure-transfer-2", "6b3da4cd", () => q(-(Math.exp(0) * (1 - 2 * 0 ** 2)))], // -φ'(0), φ' = e^{-x²}(1 - 2x²)
+
+  // --- MA2–MA5: multivariable calculus, linear algebra, ODEs, Fourier/PDE (batch 3) ---
+  ["MA2.1:numeric", "16f52056", () => q(4 * 2 ** 3)], // d/dt t^4 at t=2
+  ["MA2.1:warmup", "c2bbb378", () => q(2 * 2 * 3)], // fx = 2xy
+  ["MA2.1:multivariable-transfer-1", "2e11daf8", () => q(2 * 2 * 3)],
+  ["MA2.1:multivariable-transfer-2", "7f5caf6c", () => q(4 * 2 ** 3)],
+  ["MA2.2:numeric", "7ffb08d7", () => q((2 * 1) ** 2 + (6 * 1) ** 2)], // |grad f|^2, f=x^2+3y^2
+  ["MA2.2:warmup", "329cca1a", () => q(6)],
+  ["MA2.2:multivariable-transfer-1", "84048826", () => q(2 * 1 * 0.6 + 4 * 1 * 0.8)], // grad (2,4) . (3/5,4/5)
+  ["MA2.2:multivariable-transfer-2", "776a5eda", () => q(1 ** 2 + 2 * 2 ** 2)], // x^2+2y^2 at (1,2), f(0)=0
+  ["MA2.3:numeric", "43a0470a", () => q(5 * 5)],
+  ["MA2.3:warmup", "78e57af4", () => q(10 / 2)],
+  ["MA2.3:multivariable-transfer-1", "caeb2ebf", () => q(Math.SQRT2)],
+  ["MA2.3:multivariable-transfer-2", "2a9bbc1d", () => q(2 * 2 ** 2)], // x=y=2
+  ["MA2.4:numeric", "512ebeec", () => q(3)],
+  ["MA2.4:warmup", "35946fe8", () => q(2 * 3)],
+  ["MA2.4:multivariable-transfer-1", "c6e5556e", () => q(PI * (3 ** 2 - 1 ** 2))],
+  ["MA2.4:multivariable-transfer-2", "7ebcd580", () => q(2 * 3)],
+  ["MA2.5:numeric", "222200ac", () => q(1 ** 2 + 2 ** 2)], // phi(1,2)-phi(0,0)
+  ["MA2.5:warmup", "b60a955e", () => q(2 ** 2 - 1 ** 2)],
+  ["MA2.5:multivariable-transfer-1", "1c99a293", () => q(2 * PI)], // curl 2 times area pi
+  ["MA2.5:multivariable-transfer-2", "8ed54f6a", () => q(1 ** 2 + 2 ** 2)],
+  ["MA2.6:numeric", "c8b7c926", () => q(3 * 1)],
+  ["MA2.6:warmup", "d2ae7eb0", () => q(-3 * 1)],
+  ["MA2.6:multivariable-transfer-1", "2d3ead4d", () => q(3 * ((4 / 3) * PI))], // divergence 3 times ball volume
+  ["MA2.6:multivariable-transfer-2", "d3cba117", () => q(Math.hypot(1, 2, 2))], // area factor sqrt(1+zx^2+zy^2)
+  ["MA2.7:numeric", "1f5583c7", () => q(3 * 1)],
+  ["MA2.7:warmup", "dcf49002", () => q(1 - -1)], // dFy/dx - dFx/dy
+  ["MA2.7:multivariable-transfer-1", "bde92b2c", () => q(3 * ((4 / 3) * PI))],
+  ["MA2.7:multivariable-transfer-2", "bf623aa3", () => q(1 - -1)],
+  ["MA2.8:numeric", "bcc71daa", () => q((3 * 2 ** 2) / 2 ** 2)], // (1/r^2) d(r^3)/dr = 3
+  ["MA2.8:warmup", "ab708ad1", () => q(4)], // h = (1, s, 1)
+  ["MA2.8:multivariable-transfer-1", "04753be5", () => q((2 * 1.5) / 1.5)], // (1/s) d(s*s)/ds = 2
+  ["MA2.8:multivariable-transfer-2", "284b678b", () => q((3 * 1.5 ** 2) / 1.5 ** 2)],
+  ["MA3.1:numeric", "431bfd33", () => q(3 + 1)],
+  ["MA3.1:warmup", "cca750d6", () => q(3 - 1)],
+  ["MA3.1:linear-ode-transfer-1", "29dc56e6", () => q(3 - 1)],
+  ["MA3.1:linear-ode-transfer-2", "c93948c3", () => q(5 - 3)],
+  ["MA3.2:numeric", "d0a29b5a", () => q(3 - 2)], // rank 2, nullity 3-2
+  ["MA3.2:warmup", "55140f20", () => q(2)],
+  ["MA3.2:linear-ode-transfer-1", "8766d3a6", () => q(1 * 3 + 2 * 4)],
+  ["MA3.2:linear-ode-transfer-2", "9e4018fd", () => q(2 * 4)],
+  ["MA3.3:numeric", "f76ed036", () => q(2 * 3 - 1 * 1)],
+  ["MA3.3:warmup", "ad9d9377", () => q(-(2 * 3 - 1 * 1))],
+  ["MA3.3:linear-ode-transfer-1", "0fff1b6a", () => q(2 * 4 - 1 * 3)],
+  ["MA3.3:linear-ode-transfer-2", "b70bf428", () => q(Math.abs(-3))],
+  ["MA3.4:numeric", "9c29a0bb", () => q(4)], // [[1,n],[0,1]]
+  ["MA3.4:warmup", "3eaebfc3", () => q(2 ** 4)],
+  ["MA3.4:linear-ode-transfer-1", "7e1a767d", () => q(2 + 5)],
+  ["MA3.4:linear-ode-transfer-2", "0cf1c6c5", () => q(2 - 1)], // nullity of A - I = [[0,1],[0,0]]
+  ["MA3.5:numeric", "9c60d06d", () => q(4)],
+  ["MA3.5:warmup", "591f0e57", () => q(3)],
+  ["MA3.5:linear-ode-transfer-1", "f060ea03", () => q((3 * 1 + 1 * 1) / (1 * 1 + 1 * 1))],
+  ["MA3.5:linear-ode-transfer-2", "eb680515", () => q(4)],
+  ["MA3.6:numeric", "2c2d57df", () => q(2 + 1)], // eigenvalues 2 +/- 1
+  ["MA3.6:warmup", "76aad0e3", () => q(2 - 1)],
+  ["MA3.6:linear-ode-transfer-1", "5846f29d", () => q(2 + 1)],
+  ["MA3.6:linear-ode-transfer-2", "56e070cf", () => q(1 * 0.5 + 4 * 0.5)],
+  ["MA3.7:numeric", "b1011242", () => q(Math.min(3, 1))],
+  ["MA3.7:warmup", "58f24e9c", () => q(5)], // component of b outside the image of diag(3,1,0)
+  ["MA3.7:linear-ode-transfer-1", "8c034d3d", () => q((1 + 2 + 6) / 3)],
+  ["MA3.7:linear-ode-transfer-2", "fd42d250", () => q(10 / 0.5)],
+  ["MA3.8:numeric", "fd2070b7", () => q(0 + 3 * 1)], // x1(t) = x1(0) + t x2(0)
+  ["MA3.8:warmup", "f2d75c3c", () => q(2)],
+  ["MA3.8:linear-ode-transfer-1", "aab7ccaf", () => q(3)],
+  ["MA3.8:linear-ode-transfer-2", "99f4536b", () => q(Math.exp(-1))], // exp(-I) exp(N)
+  ["MA4.1:numeric", "c08002bc", () => q(4 / 2)],
+  ["MA4.1:warmup", "d46d86dd", () => q(1 / (1 * 1))], // y = 1/(1-t)
+  ["MA4.1:linear-ode-transfer-1", "54d535b2", () => q(3 * Math.exp(2 * Math.log(2)))],
+  ["MA4.1:linear-ode-transfer-2", "856cd672", () => q(4 * Math.exp(-Math.log(2)))],
+  ["MA4.2:numeric", "495ff52f", () => q(1 / 4)],
+  ["MA4.2:warmup", "1dc22d10", () => q(Math.sqrt(9))],
+  ["MA4.2:linear-ode-transfer-1", "d4c82756", () => q(2 * (1 - Math.exp(-2 * Math.log(2))))],
+  ["MA4.2:linear-ode-transfer-2", "2d46ea71", () => q(6 / 3)],
+  ["MA4.3:numeric", "271f97c1", () => q(2 * 1)], // y = cos 2t, |y'| max = 2
+  ["MA4.3:warmup", "ef1de3de", () => q(2)],
+  ["MA4.3:linear-ode-transfer-1", "9bf7fa7b", () => q(3 * Math.exp(-2 * Math.log(2)))],
+  ["MA4.3:linear-ode-transfer-2", "a98cbd36", () => q(2 * Math.exp(Math.log(3)))],
+  ["MA4.4:numeric", "492794d0", () => q(1 / Math.sqrt(1 + 2 * 4))],
+  ["MA4.4:warmup", "6a50532d", () => q(Math.sqrt(4))], // f' = -2x < 0 at +2
+  ["MA4.4:linear-ode-transfer-1", "e6ed1826", () => q(2 * -(2 ** 3))], // dV/dt = x x'
+  ["MA4.4:linear-ode-transfer-2", "74bcc7cc", () => q(1 / Math.sqrt(1 + 2 * 1.5))],
+  ["MA4.5:numeric", "1c1fd966", () => q((1 + Math.sqrt(1 + 8)) / 2)], // r(r-1)=2
+  ["MA4.5:warmup", "12a08bc9", () => q((1 - Math.sqrt(1 + 8)) / 2)],
+  ["MA4.5:linear-ode-transfer-1", "234acca8", () => q((1 + Math.sqrt(9)) / 2)],
+  ["MA4.5:linear-ode-transfer-2", "5fe3d52a", () => q((1 - Math.sqrt(9)) / 2)],
+  ["MA4.6:numeric", "fd3194e3", () => q(2 ** 2)],
+  ["MA4.6:warmup", "8992b3a3", () => q(1 ** 2)],
+  ["MA4.6:linear-ode-transfer-1", "3823d4a3", () => q(2 ** 2)],
+  ["MA4.6:linear-ode-transfer-2", "1a75b531", () => q(PI / 2)],
+  ["MA5.1:numeric", "350ba3f8", () => q(3 ** 2 + 2 ** 2 / 2 + 4 ** 2 / 2)], // Parseval
+  ["MA5.1:linear-ode-transfer-1", "fd0f9b2a", () => q(2)],
+  ["MA5.1:linear-ode-transfer-2", "41e50c9e", () => q((-2 + 4) / 2)],
+  ["MA5.2:numeric", "44d7ef59", () => q(2 - -2)],
+  ["MA5.2:warmup", "e558e47f", () => q(3)],
+  ["MA5.2:linear-ode-transfer-1", "9a154a67", () => q(Math.exp(-(2 ** 2 * 1 ** 2) / 2))],
+  ["MA5.2:linear-ode-transfer-2", "d89e4635", () => q(Math.abs(3))],
+  ["MA5.3:numeric", "6681750d", () => q(3 / (1 + 2))],
+  ["MA5.3:warmup", "954dcb26", () => q(3 * 2 - 4)],
+  ["MA5.3:linear-ode-transfer-1", "8a56c768", () => q(1 / (5 - 2))],
+  ["MA5.3:linear-ode-transfer-2", "a1979cdd", () => q(2 * 5 - 3)],
+  ["MA5.4:numeric", "e75be9d0", () => q(2 * (2 * PI / PI) ** 2)],
+  ["MA5.4:warmup", "3756c7d5", () => q((1 * 0.1) / 0.5 ** 2)],
+  ["MA5.4:linear-ode-transfer-1", "51e74927", () => q(1 * (2 * PI / PI) ** 2)],
+  ["MA5.4:linear-ode-transfer-2", "9dc705c8", () => q(3 * Math.exp(-2 * Math.log(2)))],
+  ["MA5.5:numeric", "5a97d3e1", () => q((2 * 3 * PI) / PI)],
+  ["MA5.5:warmup", "26346521", () => q(4 / 2)],
+  ["MA5.5:linear-ode-transfer-1", "65622259", () => q((2 * 3 * PI) / PI)],
+  ["MA5.5:linear-ode-transfer-2", "8bd24c09", () => q(PI / 2 / 2)],
+  ["MA5.6:numeric", "1bb89c00", () => q(0.5 * (1 - 0.5))],
+  ["MA5.6:warmup", "057a4071", () => q((1 - 2 * 1) - (1 - 2 * 0))],
+  ["MA5.6:linear-ode-transfer-1", "fb8e0458", () => q(2 + -2)],
+  ["MA5.6:linear-ode-transfer-2", "1b13b729", () => q(2 + 2)],
+  ["MA5.7:numeric", "151a0e92", () => q(0.5 * (1 - 0.5))],
+  ["MA5.7:warmup", "85280bbc", () => q(-0.5 - 0.5)], // values listed in the order right, left,
+  ["MA5.7:linear-ode-transfer-1", "0af8aa3c", () => q(0.25 * (1 - 0.5))],
+  ["MA5.7:linear-ode-transfer-2", "7f6fe6c2", () => q((0.5 * (1 - 0.5)) / 2)],
 ];

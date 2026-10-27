@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 740 (47.6%) |
+| Independently recomputed and passing | 855 (55.0%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 165 |
+| Lessons with at least one recomputed question | 194 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -778,3 +778,118 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `MA12.4:warmup` | as specified in the question | ok |
 | `MA12.4:structure-transfer-1` | none | ok |
 | `MA12.4:structure-transfer-2` | none | ok |
+| `MA2.1:numeric` | as specified in the question | ok |
+| `MA2.1:warmup` | as specified in the question | ok |
+| `MA2.1:multivariable-transfer-1` | none | ok |
+| `MA2.1:multivariable-transfer-2` | none | ok |
+| `MA2.2:numeric` | as specified in the question | ok |
+| `MA2.2:warmup` | as specified in the question | ok |
+| `MA2.2:multivariable-transfer-1` | none | ok |
+| `MA2.2:multivariable-transfer-2` | none | ok |
+| `MA2.3:numeric` | as specified in the question | ok |
+| `MA2.3:warmup` | as specified in the question | ok |
+| `MA2.3:multivariable-transfer-1` | none | ok |
+| `MA2.3:multivariable-transfer-2` | none | ok |
+| `MA2.4:numeric` | as specified in the question | ok |
+| `MA2.4:warmup` | as specified in the question | ok |
+| `MA2.4:multivariable-transfer-1` | none | ok |
+| `MA2.4:multivariable-transfer-2` | none | ok |
+| `MA2.5:numeric` | as specified in the question | ok |
+| `MA2.5:warmup` | as specified in the question | ok |
+| `MA2.5:multivariable-transfer-1` | none | ok |
+| `MA2.5:multivariable-transfer-2` | none | ok |
+| `MA2.6:numeric` | as specified in the question | ok |
+| `MA2.6:warmup` | as specified in the question | ok |
+| `MA2.6:multivariable-transfer-1` | none | ok |
+| `MA2.6:multivariable-transfer-2` | none | ok |
+| `MA2.7:numeric` | as specified in the question | ok |
+| `MA2.7:warmup` | as specified in the question | ok |
+| `MA2.7:multivariable-transfer-1` | none | ok |
+| `MA2.7:multivariable-transfer-2` | none | ok |
+| `MA2.8:numeric` | as specified in the question | ok |
+| `MA2.8:warmup` | as specified in the question | ok |
+| `MA2.8:multivariable-transfer-1` | none | ok |
+| `MA2.8:multivariable-transfer-2` | none | ok |
+| `MA3.1:numeric` | as specified in the question | ok |
+| `MA3.1:warmup` | as specified in the question | ok |
+| `MA3.1:linear-ode-transfer-1` | none | ok |
+| `MA3.1:linear-ode-transfer-2` | none | ok |
+| `MA3.2:numeric` | as specified in the question | ok |
+| `MA3.2:warmup` | as specified in the question | ok |
+| `MA3.2:linear-ode-transfer-1` | none | ok |
+| `MA3.2:linear-ode-transfer-2` | none | ok |
+| `MA3.3:numeric` | as specified in the question | ok |
+| `MA3.3:warmup` | as specified in the question | ok |
+| `MA3.3:linear-ode-transfer-1` | none | ok |
+| `MA3.3:linear-ode-transfer-2` | none | ok |
+| `MA3.4:numeric` | as specified in the question | ok |
+| `MA3.4:warmup` | as specified in the question | ok |
+| `MA3.4:linear-ode-transfer-1` | none | ok |
+| `MA3.4:linear-ode-transfer-2` | none | ok |
+| `MA3.5:numeric` | as specified in the question | ok |
+| `MA3.5:warmup` | as specified in the question | ok |
+| `MA3.5:linear-ode-transfer-1` | none | ok |
+| `MA3.5:linear-ode-transfer-2` | none | ok |
+| `MA3.6:numeric` | as specified in the question | ok |
+| `MA3.6:warmup` | as specified in the question | ok |
+| `MA3.6:linear-ode-transfer-1` | none | ok |
+| `MA3.6:linear-ode-transfer-2` | none | ok |
+| `MA3.7:numeric` | as specified in the question | ok |
+| `MA3.7:warmup` | as specified in the question | ok |
+| `MA3.7:linear-ode-transfer-1` | none | ok |
+| `MA3.7:linear-ode-transfer-2` | none | ok |
+| `MA3.8:numeric` | as specified in the question | ok |
+| `MA3.8:warmup` | as specified in the question | ok |
+| `MA3.8:linear-ode-transfer-1` | none | ok |
+| `MA3.8:linear-ode-transfer-2` | none | ok |
+| `MA4.1:numeric` | as specified in the question | ok |
+| `MA4.1:warmup` | as specified in the question | ok |
+| `MA4.1:linear-ode-transfer-1` | none | ok |
+| `MA4.1:linear-ode-transfer-2` | none | ok |
+| `MA4.2:numeric` | as specified in the question | ok |
+| `MA4.2:warmup` | as specified in the question | ok |
+| `MA4.2:linear-ode-transfer-1` | none | ok |
+| `MA4.2:linear-ode-transfer-2` | none | ok |
+| `MA4.3:numeric` | as specified in the question | ok |
+| `MA4.3:warmup` | as specified in the question | ok |
+| `MA4.3:linear-ode-transfer-1` | none | ok |
+| `MA4.3:linear-ode-transfer-2` | none | ok |
+| `MA4.4:numeric` | as specified in the question | ok |
+| `MA4.4:warmup` | as specified in the question | ok |
+| `MA4.4:linear-ode-transfer-1` | none | ok |
+| `MA4.4:linear-ode-transfer-2` | none | ok |
+| `MA4.5:numeric` | as specified in the question | ok |
+| `MA4.5:warmup` | as specified in the question | ok |
+| `MA4.5:linear-ode-transfer-1` | none | ok |
+| `MA4.5:linear-ode-transfer-2` | none | ok |
+| `MA4.6:numeric` | as specified in the question | ok |
+| `MA4.6:warmup` | as specified in the question | ok |
+| `MA4.6:linear-ode-transfer-1` | none | ok |
+| `MA4.6:linear-ode-transfer-2` | none | ok |
+| `MA5.1:numeric` | as specified in the question | ok |
+| `MA5.1:linear-ode-transfer-1` | none | ok |
+| `MA5.1:linear-ode-transfer-2` | none | ok |
+| `MA5.2:numeric` | as specified in the question | ok |
+| `MA5.2:warmup` | as specified in the question | ok |
+| `MA5.2:linear-ode-transfer-1` | none | ok |
+| `MA5.2:linear-ode-transfer-2` | none | ok |
+| `MA5.3:numeric` | as specified in the question | ok |
+| `MA5.3:warmup` | as specified in the question | ok |
+| `MA5.3:linear-ode-transfer-1` | none | ok |
+| `MA5.3:linear-ode-transfer-2` | none | ok |
+| `MA5.4:numeric` | as specified in the question | ok |
+| `MA5.4:warmup` | as specified in the question | ok |
+| `MA5.4:linear-ode-transfer-1` | none | ok |
+| `MA5.4:linear-ode-transfer-2` | none | ok |
+| `MA5.5:numeric` | as specified in the question | ok |
+| `MA5.5:warmup` | as specified in the question | ok |
+| `MA5.5:linear-ode-transfer-1` | none | ok |
+| `MA5.5:linear-ode-transfer-2` | none | ok |
+| `MA5.6:numeric` | as specified in the question | ok |
+| `MA5.6:warmup` | as specified in the question | ok |
+| `MA5.6:linear-ode-transfer-1` | none | ok |
+| `MA5.6:linear-ode-transfer-2` | none | ok |
+| `MA5.7:numeric` | as specified in the question | ok |
+| `MA5.7:warmup` | as specified in the question | ok |
+| `MA5.7:linear-ode-transfer-1` | none | ok |
+| `MA5.7:linear-ode-transfer-2` | none | ok |
