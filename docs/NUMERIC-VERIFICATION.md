@@ -9,9 +9,9 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1193 (76.8%) |
+| Independently recomputed and passing | 1276 (82.1%) |
 | Lessons with at least one numeric question | 354 |
-| Lessons with at least one recomputed question | 273 |
+| Lessons with at least one recomputed question | 292 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
 | Recomputed with a unit declared in the registry because the stored unit is a placeholder or absent | 78 |
 | Questions marked dimensionless | 19 |
@@ -1231,3 +1231,86 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `AS9.8:warmup` | as specified in the question | ok |
 | `AS9.8:astro-transfer-1` | none | ok |
 | `AS9.8:astro-transfer-2` | none | ok |
+| `PH2.1:numeric` | as specified in the question | ok |
+| `PH2.1:warmup` | as specified in the question | ok |
+| `PH2.1:analytical-transfer-1` | as stated | ok |
+| `PH2.1:analytical-transfer-2` | as stated | ok |
+| `PH2.1:analytical-transfer-3` | as stated | ok |
+| `PH2.2:numeric` | as specified in the question | ok |
+| `PH2.2:warmup` | as specified in the question | ok |
+| `PH2.2:analytical-transfer-1` | as stated | ok |
+| `PH2.2:analytical-transfer-2` | as stated | ok |
+| `PH2.2:analytical-transfer-3` | as stated | ok |
+| `PH2.3:numeric` | as specified in the question | ok |
+| `PH2.3:warmup` | as specified in the question | ok |
+| `PH2.3:analytical-transfer-1` | as stated | ok |
+| `PH2.3:analytical-transfer-2` | as stated | ok |
+| `PH2.3:analytical-transfer-3` | as stated | ok |
+| `PH2.4:numeric` | as specified in the question | ok |
+| `PH2.4:warmup` | as specified in the question | ok |
+| `PH2.4:analytical-transfer-1` | as stated | ok |
+| `PH2.4:analytical-transfer-2` | as stated | ok |
+| `PH2.4:analytical-transfer-3` | as stated | ok |
+| `PH2.5:numeric` | as specified in the question | ok |
+| `PH2.5:warmup` | as specified in the question | ok |
+| `PH2.5:analytical-transfer-1` | as stated | ok |
+| `PH2.5:analytical-transfer-2` | as stated | ok |
+| `PH2.5:analytical-transfer-3` | as stated | ok |
+| `PH2.6:numeric` | as specified in the question | ok |
+| `PH2.6:warmup` | as specified in the question | ok |
+| `PH2.6:analytical-transfer-1` | as stated | ok |
+| `PH2.6:analytical-transfer-2` | as stated | ok |
+| `PH2.6:analytical-transfer-3` | as stated | ok |
+| `PH2.7:numeric` | as specified in the question | ok |
+| `PH2.7:warmup` | as specified in the question | ok |
+| `PH2.7:analytical-transfer-1` | as stated | ok |
+| `PH2.7:analytical-transfer-2` | as stated | ok |
+| `PH2.7:analytical-transfer-3` | as stated | ok |
+| `PH3.1:numeric` | as specified in the question | ok |
+| `PH3.1:warmup` | as specified in the question | ok |
+| `PH3.1:thermal-optics-transfer-1` | none | ok |
+| `PH3.1:thermal-optics-transfer-2` | none | ok |
+| `PH3.2:numeric` | as specified in the question | ok |
+| `PH3.2:warmup` | as specified in the question | ok |
+| `PH3.2:thermal-optics-transfer-1` | none | ok |
+| `PH3.2:thermal-optics-transfer-2` | none | ok |
+| `PH3.3:numeric` | as specified in the question | ok |
+| `PH3.3:warmup` | as specified in the question | ok |
+| `PH3.3:thermal-optics-transfer-1` | none | ok |
+| `PH3.3:thermal-optics-transfer-2` | none | ok |
+| `PH3.4:numeric` | as specified in the question | ok |
+| `PH3.4:warmup` | as specified in the question | ok |
+| `PH3.4:thermal-optics-transfer-1` | none | ok |
+| `PH3.4:thermal-optics-transfer-2` | none | ok |
+| `PH4.1:numeric` | as specified in the question | ok |
+| `PH4.1:warmup` | as specified in the question | ok |
+| `PH4.1:em-transfer-1` | none | ok |
+| `PH4.1:em-transfer-2` | none | ok |
+| `PH4.2:numeric` | as specified in the question | ok |
+| `PH4.2:warmup` | as specified in the question | ok |
+| `PH4.2:em-transfer-1` | none | ok |
+| `PH4.2:em-transfer-2` | none | ok |
+| `PH4.3:numeric` | as specified in the question | ok |
+| `PH4.3:warmup` | as specified in the question | ok |
+| `PH4.3:em-transfer-1` | none | ok |
+| `PH4.3:em-transfer-2` | none | ok |
+| `PH4.4:numeric` | as specified in the question | ok |
+| `PH4.4:warmup` | as specified in the question | ok |
+| `PH4.4:em-transfer-1` | none | ok |
+| `PH4.4:em-transfer-2` | none | ok |
+| `PH4.5:numeric` | as specified in the question | ok |
+| `PH4.5:warmup` | as specified in the question | ok |
+| `PH4.5:em-transfer-1` | none | ok |
+| `PH4.5:em-transfer-2` | none | ok |
+| `PH4.6:numeric` | as specified in the question | ok |
+| `PH4.6:warmup` | as specified in the question | ok |
+| `PH4.6:em-transfer-1` | none | ok |
+| `PH4.6:em-transfer-2` | none | ok |
+| `PH4.7:numeric` | as specified in the question | ok |
+| `PH4.7:warmup` | as specified in the question | ok |
+| `PH4.7:em-transfer-1` | none | ok |
+| `PH4.7:em-transfer-2` | none | ok |
+| `PH4.8:numeric` | as specified in the question | ok |
+| `PH4.8:warmup` | as specified in the question | ok |
+| `PH4.8:em-transfer-1` | none | ok |
+| `PH4.8:em-transfer-2` | none | ok |
