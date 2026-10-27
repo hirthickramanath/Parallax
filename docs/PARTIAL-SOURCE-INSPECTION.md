@@ -41,3 +41,21 @@ AI-assisted inspection (Claude Sonnet 5.5) of OpenStax Astronomy modules at comm
 | AS3.7 | Using Spectra to Measure Stellar Radius, Composition, and Motion (`m59896`) | Line strength and abundance at equal temperature and pressure; amounts need model calculations. LTE, curve of growth and the grey-atmosphere derivation not covered. |
 | AS9.6 | The Inflationary Universe (`m59981`) | Flatness and uniformity problems; inflation as a hypothesis. Specific models and constraints not covered. |
 | AS9.8 | The Expanding Universe (`m62195`) | Hubble’s law and the unit of H. Modern H₀ and S₈ measurements and any tension not covered. |
+
+## Physics and astronomy additions (third pass)
+
+AI-assisted inspection (Claude Sonnet 5.5) of OpenStax University Physics Volume 3 at commit `2300d5b8ca2571dacc6ec25ebef56ba8d49000a2` and OpenStax Astronomy at commit `dff6acf8df597ceda73985308f838ed38417a606`. Each source file's SHA-256 is recorded in the ledger. These are introductory-textbook checks of the stated claims only; the advanced material in each lesson is **not** covered, and none of this is independent review.
+
+| Lesson | Source module | Inspected scope / limits |
+| --- | --- | --- |
+| PH13.1 | Properties of Nuclei (`m58607`) | r = r₀A^(1/3), r₀ ≈ 1.2 fm, from volume ∝ A. Halo, light and deformed nuclei, shell and collective models not covered. |
+| PH13.1 | Nuclear Binding Energy (`m58608`) | Mass defect Δm = Zm_p + (A−Z)m_n − m_nuc and E_b = Δm c². The semiempirical mass formula not covered. |
+| PH13.2 | Radioactive Decay (`m58609`) | Decay law, half-life, mean lifetime 1/λ, activity A = λN. Decay chains, branching, detector efficiency and counting statistics not covered. |
+| PH14.1 | X-Ray Diffraction (`m58664`) | Bragg condition mλ = 2d sinθ and the allowed orders in a worked case. Reciprocal-lattice and structure-factor treatments not covered. |
+| AS5.6 | Supernova Observations (`m59934`) | SN 1987A energy partition (visible light under 1/10 of 1%, about 1% to destroy the star, the rest in neutrinos). Flavour, detector response and statistics not covered. |
+| AS5.6 | Gravitational Wave Astronomy (`m59945`) | Hulse–Taylor pulsar as indirect evidence; Advanced LIGO's 2015 black-hole merger and later events. Counterparts and parameter estimation not covered. |
+| AS2.7 | Supernova Observations (`m59934`) | The same energy partition, as an example of different emission channels from one event. Detection thresholds and localisation not covered. |
+| AS2.7 | Gravitational Wave Astronomy (`m59945`) | Gravitational waves as a separate messenger. Joint electromagnetic follow-up not covered. |
+| AS6.5 | The Solar Cycle (`m59878`) | The solar dynamo (turbulent ionized gas in or near the convection zone), Zeeman measurement of the field, magnetism driving solar activity. Mean-field dynamo theory and the induction equation not in the module. |
+| AS8.6 | The Challenge of Dark Matter (`m59973`) | Cluster lensing arcs used to map mass; clusters hold over ten times as much dark as luminous matter. Lens equation and Einstein radius not covered. |
+| AS8.6 | The Distribution of Galaxies in Space (`m59972`) | A lens can form multiple images of a distant quasar. Time delays and H₀ from lenses not covered. |
