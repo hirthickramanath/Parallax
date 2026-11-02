@@ -13,18 +13,22 @@ interface ButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  ref?: React.Ref<HTMLButtonElement>;
 }
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
-Button.displayName = "Button";
+function Button({
+  className,
+  variant,
+  asChild = false,
+  ref,
+  ...props
+}: ButtonProps) {
+  const Comp = asChild ? Slot : "button";
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, className }))}
+      ref={ref}
+      {...props}
+    />
+  );
+}
 export { Button };
