@@ -98,7 +98,7 @@ MA6–MA9 have 63 added questions and 21 embedded investigations. Current partia
 
 ## Remaining maths, computing and foundation follow-up
 
-Fifty-two lessons have 156 added questions and embedded investigations. Current partial mappings: 146; lessons without explicit widgets: 86; independent approvals: zero. [Scope and validation](STRUCTURE-COMPUTING-FOUNDATION-EXPANSION.md).
+Fifty-two lessons have 156 added questions and embedded investigations. Current partial mappings: 146 at that checkpoint (212 now); lessons without explicit widgets: 86; independent approvals: zero. [Scope and validation](STRUCTURE-COMPUTING-FOUNDATION-EXPANSION.md).
 
 ## Current checkpoint after the remaining physics release
 
