@@ -59,3 +59,16 @@ AI-assisted inspection (Claude Sonnet 5.5) of OpenStax University Physics Volume
 | AS6.5 | The Solar Cycle (`m59878`) | The solar dynamo (turbulent ionized gas in or near the convection zone), Zeeman measurement of the field, magnetism driving solar activity. Mean-field dynamo theory and the induction equation not in the module. |
 | AS8.6 | The Challenge of Dark Matter (`m59973`) | Cluster lensing arcs used to map mass; clusters hold over ten times as much dark as luminous matter. Lens equation and Einstein radius not covered. |
 | AS8.6 | The Distribution of Galaxies in Space (`m59972`) | A lens can form multiple images of a distant quasar. Time delays and H₀ from lenses not covered. |
+
+## Astrochemistry additions (fourth pass)
+
+AI-assisted inspection (Claude Sonnet 5.5) of OpenStax Astronomy at commit `dff6acf8df597ceda73985308f838ed38417a606`. Each source file's SHA-256 is recorded in the ledger. These are introductory-textbook checks of qualitative claims only; the quantitative and modelling content of each lesson (rate equations, level populations, line assignment, reaction networks) is **not** covered, and none of this is independent review.
+
+| Lesson | Source module | Inspected scope / limits |
+| --- | --- | --- |
+| CH3.1 | Interstellar Gas (`m59910`) | Molecules survive where dust blocks dissociating ultraviolet light; giant molecular clouds are dense, near 10 K, mostly H₂ with CO as tracer; hundreds of molecules, including organics, identified. Rate equations, abundance conventions, LTE populations and detection criteria not covered. |
+| CH3.2 | Cosmic Dust (`m59911`) | Icy mantles on grains in dark clouds are sites for some reactions producing complex organics. Rates, diffusion, binding energies, desorption and network modelling not covered. |
+| CH3.2 | Interstellar Gas (`m59910`) | Reactions in the gas and on grain surfaces in shielded regions build complex compounds. Ion–molecule and neutral networks not covered. |
+| CH3.3 | Interstellar Gas (`m59910`) | Rotation and vibration give radio and infrared spectral fingerprints; laboratory wavelengths are the template; CO traces H₂ because H₂ is too cold to emit. Rigid-rotor spacing, Doppler conventions, population diagrams and blending not covered. |
+| CH6.8 | Interstellar Gas (`m59910`) | Complex organics (formaldehyde, acetic acid, glycolaldehyde) detected in clouds; the module states that their presence does not imply life exists in space. Photodestruction rates, lifetimes and prebiotic pathways not covered. |
+| CH6.8 | Cosmic Dust (`m59911`) | Icy grain mantles as sites for reactions producing complex organics. Low-density formation routes not covered. |

@@ -9,7 +9,7 @@ This is **automated arithmetic, not scientific review**. It shows that a stored 
 | Measure | Count |
 | --- | ---: |
 | Numeric questions | 1554 |
-| Independently recomputed and passing | 1551 (99.8%) |
+| Independently recomputed and passing | 1553 (99.9%) |
 | Lessons with at least one numeric question | 354 |
 | Lessons with at least one recomputed question | 354 |
 | Questions with a concrete physical unit | 68 (68 recomputed) |
@@ -969,6 +969,7 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `MA9.1:warmup` | as specified in the question | ok |
 | `MA9.1:advanced-math-transfer-1` | none | ok |
 | `MA9.1:advanced-math-transfer-2` | none | ok |
+| `MA9.2:numeric` | as specified in the question | ok |
 | `MA9.2:warmup` | as specified in the question | ok |
 | `MA9.2:advanced-math-transfer-1` | none | ok |
 | `MA9.2:advanced-math-transfer-2` | none | ok |
@@ -1096,6 +1097,7 @@ The majority of numeric questions carry no machine-readable unit, so their units
 | `CH6.7:chemistry-transfer-2` | none | ok |
 | `CH6.8:numeric` | as specified in the question | ok |
 | `CH6.8:warmup` | as specified in the question | ok |
+| `CH6.8:chemistry-transfer-1` | none | ok |
 | `CH6.8:chemistry-transfer-2` | none | ok |
 | `AS10.1:numeric` | as specified in the question | ok |
 | `AS10.1:warmup` | as specified in the question | ok |
