@@ -51,3 +51,23 @@ test("answer format does not leak the key", () => {
   for (const count of position)
     assert.ok(count / n <= 0.4, `answer position skew ${position}`);
 });
+test("numeric explanations are worked, not the hint plus a restated value", () => {
+  const all = fs
+    .readdirSync("content/lessons")
+    .filter((f) => f.endsWith(".mdx"))
+    .flatMap((f) => load(f.replace(/\.mdx$/, "")).questions.map((q) => ({ id: f, q })));
+  const numeric = all.filter(({ q }) => q.type === "numeric");
+  assert.ok(numeric.length > 1000);
+  for (const { id, q } of numeric) {
+    const where = `${id}:${q.id}`;
+    assert.ok(
+      !/The value in the stated units is/.test(q.explanation || ""),
+      `${where} still has the templated explanation`,
+    );
+    if (q.hint)
+      assert.ok(
+        !String(q.explanation || "").startsWith(`${q.hint} The value`),
+        `${where} explanation only restates the hint`,
+      );
+  }
+});
