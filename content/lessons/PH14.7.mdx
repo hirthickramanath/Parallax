@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is Meissner response identical to merely zero DC resistance?",
+      "prompt": "A material has exactly zero DC resistance. Does that by itself prove it is a superconductor in the Meissner sense?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: flux expulsion follows automatically",
+        "No: superconductors have small but finite resistance",
+        "Yes: zero resistance is the complete definition",
+        "No: a superconductor also expels magnetic flux in equilibrium, which a perfect conductor would not"
       ],
-      "answer": "No",
-      "explanation": "Its equilibrium magnetic behaviour adds information.",
+      "answer": "No: a superconductor also expels magnetic flux in equilibrium, which a perfect conductor would not",
+      "explanation": "A perfect conductor would trap whatever flux was inside; a superconductor expels it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Cooling in a field gives different results for the two."
     },
     {
       "id": "concept-2",
-      "prompt": "Can type-II superconductors contain vortices?",
+      "prompt": "Can a type-II superconductor stay superconducting while magnetic flux penetrates it?",
       "options": [
-        "Yes",
-        "No"
+        "No: any flux destroys superconductivity",
+        "Yes: but only above Tc",
+        "Yes: between Hc1 and Hc2 flux enters as quantised vortices inside superconducting material",
+        "No: vortices occur only in type-I materials"
       ],
-      "answer": "Yes",
-      "explanation": "They exist in an appropriate field regime.",
+      "answer": "Yes: between Hc1 and Hc2 flux enters as quantised vortices inside superconducting material",
+      "explanation": "Each vortex carries one flux quantum h/2e.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "There are two critical fields for type II."
     },
     {
       "id": "concept-3",
-      "prompt": "Does BCS name settle every unconventional pairing mechanism?",
+      "prompt": "BCS theory explains conventional superconductors through electron–phonon pairing. Does that settle the pairing mechanism of every superconductor?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: every superconductor is explained by BCS theory, including the cuprates and the iron-based materials",
+        "Yes: phonons are always the glue",
+        "No: cuprates and others show pairing that BCS's assumptions do not explain",
+        "No: BCS has been disproved for all materials"
       ],
-      "answer": "No",
-      "explanation": "Its microscopic assumptions are not universal.",
+      "answer": "No: cuprates and others show pairing that BCS's assumptions do not explain",
+      "explanation": "Unconventional pairing, such as d-wave in cuprates, is still debated.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about high-Tc materials."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify microscopic mechanisms?",
-      "answer": "Different materials can require different pairing descriptions.",
+      "prompt": "Why should a statement about the microscopic pairing mechanism be tied to a particular material?",
+      "answer": "Different materials can have different pairing symmetry and glue",
       "options": [
-        "Different materials can require different pairing descriptions.",
-        "Magnetic screening depth in the stated model."
+        "The mechanism only fixes the screening depth, so it is the same property for every superconducting material",
+        "All materials share one mechanism",
+        "Mechanisms cannot be studied",
+        "Different materials can have different pairing symmetry and glue"
       ],
-      "explanation": "Different materials can require different pairing descriptions.",
+      "explanation": "Lead, MgB₂ and YBCO need different descriptions.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do all superconductors behave like lead?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does one BCS interpolation apply without qualification to every superconducting material?",
-      "answer": "No; pairing and coupling regimes differ.",
+      "prompt": "The BCS weak-coupling gap relation Δ ≈ 1.76 k_B T_c is tested. Should every superconductor obey it?",
+      "answer": "No: strong coupling and multiband or unconventional pairing give different ratios",
       "options": [
-        "Yes; every superconductor has an identical gap law.",
-        "No; pairing and coupling regimes differ."
+        "No: superconductors have no gap",
+        "No: strong coupling and multiband or unconventional pairing give different ratios",
+        "Yes: the ratio is universal",
+        "Yes: it holds for any Tc"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "State the conventional weak-coupling approximation.",
+      "hint": "The relation assumes weak electron–phonon coupling.",
+      "explanation": "Pb has 2Δ/k_BT_c ≈ 4.3, and MgB₂ has two gaps.",
       "misconceptions": {
         "Yes; every superconductor has an identical gap law.": "State the conventional weak-coupling approximation."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does T=0 imply all curvature is zero?",
+      "prompt": "In a region where the stress–energy tensor T_μν is zero, is spacetime necessarily flat?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: curvature needs matter locally, so wherever the stress–energy tensor vanishes the spacetime is flat",
+        "Yes: T = 0 means no curvature",
+        "No: vacuum has constant positive curvature everywhere",
+        "No: vacuum solutions such as Schwarzschild or gravitational waves have curvature"
       ],
-      "answer": "No",
-      "explanation": "Vacuum tidal/wave curvature can remain.",
+      "answer": "No: vacuum solutions such as Schwarzschild or gravitational waves have curvature",
+      "explanation": "Vacuum solutions such as Schwarzschild or gravitational waves have curvature (nonzero Weyl tensor). R_μν = 0 does not imply R_μνρσ = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the field outside the Sun?"
     },
     {
       "id": "concept-2",
-      "prompt": "May arbitrary initial data ignore gravitational constraints?",
+      "prompt": "You pick initial data for a gravitational evolution freely. Is any choice allowed?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: all initial data are admissible, since the evolution equations alone determine the solution afterwards",
+        "No: the data must satisfy the Hamiltonian and momentum constraint equations",
+        "No: gravity has no initial data",
+        "Yes: constraints apply only at late time"
       ],
-      "answer": "No",
-      "explanation": "They must satisfy the constraint equations.",
+      "answer": "No: the data must satisfy the Hamiltonian and momentum constraint equations",
+      "explanation": "The constraints are the G_{0μ} equations on the initial slice.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Not all components of Einstein's equations are evolution equations."
     },
     {
       "id": "concept-3",
-      "prompt": "Do stresses contribute to the relativistic source?",
+      "prompt": "In general relativity, does only rest-mass density source gravity?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: only the energy density at rest sources gravity, since pressure terms vanish in the field equations",
+        "Yes: only rest mass",
+        "No: only pressure contributes",
+        "No: pressure and stresses also contribute to T_μν and thus to gravity"
       ],
-      "answer": "Yes",
-      "explanation": "T includes more than rest-mass density.",
+      "answer": "No: pressure and stresses also contribute to T_μν and thus to gravity",
+      "explanation": "T^{00} = ρ, T^{ii} = p, and both appear as sources.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the components of T_μν."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What fixes a physical solution?",
-      "answer": "Sources, compatible initial data and boundary/matching conditions.",
+      "prompt": "What is needed to pick out one physical solution of the Einstein equations?",
+      "answer": "Sources, compatible initial data and boundary or matching conditions",
       "options": [
-        "Sources, compatible initial data and boundary/matching conditions.",
-        "The contracted Bianchi identity and matter dynamics."
+        "Only the metric signature and the choice of coordinates, since the equations are otherwise fully fixed",
+        "Sources, compatible initial data and boundary or matching conditions",
+        "The equations alone",
+        "A choice of units"
       ],
-      "explanation": "Sources, compatible initial data and boundary/matching conditions.",
+      "explanation": "Without them the equations admit many solutions, from Minkowski to Kerr.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Differential equations need extra input."
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does vanishing Ricci scalar alone imply all Riemann curvature vanishes?",
-      "answer": "No; Weyl curvature can remain.",
+      "prompt": "The Ricci scalar R is zero everywhere in a region. Does the full Riemann curvature vanish there?",
+      "answer": "No: the Weyl part can survive",
       "options": [
-        "Yes; one scalar determines the whole curvature tensor.",
-        "No; Weyl curvature can remain."
+        "No: R = 0 is impossible",
+        "No: the Weyl part can survive",
+        "Yes: R = 0 means flat",
+        "Yes: one scalar fixes the tensor"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Vacuum black-hole exteriors provide counterexamples.",
+      "hint": "How many independent components does Riemann have?",
+      "explanation": "The Weyl part can survive, as in vacuum black-hole exteriors. Riemann = Weyl + Ricci terms.",
       "misconceptions": {
         "Yes; one scalar determines the whole curvature tensor.": "Vacuum black-hole exteriors provide counterexamples."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a cyclic coordinate have to be absent together with its velocity?",
+      "prompt": "A coordinate q is cyclic. Which statement is correct?",
       "options": [
-        "Yes",
-        "No"
+        "Both q and q̇ are absent from L, since a cyclic coordinate has no influence on the Lagrangian at all",
+        "q̇ is absent but q appears",
+        "q is absent from L, but its velocity q̇ may still appear, and p_q is conserved",
+        "p_q changes in time"
       ],
-      "answer": "No",
-      "explanation": "Its velocity can still appear in L.",
+      "answer": "q is absent from L, but its velocity q̇ may still appear, and p_q is conserved",
+      "explanation": "∂L/∂q = 0 gives dp_q/dt = 0. The velocity can still appear in L.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which derivative of L must vanish?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is H always T+V for every coordinate and Lagrangian choice?",
+      "prompt": "Is the Hamiltonian H = Σp q̇ − L always equal to T + V?",
       "options": [
-        "No",
-        "Yes"
+        "No: that needs extra conditions, such as scleronomic constraints and a potential independent of velocity",
+        "Yes: in any coordinates, because the Legendre transform always turns the Lagrangian into kinetic plus potential energy",
+        "Yes: for every Lagrangian",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "That identification needs additional assumptions.",
+      "answer": "No: that needs extra conditions, such as scleronomic constraints and a potential independent of velocity",
+      "explanation": "For time-dependent constraints or velocity-dependent potentials, H ≠ T + V.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a bead on a rotating wire."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a subsystem inherit a symmetry broken by a fixed external apparatus?",
+      "prompt": "A system is symmetric under translations, but a fixed external apparatus breaks the symmetry. Does the subsystem still conserve momentum?",
       "options": [
-        "Always",
-        "Not generally"
+        "Yes: always, because translation symmetry of the subsystem alone is enough to conserve its momentum",
+        "Not in general: the apparatus can exchange momentum with it",
+        "Yes: the apparatus is fixed",
+        "Yes: momentum is universal"
       ],
-      "answer": "Not generally",
-      "explanation": "The omitted apparatus can exchange the corresponding quantity.",
+      "answer": "Not in general: the apparatus can exchange momentum with it",
+      "explanation": "Noether's theorem applies to the full action with the symmetry.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a fixed wall absorb momentum?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why retain a total-derivative boundary term in Noether’s formula?",
+      "prompt": "Why does Noether's formula keep a total-derivative term when a transformation changes L by dK/dt?",
       "answer": "It can change the canonical expression for the conserved charge",
       "options": [
+        "It is always zero for physical transformations, so it never contributes to the conserved charge",
         "It can change the canonical expression for the conserved charge",
-        "Every action symmetry must leave L exactly identical"
+        "Total derivatives never matter",
+        "It is a convention"
       ],
-      "explanation": "Invariance up to a boundary term is allowed but must be accounted for.",
+      "explanation": "The charge is p δq − K when L changes by a total derivative.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where does K appear in the conserved charge?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For L=m qdot²/2+Fq, a constant coordinate translation changes L by a total derivative. Which charge is conserved?",
-      "answer": "p−Ft",
+      "prompt": "For L = ½mq̇² + Fq, shifting q → q + ε changes L by Fε, a total derivative. Which quantity is conserved?",
+      "answer": "p − Ft",
       "options": [
         "p alone",
-        "p−Ft"
+        "p − Ft",
+        "q̇",
+        "p + Ft"
       ],
-      "explanation": "The boundary term F times translation times t contributes to Noether’s charge.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "Fε = d(Fεt)/dt, so K = Ft contributes: Q = p − Ft, which matches the equation ṗ = F.",
+      "hint": "Check that d(p − Ft)/dt = 0.",
       "misconceptions": {
         "p alone": "The boundary term F times translation times t contributes to Noether’s charge."
       },

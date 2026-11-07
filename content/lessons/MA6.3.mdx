@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May the large arc be dropped without an estimate?",
+      "prompt": "When closing a contour with a large semicircle, can you drop the arc contribution without checking?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: large arcs always vanish, so the contribution of the semicircle can be dropped without any check",
+        "Yes: large arcs always vanish",
+        "No: you must estimate it and show it vanishes",
+        "Yes: it is always finite"
       ],
-      "answer": "No",
-      "explanation": "Its contribution need not vanish.",
+      "answer": "No: you must estimate it and show it vanishes",
+      "explanation": "The arc vanishes only if the integrand decays fast enough, for example via Jordan's lemma.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Estimate the integrand times the arc length."
     },
     {
       "id": "concept-2",
-      "prompt": "Is a principal value always the same as an ordinary improper integral?",
+      "prompt": "The principal value of ∫ from −1 to 1 of dx/x is 0. Is this an ordinary improper integral?",
       "options": [
-        "No",
-        "Yes"
+        "No: it relies on symmetric cancellation, while each one-sided piece diverges",
+        "Yes: it converges to 0 as an ordinary improper integral, since the two halves cancel",
+        "Yes: it converges to 2",
+        "Yes: it converges to 0"
       ],
-      "answer": "No",
-      "explanation": "Symmetric cancellation can exist when the separate one-sided integrals diverge.",
+      "answer": "No: it relies on symmetric cancellation, while each one-sided piece diverges",
+      "explanation": "A principal value takes the limit with symmetric excision. An ordinary improper integral requires the separate limits to exist.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute each side separately."
     },
     {
       "id": "concept-3",
-      "prompt": "For k>0, where does eⁱᵏᶻ decay?",
+      "prompt": "For k > 0, e^{ikz} decays in which half-plane as |z| → ∞?",
       "options": [
-        "In the lower half-plane",
-        "In the upper half-plane"
+        "Neither",
+        "The upper half-plane, since |e^{ikz}| = e^{−k Im z}",
+        "Both",
+        "The lower half-plane, since |e^{ikz}| = e^{k Im z} decays there for k > 0"
       ],
-      "answer": "In the upper half-plane",
-      "explanation": "Its magnitude is exp(−k Im z).",
+      "answer": "The upper half-plane, since |e^{ikz}| = e^{−k Im z}",
+      "explanation": "With z = x + iy, e^{ikz} = e^{ikx}e^{−ky}, which decays for y → +∞.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute |e^{ikz}| for z = x + iy."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is required if a pole lies on the integration path?",
-      "answer": "A stated indentation or limiting prescription and its justification",
+      "prompt": "A pole lies on the real axis in a contour integral. What must you do?",
+      "answer": "State and justify an indentation or limiting prescription",
       "options": [
-        "A stated indentation or limiting prescription and its justification",
-        "Ignoring the pole because it is only one point"
+        "Ignore it, since a single point on the axis has no effect on the value of the integral",
+        "Add it twice",
+        "State and justify an indentation or limiting prescription",
+        "Delete it from the integrand"
       ],
-      "explanation": "A divergent neighbourhood is not removed by deleting a point value.",
+      "explanation": "The integrand diverges near the pole, so the value depends on how you go around it (principal value plus half-residue, for a small semicircle).",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does removing one point from the domain remove the divergence?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Do residues alone prove that a closing arc contributes zero?",
-      "answer": "No; a separate estimate is needed.",
+      "prompt": "You compute residues inside a closed contour made of the real line and a large arc. Do the residues alone give the real integral?",
+      "answer": "No: you also need to show the arc contributes zero",
       "options": [
-        "Yes; every large arc vanishes.",
-        "No; a separate estimate is needed."
+        "Yes: the arc always vanishes",
+        "No: the arc doubles the result, so the residue sum must be divided by two to get the real integral",
+        "Yes: residues are enough",
+        "No: you also need to show the arc contributes zero"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Growth and contour geometry control the arc.",
+      "hint": "What does the contour consist of?",
+      "explanation": "The residue theorem gives the full contour integral. The real integral is that minus the arc.",
       "misconceptions": {
         "Yes; every large arc vanishes.": "Growth and contour geometry control the arc."
       },

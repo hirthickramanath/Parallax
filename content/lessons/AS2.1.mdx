@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does apparent brightness alone determine luminosity?",
+      "prompt": "Star A looks twice as bright as star B in the sky. Can you conclude that A has the greater luminosity?",
       "options": [
-        "Yes",
-        "No"
+        "No: distance, extinction and beaming also affect apparent brightness",
+        "Yes: brighter in the sky means more luminous, since flux is directly proportional to luminosity",
+        "Yes: if both are on the main sequence",
+        "Yes: flux equals luminosity"
       ],
-      "answer": "No",
-      "explanation": "Distance, anisotropy and extinction also matter.",
+      "answer": "No: distance, extinction and beaming also affect apparent brightness",
+      "explanation": "Flux F = L/(4πd²) before extinction. A nearby faint star can outshine a distant luminous one.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the flux in terms of luminosity and distance."
     },
     {
       "id": "concept-2",
-      "prompt": "Does increasing apparent magnitude mean increasing flux?",
+      "prompt": "A star's apparent magnitude changes from 5 to 7. What happens to its flux?",
       "options": [
-        "No",
-        "Yes"
+        "It does not change",
+        "It falls, by a factor of about 6: magnitude is a negative logarithmic scale",
+        "It rises by a factor of about 6, since a larger magnitude number means a brighter star",
+        "It rises by 2"
       ],
-      "answer": "No",
-      "explanation": "Magnitude is a negative logarithmic flux scale.",
+      "answer": "It falls, by a factor of about 6: magnitude is a negative logarithmic scale",
+      "explanation": "m₂ − m₁ = −2.5 log(F₂/F₁), so a larger magnitude means a fainter source. Δm = 2 gives 10^0.8 ≈ 6.3.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall that smaller magnitudes are brighter."
     },
     {
       "id": "concept-3",
-      "prompt": "Can Fλ and Fν be compared numerically without their unit Jacobian?",
+      "prompt": "You have a flux density F_λ in erg s⁻¹ cm⁻² Å⁻¹ and want to compare it numerically with F_ν in Jy. What do you need?",
       "options": [
-        "Yes",
-        "No"
+        "The Jacobian factor λ²/c between the two spectral variables",
+        "Only a unit change: the numerical values of F_λ and F_ν are directly comparable",
+        "The same wavelength in both",
+        "Nothing: the numbers are directly comparable"
       ],
-      "answer": "No",
-      "explanation": "They are densities with respect to different spectral variables.",
+      "answer": "The Jacobian factor λ²/c between the two spectral variables",
+      "explanation": "F_ν = F_λ λ²/c. They are densities per unit different spectral variables.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Per unit wavelength vs per unit frequency."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify a magnitude band and zero point?",
-      "answer": "Different responses and reference conventions define different measurements",
+      "prompt": "Why must a magnitude be quoted with a band and a zero point?",
+      "answer": "Different filter responses and reference conventions define different measurements",
       "options": [
-        "Different responses and reference conventions define different measurements",
-        "All magnitude systems measure exactly the same integrated flux"
+        "Different filter responses and reference conventions define different measurements",
+        "Bands are only decorative",
+        "All systems measure the same integrated flux",
+        "Zero points depend on the observer's location"
       ],
-      "explanation": "A magnitude number alone does not specify the spectral measurement.",
+      "explanation": "A V magnitude and a B magnitude of the same star differ, and Vega-based and AB zero points differ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a star have one magnitude?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a larger apparent flux alone prove a source has larger intrinsic luminosity?",
-      "answer": "No; distance and attenuation must also be known.",
+      "prompt": "Source X has a larger apparent flux than source Y. Does that prove X is intrinsically more luminous?",
+      "answer": "No: distance and attenuation must also be known",
       "options": [
-        "Yes; apparent and intrinsic brightness are interchangeable.",
-        "No; distance and attenuation must also be known."
+        "Yes: if both are in the same field the distances are similar, so flux ranks luminosity",
+        "No: distance and attenuation must also be known",
+        "Yes: flux is a property of the source",
+        "Yes: flux and luminosity are interchangeable"
       ],
-      "explanation": "Flux is power received per area and depends on propagation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Flux is power received per unit area and depends on the path to the observer.",
+      "hint": "Which one may be closer?",
       "misconceptions": {
         "Yes; apparent and intrinsic brightness are interchangeable.": "Flux is power received per area and depends on propagation."
       },

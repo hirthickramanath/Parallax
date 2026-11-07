@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do gauge-related potentials give different E and B?",
+      "prompt": "Two potentials (φ, A) and (φ′, A′) are related by a gauge transformation. Do they give different E and B?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: E changes, since the added gradient terms shift the field values at each point",
+        "Yes: B changes",
+        "Yes: different fields",
+        "No: the extra terms cancel in E and B"
       ],
-      "answer": "No",
-      "explanation": "The gradient/time-derivative terms cancel.",
+      "answer": "No: the extra terms cancel in E and B",
+      "explanation": "A′ = A + ∇χ and φ′ = φ − ∂χ/∂t leave E and B unchanged.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute E from the transformed potentials."
     },
     {
       "id": "concept-2",
-      "prompt": "Does choosing Lorenz gauge remove all possible residual gauge freedom automatically?",
+      "prompt": "You choose the Lorenz gauge ∂_μ A^μ = 0. Does that remove all gauge freedom?",
       "options": [
-        "No",
-        "Yes"
+        "No: gauge functions satisfying □χ = 0 remain",
+        "Yes: it fixes everything",
+        "Yes: automatically",
+        "Yes: it is unique"
       ],
-      "answer": "No",
-      "explanation": "Homogeneous gauge functions can remain.",
+      "answer": "No: gauge functions satisfying □χ = 0 remain",
+      "explanation": "Residual gauge transformations obey the wave equation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What equation must χ satisfy to preserve the condition?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must initial free fields sometimes supplement retarded source integrals?",
+      "prompt": "You compute the field of a source from the retarded integral. Might you need to add a free (homogeneous) field?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the particular solution need not match the initial conditions",
+        "No: retarded integrals are complete, so no free field can ever be required for initial data",
+        "No: never",
+        "No: free fields are zero"
       ],
-      "answer": "Yes",
-      "explanation": "The source particular solution alone need not match initial conditions.",
+      "answer": "Yes: the particular solution need not match the initial conditions",
+      "explanation": "The retarded solution assumes no incoming radiation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What about radiation present at t = 0?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must be included when differentiating retarded potentials?",
-      "answer": "The dependence of the retarded source time.",
+      "prompt": "What must you include when taking derivatives of retarded potentials?",
+      "answer": "The dependence of the retarded time on position",
       "options": [
-        "The dependence of the retarded source time.",
-        "Redundant potential descriptions of the same fields."
+        "The dependence of the retarded time on position",
+        "Nothing extra, since the source term depends on position only through the potentials",
+        "Only the source derivative",
+        "The gauge function"
       ],
-      "explanation": "The dependence of the retarded source time.",
+      "explanation": "t_r = t − |r − r′|/c depends on r.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does t_r depend on the field point?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Can a time-dependent gauge change A→A+gradχ generally leave φ unchanged while preserving E?",
-      "answer": "No; φ must shift by −∂χ/∂t.",
+      "prompt": "Under A → A + ∇χ, can φ stay unchanged while E is preserved in a time-dependent case?",
+      "answer": "No: φ must shift by −∂χ/∂t",
       "options": [
-        "Yes; changing only A is always the full gauge transformation.",
-        "No; φ must shift by −∂χ/∂t."
+        "Yes: E depends only on φ",
+        "Yes: φ is invariant",
+        "No: φ must shift by −∂χ/∂t",
+        "Yes: changing A alone is enough"
       ],
-      "explanation": "The electric field contains both scalar and time-dependent vector-potential terms.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "E = −∇φ − ∂A/∂t, so both parts change together.",
+      "hint": "Recompute E with the new A.",
       "misconceptions": {
         "Yes; changing only A is always the full gauge transformation.": "The electric field contains both scalar and time-dependent vector-potential terms."
       },

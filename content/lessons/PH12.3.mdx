@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can weak-field labels be extrapolated to arbitrarily strong fields unchanged?",
+      "prompt": "The Zeeman pattern of an atom is labelled using weak-field quantum numbers (F, m_F). Can those labels be extrapolated to arbitrarily strong fields?",
       "options": [
-        "Yes",
-        "No"
+        "No: strong fields overwhelm the internal couplings and change the good quantum numbers",
+        "Yes: they stay unchanged",
+        "Yes: the weak-field labels remain good at all field strengths, since the coupling to the field is a small perturbation",
+        "Yes: at all B"
       ],
-      "answer": "No",
-      "explanation": "Internal couplings can be overwhelmed.",
+      "answer": "No: strong fields overwhelm the internal couplings and change the good quantum numbers",
+      "explanation": "At strong field the Paschen–Back regime uses uncoupled labels.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which coupling dominates at strong B?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a parity eigenstate automatically have a nonzero first-order Stark shift?",
+      "prompt": "An atomic state has definite parity. Does it have a nonzero first-order (linear) Stark shift?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: for all atoms",
+        "Yes: states of definite parity have a permanent dipole moment, so a linear Stark shift is always present",
+        "Yes: always",
+        "Generally no: the dipole expectation vanishes unless degeneracy or symmetry breaking exists"
       ],
-      "answer": "No",
-      "explanation": "Its dipole expectation often vanishes absent degeneracy/symmetry breaking.",
+      "answer": "Generally no: the dipole expectation vanishes unless degeneracy or symmetry breaking exists",
+      "explanation": "⟨ψ|z|ψ⟩ = 0 for a parity eigenstate. Hydrogen's degenerate n = 2 states are the exception.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the parity of z?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is a line shift a difference of level shifts?",
+      "prompt": "A field shifts both levels of a transition. What does the line shift equal?",
       "options": [
-        "No",
-        "Yes"
+        "The difference of the two level shifts",
+        "The upper level shift only",
+        "The lower level shift only",
+        "The sum of the shifts"
       ],
-      "answer": "Yes",
-      "explanation": "Both transition states contribute.",
+      "answer": "The difference of the two level shifts",
+      "explanation": "Δν = (ΔE_upper − ΔE_lower)/h, so the line shift depends on both level shifts, not on one level alone.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "A line is a difference between levels."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a measured transition include?",
-      "answer": "Both level shifts and line/instrument conditions.",
+      "prompt": "What must an analysis of a measured transition include in a field?",
+      "answer": "Both level shifts and the line and instrument conditions",
       "options": [
-        "Both level shifts and line/instrument conditions.",
-        "Magnetic moment projection in the valid coupled basis."
+        "Both level shifts and the line and instrument conditions",
+        "Only the upper level, since the lower level of a transition is unaffected by an applied field",
+        "Nothing but the field",
+        "Only the lower level"
       ],
-      "explanation": "Both level shifts and line/instrument conditions.",
+      "explanation": "The observed shift involves both levels and the strengths of the components.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How many levels are involved in a transition?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does one level shift directly specify every observed transition frequency and intensity?",
-      "answer": "No; both levels and transition matrix elements matter.",
+      "prompt": "Does the shift of a single level fix every observed transition frequency and intensity?",
+      "answer": "No: both levels and the transition matrix elements matter",
       "options": [
-        "Yes; all lines equal one level shift.",
-        "No; both levels and transition matrix elements matter."
+        "No: both levels and the transition matrix elements matter",
+        "Yes: one shift is the line shift",
+        "Yes: all lines shift equally",
+        "Yes: intensities are fixed"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "How many levels define a line?",
       "explanation": "A line is a difference with a strength.",
       "misconceptions": {
         "Yes; all lines equal one level shift.": "A line is a difference with a strength."

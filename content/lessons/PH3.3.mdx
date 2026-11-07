@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does incompressibility force uniform pressure?",
+      "prompt": "Water is modelled as incompressible. Must the pressure then be uniform?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is hydrostatic only",
+        "Yes: incompressible means uniform",
+        "Yes: pressure is constant",
+        "No: pressure adjusts to enforce incompressibility and balance forces"
       ],
-      "answer": "No",
-      "explanation": "Pressure can enforce balance and constraints.",
+      "answer": "No: pressure adjusts to enforce incompressibility and balance forces",
+      "explanation": "Pressure is a Lagrange multiplier enforcing ∇·v = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does pressure do in incompressible flow?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is Bernoulli universally constant across every dissipative flow?",
+      "prompt": "Is Bernoulli's quantity ½v² + p/ρ + gz constant across any flow, including a viscous one?",
       "options": [
-        "No",
-        "Yes"
+        "No: it needs steady, inviscid flow along a streamline",
+        "Yes: it holds for viscous flow as well, since the quantity is a universal conservation law",
+        "Yes: in turbulence",
+        "Yes: universally"
       ],
-      "answer": "No",
-      "explanation": "Its derivation has restrictive assumptions.",
+      "answer": "No: it needs steady, inviscid flow along a streamline",
+      "explanation": "Viscous losses reduce the Bernoulli constant.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List the assumptions in the derivation."
     },
     {
       "id": "concept-3",
-      "prompt": "Does one Reynolds number alone determine all transition behaviour?",
+      "prompt": "Pipe flow transitions to turbulence near Re ≈ 2300, but in a very clean pipe laminar flow persists to much higher Re. What does this show?",
       "options": [
-        "Yes",
-        "No"
+        "Re has no meaning in a pipe, so the two values of the transition show the quantity is useless",
+        "The pipe is different",
+        "A single Reynolds number does not fix transition: geometry and disturbances matter",
+        "Re fixes transition exactly"
       ],
-      "answer": "No",
-      "explanation": "Geometry and disturbances also matter.",
+      "answer": "A single Reynolds number does not fix transition: geometry and disturbances matter",
+      "explanation": "Transition depends on the disturbance level.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does Re include the noise level?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does Re compare?",
-      "answer": "Inertial and viscous effects at specified scales.",
+      "prompt": "What does the Reynolds number compare?",
+      "answer": "Inertial and viscous effects at a specified scale",
       "options": [
-        "Inertial and viscous effects at specified scales.",
-        "∂ₜ+v·∇ along a fluid parcel."
+        "Heat conduction and viscosity at a specified scale, which fixes the temperature profile",
+        "Pressure and gravity",
+        "Inertial and viscous effects at a specified scale",
+        "Speed and sound speed"
       ],
-      "explanation": "Inertial and viscous effects at specified scales.",
+      "explanation": "The Reynolds number compares inertial to viscous effects at a given scale: Re = ρvL/μ, so the length and velocity scales must be specified.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which two terms in Navier–Stokes?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Does finding the laminar Poiseuille solution prove a real pipe stays laminar at every Reynolds number?",
-      "answer": "No; stability and transition require separate analysis.",
+      "prompt": "The laminar Poiseuille solution exists for any Reynolds number. Does that prove a real pipe flow stays laminar?",
+      "answer": "No: stability and transition require separate analysis",
       "options": [
-        "Yes; one exact solution excludes all other flow behavior.",
-        "No; stability and transition require separate analysis."
+        "No: stability and transition require separate analysis",
+        "Yes: one exact solution excludes all others, so the flow stays laminar at every Reynolds number",
+        "Yes: at all Re",
+        "Yes: the solution is exact"
       ],
-      "explanation": "Existence of a solution and physical selection/stability differ.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Existence of a solution differs from its physical selection and stability.",
+      "hint": "Is every solution stable?",
       "misconceptions": {
         "Yes; one exact solution excludes all other flow behavior.": "Existence of a solution and physical selection/stability differ."
       },

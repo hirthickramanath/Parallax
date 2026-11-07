@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Must nonparallel lines in 3D intersect?",
-      "answer": "No; they can be skew",
+      "prompt": "Two lines in three dimensions are not parallel. Must they intersect?",
+      "answer": "No: they can be skew and never meet",
       "options": [
-        "Yes",
-        "No; they can be skew"
+        "No: only parallel lines can fail to meet",
+        "No: they can be skew and never meet",
+        "Yes: non-parallel lines always meet",
+        "Yes, if they are in the same room"
       ],
-      "explanation": "They need not share a plane.",
+      "explanation": "In 3D two lines may be neither parallel nor intersecting, e.g. one along the x-axis and one through (0,0,1) along the y-direction.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take one line along the floor and another across the ceiling."
     },
     {
       "id": "c2",
-      "prompt": "Does multiplying both sides of a plane equation by the same nonzero scalar change its plane?",
-      "answer": "No",
+      "prompt": "You multiply an equation ax + by + cz = d by 5. What happens to the plane?",
+      "answer": "Nothing: it is the same plane described differently",
       "options": [
-        "No",
-        "Yes"
+        "Nothing: it is the same plane described differently",
+        "It becomes five parallel planes, since multiplying the equation by 5 repeats the plane at five offsets",
+        "It moves five times further away",
+        "It rotates by 5°"
       ],
-      "explanation": "The equation is multiplied by a nonzero scalar.",
+      "explanation": "Multiplying by a non-zero scalar gives an equivalent equation with the same solutions. The normal vector's length changes but its direction does not.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do the points that satisfy the original also satisfy the new equation?"
     },
     {
       "id": "c3",
-      "prompt": "Are latitude and polar angle the same convention?",
-      "answer": "No",
+      "prompt": "A map uses latitude while a physics text uses the polar angle θ from the +z axis. How are the two related?",
+      "answer": "Latitude = 90° − θ, so they are complementary",
       "options": [
-        "Yes",
-        "No"
+        "Latitude = θ − 90°, so they are opposite in sign only",
+        "Latitude = 90° − θ, so they are complementary",
+        "They are unrelated",
+        "They are identical"
       ],
-      "explanation": "Latitude is complementary to the polar angle from positive z.",
+      "explanation": "The polar angle is measured from the pole and latitude from the equator. At the equator θ = 90° and latitude = 0°.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check the north pole in each convention."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A line has n·v=0 for a plane n·r=d. Which additional condition puts the entire line in the plane?",
-      "answer": "Its starting point a satisfies n·a=d.",
+      "prompt": "A line r = a + tv has n·v = 0 for a plane n·r = d. What more is needed for the whole line to lie in the plane?",
+      "answer": "The point a must itself satisfy n·a = d",
       "options": [
-        "Its direction v must be nonzero only.",
-        "Its starting point a satisfies n·a=d."
+        "The vector v must be a unit vector",
+        "The point a must itself satisfy n·a = d",
+        "The line must pass through the origin",
+        "Nothing more: the line is always in the plane"
       ],
-      "explanation": "Then n·(a+tv)=d for every t. If the starting point fails the plane equation, the line is disjoint.",
+      "explanation": "n·v = 0 means the line is parallel to the plane. Then n·(a + tv) = n·a for every t, so it lies in the plane only if n·a = d; otherwise it is a parallel line outside it.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "hint": "Compute n·(a + tv) and compare with d.",
       "misconceptions": {
         "Its direction v must be nonzero only.": "Then n·(a+tv)=d for every t. If the starting point fails the plane equation, the line is disjoint."
       }

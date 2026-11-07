@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is every invertible coordinate map canonical?",
+      "prompt": "A map from (q, p) to (Q, P) is smooth and invertible. Is it necessarily canonical?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: any invertible map",
+        "Yes: if it is linear",
+        "No: it must preserve the Poisson brackets",
+        "Yes: smooth maps are canonical"
       ],
-      "answer": "No",
-      "explanation": "It must preserve the symplectic brackets.",
+      "answer": "No: it must preserve the Poisson brackets",
+      "explanation": "A transformation is canonical when it preserves the fundamental Poisson brackets; the test is {Q, P} = 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What bracket must be preserved?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does unit determinant alone establish symplecticity in arbitrary higher dimensions?",
+      "prompt": "A linear map in four phase-space dimensions has determinant 1. Is it necessarily symplectic?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: any map with unit determinant is symplectic, so volume preservation is sufficient in every dimension",
+        "Yes: unit determinant is enough",
+        "Yes: it conserves volume only",
+        "No: that is weaker than the full symplectic condition"
       ],
-      "answer": "No",
-      "explanation": "It is weaker than the full symplectic condition.",
+      "answer": "No: that is weaker than the full symplectic condition",
+      "explanation": "Volume preservation is necessary but not sufficient.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is MᵀJM = J implied by det M = 1?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can explicit time dependence add a term to the transformed Hamiltonian?",
+      "prompt": "A canonical transformation depends explicitly on time. Can the new Hamiltonian differ from the old one expressed in new variables?",
       "options": [
-        "No",
-        "Yes"
+        "No: time dependence is irrelevant",
+        "Yes: the generating function adds ∂F/∂t",
+        "No: H is invariant",
+        "No: they are identical"
       ],
-      "answer": "Yes",
-      "explanation": "The generating function contributes its time derivative.",
+      "answer": "Yes: the generating function adds ∂F/∂t",
+      "explanation": "A time-dependent generating function adds a term to the Hamiltonian: K = H + ∂F/∂t.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does F depend on time?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state the generating-function type?",
-      "answer": "Its independent variables determine the derivative rules and signs",
+      "prompt": "Why do you need to state the type (F₁, F₂, F₃ or F₄) of a generating function?",
+      "answer": "Its independent variables fix the derivative rules and signs",
       "options": [
-        "Its independent variables determine the derivative rules and signs",
-        "Every type uses the same variables and signs"
+        "All types are identical",
+        "Its independent variables fix the derivative rules and signs",
+        "It is only a convention for typing",
+        "Types only differ by a name"
       ],
-      "explanation": "A type mismatch changes the canonical construction.",
+      "explanation": "Using the wrong identities gives a non-canonical map.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which variables is F₂ a function of?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For a type-2 generating function F₂(q,P,t), which derivative identities define old p and new Q?",
-      "answer": "p=F₂,q and Q=F₂,P",
+      "prompt": "For a type-2 generating function F₂(q, P, t), which identities define p and Q?",
+      "answer": "p = ∂F₂/∂q and Q = ∂F₂/∂P",
       "options": [
-        "p=−F₂,q and Q=−F₂,P",
-        "p=F₂,q and Q=F₂,P"
+        "p = −∂F₂/∂q and Q = −∂F₂/∂P",
+        "p = ∂F₂/∂P and Q = ∂F₂/∂q",
+        "p = ∂F₂/∂q and Q = ∂F₂/∂P",
+        "p = ∂F₂/∂t"
       ],
-      "explanation": "The signs depend on the chosen generating-function type; these are the type-2 identities.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "For F₂(q, P, t): p = ∂F₂/∂q and Q = ∂F₂/∂P, with K = H + ∂F₂/∂t.",
+      "hint": "Which variables are held in each partial derivative?",
       "misconceptions": {
         "p=−F₂,q and Q=−F₂,P": "The signs depend on the chosen generating-function type; these are the type-2 identities."
       },

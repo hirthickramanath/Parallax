@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Must a convergent series have terms tending to zero?",
-      "answer": "Yes",
+      "prompt": "A series Σaₙ converges. What must be true of its terms aₙ?",
+      "answer": "They must tend to zero",
       "options": [
-        "No",
-        "Yes"
+        "They must be decreasing",
+        "They must tend to zero",
+        "They must be positive",
+        "They need not tend to anything"
       ],
-      "explanation": "Its consecutive partial sums must approach the same limit.",
+      "explanation": "If the partial sums Sₙ tend to a limit, then aₙ = Sₙ − Sₙ₋₁ tends to zero. This is a necessary condition.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write aₙ as a difference of two partial sums."
     },
     {
       "id": "c2",
-      "prompt": "Does terms tending to zero guarantee convergence?",
-      "answer": "No",
+      "prompt": "The terms of a series tend to zero. Does the series necessarily converge?",
+      "answer": "No: the harmonic series 1 + ½ + ⅓ + … diverges",
       "options": [
-        "No",
-        "Yes"
+        "No: the harmonic series 1 + ½ + ⅓ + … diverges",
+        "No, unless the terms alternate in sign",
+        "Yes, because small terms add to a finite sum",
+        "Yes, if the terms are positive"
       ],
-      "explanation": "The harmonic series provides a counterexample.",
+      "explanation": "Terms tending to zero is necessary, not sufficient. The harmonic series has terms → 0 but its partial sums grow without bound like ln n.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the harmonic series."
     },
     {
       "id": "c3",
-      "prompt": "When does a nonzero geometric series converge?",
-      "answer": "When the ratio has modulus below 1",
+      "prompt": "For which common ratio r does a geometric series a + ar + ar² + … converge (a ≠ 0)?",
+      "answer": "When |r| < 1",
       "options": [
-        "Whenever the ratio is positive",
-        "When the ratio has modulus below 1"
+        "When |r| < 1",
+        "When r < 1",
+        "When r > 0",
+        "When |r| ≤ 1"
       ],
-      "explanation": "The remainder power must tend to zero.",
+      "explanation": "The partial sum is a(1 − rⁿ)/(1 − r), which has a limit only if rⁿ → 0, i.e. |r| < 1. For |r| = 1 the terms do not tend to zero.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at what happens to rⁿ as n grows."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "For a noninteger exponent α, may the binomial power series about x=0 be used at every real x?",
-      "answer": "No; its usual open convergence interval is |x|<1.",
+      "prompt": "The binomial series for (1 + x)^α with α = ½ is used to approximate √(1 + x). For which x does it converge?",
+      "answer": "For |x| < 1 (and the edges depending on α)",
       "options": [
-        "Yes; the finite-polynomial binomial rule applies unchanged.",
-        "No; its usual open convergence interval is |x|<1."
+        "For x > 0 only",
+        "For |x| < 1 (and the edges depending on α)",
+        "For x = 0 only",
+        "For every real x"
       ],
-      "explanation": "A terminating integer expansion and a nonterminating power series have different domains.",
+      "explanation": "For non-integer α the series does not terminate, so it has a radius of convergence of 1. A finite integer-exponent binomial is a polynomial, valid for all x.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Compare a series that terminates with one that goes on forever.",
       "misconceptions": {
         "Yes; the finite-polynomial binomial rule applies unchanged.": "A terminating integer expansion and a nonterminating power series have different domains."
       }
@@ -117,14 +128,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does an individual term tending to zero guarantee convergence of its series?",
-      "answer": "No; the harmonic series is a counterexample.",
+      "prompt": "A student shows that aₙ = 1/√n tends to 0 and concludes that Σ1/√n converges. What is wrong?",
+      "answer": "Terms tending to zero is not enough; this series diverges",
       "options": [
-        "Yes; zero terms always produce a finite sum.",
-        "No; the harmonic series is a counterexample."
+        "1/√n is not defined for n = 1",
+        "Terms tending to zero is not enough; this series diverges",
+        "Nothing: the conclusion is valid",
+        "The terms should tend to one instead"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The sum needs more than a term limit.",
+      "hint": "Compare with Σ1/n^p and ask for which p it converges.",
+      "explanation": "Σ1/n^p converges only for p > 1. With p = ½ the series diverges even though the terms shrink.",
       "misconceptions": {
         "Yes; zero terms always produce a finite sum.": "The sum needs more than a term limit."
       },

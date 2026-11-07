@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do equal thermal pressures imply equal temperatures?",
+      "prompt": "Two ISM phases are in thermal pressure balance with nT = constant. Must they have the same temperature?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: always",
+        "No: they cannot coexist",
+        "Yes: equal pressure means equal temperature, since density is fixed by the pressure in each phase",
+        "No: density can compensate, so a hot dilute phase and a cold dense phase can coexist"
       ],
-      "answer": "No",
-      "explanation": "Density can compensate.",
+      "answer": "No: density can compensate, so a hot dilute phase and a cold dense phase can coexist",
+      "explanation": "P = nkT, and 1 cm⁻³ at 10⁴ K has the same pressure as 100 cm⁻³ at 100 K.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare n and T for each phase."
     },
     {
       "id": "concept-2",
-      "prompt": "Is filling fraction identical to mass fraction?",
+      "prompt": "The hot ionised medium fills much of the Galaxy's volume. Does it also contain most of the mass?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it fills the largest volume, so it must also contain the largest share of the Galaxy's mass",
+        "No: it contains no mass",
+        "No: its low density means a large volume fraction with a small mass fraction",
+        "Yes: volume equals mass"
       ],
-      "answer": "No",
-      "explanation": "Density weights mass differently.",
+      "answer": "No: its low density means a large volume fraction with a small mass fraction",
+      "explanation": "Mass fraction weights by density.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Mass = density × volume."
     },
     {
       "id": "concept-3",
-      "prompt": "Can one sight line include multiple phases?",
+      "prompt": "An absorption line is measured toward a distant star. Can that sight line pass through more than one ISM phase?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: only for HII",
+        "No: phases don't mix",
+        "No: only one phase",
+        "Yes: the observation integrates over all components along the path"
       ],
-      "answer": "Yes",
-      "explanation": "Observables integrate different components.",
+      "answer": "Yes: the observation integrates over all components along the path",
+      "explanation": "The measured column density is a sum over components.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the ISM uniform between you and the star?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What separates mass and volume fractions?",
-      "answer": "Density weighting.",
+      "prompt": "What separates the mass fraction of a phase from its volume fraction?",
+      "answer": "Weighting by density",
       "options": [
-        "Density weighting.",
-        "Number density times k_BT."
+        "Weighting by density",
+        "Nothing: the mass fraction and the volume fraction of a phase are always the same quantity",
+        "Pressure only",
+        "Temperature only"
       ],
-      "explanation": "Density weighting.",
+      "explanation": "Mass fraction ∝ ∫ρ dV, volume fraction ∝ ∫dV.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare ∫ρ dV with ∫dV."
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does satisfying nT=constant by itself prove two ISM phases are thermally stable?",
-      "answer": "No; heating/cooling balance and perturbation response are also needed.",
+      "prompt": "Two phases satisfy nT = constant. Does this prove that both are thermally stable?",
+      "answer": "No: heating and cooling balance and the response to perturbations must also be checked",
       "options": [
-        "Yes; pressure equality is a full stability proof.",
-        "No; heating/cooling balance and perturbation response are also needed."
+        "Yes: automatically",
+        "No: heating and cooling balance and the response to perturbations must also be checked",
+        "Yes: pressure equality proves stability, so both phases resist any perturbation of their heating or cooling",
+        "No: nT cannot be constant"
       ],
-      "explanation": "Mechanical pressure balance and thermal stability are distinct conditions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Mechanical pressure balance and thermal stability are separate conditions.",
+      "hint": "Where do the heating and cooling curves cross?",
       "misconceptions": {
         "Yes; pressure equality is a full stability proof.": "Mechanical pressure balance and thermal stability are distinct conditions."
       },

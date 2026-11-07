@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does resonant two-level evolution without damping have to be irreversible?",
+      "prompt": "A two-level atom is driven resonantly with no damping. Must the evolution be irreversible?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: to the ground state",
+        "Yes: it decays",
+        "No: it undergoes reversible Rabi oscillations",
+        "Yes: always irreversible"
       ],
-      "answer": "No",
-      "explanation": "It can undergo Rabi oscillations.",
+      "answer": "No: it undergoes reversible Rabi oscillations",
+      "explanation": "With no damping the excited-state population oscillates as P_e(t) = sin²(Ωt/2), which is a reversible Rabi cycle rather than a decay.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does P_e(t) look like without damping?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is rotating-wave approximation exact at arbitrary strong drive?",
+      "prompt": "The rotating-wave approximation drops counter-rotating terms. Is it exact for very strong drive?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the approximation improves as the drive gets stronger, since the dropped terms become negligible",
+        "Yes: it is exact",
+        "Yes: at all strengths",
+        "No: its time-scale conditions fail when Ω approaches ω₀"
       ],
-      "answer": "No",
-      "explanation": "Its time-scale conditions can fail.",
+      "answer": "No: its time-scale conditions fail when Ω approaches ω₀",
+      "explanation": "Bloch–Siegert shifts appear when Ω/ω₀ is not small.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the drive strength Ω with the transition frequency ω₀ in the dropped terms."
     },
     {
       "id": "concept-3",
-      "prompt": "Can far-detuned light still shift energies?",
+      "prompt": "Light far from any resonance passes through an atom. Can it still shift the atom's energy levels?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: virtual couplings produce an AC Stark (light) shift",
+        "No: only light near a resonance couples to the atom, so far off resonance the levels are left unshifted",
+        "No: no coupling off resonance",
+        "No: nothing happens"
       ],
-      "answer": "Yes",
-      "explanation": "Virtual coupling can create light shifts.",
+      "answer": "Yes: virtual couplings produce an AC Stark (light) shift",
+      "explanation": "Δ ≈ Ω²/4δ for large detuning δ, which is the basis of optical dipole traps.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of optical tweezers."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why include optical pumping?",
-      "answer": "Population can leave the assumed two-state subspace.",
+      "prompt": "Why include optical pumping in a model of atom–light interaction?",
+      "answer": "Population can leave the assumed two-state subspace",
       "options": [
-        "Population can leave the assumed two-state subspace.",
-        "The frequency mismatch in a declared transition/drive convention."
+        "Population can leave the assumed two-state subspace",
+        "It only changes the colour",
+        "It is irrelevant",
+        "It speeds up the two-level dynamics, since extra pumping steps add population to the coupled pair"
       ],
-      "explanation": "Population can leave the assumed two-state subspace.",
+      "explanation": "Real atoms have many sublevels.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is a real atom a two-level system?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does detuning leave full-transfer probability unchanged in an isolated driven two-level model?",
-      "answer": "No; the oscillation amplitude is reduced.",
+      "prompt": "In an isolated driven two-level model, does detuning only change the period of the oscillation?",
+      "answer": "No: it also reduces the oscillation amplitude",
       "options": [
-        "Yes; it changes only the oscillation period.",
-        "No; the oscillation amplitude is reduced."
+        "Yes: amplitude stays 1",
+        "Yes: full transfer always",
+        "Yes: only the period",
+        "No: it also reduces the oscillation amplitude"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Both amplitude and frequency depend on detuning.",
+      "hint": "What is the maximum transfer for δ ≠ 0?",
+      "explanation": "With detuning δ the maximum transfer is P_max = Ω²/(Ω² + δ²) < 1, so detuning reduces the amplitude as well as speeding up the oscillation.",
       "misconceptions": {
         "Yes; it changes only the oscillation period.": "Both amplitude and frequency depend on detuning."
       },

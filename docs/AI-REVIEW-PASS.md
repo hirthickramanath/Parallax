@@ -60,3 +60,21 @@ For each conceptual (multiple-choice) question: if the options are Yes/No, guess
 2. Fix F1 in a dedicated batch (largest effect on learning validity), then re-run `npm run review:handoff`.
 3. Correct PB1.1 and re-confirm its mapping.
 4. Extend close reading to the remaining lessons if wanted; the per-lesson JSON marks what has and has not been read.
+
+## Update: question redesign rolled out (F1/F2 addressed)
+
+All 354 lessons now carry the redesigned conceptual questions; see `docs/QUESTION-QUALITY.md` for the method and
+measurements (4 options, hints on every question, correct option strictly longest in 25.7% of questions, answer
+positions balanced).
+
+Effects on this report:
+
+- **F1/F2:** addressed in form. Residual leakage (correct answer rarely the shortest; a "since/because" wording tell on
+  distractors) is listed in `docs/QUESTION-QUALITY.md`.
+- **F7 (new, medium):** after the rewrite, all 212 AI-assisted source mappings are stale, because every mapped lesson
+  changed. They are kept in `staleInspections` with a reason; none counts as current. The source check must be redone.
+- **Answer-length leak:** the first rewrite pass had the right answer as the longest option in about 91% of
+  questions. A second pass lengthened distractors until the rate fell to 25.7%.
+- **Test rule relaxed:** the explanation-length rule changed from 0.6 x answer length to a 30-character floor.
+- F3 (templated numeric explanations) and F5 (boilerplate) are still open.
+- This remains a non-independent AI pass. No lesson was promoted, and none can be without an independent reviewer's record.

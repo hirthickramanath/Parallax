@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May different energy references be subtracted without checking?",
+      "prompt": "Your computed energies come from two programs that use different zero-energy references. May you subtract them directly to get a reaction energy?",
       "options": [
-        "Yes",
-        "No"
+        "No: first convert both to a common reference and check the conventions",
+        "Yes: if both are in hartree, since the programs use the same zero of energy whatever their conventions",
+        "Yes: the programs always agree",
+        "Yes: energy is energy"
       ],
-      "answer": "No",
-      "explanation": "The comparison needs a common convention.",
+      "answer": "No: first convert both to a common reference and check the conventions",
+      "explanation": "Energies are only comparable when the same reference, method and basis are used for both.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a zero of energy have to be the same in both codes?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a smooth fitted curve prove every input point converged?",
+      "prompt": "A smooth curve is fitted through computed points along a bond stretch. Does this prove every point converged to the same electronic state?",
       "options": [
-        "No",
-        "Yes"
+        "No: state switches and numerical failures can be hidden by the fit",
+        "Yes: a smooth fitted curve shows that each point converged to the same electronic state, with no failures",
+        "No: fits cannot be smooth",
+        "Yes: a smooth curve means convergence"
       ],
-      "answer": "No",
-      "explanation": "State switches and numerical errors can be hidden.",
+      "answer": "No: state switches and numerical failures can be hidden by the fit",
+      "explanation": "A fit can bridge a discontinuity or an SCF that collapsed to another state. Check the points individually.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does fitting do to an outlier point?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should unavailable independent evidence remain an explicit limitation?",
+      "prompt": "You have no experimental value to compare your computed result with. What should the report say?",
       "options": [
-        "No",
-        "Yes"
+        "Quote a plausible experimental value from memory, so that the report can still show a comparison",
+        "Claim the result is validated",
+        "Quote a plausible experimental number",
+        "State explicitly that independent evidence was unavailable as a limitation"
       ],
-      "answer": "Yes",
-      "explanation": "It cannot be invented.",
+      "answer": "State explicitly that independent evidence was unavailable as a limitation",
+      "explanation": "Missing evidence is reported, not invented.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is it honest to supply data you do not have?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What belongs in a discrepancy analysis?",
-      "answer": "Differences, assumptions, uncertainty and unresolved causes.",
+      "prompt": "What should the discrepancy analysis section of a project report contain?",
+      "answer": "The differences found, assumptions, uncertainties and causes still unresolved",
       "options": [
-        "Differences, assumptions, uncertainty and unresolved causes.",
-        "One clearly defined species/state/observable and validation scope."
+        "Only the final energy",
+        "The differences found, assumptions, uncertainties and causes still unresolved",
+        "A statement that the method is exact, so that the section shows no unresolved discrepancies at all",
+        "Only agreement with the reference"
       ],
-      "explanation": "Differences, assumptions, uncertainty and unresolved causes.",
+      "explanation": "Honest analysis shows where and how far results deviate and what remains unexplained.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What would a reader need to judge the result?"
     },
     {
       "id": "chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does an analytic toy benchmark count as an executed ab initio molecular project?",
-      "answer": "No; the actual molecular inputs, method, computation and provenance are still required.",
+      "prompt": "A project plots an analytic toy-model energy curve. Does it count as an executed ab initio molecular project?",
+      "answer": "No: it needs actual molecular inputs, a method, a computation and provenance",
       "options": [
-        "Yes; any energy plot is a complete molecular calculation.",
-        "No; the actual molecular inputs, method, computation and provenance are still required."
+        "Yes: if the plot looks like a molecule",
+        "Yes: any energy plot counts",
+        "Yes: toy models are ab initio",
+        "No: it needs actual molecular inputs, a method, a computation and provenance"
       ],
-      "explanation": "A method demonstration and a performed reproducible project are distinct.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Demonstrating a method differs from performing and documenting a calculation on a real system.",
+      "hint": "Where do the numbers come from?",
       "misconceptions": {
         "Yes; any energy plot is a complete molecular calculation.": "A method demonstration and a performed reproducible project are distinct."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the small-k acoustic approximation valid across the whole zone automatically?",
+      "prompt": "Near the zone centre an acoustic phonon has ω ≈ v·k. Can you apply this straight line across the whole Brillouin zone?",
       "options": [
-        "Yes",
-        "No"
+        "No: the dispersion becomes steeper towards the zone edge, since the lattice stiffens at short wavelengths",
+        "No: the dispersion curves over and flattens at the zone edge because the lattice is discrete",
+        "Yes: sound is always linear",
+        "Yes: ω = vk is exact for any crystal"
       ],
-      "answer": "No",
-      "explanation": "Curvature appears at larger k.",
+      "answer": "No: the dispersion curves over and flattens at the zone edge because the lattice is discrete",
+      "explanation": "For a monatomic chain ω = 2√(K/m)|sin(ka/2)|, with zero group velocity at the edge.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the sine form of the chain dispersion."
     },
     {
       "id": "concept-2",
-      "prompt": "Can a multi-atom cell have multiple branches?",
+      "prompt": "A crystal has two atoms per primitive cell. How many phonon branches per direction does it have in 3D?",
       "options": [
-        "Yes",
-        "No"
+        "Two: one per atom",
+        "One: a single mode for the cell",
+        "Three: acoustic only",
+        "Six: three acoustic and three optical"
       ],
-      "answer": "Yes",
-      "explanation": "Additional displacement degrees of freedom exist.",
+      "answer": "Six: three acoustic and three optical",
+      "explanation": "3N branches for N atoms per cell, with 3 acoustic and 3(N−1) optical.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count degrees of freedom per cell."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a perfect harmonic model include every heat-scattering mechanism?",
+      "prompt": "A perfectly harmonic crystal would conduct heat how?",
       "options": [
-        "Yes",
-        "No"
+        "With a finite conductivity set by the Debye temperature, since harmonic phonons scatter off the lattice itself",
+        "Like a gas of free electrons",
+        "Not at all, because harmonic modes carry no energy",
+        "With infinite thermal conductivity, since phonons would never scatter off each other"
       ],
-      "answer": "No",
-      "explanation": "Anharmonicity/defects/boundaries are additional.",
+      "answer": "With infinite thermal conductivity, since phonons would never scatter off each other",
+      "explanation": "Finite conductivity needs anharmonicity, defects or boundaries to scatter phonons.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What stops a harmonic phonon from travelling forever?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What limits Debye scaling?",
-      "answer": "Dimensionality and the acoustic/temperature regime.",
+      "prompt": "The Debye model predicts C ∝ T³ at low temperature. What sets the range where this holds?",
+      "answer": "The temperature must be far below the Debye temperature and the crystal three-dimensional",
       "options": [
-        "Dimensionality and the acoustic/temperature regime.",
-        "A quantized lattice normal-mode excitation."
+        "The temperature must be far below the Debye temperature and the crystal three-dimensional",
+        "It depends only on the electron density of the metal, since the phonon contribution is always negligible",
+        "It holds at every temperature",
+        "It holds only above the Debye temperature"
       ],
-      "explanation": "Dimensionality and the acoustic/temperature regime.",
+      "explanation": "In d dimensions C ∝ T^d, and only long-wavelength acoustic modes are excited at low T.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which phonons are populated at low T?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Is a lattice acoustic dispersion exactly linear at every wave number?",
-      "answer": "No; discreteness changes the zone-edge behavior.",
+      "prompt": "Is acoustic dispersion exactly linear at every wave number?",
+      "answer": "No: discreteness of the lattice bends it toward the zone edge",
       "options": [
-        "Yes; the sound approximation is exact throughout the Brillouin zone.",
-        "No; discreteness changes the zone-edge behavior."
+        "Yes: but only in 3D",
+        "No: discreteness of the lattice bends it toward the zone edge",
+        "Yes: the sound approximation is exact everywhere",
+        "No: it is linear only at the zone edge"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Keep the approximation range.",
+      "hint": "Compare the wavelength with the lattice spacing.",
+      "explanation": "Linear dispersion is a long-wavelength limit.",
       "misconceptions": {
         "Yes; the sound approximation is exact throughout the Brillouin zone.": "Keep the approximation range."
       },

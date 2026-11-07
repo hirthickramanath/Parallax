@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does mean-square convergence alone imply pointwise convergence everywhere?",
+      "prompt": "A Fourier series converges to f in mean square. Does it converge at every point?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for periodic functions, since mean-square convergence includes convergence at every single point",
+        "Yes, at every point",
+        "Not necessarily: L² convergence ignores sets of measure zero",
+        "No: it never converges"
       ],
-      "answer": "No",
-      "explanation": "L² ignores changes on sets of measure zero.",
+      "answer": "Not necessarily: L² convergence ignores sets of measure zero",
+      "explanation": "Mean-square convergence only controls the integral of the squared error. Pointwise convergence needs extra conditions, e.g. piecewise smoothness.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you change f at one point without affecting its integral?"
     },
     {
       "id": "concept-2",
-      "prompt": "For a piecewise smooth periodic function, what does its Fourier series approach at a jump?",
+      "prompt": "A piecewise smooth periodic function has a jump at x₀. To what value does its Fourier series converge there?",
       "options": [
-        "The midpoint of the one-sided limits",
-        "Always the assigned point value"
+        "Zero",
+        "The value f(x₀) that was assigned at the jump, since the series reproduces the function exactly",
+        "The average of the left and right limits",
+        "The larger of the two limits"
       ],
-      "answer": "The midpoint of the one-sided limits",
-      "explanation": "The Dirichlet jump result uses the two one-sided limits.",
+      "answer": "The average of the left and right limits",
+      "explanation": "Dirichlet's theorem: the series converges to ½[f(x₀⁺) + f(x₀⁻)] at a jump.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a square wave at its jump."
     },
     {
       "id": "concept-3",
-      "prompt": "Does the limiting Gibbs relative overshoot vanish just by retaining more modes?",
+      "prompt": "You add more terms to the Fourier series of a square wave. What happens to the Gibbs overshoot near the jump?",
       "options": [
-        "Yes",
-        "No"
+        "It moves away from the jump and vanishes in the limit of infinitely many terms",
+        "It grows without bound",
+        "It narrows toward the jump but its height (about 9%) does not vanish",
+        "It disappears"
       ],
-      "answer": "No",
-      "explanation": "Its width shrinks while the relative overshoot persists for sharp partial sums.",
+      "answer": "It narrows toward the jump but its height (about 9%) does not vanish",
+      "explanation": "The overshoot width shrinks like 1/N, but the relative height tends to a constant (about 9% of the jump).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the Gibbs phenomenon."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must be justified before differentiating an infinite Fourier series?",
-      "answer": "Sufficient regularity and a valid termwise differentiation theorem",
+      "prompt": "Before differentiating a Fourier series term by term, what must you justify?",
+      "answer": "That f is regular enough for termwise differentiation to be valid",
       "options": [
-        "Sufficient regularity and a valid termwise differentiation theorem",
-        "Only that each term is differentiable"
+        "That the series is finite, since termwise differentiation is valid whenever the sum has finitely many terms",
+        "That each term is differentiable",
+        "Nothing",
+        "That f is regular enough for termwise differentiation to be valid"
       ],
-      "explanation": "Termwise smoothness alone does not control the differentiated limit.",
+      "explanation": "Each sine and cosine is differentiable, but the differentiated series may diverge. E.g. the square wave series differentiates to a divergent series.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the differentiated series converge?"
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does adding Fourier modes remove the limiting fractional Gibbs overshoot near a jump?",
-      "answer": "No; it narrows the overshoot region rather than making that fraction vanish.",
+      "prompt": "More Fourier modes are used for a function with a jump. Does the fractional Gibbs overshoot vanish?",
+      "answer": "No: the overshoot region narrows, but the fraction stays",
       "options": [
-        "Yes; enough modes give uniform convergence to the discontinuous target.",
-        "No; it narrows the overshoot region rather than making that fraction vanish."
+        "No: the overshoot region narrows, but the fraction stays",
+        "Yes: uniform convergence is guaranteed, so the overshoot disappears as more modes are used",
+        "Yes: uniform convergence is guaranteed",
+        "No: it grows"
       ],
-      "explanation": "Uniform limits of continuous partial sums would be continuous.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Uniform limits of continuous partial sums are continuous, so a jump cannot be matched uniformly. The overshoot persists.",
+      "hint": "Can continuous functions converge uniformly to a discontinuous one?",
       "misconceptions": {
         "Yes; enough modes give uniform convergence to the discontinuous target.": "Uniform limits of continuous partial sums would be continuous."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are molality and molarity identical definitions?",
+      "prompt": "A solution is made by dissolving 1 mol of solute in 1 kg of water. Is its molality equal to its molarity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for water the molality and the molarity are equal, because one kilogram of water is one litre",
+        "Yes: they are always the same",
+        "Yes: at 25°C",
+        "Not in general: molality uses solvent mass, molarity uses solution volume"
       ],
-      "answer": "No",
-      "explanation": "They use solvent mass and solution volume, respectively.",
+      "answer": "Not in general: molality uses solvent mass, molarity uses solution volume",
+      "explanation": "Molality is moles per kg of solvent; molarity is moles per litre of solution. They coincide only for dilute aqueous solutions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the denominators."
     },
     {
       "id": "concept-2",
-      "prompt": "Must a van ’t Hoff factor always equal an integer at finite concentration?",
+      "prompt": "A 0.1 m NaCl solution freezes at a point corresponding to i ≈ 1.85. Why not 2?",
       "options": [
-        "No",
-        "Yes"
+        "Ion pairing and nonideality reduce the effective particle count",
+        "NaCl does not fully dissociate in solution, so each formula unit gives close to one particle",
+        "NaCl does not dissociate",
+        "i is always an integer"
       ],
-      "answer": "No",
-      "explanation": "Association and nonideality can change effective behavior.",
+      "answer": "Ion pairing and nonideality reduce the effective particle count",
+      "explanation": "The van 't Hoff factor is an ideal limit at infinite dilution.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the ion fully behave independently?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does the lever rule predict a nucleation rate?",
+      "prompt": "A phase diagram and the lever rule give the fraction of each phase in a two-phase region. What do they not tell you?",
       "options": [
-        "Yes",
-        "No"
+        "How fast the new phase nucleates",
+        "The mass balance of the phases, since the lever rule cannot give the proportion of each phase",
+        "The tie-line composition",
+        "The equilibrium proportion"
       ],
-      "answer": "No",
-      "explanation": "It is an equilibrium material-balance relation.",
+      "answer": "How fast the new phase nucleates",
+      "explanation": "The lever rule is an equilibrium material balance with no time dependence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is there time in the lever rule?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can an apparent colligative molar mass be misleading?",
-      "answer": "Unknown association, dissociation or nonideality changes particle effects",
+      "prompt": "A molar mass is inferred from freezing-point depression assuming no association. Why might it be misleading?",
+      "answer": "Association, dissociation or nonideality change the effective particle number",
       "options": [
-        "Unknown association, dissociation or nonideality changes particle effects",
-        "The dilute formula is exact for every mixture"
+        "Freezing points do not depend on particles",
+        "The solvent changes mass",
+        "Association, dissociation or nonideality change the effective particle number",
+        "The method is always exact"
       ],
-      "explanation": "The inference is conditional on a solution model.",
+      "explanation": "If the solute dimerises, the measured particle count is smaller and the inferred molar mass larger.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the formula assume about the solute?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Are molality and molarity interchangeable without a density and composition conversion?",
-      "answer": "No; one is per solvent mass and the other per solution volume.",
+      "prompt": "You convert a molality to a molarity without using the solution density. Is this safe?",
+      "answer": "No: you need the density and composition to convert from solvent mass to solution volume",
       "options": [
-        "Yes; both concentration labels always have the same numerical value.",
-        "No; one is per solvent mass and the other per solution volume."
+        "No: they are unrelated",
+        "Yes: numbers are equal",
+        "No: you need the density and composition to convert from solvent mass to solution volume",
+        "Yes: always for water"
       ],
-      "explanation": "The solvent/solution measure is part of the concentration definition.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The conversion depends on the solution density.",
+      "hint": "Mass of solvent vs volume of solution.",
       "misconceptions": {
         "Yes; both concentration labels always have the same numerical value.": "The solvent/solution measure is part of the concentration definition."
       },

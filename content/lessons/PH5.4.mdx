@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is power transmission always |t|² for electric amplitude t?",
+      "prompt": "A wave with electric amplitude coefficient t enters glass. Is the transmitted power fraction simply |t|²?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for any medium",
+        "No: an impedance",
+        "Yes: always |t|²",
+        "Yes: since power ∝ E²"
       ],
-      "answer": "No",
-      "explanation": "An impedance factor is needed.",
+      "answer": "No: an impedance",
+      "explanation": "An impedance (refractive-index and angle) factor is needed. T = (n₂ cos θ₂ / n₁ cos θ₁)|t|².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does power depend on E² alone?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does an evanescent field necessarily vanish everywhere beyond an interface?",
+      "prompt": "At total internal reflection, is the field beyond the interface exactly zero?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: nothing penetrates the interface, since all of the light must return into the first medium",
+        "No: an evanescent field decays rather than vanishing",
+        "Yes: identically zero",
+        "Yes: no transmission"
       ],
-      "answer": "No",
-      "explanation": "It decays rather than being identically zero.",
+      "answer": "No: an evanescent field decays rather than vanishing",
+      "explanation": "The evanescent wave decays over about a wavelength and enables frustrated TIR.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does frustrated total internal reflection show?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can hollow-guide geometry impose a low-frequency cutoff?",
+      "prompt": "A hollow metal waveguide transmits microwaves only above a certain frequency. What explains this?",
       "options": [
-        "No",
-        "Yes"
+        "There is no cutoff in a metal guide, since a hollow conductor transmits every frequency equally",
+        "Wavelength is irrelevant",
+        "The metal absorbs low frequencies",
+        "The guide's transverse boundary conditions set a cutoff wavenumber"
       ],
-      "answer": "Yes",
-      "explanation": "Transverse boundary modes set k_c.",
+      "answer": "The guide's transverse boundary conditions set a cutoff wavenumber",
+      "explanation": "Below f_c = c k_c/2π the longitudinal wavenumber is imaginary.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which dimension sets the allowed transverse modes?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish amplitude and power coefficients?",
-      "answer": "Energy flux depends on impedance as well as amplitude.",
+      "prompt": "Why do optics problems distinguish amplitude and power reflection coefficients?",
+      "answer": "Energy flux depends on impedance as well as amplitude",
       "options": [
-        "Energy flux depends on impedance as well as amplitude.",
-        "Tangential phase matching at the interface."
+        "Energy flux depends on impedance as well as amplitude",
+        "Power has no coefficient of its own, since only amplitude is defined at an interface",
+        "They are always equal",
+        "Amplitude is irrelevant"
       ],
-      "explanation": "Energy flux depends on impedance as well as amplitude.",
+      "explanation": "The transmitted power flux depends on the impedance as well as the amplitude: S = ½E²/Z, so equal amplitudes in different media carry different power.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What multiplies E² in the Poynting flux?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Is the transmitted field identically zero at an ideal total-internal-reflection interface?",
-      "answer": "No; an evanescent field can exist beyond it.",
+      "prompt": "At an ideal total-internal-reflection interface, is the transmitted field identically zero?",
+      "answer": "No: an evanescent field can exist beyond it",
       "options": [
-        "Yes; zero transmitted far-field normal power means no field anywhere.",
-        "No; an evanescent field can exist beyond it."
+        "Yes: zero normal power means no field",
+        "No: an evanescent field can exist beyond it",
+        "Yes: in every region",
+        "Yes: it is fully reflected"
       ],
-      "explanation": "Local evanescent structure and propagating normal energy flux differ.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "No time-averaged normal energy flux crosses, but the local field is nonzero.",
+      "hint": "Distinguish a local field from an average energy flow.",
       "misconceptions": {
         "Yes; zero transmitted far-field normal power means no field anywhere.": "Local evanescent structure and propagating normal energy flux differ."
       },

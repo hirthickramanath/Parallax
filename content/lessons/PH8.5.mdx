@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must the magnitude equal the largest component jℏ?",
+      "prompt": "A system has angular momentum quantum number j. Is the magnitude of the angular momentum jħ?",
       "options": [
-        "Yes",
-        "No"
+        "No: it is √(j(j+1)) ħ",
+        "Yes: |J| = jħ, the length of the vector",
+        "Yes: the maximum",
+        "Yes: √j ħ"
       ],
-      "answer": "No",
-      "explanation": "The magnitude is √(j(j+1))ℏ.",
+      "answer": "No: it is √(j(j+1)) ħ",
+      "explanation": "It is √(j(j+1)) ħ, which exceeds the largest component jħ. J² has eigenvalue j(j+1)ħ².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use the eigenvalue of J²."
     },
     {
       "id": "concept-2",
-      "prompt": "Can intrinsic spin be half integer?",
+      "prompt": "Can the intrinsic spin quantum number be a half-integer?",
       "options": [
-        "Yes",
-        "No"
+        "No: only 0",
+        "No: only integers are allowed, since spin is the orbital motion of the particle about its centre",
+        "No: spin is orbital",
+        "Yes: spin representations of rotations allow half-integers, unlike orbital angular momentum"
       ],
-      "answer": "Yes",
-      "explanation": "Its rotation representation differs from scalar orbital wavefunctions.",
+      "answer": "Yes: spin representations of rotations allow half-integers, unlike orbital angular momentum",
+      "explanation": "Spin representations of the rotation group allow half-integer values, unlike orbital angular momentum. Electrons, for example, have s = 1/2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the electron's spin?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do coupled and uncoupled bases have equal total dimension?",
+      "prompt": "Two angular momenta j₁ and j₂ can be described in the uncoupled |m₁, m₂⟩ basis or the coupled |J, M⟩ basis. Do the two bases have the same dimension?",
       "options": [
-        "No",
-        "Yes"
+        "No: they differ by one, since the coupled basis has one state fewer than the product",
+        "No: the coupled basis is smaller",
+        "Yes: both span the same tensor-product space, of dimension",
+        "No: it is larger"
       ],
-      "answer": "Yes",
-      "explanation": "They are bases of the same tensor-product space.",
+      "answer": "Yes: both span the same tensor-product space, of dimension",
+      "explanation": "Both span the same tensor-product space, of dimension (2j₁+1)(2j₂+1). Σ_J (2J+1) = (2j₁+1)(2j₂+1).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count for j₁ = j₂ = 1/2."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is spin not a classical spinning ball?",
-      "answer": "It is an intrinsic quantum rotation degree of freedom with different representation properties.",
+      "prompt": "Why is electron spin not like a classical spinning ball?",
+      "answer": "It is an intrinsic quantum degree of freedom with half-integer representations",
       "options": [
-        "It is an intrinsic quantum rotation degree of freedom with different representation properties.",
-        "One unit in m."
+        "It is orbital motion, since the electron physically spins around its own axis like a small sphere",
+        "It spins at c",
+        "The electron is a small sphere",
+        "It is an intrinsic quantum degree of freedom with half-integer representations"
       ],
-      "explanation": "It is an intrinsic quantum rotation degree of freedom with different representation properties.",
+      "explanation": "A classical ball's surface would exceed the speed of light for the observed moment, and spin ½ has no classical analogue.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What would the surface speed of a spinning electron be?"
     },
     {
       "id": "quantum-transfer-1",
@@ -101,14 +113,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does a sharp Jz value make Jx and Jy simultaneously sharp?",
-      "answer": "No; noncommuting components limit simultaneous sharpness.",
+      "prompt": "A state has a sharp value of J_z. Can J_x and J_y also be sharp?",
+      "answer": "No: the noncommuting components limit simultaneous sharpness",
       "options": [
-        "Yes; angular momentum is an ordinary known vector.",
-        "No; noncommuting components limit simultaneous sharpness."
+        "Yes: all three can be known",
+        "Yes: for large j",
+        "No: the noncommuting components limit simultaneous sharpness",
+        "Yes: angular momentum is an ordinary vector"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the angular-momentum commutators.",
+      "hint": "Use the commutation relations.",
+      "explanation": "The components do not commute, [J_x, J_y] = iħJ_z, so no state can have sharp values of two components at once.",
       "misconceptions": {
         "Yes; angular momentum is an ordinary known vector.": "Use the angular-momentum commutators."
       },

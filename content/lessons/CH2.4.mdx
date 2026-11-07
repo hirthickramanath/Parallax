@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do rotational and vibrational scales have identical mass powers?",
+      "prompt": "A diatomic molecule's reduced mass doubles. In the simple rigid-rotor and harmonic models, how do the rotational constant B and vibrational frequency ω change?",
       "options": [
-        "Yes",
-        "No"
+        "Neither changes, since the two constants depend on the electronic structure and not on the mass",
+        "Both fall by √2",
+        "Both halve",
+        "B halves, ω falls by a factor of √2: different mass powers"
       ],
-      "answer": "No",
-      "explanation": "B∝μ⁻¹ and ω∝μ⁻¹ᐟ² in the stated limits.",
+      "answer": "B halves, ω falls by a factor of √2: different mass powers",
+      "explanation": "B ∝ 1/μ (through the moment of inertia I = μr²) while ω ∝ 1/√μ (through ω = √(k/μ)).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write B and ω in terms of μ."
     },
     {
       "id": "concept-2",
-      "prompt": "Is cm⁻¹ already an angular frequency?",
+      "prompt": "A spectrum axis is labelled in cm⁻¹. Can you use that number as ω in E = ħω without conversion?",
       "options": [
-        "No",
-        "Yes"
+        "No: cm⁻¹ is an energy in joules",
+        "Yes: it is already an angular frequency",
+        "Yes: if it is multiplied by ħ only",
+        "No: cm⁻¹ is a wavenumber; it needs ×2πc to become an angular frequency"
       ],
-      "answer": "No",
-      "explanation": "Conversion needs c and 2π conventions.",
+      "answer": "No: cm⁻¹ is a wavenumber; it needs ×2πc to become an angular frequency",
+      "explanation": "Wavenumber ν̃ = 1/λ. Angular frequency ω = 2πcν̃, so factors of c and 2π matter.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the 2π and c needed to go from 1/λ to rad/s."
     },
     {
       "id": "concept-3",
-      "prompt": "Can symmetry alter line intensity patterns?",
+      "prompt": "Hydrogen gas H₂ shows alternating strong and weak rotational Raman lines. What explains the pattern?",
       "options": [
-        "No",
-        "Yes"
+        "Doppler broadening",
+        "The vibrational frequency",
+        "Experimental noise",
+        "Nuclear spin statistics combined with molecular symmetry"
       ],
-      "answer": "Yes",
-      "explanation": "Selection and nuclear statistics enter.",
+      "answer": "Nuclear spin statistics combined with molecular symmetry",
+      "explanation": "Identical nuclei force a symmetry on the total wavefunction, so ortho and para levels have different statistical weights (≈3:1 for H₂).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "The two nuclei are identical fermions."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why use multiple lines?",
-      "answer": "They constrain blends and model/assignment degeneracies.",
+      "prompt": "Why fit several rovibrational lines instead of relying on one strong line to assign a molecule's constants?",
+      "answer": "Several lines constrain blends and separate B, ω and centrifugal terms",
       "options": [
-        "They constrain blends and model/assignment degeneracies.",
-        "The rotational energy scale under its declared units."
+        "More lines raise the temperature",
+        "One line is always exact",
+        "Line count sets the dipole moment",
+        "Several lines constrain blends and separate B, ω and centrifugal terms"
       ],
-      "explanation": "They constrain blends and model/assignment degeneracies.",
+      "explanation": "A single line cannot separate overlapping features or the model parameters. A series of lines gives independent checks.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How many unknowns does a single line allow you to fit?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does the existence of a vibrational mode guarantee electric-dipole infrared activity?",
-      "answer": "No; the relevant dipole matrix element or derivative must be nonzero.",
+      "prompt": "N₂ has a vibrational mode. Why is it absent from the ordinary infrared absorption spectrum?",
+      "answer": "The dipole moment does not change during the vibration of a homonuclear diatomic",
       "options": [
-        "Yes; every allowed mechanical motion has identical optical selection rules.",
-        "No; the relevant dipole matrix element or derivative must be nonzero."
+        "N₂ does not vibrate, so there is no vibrational motion that infrared light could excite at all",
+        "Infrared light never excites vibration",
+        "Its frequency is too low",
+        "The dipole moment does not change during the vibration of a homonuclear diatomic"
       ],
-      "explanation": "The probe operator and symmetry determine intensity.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "IR absorption needs a changing dipole moment (∂μ/∂Q ≠ 0). Homonuclear diatomics are IR-inactive, though Raman-active.",
+      "hint": "What oscillates in an IR-active vibration?",
       "misconceptions": {
         "Yes; every allowed mechanical motion has identical optical selection rules.": "The probe operator and symmetry determine intensity."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does transit depth alone yield an absolute planet radius?",
+      "prompt": "A transit lowers a star's flux by 1%. Can you get the planet's absolute radius from only that depth?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: depth gives the radius directly, since R_p equals 1% of the Sun's radius for a one percent dip",
+        "Yes: depth gives radius",
+        "Yes: with the period",
+        "No: you also need the star's radius and the transit model"
       ],
-      "answer": "No",
-      "explanation": "The host-star scale and transit model matter.",
+      "answer": "No: you also need the star's radius and the transit model",
+      "explanation": "(R_p/R_*)² = depth, so you need R_* in km.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Depth gives a ratio of radii."
     },
     {
       "id": "concept-2",
-      "prompt": "Does radial velocity alone usually remove sin i degeneracy?",
+      "prompt": "A radial-velocity survey measures a velocity semi-amplitude K. Does it usually give the true planet mass?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it gives the true mass",
+        "Yes: if K is large",
+        "Yes: it gives inclination",
+        "No: it gives m sin i, because it measures the projected motion"
       ],
-      "answer": "No",
-      "explanation": "It measures projected orbital motion.",
+      "answer": "No: it gives m sin i, because it measures the projected motion",
+      "explanation": "The inclination i is unknown from RV alone.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which component of velocity do you measure?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are detected planets an unbiased occurrence sample?",
+      "prompt": "Detected exoplanets are mostly large and close-in. Does this reflect the true population of planets?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: small planets are rare",
+        "Yes: the sample is unbiased",
+        "No: geometry and survey completeness select them",
+        "Yes: large planets dominate"
       ],
-      "answer": "No",
-      "explanation": "Geometry and survey completeness select them.",
+      "answer": "No: geometry and survey completeness select them",
+      "explanation": "Transit probability ∝ R_*/a and the signal ∝ (R_p/R_*)², favouring close, big planets.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which planets are easiest to find?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must false-positive validation consider?",
-      "answer": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "prompt": "What alternatives must a false-positive validation of a transit candidate consider?",
+      "answer": "Blends, stellar activity and other astrophysical or instrumental explanations",
       "options": [
-        "Blends, activity and alternative astrophysical/instrumental explanations.",
-        "A radius ratio squared."
+        "Only the orbital period, since a periodic dip is sufficient to exclude every other explanation",
+        "Blends, stellar activity and other astrophysical or instrumental explanations",
+        "Only the depth",
+        "Nothing: a dip proves a planet"
       ],
-      "explanation": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "explanation": "Eclipsing binaries diluted by a brighter star can mimic planets.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What else dims a star periodically?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does an observed transit depth alone uniquely determine planet radius without stellar radius and contamination information?",
-      "answer": "No; stellar size and dilution enter the inference.",
+      "prompt": "Can the transit depth alone give a planet's radius without stellar radius and contamination information?",
+      "answer": "No: the stellar size and dilution by other light enter",
       "options": [
-        "Yes; depth directly measures an absolute radius.",
-        "No; stellar size and dilution enter the inference."
+        "No: the stellar size and dilution by other light enter",
+        "Yes: depth is an absolute radius, because a larger planet blocks a larger fraction of any star's light",
+        "Yes: depth is absolute",
+        "Yes: always"
       ],
-      "explanation": "A fractional area ratio is not a standalone absolute length.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The depth is a fractional area, and contamination dilutes it.",
+      "hint": "Is a ratio of areas a length?",
       "misconceptions": {
         "Yes; depth directly measures an absolute radius.": "A fractional area ratio is not a standalone absolute length."
       },

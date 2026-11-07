@@ -11,39 +11,48 @@
   "questions": [
     {
       "id": "zero",
-      "prompt": "Why not substitute h = 0 into the difference quotient?",
+      "prompt": "The derivative is defined by the limit of (f(a+h) − f(a))/h. Why can't you just set h = 0?",
       "options": [
-        "It divides by zero",
-        "It changes a to zero"
+        "The quotient becomes 0/0, which is undefined; the limit examines h ≠ 0",
+        "Setting h = 0 changes the point a, so the difference quotient would refer to a different location",
+        "Because the quotient would give a negative slope",
+        "Because f(a + 0) = f(a) is false"
       ],
-      "answer": "It divides by zero",
-      "explanation": "The derivative is a limit through nonzero h.",
+      "answer": "The quotient becomes 0/0, which is undefined; the limit examines h ≠ 0",
+      "explanation": "At h = 0 the numerator and denominator are both zero. The derivative is the value the quotient approaches for small non-zero h.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Substitute h = 0 and look at the denominator."
     },
     {
       "id": "proof",
-      "prompt": "Does a very detailed plot prove a derivative exists?",
+      "prompt": "A computer plots a function at very high resolution and it looks smooth at a point. Does that prove it is differentiable there?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, if the plot has enough pixels",
+        "No, because plots do not show derivatives",
+        "Yes, because smooth-looking means differentiable",
+        "No: finite plot samples cannot establish the limit of the quotient"
       ],
-      "answer": "No",
-      "explanation": "Finite samples cannot establish the quantified limit.",
+      "answer": "No: finite plot samples cannot establish the limit of the quotient",
+      "explanation": "A function such as x sin(1/x) oscillates too finely to see, and a tiny kink can hide between pixels. Differentiability is a statement about a limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Zooming in is still a finite number of points."
     },
     {
       "id": "abs",
-      "prompt": "Is |x| differentiable at zero?",
+      "prompt": "Is f(x) = |x| differentiable at x = 0?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the slope there is 1, since |x| = x for positive x and the same line continues through 0",
+        "No: the left and right difference quotients tend to −1 and +1",
+        "Yes: the slope there is 0",
+        "No: |x| is not continuous at 0"
       ],
-      "answer": "No",
-      "explanation": "Left and right quotients approach different values.",
+      "answer": "No: the left and right difference quotients tend to −1 and +1",
+      "explanation": "For h > 0 the quotient is +1 and for h < 0 it is −1, so the limit does not exist. |x| is continuous but has a corner.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute (|h| − 0)/h from the right and from the left."
     },
     {
       "id": "value",
@@ -68,16 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "To make the slope error less than ε, which δ suffices?",
+      "prompt": "For f(x) = x², the difference quotient at a equals 2a + h. For what range of h is it within ε of the derivative 2a?",
       "options": [
-        "δ = ε",
-        "δ = 0"
+        "For |h| > ε",
+        "For every h",
+        "For |h| < ε², only",
+        "For 0 < |h| < ε"
       ],
-      "answer": "δ = ε",
-      "explanation": "The error is |h|, so 0 < |h| < ε guarantees the desired bound.",
+      "answer": "For 0 < |h| < ε",
+      "explanation": "The error is |(2a + h) − 2a| = |h|. Choosing δ = ε guarantees an error below ε whenever 0 < |h| < δ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Subtract 2a from 2a + h and take the absolute value."
     },
     {
       "id": "depth-transfer-1",
@@ -125,14 +137,16 @@
     },
     {
       "id": "depth-model-limits",
-      "prompt": "A function is differentiable at a. Must it be continuous there?",
-      "answer": "Yes; differentiability implies continuity.",
+      "prompt": "A function is differentiable at a. What follows about its continuity there?",
+      "answer": "It must be continuous there, since f(a+h) − f(a) = h × (a convergent quotient) → 0",
       "options": [
-        "No; a differentiable jump is possible.",
-        "Yes; differentiability implies continuity."
+        "It is continuous only if the derivative is zero",
+        "It is continuous only on one side",
+        "Nothing: differentiable functions can have jumps",
+        "It must be continuous there, since f(a+h) − f(a) = h × (a convergent quotient) → 0"
       ],
-      "explanation": "Write f(a+h)−f(a) as h times its convergent difference quotient.",
-      "hint": "Identify the model assumptions before applying a formula.",
+      "explanation": "Write f(a+h) − f(a) = h × [(f(a+h) − f(a))/h]. The bracket tends to f′(a) and h → 0, so the product tends to zero.",
+      "hint": "Multiply and divide the difference by h.",
       "misconceptions": {
         "No; a differentiable jump is possible.": "Write f(a+h)−f(a) as h times its convergent difference quotient."
       },

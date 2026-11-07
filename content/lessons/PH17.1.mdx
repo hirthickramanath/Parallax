@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does repeating remove a fixed common calibration offset automatically?",
+      "prompt": "You repeat a measurement 100 times with the same miscalibrated ruler. Does averaging remove the calibration offset?",
       "options": [
-        "Yes",
-        "No"
+        "No: averaging makes the offset larger, since the same error is added again with every repeated reading",
+        "No: the offset is common to every reading, so it survives the average",
+        "Yes: error shrinks as 1/√100",
+        "Yes: averaging removes all errors"
       ],
-      "answer": "No",
-      "explanation": "The errors are correlated.",
+      "answer": "No: the offset is common to every reading, so it survives the average",
+      "explanation": "Random errors average down; systematic errors do not.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the offset random from one reading to the next?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must covariance enter derived-quantity uncertainty?",
+      "prompt": "You compute a derived quantity from two inputs that share the same calibration. Should the correlation enter its uncertainty?",
       "options": [
-        "Yes",
-        "No"
+        "No: correlation affects only the central value",
+        "No: independent addition in quadrature always applies",
+        "Yes: but only for sums",
+        "Yes: the covariance term can increase or reduce the combined uncertainty"
       ],
-      "answer": "Yes",
-      "explanation": "Inputs can share errors.",
+      "answer": "Yes: the covariance term can increase or reduce the combined uncertainty",
+      "explanation": "σ² = σ_a² + σ_b² + 2 cov(a,b) for a sum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "For f = a − b with perfectly correlated errors, what happens?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a long display of digits prove accuracy?",
+      "prompt": "A digital meter shows 12.34567 V. Does the number of digits prove that the reading is accurate?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the display is exact to the last digit shown, so every digit of the reading can be trusted",
+        "No: displays never show a voltage",
+        "No: calibration and uncertainty decide how many digits mean anything",
+        "Yes: more digits mean more accuracy"
       ],
-      "answer": "No",
-      "explanation": "Uncertainty and calibration determine meaningful precision.",
+      "answer": "No: calibration and uncertainty decide how many digits mean anything",
+      "explanation": "A display's digits show resolution, not accuracy. The meaningful precision is set by the calibration and the stated uncertainty.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Read the meter's accuracy specification."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why label simulated readings?",
-      "answer": "They are model outputs rather than observations.",
+      "prompt": "A lesson shows simulated readings. Why must they be labelled as such?",
+      "answer": "They are model outputs and not observations from an instrument",
       "options": [
-        "They are model outputs rather than observations.",
-        "Repeat consistency versus closeness under calibration/model evidence."
+        "They are real measurements taken earlier, so the label is needed only to give the date of the experiment",
+        "They cannot be graphed",
+        "They are model outputs and not observations from an instrument",
+        "Labels change the numerical values"
       ],
-      "explanation": "They are model outputs rather than observations.",
+      "explanation": "Simulated data show the method, not the world.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where did those numbers come from?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "May perfectly correlated errors be combined as if they were independent?",
-      "answer": "No; covariance changes the result.",
+      "prompt": "Two errors are perfectly correlated. May you combine them in quadrature as if independent?",
+      "answer": "No: the covariance changes the result, so the correlation model must be stated",
       "options": [
-        "Yes; quadrature always applies without conditions.",
-        "No; covariance changes the result."
+        "Yes: quadrature always applies, since adding squares gives the correct total whatever the correlation",
+        "Yes: correlation only matters for three or more errors",
+        "No: errors cannot be combined",
+        "No: the covariance changes the result, so the correlation model must be stated"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "State the correlation model.",
+      "hint": "Compare √(a²+b²) with a+b.",
+      "explanation": "Perfectly correlated errors add linearly, not in quadrature.",
       "misconceptions": {
         "Yes; quadrature always applies without conditions.": "State the correlation model."
       },

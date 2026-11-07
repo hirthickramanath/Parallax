@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can nonorthogonal overlap always be ignored?",
+      "prompt": "In LCAO with non-orthogonal atomic orbitals, can the overlap matrix S be set to the identity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes for heavy atoms",
+        "Yes for minimal bases",
+        "Yes: for minimal bases the overlap matrix is the identity, so the eigenproblem reduces to Hc = Ec",
+        "No: overlap changes the eigenproblem to Hc = ESc"
       ],
-      "answer": "No",
-      "explanation": "It changes the metric and eigenproblem.",
+      "answer": "No: overlap changes the eigenproblem to Hc = ESc",
+      "explanation": "Neglecting overlap (S = 1) is an approximation used in simple Hückel theory. Properly the generalised eigenvalue problem keeps S.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the secular equation."
     },
     {
       "id": "concept-2",
-      "prompt": "Do near-linear basis dependencies affect numerical conditioning?",
+      "prompt": "A large basis contains functions that are nearly linearly dependent. What numerical problem arises?",
       "options": [
-        "Yes",
-        "No"
+        "Small eigenvalues of S amplify errors and worsen conditioning",
+        "The basis becomes orthogonal, which makes the calculation faster and the energy more accurate",
+        "The energy is exact",
+        "No problem"
       ],
-      "answer": "Yes",
-      "explanation": "Small overlap eigenvalues amplify error.",
+      "answer": "Small eigenvalues of S amplify errors and worsen conditioning",
+      "explanation": "Inverting a near-singular overlap matrix amplifies rounding errors.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of two almost identical columns in a matrix."
     },
     {
       "id": "concept-3",
-      "prompt": "Is a coefficient-based atomic population uniquely observable?",
+      "prompt": "Mulliken atomic populations are computed from LCAO coefficients. Are they uniquely observable?",
       "options": [
-        "Yes",
-        "No"
+        "No: the partition depends on the basis set and the convention",
+        "Yes: they are uniquely observable quantities, and a larger basis set only improves the precision",
+        "Yes with a plot",
+        "Yes with large basis sets"
       ],
-      "answer": "No",
-      "explanation": "Its partition depends on the basis/convention.",
+      "answer": "No: the partition depends on the basis set and the convention",
+      "explanation": "Charges from different schemes (Mulliken, Löwdin, NPA) give different numbers.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do different partition schemes agree?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why report basis details?",
-      "answer": "Coefficients, convergence and conditioning depend on them.",
+      "prompt": "Why must a paper report the basis set used for an LCAO calculation?",
+      "answer": "Coefficients, convergence and conditioning all depend on it",
       "options": [
-        "Coefficients, convergence and conditioning depend on them.",
-        "The basis overlap matrix."
+        "It is required by the journal, since the basis set does not affect the coefficients or the energies",
+        "Basis sets don't matter",
+        "Coefficients, convergence and conditioning all depend on it",
+        "It only affects the title"
       ],
-      "explanation": "Coefficients, convergence and conditioning depend on them.",
+      "explanation": "Results change with basis size and type. Without it the result cannot be reproduced.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare results from minimal and large basis sets."
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Can a nonorthogonal atomic basis always be treated as if its overlap matrix were the identity?",
-      "answer": "No; the generalized eigenproblem retains overlap.",
+      "prompt": "A non-orthogonal atomic basis is used. Which statement is correct?",
+      "answer": "The generalised eigenproblem retains the overlap matrix",
       "options": [
-        "Yes; all basis choices have identical normalization geometry.",
-        "No; the generalized eigenproblem retains overlap."
+        "The basis is automatically orthogonal, so the overlap matrix is the identity and drops out of the equations",
+        "The overlap matrix is zero",
+        "The generalised eigenproblem retains the overlap matrix",
+        "The overlap matrix is the identity"
       ],
-      "explanation": "The basis metric enters both normalization and the eigenvalue equation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Orbitals on different atoms overlap, so ⟨φᵢ|φⱼ⟩ ≠ δᵢⱼ.",
+      "hint": "Do 1s orbitals on neighbouring nuclei overlap?",
       "misconceptions": {
         "Yes; all basis choices have identical normalization geometry.": "The basis metric enters both normalization and the eigenvalue equation."
       },

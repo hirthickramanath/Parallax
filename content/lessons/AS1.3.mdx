@@ -11,40 +11,48 @@
   "questions": [
     {
       "id": "shape",
-      "prompt": "Which central-force feature is essential to the conic derivation?",
+      "prompt": "Which property of the central force leads to conic-section orbits (ellipse, parabola, hyperbola)?",
       "options": [
-        "Inverse-square attraction",
-        "Constant downward gravity"
+        "A constant downward gravity",
+        "A force that decreases as 1/r",
+        "An inverse-square attraction, F ∝ 1/r²",
+        "A force proportional to r"
       ],
-      "answer": "Inverse-square attraction",
-      "explanation": "The Binet equation has constant forcing for −μ/r².",
+      "answer": "An inverse-square attraction, F ∝ 1/r²",
+      "explanation": "With F = −μ/r², the Binet orbit equation has constant forcing, giving a conic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which force law gives constant forcing in the Binet equation?"
     },
     {
       "id": "mass",
-      "prompt": "Why is angular momentum conserved?",
+      "prompt": "A planet moves under the Sun's gravity. Why is its angular momentum about the Sun conserved?",
       "options": [
-        "The central force has zero torque",
-        "Speed is constant everywhere"
+        "Energy is conserved, so L is too",
+        "A central force exerts no torque about the centre",
+        "Its speed is constant",
+        "Its distance is constant"
       ],
-      "answer": "The central force has zero torque",
-      "explanation": "r × F = 0 for a central force.",
+      "answer": "A central force exerts no torque about the centre",
+      "explanation": "τ = r × F = 0 when F is parallel to r.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the torque of a force pointing along r."
     },
     {
       "id": "escape",
-      "prompt": "At exactly zero specific energy, the ideal nondegenerate orbit is?",
+      "prompt": "A spacecraft has exactly zero specific orbital energy relative to a planet and nonzero angular momentum. What is its orbit?",
       "options": [
-        "Ellipse",
+        "Hyperbola",
+        "Circle",
         "Parabola",
-        "Hyperbola"
+        "Ellipse"
       ],
       "answer": "Parabola",
-      "explanation": "e = 1 when ε = 0 and h ≠ 0.",
+      "explanation": "ε = 0 gives e = 1: the boundary between bound ellipses and unbound hyperbolas.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which conic has e = 1?"
     },
     {
       "id": "speed",
@@ -69,16 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why does a lower circular orbit have a shorter period?",
+      "prompt": "Two satellites orbit Earth in circular orbits at different heights. Why does the lower one have the shorter period?",
       "options": [
-        "T scales with a^(3/2)",
-        "All orbits have equal period"
+        "Lower orbits are slower",
+        "All orbits have equal period",
+        "T depends on the satellite's mass",
+        "T² ∝ a³, so the period grows with orbital radius"
       ],
-      "answer": "T scales with a^(3/2)",
-      "explanation": "Kepler’s third law gives T² = 4π²a³/μ.",
+      "answer": "T² ∝ a³, so the period grows with orbital radius",
+      "explanation": "Kepler's third law: T² = 4π²a³/μ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Look at how a enters the period."
     },
     {
       "id": "astro-transfer-1",
@@ -102,14 +113,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "At fixed semimajor axis and central mass, does increasing eccentricity increase the ideal Kepler period?",
-      "answer": "No; the period depends on a and total mass in this model.",
+      "prompt": "Keeping the semimajor axis and central mass fixed, you increase the orbit's eccentricity. What happens to the Kepler period?",
+      "answer": "It stays the same: the period depends only on a and the mass in this model",
       "options": [
-        "Yes; every longer-looking path has a longer Kepler period.",
-        "No; the period depends on a and total mass in this model."
+        "It increases, because a more eccentric orbit has a longer path around the Sun",
+        "It doubles",
+        "It decreases",
+        "It stays the same: the period depends only on a and the mass in this model"
       ],
-      "explanation": "The speed distribution changes together with the ellipse geometry.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "T = 2π√(a³/μ). Speed changes along the orbit but the period does not.",
+      "hint": "Does e appear in the formula for T?",
       "misconceptions": {
         "Yes; every longer-looking path has a longer Kepler period.": "The speed distribution changes together with the ellipse geometry."
       },

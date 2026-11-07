@@ -12,40 +12,48 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Is the same material point always at contact during rolling?",
+      "prompt": "A wheel rolls without slipping on a flat road. Which statement about its contact point is true?",
       "options": [
-        "Yes",
-        "No"
+        "The same rim point stays on the road all the time, so the wheel rolls on a single fixed point of its rim",
+        "The contact point moves forward at speed v_cm",
+        "Different material points touch the road at different times",
+        "The contact point has speed 2v_cm relative to the road"
       ],
-      "answer": "No",
-      "explanation": "The instantaneous contact point changes as the wheel turns.",
+      "answer": "Different material points touch the road at different times",
+      "explanation": "The wheel keeps turning, so the point at the bottom is always a new material point. At that instant it is at rest relative to the road, which is the no-slip condition.",
       "type": "mcq",
       "conceptual": true,
-      "hint": "Write the governing equation and identify the relevant system before cancelling terms."
+      "hint": "Think of a mark painted on the rim: where is it half a turn later?"
     },
     {
       "id": "q2",
-      "prompt": "Does v_cm=Rω hold for arbitrary slipping?",
+      "prompt": "When does v_cm = Rω describe a rolling wheel?",
       "options": [
-        "Yes",
-        "No"
+        "Only when the contact point does not slip",
+        "Always, because ω is defined as v_cm/R, so the relation holds whether or not the wheel slips",
+        "Only when the wheel is accelerating",
+        "Only on a frictionless surface"
       ],
-      "answer": "No",
-      "explanation": "It is a no-slip constraint.",
+      "answer": "Only when the contact point does not slip",
+      "explanation": "v_cm = Rω is the no-slip constraint. A skidding or spinning wheel has v_cm ≠ Rω, and then kinetic friction acts at the contact.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask what the contact point's velocity must be for the road not to be sliding underneath it."
     },
     {
       "id": "q3",
-      "prompt": "Which has larger I about its symmetry axis for equal M and R?",
+      "prompt": "A hoop and a uniform disk have equal mass and radius. Which has the larger moment of inertia about its symmetry axis?",
       "options": [
-        "Thin hoop",
-        "Uniform disk"
+        "They are equal, because M and R match",
+        "The disk, because it has more material near the centre",
+        "The disk, because it is a solid object",
+        "The hoop, because its mass sits at the largest radius"
       ],
-      "answer": "Thin hoop",
-      "explanation": "The hoop places all its mass at the largest radius.",
+      "answer": "The hoop, because its mass sits at the largest radius",
+      "explanation": "I = ∫r² dm weights mass by radius squared. The hoop has I = MR² and the disk ½MR², so the hoop is larger.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "I depends on how the mass is distributed, not only on M and R."
     },
     {
       "id": "q4",
@@ -70,16 +78,19 @@
     },
     {
       "id": "q6",
-      "prompt": "Why check friction after deriving rolling acceleration?",
+      "prompt": "After deriving a rolling acceleration down an incline, why must you check the required friction?",
       "options": [
-        "The assumed constraint may be impossible",
-        "Friction always dissipates all energy"
+        "Friction is zero in rolling, so the acceleration found from the no-slip constraint needs no further check",
+        "The assumed no-slip constraint may need more friction than exists",
+        "Friction always removes all the kinetic energy",
+        "The acceleration formula itself includes friction losses"
       ],
-      "answer": "The assumed constraint may be impossible",
-      "explanation": "Static friction must be large enough to enforce no slip.",
+      "answer": "The assumed no-slip constraint may need more friction than exists",
+      "explanation": "No-slip rolling needs a static friction force of a definite size. If μ_s·N is smaller than that, the constraint fails and the wheel slips.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Static friction can only supply up to μ_s·N; compare it with what the constraint needs."
     },
     {
       "id": "warmup-rolling",

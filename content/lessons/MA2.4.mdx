@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a coordinate change preserve area without a scale factor?",
+      "prompt": "You change variables (x, y) → (u, v). Is the area element dx dy equal to du dv in general?",
       "options": [
-        "Always",
-        "Not generally"
+        "Yes, for any smooth map, since the area element is invariant under a change of variables",
+        "Yes, for any smooth map",
+        "Yes, always",
+        "No: it carries the Jacobian factor |∂(x,y)/∂(u,v)|"
       ],
-      "answer": "Not generally",
-      "explanation": "The derivative determinant records local distortion.",
+      "answer": "No: it carries the Jacobian factor |∂(x,y)/∂(u,v)|",
+      "explanation": "The Jacobian determinant measures the local area scaling. In polar coordinates dx dy = r dr dθ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare a small square in (r, θ) with its image in (x, y)."
     },
     {
       "id": "concept-2",
-      "prompt": "Should ordinary volume use a signed determinant without absolute value?",
+      "prompt": "The Jacobian determinant of a coordinate change is negative. How should it be used in an ordinary area integral?",
       "options": [
-        "No",
-        "Yes"
+        "Use the signed value, so that a negative Jacobian gives a negative contribution to the area integral",
+        "Use its square root",
+        "Use its absolute value, since area is non-negative",
+        "Skip it"
       ],
-      "answer": "No",
-      "explanation": "Volume is nonnegative; orientation is handled separately.",
+      "answer": "Use its absolute value, since area is non-negative",
+      "explanation": "The sign records orientation. For ordinary (unsigned) integrals use |det J|.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can an area be negative?"
     },
     {
       "id": "concept-3",
-      "prompt": "May every signed improper double integral have its integration order exchanged?",
+      "prompt": "Can you always swap the order of integration in an improper double integral?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, always, since the order of integration never affects the value of an improper double integral",
+        "Yes, whenever the function is continuous",
+        "No: you need hypotheses like absolute integrability (Fubini–Tonelli)",
+        "Yes, if both are improper"
       ],
-      "answer": "No",
-      "explanation": "Appropriate integrability hypotheses are needed.",
+      "answer": "No: you need hypotheses like absolute integrability (Fubini–Tonelli)",
+      "explanation": "There are functions for which the iterated integrals exist but differ. Absolute integrability or a non-negative integrand makes the exchange safe.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the conditions in Fubini's theorem."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify angular ranges and coverage?",
-      "answer": "A coordinate map can cover the physical region multiple times",
+      "prompt": "When integrating over a disk in polar coordinates, why must you specify the range of θ and r carefully?",
+      "answer": "The map can cover the region more than once, or miss part of it",
       "options": [
-        "A coordinate map can cover the physical region multiple times",
-        "The Jacobian alone fixes all counting automatically"
+        "The map can cover the region more than once, or miss part of it",
+        "θ is not defined",
+        "r can be negative only",
+        "The Jacobian fixes the range"
       ],
-      "explanation": "Domain and multiplicity are separate parts of the transformation.",
+      "explanation": "With θ ∈ [0, 4π] the disk would be covered twice. The Jacobian only gives the local scaling, not the domain.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens if θ runs from 0 to 4π?"
     },
     {
       "id": "multivariable-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Should an orientation-reversing coordinate map make an ordinary scalar area negative?",
-      "answer": "No; scalar area uses the absolute Jacobian determinant.",
+      "prompt": "A coordinate map reverses orientation. What is the correct scalar area element?",
+      "answer": "|det J| du dv, which stays positive",
       "options": [
-        "Yes; geometric area must have the determinant sign.",
-        "No; scalar area uses the absolute Jacobian determinant."
+        "det J du dv, which is negative, so that the area element reflects the reversal of orientation",
+        "|det J| du dv, which stays positive",
+        "1 du dv",
+        "det J du dv, which is negative"
       ],
-      "explanation": "Oriented differential forms and nonnegative scalar area have different conventions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Scalar area uses the absolute value. Oriented integrals of forms keep the sign.",
+      "hint": "Area is positive regardless of orientation.",
       "misconceptions": {
         "Yes; geometric area must have the determinant sign.": "Oriented differential forms and nonnegative scalar area have different conventions."
       },

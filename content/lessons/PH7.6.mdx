@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is Pauli exclusion caused by a classical repulsive force in the ideal gas?",
+      "prompt": "In an ideal Fermi gas the particles do not interact. Is Pauli exclusion then produced by a classical repulsive force?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they repel classically",
+        "Yes: via a short-range force",
+        "Yes: via the Coulomb force",
+        "No: it arises from fermionic state counting"
       ],
-      "answer": "No",
-      "explanation": "It comes from fermionic state counting.",
+      "answer": "No: it arises from fermionic state counting",
+      "explanation": "Antisymmetry of the wavefunction forbids double occupancy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Are there any forces in an ideal gas?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a boson mean occupation have a universal upper bound of one?",
+      "prompt": "Is the mean occupation of a boson state limited to at most one?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: by Bose statistics",
+        "Yes: at most one",
+        "No: any number of bosons can occupy a state",
+        "Yes: at high T"
       ],
-      "answer": "No",
-      "explanation": "Multiple occupation of a state is permitted.",
+      "answer": "No: any number of bosons can occupy a state",
+      "explanation": "n̄ = 1/(e^x − 1) can be arbitrarily large as x → 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does Bose–Einstein condensation involve?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are condensation and superfluidity identical concepts?",
+      "prompt": "A gas of bosons forms a Bose–Einstein condensate. Does it necessarily show superfluidity?",
       "options": [
-        "Yes",
-        "No"
+        "No: they are different concepts with different defining properties",
+        "Yes: they are identical, since every Bose–Einstein condensate flows without any viscosity",
+        "Yes: BEC means superfluid",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "Their defining properties and assumptions differ.",
+      "answer": "No: they are different concepts with different defining properties",
+      "explanation": "An ideal BEC has no superfluid critical velocity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does an ideal Bose gas flow without friction?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What changes Fermi pressure scaling?",
-      "answer": "Whether the occupied particles have nonrelativistic or relativistic dispersion.",
+      "prompt": "What changes the density scaling of Fermi degeneracy pressure, P ∝ n^(5/3) versus n^(4/3)?",
+      "answer": "Whether the particles are non-relativistic or relativistic",
       "options": [
-        "Whether the occupied particles have nonrelativistic or relativistic dispersion.",
-        "Low occupancy per quantum state."
+        "Whether they are bosons",
+        "The mass of the star only",
+        "The temperature",
+        "Whether the particles are non-relativistic or relativistic"
       ],
-      "explanation": "Whether the occupied particles have nonrelativistic or relativistic dispersion.",
+      "explanation": "The dispersion relation (E ∝ p² or E ∝ p) changes the scaling.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare E(p) in the two limits."
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can the Bose excited-mode formula be evaluated through x=0 as a finite ordinary occupation?",
-      "answer": "No; its denominator vanishes and the regime needs separate treatment.",
+      "prompt": "Can the Bose occupation 1/(e^x − 1) be evaluated at x = 0 as a finite ordinary occupation?",
+      "answer": "No: the denominator vanishes",
       "options": [
-        "Yes; the same expression is finite for every x.",
-        "No; its denominator vanishes and the regime needs separate treatment."
+        "No: the denominator vanishes",
+        "Yes: it equals 1",
+        "Yes: it is finite for all x",
+        "Yes: it equals 0"
       ],
-      "explanation": "The convergence condition is part of the statistical model.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The denominator vanishes, and that regime needs a separate treatment (condensate). At x → 0 the occupation diverges.",
+      "hint": "Evaluate e^0 − 1 in the denominator and see what happens to the occupation.",
       "misconceptions": {
         "Yes; the same expression is finite for every x.": "The convergence condition is part of the statistical model."
       },

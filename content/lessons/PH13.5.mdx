@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does local continuity prohibit boundary exchange?",
+      "prompt": "A local continuity equation ∂ρ/∂t + ∇·J = 0 holds for a conserved charge. Can charge still leave a fixed region?",
       "options": [
-        "Yes",
-        "No"
+        "No: local conservation means charge can never cross the boundary of a region, so the amount inside stays fixed",
+        "Yes: it leaves as flux through the boundary, and the equation accounts for exactly that flux",
+        "No: the density in each region must stay constant",
+        "Yes: but only if the total charge in the universe changes"
       ],
-      "answer": "No",
-      "explanation": "It precisely accounts for flux.",
+      "answer": "Yes: it leaves as flux through the boundary, and the equation accounts for exactly that flux",
+      "explanation": "Conservation is local bookkeeping: the change inside equals the net flux across the boundary.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Integrate the continuity equation over a fixed volume."
     },
     {
       "id": "concept-2",
-      "prompt": "Do discrete symmetries generate ordinary Noether currents by the same argument?",
+      "prompt": "Noether's theorem turns a continuous symmetry into a conserved current. Does a discrete symmetry such as parity give an ordinary conserved current the same way?",
       "options": [
-        "No",
-        "Yes"
+        "No: the argument needs a continuous family of variations, which a discrete symmetry lacks",
+        "No: a discrete symmetry cannot be a symmetry of the action, so no conservation law of any kind arises",
+        "Yes: parity gives a conserved vector current",
+        "Yes: every symmetry of the action gives a current by the same steps"
       ],
-      "answer": "No",
-      "explanation": "The theorem uses continuous variations.",
+      "answer": "No: the argument needs a continuous family of variations, which a discrete symmetry lacks",
+      "explanation": "The derivation differentiates with respect to a continuous parameter. Discrete symmetries give selection rules or multiplicative quantum numbers instead.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Noether's derivation differentiates with respect to a parameter."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a classical symmetry have a quantum anomaly?",
+      "prompt": "A classical Lagrangian has a symmetry. Must the quantum theory built from it have the same symmetry?",
       "options": [
-        "No",
-        "Yes"
+        "No: the quantum measure or regularisation can break it, which is called an anomaly",
+        "No: but only because of experimental error",
+        "Yes: quantisation always preserves classical symmetries",
+        "Yes: only if the symmetry is discrete"
       ],
-      "answer": "Yes",
-      "explanation": "The quantum theory can modify it.",
+      "answer": "No: the quantum measure or regularisation can break it, which is called an anomaly",
+      "explanation": "The axial current of massless fermions is classically conserved but not quantum mechanically.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about what regularisation does to the path-integral measure."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is an anomaly?",
-      "answer": "A failure of a classical symmetry in the quantum description.",
+      "prompt": "A classical symmetry is not respected by the quantum theory even though the action has it. Which term describes this?",
+      "answer": "An anomaly",
       "options": [
-        "A failure of a classical symmetry in the quantum description.",
-        "The fields satisfy the equations of motion."
+        "A Noether charge",
+        "A gauge choice",
+        "An anomaly",
+        "An equation of motion"
       ],
-      "explanation": "A failure of a classical symmetry in the quantum description.",
+      "explanation": "An anomaly is a failure of a classical symmetry in the quantum description: the action has the symmetry but the quantum theory does not.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "The symmetry is present in the action but absent in the quantum theory."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does conserving electric charge alone guarantee every proposed reaction is allowed?",
-      "answer": "No; other charges, kinematics and dynamics also constrain it.",
+      "prompt": "A proposed particle reaction conserves electric charge. Does that prove it can occur?",
+      "answer": "No: lepton and baryon number, energy and momentum, and the interaction dynamics also constrain it",
       "options": [
-        "Yes; no other conservation or selection rule matters.",
-        "No; other charges, kinematics and dynamics also constrain it."
+        "No: charge conservation is not a valid law",
+        "Yes: any charge-conserving reaction proceeds at a measurable rate",
+        "Yes: charge is the only conservation law that matters",
+        "No: lepton and baryon number, energy and momentum, and the interaction dynamics also constrain it"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Check the complete process.",
+      "hint": "Check every conserved quantum number, not just one.",
+      "explanation": "μ⁻ → e⁻ + γ conserves charge but violates lepton flavour and has never been observed.",
       "misconceptions": {
         "Yes; no other conservation or selection rule matters.": "Check the complete process."
       },

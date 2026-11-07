@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is mean lifetime equal to half-life?",
+      "prompt": "A radioactive isotope has a half-life of 10 days. Is its mean lifetime also 10 days?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the mean lifetime equals the half-life, since τ = t½ for exponential decay",
+        "No: τ = t½/ln 2 ≈ 14.4 days",
+        "No: τ = t½ ln 2 ≈ 6.9 days",
+        "Yes: equal"
       ],
-      "answer": "No",
-      "explanation": "They differ by ln2.",
+      "answer": "No: τ = t½/ln 2 ≈ 14.4 days",
+      "explanation": "N = N₀e^(−t/τ), and N = N₀/2 at t½ = τ ln 2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Solve e^(−t/τ) = ½ for t, then express τ in terms of the half-life."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a detector count every decay automatically?",
+      "prompt": "A detector records 100 counts per second from a source. Is that the decay rate?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: always",
+        "Not necessarily: branching ratios and detection efficiency matter",
+        "Yes: the counter reading equals the decay rate, since each detected count marks one decay of the source",
+        "Yes: if calibrated"
       ],
-      "answer": "No",
-      "explanation": "Branching and efficiency matter.",
+      "answer": "Not necessarily: branching ratios and detection efficiency matter",
+      "explanation": "Counts = activity × branching × efficiency × geometry.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the detector see every decay?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do daughters require source terms in a decay chain?",
+      "prompt": "In a decay chain A → B → C, does B have a source term in its rate equation?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: decays of A create B",
+        "No: B only decays away, so its rate equation has loss terms but no term from the decay of A",
+        "No: only losses",
+        "No: sources are zero"
       ],
-      "answer": "Yes",
-      "explanation": "Parent decay can create them.",
+      "answer": "Yes: decays of A create B",
+      "explanation": "dN_B/dt = λ_A N_A − λ_B N_B: the first term is the source from A's decays and the second is B's own loss.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does B come from?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What distinguishes a chain?",
-      "answer": "Coupled production and loss of species.",
+      "prompt": "What distinguishes a decay chain from a single decay?",
+      "answer": "Coupled production and loss of species",
       "options": [
-        "Coupled production and loss of species.",
-        "The expected decay rate."
+        "Coupled production and loss of species",
+        "Only the decay rate: a chain simply decays faster, with no new equations needed for the daughters",
+        "No daughters",
+        "Faster decay"
       ],
-      "explanation": "Coupled production and loss of species.",
+      "explanation": "Each daughter is both fed and depleted.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the daughter have a source?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Must every daughter population decrease immediately from zero in a decay chain?",
-      "answer": "No; feeding can first build it up.",
+      "prompt": "Starting with a pure parent sample, does the daughter population fall immediately from zero?",
+      "answer": "No: feeding from the parent first builds it up",
       "options": [
-        "Yes; every nuclide follows an isolated decreasing exponential.",
-        "No; feeding can first build it up."
+        "No: feeding from the parent first builds it up",
+        "Yes: an isolated exponential",
+        "Yes: the daughter population starts to decay at once, following an isolated exponential like the parent",
+        "Yes: from zero it falls"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Include production as well as loss.",
+      "hint": "What is dN_B/dt at t = 0?",
+      "explanation": "N_B(0) = 0 and dN_B/dt = λ_A N_A > 0 initially.",
       "misconceptions": {
         "Yes; every nuclide follows an isolated decreasing exponential.": "Include production as well as loss."
       },

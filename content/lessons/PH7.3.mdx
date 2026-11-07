@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do equal microstate probabilities imply equal macrostate probabilities?",
+      "prompt": "In the microcanonical ensemble all microstates are equally probable. Are all macrostates therefore equally probable?",
       "options": [
-        "Yes",
-        "No"
+        "No: macrostates contain different numbers of microstates",
+        "Yes: for gases, since equal microstates make every macrostate equally likely to occur",
+        "Yes: always",
+        "Yes: equal microstates mean equal macrostates"
       ],
-      "answer": "No",
-      "explanation": "Macrostates contain different numbers of microstates.",
+      "answer": "No: macrostates contain different numbers of microstates",
+      "explanation": "The probability of a macrostate is proportional to its number of microstates, P(macro) ∝ Ω(macro), and macrostates have very different Ω.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the ways to get 50 heads vs 100 heads in 100 flips."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a stationary entropy allocation automatically prove a stable maximum?",
+      "prompt": "You find a stationary point of S(E_A) when two systems share energy. Does this prove it is a stable maximum?",
       "options": [
-        "No",
-        "Yes"
+        "No: the curvature and the constraints must be checked",
+        "Yes: stationary means maximum, since any extremum of S gives a stable equilibrium",
+        "Yes: always",
+        "Yes: it is the equilibrium"
       ],
-      "answer": "No",
-      "explanation": "The curvature and constraints must be checked.",
+      "answer": "No: the curvature and the constraints must be checked",
+      "explanation": "You need ∂²S/∂E² < 0, and a stationary point could be a minimum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the second derivative tell you?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does writing S=k_B lnΩ prove rapid dynamical equilibration?",
+      "prompt": "Writing S = k_B ln Ω for a system. Does this imply it equilibrates quickly?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: S gives the rate, since a large entropy implies fast relaxation to equilibrium",
+        "Yes: always",
+        "Yes: immediately",
+        "No: relaxation needs a separate dynamical analysis"
       ],
-      "answer": "No",
-      "explanation": "Relaxation and accessible trajectories need separate dynamics.",
+      "answer": "No: relaxation needs a separate dynamical analysis",
+      "explanation": "Entropy describes equilibrium counting, not dynamics.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is there time in the formula?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does the entropy convention need to specify?",
-      "answer": "The state measure and energy-shell or counting definition.",
+      "prompt": "What must a microcanonical entropy definition specify?",
+      "answer": "The state measure and the energy-shell or counting convention",
       "options": [
-        "The state measure and energy-shell or counting definition.",
-        "Energy, volume and particle number with a stated accessible shell."
+        "Only the temperature, since the entropy follows from it without any counting convention",
+        "Nothing",
+        "The state measure and the energy-shell or counting convention",
+        "Only the volume"
       ],
-      "explanation": "The state measure and energy-shell or counting definition.",
+      "explanation": "Different conventions (Boltzmann, Gibbs) can differ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How thick is the energy shell?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -101,14 +113,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Do independent multiplicities add rather than multiply before entropy is taken?",
-      "answer": "No; counts multiply and their logarithmic entropies add.",
+      "prompt": "Two independent subsystems A and B have Ω_A and Ω_B states. What is the total multiplicity and entropy?",
+      "answer": "Ω = Ω_A Ω_B, so the entropies add",
       "options": [
-        "Yes; Ωtotal=ΩA+ΩB for independent composite states.",
-        "No; counts multiply and their logarithmic entropies add."
+        "S = S_A S_B, so the entropies multiply together",
+        "Ω = Ω_A Ω_B, so the entropies add",
+        "Ω = Ω_A − Ω_B",
+        "Ω = Ω_A + Ω_B"
       ],
-      "explanation": "Each state of one subsystem can pair with each state of the other.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Each state of A pairs with each state of B, and ln(Ω_AΩ_B) = ln Ω_A + ln Ω_B.",
+      "hint": "Count the pairs of states.",
       "misconceptions": {
         "Yes; Ωtotal=ΩA+ΩB for independent composite states.": "Each state of one subsystem can pair with each state of the other."
       },

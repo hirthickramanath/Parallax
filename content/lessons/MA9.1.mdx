@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does satisfying Euler–Lagrange automatically prove a minimum?",
+      "prompt": "A path satisfies the Euler–Lagrange equation. What does that establish about the action?",
       "options": [
-        "Yes",
-        "No"
+        "That it is stationary; whether it is a minimum, maximum or saddle needs more work",
+        "That it is a minimum",
+        "That it is zero",
+        "That it is a maximum"
       ],
-      "answer": "No",
-      "explanation": "It establishes stationarity; classification requires more.",
+      "answer": "That it is stationary; whether it is a minimum, maximum or saddle needs more work",
+      "explanation": "Euler–Lagrange follows from δS = 0. The second variation classifies the extremum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare f′(x) = 0 in calculus."
     },
     {
       "id": "concept-2",
-      "prompt": "Do fixed endpoint variations vanish at both endpoints?",
+      "prompt": "In deriving Euler–Lagrange with fixed endpoints, what are the variations η at the endpoints?",
       "options": [
-        "Yes",
-        "No"
+        "Constant but non-zero, so that each varied path is shifted by the same amount at its endpoints",
+        "Zero, to keep the endpoint values fixed",
+        "Equal to the path",
+        "Arbitrary"
       ],
-      "answer": "Yes",
-      "explanation": "They preserve the specified endpoint values.",
+      "answer": "Zero, to keep the endpoint values fixed",
+      "explanation": "η(t₁) = η(t₂) = 0, so the boundary term from integration by parts vanishes.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does 'fixed endpoints' mean for the varied paths?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does adding a total derivative change the interior fixed-endpoint equations?",
+      "prompt": "You add a total derivative dF/dt to the Lagrangian. What happens to the interior equations of motion with fixed endpoints?",
       "options": [
-        "Yes",
-        "No"
+        "They are unchanged; only a boundary term in the action changes",
+        "They gain an extra force term, since the total derivative modifies the Euler–Lagrange equation in the interior",
+        "They change",
+        "They become trivial"
       ],
-      "answer": "No",
-      "explanation": "It changes only the action boundary contribution under those conditions.",
+      "answer": "They are unchanged; only a boundary term in the action changes",
+      "explanation": "∫dF/dt dt = F(t₂) − F(t₁) is fixed by the endpoints, so its variation vanishes.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the variation of F(t₂) − F(t₁)?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Where does the Euler–Lagrange equation come from?",
-      "answer": "Integration by parts plus vanishing first variation for every admitted test function",
+      "prompt": "What produces the Euler–Lagrange equation?",
+      "answer": "Integration by parts and requiring δS = 0 for every admissible variation",
       "options": [
-        "Integration by parts plus vanishing first variation for every admitted test function",
-        "Comparing only two trial paths"
+        "Minimising the Lagrangian at each time separately, which is what the stationary-action principle requires",
+        "Integration by parts and requiring δS = 0 for every admissible variation",
+        "Solving numerically",
+        "Comparing two trial paths"
       ],
-      "explanation": "The full variation class, not a finite trial list, gives the differential equation.",
+      "explanation": "The fundamental lemma of the calculus of variations turns ∫(...)η dt = 0 for all η into (...) = 0.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Why must the bracket vanish for all η?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does a vanishing first variation guarantee a minimum?",
-      "answer": "No; stationary points can be saddles or maxima.",
+      "prompt": "The first variation of an action vanishes. Is the path necessarily a minimum?",
+      "answer": "No: stationary paths can be saddles or maxima",
       "options": [
-        "Yes; every stationary action is a minimum.",
-        "No; stationary points can be saddles or maxima."
+        "No: it must be a maximum",
+        "No: stationary paths can be saddles or maxima",
+        "Yes: stationary means minimum",
+        "Yes: for any Lagrangian"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Second variation and constraints decide the character.",
+      "hint": "Consider long-time harmonic oscillator paths.",
+      "explanation": "Principle of 'least action' is really 'stationary action'; conjugate points can make the path non-minimal.",
       "misconceptions": {
         "Yes; every stationary action is a minimum.": "Second variation and constraints decide the character."
       },

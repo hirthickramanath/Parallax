@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a correct force expression eliminate all integration error?",
+      "prompt": "Your molecular dynamics code computes the force exactly from a correct potential. Is the trajectory therefore free of integration error?",
       "options": [
-        "Yes",
-        "No"
+        "No: forces cannot be computed exactly",
+        "Yes: exact forces mean exact trajectories",
+        "No: finite time steps and boundary treatment still introduce errors",
+        "Yes: integration error only affects energy"
       ],
-      "answer": "No",
-      "explanation": "Finite steps and boundaries matter.",
+      "answer": "No: finite time steps and boundary treatment still introduce errors",
+      "explanation": "Integrators such as velocity Verlet have errors of order Δt².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the integrator step continuously?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can a thermostat alter measured dynamical correlations?",
+      "prompt": "A thermostat keeps a simulation at constant temperature. Can it change measured dynamical quantities such as diffusion or velocity correlations?",
       "options": [
-        "Yes",
-        "No"
+        "No: thermostats only change the average temperature of the system, so dynamical quantities like diffusion are unaffected",
+        "Yes: its coupling perturbs trajectories and can distort dynamics even when static averages are right",
+        "Yes: but only for gases",
+        "No: dynamics are independent of the ensemble"
       ],
-      "answer": "Yes",
-      "explanation": "Its coupling changes trajectories.",
+      "answer": "Yes: its coupling perturbs trajectories and can distort dynamics even when static averages are right",
+      "explanation": "Aggressive Langevin or Berendsen coupling damps correlations.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "A thermostat adds friction or noise."
     },
     {
       "id": "concept-3",
-      "prompt": "Is a force-field simulation automatically first-principles quantum chemistry?",
+      "prompt": "You run a classical force-field simulation of a protein. Is this a first-principles quantum-chemistry calculation?",
       "options": [
-        "Yes",
-        "No"
+        "No: force fields don't include forces",
+        "No: the force field is a fitted classical approximation to the potential energy surface",
+        "Yes: force fields are solved from the Schrödinger equation",
+        "Yes: all MD is ab initio"
       ],
-      "answer": "No",
-      "explanation": "Its physical approximation is different.",
+      "answer": "No: the force field is a fitted classical approximation to the potential energy surface",
+      "explanation": "Ab initio MD computes forces from electronic structure at each step.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where do the force-field parameters come from?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why retain force-field provenance?",
-      "answer": "The potential model limits physical interpretation.",
+      "prompt": "Why should a simulation record which force field, with which version and parameters, was used?",
+      "answer": "The potential model limits what the simulation can say about real physics",
       "options": [
-        "The potential model limits physical interpretation.",
-        "The negative potential gradient."
+        "Names help with filing",
+        "Force fields never matter",
+        "Parameters can be recomputed from scratch",
+        "The potential model limits what the simulation can say about real physics"
       ],
-      "explanation": "The potential model limits physical interpretation.",
+      "explanation": "Different force fields give different structures and energies.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can the result be better than the potential?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does a zero potential value imply a zero force at the same point?",
-      "answer": "No; force depends on the potential derivative.",
+      "prompt": "At a point the potential energy U is zero. Does the force there have to be zero?",
+      "answer": "No: force is the negative gradient of U",
       "options": [
-        "Yes; zero energy always means mechanical equilibrium.",
-        "No; force depends on the potential derivative."
+        "Yes: F = U",
+        "No: force is the negative gradient of U",
+        "Yes: zero energy means equilibrium",
+        "No: force is always zero when U is positive"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Value and slope are different.",
+      "hint": "Think of a slope passing through zero.",
+      "explanation": "Force is the negative gradient of U, so it depends on the slope, not the value. U = kx has U = 0 at x = 0 but F = −k.",
       "misconceptions": {
         "Yes; zero energy always means mechanical equilibrium.": "Value and slope are different."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can a conservative torque-free circular particle drift through circular Kepler orbits indefinitely?",
+      "prompt": "A particle drifts inward through a series of circular Kepler orbits. Can this happen with no torque and conserved angular momentum?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: gravity alone moves the particle inward, which conserves its angular momentum",
+        "Yes: for any force",
+        "Yes: with conserved energy",
+        "No: moving to smaller circular orbits needs angular momentum to be removed"
       ],
-      "answer": "No",
-      "explanation": "Angular momentum must change.",
+      "answer": "No: moving to smaller circular orbits needs angular momentum to be removed",
+      "explanation": "Circular orbit angular momentum is L = √(GMr), so lower r means lower L.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does L depend on r?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is η universally fixed at .1 for every accretor?",
+      "prompt": "The radiative efficiency η = L/(Ṁc²) is quoted as 0.1. Is it fixed for all accretors?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: for black holes the efficiency is always 0.1, whatever their spin",
+        "No: geometry, spin and energy transport change it",
+        "Yes: for all discs",
+        "Yes: always 0.1"
       ],
-      "answer": "No",
-      "explanation": "Geometry, spin and energy transport affect it.",
+      "answer": "No: geometry, spin and energy transport change it",
+      "explanation": "η ranges from about 0.057 (non-spinning black hole) to 0.42 (maximal spin) and is lower for radiatively inefficient flows.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does it depend on how close the inner edge is?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a thin-disc flux formula require an inner-boundary assumption?",
+      "prompt": "A thin-disc temperature profile is derived using a zero-torque condition at the inner edge. What does this show?",
       "options": [
-        "No",
-        "Yes"
+        "No assumption is needed",
+        "The profile depends on an inner-boundary assumption",
+        "The disc has no edge",
+        "The edge is irrelevant"
       ],
-      "answer": "Yes",
-      "explanation": "The torque condition changes the profile.",
+      "answer": "The profile depends on an inner-boundary assumption",
+      "explanation": "The torque at the inner boundary changes the (1 − √(R_in/R)) factor.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the factor come from?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify Eddington limits?",
-      "answer": "Opacity, geometry and flow conditions enter the force balance.",
+      "prompt": "Why should an Eddington-luminosity limit be quoted with care?",
+      "answer": "Opacity, geometry and flow conditions enter the force balance",
       "options": [
-        "Opacity, geometry and flow conditions enter the force balance.",
-        "Angular-momentum transport."
+        "It applies only to stars, so it cannot be used to describe the accretion onto compact objects",
+        "Opacity, geometry and flow conditions enter the force balance",
+        "It depends on distance",
+        "It is exact for all sources"
       ],
-      "explanation": "Opacity, geometry and flow conditions enter the force balance.",
+      "explanation": "L_Edd = 4πGMm_pc/σ_T assumes spherical, ionised hydrogen and electron-scattering opacity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "List the assumptions in the derivation."
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a luminosity measurement uniquely determine accretion rate without a flow efficiency?",
-      "answer": "No; efficiency and losses must be modeled.",
+      "prompt": "You measure an accretor's luminosity. Can you find its accretion rate without knowing the radiative efficiency?",
+      "answer": "No: efficiency and losses must be modelled",
       "options": [
-        "Yes; every accretion flow radiates the same rest-mass fraction.",
-        "No; efficiency and losses must be modeled."
+        "No: efficiency and losses must be modelled",
+        "Yes: with the distance, the luminosity gives the accretion rate directly as L = Ṁc²",
+        "Yes: Ṁ = L/c²",
+        "Yes: all flows radiate the same fraction"
       ],
-      "explanation": "The energy budget contains an independent efficiency parameter.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Accretion luminosity depends on how efficiently rest-mass energy is radiated: Ṁ = L/(ηc²), so the efficiency η and any radiative losses must be modelled before inferring Ṁ.",
+      "hint": "Write Ṁ in terms of L.",
       "misconceptions": {
         "Yes; every accretion flow radiates the same rest-mass fraction.": "The energy budget contains an independent efficiency parameter."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does recombination balance depend only on mean density regardless of clumping?",
+      "prompt": "An HII region is clumpy, with the same mean density as a smooth one. Does the recombination rate stay the same?",
       "options": [
-        "Yes",
-        "No"
+        "No: recombination ∝ n², so clumping raises the rate",
+        "Yes: only the mean density matters for recombination, so a clumpy region recombines at the same rate",
+        "Yes: only mean density matters",
+        "No: clumping lowers it"
       ],
-      "answer": "No",
-      "explanation": "Density products change under clumping.",
+      "answer": "No: recombination ∝ n², so clumping raises the rate",
+      "explanation": "⟨n²⟩ > ⟨n⟩² when density varies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recombinations involve a product of densities."
     },
     {
       "id": "concept-2",
-      "prompt": "Is case B universal for every nebula?",
+      "prompt": "Case B recombination assumes the nebula is optically thick to Lyman photons. Does it hold for every nebula?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is universal",
+        "No: case B is wrong everywhere",
+        "No: it depends on optical depth and photon recycling",
+        "Yes: for all gas"
       ],
-      "answer": "No",
-      "explanation": "Optical-depth and photon-recycling assumptions matter.",
+      "answer": "No: it depends on optical depth and photon recycling",
+      "explanation": "In optically thin nebulae, Lyman photons escape and case A applies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens to a Lyman photon in thin gas?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can an HII region expand after heating?",
+      "prompt": "After ionisation heats the gas to 10⁴ K, what happens to the HII region?",
       "options": [
-        "No",
-        "Yes"
+        "It collapses, because the heated gas radiates away its energy and loses pressure support against gravity",
+        "It stays fixed",
+        "It expands, since the pressure of the ionised gas exceeds that of its surroundings",
+        "It cools to 10 K"
       ],
-      "answer": "Yes",
-      "explanation": "Pressure changes drive dynamics.",
+      "answer": "It expands, since the pressure of the ionised gas exceeds that of its surroundings",
+      "explanation": "The overpressure drives the expansion at about the sound speed (~10 km/s).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the pressures inside and outside."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why model nebular line ratios?",
-      "answer": "Excitation, abundance and transfer affect them.",
+      "prompt": "Why do astronomers model nebular line ratios rather than just reading off abundances?",
+      "answer": "Excitation, abundance and radiative transfer all affect them",
       "options": [
-        "Excitation, abundance and transfer affect them.",
-        "Ionizations supplied and recombinations."
+        "Line ratios give the abundances directly, so models of excitation and radiative transfer are not needed",
+        "Excitation, abundance and radiative transfer all affect them",
+        "Models are not needed",
+        "Lines are all equal"
       ],
-      "explanation": "Excitation, abundance and transfer affect them.",
+      "explanation": "Temperature and density change the emissivity of each line.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a line's strength depend on T?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does the static Strömgren radius include dust absorption, leakage and dynamical expansion automatically?",
-      "answer": "No; those effects need additional terms or dynamics.",
+      "prompt": "The static Strömgren radius is computed from photon-balance in a uniform medium. Does it automatically include dust, leakage and expansion?",
+      "answer": "No: those need additional terms or dynamics",
       "options": [
-        "Yes; the equilibrium photon balance includes every HII-region process.",
-        "No; those effects need additional terms or dynamics."
+        "Yes: expansion of the region is included, and the radius adjusts as the ionised gas pushes outward",
+        "No: those need additional terms or dynamics",
+        "Yes: dust is included",
+        "Yes: it includes every process"
       ],
-      "explanation": "The simple sphere has explicit uniform and equilibrium assumptions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The simple sphere assumes uniform density and equilibrium.",
+      "hint": "List the assumptions in the derivation.",
       "misconceptions": {
         "Yes; the equilibrium photon balance includes every HII-region process.": "The simple sphere has explicit uniform and equilibrium assumptions."
       },

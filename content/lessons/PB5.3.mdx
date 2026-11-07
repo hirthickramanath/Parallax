@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does n-type mean the bulk material carries a large net negative charge?",
-      "answer": "No",
+      "prompt": "A silicon sample is doped n-type. What is its net electric charge?",
+      "answer": "Essentially neutral, as mobile electrons balance ionised donors",
       "options": [
-        "Yes",
-        "No"
+        "Negative, because the electrons added by the donors are the majority carriers and give the sample a net charge",
+        "Essentially neutral, as mobile electrons balance ionised donors",
+        "Strongly negative, because it has extra electrons",
+        "Strongly positive, because donors have lost electrons"
       ],
-      "explanation": "Ionized donors and carriers satisfy bulk neutrality.",
+      "explanation": "Donor atoms contribute electrons but also become fixed positive ions. Charge neutrality holds in the bulk; n-type refers to the majority carrier.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the fixed ions as well as the mobile electrons."
     },
     {
       "id": "c2",
-      "prompt": "Is a diode voltage drop universally exactly 0.7 V?",
-      "answer": "No",
+      "prompt": "A silicon diode is said to drop 0.7 V. How exact is that?",
+      "answer": "It is a typical value that depends on current and temperature",
       "options": [
-        "No",
-        "Yes"
+        "It is a law of nature for all diodes, so every silicon diode drops exactly the same voltage",
+        "It is exactly 0.7 V in every circuit",
+        "It only applies to germanium diodes",
+        "It is a typical value that depends on current and temperature"
       ],
-      "explanation": "It depends on current, temperature and device properties.",
+      "explanation": "The Shockley equation gives a voltage that rises slowly with current and falls with temperature. 0.7 V is a rule of thumb for ordinary currents.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the exponential diode equation: does V stay fixed as I changes?"
     },
     {
       "id": "c3",
-      "prompt": "Does conductivity depend only on carrier count?",
-      "answer": "No; mobility also matters",
+      "prompt": "Two semiconductor samples have the same number of free carriers but different conductivities. What explains this?",
+      "answer": "Different mobilities, since σ includes mobility as well as density",
       "options": [
-        "Yes",
-        "No; mobility also matters"
+        "Different electron charges, since the charge carried by an electron depends on the sample it is in",
+        "Different mobilities, since σ includes mobility as well as density",
+        "Different temperatures only",
+        "One of them cannot conduct at all"
       ],
-      "explanation": "σ includes densities and mobilities.",
+      "explanation": "σ = q(nμ_n + pμ_p). Carriers that move more easily per unit field give higher conductivity even at the same density.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the formula for conductivity."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Does an ordinary n-type bulk semiconductor necessarily carry a large net negative charge?",
-      "answer": "No; mobile electrons can be balanced by fixed ionized donors.",
+      "prompt": "A phosphorus-doped (n-type) silicon crystal is connected in a circuit. Why does it not attract charges as if it were strongly negatively charged?",
+      "answer": "Its mobile electrons are balanced by fixed positive donor ions",
       "options": [
-        "Yes; n-type means the whole bulk is negatively charged.",
-        "No; mobile electrons can be balanced by fixed ionized donors."
+        "Phosphorus removes electrons from the lattice",
+        "Electrons in silicon carry no charge",
+        "The crystal is grounded by its own doping",
+        "Its mobile electrons are balanced by fixed positive donor ions"
       ],
-      "explanation": "Distinguish carrier type from net bulk charge density.",
+      "explanation": "Each donor gives one electron and leaves behind a fixed positive ion, so the crystal as a whole stays neutral while having mobile electrons.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Think about the donor atom after it gives up its electron.",
       "misconceptions": {
         "Yes; n-type means the whole bulk is negatively charged.": "Distinguish carrier type from net bulk charge density."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does the ideal exponential diode law describe unlimited high-current operation without series resistance or heating?",
-      "answer": "No; its regime and circuit limits matter.",
+      "prompt": "A diode in a circuit is driven with ever larger current. Why does the ideal exponential law eventually fail?",
+      "answer": "Series resistance and heating add voltage drops the ideal law omits",
       "options": [
-        "Yes; the exponential is exact at every current.",
-        "No; its regime and circuit limits matter."
+        "Series resistance and heating add voltage drops the ideal law omits",
+        "The current exceeds the speed of light",
+        "The exponential law only holds for reverse bias",
+        "Diodes become ideal at high current"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Real devices have additional mechanisms and limits.",
+      "hint": "Consider what else in a real diode carries current.",
+      "explanation": "The Shockley law assumes an ideal junction at low injection. At large current, bulk resistance and self-heating dominate, so V grows more linearly with I.",
       "misconceptions": {
         "Yes; the exponential is exact at every current.": "Real devices have additional mechanisms and limits."
       },

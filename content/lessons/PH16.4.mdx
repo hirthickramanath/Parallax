@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the ergoregion boundary always identical to the horizon?",
+      "prompt": "For a rotating Kerr black hole, are the outer event horizon and the boundary of the ergoregion the same surface?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: only for Schwarzschild",
+        "Yes: they coincide",
+        "No: the ergosurface is inside the horizon",
+        "No: the ergosurface lies outside the horizon except at the poles"
       ],
-      "answer": "No",
-      "explanation": "Their geometric definitions differ.",
+      "answer": "No: the ergosurface lies outside the horizon except at the poles",
+      "explanation": "Inside the ergoregion nothing can stay at rest, yet you can still escape.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "One is where static observers stop existing, the other where escape stops."
     },
     {
       "id": "concept-2",
-      "prompt": "Does semiclassical Hawking theory solve all quantum-gravity questions?",
+      "prompt": "Hawking radiation is derived with quantum fields on a fixed curved background. Does it settle all questions of quantum gravity?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it resolves the singularity inside the black hole, which makes it a complete quantum gravity result",
+        "No: it ignores the quantum dynamics of the geometry",
+        "Yes: it is a full quantum gravity theory",
+        "No: it is not a quantum calculation at all"
       ],
-      "answer": "No",
-      "explanation": "It treats fields on a prescribed geometry.",
+      "answer": "No: it ignores the quantum dynamics of the geometry",
+      "explanation": "It ignores the quantum dynamics of the geometry, leaving the information problem open. It is semiclassical.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the metric quantised in the derivation?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does larger Schwarzschild mass mean lower Hawking temperature?",
+      "prompt": "A Schwarzschild black hole's mass is doubled. What happens to its Hawking temperature?",
       "options": [
-        "No",
-        "Yes"
+        "It quadruples, since T_H grows with the square of M",
+        "It halves, because T_H ∝ 1/M",
+        "It doubles",
+        "It stays the same"
       ],
-      "answer": "Yes",
-      "explanation": "T_H scales inversely with mass.",
+      "answer": "It halves, because T_H ∝ 1/M",
+      "explanation": "The Hawking temperature T_H = ħc³/(8πGMk_B) is inversely proportional to M, so doubling the mass halves the temperature.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Heavier black holes are colder."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify observational compact-object claims?",
-      "answer": "Emission/transfer and source models enter inference.",
+      "prompt": "Why must an observational claim about a compact object state the emission model used?",
+      "answer": "Inferences such as spin or mass rely on assumptions about emission and radiative transfer",
       "options": [
-        "Emission/transfer and source models enter inference.",
-        "Mass and angular momentum with stated units."
+        "Spin can be read off directly",
+        "Inferences such as spin or mass rely on assumptions about emission and radiative transfer",
+        "Models only affect the colour",
+        "Observations need no model"
       ],
-      "explanation": "Emission/transfer and source models enter inference.",
+      "explanation": "X-ray continuum fitting assumes a thin-disc model.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do we see the black hole or the light around it?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Are the Kerr horizon, ergosurface and innermost stable circular orbit generally the same surface?",
-      "answer": "No; they are distinct geometric or dynamical loci.",
+      "prompt": "Are the Kerr event horizon, the ergosurface and the innermost stable circular orbit (ISCO) the same location?",
+      "answer": "No: they are distinct loci with different geometric or dynamical definitions",
       "options": [
-        "Yes; rotation changes only their shared name.",
-        "No; they are distinct geometric or dynamical loci."
+        "No: Kerr has none of them",
+        "Yes: rotation only changes the name",
+        "Yes: they coincide for any spin",
+        "No: they are distinct loci with different geometric or dynamical definitions"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "State which radius is being calculated.",
+      "hint": "What defines each of them?",
+      "explanation": "For a = 0 the horizon is at 2M and the ISCO at 6M.",
       "misconceptions": {
         "Yes; rotation changes only their shared name.": "State which radius is being calculated."
       },

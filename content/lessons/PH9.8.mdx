@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does any ordinary correlation prove entanglement?",
+      "prompt": "Two measurement outcomes are correlated. Does that prove the two systems are entangled?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: correlation is entanglement, since any correlated pair of outcomes needs a quantum link",
+        "Yes: always",
+        "No: separable mixed states can also have correlations",
+        "Yes: any correlation"
       ],
-      "answer": "No",
-      "explanation": "Separable mixtures can correlate.",
+      "answer": "No: separable mixed states can also have correlations",
+      "explanation": "Classical correlated states, such as two coins in the same face, are not entangled.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of two gloves in two boxes."
     },
     {
       "id": "concept-2",
-      "prompt": "Does entanglement enable controlled faster-than-light signalling?",
+      "prompt": "Entangled particles are measured far apart. Can one party use this to send a message faster than light?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: with a Bell pair",
+        "Yes: by choosing the setting",
+        "Yes: instantly",
+        "No: the local statistics are unchanged, so the no-signalling theorem holds"
       ],
-      "answer": "No",
-      "explanation": "Unconditional remote statistics obey no signalling.",
+      "answer": "No: the local statistics are unchanged, so the no-signalling theorem holds",
+      "explanation": "Each party's marginal outcomes are random regardless of the other's choice.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does Bob see by himself?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does teleportation require classical communication?",
+      "prompt": "Does quantum teleportation of a state need a classical communication channel?",
       "options": [
-        "No",
-        "Yes"
+        "No: the entanglement is enough",
+        "No: it is faster than light",
+        "No: it is instantaneous",
+        "Yes: the measurement outcomes must be sent to the receiver"
       ],
-      "answer": "Yes",
-      "explanation": "Outcome information is part of the protocol.",
+      "answer": "Yes: the measurement outcomes must be sent to the receiver",
+      "explanation": "Without the two classical bits, the receiver's state is random.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does Bob know which correction to apply?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does no-cloning prohibit?",
-      "answer": "Perfect universal copying of an arbitrary unknown state.",
+      "prompt": "What does the no-cloning theorem forbid?",
+      "answer": "Perfect universal copying of an arbitrary unknown quantum state",
       "options": [
-        "Perfect universal copying of an arbitrary unknown state.",
-        "A convex combination of product states across the chosen split."
+        "Perfect universal copying of an arbitrary unknown quantum state",
+        "Copying classical bits",
+        "Preparing known states",
+        "Measuring a state"
       ],
-      "explanation": "Perfect universal copying of an arbitrary unknown state.",
+      "explanation": "Known states or orthogonal sets can be copied.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can you copy a state you know?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does a Bell-inequality violation permit controllable faster-than-light communication?",
-      "answer": "No; the local marginal outcomes do not carry such a signal.",
+      "prompt": "Bell inequalities are violated. Does this permit controllable faster-than-light communication?",
+      "answer": "No: the local marginal outcomes carry no signal",
       "options": [
-        "Yes; correlation lets one choose the remote random outcome.",
-        "No; the local marginal outcomes do not carry such a signal."
+        "No: the local marginal outcomes carry no signal",
+        "Yes: via the shared state",
+        "Yes: instantaneously",
+        "Yes: correlation lets one choose the remote outcome"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Correlation is different from controllable signaling.",
+      "hint": "Can Alice control the outcome Bob sees?",
+      "explanation": "Correlation differs from controllable signalling.",
       "misconceptions": {
         "Yes; correlation lets one choose the remote random outcome.": "Correlation is different from controllable signaling."
       },

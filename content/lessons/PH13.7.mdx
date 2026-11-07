@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can efficiency be omitted from every count-to-cross-section conversion?",
+      "prompt": "You convert observed event counts to a cross section. Can you skip the detection efficiency?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the observed counts equal the number of interactions that took place, so no correction is needed at all",
+        "Yes: efficiency only affects the uncertainty",
+        "No: the counts are only the fraction of events detected and selected, so you must correct for it",
+        "No: but only for neutral particles"
       ],
-      "answer": "No",
-      "explanation": "Observed events are only a subset.",
+      "answer": "No: the counts are only the fraction of events detected and selected, so you must correct for it",
+      "explanation": "σ = N_obs / (ε · L), where L is the integrated luminosity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the detector record every interaction?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is detector simulation identical to independent calibration?",
+      "prompt": "A Monte Carlo simulation reproduces the detector response. Does that replace independent calibration?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: a simulation is a calibration",
+        "No: simulations cannot model detector response at all, so only direct calibration data can ever be trusted",
+        "Yes: if it has enough events",
+        "No: the simulation must itself be validated against calibration data"
       ],
-      "answer": "No",
-      "explanation": "It requires validation against observations.",
+      "answer": "No: the simulation must itself be validated against calibration data",
+      "explanation": "Simulation encodes assumptions about materials and geometry that need data to check them.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where do the simulation's inputs come from?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can naive unfolding amplify noise?",
+      "prompt": "You unfold a measured spectrum by applying the inverse response matrix directly. What can go wrong?",
       "options": [
-        "No",
-        "Yes"
+        "The unfolded spectrum becomes smoother than the true one, since inversion averages away the fine structure",
+        "Nothing: the inverse is exact and stable",
+        "The total event count is destroyed",
+        "Statistical noise can be amplified because the matrix is ill conditioned"
       ],
-      "answer": "Yes",
-      "explanation": "The inverse can be ill conditioned.",
+      "answer": "Statistical noise can be amplified because the matrix is ill conditioned",
+      "explanation": "Regularised unfolding trades some bias for much smaller variance.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Small singular values in the inverse become large factors."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish significance and precision?",
-      "answer": "They answer different statistical questions.",
+      "prompt": "An analysis reports a 5σ discovery with a 30% uncertainty on the rate. Why are these two statements about different things?",
+      "answer": "Significance measures incompatibility with the null hypothesis; precision measures how well a value is known",
       "options": [
-        "They answer different statistical questions.",
-        "The exposure factor converting cross section to expected interactions."
+        "They are two names for the same quantity, since a larger significance always means a smaller fractional uncertainty",
+        "Significance measures incompatibility with the null hypothesis; precision measures how well a value is known",
+        "Significance measures systematic error only",
+        "Precision measures the probability of a fluke"
       ],
-      "explanation": "They answer different statistical questions.",
+      "explanation": "You can have a clear discovery with a poor measurement, or a precise measurement of a small effect.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "One is a hypothesis test and the other is an interval."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does a neutral particle follow the same magnetic bending radius as a unit-charge particle?",
-      "answer": "No; the Lorentz force depends on charge.",
+      "prompt": "In a uniform magnetic field, does a neutral particle follow the same curved track as a charged one with the same momentum?",
+      "answer": "No: the Lorentz force acts only on charge",
       "options": [
-        "Yes; momentum alone determines curvature.",
-        "No; the Lorentz force depends on charge."
+        "No: the Lorentz force acts only on charge",
+        "Yes: neutral particles curve more gently",
+        "Yes: momentum alone sets the curvature",
+        "No: neutral particles spiral in the opposite direction"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Charge and field geometry are essential.",
+      "hint": "What does the radius formula contain besides momentum?",
+      "explanation": "The Lorentz force acts only on charge, so a neutral particle travels straight. r = p/(qB), so as q → 0 the radius diverges.",
       "misconceptions": {
         "Yes; momentum alone determines curvature.": "Charge and field geometry are essential."
       },

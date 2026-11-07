@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can digital filtering always undo prior aliasing uniquely?",
+      "prompt": "A signal was sampled below the Nyquist rate, so a high-frequency tone appears at a low frequency. Can digital filtering later recover the original uniquely?",
       "options": [
-        "Yes",
-        "No"
+        "No: aliasing affects only the amplitude of the tone, so the original frequency can be read off afterwards",
+        "No: different input frequencies can produce identical samples",
+        "Yes: aliasing is reversible by interpolation",
+        "Yes: a good filter undoes aliasing"
       ],
-      "answer": "No",
-      "explanation": "Different inputs can share the same samples.",
+      "answer": "No: different input frequencies can produce identical samples",
+      "explanation": "Different input frequencies can produce identical samples, so the original cannot be identified. Anti-alias filtering must happen before sampling.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Two different sine waves can pass through the same sample points."
     },
     {
       "id": "concept-2",
-      "prompt": "Does ADC bit depth alone determine real sensor accuracy?",
+      "prompt": "A sensor is read by a 24-bit ADC. Does the bit depth alone set the sensor accuracy?",
       "options": [
-        "No",
-        "Yes"
+        "No: calibration, noise and nonlinearity limit accuracy more than the number of bits",
+        "No: ADCs have no resolution of their own, so the accuracy depends only on the sensor and the amplifier",
+        "Yes: more bits means more accuracy",
+        "Yes: a 24-bit ADC is accurate to 24 bits"
       ],
-      "answer": "No",
-      "explanation": "Calibration, noise and nonlinearity matter.",
+      "answer": "No: calibration, noise and nonlinearity limit accuracy more than the number of bits",
+      "explanation": "Resolution is the smallest step; accuracy is closeness to the truth.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Resolution and accuracy are different words."
     },
     {
       "id": "concept-3",
-      "prompt": "Should acquisition settings accompany raw data?",
+      "prompt": "You save raw data from an experiment. Should the acquisition settings (gain, sample rate, filter) be saved too?",
       "options": [
-        "No",
-        "Yes"
+        "No: settings can always be guessed",
+        "No: only the numbers matter",
+        "Yes: they define the instrument's response and are needed to interpret the data",
+        "Yes: but only for analogue instruments"
       ],
-      "answer": "Yes",
-      "explanation": "They define the measurement response.",
+      "answer": "Yes: they define the instrument's response and are needed to interpret the data",
+      "explanation": "Without gain and sample rate you cannot convert counts to physical units.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you turn counts into volts without the gain?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does a synthetic input verify?",
-      "answer": "The processing path, not every physical calibration.",
+      "prompt": "A synthetic sine wave is fed through your acquisition code and comes out right. What does this verify?",
+      "answer": "The processing path, but not the physical calibration of the sensor",
       "options": [
-        "The processing path, not every physical calibration.",
-        "A suitable analog bandwidth/anti-alias design."
+        "The processing path, but not the physical calibration of the sensor",
+        "That the sample rate is irrelevant to the result, since a correct sine wave shows the system is calibrated",
+        "That the sensor is calibrated",
+        "That the experiment is correct"
       ],
-      "explanation": "The processing path, not every physical calibration.",
+      "explanation": "Synthetic inputs test software, not hardware.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the synthetic signal pass through the sensor?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Can more ADC amplitude bits alone eliminate aliasing from insufficient sample rate?",
-      "answer": "No; time sampling and antialias filtering are separate.",
+      "prompt": "Would raising an ADC from 12 to 16 amplitude bits remove aliasing caused by too low a sample rate?",
+      "answer": "No: amplitude resolution and time sampling are independent",
       "options": [
-        "Yes; amplitude resolution repairs every sampling error.",
-        "No; time sampling and antialias filtering are separate."
+        "No: amplitude resolution and time sampling are independent",
+        "Yes: more bits repair every sampling error",
+        "Yes: aliasing is an amplitude error",
+        "No: bits change the sample rate"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Resolve time and amplitude limitations separately.",
+      "hint": "Aliasing happens in the time axis.",
+      "explanation": "Amplitude resolution and time sampling are independent, so you need a higher rate or an anti-alias filter. Nyquist concerns the sampling frequency only.",
       "misconceptions": {
         "Yes; amplitude resolution repairs every sampling error.": "Resolve time and amplitude limitations separately."
       },

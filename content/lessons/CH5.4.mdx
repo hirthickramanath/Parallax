@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does isolated SiO₄ have the same formal net charge as neutral SiO₂?",
+      "prompt": "An isolated SiO₄ tetrahedron has four oxygens each bonded to one silicon. Does it have the same net charge as neutral SiO₂?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are 4−, since the isolated SiO₄ unit has the same net charge as neutral SiO₂",
+        "No: isolated SiO₄ is 4−; sharing oxygens between tetrahedra gives neutral SiO₂",
+        "Yes: both are neutral",
+        "No: SiO₂ has no oxygen"
       ],
-      "answer": "No",
-      "explanation": "Oxygen sharing changes stoichiometry.",
+      "answer": "No: isolated SiO₄ is 4−; sharing oxygens between tetrahedra gives neutral SiO₂",
+      "explanation": "In SiO₂ each oxygen is shared between two Si, giving 4 × ½ = 2 oxygens per Si.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count oxygens per silicon when each is shared."
     },
     {
       "id": "concept-2",
-      "prompt": "Does refractory mean stable under every extreme condition?",
+      "prompt": "A mineral is called refractory. Is it stable under every extreme condition?",
       "options": [
-        "No",
-        "Yes"
+        "No: refractory means volatile",
+        "Yes: always stable",
+        "No: it resists high temperature but regime and processing can still change it",
+        "Yes: nothing changes it"
       ],
-      "answer": "No",
-      "explanation": "Regime and processing matter.",
+      "answer": "No: it resists high temperature but regime and processing can still change it",
+      "explanation": "Shocks, irradiation and chemical attack can alter refractory grains.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Refractory is a relative term."
     },
     {
       "id": "concept-3",
-      "prompt": "Can grain size/shape alter spectral inference?",
+      "prompt": "Two dust samples have the same composition but different grain sizes and shapes. Will their infrared spectra match?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: size is irrelevant",
+        "No: composition does not matter",
+        "Not necessarily: the optical response depends on size and shape",
+        "Yes: composition alone sets it"
       ],
-      "answer": "Yes",
-      "explanation": "Optical response depends on geometry.",
+      "answer": "Not necessarily: the optical response depends on size and shape",
+      "explanation": "Absorption and scattering depend on geometry, shifting band positions and widths.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of small vs large particles."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a dust mass estimate state?",
-      "answer": "Opacity, temperature, optical-depth and geometry assumptions.",
+      "prompt": "An astronomer estimates a dust mass from submillimetre flux. Which assumptions must be stated?",
+      "answer": "Opacity, dust temperature, optical depth and geometry",
       "options": [
-        "Opacity, temperature, optical-depth and geometry assumptions.",
-        "Oxygen sharing between tetrahedra."
+        "Nothing: the submillimetre flux gives the dust mass directly, whatever the temperature or the opacity",
+        "Only the flux",
+        "The telescope name",
+        "Opacity, dust temperature, optical depth and geometry"
       ],
-      "explanation": "Opacity, temperature, optical-depth and geometry assumptions.",
+      "explanation": "M = F d² / (κ B(T)). Each assumption changes the result.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Write the formula from flux to mass."
     },
     {
       "id": "chemistry-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does sharing a silicate corner mean an oxygen atom physically disappears?",
-      "answer": "No; it is counted once globally and shared by neighboring tetrahedra.",
+      "prompt": "Two tetrahedra share a corner oxygen. Does that oxygen atom disappear?",
+      "answer": "No: it is one atom shared by both tetrahedra and counted once",
       "options": [
-        "Yes; bond formation destroys the shared oxygen nucleus.",
-        "No; it is counted once globally and shared by neighboring tetrahedra."
+        "No: it is counted twice in the formula",
+        "Yes: it merges with silicon",
+        "Yes: bonding destroys it",
+        "No: it is one atom shared by both tetrahedra and counted once"
       ],
-      "explanation": "Stoichiometric accounting preserves atoms.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Stoichiometric accounting preserves atoms. The oxygen counts as half for each tetrahedron.",
+      "hint": "Count the atoms in the whole structure.",
       "misconceptions": {
         "Yes; bond formation destroys the shared oxygen nucleus.": "Stoichiometric accounting preserves atoms."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does lensing require luminous tracers on circular orbits?",
+      "prompt": "A cluster bends the light of a background galaxy. Does lensing need luminous tracers on circular orbits?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it needs orbiting stars",
+        "Yes: it needs rotating galaxies",
+        "Yes: it needs gas",
+        "No: it probes how gravity bends light, whatever the matter is"
       ],
-      "answer": "No",
-      "explanation": "It probes light propagation through gravity.",
+      "answer": "No: it probes how gravity bends light, whatever the matter is",
+      "explanation": "Lensing measures the total projected mass, luminous or dark.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does light care what the mass is made of?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is Einstein angle linear in point mass?",
+      "prompt": "You increase a point lens's mass by a factor of 4. How does its Einstein angle change?",
       "options": [
-        "No",
-        "Yes"
+        "It quadruples",
+        "It doubles, because θ_E ∝ √M",
+        "It quadruples, because θ_E is proportional to the mass of the lens in this point-lens model",
+        "It stays the same"
       ],
-      "answer": "No",
-      "explanation": "It scales as √M at fixed geometry.",
+      "answer": "It doubles, because θ_E ∝ √M",
+      "explanation": "θ_E = √(4GM D_LS/(c² D_L D_S)).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the square root in the formula."
     },
     {
       "id": "concept-3",
-      "prompt": "Can source redshift uncertainty affect lensing mass inference?",
+      "prompt": "The source redshift of a lensed galaxy is uncertain. Does this affect the inferred lens mass?",
       "options": [
-        "No",
-        "Yes"
+        "No: the source redshift cancels in the lens mapping, so the inferred lens mass does not depend on it",
+        "No: lensing is independent of distance",
+        "Yes: the distance ratios D_LS/D_S enter the lens mapping",
+        "No: only the lens redshift matters"
       ],
-      "answer": "Yes",
-      "explanation": "Distance ratios enter the mapping.",
+      "answer": "Yes: the distance ratios D_LS/D_S enter the lens mapping",
+      "explanation": "Σ_cr depends on D_S, D_L and D_LS.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the source distance appear in the critical density?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why combine cluster probes carefully?",
-      "answer": "Their systematics and geometry can be correlated.",
+      "prompt": "Why should different probes of a cluster (X-ray, lensing, dynamics) be combined carefully?",
+      "answer": "Their systematics and geometry can be correlated",
       "options": [
-        "Their systematics and geometry can be correlated.",
-        "The gravitational deflection structure along the source geometry."
+        "They are independent probes with independent systematics, so combining them needs no special care",
+        "Only one is needed",
+        "They always agree",
+        "Their systematics and geometry can be correlated"
       ],
-      "explanation": "Their systematics and geometry can be correlated.",
+      "explanation": "All depend on the line-of-sight structure and on assumptions such as sphericity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do they share any assumption?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can every extended cluster lens be modeled exactly by one point-lens Einstein radius?",
-      "answer": "No; the spatial mass distribution and shear matter.",
+      "prompt": "Can any extended cluster lens be modelled exactly by a single point-lens Einstein radius?",
+      "answer": "No: the spatial mass distribution and shear matter",
       "options": [
-        "Yes; all lens mappings are identical after rescaling one radius.",
-        "No; the spatial mass distribution and shear matter."
+        "No: the spatial mass distribution and shear matter",
+        "Yes: any extended cluster lens rescales to one point-lens Einstein radius, with no shear or substructure",
+        "Yes: for all clusters",
+        "Yes: any lens rescales to a point"
       ],
-      "explanation": "An angular scale does not specify a complete extended lens equation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "An angular scale alone does not define the full lens equation.",
+      "hint": "Does a point lens produce shear?",
       "misconceptions": {
         "Yes; all lens mappings are identical after rescaling one radius.": "An angular scale does not specify a complete extended lens equation."
       },

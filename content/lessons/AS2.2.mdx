@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does c divided by the Bν peak necessarily give the Bλ peak wavelength?",
+      "prompt": "You find the frequency peak of B_ν and compute c/ν_peak. Is this the wavelength at which B_λ peaks?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for any temperature, because λ = c/ν converts the peak position exactly",
+        "No: the two densities have different peaks because of the Jacobian",
+        "Yes: λ = c/ν exactly",
+        "Yes: for low frequencies"
       ],
-      "answer": "No",
-      "explanation": "The spectral-density Jacobian shifts the peak.",
+      "answer": "No: the two densities have different peaks because of the Jacobian",
+      "explanation": "Wien's law gives λ_max T = 2.898 mm·K, while c/ν_max gives about 5.1 mm·K/T.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the two peak constants."
     },
     {
       "id": "concept-2",
-      "prompt": "Does an element always show every possible spectral line?",
+      "prompt": "A hot star's gas contains iron. Do you expect every possible Fe line to appear in its spectrum?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: every allowed line appears",
+        "Yes: all allowed transitions of iron are equally strong in a hot star, so every line appears",
+        "No: populations, opacity and illumination decide which lines are observed",
+        "No: iron has no lines"
       ],
-      "answer": "No",
-      "explanation": "Population, opacity and illumination control observability.",
+      "answer": "No: populations, opacity and illumination decide which lines are observed",
+      "explanation": "A line needs lower-level population and a suitable radiation field.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the lower level need to be populated?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is Rayleigh–Jeans valid at every frequency?",
+      "prompt": "The Rayleigh–Jeans law B_ν = 2ν²kT/c² is applied to X-ray frequencies at 10⁴ K. What goes wrong?",
       "options": [
-        "Yes",
-        "No"
+        "The temperature is too low for any radiation law to apply at X-ray frequencies",
+        "It is only for X-rays",
+        "It assumes hν ≪ kT, which fails at high frequency",
+        "Nothing: it is valid at all frequencies"
       ],
-      "answer": "No",
-      "explanation": "It assumes hν much smaller than kT.",
+      "answer": "It assumes hν ≪ kT, which fails at high frequency",
+      "explanation": "RJ diverges as ν² (the ultraviolet catastrophe), while Planck's law falls off exponentially.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the photon energy hν with the thermal energy kT."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can a fitted colour temperature differ from a local gas temperature?",
-      "answer": "Emission and transport need not follow one equilibrium blackbody",
+      "prompt": "A spectrum is fitted with a blackbody of 6000 K, yet the gas temperature measured from lines is 10,000 K. Why might they differ?",
+      "answer": "The emission and transport need not follow a single equilibrium blackbody",
       "options": [
-        "Emission and transport need not follow one equilibrium blackbody",
-        "Every smooth spectrum is exactly Planckian"
+        "Every smooth spectrum is Planckian",
+        "One value must be wrong",
+        "Temperature depends on wavelength",
+        "The emission and transport need not follow a single equilibrium blackbody"
       ],
-      "explanation": "Model assumptions determine the physical interpretation.",
+      "explanation": "Colour temperature is a fit parameter, not necessarily the kinetic temperature of the gas.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What assumption does the blackbody fit make?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does changing from spectral density per wavelength to density per frequency preserve the peak location by ν=c/λ alone?",
-      "answer": "No; the density changes by a Jacobian.",
+      "prompt": "Converting a spectrum from per-wavelength to per-frequency, can you keep the peak position by simply setting ν = c/λ?",
+      "answer": "No: the density changes by a Jacobian, so the peak shifts",
       "options": [
-        "Yes; both densities have the same peak under direct substitution.",
-        "No; the density changes by a Jacobian."
+        "No: the density changes by a Jacobian, so the peak shifts",
+        "No: ν and λ are unrelated",
+        "Yes: substitution ν = c/λ preserves the position of the peak, because only the axis label changes",
+        "Yes: the density is invariant"
       ],
-      "explanation": "A spectral density depends on the integration variable.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "B_ν dν = B_λ dλ, so B_ν = B_λ λ²/c.",
+      "hint": "Densities transform with a factor dλ/dν.",
       "misconceptions": {
         "Yes; both densities have the same peak under direct substitution.": "A spectral density depends on the integration variable."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is Γ(n) equal to n! for a positive integer n?",
+      "prompt": "What is Γ(5) for the gamma function?",
       "options": [
-        "Yes",
-        "No"
+        "6",
+        "120, since Γ(n) = n!, which gives 5! for the argument 5",
+        "24, since Γ(n) = (n − 1)!",
+        "5"
       ],
-      "answer": "No",
-      "explanation": "Γ(n)=(n−1)!.",
+      "answer": "24, since Γ(n) = (n − 1)!",
+      "explanation": "Γ(n+1) = nΓ(n) and Γ(1) = 1, so Γ(n) = (n − 1)!, giving Γ(5) = 4! = 24.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall Γ(1) and the recurrence."
     },
     {
       "id": "concept-2",
-      "prompt": "Does meromorphic continuation make the defining gamma integral converge at negative integers?",
+      "prompt": "The gamma function can be analytically continued to negative non-integers. Does the defining integral ∫t^{z−1}e^{−t}dt converge there?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it converges everywhere",
+        "Yes, for Re z < 0, since the integrand decays quickly enough there to give a finite value",
+        "No, but it equals 0",
+        "No: the integral diverges for Re z ≤ 0; the continued function is a different object"
       ],
-      "answer": "No",
-      "explanation": "The original integral domain and continued function are different.",
+      "answer": "No: the integral diverges for Re z ≤ 0; the continued function is a different object",
+      "explanation": "Near t = 0 the integrand behaves as t^{z−1}, integrable only for Re z > 0. The continuation uses the recurrence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check the behaviour near t = 0."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a formal beta normalization guarantee a probability density outside positive real shape parameters?",
+      "prompt": "The beta function B(a, b) is used to normalise a density x^{a−1}(1 − x)^{b−1}. When is this a valid probability density?",
       "options": [
-        "Yes",
-        "No"
+        "Only for integers",
+        "For any real a and b",
+        "When a + b = 1",
+        "When a > 0 and b > 0"
       ],
-      "answer": "No",
-      "explanation": "Positivity and integrability must both hold.",
+      "answer": "When a > 0 and b > 0",
+      "explanation": "Integrability near 0 and 1 requires a, b > 0, and the function must be non-negative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check the endpoint behaviour."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What justifies the beta–gamma change of variables?",
-      "answer": "Absolute integrability in the stated parameter domain and the Jacobian",
+      "prompt": "What justifies writing B(a, b) = Γ(a)Γ(b)/Γ(a + b) via a change of variables?",
+      "answer": "Absolute integrability in the parameter domain and the Jacobian of the substitution",
       "options": [
-        "Absolute integrability in the stated parameter domain and the Jacobian",
-        "Only a resemblance between symbols"
+        "Absolute integrability in the parameter domain and the Jacobian of the substitution",
+        "That the symbols for the two functions look similar, which is why the Beta function reduces to Gamma functions",
+        "Only that a and b are integers",
+        "Nothing"
       ],
-      "explanation": "Endpoint convergence and the area factor are essential.",
+      "explanation": "The product of two gamma integrals is converted to polar-like variables with a Jacobian, valid for Re a, Re b > 0.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Why do you need convergence and a Jacobian?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "May the positive-argument beta integral be used for arbitrary negative endpoint exponents without a convergence check?",
-      "answer": "No; convergence or a separate analytic continuation is needed.",
+      "prompt": "Can you use ∫₀¹ x^{a−1}(1 − x)^{b−1}dx = Γ(a)Γ(b)/Γ(a + b) with a = −1/2?",
+      "answer": "Not as an integral: it diverges, so analytic continuation would be needed",
       "options": [
-        "Yes; the factorial identity removes all endpoint restrictions.",
-        "No; convergence or a separate analytic continuation is needed."
+        "Not as an integral: it diverges, so analytic continuation would be needed",
+        "Yes, it equals 0, since the integral at a = −1/2 vanishes by the symmetry of the integrand",
+        "Yes, it equals 1",
+        "Yes, directly"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "For the defining real beta integral, both parameters must be positive.",
+      "hint": "Check the endpoint exponent.",
+      "explanation": "The integrand behaves as x^{−3/2} near 0, which is not integrable.",
       "misconceptions": {
         "Yes; the factorial identity removes all endpoint restrictions.": "An algebraic identity does not establish convergence of an improper integral."
       },

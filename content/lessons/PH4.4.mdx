@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does total charge zero imply zero exterior field?",
+      "prompt": "A localised charge distribution has zero total charge. Is the field outside it zero?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: zero total charge means zero field everywhere outside the distribution",
+        "No: dipole and higher multipoles can remain",
+        "Yes: in all cases",
+        "Yes: by Gauss"
       ],
-      "answer": "No",
-      "explanation": "Higher moments can remain.",
+      "answer": "No: dipole and higher multipoles can remain",
+      "explanation": "A dipole has zero net charge but a nonzero field.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of +q and −q a distance apart."
     },
     {
       "id": "concept-2",
-      "prompt": "Is a dipole approximation exact at every distance?",
+      "prompt": "Is the dipole approximation exact at every distance from the source?",
       "options": [
-        "No",
-        "Yes"
+        "No: it is an exterior far-field approximation",
+        "Yes: it is exact at all r, since point dipoles have no higher-order terms",
+        "Yes: exact everywhere",
+        "Yes: for point dipoles only"
       ],
-      "answer": "No",
-      "explanation": "It is an exterior far-field approximation.",
+      "answer": "No: it is an exterior far-field approximation",
+      "explanation": "Higher multipoles dominate near the source.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens at r comparable to the source size?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is dipole moment origin-independent for any nonzero net charge?",
+      "prompt": "You shift the origin of your coordinates. For a distribution with nonzero total charge Q, what happens to the dipole moment?",
       "options": [
-        "Yes",
-        "No"
+        "It becomes zero, since moving the origin removes the charge from the dipole sum",
+        "It stays the same",
+        "It doubles",
+        "It changes by −Q times the shift"
       ],
-      "answer": "No",
-      "explanation": "It changes by minus total charge times the origin shift.",
+      "answer": "It changes by −Q times the shift",
+      "explanation": "p′ = p − Qa. It is origin-independent only if Q = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recompute ∫ r′ ρ dV with r′ = r − a."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why define a quadrupole convention explicitly?",
-      "answer": "Different normalizations assign different numerical factors to the same potential",
+      "prompt": "Why must you state the quadrupole convention when quoting a quadrupole moment?",
+      "answer": "Different normalisations give different numbers for the same potential",
       "options": [
-        "Different normalizations assign different numerical factors to the same potential",
-        "All conventions have identical tensor entries"
+        "It makes no difference, since every normalisation gives the same number for the potential",
+        "Quadrupoles have no convention",
+        "Different normalisations give different numbers for the same potential",
+        "All conventions are identical"
       ],
-      "explanation": "The potential and moment definition must be used consistently.",
+      "explanation": "Some definitions include 1/2 or traceless factors of 3.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the quadrupole tensor traceless in every textbook?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does total charge zero guarantee a localized distribution has zero electric field everywhere outside it?",
-      "answer": "No; dipole and higher multipoles can remain.",
+      "prompt": "A localised distribution has zero total charge. Does that guarantee no field anywhere outside?",
+      "answer": "No: higher multipoles can remain",
       "options": [
-        "Yes; a zero monopole eliminates every spatial moment.",
-        "No; dipole and higher multipoles can remain."
+        "Yes: all moments vanish",
+        "Yes: zero monopole eliminates all",
+        "No: higher multipoles can remain",
+        "Yes: far away"
       ],
-      "explanation": "The multipole hierarchy retains information beyond net charge.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The multipole hierarchy keeps information beyond the net charge.",
+      "hint": "What is the next term after the monopole?",
       "misconceptions": {
         "Yes; a zero monopole eliminates every spatial moment.": "The multipole hierarchy retains information beyond net charge."
       },

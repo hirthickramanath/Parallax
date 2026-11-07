@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a Wiener path an ordinary differentiable forcing curve?",
+      "prompt": "Is a Wiener process path an ordinary differentiable function of time?",
       "options": [
-        "Yes",
-        "No"
+        "Yes except at t = 0",
+        "No: it is continuous but nowhere differentiable, with non-zero quadratic variation",
+        "Yes, almost everywhere, since the path has a well-defined slope at all but a few isolated times",
+        "Yes: its paths are smooth, since the increments over a short time are small and proportional to dt"
       ],
-      "answer": "No",
-      "explanation": "Its quadratic variation changes calculus.",
+      "answer": "No: it is continuous but nowhere differentiable, with non-zero quadratic variation",
+      "explanation": "(dW)² = dt, which changes the chain rule (Itô's lemma).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the sizes of ΔW and Δt."
     },
     {
       "id": "concept-2",
-      "prompt": "Can state-dependent diffusion be pulled outside every spatial derivative?",
+      "prompt": "In the Fokker–Planck equation with state-dependent diffusion D(x), where does D sit?",
       "options": [
-        "No",
-        "Yes"
+        "Outside as a constant",
+        "Inside the derivatives, such as ∂²(D p)/∂x² in the Itô form",
+        "In the drift term only, so D(x) does not enter the second-derivative part of the equation",
+        "It disappears"
       ],
-      "answer": "No",
-      "explanation": "Its variation contributes to probability evolution.",
+      "answer": "Inside the derivatives, such as ∂²(D p)/∂x² in the Itô form",
+      "explanation": "Gradients of D contribute to the probability evolution and cannot be pulled out.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Derive from the Kramers–Moyal expansion."
     },
     {
       "id": "concept-3",
-      "prompt": "Can arithmetic and logarithmic growth differ?",
+      "prompt": "For geometric Brownian motion, can the mean growth rate of S differ from the growth rate of ln S?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: noise adds a −σ²/2 correction",
+        "No: they are identical, because the growth rate of S and that of ln S are the same for any noise",
+        "No: they are identical",
+        "Yes: they differ by σ"
       ],
-      "answer": "Yes",
-      "explanation": "Noise changes their relationship.",
+      "answer": "Yes: noise adds a −σ²/2 correction",
+      "explanation": "d ln S = (μ − σ²/2)dt + σdW (Itô's lemma).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply Itô's lemma to ln S."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare discretizations?",
-      "answer": "Finite-step error can change distribution or positivity.",
+      "prompt": "Why compare different numerical discretisations of an SDE?",
+      "answer": "Finite-step errors can change distributions or break positivity",
       "options": [
-        "Finite-step error can change distribution or positivity.",
-        "Half the noise variance times the second spatial derivative."
+        "Discretisation never matters",
+        "They always agree",
+        "Finite-step errors can change distributions or break positivity",
+        "Only one scheme exists"
       ],
-      "explanation": "Finite-step error can change distribution or positivity.",
+      "explanation": "Euler–Maruyama can give negative values for processes that must stay positive.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a large step preserve positivity?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does a Wiener increment scale in standard deviation as dt rather than sqrt(dt)?",
-      "answer": "No; its variance is dt.",
+      "prompt": "How does the standard deviation of a Wiener increment ΔW scale with the time step Δt?",
+      "answer": "As √Δt, since its variance is Δt",
       "options": [
-        "Yes; it scales like a deterministic velocity increment.",
-        "No; its variance is dt."
+        "As Δt², since the variance of a Wiener increment scales with the square of the time step",
+        "As √Δt, since its variance is Δt",
+        "It does not depend on Δt",
+        "As Δt"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Stochastic and ordinary differential increments differ.",
+      "hint": "Variance adds linearly in time.",
+      "explanation": "ΔW ~ N(0, Δt). A deterministic velocity increment scales like Δt instead.",
       "misconceptions": {
         "Yes; it scales like a deterministic velocity increment.": "Stochastic and ordinary differential increments differ."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every stationary point minimize free energy?",
+      "prompt": "You find a stationary point of the Landau free energy. Is it necessarily a minimum?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: always stable",
+        "No: curvature and a global comparison distinguish minima, maxima and saddles",
+        "Yes: by definition",
+        "Yes: all stationary points are minima"
       ],
-      "answer": "No",
-      "explanation": "Curvature and global comparison distinguish extrema.",
+      "answer": "No: curvature and a global comparison distinguish minima, maxima and saddles",
+      "explanation": "At the maximum F″ < 0, an unstable state.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the sign of F″?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is coexistence fixed by equal minimum free energies?",
+      "prompt": "In a first-order transition, what fixes the coexistence point?",
       "options": [
-        "Yes",
-        "No"
+        "The spinodal, the point where the curvature of the free energy changes sign between phases",
+        "Equal minimum free energies of the two phases",
+        "Equal curvatures",
+        "Equal order parameters"
       ],
-      "answer": "Yes",
-      "explanation": "A spinodal concerns local stability instead.",
+      "answer": "Equal minimum free energies of the two phases",
+      "explanation": "The spinodal concerns local stability, whereas coexistence requires equal free energies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which condition compares the two phases?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are mean-field critical exponents exact in all dimensions?",
+      "prompt": "Mean-field theory gives order-parameter exponent β = 1/2. Is it exact in all dimensions?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: in all dimensions",
+        "No: critical fluctuations change it below the upper critical dimension",
+        "Yes: universal",
+        "Yes: for all systems"
       ],
-      "answer": "No",
-      "explanation": "Critical fluctuations can change them.",
+      "answer": "No: critical fluctuations change it below the upper critical dimension",
+      "explanation": "Ising exponents in 3D give β ≈ 0.33.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare with the known 3D Ising exponent."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What limits uniform mean field near criticality?",
-      "answer": "Long-range correlated fluctuations.",
+      "prompt": "What limits the validity of uniform mean-field theory near a critical point?",
+      "answer": "Long-range correlated fluctuations",
       "options": [
-        "Long-range correlated fluctuations.",
-        "Macroscopic phases or symmetry-breaking states."
+        "Nothing limits it: mean-field theory is valid at every temperature",
+        "Long-range correlated fluctuations",
+        "Macroscopic phases",
+        "Low temperature"
       ],
-      "explanation": "Long-range correlated fluctuations.",
+      "explanation": "Fluctuations at all length scales invalidate the uniform assumption.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens to ξ at T_c?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Is the mean-field order-parameter exponent one half guaranteed for every physical critical system?",
-      "answer": "No; fluctuations and universality class can change it.",
+      "prompt": "Is the mean-field exponent β = 1/2 guaranteed for every physical critical system?",
+      "answer": "No: fluctuations and the universality class can change it",
       "options": [
-        "Yes; a quartic toy fixes all dimensions and interactions.",
-        "No; fluctuations and universality class can change it."
+        "No: fluctuations and the universality class can change it",
+        "Yes: in all dimensions",
+        "Yes: for all interactions",
+        "Yes: a quartic toy model fixes all"
       ],
-      "explanation": "Mean-field theory has explicit approximation limits.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Mean-field theory has explicit assumptions.",
+      "hint": "What does the mean-field approximation ignore?",
       "misconceptions": {
         "Yes; a quartic toy fixes all dimensions and interactions.": "Mean-field theory has explicit approximation limits."
       },

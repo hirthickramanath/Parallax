@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is T_eq necessarily surface temperature?",
+      "prompt": "A planet's equilibrium temperature is 255 K, like Earth's. Is its surface 255 K?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the equilibrium temperature is the surface temperature, since the atmosphere does not matter for it",
+        "Yes: always",
+        "No: the atmosphere and heat redistribution change surface conditions",
+        "Yes: for rocky planets"
       ],
-      "answer": "No",
-      "explanation": "Atmosphere and redistribution change surface conditions.",
+      "answer": "No: the atmosphere and heat redistribution change surface conditions",
+      "explanation": "Earth's surface averages 288 K because of the greenhouse effect.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the atmosphere included in T_eq?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a habitable-zone location prove biology?",
+      "prompt": "A planet lies in the habitable zone. Does this prove it hosts life?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: a habitable-zone planet has liquid water on its surface and so hosts life in some form",
+        "Yes: life is there",
+        "No: it is a conditional insolation criterion for liquid water",
+        "Yes: it guarantees biology"
       ],
-      "answer": "No",
-      "explanation": "It is a conditional physical insolation criterion.",
+      "answer": "No: it is a conditional insolation criterion for liquid water",
+      "explanation": "The zone describes where liquid water could exist under suitable conditions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the zone tell you about the planet?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should a proposed biosignature be tested against abiotic processes?",
+      "prompt": "Oxygen is detected in an exoplanet atmosphere. Should the claim be tested against non-biological sources?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: only for hydrogen",
+        "No: oxygen implies life",
+        "Yes: abiotic photochemistry and water loss can produce oxygen",
+        "No: only plants make oxygen"
       ],
-      "answer": "Yes",
-      "explanation": "Chemical and observational alternatives matter.",
+      "answer": "Yes: abiotic photochemistry and water loss can produce oxygen",
+      "explanation": "Alternatives must be excluded before a biosignature claim.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can chemistry alone make O₂?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a gas detection include?",
-      "answer": "Calibration, spectral alternatives and uncertainty.",
+      "prompt": "What must accompany the reported detection of a gas in an exoplanet spectrum?",
+      "answer": "Calibration, spectral alternatives and uncertainty",
       "options": [
-        "Calibration, spectral alternatives and uncertainty.",
-        "The relevant total reflected fraction in the energy model."
+        "Just the abundance, because the calibration and the alternative spectral explanations do not change it",
+        "Only the name",
+        "Only a plot",
+        "Calibration, spectral alternatives and uncertainty"
       ],
-      "explanation": "Calibration, spectral alternatives and uncertainty.",
+      "explanation": "Other molecules can have overlapping features.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can another gas absorb at the same wavelength?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does an Earth-like equilibrium temperature prove a planet has a habitable surface or life?",
-      "answer": "No; atmosphere, climate and chemical context are also required.",
+      "prompt": "A planet has an Earth-like equilibrium temperature. Does that show it has a habitable surface or life?",
+      "answer": "No: atmosphere, climate and chemical context are also required",
       "options": [
-        "Yes; one thermal number establishes habitability.",
-        "No; atmosphere, climate and chemical context are also required."
+        "Yes: an Earth-like equilibrium temperature shows the surface is habitable, with oceans and a stable climate",
+        "No: atmosphere, climate and chemical context are also required",
+        "Yes: it shows life",
+        "Yes: it has oceans"
       ],
-      "explanation": "Radiative equilibrium is a simplified energy balance, not a biological diagnosis.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Radiative equilibrium is a simple energy balance, not a biological diagnosis.",
+      "hint": "Venus has a similar T_eq to Earth's, yet...",
       "misconceptions": {
         "Yes; one thermal number establishes habitability.": "Radiative equilibrium is a simplified energy balance, not a biological diagnosis."
       },

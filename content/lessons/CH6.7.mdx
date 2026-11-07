@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does equal exact molecular mass imply equal connectivity?",
+      "prompt": "Two compounds have the same exact molecular mass in a mass spectrum. Do they have the same connectivity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the same mass means the same structure, since an exact mass fixes the connectivity of the atoms",
+        "No: constitutional isomers share formula and mass but differ in connectivity",
+        "Yes: unless one is a salt",
+        "No: mass is unrelated to formula"
       ],
-      "answer": "No",
-      "explanation": "Constitutional isomers can have the same formula.",
+      "answer": "No: constitutional isomers share formula and mass but differ in connectivity",
+      "explanation": "Ethanol and dimethyl ether both have mass 46.04 yet differ in bonding.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare ethanol and dimethyl ether."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the n+1 splitting rule cover every NMR spin system?",
+      "prompt": "An NMR multiplet is much more complex than the n+1 rule predicts. What may explain it?",
       "options": [
-        "No",
-        "Yes"
+        "The instrument failed, because the n+1 rule is exact and always gives the observed multiplet pattern",
+        "The rule always works",
+        "There are no neighbouring protons",
+        "Strong coupling or non-equivalent neighbours put the system outside the simple n+1 regime"
       ],
-      "answer": "No",
-      "explanation": "It has a restricted simple-coupling regime.",
+      "answer": "Strong coupling or non-equivalent neighbours put the system outside the simple n+1 regime",
+      "explanation": "The n+1 rule holds for first-order spectra with similar coupling constants.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When does n+1 stop applying?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does every attenuation measurement obey linear Beer–Lambert concentration scaling?",
+      "prompt": "A series of dilutions shows absorbance rising less than linearly with concentration at high concentration. What may be responsible?",
       "options": [
-        "Yes",
-        "No"
+        "Beer–Lambert is exact, so any fall below linearity must come from an error in the dilutions",
+        "Concentration is wrong",
+        "Dilutions change the molecule",
+        "Aggregation, scattering or instrument stray light break Beer–Lambert linearity"
       ],
-      "answer": "No",
-      "explanation": "Scattering, association and instrumental effects can violate the model.",
+      "answer": "Aggregation, scattering or instrument stray light break Beer–Lambert linearity",
+      "explanation": "The Beer–Lambert law holds in a limited regime.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List where the law's assumptions fail."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why combine several spectral methods?",
-      "answer": "Different methods constrain different structural features and ambiguities",
+      "prompt": "Why do chemists combine MS, IR and NMR when identifying a compound?",
+      "answer": "Each method constrains different structural features and ambiguities",
       "options": [
-        "Different methods constrain different structural features and ambiguities",
-        "One correctly positioned peak uniquely fixes every atom"
+        "The methods are the same measurement carried out three times, so combining them reduces random noise only",
+        "Each method constrains different structural features and ambiguities",
+        "One method is always enough",
+        "To make the report longer"
       ],
-      "explanation": "Independent information reduces degeneracy but still needs model checks.",
+      "explanation": "MS gives formula, IR gives functional groups and NMR gives connectivity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does each technique report on?"
     },
     {
       "id": "chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does one matched IR or UV absorption feature uniquely determine a complete organic structure?",
-      "answer": "No; multiple spectral and chemical constraints are needed.",
+      "prompt": "A strong IR band at 1715 cm⁻¹ is observed. Does it fully determine the structure?",
+      "answer": "No: it suggests a carbonyl, but other data are needed for the rest of the structure",
       "options": [
-        "Yes; a single band is a full structure proof.",
-        "No; multiple spectral and chemical constraints are needed."
+        "Yes: the compound is acetone",
+        "Yes: it proves an ester",
+        "No: it suggests a carbonyl, but other data are needed for the rest of the structure",
+        "No: it suggests nothing"
       ],
-      "explanation": "Different molecules and environments can share features.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Many ketones, aldehydes and acids absorb near that frequency.",
+      "hint": "How many compounds contain C=O?",
       "misconceptions": {
         "Yes; a single band is a full structure proof.": "Different molecules and environments can share features."
       },

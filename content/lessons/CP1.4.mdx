@@ -32,7 +32,7 @@
       "options": [
         "Stability for every step size, however large",
         "It preserves phase-space structure, so the energy error stays bounded rather than drifting",
-        "Exact conservation of the original energy at every single step",
+        "Exact conservation of the original energy at every single step, for any size of the time step",
         "Zero phase error however many orbits are integrated"
       ],
       "explanation": "Symplectic methods conserve a nearby (modified) Hamiltonian, so energy oscillates within bounds instead of drifting. They are not exactly energy-conserving and can still be unstable for large steps.",
@@ -80,7 +80,7 @@
       "prompt": "After many oscillation periods, how does velocity Verlet's energy error compare with forward Euler's for a harmonic oscillator?",
       "answer": "Verlet's stays bounded and oscillates, while Euler's grows steadily",
       "options": [
-        "Both grow at the same rate once enough periods have passed",
+        "Euler's stays bounded and Verlet's grows steadily, because Verlet has the larger error at each step",
         "Euler's stays bounded and Verlet's is the one that grows",
         "Verlet's stays bounded and oscillates, while Euler's grows steadily",
         "Both stay exactly zero, since the system is conservative"

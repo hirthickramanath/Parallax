@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are Christoffel symbols themselves a tensor?",
+      "prompt": "Are the Christoffel symbols Γ^λ_{μν} the components of a tensor?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they are the components of a tensor, since they carry one upper and two lower indices",
+        "Yes if symmetric",
+        "Yes in flat space",
+        "No: they transform with an inhomogeneous term"
       ],
-      "answer": "No",
-      "explanation": "Their transformation includes an inhomogeneous term.",
+      "answer": "No: they transform with an inhomogeneous term",
+      "explanation": "Γ vanishes in Cartesian coordinates but not in polar coordinates, impossible for a tensor.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a tensor be zero in one frame and non-zero in another?"
     },
     {
       "id": "concept-2",
-      "prompt": "Do nonzero Christoffel symbols always mean curvature?",
+      "prompt": "Polar coordinates in a flat plane have non-zero Christoffel symbols. What does this imply about curvature?",
       "options": [
-        "No",
-        "Yes"
+        "The plane is curved, because non-zero Christoffel symbols always indicate non-zero curvature",
+        "The metric is wrong",
+        "Nothing: Γ can be non-zero in flat space, depending on the coordinates",
+        "The space is a sphere"
       ],
-      "answer": "No",
-      "explanation": "Flat curvilinear coordinates can have them.",
+      "answer": "Nothing: Γ can be non-zero in flat space, depending on the coordinates",
+      "explanation": "Curvature is measured by the Riemann tensor, which vanishes for the plane.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether the plane itself is curved, whatever coordinates you use."
     },
     {
       "id": "concept-3",
-      "prompt": "Does Levi–Civita uniqueness require a chosen metric and constraints?",
+      "prompt": "The Levi-Civita connection is unique. What does that uniqueness require?",
       "options": [
-        "No",
-        "Yes"
+        "A volume form",
+        "A chosen atlas only",
+        "No conditions: the Levi-Civita connection exists and is unique for any smooth manifold",
+        "A chosen metric, metric compatibility and zero torsion"
       ],
-      "answer": "Yes",
-      "explanation": "Compatibility and zero torsion specify it.",
+      "answer": "A chosen metric, metric compatibility and zero torsion",
+      "explanation": "Compatibility (∇g = 0) plus torsion-freeness fix the Γ's in terms of g.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the fundamental theorem of Riemannian geometry."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should not be inferred from one connection component?",
-      "answer": "An invariant claim of nonzero curvature.",
+      "prompt": "You find non-zero Christoffel symbols in some coordinates. Which conclusion is NOT justified by that alone?",
+      "answer": "That the space has non-zero Riemann curvature",
       "options": [
-        "An invariant claim of nonzero curvature.",
-        "Geometric objects in neighbouring tangent spaces."
+        "That the space has non-zero Riemann curvature",
+        "That the symbols depend on the coordinates chosen",
+        "That the metric components are not all constant in these coordinates",
+        "That the Γ's are not components of a tensor"
       ],
-      "explanation": "An invariant claim of nonzero curvature.",
+      "explanation": "Γ is built from derivatives of the metric components. Flat space in curvilinear coordinates already gives non-zero Γ, so only the Riemann tensor can establish curvature.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which object is the invariant measure of curvature?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Do nonzero Christoffel symbols necessarily imply nonzero curvature?",
-      "answer": "No; flat polar coordinates already have them.",
+      "prompt": "Non-zero Christoffel symbols appear for a flat plane in polar coordinates. Do non-zero Christoffel symbols imply curvature?",
+      "answer": "No: the polar plane is flat but has them",
       "options": [
-        "Yes; every connection coefficient is a curvature component.",
-        "No; flat polar coordinates already have them."
+        "No: the polar plane is flat but has them",
+        "Yes: they are tensors",
+        "Yes: they are curvature components",
+        "Yes in two dimensions"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Connections are coordinate-dependent coefficients.",
+      "hint": "Compute the polar Christoffel symbols.",
+      "explanation": "Γ^r_{θθ} = −r and Γ^θ_{rθ} = 1/r in polar coordinates while R = 0.",
       "misconceptions": {
         "Yes; every connection coefficient is a curvature component.": "Connections are coordinate-dependent coefficients."
       },

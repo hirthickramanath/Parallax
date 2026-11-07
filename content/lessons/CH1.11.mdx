@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May a spatially varying D always be moved outside ∇·(D∇c)?",
+      "prompt": "The diffusion coefficient D varies with position. Can you pull D outside the divergence in ∇·(D∇c)?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: D can always be taken outside the divergence, since the gradient of c is the only quantity that varies",
+        "No: the gradient of D contributes to the evolution",
+        "Yes: always",
+        "Yes: D is a constant"
       ],
-      "answer": "No",
-      "explanation": "Its gradients can contribute to evolution.",
+      "answer": "No: the gradient of D contributes to the evolution",
+      "explanation": "∇·(D∇c) = D∇²c + ∇D·∇c. The second term is lost if you move D outside.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply the product rule."
     },
     {
       "id": "concept-2",
-      "prompt": "Does rms displacement equal each particle’s deterministic travel distance?",
+      "prompt": "A particle's rms displacement after time t is √(2Dt). Is this the distance each particle travels?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: each particle travels exactly that far, because diffusion moves every particle in the same way",
+        "Yes: each particle travels exactly that far",
+        "Yes: deterministically",
+        "No: it summarises the spread of an ensemble, and each path is random"
       ],
-      "answer": "No",
-      "explanation": "It summarizes an ensemble distribution.",
+      "answer": "No: it summarises the spread of an ensemble, and each path is random",
+      "explanation": "Individual displacements are random with that rms value.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a random walk deterministic?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are no-flux and zero-concentration boundary conditions identical?",
+      "prompt": "A boundary is described as 'no flux' in one model and 'zero concentration' in another. Are these the same condition?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both mean nothing passes",
+        "No: no-flux sets the gradient and zero-concentration sets the value",
+        "No: neither exists",
+        "Yes: they are equivalent"
       ],
-      "answer": "No",
-      "explanation": "They constrain different quantities.",
+      "answer": "No: no-flux sets the gradient and zero-concentration sets the value",
+      "explanation": "A wall (no flux) differs from a perfect absorber (c = 0).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens to particles that hit each?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why combine a constitutive law with conservation?",
-      "answer": "The flux response and its accumulation determine different parts of evolution",
+      "prompt": "Why is Fick's law alone not enough to predict how concentration evolves?",
+      "answer": "You also need conservation, boundary and initial conditions",
       "options": [
-        "The flux response and its accumulation determine different parts of evolution",
-        "A gradient law alone fixes every boundary and initial condition"
+        "It predicts only steady states, so conservation of mass is not needed for the time evolution",
+        "You also need conservation, boundary and initial conditions",
+        "It does not involve concentration",
+        "It is complete"
       ],
-      "explanation": "A PDE also needs conservation and problem data.",
+      "explanation": "Fick gives flux. Conservation (∂c/∂t = −∇·J) turns it into a PDE that needs problem data.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What links flux to the rate of change of c?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Is the total three-dimensional mean-square displacement always 2Dt under isotropic free diffusion?",
-      "answer": "No; summing three independent components gives 6Dt.",
+      "prompt": "For free isotropic diffusion in three dimensions, what is the total mean-square displacement?",
+      "answer": "6Dt, the sum of three independent components of 2Dt",
       "options": [
-        "Yes; dimensionality never changes the total squared-displacement factor.",
-        "No; summing three independent components gives 6Dt."
+        "6Dt, the sum of three independent components of 2Dt",
+        "3Dt, because the three directions of motion share a single total displacement of 2Dt",
+        "2Dt",
+        "Dt"
       ],
-      "explanation": "The requested displacement variable and dimension must be specified.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "⟨x²⟩ = 2Dt per dimension, so ⟨r²⟩ = 6Dt in 3D.",
+      "hint": "Add the three Cartesian components.",
       "misconceptions": {
         "Yes; dimensionality never changes the total squared-displacement factor.": "The requested displacement variable and dimension must be specified."
       },

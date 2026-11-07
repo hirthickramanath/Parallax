@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does adding a constant to potential change E?",
+      "prompt": "You add a constant V₀ to the potential everywhere. How does the electric field change?",
       "options": [
-        "Yes",
-        "No"
+        "It does not, since E = −∇V and the gradient of a constant is zero",
+        "It doubles, since adding the same constant everywhere also scales up the gradient",
+        "It increases by V₀",
+        "It reverses"
       ],
-      "answer": "No",
-      "explanation": "A gradient removes the constant.",
+      "answer": "It does not, since E = −∇V and the gradient of a constant is zero",
+      "explanation": "Only potential differences matter physically.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take the gradient of V + V₀ and see what happens to the constant."
     },
     {
       "id": "concept-2",
-      "prompt": "Does one reference value replace all boundary data?",
+      "prompt": "You set V = 0 at one reference point. Does that replace the boundary data needed for a boundary-value problem?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: for Laplace's equation, since one reference value determines the whole solution inside",
+        "Yes: it is enough",
+        "No: it only fixes the additive constant, not the physical gradients",
+        "Yes: one value determines everything"
       ],
-      "answer": "No",
-      "explanation": "It fixes gauge, not all physical gradients.",
+      "answer": "No: it only fixes the additive constant, not the physical gradients",
+      "explanation": "You still need the potential or flux on the boundary.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does fixing one number determine a whole function?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can arbitrary Neumann data always match any total charge?",
+      "prompt": "You specify only the normal derivative (Neumann data) on a closed boundary. Can it be any function you like?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: if the surface is a sphere, any normal-derivative data are allowed whatever the enclosed charge",
+        "Yes: arbitrary data",
+        "No: it must satisfy a compatibility condition with the enclosed charge",
+        "Yes: any function"
       ],
-      "answer": "No",
-      "explanation": "An integrated compatibility condition must hold.",
+      "answer": "No: it must satisfy a compatibility condition with the enclosed charge",
+      "explanation": "∮∂V/∂n dS = −Q/ε₀ by Gauss's theorem.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Integrate the normal derivative over the boundary."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What supports trusting a constructed Dirichlet solution?",
-      "answer": "Uniqueness once the equation and full boundary data are satisfied",
+      "prompt": "What justifies trusting a trial potential for a Dirichlet problem?",
+      "answer": "It satisfies the equation and all the boundary data, and the solution is unique",
       "options": [
-        "Uniqueness once the equation and full boundary data are satisfied",
-        "Agreement at one sampled point"
+        "It matches at one point, which shows that the potential is correct everywhere in the region",
+        "It satisfies the equation and all the boundary data, and the solution is unique",
+        "It looks plausible",
+        "It is simple"
       ],
-      "explanation": "A local sample does not establish the boundary-value problem.",
+      "explanation": "The uniqueness theorem guarantees it is the solution.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does uniqueness require?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does potential zero at one point imply electric field zero there?",
-      "answer": "No; field depends on the spatial gradient, not that scalar value.",
+      "prompt": "The potential is zero at the midpoint of an electric dipole. Is the field zero there?",
+      "answer": "No: E depends on the gradient, and the dipole's fields add at the midpoint",
       "options": [
-        "Yes; zero potential always means zero force.",
-        "No; field depends on the spatial gradient, not that scalar value."
+        "No: E depends on the gradient, and the dipole's fields add at the midpoint",
+        "Yes: zero force at the midpoint, since the field vanishes wherever the potential is zero",
+        "Yes: by symmetry",
+        "Yes: zero potential means zero field"
       ],
-      "explanation": "A dipole midpoint can have canceling potentials and adding electric fields.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The two charges' potentials cancel but their fields point the same way.",
+      "hint": "Compare V and E at the midpoint of +q and −q.",
       "misconceptions": {
         "Yes; zero potential always means zero force.": "A dipole midpoint can have canceling potentials and adding electric fields."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Does f′(c)=0 guarantee an extremum?",
+      "prompt": "f′(c) = 0 at a point c. Is c necessarily a local maximum or minimum?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, but only for polynomials, since a zero derivative at a point always marks a local extremum there",
+        "No: f(x) = x³ has f′(0) = 0 but no extremum",
+        "No: f′ must be negative at an extremum",
+        "Yes: a zero slope means a peak or a trough"
       ],
-      "answer": "No",
-      "explanation": "x³ at zero is a counterexample.",
+      "answer": "No: f(x) = x³ has f′(0) = 0 but no extremum",
+      "explanation": "A stationary point can also be a stationary inflection. For x³, the function increases on both sides of 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try f(x) = x³ at x = 0."
     },
     {
       "id": "q2",
-      "prompt": "Which points must a global bounded-interval search include?",
+      "prompt": "You seek the global maximum of a continuous function on [a, b]. Which candidates must you compare?",
       "options": [
-        "Endpoints as well as interior candidates",
-        "Only stationary points"
+        "Points where f is zero, since the largest value of a continuous function occurs at a root",
+        "Endpoints only",
+        "Stationary points and both endpoints",
+        "Stationary points only"
       ],
-      "answer": "Endpoints as well as interior candidates",
-      "explanation": "The largest value may occur at an endpoint.",
+      "answer": "Stationary points and both endpoints",
+      "explanation": "The maximum on a closed interval can occur at an interior stationary point or at an endpoint, so all of them must be compared.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of an increasing function on [0, 1]."
     },
     {
       "id": "q3",
-      "prompt": "What units does ∫ x λ(x) dx have if λ is kg/m?",
+      "prompt": "λ(x) is mass per unit length in kg/m. What are the units of ∫ x λ(x) dx?",
       "options": [
-        "kg m",
-        "kg"
+        "kg/m, because integrating λ over x leaves the units of the density unchanged by the factor of x",
+        "m",
+        "kg·m, a first moment rather than a mass",
+        "kg, a mass"
       ],
-      "answer": "kg m",
-      "explanation": "It is a first moment, not mass.",
+      "answer": "kg·m, a first moment rather than a mass",
+      "explanation": "x is in metres and λ dx in kilograms, so x λ dx has units kg·m. Dividing by the total mass gives a position, the centre of mass.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply the units of x, λ and dx."
     },
     {
       "id": "q4",
@@ -124,14 +133,16 @@
     },
     {
       "id": "depth-model-limits",
-      "prompt": "Does f′(0)=0 for f(x)=x³ make x=0 a local extremum?",
-      "answer": "No; the function increases through that stationary point.",
+      "prompt": "For f(x) = x³ we have f′(0) = 0. What does the function do around x = 0?",
+      "answer": "It increases through x = 0, so there is no local extremum",
       "options": [
-        "Yes; every stationary point is a maximum or minimum.",
-        "No; the function increases through that stationary point."
+        "It has a local minimum at 0, since f′(0) = 0 means that the function bottoms out at that point",
+        "It is not differentiable at 0",
+        "It has a local maximum at 0",
+        "It increases through x = 0, so there is no local extremum"
       ],
-      "explanation": "Inspect the sign change of the derivative or compare neighboring values.",
-      "hint": "Identify the model assumptions before applying a formula.",
+      "explanation": "f′(x) = 3x² ≥ 0 on both sides, so it does not change sign. A derivative sign change is needed for an extremum.",
+      "hint": "Check the sign of f′ just left and right of 0.",
       "misconceptions": {
         "Yes; every stationary point is a maximum or minimum.": "Inspect the sign change of the derivative or compare neighboring values."
       },

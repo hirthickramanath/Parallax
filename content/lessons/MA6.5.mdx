@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does nonzero derivative everywhere on a domain guarantee global injectivity?",
+      "prompt": "f′(z) ≠ 0 everywhere on a domain. Is f necessarily one-to-one?",
       "options": [
-        "Yes",
-        "No"
+        "No: e.g. eᶻ is locally injective but periodic",
+        "Yes: a non-zero derivative everywhere implies that f is one-to-one on the whole domain",
+        "No: such f do not exist",
+        "Yes: on any domain"
       ],
-      "answer": "No",
-      "explanation": "Local inverse information does not rule out separate points sharing an image.",
+      "answer": "No: e.g. eᶻ is locally injective but periodic",
+      "explanation": "Non-zero derivative gives local injectivity only. eᶻ takes the same value at z and z + 2πi.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about eᶻ: does it ever repeat a value?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is z² locally conformal at zero?",
+      "prompt": "Is f(z) = z² conformal at z = 0?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is conformal everywhere",
+        "No: it is not holomorphic",
+        "No: f′(0) = 0, so angles are doubled there",
+        "Yes: it preserves angles at 0"
       ],
-      "answer": "No",
-      "explanation": "Its derivative vanishes there.",
+      "answer": "No: f′(0) = 0, so angles are doubled there",
+      "explanation": "Conformal maps need f′ ≠ 0. At 0, z² maps angle θ to 2θ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute f′(0) and recall what conformal needs."
     },
     {
       "id": "concept-3",
-      "prompt": "Does conformal pullback preserve an arbitrary Poisson source without scaling?",
+      "prompt": "A conformal map w = f(z) transforms Poisson's equation. How does the source term change?",
       "options": [
-        "Yes",
-        "No"
+        "It is scaled by |f′|, since a conformal map stretches lengths by |f′| and nothing more in two dimensions",
+        "It is zero",
+        "It is unchanged",
+        "It is scaled by |f′|²"
       ],
-      "answer": "No",
-      "explanation": "The Laplacian transforms with |f′|².",
+      "answer": "It is scaled by |f′|²",
+      "explanation": "Δ_z u = |f′(z)|² Δ_w u. So a pulled-back source must be rescaled.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall how the Laplacian transforms under conformal maps."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What extra check is needed for a global conformal equivalence?",
-      "answer": "Injectivity and the target domain, not just nonzero local derivative",
+      "prompt": "Besides f′ ≠ 0, what must you check for a conformal equivalence between two domains?",
+      "answer": "That the map is injective and its image is exactly the target domain",
       "options": [
-        "Injectivity and the target domain, not just nonzero local derivative",
-        "Only a nonzero derivative at one point"
+        "Only that f′ is non-zero at one point, since a single point of non-vanishing derivative fixes the map",
+        "That f is real",
+        "Nothing",
+        "That the map is injective and its image is exactly the target domain"
       ],
-      "explanation": "A local angle-preserving map can overlap globally.",
+      "explanation": "A global equivalence is a bijective holomorphic map. Local angle preservation can overlap globally.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the map cover the target once?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does local conformality imply global one-to-one behavior?",
-      "answer": "No; distinct points may share an image.",
+      "prompt": "z ↦ z² preserves angles away from 0. Is it globally one-to-one on ℂ \\ {0}?",
+      "answer": "No: z and −z map to the same point",
       "options": [
-        "Yes; preserving local angles proves global injectivity.",
-        "No; distinct points may share an image."
+        "No: z and −z map to the same point",
+        "No: it is not holomorphic",
+        "Yes: angle preservation implies injectivity",
+        "Yes, on the real line"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "The square map supplies a counterexample.",
+      "hint": "Compute f(−z) and compare it with f(z).",
+      "explanation": "Local conformality does not give global injectivity.",
       "misconceptions": {
         "Yes; preserving local angles proves global injectivity.": "The square map supplies a counterexample."
       },

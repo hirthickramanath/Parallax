@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are hyperfine and fine structure the same coupling?",
+      "prompt": "Hyperfine splitting and fine structure both split atomic levels. Are they the same coupling?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both involve the nucleus",
+        "Yes: both are spin–orbit couplings of the electron, and hyperfine is just a smaller version of fine structure",
+        "No: hyperfine involves nuclear spin, and fine structure involves the electron's spin–orbit coupling",
+        "Yes: same"
       ],
-      "answer": "No",
-      "explanation": "Nuclear spin enters hyperfine structure.",
+      "answer": "No: hyperfine involves nuclear spin, and fine structure involves the electron's spin–orbit coupling",
+      "explanation": "Fine structure is ~α² E_n, and hyperfine is smaller by a factor of m_e/m_p.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which spins couple in each?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must A’s units/convention be specified?",
+      "prompt": "A hyperfine constant A is quoted in a paper. Why must its units and convention be specified?",
       "options": [
-        "Yes",
-        "No"
+        "The constant A is defined the same way everywhere, so its numerical value needs no further context",
+        "Units do not matter",
+        "Definitions can absorb factors of ħ",
+        "A has fixed units"
       ],
-      "answer": "Yes",
-      "explanation": "Definitions can absorb ℏ factors.",
+      "answer": "Definitions can absorb factors of ħ",
+      "explanation": "Definitions can absorb factors of ħ, and A can be in energy, frequency or angular frequency. A/h in Hz versus A in joules differ by h.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is A given in J, Hz or rad/s?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does one simple hyperfine model include every radiative correction?",
+      "prompt": "A simple hyperfine model (contact term) is used for hydrogen. Does it include every radiative correction?",
       "options": [
-        "Yes",
-        "No"
+        "No: other terms require separate treatment",
+        "Yes: all corrections",
+        "Yes: includes QED",
+        "Yes: it is exact"
       ],
-      "answer": "No",
-      "explanation": "Other terms require separate treatment.",
+      "answer": "No: other terms require separate treatment",
+      "explanation": "The 21 cm line shows tiny QED corrections of order α.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the contact interaction a complete theory?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare energy scales?",
-      "answer": "They choose the appropriate coupled basis and perturbative regime.",
+      "prompt": "Why compare the sizes of the fine-structure, hyperfine and Zeeman energies?",
+      "answer": "They choose the appropriate coupled basis and the perturbative regime",
       "options": [
-        "They choose the appropriate coupled basis and perturbative regime.",
-        "Total nuclear-plus-electronic angular momentum."
+        "They choose the appropriate coupled basis and the perturbative regime",
+        "Nothing",
+        "They show which interaction is largest, which fixes the nuclear mass used in the calculation of the levels",
+        "They determine the colour"
       ],
-      "explanation": "They choose the appropriate coupled basis and perturbative regime.",
+      "explanation": "Weak fields use |F, m_F⟩, and strong fields use |m_I, m_J⟩.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which interaction dominates?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does a principal quantum number alone determine every fine and hyperfine level?",
-      "answer": "No; angular and nuclear couplings also matter.",
+      "prompt": "Does the principal quantum number n alone determine every fine and hyperfine level of hydrogen?",
+      "answer": "No: angular and nuclear couplings also matter",
       "options": [
-        "Yes; all splittings depend only on n.",
-        "No; angular and nuclear couplings also matter."
+        "Yes: only n",
+        "Yes: for all levels",
+        "Yes: n fixes the energy of every level, and splittings are only tiny corrections that add no new levels",
+        "No: angular and nuclear couplings also matter"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Are 2s₁/₂ and 2p₃/₂ the same energy?",
       "explanation": "Retain the relevant angular labels.",
       "misconceptions": {
         "Yes; all splittings depend only on n.": "Retain the relevant angular labels."

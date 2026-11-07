@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does an energy gap alone guarantee a strong dipole line?",
+      "prompt": "Two electronic states are separated by exactly the energy of a lamp photon, yet the absorption is extremely weak. What is the likely reason?",
       "options": [
-        "Yes",
-        "No"
+        "The sample is a gas, so collisions broaden the line until the absorption becomes too weak to see",
+        "The transition dipole matrix element is nearly zero (symmetry or spin forbidden)",
+        "The energy gap is too large",
+        "Photon energy is irrelevant"
       ],
-      "answer": "No",
-      "explanation": "The matrix element and populations matter.",
+      "answer": "The transition dipole matrix element is nearly zero (symmetry or spin forbidden)",
+      "explanation": "Resonance is necessary, not sufficient. Intensity ∝ |⟨f|μ|i⟩|² times population.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which factor besides the gap sets the intensity?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is an overlap factor an amplitude squared?",
+      "prompt": "Franck–Condon factors are overlap integrals between vibrational wavefunctions. How is the line intensity related?",
       "options": [
-        "Yes",
-        "No"
+        "Intensity scales with the square of the overlap integral",
+        "Intensity scales with the overlap itself, so doubling the overlap integral doubles the line intensity",
+        "Intensity scales with its cube root",
+        "Intensity is independent of the overlap"
       ],
-      "answer": "Yes",
-      "explanation": "Intensity uses squared modulus.",
+      "answer": "Intensity scales with the square of the overlap integral",
+      "explanation": "Transition probability involves |⟨v'|v⟩|², the squared modulus of the amplitude.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Amplitudes give probabilities after squaring."
     },
     {
       "id": "concept-3",
-      "prompt": "Does one two-rate yield formula describe every multistate system?",
+      "prompt": "A fluorescence yield is written Φ = k_r/(k_r + k_nr). When does this simple formula stop being enough?",
       "options": [
-        "Yes",
-        "No"
+        "Never: the simple ratio of rates applies to every molecule whatever excited states it has",
+        "Only at zero temperature",
+        "With several coupled excited states, intersystem crossing or back-transfer",
+        "For any real molecule"
       ],
-      "answer": "No",
-      "explanation": "Coupled kinetics may be needed.",
+      "answer": "With several coupled excited states, intersystem crossing or back-transfer",
+      "explanation": "Two competing rates describe a single decaying state. Multi-state kinetics needs a rate matrix.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many states does the formula assume?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish peak and integrated strength?",
-      "answer": "Broadening redistributes intensity.",
+      "prompt": "A band broadens while its integrated area stays constant. Why is the integrated strength more reliable than the peak height for comparing transitions?",
+      "answer": "Broadening redistributes intensity over a wider range but conserves the area",
       "options": [
-        "Broadening redistributes intensity.",
-        "Symmetry of both states and the interaction operator."
+        "Peak height is always exact, whereas the area depends on how the detector responds to the colour",
+        "Broadening redistributes intensity over a wider range but conserves the area",
+        "Area depends on the detector colour",
+        "Broadening creates new intensity"
       ],
-      "explanation": "Broadening redistributes intensity.",
+      "explanation": "Peak height falls as the line widens; the integral over the band reflects the transition strength.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is conserved when a peak widens?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does electric-dipole forbidden mean a transition is impossible through every physical mechanism?",
-      "answer": "No; other multipoles or coupling effects may provide weaker channels.",
+      "prompt": "Phosphorescence is a spin-forbidden transition that is still observed. What does this show?",
+      "answer": "Selection rules hold for a given operator and approximation; spin–orbit coupling gives weak channels",
       "options": [
-        "Yes; one zero dipole matrix element forbids all mechanisms absolutely.",
-        "No; other multipoles or coupling effects may provide weaker channels."
+        "Selection rules hold for a given operator and approximation; spin–orbit coupling gives weak channels",
+        "Light has no angular momentum",
+        "The molecule has no spin",
+        "Selection rules are never valid"
       ],
-      "explanation": "A selection rule belongs to a specified operator and approximation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The pure electric-dipole spin-conserving rule is relaxed by spin–orbit mixing, giving weak and slow transitions.",
+      "hint": "What mixes singlet and triplet character?",
       "misconceptions": {
         "Yes; one zero dipole matrix element forbids all mechanisms absolutely.": "A selection rule belongs to a specified operator and approximation."
       },

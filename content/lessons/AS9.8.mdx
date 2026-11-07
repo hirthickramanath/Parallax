@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can correlated estimates be compared with an independent-error denominator unchanged?",
+      "prompt": "Two H₀ estimates share a calibration, so their errors are correlated. Can you compare them using σ² = σ₁² + σ₂²?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: errors always add in quadrature",
+        "Yes: independent only",
+        "No: the covariance changes the variance of the difference",
+        "Yes: correlation cancels"
       ],
-      "answer": "No",
-      "explanation": "Covariance changes the difference variance.",
+      "answer": "No: the covariance changes the variance of the difference",
+      "explanation": "Var(x₁ − x₂) = σ₁² + σ₂² − 2cov.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Include the covariance term."
     },
     {
       "id": "concept-2",
-      "prompt": "Is an early-model H₀ posterior model free?",
+      "prompt": "The CMB gives H₀ = 67.4 km/s/Mpc. Is that a model-free measurement?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the CMB gives H₀ directly, with no assumed model, so it is as direct as any local distance ladder",
+        "No: it depends on assumptions such as ΛCDM and early-universe physics",
+        "Yes: model independent",
+        "Yes: direct measurement"
       ],
-      "answer": "No",
-      "explanation": "It depends on early-universe assumptions.",
+      "answer": "No: it depends on assumptions such as ΛCDM and early-universe physics",
+      "explanation": "H₀ is inferred from fitting the sound horizon and the model.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is H₀ observed directly from the CMB?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must live scientific-status claims be tied to dated sources?",
+      "prompt": "A document states the current status of the Hubble tension. Why must the claim carry a dated source?",
       "options": [
-        "No",
-        "Yes"
+        "Dates are decorative",
+        "Data and analyses evolve",
+        "Status never changes",
+        "It is a legal requirement"
       ],
-      "answer": "Yes",
-      "explanation": "Data and analyses evolve.",
+      "answer": "Data and analyses evolve",
+      "explanation": "New measurements can shift or resolve a tension.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Will the claim be true in five years?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a proposed new model satisfy?",
-      "answer": "Joint consistency, not only improvement of one selected discrepancy.",
+      "prompt": "What must a proposed new-physics model satisfy to address the Hubble tension?",
+      "answer": "Joint consistency with all data, not only improvement of one discrepancy",
       "options": [
-        "Joint consistency, not only improvement of one selected discrepancy.",
-        "Specified estimates, models and covariance."
+        "Fix the value of H₀ alone, since the other cosmological parameters are not affected by the change",
+        "Joint consistency with all data, not only improvement of one discrepancy",
+        "Fit one dataset",
+        "Avoid other data"
       ],
-      "explanation": "Joint consistency, not only improvement of one selected discrepancy.",
+      "explanation": "A model that fixes H₀ may worsen S₈ or the CMB fit.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What else must it still match?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a large standardized discrepancy alone establish a unique new-physics explanation?",
-      "answer": "No; calibration, model assumptions and alternative explanations must be examined.",
+      "prompt": "A tension is quoted at 5σ. Does it establish a unique new-physics explanation?",
+      "answer": "No: calibration, model assumptions and other explanations must be examined",
       "options": [
-        "Yes; any discrepancy has exactly one physical cause.",
-        "No; calibration, model assumptions and alternative explanations must be examined."
+        "No: calibration, model assumptions and other explanations must be examined",
+        "Yes: a 5σ tension excludes all systematics, so a single new-physics cause must be responsible for it",
+        "Yes: systematics are excluded",
+        "Yes: 5σ proves new physics"
       ],
-      "explanation": "A tension quantifies inconsistency under assumptions, not a unique cause.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A tension quantifies inconsistency under assumptions, not its cause.",
+      "hint": "Could a hidden systematic cause 5σ?",
       "misconceptions": {
         "Yes; any discrepancy has exactly one physical cause.": "A tension quantifies inconsistency under assumptions, not a unique cause."
       },

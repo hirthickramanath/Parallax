@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does gauge fixing change a properly defined physical observable?",
+      "prompt": "A QED calculation is done in Feynman gauge and again in Coulomb gauge. Should a properly defined physical observable differ?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the gauge choice changes the observable result, so one must be chosen to match the experiment",
+        "No: both give zero",
+        "Yes: only the Coulomb gauge is correct",
+        "No: gauge choice is a redundant description, so physical results must agree"
       ],
-      "answer": "No",
-      "explanation": "It chooses a redundant description.",
+      "answer": "No: gauge choice is a redundant description, so physical results must agree",
+      "explanation": "Only gauge-invariant quantities are observable.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Gauge is a choice of description."
     },
     {
       "id": "concept-2",
-      "prompt": "Is a bare charge automatically the measured renormalized charge?",
+      "prompt": "The Lagrangian contains a bare charge e₀. Is it the charge measured at long distance?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: e₀ is what is measured",
+        "Yes: loops do not change it",
+        "No: charge is unmeasurable",
+        "No: loop corrections screen it"
       ],
-      "answer": "No",
-      "explanation": "A matching prescription is required.",
+      "answer": "No: loop corrections screen it",
+      "explanation": "Loop corrections screen it, and the measured charge is defined by a renormalisation condition. The physical e is defined at q² = 0 by the Thomson limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Vacuum polarisation screens charge."
     },
     {
       "id": "concept-3",
-      "prompt": "Can soft real emission matter for finite measured rates?",
+      "prompt": "A virtual-photon correction diverges at low photon energy. Can real soft-photon emission matter for a finite measured rate?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the divergences cancel only when real soft emission is included for the same observable",
+        "No: soft photons cannot be emitted by a charged particle, so the virtual correction alone gives the rate",
+        "Yes: but only in non-abelian theories",
+        "No: real emission is separate and irrelevant"
       ],
-      "answer": "Yes",
-      "explanation": "Infrared-safe observables combine appropriate contributions.",
+      "answer": "Yes: the divergences cancel only when real soft emission is included for the same observable",
+      "explanation": "This is the Bloch–Nordsieck / KLN cancellation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Detectors cannot resolve arbitrarily soft photons."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why define detector acceptance?",
-      "answer": "Soft/collinear radiation affects the measured observable.",
+      "prompt": "Why must a QED prediction specify the detector acceptance for photons?",
+      "answer": "Soft and collinear radiation can leave the measured quantity unchanged or not, depending on the cut",
       "options": [
-        "Soft/collinear radiation affects the measured observable.",
-        "Coordinated matter/potential transformations and symmetry-respecting calculation."
+        "It does not matter for any observable quantity, because soft radiation never changes the measured result",
+        "Acceptance affects only the charge",
+        "Soft and collinear radiation can leave the measured quantity unchanged or not, depending on the cut",
+        "Photons are not detected"
       ],
-      "explanation": "Soft/collinear radiation affects the measured observable.",
+      "explanation": "Infrared-safe observables are defined with resolution and energy thresholds.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What counts as one electron plus a collinear photon?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does one tree-level scaling include all loop and real-radiation corrections?",
-      "answer": "No; a complete observable needs its specified perturbative treatment.",
+      "prompt": "The leading-order QED cross section scales as α². Does that scaling include loop and radiative corrections?",
+      "answer": "No: higher orders add terms with more powers of α",
       "options": [
-        "Yes; α² is exact for every QED process.",
-        "No; a complete observable needs its specified perturbative treatment."
+        "Yes: α² is exact",
+        "No: higher orders add terms with more powers of α",
+        "No: α² never appears",
+        "Yes: loops are just rescalings"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "State process, order and measurement definition.",
+      "hint": "How many vertices does a loop add?",
+      "explanation": "Higher orders add terms with more powers of α, and the observable needs its stated perturbative order. NLO terms are of order α³.",
       "misconceptions": {
         "Yes; α² is exact for every QED process.": "State process, order and measurement definition."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can boundary variation always be dropped without conditions?",
+      "prompt": "Deriving the Euler–Lagrange equations drops a boundary term from the variation. When is this legitimate?",
       "options": [
-        "Yes",
-        "No"
+        "Never: the boundary term always contributes, so the equations of motion always pick up an extra piece",
+        "Always, with no conditions",
+        "Only for scalar fields",
+        "When the variations vanish on the boundary or the boundary conditions control it"
       ],
-      "answer": "No",
-      "explanation": "The variational problem must control it.",
+      "answer": "When the variations vanish on the boundary or the boundary conditions control it",
+      "explanation": "δφ = 0 at the endpoints makes the surface term vanish.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is assumed about δφ at the edge?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is canonical momentum always just the field time derivative?",
+      "prompt": "For a field φ, is the canonical momentum π always equal to ∂φ/∂t?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: for every theory",
+        "No: π = ∂L/∂(∂φ/∂t), which depends on the Lagrangian and may be constrained",
+        "Yes: π is always the time derivative",
+        "No: π is always zero"
       ],
-      "answer": "No",
-      "explanation": "It depends on the Lagrangian and constraints.",
+      "answer": "No: π = ∂L/∂(∂φ/∂t), which depends on the Lagrangian and may be constrained",
+      "explanation": "For a Lagrangian with a coefficient or extra terms, π differs from φ̇.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the definition of π from L."
     },
     {
       "id": "concept-3",
-      "prompt": "Can improved currents differ locally while retaining a controlled total charge?",
+      "prompt": "Two currents differ by a term ∂_ν B^{μν} with B antisymmetric. Do they give the same conserved charge?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the two currents are identical at every point, so the difference term has no effect anywhere in space",
+        "No: antisymmetric terms are not allowed",
+        "No: the charge changes by a large amount",
+        "Yes: the extra piece is identically conserved and integrates to a surface term"
       ],
-      "answer": "Yes",
-      "explanation": "Identically conserved additions can do that.",
+      "answer": "Yes: the extra piece is identically conserved and integrates to a surface term",
+      "explanation": "The extra piece is identically conserved and integrates to a surface term, so the total charge is unchanged. Improvement terms change the local current, not the total charge.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Show that ∂_μ∂_ν B^{μν} = 0 for any antisymmetric B^{μν}, then integrate over space."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify gauge components?",
-      "answer": "Redundancy does not represent independent physical states.",
+      "prompt": "Why do physicists say gauge-field components are not independent physical degrees of freedom?",
+      "answer": "Gauge redundancy means different components describe the same physical state",
       "options": [
-        "Redundancy does not represent independent physical states.",
-        "Stationarity under admissible field variations."
+        "They are all independent",
+        "They only exist in classical theory",
+        "Gauge redundancy means different components describe the same physical state",
+        "They are fixed by the speed of light"
       ],
-      "explanation": "Redundancy does not represent independent physical states.",
+      "explanation": "A_μ has 4 components but photons have 2 polarisations.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Count components against physical polarisations."
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Must a current be conserved for arbitrary fields that do not satisfy the equations of motion?",
-      "answer": "No; the Noether conservation statement is on shell.",
+      "prompt": "Noether's theorem gives ∂_μ J^μ = 0. For which field configurations does this hold?",
+      "answer": "Only those satisfying the equations of motion (on shell)",
       "options": [
-        "Yes; every arbitrary field configuration conserves that current.",
-        "No; the Noether conservation statement is on shell."
+        "Only the vacuum configuration, where the fields vanish and the equations are satisfied trivially",
+        "Only those satisfying the equations of motion (on shell)",
+        "Only static configurations",
+        "Every configuration, solution or not"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the action and equations together.",
+      "hint": "The proof uses δS = 0.",
+      "explanation": "The derivation uses the field equations.",
       "misconceptions": {
         "Yes; every arbitrary field configuration conserves that current.": "Use the action and equations together."
       },

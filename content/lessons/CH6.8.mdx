@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a steady abundance necessarily mean thermodynamic equilibrium?",
+      "prompt": "An interstellar molecule's abundance stays constant over time. Does that mean it is in thermodynamic equilibrium?",
       "options": [
-        "Yes",
-        "No"
+        "No: abundances cannot be constant",
+        "Yes: constant abundance means the molecule is in thermodynamic equilibrium with its surroundings",
+        "No: formation and destruction can balance in a driven, non-equilibrium environment",
+        "Yes: constant means equilibrium"
       ],
-      "answer": "No",
-      "explanation": "Formation and destruction can balance in a driven environment.",
+      "answer": "No: formation and destruction can balance in a driven, non-equilibrium environment",
+      "explanation": "A steady state with continuous flux differs from equilibrium.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is energy flowing through the system?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does an organic detection alone imply biology?",
+      "prompt": "Amino acids are detected in a meteorite. Does this alone imply biology?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: amino acids are only made by living cells, so any meteorite that contains them was once alive",
+        "Yes: amino acids imply life",
+        "No: they were not found",
+        "No: abiotic chemistry can produce organic molecules"
       ],
-      "answer": "No",
-      "explanation": "Abiotic pathways can produce organic molecules.",
+      "answer": "No: abiotic chemistry can produce organic molecules",
+      "explanation": "Murchison-type meteorites contain amino acids from abiotic processes.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can chemistry make these without life?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a possible product formula establish a viable low-density formation route?",
+      "prompt": "A reaction A + B → C is energetically favourable on paper. Does this show it works in a cold, low-density cloud?",
       "options": [
-        "Yes",
-        "No"
+        "No: rates, barriers and a route for removing the excess energy must also be checked",
+        "Yes: favourable means feasible, because the energetics alone decide whether the reaction occurs in the cloud",
+        "Yes: density does not matter",
+        "No: nothing reacts in clouds"
       ],
-      "answer": "No",
-      "explanation": "Rates, barriers and energy removal must be checked.",
+      "answer": "No: rates, barriers and a route for removing the excess energy must also be checked",
+      "explanation": "At low density, radiative association may be too slow without a third body.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What carries away the reaction energy?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare reaction times with environmental lifetimes?",
-      "answer": "A chemically allowed pathway may be too slow to affect the observed population",
+      "prompt": "Why compare a reaction timescale with the environment's lifetime?",
+      "answer": "A chemically allowed pathway may be too slow to matter before conditions change",
       "options": [
-        "A chemically allowed pathway may be too slow to affect the observed population",
-        "Every favourable pathway reaches completion immediately"
+        "Lifetimes fix the rate constant of the reaction, so the two timescales are really the same quantity",
+        "Environments never change",
+        "A chemically allowed pathway may be too slow to matter before conditions change",
+        "All favourable routes finish instantly"
       ],
-      "explanation": "Kinetics and physical evolution jointly determine relevance.",
+      "explanation": "Relevance depends on both kinetics and physical evolution.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What if the cloud collapses in 10⁵ years but the reaction takes 10⁹?"
     },
     {
       "id": "chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does suppressing one photodestruction channel alone fix the abundance of an interstellar organic molecule?",
-      "answer": "No; formation and competing losses/transport also enter.",
+      "prompt": "Shielding reduces photodestruction of an organic molecule in a cloud. Does that fix its abundance?",
+      "answer": "No: formation, other losses and transport also affect it",
       "options": [
-        "Yes; shielding uniquely determines every abundance.",
-        "No; formation and competing losses/transport also enter."
+        "Yes: only photodestruction matters, so a molecule with less of it must have a larger abundance",
+        "No: formation, other losses and transport also affect it",
+        "Yes: shielding sets abundance",
+        "No: shielding does nothing"
       ],
-      "explanation": "A network balance requires all relevant channels.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Abundance is the balance of all formation and loss channels.",
+      "hint": "Write the balance equation with all terms.",
       "misconceptions": {
         "Yes; shielding uniquely determines every abundance.": "A network balance requires all relevant channels."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "What does the transform at zero frequency equal for an integrable function?",
+      "prompt": "For an integrable function f(x), what is its Fourier transform at zero frequency?",
       "options": [
-        "Always its maximum",
-        "Its integral"
+        "The integral of f",
+        "Always zero",
+        "Its average value",
+        "Its maximum value"
       ],
-      "answer": "Its integral",
-      "explanation": "Set the exponential kernel to one.",
+      "answer": "The integral of f",
+      "explanation": "Setting k = 0 in the transform gives F(0) = ∫f(x)e⁰dx = ∫f(x)dx, the total integral of f.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Set k = 0 in the exponential kernel."
     },
     {
       "id": "concept-2",
-      "prompt": "Does zero-padding create new physical spectral resolution?",
+      "prompt": "You zero-pad a finite signal before an FFT. Does this increase the true spectral resolution?",
       "options": [
-        "No",
-        "Yes"
+        "No, it removes information, since adding zeros to the signal lowers the resolution of the spectrum",
+        "Yes: it adds information",
+        "Yes, by a factor of the padding",
+        "No: it interpolates the same spectrum onto a finer grid"
       ],
-      "answer": "No",
-      "explanation": "It interpolates finite-data spectral samples.",
+      "answer": "No: it interpolates the same spectrum onto a finer grid",
+      "explanation": "Resolution is set by the observation time T (≈ 1/T). Zero-padding only gives smoother sampling of the spectrum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does padding add measurements?"
     },
     {
       "id": "concept-3",
-      "prompt": "Under this convention, what does convolution in x become?",
+      "prompt": "With the convention F(k) = ∫f(x)e^{−ikx}dx, what does convolution in x become?",
       "options": [
-        "A derivative in k",
-        "A product of transforms"
+        "A product of the transforms",
+        "A convolution in k, so the transform of a convolution is another convolution of the transforms",
+        "A sum of transforms",
+        "A derivative in k"
       ],
-      "answer": "A product of transforms",
-      "explanation": "The convolution theorem gives a product with the stated normalization.",
+      "answer": "A product of the transforms",
+      "explanation": "(f∗g)^ = f̂ ĝ (with factor depending on the normalisation).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the convolution theorem."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must accompany a quoted spectral width?",
-      "answer": "Transform and frequency convention, window and sampling assumptions",
+      "prompt": "You quote a spectral width of 5 Hz for a measured signal. What else should be stated?",
+      "answer": "The transform convention, window and sampling assumptions",
       "options": [
-        "Transform and frequency convention, window and sampling assumptions",
+        "The transform convention, window and sampling assumptions",
+        "The colour map used in the plot, because the width is read from the spectrum and not from the data",
+        "Nothing",
         "Only the number of plotted bins"
       ],
-      "explanation": "Those choices determine normalization, leakage and interpretation.",
+      "explanation": "Windowing affects leakage and resolution, and FWHM vs. RMS widths differ. The convention changes normalisation and units (Hz versus rad/s).",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What choices affect the width of a spectral peak?"
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Can Fourier-transform formulas from different normalization conventions be mixed without adjusting constants?",
-      "answer": "No; the forward/inverse convention controls the factors.",
+      "prompt": "Two textbooks use different Fourier conventions (e.g. 1/√2π versus 1/2π). Can you mix their formulas?",
+      "answer": "Not without adjusting the constants",
       "options": [
-        "Yes; every convention has identical coefficients.",
-        "No; the forward/inverse convention controls the factors."
+        "Not without adjusting the constants",
+        "Yes: the constants cancel, so the two forms of the formulas are interchangeable without adjustment",
+        "Yes: the constants cancel",
+        "Yes: the formulas are identical"
       ],
-      "explanation": "Transform definitions are part of each identity.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The forward/inverse convention sets factors of 2π and the form of identities like Parseval and convolution.",
+      "hint": "Check the inverse-transform prefactor.",
       "misconceptions": {
         "Yes; every convention has identical coefficients.": "Transform definitions are part of each identity."
       },

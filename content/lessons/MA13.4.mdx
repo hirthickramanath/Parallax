@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a local Berry connection gauge invariant?",
+      "prompt": "Is the Berry connection A = i⟨n|∇n⟩ gauge invariant?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for real eigenvectors, since removing the phase freedom makes the connection gauge invariant",
+        "Yes for real eigenvectors",
+        "No: it shifts by the gradient of a phase when the eigenvector phase changes",
+        "Yes for closed loops only"
       ],
-      "answer": "No",
-      "explanation": "It shifts by an exact phase derivative.",
+      "answer": "No: it shifts by the gradient of a phase when the eigenvector phase changes",
+      "explanation": "Under |n⟩ → e^{iχ}|n⟩, A → A − ∇χ. Only the curvature and loop integrals (mod 2π) are invariant.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Redefine the phase of |n⟩ and recompute."
     },
     {
       "id": "concept-2",
-      "prompt": "Does an arbitrary open-surface curvature integral have to be an integer multiple of 2π?",
+      "prompt": "Is the integral of the Berry curvature over an arbitrary open surface always an integer multiple of 2π?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the integral over any surface is an integer multiple of 2π, whether the surface is open or closed",
+        "Yes: only in 1D",
+        "Yes: for any surface in parameter space",
+        "No: that is guaranteed only over a closed surface (a Chern number)"
       ],
-      "answer": "No",
-      "explanation": "Global closed-bundle conditions are required.",
+      "answer": "No: that is guaranteed only over a closed surface (a Chern number)",
+      "explanation": "Over an open surface it equals the Berry phase of the boundary mod 2π, which varies continuously.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare a closed and an open surface."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a gap closure change a topological classification?",
+      "prompt": "The energy gap of a system closes as a parameter is varied. What happens to its topological classification?",
       "options": [
-        "No",
-        "Yes"
+        "It is always trivial, since closing the gap removes the protection and resets the classification",
+        "It cannot be defined",
+        "It is unchanged",
+        "It can change, since the adiabatic protection fails at the gap closure"
       ],
-      "answer": "Yes",
-      "explanation": "The protecting adiabatic structure can fail.",
+      "answer": "It can change, since the adiabatic protection fails at the gap closure",
+      "explanation": "Topological invariants are constant while the gap stays open.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What protects the invariant?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why use global patches?",
-      "answer": "One eigenvector phase convention may not cover the whole parameter space.",
+      "prompt": "Why do global calculations of Berry phase sometimes need several patches?",
+      "answer": "One phase convention for the eigenvector may not cover the whole parameter space",
       "options": [
-        "One eigenvector phase convention may not cover the whole parameter space.",
-        "The gauge-invariant local curvature of the phase connection."
+        "The curvature is not gauge invariant, so it has to be recomputed in a new patch of the parameter space",
+        "Patches are decorative",
+        "The eigenvector is always global",
+        "One phase convention for the eigenvector may not cover the whole parameter space"
       ],
-      "explanation": "One eigenvector phase convention may not cover the whole parameter space.",
+      "explanation": "For a sphere of parameters, a smooth global gauge for the eigenvector can fail, giving non-zero Chern number.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall the Dirac monopole."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is every Berry phase necessarily an integer topological invariant?",
-      "answer": "No; it can vary continuously modulo 2π.",
+      "prompt": "Is every Berry phase an integer topological invariant?",
+      "answer": "No: a loop's Berry phase varies continuously modulo 2π",
       "options": [
-        "Yes; every geometric phase is an integer.",
-        "No; it can vary continuously modulo 2π."
+        "Yes: it is quantised",
+        "Yes: always an integer",
+        "Yes: it is 2π times an integer",
+        "No: a loop's Berry phase varies continuously modulo 2π"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Distinguish loop phase from a normalized closed-surface Chern number.",
+      "hint": "Is the phase of an arbitrary loop quantised?",
+      "explanation": "A quantised Chern number comes from a closed surface; a loop phase depends on the path.",
       "misconceptions": {
         "Yes; every geometric phase is an integer.": "Distinguish loop phase from a normalized closed-surface Chern number."
       },

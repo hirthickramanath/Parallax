@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a recurrence alone automatically prove convergence everywhere?",
+      "prompt": "You derive a recurrence for the coefficients of a power-series solution. Does the recurrence alone show the series converges everywhere?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for linear ODEs, since the recurrence gives convergence on the entire line without further checks",
+        "Yes, for linear ODEs",
+        "Yes: the recurrence gives convergence on the entire line",
+        "No: you must check analyticity of the coefficients and find the convergence radius"
       ],
-      "answer": "No",
-      "explanation": "Analytic hypotheses and the convergence domain matter.",
+      "answer": "No: you must check analyticity of the coefficients and find the convergence radius",
+      "explanation": "The radius of convergence is set by the nearest singularity of the ODE's coefficients, e.g. 1/(1 + x²) limits the radius to 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the singularities of the coefficient functions."
     },
     {
       "id": "concept-2",
-      "prompt": "Does an integer difference of roots always force a logarithm?",
+      "prompt": "The Frobenius indicial roots differ by an integer. What happens to the second solution?",
       "options": [
-        "No",
-        "Yes"
+        "It never exists",
+        "It is always a power series",
+        "It is always a power series, with no logarithm term, whatever the difference of the roots",
+        "It may contain a logarithm, but not always"
       ],
-      "answer": "No",
-      "explanation": "A logarithmic second solution can arise but is not universal.",
+      "answer": "It may contain a logarithm, but not always",
+      "explanation": "For integer differences the second solution can include a log term. Whether it does depends on the recurrence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check if the recurrence breaks down at that step."
     },
     {
       "id": "concept-3",
-      "prompt": "May a singular mathematical solution be rejected without checking physical boundary conditions?",
+      "prompt": "A mathematical solution of a physical ODE is singular at r = 0. May you discard it without checking the physical conditions?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, always, since singular solutions are mathematical artefacts and are never physically meaningful",
+        "Only if it is complex",
+        "Yes: singular solutions are never physical",
+        "No: the physical domain and boundary conditions decide"
       ],
-      "answer": "No",
-      "explanation": "The admitted domain and physical conditions decide.",
+      "answer": "No: the physical domain and boundary conditions decide",
+      "explanation": "A singular mode may be unphysical inside a region that includes r = 0, but acceptable for a region excluding the origin (e.g. outside a sphere).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the physical domain include the singular point?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What defines a regular singular point in the stated normalized form?",
-      "answer": "xP and x²Q are analytic at zero",
+      "prompt": "For y″ + P(x)y′ + Q(x)y = 0, when is x = 0 a regular singular point?",
+      "answer": "When xP(x) and x²Q(x) are analytic at 0",
       "options": [
-        "xP and x²Q are analytic at zero",
-        "Every coefficient must itself be finite there"
+        "When P and Q are finite at 0, since finiteness of the coefficients is what defines a regular singular point",
+        "When xP(x) and x²Q(x) are analytic at 0",
+        "When P and Q are zero",
+        "When y(0) = 0"
       ],
-      "explanation": "The weighted analyticity condition is weaker than an ordinary point.",
+      "explanation": "Weaker singularities than analytic coefficients are allowed (poles of order ≤ 1 and ≤ 2). Frobenius' method works there.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of Euler's equation x²y″ + axy′ + by = 0."
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Do two indicial roots alone always guarantee two independent ordinary power-series solutions through the singular point?",
-      "answer": "No; root differences, logarithms and the domain must be examined.",
+      "prompt": "The indicial equation gives two roots. Are two independent power series solutions at the singular point guaranteed?",
+      "answer": "No: root differences and logarithm terms must be examined",
       "options": [
-        "Yes; the recurrence and singular point never add conditions.",
-        "No; root differences, logarithms and the domain must be examined."
+        "No: root differences and logarithm terms must be examined",
+        "Yes, always, since the two indicial roots give two independent power series at the singular point",
+        "No: only one root exists",
+        "Yes: the two roots give two series"
       ],
-      "explanation": "Frobenius structure includes more than the root list.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "If the roots differ by an integer, the second solution may need a logarithm, and the series for one root may fail.",
+      "hint": "Recall the case of equal roots.",
       "misconceptions": {
         "Yes; the recurrence and singular point never add conditions.": "Frobenius structure includes more than the root list."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does trace preservation alone ensure physical density matrices?",
+      "prompt": "A proposed master equation preserves the trace of ρ. Does that alone guarantee a physical evolution?",
       "options": [
-        "Yes",
-        "No"
+        "No: positivity, including with ancillas (complete positivity), is also needed",
+        "Yes: preserving the trace means the probabilities still sum to one, which is all that a physical state requires",
+        "Yes: always",
+        "Yes: any trace-preserving map"
       ],
-      "answer": "No",
-      "explanation": "Positivity and ancillary consistency also matter.",
+      "answer": "No: positivity, including with ancillas (complete positivity), is also needed",
+      "explanation": "The Lindblad form guarantees complete positivity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Could ρ get a negative eigenvalue?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are dephasing and amplitude damping identical?",
+      "prompt": "Dephasing and amplitude damping both decay the coherence of a qubit. Do they act identically?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: both conserve energy",
+        "No: amplitude damping changes populations, but pure dephasing does not",
+        "Yes: identical",
+        "Yes: both relax populations"
       ],
-      "answer": "No",
-      "explanation": "They affect populations differently.",
+      "answer": "No: amplitude damping changes populations, but pure dephasing does not",
+      "explanation": "Amplitude damping drives |1⟩ → |0⟩, and dephasing only randomises phase.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does dephasing change the diagonal elements?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a Markovian bath approximation apply to every environment?",
+      "prompt": "Does the Markovian (memoryless) bath approximation hold for every environment?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: any environment can be treated as memoryless once the system-bath coupling is taken to be weak enough",
+        "Yes: for any coupling",
+        "Yes: all baths",
+        "No: memory effects and timescale assumptions can fail"
       ],
-      "answer": "No",
-      "explanation": "Memory/time-scale assumptions can fail.",
+      "answer": "No: memory effects and timescale assumptions can fail",
+      "explanation": "It needs the bath correlation time to be short.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the bath correlation time with the system timescale."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state bath approximations?",
-      "answer": "They delimit the valid reduced-dynamics regime.",
+      "prompt": "Why state the bath approximations (Born, Markov, secular) used to derive a master equation?",
+      "answer": "They delimit the regime where the reduced dynamics is valid",
       "options": [
-        "They delimit the valid reduced-dynamics regime.",
-        "Valid evolution including arbitrary untouched ancillas."
+        "The equation is exact",
+        "They never matter",
+        "They are decorative",
+        "They delimit the regime where the reduced dynamics is valid"
       ],
-      "explanation": "They delimit the valid reduced-dynamics regime.",
+      "explanation": "Outside the regime, the equation can fail.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does each approximation require of the bath?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Must population relaxation and coherence decay have identical rates?",
-      "answer": "No; even simple amplitude damping gives different rates.",
+      "prompt": "In amplitude damping, must population relaxation and coherence decay have the same rate?",
+      "answer": "No: coherences decay at half the population rate, even in the simplest case",
       "options": [
-        "Yes; all density-matrix entries decay identically.",
-        "No; even simple amplitude damping gives different rates."
+        "Yes: both obey a single relaxation rate γ, because the density matrix elements decay together in this channel",
+        "Yes: both at γ",
+        "Yes: always equal",
+        "No: coherences decay at half the population rate, even in the simplest case"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The generator acts differently on populations and coherences.",
+      "hint": "Recall the relation T₂ = 2T₁ for pure relaxation and what extra dephasing adds.",
+      "explanation": "ρ₁₁ decays at γ, while ρ₀₁ decays at γ/2.",
       "misconceptions": {
         "Yes; all density-matrix entries decay identically.": "The generator acts differently on populations and coherences."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does mean background subtraction remove photon noise already present?",
+      "prompt": "You subtract the mean sky background from a star's aperture counts. Is the photon noise from the sky gone?",
       "options": [
-        "Yes",
-        "No"
+        "No: sky has no noise",
+        "No: subtraction removes the mean but the random fluctuation (variance) stays",
+        "Yes: subtracting the mean sky level removes the noise from the sky, leaving only the source",
+        "Yes: noise is part of the mean"
       ],
-      "answer": "No",
-      "explanation": "The fluctuating arrivals remain in the data uncertainty.",
+      "answer": "No: subtraction removes the mean but the random fluctuation (variance) stays",
+      "explanation": "Poisson counts fluctuate about their mean by √N, and subtracting adds variance.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the noise of N counts?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are resolving power and absolute wavelength accuracy identical?",
+      "prompt": "A spectrograph has resolving power R = 50,000. Does that mean its wavelength calibration is accurate to 1/50,000?",
       "options": [
-        "No",
-        "Yes"
+        "No: resolution is a width scale, while accuracy concerns calibration bias",
+        "No: resolution is not defined",
+        "Yes: a resolving power of 50,000 means wavelengths are known to one part in 50,000",
+        "Yes: for calibration lamps"
       ],
-      "answer": "No",
-      "explanation": "Resolution describes a width scale; accuracy concerns calibration bias.",
+      "answer": "No: resolution is a width scale, while accuracy concerns calibration bias",
+      "explanation": "A spectrum can be sharp yet shifted by a calibration error.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is sharpness the same as correctness?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a negative net flux be assigned an ordinary real logarithmic magnitude?",
+      "prompt": "After background subtraction a faint source has a negative net flux. Can you compute its magnitude as −2.5 log F?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: take the absolute value of the net flux, then compute −2.5 log of that value as the magnitude",
+        "No: the logarithm of a negative number is undefined; use a likelihood or an upper limit",
+        "Yes: the magnitude is negative",
+        "Yes: set it to zero"
       ],
-      "answer": "No",
-      "explanation": "A likelihood or upper-limit treatment is needed.",
+      "answer": "No: the logarithm of a negative number is undefined; use a likelihood or an upper limit",
+      "explanation": "Noise can make a measured flux negative. Report the flux or a limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is log of a negative number?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why retain continuum-placement uncertainty in equivalent width?",
-      "answer": "The normalization directly affects the line integral",
+      "prompt": "Why include continuum-placement uncertainty when reporting an equivalent width?",
+      "answer": "The continuum normalisation enters directly into the integrated line strength",
       "options": [
-        "The normalization directly affects the line integral",
-        "Only the central line pixel matters"
+        "The continuum normalisation enters directly into the integrated line strength",
+        "Only the central pixel of the line matters, so the continuum level adds no uncertainty",
+        "The continuum is exact",
+        "It affects only line wavelength"
       ],
-      "explanation": "The continuum enters every normalized spectral sample.",
+      "explanation": "W = ∫(1 − F/F_c) dλ, so a continuum error scales the result.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where does F_c appear in the formula?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does subtracting the expected sky background eliminate the sky shot noise?",
-      "answer": "No; subtraction removes its mean but leaves variance.",
+      "prompt": "You subtract the expected sky level exactly. Does it also remove the sky shot noise?",
+      "answer": "No: subtraction removes its mean but leaves variance",
       "options": [
-        "Yes; an exactly known mean removes all counting fluctuations.",
-        "No; subtraction removes its mean but leaves variance."
+        "No: the sky has no counts",
+        "No: subtraction removes its mean but leaves variance",
+        "Yes: a known mean has no noise",
+        "Yes: it removes counting fluctuations"
       ],
-      "explanation": "The random counts still contribute to measurement uncertainty.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Random arrivals still fluctuate even if the mean is known.",
+      "hint": "What is the variance of Poisson counts?",
       "misconceptions": {
         "Yes; an exactly known mean removes all counting fluctuations.": "The random counts still contribute to measurement uncertainty."
       },

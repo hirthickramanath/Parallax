@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is burst duration alone a perfect progenitor classifier?",
+      "prompt": "Short GRBs (<2 s) are linked to mergers and long ones to collapsars. Is duration a perfect classifier?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: with the redshift known, the duration separates the two classes cleanly",
+        "No: the distributions overlap and observational conditions blur the split",
+        "Yes: at 2 seconds exactly",
+        "Yes: duration is perfect"
       ],
-      "answer": "No",
-      "explanation": "Channels and observational conditions overlap.",
+      "answer": "No: the distributions overlap and observational conditions blur the split",
+      "explanation": "Some long bursts come from mergers and some short ones from collapsars.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is there a sharp boundary?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is isotropic-equivalent energy necessarily the actual total emitted energy?",
+      "prompt": "A GRB has an isotropic-equivalent energy of 10⁵⁴ erg. Is this the real emitted energy?",
       "options": [
-        "No",
-        "Yes"
+        "No: beaming concentrates the light into a narrow cone, so the true energy is higher than the isotropic value",
+        "Not necessarily: beaming means the true energy is lower",
+        "Yes: always exact",
+        "Yes: if the redshift is known"
       ],
-      "answer": "No",
-      "explanation": "Emission can be beamed.",
+      "answer": "Not necessarily: beaming means the true energy is lower",
+      "explanation": "E_true = E_iso × (1 − cos θ_j), and jets have θ_j of a few degrees.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What if the emission is a narrow jet?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a variability size estimate depend on motion and redshift?",
+      "prompt": "A burst varies in 1 ms. The source radius is estimated as R ≲ cΔt = 300 km. What affects this estimate?",
       "options": [
-        "No",
-        "Yes"
+        "Only the distance to the source, since the variability time is unaffected by its motion or redshift",
+        "Relativistic motion and redshift transform arrival times, relaxing the bound",
+        "Nothing",
+        "Only luminosity"
       ],
-      "answer": "Yes",
-      "explanation": "Arrival times transform.",
+      "answer": "Relativistic motion and redshift transform arrival times, relaxing the bound",
+      "explanation": "With bulk Lorentz factor Γ, R ≲ Γ²cΔt/(1 + z).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does a Lorentz factor change the timescale?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify transient classifications?",
-      "answer": "Duration, environment and emission geometry can be degenerate.",
+      "prompt": "Why must a transient classification be qualified?",
+      "answer": "Duration, environment and emission geometry can be degenerate",
       "options": [
-        "Duration, environment and emission geometry can be degenerate.",
-        "Accretion onto a compact object."
+        "All transients are alike, so every class share the same duration, environment and emission geometry",
+        "Only colour matters",
+        "Classes are exact",
+        "Duration, environment and emission geometry can be degenerate"
       ],
-      "explanation": "Duration, environment and emission geometry can be degenerate.",
+      "explanation": "Different progenitors can produce similar light curves.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can two different explosions look alike?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Is the variability light-crossing estimate always an exact physical radius?",
-      "answer": "No; it is an assumption-dependent scale or upper bound.",
+      "prompt": "A light-crossing argument gives R ≲ cΔt from variability. Is it an exact physical radius?",
+      "answer": "No: it depends on assumptions and is a scale or an upper bound",
       "options": [
-        "Yes; every variability feature directly images one spherical radius.",
-        "No; it is an assumption-dependent scale or upper bound."
+        "No: it depends on assumptions and is a scale or an upper bound",
+        "No: it is a lower bound on the radius, because the source cannot be smaller than the light-crossing scale",
+        "Yes: it images the source",
+        "Yes: a sphere"
       ],
-      "explanation": "Emission geometry and the source clock can change the interpretation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Emission geometry and the source clock affect the interpretation.",
+      "hint": "Do all parts of the source have to vary together?",
       "misconceptions": {
         "Yes; every variability feature directly images one spherical radius.": "Emission geometry and the source clock can change the interpretation."
       },

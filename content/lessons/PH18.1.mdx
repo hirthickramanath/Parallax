@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a high citation count prove a calculation correct?",
+      "prompt": "A paper has thousands of citations. Does that prove its calculation is correct?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: wrong papers are never cited",
+        "Yes: citations are peer verification",
+        "No: citations show attention and use",
+        "No: citations are always meaningless"
       ],
-      "answer": "No",
-      "explanation": "Method and evidence still require checking.",
+      "answer": "No: citations show attention and use",
+      "explanation": "Citations show attention and use, and the method and evidence still need checking. Retracted and wrong papers can be heavily cited.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Why might someone cite a wrong paper?"
     },
     {
       "id": "concept-2",
-      "prompt": "Should inaccessible source details be invented?",
+      "prompt": "You cannot open a source's full text. Should you fill in its missing details from guesswork?",
       "options": [
-        "No",
-        "Yes"
+        "No: just delete the source from the bibliography silently, so that the unverified details never appear",
+        "Yes: plausible details are fine",
+        "No: state the gap openly and mark what you could not verify",
+        "Yes: if you remember the topic"
       ],
-      "answer": "No",
-      "explanation": "The verification gap must remain explicit.",
+      "answer": "No: state the gap openly and mark what you could not verify",
+      "explanation": "An honest verification gap is better than an invented detail.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does an honest researcher do about unseen text?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can one residual ignore arbitrary search trials?",
+      "prompt": "A paper reports a 3σ excess after scanning many mass windows. Can you quote the local significance as the discovery significance?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: scanning many windows increases the significance, so the local value understates the discovery",
+        "No: the look-elsewhere effect means the real search design must be accounted for",
+        "Yes: the residual is all you need",
+        "No: significance has no meaning"
       ],
-      "answer": "No",
-      "explanation": "A discovery calculation needs the actual search design.",
+      "answer": "No: the look-elsewhere effect means the real search design must be accounted for",
+      "explanation": "Global significance is lower than local.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many places did they look?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must honest verification state?",
-      "answer": "Which checks were and were not performed.",
+      "prompt": "After a literature check, what should an honest verification note include?",
+      "answer": "Which checks were performed and which were not",
       "options": [
-        "Which checks were and were not performed.",
-        "Exact source/version and claim-evidence links."
+        "Only the successful checks",
+        "Only the conclusion",
+        "Which checks were performed and which were not",
+        "A statement that everything is verified"
       ],
-      "explanation": "Which checks were and were not performed.",
+      "explanation": "A reader should be able to see the coverage.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What would the reader need to trust the note?"
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "May likelihood factors from papers sharing the same underlying data always be multiplied as independent evidence?",
-      "answer": "No; dependence can double-count information.",
+      "prompt": "Two papers each report a likelihood from overlapping datasets. May you multiply the likelihoods as independent evidence?",
+      "answer": "No: shared data cause double-counting, so dependence must be modelled",
       "options": [
-        "Yes; different publication titles ensure independence.",
-        "No; dependence can double-count information."
+        "Yes: papers with different titles and authors give independent evidence, so their likelihoods multiply",
+        "No: shared data cause double-counting, so dependence must be modelled",
+        "Yes: multiplication is always valid",
+        "No: likelihoods cannot be combined"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Inspect data and method provenance.",
+      "hint": "Do the papers use the same events?",
+      "explanation": "Combining correlated analyses requires their covariance.",
       "misconceptions": {
         "Yes; different publication titles ensure independence.": "Inspect data and method provenance."
       },

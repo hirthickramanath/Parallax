@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does any redshift directly equal v/c at all values?",
+      "prompt": "A quasar has z = 2. Can you say it recedes at v = 2c using z = v/c?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: z is exactly v/c, so the quasar is receding at twice the speed of light, which relativity allows for distant galaxies",
+        "Yes: faster than light is allowed",
+        "No: z = v/c is only a low-speed approximation, and cosmological redshift is not an ordinary Doppler shift",
+        "Yes: v = cz"
       ],
-      "answer": "No",
-      "explanation": "The relation depends on regime and physical model.",
+      "answer": "No: z = v/c is only a low-speed approximation, and cosmological redshift is not an ordinary Doppler shift",
+      "explanation": "The relativistic relation is 1 + z = √((1+β)/(1−β)), and cosmological redshift is from spacetime expansion.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is v/c allowed to exceed 1?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must exact independent shift factors combine by simple addition of z?",
+      "prompt": "Light from a galaxy has a cosmological redshift z₁ = 1 and is then Doppler-shifted by a cluster motion with z₂ = 0.1. What is the total redshift?",
       "options": [
-        "No",
-        "Yes"
+        "z = 1.2, because (1+z) factors multiply: 2 × 1.1 = 2.2",
+        "z = 1.1, because the Doppler redshift of 0.1 adds to the cosmological one: 1 + 0.1",
+        "z = 1.1",
+        "z = 1.0"
       ],
-      "answer": "No",
-      "explanation": "Their 1+z factors multiply under appropriate composition.",
+      "answer": "z = 1.2, because (1+z) factors multiply: 2 × 1.1 = 2.2",
+      "explanation": "1 + z_tot = (1 + z₁)(1 + z₂) = 2.2, so z_tot = 1.2, not 1.1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply the factors 1 + z."
     },
     {
       "id": "concept-3",
-      "prompt": "Does one ambiguous line guarantee the correct rest identification?",
+      "prompt": "Only one emission line is seen in a faint galaxy. Does it guarantee the correct redshift?",
       "options": [
-        "Yes",
-        "No"
+        "No: it could be a different line at another redshift; more features and checks are needed",
+        "Yes: if it is strong",
+        "Yes: one line fixes z",
+        "Yes: lines never confuse"
       ],
-      "answer": "No",
-      "explanation": "Multiple consistent features and calibration checks are needed.",
+      "answer": "No: it could be a different line at another redshift; more features and checks are needed",
+      "explanation": "A single line at 3727 Å could be [OII] at z = 0 or Lyα at z ≈ 2.07.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Could another line fall at the same observed wavelength?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why keep cosmological and radial SR interpretations separate?",
-      "answer": "They describe different spacetime and propagation models",
+      "prompt": "Why should the cosmological and special-relativistic readings of a redshift be kept separate?",
+      "answer": "They assume different models of spacetime and light propagation",
       "options": [
-        "They describe different spacetime and propagation models",
-        "The measured wavelength ratio changes definition"
+        "Cosmological redshift is not a measurable shift, so only the Doppler reading is physical",
+        "The wavelength ratio is defined differently",
+        "They give the same distance",
+        "They assume different models of spacetime and light propagation"
       ],
-      "explanation": "The definition is common; the inferred cause and distance relation differ.",
+      "explanation": "The definition of z is the same, but the interpretation and the distance relation differ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the source moving through space or space expanding?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can z≈v/c be used without qualification for a galaxy with cosmological redshift z=3?",
-      "answer": "No; the small-speed local approximation is outside its regime.",
+      "prompt": "A galaxy has z = 3. Can you apply z ≈ v/c without qualification to find its speed?",
+      "answer": "No: the low-speed local approximation is outside its regime",
       "options": [
-        "Yes; redshift is always a unique global special-relativistic speed.",
-        "No; the small-speed local approximation is outside its regime."
+        "Yes: z is a special-relativistic speed, so z ≈ v/c gives the speed of the galaxy directly",
+        "Yes: always",
+        "Yes: v = 3c",
+        "No: the low-speed local approximation is outside its regime"
       ],
-      "explanation": "Cosmological wavelength stretching and local Doppler conventions must be distinguished.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "At z = 3 the approximation is far outside its range, and the shift is cosmological.",
+      "hint": "What does z ≈ v/c assume about v?",
       "misconceptions": {
         "Yes; redshift is always a unique global special-relativistic speed.": "Cosmological wavelength stretching and local Doppler conventions must be distinguished."
       },

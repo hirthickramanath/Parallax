@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can a pointwise limit of continuous functions be discontinuous?",
+      "prompt": "fₙ(x) = xⁿ on [0, 1] are continuous. What is the pointwise limit?",
       "options": [
-        "No",
-        "Yes"
+        "The continuous function 0, because xⁿ tends to 0 at every point of [0, 1], including x = 1",
+        "The continuous function 1",
+        "It has no limit",
+        "0 for x < 1 and 1 at x = 1, which is discontinuous"
       ],
-      "answer": "Yes",
-      "explanation": "xⁿ on [0,1] is an example.",
+      "answer": "0 for x < 1 and 1 at x = 1, which is discontinuous",
+      "explanation": "Each fₙ is continuous, yet the limit jumps at x = 1. Pointwise limits of continuous functions need not be continuous; uniform limits are.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate xⁿ for x = 0.5 and for x = 1."
     },
     {
       "id": "concept-2",
-      "prompt": "Does uniform function convergence alone justify passing derivatives to the limit?",
+      "prompt": "fₙ(x) = sin(nx)/n → 0 uniformly. What about the derivatives at 0?",
       "options": [
-        "No",
-        "Yes"
+        "fₙ′(0) tends to ∞ with n, so the derivatives of the sequence blow up although the functions tend to 0 uniformly",
+        "They do not exist",
+        "They tend to 0",
+        "fₙ′(0) = 1 for every n, but the limit's derivative is 0, so differentiation does not pass to the limit"
       ],
-      "answer": "No",
-      "explanation": "sin(nx)/n converges uniformly but its derivative at zero stays 1.",
+      "answer": "fₙ′(0) = 1 for every n, but the limit's derivative is 0, so differentiation does not pass to the limit",
+      "explanation": "fₙ′(x) = cos(nx), so fₙ′(0) = 1, while the limit function is 0 with derivative 0. Uniform convergence of the functions is not enough for derivatives.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Differentiate sin(nx)/n."
     },
     {
       "id": "concept-3",
-      "prompt": "Does the finite-interval integral bound automatically apply on an infinite domain?",
+      "prompt": "On [a, b], uniform convergence gives |∫(fₙ − f)| ≤ (b − a) sup|fₙ − f|. Does this bound carry over to an infinite domain?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is the same on an infinite domain, since the supremum of the difference still controls the integral",
+        "No: the length factor (b − a) is no longer finite",
+        "Yes, since sup|fₙ − f| is small",
+        "Yes, with a smaller constant"
       ],
-      "answer": "No",
-      "explanation": "The interval-length factor is no longer finite.",
+      "answer": "No: the length factor (b − a) is no longer finite",
+      "explanation": "Uniform convergence on ℝ can still leave integrals of ∫|fₙ − f| infinite, e.g. a bump of height 1/n and width n².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "The bound contains the interval length."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What makes the M-test uniform?",
-      "answer": "One summable majorant bounds each term at every domain point",
+      "prompt": "What makes the Weierstrass M-test a test for uniform convergence?",
+      "answer": "A single summable bound Mₙ holds for every point of the domain",
       "options": [
-        "One summable majorant bounds each term at every domain point",
-        "Convergence at one selected input"
+        "A single summable bound Mₙ holds for every point of the domain",
+        "Convergence of the series at one chosen point, which is enough to give uniform convergence everywhere",
+        "A bound that depends on x",
+        "Convergence at each point separately"
       ],
-      "explanation": "The tail estimate is independent of location.",
+      "explanation": "If |fₙ(x)| ≤ Mₙ for all x with ΣMₙ < ∞, the tails are small independent of x.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What must be independent of the location x?"
     },
     {
       "id": "analysis-transfer-1",
@@ -114,14 +126,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "In uniform convergence, may the chosen tail index N depend on the point x?",
-      "answer": "No; one N must control every x in the domain.",
+      "prompt": "In the definition of uniform convergence, how does the index N relate to the point x?",
+      "answer": "One N works for all x in the domain at once",
       "options": [
-        "Yes; choosing a different N for each x is uniform convergence.",
-        "No; one N must control every x in the domain."
+        "N is not needed",
+        "N depends on x only at the endpoints",
+        "N may depend on x",
+        "One N works for all x in the domain at once"
       ],
-      "explanation": "Exchanging the order of the domain and tail quantifiers changes the condition.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "Uniform: ∀ε ∃N ∀x. Pointwise: ∀x ∀ε ∃N, where N may depend on x. Swapping the quantifiers changes the meaning.",
+      "hint": "Look at the order of the quantifiers.",
       "misconceptions": {
         "Yes; choosing a different N for each x is uniform convergence.": "Exchanging the order of the domain and tail quantifiers changes the condition."
       },

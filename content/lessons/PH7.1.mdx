@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are heat and work independent stored state functions?",
+      "prompt": "Heat Q and work W are both energy changes in a process. Are they stored state functions of a system?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: heat is stored",
+        "Yes: work is stored",
+        "No: they describe transfer along a path; U is the state function",
+        "Yes: both are state functions"
       ],
-      "answer": "No",
-      "explanation": "They describe transfer paths; U is the state function.",
+      "answer": "No: they describe transfer along a path; U is the state function",
+      "explanation": "Q and W depend on the path, while ΔU = Q − W depends only on the end states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the system 'contain' a certain amount of heat?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does the minimum-potential rule depend on controlled variables?",
+      "prompt": "At equilibrium, which thermodynamic potential is minimised?",
       "options": [
-        "Yes",
-        "No"
+        "Always F, since the Helmholtz free energy is the potential that is minimised in every case",
+        "Always U",
+        "Always G",
+        "It depends on which variables are controlled: F at fixed T,V and G at fixed T,p"
       ],
-      "answer": "Yes",
-      "explanation": "Different reservoir constraints select F or G.",
+      "answer": "It depends on which variables are controlled: F at fixed T,V and G at fixed T,p",
+      "explanation": "Different reservoir constraints select different potentials.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the system exchange with its surroundings?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a subsystem entropy decrease without violating the second law?",
+      "prompt": "The entropy of a refrigerated subsystem falls. Does this violate the second law?",
       "options": [
-        "No",
-        "Yes"
+        "No: entropy is exported",
+        "Yes: entropy never decreases",
+        "Yes: for every subsystem",
+        "Yes: the second law forbids it"
       ],
-      "answer": "Yes",
-      "explanation": "Entropy can be exported; the total balance matters.",
+      "answer": "No: entropy is exported",
+      "explanation": "Entropy is exported, and only the total (system + surroundings) cannot decrease. ΔS_total ≥ 0 is the requirement.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Include the entropy of the surroundings."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What potential suits fixed T,p?",
-      "answer": "Gibbs free energy G.",
+      "prompt": "Which thermodynamic potential is minimised at fixed temperature and pressure?",
+      "answer": "Gibbs free energy G",
       "options": [
-        "Gibbs free energy G.",
-        "Work done by the system is positive."
+        "Enthalpy H",
+        "Gibbs free energy G",
+        "Helmholtz free energy F",
+        "Internal energy U"
       ],
-      "explanation": "Gibbs free energy G.",
+      "explanation": "dG = −S dT + V dp ≤ 0 at fixed T and p.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which potential has natural variables T and p?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can a temperature-only term omitted from a Helmholtz volume difference be ignored when computing entropy?",
-      "answer": "No; its temperature derivative can contribute.",
+      "prompt": "A term depending only on temperature is dropped from a Helmholtz energy while computing a volume difference. Can you ignore it when computing the entropy?",
+      "answer": "No: its temperature derivative contributes to the entropy S = −∂F/∂T",
       "options": [
-        "Yes; every omitted term is irrelevant to every thermodynamic derivative.",
-        "No; its temperature derivative can contribute."
+        "Yes: it is irrelevant",
+        "Yes: for volume only",
+        "No: its temperature derivative contributes to the entropy S = −∂F/∂T",
+        "Yes: it cancels"
       ],
-      "explanation": "A controlled volume derivative and a temperature derivative are different operations.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A volume-independent term cancels in volume differences but not in ∂F/∂T.",
+      "hint": "What is S in terms of F?",
       "misconceptions": {
         "Yes; every omitted term is irrelevant to every thermodynamic derivative.": "A controlled volume derivative and a temperature derivative are different operations."
       },

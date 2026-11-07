@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are simultaneity and simultaneous photon arrival identical?",
+      "prompt": "Two lightning strikes are simultaneous in a frame. Are they necessarily seen by an observer as simultaneous flashes arriving together?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: simultaneous events produce flashes that always reach any observer at the same instant, wherever they stand",
+        "Yes: light is instantaneous",
+        "No: signal travel times differ, so simultaneity of events is not simultaneity of arrival",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "Signal travel time and event coordinates are different.",
+      "answer": "No: signal travel times differ, so simultaneity of events is not simultaneity of arrival",
+      "explanation": "Event coordinates are defined by synchronised clocks, not by what the observer sees.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does light take time to arrive?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a Lorentz boost preserve the Minkowski interval?",
+      "prompt": "A Lorentz boost mixes t and x. Does it preserve the interval s² = c²t² − x²?",
       "options": [
-        "Yes",
-        "No"
+        "No: it changes s²",
+        "Yes: it mixes time and space but keeps the quadratic form",
+        "No: it scales s²",
+        "No: it rotates s²"
       ],
-      "answer": "Yes",
-      "explanation": "It mixes time and space while preserving the stated quadratic form.",
+      "answer": "Yes: it mixes time and space but keeps the quadratic form",
+      "explanation": "Lorentz transformations are defined as those preserving the interval.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute c²t′² − x′² after the boost and compare it with c²t² − x²."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a spacelike event ordering differ between inertial frames?",
+      "prompt": "Two events are spacelike separated. Can their time order differ between inertial frames?",
       "options": [
-        "No",
-        "Yes"
+        "No: spacelike separated events keep the same time order in all frames, since the order is fixed by the invariant interval",
+        "Yes: but no causal influence can connect them",
+        "No: for any events",
+        "No: time order is absolute"
       ],
-      "answer": "Yes",
-      "explanation": "It does not represent a reversible causal influence.",
+      "answer": "Yes: but no causal influence can connect them",
+      "explanation": "Only timelike or lightlike separations have a frame-independent order.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a signal travel between spacelike events?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is essential in a moving-rod length comparison?",
-      "answer": "Endpoint events simultaneous in the measuring frame",
+      "prompt": "What is essential when you compare the length of a moving rod?",
+      "answer": "The two endpoint events must be simultaneous in the measuring frame",
       "options": [
-        "Endpoint events simultaneous in the measuring frame",
-        "Using any two endpoint events regardless of time"
+        "Take the endpoint positions at any two times, since the rod's length is a fixed property of the rod itself in any frame",
+        "Use the rod's rest frame only",
+        "Use endpoints at different times",
+        "The two endpoint events must be simultaneous in the measuring frame"
       ],
-      "explanation": "Length contraction includes a simultaneity condition.",
+      "explanation": "Length contraction depends on the simultaneity condition.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "When do you record the positions of both ends?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Can time dilation alone determine every comparison between spatially separated events?",
-      "answer": "No; simultaneity and event coordinates must be specified.",
+      "prompt": "Can time dilation alone determine every comparison between two spatially separated events?",
+      "answer": "No: simultaneity and the full event coordinates must be specified",
       "options": [
-        "Yes; multiply every time interval by γ regardless of separation.",
-        "No; simultaneity and event coordinates must be specified."
+        "Yes: always",
+        "Yes: multiplying the proper time interval by γ gives the other frame's interval for any pair of events",
+        "No: simultaneity and the full event coordinates must be specified",
+        "Yes: for any separation"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the full Lorentz transformation.",
+      "hint": "Which term appears when Δx ≠ 0?",
+      "explanation": "Δt′ = γ(Δt − vΔx/c²), which includes the term vΔx/c².",
       "misconceptions": {
         "Yes; multiply every time interval by γ regardless of separation.": "Use the full Lorentz transformation."
       },

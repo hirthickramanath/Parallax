@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is position alone always enough state for a second-order equation?",
+      "prompt": "For the second-order ODE x″ = −x, is the position x(t) alone enough to determine the future?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: velocity follows from position, so knowing x(0) alone fixes the whole later motion",
+        "No: you also need the velocity as an independent initial condition",
+        "Yes: position is enough",
+        "No: you need the acceleration"
       ],
-      "answer": "No",
-      "explanation": "Velocity supplies independent initial data.",
+      "answer": "No: you also need the velocity as an independent initial condition",
+      "explanation": "A second-order ODE needs two initial values. The state is (x, v), a point in the phase plane.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the integration constants."
     },
     {
       "id": "concept-2",
-      "prompt": "Is every point on one nullcline an equilibrium?",
+      "prompt": "In a planar system, a point lies on the x-nullcline (dx/dt = 0). Is it necessarily an equilibrium?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: nullcline points are equilibria",
+        "No: dy/dt must also be zero",
+        "Yes, if it is on the axis",
+        "No: equilibria do not exist"
       ],
-      "answer": "No",
-      "explanation": "Every component derivative must vanish.",
+      "answer": "No: dy/dt must also be zero",
+      "explanation": "Equilibria lie where both nullclines meet.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What do both derivatives need to be?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can crossing in a projected plot prove uniqueness failure?",
+      "prompt": "Two trajectories appear to cross in a plot of x against y. Does this violate uniqueness of solutions?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, always, since two crossing trajectories in a plot must start from the same state and so coincide",
+        "Yes, always",
+        "Not necessarily: the plot may hide state variables or time dependence",
+        "No: trajectories can never cross"
       ],
-      "answer": "No",
-      "explanation": "Hidden state coordinates or forcing time can differ.",
+      "answer": "Not necessarily: the plot may hide state variables or time dependence",
+      "explanation": "In a full state space trajectories cannot cross, but in a projection or for non-autonomous systems they can.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the plot the complete state?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why test step refinement for an apparently spiralling conservative orbit?",
-      "answer": "The spiral may be numerical energy drift",
+      "prompt": "A simulation of a conservative oscillator shows an outward spiral. Why test smaller time steps?",
+      "answer": "The spiral may be numerical energy drift, not physics",
       "options": [
-        "The spiral may be numerical energy drift",
-        "Every spiral automatically proves a physical drag force"
+        "Every spiral shows a drag force, so a smaller time step would not change the outward growth",
+        "The spiral may be numerical energy drift, not physics",
+        "Every spiral shows a drag force",
+        "A smaller step always creates a spiral"
       ],
-      "explanation": "Discretization can change the qualitative portrait.",
+      "explanation": "Methods like explicit Euler add energy at each step. If the spiral changes with the step size, it is an artefact.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the spiral shrink as the step shrinks?"
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does one negative and one positive real eigenvalue describe an asymptotically stable planar equilibrium?",
-      "answer": "No; it is a saddle with an unstable direction.",
+      "prompt": "A planar linear system has eigenvalues +2 and −3. What is the equilibrium?",
+      "answer": "A saddle: unstable, with one attracting direction",
       "options": [
-        "Yes; any negative eigenvalue stabilizes every direction.",
-        "No; it is a saddle with an unstable direction."
+        "A stable node, since the eigenvalues have different signs and both directions are attracting",
+        "A saddle: unstable, with one attracting direction",
+        "A centre",
+        "Asymptotically stable"
       ],
-      "explanation": "All perturbation directions matter for stability.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The +2 direction grows. Stability requires all eigenvalues to have negative real parts.",
+      "hint": "Look at the sign of each eigenvalue.",
       "misconceptions": {
         "Yes; any negative eigenvalue stabilizes every direction.": "All perturbation directions matter for stability."
       },

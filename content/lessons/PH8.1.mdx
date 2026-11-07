@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is |ψ(x)|² itself a point probability in a continuous coordinate?",
+      "prompt": "The wavefunction squared |ψ(x)|² has a value of 0.5 m⁻¹ at some point. Is 0.5 the probability of finding the particle exactly there?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a probability",
+        "Yes: exactly there",
+        "Yes: in a continuous coordinate",
+        "No: it is a density"
       ],
-      "answer": "No",
-      "explanation": "It is a density integrated over a region.",
+      "answer": "No: it is a density",
+      "explanation": "It is a density; probabilities come from integrating over a region. The value has units of inverse length.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What are the units of |ψ|²?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can relative phase change interference?",
+      "prompt": "Two paths interfere. Does changing their relative phase alter the pattern?",
       "options": [
-        "Yes",
-        "No"
+        "No: only magnitudes matter, since the intensities simply add for each path alone",
+        "No: only intensities add",
+        "No: phase is irrelevant",
+        "Yes: cross terms depend on the relative phase"
       ],
-      "answer": "Yes",
-      "explanation": "Cross terms depend on relative phase.",
+      "answer": "Yes: cross terms depend on the relative phase",
+      "explanation": "|ψ₁ + ψ₂|² = |ψ₁|² + |ψ₂|² + 2Re(ψ₁*ψ₂).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the cross term."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a global phase alter all position probabilities?",
+      "prompt": "You multiply a wavefunction by a global phase e^(iα). What happens to the position probabilities?",
       "options": [
-        "Yes",
-        "No"
+        "They change by cos α, since the phase factor rotates the amplitude at every point",
+        "They are shifted",
+        "They vanish",
+        "Nothing: the unit modulus cancels in |ψ|²"
       ],
-      "answer": "No",
-      "explanation": "Its unit modulus cancels in |ψ|².",
+      "answer": "Nothing: the unit modulus cancels in |ψ|²",
+      "explanation": "A global phase has unit modulus: |e^(iα)ψ|² = |ψ|², so all position probabilities are unchanged.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Work out |e^(iα)|² and see how the position probability density is affected."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What qualifies uncertainty statements?",
-      "answer": "Observable definitions, state variances and operator-domain assumptions.",
+      "prompt": "What must be specified when stating an uncertainty relation such as ΔxΔp ≥ ħ/2?",
+      "answer": "The observable definitions, state variances and operator-domain assumptions",
       "options": [
-        "Observable definitions, state variances and operator-domain assumptions.",
-        "Probability amplitudes in a chosen representation."
+        "Nothing beyond the numbers, since the inequality holds for any pair of observables as stated",
+        "The potential",
+        "The mass",
+        "The observable definitions, state variances and operator-domain assumptions"
       ],
-      "explanation": "Observable definitions, state variances and operator-domain assumptions.",
+      "explanation": "Δ is a standard deviation in a given state, not a measurement disturbance.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does Δx denote precisely?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does a matter-wave wavelength by itself specify an exact classical particle trajectory?",
-      "answer": "No; the quantum state and measurement context matter.",
+      "prompt": "A particle has a well-defined de Broglie wavelength. Does this define its exact classical trajectory?",
+      "answer": "No: the quantum state and the measurement context matter",
       "options": [
-        "Yes; wavelength determines every position at all times.",
-        "No; the quantum state and measurement context matter."
+        "No: the quantum state and the measurement context matter",
+        "Yes: λ gives the trajectory, since a definite wavelength fixes the position at all times",
+        "Yes: wavelength fixes all positions",
+        "Yes: at all times"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Does a plane wave have a definite position?",
       "explanation": "Momentum scale is not a full trajectory.",
       "misconceptions": {
         "Yes; wavelength determines every position at all times.": "Momentum scale is not a full trajectory."

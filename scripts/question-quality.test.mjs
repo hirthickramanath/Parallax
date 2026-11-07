@@ -25,8 +25,9 @@ test("every rewritten conceptual question has 3-4 distinct options, a hint and a
     assert.ok(q.options.includes(q.answer), where);
     assert.ok(q.hint && q.hint.length > 20, `${where} needs a hint`);
     assert.ok(
-      q.explanation.length > q.answer.length * 0.6 &&
-        q.explanation !== q.answer,
+      q.explanation.length >= 30 &&
+        q.explanation !== q.answer &&
+        !q.answer.includes(q.explanation),
       `${where} explanation should say why`,
     );
     assert.ok(

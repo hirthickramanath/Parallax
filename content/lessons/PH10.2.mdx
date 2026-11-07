@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are Dirac spinor components ordinary vector components?",
+      "prompt": "Are the four components of a Dirac spinor the components of an ordinary 4-vector?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they transform like (ct, x, y, z), so the four components of a Dirac spinor form an ordinary 4-vector",
+        "Yes: they are a 4-vector",
+        "No: they transform in a spinor representation of the Lorentz group",
+        "Yes: they are scalars"
       ],
-      "answer": "No",
-      "explanation": "They transform in a spinor representation.",
+      "answer": "No: they transform in a spinor representation of the Lorentz group",
+      "explanation": "A rotation by 2π changes the sign of a spinor.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a 2π rotation do to a spinor?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does free H² reproduce relativistic dispersion?",
+      "prompt": "For a free particle, squaring the Dirac Hamiltonian gives H² = ?",
       "options": [
-        "Yes",
-        "No"
+        "p²/2m, the non-relativistic kinetic energy, since squaring H removes the rest-mass term entirely",
+        "pc + mc²",
+        "p²c² + m²c⁴, the relativistic dispersion relation",
+        "mc²"
       ],
-      "answer": "Yes",
+      "answer": "p²c² + m²c⁴, the relativistic dispersion relation",
       "explanation": "The anticommutation algebra cancels cross terms.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use {α_i, α_j} = 2δ_ij."
     },
     {
       "id": "concept-3",
-      "prompt": "Is g=2 universally exact for every composite particle?",
+      "prompt": "The Dirac equation predicts g = 2 for the electron. Is g = 2 exact for every particle, including composite ones?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: g = 2 is universal, so it holds exactly for every particle, including the proton and the neutron",
+        "Yes: for all particles",
+        "Yes: for protons too",
+        "No: radiative corrections and internal structure change it"
       ],
-      "answer": "No",
-      "explanation": "Radiative and internal structure effects matter.",
+      "answer": "No: radiative corrections and internal structure change it",
+      "explanation": "The proton has g ≈ 5.59, and the electron has g ≈ 2.0023.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the proton's g?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state metric/sign conventions?",
-      "answer": "Gamma algebra and coupling formulas depend on them.",
+      "prompt": "Why should a Dirac-equation result state the metric and sign conventions?",
+      "answer": "The gamma-matrix algebra and coupling formulas depend on them",
       "options": [
-        "Gamma algebra and coupling formulas depend on them.",
-        "The Clifford anticommutation relations."
+        "The gamma-matrix algebra and coupling formulas depend on them",
+        "Conventions are unique, so the gamma-matrix algebra is the same in every textbook",
+        "Only units matter",
+        "They don't matter"
       ],
-      "explanation": "Gamma algebra and coupling formulas depend on them.",
+      "explanation": "With (+,−,−,−) versus (−,+,+,+), the γ matrices and the signs of terms change.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is (γ⁰)² in each signature?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does plotting relativistic energy alone specify the full Dirac spinor state?",
-      "answer": "No; spinor components and preparation are additional.",
+      "prompt": "Plotting the relativistic energy E(p) for a Dirac particle. Does it specify the full spinor state?",
+      "answer": "No: spinor components and the preparation are additional",
       "options": [
-        "Yes; one scalar curve determines every spin degree of freedom.",
-        "No; spinor components and preparation are additional."
+        "Yes: the curve E(p) fixes the whole state, since the energy determines the spinor components",
+        "No: spinor components and the preparation are additional",
+        "Yes: one curve gives all",
+        "Yes: including spin"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "How many spinor solutions share a given E?",
       "explanation": "Energy eigenvalues do not uniquely fix all states.",
       "misconceptions": {
         "Yes; one scalar curve determines every spin degree of freedom.": "Energy eigenvalues do not uniquely fix all states."

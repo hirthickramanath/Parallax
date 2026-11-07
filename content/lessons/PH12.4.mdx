@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the harmonic potential include a finite dissociation limit?",
+      "prompt": "A molecule is modelled as a harmonic oscillator. Does the model predict a finite dissociation energy?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: at the zero-point energy",
+        "No: the harmonic potential rises forever, so the molecule never dissociates in this model",
+        "Yes: at large amplitude",
+        "Yes: it dissociates at ħω"
       ],
-      "answer": "No",
-      "explanation": "It is a local quadratic approximation.",
+      "answer": "No: the harmonic potential rises forever, so the molecule never dissociates in this model",
+      "explanation": "It is a local quadratic approximation near the minimum. A Morse potential has a finite D_e.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a parabola do at large r?"
     },
     {
       "id": "concept-2",
-      "prompt": "Do IR and Raman have identical selection mechanisms?",
+      "prompt": "A vibration is IR-inactive but Raman-active. What does this show about the two selection mechanisms?",
       "options": [
-        "No",
-        "Yes"
+        "They are identical",
+        "Raman needs a permanent dipole",
+        "IR needs a changing dipole",
+        "Both need a dipole"
       ],
-      "answer": "No",
-      "explanation": "Dipole and polarizability response differ.",
+      "answer": "IR needs a changing dipole",
+      "explanation": "IR needs a changing dipole; Raman needs a changing polarisability. N₂ is IR-inactive but Raman-active.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which property changes in each?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can isotopic mass alter rotational/vibrational scales?",
+      "prompt": "You replace ¹H by ²H in a diatomic molecule. Do the rotational and vibrational scales change?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the reduced mass and moment of inertia change",
+        "No: nuclei don't matter",
+        "No: only the intensity changes",
+        "No: the electronic structure is the same, so the spectrum is the same"
       ],
-      "answer": "Yes",
-      "explanation": "It changes inertia and reduced mass.",
+      "answer": "Yes: the reduced mass and moment of inertia change",
+      "explanation": "Isotope substitution leaves the electronic potential unchanged but changes the reduced mass: B ∝ 1/μ and ω ∝ 1/√μ, so rotational and vibrational spacings shift.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does μ change from H to D?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why retain isotopologue labels?",
-      "answer": "Mass and nuclear statistics affect spectral assignments.",
+      "prompt": "Why label spectra by isotopologue?",
+      "answer": "Mass and nuclear statistics affect the spectral assignments",
       "options": [
-        "Mass and nuclear statistics affect spectral assignments.",
-        "Moment of inertia and J(J+1)."
+        "Isotopologues are identical",
+        "Isotopes do not matter",
+        "Only colour changes",
+        "Mass and nuclear statistics affect the spectral assignments"
       ],
-      "explanation": "Mass and nuclear statistics affect spectral assignments.",
+      "explanation": "Line positions and the even/odd intensity alternation change.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does H₂ vs HD vs D₂ look like?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Do predicted energy differences alone determine observed line intensities?",
-      "answer": "No; populations and transition strengths are needed.",
+      "prompt": "You compute the energy difference between two molecular levels. Does it alone give the observed line intensity?",
+      "answer": "No: populations and transition strengths are needed",
       "options": [
-        "Yes; every energy difference appears equally bright.",
-        "No; populations and transition strengths are needed."
+        "Yes: the largest energy gap gives the brightest line, since intensity is proportional to the energy difference",
+        "No: populations and transition strengths are needed",
+        "Yes: intensity is energy",
+        "Yes: every difference is equally bright"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Selection and excitation matter.",
+      "hint": "Is every allowed gap equally populated?",
+      "explanation": "Selection rules and excitation conditions determine the intensity.",
       "misconceptions": {
         "Yes; every energy difference appears equally bright.": "Selection and excitation matter."
       },

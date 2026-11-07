@@ -13,7 +13,7 @@
       "id": "force",
       "prompt": "Why can different masses have the same vacuum acceleration?",
       "options": [
-        "Their weights are equal",
+        "Their weights are equal, so the masses fall at the same rate regardless of their inertia",
         "Weight and inertia scale together",
         "Gravity vanishes"
       ],
@@ -25,27 +25,33 @@
     },
     {
       "id": "drag",
-      "prompt": "Does a simulation prove the equivalence of gravitational and inertial mass?",
+      "prompt": "A computer simulation of falling bodies assumes gravitational and inertial mass are equal. Does it prove that they are equal?",
       "options": [
-        "Yes",
-        "No"
+        "No: the two masses are defined to be different",
+        "Yes: any model of falling bodies proves it",
+        "Yes: the simulation shows equal acceleration",
+        "No: the simulation builds in the equivalence; only experiments can test it"
       ],
-      "answer": "No",
-      "explanation": "The simulation assumes that equivalence; experimental observations test it.",
+      "answer": "No: the simulation builds in the equivalence; only experiments can test it",
+      "explanation": "A simulation returns what its assumptions imply. The equivalence of gravitational and inertial mass is tested by experiments such as torsion-balance (Eötvös-type) measurements.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask what the code assumed before it ran, and what experiments would test."
     },
     {
       "id": "height",
-      "prompt": "Can constant g model a complete planetary orbit?",
+      "prompt": "Can a constant g = 9.8 m/s² describe a whole planetary orbit?",
       "options": [
-        "Yes, always",
-        "No, the inverse-square variation matters"
+        "No: orbits have no gravity, because a body in orbit is weightless and moves under no force at all",
+        "Yes, if the orbit is circular",
+        "No: gravity varies as 1/r² over orbital distances",
+        "Yes: g is a universal constant"
       ],
-      "answer": "No, the inverse-square variation matters",
-      "explanation": "The constant-g approximation is local.",
+      "answer": "No: gravity varies as 1/r² over orbital distances",
+      "explanation": "g = GM/r² is nearly constant only over small height changes near the surface. Orbital radii change by large factors.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare g at the surface with g at the Moon's distance."
     },
     {
       "id": "distance",
@@ -73,16 +79,19 @@
     },
     {
       "id": "core",
-      "prompt": "For equal linear drag b and unequal masses, why can accelerations differ?",
+      "prompt": "Two balls with the same linear drag coefficient b but different masses are dropped. Why do their accelerations differ?",
       "options": [
-        "Drag acceleration is −bv/m",
-        "Gravity changes with the bob colour"
+        "The drag acceleration −bv/m depends on mass, while g does not",
+        "Drag does not act on heavier balls",
+        "Heavier balls have less inertia",
+        "Gravity differs between the balls"
       ],
-      "answer": "Drag acceleration is −bv/m",
-      "explanation": "The mass does not cancel in the drag term.",
+      "answer": "The drag acceleration −bv/m depends on mass, while g does not",
+      "explanation": "With F = mg − bv, a = g − bv/m. The mass cancels in the gravity term but not in the drag term.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Divide the force equation by m and see what is left."
     },
     {
       "id": "warmup-net-force",
@@ -154,7 +163,7 @@
       "id": "transfer-reasoning",
       "prompt": "At the highest point of a vertical throw in vacuum near Earth, which statement is correct?",
       "options": [
-        "Velocity and acceleration are both zero",
+        "Velocity and acceleration are both zero at the top, because the object is momentarily in equilibrium there",
         "Velocity is zero but acceleration remains downward",
         "Acceleration points upward"
       ],

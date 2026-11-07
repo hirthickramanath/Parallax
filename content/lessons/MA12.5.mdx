@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must every continuous-spectrum value have a normalizable eigenvector?",
+      "prompt": "A self-adjoint operator has a continuous spectrum (e.g. position operator). Does each spectral value have a normalisable eigenvector?",
       "options": [
-        "Yes",
-        "No"
+        "No: it needs generalised, non-normalisable eigenstates",
+        "Yes, every spectral value has a normalisable eigenvector, as for the eigenstates of a discrete operator",
+        "Yes for a discrete part only",
+        "Yes for bounded operators"
       ],
-      "answer": "No",
-      "explanation": "Generalized eigenstates may be needed.",
+      "answer": "No: it needs generalised, non-normalisable eigenstates",
+      "explanation": "δ(x − x₀) is not in L² but acts as an eigenfunction of x.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is δ(x − x₀) square-integrable?"
     },
     {
       "id": "concept-2",
       "prompt": "Does every self-adjoint operator have only discrete eigenvalues?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: self-adjoint operators always have a complete set of normalisable eigenvectors with discrete eigenvalues",
+        "Yes, if the domain is bounded, since self-adjoint operators on a bounded domain have only eigenvalues",
+        "No: continuous spectral components can occur",
+        "Yes if bounded"
       ],
-      "answer": "No",
-      "explanation": "Continuous spectral components can occur.",
+      "answer": "No: continuous spectral components can occur",
+      "explanation": "The free-particle Hamiltonian has a purely continuous spectrum [0, ∞).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the free particle."
     },
     {
       "id": "concept-3",
-      "prompt": "Must continuum spectral numerics be checked under refinement?",
+      "prompt": "You discretise an operator with a continuous spectrum on a grid. What check is essential?",
       "options": [
-        "No",
-        "Yes"
+        "Reduce the grid",
+        "Use only one resolution",
+        "None: the spectrum is exact",
+        "Refine the grid and cutoff, since truncation can create artefacts"
       ],
-      "answer": "Yes",
-      "explanation": "Truncation can create artifacts.",
+      "answer": "Refine the grid and cutoff, since truncation can create artefacts",
+      "explanation": "A box of size L turns the continuum into a dense discrete spectrum and shifts thresholds.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the picture change with L?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What restricts f(A) for an unbounded f?",
-      "answer": "The functional-calculus domain condition.",
+      "prompt": "When defining f(A) for an unbounded function f of a self-adjoint operator A, what restricts the result?",
+      "answer": "The domain condition from the functional calculus (∫|f|²dμ < ∞)",
       "options": [
-        "The functional-calculus domain condition.",
-        "A projection-valued spectral measure for self-adjoint operators."
+        "The dimension",
+        "The boundedness of f only, since any bounded function of A is defined on the whole Hilbert space",
+        "Nothing",
+        "The domain condition from the functional calculus (∫|f|²dμ < ∞)"
       ],
-      "explanation": "The functional-calculus domain condition.",
+      "explanation": "f(A) is defined on vectors for which ∫|f(λ)|² d⟨ψ,E_λψ⟩ is finite.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is f(A)ψ defined for every ψ?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Must every self-adjoint operator have a complete countable basis of ordinary eigenvectors?",
-      "answer": "No; continuous spectrum can occur.",
+      "prompt": "Does every self-adjoint operator have a countable orthonormal basis of eigenvectors?",
+      "answer": "No: continuous spectrum requires projection-valued measures",
       "options": [
-        "Yes; all spectral resolutions are finite-matrix sums.",
-        "No; continuous spectrum can occur."
+        "Yes if unbounded",
+        "Yes: a self-adjoint operator always has a countable orthonormal basis of its eigenvectors",
+        "No: continuous spectrum requires projection-valued measures",
+        "Yes on L²"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The spectral theorem also uses projection-valued measures.",
+      "hint": "Think of the position operator.",
+      "explanation": "The spectral theorem is stated through projection-valued measures to cover both discrete and continuous parts.",
       "misconceptions": {
         "Yes; all spectral resolutions are finite-matrix sums.": "The spectral theorem also uses projection-valued measures."
       },

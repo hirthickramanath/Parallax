@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does fringe visibility depend only on coherence?",
+      "prompt": "Two coherent beams interfere but the fringes have low contrast. Is coherence the only possible cause?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: always, since coherence alone controls the visibility of the fringes in any experiment",
+        "No: unequal beam intensities also reduce the visibility",
+        "Yes: only the wavelength",
+        "Yes: only coherence"
       ],
-      "answer": "No",
-      "explanation": "Unequal intensities can also reduce it.",
+      "answer": "No: unequal beam intensities also reduce the visibility",
+      "explanation": "V = 2√(I₁I₂)/(I₁ + I₂) for perfectly coherent light.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute V for I₂ = 0.1 I₁."
     },
     {
       "id": "concept-2",
-      "prompt": "Is the sinc value at zero undefined physically?",
+      "prompt": "The single-slit pattern is ∝ sinc²(β) with sinc(β) = sin β/β. Is the intensity at β = 0 undefined?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is zero, since sin β = 0 at β = 0",
+        "Yes: infinite",
+        "No: the limit is 1",
+        "Yes: it is 0/0"
       ],
-      "answer": "No",
-      "explanation": "Its removable limit is one.",
+      "answer": "No: the limit is 1",
+      "explanation": "The limit is 1 (removable), giving the central maximum. lim β→0 sin β/β = 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use sin β ≈ β for small β."
     },
     {
       "id": "concept-3",
-      "prompt": "Does Fraunhofer theory apply at every observation distance?",
+      "prompt": "Does Fraunhofer (far-field) diffraction theory apply at any distance from the aperture?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: if the slit is narrow, since a narrow aperture puts the screen in the far field",
+        "Yes: any distance",
+        "Yes: at every screen distance",
+        "No: in the near field the phase terms matter"
       ],
-      "answer": "No",
-      "explanation": "Near-field phase terms may matter.",
+      "answer": "No: in the near field the phase terms matter",
+      "explanation": "Fraunhofer needs a Fresnel number a²/λL ≪ 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare a²/(λL) with 1."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify resolution criteria?",
-      "answer": "Object, noise, aperture and detection assumptions matter.",
+      "prompt": "Why should a resolution criterion such as Rayleigh's be stated with its assumptions?",
+      "answer": "The object, noise, aperture and detection assumptions matter",
       "options": [
-        "Object, noise, aperture and detection assumptions matter.",
-        "Complex amplitudes before taking squared magnitude."
+        "It is universal, since the criterion gives the physical limit for every object and detector",
+        "The object, noise, aperture and detection assumptions matter",
+        "It is the physical limit",
+        "It is exact"
       ],
-      "explanation": "Object, noise, aperture and detection assumptions matter.",
+      "explanation": "With a good signal-to-noise ratio and prior knowledge, closer sources can be resolved.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is Rayleigh's criterion a law?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Does finite slit width affect only fringe spacing and leave the overall envelope unchanged?",
-      "answer": "No; it creates a diffraction envelope that can suppress fringes.",
+      "prompt": "Each slit in a double slit has finite width. How does this affect the pattern?",
+      "answer": "It adds a single-slit diffraction envelope that can suppress fringes",
       "options": [
-        "Yes; slit width and slit separation have identical roles.",
-        "No; it creates a diffraction envelope that can suppress fringes."
+        "It adds a single-slit diffraction envelope that can suppress fringes",
+        "It has no effect",
+        "It changes only the fringe spacing",
+        "Widths act like separation"
       ],
-      "explanation": "Single-aperture diffraction and two-source phase interference are distinct factors.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "I ∝ cos²(δ/2) sinc²(β). The separation sets the fringes and the width sets the envelope.",
+      "hint": "Which parameter sets the envelope?",
       "misconceptions": {
         "Yes; slit width and slit separation have identical roles.": "Single-aperture diffraction and two-source phase interference are distinct factors."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a surviving nucleus become more likely to decay just because it is older in this model?",
-      "answer": "No",
+      "prompt": "In the constant-rate decay model, a nucleus has survived for a long time. How does its chance of decaying in the next second compare with a new nucleus?",
+      "answer": "It is the same, since the process has no memory",
       "options": [
-        "Yes",
-        "No"
+        "It is the same, since the process has no memory",
+        "It is zero until it reaches the half-life, since a nucleus is stable for the first part of its life",
+        "It is lower, because it has survived so far",
+        "It is higher, because it is older"
       ],
-      "explanation": "The constant-rate model is memoryless.",
+      "explanation": "A constant decay constant λ means the probability per unit time does not depend on age. Exponential decay is memoryless.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Remember that λ does not depend on how long the nucleus has existed."
     },
     {
       "id": "c2",
-      "prompt": "Does positive reaction Q guarantee an immediate reaction?",
-      "answer": "No",
+      "prompt": "A nuclear reaction has a positive Q value, so energy is released. Does it necessarily proceed quickly?",
+      "answer": "No: barriers and selection rules can make the rate very small",
       "options": [
-        "No",
-        "Yes"
+        "No: barriers and selection rules can make the rate very small",
+        "Yes, because positive Q means the reaction is spontaneous and so proceeds quickly in every case",
+        "Yes, but only if the temperature is high",
+        "No, because Q only gives the final mass"
       ],
-      "explanation": "Barriers and transition rules can suppress the rate.",
+      "explanation": "Q tells you the energy balance, not the rate. Coulomb barriers, quantum tunnelling and transition rules control how fast it happens.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Energy being available is not the same as it being easy to reach."
     },
     {
       "id": "c3",
-      "prompt": "Is a detector count automatically the true decay count?",
-      "answer": "No",
+      "prompt": "A counter records 1,000 counts per minute from a source. Is this necessarily the number of decays per minute?",
+      "answer": "No: efficiency, background and dead time all affect the count",
       "options": [
-        "Yes",
-        "No"
+        "Yes, since counters record every decay, so the rate shown is the number of decays per minute",
+        "No: efficiency, background and dead time all affect the count",
+        "Yes, if the source is far away",
+        "No, but only because of background radiation"
       ],
-      "explanation": "Efficiency, background and dead time matter.",
+      "explanation": "Detectors see only a fraction of the decays (geometry and efficiency), add background, and miss events during dead time.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List the ways a detector can miss or add events."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A detector has substantial dead time. May observed counts always be converted to true decays by dividing by a constant efficiency alone?",
-      "answer": "No; rate-dependent losses need a dead-time model.",
+      "prompt": "A Geiger counter has substantial dead time. How should its high-rate readings be corrected?",
+      "answer": "With a dead-time model, since losses grow as the rate rises",
       "options": [
-        "Yes; dead time never changes the count-rate relation.",
-        "No; rate-dependent losses need a dead-time model."
+        "By subtracting the background alone",
+        "No correction is needed",
+        "With a dead-time model, since losses grow as the rate rises",
+        "By dividing by a fixed efficiency alone"
       ],
-      "explanation": "A detector cannot record a second event while it is recovering.",
+      "explanation": "The counter cannot register a new event while recovering, so the fraction lost depends on the true rate. A constant efficiency does not capture that.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Ask whether the fraction of events missed is the same at low and high rates.",
       "misconceptions": {
         "Yes; dead time never changes the count-rate relation.": "A detector cannot record a second event while it is recovering."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does a half-life specify the exact decay time of each individual nucleus?",
-      "answer": "No; it characterizes a survival distribution.",
+      "prompt": "A nuclide has a half-life of 10 minutes. Which statement about one particular nucleus is correct?",
+      "answer": "Its decay time is random, with 50% chance of decay within 10 minutes",
       "options": [
-        "Yes; every nucleus decays at the half-life.",
-        "No; it characterizes a survival distribution."
+        "It cannot decay before 10 minutes",
+        "Its decay time is random, with 50% chance of decay within 10 minutes",
+        "It is certain to survive for 10 minutes",
+        "It decays exactly at 10 minutes"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The law describes probabilities and ensemble counts.",
+      "hint": "Half-life is a statement about a population.",
+      "explanation": "The half-life describes the survival distribution of a large sample. Any single nucleus can decay at any time, with probability ½ of doing so within one half-life.",
       "misconceptions": {
         "Yes; every nucleus decays at the half-life.": "The law describes probabilities and ensemble counts."
       },

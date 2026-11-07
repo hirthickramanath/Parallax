@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are peaks of Bν and Bλ obtained by substituting ν=c/λ without a Jacobian?",
+      "prompt": "You find the peak frequency of B_ν and compute c/ν. Do you get the peak wavelength of B_λ?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: always, since the peak wavelength is the speed of light divided by the peak frequency",
+        "Yes: λ = c/ν",
+        "No: spectral densities transform with their integration measure",
+        "Yes: at all temperatures"
       ],
-      "answer": "No",
-      "explanation": "Spectral densities transform with their integration measure.",
+      "answer": "No: spectral densities transform with their integration measure",
+      "explanation": "Spectral densities transform with their integration measure (a Jacobian). B_λ = B_ν c/λ². The peaks differ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does dν = (c/λ²)dλ do?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does Rayleigh–Jeans apply at arbitrarily high frequency?",
+      "prompt": "The Rayleigh–Jeans law is used at very high frequency. What goes wrong?",
       "options": [
-        "No",
-        "Yes"
+        "It is exact there, since the Rayleigh–Jeans law is derived for high frequencies",
+        "Nothing",
+        "Its derivation needs hν ≪ k_BT, and it diverges at high ν",
+        "It underestimates the intensity"
       ],
-      "answer": "No",
-      "explanation": "Its derivation requires hν≪k_BT.",
+      "answer": "Its derivation needs hν ≪ k_BT, and it diverges at high ν",
+      "explanation": "The Planck law cuts off exponentially.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the photon energy hν with the thermal energy kT at high frequency."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a Debye continuum represent unlimited lattice modes?",
+      "prompt": "Does the Debye model allow unlimited vibrational modes in a solid?",
       "options": [
-        "Yes",
-        "No"
+        "No: the cutoff frequency enforces a total of 3N modes",
+        "Yes: all frequencies are allowed, so the model contains an unlimited number of modes",
+        "Yes: unlimited",
+        "Yes: a continuum has infinite modes"
       ],
-      "answer": "No",
-      "explanation": "Its cutoff enforces a total 3N mode count.",
+      "answer": "No: the cutoff frequency enforces a total of 3N modes",
+      "explanation": "ω_D is chosen so that ∫g(ω)dω = 3N.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many degrees of freedom do N atoms have?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What distinguishes per-frequency and per-wavelength spectra?",
-      "answer": "Their Jacobian and integration measure.",
+      "prompt": "What distinguishes a spectrum per unit frequency from one per unit wavelength?",
+      "answer": "Their Jacobian and integration measure",
       "options": [
-        "Their Jacobian and integration measure.",
-        "Photon number is not a conserved constraint."
+        "Nothing: they are the same spectrum written in different variables",
+        "Only the units",
+        "Only the temperature",
+        "Their Jacobian and integration measure"
       ],
-      "explanation": "Their Jacobian and integration measure.",
+      "explanation": "B_ν dν = B_λ dλ, so densities differ by factors of c/λ².",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do the integrals over each give the same total?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can the low-temperature Debye cubic law be extrapolated unchanged to arbitrarily high temperature?",
-      "answer": "No; the finite vibrational mode count changes the high-temperature behavior.",
+      "prompt": "The Debye low-temperature law C ∝ T³ is extrapolated to very high temperature. Is that valid?",
+      "answer": "No: the finite number of modes changes the behaviour (C → 3Nk)",
       "options": [
-        "Yes; an asymptotic low-temperature expression is exact at all temperatures.",
-        "No; the finite vibrational mode count changes the high-temperature behavior."
+        "Yes: C ∝ T³ at all T",
+        "Yes: C grows without limit",
+        "Yes: it is exact",
+        "No: the finite number of modes changes the behaviour (C → 3Nk)"
       ],
-      "explanation": "The approximation has a temperature regime.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "At high T the Dulong–Petit limit applies.",
+      "hint": "Does heat capacity grow forever?",
       "misconceptions": {
         "Yes; an asymptotic low-temperature expression is exact at all temperatures.": "The approximation has a temperature regime."
       },

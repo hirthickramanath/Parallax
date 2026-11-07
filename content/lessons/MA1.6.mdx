@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does continuity imply differentiability?",
+      "prompt": "f(x) = |x| is continuous at 0. Is it differentiable there?",
       "options": [
-        "Yes",
-        "No"
+        "No: |x| is not continuous at 0, because the left and right limits there take different values",
+        "Yes, with derivative 0",
+        "No: continuity does not imply differentiability (it has a corner)",
+        "Yes: all continuous functions are differentiable"
       ],
-      "answer": "No",
-      "explanation": "The absolute-value cusp is a counterexample.",
+      "answer": "No: continuity does not imply differentiability (it has a corner)",
+      "explanation": "Differentiability implies continuity, but not conversely. The left and right slopes at 0 are −1 and +1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the slopes on either side of 0."
     },
     {
       "id": "concept-2",
-      "prompt": "Must the mean-value point c be unique?",
+      "prompt": "The mean value theorem promises a point c with f′(c) = (f(b) − f(a))/(b − a). Is c unique?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, always the midpoint of the interval, since the mean value theorem gives the point c = (a + b)/2",
+        "No such point exists",
+        "Yes: there is exactly one such point",
+        "Not necessarily: it gives existence only, and there may be several"
       ],
-      "answer": "No",
-      "explanation": "The theorem guarantees existence only.",
+      "answer": "Not necessarily: it gives existence only, and there may be several",
+      "explanation": "For f(x) = x³ − x on [−1, 1], f′(c) = 0 holds at c = ±1/√3. The theorem does not claim uniqueness.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try a cubic with several points of the right slope."
     },
     {
       "id": "concept-3",
-      "prompt": "Does strict increase require a strictly positive derivative at every point?",
+      "prompt": "f(x) = x³ is strictly increasing. What is its derivative at x = 0?",
       "options": [
-        "Yes",
-        "No"
+        "Positive, since a strictly increasing function must have a derivative greater than zero at every point",
+        "Undefined",
+        "Negative",
+        "Zero, so strict increase does not need f′ > 0 everywhere"
       ],
-      "answer": "No",
-      "explanation": "x³ is strictly increasing but has derivative zero at zero.",
+      "answer": "Zero, so strict increase does not need f′ > 0 everywhere",
+      "explanation": "f′(x) = 3x², which is 0 at x = 0 but positive elsewhere. The derivative vanishes only at an isolated point and f still increases.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute 3x² at x = 0."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What justifies a Taylor error bound?",
-      "answer": "A bound on the required derivative over the interval",
+      "prompt": "What is needed to bound the error of a Taylor polynomial of degree n on an interval?",
+      "answer": "A bound on the (n+1)-th derivative over that interval",
       "options": [
-        "A bound on the required derivative over the interval",
-        "Only a matching value at the expansion point"
+        "Only that f is continuous",
+        "A bound on the (n+1)-th derivative over that interval",
+        "Only f(a) at the expansion point",
+        "Only the first derivative"
       ],
-      "explanation": "The remainder depends on an intermediate derivative, not just the initial coefficients.",
+      "explanation": "The Lagrange remainder is f^(n+1)(ξ)(x − a)^(n+1)/(n+1)!, so bounding |f^(n+1)| gives a bound on the error.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Look at the form of the remainder."
     },
     {
       "id": "analysis-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "Why cannot Rolle’s theorem force a zero derivative for |x| on [−1,1]?",
-      "answer": "It is not differentiable at the interior point 0.",
+      "prompt": "Why does Rolle's theorem not apply to f(x) = |x| on [−1, 1], even though f(−1) = f(1)?",
+      "answer": "f is not differentiable at the interior point 0",
       "options": [
-        "Equal endpoint values are never relevant to Rolle’s theorem.",
-        "It is not differentiable at the interior point 0."
+        "f is not differentiable at the interior point 0",
+        "f is not continuous",
+        "The interval is too short",
+        "Equal endpoint values are irrelevant"
       ],
-      "explanation": "All theorem hypotheses must hold, not just the endpoint equality.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "Rolle's theorem needs continuity on [a, b], differentiability on (a, b), and f(a) = f(b). The corner at 0 breaks the second condition.",
+      "hint": "Check each hypothesis separately.",
       "misconceptions": {
         "Equal endpoint values are never relevant to Rolle’s theorem.": "All theorem hypotheses must hold, not just the endpoint equality."
       },

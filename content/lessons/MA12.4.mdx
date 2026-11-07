@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is δ² automatically defined in ordinary distribution theory?",
+      "prompt": "Is δ(x)² a well-defined distribution in ordinary distribution theory?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it equals δ(2x)",
+        "Yes: it equals δ(x)",
+        "No: products of singular distributions need extra structure",
+        "Yes: it equals 0"
       ],
-      "answer": "No",
-      "explanation": "Products of singular distributions need extra structure.",
+      "answer": "No: products of singular distributions need extra structure",
+      "explanation": "Smoothing δ by a width ε gives δ_ε² ~ 1/ε → ∞, with no limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Square a narrow Gaussian of width ε."
     },
     {
       "id": "concept-2",
-      "prompt": "Does delta scaling use |a|?",
+      "prompt": "How does δ(ax) relate to δ(x) for a ≠ 0?",
       "options": [
-        "Yes",
-        "No"
+        "δ(ax) = δ(x)",
+        "δ(ax) = δ(x)/a, since the scaling factor enters without the modulus for negative a",
+        "δ(ax) = δ(x)/|a|",
+        "δ(ax) = aδ(x)"
       ],
-      "answer": "Yes",
-      "explanation": "The integration Jacobian has an absolute value.",
+      "answer": "δ(ax) = δ(x)/|a|",
+      "explanation": "Substituting u = ax in ∫δ(ax)φ(x)dx gives φ(0)/|a|, with the absolute value from the Jacobian.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Change variables and keep the sign of the Jacobian."
     },
     {
       "id": "concept-3",
-      "prompt": "Does weak convergence require uniform convergence of kernels?",
+      "prompt": "Do narrow bumps δ_ε converge to the delta distribution uniformly as functions?",
       "options": [
-        "Yes",
-        "No"
+        "No: they do not converge at all, because the peaks grow without limit as the width shrinks",
+        "Yes: pointwise",
+        "No: they converge weakly, by their action on test functions",
+        "Yes: uniformly"
       ],
-      "answer": "No",
-      "explanation": "It concerns actions on test functions.",
+      "answer": "No: they converge weakly, by their action on test functions",
+      "explanation": "The peak height grows as ε → 0 while ∫δ_εφ → φ(0).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the maximum of the bumps."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What do narrow normalized kernels approach?",
-      "answer": "Delta in a specified weak/distributional sense.",
+      "prompt": "Narrow normalised kernels such as Gaussians of width ε → 0 approach what?",
+      "answer": "The delta distribution, in the weak (distributional) sense",
       "options": [
-        "Delta in a specified weak/distributional sense.",
-        "Evaluates a test function at its support point."
+        "Zero everywhere, since the area of the kernel shrinks to nothing as the width goes to zero",
+        "A bounded function",
+        "A step function",
+        "The delta distribution, in the weak (distributional) sense"
       ],
-      "explanation": "Delta in a specified weak/distributional sense.",
+      "explanation": "∫K_ε(x)φ(x)dx → φ(0) for every test function φ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Test with a smooth φ."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is the delta distribution an ordinary function with a finite value at zero and zero elsewhere?",
-      "answer": "No; it is defined through its action on test functions.",
+      "prompt": "Can the Dirac delta be defined as an ordinary function equal to a finite value at 0 and zero elsewhere?",
+      "answer": "No: it is defined through its action on test functions",
       "options": [
-        "Yes; choosing a tall enough finite spike defines it exactly.",
-        "No; it is defined through its action on test functions."
+        "Yes: take a tall finite spike at the origin and let its height go to infinity at zero",
+        "Yes: take a tall finite spike",
+        "Yes: δ(0) = ∞ defines it exactly",
+        "No: it is defined through its action on test functions"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Normalized approximants are not the distribution itself.",
+      "hint": "What is the integral of a function that is zero almost everywhere?",
+      "explanation": "An ordinary function that vanishes except at one point has zero integral. δ is a distribution with ∫δφ = φ(0).",
       "misconceptions": {
         "Yes; choosing a tall enough finite spike defines it exactly.": "Normalized approximants are not the distribution itself."
       },

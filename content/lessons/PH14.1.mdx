@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a lattice alone the complete crystal basis?",
+      "prompt": "You know a crystal's Bravais lattice. Have you specified the full crystal structure?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the basis is always a single atom at each lattice point, so the lattice type fixes the whole structure",
+        "Yes: the lattice fixes every atomic position",
+        "No: you still need the basis, which says which atoms sit where in each unit cell",
+        "No: but only for metals"
       ],
-      "answer": "No",
-      "explanation": "Constituent positions inside the cell also matter.",
+      "answer": "No: you still need the basis, which says which atoms sit where in each unit cell",
+      "explanation": "Crystal = lattice + basis. Diamond and FCC share a lattice but not a structure.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Diamond and FCC have the same lattice."
     },
     {
       "id": "concept-2",
-      "prompt": "Can structure factors suppress otherwise permitted peaks?",
+      "prompt": "The Bragg condition is satisfied for a reflection, yet no peak is seen. What could explain this?",
       "options": [
-        "Yes",
-        "No"
+        "Bragg's law is wrong for that reflection",
+        "Only odd reflections can ever occur",
+        "The lattice parameter is zero",
+        "The structure factor vanishes because the basis atoms scatter out of phase"
       ],
-      "answer": "Yes",
-      "explanation": "Basis amplitudes interfere.",
+      "answer": "The structure factor vanishes because the basis atoms scatter out of phase",
+      "explanation": "BCC lattices show only reflections with h+k+l even.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the sum of scattering from atoms within the cell."
     },
     {
       "id": "concept-3",
-      "prompt": "Are θ and 2θ interchangeable in Bragg’s formula?",
+      "prompt": "Bragg's law is nλ = 2d sin θ. In a diffractometer, the detector angle read-out is 2θ. Can you use that read-out in place of θ?",
       "options": [
-        "Yes",
-        "No"
+        "No: halve it first, since θ is the angle to the planes, not the total deflection",
+        "Yes: the factor of 2 cancels in the formula",
+        "Yes: the detector angle can be used directly as θ in Bragg's law, because the two angles are interchangeable",
+        "No: use 2θ only for electrons"
       ],
-      "answer": "No",
-      "explanation": "The angle convention matters.",
+      "answer": "No: halve it first, since θ is the angle to the planes, not the total deflection",
+      "explanation": "The scattered beam is deflected by 2θ from the incident beam.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Bragg's θ is measured from the plane, not from the beam."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify structural identification?",
-      "answer": "Limited reciprocal data can be degenerate.",
+      "prompt": "Why do crystallographers hedge a structure identification from a limited powder pattern?",
+      "answer": "Few reflections can be consistent with more than one structure",
       "options": [
-        "Limited reciprocal data can be degenerate.",
-        "Translation-periodic constructive scattering."
+        "Every powder pattern fits exactly one structure, but the uncertainty in peak intensities makes hedging customary",
+        "Peak positions are random",
+        "Powder patterns contain no structural information",
+        "Few reflections can be consistent with more than one structure"
       ],
-      "explanation": "Limited reciprocal data can be degenerate.",
+      "explanation": "Overlapping peaks and missing phase information leave ambiguity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Diffraction records intensity but not phase."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does a geometrically possible Bragg condition guarantee nonzero peak intensity?",
-      "answer": "No; the structure factor can extinguish it.",
+      "prompt": "A set of planes satisfies the geometric Bragg condition. Does that guarantee a measurable peak?",
+      "answer": "No: the structure factor can cancel it entirely",
       "options": [
-        "Yes; every lattice condition has equal intensity.",
-        "No; the structure factor can extinguish it."
+        "Yes: every allowed geometry gives equal intensity",
+        "No: the structure factor can cancel it entirely",
+        "Yes: intensity depends only on the sample mass",
+        "No: Bragg's law needs a magnetic field"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Basis interference and selection rules matter.",
+      "hint": "Geometry is about position, not amplitude.",
+      "explanation": "Geometry gives where a peak may be and the structure factor gives whether it is there.",
       "misconceptions": {
         "Yes; every lattice condition has equal intensity.": "Basis interference and selection rules matter."
       },

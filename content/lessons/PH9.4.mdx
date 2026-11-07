@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a bound for an approximate Hamiltonian automatically bound the exact physical energy?",
+      "prompt": "A variational calculation gives an upper bound for the ground-state energy of an approximate Hamiltonian. Is it automatically a bound for the exact physical energy?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a lower bound",
+        "Yes: always an upper bound for the true energy",
+        "Yes: for any Hamiltonian",
+        "No: errors of the model Hamiltonian are separate from the variational bound"
       ],
-      "answer": "No",
-      "explanation": "Model errors are separate.",
+      "answer": "No: errors of the model Hamiltonian are separate from the variational bound",
+      "explanation": "The theorem holds for the Hamiltonian used in the trial energy, not for the real system.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which Hamiltonian appears in ⟨ψ|H|ψ⟩?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can unconstrained minimization target an excited state automatically?",
+      "prompt": "You minimise ⟨H⟩ over all trial functions with no constraints. Can it find an excited state?",
       "options": [
-        "No",
-        "Yes"
+        "No: it converges to the ground state unless orthogonality or min–max conditions are imposed",
+        "Yes: it finds any state, since the variational principle gives a bound on every excited state",
+        "Yes: by chance",
+        "Yes: the first excited state"
       ],
-      "answer": "No",
-      "explanation": "Orthogonality/min–max conditions are needed.",
+      "answer": "No: it converges to the ground state unless orthogonality or min–max conditions are imposed",
+      "explanation": "Excited states need trial functions orthogonal to lower states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the minimum of ⟨H⟩ over all states?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are WKB phase offsets identical for all boundaries?",
+      "prompt": "The WKB quantisation ∮p dx = (n + ½)h uses a ½ from the turning points. Is the offset the same for a hard wall?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for all boundaries, since the phase offset ½ arises from the quantisation condition itself",
+        "Yes: always 0",
+        "No: turning points and hard walls give different phase offsets",
+        "Yes: always ½"
       ],
-      "answer": "No",
-      "explanation": "Turning points and hard walls differ.",
+      "answer": "No: turning points and hard walls give different phase offsets",
+      "explanation": "A hard wall gives (n + ¼) with one soft turning point, or n with two hard walls.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is ψ at a hard wall?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish bounds and estimates?",
-      "answer": "Their error guarantees differ.",
+      "prompt": "Why should you distinguish a variational bound from an estimate?",
+      "answer": "Their error guarantees differ",
       "options": [
-        "Their error guarantees differ.",
-        "Self-adjoint lower-bounded H and an admissible normalized trial."
+        "They are the same thing",
+        "Estimates are always rigorous",
+        "Their error guarantees differ",
+        "Bounds are always tight"
       ],
-      "explanation": "Their error guarantees differ.",
+      "explanation": "A bound is a guaranteed inequality, whereas an estimate carries no guarantee.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which one tells you the sign of the error?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does a variational estimate below another approximation automatically mean the physical Hamiltonians are comparable?",
-      "answer": "No; the Hamiltonian and domain must match.",
+      "prompt": "A variational energy comes out lower than another approximation's result. Does that make it more accurate?",
+      "answer": "Not necessarily: the Hamiltonians and domains must match",
       "options": [
-        "Yes; any smaller number is more accurate.",
-        "No; the Hamiltonian and domain must match."
+        "Yes: it is the true value, since a variational result can never lie below the exact energy",
+        "Yes: lower is more accurate",
+        "Yes: always",
+        "Not necessarily: the Hamiltonians and domains must match"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Compare like with like.",
+      "hint": "Do both calculations solve the same Hamiltonian?",
+      "explanation": "Two Hamiltonians are only equivalent if their operators and domains match, so you must compare like with like before concluding anything.",
       "misconceptions": {
         "Yes; any smaller number is more accurate.": "Compare like with like."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is μ always the same through an ionization zone?",
+      "prompt": "A gas of hydrogen passes from neutral to fully ionised across a stellar ionisation zone. What happens to the mean molecular weight μ?",
       "options": [
-        "Yes",
-        "No"
+        "It doubles, because each ionised atom contributes two particles to the mean mass",
+        "It rises",
+        "It stays the same",
+        "It falls (about 1 to 0.5) because the number of free particles changes"
       ],
-      "answer": "No",
-      "explanation": "The number of free particles changes.",
+      "answer": "It falls (about 1 to 0.5) because the number of free particles changes",
+      "explanation": "Ionisation turns each H atom into a proton and an electron, doubling the particle count for the same mass.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count free particles per unit mass."
     },
     {
       "id": "concept-2",
-      "prompt": "Does degenerate electron pressure necessarily depend strongly on temperature in the cold limit?",
+      "prompt": "A white dwarf cools to a very low temperature. How does the degenerate electron pressure change?",
       "options": [
-        "No",
-        "Yes"
+        "It falls in proportion to T",
+        "It rises with T⁴",
+        "It falls to zero",
+        "Hardly at all: state filling (Pauli exclusion) dominates, not temperature"
       ],
-      "answer": "No",
-      "explanation": "State filling can dominate its leading pressure.",
+      "answer": "Hardly at all: state filling (Pauli exclusion) dominates, not temperature",
+      "explanation": "In the cold limit, P is set by the density through the Fermi momentum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What provides the pressure when thermal motion is negligible?"
     },
     {
       "id": "concept-3",
-      "prompt": "May pressure and internal energy be chosen independently without consistency checks?",
+      "prompt": "A model chooses a formula for pressure P(ρ, T) and a separate formula for internal energy E(ρ, T), without checking them. What can go wrong?",
       "options": [
-        "Yes",
-        "No"
+        "Nothing: the two formulas are independent, so they can be chosen separately without any consistency check",
+        "The temperature is lost",
+        "Only units",
+        "They may violate thermodynamic relations between derivatives, e.g. Maxwell relations"
       ],
-      "answer": "No",
-      "explanation": "Thermodynamic derivatives relate them.",
+      "answer": "They may violate thermodynamic relations between derivatives, e.g. Maxwell relations",
+      "explanation": "P and E are linked through derivatives of the free energy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Are there relations such as (∂E/∂V)_T = T(∂P/∂T)_V − P?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should an EOS provide consistently?",
-      "answer": "Pressure, energy and the required thermodynamic derivatives.",
+      "prompt": "What must a stellar equation-of-state table provide so that the structure code is consistent?",
+      "answer": "Pressure, energy and the thermodynamic derivatives, all from one free energy",
       "options": [
-        "Pressure, energy and the required thermodynamic derivatives.",
-        "Composition and ionization particle counts."
+        "Pressure, energy and the thermodynamic derivatives, all from one free energy",
+        "Only the density, since the equation of state is a simple lookup of the pressure",
+        "Opacity alone",
+        "Pressure alone"
       ],
-      "explanation": "Pressure, energy and the required thermodynamic derivatives.",
+      "explanation": "Adiabatic gradients and stability depend on derivatives, so they must be consistent with P and E.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the code need besides P?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does sharing exponent 5/3 prove cold electron degeneracy and a monatomic ideal gas have identical thermal behavior?",
-      "answer": "No; the coefficient and temperature/entropy dependence differ.",
+      "prompt": "A non-relativistic degenerate electron gas and an adiabatic monatomic ideal gas both have P ∝ ρ^(5/3). Do they behave identically?",
+      "answer": "No: the coefficient and the temperature and entropy dependence differ",
       "options": [
-        "Yes; the exponent fully determines the thermodynamics.",
-        "No; the coefficient and temperature/entropy dependence differ."
+        "Yes: the exponent fixes everything",
+        "No: the coefficient and the temperature and entropy dependence differ",
+        "Yes: both are ideal gases",
+        "Yes: both are cold"
       ],
-      "explanation": "A density scaling alone is not a complete equation of state.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The degenerate gas has pressure independent of T, while the ideal gas has P = ρkT/μm_u.",
+      "hint": "Does P depend on T in each?",
       "misconceptions": {
         "Yes; the exponent fully determines the thermodynamics.": "A density scaling alone is not a complete equation of state."
       },

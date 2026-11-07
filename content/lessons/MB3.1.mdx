@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Can a limit exist if f(a) is undefined?",
+      "prompt": "The function f(x) = (x² − 1)/(x − 1) is undefined at x = 1. Does lim x→1 f(x) exist?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the limit is 2, because the limit ignores the value at x = 1",
+        "Yes, and the limit is 0, since the numerator vanishes at x = 1 and so the quotient tends to zero",
+        "No: the function is not continuous",
+        "No: a limit needs the function to be defined at the point"
       ],
-      "answer": "Yes",
-      "explanation": "The punctured neighborhood excludes the point itself.",
+      "answer": "Yes: the limit is 2, because the limit ignores the value at x = 1",
+      "explanation": "The limit looks at values near x = 1 but not at it. For x ≠ 1, f(x) = x + 1 → 2, so the limit exists although f(1) does not.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Simplify the fraction for x ≠ 1, then ask what happens as x approaches 1."
     },
     {
       "id": "q2",
-      "prompt": "Does testing 1,000 nearby points prove a limit?",
+      "prompt": "You evaluate a function at 1,000 points that approach a. All values near L. Is lim x→a f(x) = L proved?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, as long as the points are evenly spaced, since 1,000 samples near a determine the limit",
+        "Yes, since 1,000 points are plenty",
+        "No, because limits can only be found by algebra",
+        "No: the definition must hold for every x close enough to a"
       ],
-      "answer": "No",
-      "explanation": "The quantified definition controls every sufficiently nearby input.",
+      "answer": "No: the definition must hold for every x close enough to a",
+      "explanation": "The ε–δ definition requires f(x) within ε of L for all x in a punctured neighbourhood. Finite sampling can miss rapid oscillation, e.g. sin(1/x).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of sin(1/x): could 1,000 samples fool you?"
     },
     {
       "id": "q3",
-      "prompt": "Continuity at a requires what?",
+      "prompt": "Which condition makes f continuous at x = a?",
       "options": [
-        "The limit equals f(a)",
-        "Only a smooth-looking picture"
+        "The limit exists",
+        "f(a) exists",
+        "The limit exists and equals f(a)",
+        "The graph looks smooth near a, since continuity is the same as having no visible break in the curve"
       ],
-      "answer": "The limit equals f(a)",
-      "explanation": "The point value must exist and match the limit.",
+      "answer": "The limit exists and equals f(a)",
+      "explanation": "Continuity needs three things: f(a) is defined, the limit exists, and the two are equal. 'Looks smooth' is not a criterion.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List what must be true about f(a) and the limit."
     },
     {
       "id": "q4",
@@ -69,16 +78,19 @@
     },
     {
       "id": "q6",
-      "prompt": "Why is δ = min(1, ε/(1+2|a|)) useful for x²?",
+      "prompt": "When proving that x² is continuous at a, one chooses δ = min(1, ε/(1 + 2|a|)). Why use a minimum of two numbers?",
       "options": [
-        "It bounds both factors in the error",
-        "It sets x equal to a"
+        "The 1 keeps x near a so |x + a| is bounded, and the other term gives the error ε",
+        "Both numbers are equal in size, so the minimum has no effect on the value of the chosen δ",
+        "The minimum makes δ larger than needed",
+        "The 1 sets x equal to a"
       ],
-      "answer": "It bounds both factors in the error",
-      "explanation": "One bound controls x+a; the other controls the requested error.",
+      "answer": "The 1 keeps x near a so |x + a| is bounded, and the other term gives the error ε",
+      "explanation": "|x² − a²| = |x − a||x + a|. Taking δ ≤ 1 guarantees |x + a| ≤ 1 + 2|a|, and then |x − a| < ε/(1 + 2|a|) gives an error below ε.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Factor x² − a² and ask what must be bounded in each factor."
     },
     {
       "id": "depth-transfer-1",
@@ -126,14 +138,16 @@
     },
     {
       "id": "depth-model-limits",
-      "prompt": "If a function has a jump at a, can choosing just f(a) repair continuity?",
-      "answer": "No; unequal one-sided limits cannot be repaired by one point value.",
+      "prompt": "A function has a jump at a, with different one-sided limits. Can redefining f(a) make it continuous there?",
+      "answer": "No: with unequal one-sided limits, no single value of f(a) matches both",
       "options": [
-        "Yes; any discontinuity is removable.",
-        "No; unequal one-sided limits cannot be repaired by one point value."
+        "Yes: pick the average of the two one-sided limits, which makes the function continuous at the jump",
+        "Yes: pick the left-hand limit as f(a)",
+        "No: with unequal one-sided limits, no single value of f(a) matches both",
+        "Yes: any value of f(a) removes a jump"
       ],
-      "explanation": "Distinguish failure of the limit from a missing or mismatched point value.",
-      "hint": "Identify the model assumptions before applying a formula.",
+      "explanation": "Continuity needs one limit that equals f(a). If the left and right limits differ, the limit does not exist, so no value of f(a) works. Only removable discontinuities can be repaired.",
+      "hint": "Does the two-sided limit exist when the one-sided limits differ?",
       "misconceptions": {
         "Yes; any discontinuity is removable.": "Distinguish failure of the limit from a missing or mismatched point value."
       },

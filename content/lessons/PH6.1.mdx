@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does nonlinear ω(k) generally preserve packet shape?",
+      "prompt": "A wave packet travels in a medium where ω(k) is nonlinear. What happens to the packet shape?",
       "options": [
-        "Yes",
-        "No"
+        "It stays the same only when k is small",
+        "It is preserved exactly, since each component travels at the same speed in a nonlinear medium",
+        "It sharpens",
+        "It generally changes, since different components accumulate different phases"
       ],
-      "answer": "No",
-      "explanation": "Different spectral components accumulate different phases.",
+      "answer": "It generally changes, since different components accumulate different phases",
+      "explanation": "Each Fourier component moves at its own phase speed, so the packet disperses.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do all frequency components travel together?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is numerical dispersion identical to material dispersion?",
+      "prompt": "A finite-difference simulation of a wave equation shows pulses spreading. Is this the same as dispersion in the real medium?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: always physical, since a numerical scheme cannot add spreading of its own",
+        "Yes: it is material dispersion",
+        "No: it can arise from the discretisation of the scheme",
+        "Yes: identical"
       ],
-      "answer": "No",
-      "explanation": "It can arise from the discrete scheme.",
+      "answer": "No: it can arise from the discretisation of the scheme",
+      "explanation": "Numerical dispersion depends on grid spacing and time step.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the continuous equation have the same ω(k) as the scheme?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does group velocity require a meaningful envelope regime?",
+      "prompt": "When is the group velocity dω/dk a meaningful speed of a wave packet?",
       "options": [
-        "No",
-        "Yes"
+        "Only in vacuum, since dispersion is absent elsewhere and the envelope is otherwise undefined",
+        "When the envelope remains well defined, i.e. weak distortion",
+        "For any wave",
+        "Only for plane waves"
       ],
-      "answer": "Yes",
-      "explanation": "Strong distortion can invalidate that interpretation.",
+      "answer": "When the envelope remains well defined, i.e. weak distortion",
+      "explanation": "Strong dispersion or absorption can distort the envelope so much that no single speed describes it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does v_g describe?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify the wave branch?",
-      "answer": "Different branches can have different propagation and polarization.",
+      "prompt": "Why must you specify which wave branch (mode) you are using?",
+      "answer": "Different branches can have different propagation and polarisation",
       "options": [
-        "Different branches can have different propagation and polarization.",
-        "Frequency-dependent phase evolution across modes."
+        "Branches have the same ω(k), so the choice of mode makes no difference to the wave",
+        "Different branches can have different propagation and polarisation",
+        "It only changes labels",
+        "All branches are the same"
       ],
-      "explanation": "Different branches can have different propagation and polarization.",
+      "explanation": "A medium may support several dispersion curves.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a plasma carry only one type of wave?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Are ω/k and dω/dk guaranteed equal for an arbitrary dispersion relation?",
-      "answer": "No; they coincide only in special regimes such as a linear relation through the origin.",
+      "prompt": "For an arbitrary dispersion relation ω(k), are ω/k and dω/dk equal?",
+      "answer": "No: they coincide only in special cases such as a linear relation through the origin",
       "options": [
-        "Yes; all definitions of wave speed are identical.",
-        "No; they coincide only in special regimes such as a linear relation through the origin."
+        "No: they coincide only in special cases such as a linear relation through the origin",
+        "Yes: always equal, since both express the same ratio of frequency to wavenumber for any wave",
+        "Yes: for any wave",
+        "Yes: all wave speeds are the same"
       ],
-      "explanation": "A derivative and a ratio need not agree.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The phase velocity is ω/k, and the group velocity is its derivative.",
+      "hint": "Test ω = ck and ω = ck².",
       "misconceptions": {
         "Yes; all definitions of wave speed are identical.": "A derivative and a ratio need not agree."
       },

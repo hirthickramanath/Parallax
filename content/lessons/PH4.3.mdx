@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is an image charge a literal source inside the replaced conductor?",
+      "prompt": "In the method of images, a point charge near a grounded plane is replaced by an image charge behind it. Is the image a real charge inside the conductor?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the conductor holds it as a real charge, so the field behind the plane is produced by it",
+        "No: it is a mathematical device that reproduces the field in the exterior region",
+        "Yes: charge is induced there",
+        "Yes: it is real"
       ],
-      "answer": "No",
-      "explanation": "It represents the exterior boundary solution.",
+      "answer": "No: it is a mathematical device that reproduces the field in the exterior region",
+      "explanation": "The real charge is the induced surface charge on the plane.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where is the real induced charge?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are grounded and isolated-neutral boundary conditions identical?",
+      "prompt": "A conductor is grounded in one problem and isolated and neutral in another. Are the boundary conditions identical?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: both are neutral",
+        "Yes: both are at V = 0",
+        "Yes: the same field results",
+        "No: one fixes the potential, the other fixes the total charge"
       ],
-      "answer": "No",
-      "explanation": "They impose different potential or total-charge conditions.",
+      "answer": "No: one fixes the potential, the other fixes the total charge",
+      "explanation": "An isolated neutral conductor floats at an unknown potential with Q = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which quantity is specified in each?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can image-pair potential energy be used without the induced-charge assembly factor?",
+      "prompt": "You compute the work to bring a charge near a grounded plane. Can you use the full energy of the two-charge image configuration?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: with no changes",
+        "Yes: use the full pair energy of the image configuration, since the induced charges stay fixed",
+        "Yes: exactly",
+        "No: the induced charges change during assembly, so a factor of 1/2 appears"
       ],
-      "answer": "No",
-      "explanation": "The induced configuration changes during assembly.",
+      "answer": "No: the induced charges change during assembly, so a factor of 1/2 appears",
+      "explanation": "U = ½ q V_induced. The image energy is for a symmetric pair, and only half is in the physical region.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the image charge fixed as the real charge approaches?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why does the image construction solve the physical half-space problem?",
-      "answer": "It satisfies the field equation and full boundary conditions, so uniqueness applies",
+      "prompt": "Why does the image construction solve the real half-space problem?",
+      "answer": "It satisfies Poisson's equation and the full boundary conditions",
       "options": [
-        "It satisfies the field equation and full boundary conditions, so uniqueness applies",
-        "A conductor literally contains the image particle"
+        "The conductor contains an image charge",
+        "Images are real",
+        "It is an approximation",
+        "It satisfies Poisson's equation and the full boundary conditions"
       ],
-      "explanation": "The mathematical singularities remain outside the physical domain.",
+      "explanation": "It satisfies Poisson's equation and the full boundary conditions, so uniqueness applies. Its singularity lies outside the physical region.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which theorem guarantees it is the solution?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Is the image charge a second independently placed physical charge in the conductor half-space?",
-      "answer": "No; it constructs the field in the physical exterior region.",
+      "prompt": "Is the image charge an extra physical charge placed in the conductor?",
+      "answer": "No: it is a boundary construction that gives the field in the exterior region",
       "options": [
-        "Yes; the method creates a real additional point source.",
-        "No; it constructs the field in the physical exterior region."
+        "Yes: in the conductor",
+        "Yes: a second real charge",
+        "Yes: independently placed",
+        "No: it is a boundary construction that gives the field in the exterior region"
       ],
-      "explanation": "A mathematical boundary construction must be distinguished from actual source matter.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The mathematical construction must be distinguished from the physical sources.",
+      "hint": "Where is the field defined?",
       "misconceptions": {
         "Yes; the method creates a real additional point source.": "A mathematical boundary construction must be distinguished from actual source matter."
       },

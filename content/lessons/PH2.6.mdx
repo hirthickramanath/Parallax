@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every Hamiltonian system possess global action–angle coordinates?",
+      "prompt": "Does every Hamiltonian system have global action–angle coordinates?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: always",
+        "No: integrability and regularity conditions are required",
+        "Yes: every Hamiltonian system can be given action–angle variables over the whole phase space",
+        "Yes: in any dimension"
       ],
-      "answer": "No",
-      "explanation": "Integrability and regularity conditions are required.",
+      "answer": "No: integrability and regularity conditions are required",
+      "explanation": "Chaotic systems have no global action–angle variables.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What about chaotic systems?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does every one-function HJ solution encode all trajectories?",
+      "prompt": "You find one solution S of the Hamilton–Jacobi equation. Does it encode all trajectories?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: a single solution S already encodes every orbit, since its gradient gives all the momenta",
+        "Yes: it is general",
+        "Yes: always",
+        "No: a complete solution needs enough independent constants"
       ],
-      "answer": "No",
-      "explanation": "A complete family needs enough independent constants.",
+      "answer": "No: a complete solution needs enough independent constants",
+      "explanation": "A complete integral has n constants for n degrees of freedom.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many constants does a general solution have?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is the 1/(2π) action convention irrelevant to its paired frequency formula?",
+      "prompt": "Textbook A defines J = ∮p dq and textbook B defines J = (1/2π)∮p dq. Does the convention affect the frequency formula?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the angle variable and the derivative ω = ∂H/∂J must be defined consistently",
+        "No: the factor of 2π cancels between the definition of J and the derivative, so ω is the same number",
+        "No: conventions are irrelevant",
+        "No: ω is the same number"
       ],
-      "answer": "No",
-      "explanation": "The canonical angle and derivative convention must match.",
+      "answer": "Yes: the angle variable and the derivative ω = ∂H/∂J must be defined consistently",
+      "explanation": "A factor of 2π changes the derivative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the factor change ∂H/∂J?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why inspect turning points and separatrices?",
+      "prompt": "Why inspect turning points and separatrices when building action–angle coordinates?",
       "answer": "They can make local branches or periodic coordinates singular",
       "options": [
+        "They are decorative",
         "They can make local branches or periodic coordinates singular",
-        "Every energy level has the same finite period"
+        "Every orbit has the same period",
+        "They set the energy"
       ],
-      "explanation": "The coordinate construction has a physical and geometric domain.",
+      "explanation": "The period diverges at a separatrix.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens to the period at a separatrix?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For H(J)=3J+0.5J², should the canonical angle frequency be computed as H/J?",
-      "answer": "No; it is ∂H/∂J.",
+      "prompt": "For H(J) = 3J + 0.5J², how should the angle frequency be computed?",
+      "answer": "ω = ∂H/∂J = 3 + J",
       "options": [
-        "Yes; energy divided by action always equals angle frequency.",
-        "No; it is ∂H/∂J."
+        "ω = ∂H/∂J = 3 + J",
+        "ω = ∂H/∂J = 3 + 0.5J",
+        "ω = H/J",
+        "ω = 3"
       ],
-      "explanation": "The equality H/J=omega holds for a purely linear oscillator Hamiltonian, not every H(J).",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "H/J = 3 + 0.5J would be wrong. H/J = ω only when H is linear in J.",
+      "hint": "Differentiate H with respect to J.",
       "misconceptions": {
         "Yes; energy divided by action always equals angle frequency.": "The equality H/J=omega holds for a purely linear oscillator Hamiltonian, not every H(J)."
       },

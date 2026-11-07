@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does an agreeing demonstration automatically validate a model independently?",
+      "prompt": "A model agrees with a demonstration whose calibration was tuned using that same model. Does the agreement independently validate the model?",
       "options": [
-        "Yes",
-        "No"
+        "No: calibration and model selection can be circular",
+        "Yes: agreement between model and demonstration counts as validation, however the calibration was made",
+        "Yes: tuning makes the model more valid",
+        "No: validation never needs data"
       ],
-      "answer": "No",
-      "explanation": "Calibration and selection can be circular.",
+      "answer": "No: calibration and model selection can be circular",
+      "explanation": "Calibration and model selection can be circular, so independent data are needed. Test on data not used to fit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Was the test independent of the tuning?"
     },
     {
       "id": "concept-2",
-      "prompt": "May synthetic readings be described as newly measured local g?",
+      "prompt": "A capstone plan generates readings from a pendulum model. May the report call them a new measurement of local g?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: if the model is accurate",
+        "No: g cannot be measured with a pendulum",
+        "Yes: any pendulum numbers measure g",
+        "No: they are generated from the model and are not measurements"
       ],
-      "answer": "No",
-      "explanation": "They are generated from a model.",
+      "answer": "No: they are generated from the model and are not measurements",
+      "explanation": "Simulated data can only reproduce the input g.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where did the numbers come from?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a forced zero intercept hide an offset?",
+      "prompt": "In a linear fit you force the line through the origin. Could this hide a systematic offset?",
       "options": [
-        "No",
-        "Yes"
+        "No: fitting through the origin improves accuracy",
+        "Yes: but only for curved data",
+        "No: the intercept is always zero",
+        "Yes: it removes the intercept as a diagnostic"
       ],
-      "answer": "Yes",
-      "explanation": "It removes a diagnostic degree of freedom.",
+      "answer": "Yes: it removes the intercept as a diagnostic",
+      "explanation": "It removes the intercept as a diagnostic, so offsets get absorbed into the slope. A free intercept tests the assumed proportionality.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a nonzero intercept tell you?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What remains honest without equipment?",
-      "answer": "A labelled design/simulation with unperformed checks explicit.",
+      "prompt": "You have no equipment. What is an honest capstone deliverable?",
+      "answer": "A clearly labelled design or simulation that states which checks have not been performed",
       "options": [
-        "A labelled design/simulation with unperformed checks explicit.",
-        "A prediction with a stated measurement and discrepancy criterion."
+        "Nothing: without equipment no honest capstone can be produced, so the project should simply be skipped",
+        "A report presenting simulated numbers as data",
+        "A clearly labelled design or simulation that states which checks have not been performed",
+        "A claim that the experiment worked"
       ],
-      "explanation": "A labelled design/simulation with unperformed checks explicit.",
+      "explanation": "Honesty means labelling what is a plan and what is a measurement.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What can you truthfully say you did?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does finishing an analytic planning widget count as completing the real capstone experiment?",
-      "answer": "No; recorded execution and analysis are still required.",
+      "prompt": "You finished building an analytic planning widget for the capstone. Have you completed the experiment?",
+      "answer": "No: a plan and a plot are not evidence until execution and analysis are recorded",
       "options": [
-        "Yes; a plan and a plot are equivalent to collected evidence.",
-        "No; recorded execution and analysis are still required."
+        "Yes: a plan is equivalent to data, since the widget already computes the expected result of the experiment",
+        "No: widgets cannot be built",
+        "Yes: the plot is the result",
+        "No: a plan and a plot are not evidence until execution and analysis are recorded"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Keep preparation separate from execution.",
+      "hint": "Has anything been measured?",
+      "explanation": "Planning and execution are distinct phases.",
       "misconceptions": {
         "Yes; a plan and a plot are equivalent to collected evidence.": "Keep preparation separate from execution."
       },

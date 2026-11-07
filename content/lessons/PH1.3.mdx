@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a central force guarantee zero torque about its centre?",
+      "prompt": "A force F = f(r) r̂ is always directed along the line to a fixed centre. What is the torque about that centre?",
       "options": [
-        "No",
-        "Yes"
+        "Zero, since the force is parallel to the position vector",
+        "Maximum, since the torque is largest when the force points along the line to the centre",
+        "Equal to F r",
+        "Constant but non-zero"
       ],
-      "answer": "Yes",
-      "explanation": "Its force is parallel to the position vector.",
+      "answer": "Zero, since the force is parallel to the position vector",
+      "explanation": "The torque is τ = r × F. When F is parallel to r (a central force) the cross product vanishes, so the torque is zero.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the cross product of parallel vectors."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the area law alone prove an inverse-square force?",
+      "prompt": "You observe that a planet sweeps equal areas in equal times. Does this prove the force is inverse-square?",
       "options": [
-        "No",
-        "Yes"
+        "No: any central force conserves angular momentum and the area rate",
+        "Yes: Kepler's second law proves it",
+        "Yes: only inverse-square gives this",
+        "Yes: equal areas mean 1/r²"
       ],
-      "answer": "No",
-      "explanation": "Any central force preserves angular momentum and area rate.",
+      "answer": "No: any central force conserves angular momentum and the area rate",
+      "explanation": "Kepler's second law only needs a central force. The inverse-square form follows from the first and third laws.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the area law follow from?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is the effective angular barrier an additional physical interaction?",
+      "prompt": "The effective potential includes an L²/(2mr²) barrier. Is it a separate physical force law?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a new interaction between the particle and the centre, added to the force from the potential",
+        "Yes: a real repulsion",
+        "Yes: gravity's repulsive part",
+        "No: it comes from re-expressing the angular motion in terms of radial motion"
       ],
-      "answer": "No",
-      "explanation": "It comes from reducing the angular motion.",
+      "answer": "No: it comes from re-expressing the angular motion in terms of radial motion",
+      "explanation": "The barrier is the centrifugal term resulting from conserved angular momentum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the L² come from?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What identifies radial stability of a circular orbit at fixed angular momentum?",
-      "answer": "A local minimum of the effective potential",
+      "prompt": "What tells you that a circular orbit is stable against radial perturbations at fixed L?",
+      "answer": "The effective potential has a local minimum there",
       "options": [
-        "A local minimum of the effective potential",
-        "Any stationary point regardless of curvature"
+        "A local maximum of V_eff, since a particle at the top of the barrier stays there under small kicks",
+        "A zero of V_eff",
+        "The effective potential has a local minimum there",
+        "Any stationary point of V_eff"
       ],
-      "explanation": "A maximum can instead be unstable.",
+      "explanation": "A stationary point with positive curvature gives a restoring force. A maximum is unstable.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Check the sign of the second derivative."
     },
     {
       "id": "mechanics-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "mechanics-model-limits",
-      "prompt": "At a circular-orbit position, increase tangential speed above circular but below escape speed, with no radial velocity. What is that point on the new orbit?",
-      "answer": "A periapsis; the initial radial acceleration becomes outward.",
+      "prompt": "A satellite in a circular orbit gets a tangential speed boost to above circular but below escape speed. What is the boost point on the new orbit?",
+      "answer": "Periapsis, because the radial acceleration is now outward from the start",
       "options": [
-        "An apoapsis; higher tangential speed always makes the starting radius maximal.",
-        "A periapsis; the initial radial acceleration becomes outward."
+        "A circular point",
+        "The semi-latus rectum",
+        "Periapsis, because the radial acceleration is now outward from the start",
+        "Apoapsis, because the extra tangential speed starts the satellite at its farthest point from the centre"
       ],
-      "explanation": "r-double-dot=v²/r−μ/r² is positive when v exceeds circular speed.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "With more tangential speed than circular, gravity can't hold it at r, so it moves outward from the boost point, which is the closest point.",
+      "hint": "Compare gravity with the needed centripetal force.",
       "misconceptions": {
         "An apoapsis; higher tangential speed always makes the starting radius maximal.": "r-double-dot=v²/r−μ/r² is positive when v exceeds circular speed."
       },

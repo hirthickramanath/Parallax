@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is centrifugal force the inward physical centripetal force?",
+      "prompt": "In a rotating frame, a ball on a string seems to be pulled outward. Is this centrifugal effect the same as the real inward centripetal force?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a real force",
+        "Yes: they act in the same direction",
+        "Yes: they are the same force",
+        "No: it is an outward fictitious term that appears only in the rotating frame"
       ],
-      "answer": "No",
-      "explanation": "Centrifugal is an outward rotating-frame term.",
+      "answer": "No: it is an outward fictitious term that appears only in the rotating frame",
+      "explanation": "The real inward force is the string's tension. In the rotating frame an outward inertial term balances it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which direction does each point?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does Coriolis do instantaneous work relative to rotating velocity?",
+      "prompt": "Does the Coriolis force do work on a particle moving in a rotating frame?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it speeds the particle up, since the Coriolis force acts along the velocity of the particle",
+        "Yes: it does work on rotating bodies",
+        "No: it is perpendicular to the velocity in that frame",
+        "Yes: it slows it down"
       ],
-      "answer": "No",
-      "explanation": "It is perpendicular to that velocity.",
+      "answer": "No: it is perpendicular to the velocity in that frame",
+      "explanation": "F_cor = −2mΩ × v is always perpendicular to v, so F·v = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute (Ω × v)·v: what is the dot product of a vector with its own cross product?"
     },
     {
       "id": "concept-3",
-      "prompt": "When is the Euler term zero?",
+      "prompt": "In which case does the Euler force term −m(dΩ/dt × r) vanish?",
       "options": [
-        "Whenever the particle is at rest in rotating axes",
-        "When angular velocity is constant"
+        "Only at the axis",
+        "Whenever the particle is at rest in the rotating axes",
+        "Whenever the frame rotates",
+        "When the frame's angular velocity is constant"
       ],
-      "answer": "When angular velocity is constant",
-      "explanation": "It depends on the frame angular acceleration.",
+      "answer": "When the frame's angular velocity is constant",
+      "explanation": "The Euler term depends on the frame's angular acceleration, not on the particle's motion.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which quantity is differentiated in the Euler term?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is a reliable way to determine inertial-term signs?",
-      "answer": "Derive the acceleration transformation and move terms across the equation",
+      "prompt": "What is a reliable way to get the signs of the inertial terms in a rotating frame?",
+      "answer": "Derive the acceleration transformation and move the extra terms to the force side",
       "options": [
-        "Derive the acceleration transformation and move terms across the equation",
-        "Guess from the word centrifugal"
+        "Derive the acceleration transformation and move the extra terms to the force side",
+        "Copy the signs from another book, since the inertial terms in the rotating frame are the same everywhere",
+        "Guess from the names",
+        "Always use plus signs"
       ],
-      "explanation": "A declared frame and cross-product convention fixes signs.",
+      "explanation": "A declared frame and cross-product convention fixes every sign.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Start from a_inertial = a_rot + ..."
     },
     {
       "id": "mechanics-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "mechanics-model-limits",
-      "prompt": "A point is fixed away from the axis in a uniformly rotating frame. Must its inertial acceleration vanish?",
-      "answer": "No; its inertial motion has centripetal acceleration.",
+      "prompt": "A point is fixed at distance r from the axis in a uniformly rotating frame. Is its acceleration in an inertial frame zero?",
+      "answer": "No: it moves in a circle with centripetal acceleration ω²r",
       "options": [
-        "Yes; zero rotating-coordinate velocity means zero inertial acceleration.",
-        "No; its inertial motion has centripetal acceleration."
+        "No: it moves in a circle with centripetal acceleration ω²r",
+        "Yes: its velocity in the rotating frame is zero, so its acceleration in the inertial frame is also zero",
+        "Yes: if ω is constant",
+        "Yes: it is at rest"
       ],
-      "explanation": "Coordinate stationarity is frame dependent.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "Rest in the rotating frame is not rest in an inertial frame.",
+      "hint": "How does the point move relative to the inertial frame?",
       "misconceptions": {
         "Yes; zero rotating-coordinate velocity means zero inertial acceleration.": "Coordinate stationarity is frame dependent."
       },

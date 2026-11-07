@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can each represented matrix use an unrelated basis while preserving the same written representation law automatically?",
+      "prompt": "You represent a group by matrices D(g) but use a different basis for each g. Do the products still obey D(g)D(h) = D(gh)?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the law is basis independent per element",
+        "Yes: any basis works for each matrix",
+        "Not automatically: a single consistent basis change is required",
+        "Only for abelian groups"
       ],
-      "answer": "No",
-      "explanation": "One consistent basis change is needed.",
+      "answer": "Not automatically: a single consistent basis change is required",
+      "explanation": "A change of basis must be D′(g) = SD(g)S⁻¹ with the same S for all g.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the product law survive if S depends on g?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is character basis invariant?",
+      "prompt": "Is the character χ(g) = tr D(g) the same in every basis?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: similarity transformations preserve the trace",
+        "No: it depends on the basis, since the matrix entries change and the trace changes with them",
+        "No: only the determinant is invariant",
+        "Only for 1D representations"
       ],
-      "answer": "Yes",
-      "explanation": "Trace is preserved by similarity.",
+      "answer": "Yes: similarity transformations preserve the trace",
+      "explanation": "tr(SDS⁻¹) = tr(D) by the cyclic property of the trace.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use the cyclic property tr(AB) = tr(BA) on SDS⁻¹."
     },
     {
       "id": "concept-3",
-      "prompt": "Does finite-group complete reducibility apply unchanged to every infinite group?",
+      "prompt": "Finite-group representations are completely reducible. Does this carry over unchanged to every infinite group?",
       "options": [
-        "Yes",
-        "No"
+        "Yes over any field, since the averaging argument works whatever the group and the number field",
+        "No: the averaging argument needs hypotheses, e.g. a finite or compact group",
+        "Yes: always",
+        "Yes for abelian groups"
       ],
-      "answer": "No",
-      "explanation": "The averaging proof has hypotheses.",
+      "answer": "No: the averaging argument needs hypotheses, e.g. a finite or compact group",
+      "explanation": "The group ℤ has a 2D representation that is reducible but not completely reducible.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall how Maschke's theorem is proved."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state representation hypotheses?",
-      "answer": "Reducibility and classification theorems depend on field, dimension and group properties.",
+      "prompt": "Why does a statement about reducibility need its hypotheses (field, dimension, type of group)?",
+      "answer": "Classification and reducibility theorems depend on them",
       "options": [
-        "Reducibility and classification theorems depend on field, dimension and group properties.",
-        "A homomorphism to invertible linear operators."
+        "Classification and reducibility theorems depend on them",
+        "Reducibility is always the same",
+        "They only affect notation",
+        "They don't matter"
       ],
-      "explanation": "Reducibility and classification theorems depend on field, dimension and group properties.",
+      "explanation": "Over ℝ the rotation group SO(2) has irreducible 2D representations, but over ℂ they split.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the 2D rotation representation reducible over ℝ?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does changing the matrix basis change a representation character?",
-      "answer": "No; similarity preserves trace.",
+      "prompt": "You change basis for a representation matrix D(g) to SD(g)S⁻¹. What happens to its character?",
+      "answer": "Unchanged, because similarity preserves the trace",
       "options": [
-        "Yes; trace depends on the basis labeling.",
-        "No; similarity preserves trace."
+        "It becomes zero",
+        "It is replaced by its inverse, since conjugating by S sends the trace of D(g) to the trace of D(g⁻¹)",
+        "It changes by the factor det S",
+        "Unchanged, because similarity preserves the trace"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use cyclic invariance of trace.",
+      "hint": "Use the cyclic property tr(AB) = tr(BA) on SDS⁻¹.",
+      "explanation": "Cyclic invariance of the trace gives tr(SDS⁻¹) = tr D.",
       "misconceptions": {
         "Yes; trace depends on the basis labeling.": "Use cyclic invariance of trace."
       },

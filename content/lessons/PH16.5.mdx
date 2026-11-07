@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does an exactly spherical isolated motion generically emit GR tensor waves?",
+      "prompt": "A perfectly spherical star pulsates symmetrically in isolation. Does it emit gravitational waves in general relativity?",
       "options": [
-        "Yes",
-        "No"
+        "No: gravitational waves do not exist",
+        "Yes: any change of mass distribution radiates",
+        "No: there is no monopole or dipole radiation, and a spherical motion has no quadrupole",
+        "Yes: only at the pulsation frequency"
       ],
-      "answer": "No",
-      "explanation": "The radiative multipole structure forbids that elementary spherical signal.",
+      "answer": "No: there is no monopole or dipole radiation, and a spherical motion has no quadrupole",
+      "explanation": "This is the gravitational analogue of Birkhoff's theorem.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "The lowest radiating multipole is the quadrupole."
     },
     {
       "id": "concept-2",
-      "prompt": "Are all metric perturbation components physical polarizations?",
+      "prompt": "The metric perturbation h_μν has ten components. Are they all physical polarisations?",
       "options": [
-        "No",
-        "Yes"
+        "No: there are no polarisations in general relativity, because gravitational waves carry no transverse components",
+        "No: gauge freedom and constraints remove all but two transverse-traceless polarisations",
+        "Yes: six polarisations",
+        "Yes: ten polarisations"
       ],
-      "answer": "No",
-      "explanation": "Gauge removes redundant components.",
+      "answer": "No: gauge freedom and constraints remove all but two transverse-traceless polarisations",
+      "explanation": "Gravitational waves have plus and cross polarisations.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count gauge and constraint components."
     },
     {
       "id": "concept-3",
-      "prompt": "Does intensity scale with squared strain amplitude?",
+      "prompt": "A gravitational wave's strain amplitude doubles. How does its energy flux change?",
       "options": [
-        "No",
-        "Yes"
+        "It quadruples",
+        "It stays the same",
+        "It halves",
+        "It doubles"
       ],
-      "answer": "Yes",
-      "explanation": "Radiative energy flux is quadratic at the admitted order.",
+      "answer": "It quadruples",
+      "explanation": "Energy flux scales as the square of the strain and of its frequency, ∝ (c³/16πG) ḣ², so doubling the amplitude quadruples it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Energy is quadratic in amplitude."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state gauge?",
-      "answer": "It separates coordinate components from radiative observables.",
+      "prompt": "Why does a gravitational-wave calculation specify the gauge?",
+      "answer": "Coordinate components depend on gauge, so you must separate them from radiative observables",
       "options": [
-        "It separates coordinate components from radiative observables.",
-        "The mass quadrupole."
+        "Gauge is irrelevant",
+        "To define the speed of light",
+        "To set the mass quadrupole",
+        "Coordinate components depend on gauge, so you must separate them from radiative observables"
       ],
-      "explanation": "It separates coordinate components from radiative observables.",
+      "explanation": "The transverse-traceless gauge exposes the radiative part.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Not every component of h is observable."
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does an ideal strain sinusoid alone establish a detected astrophysical signal?",
-      "answer": "No; detector response and noise evidence are needed.",
+      "prompt": "You see a clean sinusoidal strain curve. Does that alone establish an astrophysical detection?",
+      "answer": "No: you also need the detector response and evidence that noise cannot mimic it",
       "options": [
-        "Yes; any plotted waveform is observational confirmation.",
-        "No; detector response and noise evidence are needed."
+        "No: detectors cannot measure strain",
+        "Yes: any waveform confirms a detection",
+        "Yes: if it is plotted on a log scale",
+        "No: you also need the detector response and evidence that noise cannot mimic it"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Model prediction and data analysis are distinct.",
+      "hint": "Detections are statistical claims.",
+      "explanation": "LIGO compares candidates with templates and background distributions.",
       "misconceptions": {
         "Yes; any plotted waveform is observational confirmation.": "Model prediction and data analysis are distinct."
       },

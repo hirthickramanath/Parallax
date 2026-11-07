@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the gradient tangent to a regular level surface?",
+      "prompt": "At a point of a regular level surface f(x, y, z) = c, how does ∇f relate to the surface?",
       "options": [
-        "Yes",
-        "No; it is normal"
+        "It is at 45° to the surface",
+        "It is parallel to the surface's edge",
+        "It is tangent to the surface",
+        "It is normal (perpendicular) to the surface"
       ],
-      "answer": "No; it is normal",
-      "explanation": "Tangent first-order changes have zero dot product with it.",
+      "answer": "It is normal (perpendicular) to the surface",
+      "explanation": "First-order changes of f along tangent directions are zero (∇f · t = 0), so ∇f is orthogonal to every tangent vector.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of height contours on a map: which way does the slope point?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does equality of mixed partials follow merely from their existence at one point?",
+      "prompt": "Both mixed partials fxy and fyx exist at a point. Are they necessarily equal?",
       "options": [
-        "Not generally",
-        "Always"
+        "Always equal, since the order of differentiation never matters when both mixed partials exist",
+        "Never equal",
+        "Always equal",
+        "Not necessarily: equality needs continuity of the mixed partials nearby"
       ],
-      "answer": "Not generally",
-      "explanation": "A standard theorem assumes suitable nearby continuity.",
+      "answer": "Not necessarily: equality needs continuity of the mixed partials nearby",
+      "explanation": "Clairaut's theorem assumes the second partials are continuous. Counterexamples exist where they exist but differ at a point.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the hypotheses of Clairaut's theorem."
     },
     {
       "id": "concept-3",
-      "prompt": "Can the Euclidean steepest direction depend on coordinate scaling?",
+      "prompt": "Does the direction of steepest ascent depend on how you scale the coordinates?",
       "options": [
-        "No",
-        "Yes"
+        "No: the steepest ascent is always along ∇f, whatever the scaling of the coordinates",
+        "Only in 1D",
+        "No: it is always ∇f",
+        "Yes: the notion of a unit step changes with the metric"
       ],
-      "answer": "Yes",
-      "explanation": "Changing the metric notion of a unit step changes the optimization.",
+      "answer": "Yes: the notion of a unit step changes with the metric",
+      "explanation": "Steepest ascent maximises the change per unit step. If coordinates are rescaled, the unit sphere changes, and so does the optimal direction.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Imagine stretching the x-axis by a factor of 10."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What justifies the second-order expansion here?",
-      "answer": "Continuous second derivatives near the expansion point",
+      "prompt": "What justifies the second-order Taylor expansion of f(x, y) near a point?",
+      "answer": "Continuous second derivatives in a neighbourhood",
       "options": [
-        "Continuous second derivatives near the expansion point",
-        "A good-looking contour plot alone"
+        "A good-looking contour plot of the function, which shows that the second derivatives are continuous",
+        "Continuous second derivatives in a neighbourhood",
+        "Only continuity of f",
+        "The existence of f at the point"
       ],
-      "explanation": "Taylor requires regularity, not visual evidence.",
+      "explanation": "Taylor's theorem with remainder needs enough smoothness. Visual evidence cannot justify it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Look at the hypotheses of Taylor's theorem."
     },
     {
       "id": "multivariable-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "At a point where gradient is zero, does gradient direction still identify a unique steepest-ascent unit direction?",
-      "answer": "No; all first-order directional derivatives vanish.",
+      "prompt": "At a point where ∇f = 0, what does the 'direction of steepest ascent' mean?",
+      "answer": "It is undefined to first order, since every directional derivative is zero",
       "options": [
-        "Yes; the zero vector defines a unique unit direction.",
-        "No; all first-order directional derivatives vanish."
+        "It is undefined to first order, since every directional derivative is zero",
+        "The x-direction",
+        "The zero vector, which is a unit direction",
+        "The direction of the Hessian"
       ],
-      "explanation": "Higher-order terms must distinguish behavior when the linear term vanishes.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "With ∇f = 0 all first-order directional derivatives vanish, so higher-order terms (the Hessian) decide behaviour.",
+      "hint": "Compute D_u f = ∇f · u when ∇f = 0.",
       "misconceptions": {
         "Yes; the zero vector defines a unique unit direction.": "Higher-order terms must distinguish behavior when the linear term vanishes."
       },

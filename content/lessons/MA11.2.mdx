@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a smooth manifold require one global chart?",
+      "prompt": "Must a smooth manifold be covered by a single coordinate chart?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: one global chart is needed, since a manifold must be described by a single coordinate system",
+        "Yes for compact manifolds",
+        "Yes for closed manifolds",
+        "No: compatible local charts are enough"
       ],
-      "answer": "No",
-      "explanation": "Compatible local charts suffice.",
+      "answer": "No: compatible local charts are enough",
+      "explanation": "The sphere S² cannot be covered by one chart; two (stereographic) charts suffice.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a map of the Earth."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a coordinate singularity always mean physical curvature diverges?",
+      "prompt": "A metric component diverges at a point in some coordinates. Does that mean the spacetime curvature diverges there?",
       "options": [
-        "No",
-        "Yes"
+        "No: the metric cannot diverge",
+        "Yes: it is a singularity, since a diverging metric component always means diverging curvature",
+        "Yes: always",
+        "Not necessarily: it may be a coordinate singularity"
       ],
-      "answer": "No",
-      "explanation": "The chart itself can fail.",
+      "answer": "Not necessarily: it may be a coordinate singularity",
+      "explanation": "The Schwarzschild r = 2M is a coordinate artefact; invariants such as the Kretschmann scalar are finite.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute an invariant curvature scalar."
     },
     {
       "id": "concept-3",
-      "prompt": "Is a metric automatically fixed by a smooth atlas?",
+      "prompt": "A smooth atlas is given. Does it determine the metric?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, the atlas determines the metric up to rotation, because it fixes the lengths of the coordinate basis",
+        "Yes up to scaling",
+        "No: the metric is additional geometric data",
+        "Yes: a smooth atlas fixes the metric uniquely, since the chart overlaps determine all lengths"
       ],
-      "answer": "No",
-      "explanation": "It is additional geometric data.",
+      "answer": "No: the metric is additional geometric data",
+      "explanation": "A manifold can carry many different metrics.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you rescale lengths on the sphere?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why diagnose singularities invariantly?",
-      "answer": "Coordinate failure can mimic a divergent component.",
+      "prompt": "Why should singularities be diagnosed using invariants rather than coordinate components?",
+      "answer": "A coordinate failure can mimic a divergent component",
       "options": [
-        "Coordinate failure can mimic a divergent component.",
-        "A compatible collection of local charts."
+        "A coordinate failure can mimic a divergent component",
+        "Invariants are easier to compute, whereas components never diverge unless the spacetime itself is singular",
+        "Components never diverge",
+        "Invariants are always zero"
       ],
-      "explanation": "Coordinate failure can mimic a divergent component.",
+      "explanation": "Use scalars such as the Ricci or Kretschmann scalars to tell physical from coordinate singularities.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare Schwarzschild at r = 2M and r = 0."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does the failure of polar angle at the origin make the Euclidean plane geometrically singular?",
-      "answer": "No; the coordinates fail there.",
+      "prompt": "The polar angle θ is undefined at the origin. Is the Euclidean plane singular there?",
+      "answer": "No: the coordinates fail; Cartesian coordinates are regular",
       "options": [
-        "Yes; every coordinate singularity is physical.",
-        "No; the coordinates fail there."
+        "Yes: the curvature diverges at the origin, since the polar angle θ is undefined there",
+        "Yes: the metric is not defined",
+        "Yes: it is a physical singularity",
+        "No: the coordinates fail; Cartesian coordinates are regular"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use another regular chart.",
+      "hint": "Is there a good chart at the origin?",
+      "explanation": "The plane is flat everywhere. Choosing a different chart removes the issue.",
       "misconceptions": {
         "Yes; every coordinate singularity is physical.": "Use another regular chart."
       },

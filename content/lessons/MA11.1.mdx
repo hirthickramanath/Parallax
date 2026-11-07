@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do vector and covector components use the same arbitrary-coordinate Jacobian?",
+      "prompt": "Under a change of coordinates, how do vector and covector components transform?",
       "options": [
-        "Yes",
-        "No"
+        "Not at all, since the components of vectors and covectors are the same in every coordinate system",
+        "Both with the same Jacobian",
+        "Identically",
+        "With mutually inverse (transpose-inverse) Jacobians"
       ],
-      "answer": "No",
-      "explanation": "They use mutually inverse transformations.",
+      "answer": "With mutually inverse (transpose-inverse) Jacobians",
+      "explanation": "Vector components (upper index) use ∂x′/∂x; covector components (lower index) use ∂x/∂x′.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Contraction vᵢwⁱ must be invariant."
     },
     {
       "id": "concept-2",
-      "prompt": "Must free indices match across a tensor equation?",
+      "prompt": "In a tensor equation, what must be true of the free indices on the two sides?",
       "options": [
-        "Yes",
-        "No"
+        "They are only on one side",
+        "They can be dummy",
+        "They must match in name and position",
+        "They are only on one side, because the free indices on the two sides of an equation are independent"
       ],
-      "answer": "Yes",
-      "explanation": "They define the component type being equated.",
+      "answer": "They must match in name and position",
+      "explanation": "The free indices define the type of the object being equated.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare A^μ = B^μ with A^μ = B_μ."
     },
     {
       "id": "concept-3",
-      "prompt": "Is index lowering always numerically unchanged?",
+      "prompt": "Lowering an index of a vector with a metric g_{μν} gives vμ = g_{μν}v^ν. Are the numerical components the same?",
       "options": [
-        "Yes",
-        "No"
+        "Only for orthonormal bases, in which case the lowered components are numerically equal to the original ones",
+        "Not in general: the metric mixes and rescales them",
+        "Yes in all coordinates",
+        "Yes: lowering only changes position"
       ],
-      "answer": "No",
-      "explanation": "It uses the metric.",
+      "answer": "Not in general: the metric mixes and rescales them",
+      "explanation": "In polar coordinates g_θθ = r², so v_θ = r²v^θ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate with the polar metric."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is an arbitrary component derivative insufficient?",
-      "answer": "Basis variation contributes connection terms.",
+      "prompt": "Why is the ordinary partial derivative of a vector's components not a tensor in curvilinear coordinates?",
+      "answer": "The basis vectors vary, adding connection terms",
       "options": [
-        "Basis variation contributes connection terms.",
-        "A dual pairing that removes one upper/lower index pair."
+        "The derivative is zero",
+        "Partial derivatives do not exist",
+        "Vectors have no components",
+        "The basis vectors vary, adding connection terms"
       ],
-      "explanation": "Basis variation contributes connection terms.",
+      "explanation": "∂_μ v^ν transforms with an extra inhomogeneous term; the covariant derivative ∇_μ v^ν = ∂_μ v^ν + Γ^ν_{μλ}v^λ fixes this.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the polar unit vector e_r stay fixed?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "May an index be lowered without a metric or another specified pairing?",
-      "answer": "No; the pairing defines the conversion.",
+      "prompt": "Without a metric, can you convert v^μ into a covector?",
+      "answer": "No: you need a metric or another pairing to define the conversion",
       "options": [
-        "Yes; upper and lower indices are interchangeable typography.",
-        "No; the pairing defines the conversion."
+        "No: you need a metric or another pairing to define the conversion",
+        "Yes: by transposing the column of components, which converts v^μ into a covector without needing a metric",
+        "Yes: indices are typography",
+        "Yes: just move the index"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Vectors and covectors have different transformation laws.",
+      "hint": "Which object defines the lowered components?",
+      "explanation": "Vectors and covectors live in different spaces and transform differently.",
       "misconceptions": {
         "Yes; upper and lower indices are interchangeable typography.": "Vectors and covectors have different transformation laws."
       },

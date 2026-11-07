@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does strain have units of length?",
+      "prompt": "LIGO measures a strain of h ~ 10⁻²¹. What are the units of h?",
       "options": [
-        "Yes",
-        "No"
+        "Seconds: strain is a time delay measured in the arrival of the signal at the detector",
+        "Dimensionless: a fractional length change ΔL/L",
+        "Metres",
+        "Metres per second"
       ],
-      "answer": "No",
-      "explanation": "It is dimensionless.",
+      "answer": "Dimensionless: a fractional length change ΔL/L",
+      "explanation": "h = ΔL/L is a ratio of lengths.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the formula ΔL/L."
     },
     {
       "id": "concept-2",
-      "prompt": "Does chirp mass alone determine both component masses?",
+      "prompt": "A gravitational-wave signal gives a precise chirp mass 𝓜. Can you read off both component masses from it?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the chirp mass fixes the two masses uniquely, since they are each half of 𝓜 in a symmetric system",
+        "Yes: 𝓜 gives m₁ and m₂",
+        "No: a second quantity, such as the mass ratio, is required",
+        "Yes: they equal 𝓜"
       ],
-      "answer": "No",
-      "explanation": "Mass ratio remains additional information.",
+      "answer": "No: a second quantity, such as the mass ratio, is required",
+      "explanation": "𝓜 = (m₁m₂)^(3/5)/(m₁+m₂)^(1/5), one combination of two masses.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many unknowns and how many equations?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must detector noise and calibration enter inference?",
+      "prompt": "A candidate GW event is found in detector data. Why must the noise and calibration enter the inference?",
       "options": [
-        "No",
-        "Yes"
+        "They set the significance and the parameter uncertainties",
+        "They do not matter, because a real gravitational-wave signal is far larger than any detector noise",
+        "They only affect plots",
+        "The signal is noise-free"
       ],
-      "answer": "Yes",
-      "explanation": "They determine significance and parameter uncertainty.",
+      "answer": "They set the significance and the parameter uncertainties",
+      "explanation": "Detector noise determines the false-alarm rate, and calibration errors shift amplitude and phase.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How confident can you be if the noise is non-Gaussian?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What qualifies a waveform inference?",
-      "answer": "The model regime, noise, calibration and parameter degeneracies.",
+      "prompt": "What qualifies a parameter estimated from a gravitational waveform?",
+      "answer": "The waveform model's regime, the noise, calibration and parameter degeneracies",
       "options": [
-        "The model regime, noise, calibration and parameter degeneracies.",
-        "A geometry-dependent strain response through light measurements."
+        "The location of the detector only, since the waveform model and noise are irrelevant to the parameters",
+        "The observation time only",
+        "The waveform model's regime, the noise, calibration and parameter degeneracies",
+        "Nothing"
       ],
-      "explanation": "The model regime, noise, calibration and parameter degeneracies.",
+      "explanation": "Spin and mass ratio and distance and inclination are partly degenerate.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Are distance and inclination separable?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can the leading slow-inspiral frequency law be assumed exact through merger?",
-      "answer": "No; strong-field dynamics require a more complete waveform.",
+      "prompt": "The leading-order inspiral law, f ∝ (t_c − t)^(−3/8), is used right through the merger. Is that valid?",
+      "answer": "No: strong-field dynamics need a more complete waveform",
       "options": [
-        "Yes; the same lowest-order approximation is exact everywhere.",
-        "No; strong-field dynamics require a more complete waveform."
+        "No: strong-field dynamics need a more complete waveform",
+        "Yes: until ringdown",
+        "Yes: for all masses",
+        "Yes: the same law is exact"
       ],
-      "explanation": "An approximation must be checked against the frequency and velocity regime.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Post-Newtonian terms and numerical relativity are needed near the merger.",
+      "hint": "Does v ≪ c hold at merger?",
       "misconceptions": {
         "Yes; the same lowest-order approximation is exact everywhere.": "An approximation must be checked against the frequency and velocity regime."
       },

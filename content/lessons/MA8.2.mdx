@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the CLT say all original observations become Gaussian?",
+      "prompt": "You draw many independent measurements from a skewed distribution. What does the central limit theorem say?",
       "options": [
-        "Yes",
-        "No"
+        "The raw measurements become normal as n grows, since the theorem applies to the data and not to the mean",
+        "The standardised sample mean tends to a normal distribution; the raw data stay skewed",
+        "The data become uniform",
+        "The raw measurements become normal"
       ],
-      "answer": "No",
-      "explanation": "It concerns a standardized sum or mean.",
+      "answer": "The standardised sample mean tends to a normal distribution; the raw data stay skewed",
+      "explanation": "The CLT is about the distribution of the sum or mean, not of the individual observations.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Distinguish the data distribution from the sampling distribution of the mean."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the classical iid CLT apply unchanged to infinite-variance Cauchy data?",
+      "prompt": "Cauchy-distributed data have infinite variance. What happens to the sample mean as n grows?",
       "options": [
-        "No",
-        "Yes"
+        "The classical CLT does not apply: the mean has the same Cauchy spread for any n",
+        "It becomes uniform",
+        "It becomes normal, as the CLT predicts, with a spread that shrinks like 1/√n for any distribution",
+        "It converges to zero"
       ],
-      "answer": "No",
-      "explanation": "Its finite-variance hypothesis fails.",
+      "answer": "The classical CLT does not apply: the mean has the same Cauchy spread for any n",
+      "explanation": "The CLT needs a finite variance. The average of n Cauchy variables is again Cauchy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the hypotheses of the CLT."
     },
     {
       "id": "concept-3",
-      "prompt": "Is there one universal sufficient sample size for every Gaussian approximation?",
+      "prompt": "Is there one sample size n that makes the Gaussian approximation good for every distribution?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: n = 1000",
+        "Yes: n = 30 is always enough, since the Gaussian approximation is good at that size for every distribution",
+        "No: it depends on the tails, skewness and the accuracy you need",
+        "Yes: n = 100"
       ],
-      "answer": "No",
-      "explanation": "Tail behaviour and required accuracy matter.",
+      "answer": "No: it depends on the tails, skewness and the accuracy you need",
+      "explanation": "Heavy-tailed or highly skewed distributions need much larger n. n = 30 is only a rule of thumb.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a very skewed distribution."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can correlated samples break the naive standard-error calculation?",
-      "answer": "Covariances contribute to the variance of the mean",
+      "prompt": "Why can correlated measurements break the naive standard error σ/√n?",
+      "answer": "Covariances add to the variance of the mean, so the effective sample size is smaller",
       "options": [
-        "Covariances contribute to the variance of the mean",
-        "Correlation always improves information"
+        "The mean is not defined",
+        "Correlation improves the information",
+        "Covariances add to the variance of the mean, so the effective sample size is smaller",
+        "Correlated data have zero variance"
       ],
-      "explanation": "The effective information differs from the raw sample count.",
+      "explanation": "Var(x̄) = (1/n²)ΣΣ Cov(xᵢ, xⱼ). Positive correlations increase it above σ²/n.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Write the variance of a sum including cross terms."
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does the central limit theorem make the individual raw observations normally distributed?",
-      "answer": "No; it concerns a suitably standardized aggregate.",
+      "prompt": "A simulation shows the histogram of the sample mean becoming bell-shaped. What does the CLT not say?",
+      "answer": "That the individual observations are normally distributed",
       "options": [
-        "Yes; all raw distributions change to normal as n grows.",
-        "No; it concerns a suitably standardized aggregate."
+        "That the result needs finite variance, so the CLT holds only for distributions with a defined spread",
+        "That its variance shrinks like 1/n",
+        "That the individual observations are normally distributed",
+        "That the mean is approximately normal"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Distinguish data distribution from sampling distribution.",
+      "hint": "What object does the theorem describe?",
+      "explanation": "The theorem concerns a standardised aggregate, not each observation.",
       "misconceptions": {
         "Yes; all raw distributions change to normal as n grows.": "Distinguish data distribution from sampling distribution."
       },

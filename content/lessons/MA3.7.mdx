@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does SVD require a square diagonalizable matrix?",
+      "prompt": "Which matrices have a singular value decomposition?",
       "options": [
-        "Yes",
-        "No"
+        "Only symmetric matrices",
+        "Only invertible matrices",
+        "Every finite matrix, including rectangular ones",
+        "Only square diagonalisable matrices"
       ],
-      "answer": "No",
-      "explanation": "It applies to every finite rectangular matrix.",
+      "answer": "Every finite matrix, including rectangular ones",
+      "explanation": "The SVD exists for any m × n real or complex matrix: A = UΣV*.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall that SVD applies to all matrices."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a pseudoinverse always solve Ax=b exactly?",
+      "prompt": "You apply the pseudoinverse to solve Ax = b. When does x = A⁺b satisfy Ax = b exactly?",
       "options": [
-        "No",
-        "Yes"
+        "Only if A is square, since a pseudoinverse of a rectangular matrix never gives an exact solution",
+        "Only if b is in the column space of A",
+        "Always",
+        "Never"
       ],
-      "answer": "No",
-      "explanation": "An out-of-image component remains as a residual.",
+      "answer": "Only if b is in the column space of A",
+      "explanation": "A⁺b gives the least-squares solution. Any component of b outside the range of A remains as a residual.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is b always in the range of A?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can tiny singular values amplify data errors?",
+      "prompt": "A matrix has a very small singular value. What does that mean for solving Ax = b with noisy b?",
       "options": [
-        "No",
-        "Yes"
+        "Errors in b can be amplified by up to 1/σ_min",
+        "Errors are reduced",
+        "The solution is exact",
+        "Nothing: small singular values are harmless"
       ],
-      "answer": "Yes",
-      "explanation": "Inversion divides by those small values.",
+      "answer": "Errors in b can be amplified by up to 1/σ_min",
+      "explanation": "Inversion divides components by the singular values. Noise along a direction with tiny σ gets magnified.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write x = Σ (uᵢ·b/σᵢ)vᵢ and see what a tiny σᵢ does."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must accompany numerical rank truncation?",
-      "answer": "The threshold, scale and modeling justification",
+      "prompt": "You truncate small singular values below a threshold to define numerical rank. What should you report?",
+      "answer": "The threshold, the data scale and a modelling justification",
       "options": [
-        "The threshold, scale and modeling justification",
-        "A claim that the discarded directions never existed"
+        "Nothing: the rank is a fact of the matrix, so no threshold or justification needs to be quoted",
+        "Only the largest singular value",
+        "The threshold, the data scale and a modelling justification",
+        "That the discarded directions never existed"
       ],
-      "explanation": "Finite-precision rank is a decision sensitive to data and scale.",
+      "explanation": "Finite-precision rank is a decision depending on noise level and scale. It should be documented.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is numerical rank a property of the matrix alone?"
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does a nonzero determinant guarantee numerically stable inversion of noisy data?",
-      "answer": "No; a very small singular value can cause severe amplification.",
+      "prompt": "A matrix has a non-zero determinant. Can solving with noisy data still be unreliable?",
+      "answer": "Yes: a tiny singular value can strongly amplify errors",
       "options": [
-        "Yes; invertibility and numerical conditioning are identical.",
-        "No; a very small singular value can cause severe amplification."
+        "Yes, but only if the determinant is negative",
+        "No: an invertible matrix means the solve is stable, whatever the noise in the data",
+        "No: determinant measures conditioning",
+        "Yes: a tiny singular value can strongly amplify errors"
       ],
-      "explanation": "Condition number measures sensitivity beyond exact rank.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Invertibility is exact; conditioning (σ_max/σ_min) measures sensitivity to perturbation.",
+      "hint": "Compare det with the condition number.",
       "misconceptions": {
         "Yes; invertibility and numerical conditioning are identical.": "Condition number measures sensitivity beyond exact rank."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May every nonzero ring element be divided out?",
+      "prompt": "In the ring ℤ, can you divide any non-zero element by 2 and stay in the ring?",
       "options": [
-        "Yes",
-        "No"
+        "No: ℤ has no non-zero elements",
+        "No: 2 is not a unit, so 1/2 is not in ℤ",
+        "Yes: division is always allowed",
+        "Yes: every non-zero element is invertible"
       ],
-      "answer": "No",
-      "explanation": "It may not be a unit.",
+      "answer": "No: 2 is not a unit, so 1/2 is not in ℤ",
+      "explanation": "A ring need not have multiplicative inverses. Units (such as ±1 in ℤ) are the invertible elements.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether 1/2 is an integer, and what a unit in ℤ would be."
     },
     {
       "id": "concept-2",
-      "prompt": "Does Z_p form a field for prime p?",
+      "prompt": "For a prime p, what kind of structure is ℤ/pℤ?",
       "options": [
-        "Yes",
-        "No"
+        "A field, since every non-zero residue has an inverse",
+        "A vector space over ℚ",
+        "A group under multiplication only",
+        "A ring that is not a field, since some non-zero residues have no inverse in ℤ/pℤ"
       ],
-      "answer": "Yes",
-      "explanation": "Every nonzero residue has an inverse.",
+      "answer": "A field, since every non-zero residue has an inverse",
+      "explanation": "If a is not a multiple of p, gcd(a, p) = 1, so ax ≡ 1 (mod p) has a solution (Bézout).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Find the inverse of 2 mod 5."
     },
     {
       "id": "concept-3",
-      "prompt": "Is polynomial irreducibility independent of coefficient field?",
+      "prompt": "x² + 1 is irreducible over ℝ. What about over ℂ?",
       "options": [
-        "Yes",
-        "No"
+        "It factors as (x − i)(x + i), so irreducibility depends on the field",
+        "It is a unit",
+        "It has no roots",
+        "It stays irreducible over ℂ, because x² + 1 has no root among the complex numbers either"
       ],
-      "answer": "No",
-      "explanation": "Available factors depend on the field.",
+      "answer": "It factors as (x − i)(x + i), so irreducibility depends on the field",
+      "explanation": "Which factors are available depends on the coefficients allowed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does x² + 1 have roots in ℂ?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state the coefficient field?",
-      "answer": "Factorization and solvability depend on it.",
+      "prompt": "You factor x² − 2 over ℚ and over ℝ. Why must you state the coefficient field?",
+      "answer": "Factorisation and solvability depend on which field the coefficients lie in",
       "options": [
-        "Factorization and solvability depend on it.",
-        "A nonzero factor of a zero product with another nonzero element."
+        "Factorisation and solvability depend on which field the coefficients lie in",
+        "Fields do not affect roots",
+        "The field only changes the notation",
+        "The answer is always the same"
       ],
-      "explanation": "Factorization and solvability depend on it.",
+      "explanation": "x² − 2 is irreducible over ℚ but factors as (x − √2)(x + √2) over ℝ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Ask whether √2 is a rational number, then whether it is real."
     },
     {
       "id": "structure-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is the residue ring modulo every positive integer a field?",
-      "answer": "No; composite moduli have zero divisors.",
+      "prompt": "Is ℤ/6ℤ a field?",
+      "answer": "No: composite moduli have zero divisors, e.g. 2·3 ≡ 0",
       "options": [
-        "Yes; finite arithmetic always has inverses.",
-        "No; composite moduli have zero divisors."
+        "Yes: finite rings are fields, so ℤ/6ℤ has an inverse for every non-zero residue class",
+        "Yes: 6 is even",
+        "No: composite moduli have zero divisors, e.g. 2·3 ≡ 0",
+        "Yes: it has inverses"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Check nonzero multiplicative inverses.",
+      "hint": "Find a product of two non-zero residues that is 0.",
+      "explanation": "A field needs inverses for all non-zero elements. 2 has no inverse mod 6.",
       "misconceptions": {
         "Yes; finite arithmetic always has inverses.": "Check nonzero multiplicative inverses."
       },

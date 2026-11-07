@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a chosen branch cut necessarily a physical singularity at every point on it?",
+      "prompt": "You choose the branch cut of √z along the negative real axis. Is every point on that cut a physical singularity?",
       "options": [
-        "Yes",
-        "No"
+        "No: it has no branch point",
+        "Yes: the function is undefined there",
+        "Yes: all points on the cut are singular",
+        "No: the cut is a convention; only the branch point itself is intrinsically singular"
       ],
-      "answer": "No",
-      "explanation": "Away from the branch point another local branch can be regular.",
+      "answer": "No: the cut is a convention; only the branch point itself is intrinsically singular",
+      "explanation": "You can move the cut elsewhere. Only z = 0 is a genuine branch point.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can the cut be rotated?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does one loop around zero return a continued square root to its initial sign?",
+      "prompt": "You continue √z once around the origin along a circle. What is the result?",
       "options": [
-        "No",
-        "Yes"
+        "It becomes zero",
+        "It returns to the same value",
+        "The sign flips; two loops are needed to return",
+        "It doubles, since the continued function picks up a factor of two on a loop around the origin"
       ],
-      "answer": "No",
-      "explanation": "It changes sign after one loop and returns after two.",
+      "answer": "The sign flips; two loops are needed to return",
+      "explanation": "√(re^{iθ}) = √r e^{iθ/2}. After θ → θ + 2π the value is multiplied by e^{iπ} = −1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Track the phase e^{iθ/2}."
     },
     {
       "id": "concept-3",
-      "prompt": "Does agreement only at isolated sample points establish analytic identity?",
+      "prompt": "Two analytic functions agree at ten isolated points. Are they identical?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, if both are polynomials of degree below 10, since agreement at ten points then forces them to be equal",
+        "No: they never agree",
+        "Yes: ten points are enough",
+        "No: the identity theorem needs agreement on a set with an accumulation point inside a connected domain"
       ],
-      "answer": "No",
-      "explanation": "The identity theorem needs an interior accumulation point in a connected domain.",
+      "answer": "No: the identity theorem needs agreement on a set with an accumulation point inside a connected domain",
+      "explanation": "sin(πz) vanishes at all integers but is not zero; you need an accumulation point in the domain.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare sin(πz) with 0."
     },
     {
       "id": "numeric",
@@ -69,16 +78,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a branch-dependent physical calculation state?",
-      "answer": "Its branch domain and the model condition selecting that choice",
+      "prompt": "A physical calculation uses a branch-dependent function. What must you specify?",
+      "answer": "The branch domain and the physical condition that selects it",
       "options": [
-        "Its branch domain and the model condition selecting that choice",
-        "Only the library function name"
+        "Nothing: the function name suffices, because every branch of a multivalued function gives the same physical result",
+        "Only the function name in the code",
+        "The numerical value at one point",
+        "The branch domain and the physical condition that selects it"
       ],
-      "explanation": "Default conventions do not supply boundary or causality conditions.",
+      "explanation": "Defaults like a library's principal branch do not enforce causality or boundary conditions.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What fixes the correct branch in the physical problem?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does continuation of log around zero return the same value after one positive circuit?",
-      "answer": "No; it gains 2πi.",
+      "prompt": "You continue ln z once counterclockwise around the origin. What is the change in value?",
+      "answer": "It gains 2πi",
       "options": [
-        "Yes; all analytic continuations are globally single valued.",
-        "No; it gains 2πi."
+        "Nothing: ln z is single valued",
+        "It doubles",
+        "It loses 2π",
+        "It gains 2πi"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "The puncture produces monodromy.",
+      "hint": "Track the argument θ as you go once round the origin.",
+      "explanation": "ln z = ln r + iθ and θ increases by 2π.",
       "misconceptions": {
         "Yes; all analytic continuations are globally single valued.": "The puncture produces monodromy."
       },

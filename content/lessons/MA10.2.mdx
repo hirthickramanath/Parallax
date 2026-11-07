@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do overlapping permutations always commute?",
+      "prompt": "Two permutations of S₅ share a common symbol in their cycles (e.g. (1 2) and (2 3)). Do they commute?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: always, because cycles that share a symbol still commute, as the product is independent of the order",
+        "Yes: cycles commute",
+        "Yes: if they have the same length",
+        "Not in general: composition order changes the result"
       ],
-      "answer": "No",
-      "explanation": "Their action order can change the mapping.",
+      "answer": "Not in general: composition order changes the result",
+      "explanation": "(1 2)(2 3) and (2 3)(1 2) are different 3-cycles. Disjoint cycles commute.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute both products on the symbol 1."
     },
     {
       "id": "concept-2",
-      "prompt": "Is cycle-product order generally the sum of lengths?",
+      "prompt": "A permutation is a product of disjoint cycles of lengths 2 and 3. What is its order?",
       "options": [
-        "No",
-        "Yes"
+        "2",
+        "5, the sum of the lengths, since the order of a product of disjoint cycles is the total of their lengths",
+        "6, the least common multiple of the lengths",
+        "1"
       ],
-      "answer": "No",
-      "explanation": "For disjoint cycles it is their least common multiple.",
+      "answer": "6, the least common multiple of the lengths",
+      "explanation": "Each cycle returns to identity after its own length. The product returns when both do, at lcm(2, 3) = 6.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When does each cycle return to the identity?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is parity independent of the transposition factorization?",
+      "prompt": "A permutation can be written as a product of transpositions in different ways. What is true of the parity?",
       "options": [
-        "No",
-        "Yes"
+        "The parity (even or odd) is the same for every factorisation",
+        "It is always even",
+        "It depends on the writer, since different factorisations of the same permutation can have different parities",
+        "It can vary"
       ],
-      "answer": "Yes",
-      "explanation": "The sign homomorphism is well defined.",
+      "answer": "The parity (even or odd) is the same for every factorisation",
+      "explanation": "The sign homomorphism S_n → {±1} is well defined, so even and odd are intrinsic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the sign function."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state composition convention?",
-      "answer": "Written products otherwise become ambiguous.",
+      "prompt": "Why must a text state its permutation composition convention?",
+      "answer": "Without it a written product such as στ is ambiguous (left-to-right or right-to-left)",
       "options": [
-        "Written products otherwise become ambiguous.",
-        "The least positive repetition giving identity."
+        "Because all conventions agree, so the product στ always means the same permutation whichever order is used",
+        "Without it a written product such as στ is ambiguous (left-to-right or right-to-left)",
+        "Because it changes the order of cycles",
+        "To define the sign"
       ],
-      "explanation": "Written products otherwise become ambiguous.",
+      "explanation": "The product στ can mean 'σ then τ' or 'τ then σ', giving different results for non-commuting permutations.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compute (1 2)(1 3) in both conventions."
     },
     {
       "id": "structure-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Do arbitrary overlapping cycles commute?",
-      "answer": "No; composition order can change the result.",
+      "prompt": "Do cycles that overlap on a symbol commute?",
+      "answer": "No: the order of composition can change the result",
       "options": [
-        "Yes; cycle notation is commutative.",
-        "No; composition order can change the result."
+        "Yes: cycle notation is commutative, so overlapping cycles give the same result in either order",
+        "Yes: if both are even",
+        "Yes: if they are the same length",
+        "No: the order of composition can change the result"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Apply each map to the same test index.",
+      "hint": "Test (1 2) and (1 3) on 1.",
+      "explanation": "Apply each map to the same index to see that the results differ.",
       "misconceptions": {
         "Yes; cycle notation is commutative.": "Apply each map to the same test index."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can a singular velocity Hessian always be inverted in the ordinary Legendre construction?",
+      "prompt": "The velocity Hessian ∂²L/∂q̇∂q̇ is singular. Can the ordinary Legendre transform be inverted to give H(q, p)?",
       "options": [
-        "Yes",
-        "No"
+        "No: the momenta are constrained and a constrained (Dirac) formulation is needed",
+        "Yes: using p = mq̇ to invert the relation, which works for any Lagrangian with a kinetic term",
+        "Yes: always",
+        "Yes: by a limit"
       ],
-      "answer": "No",
-      "explanation": "A constrained formulation may be needed.",
+      "answer": "No: the momenta are constrained and a constrained (Dirac) formulation is needed",
+      "explanation": "A singular Hessian means q̇ cannot be solved from p.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you solve p = ∂L/∂q̇ for q̇?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is canonical momentum always mechanical mv in a magnetic field?",
+      "prompt": "A charged particle moves in a magnetic field. Is its canonical momentum equal to the mechanical momentum mv?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: always mv",
+        "Yes: B does no work",
+        "Yes: for uniform fields",
+        "No: it is mv + qA, which includes the vector potential"
       ],
-      "answer": "No",
-      "explanation": "The vector-potential contribution changes it.",
+      "answer": "No: it is mv + qA, which includes the vector potential",
+      "explanation": "L = ½mv² + qv·A gives p = mv + qA.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute ∂L/∂v for a charge in a magnetic field and see which term appears beyond mv."
     },
     {
       "id": "concept-3",
-      "prompt": "Does phase-space volume preservation guarantee every position projection preserves area?",
+      "prompt": "Liouville's theorem says phase-space volume is preserved. Does a projection onto the (q) axis keep area?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: all projections preserve it, since Liouville's theorem applies to every subspace of phase space",
+        "No: projection discards momentum dimensions and need not preserve area",
+        "Yes: volume is invariant",
+        "Yes: the flow is incompressible"
       ],
-      "answer": "No",
-      "explanation": "Projection can discard phase-space dimensions.",
+      "answer": "No: projection discards momentum dimensions and need not preserve area",
+      "explanation": "Only the full phase-space volume is conserved.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a projection keep the full phase space?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is required before substituting velocities into H(q,p,t)?",
-      "answer": "An invertible momentum–velocity relation in the regular construction",
+      "prompt": "What must hold before you can substitute velocities in terms of momenta to write H(q, p, t)?",
+      "answer": "The momentum–velocity relation must be invertible",
       "options": [
-        "An invertible momentum–velocity relation in the regular construction",
-        "Only adding p as a new symbol"
+        "Nothing special: velocities can always be eliminated, whatever form the Lagrangian happens to take",
+        "Make the Lagrangian zero",
+        "Add p as a new symbol",
+        "The momentum–velocity relation must be invertible"
       ],
-      "explanation": "The Legendre map must actually solve for the velocities.",
+      "explanation": "The Legendre map must actually solve for q̇(q, p, t).",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can you solve p = ∂L/∂q̇ uniquely for q̇?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For qdot=p/m and pdot=−kq−gamma p with gamma>0, does canonical phase area remain constant?",
-      "answer": "No; the flow divergence is −gamma and area contracts.",
+      "prompt": "For q̇ = p/m and ṗ = −kq − γp with γ > 0, does the phase-space area stay constant?",
+      "answer": "No: the flow has divergence −γ, so area contracts",
       "options": [
-        "Yes; every differential equation preserves Hamiltonian phase area.",
-        "No; the flow divergence is −gamma and area contracts."
+        "No: the flow has divergence −γ, so area contracts",
+        "No: area grows steadily, since the damping term feeds energy into the oscillator",
+        "Yes: it is Hamiltonian",
+        "Yes: every ODE preserves area"
       ],
-      "explanation": "The damping term changes divergence, so the standard Hamiltonian incompressibility argument no longer applies.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "∇·(q̇, ṗ) = 0 − γ = −γ. Hamiltonian flow has zero divergence.",
+      "hint": "Compute ∂q̇/∂q + ∂ṗ/∂p.",
       "misconceptions": {
         "Yes; every differential equation preserves Hamiltonian phase area.": "The damping term changes divergence, so the standard Hamiltonian incompressibility argument no longer applies."
       },

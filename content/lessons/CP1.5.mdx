@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a tiny residual guarantee accurate parameters?",
-      "answer": "No",
+      "prompt": "A least-squares fit gives a tiny residual. Does that guarantee the parameters are accurate?",
+      "answer": "No: an ill-conditioned problem can amplify data errors into the parameters",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a small residual means accurate parameters",
+        "Yes, if the data are noisy",
+        "No: an ill-conditioned problem can amplify data errors into the parameters",
+        "No, because residuals are always large"
       ],
-      "explanation": "Conditioning can amplify data errors.",
+      "explanation": "A small residual only says the model reproduces the data. If the problem is ill-conditioned, very different parameter sets give almost equal residuals.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of nearly collinear columns in the design matrix."
     },
     {
       "id": "c2",
-      "prompt": "Does forming normal equations improve conditioning?",
-      "answer": "No; it squares the 2-norm condition number",
+      "prompt": "You replace the least-squares problem min‖Ax − b‖ with the normal equations AᵀAx = Aᵀb. What happens to the conditioning?",
+      "answer": "It gets worse: κ(AᵀA) = κ(A)²",
       "options": [
-        "No; it squares the 2-norm condition number",
-        "Yes"
+        "It becomes perfect, since forming AᵀA removes the dependence of the problem on the matrix A",
+        "It gets worse: κ(AᵀA) = κ(A)²",
+        "It stays the same",
+        "It improves"
       ],
-      "explanation": "For full-column-rank A, κ₂(AᵀA)=κ₂(A)².",
+      "explanation": "For full-column-rank A, the singular values of AᵀA are the squares of those of A, so the condition number is squared.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare singular values of A with eigenvalues of AᵀA."
     },
     {
       "id": "c3",
-      "prompt": "Does regularization leave the inferred problem unchanged?",
-      "answer": "No",
+      "prompt": "You add Tikhonov regularisation to a fit. How does this change the inference?",
+      "answer": "It adds a prior-like assumption that changes the solution",
       "options": [
-        "Yes",
-        "No"
+        "It adds a prior-like assumption that changes the solution",
+        "It guarantees the true parameters",
+        "It leaves the problem unchanged",
+        "It removes all noise"
       ],
-      "explanation": "It introduces additional constraints or assumptions.",
+      "explanation": "Regularisation trades bias for stability. The solution now depends on the penalty and its weight, as well as the data.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the regularised minimiser the same as the original?"
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "For an ill-conditioned least-squares problem, does forming AᵀA usually improve its 2-norm conditioning?",
-      "answer": "No; the full-rank 2-norm condition number is squared.",
+      "prompt": "For an ill-conditioned least-squares problem, which approach is preferred numerically?",
+      "answer": "QR or SVD on A directly, rather than forming AᵀA",
       "options": [
-        "Yes; squaring the matrix removes sensitivity.",
-        "No; the full-rank 2-norm condition number is squared."
+        "Always form the normal equations AᵀAx = Aᵀb, since this is the most accurate method for any matrix",
+        "Always form the normal equations",
+        "QR or SVD on A directly, rather than forming AᵀA",
+        "Remove the largest singular value"
       ],
-      "explanation": "Compare singular values of A with eigenvalues of AᵀA.",
+      "explanation": "QR and SVD work with κ(A), while forming AᵀA squares it and can wipe out about half the digits.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Which method avoids squaring the condition number?",
       "misconceptions": {
         "Yes; squaring the matrix removes sensitivity.": "Compare singular values of A with eigenvalues of AᵀA."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Does a small residual always guarantee a small forward solution error?",
-      "answer": "No; conditioning can amplify error.",
+      "prompt": "A linear solve returns x with residual ‖Ax − b‖ about 10⁻¹⁵. Why can the error in x still be large?",
+      "answer": "The forward error can be the residual times the condition number",
       "options": [
-        "Yes; residual and solution error are identical.",
-        "No; conditioning can amplify error."
+        "Residuals are always larger than errors, so a residual of 10⁻¹⁵ means x is exact to machine precision",
+        "The forward error can be the residual times the condition number",
+        "Residual and error are the same thing",
+        "The solver must have a bug"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Relate the error through A inverse and singular values.",
+      "hint": "Relate error and residual through A⁻¹.",
+      "explanation": "Since x − x* = A⁻¹r, the relative error can be up to κ(A) times the relative residual.",
       "misconceptions": {
         "Yes; residual and solution error are identical.": "Relate the error through A inverse and singular values."
       },

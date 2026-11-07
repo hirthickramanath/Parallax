@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does more magnification automatically improve physical resolution?",
+      "prompt": "You double the eyepiece magnification on a telescope. Will fine structure smaller than the seeing disc become visible?",
       "options": [
-        "Yes",
-        "No"
+        "No: the point-spread function limits the physical resolution, not magnification",
+        "Yes: until the image is dark",
+        "Yes: if the pixel is small",
+        "Yes: more magnification always resolves more"
       ],
-      "answer": "No",
-      "explanation": "The point-spread function limits available structure.",
+      "answer": "No: the point-spread function limits the physical resolution, not magnification",
+      "explanation": "Magnification enlarges the blur. Resolution is set by diffraction and seeing.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What sets the size of a point source's image?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does flat-fielding eliminate all uncertainty?",
+      "prompt": "You apply flat-field correction to a CCD image. Is the result free of uncertainty from pixel sensitivity differences?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: flat-fielding eliminates every pixel-to-pixel difference, so no uncertainty remains",
+        "Yes: it removes photon noise",
+        "Yes: it removes read noise",
+        "No: calibration frames themselves carry noise and model limits"
       ],
-      "answer": "No",
-      "explanation": "Calibration frames also have noise and model limitations.",
+      "answer": "No: calibration frames themselves carry noise and model limits",
+      "explanation": "The flat has its own noise, which propagates into the corrected image.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the flat-field frame have noise?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is quantum efficiency identical to total optical throughput?",
+      "prompt": "A CCD has a quantum efficiency of 90%. Is 90% the fraction of photons from the sky that is detected?",
       "options": [
-        "Yes",
-        "No"
+        "No: telescope, filter and atmospheric losses occur before photons reach the detector",
+        "No: QE is about electrons only",
+        "Yes: that is the total throughput",
+        "Yes: the sky has no losses"
       ],
-      "answer": "No",
-      "explanation": "Other losses occur before photons reach the detector.",
+      "answer": "No: telescope, filter and atmospheric losses occur before photons reach the detector",
+      "explanation": "Total throughput multiplies atmosphere, mirrors, optics, filter and QE.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the elements in the light path."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify the extraction aperture in a noise budget?",
-      "answer": "It determines included source and background pixels",
+      "prompt": "A noise budget for photometry lists an aperture radius. Why does the aperture matter?",
+      "answer": "It determines how many source and background pixels are included",
       "options": [
-        "It determines included source and background pixels",
-        "Background does not depend on pixel selection"
+        "It sets the exposure time and so decides how many photons the detector collects",
+        "It sets the exposure time",
+        "It determines how many source and background pixels are included",
+        "It only sets the colour"
       ],
-      "explanation": "Signal and several noise contributions depend on the extraction.",
+      "explanation": "Signal, sky shot noise and read noise all scale with the number of pixels summed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Count pixels in a small and a large aperture."
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a finer detector pixel automatically beat atmospheric seeing and aperture diffraction?",
-      "answer": "No; sampling cannot restore angular information absent from the image.",
+      "prompt": "You switch to a detector with smaller pixels. Does this beat atmospheric seeing and diffraction?",
+      "answer": "No: sampling cannot restore angular information that the image does not contain",
       "options": [
-        "Yes; sufficiently small pixels remove every optical limit.",
-        "No; sampling cannot restore angular information absent from the image."
+        "Yes: smaller pixels remove the seeing and diffraction limits down to the size of a pixel",
+        "No: sampling cannot restore angular information that the image does not contain",
+        "Yes: down to the pixel size",
+        "No: pixels do not matter"
       ],
-      "explanation": "Sampling is distinct from the instrument and atmosphere point-spread function.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Pixels sample the point-spread function; they cannot sharpen it.",
+      "hint": "Does a finer grid add information?",
       "misconceptions": {
         "Yes; sufficiently small pixels remove every optical limit.": "Sampling is distinct from the instrument and atmosphere point-spread function."
       },

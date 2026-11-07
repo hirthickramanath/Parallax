@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does target invariance alone guarantee rapid mixing?",
+      "prompt": "An MCMC chain has the correct target as its stationary distribution. Does that guarantee it explores the target quickly?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the right stationary distribution means fast mixing",
+        "No: it can stay trapped in one region for a very long time",
+        "Yes, once burn-in is over",
+        "No: stationary distributions cannot be reached"
       ],
-      "answer": "No",
-      "explanation": "A chain can remain trapped for a long time.",
+      "answer": "No: it can stay trapped in one region for a very long time",
+      "explanation": "Stationarity says where the chain ends up in the limit, not how long it takes. Multimodal targets with narrow bridges mix slowly.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of two separated modes with a high barrier between them."
     },
     {
       "id": "concept-2",
-      "prompt": "Should rejected MCMC states remain in the recorded chain?",
+      "prompt": "In Metropolis sampling, a proposal is rejected. What should be recorded for that step?",
       "options": [
-        "Yes",
-        "No"
+        "The current state again, repeated",
+        "The rejected proposal",
+        "Nothing: skip the step",
+        "A fresh random state"
       ],
-      "answer": "Yes",
-      "explanation": "Removing repeats changes its time-weighted distribution.",
+      "answer": "The current state again, repeated",
+      "explanation": "A rejection means the chain stays where it is, and the repeated value carries weight in the time average. Dropping repeats biases the distribution.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "The chain is a sequence in time, one state per step."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a nonsymmetric proposal need a proposal-density ratio?",
+      "prompt": "A Metropolis–Hastings proposal is not symmetric. What must the acceptance probability include?",
       "options": [
-        "No",
-        "Yes"
+        "Nothing extra: the acceptance probability has the same form as for symmetric proposals, so the formula is unchanged",
+        "The ratio q(x|x′)/q(x′|x) of proposal densities",
+        "The step size alone",
+        "The ratio of the chain lengths"
       ],
-      "answer": "Yes",
-      "explanation": "The Hastings factor corrects directional proposal bias.",
+      "answer": "The ratio q(x|x′)/q(x′|x) of proposal densities",
+      "explanation": "Detailed balance requires correcting for the asymmetry of the proposal, otherwise the chain's stationary distribution is not the target.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What cancels in the acceptance ratio when the proposal is symmetric?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should multiple chains test?",
-      "answer": "Sensitivity to starts and signs of poor exploration, without claiming proof of complete mixing.",
+      "prompt": "Why run several chains from different starting points?",
+      "answer": "To detect sensitivity to starting values and signs of poor exploration",
       "options": [
-        "Sensitivity to starts and signs of poor exploration, without claiming proof of complete mixing.",
-        "N⁻¹ᐟ² when finite-variance assumptions apply."
+        "To reduce the Monte Carlo error as 1/N, since the extra chains simply add more independent samples",
+        "To avoid needing burn-in",
+        "To prove the chain has fully mixed",
+        "To detect sensitivity to starting values and signs of poor exploration"
       ],
-      "explanation": "Sensitivity to starts and signs of poor exploration, without claiming proof of complete mixing.",
+      "explanation": "Agreement between chains is evidence, not proof, of convergence. Disagreement reveals trapping or slow mixing.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What can multiple chains reveal that one cannot?"
     },
     {
       "id": "computing-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Does a long raw MCMC chain automatically provide the same number of independent samples?",
-      "answer": "No; autocorrelation reduces effective information.",
+      "prompt": "An MCMC run stores 100,000 states that are strongly autocorrelated. How many independent samples does it effectively give?",
+      "answer": "Far fewer than 100,000, as given by the effective sample size",
       "options": [
-        "Yes; every stored state is independent.",
-        "No; autocorrelation reduces effective information."
+        "More than 100,000",
+        "Exactly 1,000 always",
+        "Exactly 100,000",
+        "Far fewer than 100,000, as given by the effective sample size"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Assess effective sample size and mixing.",
+      "hint": "Think of a chain that moves by tiny steps.",
+      "explanation": "Neighbouring states carry overlapping information. The effective sample size N/(1 + 2Στ) can be orders of magnitude lower.",
       "misconceptions": {
         "Yes; every stored state is independent.": "Assess effective sample size and mixing."
       },

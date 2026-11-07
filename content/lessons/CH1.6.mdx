@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a catalyst change the equilibrium constant of the same net reaction at fixed temperature?",
+      "prompt": "A catalyst is added to a reaction at fixed temperature. What happens to its equilibrium constant?",
       "options": [
-        "Yes",
-        "No"
+        "It increases, because the catalyst raises the forward rate and so shifts the equilibrium toward the products",
+        "Nothing: it changes the pathway and rate, not the endpoint thermodynamics",
+        "It becomes infinite",
+        "It decreases"
       ],
-      "answer": "No",
-      "explanation": "It changes pathways and rates, not endpoint thermodynamics.",
+      "answer": "Nothing: it changes the pathway and rate, not the endpoint thermodynamics",
+      "explanation": "K depends on ΔG° only. A catalyst lowers the barrier in both directions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a catalyst change ΔG°?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is Langmuir coverage linear at every pressure?",
+      "prompt": "The Langmuir isotherm gives surface coverage θ = KP/(1 + KP). How does θ behave as P grows large?",
       "options": [
-        "No",
-        "Yes"
+        "It grows without limit",
+        "It saturates towards 1, so coverage is not linear at every pressure",
+        "It stays proportional to P",
+        "It falls to zero"
       ],
-      "answer": "No",
-      "explanation": "Finite site occupancy produces saturation.",
+      "answer": "It saturates towards 1, so coverage is not linear at every pressure",
+      "explanation": "There are only a finite number of sites. θ is linear at low P but saturates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take the limit KP ≫ 1."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a named surface-mechanism family determine every rate law uniquely?",
+      "prompt": "A reaction is called 'Langmuir–Hinshelwood'. Does that name alone fix its rate law?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is always first order, since the surface reaction is the only step that matters in this model",
+        "Yes: always first order",
+        "No: the elementary steps and site balance must still be specified",
+        "Yes: it has one rate law"
       ],
-      "answer": "No",
-      "explanation": "Site balance and elementary steps still need specifying.",
+      "answer": "No: the elementary steps and site balance must still be specified",
+      "explanation": "Different rate-determining steps and competitive adsorption lead to different forms.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List what else you need to write the rate law."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can very strong adsorption reduce turnover?",
-      "answer": "It can block sites or make product removal slow",
+      "prompt": "A surface binds a reactant very strongly. Why can this reduce the catalytic turnover?",
+      "answer": "It can block sites or make product desorption slow",
       "options": [
-        "It can block sites or make product removal slow",
-        "Any stronger binding must improve every step"
+        "It increases the number of sites",
+        "Strong binding always speeds every step",
+        "It raises the temperature",
+        "It can block sites or make product desorption slow"
       ],
-      "explanation": "Binding and release are competing requirements in the cycle.",
+      "explanation": "Sabatier principle: the best catalysts bind neither too weakly nor too strongly.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think about the final step in the cycle."
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does a catalyst change the thermodynamic equilibrium constant simply by lowering an activation barrier?",
-      "answer": "No; it changes kinetics while equilibrium is set by state free energies.",
+      "prompt": "Does a catalyst alter the equilibrium constant just by lowering an activation barrier?",
+      "answer": "No: it speeds both directions equally, and equilibrium depends on the state free energies",
       "options": [
-        "Yes; faster pathways necessarily create a different equilibrium constant.",
-        "No; it changes kinetics while equilibrium is set by state free energies."
+        "No: it speeds both directions equally, and equilibrium depends on the state free energies",
+        "Yes: the forward barrier alone drops, so the equilibrium shifts toward the products as the catalyst speeds up",
+        "Yes: lower barrier shifts equilibrium",
+        "No: it has no effect at all on rates"
       ],
-      "explanation": "Forward and reverse detailed thermodynamic constraints must remain consistent.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "By microscopic reversibility, the forward and reverse barriers drop by the same amount.",
+      "hint": "What does the catalyst do to the reverse reaction?",
       "misconceptions": {
         "Yes; faster pathways necessarily create a different equilibrium constant.": "Forward and reverse detailed thermodynamic constraints must remain consistent."
       },

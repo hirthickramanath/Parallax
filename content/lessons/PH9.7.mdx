@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does trace one imply a state is pure?",
+      "prompt": "A density matrix has trace one. Does that imply the state is pure?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for qubits, since a trace-one density matrix of a two-level system is always pure",
+        "Yes: trace one means pure",
+        "No: trace one is required of all states",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "Positivity and purity are separate properties.",
+      "answer": "No: trace one is required of all states",
+      "explanation": "Trace one is required of all states, and purity needs Tr ρ² = 1. Mixed states also have trace one.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What distinguishes pure from mixed?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can a pure joint state have reduced decoherence?",
+      "prompt": "A pure entangled state of two qubits is given. Can one qubit still show decoherence?",
       "options": [
-        "Yes",
-        "No"
+        "No: only mixed states decohere, since a pure state of the joint system stays pure for each qubit",
+        "No: no decoherence",
+        "Yes: entanglement hides phase information locally",
+        "No: pure stays pure"
       ],
-      "answer": "Yes",
-      "explanation": "Entanglement hides phase information locally.",
+      "answer": "Yes: entanglement hides phase information locally",
+      "explanation": "The reduced state is mixed, so local coherence is lost.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Trace out one qubit of the entangled pair and ask whether the remaining state is pure or mixed."
     },
     {
       "id": "concept-3",
-      "prompt": "Is every arbitrary matrix-element damping rule physical?",
+      "prompt": "You damp the off-diagonal elements of ρ with an arbitrary rate matrix. Is the dynamics always physical?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: all rates are allowed, since any damping of the off-diagonal elements gives a valid evolution",
+        "Yes: it keeps trace",
+        "Yes: any damping works",
+        "No: positivity and complete positivity impose constraints"
       ],
-      "answer": "No",
-      "explanation": "Positivity and complete positivity impose constraints.",
+      "answer": "No: positivity and complete positivity impose constraints",
+      "explanation": "The Lindblad form is the general physical generator.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a density matrix get a negative eigenvalue?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish dephasing and relaxation?",
-      "answer": "They affect coherence and populations/energy differently.",
+      "prompt": "Why distinguish dephasing from relaxation?",
+      "answer": "They affect coherence and populations or energy differently",
       "options": [
-        "They affect coherence and populations/energy differently.",
-        "Summing inaccessible subsystem indices."
+        "They affect coherence and populations or energy differently",
+        "Neither changes coherence, since both processes act on the energy of the system only",
+        "They are the same",
+        "Both change populations"
       ],
-      "explanation": "They affect coherence and populations/energy differently.",
+      "explanation": "T₂ ≤ 2T₁, where dephasing adds to T₂.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which one changes the diagonal elements?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Is an equal coherent superposition identical to an equal incoherent mixture?",
-      "answer": "No; their density matrices have different coherences.",
+      "prompt": "Is an equal coherent superposition (|0⟩ + |1⟩)/√2 identical to an equal incoherent mixture?",
+      "answer": "No: their density matrices differ in the off-diagonal coherences",
       "options": [
-        "Yes; equal populations make every measurement identical.",
-        "No; their density matrices have different coherences."
+        "Yes: equal populations, since both states give identical results for every possible measurement",
+        "Yes: they are the same state",
+        "No: their density matrices differ in the off-diagonal coherences",
+        "Yes: all measurements agree"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Another measurement basis reveals interference.",
+      "hint": "Measure in the X basis.",
+      "explanation": "An X-basis measurement distinguishes them.",
       "misconceptions": {
         "Yes; equal populations make every measurement identical.": "Another measurement basis reveals interference."
       },

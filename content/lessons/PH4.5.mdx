@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does E=0 in equilibrium imply the conductor carries no net charge?",
+      "prompt": "In electrostatic equilibrium E = 0 inside a conductor. Does that mean the conductor has no net charge?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: charge is inside",
+        "Yes: it is neutral",
+        "Yes: no field means no charge",
+        "No: excess charge can sit on its surface"
       ],
-      "answer": "No",
-      "explanation": "Excess charge can reside on its surface.",
+      "answer": "No: excess charge can sit on its surface",
+      "explanation": "Net charge resides on the surface of a conductor.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does excess charge go?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a cavity containing a point charge obey the same zero-field argument as an empty cavity?",
+      "prompt": "A conductor has a cavity containing a point charge. Does the zero-field argument for an empty cavity still hold?",
       "options": [
-        "No",
-        "Yes"
+        "No: the internal charge induces surface charge and field in the cavity",
+        "Yes: same as empty",
+        "Yes: the field is zero",
+        "Yes: conductors screen it"
       ],
-      "answer": "No",
-      "explanation": "Internal charge changes Poisson sources and induced surface charge.",
+      "answer": "No: the internal charge induces surface charge and field in the cavity",
+      "explanation": "The cavity field is nonzero, though the field outside the conductor is screened.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether the cavity is empty, and what a charge inside induces on the cavity wall."
     },
     {
       "id": "concept-3",
-      "prompt": "Can capacitor field energy alone describe every fixed-voltage mechanical process?",
+      "prompt": "A capacitor is connected to a battery while a dielectric slab is pulled out. Can you find the mechanical work from the capacitor's field energy alone?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the battery plays no role",
+        "Yes: ½CV² is enough",
+        "Yes: energy conservation within the capacitor",
+        "No: the battery exchanges work and charge with it"
       ],
-      "answer": "No",
-      "explanation": "The voltage source exchanges work and charge.",
+      "answer": "No: the battery exchanges work and charge with it",
+      "explanation": "At fixed voltage the source supplies energy equal to twice the change in field energy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the battery do work?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What ensures zero field in an empty enclosed electrostatic cavity?",
-      "answer": "Constant boundary potential and the source-free uniqueness theorem",
+      "prompt": "Why is the electric field zero inside an empty cavity of a conductor in electrostatics?",
+      "answer": "The cavity wall is an equipotential",
       "options": [
-        "Constant boundary potential and the source-free uniqueness theorem",
-        "A universal claim that all cavities always have zero field"
+        "The cavity wall is an equipotential",
+        "Every cavity has zero field",
+        "It is a convention",
+        "The conductor repels field"
       ],
-      "explanation": "Internal charges or nonideal/time-dependent conditions change the problem.",
+      "explanation": "The cavity wall is an equipotential, and the source-free uniqueness theorem gives V = constant. Internal charges or time-dependent fields change this.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What potential does the wall have?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "When voltage is held fixed by a battery, can mechanical energy changes always be computed from capacitor energy alone?",
-      "answer": "No; the voltage source can exchange energy.",
+      "prompt": "A capacitor is held at fixed voltage by a battery. Can all mechanical energy changes be found from the capacitor's stored energy?",
+      "answer": "No: the voltage source exchanges energy with the system",
       "options": [
-        "Yes; the battery never affects energy bookkeeping.",
-        "No; the voltage source can exchange energy."
+        "Yes: the battery has no effect on the energy, so the stored energy of the capacitor gives every change",
+        "No: the voltage source exchanges energy with the system",
+        "Yes: always",
+        "Yes: energy is conserved in the capacitor"
       ],
-      "explanation": "The controlled boundary condition determines which system energy must be included.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The controlled boundary condition determines which energy must be included.",
+      "hint": "Include the energy delivered by the battery.",
       "misconceptions": {
         "Yes; the battery never affects energy bookkeeping.": "The controlled boundary condition determines which system energy must be included."
       },

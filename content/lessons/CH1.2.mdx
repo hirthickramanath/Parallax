@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are liquid and vapour mole fractions always equal?",
+      "prompt": "In a binary liquid mixture in equilibrium with its vapour, how do the vapour and liquid mole fractions compare?",
       "options": [
-        "Yes",
-        "No"
+        "They are always equal",
+        "The less volatile component is enriched in the vapour",
+        "They differ: the more volatile component is enriched in the vapour",
+        "They differ only for azeotropes"
       ],
-      "answer": "No",
-      "explanation": "Relative volatility can enrich one component in vapour.",
+      "answer": "They differ: the more volatile component is enriched in the vapour",
+      "explanation": "Different vapour pressures give different compositions. Distillation exploits this.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of why distillation works."
     },
     {
       "id": "concept-2",
-      "prompt": "Is every Henry constant numerically comparable regardless of convention?",
+      "prompt": "Two tables list Henry's constants for the same gas. Can you compare their numbers directly?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: Henry's constant is universal",
+        "Yes: it has no units",
+        "No: the value and units depend on the concentration convention used",
+        "Yes: only if both use SI"
       ],
-      "answer": "No",
-      "explanation": "Its definition and units depend on the concentration convention.",
+      "answer": "No: the value and units depend on the concentration convention used",
+      "explanation": "kH can be defined with mole fraction, molality or molarity, giving different numbers and units.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the definition used in each table."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a phase diagram alone predict a nucleation rate?",
+      "prompt": "A phase diagram shows a liquid is supercooled below its freezing point. Does it tell you how fast crystals will nucleate?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: below the freezing line the nucleation is immediate, so the diagram gives the rate of crystallisation",
+        "Yes: it gives the rate",
+        "Yes: from the slope of the line",
+        "No: nucleation rates need kinetic information"
       ],
-      "answer": "No",
-      "explanation": "Transformation kinetics needs additional information.",
+      "answer": "No: nucleation rates need kinetic information",
+      "explanation": "Phase diagrams show equilibrium states. Supercooled water can stay liquid for a long time.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a phase diagram contain a time axis?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What limits the integrated Clausius–Clapeyron approximation?",
-      "answer": "Ideal vapour, negligible condensed volume and approximately constant enthalpy",
+      "prompt": "Under what assumptions does the integrated Clausius–Clapeyron equation ln(p₂/p₁) = −(ΔH/R)(1/T₂ − 1/T₁) hold?",
+      "answer": "The vapour is ideal, the liquid volume is negligible, and ΔH is nearly constant",
       "options": [
-        "Ideal vapour, negligible condensed volume and approximately constant enthalpy",
-        "It is exact for every liquid near its critical point"
+        "It needs a non-volatile solute",
+        "The vapour is ideal, the liquid volume is negligible, and ΔH is nearly constant",
+        "It requires constant volume",
+        "It is exact for any liquid near its critical point"
       ],
-      "explanation": "The approximations are part of the derivation.",
+      "explanation": "These approximations are built into the derivation. Near the critical point they fail.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "List the simplifications used to integrate the equation."
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does a straight ideal Raoult-law pressure line establish the full phase behavior of every real mixture?",
-      "answer": "No; nonideal activities and phase equilibria can alter it.",
+      "prompt": "A real mixture's vapour pressure deviates from the straight Raoult's-law line. What does this show?",
+      "answer": "Non-ideal activities: the mixture's behaviour differs from the ideal-solution model",
       "options": [
-        "Yes; every mixture has the same ideal straight-line diagram.",
-        "No; nonideal activities and phase equilibria can alter it."
+        "That the temperature is zero",
+        "That Raoult's law is exact",
+        "Non-ideal activities: the mixture's behaviour differs from the ideal-solution model",
+        "That the mixture is pure"
       ],
-      "explanation": "The constitutive ideality assumption must be tested.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Raoult's law is the ideal limit. Positive or negative deviations indicate unlike interactions and activity coefficients ≠ 1.",
+      "hint": "What assumption makes the pressure line straight?",
       "misconceptions": {
         "Yes; every mixture has the same ideal straight-line diagram.": "The constitutive ideality assumption must be tested."
       },

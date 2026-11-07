@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every norm arise from an inner product?",
+      "prompt": "Does every norm come from an inner product?",
       "options": [
-        "Yes",
-        "No"
+        "No: only norms satisfying the parallelogram law do",
+        "Yes, in Banach spaces, since completeness of the norm is enough to give it an inner product",
+        "Yes in finite dimensions",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "Extra structure such as the parallelogram property is required.",
+      "answer": "No: only norms satisfying the parallelogram law do",
+      "explanation": "The sup-norm on ℝ² fails the parallelogram identity, so it is not induced by an inner product.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Test the parallelogram law on (1, 0) and (0, 1) in the max-norm."
     },
     {
       "id": "concept-2",
-      "prompt": "Do L² elements distinguish changes at one point of measure zero?",
+      "prompt": "Two functions in L² differ only at a single point. Does L² tell them apart?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, if the point is the origin, because L² then registers the difference of the two values",
+        "No: elements are equivalence classes of functions equal almost everywhere",
+        "Yes: the two functions are different elements, since they have different values at that single point",
+        "Yes if the difference is large"
       ],
-      "answer": "No",
-      "explanation": "They are equivalence classes.",
+      "answer": "No: elements are equivalence classes of functions equal almost everywhere",
+      "explanation": "‖f − g‖₂ = 0, so f and g represent the same L² element.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the L² norm of their difference."
     },
     {
       "id": "concept-3",
-      "prompt": "Does nearest-subspace projection need closedness for the general theorem?",
+      "prompt": "For the best-approximation projection onto a subspace M of a Hilbert space, what is needed in general?",
       "options": [
-        "No",
-        "Yes"
+        "M must be open, since a nearest point in M exists only when the subspace contains no boundary",
+        "Nothing",
+        "M must be closed, otherwise a nearest point may not exist",
+        "M must be finite"
       ],
-      "answer": "Yes",
-      "explanation": "The minimizer may otherwise be absent.",
+      "answer": "M must be closed, otherwise a nearest point may not exist",
+      "explanation": "In an incomplete or non-closed subspace the infimum of the distance need not be attained.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of polynomials inside L²."
     },
     {
       "id": "numeric",
@@ -68,15 +77,18 @@
     {
       "id": "core",
       "prompt": "Why distinguish distributions from L² vectors?",
-      "answer": "Their action and continuity spaces can differ.",
+      "answer": "Their continuity properties and the spaces they act on differ",
       "options": [
-        "Their action and continuity spaces can differ.",
-        "Norm completeness."
+        "Distributions are always bounded",
+        "Their continuity properties and the spaces they act on differ",
+        "L² vectors are distributions with no test functions, so there is no need to distinguish the two spaces",
+        "They are the same"
       ],
-      "explanation": "Their action and continuity spaces can differ.",
+      "explanation": "A distribution acts on test functions; an L² function is a vector with a norm. δ is a distribution but not in L².",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Ask whether δ(x) is a square-integrable function."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Can an incomplete inner-product subspace be called a Hilbert space without taking its completion?",
-      "answer": "No; completeness in the induced norm is required.",
+      "prompt": "An inner-product space is incomplete. Can it be called a Hilbert space?",
+      "answer": "No: completeness in the induced norm is part of the definition",
       "options": [
-        "Yes; an inner product alone suffices.",
-        "No; completeness in the induced norm is required."
+        "Yes, if it is finite-dimensional, since every inner-product space of finite dimension is automatically a Hilbert space",
+        "Yes: an inner product suffices",
+        "Yes if separable",
+        "No: completeness in the induced norm is part of the definition"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Completeness is part of the Hilbert-space definition.",
+      "hint": "Recall the definition of a Hilbert space.",
+      "explanation": "The rational vectors in ℝⁿ form an inner-product space that is not complete.",
       "misconceptions": {
         "Yes; an inner product alone suffices.": "An incomplete inner-product space is not yet Hilbert."
       },

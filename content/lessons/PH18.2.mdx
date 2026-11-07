@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are all kinds of error bars interchangeable without a label?",
+      "prompt": "A plot has error bars but no caption explaining them. Can the reader treat them as any uncertainty summary?",
       "options": [
-        "Yes",
-        "No"
+        "No: error bars are decorative",
+        "Yes: all error bars are equivalent",
+        "No: standard deviation, standard error and confidence intervals mean different things",
+        "Yes: they always show 95% intervals"
       ],
-      "answer": "No",
-      "explanation": "They represent different uncertainty summaries.",
+      "answer": "No: standard deviation, standard error and confidence intervals mean different things",
+      "explanation": "Standard deviation, standard error and confidence intervals mean different things, so the bar type must be labelled. SD is about 2.5 times larger than SE for N ≈ 6.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the bar the spread of the data or the uncertainty of the mean?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a polished figure prove a method was validated?",
+      "prompt": "A figure is beautifully produced. Does that show the method behind it was validated?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: reviewers accept clear figures as validation",
+        "No: figures can't be produced for methods",
+        "Yes: good figures need good methods",
+        "No: validation needs reported evidence and checks"
       ],
-      "answer": "No",
-      "explanation": "Evidence and checks must be reported.",
+      "answer": "No: validation needs reported evidence and checks",
+      "explanation": "Validation needs reported evidence and checks, not presentation quality. Polish and correctness are independent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a bad method be drawn nicely?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should unresolved discrepancies be included when material?",
+      "prompt": "Your data disagree with the model at one point that is material to the conclusion. Should the discrepancy appear in the paper?",
       "options": [
-        "No",
-        "Yes"
+        "No: remove outliers silently",
+        "Yes: unresolved discrepancies limit the conclusion and readers need them",
+        "No: only supportive points matter",
+        "Yes: but only in the supplement with no mention of its effect"
       ],
-      "answer": "Yes",
-      "explanation": "They limit the conclusion.",
+      "answer": "Yes: unresolved discrepancies limit the conclusion and readers need them",
+      "explanation": "Selective reporting misleads readers, because they cannot judge the conclusion without seeing the unresolved discrepancies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does it affect what the reader should believe?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What makes an argument assessable?",
-      "answer": "Evidence, assumptions and limitations are visible.",
+      "prompt": "What makes a scientific argument assessable by a reader?",
+      "answer": "The evidence, assumptions and limitations are all visible",
       "options": [
-        "Evidence, assumptions and limitations are visible.",
-        "Data, model, inference and speculation."
+        "The evidence, assumptions and limitations are all visible",
+        "Complex vocabulary and technical precision that signals expertise to the reader",
+        "A long reference list",
+        "A confident tone"
       ],
-      "explanation": "Evidence, assumptions and limitations are visible.",
+      "explanation": "A reader should be able to see data, model, inference and speculation as separate things.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Could a reader find the weak points?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does reporting a large standardized residual alone establish a causal mechanism?",
-      "answer": "No; model adequacy, uncertainty and alternatives still matter.",
+      "prompt": "A fit reports a standardised residual (z score) of 4 at one point. Does that alone establish a causal mechanism?",
+      "answer": "No: you still need model adequacy, uncertainty analysis and alternative explanations",
       "options": [
-        "Yes; a z score uniquely identifies the cause.",
-        "No; model adequacy, uncertainty and alternatives still matter."
+        "Yes: z > 3 means new physics",
+        "Yes: a large z identifies the cause",
+        "No: z scores can never be large",
+        "No: you still need model adequacy, uncertainty analysis and alternative explanations"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Separate discrepancy from explanation.",
+      "hint": "What could cause a residual besides the mechanism you favour?",
+      "explanation": "A residual shows tension, not a reason for it.",
       "misconceptions": {
         "Yes; a z score uniquely identifies the cause.": "Separate discrepancy from explanation."
       },

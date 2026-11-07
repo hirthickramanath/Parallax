@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does bulk density uniquely determine internal composition?",
+      "prompt": "Two planets have the same bulk density of 3 g/cm³. Must they have the same composition?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are water",
+        "Yes: both are rock",
+        "Yes: density fixes it",
+        "No: compression, temperature and mixtures are degenerate"
       ],
-      "answer": "No",
-      "explanation": "Compression, temperature and mixtures are degenerate.",
+      "answer": "No: compression, temperature and mixtures are degenerate",
+      "explanation": "A big water-rich planet and a small rocky planet may have similar density.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does pressure change density?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is scale height a sharp atmospheric edge?",
+      "prompt": "An atmosphere has a pressure scale height H = 8 km. Does the atmosphere end at 8 km?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the atmosphere ends at 10H, which is the height at which the pressure falls to exactly zero",
+        "Yes: at 2H",
+        "No: H is the e-folding length of an exponential decrease with height",
+        "Yes: it ends at H"
       ],
-      "answer": "No",
-      "explanation": "It is a local exponential scale in a model.",
+      "answer": "No: H is the e-folding length of an exponential decrease with height",
+      "explanation": "P = P₀ exp(−z/H). The pressure keeps falling gradually.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does pressure vary with z?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are Jeans and hydrodynamic escape the same approximation?",
+      "prompt": "Jeans escape treats individual fast molecules in the tail of the Maxwell distribution. Is hydrodynamic escape the same approximation?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are thermal processes at the molecular level, so Jeans escape and hydrodynamic escape are the same",
+        "No: hydrodynamic escape is a bulk outflow, a different regime",
+        "Yes: for any planet",
+        "Yes: both are thermal"
       ],
-      "answer": "No",
-      "explanation": "They describe different flow regimes.",
+      "answer": "No: hydrodynamic escape is a bulk outflow, a different regime",
+      "explanation": "Hydrodynamic escape applies when heating drives a collective wind.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the outflow a few particles or the whole gas?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify escape rates?",
-      "answer": "Heating, geometry and regime assumptions enter.",
+      "prompt": "Why should a quoted atmospheric escape rate come with its assumptions?",
+      "answer": "Heating, geometry and flow-regime assumptions all enter",
       "options": [
-        "Heating, geometry and regime assumptions enter.",
-        "An EOS, composition and thermal/transport model."
+        "The rate is universal",
+        "Heating, geometry and flow-regime assumptions all enter",
+        "Escape is independent of heating",
+        "Only planet mass matters"
       ],
-      "explanation": "Heating, geometry and regime assumptions enter.",
+      "explanation": "Energy-limited and Jeans formulas differ by orders of magnitude.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What energy source drives the escape?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Is one pressure scale height a sharp outer boundary of an atmosphere?",
-      "answer": "No; it is an exponential decrease scale in this model.",
+      "prompt": "Is a pressure scale height a sharp outer boundary of the atmosphere?",
+      "answer": "No: it is an exponential decay scale in this model",
       "options": [
-        "Yes; all gas ends abruptly there.",
-        "No; it is an exponential decrease scale in this model."
+        "Yes: it marks the exobase, where the gas ends and the atmosphere gives way to empty space",
+        "Yes: gas ends there",
+        "Yes: at the top of the troposphere",
+        "No: it is an exponential decay scale in this model"
       ],
-      "explanation": "The hydrostatic solution decreases continuously with height.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The hydrostatic solution decreases continuously.",
+      "hint": "Does the exponent ever hit zero?",
       "misconceptions": {
         "Yes; all gas ends abruptly there.": "The hydrostatic solution decreases continuously with height."
       },

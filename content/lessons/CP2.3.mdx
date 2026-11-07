@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does unit conversion automatically propagate calibration uncertainty?",
+      "prompt": "You convert a flux from Jy to erg s⁻¹ cm⁻² Hz⁻¹ with astropy.units. What happens to its calibration uncertainty?",
       "options": [
-        "Yes",
-        "No"
+        "It is converted to a probability automatically, since astropy.units tracks the error along with the value",
+        "Nothing automatically: unit conversion does not propagate uncertainties",
+        "It is removed",
+        "It is added in quadrature automatically"
       ],
-      "answer": "No",
-      "explanation": "Units and statistical uncertainty are separate.",
+      "answer": "Nothing automatically: unit conversion does not propagate uncertainties",
+      "explanation": "Units handle dimensions and scale factors. Statistical and systematic uncertainties must be tracked separately.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does astropy.units know your error bars?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can coordinate epoch affect cross-matching?",
+      "prompt": "You cross-match two catalogues observed in different epochs for a high proper-motion star. Why does epoch matter?",
       "options": [
-        "Yes",
-        "No"
+        "The star's position changes between epochs",
+        "Epoch sets the units",
+        "It does not matter for stars",
+        "Epochs change the star's brightness only"
       ],
-      "answer": "Yes",
-      "explanation": "Proper motion changes apparent direction.",
+      "answer": "The star's position changes between epochs",
+      "explanation": "Proper motion shifts the apparent position over time, so positions must be propagated to a common epoch, or the matching radius widened.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do nearby stars stay fixed on the sky?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is every remote query result automatically a complete sample?",
+      "prompt": "A TAP query to a survey archive returns exactly 2000 rows. What should you suspect?",
       "options": [
-        "Yes",
-        "No"
+        "A row limit: the sample may be truncated",
+        "A complete sample, since 2000 is a round number the archive uses to mark the end of its table",
+        "A sample with no selection effects",
+        "A perfectly random sample"
       ],
-      "answer": "No",
-      "explanation": "Row limits and selection must be verified.",
+      "answer": "A row limit: the sample may be truncated",
+      "explanation": "Many services cap rows by default. Always check for truncation and understand the selection function before drawing conclusions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is 2000 a natural number for a survey result?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify reciprocal-parallax distances?",
-      "answer": "Nonlinear errors and selection affect distance inference.",
+      "prompt": "Why must a distance from the reciprocal of a parallax be treated with care?",
+      "answer": "The inverse is nonlinear, so errors and selection bias the estimate",
       "options": [
-        "Nonlinear errors and selection affect distance inference.",
-        "Frame, epoch and relevant motion/uncertainty information."
+        "Parallax has no units, so 1/ϖ is an exact distance for all stars with a positive measurement",
+        "1/ϖ is exact for all stars",
+        "Parallax is never measurable",
+        "The inverse is nonlinear, so errors and selection bias the estimate"
       ],
-      "explanation": "Nonlinear errors and selection affect distance inference.",
+      "explanation": "For noisy parallaxes the distribution of 1/ϖ is skewed and can even give negative or infinite values. A prior-based inference is better at low signal-to-noise.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Imagine ϖ close to zero with a large error."
     },
     {
       "id": "computing-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Is inverse measured parallax a universally unbiased distance estimator even at low signal-to-noise?",
-      "answer": "No; the transform and measurement model need care.",
+      "prompt": "A star has a measured parallax of 1.0 ± 0.8 mas. Is d = 1/ϖ = 1 kpc a reliable distance?",
+      "answer": "No: the low signal-to-noise makes the inversion biased and the uncertainty large",
       "options": [
-        "Yes; every measured parallax can be inverted without inference.",
-        "No; the transform and measurement model need care."
+        "Yes, if units are right, because a parallax of 1.0 mas gives a distance of 1 kpc with a small error",
+        "No: the low signal-to-noise makes the inversion biased and the uncertainty large",
+        "Yes: the inversion is always unbiased",
+        "No, because parallax is in milliarcseconds"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Uncertainty, selection and priors can matter.",
+      "hint": "Compare the parallax with its uncertainty.",
+      "explanation": "With ϖ/σ ≈ 1.25, the true parallax could be much smaller (distance far larger) or larger. A probabilistic estimate with a prior is needed.",
       "misconceptions": {
         "Yes; every measured parallax can be inverted without inference.": "Uncertainty, selection and priors can matter."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does Schwarzschild include arbitrary composition stratification automatically?",
+      "prompt": "Material with a composition gradient (molecular weight increasing inward) is checked with the plain Schwarzschild criterion. What is missing?",
       "options": [
-        "Yes",
-        "No"
+        "Nothing: the Schwarzschild criterion already includes composition gradients, so no change is needed",
+        "The Ledoux composition term, because composition changes stability",
+        "Only the opacity",
+        "Only rotation"
       ],
-      "answer": "No",
-      "explanation": "A composition-sensitive criterion is needed.",
+      "answer": "The Ledoux composition term, because composition changes stability",
+      "explanation": "Schwarzschild assumes uniform composition. Ledoux adds a ∇_μ term.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which criterion includes ∇_μ?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is the mixing-length parameter universally fixed by first principles in this closure?",
+      "prompt": "Stellar codes use a mixing length ℓ = α H_p. Is α fixed by first principles in this theory?",
       "options": [
-        "No",
-        "Yes"
+        "No: it is a calibrated parameter (for the Sun ≈ 1.8–2.0)",
+        "No: it does not appear",
+        "Yes: α = 1 always, because the mixing length is defined as one pressure scale height",
+        "Yes: derived exactly"
       ],
-      "answer": "No",
-      "explanation": "It is model/calibration dependent.",
+      "answer": "No: it is a calibrated parameter (for the Sun ≈ 1.8–2.0)",
+      "explanation": "Mixing-length theory is a closure with a free parameter, typically calibrated to the solar radius.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How is α usually determined?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can efficient convection transport energy with a nearly adiabatic gradient?",
+      "prompt": "In a deep convective zone of a star, the actual temperature gradient is nearly adiabatic yet a large flux is carried. How is that possible?",
       "options": [
-        "No",
-        "Yes"
+        "It is impossible: any large flux requires a strongly superadiabatic temperature gradient",
+        "The gradient must be steeper",
+        "The flux is zero",
+        "Efficient convection needs only a tiny superadiabatic excess"
       ],
-      "answer": "Yes",
-      "explanation": "A small superadiabatic excess can sustain a large flux.",
+      "answer": "Efficient convection needs only a tiny superadiabatic excess",
+      "explanation": "Efficient convection carries flux with ∇ − ∇_ad ~ 10⁻⁶ in stellar interiors.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How large is the density of the convective cells?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What can local stability criteria miss?",
-      "answer": "Nonlocal mixing, rotation, fields and diffusive instabilities.",
+      "prompt": "What can a local stability criterion such as Schwarzschild's fail to capture?",
+      "answer": "Nonlocal mixing, rotation, magnetic fields and double-diffusive instabilities",
       "options": [
-        "Nonlocal mixing, rotation, fields and diffusive instabilities.",
-        "The actual and adiabatic logarithmic gradients."
+        "The sign of the temperature gradient, which only a nonlocal calculation can determine",
+        "The adiabatic gradient",
+        "Nonlocal mixing, rotation, magnetic fields and double-diffusive instabilities",
+        "The pressure"
       ],
-      "explanation": "Nonlocal mixing, rotation, fields and diffusive instabilities.",
+      "explanation": "Overshooting and semi-convection lie beyond a local sign test.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens to a rising blob that crosses the boundary?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does the Schwarzschild sign test alone compute the nonlinear convective heat flux?",
-      "answer": "No; a transport closure or dynamical calculation is still needed.",
+      "prompt": "The Schwarzschild criterion says a region is convectively unstable. Does it give you the convective heat flux?",
+      "answer": "No: a transport closure or dynamical calculation is still needed",
       "options": [
-        "Yes; the sign determines a unique flux.",
-        "No; a transport closure or dynamical calculation is still needed."
+        "No: instability does not imply flux",
+        "Yes: through the sign",
+        "Yes: it gives a unique flux",
+        "No: a transport closure or dynamical calculation is still needed"
       ],
       "explanation": "Instability and saturated transport are separate questions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "hint": "Does 'unstable' tell you how fast?",
       "misconceptions": {
         "Yes; the sign determines a unique flux.": "Instability and saturated transport are separate questions."
       },

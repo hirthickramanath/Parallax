@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a large nuclear mass guarantee one-surface validity at all degeneracies?",
+      "prompt": "Nuclei are much heavier than electrons. Does that guarantee the Born–Oppenheimer picture holds near every degeneracy?",
       "options": [
-        "Yes",
-        "No"
+        "No: electrons are heavier",
+        "No: derivative couplings become large near degeneracies",
+        "Yes: the mass ratio is enough, so the Born–Oppenheimer picture holds near every degeneracy",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "Derivative couplings can become important.",
+      "answer": "No: derivative couplings become large near degeneracies",
+      "explanation": "The approximation requires well-separated electronic states. At conical intersections, non-adiabatic coupling is important.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens when two electronic states have the same energy?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a negative Hessian mode indicate a stable minimum?",
+      "prompt": "A geometry has one negative Hessian eigenvalue. What kind of stationary point is it?",
       "options": [
-        "No",
-        "Yes"
+        "A stable minimum, because one negative curvature means the energy rises in every direction",
+        "A stable minimum",
+        "A saddle point (first-order): unstable along that direction",
+        "A maximum in all directions"
       ],
-      "answer": "No",
-      "explanation": "It is an unstable direction.",
+      "answer": "A saddle point (first-order): unstable along that direction",
+      "explanation": "Minima have all positive eigenvalues; transition states have exactly one negative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall how transition states are characterised."
     },
     {
       "id": "concept-3",
-      "prompt": "Can zero-point motion matter beyond the optimized geometry?",
+      "prompt": "Zero-point motion exists in quantum nuclei. Does it matter beyond the optimised geometry?",
       "options": [
-        "No",
-        "Yes"
+        "No: only the minimum matters, since nuclei behave classically and sit exactly at the optimised geometry",
+        "No: nuclei are classical",
+        "Only for electrons",
+        "Yes: nuclei occupy quantum states spread over the surface"
       ],
-      "answer": "Yes",
-      "explanation": "Nuclei occupy quantum states on the surface.",
+      "answer": "Yes: nuclei occupy quantum states spread over the surface",
+      "explanation": "Zero-point energy shifts barriers and isotope effects.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the H/D isotope effect."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is a barrier not a full rate?",
-      "answer": "Dynamics, states and transmission/prefactors also enter.",
+      "prompt": "A potential energy barrier is computed. Why is it not the full reaction rate?",
+      "answer": "Dynamics, state counting, transmission and prefactors also enter",
       "options": [
-        "Dynamics, states and transmission/prefactors also enter.",
-        "Electronic energy under a clamped-geometry convention plus consistent nuclear terms."
+        "Barriers do not affect rates",
+        "The rate depends only on the temperature",
+        "Dynamics, state counting, transmission and prefactors also enter",
+        "A barrier is the rate"
       ],
-      "explanation": "Dynamics, states and transmission/prefactors also enter.",
+      "explanation": "Rates need partition functions and dynamics, as in transition-state theory.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What multiplies exp(−ΔE/kT)?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does a large nuclear mass alone guarantee adiabatic electronic following near every small gap?",
-      "answer": "No; gap and coupling dynamics also matter.",
+      "prompt": "Near a small electronic energy gap, does a large nuclear mass alone guarantee the electrons follow nuclear motion adiabatically?",
+      "answer": "No: the size of the gap and the coupling also matter",
       "options": [
-        "Yes; mass ratio by itself settles every avoided crossing.",
-        "No; gap and coupling dynamics also matter."
+        "Yes for large atoms",
+        "Yes: a large mass guarantees the electrons follow adiabatically, whatever the size of the gap",
+        "No: the size of the gap and the coupling also matter",
+        "Yes always"
       ],
-      "explanation": "The separation approximation has spectral and dynamical conditions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Adiabatic following requires the nuclear motion to be slow compared with the gap.",
+      "hint": "Compare the gap with the nuclear velocity coupling.",
       "misconceptions": {
         "Yes; mass ratio by itself settles every avoided crossing.": "The separation approximation has spectral and dynamical conditions."
       },

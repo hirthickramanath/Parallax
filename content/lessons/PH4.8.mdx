@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does adding a smooth gradient to A change B?",
+      "prompt": "You add the gradient of a smooth function to the vector potential, A → A + ∇χ. Does B change?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: B changes by ∇χ",
+        "Yes: B doubles",
+        "Yes: B rotates",
+        "No: the curl of a gradient is zero"
       ],
-      "answer": "No",
-      "explanation": "Curl of a gradient vanishes.",
+      "answer": "No: the curl of a gradient is zero",
+      "explanation": "Since B = ∇ × A and ∇ × ∇χ = 0, adding a gradient to A leaves B unchanged.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute curl of a gradient."
     },
     {
       "id": "concept-2",
-      "prompt": "Does uniform magnetization necessarily remove every bound current?",
+      "prompt": "A magnet has uniform magnetisation M. Do all bound currents vanish?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: no bound current",
+        "Yes: uniform means none",
+        "No: a surface bound current K_b = M × n̂ remains",
+        "Yes: bulk J_b = 0 so none"
       ],
-      "answer": "No",
-      "explanation": "A surface bound current can remain.",
+      "answer": "No: a surface bound current K_b = M × n̂ remains",
+      "explanation": "J_b = ∇ × M = 0 in the bulk, but surface currents exist.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute M × n̂ on a side face."
     },
     {
       "id": "concept-3",
-      "prompt": "Can every magnetic material be described by one constant scalar μ?",
+      "prompt": "Can every magnetic material be described by a single constant scalar permeability μ?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: all materials, since permeability is a single constant of every magnetic substance",
+        "Yes: for iron too",
+        "No: hysteresis, anisotropy and nonlinear response can matter",
+        "Yes: every material has one μ"
       ],
-      "answer": "No",
-      "explanation": "Hysteresis, anisotropy and nonlinear response can matter.",
+      "answer": "No: hysteresis, anisotropy and nonlinear response can matter",
+      "explanation": "Ferromagnets show hysteresis, so B is not a function of H alone.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a permanent magnet."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish a gauge choice from a constitutive law?",
-      "answer": "One changes a representation; the other models physical material response",
+      "prompt": "What is the difference between a gauge choice and a constitutive law?",
+      "answer": "A gauge changes the representation",
       "options": [
-        "One changes a representation; the other models physical material response",
-        "Both are arbitrary changes with no physical consequences"
+        "Both have physical effects on the measured field",
+        "They are the same",
+        "A gauge changes the representation",
+        "Both are arbitrary"
       ],
-      "explanation": "A material law has testable regime-dependent predictions.",
+      "explanation": "A gauge changes the representation, while a constitutive law models real material response. Materials have testable, regime-dependent responses.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which one can be tested in a lab?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does adding a smooth gradient to A change B=curl A locally?",
-      "answer": "No; curl of that gradient vanishes under the stated regularity.",
+      "prompt": "Does adding a smooth gradient to A change the local B = ∇ × A?",
+      "answer": "No: the curl of the gradient vanishes",
       "options": [
-        "Yes; every change in potential changes magnetic field.",
-        "No; curl of that gradient vanishes under the stated regularity."
+        "No: the curl of the gradient vanishes",
+        "Yes: B changes locally, since the curl picks up the added gradient",
+        "Yes: any change in A changes B",
+        "Yes: B changes locally"
       ],
-      "explanation": "Gauge-related potentials can encode the same local field.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Gauge-related potentials describe the same local field.",
+      "hint": "Recall what ∇ × (∇χ) equals for any smooth scalar function χ.",
       "misconceptions": {
         "Yes; every change in potential changes magnetic field.": "Gauge-related potentials can encode the same local field."
       },

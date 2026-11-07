@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do existing coordinate partials alone prove continuity?",
+      "prompt": "The partial derivatives ∂f/∂x and ∂f/∂y exist at the origin. Does this prove f is continuous there?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: when both partial derivatives exist at the origin, the function must be continuous there",
+        "No: partials never exist at the origin",
+        "Yes, if f is polynomial",
+        "No: f can have partials yet be discontinuous, as along a diagonal"
       ],
-      "answer": "No",
-      "explanation": "The rational two-variable counterexample fails along a diagonal.",
+      "answer": "No: f can have partials yet be discontinuous, as along a diagonal",
+      "explanation": "Partials only probe the coordinate axes. The function f = xy/(x² + y²), f(0,0) = 0 has both partials but is discontinuous at the origin.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check the value of f along the line y = x."
     },
     {
       "id": "concept-2",
-      "prompt": "What kind of object is the total derivative?",
+      "prompt": "What kind of object is the total derivative Df(a) of a differentiable function f: ℝⁿ → ℝᵐ?",
       "options": [
-        "A linear map",
-        "An arbitrary direction-dependent rule"
+        "A single number, namely the sum of the partial derivatives of f at the point a",
+        "A list of partials with no meaning",
+        "An arbitrary function of direction",
+        "A linear map giving the best local approximation"
       ],
-      "answer": "A linear map",
-      "explanation": "Linearity is part of the local approximation.",
+      "answer": "A linear map giving the best local approximation",
+      "explanation": "f(a + h) = f(a) + Df(a)h + o(|h|). The linearity in h is part of the definition.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the first-order term in the Taylor expansion?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does the chain-rule matrix order matter?",
+      "prompt": "For a composition f∘g, does the order of multiplication of Jacobian matrices matter?",
       "options": [
-        "No",
-        "Yes"
+        "No, the order is irrelevant for square matrices",
+        "No: matrices commute",
+        "Yes: D(f∘g) = Df · Dg, and the dimensions must match",
+        "Yes, but only for 1D functions"
       ],
-      "answer": "Yes",
-      "explanation": "Maps compose in a specified order and dimensions must agree.",
+      "answer": "Yes: D(f∘g) = Df · Dg, and the dimensions must match",
+      "explanation": "The chain rule composes linear maps: first Dg, then Df. Matrix multiplication is not commutative, and shapes must agree.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which map is applied first?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is total differentiability stronger than axis tests?",
-      "answer": "It controls the normalized remainder for all small displacements",
+      "prompt": "Why is total differentiability a stronger condition than checking along the coordinate axes?",
+      "answer": "It controls the remainder for every small displacement, in all directions",
       "options": [
-        "It controls the normalized remainder for all small displacements",
-        "It only requires more plotted points on the axes"
+        "It needs more points on the axes, whereas partial derivatives already control every direction at once",
+        "It controls the remainder for every small displacement, in all directions",
+        "It only applies in one dimension",
+        "It requires only continuity"
       ],
-      "explanation": "A neighbourhood condition cannot be inferred from finitely many directions.",
+      "explanation": "Differentiability requires |f(a + h) − f(a) − Df(a)h|/|h| → 0 as h → 0 in any direction, not just along axes.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Count the directions that must be controlled."
     },
     {
       "id": "multivariable-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Do existing coordinate partial derivatives at a point alone guarantee differentiability there?",
-      "answer": "No; a full small-remainder linear approximation is stronger.",
+      "prompt": "Both partial derivatives of f exist at a point. Does that guarantee f is differentiable there?",
+      "answer": "No: differentiability needs the full linear approximation, which is stronger",
       "options": [
-        "Yes; checking the coordinate axes establishes every approach direction.",
-        "No; a full small-remainder linear approximation is stronger."
+        "No: differentiability needs the full linear approximation, which is stronger",
+        "Yes: when both partial derivatives exist, f has a full linear approximation at that point",
+        "Yes, if f is continuous",
+        "Yes, in 2D"
       ],
-      "explanation": "The origin counterexample has coordinate partials but fails continuity.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Existence of partials is weaker than differentiability. Continuity of the partials in a neighbourhood is sufficient.",
+      "hint": "Recall the example with partials but no continuity.",
       "misconceptions": {
         "Yes; checking the coordinate axes establishes every approach direction.": "The origin counterexample has coordinate partials but fails continuity."
       },

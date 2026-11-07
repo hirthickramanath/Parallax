@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the isoperimetric multiplier generally a function of time for one regular scalar integral constraint?",
+      "prompt": "For an isoperimetric problem with one integral constraint, what is the Lagrange multiplier?",
       "options": [
-        "Yes, always",
-        "No; it is a constant"
+        "Zero",
+        "A constant",
+        "A function of time",
+        "A vector"
       ],
-      "answer": "No; it is a constant",
-      "explanation": "A single global equality uses one multiplier in this formulation.",
+      "answer": "A constant",
+      "explanation": "A single global constraint ∫G dt = C needs one multiplier λ for the functional.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many constraints are there?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a pointwise constraint generally need a multiplier function?",
+      "prompt": "A constraint g(q, t) = 0 must hold at every instant. How many multipliers does it need?",
       "options": [
-        "Yes",
-        "No"
+        "A multiplier function λ(t)",
+        "Two constants, one for each endpoint, since the constraint must be imposed at both ends of the interval",
+        "One constant",
+        "None"
       ],
-      "answer": "Yes",
-      "explanation": "It imposes a condition at each time.",
+      "answer": "A multiplier function λ(t)",
+      "explanation": "A pointwise constraint is infinitely many conditions, one for each time.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many conditions does 'at every instant' impose?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can every velocity constraint be treated as a holonomic variational constraint without changing physics?",
+      "prompt": "Can every velocity constraint be handled as an ordinary holonomic constraint without changing the physics?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: any velocity constraint can be integrated to a relation among coordinates, so the usual multiplier method applies unchanged",
+        "Yes with a multiplier",
+        "No: non-holonomic constraints give different equations by d'Alembert and vakonomic derivations",
+        "Yes, as long as the constraint is linear in the velocities, since every linear constraint is integrable"
       ],
-      "answer": "No",
-      "explanation": "Nonholonomic d’Alembert and vakonomic constructions can differ.",
+      "answer": "No: non-holonomic constraints give different equations by d'Alembert and vakonomic derivations",
+      "explanation": "A rolling-without-slipping constraint is non-holonomic and needs care.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can the constraint be integrated to a relation between coordinates?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why reject the unconstrained zero path in the example?",
-      "answer": "It violates the required integral even though its kinetic functional is smaller",
+      "prompt": "In a constrained variational example the unconstrained minimiser is the zero path. Why can't you use it?",
+      "answer": "It violates the required integral constraint",
       "options": [
-        "It violates the required integral even though its kinetic functional is smaller",
-        "Every zero path has an undefined action"
+        "It maximises the action instead of minimising it, so it cannot be used as the starting path",
+        "It violates the required integral constraint",
+        "It has no endpoints",
+        "Zero paths have undefined action"
       ],
-      "explanation": "The feasible set defines what counts as a competitor.",
+      "explanation": "Competitors must satisfy the constraint, and the feasible set defines the minimisation.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the zero path feasible?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Can the constraint equation be discarded after introducing its multiplier?",
-      "answer": "No; it must still be solved with stationarity.",
+      "prompt": "After adding a multiplier term, can you drop the original constraint equation?",
+      "answer": "No: it must still be solved together with the stationarity equations",
       "options": [
-        "Yes; the multiplier automatically enforces any chosen constraint.",
-        "No; it must still be solved with stationarity."
+        "No: it must still be solved together with the stationarity equations",
+        "Yes, if λ = 0",
+        "Yes: the constraint is automatic",
+        "Yes: the multiplier enforces the constraint, so the original equation g = 0 can be dropped afterwards"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "The augmented equations include the original constraint.",
+      "hint": "Count the unknowns and the equations.",
+      "explanation": "Stationarity with respect to λ gives back the constraint, which must be satisfied.",
       "misconceptions": {
         "Yes; the multiplier automatically enforces any chosen constraint.": "The augmented equations include the original constraint."
       },

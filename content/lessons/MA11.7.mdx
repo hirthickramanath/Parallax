@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does local product structure prove a bundle globally trivial?",
+      "prompt": "A fibre bundle looks like a product U × F locally. Does that make it globally a product?",
       "options": [
-        "Yes",
-        "No"
+        "No: transition functions can give a non-trivial global structure (e.g. the Möbius band)",
+        "Yes: local triviality implies global triviality, so every bundle is a product over its whole base space",
+        "Yes: for smooth bundles",
+        "Yes: over a circle"
       ],
-      "answer": "No",
-      "explanation": "Transition topology can be nontrivial.",
+      "answer": "No: transition functions can give a non-trivial global structure (e.g. the Möbius band)",
+      "explanation": "The Möbius band is locally a product of an interval with a circle but globally twisted.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the Möbius band."
     },
     {
       "id": "concept-2",
-      "prompt": "Does an abelian A→A+dχ change local F=dA?",
+      "prompt": "In electromagnetism A → A + dχ. What happens to the field strength F = dA?",
       "options": [
-        "No",
-        "Yes"
+        "It becomes zero",
+        "It changes by dχ, since the field strength F = dA picks up the exact term added to A",
+        "It doubles",
+        "It is unchanged, since d²χ = 0"
       ],
-      "answer": "No",
-      "explanation": "d²χ=0.",
+      "answer": "It is unchanged, since d²χ = 0",
+      "explanation": "F′ = d(A + dχ) = dA + d²χ = dA.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply the exterior derivative d to dχ, and recall d² = 0."
     },
     {
       "id": "concept-3",
-      "prompt": "Must gauge-coupling/sign conventions be stated?",
+      "prompt": "You compare a gauge-theory formula with another text's. What must you check?",
       "options": [
-        "No",
-        "Yes"
+        "Nothing: the formulas are universal, so the coupling and the sign of the connection agree in every text",
+        "Only the units",
+        "Coupling and sign conventions, because connection formulas depend on them",
+        "Only the metric signature"
       ],
-      "answer": "Yes",
-      "explanation": "Connection formulas depend on them.",
+      "answer": "Coupling and sign conventions, because connection formulas depend on them",
+      "explanation": "D = ∂ − iqA versus ∂ + iqA change the sign of the coupling.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the covariant derivative definition."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish local potentials and global structure?",
-      "answer": "One chart need not describe the whole bundle.",
+      "prompt": "Why distinguish local gauge potentials from global bundle structure?",
+      "answer": "One chart need not describe the whole bundle",
       "options": [
-        "One chart need not describe the whole bundle.",
-        "A local base-times-fibre description."
+        "The bundle is always trivial",
+        "One chart need not describe the whole bundle",
+        "Potentials are always global",
+        "Fields are always zero"
       ],
-      "explanation": "One chart need not describe the whole bundle.",
+      "explanation": "The Dirac monopole potential cannot be defined by one A over the whole sphere; two patches are needed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall the Dirac monopole: can one A cover the whole sphere?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is a local gauge potential itself generally gauge invariant?",
-      "answer": "No; gauge transformations change its representative.",
+      "prompt": "Is a local gauge potential A itself gauge invariant?",
+      "answer": "No: gauge transformations change it",
       "options": [
-        "Yes; every component is directly observable.",
-        "No; gauge transformations change its representative."
+        "No: gauge transformations change it",
+        "Yes: only F changes under a gauge transformation, so the potential A itself is gauge invariant",
+        "Yes: A = 0 always",
+        "Yes: it is observable"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Distinguish representative and gauge-invariant quantities.",
+      "hint": "Recall that A → A + dχ is allowed, then ask if A changes.",
+      "explanation": "Only gauge-invariant quantities such as F and holonomies are physical.",
       "misconceptions": {
         "Yes; every component is directly observable.": "Distinguish representative and gauge-invariant quantities."
       },

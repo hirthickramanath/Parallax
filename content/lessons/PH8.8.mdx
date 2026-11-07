@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do Schrödinger and Heisenberg pictures predict different measurement probabilities?",
+      "prompt": "The Schrödinger and Heisenberg pictures put the time dependence in different places. Do they predict different measurement probabilities?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: different probabilities, since Heisenberg's picture gives measurable values that differ",
+        "Yes: for time-dependent H",
+        "Yes: Heisenberg is more accurate",
+        "No: they are equivalent redistributions of the time dependence"
       ],
-      "answer": "No",
-      "explanation": "They are equivalent redistributions of time dependence.",
+      "answer": "No: they are equivalent redistributions of the time dependence",
+      "explanation": "⟨A⟩ = ⟨ψ(t)|A|ψ(t)⟩ = ⟨ψ|A_H(t)|ψ⟩.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the unitary evolution do in each?"
     },
     {
       "id": "concept-2",
-      "prompt": "May time ordering always be omitted for H(t)?",
+      "prompt": "The Hamiltonian is H(t). Can you always write U = exp(−i∫H dt/ħ) without time ordering?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: always, since the exponential of the integral is valid for any time-dependent Hamiltonian",
+        "Yes: the integral suffices",
+        "Yes: time ordering is not needed",
+        "No: Hamiltonians at different times may not commute"
       ],
-      "answer": "No",
-      "explanation": "Hamiltonians at distinct times can fail to commute.",
+      "answer": "No: Hamiltonians at different times may not commute",
+      "explanation": "If [H(t₁), H(t₂)] ≠ 0, a Dyson series with time ordering is needed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When does e^A e^B = e^(A+B)?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is ⟨V′(x)⟩ always equal to V′(⟨x⟩)?",
+      "prompt": "Is ⟨V′(x)⟩ always equal to V′(⟨x⟩) in a quantum state?",
       "options": [
-        "Yes",
-        "No"
+        "No: for nonlinear forces it depends on the fluctuations of the state",
+        "Yes: always, since the expectation of a function equals the function of the expectation",
+        "Yes: for any potential",
+        "Yes: Ehrenfest guarantees it"
       ],
-      "answer": "No",
-      "explanation": "Nonlinear forces depend on state fluctuations.",
+      "answer": "No: for nonlinear forces it depends on the fluctuations of the state",
+      "explanation": "It is true only for linear V′ (harmonic oscillator) or narrow states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is ⟨x²⟩ equal to ⟨x⟩²?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does Ehrenfest not generally justify?",
-      "answer": "Replacing a nonlinear force expectation by the force at the mean position.",
+      "prompt": "What does Ehrenfest's theorem not generally justify?",
+      "answer": "Replacing the expectation of a nonlinear force by the force at the mean position",
       "options": [
-        "Replacing a nonlinear force expectation by the force at the mean position.",
-        "A_H=U†A_SU."
+        "Conservation of energy for a time-independent Hamiltonian, which follows from the dynamics",
+        "Replacing the expectation of a nonlinear force by the force at the mean position",
+        "Position evolution",
+        "The momentum equation"
       ],
-      "explanation": "Replacing a nonlinear force expectation by the force at the mean position.",
+      "explanation": "d⟨p⟩/dt = −⟨V′(x)⟩, which is not V′(⟨x⟩) in general.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which step needs ⟨f(x)⟩ = f(⟨x⟩)?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Do changing energy eigenstate phases alone change the energy-basis populations?",
-      "answer": "No; phase magnitudes stay unchanged.",
+      "prompt": "Time evolution multiplies each energy-eigenstate amplitude by a phase. Does this change the populations in the energy basis?",
+      "answer": "No: the magnitudes of the amplitudes stay unchanged",
       "options": [
-        "Yes; every phase evolution redistributes energy populations.",
-        "No; phase magnitudes stay unchanged."
+        "Yes: populations oscillate, since the phases move probability between energy levels",
+        "No: the magnitudes of the amplitudes stay unchanged",
+        "Yes: every phase redistributes populations",
+        "Yes: energies change"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Interference depends on the measurement basis.",
+      "hint": "Take the squared modulus.",
+      "explanation": "|c_n e^(−iE_n t/ħ)|² = |c_n|².",
       "misconceptions": {
         "Yes; every phase evolution redistributes energy populations.": "Interference depends on the measurement basis."
       },

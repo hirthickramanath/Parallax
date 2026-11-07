@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does changing an operator basis necessarily change the underlying map?",
+      "prompt": "You change the basis in which an operator T is written. What changes?",
       "options": [
-        "Yes",
-        "No"
+        "Its rank",
+        "The map itself changes, since a different basis gives a different operator on the space",
+        "Its eigenvalues",
+        "Only its matrix representation; the map itself is unchanged"
       ],
-      "answer": "No",
-      "explanation": "Only its component representation changes.",
+      "answer": "Only its matrix representation; the map itself is unchanged",
+      "explanation": "A basis change relabels coordinates. The underlying linear map, its eigenvalues and rank are intrinsic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the operator tied to the coordinates?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does injectivity always imply surjectivity in infinite dimensions?",
+      "prompt": "A linear map is one-to-one on an infinite-dimensional space. Is it automatically onto?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, if it is continuous",
+        "No: it is never one-to-one",
+        "Yes, as in finite dimensions",
+        "No: the right-shift on sequences is one-to-one but not onto"
       ],
-      "answer": "No",
-      "explanation": "The finite-dimensional square-space theorem has a genuine restriction.",
+      "answer": "No: the right-shift on sequences is one-to-one but not onto",
+      "explanation": "The rank–nullity argument needs finite dimension. The right shift (x₁, x₂, …) → (0, x₁, x₂, …) misses vectors with nonzero first entry.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try the shift operator on sequences."
     },
     {
       "id": "concept-3",
-      "prompt": "What do matrix columns represent?",
+      "prompt": "What do the columns of a matrix of a linear map represent?",
       "options": [
-        "A list of unrelated eigenvalues",
-        "Images of input basis vectors in output coordinates"
+        "Random constants",
+        "The input basis vectors",
+        "The images of the input basis vectors, written in output coordinates",
+        "A list of eigenvalues"
       ],
-      "answer": "Images of input basis vectors in output coordinates",
-      "explanation": "Linearity fixes the rest of the map from these images.",
+      "answer": "The images of the input basis vectors, written in output coordinates",
+      "explanation": "Column j is T(e_j). Linearity then determines T on every vector.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply the matrix to the j-th basis vector."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "When does the similarity transformation S⁻¹AS apply?",
-      "answer": "One operator represented in two bases of the same space",
+      "prompt": "When is the similarity transformation S⁻¹AS the right way to relate two matrices?",
+      "answer": "When the same operator on one space is written in two bases",
       "options": [
-        "One operator represented in two bases of the same space",
-        "Any rectangular array without dimension checks"
+        "When the same operator on one space is written in two bases",
+        "For any two matrices of the same size, since S⁻¹AS relates every pair of square matrices",
+        "Only for diagonal matrices",
+        "When mapping between different spaces"
       ],
-      "explanation": "Different input/output spaces require separate coordinate conversions.",
+      "explanation": "A map between different input and output spaces needs separate basis changes on each side.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the map go from a space to itself?"
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Do arbitrary linear maps represented by square matrices necessarily commute?",
-      "answer": "No; composition order generally changes the map.",
+      "prompt": "A and B are n × n matrices. Is AB = BA in general?",
+      "answer": "No: composition order generally changes the map",
       "options": [
-        "Yes; matrix multiplication is commutative like scalar multiplication.",
-        "No; composition order generally changes the map."
+        "Yes: matrix multiplication is commutative, so AB = BA holds for every pair of square matrices",
+        "No: composition order generally changes the map",
+        "Yes, for square matrices",
+        "Yes, for invertible matrices"
       ],
-      "explanation": "A simple shear and rotation provide noncommuting examples.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A shear followed by a rotation differs from the rotation followed by the shear.",
+      "hint": "Try two simple 2×2 matrices.",
       "misconceptions": {
         "Yes; matrix multiplication is commutative like scalar multiplication.": "A simple shear and rotation provide noncommuting examples."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is semimajor axis always the current separation?",
+      "prompt": "Mars' semimajor axis is 1.52 AU, but at perihelion it is 1.38 AU from the Sun. Why do these differ?",
       "options": [
-        "Yes",
-        "No"
+        "The semimajor axis was measured wrongly, so the two values should agree once the data are corrected",
+        "Mars moves in a circle",
+        "The Sun moves",
+        "The orbit is eccentric, so the current separation varies around the semimajor axis"
       ],
-      "answer": "No",
-      "explanation": "They differ around an eccentric orbit.",
+      "answer": "The orbit is eccentric, so the current separation varies around the semimajor axis",
+      "explanation": "a is the orbit's average size. The instantaneous distance is r = a(1 − e²)/(1 + e cos ν).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute a(1 − e) for the perihelion."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a near-rational period ratio alone prove resonance?",
+      "prompt": "Two asteroids have a period ratio of 2.003 : 1. Does this prove they are in a 2:1 resonance?",
       "options": [
-        "No",
-        "Yes"
+        "No: resonance is impossible",
+        "No: you must show the resonant angle librates",
+        "Yes: close ratios prove it",
+        "Yes: 0.3% is close enough"
       ],
-      "answer": "No",
-      "explanation": "Dynamical resonant-angle behaviour is needed.",
+      "answer": "No: you must show the resonant angle librates",
+      "explanation": "True resonance is a dynamical state, where a resonant angle oscillates rather than circulates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the resonant angle do in a true resonance?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do tides depend on gravity gradients?",
+      "prompt": "Io is heated by tides from Jupiter. What must the tidal force have for this heating?",
       "options": [
-        "No",
-        "Yes"
+        "A uniform pull, since a force that is the same across the moon squeezes it as it moves",
+        "A uniform pull",
+        "A gradient across the moon, since differential forces deform it",
+        "A constant force"
       ],
-      "answer": "Yes",
-      "explanation": "Differential forces deform the body.",
+      "answer": "A gradient across the moon, since differential forces deform it",
+      "explanation": "Tides are gradients of gravity. A uniform field only accelerates the body.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a uniform field deform a body?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why check orbital integrators?",
-      "answer": "Numerical error can imitate secular or chaotic changes.",
+      "prompt": "Why test an orbit integrator for energy drift when predicting long-term planetary motion?",
+      "answer": "Numerical error can imitate secular or chaotic changes",
       "options": [
-        "Numerical error can imitate secular or chaotic changes.",
-        "Semimajor axis and total mass."
+        "Integrators are exact for gravity, so any energy drift in the plot would come from the physics itself",
+        "Energy is not conserved in nature",
+        "Numerical error can imitate secular or chaotic changes",
+        "It makes the plot smoother"
       ],
-      "explanation": "Numerical error can imitate secular or chaotic changes.",
+      "explanation": "A spurious drift in a or e can be mistaken for a physical effect.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the orbit changing, or is the code?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does escaping a planet automatically imply escaping the Solar System?",
-      "answer": "No; the solar gravitational energy and trajectory remain relevant.",
+      "prompt": "A probe reaches escape velocity from Earth. Has it escaped the Solar System?",
+      "answer": "No: the Sun's gravitational field and its trajectory around the Sun are still relevant",
       "options": [
-        "Yes; all gravitational escape conditions are identical.",
-        "No; the solar gravitational energy and trajectory remain relevant."
+        "Yes: at Earth's escape velocity the probe also leaves the Sun's gravity, so it is free of the Solar System",
+        "No: the Sun's gravitational field and its trajectory around the Sun are still relevant",
+        "Yes: escape is escape",
+        "Yes: Earth's escape is solar escape"
       ],
-      "explanation": "The chosen gravitating system and asymptotic boundary must be specified.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Earth's escape speed is 11.2 km/s, while Solar System escape at 1 AU needs 42 km/s.",
+      "hint": "Compare the speed needed to leave the Sun's gravity.",
       "misconceptions": {
         "Yes; all gravitational escape conditions are identical.": "The chosen gravitating system and asymptotic boundary must be specified."
       },

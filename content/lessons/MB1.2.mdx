@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Which input is allowed for a real logarithm?",
-      "answer": "A positive number",
+      "prompt": "Which inputs does the real logarithm ln x accept?",
+      "answer": "Positive numbers only",
       "options": [
-        "Any negative number",
-        "A positive number"
+        "Numbers greater than or equal to 1",
+        "Any real number",
+        "Any number except zero",
+        "Positive numbers only"
       ],
-      "explanation": "Positive-base real exponentials have positive range.",
+      "explanation": "ln is the inverse of eˣ, whose output is always positive. So ln x is defined only for x > 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What values can eˣ produce?"
     },
     {
       "id": "c2",
-      "prompt": "What does multiplying by i do geometrically?",
-      "answer": "Rotate by a quarter-turn",
+      "prompt": "Multiplying a complex number by i does what to it in the Argand plane?",
+      "answer": "Rotates it by 90° about the origin",
       "options": [
-        "Rotate by a quarter-turn",
-        "Double every modulus"
+        "Rotates it by 180°",
+        "Doubles its distance from the origin",
+        "Rotates it by 90° about the origin",
+        "Reflects it in the real axis"
       ],
-      "explanation": "Its modulus is 1 and argument π/2.",
+      "explanation": "i has modulus 1 and argument π/2. Multiplying multiplies moduli (×1) and adds arguments (+90°), so the number turns a quarter-turn.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the moduli and arguments of z and iz."
     },
     {
       "id": "c3",
-      "prompt": "Is log(x+y)=log(x)+log(y) generally true?",
-      "answer": "No",
+      "prompt": "Is log(x + y) equal to log x + log y?",
+      "answer": "No: the sum rule holds for log(xy), not log(x + y)",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for all positive x and y, because the logarithm of a sum is the sum of the logarithms",
+        "No: the sum rule holds for log(xy), not log(x + y)",
+        "No, but it is true for the sum x + y = 1",
+        "Yes, if the base is e"
       ],
-      "explanation": "The addition identity applies to a product inside the logarithm.",
+      "explanation": "log a + log b = log(ab). The logarithm turns products into sums, and it does not simplify the log of a sum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try x = y = 1: compare log 2 with 0."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "With the principal complex logarithm, does Log((-1)(-1)) equal Log(-1)+Log(-1)?",
-      "answer": "No; the values are 0 and 2πi.",
+      "prompt": "With the principal complex logarithm, how do Log((−1)(−1)) and Log(−1) + Log(−1) compare?",
+      "answer": "They differ: 0 versus 2πi",
       "options": [
-        "Yes; the product rule has no branch restriction.",
-        "No; the values are 0 and 2πi."
+        "They are equal, both being 2πi",
+        "They differ: 0 versus iπ",
+        "They are equal, both being 0",
+        "They differ: 0 versus 2πi"
       ],
-      "explanation": "The argument is defined on a branch; adding arguments may cross its cut.",
+      "explanation": "Log(1) = 0, but Log(−1) = iπ, so the sum is 2πi. The sum of arguments leaves the principal range (−π, π], so the product rule fails.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Compute each Log value using arguments between −π and π.",
       "misconceptions": {
         "Yes; the product rule has no branch restriction.": "The argument is defined on a branch; adding arguments may cross its cut."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "May a real logarithm equation keep a candidate with a nonpositive original argument?",
-      "answer": "No; it violates the original domain.",
+      "prompt": "Solving ln(x − 3) + ln(x + 1) = ln 5 gives x = 4 and x = −2 after combining. What should you do with these?",
+      "answer": "Reject any that make an original log argument non-positive",
       "options": [
-        "Yes; cancellation removes every logarithm domain restriction.",
-        "No; it violates the original domain."
+        "Accept only the negative one",
+        "Accept both, since combining removes the logs",
+        "Reject both, since logs cannot be combined",
+        "Reject any that make an original log argument non-positive"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Substitute into the original expression.",
+      "hint": "Substitute into the original arguments, not the combined form.",
+      "explanation": "x = −2 makes x − 3 and x + 1 negative, so the original logarithms are undefined. Only x = 4 survives the domain check.",
       "misconceptions": {
         "Yes; cancellation removes every logarithm domain restriction.": "Substitute into the original expression."
       },

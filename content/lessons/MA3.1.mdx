@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must a subspace contain zero?",
+      "prompt": "Which of these must hold for every subspace W of a vector space V?",
       "options": [
-        "No",
-        "Yes"
+        "W is finite",
+        "W contains every unit vector",
+        "W contains the zero vector",
+        "W contains a basis of V"
       ],
-      "answer": "Yes",
-      "explanation": "Closure under zero scalar multiplication produces it.",
+      "answer": "W contains the zero vector",
+      "explanation": "Closure under scalar multiplication includes multiplying by 0, which produces the zero vector, so every subspace contains it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply any vector in W by the scalar 0."
     },
     {
       "id": "concept-2",
-      "prompt": "Is the union of two subspaces always a subspace?",
+      "prompt": "U and W are subspaces of ℝ². Is the union U ∪ W always a subspace?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the union of two subspaces is a subspace, since both contain the zero vector",
+        "Yes, if they contain zero",
+        "No: the sum of a vector from each can fall outside the union",
+        "Yes, if U and W are lines"
       ],
-      "answer": "No",
-      "explanation": "A sum of vectors from different pieces can leave the union.",
+      "answer": "No: the sum of a vector from each can fall outside the union",
+      "explanation": "The x-axis and y-axis are subspaces of ℝ², but (1, 0) + (0, 1) = (1, 1) lies on neither. U ∪ W is a subspace only if one contains the other.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take the x-axis and the y-axis in the plane."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a basis give unique coordinates?",
+      "prompt": "A set of vectors is a basis of V. What does it provide for each vector v in V?",
       "options": [
-        "No",
-        "Yes"
+        "Coordinates only for unit vectors",
+        "Several possible coordinate lists",
+        "No coordinates unless v is a basis vector",
+        "Exactly one set of coordinates"
       ],
-      "answer": "Yes",
-      "explanation": "Spanning gives existence and independence gives uniqueness.",
+      "answer": "Exactly one set of coordinates",
+      "explanation": "Spanning gives existence of a combination; linear independence gives uniqueness.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about both properties of a basis."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is the set of polynomials of degree exactly n not generally a subspace?",
-      "answer": "Leading terms can cancel and zero is excluded",
+      "prompt": "Why is the set of polynomials of degree exactly n not a vector subspace of the polynomials?",
+      "answer": "Sums can lose the leading term, and zero is excluded",
       "options": [
-        "Leading terms can cancel and zero is excluded",
-        "It has too many points to form a space"
+        "It has no basis, because the polynomials of degree exactly n do not span anything useful",
+        "Sums can lose the leading term, and zero is excluded",
+        "It has too many elements",
+        "It is not closed under scalar multiplication by 1"
       ],
-      "explanation": "Closure and the zero requirement fail.",
+      "explanation": "x^n + (−x^n + 1) = 1 has degree 0, so closure under addition fails, and the zero polynomial is not of degree n.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Add x² to −x² + 1 and look at the degree of the sum."
     },
     {
       "id": "linear-ode-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Is the plane x+y+z=1 a vector subspace of R³?",
-      "answer": "No; it does not contain the zero vector.",
+      "prompt": "Is the plane x + y + z = 1 a subspace of ℝ³?",
+      "answer": "No: it does not contain the zero vector",
       "options": [
-        "Yes; every geometric plane is a vector subspace.",
-        "No; it does not contain the zero vector."
+        "Yes: every plane is a subspace",
+        "No: it does not contain the zero vector",
+        "Yes: it is spanned by two vectors",
+        "Yes: it is closed under addition"
       ],
-      "explanation": "An affine translation generally loses the required zero vector.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "At (0, 0, 0) the equation gives 0 ≠ 1. Only planes through the origin are subspaces.",
+      "hint": "Substitute (0, 0, 0).",
       "misconceptions": {
         "Yes; every geometric plane is a vector subspace.": "An affine translation generally loses the required zero vector."
       },

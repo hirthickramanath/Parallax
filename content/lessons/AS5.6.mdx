@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a nearby arrival time alone prove common origin?",
+      "prompt": "A neutrino arrives 3 s from a flare. Does that alone prove a common origin?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: arrival within seconds of the flare proves a common origin, since a chance coincidence is negligible",
+        "Yes: with 3 seconds",
+        "No: background rates and source and detector models are needed",
+        "Yes: closeness proves it"
       ],
-      "answer": "No",
-      "explanation": "Background and source/detector models are needed.",
+      "answer": "No: background rates and source and detector models are needed",
+      "explanation": "You must compute the chance of an unrelated coincidence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How often do unrelated neutrinos arrive?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a nondetection prove zero emitted flux?",
+      "prompt": "A neutrino telescope sees no events from a source. Does this prove the source emitted no neutrinos?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: always",
+        "Yes: zero detected events means the source emitted no neutrinos, whatever the exposure and the sensitivity",
+        "Yes: if the exposure is long",
+        "No: the sensitivity and geometry set only an upper limit"
       ],
-      "answer": "No",
-      "explanation": "Sensitivity and geometry matter.",
+      "answer": "No: the sensitivity and geometry set only an upper limit",
+      "explanation": "A source can be too faint or in the wrong direction for the detector.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the minimum flux the detector can see?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can correlated messenger summaries always be multiplied as independent?",
+      "prompt": "Two messenger analyses use overlapping data. Can you multiply their probabilities as if they were independent?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: if both are Bayesian",
+        "Yes: probabilities always multiply",
+        "Yes: if both are significant",
+        "No: shared information would be double counted"
       ],
-      "answer": "No",
-      "explanation": "Shared information can be double counted.",
+      "answer": "No: shared information would be double counted",
+      "explanation": "Multiplication assumes independence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do both use the same information?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why include nondetections?",
-      "answer": "They constrain models through sensitivity and selection.",
+      "prompt": "Why should a multi-messenger paper report nondetections?",
+      "answer": "They constrain models through the sensitivity and selection of the instruments",
       "options": [
-        "They constrain models through sensitivity and selection.",
-        "Energy/direction-dependent detection response in the stated convention."
+        "They constrain models through the sensitivity and selection of the instruments",
+        "They add length",
+        "They prove absence",
+        "They are meaningless"
       ],
-      "explanation": "They constrain models through sensitivity and selection.",
+      "explanation": "An upper limit rules out some parameter space.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What can a limit rule out?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Is the probability of at least one total count a discovery significance against background?",
-      "answer": "No; the background-only distribution and analysis selection must be evaluated.",
+      "prompt": "An analysis finds one neutrino candidate in a source window. Is the probability of seeing at least one count under the signal hypothesis the same as the significance against the background?",
+      "answer": "No: the background-only distribution and the selection must be evaluated",
       "options": [
-        "Yes; any count makes the signal hypothesis certain.",
-        "No; the background-only distribution and analysis selection must be evaluated."
+        "No: the background-only distribution and the selection must be evaluated",
+        "Yes: they are identical",
+        "Yes: any count confirms the signal",
+        "No: counts are meaningless"
       ],
-      "explanation": "Detection probability under signal-plus-background is different from false-alarm probability.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A p-value is computed under the null (background-only) hypothesis.",
+      "hint": "Which hypothesis is the p-value computed under?",
       "misconceptions": {
         "Yes; any count makes the signal hypothesis certain.": "Detection probability under signal-plus-background is different from false-alarm probability."
       },

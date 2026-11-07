@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does reversing path orientation reverse vector work?",
+      "prompt": "You reverse the direction in which a path is traversed. What happens to the work ∫F·dr?",
       "options": [
-        "No",
-        "Yes"
+        "It changes sign",
+        "It doubles",
+        "It becomes zero",
+        "It is unchanged"
       ],
-      "answer": "Yes",
-      "explanation": "The tangent direction reverses.",
+      "answer": "It changes sign",
+      "explanation": "The tangent vector dr reverses, so F·dr changes sign along the whole path.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Reverse the sign of the tangent."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a scalar arc-length integral reverse sign with orientation?",
+      "prompt": "You compute the arc length of a curve by ∫|r′(t)|dt. Does reversing the path change the result?",
       "options": [
-        "No",
-        "Yes"
+        "No: the integrand uses the magnitude of the tangent",
+        "Yes: it becomes zero",
+        "Yes: it changes sign, because reversing the direction of travel reverses the sign of the length",
+        "Yes: it doubles"
       ],
-      "answer": "No",
-      "explanation": "Arc length uses the tangent magnitude.",
+      "answer": "No: the integrand uses the magnitude of the tangent",
+      "explanation": "Scalar line integrals ∫f ds use |r′|, which is orientation independent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the speed positive in both directions?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does zero curl on a punctured domain automatically give a global potential?",
+      "prompt": "A field has zero curl everywhere on the plane minus the origin. Must it have a potential on that domain?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, if the field is smooth",
+        "Yes: zero curl gives a potential everywhere",
+        "No: a hole can obstruct a global potential",
+        "No: potentials never exist"
       ],
-      "answer": "No",
-      "explanation": "Topology and excluded singularities matter.",
+      "answer": "No: a hole can obstruct a global potential",
+      "explanation": "F = (−y, x)/(x² + y²) has zero curl away from the origin but circulation 2π around it, so no single-valued potential.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the circulation around the unit circle."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What makes endpoint work possible?",
-      "answer": "A valid single-valued potential on a domain containing the paths",
+      "prompt": "Work along a path depends only on its endpoints. What must be true of the field?",
+      "answer": "It has a single-valued potential on a region containing the paths",
       "options": [
-        "A valid single-valued potential on a domain containing the paths",
-        "Only two measured endpoint field values"
+        "It is zero at the endpoints",
+        "It has the same value at the endpoints",
+        "It is constant",
+        "It has a single-valued potential on a region containing the paths"
       ],
-      "explanation": "Integrating a gradient uses potential differences, not just endpoint force samples.",
+      "explanation": "If F = ∇φ with φ defined on the region, ∫F·dr = φ(end) − φ(start).",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of conservative fields and potentials."
     },
     {
       "id": "multivariable-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Does zero curl on a punctured planar domain automatically imply every closed line integral vanishes?",
-      "answer": "No; a hole can obstruct a global potential.",
+      "prompt": "A field has curl 0 on a punctured plane. Does every closed line integral vanish?",
+      "answer": "Not necessarily: a loop around the hole can have non-zero circulation",
       "options": [
-        "Yes; local curl checks establish global path independence on every domain.",
-        "No; a hole can obstruct a global potential."
+        "Yes, for smooth loops",
+        "Not necessarily: a loop around the hole can have non-zero circulation",
+        "Yes: curl 0 means zero circulation everywhere, including around a loop that encloses the puncture",
+        "No: they are always non-zero"
       ],
-      "explanation": "The circulation field around the missing origin is a counterexample.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Stokes' theorem needs a surface in the domain bounded by the loop. A loop around the hole bounds none within the domain.",
+      "hint": "Recall the field (−y, x)/(x² + y²).",
       "misconceptions": {
         "Yes; local curl checks establish global path independence on every domain.": "The circulation field around the missing origin is a counterexample."
       },

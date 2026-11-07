@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is flux freezing valid independently of ideal/smoothness assumptions?",
+      "prompt": "Flux freezing says field lines move with the plasma. Does this hold regardless of resistivity and smoothness?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: flux freezing holds for any fluid, with any resistivity and any roughness of the magnetic field",
+        "No: it never holds",
+        "No: the theorem needs ideal MHD and sufficiently smooth fields",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "Its theorem has model and regularity conditions.",
+      "answer": "No: the theorem needs ideal MHD and sufficiently smooth fields",
+      "explanation": "Resistivity and reconnection break the frozen-in condition.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does ideal MHD assume about resistivity?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does magnetic pressure alone describe all magnetic force directions?",
+      "prompt": "Magnetic pressure B²/2μ₀ acts in every direction. Does it describe the whole magnetic force?",
       "options": [
-        "No",
-        "Yes"
+        "No: there is no magnetic force",
+        "Yes: it is isotropic",
+        "Yes: pressure is everything",
+        "No: field-line tension acts along the field and also matters"
       ],
-      "answer": "No",
-      "explanation": "Field-line tension also matters.",
+      "answer": "No: field-line tension acts along the field and also matters",
+      "explanation": "The Lorentz force splits into a pressure gradient and a curvature (tension) term.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a bent field line do?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does one-fluid MHD include all kinetic plasma resonances automatically?",
+      "prompt": "One-fluid MHD is used to study a collisionless plasma. Does it include kinetic resonances such as Landau damping?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: Landau damping is included automatically through the viscosity term of the one-fluid equations",
+        "Yes: through the viscosity",
+        "No: those need the distribution function, not a fluid description",
+        "Yes: all effects are included"
       ],
-      "answer": "No",
-      "explanation": "Those can require distribution-function physics.",
+      "answer": "No: those need the distribution function, not a fluid description",
+      "explanation": "MHD takes moments and discards velocity-space structure.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a fluid model drop?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What limits flux-freezing arguments?",
-      "answer": "Nonideal terms, kinetic physics and regularity failures.",
+      "prompt": "What limits the use of flux-freezing arguments?",
+      "answer": "Non-ideal terms, kinetic physics and failures of smoothness",
       "options": [
-        "Nonideal terms, kinetic physics and regularity failures.",
-        "E+v×B=0."
+        "Only the gas density, since freezing fails wherever the plasma becomes too dilute to remain ionised",
+        "Non-ideal terms, kinetic physics and failures of smoothness",
+        "Nothing",
+        "Only the magnitude of B"
       ],
-      "explanation": "Nonideal terms, kinetic physics and regularity failures.",
+      "explanation": "Reconnection and turbulence violate the assumptions.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does E + v × B = 0 assume?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Is the Alfvén speed the propagation speed of every possible plasma disturbance?",
-      "answer": "No; mode, direction and physical regime matter.",
+      "prompt": "Is the Alfvén speed the propagation speed of every disturbance in a magnetised plasma?",
+      "answer": "No: it depends on the mode, direction and physical regime",
       "options": [
-        "Yes; every MHD and kinetic signal has that speed.",
-        "No; mode, direction and physical regime matter."
+        "No: it depends on the mode, direction and physical regime",
+        "Yes: all signals travel at v_A",
+        "Yes: even sound waves",
+        "Yes: in vacuum"
       ],
-      "explanation": "The restoring forces and approximations differ among modes.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Fast and slow magnetosonic modes propagate at different speeds.",
+      "hint": "Are there other MHD waves?",
       "misconceptions": {
         "Yes; every MHD and kinetic signal has that speed.": "The restoring forces and approximations differ among modes."
       },

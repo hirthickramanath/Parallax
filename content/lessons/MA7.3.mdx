@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May a singular Yₘ solution be retained automatically at the centre of a regular full disk?",
+      "prompt": "You solve a vibrating full circular drum, including the centre. May you keep the Y_m Bessel solution?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: Y_m is the physical one",
+        "Yes: both solutions are always kept",
+        "No: J_m diverges",
+        "No: Y_m diverges at the origin, which is inside the domain"
       ],
-      "answer": "No",
-      "explanation": "Regularity at the included origin excludes that singular branch.",
+      "answer": "No: Y_m diverges at the origin, which is inside the domain",
+      "explanation": "Regularity at r = 0 selects J_m. Y_m would be allowed for an annulus.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is Y_m finite at r = 0?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are circular Dirichlet membrane frequencies generally integer multiples of the lowest one?",
+      "prompt": "Are the frequencies of a circular drum integer multiples of the lowest one?",
       "options": [
-        "No",
-        "Yes"
+        "No: they follow the zeros of Bessel functions, which are not integer ratios",
+        "Yes, like a string, since a circular membrane has overtones at exact multiples of its fundamental",
+        "Yes, like a string",
+        "Yes, like a pipe"
       ],
-      "answer": "No",
-      "explanation": "Bessel zeros determine the spectrum.",
+      "answer": "No: they follow the zeros of Bessel functions, which are not integer ratios",
+      "explanation": "The ratios are 1 : 1.59 : 2.14 : 2.30 : …, which is why drums sound less harmonic than strings.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the first zeros: 2.405, 3.832, 5.136."
     },
     {
       "id": "concept-3",
-      "prompt": "What radial weight appears in disk-mode orthogonality?",
+      "prompt": "Bessel functions J_m(kr) with different k are orthogonal on [0, a]. Which radial weight appears?",
       "options": [
-        "1 with no radial factor",
+        "1",
+        "r²",
+        "1/r",
         "r"
       ],
       "answer": "r",
-      "explanation": "The polar area element and radial operator supply r.",
+      "explanation": "The polar area element supplies r, and the radial equation is of Sturm–Liouville form with weight r.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the area element in polar coordinates?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What changes when the circular boundary becomes a zero-normal-derivative boundary?",
-      "answer": "The spectral condition uses derivative zeros and possible zero modes",
+      "prompt": "A drum's boundary condition changes from fixed (u = 0) to free (∂u/∂r = 0). What happens to the allowed frequencies?",
+      "answer": "They follow zeros of J′ instead of J, and a zero mode may appear",
       "options": [
-        "The spectral condition uses derivative zeros and possible zero modes",
-        "Nothing; the same zeros always apply"
+        "They follow zeros of J′ instead of J, and a zero mode may appear",
+        "Nothing changes, since the boundary condition affects only the amplitude and not the frequencies of the modes",
+        "They all vanish",
+        "They become integer multiples"
       ],
-      "explanation": "Different boundary data select different eigenvalues.",
+      "explanation": "The boundary condition selects the eigenvalues. For Neumann conditions the m = 0 mode with k = 0 (constant) is allowed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which condition gives J(ka) = 0 and which gives J′(ka) = 0?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does choosing an arbitrary radial wave number satisfy every circular boundary condition?",
-      "answer": "No; the boundary condition selects allowed values.",
+      "prompt": "You choose any wave number k in J₀(kr). Does it satisfy a fixed-edge condition at r = a?",
+      "answer": "Only if ka is a zero of J₀; the boundary selects the allowed k",
       "options": [
-        "Yes; every regular Bessel solution has the same boundary zero.",
-        "No; the boundary condition selects allowed values."
+        "Never",
+        "Only if ka is a zero of J₀; the boundary selects the allowed k",
+        "Yes: any k works, since J₀(kr) is regular at the centre and so vanishes at the edge for every k",
+        "Yes: regularity ensures it"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Regularity and the outer boundary are distinct constraints.",
+      "hint": "Two conditions: centre and edge.",
+      "explanation": "Regularity at r = 0 gives J₀; the outer boundary then gives J₀(ka) = 0.",
       "misconceptions": {
         "Yes; every regular Bessel solution has the same boundary zero.": "Regularity and the outer boundary are distinct constraints."
       },

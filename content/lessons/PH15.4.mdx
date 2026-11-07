@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are internal lines necessarily physical on-shell particles?",
+      "prompt": "Internal lines in a tree diagram are shown carrying momentum p. Must the particle on that line satisfy p² = m²?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: all lines are on shell",
+        "No: internal lines are integrated or off-shell terms of the amplitude",
+        "No: internal lines carry no momentum",
+        "Yes: or energy would not be conserved"
       ],
-      "answer": "No",
-      "explanation": "They are integrated terms in an amplitude.",
+      "answer": "No: internal lines are integrated or off-shell terms of the amplitude",
+      "explanation": "Momentum is conserved at vertices but virtual lines are off shell.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the internal particle detected?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can coherent diagram probabilities always be summed independently?",
+      "prompt": "Two diagrams contribute to the same final state. Can you compute each probability and just add them?",
       "options": [
-        "No",
-        "Yes"
+        "No: you add amplitudes first",
+        "Yes: interference never occurs",
+        "No: only one diagram is allowed",
+        "Yes: probabilities add"
       ],
-      "answer": "No",
-      "explanation": "Amplitudes interfere.",
+      "answer": "No: you add amplitudes first",
+      "explanation": "You add amplitudes first, because the diagrams interfere. |M₁ + M₂|² ≠ |M₁|² + |M₂|².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the two-slit experiment."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a rate require phase space and incident normalization?",
+      "prompt": "You computed the amplitude M for a process. Is that already the cross section?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the cross section equals the amplitude up to an overall sign, since both measure the same probability",
+        "Yes: σ = |M|²",
+        "No: you also need phase space and the incident flux normalisation",
+        "No: cross sections do not depend on M"
       ],
-      "answer": "Yes",
-      "explanation": "Amplitude alone is not a cross section.",
+      "answer": "No: you also need phase space and the incident flux normalisation",
+      "explanation": "A cross section is the squared amplitude integrated over final-state phase space and divided by the incident flux: σ ∝ (1/flux) ∫|M|² dΦ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What converts an amplitude to a rate?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why estimate higher orders?",
-      "answer": "The truncation is not an exact prediction.",
+      "prompt": "Why estimate the size of next-order corrections after a leading-order calculation?",
+      "answer": "The truncated series is an approximation, and its error needs an estimate",
       "options": [
-        "The truncation is not an exact prediction.",
-        "Time ordering and interaction expansion."
+        "To reduce the number of diagrams",
+        "Higher orders are always zero",
+        "The truncated series is an approximation, and its error needs an estimate",
+        "The leading order is exact"
       ],
-      "explanation": "The truncation is not an exact prediction.",
+      "explanation": "The scale dependence of α_s is a common uncertainty estimate.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is dropped when you truncate?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "May interfering diagrams be squared separately and added without cross terms?",
-      "answer": "No; amplitudes for the same final state interfere.",
+      "prompt": "Two diagrams lead to the same final state with the same quantum numbers. May you square each and add the results?",
+      "answer": "No: you add the amplitudes and then square",
       "options": [
-        "Yes; every diagram is an independent classical event.",
-        "No; amplitudes for the same final state interfere."
+        "No: you add the amplitudes and then square",
+        "Yes: the cross term is zero",
+        "No: squaring is not allowed in QFT",
+        "Yes: each diagram is a separate classical event"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Identify coherent alternatives.",
+      "hint": "Is the final state distinguishable?",
+      "explanation": "You add the amplitudes and then square, which keeps the cross term. Coherent contributions interfere.",
       "misconceptions": {
         "Yes; every diagram is an independent classical event.": "Identify coherent alternatives."
       },

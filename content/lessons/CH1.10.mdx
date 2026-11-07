@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are conductance and conductivity the same geometry-independent quantity?",
+      "prompt": "Two conductivity cells filled with the same solution give different measured conductances. What explains this?",
       "options": [
-        "Yes",
-        "No"
+        "Conductance depends on the cell geometry, while conductivity does not",
+        "They are the same quantity, so the two measured conductances should agree for the same solution",
+        "Conductivity depends on geometry",
+        "The solution differs"
       ],
-      "answer": "No",
-      "explanation": "Conductance also depends on cell dimensions.",
+      "answer": "Conductance depends on the cell geometry, while conductivity does not",
+      "explanation": "G = κ A/l, so the cell constant l/A enters.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare electrode area and spacing."
     },
     {
       "id": "concept-2",
-      "prompt": "Does bulk electroneutrality forbid interfacial double layers?",
+      "prompt": "Bulk electroneutrality holds in an electrolyte. Does that forbid a charged double layer at an electrode?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: electroneutrality holds everywhere in an electrolyte, so a charged double layer cannot form at an electrode",
+        "Yes: double layers do not exist",
+        "Yes: charge is always neutral everywhere",
+        "No: electroneutrality is a bulk approximation that fails at the Debye-length scale"
       ],
-      "answer": "No",
-      "explanation": "It is a scale-dependent approximation.",
+      "answer": "No: electroneutrality is a bulk approximation that fails at the Debye-length scale",
+      "explanation": "Near surfaces, net charge accumulates over a few nanometres.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "At what length does neutrality hold?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can mobility definitions be mixed without charge-factor changes?",
+      "prompt": "One textbook defines mobility as velocity per unit force, another as velocity per unit field. Can the values be mixed directly?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: mobility is mobility, so the two definitions give the same values and can be mixed freely",
+        "No: they differ by a charge factor",
+        "Yes: mobility is mobility",
+        "Yes: if both use SI"
       ],
-      "answer": "No",
-      "explanation": "Mechanical and electrical mobility have different conventions.",
+      "answer": "No: they differ by a charge factor",
+      "explanation": "Electrical mobility = z e × mechanical mobility.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Force = charge × field."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why does an independent-ion estimate need a regime check?",
-      "answer": "Correlations, concentration and interface effects can change transport",
+      "prompt": "Why check the concentration regime before applying the Nernst–Einstein relation to a salt solution?",
+      "answer": "Ion correlations and interfacial effects can change transport at higher concentrations",
       "options": [
-        "Correlations, concentration and interface effects can change transport",
-        "Every electrolyte is an ideal noninteracting gas"
+        "It is universally exact, because ions never interact and the relation holds at any concentration",
+        "It only applies to gases",
+        "Ions never interact",
+        "Ion correlations and interfacial effects can change transport at higher concentrations"
       ],
-      "explanation": "The Nernst–Einstein relation is a model, not a universal exact law for all mixtures.",
+      "explanation": "The relation assumes independent ions, which fails when ions interact.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Are ions independent in 5 M salt?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Can electroneutrality make ionic strength zero in an ordinary salt solution?",
-      "answer": "No; ionic strength sums squared charges, not signed charges.",
+      "prompt": "A 0.1 M NaCl solution is electrically neutral. Is its ionic strength zero?",
+      "answer": "No: ionic strength sums c z² over all ions and is positive",
       "options": [
-        "Yes; opposite ionic charges cancel every concentration measure.",
-        "No; ionic strength sums squared charges, not signed charges."
+        "Yes: the positive and negative charges cancel, so a neutral solution has an ionic strength of zero",
+        "Yes: because it is neutral",
+        "No: it equals the pH",
+        "No: ionic strength sums c z² over all ions and is positive"
       ],
-      "explanation": "The absolute charge contribution to screening remains.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "I = ½ Σ cᵢ zᵢ². For 0.1 M NaCl, I = 0.1 M.",
+      "hint": "Remember that each charge is squared in the sum, so cations and anions both count positively.",
       "misconceptions": {
         "Yes; opposite ionic charges cancel every concentration measure.": "The absolute charge contribution to screening remains."
       },

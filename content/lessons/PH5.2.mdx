@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does Poynting’s theorem include power transferred to matter?",
+      "prompt": "Poynting's theorem balances field energy and flux. Does it include power transferred to matter?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the term −J·E accounts for work done on charges",
+        "No: the theorem applies only in vacuum, so power transferred to matter is not included",
+        "No: matter is ignored",
+        "No: only fields"
       ],
-      "answer": "Yes",
-      "explanation": "Its source term is −J·E for field energy.",
+      "answer": "Yes: the term −J·E accounts for work done on charges",
+      "explanation": "Poynting's theorem balances stored energy and flux against work on charges: ∂u/∂t + ∇·S = −J·E, so −J·E is the work done on the charges.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does J·E represent?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are peak and RMS electric amplitudes interchangeable in intensity formulas?",
+      "prompt": "An intensity formula uses E₀²/(2μ₀c). Can you substitute the RMS amplitude for E₀ without changing the formula?",
       "options": [
-        "No",
-        "Yes"
+        "No: the squares differ by a factor of 2 for a sine wave",
+        "Yes: they are the same quantity, since RMS and peak amplitudes differ only by a phase",
+        "Yes: only a factor of π",
+        "Yes: RMS is peak"
       ],
-      "answer": "No",
-      "explanation": "Their squares differ by two for a sine wave.",
+      "answer": "No: the squares differ by a factor of 2 for a sine wave",
+      "explanation": "E_rms = E₀/√2, so E_rms² = E₀²/2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the average of cos²?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is every local nonzero Poynting vector outward radiation at infinity?",
+      "prompt": "The Poynting vector is nonzero at a point near an antenna. Does that mean energy radiates out to infinity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: nonzero S means radiation, since the Poynting vector always points away from the antenna",
+        "Yes: always",
+        "No: near fields can have reversible or circulating flux",
+        "Yes: S is radiation"
       ],
-      "answer": "No",
-      "explanation": "Near fields can have reversible or circulating flux.",
+      "answer": "No: near fields can have reversible or circulating flux",
+      "explanation": "Only the time-averaged flux through a distant sphere is radiated power.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where is the radiated power defined?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify energy formulas in matter?",
-      "answer": "Dispersion, loss and material energy must be included.",
+      "prompt": "Why should the energy density ½ε₀E² + B²/2μ₀ be qualified when used in matter?",
+      "answer": "Dispersion, loss and the material's own energy must be included",
       "options": [
-        "Dispersion, loss and material energy must be included.",
-        "ε₀E²/2+B²/(2μ₀)."
+        "It is the same in all media, since matter modifies neither the fields nor the stored energy",
+        "Dispersion, loss and the material's own energy must be included",
+        "Matter has no energy",
+        "It is exact in matter"
       ],
-      "explanation": "Dispersion, loss and material energy must be included.",
+      "explanation": "In a medium, energy storage depends on frequency-dependent ε and μ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is ε constant with frequency?"
     },
     {
       "id": "em-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Can peak squared field be used as the sinusoidal time average without a factor adjustment?",
-      "answer": "No; the average of cos² is one half.",
+      "prompt": "Can the peak E² be used as the sinusoidal time average without a factor?",
+      "answer": "No: the average of cos² is one half",
       "options": [
-        "Yes; peak and time-averaged intensities are always identical.",
-        "No; the average of cos² is one half."
+        "No: the average of cos² is one half",
+        "Yes: for all waves, since the time average equals the peak value",
+        "Yes: they are identical",
+        "Yes: with intensity"
       ],
-      "explanation": "State amplitude and averaging conventions before comparing power.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "State the amplitude and averaging convention before comparing power.",
+      "hint": "Average cos² over a period.",
       "misconceptions": {
         "Yes; peak and time-averaged intensities are always identical.": "State amplitude and averaging conventions before comparing power."
       },

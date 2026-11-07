@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the finite zero-field symmetric model need a nonzero mean magnetization?",
+      "prompt": "A finite Ising model in zero field has up/down symmetry. Must its mean magnetisation be nonzero below T_c?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is positive",
+        "Yes: it orders",
+        "Yes: always nonzero",
+        "No: symmetry pairs positive and negative magnetisation states, so the mean is zero"
       ],
-      "answer": "No",
-      "explanation": "Symmetry pairs positive and negative magnetization states.",
+      "answer": "No: symmetry pairs positive and negative magnetisation states, so the mean is zero",
+      "explanation": "Spontaneous magnetisation needs the thermodynamic limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do +M and −M have the same weight?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does the one-dimensional short-range Ising model have a positive-temperature transition?",
+      "prompt": "Does the one-dimensional short-range Ising model have a phase transition at positive temperature?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: at a finite T_c, since short-range interactions are enough to order the infinite chain",
+        "Yes: at T_c = J/k",
+        "Yes: at any T",
+        "No: in the infinite chain the transition occurs only at T = 0"
       ],
-      "answer": "No",
-      "explanation": "Its infinite-chain transition occurs only at zero temperature.",
+      "answer": "No: in the infinite chain the transition occurs only at T = 0",
+      "explanation": "Domain walls cost only a finite energy but gain entropy ln N.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the energy and entropy of a domain wall."
     },
     {
       "id": "concept-3",
-      "prompt": "Does coarse graining generally generate additional effective couplings?",
+      "prompt": "After a renormalisation coarse-graining step, does the effective Hamiltonian keep exactly the original form?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is invariant, since a coarse-graining step cannot generate new interaction terms",
+        "Yes: the same form",
+        "No: additional effective couplings are generally generated",
+        "Yes: always"
       ],
-      "answer": "Yes",
-      "explanation": "The microscopic interaction form need not be preserved.",
+      "answer": "No: additional effective couplings are generally generated",
+      "explanation": "Next-nearest-neighbour and multispin terms appear.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens when you integrate out spins?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What helps determine universality?",
-      "answer": "Symmetry, dimensionality and relevant interaction structure.",
+      "prompt": "What helps determine a system's universality class?",
+      "answer": "Symmetry, dimensionality and the relevant interaction structure",
       "options": [
-        "Symmetry, dimensionality and relevant interaction structure.",
-        "The spatial scale of correlation decay in the stated regime."
+        "Chemical composition",
+        "The lattice constant",
+        "Symmetry, dimensionality and the relevant interaction structure",
+        "The temperature scale"
       ],
-      "explanation": "Symmetry, dimensionality and relevant interaction structure.",
+      "explanation": "Microscopic details are irrelevant at the critical point.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Why do liquids and magnets share exponents?"
     },
     {
       "id": "thermal-optics-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Does the infinite short-range one-dimensional zero-field Ising chain have a positive-temperature ordering transition like the square lattice?",
-      "answer": "No; its correlation length remains finite at every positive temperature.",
+      "prompt": "Does the infinite 1D short-range Ising chain order at positive temperature like the 2D square lattice?",
+      "answer": "No: its correlation length stays finite at every positive T",
       "options": [
-        "Yes; dimensionality never affects the transition.",
-        "No; its correlation length remains finite at every positive temperature."
+        "Yes: at a finite T_c",
+        "Yes: it orders",
+        "No: its correlation length stays finite at every positive T",
+        "Yes: dimension does not matter"
       ],
-      "explanation": "The model and dimension are essential hypotheses.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "ξ ~ e^(2J/kT) is finite at any T > 0.",
+      "hint": "What is the correlation length at T > 0?",
       "misconceptions": {
         "Yes; dimensionality never affects the transition.": "The model and dimension are essential hypotheses."
       },

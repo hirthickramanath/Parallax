@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is dσ/dΩ integrated over θ without the solid-angle weight?",
+      "prompt": "You integrate dσ/dΩ over θ to get the total cross section. What measure must be included?",
       "options": [
-        "Yes",
-        "No"
+        "None, since the total cross section is just the integral of dσ/dΩ over the angle θ",
+        "Only dφ",
+        "Only dθ",
+        "The solid-angle weight sin θ dθ dφ"
       ],
-      "answer": "No",
-      "explanation": "The angular measure includes sinθ and azimuth.",
+      "answer": "The solid-angle weight sin θ dθ dφ",
+      "explanation": "The total cross section integrates the differential cross section over solid angle: σ = ∫(dσ/dΩ) sin θ dθ dφ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is dΩ in spherical coordinates?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is Born approximation exact for every potential?",
+      "prompt": "Is the Born approximation exact for every potential?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is exact for any potential, since it includes every order in the interaction",
+        "Yes: at low energy",
+        "Yes: for any strength",
+        "No: its perturbative regime must hold"
       ],
-      "answer": "No",
-      "explanation": "Its perturbative regime must hold.",
+      "answer": "No: its perturbative regime must hold",
+      "explanation": "It requires a weak potential or a high energy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When does the first-order term dominate?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can limited angular acceptance bias inferred total cross section?",
+      "prompt": "A detector covers only part of the angular range. Can this bias an inferred total cross section?",
       "options": [
-        "No",
-        "Yes"
+        "No: it cancels",
+        "No: the cross section is local",
+        "No: it averages out",
+        "Yes: it samples only part of the scattered flux"
       ],
-      "answer": "Yes",
-      "explanation": "The detector samples only part of the flux.",
+      "answer": "Yes: it samples only part of the scattered flux",
+      "explanation": "You must extrapolate to unobserved angles.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where might the missing flux be?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify Coulomb examples?",
-      "answer": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "prompt": "Why do Coulomb scattering examples need special care in scattering theory?",
+      "answer": "The long range changes the asymptotic and convergence assumptions",
       "options": [
-        "Long-range behaviour changes asymptotic and convergence assumptions.",
-        "A complex asymptotic coefficient tied to flux normalization."
+        "The long range changes the asymptotic and convergence assumptions",
+        "It is no different from short-range scattering, since the same asymptotic assumptions apply",
+        "Phase shifts are finite",
+        "Coulomb is short-range"
       ],
-      "explanation": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "explanation": "The Coulomb phase diverges logarithmically.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How fast does 1/r fall compared with the usual assumption?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Can the short-range s-wave model be applied unchanged to long-range Coulomb scattering?",
-      "answer": "No; the interaction and asymptotic assumptions differ.",
+      "prompt": "Can the short-range s-wave scattering-length model be applied unchanged to Coulomb scattering?",
+      "answer": "No: the interaction and asymptotic assumptions differ",
       "options": [
-        "Yes; every potential has the same scattering-length formula.",
-        "No; the interaction and asymptotic assumptions differ."
+        "Yes: formula is universal",
+        "Yes: with a cut-off",
+        "No: the interaction and asymptotic assumptions differ",
+        "Yes: every potential has a scattering length"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Is the Coulomb potential short-range?",
       "explanation": "Check range, channels and energy.",
       "misconceptions": {
         "Yes; every potential has the same scattering-length formula.": "Check range, channels and energy."

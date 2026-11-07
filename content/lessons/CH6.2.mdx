@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does R automatically mean positive optical rotation?",
+      "prompt": "A compound has the R configuration. Is its optical rotation therefore positive?",
       "options": [
-        "Yes",
-        "No"
+        "No: R compounds are inactive",
+        "Yes: R compounds are levorotatory, so a positive rotation means the S configuration is present",
+        "Yes: R is dextrorotatory",
+        "No: the R/S label and the sign of rotation are independent properties"
       ],
-      "answer": "No",
-      "explanation": "Configuration and rotation sign are different properties.",
+      "answer": "No: the R/S label and the sign of rotation are independent properties",
+      "explanation": "CIP labels depend on atomic priorities. Rotation is measured experimentally.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a naming rule predict a measurement?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does n stereocentres always give exactly 2ⁿ distinct stereoisomers?",
+      "prompt": "Tartaric acid has two stereocentres but only three stereoisomers. What explains the missing fourth?",
       "options": [
-        "No",
-        "Yes"
+        "Tartaric acid is achiral",
+        "A mistake in counting",
+        "One isomer is unstable",
+        "A meso form is superimposable on its mirror image, so symmetry reduces the 2ⁿ count"
       ],
-      "answer": "No",
-      "explanation": "Symmetry and meso forms can reduce the count.",
+      "answer": "A meso form is superimposable on its mirror image, so symmetry reduces the 2ⁿ count",
+      "explanation": "2ⁿ is a maximum. Internal symmetry can make some combinations identical.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the (R,S) form identical to the (S,R) form?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a racemate’s zero net rotation make its individual molecules achiral?",
+      "prompt": "A racemic mixture shows zero optical rotation. Are its molecules achiral?",
       "options": [
-        "Yes",
-        "No"
+        "No: racemates are not mixtures",
+        "No: each molecule is chiral; the opposite rotations of the two enantiomers cancel",
+        "Yes: zero rotation means achiral",
+        "Yes: racemates are meso"
       ],
-      "answer": "No",
-      "explanation": "Opposite enantiomer contributions can cancel.",
+      "answer": "No: each molecule is chiral; the opposite rotations of the two enantiomers cancel",
+      "explanation": "The mixture contains equal amounts of both enantiomers.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the net rotation of the sample the same as that of each molecule?"
     },
     {
       "id": "numeric",
@@ -69,16 +78,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state a timescale for conformational distinguishability?",
-      "answer": "Exchange may average structures within the measurement time",
+      "prompt": "Why must a claim that conformers are distinguishable state the measurement timescale?",
+      "answer": "Fast exchange can average structures within the measurement time",
       "options": [
-        "Exchange may average structures within the measurement time",
-        "A model drawing sets every experimental exchange rate"
+        "Fast exchange can average structures within the measurement time",
+        "Conformers never exchange, so a claim that they are distinguishable is independent of the timescale used",
+        "The timescale does not matter",
+        "Exchange is always slow"
       ],
-      "explanation": "Kinetics and instrumental timescale determine the observed distinction.",
+      "explanation": "Room-temperature NMR shows one averaged signal for cyclohexane chair flipping, while cooling resolves two.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare the exchange rate with the instrument's timescale."
     },
     {
       "id": "chemistry-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Is rotation between ordinary conformations automatically an inversion of every stereocenter configuration?",
-      "answer": "No; conformation and configuration are distinct.",
+      "prompt": "You rotate about a C–C single bond. Does this change a stereocentre's R/S configuration?",
+      "answer": "No: conformation and configuration are distinct; rotation does not break bonds",
       "options": [
-        "Yes; any bond rotation changes all stereochemical labels.",
-        "No; conformation and configuration are distinct."
+        "No: conformation and configuration are distinct; rotation does not break bonds",
+        "Yes: any rotation inverts all centres",
+        "Yes: rotating about a single bond converts R to S by moving the substituents around the centre",
+        "No: rotation is impossible"
       ],
-      "explanation": "The atom connectivity and stereocenter geometry must be tracked.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Configuration changes only by breaking and reforming bonds.",
+      "hint": "Do any bonds break during a rotation?",
       "misconceptions": {
         "Yes; any bond rotation changes all stereochemical labels.": "The atom connectivity and stereocenter geometry must be tracked."
       },

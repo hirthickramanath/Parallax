@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are arbitrary projected diagonal entries always the splitting eigenvalues?",
+      "prompt": "In a degenerate subspace, you take the diagonal entries of the perturbation matrix in an arbitrary basis. Are they the energy shifts?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: off-diagonals do nothing",
+        "No: the full subspace matrix must be diagonalised",
+        "Yes: any basis works",
+        "Yes: diagonal entries are the shifts"
       ],
-      "answer": "No",
-      "explanation": "The full subspace matrix must be diagonalized.",
+      "answer": "No: the full subspace matrix must be diagonalised",
+      "explanation": "Off-diagonal elements mix the states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which basis diagonalises V?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a basis change alter the physical projected eigenvalues?",
+      "prompt": "You change the basis within the degenerate subspace. Do the physical eigenvalues of the projected perturbation change?",
       "options": [
-        "No",
-        "Yes"
+        "No: a similarity transformation preserves them",
+        "Yes: they rotate",
+        "Yes: partially",
+        "Yes: they change"
       ],
-      "answer": "No",
-      "explanation": "Similarity preserves them.",
+      "answer": "No: a similarity transformation preserves them",
+      "explanation": "Eigenvalues of a matrix are basis independent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is invariant under similarity transformations?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is one fine-structure correction automatically the complete effect?",
+      "prompt": "You compute a relativistic kinetic-energy correction to hydrogen. Is this the complete fine-structure effect?",
       "options": [
-        "Yes",
-        "No"
+        "No: spin–orbit and Darwin terms of the same order must also be combined",
+        "Yes: it is complete, since the relativistic kinetic correction is the only effect at that order",
+        "Yes: the others are smaller",
+        "Yes: it is the only term"
       ],
-      "answer": "No",
-      "explanation": "Terms of the relevant order must be combined.",
+      "answer": "No: spin–orbit and Darwin terms of the same order must also be combined",
+      "explanation": "All three terms are of order α²E_n.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List the three fine-structure terms."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare energy scales?",
-      "answer": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "prompt": "Why compare the relative sizes of the Zeeman and fine-structure energies?",
+      "answer": "They determine the appropriate basis and the perturbative hierarchy",
       "options": [
-        "They determine the appropriate coupled basis and perturbative hierarchy.",
-        "The perturbation restricted to the degenerate subspace."
+        "They give the lifetime of each level, which sets which perturbation can be neglected",
+        "Nothing",
+        "They determine the mass",
+        "They determine the appropriate basis and the perturbative hierarchy"
       ],
-      "explanation": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "explanation": "Weak fields use the coupled basis, and strong fields (Paschen–Back) use the uncoupled one.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which perturbation dominates?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "May diagonal elements in an arbitrary degenerate basis always be read as the first-order shifts?",
-      "answer": "No; diagonalize the restricted perturbation first.",
+      "prompt": "Can you read the first-order shifts from the diagonal elements of V in any chosen degenerate basis?",
+      "answer": "No: you should diagonalise the restricted perturbation first",
       "options": [
-        "Yes; basis mixing never matters in degeneracy.",
-        "No; diagonalize the restricted perturbation first."
+        "Yes: always, since the diagonal elements in any basis give the first-order shifts directly",
+        "No: you should diagonalise the restricted perturbation first",
+        "Yes: diagonal elements are shifts",
+        "Yes: basis mixing never matters"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Is the matrix diagonal in your basis?",
       "explanation": "Off-diagonal elements can split the level.",
       "misconceptions": {
         "Yes; basis mixing never matters in degeneracy.": "Off-diagonal elements can split the level."

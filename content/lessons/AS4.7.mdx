@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does donor mass loss alone determine orbital expansion or shrinkage?",
+      "prompt": "A donor star loses mass to its companion. Does the donor's mass loss alone say whether the orbit widens or shrinks?",
       "options": [
-        "Yes",
-        "No"
+        "No: angular momentum and how much mass the accretor keeps also matter",
+        "No: the orbit never changes",
+        "Yes: mass loss always widens it",
+        "Yes: always shrinks it"
       ],
-      "answer": "No",
-      "explanation": "Angular momentum and mass retention assumptions matter.",
+      "answer": "No: angular momentum and how much mass the accretor keeps also matter",
+      "explanation": "For conservative transfer the orbit shrinks until the mass ratio reverses, then widens.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the total angular momentum conserved?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is a Roche lobe a rigid physical wall?",
+      "prompt": "Is a Roche lobe a rigid physical wall that confines a star?",
       "options": [
-        "No",
-        "Yes"
+        "No: it is an equipotential surface of the effective potential",
+        "Yes: a solid boundary",
+        "Yes: a magnetic shell",
+        "No: it does not exist"
       ],
-      "answer": "No",
-      "explanation": "It is an effective-potential geometry.",
+      "answer": "No: it is an equipotential surface of the effective potential",
+      "explanation": "Gas can pass through the L1 point when the star fills its lobe.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What defines the Roche surface?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can mass transfer change a star’s evolutionary path?",
+      "prompt": "A star in a close binary has gained mass from its companion. Can its evolutionary path change?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: only its colour",
+        "No: evolution depends only on birth mass",
+        "No: accretion has no effect",
+        "Yes: its mass, composition and spin change"
       ],
-      "answer": "Yes",
-      "explanation": "Mass, composition and spin can change.",
+      "answer": "Yes: its mass, composition and spin change",
+      "explanation": "Mass transfer produces blue stragglers and stripped stars.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the main-sequence lifetime depend on mass?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What qualifies binary mass inference?",
-      "answer": "Inclination, orbit and measurement-model assumptions.",
+      "prompt": "You infer the mass of a star from its binary orbit. What assumptions qualify the result?",
+      "answer": "The inclination, orbit shape and the measurement model",
       "options": [
-        "Inclination, orbit and measurement-model assumptions.",
-        "Specified total mass and angular momentum constraints."
+        "The inclination, orbit shape and the measurement model",
+        "None: the orbit gives the mass directly, whatever the inclination or the orbit shape",
+        "The distance only",
+        "The star's colour"
       ],
-      "explanation": "Inclination, orbit and measurement-model assumptions.",
+      "explanation": "Spectroscopic orbits give m sin³ i, so the unknown inclination matters.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the radial-velocity curve not tell you?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does the fact that a donor fills its Roche lobe uniquely determine whether transfer is stable?",
-      "answer": "No; the stellar and lobe responses also matter.",
+      "prompt": "A star fills its Roche lobe. Does that alone tell you whether the mass transfer is stable?",
+      "answer": "No: the star's and the lobe's responses to mass loss also matter",
       "options": [
-        "Yes; all lobe-filling systems evolve identically.",
-        "No; the stellar and lobe responses also matter."
+        "Yes: a star that fills its lobe always transfers mass stably, whatever its structure",
+        "No: the star's and the lobe's responses to mass loss also matter",
+        "Yes: all lobe-filling systems behave alike",
+        "Yes: transfer is always unstable"
       ],
-      "explanation": "Overflow geometry and dynamical/thermal response are different inputs.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Stability depends on how the donor radius and Roche radius change with mass loss.",
+      "hint": "Compare how both radii respond.",
       "misconceptions": {
         "Yes; all lobe-filling systems evolve identically.": "Overflow geometry and dynamical/thermal response are different inputs."
       },

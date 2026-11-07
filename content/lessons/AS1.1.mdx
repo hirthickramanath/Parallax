@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Do horizon coordinates depend on observer position and time?",
+      "prompt": "Two observers at different latitudes look at the same star at the same instant. Will they measure the same altitude and azimuth?",
       "options": [
-        "Yes",
-        "No"
+        "No: horizon coordinates depend on the observer's position and time",
+        "Yes: if the clocks agree",
+        "Yes: a star has one fixed altitude and azimuth, so any two observers must read the same values",
+        "Yes: altitude is a property of the star"
       ],
-      "answer": "Yes",
-      "explanation": "The local frame changes with latitude and Earth’s rotation.",
+      "answer": "No: horizon coordinates depend on the observer's position and time",
+      "explanation": "Altitude and azimuth are defined relative to the local horizon, which changes with latitude, longitude and time.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where is the horizon for each observer?"
     },
     {
       "id": "q2",
-      "prompt": "Does right ascension in hours mean the same thing as local civil time?",
+      "prompt": "A star has right ascension 6h. Does that mean it crosses the meridian at 6 o'clock civil time?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: on every date",
+        "No: RA is an angular coordinate, not a reading of a civil clock",
+        "Yes: at every site",
+        "Yes: RA hours are clock hours"
       ],
-      "answer": "No",
-      "explanation": "It is an angular coordinate, not a civil clock reading.",
+      "answer": "No: RA is an angular coordinate, not a reading of a civil clock",
+      "explanation": "RA is measured along the equator from the equinox. The local sidereal time equals the RA when the star transits.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What clock tells you when RA = LST?"
     },
     {
       "id": "q3",
-      "prompt": "Can a source move below the horizon while its RA/declination remain nearly fixed?",
+      "prompt": "A star sets below your western horizon. Did its RA and declination change?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: declination changes",
+        "Yes: RA changes by 12 hours",
+        "Yes: both change as it sets",
+        "No: they stay nearly fixed, because the observer's frame rotates under the sky"
       ],
-      "answer": "Yes",
-      "explanation": "The observer’s frame rotates relative to the sky.",
+      "answer": "No: they stay nearly fixed, because the observer's frame rotates under the sky",
+      "explanation": "Equatorial coordinates are tied to the sky, not to the horizon. Earth's rotation moves the horizon.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which coordinate system moves with the Earth?"
     },
     {
       "id": "q4",
@@ -69,16 +78,19 @@
     },
     {
       "id": "q6",
-      "prompt": "Why does precise telescope pointing need a stated epoch/reference frame?",
+      "prompt": "A telescope is pointed to a catalogue position given in a 1950 frame. Why must the epoch or reference frame be stated?",
       "options": [
-        "Catalogue directions evolve through several effects",
-        "Coordinates are meaningless"
+        "The stars have moved physically only a little",
+        "Epochs are a formatting convention",
+        "Precession, proper motion and other effects shift the catalogue direction with time",
+        "The coordinates would be meaningless"
       ],
-      "answer": "Catalogue directions evolve through several effects",
-      "explanation": "Precession, proper motion and other corrections matter for precision.",
+      "answer": "Precession, proper motion and other effects shift the catalogue direction with time",
+      "explanation": "Positions differ by arcminutes between epochs. Precision pointing needs the right frame.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the equinox stay fixed in the sky?"
     },
     {
       "id": "astro-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does upper culmination above the horizon imply a star is visible at every hour angle?",
-      "answer": "No; its lower culmination may be below the horizon.",
+      "prompt": "A star is seen above the horizon at upper culmination. Is it necessarily visible at every hour angle (circumpolar)?",
+      "answer": "No: its lower culmination may be below the horizon",
       "options": [
-        "Yes; one visible transit makes it circumpolar.",
-        "No; its lower culmination may be below the horizon."
+        "Yes: for any declination",
+        "No: its lower culmination may be below the horizon",
+        "Yes: if the altitude is above 45°",
+        "Yes: one visible transit means circumpolar"
       ],
-      "explanation": "Visibility throughout a rotation requires a separate lower-transit test.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Circumpolar stars need the lower culmination above the horizon: δ > 90° − φ.",
+      "hint": "Check the lowest point of its daily circle.",
       "misconceptions": {
         "Yes; one visible transit makes it circumpolar.": "Visibility throughout a rotation requires a separate lower-transit test."
       },

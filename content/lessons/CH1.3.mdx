@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does overall reaction order uniquely identify a mechanism?",
+      "prompt": "Two different mechanisms both give an observed overall second-order rate law. What does this show?",
       "options": [
-        "Yes",
-        "No"
+        "The mechanisms are the same, since two pathways with the same overall order must have the same steps",
+        "The overall order alone does not identify the mechanism",
+        "The reaction has two steps",
+        "The mechanism is bimolecular"
       ],
-      "answer": "No",
-      "explanation": "Different elementary networks can give the same effective order.",
+      "answer": "The overall order alone does not identify the mechanism",
+      "explanation": "Different networks of elementary steps can produce the same effective rate law.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can two different routes give the same kinetics?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is a steady-state intermediate automatically at thermodynamic equilibrium?",
+      "prompt": "An intermediate is in a steady state. Is it therefore at thermodynamic equilibrium?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: steady state means ΔG = 0",
+        "No: formation and removal balance while net flux continues",
+        "No: intermediates cannot be steady",
+        "Yes: constant concentration means equilibrium"
       ],
-      "answer": "No",
-      "explanation": "Formation and removal can balance while flux continues.",
+      "answer": "No: formation and removal balance while net flux continues",
+      "explanation": "Steady state means d[I]/dt ≈ 0 with ongoing flux through it, unlike equilibrium where net flux is zero.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a river's constant level mean the water is not flowing?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is activation energy the same as reaction enthalpy?",
+      "prompt": "How does the activation energy Eₐ relate to the reaction enthalpy ΔH?",
       "options": [
-        "Yes",
-        "No"
+        "Eₐ = −ΔH, since the barrier forward equals the energy released in the overall reaction",
+        "They are different: Eₐ is a barrier height, ΔH is the endpoint energy change",
+        "Eₐ = 2ΔH",
+        "They are equal"
       ],
-      "answer": "No",
-      "explanation": "Barrier and endpoint energy change are different quantities.",
+      "answer": "They are different: Eₐ is a barrier height, ΔH is the endpoint energy change",
+      "explanation": "Exothermic reactions can have large barriers, and endothermic ones small barriers.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Sketch a reaction coordinate diagram."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare different initial conditions in mechanism inference?",
-      "answer": "They can expose parameter degeneracies hidden by one trace",
+      "prompt": "Why run a kinetic experiment from several different initial conditions when inferring a mechanism?",
+      "answer": "Different starts can expose parameter degeneracies that one trace hides",
       "options": [
-        "They can expose parameter degeneracies hidden by one trace",
-        "A single perfect curve fit proves every elementary step"
+        "One perfect curve fit proves every step, so extra initial conditions would only repeat the same information",
+        "It saves time",
+        "It lowers the temperature",
+        "Different starts can expose parameter degeneracies that one trace hides"
       ],
-      "explanation": "One observational trajectory may not identify the network.",
+      "explanation": "A single trajectory can often be fit by several parameter sets. Varying concentrations separates them.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can one curve be fitted equally well by different models?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does an overall stoichiometric equation automatically determine the experimental reaction order?",
-      "answer": "No; the mechanism and effective rate law must be established.",
+      "prompt": "A reaction is written 2A + B → C. Can you conclude the rate is k[A]²[B]?",
+      "answer": "No: the rate law must be found from the mechanism or experiment",
       "options": [
-        "Yes; every overall coefficient is always a rate-law exponent.",
-        "No; the mechanism and effective rate law must be established."
+        "Yes: the stoichiometric coefficients are the exponents, so the rate is k[A]²[B] for this equation",
+        "Yes for gases",
+        "Yes for exothermic reactions",
+        "No: the rate law must be found from the mechanism or experiment"
       ],
-      "explanation": "Only an appropriate elementary-step model justifies that direct identification.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Only for an elementary step do the coefficients give the orders.",
+      "hint": "Is the equation one elementary step?",
       "misconceptions": {
         "Yes; every overall coefficient is always a rate-law exponent.": "Only an appropriate elementary-step model justifies that direct identification."
       },

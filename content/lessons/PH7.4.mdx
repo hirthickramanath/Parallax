@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is subsystem energy fixed in the canonical ensemble?",
+      "prompt": "A system is in thermal contact with a heat bath (canonical ensemble). Is its energy fixed?",
       "options": [
-        "Yes",
-        "No"
+        "No: it fluctuates through exchange with the bath",
+        "Yes: temperature fixes the energy, so the system sits at a single value of E always",
+        "Yes: energy is fixed",
+        "Yes: E is constant"
       ],
-      "answer": "No",
-      "explanation": "It fluctuates through exchange with the bath.",
+      "answer": "No: it fluctuates through exchange with the bath",
+      "explanation": "In the canonical ensemble T is fixed and E fluctuates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is fixed, T or E?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must degeneracy be included in a sum over distinct energy levels?",
+      "prompt": "A level with energy ε has degeneracy g. How does it enter the partition function?",
       "options": [
-        "Yes",
-        "No"
+        "As e^(−gβε), since the degeneracy multiplies the energy inside the exponent",
+        "Not at all",
+        "As g e^(−βε), since each microstate has its own weight",
+        "Once, as e^(−βε)"
       ],
-      "answer": "Yes",
-      "explanation": "Each microstate contributes a weight.",
+      "answer": "As g e^(−βε), since each microstate has its own weight",
+      "explanation": "The sum over states includes all g degenerate states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the sum over levels or states?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a fixed-Hamiltonian canonical heat capacity be negative?",
+      "prompt": "A system has a fixed Hamiltonian and is in the canonical ensemble. Can its heat capacity be negative?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for gravitating systems, since the canonical ensemble allows negative C_V",
+        "Yes: it can be negative",
+        "No: C_V ∝ the energy variance",
+        "Yes: in phase transitions"
       ],
-      "answer": "No",
-      "explanation": "It is proportional to a nonnegative energy variance.",
+      "answer": "No: C_V ∝ the energy variance",
+      "explanation": "C_V ∝ the energy variance, which is non-negative. C_V = Var(E)/(kT²) ≥ 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the heat capacity in terms of fluctuations?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What controls canonical energy fluctuations?",
-      "answer": "The second β derivative of lnZ.",
+      "prompt": "What determines the size of canonical energy fluctuations?",
+      "answer": "The second β-derivative of ln Z",
       "options": [
-        "The second β derivative of lnZ.",
-        "A first-order expansion of the large bath entropy."
+        "Only the temperature, since fluctuations vanish at fixed T for any system",
+        "The second β-derivative of ln Z",
+        "The first derivative of Z",
+        "The volume"
       ],
-      "explanation": "The second β derivative of lnZ.",
+      "explanation": "The variance of the energy comes from the second derivative of the log partition function: Var(E) = ∂² ln Z/∂β².",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Differentiate ln Z twice."
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can level degeneracy be omitted from a partition sum whenever energy values are known?",
-      "answer": "No; every independent state contributes its Boltzmann weight.",
+      "prompt": "You know all the energy values of a system. Can you omit the degeneracy from the partition sum?",
+      "answer": "No: every independent state contributes its Boltzmann weight",
       "options": [
-        "Yes; only distinct numerical energies are counted.",
-        "No; every independent state contributes its Boltzmann weight."
+        "No: every independent state contributes its Boltzmann weight",
+        "Yes: if g is small, since a small degeneracy changes the sum only by a negligible amount",
+        "Yes: only distinct energies count",
+        "Yes: degeneracy is a detail"
       ],
-      "explanation": "Multiplicity changes probabilities and thermodynamics.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Multiplicity changes the probabilities and the thermodynamics.",
+      "hint": "Two states with the same energy: how many terms?",
       "misconceptions": {
         "Yes; only distinct numerical energies are counted.": "Multiplicity changes probabilities and thermodynamics."
       },

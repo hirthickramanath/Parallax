@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero instantaneous contact velocity imply zero contact-point acceleration?",
+      "prompt": "A wheel rolls without slipping, so its contact point is instantaneously at rest. Is the contact point's acceleration also zero?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the contact point is a pivot, so its acceleration is zero as well as its velocity",
+        "Yes: always",
+        "No: the contact point has an upward (centripetal) acceleration",
+        "Yes: zero velocity means zero acceleration"
       ],
-      "answer": "No",
-      "explanation": "Velocity can vanish while acceleration is nonzero.",
+      "answer": "No: the contact point has an upward (centripetal) acceleration",
+      "explanation": "The contact point accelerates toward the wheel's centre as ω²R.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Velocity zero is an instant, not a state."
     },
     {
       "id": "concept-2",
-      "prompt": "Does every point of a translating and rotating rigid body have the centre velocity?",
+      "prompt": "A rigid body translates and rotates. Do all its points have the velocity of its centre?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: translation only",
+        "No: the rotation term ω × r differs for each position",
+        "Yes: it is rigid",
+        "Yes: all share one velocity"
       ],
-      "answer": "No",
-      "explanation": "The rotational cross-product term varies by position.",
+      "answer": "No: the rotation term ω × r differs for each position",
+      "explanation": "v = v_cm + ω × r′, which varies with r′.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a point on the rim move with the centre?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does centre-of-mass translation require a perfectly rigid system?",
+      "prompt": "The centre of mass of a system accelerates as F_ext/M. Does this require the system to be rigid?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: only in equilibrium",
+        "No: it follows from Newton's laws for any system of particles",
+        "Yes: only solids",
+        "Yes: only rigid bodies"
       ],
-      "answer": "No",
-      "explanation": "The fixed-particle momentum result is more general than rigidity.",
+      "answer": "No: it follows from Newton's laws for any system of particles",
+      "explanation": "Internal forces cancel in pairs, so no rigidity is needed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do internal forces cancel in pairs?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is an instantaneous contact point not automatically a fixed dynamical pivot?",
-      "answer": "Its acceleration and identity can change",
+      "prompt": "Why is the instantaneous contact point of a rolling wheel not a fixed dynamical pivot?",
+      "answer": "Its acceleration is non-zero and the contact point changes identity",
       "options": [
-        "Its acceleration and identity can change",
-        "Zero velocity makes its acceleration permanently zero"
+        "Its acceleration is non-zero and the contact point changes identity",
+        "It carries no torque",
+        "Its velocity is zero for all time",
+        "It is a fixed pivot"
       ],
-      "explanation": "Kinematic zero velocity is not a fixed-origin torque condition.",
+      "explanation": "Zero velocity at one instant doesn't make a fixed-origin torque equation always valid.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which material point is in contact a moment later?"
     },
     {
       "id": "mechanics-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "mechanics-model-limits",
-      "prompt": "Can a system have zero center-of-mass velocity but nonzero kinetic energy from internal motion?",
-      "answer": "Yes; opposite particle velocities can cancel momentum without canceling energy.",
+      "prompt": "A system has zero centre-of-mass velocity. Can it still have kinetic energy?",
+      "answer": "Yes: opposite velocities cancel momentum but not energy",
       "options": [
-        "No; zero total momentum forces every particle to be at rest.",
-        "Yes; opposite particle velocities can cancel momentum without canceling energy."
+        "No: zero momentum means zero kinetic energy, since a body with no net motion cannot have any energy",
+        "No: everything is at rest",
+        "Yes: only for rigid bodies",
+        "Yes: opposite velocities cancel momentum but not energy"
       ],
-      "explanation": "Momentum adds signed vector contributions while kinetic energies are nonnegative.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "Momentum adds signed vectors, but kinetic energy adds positive terms.",
+      "hint": "Think of two masses moving in opposite directions.",
       "misconceptions": {
         "No; zero total momentum forces every particle to be at rest.": "Momentum adds signed vector contributions while kinetic energies are nonnegative."
       },

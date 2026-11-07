@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is holomorphicity near only the contour enough for every closed integral to vanish?",
+      "prompt": "f is holomorphic on a neighbourhood of a closed contour C, but has a pole inside C. Is ∮f dz zero?",
       "options": [
-        "Yes",
-        "No"
+        "Not necessarily: Cauchy's theorem needs f holomorphic on the whole enclosed region",
+        "Yes, always, since f is holomorphic on the contour itself and so the integral must vanish",
+        "Yes, always",
+        "Yes, since f is holomorphic on C"
       ],
-      "answer": "No",
-      "explanation": "A singularity can lie in the enclosed excluded region.",
+      "answer": "Not necessarily: Cauchy's theorem needs f holomorphic on the whole enclosed region",
+      "explanation": "∮dz/z = 2πi on the unit circle although 1/z is holomorphic near the circle.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate ∮dz/z around the unit circle and compare."
     },
     {
       "id": "concept-2",
-      "prompt": "What happens when the path orientation reverses?",
+      "prompt": "You traverse a contour in the opposite direction. What happens to ∫f dz?",
       "options": [
-        "The integral changes sign",
-        "The integral is unchanged"
+        "It changes sign",
+        "It stays the same",
+        "It becomes zero",
+        "It doubles"
       ],
-      "answer": "The integral changes sign",
-      "explanation": "The tangent increment changes direction.",
+      "answer": "It changes sign",
+      "explanation": "dz = z′(t)dt reverses sign with the direction of travel.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens to the tangent vector?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can an entire bounded nonconstant function exist?",
+      "prompt": "Does a bounded entire function that is not constant exist?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, e.g. cos z",
+        "Yes: eᶻ is an example",
+        "Yes: sin z is an example",
+        "No: Liouville's theorem says it must be constant"
       ],
-      "answer": "No",
-      "explanation": "Cauchy estimates imply Liouville’s theorem.",
+      "answer": "No: Liouville's theorem says it must be constant",
+      "explanation": "Cauchy's estimates bound |f′| by M/R for every R, so f′ = 0. (sin z and cos z are unbounded on the complex plane.)",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is sin z bounded for imaginary arguments?"
     },
     {
       "id": "numeric",
@@ -69,16 +78,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a contour deformation preserve for a holomorphic integrand?",
-      "answer": "Admissibility within the nonsingular domain and relevant winding information",
+      "prompt": "When deforming a contour for a holomorphic integrand, what must be preserved?",
+      "answer": "That the deformation stays within the domain of holomorphy, not crossing singularities",
       "options": [
-        "Admissibility within the nonsingular domain and relevant winding information",
-        "Only the length of the contour"
+        "That the deformation stays within the domain of holomorphy, not crossing singularities",
+        "The length of the contour",
+        "The shape of the contour",
+        "The starting point only"
       ],
-      "explanation": "Length does not determine whether singularities were crossed.",
+      "explanation": "Crossing a singularity changes the integral by its residue. Length is irrelevant.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens if the contour crosses a pole?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Can Cauchy's theorem set the integral of 1/z around its pole to zero?",
-      "answer": "No; the enclosed singularity violates its hypotheses.",
+      "prompt": "Can Cauchy's theorem be used to say ∮ dz/z = 0 around the origin?",
+      "answer": "No: the pole at 0 lies inside, violating its hypotheses",
       "options": [
-        "Yes; every closed contour integral is zero.",
-        "No; the enclosed singularity violates its hypotheses."
+        "Yes, for circles, since the integral of 1/z around any circle centred at the origin is zero",
+        "No: the pole at 0 lies inside, violating its hypotheses",
+        "No, it equals 0 only for squares",
+        "Yes: closed contours always give zero"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Check the entire relevant domain.",
+      "hint": "Check where 1/z is holomorphic.",
+      "explanation": "The integral equals 2πi. The theorem needs holomorphy inside the contour.",
       "misconceptions": {
         "Yes; every closed contour integral is zero.": "Check the entire relevant domain."
       },

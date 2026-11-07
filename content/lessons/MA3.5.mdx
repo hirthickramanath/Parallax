@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the complex standard inner product use an unconjugated transpose?",
+      "prompt": "For complex vectors, which expression is the standard inner product ⟨u, v⟩?",
       "options": [
-        "Yes",
-        "No; it uses conjugate transpose"
+        "The plain transpose, uᵀv",
+        "The sum of squares of entries",
+        "The product of the entries",
+        "The conjugate transpose, u*v"
       ],
-      "answer": "No; it uses conjugate transpose",
-      "explanation": "Conjugation is needed for positive squared norms.",
+      "answer": "The conjugate transpose, u*v",
+      "explanation": "Conjugation ensures ⟨v, v⟩ = Σ|vᵢ|² ≥ 0. Without it, a complex vector like (1, i) would have a zero 'norm'.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute vᵀv for v = (1, i)."
     },
     {
       "id": "concept-2",
-      "prompt": "What is perpendicular to the fitting subspace at the least-squares solution?",
+      "prompt": "At the least-squares solution, what is orthogonal to the column space of A?",
       "options": [
-        "The residual",
-        "The fitted vector itself necessarily"
+        "The solution x",
+        "The fitted vector Ax",
+        "The residual b − Ax",
+        "The data b"
       ],
-      "answer": "The residual",
-      "explanation": "A remaining in-subspace residual could be reduced.",
+      "answer": "The residual b − Ax",
+      "explanation": "If the residual had a component in the column space, you could reduce it by adjusting x. So Aᵀ(b − Ax) = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the normal equations."
     },
     {
       "id": "concept-3",
-      "prompt": "Are direct dot products coefficients for any nonorthogonal basis?",
+      "prompt": "You have a basis of ℝ² that is not orthogonal. Can coefficients be found by simple dot products v·eᵢ?",
       "options": [
-        "Yes",
-        "No"
+        "No: that formula needs an orthonormal basis",
+        "Yes, when the basis vectors have unit length",
+        "Yes, when they are independent",
+        "Yes: always"
       ],
-      "answer": "No",
-      "explanation": "The simple coefficient formula requires orthonormality.",
+      "answer": "No: that formula needs an orthonormal basis",
+      "explanation": "With a non-orthogonal basis the dot products mix the coefficients, so you solve a linear system instead.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try the basis (1, 0) and (1, 1)."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can normal equations be numerically inferior to QR?",
-      "answer": "They square the 2-norm condition number when full column rank holds",
+      "prompt": "Why can solving the normal equations be less accurate than using QR?",
+      "answer": "They square the condition number when A has full column rank",
       "options": [
-        "They square the 2-norm condition number when full column rank holds",
-        "They change the exact least-squares minimizer in exact arithmetic"
+        "They ignore the data vector b, so the solution depends only on the matrix and not on the measurements",
+        "They need more memory only",
+        "They square the condition number when A has full column rank",
+        "They give a different minimiser in exact arithmetic"
       ],
-      "explanation": "The geometric condition is correct, but its numerical implementation can be unstable.",
+      "explanation": "κ(AᵀA) = κ(A)². In exact arithmetic the minimiser is the same, but rounding errors can then be much larger.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare the condition numbers."
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "May Gram–Schmidt normalize a zero residual from a dependent input vector?",
-      "answer": "No; the division is undefined and dependence must be handled.",
+      "prompt": "In Gram–Schmidt, a new input vector is a combination of earlier ones. What happens when you try to normalise the residual?",
+      "answer": "The residual is zero, so the division is undefined and dependence must be handled",
       "options": [
-        "Yes; every supplied vector adds one basis direction.",
-        "No; the division is undefined and dependence must be handled."
+        "The residual is the new basis vector",
+        "The residual is zero, so the division is undefined and dependence must be handled",
+        "Normalisation always works",
+        "The residual equals the input vector"
       ],
-      "explanation": "A zero residual indicates no new independent direction.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A zero residual means the vector adds no new direction. The algorithm must skip it or flag dependence.",
+      "hint": "What is the residual of a vector already in the span?",
       "misconceptions": {
         "Yes; every supplied vector adds one basis direction.": "A zero residual indicates no new independent direction."
       },

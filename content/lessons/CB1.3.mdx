@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a catalyst change K at the same temperature?",
-      "answer": "No",
+      "prompt": "A catalyst is added to a reversible reaction at constant temperature. What happens to the equilibrium constant K?",
+      "answer": "It is unchanged: the catalyst speeds both directions equally",
       "options": [
-        "Yes",
-        "No"
+        "It decreases, since the catalyst speeds the reverse reaction as well and so favours the reactants",
+        "It is unchanged: the catalyst speeds both directions equally",
+        "It becomes infinite",
+        "It increases, since the forward reaction speeds up"
       ],
-      "explanation": "It changes pathways and rates, not equilibrium free energies.",
+      "explanation": "K is set by the standard Gibbs energy difference, ΔG° = −RT ln K. A catalyst lowers the barrier both ways, so equilibrium is reached sooner, not shifted.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which quantity determines K, and does a catalyst change it?"
     },
     {
       "id": "c2",
-      "prompt": "Must an exothermic process be spontaneous at every temperature?",
-      "answer": "No",
+      "prompt": "A reaction is exothermic (ΔH < 0) but has a large negative ΔS. Is it spontaneous at all temperatures?",
+      "answer": "No: at high temperature −TΔS can outweigh ΔH",
       "options": [
-        "No",
-        "Yes"
+        "Yes, if ΔH is large",
+        "No: exothermic reactions never occur",
+        "Yes: all exothermic reactions are spontaneous",
+        "No: at high temperature −TΔS can outweigh ΔH"
       ],
-      "explanation": "Entropy and temperature also enter Gibbs energy.",
+      "explanation": "ΔG = ΔH − TΔS. With ΔS < 0, the −TΔS term becomes positive and grows with T, eventually making ΔG positive.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write ΔG = ΔH − TΔS and raise T."
     },
     {
       "id": "c3",
-      "prompt": "Does equilibrium mean molecules stop reacting?",
-      "answer": "No",
+      "prompt": "A reaction mixture is at equilibrium. What is happening at the molecular level?",
+      "answer": "Forward and reverse reactions continue at equal rates",
       "options": [
-        "Yes",
-        "No"
+        "Forward and reverse reactions continue at equal rates",
+        "Only the forward reaction continues",
+        "Reactants and products have equal concentrations",
+        "All reactions have stopped"
       ],
-      "explanation": "Forward and reverse processes balance dynamically.",
+      "explanation": "Equilibrium is dynamic. Concentrations stay constant because the forward and reverse rates are equal, not because nothing happens.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a busy two-way street with balanced traffic."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "At fixed temperature, does a catalyst change the equilibrium constant of a specified reaction?",
-      "answer": "No; it changes pathways and rates, not the equilibrium free-energy difference.",
+      "prompt": "Two catalysts speed up a reaction by different factors at the same temperature. How do their equilibrium compositions compare?",
+      "answer": "They are the same: both reach the same K",
       "options": [
-        "Yes; faster forward reaction necessarily raises K.",
-        "No; it changes pathways and rates, not the equilibrium free-energy difference."
+        "They are the same: both reach the same K",
+        "Neither reaches equilibrium",
+        "The slower catalyst gives more product",
+        "The faster catalyst gives more product"
       ],
-      "explanation": "Both forward and reverse pathways must respect the same equilibrium.",
+      "explanation": "Equilibrium depends only on thermodynamics (ΔG°, T). Catalysts only change how fast equilibrium is reached.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Does either catalyst alter ΔG°?",
       "misconceptions": {
         "Yes; faster forward reaction necessarily raises K.": "Both forward and reverse pathways must respect the same equilibrium."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does a thermodynamically favorable standard reaction necessarily convert all reactant into product at equilibrium?",
-      "answer": "No; the finite equilibrium constant and material balance determine composition.",
+      "prompt": "A reaction has ΔG° = −10 kJ/mol at 298 K. What does that imply about the composition at equilibrium?",
+      "answer": "Products are favoured, but the finite K still leaves some reactant",
       "options": [
-        "Yes; a negative standard Gibbs change implies complete conversion.",
-        "No; the finite equilibrium constant and material balance determine composition."
+        "The reaction goes to 100% completion, since a negative free energy means no reactant remains",
+        "Products are favoured, but the finite K still leaves some reactant",
+        "No products form",
+        "The reaction goes to 100% completion"
       ],
-      "explanation": "Actual activities enter the equilibrium condition.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "K = exp(−ΔG°/RT) ≈ 57: large but finite. The equilibrium mixture is set by K and the material balance, and real activities.",
+      "hint": "Compute K from ΔG° and see whether it is infinite.",
       "misconceptions": {
         "Yes; a negative standard Gibbs change implies complete conversion.": "Actual activities enter the equilibrium condition."
       },

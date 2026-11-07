@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero net magnetization prove no local magnetic order?",
+      "prompt": "A sample shows zero net magnetisation with no applied field. Does that prove there is no local magnetic order?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: order always produces a net moment",
+        "No: antiferromagnetic cancellation or randomly oriented domains give zero net moment while order exists locally",
+        "Yes: no net moment means no moment on any atom",
+        "No: but only if the sample is a superconductor"
       ],
-      "answer": "No",
-      "explanation": "Domains or antiferromagnetic cancellation can occur.",
+      "answer": "No: antiferromagnetic cancellation or randomly oriented domains give zero net moment while order exists locally",
+      "explanation": "MnO has ordered moments on every Mn site but no net magnetisation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about neighbouring moments that point opposite ways."
     },
     {
       "id": "concept-2",
-      "prompt": "Does equilibrium susceptibility alone fix a hysteresis loop?",
+      "prompt": "You measure a material's equilibrium susceptibility. Does that determine the shape of its hysteresis loop?",
       "options": [
-        "No",
-        "Yes"
+        "No: loops depend on domain dynamics and metastable states that equilibrium response does not capture",
+        "Yes: once the susceptibility is known, the full magnetisation curve M(H) follows from it for all applied fields",
+        "Yes: hysteresis is a linear response",
+        "No: hysteresis only appears in paramagnets"
       ],
-      "answer": "No",
-      "explanation": "Dynamics and metastability matter.",
+      "answer": "No: loops depend on domain dynamics and metastable states that equilibrium response does not capture",
+      "explanation": "Pinning, anisotropy and sweep rate all change coercivity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Hysteresis means the history of the sample matters."
     },
     {
       "id": "concept-3",
-      "prompt": "Does J sign depend on Hamiltonian convention?",
+      "prompt": "A paper writes the exchange energy as H = −J S₁·S₂, another as H = +J S₁·S₂. Does the sign of J mean the same thing in both?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the sign of J is a physical constant of the material, so ferromagnets always have the same sign",
+        "Yes: positive J is always ferromagnetic",
+        "No: the sign convention in the Hamiltonian decides which alignment is favoured",
+        "No: J has no sign in either case"
       ],
-      "answer": "Yes",
-      "explanation": "The stated minus sign sets which ordering is favoured.",
+      "answer": "No: the sign convention in the Hamiltonian decides which alignment is favoured",
+      "explanation": "With the −J convention positive J favours parallel spins; with +J it favours antiparallel.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check which alignment lowers the energy in each convention."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify ordering claims?",
-      "answer": "Dimension, range, anisotropy and limits matter.",
+      "prompt": "Why must a claim of long-range magnetic order state the dimension, interaction range and anisotropy?",
+      "answer": "These determine whether order can exist at finite temperature at all",
       "options": [
-        "Dimension, range, anisotropy and limits matter.",
-        "An ordered state without the corresponding explicit driving field in the appropriate limit."
+        "They are only needed to fix the units of the coupling constant, and have no bearing on whether order exists",
+        "These determine whether order can exist at finite temperature at all",
+        "Order exists in every model regardless",
+        "They set the colour of the material"
       ],
-      "explanation": "Dimension, range, anisotropy and limits matter.",
+      "explanation": "The Mermin–Wagner theorem forbids order in 1D and 2D isotropic short-range Heisenberg models.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall the Mermin–Wagner theorem."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Is weak-field Curie linearity guaranteed at arbitrarily strong magnetic fields?",
-      "answer": "No; saturation and other effects can matter.",
+      "prompt": "Curie's law gives M ∝ H/T for a paramagnet in weak fields. Does it still hold at very strong fields?",
+      "answer": "No: magnetisation saturates when all moments align, so the response stops being linear",
       "options": [
-        "Yes; every magnetization is linear at all fields.",
-        "No; saturation and other effects can matter."
+        "No: M becomes zero at strong fields",
+        "Yes: M keeps growing linearly with H",
+        "Yes: M decreases linearly with H",
+        "No: magnetisation saturates when all moments align, so the response stops being linear"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Respect the response regime.",
+      "hint": "There is a maximum when every moment is aligned.",
+      "explanation": "The Brillouin function saturates at M_s = n g μ_B J.",
       "misconceptions": {
         "Yes; every magnetization is linear at all fields.": "Respect the response regime."
       },

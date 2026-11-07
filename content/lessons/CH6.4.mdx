@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does SN2 inversion always imply an R label becomes S?",
+      "prompt": "(R)-2-bromobutane undergoes SN2 with a nucleophile that gives a product of inverted geometry. Is the product label necessarily S?",
       "options": [
-        "Yes",
-        "No"
+        "No: the CIP priorities may change when the substituent changes",
+        "No: SN2 retains geometry",
+        "Yes: R always becomes S in SN2, because inversion of geometry always flips the CIP label",
+        "Yes: inversion always gives S"
       ],
-      "answer": "No",
-      "explanation": "CIP priorities can change after substitution.",
+      "answer": "No: the CIP priorities may change when the substituent changes",
+      "explanation": "The geometry inverts, but the label depends on the priority order of the new substituent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the nucleophile rank the same as the leaving group?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must an SN1 reaction produce perfectly equal enantiomer amounts?",
+      "prompt": "An SN1 reaction at a chiral centre gives slightly more inversion than retention. What explains this?",
       "options": [
-        "No",
-        "Yes"
+        "A measurement error always, since a planar carbocation must give exactly equal amounts of both products",
+        "SN1 is really SN2",
+        "Ion pairing and solvent environment can shield one face of the carbocation",
+        "The carbocation is not planar"
       ],
-      "answer": "No",
-      "explanation": "Ion pairing and solvent environment can affect attack.",
+      "answer": "Ion pairing and solvent environment can shield one face of the carbocation",
+      "explanation": "The leaving group may remain close to the front face briefly, biasing attack to the back.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the leaving group completely gone at the moment of attack?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are basicity and nucleophilicity identical in every medium?",
+      "prompt": "Tert-butoxide is a strong base but a poor nucleophile. What does this show?",
       "options": [
-        "Yes",
-        "No"
+        "Basicity (thermodynamic) and nucleophilicity (kinetic) are not the same property",
+        "Tert-butoxide is not a base at all, and its low reactivity arises only from its large size",
+        "They are identical",
+        "Nucleophilicity only depends on charge"
       ],
-      "answer": "No",
-      "explanation": "Equilibrium and kinetic tendencies have different dependencies.",
+      "answer": "Basicity (thermodynamic) and nucleophilicity (kinetic) are not the same property",
+      "explanation": "Steric bulk blocks attack at carbon but still allows proton removal.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which one is affected by crowding?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why include conformation in an E2 prediction?",
-      "answer": "Required proton/leaving-group geometry may be inaccessible",
+      "prompt": "A cyclohexyl bromide undergoes E2 only when the leaving group is axial. Why is conformation needed to predict the product?",
+      "answer": "E2 requires an anti-periplanar H and leaving group, which some conformers lack",
       "options": [
-        "Required proton/leaving-group geometry may be inaccessible",
-        "Every β hydrogen has identical orbital access"
+        "E2 requires an anti-periplanar H and leaving group, which some conformers lack",
+        "E2 needs a carbocation, which forms only when the leaving group sits in an axial position",
+        "Conformation does not matter",
+        "All β hydrogens react equally"
       ],
-      "explanation": "Antiperiplanar availability can control a cyclic substrate outcome.",
+      "explanation": "The orbital overlap of the transition state needs the H–C–C–X dihedral near 180°.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which dihedral angle does E2 require?"
     },
     {
       "id": "chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does geometric inversion necessarily imply an R label must become S after every substitution?",
-      "answer": "No; changed substituent priorities can alter the label comparison.",
+      "prompt": "Does an SN2 inversion of configuration guarantee that an R substrate gives an S product?",
+      "answer": "No: the label depends on both geometry and the changed priorities",
       "options": [
-        "Yes; geometry and CIP labels are identical under all replacements.",
-        "No; changed substituent priorities can alter the label comparison."
+        "Yes: because inversion flips labels",
+        "No: the label depends on both geometry and the changed priorities",
+        "No: SN2 gives racemisation, so the product is a mixture of R and S rather than one label",
+        "Yes: R always becomes S"
       ],
-      "explanation": "Configuration labels depend on both geometry and priority ordering.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Geometry inverts, but the descriptor depends on CIP ranking.",
+      "hint": "Rank the substituents on the product.",
       "misconceptions": {
         "Yes; geometry and CIP labels are identical under all replacements.": "Configuration labels depend on both geometry and priority ordering."
       },

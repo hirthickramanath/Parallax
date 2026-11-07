@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can N=a†a have a negative expectation in a valid state?",
+      "prompt": "The number operator is N = a†a. Can ⟨N⟩ be negative in a valid state?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: in some superpositions, since cross terms between number states can make it negative",
+        "Yes: in excited states",
+        "Yes: for squeezed states",
+        "No: ⟨N⟩ = ‖a|ψ⟩‖² is a squared norm and is non-negative"
       ],
-      "answer": "No",
-      "explanation": "It is a squared norm.",
+      "answer": "No: ⟨N⟩ = ‖a|ψ⟩‖² is a squared norm and is non-negative",
+      "explanation": "⟨ψ|a†a|ψ⟩ = (a|ψ⟩)†(a|ψ⟩) ≥ 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write ⟨N⟩ as an inner product."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a stationary oscillator state need zero position uncertainty?",
+      "prompt": "An oscillator is in an energy eigenstate (a stationary state). Is its position uncertainty zero?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: stationary means fixed position, since the state has a definite value of x",
+        "Yes: for the ground state",
+        "No: stationary states still have quantum fluctuations in x",
+        "Yes: Δx = 0"
       ],
-      "answer": "No",
-      "explanation": "Stationarity does not remove quantum fluctuations.",
+      "answer": "No: stationary states still have quantum fluctuations in x",
+      "explanation": "For the ground state Δx = √(ħ/2mω), which is nonzero.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can both Δx and Δp be zero?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does an arbitrary anharmonic potential retain exact equal level spacing?",
+      "prompt": "Does an arbitrary anharmonic potential give equally spaced energy levels like the harmonic oscillator?",
       "options": [
-        "Yes",
-        "No"
+        "No: the ladder algebra depends on the quadratic Hamiltonian",
+        "Yes: any binding potential gives evenly spaced levels, as the ladder structure is general",
+        "Yes: all potentials",
+        "Yes: levels are always evenly spaced"
       ],
-      "answer": "No",
-      "explanation": "The ladder algebra depends on the quadratic Hamiltonian.",
+      "answer": "No: the ladder algebra depends on the quadratic Hamiltonian",
+      "explanation": "Molecular vibrations show shrinking level spacing with n.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the Morse potential quadratic?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What number statistics characterize an ideal coherent state?",
-      "answer": "Poisson with mean |α|².",
+      "prompt": "What is the photon-number distribution of an ideal coherent state |α⟩?",
+      "answer": "Poisson with mean |α|²",
       "options": [
-        "Poisson with mean |α|².",
-        "ℏω/2."
+        "Thermal with mean |α|, like blackbody light",
+        "Poisson with mean |α|²",
+        "Fixed at |α|",
+        "Uniform"
       ],
-      "explanation": "Poisson with mean |α|².",
+      "explanation": "P(n) = e^(−|α|²)|α|^(2n)/n!, which is a Poisson distribution whose mean photon number is |α|².",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which distribution has variance equal to the mean?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does a|0>=0 mean the oscillator ground-state energy vanishes?",
-      "answer": "No; the zero-point term remains.",
+      "prompt": "The ground state obeys a|0⟩ = 0. Does the oscillator therefore have zero ground-state energy?",
+      "answer": "No: H = ħω(a†a + ½)",
       "options": [
-        "Yes; annihilation means every physical quantity is zero.",
-        "No; the zero-point term remains."
+        "Yes: all quantities vanish",
+        "No: H = ħω(a†a + ½)",
+        "Yes: annihilation means zero energy",
+        "Yes: E₀ = 0"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The Hamiltonian includes one half.",
+      "hint": "Write H = ħω(a†a + ½) and apply it to the state |0⟩.",
+      "explanation": "H = ħω(a†a + ½), and the zero-point term remains. E₀ = ½ħω.",
       "misconceptions": {
         "Yes; annihilation means every physical quantity is zero.": "The Hamiltonian includes one half."
       },

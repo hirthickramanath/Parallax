@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does one subsequence approaching L prove the whole sequence approaches L?",
+      "prompt": "The sequence 1, −1, 1, −1, … has a subsequence (the odd terms) approaching 1. What does this show about the whole sequence?",
       "options": [
-        "Yes",
-        "No"
+        "That the sequence converges to 1, since a subsequence that approaches 1 forces the whole sequence to 1",
+        "That the sequence converges to 1",
+        "Nothing about the full sequence: other subsequences approach different values",
+        "That the sequence is unbounded"
       ],
-      "answer": "No",
-      "explanation": "Other subsequences can approach other values.",
+      "answer": "Nothing about the full sequence: other subsequences approach different values",
+      "explanation": "A single convergent subsequence does not control the others. The even terms converge to −1, so the full sequence diverges.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the even-numbered terms."
     },
     {
       "id": "concept-2",
-      "prompt": "Is every convergent real sequence bounded?",
+      "prompt": "A real sequence converges. What is true of it?",
       "options": [
-        "Yes",
-        "No"
+        "It must be monotone, since the terms of a convergent sequence approach the limit from one side only",
+        "It has no finite limit",
+        "It must be unbounded",
+        "It is bounded: the tail stays near the limit and only finitely many terms lie outside"
       ],
-      "answer": "Yes",
-      "explanation": "The tail is controlled and the prefix is finite.",
+      "answer": "It is bounded: the tail stays near the limit and only finitely many terms lie outside",
+      "explanation": "After some index N all terms lie within 1 of the limit, and the finitely many earlier terms have a maximum. So the whole sequence is bounded.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Split the sequence into a tail and a finite prefix."
     },
     {
       "id": "concept-3",
-      "prompt": "When using a quotient limit, may the denominator limit be zero without further work?",
+      "prompt": "You want lim aₙ/bₙ where aₙ → 3 and bₙ → 0. What can you say about the quotient limit law?",
       "options": [
-        "Yes",
-        "No"
+        "It cannot be applied directly, because the denominator tends to zero",
+        "It gives 0",
+        "It gives 3/0 = ∞ automatically, because the quotient limit law extends to a zero denominator",
+        "It gives 3"
       ],
-      "answer": "No",
-      "explanation": "The standard quotient law requires a nonzero limiting denominator.",
+      "answer": "It cannot be applied directly, because the denominator tends to zero",
+      "explanation": "The limit law needs a non-zero limit for the denominator. With bₙ → 0 the quotient can diverge, oscillate or converge depending on the details.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the hypotheses of the quotient law."
     },
     {
       "id": "numeric",
@@ -68,16 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does Bolzano–Weierstrass guarantee for a bounded real sequence?",
+      "prompt": "What does the Bolzano–Weierstrass theorem guarantee for a bounded real sequence?",
       "answer": "At least one convergent subsequence",
       "options": [
+        "That it converges to its supremum",
+        "That the whole sequence converges to its supremum, because boundedness forces the terms toward the largest value",
         "At least one convergent subsequence",
-        "Convergence of every term to the same limit"
+        "That the sequence is monotone"
       ],
-      "explanation": "Boundedness alone permits oscillation.",
+      "explanation": "Boundedness allows oscillation, so the whole sequence need not converge, but some subsequence always does.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of 1, −1, 1, −1, …"
     },
     {
       "id": "analysis-transfer-1",
@@ -115,14 +127,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "Every convergent subsequence of a bounded real sequence has the same limit L. Must the full sequence converge to L?",
-      "answer": "Yes; otherwise a separated subsequence would have a different convergent subsubsequence.",
+      "prompt": "A bounded real sequence has the property that every convergent subsequence tends to L. What follows?",
+      "answer": "The whole sequence converges to L",
       "options": [
-        "No; boundedness and uniqueness of the subsequential limit provide no information.",
-        "Yes; otherwise a separated subsequence would have a different convergent subsubsequence."
+        "Nothing: subsequences give no information",
+        "The whole sequence converges to L",
+        "The sequence may still diverge",
+        "The sequence is monotone"
       ],
-      "explanation": "If convergence fails, choose a subsequence staying ε away from L and apply Bolzano–Weierstrass.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "If it did not converge to L, some subsequence would stay at least ε from L. By Bolzano–Weierstrass that has a further convergent subsequence with limit ≠ L, a contradiction.",
+      "hint": "Suppose the sequence does not converge to L and look for a subsequence staying away.",
       "misconceptions": {
         "No; boundedness and uniqueness of the subsequential limit provide no information.": "If convergence fails, choose a subsequence staying ε away from L and apply Bolzano–Weierstrass."
       },

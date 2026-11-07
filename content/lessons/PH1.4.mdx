@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the Rutherford formula automatically use the laboratory angle for any target mass?",
+      "prompt": "The Rutherford formula is simplest in relative coordinates. Can you use it unchanged with the laboratory scattering angle for any target mass?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for heavy targets only, since then the lab angle and the centre-of-mass angle are the same",
+        "Yes: for light targets",
+        "No: it needs transforming from centre-of-mass to laboratory coordinates",
+        "Yes: the lab angle is always the same"
       ],
-      "answer": "No",
-      "explanation": "It is simplest in relative centre-of-mass coordinates.",
+      "answer": "No: it needs transforming from centre-of-mass to laboratory coordinates",
+      "explanation": "The centre-of-mass angle and the lab angle differ unless the target is much heavier than the projectile.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where is the target after the collision?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does an exact outgoing angle have a finite discrete probability in the continuous model?",
+      "prompt": "A detector is set at exactly θ = 30°. Is the probability that a particle scatters to exactly that angle a finite number in the continuous model?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it equals dσ/dΩ",
+        "Yes: always finite",
+        "No: the cross section is a density, so only a range of angles has finite probability",
+        "Yes: equal to one"
       ],
-      "answer": "No",
-      "explanation": "The cross section is a density integrated over acceptance.",
+      "answer": "No: the cross section is a density, so only a range of angles has finite probability",
+      "explanation": "dσ/dΩ must be integrated over an acceptance solid angle to give a probability.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the probability of a single point on a continuous distribution?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does the ideal point-Coulomb prediction remain finite at zero angle?",
+      "prompt": "The Rutherford cross section is dσ/dΩ ∝ 1/sin⁴(θ/2). What happens as θ → 0?",
       "options": [
-        "Yes",
-        "No"
+        "It diverges, so screening and experimental geometry matter",
+        "It vanishes, since scattering through very small angles needs a distant particle, which contributes nothing",
+        "It becomes constant",
+        "It stays finite"
       ],
-      "answer": "No",
-      "explanation": "It diverges forward; screening and experimental geometry matter.",
+      "answer": "It diverges, so screening and experimental geometry matter",
+      "explanation": "The unscreened Coulomb potential has an infinite range.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate sin(θ/2) at θ = 0."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why does the cross-section derivation include a sine factor?",
-      "answer": "It converts the scattering-angle interval into a solid-angle annulus",
+      "prompt": "Why does the derivation of dσ/dΩ from the impact parameter contain a sin θ?",
+      "answer": "It converts the angle interval into the solid-angle ring dΩ = 2π sin θ dθ",
       "options": [
-        "It converts the scattering-angle interval into a solid-angle annulus",
-        "It assumes every angle bin has equal solid angle"
+        "It converts the angle interval into the solid-angle ring dΩ = 2π sin θ dθ",
+        "Sine is used for the energy of the scattered particle, which depends on the angle of scattering",
+        "Every angle bin has equal solid angle",
+        "It is a normalisation"
       ],
-      "explanation": "dΩ=2π sinθ dθ.",
+      "explanation": "The number of particles in an impact-parameter annulus equals those in a scattering-angle annulus.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is the solid angle of a ring at angle θ?"
     },
     {
       "id": "mechanics-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "mechanics-model-limits",
-      "prompt": "Is the all-angle integrated cross section finite for an ideal unscreened repulsive Coulomb law with no forward cutoff?",
-      "answer": "No; the forward-angle integral diverges.",
+      "prompt": "Is the total cross section of an unscreened repulsive Coulomb potential finite?",
+      "answer": "No: the forward-angle integral diverges",
       "options": [
-        "Yes; a divergent value at one angle never affects an integral.",
-        "No; the forward-angle integral diverges."
+        "Yes: it equals πa²",
+        "Yes: it equals zero",
+        "Yes: the divergence at one angle does not matter",
+        "No: the forward-angle integral diverges"
       ],
-      "explanation": "Near zero, dσ/dΩ scales as θ^(−4), while dΩ supplies only a factor proportional to θ dθ.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "Near θ = 0, dσ/dΩ ∝ θ⁻⁴ while dΩ ∝ θ dθ, giving an integrand ∝ θ⁻³.",
+      "hint": "Integrate θ⁻⁴ × θ dθ from zero.",
       "misconceptions": {
         "Yes; a divergent value at one angle never affects an integral.": "Near zero, dσ/dΩ scales as θ^(−4), while dΩ supplies only a factor proportional to θ dθ."
       },

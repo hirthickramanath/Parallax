@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a repeated eigenvalue always prevent diagonalization?",
+      "prompt": "The identity matrix has the eigenvalue 1 repeated n times. Is it diagonalisable?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a repeated eigenvalue does not prevent diagonalisation",
+        "Only if n = 1",
+        "No: repeated eigenvalues are never diagonalisable, so the identity matrix cannot be diagonalised",
+        "No: it has no eigenvectors"
       ],
-      "answer": "No",
-      "explanation": "The identity is a counterexample.",
+      "answer": "Yes: a repeated eigenvalue does not prevent diagonalisation",
+      "explanation": "The identity is already diagonal, with n independent eigenvectors for λ = 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the identity diagonal?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a repeated eigenvalue always provide enough independent eigenvectors?",
+      "prompt": "The matrix [[1, 1], [0, 1]] has eigenvalue 1 twice. How many independent eigenvectors does it have?",
       "options": [
-        "No",
-        "Yes"
+        "Infinitely many independent ones",
+        "Two",
+        "One",
+        "Zero"
       ],
-      "answer": "No",
-      "explanation": "A Jordan shear can have only one eigenvector direction.",
+      "answer": "One",
+      "explanation": "Solving (A − I)v = 0 gives v = (a, 0), a one-dimensional space. The matrix is defective.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Solve (A − I)v = 0 and count independent solutions."
     },
     {
       "id": "concept-3",
-      "prompt": "Must the zero vector be counted as an eigenvector?",
+      "prompt": "Is the zero vector an eigenvector of any matrix?",
       "options": [
-        "Yes",
-        "No"
+        "No: eigenvectors are non-zero by definition",
+        "Yes, for the zero matrix",
+        "Yes: A0 = λ0 for all λ",
+        "Only for the identity"
       ],
-      "answer": "No",
-      "explanation": "Eigenvectors are explicitly nonzero.",
+      "answer": "No: eigenvectors are non-zero by definition",
+      "explanation": "If 0 were allowed, every number would be an eigenvalue. The definition requires v ≠ 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What would 'every λ is an eigenvalue' mean?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is required for diagonalization?",
-      "answer": "A full independent eigenvector basis in the chosen field",
+      "prompt": "What is required for an n × n matrix to be diagonalisable over a field?",
+      "answer": "A basis of n independent eigenvectors in that field",
       "options": [
-        "A full independent eigenvector basis in the chosen field",
-        "Only finding roots of the characteristic polynomial"
+        "Just finding the roots of the characteristic polynomial",
+        "n distinct entries",
+        "A nonzero determinant",
+        "A basis of n independent eigenvectors in that field"
       ],
-      "explanation": "The eigenspace dimensions must supply the whole space.",
+      "explanation": "The eigenspace dimensions must add up to n. Repeated roots with too few eigenvectors give non-diagonalisable matrices.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Count independent eigenvectors."
     },
     {
       "id": "linear-ode-transfer-1",
@@ -101,14 +113,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does every real matrix with real eigenvalues have a complete eigenvector basis?",
-      "answer": "No; repeated eigenvalues can be defective.",
+      "prompt": "A real matrix has only real eigenvalues. Must it be diagonalisable?",
+      "answer": "No: repeated eigenvalues can leave it defective",
       "options": [
-        "Yes; real eigenvalues alone guarantee diagonalization.",
-        "No; repeated eigenvalues can be defective."
+        "Yes: real eigenvalues are enough, since the matrix then has a full set of eigenvectors",
+        "Yes, if det ≠ 0",
+        "Yes, if the matrix is square",
+        "No: repeated eigenvalues can leave it defective"
       ],
-      "explanation": "The two-dimensional Jordan shear is a counterexample.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "[[1, 1], [0, 1]] has real eigenvalue 1 but only one independent eigenvector.",
+      "hint": "Recall the shear matrix.",
       "misconceptions": {
         "Yes; real eigenvalues alone guarantee diagonalization.": "The two-dimensional Jordan shear is a counterexample."
       },

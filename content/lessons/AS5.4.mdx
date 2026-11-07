@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does magnetic confinement alone prove efficient acceleration?",
+      "prompt": "A region has a strong magnetic field that confines particles for a long time. Does this prove it accelerates them efficiently?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: confinement is acceleration",
+        "Yes: for protons",
+        "Yes: fields add energy",
+        "No: acceleration gains, losses and escape rates also matter"
       ],
-      "answer": "No",
-      "explanation": "Losses, escape and gain rates also matter.",
+      "answer": "No: acceleration gains, losses and escape rates also matter",
+      "explanation": "Confinement is a necessary condition, not a mechanism that gives the particles energy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does holding a particle in place give it energy?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are cumulative and differential power-law indices identical?",
+      "prompt": "A cosmic-ray spectrum has a differential spectrum N(E) ∝ E^(−2.7). What is the index of the cumulative spectrum N(>E)?",
       "options": [
-        "No",
-        "Yes"
+        "−1.7, since integrating raises the exponent by one",
+        "−2.7",
+        "−3.7, since integrating a power law lowers the exponent by one in the cumulative form",
+        "−0.7"
       ],
-      "answer": "No",
-      "explanation": "Differentiation changes the power.",
+      "answer": "−1.7, since integrating raises the exponent by one",
+      "explanation": "Integrating a differential spectrum N(E) ∝ E^(−0.7) from E upward raises the exponent by one and flips the sign: N(>E) = ∫ N dE ∝ E^(−1.7).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Integrate E^(−2.7) from E upwards."
     },
     {
       "id": "concept-3",
-      "prompt": "Do charged-particle arrival directions always point straight back to sources?",
+      "prompt": "A cosmic-ray proton of 10 GeV arrives from the direction of the Crab Nebula. Does it come from the Crab?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a 10 GeV proton points back to the Crab, because cosmic rays travel in straight lines from the source",
+        "Yes: for any energy",
+        "Not necessarily: magnetic fields deflect charged particles, scrambling their direction",
+        "Yes: cosmic rays travel straight"
       ],
-      "answer": "No",
-      "explanation": "Magnetic fields deflect them.",
+      "answer": "Not necessarily: magnetic fields deflect charged particles, scrambling their direction",
+      "explanation": "Galactic fields make the Larmor radius of low-energy particles much smaller than the distances.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a magnetic field do to a charged particle's path?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify the test-particle shock result?",
-      "answer": "Its flow and scattering assumptions can fail.",
+      "prompt": "Diffusive shock acceleration predicts a spectrum with index near −2 in the test-particle limit. Why must that result be qualified?",
+      "answer": "Its flow and scattering assumptions can fail (e.g. when particles modify the shock)",
       "options": [
-        "Its flow and scattering assumptions can fail.",
-        "Escape and losses."
+        "It is exact for all shocks, because test-particle acceleration is independent of the flow and scattering details",
+        "It applies only to neutral gas",
+        "It ignores shocks",
+        "Its flow and scattering assumptions can fail (e.g. when particles modify the shock)"
       ],
-      "explanation": "Its flow and scattering assumptions can fail.",
+      "explanation": "Strong feedback from the accelerated particles changes the shock structure and the spectrum.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the test-particle limit assume about their back-reaction?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does satisfying a gyroradius confinement inequality prove an accelerator reaches that energy?",
-      "answer": "No; acceleration, losses and escape times must also be checked.",
+      "prompt": "A source satisfies the Hillas criterion (R·B large enough so the gyroradius fits inside). Does it reach that maximum energy?",
+      "answer": "Not necessarily: acceleration time, losses and escape also decide",
       "options": [
-        "Yes; confinement guarantees acceleration efficiency.",
-        "No; acceleration, losses and escape times must also be checked."
+        "Not necessarily: acceleration time, losses and escape also decide",
+        "Yes: automatically",
+        "No: it can never reach it",
+        "Yes: the criterion guarantees it"
       ],
-      "explanation": "A necessary geometric condition is not a full dynamical mechanism.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The gyroradius condition is necessary but not sufficient.",
+      "hint": "Is a geometric condition enough?",
       "misconceptions": {
         "Yes; confinement guarantees acceleration efficiency.": "A necessary geometric condition is not a full dynamical mechanism."
       },

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Is sqrt(x²)=x for every real x?",
-      "answer": "No; it equals |x|",
+      "prompt": "For all real x, what does sqrt(x**2) equal?",
+      "answer": "|x|",
       "options": [
-        "Yes",
-        "No; it equals |x|"
+        "x",
+        "x² / x",
+        "|x|",
+        "−x"
       ],
-      "explanation": "Negative x supplies a counterexample.",
+      "explanation": "The principal square root is non-negative. For x = −3, √9 = 3 = |x|, not x.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try a negative value such as x = −3 and square-root the result."
     },
     {
       "id": "c2",
-      "prompt": "Does cancelling a denominator factor make original excluded points valid?",
-      "answer": "No",
+      "prompt": "You cancel the factor (x − 2) from (x − 2)(x + 1)/(x − 2). Is the result x + 1 valid at x = 2?",
+      "answer": "No: the original expression is undefined at x = 2",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the factors cancel, so the expression equals x + 1 for every x, including x = 2",
+        "No: the original expression is undefined at x = 2",
+        "Yes: the result equals 3 there",
+        "No, but only on the real line"
       ],
-      "explanation": "The original domain remains restricted.",
+      "explanation": "Cancelling changes the expression's domain unless you track it. The original is undefined at x = 2 even though x + 1 is defined.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Substitute x = 2 into the original expression."
     },
     {
       "id": "c3",
-      "prompt": "Does one numerical root-finder run prove all roots were found?",
-      "answer": "No",
+      "prompt": "A numerical root-finder started at x₀ = 1 returns one root. Has it found all of them?",
+      "answer": "Not necessarily: a local search finds roots near its starting point",
       "options": [
-        "Yes",
-        "No"
+        "Yes: root-finders list every root, so one converged answer from x₀ = 1 means there are no others",
+        "Not necessarily: a local search finds roots near its starting point",
+        "Yes: root-finders list every root",
+        "Yes, if it converged"
       ],
-      "explanation": "A local search depends on its starting point and method.",
+      "explanation": "Methods like Newton's depend on the initial guess. Other roots may need different starts or an analytic or symbolic approach.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about a function that crosses zero at several places."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Simplifying x/x to 1 changes what if the original domain restriction is forgotten?",
-      "answer": "It incorrectly admits x=0.",
+      "prompt": "You simplify x/x to 1 and forget the original domain. What error can result?",
+      "answer": "You wrongly accept x = 0 as valid",
       "options": [
-        "Nothing; division by zero becomes valid after simplification.",
-        "It incorrectly admits x=0."
+        "No error: the two are identical",
+        "You lose the solution x = 1",
+        "You wrongly accept x = 0 as valid",
+        "You change the function for large x"
       ],
-      "explanation": "An algebraic expression carries its domain with it.",
+      "explanation": "x/x is undefined at x = 0, but 1 is defined everywhere. A simplification can silently drop a domain restriction.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Substitute x = 0 in both forms.",
       "misconceptions": {
         "Nothing; division by zero becomes valid after simplification.": "An algebraic expression carries its domain with it."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "May sqrt(x²) always be replaced by x for an unspecified real x?",
-      "answer": "No; the correct real expression is |x|.",
+      "prompt": "For an unspecified real x, SymPy should not replace sqrt(x**2) with x. What should it return?",
+      "answer": "Abs(x)",
       "options": [
-        "Yes; squaring makes the sign irrelevant to the final x.",
-        "No; the correct real expression is |x|."
+        "x, because the square root of x squared is x for every real value of x, positive or negative",
+        "x**2",
+        "Abs(x)",
+        "x"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Domain assumptions determine simplification.",
+      "hint": "SymPy needs an assumption such as positive=True to simplify further.",
+      "explanation": "Without an assumption that x ≥ 0, only |x| is correct. Declaring x positive allows sqrt(x**2) → x.",
       "misconceptions": {
         "Yes; squaring makes the sign irrelevant to the final x.": "Domain assumptions determine simplification."
       },

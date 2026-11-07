@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are boundary conditions separate from the operator-domain question?",
+      "prompt": "For a Sturm–Liouville problem, are the boundary conditions part of the definition of the operator?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they are needed for it to be self-adjoint",
+        "No: they are irrelevant to eigenvalues",
+        "No: they are separate",
+        "Only for periodic problems"
       ],
-      "answer": "No",
-      "explanation": "They are essential to the self-adjoint formulation.",
+      "answer": "Yes: they are needed for it to be self-adjoint",
+      "explanation": "The boundary term in the symmetry identity must vanish. The domain of the operator includes the boundary conditions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the boundary term come from in the integration by parts?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does p>0 alone ensure every eigenvalue is positive for arbitrary q?",
+      "prompt": "For −(py′)′ + qy = λwy with p > 0, are all eigenvalues necessarily positive?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, since p > 0",
+        "Yes, since w > 0",
+        "No: eigenvalues are always complex",
+        "No: a sufficiently negative q can produce negative eigenvalues"
       ],
-      "answer": "No",
-      "explanation": "A negative potential term can shift eigenvalues.",
+      "answer": "No: a sufficiently negative q can produce negative eigenvalues",
+      "explanation": "Multiplying by y and integrating gives λ = (∫p y′² + q y²)/∫w y² − boundary terms. A negative q can make λ negative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take q constant and negative."
     },
     {
       "id": "concept-3",
-      "prompt": "Is orthogonality always with unweighted ordinary overlap?",
+      "prompt": "Eigenfunctions of a Sturm–Liouville problem with weight w(x) are orthogonal. Which integral vanishes?",
       "options": [
-        "Yes",
-        "No"
+        "∫ y_m y_n w(x) dx",
+        "∫ y_m′ y_n′ dx",
+        "∫ w(x) dx",
+        "∫ y_m y_n dx taken without the weight, since the weight only changes the normalisation"
       ],
-      "answer": "No",
-      "explanation": "The weight w defines the relevant inner product.",
+      "answer": "∫ y_m y_n w(x) dx",
+      "explanation": "The inner product is weighted: ⟨f, g⟩ = ∫ f g w dx.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which function multiplies λ in the equation?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Which step makes distinct eigenfunctions orthogonal?",
-      "answer": "Integration by parts with vanishing boundary form",
+      "prompt": "Which step shows that eigenfunctions with different eigenvalues are orthogonal?",
+      "answer": "Integration by parts with vanishing boundary terms",
       "options": [
-        "Integration by parts with vanishing boundary form",
-        "Only sketching different numbers of nodes"
+        "Counting the number of zeros of each eigenfunction, which differ for different eigenvalues",
+        "Normalising them",
+        "Plotting them",
+        "Integration by parts with vanishing boundary terms"
       ],
-      "explanation": "Boundary compatibility eliminates the extra endpoint term.",
+      "explanation": "(λₘ − λₙ)∫wyₘyₙ equals a boundary term that vanishes by the boundary conditions. So the integral is zero when λₘ ≠ λₙ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Subtract the equations for yₘ and yₙ and integrate."
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "May the positive Sturm–Liouville weight be ignored in an orthogonality calculation?",
-      "answer": "No; it defines the relevant inner product.",
+      "prompt": "You compute an orthogonality integral for Sturm–Liouville eigenfunctions and leave out the weight w(x). What goes wrong?",
+      "answer": "You use the wrong inner product, so orthogonality generally fails",
       "options": [
-        "Yes; every weight yields the same numerical inner product.",
-        "No; it defines the relevant inner product."
+        "The integral is always zero",
+        "Nothing: the weight is only a normalisation, so the orthogonality integral gives the same zero",
+        "You use the wrong inner product, so orthogonality generally fails",
+        "The eigenvalues change"
       ],
-      "explanation": "The operator symmetry and orthogonality are tied to that measure.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Orthogonality is with respect to the weight w. For Bessel functions J₀(kr), the weight is r.",
+      "hint": "Which inner product makes the operator symmetric?",
       "misconceptions": {
         "Yes; every weight yields the same numerical inner product.": "The operator symmetry and orthogonality are tied to that measure."
       },

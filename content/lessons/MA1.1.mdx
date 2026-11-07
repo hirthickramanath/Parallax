@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is an implication equivalent to its converse?",
+      "prompt": "'If it is a square, then it is a rectangle' is true. What can you say about its converse, 'if it is a rectangle, then it is a square'?",
       "options": [
-        "Always",
-        "Not generally"
+        "It is automatically true, since a statement and its converse always have the same truth value",
+        "It is true only for squares",
+        "It is not implied; it can be false even when the original is true",
+        "It is the same statement"
       ],
-      "answer": "Not generally",
-      "explanation": "Only its contrapositive is automatically equivalent.",
+      "answer": "It is not implied; it can be false even when the original is true",
+      "explanation": "An implication and its converse are independent claims. Only the contrapositive 'not rectangle ⇒ not square' is automatically equivalent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Find a rectangle that is not a square."
     },
     {
       "id": "concept-2",
-      "prompt": "Can a preimage be defined without an inverse function?",
+      "prompt": "For f(x) = x² on the reals, the preimage f⁻¹({4}) is {−2, 2}. What does this show about f?",
       "options": [
-        "Yes",
-        "No"
+        "That f has an inverse function, because every output value corresponds to exactly one input",
+        "A preimage exists even though f has no inverse function",
+        "That f is one-to-one",
+        "That the preimage must be a single point"
       ],
-      "answer": "Yes",
-      "explanation": "Preimages are sets of admitted inputs meeting a condition.",
+      "answer": "A preimage exists even though f has no inverse function",
+      "explanation": "A preimage is a set of inputs that map into a given set. It is defined for any function, injective or not.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is x² one-to-one on the reals?"
     },
     {
       "id": "concept-3",
-      "prompt": "May quantifiers generally be exchanged without changing meaning?",
+      "prompt": "Compare 'for every x there is a y with y > x' and 'there is a y such that for every x, y > x'. Over the reals, what do you conclude?",
       "options": [
-        "Yes",
-        "No"
+        "Both are false, since in each case no real number y can be larger than every real x",
+        "They are equivalent",
+        "Both are true",
+        "Quantifier order matters: the first is true, the second is false"
       ],
-      "answer": "No",
-      "explanation": "Their order determines allowed dependencies.",
+      "answer": "Quantifier order matters: the first is true, the second is false",
+      "explanation": "In the first, y may depend on x (take y = x + 1). The second needs a single y exceeding every real, which does not exist.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can one number be larger than all real numbers?"
     },
     {
       "id": "numeric",
@@ -69,16 +78,19 @@
     },
     {
       "id": "core",
-      "prompt": "Which proof establishes equality of sets?",
-      "answer": "Show every element of each belongs to the other",
+      "prompt": "How do you prove that two sets A and B are equal?",
+      "answer": "Show A ⊆ B and B ⊆ A",
       "options": [
-        "Show every element of each belongs to the other",
-        "Show only that they share one example"
+        "Show they share one element",
+        "Show A ⊆ B only",
+        "Show A ⊆ B and B ⊆ A",
+        "Show A has the same size as B"
       ],
-      "explanation": "Mutual containment proves equality; a shared element does not.",
+      "explanation": "Equality means the same elements, which is mutual containment. One shared element or equal size does not establish it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Two sets are equal when each is inside the other."
     },
     {
       "id": "analysis-transfer-1",
@@ -118,14 +130,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "Over the real numbers, does ∀x ∃y (y>x) imply ∃y ∀x (y>x)?",
-      "answer": "No; y can depend on x, but no real number exceeds all reals.",
+      "prompt": "Over the real numbers, is it valid to deduce ∃y ∀x (y > x) from ∀x ∃y (y > x)?",
+      "answer": "No: a single y exceeding all reals does not exist (take x = y + 1)",
       "options": [
-        "Yes; quantifiers can always be exchanged.",
-        "No; y can depend on x, but no real number exceeds all reals."
+        "No: a single y exceeding all reals does not exist (take x = y + 1)",
+        "Yes, since y depends on nothing",
+        "Yes: ∀ and ∃ can always be swapped",
+        "No, but only for the integers"
       ],
-      "explanation": "For a proposed universal y, choose x=y+1.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "∃∀ is stronger than ∀∃. Given any proposed y, the choice x = y + 1 contradicts y > x.",
+      "hint": "Test a proposed y against x = y + 1.",
       "misconceptions": {
         "Yes; quantifiers can always be exchanged.": "For a proposed universal y, choose x=y+1."
       },

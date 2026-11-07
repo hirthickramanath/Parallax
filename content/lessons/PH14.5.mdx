@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a hole a new elementary positive particle?",
+      "prompt": "In a semiconductor, is a hole a distinct elementary positively charged particle?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a positron in the crystal",
+        "No: it is a quasiparticle describing a missing electron in a nearly full band",
+        "No: it is a neutral excitation",
+        "Yes: it is a proton"
       ],
-      "answer": "No",
-      "explanation": "It is an effective band vacancy.",
+      "answer": "No: it is a quasiparticle describing a missing electron in a nearly full band",
+      "explanation": "Holes have an effective mass and positive charge, but are collective behaviour of many electrons.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is actually missing from the valence band?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does built-in equilibrium junction potential alone supply unlimited extractable work?",
+      "prompt": "A p–n junction has a built-in potential at equilibrium. Can you draw unlimited steady power from it without any other input?",
       "options": [
-        "No",
-        "Yes"
+        "No: at equilibrium there is no net current",
+        "No: the junction has no field",
+        "Yes: the potential gives unlimited current",
+        "Yes: the built-in field is a free battery"
       ],
-      "answer": "No",
-      "explanation": "A full electrochemical circuit balance is required.",
+      "answer": "No: at equilibrium there is no net current",
+      "explanation": "At equilibrium there is no net current, and extracting work needs an energy source such as light or bias. That would be a perpetual motion machine of the second kind.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the net current at equilibrium?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do mobility and density both affect conductivity?",
+      "prompt": "Conductivity in a semiconductor is σ = nqμ. If you double the mobility μ at fixed carrier density, what happens?",
       "options": [
-        "No",
-        "Yes"
+        "σ becomes independent of the carrier density, since the mobility absorbs the entire dependence of σ on n",
+        "σ halves",
+        "σ doubles, because density and mobility enter independently as factors",
+        "σ is unchanged"
       ],
-      "answer": "Yes",
-      "explanation": "They enter independently.",
+      "answer": "σ doubles, because density and mobility enter independently as factors",
+      "explanation": "Doping changes n, and scattering changes μ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at how n and μ appear in σ = nqμ."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is nondegenerate carrier counting?",
-      "answer": "A low-occupation approximation with its own validity range.",
+      "prompt": "Carrier density in a semiconductor is often written n = N_c e^(−(E_c−E_F)/k_BT). When does this fail?",
+      "answer": "In degenerate doping",
       "options": [
-        "A low-occupation approximation with its own validity range.",
-        "Ionization, compensation and occupation regimes."
+        "In degenerate doping",
+        "In intrinsic material only",
+        "Whenever the temperature is above 0 K",
+        "For every n-type sample"
       ],
-      "explanation": "A low-occupation approximation with its own validity range.",
+      "explanation": "In degenerate doping, where the Fermi level approaches or enters a band and the low-occupation approximation breaks. The Boltzmann approximation needs E_c − E_F ≫ k_BT.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "The approximation assumes states are rarely occupied."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does an activation factor alone determine a complete device current?",
-      "answer": "No; prefactors, mobility and device conditions also matter.",
+      "prompt": "Carrier density in a semiconductor follows an activation factor e^(−E/k_BT). Does that alone give the device's current?",
+      "answer": "No: you also need the prefactor, the mobility and the device geometry and bias",
       "options": [
-        "Yes; gap alone fixes every circuit response.",
-        "No; prefactors, mobility and device conditions also matter."
+        "No: thermally activated carriers do not take part in conduction, because only carriers at the band edge can carry current",
+        "No: you also need the prefactor, the mobility and the device geometry and bias",
+        "Yes: the activation factor is the current",
+        "Yes: the band gap fixes every circuit response"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Separate carrier population and transport.",
+      "hint": "Population and transport are two different things.",
+      "explanation": "Carrier population and transport are separate steps.",
       "misconceptions": {
         "Yes; gap alone fixes every circuit response.": "Separate carrier population and transport."
       },

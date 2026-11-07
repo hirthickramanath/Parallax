@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is every edge state automatically topologically protected?",
+      "prompt": "A sample has conducting states at its edge. Does that alone prove they are topologically protected?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: every edge state is topological",
+        "No: topological states are never at an edge",
+        "No: you must identify the invariant and the symmetry or gap that protects them",
+        "Yes: edges always conduct robustly"
       ],
-      "answer": "No",
-      "explanation": "The invariant and protecting assumptions matter.",
+      "answer": "No: you must identify the invariant and the symmetry or gap that protects them",
+      "explanation": "Trivial edge states from dangling bonds can be removed by disorder.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Protection needs a specific reason, not just conduction."
     },
     {
       "id": "concept-2",
-      "prompt": "Can a gap closure permit a change in band topology?",
+      "prompt": "A band structure is tuned until the gap closes and reopens. What can this change?",
       "options": [
-        "Yes",
-        "No"
+        "The topological invariant of the occupied bands, since topology changes only through a gap closing",
+        "Nothing: gap closing is irrelevant",
+        "The number of electrons",
+        "Only the effective mass"
       ],
-      "answer": "Yes",
-      "explanation": "The occupied-state structure can change.",
+      "answer": "The topological invariant of the occupied bands, since topology changes only through a gap closing",
+      "explanation": "Smooth deformations preserving the gap cannot change an integer invariant.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What can change an integer without breaking continuity?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does one noninteracting integer model fully explain fractional Hall physics?",
+      "prompt": "Non-interacting band topology explains the integer quantum Hall effect. Does it also explain the fractional effect?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the same non-interacting integer model covers both effects once the electron density is varied",
+        "Yes: fractions come from disorder",
+        "No: fractional plateaus require strong electron interactions and topological order",
+        "No: the fractional effect has no plateaus"
       ],
-      "answer": "No",
-      "explanation": "Interactions and topological order enter.",
+      "answer": "No: fractional plateaus require strong electron interactions and topological order",
+      "explanation": "Laughlin's wavefunction describes an interacting liquid with fractionally charged quasiparticles.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where could a fraction like 1/3 come from?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare multiple observables?",
-      "answer": "A single conducting edge or plateau does not establish every topological claim.",
+      "prompt": "Why do experiments measure several observables before claiming a topological phase?",
+      "answer": "A single edge conductor or plateau can arise from non-topological causes",
       "options": [
-        "A single conducting edge or plateau does not establish every topological claim.",
-        "A specified gapped occupied-state bundle."
+        "To increase the sample size",
+        "Topology has no observables",
+        "A single edge conductor or plateau can arise from non-topological causes",
+        "One observable is always conclusive"
       ],
-      "explanation": "A single conducting edge or plateau does not establish every topological claim.",
+      "explanation": "Quantised Hall conductance, edge transport and bulk gap together make a stronger case.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is a plateau the only possible cause?"
     },
     {
       "id": "matter-transfer-1",
@@ -101,14 +113,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does choosing a plateau index in a toy display compute a material Chern number?",
-      "answer": "No; that requires the actual Hamiltonian and occupied-state structure.",
+      "prompt": "A teaching toy lets you slide a plateau index up and down. Does that compute a real material's Chern number?",
+      "answer": "No: a Chern number comes from the actual Hamiltonian and its occupied-state Berry curvature",
       "options": [
-        "Yes; a slider proves a topological phase.",
-        "No; that requires the actual Hamiltonian and occupied-state structure."
+        "No: a Chern number comes from the actual Hamiltonian and its occupied-state Berry curvature",
+        "No: Chern numbers do not exist for real materials, which is why the slider is only a teaching illustration",
+        "Yes: any displayed integer is a Chern number",
+        "Yes: the slider shows the true invariant"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "A supplied invariant is different from a derived one.",
+      "hint": "Where does the integer come from in a real calculation?",
+      "explanation": "C = (1/2π)∫F d²k over the filled bands.",
       "misconceptions": {
         "Yes; a slider proves a topological phase.": "A supplied invariant is different from a derived one."
       },
