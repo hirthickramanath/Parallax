@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does friction without recoil noise determine a laser-cooled equilibrium temperature?",
+      "prompt": "Optical molasses gives a velocity-dependent friction force. Why does it not cool atoms to zero temperature?",
       "options": [
-        "Yes",
-        "No"
+        "Photon momentum is far too small to affect the motion of an atom",
+        "Random photon recoil causes momentum diffusion that balances the friction",
+        "The magnetic field of the trap heats the atoms back up",
+        "The friction force reverses sign once the atom is slower than some speed"
       ],
-      "answer": "No",
-      "explanation": "Diffusion/heating also matter.",
+      "answer": "Random photon recoil causes momentum diffusion that balances the friction",
+      "explanation": "Each scattering event kicks the atom in a random direction. Equilibrium is reached where friction cooling equals diffusive heating, giving the Doppler limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What else happens to an atom each time it scatters a photon?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is molasses alone automatically a position trap?",
+      "prompt": "Is optical molasses by itself a trap that holds atoms at a point?",
       "options": [
-        "No",
-        "Yes"
+        "No: it supplies damping, not a restoring force toward a point",
+        "No: it heats the atoms instead of cooling them",
+        "Yes: it supplies a position-dependent restoring force toward the centre",
+        "Yes: it confines atoms to the region where the beams intersect"
       ],
-      "answer": "No",
-      "explanation": "Damping and restoring forces differ.",
+      "answer": "No: it supplies damping, not a restoring force toward a point",
+      "explanation": "Molasses depends on velocity, not position. A magneto-optical trap adds a magnetic gradient to create the restoring force.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the force depend on velocity, on position, or on both?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does low temperature alone guarantee condensation at arbitrary density?",
+      "prompt": "A gas is cooled to a very low temperature. Does it necessarily form a Bose–Einstein condensate?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: once the temperature is below the single-photon recoil limit",
+        "No: condensation depends on phase-space density, temperature and density together",
+        "Yes: every gas below about 1 μK has condensed",
+        "No: bosons cannot condense in three dimensions at all"
       ],
-      "answer": "No",
-      "explanation": "Phase-space density and geometry matter.",
+      "answer": "No: condensation depends on phase-space density, temperature and density together",
+      "explanation": "For a uniform ideal Bose gas the threshold is nλ³ ≈ 2.6. A dilute gas can be extremely cold and still far from degenerate.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What combination of temperature and density sets the condition?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What diagnoses ideal boson degeneracy?",
-      "answer": "Phase-space density with the specified geometry/statistics.",
+      "prompt": "Which quantity diagnoses degeneracy of an ideal Bose gas?",
+      "answer": "Phase-space density, about 2.6 for a uniform gas",
       "options": [
-        "Phase-space density with the specified geometry/statistics.",
-        "Momentum diffusion and other heating."
+        "The temperature in kelvin, taken by itself",
+        "Phase-space density, about 2.6 for a uniform gas",
+        "The momentum diffusion rate of the cooling light",
+        "The linewidth of the cooling laser transition"
       ],
-      "explanation": "Phase-space density with the specified geometry/statistics.",
+      "explanation": "Degeneracy sets in when the thermal de Broglie wavelength becomes comparable to the interparticle spacing, i.e. when phase-space density reaches order one.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare the de Broglie wavelength with the spacing between atoms."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does laser cooling alone automatically establish a Bose–Einstein condensate?",
-      "answer": "No; phase-space density and other conditions must be demonstrated.",
+      "prompt": "Atoms have been laser-cooled to about 10 μK. Is the gas a Bose–Einstein condensate?",
+      "answer": "Not by itself: laser cooling typically leaves phase-space density well below threshold",
       "options": [
-        "Yes; every cold gas is condensed.",
-        "No; phase-space density and other conditions must be demonstrated."
+        "Not by itself: laser cooling typically leaves phase-space density well below threshold",
+        "No: laser-cooled atoms can never be condensed under any conditions",
+        "Yes: laser cooling alone directly produces the condensate",
+        "Yes: every gas below a few microkelvin is already condensed"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Temperature alone is insufficient.",
+      "hint": "Is the temperature alone enough, or does density matter too?",
+      "explanation": "Phase-space density must be demonstrated. In practice evaporative cooling follows laser cooling to reach it.",
       "misconceptions": {
         "Yes; every cold gas is condensed.": "Temperature alone is insufficient."
       },

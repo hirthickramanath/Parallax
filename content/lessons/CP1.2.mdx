@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a connecting line prove a measured continuous trajectory?",
-      "answer": "No",
+      "prompt": "A plot of measured positions joins the points with a line. What does the line show?",
+      "answer": "Only a plotting choice; it does not show the quantity was measured in between",
       "options": [
-        "Yes",
-        "No"
+        "That the trajectory was measured continuously between the plotted points",
+        "Only a plotting choice; it does not show the quantity was measured in between",
+        "That the uncertainties on the individual points are negligible",
+        "That the data follow a smooth underlying model without any scatter"
       ],
-      "explanation": "The line may be only a plotting choice.",
+      "explanation": "A connecting line interpolates visually. Unless the data are continuous, the line is a presentation choice.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Were any measurements taken between the plotted points?"
     },
     {
       "id": "c2",
-      "prompt": "Can log axes include negative real values unchanged?",
-      "answer": "No",
+      "prompt": "A log axis is used for data that include zero and negative values. What happens?",
+      "answer": "A real logarithm needs positive arguments, so they cannot be plotted without a stated alternative",
       "options": [
-        "No",
-        "Yes"
+        "They plot at their absolute values with no loss of meaning",
+        "They plot below the axis, since the log of a negative number is negative",
+        "They all plot at the origin of the axis, where the log is zero",
+        "A real logarithm needs positive arguments, so they cannot be plotted without a stated alternative"
       ],
-      "explanation": "Real logarithms require positive arguments.",
+      "explanation": "The real logarithm is undefined for zero and negative values. A symmetric-log or other declared transformation is needed to show them.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is log(0), and what is log of a negative number in the reals?"
     },
     {
       "id": "c3",
-      "prompt": "Are standard deviation and standard error interchangeable?",
-      "answer": "No",
+      "prompt": "Error bars show the standard error of the mean rather than the standard deviation. How should this be handled?",
+      "answer": "State which it is: the standard error describes the mean, the standard deviation the spread",
       "options": [
-        "Yes",
-        "No"
+        "Nothing: they are the same quantity, so labelling is optional",
+        "Always show the standard error, since the deviation needs many points",
+        "State which it is: the standard error describes the mean, the standard deviation the spread",
+        "The standard error is the larger of the two, so it is the safe choice"
       ],
-      "explanation": "They describe different uncertainties.",
+      "explanation": "The standard error is σ/√N, smaller than the spread. Readers need to know which was plotted to interpret the bars.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which grows with sample size, and which shrinks?"
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A data set includes zero and negative measurements. Is silently discarding them to make a logarithmic plot acceptable?",
-      "answer": "No; the transformation and excluded data must be explained.",
+      "prompt": "To make a logarithmic plot you are tempted to drop the zero and negative readings. What is the acceptable way to proceed?",
+      "answer": "State what was excluded and why, or choose a transformation that can show those values",
       "options": [
-        "Yes; logarithmic axes make missing points irrelevant.",
-        "No; the transformation and excluded data must be explained."
+        "Plot their absolute values and say nothing about the change",
+        "State what was excluded and why, or choose a transformation that can show those values",
+        "Drop them silently, since log axes make missing points irrelevant",
+        "Replace them with the smallest positive value without saying so"
       ],
-      "explanation": "A log transform has a domain and can change the represented population.",
+      "explanation": "A log transform has a domain and can change the population shown. Excluded data and the transformation must be disclosed.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Could a reader tell from the figure that data were removed?",
       "misconceptions": {
         "Yes; logarithmic axes make missing points irrelevant.": "A log transform has a domain and can change the represented population."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "For unequal-width density bins, is probability represented by height alone?",
-      "answer": "No; it is density times bin width.",
+      "prompt": "A histogram has bins of unequal width. How is probability represented?",
+      "answer": "By area: density times bin width",
       "options": [
-        "Yes; width has no effect on probability.",
-        "No; it is density times bin width."
+        "By bin width alone, because wider bins always carry more mass",
+        "By height alone, because the tallest bar is always the most probable",
+        "By the number of bins, since more bins mean more probability",
+        "By area: density times bin width"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Histogram area encodes the mass.",
+      "hint": "Which quantity of a bar has the same meaning for wide and narrow bins?",
+      "explanation": "With a density histogram the area of each bar encodes probability mass; with unequal widths, equal heights do not mean equal probability.",
       "misconceptions": {
         "Yes; width has no effect on probability.": "Histogram area encodes the mass."
       },

@@ -9,15 +9,15 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS1.1 Celestial coordinates and time | 10 / 10 | 5 | 4 | astro_AS1.1 |
 | AS1.2 Seasons, precession and eclipses | 10 / 10 | 5 | 4 | astro_AS1.2 |
 | AS1.3 Orbits and orbital elements | 10 / 10 | 5 | 4 | astro_AS1.3, orbit_explorer |
-| AS1.4 N-body problem and Lagrange points | 10 / 10 | 5 | 6 | astro_AS1.4 |
+| AS1.4 N-body problem and Lagrange points | 10 / 10 | 5 | 9 | astro_AS1.4 |
 | AS1.5 Tides and the Roche limit | 10 / 10 | 5 | 6 | astro_AS1.5, tidal_explorer |
 | AS10.1 Reading arXiv and NASA ADS | 9 / 9 | 4 | 3 | astro_AS10.1 |
 | AS10.2 Analysing survey data (Gaia, TESS, SDSS) | 9 / 9 | 4 | 3 | astro_AS10.2 |
-| AS10.3 Bayesian inference for astronomy | 9 / 9 | 4 | 3 | astro_AS10.3 |
-| AS10.4 Capstone: reproduce a published result | 9 / 9 | 4 | 3 | astro_AS10.4 |
+| AS10.3 Bayesian inference for astronomy | 9 / 9 | 4 | 7 | astro_AS10.3 |
+| AS10.4 Capstone: reproduce a published result | 9 / 9 | 4 | 7 | astro_AS10.4 |
 | AS2.1 Flux, luminosity and magnitudes | 10 / 10 | 5 | 4 | astro_AS2.1 |
 | AS2.2 Blackbody radiation and spectral lines | 10 / 10 | 5 | 4 | astro_AS2.2 |
-| AS2.3 Radiative transfer (optical depth, source function) | 9 / 9 | 4 | 3 | astro_AS2.3, radiation_lab |
+| AS2.3 Radiative transfer (optical depth, source function) | 9 / 9 | 4 | 7 | astro_AS2.3, radiation_lab |
 | AS2.4 Doppler shift and redshift | 10 / 10 | 5 | 4 | astro_AS2.4, radiation_lab |
 | AS2.5 Telescopes and detectors | 9 / 9 | 4 | 3 | astro_AS2.5 |
 | AS2.6 Photometry and spectroscopy | 9 / 9 | 4 | 3 | astro_AS2.6 |
@@ -27,7 +27,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | AS3.3 Nuclear reactions and energy generation | 10 / 10 | 5 | 4 | astro_AS3.3 |
 | AS3.4 Opacity and radiative transport | 10 / 10 | 5 | 4 | astro_AS3.4 |
 | AS3.5 Convection and mixing-length theory | 9 / 9 | 4 | 3 | astro_AS3.5 |
-| AS3.6 Structure equations and polytropes | 9 / 9 | 4 | 3 | astro_AS3.6 |
+| AS3.6 Structure equations and polytropes | 9 / 9 | 4 | 7 | astro_AS3.6 |
 | AS3.7 Stellar atmospheres and spectra | 9 / 9 | 4 | 3 | astro_AS3.7 |
 | AS4.1 Star formation and the Jeans mass | 10 / 10 | 5 | 4 | astro_AS4.1 |
 | AS4.2 Main sequence and the HR diagram | 10 / 10 | 5 | 4 | astro_AS4.2 |
@@ -80,7 +80,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CH1.2 Phase equilibria and solutions | 9 / 9 | 4 | 3 | physical_chemistry_CH1.2 |
 | CH1.3 Chemical kinetics and mechanisms | 9 / 9 | 4 | 3 | physical_chemistry_CH1.3 |
 | CH1.4 Transition-state theory and reaction dynamics | 9 / 9 | 4 | 3 | physical_chemistry_CH1.4 |
-| CH1.5 Statistical thermodynamics of molecules | 9 / 9 | 4 | 3 | physical_chemistry_CH1.5 |
+| CH1.5 Statistical thermodynamics of molecules | 9 / 9 | 4 | 7 | physical_chemistry_CH1.5 |
 | CH1.6 Surfaces and catalysis | 9 / 9 | 4 | 3 | physical_chemistry_CH1.6 |
 | CH1.7 Nonideal mixtures, activity and fugacity | 9 / 9 | 4 | 3 | physical_chemistry_CH1.7 |
 | CH1.8 Colligative properties and phase diagrams | 9 / 9 | 4 | 3 | physical_chemistry_CH1.8 |
@@ -94,7 +94,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CH3.1 Molecules in the interstellar medium | 9 / 9 | 4 | 3 | chemistry_CH3.1 |
 | CH3.2 Gas-phase and grain-surface reaction networks | 9 / 9 | 4 | 3 | chemistry_CH3.2 |
 | CH3.3 Molecular spectral fingerprints in radio astronomy | 9 / 9 | 4 | 3 | chemistry_CH3.3 |
-| CH3.4 Prebiotic chemistry and astrobiology | 9 / 9 | 4 | 3 | bayes_explorer |
+| CH3.4 Prebiotic chemistry and astrobiology | 9 / 9 | 4 | 7 | bayes_explorer |
 | CH3.5 Computational chemistry mini-project | 9 / 9 | 4 | 3 | physical_chemistry_CH2.3 |
 | CH4.1 Lewis structures, formal charge and resonance | 9 / 9 | 4 | 3 | chemistry_CH4.1 |
 | CH4.2 Valence-bond theory, hybridization and its limits | 9 / 9 | 4 | 3 | molecular_geometry_explorer |
@@ -106,20 +106,20 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | CH4.8 Bonding evidence from spectroscopy and computation | 9 / 9 | 4 | 3 | chemistry_CH4.8 |
 | CH5.1 Periodicity and selected s/p-block trends | 9 / 9 | 4 | 3 | chemistry_CH5.1 |
 | CH5.2 Transition metals, oxidation states and coordination | 9 / 9 | 4 | 3 | chemistry_CH5.2 |
-| CH5.3 Selected f-block chemistry and electronic structure | 9 / 9 | 4 | 3 | chemistry_CH5.3 |
+| CH5.3 Selected f-block chemistry and electronic structure | 9 / 9 | 4 | 7 | chemistry_CH5.3 |
 | CH5.4 Minerals, silicates and refractory astrophysical material | 9 / 9 | 4 | 3 | chemistry_CH5.4 |
 | CH6.1 Structure, resonance and acid-base reasoning | 9 / 9 | 4 | 3 | chemistry_CH6.1 |
 | CH6.2 Stereochemistry and conformations | 9 / 9 | 4 | 3 | chemistry_CH6.2 |
-| CH6.3 Electron-pair movement and elementary mechanisms | 9 / 9 | 4 | 3 | chemistry_CH6.3 |
+| CH6.3 Electron-pair movement and elementary mechanisms | 9 / 9 | 4 | 7 | chemistry_CH6.3 |
 | CH6.4 Substitution and elimination | 9 / 9 | 4 | 3 | chemistry_CH6.4 |
 | CH6.5 Addition, carbonyl chemistry and functional groups | 9 / 9 | 4 | 3 | chemistry_CH6.5 |
 | CH6.6 Aromaticity and aromatic reactions | 9 / 9 | 4 | 3 | chemistry_CH6.6 |
 | CH6.7 Organic spectroscopy and molecular identification | 9 / 9 | 4 | 3 | chemistry_CH6.7 |
 | CH6.8 Interstellar organics and prebiotic reaction questions | 9 / 9 | 4 | 3 | chemistry_CH6.8 |
 | CP1.1 Python and NumPy | 10 / 10 | 5 | 6 | computing_CP1.1 |
-| CP1.2 Plotting and visualisation | 10 / 10 | 5 | 6 | computing_CP1.2 |
+| CP1.2 Plotting and visualisation | 10 / 10 | 5 | 9 | computing_CP1.2 |
 | CP1.3 Numerical differentiation and integration | 10 / 10 | 5 | 6 | computing_CP1.3 |
-| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 10 / 10 | 5 | 6 | computing_CP1.4, ode_accuracy_explorer |
+| CP1.4 ODE solvers (Runge-Kutta, symplectic integrators) | 10 / 10 | 5 | 9 | computing_CP1.4, ode_accuracy_explorer |
 | CP1.5 Numerical linear algebra | 10 / 10 | 5 | 6 | computing_CP1.5 |
 | CP1.6 Symbolic maths with SymPy | 10 / 10 | 5 | 6 | computing_CP1.6 |
 | CP2.1 PDE solvers (finite differences) | 9 / 9 | 4 | 3 | computing_CP2.1 |
@@ -153,7 +153,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA12.3 Bounded and unbounded operators | 9 / 9 | 4 | 3 | structure_MA12.3 |
 | MA12.4 Distributions and the Dirac delta | 9 / 9 | 4 | 3 | structure_MA12.4 |
 | MA12.5 Spectral theory of operators | 9 / 9 | 4 | 3 | structure_MA12.5 |
-| MA13.1 Dynamical systems and chaos | 9 / 9 | 4 | 3 | structure_MA13.1 |
+| MA13.1 Dynamical systems and chaos | 9 / 9 | 4 | 7 | structure_MA13.1 |
 | MA13.2 Stochastic differential equations and Fokker-Planck | 9 / 9 | 4 | 3 | structure_MA13.2 |
 | MA13.3 Renormalisation group mathematics | 9 / 9 | 4 | 3 | structure_MA13.3 |
 | MA13.4 Topology in physics (Berry phase, topological invariants) | 9 / 9 | 4 | 3 | structure_MA13.4 |
@@ -170,7 +170,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA3.3 Determinants | 9 / 9 | 4 | 3 | linear_ode_MA3.3 |
 | MA3.4 Eigenvalues and diagonalisation | 9 / 9 | 4 | 3 | linear_ode_MA3.4 |
 | MA3.5 Inner product spaces and orthogonality | 9 / 9 | 4 | 3 | linear_ode_MA3.5 |
-| MA3.6 Spectral theorem and Hermitian operators | 9 / 9 | 4 | 3 | linear_ode_MA3.6 |
+| MA3.6 Spectral theorem and Hermitian operators | 9 / 9 | 4 | 7 | linear_ode_MA3.6 |
 | MA3.7 SVD and least squares | 9 / 9 | 4 | 3 | linear_ode_MA3.7 |
 | MA3.8 Jordan form and matrix exponentials | 9 / 9 | 4 | 3 | linear_ode_MA3.8 |
 | MA4.1 First-order methods | 9 / 9 | 4 | 3 | linear_ode_MA4.1 |
@@ -197,7 +197,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA7.3 Bessel functions | 9 / 9 | 4 | 3 | advanced_math_MA7.3 |
 | MA7.4 Hermite and Laguerre polynomials | 9 / 9 | 4 | 3 | advanced_math_MA7.4 |
 | MA7.5 Asymptotic methods (saddle point, WKB) | 9 / 9 | 4 | 3 | advanced_math_MA7.5 |
-| MA8.1 Probability axioms and random variables | 9 / 9 | 4 | 3 | advanced_math_MA8.1 |
+| MA8.1 Probability axioms and random variables | 9 / 9 | 4 | 7 | advanced_math_MA8.1 |
 | MA8.2 Distributions and the central limit theorem | 9 / 9 | 4 | 3 | advanced_math_MA8.2 |
 | MA8.3 Markov chains and Poisson processes | 9 / 9 | 4 | 3 | advanced_math_MA8.3 |
 | MA8.4 Estimation and hypothesis testing | 9 / 9 | 4 | 3 | advanced_math_MA8.4 |
@@ -206,7 +206,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MA8.7 Error analysis and fitting | 9 / 9 | 4 | 3 | advanced_math_MA8.7 |
 | MA9.1 Euler-Lagrange equation | 9 / 9 | 4 | 3 | advanced_math_MA9.1 |
 | MA9.2 Constraints and Lagrange multipliers in functionals | 9 / 9 | 4 | 3 | advanced_math_MA9.2 |
-| MA9.3 Noether's theorem (mathematical form) | 9 / 9 | 4 | 3 | advanced_math_MA9.3 |
+| MA9.3 Noether's theorem (mathematical form) | 9 / 9 | 4 | 7 | advanced_math_MA9.3 |
 | MB1.1 Inequalities, functions and graphs | 10 / 10 | 5 | 6 | foundation_next_MB1.1 |
 | MB1.2 Logs, exponentials, complex numbers | 10 / 10 | 5 | 6 | foundation_next_MB1.2 |
 | MB1.3 Sequences, series, binomial theorem | 10 / 10 | 5 | 6 | foundation_next_MB1.3 |
@@ -221,8 +221,8 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | MB3.5 Basic ordinary differential equations | 12 / 12 | 7 | 6 | ode_accuracy_explorer |
 | MB4.1 Matrices and determinants | 10 / 10 | 5 | 6 | foundation_next_MB4.1 |
 | MB4.2 Vector algebra | 10 / 10 | 5 | 6 | foundation_next_MB4.2 |
-| MB4.3 Probability and conditional probability | 10 / 10 | 5 | 6 | foundation_next_MB4.3, bayes_explorer |
-| MB4.4 Distributions and expectation | 10 / 10 | 5 | 6 | foundation_next_MB4.4 |
+| MB4.3 Probability and conditional probability | 10 / 10 | 5 | 9 | foundation_next_MB4.3, bayes_explorer |
+| MB4.4 Distributions and expectation | 10 / 10 | 5 | 9 | foundation_next_MB4.4 |
 | PB1.1 Kinematics and Newton’s laws | 13 / 13 | 7 | 8 | falling_bodies |
 | PB1.2 Work, energy and momentum | 13 / 13 | 9 | 8 | collision_explorer |
 | PB1.3 Rotation and rolling | 14 / 14 | 9 | 9 | rolling_explorer |
@@ -250,18 +250,18 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH10.2 Dirac equation and spin | 9 / 9 | 4 | 3 | quantum_PH10.2 |
 | PH10.3 Path-integral formulation | 9 / 9 | 4 | 3 | quantum_PH10.3 |
 | PH10.4 Second quantisation | 9 / 9 | 4 | 3 | quantum_PH10.4 |
-| PH10.5 Many-body theory and Hartree-Fock | 9 / 9 | 4 | 3 | quantum_PH10.5 |
+| PH10.5 Many-body theory and Hartree-Fock | 9 / 9 | 4 | 7 | quantum_PH10.5 |
 | PH10.6 Open quantum systems and the Lindblad equation | 9 / 9 | 4 | 3 | quantum_PH10.6 |
 | PH11.1 Spacetime and Lorentz transformations | 9 / 9 | 4 | 3 | matter_PH11.1 |
 | PH11.2 Four-vectors and relativistic dynamics | 9 / 9 | 4 | 3 | matter_PH11.2 |
 | PH11.3 Relativistic collisions and particle kinematics | 9 / 9 | 4 | 3 | matter_PH11.3 |
-| PH11.4 Acceleration, Thomas precession and relativistic optics | 9 / 9 | 4 | 3 | matter_PH11.4 |
+| PH11.4 Acceleration, Thomas precession and relativistic optics | 9 / 9 | 4 | 7 | matter_PH11.4 |
 | PH12.1 Hydrogenic fine and hyperfine structure | 9 / 9 | 4 | 3 | matter_PH12.1 |
 | PH12.2 Multi-electron atoms and term symbols | 9 / 9 | 4 | 3 | matter_PH12.2 |
 | PH12.3 Atoms in fields (Zeeman, Stark) | 9 / 9 | 4 | 3 | matter_PH12.3 |
 | PH12.4 Molecular structure and spectra | 9 / 9 | 4 | 3 | matter_PH12.4 |
 | PH12.5 Atom-light interaction | 9 / 9 | 4 | 3 | matter_PH12.5 |
-| PH12.6 Laser cooling and Bose-Einstein condensation | 9 / 9 | 4 | 3 | matter_PH12.6 |
+| PH12.6 Laser cooling and Bose-Einstein condensation | 9 / 9 | 4 | 7 | matter_PH12.6 |
 | PH13.1 Nuclear structure and models | 9 / 9 | 4 | 3 | matter_PH13.1 |
 | PH13.2 Radioactivity and decay | 9 / 9 | 4 | 3 | matter_PH13.2 |
 | PH13.3 Nuclear reactions, fission and fusion | 9 / 9 | 4 | 3 | matter_PH13.3 |
@@ -287,7 +287,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH15.8 Higgs mechanism and electroweak theory | 9 / 9 | 4 | 3 | fields_PH15.8 |
 | PH16.1 Equivalence principle and curved spacetime | 10 / 10 | 5 | 3 | fields_PH16.1 |
 | PH16.2 Einstein field equations | 9 / 9 | 4 | 3 | fields_PH16.2 |
-| PH16.3 Schwarzschild solution and classical tests | 9 / 9 | 4 | 3 | fields_PH16.3 |
+| PH16.3 Schwarzschild solution and classical tests | 9 / 9 | 4 | 7 | fields_PH16.3 |
 | PH16.4 Black holes: Kerr, thermodynamics and Hawking radiation | 9 / 9 | 4 | 3 | fields_PH16.4 |
 | PH16.5 Gravitational waves | 9 / 9 | 4 | 3 | fields_PH16.5 |
 | PH16.6 Cosmological solutions (FLRW) | 9 / 9 | 4 | 3 | fields_PH16.6 |
@@ -308,7 +308,7 @@ Generated with `node scripts/content-audit.mjs`. This is editorial triage, not v
 | PH2.4 Hamiltonian mechanics and phase space | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
 | PH2.5 Canonical transformations and Poisson brackets | 10 / 10 | 5 | 4 | canonical_shear_explorer |
 | PH2.6 Hamilton-Jacobi theory and action-angle variables | 10 / 10 | 5 | 4 | hamiltonian_phase_explorer |
-| PH2.7 Small oscillations and normal modes | 10 / 10 | 5 | 4 | coupled_oscillator_lab |
+| PH2.7 Small oscillations and normal modes | 10 / 10 | 5 | 8 | coupled_oscillator_lab |
 | PH3.1 Nonlinear oscillators, chaos and Lyapunov exponents | 9 / 9 | 4 | 3 | thermal_optics_PH3.1 |
 | PH3.2 Stress and strain | 9 / 9 | 4 | 3 | thermal_optics_PH3.2 |
 | PH3.3 Fluid dynamics (Euler and Navier-Stokes) | 9 / 9 | 4 | 3 | thermal_optics_PH3.3 |

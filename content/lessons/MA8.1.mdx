@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must a probability density be at most one?",
+      "prompt": "A continuous random variable has density f. Can f(x) be greater than 1?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, but only for a discrete variable, which has no density",
+        "Yes: only the integral of f over an event must lie in [0,1]",
+        "No: a probability can never exceed 1, so neither can its density",
+        "No: a density is itself a probability and is bounded by one"
       ],
-      "answer": "No",
-      "explanation": "Only its integral over an event must lie between zero and one.",
+      "answer": "Yes: only the integral of f over an event must lie in [0,1]",
+      "explanation": "The uniform density on [0, 0.5] equals 2 everywhere on its support. Probability is the area under the density, not its height.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try the uniform distribution on [0, 0.5]."
     },
     {
       "id": "concept-2",
-      "prompt": "Does expectation linearity require independence?",
+      "prompt": "When does E[X + Y] = E[X] + E[Y] hold?",
       "options": [
-        "No",
-        "Yes"
+        "Whenever both expectations exist",
+        "Only if X and Y are uncorrelated with each other",
+        "Only if X and Y happen to have equal variances",
+        "Only if X and Y are independent of one another"
       ],
-      "answer": "No",
-      "explanation": "Integrability suffices for sums.",
+      "answer": "Whenever both expectations exist",
+      "explanation": "Expectation is linear. Independence is needed for the variance of a sum (via the covariance), not for its mean.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which quantity needs independence: the mean of a sum or its variance?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can elementary event division condition on an event of probability zero?",
+      "prompt": "How is P(A | B) defined, and what happens if P(B) = 0?",
       "options": [
-        "Yes",
-        "No"
+        "P(A∩B)/P(B); the ratio is undefined for P(B) = 0",
+        "P(A∩B)/P(A), which is defined for any event B whatever",
+        "P(A)P(B), which is used whenever B has zero probability",
+        "P(A∩B)/P(B), which is simply 0 when P(B) = 0"
       ],
-      "answer": "No",
-      "explanation": "The denominator would be zero; another conditional construction is needed.",
+      "answer": "P(A∩B)/P(B); the ratio is undefined for P(B) = 0",
+      "explanation": "The denominator would be zero. Conditioning on a continuous variable taking an exact value uses conditional densities or regular conditional distributions instead.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the denominator when P(B) = 0?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does the second term in total variance represent?",
-      "answer": "Variation of conditional means across groups",
+      "prompt": "In Var(X) = E[Var(X|G)] + Var(E[X|G]), what does the second term represent?",
+      "answer": "The variation of the group means about the overall mean",
       "options": [
-        "Variation of conditional means across groups",
-        "An optional correction that is always zero"
+        "The variation of the group means about the overall mean",
+        "The average of the variances within the individual groups",
+        "A correction term that is always zero for any grouping",
+        "The covariance between X and the group label G"
       ],
-      "explanation": "Mixing different group means adds uncertainty.",
+      "explanation": "The first term is the average spread inside groups. The second measures how different the group means are, which adds to the total variance.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which term would vanish if all groups had the same mean?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Are mutually exclusive events with positive probabilities independent?",
-      "answer": "No; their intersection is zero but the product is positive.",
+      "prompt": "Events A and B are disjoint and each has positive probability. Are they independent?",
+      "answer": "No: P(A∩B) = 0 but P(A)P(B) > 0",
       "options": [
-        "Yes; disjoint and independent mean the same thing.",
-        "No; their intersection is zero but the product is positive."
+        "Yes: disjoint events cannot influence each other",
+        "No: P(A∩B) = 0 but P(A)P(B) > 0",
+        "Only if P(A) = P(B)",
+        "Yes: P(A∩B) = 0 is the independence condition"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Compare the joint probability to the product.",
+      "hint": "Compare P(A∩B) with the product P(A)P(B).",
+      "explanation": "Independence needs P(A∩B) = P(A)P(B). Disjoint events with positive probabilities fail this: learning A occurred tells you B did not.",
       "misconceptions": {
         "Yes; disjoint and independent mean the same thing.": "Compare the joint probability to the product."
       },

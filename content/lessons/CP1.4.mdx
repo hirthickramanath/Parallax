@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a smooth plotted trajectory guarantee conserved energy?",
-      "answer": "No",
+      "prompt": "A plotted orbit looks smooth and closed. What does that guarantee about energy conservation?",
+      "answer": "Nothing: small local errors can accumulate in ways the picture does not show",
       "options": [
-        "Yes",
-        "No"
+        "Nothing: small local errors can accumulate in ways the picture does not show",
+        "Energy is conserved exactly but the phase of the orbit must be wrong",
+        "Energy is conserved provided the plotted curve has no visible kinks",
+        "Energy is conserved to machine precision whenever the orbit looks closed"
       ],
-      "explanation": "Small local errors can accumulate systematically.",
+      "explanation": "A smooth curve can still drift slowly in energy or phase. Check energy and phase error numerically, ideally against an analytic or refined solution.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a slow drift be seen in one plot of a single orbit?"
     },
     {
       "id": "c2",
-      "prompt": "Does symplectic mean exact original-energy conservation each step?",
-      "answer": "No",
+      "prompt": "What does 'symplectic' guarantee for an integrator of a Hamiltonian system?",
+      "answer": "It preserves phase-space structure, so the energy error stays bounded rather than drifting",
       "options": [
-        "No",
-        "Yes"
+        "Stability for every step size, however large",
+        "It preserves phase-space structure, so the energy error stays bounded rather than drifting",
+        "Exact conservation of the original energy at every single step",
+        "Zero phase error however many orbits are integrated"
       ],
-      "explanation": "It preserves geometric structure under its assumptions.",
+      "explanation": "Symplectic methods conserve a nearby (modified) Hamiltonian, so energy oscillates within bounds instead of drifting. They are not exactly energy-conserving and can still be unstable for large steps.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is preserving a geometric structure the same as preserving one number exactly?"
     },
     {
       "id": "c3",
-      "prompt": "Are stability and accuracy the same requirement?",
-      "answer": "No",
+      "prompt": "For y' = −10y, explicit Euler with h = 0.15 is stable (multiplier −0.5). Is it accurate?",
+      "answer": "No: stable means the error does not blow up",
       "options": [
-        "Yes",
-        "No"
+        "No: a stable method is always inaccurate, whatever the step",
+        "Yes: any stable method is automatically an accurate one",
+        "Yes: a multiplier smaller than one in size gives the exact solution",
+        "No: stable means the error does not blow up"
       ],
-      "explanation": "A stable answer can still be inaccurate.",
+      "explanation": "The true factor per step is e^(−1.5) ≈ 0.22, positive. Euler's −0.5 alternates in sign, so it is stable but a poor approximation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the sign and size of Euler's factor with the true factor e^(−λh)."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Does a symplectic integrator generally conserve the original Hamiltonian exactly at every finite step?",
-      "answer": "No; symplectic structure is not exact stepwise energy conservation.",
+      "prompt": "After many oscillation periods, how does velocity Verlet's energy error compare with forward Euler's for a harmonic oscillator?",
+      "answer": "Verlet's stays bounded and oscillates, while Euler's grows steadily",
       "options": [
-        "Yes; symplectic always means zero energy error.",
-        "No; symplectic structure is not exact stepwise energy conservation."
+        "Both grow at the same rate once enough periods have passed",
+        "Euler's stays bounded and Verlet's is the one that grows",
+        "Verlet's stays bounded and oscillates, while Euler's grows steadily",
+        "Both stay exactly zero, since the system is conservative"
       ],
-      "explanation": "Distinguish preservation of the symplectic form from preservation of the original energy.",
+      "explanation": "Forward Euler multiplies the amplitude by √(1+(hω)²) each step, so energy grows. Velocity Verlet is symplectic and its energy error stays bounded.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Which method has a structure-preserving design, and which multiplies the amplitude each step?",
       "misconceptions": {
         "Yes; symplectic always means zero energy error.": "Distinguish preservation of the symplectic form from preservation of the original energy."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Does local order alone guarantee stability for every step size?",
-      "answer": "No; the equation and amplification region matter.",
+      "prompt": "RK4 is fourth-order accurate. What happens for y' = −λy if the step is too large?",
+      "answer": "It can blow up: stability needs λh inside its stability region",
       "options": [
-        "Yes; fourth order is unconditionally stable.",
-        "No; the equation and amplification region matter."
+        "It is stable at any step, because high order means unconditional stability",
+        "It always decays smoothly but loses accuracy as the step grows",
+        "It is stable whenever h < 1, whatever the value of λ",
+        "It can blow up: stability needs λh inside its stability region"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Check the method on the problem spectrum.",
+      "hint": "Evaluate the amplification polynomial at a large λh.",
+      "explanation": "Accuracy order and stability are separate. The RK4 amplification polynomial exceeds 1 in size once |λh| passes about 2.8.",
       "misconceptions": {
         "Yes; fourth order is unconditionally stable.": "Check the method on the problem spectrum."
       },

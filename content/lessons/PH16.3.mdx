@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the Schwarzschild r_s chart problem the same as the central curvature singularity?",
+      "prompt": "In Schwarzschild coordinates, what is happening at r = r_s?",
       "options": [
-        "Yes",
-        "No"
+        "The chart is singular but spacetime is regular there",
+        "The physical surface of the central body",
+        "A curvature singularity where the tidal forces diverge",
+        "Nothing happens: no feature appears in any coordinate system"
       ],
-      "answer": "No",
-      "explanation": "A regular horizon extension distinguishes them.",
+      "answer": "The chart is singular but spacetime is regular there",
+      "explanation": "Curvature invariants such as the Kretschmann scalar are finite at r_s. A regular extension of the chart (Eddington–Finkelstein, Kruskal) shows the horizon is not a singularity; the invariants diverge at r = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do curvature invariants diverge at r_s or only at r = 0?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a static exterior clock formula describe arbitrary infalling motion?",
+      "prompt": "A hovering clock at fixed r obeys dτ = √(1 − r_s/r) dt. Does this apply to a freely falling clock?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it describes every clock located at radius r",
+        "No: it holds for static observers; a falling clock has a different worldline and proper time",
+        "No: gravity does not affect the rate of freely falling clocks",
+        "Yes, but only for clocks falling radially inward"
       ],
-      "answer": "No",
-      "explanation": "Observer worldlines differ.",
+      "answer": "No: it holds for static observers; a falling clock has a different worldline and proper time",
+      "explanation": "The factor comes from a worldline with fixed r. A freely falling observer has dr/dt ≠ 0 and uses a different relation between proper time and coordinate time.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the observer's worldline in each case?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can weak-deflection formulas be extrapolated to every capture regime?",
+      "prompt": "The weak-field deflection angle 4GM/(c²b) is applied to a ray passing near a black hole's photon sphere. Is that valid?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the formula holds for any impact parameter",
+        "No: black holes do not deflect light at all",
+        "No: it needs b ≫ r_s; near the photon sphere the full geodesics are required and rays can be captured",
+        "Yes, once a relativistic correction factor is included"
       ],
-      "answer": "No",
-      "explanation": "Strong-field behaviour needs the full geodesics.",
+      "answer": "No: it needs b ≫ r_s; near the photon sphere the full geodesics are required and rays can be captured",
+      "explanation": "For b below about 2.6 r_s light is captured, and just above it the deflection angle is large and diverges logarithmically; the weak-field series fails there.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the impact parameter with the Schwarzschild radius."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify observers for redshift?",
-      "answer": "Motion and gravitational position both affect frequency comparison.",
+      "prompt": "Why must the observers be specified when quoting a gravitational redshift?",
+      "answer": "Frequency comparisons depend on both the observers' motion and their position in the field",
       "options": [
-        "Motion and gravitational position both affect frequency comparison.",
-        "A radius defined by symmetry-sphere area 4πr²."
+        "Only the emitter's radius matters, not who measures the frequency",
+        "Redshift is a property of the photon alone, independent of anyone measuring it",
+        "Frequency comparisons depend on both the observers' motion and their position in the field",
+        "Redshift is defined only for observers located at infinity"
       ],
-      "explanation": "Motion and gravitational position both affect frequency comparison.",
+      "explanation": "The measured frequency is −k·u evaluated for each observer's four-velocity, so changing the observer's motion changes the result.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Frequency is measured by someone: what do they contribute?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does the stationary clock factor imply an infalling observer experiences proper time stopping at the horizon?",
-      "answer": "No; static and freely falling observers differ.",
+      "prompt": "A freely falling observer crosses r = r_s. What does their own clock do?",
+      "answer": "It keeps ticking and crosses the horizon in finite proper time",
       "options": [
-        "Yes; every local clock physically stops there.",
-        "No; static and freely falling observers differ."
+        "It keeps ticking and crosses the horizon in finite proper time",
+        "It runs infinitely fast as r_s is approached",
+        "It runs backward once the horizon is crossed",
+        "It stops ticking as the observer reaches r_s"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the worldline and regular local frame.",
+      "hint": "Whose time is infinite: the coordinate time or the infaller's proper time?",
+      "explanation": "The infinite coordinate time to reach r_s is a feature of the static description. The falling observer's proper time is finite, and a regular local frame shows nothing singular at the horizon.",
       "misconceptions": {
         "Yes; every local clock physically stops there.": "Use the worldline and regular local frame."
       },

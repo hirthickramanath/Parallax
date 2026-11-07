@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does expectation have to be an attainable single outcome?",
-      "answer": "No",
+      "prompt": "A fair six-sided die has mean 3.5. What does this show about expectation?",
+      "answer": "The expectation need not be a value the variable can actually take",
       "options": [
-        "Yes",
-        "No"
+        "The expectation need not be a value the variable can actually take",
+        "The expectation is always the most likely single outcome",
+        "The die must have a face marked 3.5 to give that mean",
+        "The die must be biased, since 3.5 can never be rolled"
       ],
-      "explanation": "A fair die has mean 3.5.",
+      "explanation": "Expectation is a probability-weighted average, not a prediction of a single roll. Here (1+2+3+4+5+6)/6 = 3.5.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Add up the outcomes weighted by their probabilities."
     },
     {
       "id": "c2",
-      "prompt": "Does averaging remove a common fixed bias?",
-      "answer": "No",
+      "prompt": "Every measurement carries the same fixed offset (a systematic bias). What does averaging many measurements do to it?",
+      "answer": "Nothing: the average carries the same offset",
       "options": [
-        "No",
-        "Yes"
+        "It removes the offset provided the measurements are independent",
+        "It halves the offset each time the sample size is doubled",
+        "It removes the offset as the sample size grows large enough",
+        "Nothing: the average carries the same offset"
       ],
-      "explanation": "The same offset remains in the average.",
+      "explanation": "E[X + b] = E[X] + b. The standard error shrinks as 1/√N, but a common offset is untouched.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the expectation of X + b?"
     },
     {
       "id": "c3",
-      "prompt": "When do independent variances add?",
-      "answer": "When finite variances exist",
+      "prompt": "Which condition lets you write Var(X + Y) = Var(X) + Var(Y)?",
+      "answer": "X and Y uncorrelated (for example independent) with finite variances",
       "options": [
-        "Regardless of existence",
-        "When finite variances exist"
+        "X and Y have equal means, so the offsets cancel",
+        "None: variance is linear for all random variables",
+        "X and Y have the same probability distribution",
+        "X and Y uncorrelated (for example independent) with finite variances"
       ],
-      "explanation": "Variance arithmetic requires defined finite moments here.",
+      "explanation": "Var(X+Y) = Var(X) + Var(Y) + 2Cov(X,Y). The extra term vanishes for uncorrelated variables, provided the variances exist.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Expand the square of the centred sum."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "May Var(X+Y)=Var(X)+Var(Y) be assumed for correlated finite-variance X and Y?",
-      "answer": "No; the term 2 Cov(X,Y) is also required.",
+      "prompt": "Why does Var(X + Y) = Var(X) + Var(Y) fail for positively correlated variables?",
+      "answer": "The cross term 2Cov(X,Y) is also present in the expansion and adds to the variance",
       "options": [
-        "Yes; variance is linear for all random variables.",
-        "No; the term 2 Cov(X,Y) is also required."
+        "Dependent variables are required to have equal means",
+        "The covariance terms cancel by linearity of expectation",
+        "The cross term 2Cov(X,Y) is also present in the expansion and adds to the variance",
+        "Variance is simply not defined for dependent variables"
       ],
-      "explanation": "Expand the square of the centered sum.",
+      "explanation": "Linearity of expectation gives E[X+Y]; the variance involves the square of the sum, which contains the cross term.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Which term appears when you square (X − μX) + (Y − μY)?",
       "misconceptions": {
         "Yes; variance is linear for all random variables.": "Expand the square of the centered sum."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Do variances of arbitrary dependent variables always add without covariance terms?",
-      "answer": "No; covariance can change the sum variance.",
+      "prompt": "Var(X) = 4, Var(Y) = 9 and Cov(X, Y) = 3. What is Var(X + Y)?",
+      "answer": "19",
       "options": [
-        "Yes; linearity of expectation removes dependence.",
-        "No; covariance can change the sum variance."
+        "25",
+        "16",
+        "19",
+        "13"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Linearity of means does not imply variance additivity.",
+      "hint": "Include the cross term 2Cov(X,Y).",
+      "explanation": "Var(X+Y) = 4 + 9 + 2·3 = 19. Ignoring the covariance would give 13.",
       "misconceptions": {
         "Yes; linearity of expectation removes dependence.": "Linearity of means does not imply variance additivity."
       },

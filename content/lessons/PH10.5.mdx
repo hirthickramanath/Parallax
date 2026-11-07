@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does Hartree–Fock omit all exchange?",
+      "prompt": "What does Hartree–Fock do about electron exchange?",
       "options": [
-        "Yes",
-        "No"
+        "It includes exchange exactly through the Slater determinant, but omits correlation beyond it",
+        "It includes exchange only approximately, through a local density",
+        "It includes both exchange and correlation exactly, within the basis",
+        "It omits exchange entirely, keeping only the Hartree mean-field term"
       ],
-      "answer": "No",
-      "explanation": "Antisymmetry generates exchange terms.",
+      "answer": "It includes exchange exactly through the Slater determinant, but omits correlation beyond it",
+      "explanation": "Antisymmetry of the determinant generates the exchange term. What it leaves out is correlation beyond this mean-field structure.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the exchange term come from in a Slater determinant?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does small iterative residual prove a global HF minimum?",
+      "prompt": "An SCF iteration reports a tiny residual. What does that prove?",
       "options": [
-        "No",
-        "Yes"
+        "The energy now equals the exact ground-state energy of the system",
+        "A stationary point was reached; it could be a saddle or a local minimum, not necessarily the global one",
+        "The correlation energy of the molecule must be zero",
+        "The global Hartree–Fock minimum has been found for the molecule"
       ],
-      "answer": "No",
-      "explanation": "Other stationary states can exist.",
+      "answer": "A stationary point was reached; it could be a saddle or a local minimum, not necessarily the global one",
+      "explanation": "A small residual means the Fock operator is self-consistent with its orbitals. Other stationary solutions can exist, so state stability and starting guess matter.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a vanishing gradient tell you about the kind of point?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is a same-Hamiltonian variational bound automatically a real-world error bar?",
+      "prompt": "The Hartree–Fock energy lies above the exact ground-state energy of the same Hamiltonian. Is that gap an error bar on a real molecule's energy?",
       "options": [
-        "Yes",
-        "No"
+        "No: it applies to that model Hamiltonian only",
+        "Yes, once the basis set has been made complete",
+        "Yes: the variational bound is the total error on the real molecule",
+        "No: Hartree–Fock energies are not variational at all"
       ],
-      "answer": "No",
-      "explanation": "Hamiltonian/model errors are separate.",
+      "answer": "No: it applies to that model Hamiltonian only",
+      "explanation": "The variational bound compares trial states for a fixed Hamiltonian. Real molecules involve additional approximations that the bound does not quantify.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which Hamiltonian does the variational bound refer to?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must numerical convergence distinguish?",
-      "answer": "Iteration, basis, state and physical-model errors.",
+      "prompt": "A Hartree–Fock energy keeps changing as you enlarge the basis set. Which error is that?",
+      "answer": "Basis-set error, separate from iteration error and physical-model error",
       "options": [
-        "Iteration, basis, state and physical-model errors.",
-        "Slater determinants under the stated constraints."
+        "Physical-model error caused by the missing correlation energy",
+        "Not an error at all: energies are supposed to change with the basis",
+        "Iteration error, which a tighter SCF convergence threshold would remove",
+        "Basis-set error, separate from iteration error and physical-model error"
       ],
-      "explanation": "Iteration, basis, state and physical-model errors.",
+      "explanation": "Convergence has to be tested separately for the SCF iterations, the basis, the electronic state and the physical model.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What did you change between the two calculations?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does one Slater determinant generally include every electron-correlation effect?",
-      "answer": "No; Hartree–Fock omits correlation beyond its mean-field exchange structure.",
+      "prompt": "Which effect lies beyond a single Slater determinant?",
+      "answer": "Electron correlation beyond mean-field exchange, such as instantaneous repulsion",
       "options": [
-        "Yes; antisymmetry alone solves all interactions exactly.",
-        "No; Hartree–Fock omits correlation beyond its mean-field exchange structure."
+        "Antisymmetry of the many-electron wavefunction under exchange",
+        "Electron correlation beyond mean-field exchange, such as instantaneous repulsion",
+        "The Pauli exclusion principle for electrons with the same spin",
+        "Exchange interaction between same-spin electrons"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Exchange and full correlation are distinct.",
+      "hint": "Which effects does antisymmetry already supply?",
+      "explanation": "A single determinant builds in antisymmetry and exchange. Correlated motion needs additional determinants or other methods.",
       "misconceptions": {
         "Yes; antisymmetry alone solves all interactions exactly.": "Exchange and full correlation are distinct."
       },
