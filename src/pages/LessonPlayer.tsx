@@ -42,6 +42,9 @@ function layerFamily(layer: string) {
 export function LessonPlayer() {
   const { id = "" } = useParams();
   const lesson = course.authored[id];
+  useEffect(() => {
+    if (!lesson) document.title = "Lesson not found — Parallax";
+  }, [lesson]);
   return lesson ? (
     <Player key={id} id={id} />
   ) : (
@@ -56,6 +59,9 @@ function Player({ id }: { id: string }) {
   const { tutorUrl } = useServices();
   const store = useLearning(),
     lesson = course.authored[id];
+  useEffect(() => {
+    document.title = `${lesson.title} — Parallax`;
+  }, [lesson.title]);
   const [index, setIndex] = useState(() => {
       const bookmark = store.records.lessons[id]?.lastSection;
       return Math.max(

@@ -17,6 +17,7 @@ import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
 import { AccountMenu } from "./components/AccountMenu";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { RouteTitle } from "./components/RouteTitle";
 import { Login } from "./pages/Login";
 import "@fontsource-variable/literata/wght.css";
 import "@fontsource-variable/literata/wght-italic.css";
@@ -119,6 +120,7 @@ function Renamed({ children }: { children: ReactElement }) {
 function App() {
   return (
     <Suspense fallback={<SkyLoader />}>
+      <RouteTitle />
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Entry />} />

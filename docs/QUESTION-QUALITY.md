@@ -63,15 +63,23 @@ a floor, not a quality judgement.
 
 ## Known limitation: retries (not changed)
 
-`QuestionCard` lets a learner retry a question outside the adaptive check, and `LessonPlayer` scores the check from
-the latest attempt per question. A two-option question can therefore be passed by clicking both options. Four options
-make this much slower but do not remove it. Options, none implemented:
+Code reading (`QuestionCard`, `AdaptiveCheck`, `LessonPlayer`):
 
-1. Score the check on the first attempt only.
-2. Lock a question after the first answer inside the check.
+- The adaptive "Find your challenge" check on the first section already locks each question after one answer
+  (`lockAfterSubmit`), so it cannot be gamed by retrying.
+- The lesson's own check and problem questions are not locked. A learner can resubmit until correct, and
+  `LessonPlayer` computes `mastery` from the latest attempt per question. With four options a learner can reach full
+  mastery by trial and error, and nothing in the record shows how many tries it took. XP is awarded once per question,
+  so it is not inflated.
+- Trusted, server-side assessment (`TrustedAssessment`) is a separate path and is not affected.
+
+Options, none implemented:
+
+1. Score mastery on the first attempt only (keep retries for learning, but record the first attempt separately).
+2. Lock a question after the first answer inside the check, as the adaptive check does.
 3. Keep as is and treat the check as formative.
 
-This changes learner-visible behaviour, so it is left for the owner to decide.
+This changes learner-visible behaviour, so it is left for the owner to decide. Option 1 is the least disruptive.
 
 ## Consequences for review
 
