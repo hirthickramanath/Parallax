@@ -14,7 +14,7 @@
       "id": "concept-1",
       "prompt": "A signal was sampled below the Nyquist rate, so a high-frequency tone appears at a low frequency. Can digital filtering later recover the original uniquely?",
       "options": [
-        "No: aliasing affects only the amplitude of the tone, so the original frequency can be read off afterwards",
+        "No: aliasing affects the amplitude alone, so the frequency can be recovered",
         "No: different input frequencies can produce identical samples",
         "Yes: aliasing is reversible by interpolation",
         "Yes: a good filter undoes aliasing"
@@ -30,7 +30,7 @@
       "prompt": "A sensor is read by a 24-bit ADC. Does the bit depth alone set the sensor accuracy?",
       "options": [
         "No: calibration, noise and nonlinearity limit accuracy more than the number of bits",
-        "No: ADCs have no resolution of their own, so the accuracy depends only on the sensor and the amplifier",
+        "No: ADCs have no resolution of their own, so accuracy rests on the sensor and amplifier",
         "Yes: more bits means more accuracy",
         "Yes: a 24-bit ADC is accurate to 24 bits"
       ],
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "You save raw data from an experiment. Should the acquisition settings (gain, sample rate, filter) be saved too?",
       "options": [
-        "No: settings can always be guessed",
-        "No: only the numbers matter",
+        "No: settings can be guessed afterwards from the shape of the data",
+        "No: the numbers matter, and the settings add no information to them",
         "Yes: they define the instrument's response and are needed to interpret the data",
-        "Yes: but only for analogue instruments"
+        "Yes: but just for analogue instruments, where the gain and the sampling are set by hand"
       ],
       "answer": "Yes: they define the instrument's response and are needed to interpret the data",
       "explanation": "Without gain and sample rate you cannot convert counts to physical units.",
@@ -116,7 +116,7 @@
       "answer": "No: amplitude resolution and time sampling are independent",
       "options": [
         "No: amplitude resolution and time sampling are independent",
-        "Yes: more bits repair every sampling error",
+        "Yes: more bits repair the sampling error of a sensor",
         "Yes: aliasing is an amplitude error",
         "No: bits change the sample rate"
       ],

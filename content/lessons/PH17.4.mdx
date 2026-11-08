@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "Your molecular dynamics code computes the force exactly from a correct potential. Is the trajectory therefore free of integration error?",
       "options": [
-        "No: forces cannot be computed exactly",
+        "No: forces cannot be computed to the precision needed in the code",
         "Yes: exact forces mean exact trajectories",
         "No: finite time steps and boundary treatment still introduce errors",
-        "Yes: integration error only affects energy"
+        "Yes: integration error affects the energy alone, not the trajectory in the run"
       ],
       "answer": "No: finite time steps and boundary treatment still introduce errors",
       "explanation": "Integrators such as velocity Verlet have errors of order Δt².",
@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "A thermostat keeps a simulation at constant temperature. Can it change measured dynamical quantities such as diffusion or velocity correlations?",
       "options": [
-        "No: thermostats only change the average temperature of the system, so dynamical quantities like diffusion are unaffected",
+        "No: thermostats change the average temperature, so quantities like diffusion are unaffected",
         "Yes: its coupling perturbs trajectories and can distort dynamics even when static averages are right",
-        "Yes: but only for gases",
+        "Yes: but just for gases, where the thermostat couples to the motion of the free particles in the box",
         "No: dynamics are independent of the ensemble"
       ],
       "answer": "Yes: its coupling perturbs trajectories and can distort dynamics even when static averages are right",
@@ -47,7 +47,7 @@
         "No: force fields don't include forces",
         "No: the force field is a fitted classical approximation to the potential energy surface",
         "Yes: force fields are solved from the Schrödinger equation",
-        "Yes: all MD is ab initio"
+        "Yes: MD is ab initio, as the forces are computed from the electrons in each step of the run"
       ],
       "answer": "No: the force field is a fitted classical approximation to the potential energy surface",
       "explanation": "Ab initio MD computes forces from electronic structure at each step.",
@@ -79,8 +79,8 @@
       "prompt": "Why should a simulation record which force field, with which version and parameters, was used?",
       "answer": "The potential model limits what the simulation can say about real physics",
       "options": [
-        "Names help with filing",
-        "Force fields never matter",
+        "Names help with filing the output of the run in the archive",
+        "Force fields do not matter once the system is equilibrated and the run is long enough",
         "Parameters can be recomputed from scratch",
         "The potential model limits what the simulation can say about real physics"
       ],
@@ -115,10 +115,10 @@
       "prompt": "At a point the potential energy U is zero. Does the force there have to be zero?",
       "answer": "No: force is the negative gradient of U",
       "options": [
-        "Yes: F = U",
+        "Yes: F = U, as force and energy are equal",
         "No: force is the negative gradient of U",
         "Yes: zero energy means equilibrium",
-        "No: force is always zero when U is positive"
+        "No: force is zero whenever U is positive"
       ],
       "hint": "Think of a slope passing through zero.",
       "explanation": "Force is the negative gradient of U, so it depends on the slope, not the value. U = kx has U = 0 at x = 0 but F = −k.",

@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "You compute a derived quantity from two inputs that share the same calibration. Should the correlation enter its uncertainty?",
       "options": [
-        "No: correlation affects only the central value",
-        "No: independent addition in quadrature always applies",
-        "Yes: but only for sums",
+        "No: correlation affects the central value alone, not the uncertainty of the result",
+        "No: independent addition in quadrature applies in the case of shared calibration",
+        "Yes: but just for sums, not for products or ratios of the inputs",
         "Yes: the covariance term can increase or reduce the combined uncertainty"
       ],
       "answer": "Yes: the covariance term can increase or reduce the combined uncertainty",
@@ -44,8 +44,8 @@
       "id": "concept-3",
       "prompt": "A digital meter shows 12.34567 V. Does the number of digits prove that the reading is accurate?",
       "options": [
-        "Yes: the display is exact to the last digit shown, so every digit of the reading can be trusted",
-        "No: displays never show a voltage",
+        "Yes: the display is exact to its last digit, so each digit is reliable",
+        "No: displays do not show a voltage in the usual sense",
         "No: calibration and uncertainty decide how many digits mean anything",
         "Yes: more digits mean more accuracy"
       ],
@@ -79,8 +79,8 @@
       "prompt": "A lesson shows simulated readings. Why must they be labelled as such?",
       "answer": "They are model outputs and not observations from an instrument",
       "options": [
-        "They are real measurements taken earlier, so the label is needed only to give the date of the experiment",
-        "They cannot be graphed",
+        "They are real measurements, so the label gives the date of the run",
+        "They cannot be graphed with the usual tools of the lab",
         "They are model outputs and not observations from an instrument",
         "Labels change the numerical values"
       ],
@@ -115,9 +115,9 @@
       "prompt": "Two errors are perfectly correlated. May you combine them in quadrature as if independent?",
       "answer": "No: the covariance changes the result, so the correlation model must be stated",
       "options": [
-        "Yes: quadrature always applies, since adding squares gives the correct total whatever the correlation",
-        "Yes: correlation only matters for three or more errors",
-        "No: errors cannot be combined",
+        "Yes: quadrature applies, as adding squares gives the correct total whatever the correlation",
+        "Yes: correlation matters just for three or more errors, not for a pair of them in the sum",
+        "No: errors cannot be combined in a single reported result",
         "No: the covariance changes the result, so the correlation model must be stated"
       ],
       "hint": "Compare √(a²+b²) with a+b.",

@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "A system's equations are fully deterministic. Does that guarantee long-term practical predictability?",
       "options": [
-        "Yes: determinism means predictability, since the same start always gives the same result",
-        "Yes: with a computer",
+        "Yes: determinism means predictability in practice",
+        "Yes: with a fast enough computer and good data",
         "No: tiny initial uncertainties can grow exponentially",
-        "Yes: always"
+        "Yes: determinism guarantees prediction over long times"
       ],
       "answer": "No: tiny initial uncertainties can grow exponentially",
       "explanation": "Chaotic systems have a positive Lyapunov exponent.",
@@ -31,8 +31,8 @@
       "options": [
         "No: transients and numerical artifacts must be excluded",
         "Yes: a positive finite-time growth rate proves chaos, since it is the Lyapunov exponent itself",
-        "Yes: always",
-        "Yes: for any time"
+        "Yes: the growth rate is the Lyapunov exponent",
+        "Yes: for a time of the length used in the computation here"
       ],
       "answer": "No: transients and numerical artifacts must be excluded",
       "explanation": "Finite-time exponents fluctuate, and the limit t → ∞ is needed.",
@@ -44,8 +44,8 @@
       "id": "concept-3",
       "prompt": "Two solutions of a nonlinear equation are added. Is the sum a solution?",
       "options": [
-        "Yes: in all cases, since adding solutions is always allowed for differential equations",
-        "Yes: always",
+        "Yes: in each case, as adding solutions is allowed for equations",
+        "Yes: the sum is a solution of the equation, by superposition",
         "Yes: if both are small",
         "Generally not: nonlinear equations do not obey superposition"
       ],
@@ -79,10 +79,10 @@
       "prompt": "What can a Poincaré section show about a flow?",
       "answer": "The reduced recurring structure of the flow on a chosen sampling surface",
       "options": [
-        "Nothing about the dynamics, since a section is only a slice and cannot reveal recurring structure",
+        "No dynamics: a section is a slice and cannot reveal recurring structure",
         "The reduced recurring structure of the flow on a chosen sampling surface",
         "The Lyapunov exponent directly",
-        "The exact trajectory"
+        "The exact trajectory of the flow in time and in space"
       ],
       "explanation": "It reduces a continuous flow to a lower-dimensional map.",
       "type": "mcq",
@@ -117,8 +117,8 @@
       "options": [
         "Yes: a negative multiplier means the point is stable, since deviations alternate in sign and shrink",
         "No: stability needs |derivative| < 1, and a multiplier −2 amplifies deviations",
-        "Yes: any slope below zero",
-        "Yes: negative slopes attract"
+        "Yes: a slope below zero makes the fixed point stable, as deviations shrink in the map",
+        "Yes: negative slopes attract, as the iteration flips sign in each step of the map"
       ],
       "explanation": "The deviation changes by a factor of −2 each step.",
       "hint": "Iterate a small deviation ε.",

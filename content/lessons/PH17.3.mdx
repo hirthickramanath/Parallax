@@ -15,7 +15,7 @@
       "prompt": "A Monte Carlo estimate uses a proposal that never samples a region where the target is nonzero. Does a larger N fix this?",
       "options": [
         "No: the bias increases with N, because each extra sample adds more weight outside the target region",
-        "Yes: the bias shrinks as 1/√N",
+        "Yes: the bias shrinks as 1/√N, as more samples fill in the missing region of the target",
         "Yes: more samples cover everything",
         "No: the estimator targets the wrong region and stays biased however large N gets"
       ],
@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "Monte Carlo error scales as 1/√N. If you quadruple N, is the actual error of that one run guaranteed to halve?",
       "options": [
-        "Yes: exactly half every time",
+        "Yes: half, with the same result in each run",
         "No: the scaling describes the typical standard uncertainty",
-        "No: the error doubles",
+        "No: the error doubles, as more samples add more noise to the sum",
         "Yes: the error halves deterministically"
       ],
       "answer": "No: the scaling describes the typical standard uncertainty",
@@ -80,9 +80,9 @@
       "answer": "So the run can be reproduced exactly, along with the code version and environment",
       "options": [
         "So the run can be reproduced exactly, along with the code version and environment",
-        "Seeds have no effect on results",
-        "To increase accuracy",
-        "To make the result more random"
+        "Seeds have no effect on results, so recording one is a waste of space in the log",
+        "To increase accuracy of the estimate, as a recorded seed lowers the noise in the run",
+        "To make the result more random, as a recorded seed adds noise"
       ],
       "explanation": "Pseudo-random generators are deterministic given a seed.",
       "type": "mcq",
@@ -115,9 +115,9 @@
       "prompt": "An importance-sampling proposal assigns zero density to a rare region where the target integrand is nonzero. Is the estimate still unbiased?",
       "answer": "No: the estimator loses the required support and misses that region's contribution",
       "options": [
-        "Yes: the importance weights correct for it automatically, since they rescale every sample drawn from q",
-        "Yes: rare regions can always be ignored",
-        "No: it only increases variance",
+        "Yes: the importance weights correct for it, as they rescale each sample drawn from q",
+        "Yes: rare regions can be ignored in the estimator, as they are rarely sampled",
+        "No: it increases the variance, but not the bias of the estimator",
         "No: the estimator loses the required support and misses that region's contribution"
       ],
       "hint": "What is the weight p/q at q = 0?",

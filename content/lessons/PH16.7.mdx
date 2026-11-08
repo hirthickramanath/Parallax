@@ -15,9 +15,9 @@
       "prompt": "A numerical relativity movie looks smooth and physical. Does that show the constraint equations are satisfied?",
       "options": [
         "No: you need to monitor constraint residuals and check convergence with resolution",
-        "No: constraints do not exist in a 3+1 evolution, so a smooth movie says nothing about their residuals",
+        "No: constraints do not exist in a 3+1 evolution, so residuals are moot",
         "Yes: smooth output means correct output",
-        "Yes: constraints are automatically conserved"
+        "Yes: constraints are preserved by the evolution scheme itself"
       ],
       "answer": "No: you need to monitor constraint residuals and check convergence with resolution",
       "explanation": "Constraint violations can grow even while output looks plausible.",
@@ -30,9 +30,9 @@
       "prompt": "A simulation extracts gravitational waves at the edge of a finite computational domain. What can go wrong?",
       "options": [
         "Boundary reflections and the finite extraction radius can contaminate the waveform",
-        "The waveform becomes exactly gauge invariant at the boundary, so extraction there is the most reliable",
-        "The waves become stronger",
-        "Nothing: the boundary has no effect"
+        "The waveform becomes gauge invariant at the boundary, so extraction there is reliable",
+        "The waves become stronger near the boundary of the computational box",
+        "No effect: the boundary does not touch the extracted waveform in the run"
       ],
       "answer": "Boundary reflections and the finite extraction radius can contaminate the waveform",
       "explanation": "Practitioners extrapolate to infinity or use Cauchy-characteristic extraction.",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "A group ran a very expensive simulation on a supercomputer. Does the cost alone make the result scientifically valid?",
       "options": [
-        "Yes: supercomputers do not make numerical errors, so a result produced at a large facility is always scientifically valid",
+        "Yes: supercomputers do not make numerical errors, so a result produced at a large facility is scientifically valid",
         "No: verification (solving the equations correctly) and validation (against the physics) are still required",
-        "Yes: more cost means more accuracy",
+        "Yes: more cost means more accuracy, so the result is reliable whatever the method or the resolution that was used",
         "No: computing cost is irrelevant to anything"
       ],
       "answer": "No: verification (solving the equations correctly) and validation (against the physics) are still required",
@@ -82,7 +82,7 @@
         "A study design with checks to carry out, not an executed merger simulation",
         "A measured gravitational waveform",
         "Results of an executed black-hole merger run",
-        "A catalogue of detections"
+        "A catalogue of detections from the gravitational-wave observatories"
       ],
       "explanation": "The lesson specifies what to evolve and what diagnostics to record.",
       "type": "mcq",
@@ -115,9 +115,9 @@
       "prompt": "A synthetic curve shows error falling as h². Is this an executed numerical-relativity simulation?",
       "answer": "No: you still need the actual field evolution and recorded diagnostics to show second-order convergence",
       "options": [
-        "Yes: any h² plot solves Einstein's equations",
+        "Yes: a plot of h² solves Einstein's equations, as the error falls at second order in the code",
         "No: you still need the actual field evolution and recorded diagnostics to show second-order convergence",
-        "Yes: the curve proves the code works",
+        "Yes: the curve proves the code works, as the error falls at the expected rate for the scheme",
         "No: second-order convergence cannot be measured"
       ],
       "hint": "Where do the plotted numbers come from?",
