@@ -15,9 +15,9 @@
       "prompt": "You double the eyepiece magnification on a telescope. Will fine structure smaller than the seeing disc become visible?",
       "options": [
         "No: the point-spread function limits the physical resolution, not magnification",
-        "Yes: until the image is dark",
-        "Yes: if the pixel is small",
-        "Yes: more magnification always resolves more"
+        "Yes: until the image becomes too dark to see the detail clearly",
+        "Yes: if the pixel is small enough, the fine structure becomes visible in the eyepiece image",
+        "Yes: more magnification resolves finer structure at the eyepiece, whatever the optics"
       ],
       "answer": "No: the point-spread function limits the physical resolution, not magnification",
       "explanation": "Magnification enlarges the blur. Resolution is set by diffraction and seeing.",
@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "You apply flat-field correction to a CCD image. Is the result free of uncertainty from pixel sensitivity differences?",
       "options": [
-        "Yes: flat-fielding eliminates every pixel-to-pixel difference, so no uncertainty remains",
-        "Yes: it removes photon noise",
-        "Yes: it removes read noise",
+        "Yes: flat-fielding eliminates the pixel-to-pixel differences, so no uncertainty remains",
+        "Yes: flat-fielding removes photon noise from the image together with the gain pattern",
+        "Yes: flat-fielding also removes read noise, so the image is clean",
         "No: calibration frames themselves carry noise and model limits"
       ],
       "answer": "No: calibration frames themselves carry noise and model limits",
@@ -45,9 +45,9 @@
       "prompt": "A CCD has a quantum efficiency of 90%. Is 90% the fraction of photons from the sky that is detected?",
       "options": [
         "No: telescope, filter and atmospheric losses occur before photons reach the detector",
-        "No: QE is about electrons only",
-        "Yes: that is the total throughput",
-        "Yes: the sky has no losses"
+        "No: QE refers to the conversion of electrons by the readout",
+        "Yes: that figure is the total throughput of the whole system, from sky to counts",
+        "Yes: the sky and the optics have no losses before the detector"
       ],
       "answer": "No: telescope, filter and atmospheric losses occur before photons reach the detector",
       "explanation": "Total throughput multiplies atmosphere, mirrors, optics, filter and QE.",
@@ -80,9 +80,9 @@
       "answer": "It determines how many source and background pixels are included",
       "options": [
         "It sets the exposure time and so decides how many photons the detector collects",
-        "It sets the exposure time",
+        "It sets the exposure time, which fixes the count rate from the star",
         "It determines how many source and background pixels are included",
-        "It only sets the colour"
+        "It fixes the colour, which is a property of the aperture and not of the star"
       ],
       "explanation": "Signal, sky shot noise and read noise all scale with the number of pixels summed.",
       "type": "mcq",
@@ -117,8 +117,8 @@
       "options": [
         "Yes: smaller pixels remove the seeing and diffraction limits down to the size of a pixel",
         "No: sampling cannot restore angular information that the image does not contain",
-        "Yes: down to the pixel size",
-        "No: pixels do not matter"
+        "Yes: the resolution is improved down to the pixel size of the detector, which is chosen freely",
+        "No: pixels do not matter to the detail that is recorded in the image"
       ],
       "explanation": "Pixels sample the point-spread function; they cannot sharpen it.",
       "hint": "Does a finer grid add information?",

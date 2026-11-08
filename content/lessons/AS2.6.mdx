@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "You subtract the mean sky background from a star's aperture counts. Is the photon noise from the sky gone?",
       "options": [
-        "No: sky has no noise",
+        "No: the sky has no random noise once the star is subtracted from it",
         "No: subtraction removes the mean but the random fluctuation (variance) stays",
-        "Yes: subtracting the mean sky level removes the noise from the sky, leaving only the source",
-        "Yes: noise is part of the mean"
+        "Yes: subtracting the mean sky level removes the noise from the sky, leaving just the source",
+        "Yes: noise is part of the mean, so it is removed together with the sky level"
       ],
       "answer": "No: subtraction removes the mean but the random fluctuation (variance) stays",
       "explanation": "Poisson counts fluctuate about their mean by √N, and subtracting adds variance.",
@@ -30,9 +30,9 @@
       "prompt": "A spectrograph has resolving power R = 50,000. Does that mean its wavelength calibration is accurate to 1/50,000?",
       "options": [
         "No: resolution is a width scale, while accuracy concerns calibration bias",
-        "No: resolution is not defined",
+        "No: resolution is not defined for a spectrograph with a slit",
         "Yes: a resolving power of 50,000 means wavelengths are known to one part in 50,000",
-        "Yes: for calibration lamps"
+        "Yes: for calibration lamps the wavelength is known to the resolution, one part in 50,000 or better"
       ],
       "answer": "No: resolution is a width scale, while accuracy concerns calibration bias",
       "explanation": "A spectrum can be sharp yet shifted by a calibration error.",
@@ -80,9 +80,9 @@
       "answer": "The continuum normalisation enters directly into the integrated line strength",
       "options": [
         "The continuum normalisation enters directly into the integrated line strength",
-        "Only the central pixel of the line matters, so the continuum level adds no uncertainty",
-        "The continuum is exact",
-        "It affects only line wavelength"
+        "The central pixel of the line matters, so the continuum level adds no uncertainty",
+        "The continuum level is fixed once the spectrum has been normalised, so it adds no error to the integral",
+        "It affects the line wavelength but leaves the strength unchanged"
       ],
       "explanation": "W = ∫(1 − F/F_c) dλ, so a continuum error scales the result.",
       "type": "mcq",

@@ -15,8 +15,8 @@
       "prompt": "A source is not detected in a survey image. Should you record its flux as zero?",
       "options": [
         "Yes: no detection means no flux, so setting the value to zero is the safest summary",
-        "Yes: or negative",
-        "Yes: set it to zero",
+        "Yes: or negative, whichever value the noise produced for the faint measurement",
+        "Yes: set the flux to zero and carry on with the remaining sources",
         "No: censoring and noise need a measurement model, e.g. an upper limit"
       ],
       "answer": "No: censoring and noise need a measurement model, e.g. an upper limit",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "You apply a signal-to-noise cut to a Gaia catalogue. Can this change the population you study?",
       "options": [
-        "No: a signal-to-noise cut only removes noise and leaves the studied population unchanged",
-        "No: the population is fixed",
+        "No: a signal-to-noise cut removes noise and leaves the studied population unchanged",
+        "No: the population being studied is fixed by nature and cannot be altered by a cut",
         "Yes: selection depends on observable properties such as brightness and colour",
-        "No: they are neutral"
+        "No: signal-to-noise cuts are neutral with respect to the properties of the objects"
       ],
       "answer": "Yes: selection depends on observable properties such as brightness and colour",
       "explanation": "Cuts on parallax error preferentially remove distant and faint stars.",
@@ -45,9 +45,9 @@
       "prompt": "You rerun a live database query next month. Does that alone make your analysis reproducible?",
       "options": [
         "Yes: a live database returns the same answer for the same query, so reruns reproduce the analysis",
-        "Yes: the same query suffices",
+        "Yes: running the same query again is enough to reproduce the analysis",
         "No: the exact response or data release must be retained",
-        "Yes: queries are reproducible"
+        "Yes: database queries are reproducible once the text is recorded"
       ],
       "answer": "No: the exact response or data release must be retained",
       "explanation": "Databases are updated, so the response can change.",
@@ -115,9 +115,9 @@
       "prompt": "A catalogue contains objects with very precisely measured properties. Does it represent an unbiased parent population?",
       "answer": "No: selection can bias which objects enter it",
       "options": [
-        "Yes: precisely measured objects form an unbiased sample, since precision removes selection effects",
-        "Yes: always",
-        "Yes: precise means complete",
+        "Yes: precisely measured objects form an unbiased sample, as precision removes selection effects",
+        "Yes: a catalogue is a fair sample whenever its objects are well measured",
+        "Yes: precisely measured means the catalogue is complete",
         "No: selection can bias which objects enter it"
       ],
       "explanation": "Measurement precision and population completeness are different properties.",

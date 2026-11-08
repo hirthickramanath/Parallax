@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "The Rosseland mean opacity is used in stellar interiors. Is it a simple arithmetic average of κ_ν?",
       "options": [
-        "No: it is a geometric mean of κ_ν, taken with equal weights over all frequencies",
-        "Yes: a simple average",
+        "No: it is a geometric mean of κ_ν, taken with equal weights over frequency",
+        "Yes: it is a simple average of κ_ν over frequency",
         "No: it is a weighted harmonic mean, so low-opacity windows dominate",
-        "Yes: weighted by frequency"
+        "Yes: it is weighted by frequency in a linear way"
       ],
       "answer": "No: it is a weighted harmonic mean, so low-opacity windows dominate",
       "explanation": "1/κ_R = ∫(1/κ_ν)(dB_ν/dT)dν / ∫(dB_ν/dT)dν. Radiation leaks through transparent frequencies.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "Photons scatter mostly in the forward direction. How does this affect the opacity relevant for radiative transport?",
       "options": [
-        "It is higher, because every forward scattering still redirects energy and so adds to the transport opacity",
-        "Scattering stops transport",
+        "It is higher, as a forward scattering still redirects energy and so adds to the transport opacity",
+        "Scattering stops the transport of energy through the gas altogether",
         "Transport opacity is lower, since forward scattering barely changes the direction of energy flow",
-        "It does not matter"
+        "It does not matter for the transport opacity in this setting"
       ],
       "answer": "Transport opacity is lower, since forward scattering barely changes the direction of energy flow",
       "explanation": "κ_tr = κ_s(1 − ⟨cos θ⟩) is smaller when ⟨cos θ⟩ is positive.",
@@ -79,10 +79,10 @@
       "prompt": "What treatment replaces the diffusion approximation near an optically thin boundary?",
       "answer": "A full radiative-transfer calculation",
       "options": [
-        "A stronger diffusion coefficient, because diffusion remains valid however thin the boundary becomes",
+        "A stronger diffusion coefficient, as diffusion remains valid however thin the boundary becomes",
         "A full radiative-transfer calculation",
-        "Ignoring radiation",
-        "Setting the opacity to zero"
+        "Ignoring radiation in the outer layers",
+        "Setting the opacity to zero in the outer layers"
       ],
       "explanation": "Where mean free paths are long, you solve the transfer equation directly.",
       "type": "mcq",
@@ -115,10 +115,10 @@
       "prompt": "Opacity rises while the required energy flux stays fixed in a radiative zone. What must happen to the temperature gradient?",
       "answer": "It must steepen: |dT/dr| ∝ κ L ρ/T³",
       "options": [
-        "It stays the same, because the flux is fixed and the gradient depends on flux alone",
+        "It stays the same, as the flux is fixed and the gradient depends on flux alone",
         "It must steepen: |dT/dr| ∝ κ L ρ/T³",
-        "It reverses",
-        "It flattens"
+        "It reverses in sign near the base of the zone",
+        "It flattens near the base of the zone"
       ],
       "explanation": "The diffusion equation gives dT/dr ∝ −κ ρ F/T³, so a larger κ needs a larger gradient.",
       "hint": "Write dT/dr in terms of κ.",
