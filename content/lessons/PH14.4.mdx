@@ -15,9 +15,9 @@
       "prompt": "A DFT calculation gives a Kohn–Sham band gap. Is it identical to the optical gap measured experimentally?",
       "options": [
         "No: optical absorption involves excitations and excitonic effects that the Kohn–Sham gap does not capture",
-        "Yes: they are the same quantity, since a correct band structure already includes every excitation in the crystal",
-        "Yes: DFT gaps are exact",
-        "No: optical gaps are always zero"
+        "Yes: they are the same quantity, as a correct band structure already includes the excitations in the crystal",
+        "Yes: DFT gaps are exact, as the Kohn–Sham scheme is exact in principle for the ground state",
+        "No: optical gaps are zero, as absorption in a crystal begins at the Fermi level of the electrons in each of the bands"
       ],
       "answer": "No: optical absorption involves excitations and excitonic effects that the Kohn–Sham gap does not capture",
       "explanation": "Standard DFT approximations typically underestimate gaps.",
@@ -32,7 +32,7 @@
         "It couples the degenerate states and opens a gap",
         "It makes the bands cross at higher energy",
         "It removes the zone boundary",
-        "It leaves the crossing exactly as it was"
+        "It leaves the crossing as it was, with no coupling"
       ],
       "answer": "It couples the degenerate states and opens a gap",
       "explanation": "Bragg reflection mixes the two plane waves into standing waves with different energies.",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "Band theory says a half-filled band is a metal. Can a material with such a band still be an insulator?",
       "options": [
-        "No: half filling always gives a metal",
-        "No: the band picture is always exact",
-        "Yes: but only at the zone edge",
+        "No: half filling gives a metal in the band picture, whatever the interaction",
+        "No: the band picture is exact, so the gap cannot open from the interaction",
+        "Yes: but just at the zone edge, where the bands meet in the crystal",
         "Yes: strong electron–electron correlation can open a gap (a Mott insulator)"
       ],
       "answer": "Yes: strong electron–electron correlation can open a gap (a Mott insulator)",
@@ -79,9 +79,9 @@
       "prompt": "What can invalidate classifying a material as metal or insulator from its independent-electron bands?",
       "answer": "Strong correlations, disorder and topology beyond simple band filling",
       "options": [
-        "Having a periodic lattice",
+        "Having a periodic lattice with a basis of atoms in each unit cell of it",
         "Counting the number of electrons correctly",
-        "The use of Bloch's theorem",
+        "The use of Bloch's theorem to label the states of the crystal by momentum",
         "Strong correlations, disorder and topology beyond simple band filling"
       ],
       "explanation": "The filling criterion assumes non-interacting electrons in a perfect crystal.",
@@ -115,10 +115,10 @@
       "prompt": "An electron in a band has nonzero crystal momentum. Must its group velocity be nonzero?",
       "answer": "No: velocity is the slope dE/dk",
       "options": [
-        "Yes: nonzero k always means motion",
+        "Yes: nonzero k means motion",
         "No: velocity is the slope dE/dk",
-        "Yes: v = ħk/m for every band",
-        "No: group velocity is always zero in a band"
+        "Yes: v = ħk/m in each band",
+        "No: group velocity is zero in bands"
       ],
       "hint": "Group velocity is a derivative of the dispersion.",
       "explanation": "Velocity is the slope dE/dk, which vanishes at band edges and extrema. v = (1/ħ) dE/dk.",
