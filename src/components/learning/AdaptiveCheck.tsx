@@ -78,7 +78,6 @@ export function AdaptiveCheck({ lesson }: { lesson: Authored }) {
         <>
           <QuestionCard
             key={`${q.id}-${seen.length}`}
-            lockAfterSubmit
             lessonId={lesson.id}
             question={{ ...q, id: `adaptive-${q.id}`, tier: "adaptive" }}
             onResult={(_, correct) => {

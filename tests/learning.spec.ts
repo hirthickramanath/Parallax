@@ -601,9 +601,15 @@ test("real-analysis exact index answer rejects a nearby integer before accepting
   await question.getByRole("spinbutton").fill("100");
   await question.getByRole("button", { name: "Check answer" }).click();
   await expect(question.getByRole("status")).toContainText("Not quite");
-  await question.getByRole("spinbutton").fill("101");
-  await question.getByRole("button", { name: "Check answer" }).click();
-  await expect(question.getByRole("status")).toContainText("That’s right");
+  // One attempt per question: the first answer is final, the card locks, and it says why.
+  await expect(question.getByRole("spinbutton")).toBeDisabled();
+  await expect(
+    question.getByRole("button", { name: "Check answer" }),
+  ).toBeDisabled();
+  await expect(question).toContainText("one attempt per question");
+  await page.reload();
+  await expect(question.getByRole("spinbutton")).toBeDisabled();
+  await expect(question.getByRole("status")).toContainText("Not quite");
 });
 
 test("radiation apparatus separates extinction, emission and radial Doppler interpretations", async ({
@@ -1912,12 +1918,11 @@ test("discrete group orders reject tolerance-based fractional answers in lesson 
   await page.getByRole("button", { name: "Commit and investigate" }).click();
   await page.getByLabel("Lesson section").selectOption("problems");
   const question = page.locator('[data-question-id="structure-transfer-1"]');
+  // A near miss is wrong for an exact integer answer, and the first attempt is final.
   await question.getByRole("spinbutton").fill("4.01");
   await question.getByRole("button", { name: "Check answer" }).click();
   await expect(question.getByRole("status")).toContainText("Not quite");
-  await question.getByRole("spinbutton").fill("4");
-  await question.getByRole("button", { name: "Check answer" }).click();
-  await expect(question.getByRole("status")).toContainText("That’s right");
+  await expect(question.getByRole("spinbutton")).toBeDisabled();
 });
 
 test("foundation revision begins from dashboard and saves a separate progressive lesson", async ({
