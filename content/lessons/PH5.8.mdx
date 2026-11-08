@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does superluminal phase speed imply superluminal information?",
+      "prompt": "A wave in a plasma has phase speed above c. Does that imply superluminal signalling?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it carries information, since a phase speed above c lets signals move faster than light",
+        "Yes: a phase speed above c is a faster signal",
+        "Yes: it violates relativity",
+        "No: phase speed differs from the speed of signals and energy"
       ],
-      "answer": "No",
-      "explanation": "Phase and causal propagation are distinct.",
+      "answer": "No: phase speed differs from the speed of signals and energy",
+      "explanation": "Group velocity v_g = c²/v_p < c here.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which velocity carries energy?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a cold-fluid model fully describe Landau damping?",
+      "prompt": "A cold-fluid model of a plasma is used to describe wave damping. Does it capture Landau damping?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is a collisional process, so a cold fluid model that includes collisions captures it",
+        "Yes: the cold-fluid equations already contain Landau damping",
+        "Yes: fluid models include it",
+        "No: Landau damping needs kinetic velocity-distribution physics"
       ],
-      "answer": "No",
-      "explanation": "It needs kinetic velocity-distribution physics.",
+      "answer": "No: Landau damping needs kinetic velocity-distribution physics",
+      "explanation": "Landau damping arises from resonant particles with v ≈ ω/k.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a cold fluid have particles at different speeds?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are all mathematical self-force runaway solutions acceptable physical trajectories?",
+      "prompt": "The classical equation for a self-force on a point charge has runaway solutions where acceleration grows exponentially. Are these acceptable?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the runaway branches describe real motion of the charge",
+        "Yes: each mathematical solution is a possible real motion",
+        "No: the approximation's validity and the admissible conditions must be controlled",
+        "Yes: the runaway behaviour is a genuine physical effect"
       ],
-      "answer": "No",
-      "explanation": "The approximation and admissible conditions must be controlled.",
+      "answer": "No: the approximation's validity and the admissible conditions must be controlled",
+      "explanation": "The Abraham–Lorentz equation is not valid at the quantum or classical electron radius scale.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a charge accelerate by itself with no force?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify classical radiation reaction?",
-      "answer": "Point-charge equations and truncations have unphysical branches and limited validity.",
+      "prompt": "Why should classical radiation-reaction results be qualified?",
+      "answer": "Point-charge equations and truncations have unphysical branches and limited validity",
       "options": [
-        "Point-charge equations and truncations have unphysical branches and limited validity.",
-        "Density, electron charge/mass and vacuum permittivity."
+        "They remain valid at arbitrarily short distances and strong fields",
+        "They carry over unchanged to extended charge distributions",
+        "They are exact consequences of Maxwell's equations and the Lorentz force",
+        "Point-charge equations and truncations have unphysical branches and limited validity"
       ],
-      "explanation": "Point-charge equations and truncations have unphysical branches and limited validity.",
+      "explanation": "Runaways and pre-acceleration occur in the Abraham–Lorentz equation.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What breaks at very short timescales?"
     },
     {
       "id": "em-transfer-1",
       "prompt": "For ωp=3,c=1 and k=4, find positive wave frequency.",
       "answer": "5",
       "hint": "Use sqrt(ωp²+c²k²).",
-      "explanation": "Use sqrt(ωp²+c²k²). The value in the stated units is 5.",
+      "explanation": "ω = √(ω_p² + c²k²) = √(9 + 1 × 16) = √25 = 5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For that plasma mode, find group speed c²k/ω.",
       "answer": "0.8",
       "hint": "Differentiate the stated dispersion relation.",
-      "explanation": "Differentiate the stated dispersion relation. The value in the stated units is 0.8.",
+      "explanation": "Differentiating ω² = ω_p² + c²k² gives 2ω dω = 2c²k dk, so v_g = c²k/ω = 1 × 4/5 = 0.8. It is below c, as it must be.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does phase velocity above c in the ideal cold-plasma branch imply faster-than-light signal transmission?",
-      "answer": "No; phase speed differs from packet/signal propagation.",
+      "prompt": "Does phase velocity above c in a cold plasma imply faster-than-light signal transmission?",
+      "answer": "No: phase speed differs from packet and signal propagation",
       "options": [
-        "Yes; a sinusoidal phase directly carries new information at that speed.",
-        "No; phase speed differs from packet/signal propagation."
+        "Yes: at that speed information moves faster than c, which violates relativity in the cold plasma",
+        "Yes: phase speed is by definition the signal speed",
+        "Yes: sinusoidal phase carries new information",
+        "No: phase speed differs from packet and signal propagation"
       ],
-      "explanation": "Group behavior and causal response require the full dispersion model.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Group behaviour and causal response determine information flow.",
+      "hint": "Which velocity governs the envelope?",
       "misconceptions": {
         "Yes; a sinusoidal phase directly carries new information at that speed.": "Group behavior and causal response require the full dispersion model."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Dispersion, plasmas and radiation reaction”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For ω_p=3 and c=2, a wave with ω=5 has k=√(25−9)/2=2. Its phase velocity i
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Dispersion, plasmas and radiation reaction”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Dispersion, plasmas and radiation reaction” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Dispersion, plasmas and radiation reaction” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

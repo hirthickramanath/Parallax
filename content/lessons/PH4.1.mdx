@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero enclosed charge require zero field on the boundary?",
+      "prompt": "A closed surface encloses no net charge. Must the electric field vanish at every point of that surface?",
       "options": [
-        "Yes",
-        "No"
+        "No: only the net flux is zero, and field can enter in places and leave in others",
+        "Yes: zero charge means zero field on the surface, since Gauss's law fixes the field at each point",
+        "Yes: zero enclosed charge means the field is zero on the surface",
+        "Yes: a symmetric closed surface forces the field to vanish on it"
       ],
-      "answer": "No",
-      "explanation": "Only the signed net flux is fixed at zero.",
+      "answer": "No: only the net flux is zero, and field can enter in places and leave in others",
+      "explanation": "A charge outside the surface produces fields that pass through it with zero net flux.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a charge just outside."
     },
     {
       "id": "concept-2",
-      "prompt": "Does choosing a spherical Gaussian surface create spherical source symmetry?",
+      "prompt": "You choose a spherical Gaussian surface around an arbitrary charge distribution. Does that make the field spherically symmetric?",
       "options": [
-        "No",
-        "Yes"
+        "No: the source must supply the symmetry, not the surface",
+        "Yes: if the surface is closed, Gauss's law makes the field spherically symmetric on it",
+        "Yes: Gauss's law makes it symmetric",
+        "Yes: a sphere gives symmetry"
       ],
-      "answer": "No",
-      "explanation": "The source must supply the required symmetry.",
+      "answer": "No: the source must supply the symmetry, not the surface",
+      "explanation": "Gauss's law holds for any surface, but E can be pulled out of the integral only when symmetry makes it constant over the surface.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the surface change the source?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is the field at a point charge defined by its own Coulomb formula?",
+      "prompt": "Is the Coulomb field E = q/(4πε₀r²) defined at the location of the point charge itself?",
       "options": [
-        "Yes",
-        "No"
+        "No: the expression diverges at r = 0",
+        "Yes: it is zero there, since the charge cancels its own field at the centre",
+        "Yes: it equals q",
+        "Yes: it is infinite but defined"
       ],
-      "answer": "No",
-      "explanation": "The expression is singular at the source point.",
+      "answer": "No: the expression diverges at r = 0",
+      "explanation": "The formula is singular at the source point.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate 1/r² at r = 0."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "When can Gauss’s law directly determine a field magnitude?",
-      "answer": "When source symmetry fixes direction and constancy on an appropriate surface",
+      "prompt": "Under what circumstances can Gauss's law alone give the magnitude of E?",
+      "answer": "When the source symmetry fixes the field direction and makes it constant over a suitable surface",
       "options": [
-        "When source symmetry fixes direction and constancy on an appropriate surface",
-        "Whenever any closed surface can be drawn"
+        "When the source symmetry fixes the field direction and makes it constant over a suitable surface",
+        "For a general charge distribution, once a closed surface has been drawn around it",
+        "Whenever a closed surface can be drawn through the region of interest",
+        "When the total enclosed charge is known and the surface is closed"
       ],
-      "explanation": "Flux alone is one integrated constraint.",
+      "explanation": "Flux gives one integrated constraint, so you need symmetry to extract E.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which three symmetries are usually used?"
     },
     {
       "id": "em-transfer-1",
       "prompt": "With ε₀=1 and total enclosed charge 3, find outward electric flux through a closed surface.",
       "answer": "3",
       "hint": "Gauss law gives q_enclosed/ε₀.",
-      "explanation": "Gauss law gives q_enclosed/ε₀. The value in the stated units is 3.",
+      "explanation": "Gauss's law: Φ = q_enc/ε₀ = 3/1 = 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For one point charge q=2, k=1/(4πε₀)=1 and distance r=2, find electric-field magnitude.",
       "answer": "0.5",
       "hint": "Use k|q|/r² in the explicitly stated units.",
-      "explanation": "Use k|q|/r² in the explicitly stated units. The value in the stated units is 0.5.",
+      "explanation": "E = k|q|/r² = 1 × 2/2² = 2/4 = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does zero net enclosed charge imply zero electric field at every point on a closed surface?",
-      "answer": "No; it constrains net flux rather than every local field value.",
+      "prompt": "Does zero net enclosed charge imply that E is zero at every point on the closed surface?",
+      "answer": "No: it constrains the net flux, not every local field value",
       "options": [
-        "Yes; zero flux forces the whole surface field to vanish.",
-        "No; it constrains net flux rather than every local field value."
+        "Yes: Gauss's law makes the field vanish everywhere on a surface that encloses no net charge",
+        "Yes: zero flux forces E = 0",
+        "Yes: the field must vanish at the surface points",
+        "No: it constrains the net flux, not every local field value"
       ],
-      "explanation": "Outside charges and positive/negative contributions can yield cancellation in flux.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Outside charges contribute positive and negative flux that cancel in total.",
+      "hint": "Does zero total flux mean zero flux everywhere?",
       "misconceptions": {
         "Yes; zero flux forces the whole surface field to vanish.": "Outside charges and positive/negative contributions can yield cancellation in flux."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Coulomb's law and Gauss's law (integral and differential)”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -219,18 +233,18 @@ Use normalized units kQ=1 and R=2 for a uniform charged sphere. At r=1, E=kQr/R�
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Coulomb's law and Gauss's law (integral and differential)”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Coulomb's law and Gauss's law (integral and differential)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Coulomb's law and Gauss's law (integral and differential)” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

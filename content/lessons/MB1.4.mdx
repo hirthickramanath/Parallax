@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Can examples alone prove a universal integer claim?",
-      "answer": "No",
+      "prompt": "You check a formula for n = 1 to 100 and it works each time. What does this establish for all positive integers?",
+      "answer": "Nothing certain: untested integers remain",
       "options": [
-        "Yes",
-        "No"
+        "That it is true for all but a few integers",
+        "That it is true for every positive integer",
+        "That it is true for all multiples of 100",
+        "Nothing certain: untested integers remain"
       ],
-      "explanation": "Untested integers remain.",
+      "explanation": "Finite checks cannot cover infinitely many cases. Some statements hold for a very long run and then fail, so a proof needs an argument.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether n = 101 has been tested."
     },
     {
       "id": "c2",
-      "prompt": "What is missing from an induction step without a base?",
-      "answer": "A starting true statement",
+      "prompt": "Someone proves 'P(n) implies P(n+1)' for every n but never checks a starting case. What is missing?",
+      "answer": "A true base case to start the chain",
       "options": [
-        "A starting true statement",
-        "An extra computed example only"
+        "A check of the statement at n = 100, since a large case shows that the induction step is reliable",
+        "A second inductive step",
+        "A true base case to start the chain",
+        "A counterexample"
       ],
-      "explanation": "An implication does not establish its antecedent.",
+      "explanation": "The step only says if P(n) holds then P(n+1) does. Without a first true statement the chain never starts: 'n = n + 1' has such a step but is false.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "An implication does not make its premise true."
     },
     {
       "id": "c3",
-      "prompt": "Does a theorem automatically prove its converse?",
-      "answer": "No",
+      "prompt": "You have proved 'if a number is divisible by 6, it is divisible by 3'. What follows about the converse?",
+      "answer": "Nothing: the converse must be proved separately, and it is false here",
       "options": [
-        "Yes",
-        "No"
+        "The converse is also proved, since a statement and its converse always hold or fail together",
+        "Nothing: the converse must be proved separately, and it is false here",
+        "The converse is true when the statement itself has been proved",
+        "The converse follows by contradiction"
       ],
-      "explanation": "Reversing an implication is a separate claim.",
+      "explanation": "A → B and B → A are different claims. Here 9 is divisible by 3 but not by 6.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Find a number divisible by 3 that is not divisible by 6."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "To prove P(n) for every positive integer using P(n)⇒P(n+2), which starting information is sufficient?",
-      "answer": "Both P(1) and P(2)",
+      "prompt": "You prove P(n) ⇒ P(n+2) for all n. Which base cases suffice to prove P(n) for every positive integer?",
+      "answer": "P(1) and P(2)",
       "options": [
-        "P(1) alone",
-        "Both P(1) and P(2)"
+        "P(2) alone",
+        "P(1), P(2) and P(3)",
+        "P(1) and P(2)",
+        "P(1) alone"
       ],
-      "explanation": "The step connects odd indices to odd indices and even indices to even indices.",
+      "explanation": "The step links 1→3→5… and 2→4→6…, two separate chains. Each needs its own starting point.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Write out which values the step reaches from P(1).",
       "misconceptions": {
         "P(1) alone": "The step connects odd indices to odd indices and even indices to even indices."
       }
@@ -118,14 +129,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does verifying an identity for a thousand integers replace an induction step?",
-      "answer": "No; untested integers remain.",
+      "prompt": "An identity is checked for n = 1 to 1000 and holds each time. Why is an induction step still needed?",
+      "answer": "Because infinitely many integers have not been tested",
       "options": [
-        "Yes; enough examples prove every integer.",
-        "No; untested integers remain."
+        "Because 1000 checks are too few for a proof to be sure",
+        "Because induction replaces testing for small values of n alone",
+        "Because identities must be tested for negative n",
+        "Because infinitely many integers have not been tested"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "A universal implication is needed.",
+      "hint": "Compare finitely many checks with infinitely many integers.",
+      "explanation": "Induction proves the statement for all n by showing P(n) forces P(n+1). Checking cases, however many, never covers all integers.",
       "misconceptions": {
         "Yes; enough examples prove every integer.": "A universal implication is needed."
       },

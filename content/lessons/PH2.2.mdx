@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does eliminating a constraint force imply it is physically zero?",
+      "prompt": "After eliminating a constraint force from the equations, does that mean the force is physically zero?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: once it is eliminated the force vanishes, since it no longer appears in the remaining equations",
+        "Yes: it is not a physical force in the mechanical system",
+        "Yes: it cancels everything",
+        "No: it can do no work along the allowed virtual displacements"
       ],
-      "answer": "No",
-      "explanation": "It may do no work along the allowed virtual directions.",
+      "answer": "No: it can do no work along the allowed virtual displacements",
+      "explanation": "The normal force on a bead on a wire is non-zero though it doesn't appear in the Lagrange equation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the normal force do work on a wire-bound bead?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is every velocity constraint holonomic?",
+      "prompt": "Is every constraint written as a velocity relation integrable to a position constraint?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it can be integrated to give a relation among the positions",
+        "Yes: in each case that arises in mechanics problems",
+        "Yes: it integrates to a position constraint in each case",
+        "No: some, such as rolling on a plane in 3D, are non-holonomic"
       ],
-      "answer": "No",
-      "explanation": "Some are nonintegrable position restrictions.",
+      "answer": "No: some, such as rolling on a plane in 3D, are non-holonomic",
+      "explanation": "Non-holonomic constraints restrict velocities without restricting positions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a rolling ball reach every position?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must an ideal moving constraint preserve the particle’s mechanical energy?",
+      "prompt": "A bead slides on a frictionless wire that is itself moving. Must the bead's mechanical energy be conserved?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a frictionless wire does no work, whatever the wire does",
+        "No: a moving constraint can exchange energy with the bead",
+        "Yes: no friction means constant energy",
+        "Yes: ideal constraints conserve energy"
       ],
-      "answer": "No",
-      "explanation": "A moving support can exchange energy.",
+      "answer": "No: a moving constraint can exchange energy with the bead",
+      "explanation": "The constraint force does work if the wire moves.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the normal force do work when the wire moves?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why not interpret λ alone as a universal force?",
-      "answer": "Its value depends on the constraint normalization",
+      "prompt": "Why shouldn't the Lagrange multiplier λ be read as a universal force?",
+      "answer": "Its value depends on how the constraint is normalised",
       "options": [
-        "Its value depends on the constraint normalization",
-        "All constraints have dimensionless identical gradients"
+        "It is the physical force of the constraint, in newtons",
+        "It is dimensionless, so it carries no force in the problem",
+        "Its value depends on how the constraint is normalised",
+        "It has the same units for each constraint in the system"
       ],
-      "explanation": "The physical reaction is λ times the specified constraint gradient.",
+      "explanation": "The reaction is λ ∇f, so rescaling f rescales λ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens if you multiply f by 2?"
     },
     {
       "id": "analytical-transfer-1",
@@ -114,14 +126,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For an explicitly moving constraint f(q,t)=0, is grad(f)·qdot=0 the complete velocity condition?",
-      "answer": "No; grad(f)·qdot+f_t=0 is required.",
+      "prompt": "For a moving constraint f(q,t) = 0, is ∇f · q̇ = 0 the complete velocity condition?",
+      "answer": "No: you need ∇f · q̇ + ∂f/∂t = 0",
       "options": [
-        "Yes; explicit time dependence never enters the velocity condition.",
-        "No; grad(f)·qdot+f_t=0 is required."
+        "Yes: it is complete",
+        "No: you need ∇f · q̇ + ∂f/∂t = 0",
+        "Yes: ∂f/∂t is zero",
+        "Yes: time dependence does not enter"
       ],
-      "explanation": "Differentiate f(q(t),t) using both parts of the chain rule.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "Differentiate f(q(t), t) with the chain rule.",
+      "hint": "Take d/dt of f(q(t), t).",
       "misconceptions": {
         "Yes; explicit time dependence never enters the velocity condition.": "Differentiate f(q(t),t) using both parts of the chain rule."
       },
@@ -166,7 +180,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Constraints and generalised coordinates”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -232,18 +246,18 @@ A particle on a circle of radius R with g=x²+y²−R² has reaction λ(2x,2y) i
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Constraints and generalised coordinates”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Constraints and generalised coordinates” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Constraints and generalised coordinates” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does mean background subtraction remove photon noise already present?",
+      "prompt": "You subtract the mean sky background from a star's aperture counts. Is the photon noise from the sky gone?",
       "options": [
-        "Yes",
-        "No"
+        "No: the sky has no random noise once the star is subtracted from it",
+        "No: subtraction removes the mean but the random fluctuation (variance) stays",
+        "Yes: subtracting the mean sky level removes the noise from the sky, leaving just the source",
+        "Yes: noise is part of the mean, so it is removed together with the sky level"
       ],
-      "answer": "No",
-      "explanation": "The fluctuating arrivals remain in the data uncertainty.",
+      "answer": "No: subtraction removes the mean but the random fluctuation (variance) stays",
+      "explanation": "Poisson counts fluctuate about their mean by √N, and subtracting adds variance.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the noise of N counts?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are resolving power and absolute wavelength accuracy identical?",
+      "prompt": "A spectrograph has resolving power R = 50,000. Does that mean its wavelength calibration is accurate to 1/50,000?",
       "options": [
-        "No",
-        "Yes"
+        "No: resolution is a width scale, while accuracy concerns calibration bias",
+        "No: resolution is not defined for a spectrograph with a slit",
+        "Yes: a resolving power of 50,000 means wavelengths are known to one part in 50,000",
+        "Yes: for calibration lamps the wavelength is known to the resolution, one part in 50,000 or better"
       ],
-      "answer": "No",
-      "explanation": "Resolution describes a width scale; accuracy concerns calibration bias.",
+      "answer": "No: resolution is a width scale, while accuracy concerns calibration bias",
+      "explanation": "A spectrum can be sharp yet shifted by a calibration error.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is sharpness the same as correctness?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a negative net flux be assigned an ordinary real logarithmic magnitude?",
+      "prompt": "After background subtraction a faint source has a negative net flux. Can you compute its magnitude as −2.5 log F?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: take the absolute value of the net flux, then compute −2.5 log of that value as the magnitude",
+        "No: the logarithm of a negative number is undefined; use a likelihood or an upper limit",
+        "Yes: the magnitude is negative, which means the source is very bright",
+        "Yes: set the flux to zero and compute a finite magnitude from the result"
       ],
-      "answer": "No",
-      "explanation": "A likelihood or upper-limit treatment is needed.",
+      "answer": "No: the logarithm of a negative number is undefined; use a likelihood or an upper limit",
+      "explanation": "Noise can make a measured flux negative. Report the flux or a limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is log of a negative number?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why retain continuum-placement uncertainty in equivalent width?",
-      "answer": "The normalization directly affects the line integral",
+      "prompt": "Why include continuum-placement uncertainty when reporting an equivalent width?",
+      "answer": "The continuum normalisation enters directly into the integrated line strength",
       "options": [
-        "The normalization directly affects the line integral",
-        "Only the central line pixel matters"
+        "The continuum normalisation enters directly into the integrated line strength",
+        "The central pixel of the line matters, so the continuum level adds no uncertainty",
+        "The continuum level is fixed once the spectrum has been normalised, so it adds no error to the integral",
+        "It affects the line wavelength but leaves the strength unchanged"
       ],
-      "explanation": "The continuum enters every normalized spectral sample.",
+      "explanation": "W = ∫(1 − F/F_c) dλ, so a continuum error scales the result.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where does F_c appear in the formula?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "A source yields 400 electrons with negligible other noise. Find shot-noise signal-to-noise ratio.",
       "answer": "20",
       "hint": "Poisson standard deviation is sqrt(N).",
-      "explanation": "Poisson standard deviation is sqrt(N). The value in the stated units is 20.",
+      "explanation": "Shot noise is √N = √400 = 20 electrons, so the SNR is N/√N = 400/20 = 20.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For 100 source electrons and additional independent variance 300 electron², find SNR.",
       "answer": "5",
       "hint": "Divide 100 by sqrt(100+300).",
-      "explanation": "Divide 100 by sqrt(100+300). The value in the stated units is 5.",
+      "explanation": "Independent variances add: the total variance is 100 + 300 = 400, so σ = 20 and SNR = 100/20 = 5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does subtracting the expected sky background eliminate the sky shot noise?",
-      "answer": "No; subtraction removes its mean but leaves variance.",
+      "prompt": "You subtract the expected sky level exactly. Does it also remove the sky shot noise?",
+      "answer": "No: subtraction removes its mean but leaves variance",
       "options": [
-        "Yes; an exactly known mean removes all counting fluctuations.",
-        "No; subtraction removes its mean but leaves variance."
+        "No: the sky has no counts once its mean level is subtracted",
+        "No: subtraction removes its mean but leaves variance",
+        "Yes: a known mean has no noise, so the subtraction leaves a clean image",
+        "Yes: it removes counting fluctuations"
       ],
-      "explanation": "The random counts still contribute to measurement uncertainty.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Random arrivals still fluctuate even if the mean is known.",
+      "hint": "What is the variance of Poisson counts?",
       "misconceptions": {
         "Yes; an exactly known mean removes all counting fluctuations.": "The random counts still contribute to measurement uncertainty."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Photometry and spectroscopy”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ If an aperture has C=1000 counts over n=10 pixels and background estimate b=20 c
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Photometry and spectroscopy”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Photometry and spectroscopy” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Photometry and spectroscopy” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

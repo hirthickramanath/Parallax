@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can a rational transform formula be used as its defining integral outside the convergence region?",
+      "prompt": "L{eᵃᵗ} = 1/(s − a) is derived for Re s > a. Is the integral definition valid at Re s < a?",
       "options": [
-        "Yes",
-        "No"
+        "No: the integral diverges there, even though the formula continues analytically",
+        "Yes: the formula holds everywhere, so the integral also converges to 1/(s − a) for Re s < a",
+        "No: the formula is wrong, as the integral gives a different result for such values of s",
+        "Yes: it converges to 0, as the exponential decays at large t for such values of s"
       ],
-      "answer": "No",
-      "explanation": "Analytic continuation and integral convergence are different claims.",
+      "answer": "No: the integral diverges there, even though the formula continues analytically",
+      "explanation": "The defining integral converges only in a half-plane. The rational formula can be continued analytically, but that is a different statement.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check whether ∫e^{(a−s)t}dt converges for s < a."
     },
     {
       "id": "concept-2",
-      "prompt": "Does transforming y′ retain an initial-value term?",
+      "prompt": "You take the Laplace transform of y′(t). What does it produce?",
       "options": [
-        "Yes",
-        "No"
+        "Y(s)/s, as the derivative acts as an integral",
+        "sY(s), with no term for the initial value of y",
+        "Y(s) − y(0), which includes the initial value but with the opposite sign to the correct form",
+        "sY(s) − y(0⁺), which includes the initial value"
       ],
-      "answer": "Yes",
-      "explanation": "The integration-by-parts boundary term is −y(0⁺).",
+      "answer": "sY(s) − y(0⁺), which includes the initial value",
+      "explanation": "Integration by parts gives ∫y′e^{−st}dt = [ye^{−st}] + s∫ye^{−st}dt = −y(0⁺) + sY(s).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Integrate ∫y′e^{−st}dt by parts and keep the boundary term."
     },
     {
       "id": "concept-3",
-      "prompt": "Is u(t−a)f(t) always the same delayed signal as u(t−a)f(t−a)?",
+      "prompt": "Are u(t−a)f(t) and u(t−a)f(t−a) the same signal?",
       "options": [
-        "Yes",
-        "No"
+        "No: the first is not defined",
+        "Yes: the step function cancels the shift, so the two expressions describe the same delayed signal",
+        "Yes: both are delayed",
+        "No: the second one also shifts the argument of f"
       ],
-      "answer": "No",
-      "explanation": "The latter also shifts the function argument.",
+      "answer": "No: the second one also shifts the argument of f",
+      "explanation": "The second is f delayed by a; the first is f switched on at t = a without shifting its shape. Their transforms differ (e^{−as}F(s) for the second).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take f(t) = t and compare at t = a."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "How should an inverse solution be checked?",
-      "answer": "Against the original equation, initial values and convergence assumptions",
+      "prompt": "You find an inverse Laplace solution of an ODE initial-value problem. How should you check it?",
+      "answer": "Against the original equation, the initial values and the convergence assumptions",
       "options": [
-        "Against the original equation, initial values and convergence assumptions",
-        "Only by simplifying its denominator"
+        "By checking the transform of the result, with no need to return to the equation",
+        "Against the original equation, the initial values and the convergence assumptions",
+        "No check is needed, as the algebra of the transform is reliable at each step",
+        "By simplifying the denominator of the transform and the partial fractions"
       ],
-      "explanation": "Algebra alone can miss initial terms and domain errors.",
+      "explanation": "Algebra on the transform can drop initial terms or domain restrictions. Substituting back into the ODE is the real test.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the result satisfy the original equation?"
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "Evaluate the one-sided Laplace transform of exp(2t) at real s=5.",
       "answer": "0.3333333333333333",
       "hint": "Use 1/(s−2) in its convergence region.",
-      "explanation": "Use 1/(s−2) in its convergence region. The value in the stated units is 0.333333333333.",
+      "explanation": "L[e^(at)](s) = 1/(s − a) for s > a. With a = 2 and s = 5 this is 1/3 ≈ 0.3333.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For f(0)=3 and F(2)=5, find L[f′](2).",
       "answer": "7",
       "hint": "Compute sF(s)−f(0).",
-      "explanation": "Compute sF(s)−f(0). The value in the stated units is 7.",
+      "explanation": "L[f′](s) = sF(s) − f(0) = 2 × 5 − 3 = 7.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "May the initial-value term be omitted when transforming a derivative with a nonzero initial condition?",
-      "answer": "No; integration by parts produces it explicitly.",
+      "prompt": "Transforming y″ + y = 0 with y(0) = 1: may you skip the initial-value terms?",
+      "answer": "No: they come from integration by parts and carry the initial data",
       "options": [
-        "Yes; the transform erases all initial conditions.",
-        "No; integration by parts produces it explicitly."
+        "Yes, if y(0) is small, as the term is then negligible in the transform",
+        "Yes, for homogeneous equations",
+        "Yes: the transform removes the initial conditions, so the terms from y(0) and y′(0) can be omitted",
+        "No: they come from integration by parts and carry the initial data"
       ],
-      "explanation": "Omitting the term changes the initial-value problem.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "L{y″} = s²Y − sy(0) − y′(0). Leaving out y(0) changes the initial-value problem.",
+      "hint": "Write L{y″} explicitly.",
       "misconceptions": {
         "Yes; the transform erases all initial conditions.": "Omitting the term changes the initial-value problem."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Laplace transform”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ Solve y′+2y=0 with y(0)=3. Transformation gives (s+2)Y=3, so Y=3/(s+2) and y=3
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Laplace transform”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Laplace transform” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Laplace transform” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

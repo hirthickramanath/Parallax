@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a uniform magnetic field alone perform Stern–Gerlach spatial filtering?",
+      "prompt": "Silver atoms pass through a uniform magnetic field. Will they separate spatially like in the Stern–Gerlach experiment?",
       "options": [
-        "Yes",
-        "No"
+        "No: a field gradient is needed to exert a net force",
+        "Yes: a uniform field pushes opposite spins apart",
+        "Yes: the field magnitude separates the spins",
+        "Yes: with a strong field"
       ],
-      "answer": "No",
-      "explanation": "A gradient is needed for the elementary separation model.",
+      "answer": "No: a field gradient is needed to exert a net force",
+      "explanation": "A uniform field exerts only a torque on a magnetic moment. A net force requires a field gradient, F = μ ∇B.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What produces a force on a magnetic moment?"
     },
     {
       "id": "concept-2",
-      "prompt": "Do pure Bloch states have unit vector length?",
+      "prompt": "A pure spin-½ state is represented on the Bloch sphere. How long is its Bloch vector?",
       "options": [
-        "Yes",
-        "No"
+        "Less than 1, inside the sphere, as for a mixed state",
+        "Zero, at the centre of the sphere",
+        "Greater than 1, outside the sphere",
+        "Exactly 1, on the surface of the sphere"
       ],
-      "answer": "Yes",
+      "answer": "Exactly 1, on the surface of the sphere",
       "explanation": "Mixed states lie inside the sphere.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where do mixed states lie?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are conditional and joint sequence probabilities identical?",
+      "prompt": "In a sequence of Stern–Gerlach filters, are the conditional probability and the joint probability the same?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: conditional is joint, since the probability of passing the earlier filter is one by definition",
+        "Yes: the joint probability equals the conditional probability",
+        "No: the joint probability includes the probability of passing the earlier filter",
+        "Yes: the two probabilities coincide for a pure state"
       ],
-      "answer": "No",
-      "explanation": "Joint probabilities include the preparation/filter probability.",
+      "answer": "No: the joint probability includes the probability of passing the earlier filter",
+      "explanation": "P(joint) = P(first) × P(second | first).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply the stage probabilities."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "How does uniform-field precession differ from filtering?",
-      "answer": "It is unitary rotation rather than outcome-conditioned measurement.",
+      "prompt": "How does spin precession in a uniform field differ from filtering by a Stern–Gerlach apparatus?",
+      "answer": "Precession is a unitary rotation, while filtering is an outcome-conditioned measurement",
       "options": [
-        "It is unitary rotation rather than outcome-conditioned measurement.",
-        "(1±r·n)/2."
+        "Precession is a measurement that collapses the spin, while filtering rotates it unitarily",
+        "They are the same process described in different words",
+        "Filtering is a unitary rotation, while precession is a measurement",
+        "Precession is a unitary rotation, while filtering is an outcome-conditioned measurement"
       ],
-      "explanation": "It is unitary rotation rather than outcome-conditioned measurement.",
+      "explanation": "Precession keeps the state pure and reversible, and measurement projects it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is information gained during precession?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Can an ideal measurement along x preserve a previously sharp z projection in every selected state?",
-      "answer": "No; the projections do not commute.",
+      "prompt": "A spin has a sharp z projection and an ideal x measurement is made. Does a later z measurement reproduce the earlier z value for every selected state?",
+      "answer": "No: the projections do not commute, so the x measurement erases the z value",
       "options": [
-        "Yes; measurements merely reveal all pre-existing sharp components.",
-        "No; the projections do not commute."
+        "Yes: z is preserved, since an ideal x measurement does not disturb a sharp z projection",
+        "Yes: measurements reveal pre-existing values",
+        "No: the projections do not commute, so the x measurement erases the z value",
+        "Yes: the sharp z value survives the intervening x measurement"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Preparation and measurement update matter.",
+      "hint": "What are the z outcomes of |+x⟩?",
+      "explanation": "After an x measurement the state is an x eigenstate with 50/50 z outcomes.",
       "misconceptions": {
         "Yes; measurements merely reveal all pre-existing sharp components.": "Preparation and measurement update matter."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Spin-1/2 systems and Stern-Gerlach”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For an initial z-up state and a measurement axis at 60° to z, p_up=(1+cos60°)/
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Spin-1/2 systems and Stern-Gerlach”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Spin-1/2 systems and Stern-Gerlach” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Spin-1/2 systems and Stern-Gerlach” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

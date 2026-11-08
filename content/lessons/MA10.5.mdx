@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do isomorphic Lie algebras guarantee globally identical groups?",
+      "prompt": "Two Lie groups have isomorphic Lie algebras. Must the groups be globally the same?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, when both of the groups are connected and simple",
+        "No: topology and covering structure can differ, as for SU(2) and SO(3)",
+        "Yes, when both groups are compact and have equal dimension",
+        "Yes: the Lie algebra fixes the topology of the group as well as its local form"
       ],
-      "answer": "No",
-      "explanation": "Topology and covering structure can differ.",
+      "answer": "No: topology and covering structure can differ, as for SU(2) and SO(3)",
+      "explanation": "The algebra only describes the group near the identity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of SU(2) and SO(3)."
     },
     {
       "id": "concept-2",
-      "prompt": "Does SU(2) double cover SO(3)?",
+      "prompt": "How are SU(2) and SO(3) related?",
       "options": [
-        "Yes",
-        "No"
+        "They are unrelated, with different Lie algebras and elements",
+        "SU(2) is a double cover of SO(3): two SU(2) elements map to each rotation",
+        "They are isomorphic, so each rotation corresponds to a single element of SU(2)",
+        "SO(3) double-covers SU(2): two rotations in SO(3) correspond to each element of SU(2)"
       ],
-      "answer": "Yes",
-      "explanation": "Two spinor elements correspond to one spatial rotation.",
+      "answer": "SU(2) is a double cover of SO(3): two SU(2) elements map to each rotation",
+      "explanation": "The elements U and −U of SU(2) give the same rotation. A 2π rotation of a spinor gives −1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about spin-½ under a 360° rotation."
     },
     {
       "id": "concept-3",
-      "prompt": "Do finite rotations about different axes generally commute?",
+      "prompt": "Do finite rotations of 90° about the x-axis and then the y-axis give the same result in the opposite order?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: rotations commute, so the final orientation does not depend on the order",
+        "Just in 2D, where the rotations share a single axis of turning",
+        "Yes: rotations by a right angle commute with each other",
+        "No: finite rotations about different axes generally do not commute"
       ],
-      "answer": "No",
-      "explanation": "Their commutator is nonzero.",
+      "answer": "No: finite rotations about different axes generally do not commute",
+      "explanation": "The generators have a non-zero commutator [Jx, Jy] = iJz, so finite rotations differ in order.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Rotate a book in both orders."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does a global phase not change alone?",
-      "answer": "Probabilities for one pure-state ray.",
+      "prompt": "A quantum state is multiplied by a global phase e^{iα}. What does this not change?",
+      "answer": "The probabilities of measurement outcomes",
       "options": [
-        "Probabilities for one pure-state ray.",
-        "The tangent generator structure with a bracket."
+        "The inner product of different states, which a global phase would multiply by a factor of e^{iα}",
+        "The probabilities of measurement outcomes",
+        "The overall phase of the state vector itself",
+        "The vector in Hilbert space"
       ],
-      "explanation": "Probabilities for one pure-state ray.",
+      "explanation": "|⟨φ|e^{iα}ψ⟩|² = |⟨φ|ψ⟩|². The vector changes, but not the physical ray or probabilities.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Take the modulus squared of e^{iα}."
     },
     {
       "id": "structure-transfer-1",
@@ -101,14 +113,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Are SU(2) and SO(3) globally identical because their Lie algebras correspond?",
-      "answer": "No; SU(2) double-covers SO(3).",
+      "prompt": "SU(2) and SO(3) have the same Lie algebra. Are they therefore globally identical?",
+      "answer": "No: SU(2) is a double cover of SO(3)",
       "options": [
-        "Yes; local algebra fixes all global topology.",
-        "No; SU(2) double-covers SO(3)."
+        "Yes: the algebra determines the group",
+        "No: SU(2) is a double cover of SO(3)",
+        "No: they have different dimensions",
+        "Yes: the groups differ by a sign convention"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Finite rotations retain global information.",
+      "hint": "Compare the element −I in SU(2).",
+      "explanation": "The algebra fixes the local structure only; finite rotations retain global topology.",
       "misconceptions": {
         "Yes; local algebra fixes all global topology.": "Finite rotations retain global information."
       },
@@ -153,7 +167,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Lie groups and Lie algebras (SO(3), SU(2))”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,18 +231,18 @@ At a full 2π rotation a spin-half matrix has trace −2. At 4π its trace is +2
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Lie groups and Lie algebras (SO(3), SU(2))”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Lie groups and Lie algebras (SO(3), SU(2))” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Lie groups and Lie algebras (SO(3), SU(2))” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

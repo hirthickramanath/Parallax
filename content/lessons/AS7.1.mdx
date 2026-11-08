@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is semimajor axis always the current separation?",
+      "prompt": "Mars' semimajor axis is 1.52 AU, but at perihelion it is 1.38 AU from the Sun. Why do these differ?",
       "options": [
-        "Yes",
-        "No"
+        "The semimajor axis was measured wrongly, so the two values should agree once the data are corrected",
+        "Mars moves in a circle around the Sun, so the distance is fixed",
+        "The Sun moves in its place, so the distance to Mars changes",
+        "The orbit is eccentric, so the current separation varies around the semimajor axis"
       ],
-      "answer": "No",
-      "explanation": "They differ around an eccentric orbit.",
+      "answer": "The orbit is eccentric, so the current separation varies around the semimajor axis",
+      "explanation": "a is the orbit's average size. The instantaneous distance is r = a(1 − e²)/(1 + e cos ν).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute a(1 − e) for the perihelion."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a near-rational period ratio alone prove resonance?",
+      "prompt": "Two asteroids have a period ratio of 2.003 : 1. Does this prove they are in a 2:1 resonance?",
       "options": [
-        "No",
-        "Yes"
+        "No: resonance is impossible",
+        "No: you must show the resonant angle librates",
+        "Yes: close ratios prove it",
+        "Yes: 0.3% is close enough"
       ],
-      "answer": "No",
-      "explanation": "Dynamical resonant-angle behaviour is needed.",
+      "answer": "No: you must show the resonant angle librates",
+      "explanation": "True resonance is a dynamical state, where a resonant angle oscillates rather than circulates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the resonant angle do in a true resonance?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do tides depend on gravity gradients?",
+      "prompt": "Io is heated by tides from Jupiter. What must the tidal force have for this heating?",
       "options": [
-        "No",
-        "Yes"
+        "A uniform pull, since a force that is the same across the moon squeezes it as it moves",
+        "A uniform pull on the whole moon, strong enough to squeeze it",
+        "A gradient across the moon, since differential forces deform it",
+        "A constant force at the surface of the moon"
       ],
-      "answer": "Yes",
-      "explanation": "Differential forces deform the body.",
+      "answer": "A gradient across the moon, since differential forces deform it",
+      "explanation": "Tides are gradients of gravity. A uniform field only accelerates the body.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a uniform field deform a body?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why check orbital integrators?",
-      "answer": "Numerical error can imitate secular or chaotic changes.",
+      "prompt": "Why test an orbit integrator for energy drift when predicting long-term planetary motion?",
+      "answer": "Numerical error can imitate secular or chaotic changes",
       "options": [
-        "Numerical error can imitate secular or chaotic changes.",
-        "Semimajor axis and total mass."
+        "Integrators are exact for gravity, so an energy drift in the plot would come from the physics itself",
+        "Energy is not conserved in nature",
+        "Numerical error can imitate secular or chaotic changes",
+        "It makes the plot smoother"
       ],
-      "explanation": "Numerical error can imitate secular or chaotic changes.",
+      "explanation": "A spurious drift in a or e can be mistaken for a physical effect.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the orbit changing, or is the code?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "At fixed radius, planetary mass quadruples. Find escape-speed factor.",
       "answer": "2",
       "hint": "Use the square root of mass.",
-      "explanation": "Use the square root of mass. The value in the stated units is 2.",
+      "explanation": "v_esc = √(2GM/R) ∝ √M at fixed radius. Quadrupling M gives √4 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "At the same spherical Newtonian radius, find escape speed divided by circular speed.",
       "answer": "1.4142135623730951",
       "hint": "Compare sqrt(2GM/R) with sqrt(GM/R).",
-      "explanation": "Compare sqrt(2GM/R) with sqrt(GM/R). The value in the stated units is 1.414213562373.",
+      "explanation": "v_esc/v_circ = √(2GM/R)/√(GM/R) = √2 ≈ 1.4142.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does escaping a planet automatically imply escaping the Solar System?",
-      "answer": "No; the solar gravitational energy and trajectory remain relevant.",
+      "prompt": "A probe reaches escape velocity from Earth. Has it escaped the Solar System?",
+      "answer": "No: the Sun's gravitational field and its trajectory around the Sun are still relevant",
       "options": [
-        "Yes; all gravitational escape conditions are identical.",
-        "No; the solar gravitational energy and trajectory remain relevant."
+        "Yes: at Earth's escape velocity the probe also leaves the Sun's gravity, so it is free of the Solar System",
+        "No: the Sun's gravitational field and its trajectory around the Sun are still relevant",
+        "Yes: escape is escape from the planet and the Sun alike",
+        "Yes: Earth's escape is solar escape"
       ],
-      "explanation": "The chosen gravitating system and asymptotic boundary must be specified.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Earth's escape speed is 11.2 km/s, while Solar System escape at 1 AU needs 42 km/s.",
+      "hint": "Compare the speed needed to leave the Sun's gravity.",
       "misconceptions": {
         "Yes; all gravitational escape conditions are identical.": "The chosen gravitating system and asymptotic boundary must be specified."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Solar System physics”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ At fixed central mass, increasing semimajor axis by four increases period by eig
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Solar System physics”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Solar System physics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Solar System physics” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does golden-rule constant rate hold forever in an isolated two-level system?",
+      "prompt": "Fermi's golden rule gives a constant transition rate. Does this hold forever in an isolated two-level system?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for strong coupling too, as the rate stays constant in time",
+        "Yes: forever, even once the coupling is strong",
+        "Yes: the transition rate stays constant at long times",
+        "No: coherent oscillations and depletion of the initial state alter it"
       ],
-      "answer": "No",
-      "explanation": "Coherent oscillations and depletion differ.",
+      "answer": "No: coherent oscillations and depletion of the initial state alter it",
+      "explanation": "Rabi oscillations are bounded, and the golden rule requires a continuum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is there a continuum in a two-level system?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does rate scale with squared matrix element?",
+      "prompt": "You double the matrix element of the perturbation. What happens to the golden-rule rate?",
       "options": [
-        "Yes",
-        "No"
+        "It halves",
+        "It quadruples",
+        "It is unchanged",
+        "It doubles"
       ],
-      "answer": "Yes",
-      "explanation": "It follows from amplitude squared.",
+      "answer": "It quadruples",
+      "explanation": "It quadruples, as rate ∝ |V_fi|². Γ = (2π/ħ)|V_fi|²ρ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the rate linear in the amplitude?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must final-state density specify energy versus frequency convention?",
+      "prompt": "The density of final states ρ can be defined per unit energy or per unit frequency. Does the convention matter?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: converting changes factors such as ħ in the rate",
+        "No: it cancels, since the factor of ħ in the density appears again in the energy delta function",
+        "No: the units are the same",
+        "No: they are identical"
       ],
-      "answer": "Yes",
-      "explanation": "Conversion changes factors such as ℏ.",
+      "answer": "Yes: converting changes factors such as ħ in the rate",
+      "explanation": "Converting a density of states from per-unit-frequency to per-unit-energy introduces a factor of ħ, ρ_E = ρ_ω/ħ, which changes the rate if ignored.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare dE with dω and track the factor of ħ between them."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why check depletion?",
-      "answer": "First-order amplitudes fail when transferred probability is large.",
+      "prompt": "Why check for depletion of the initial state when using first-order time-dependent perturbation theory?",
+      "answer": "First-order amplitudes fail when the transferred probability is large",
       "options": [
-        "First-order amplitudes fail when transferred probability is large.",
-        "A time integral of interaction-picture matrix elements."
+        "It makes the rate zero, since a depleted initial state can no longer transfer probability",
+        "Depletion of the initial state is irrelevant to the result",
+        "First-order amplitudes remain valid for large transferred probability",
+        "First-order amplitudes fail when the transferred probability is large"
       ],
-      "explanation": "First-order amplitudes fail when transferred probability is large.",
+      "explanation": "The theory assumes |c_f|² ≪ 1.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does first order assume about c_i?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Can an isolated two-state transition probability grow linearly without bound forever?",
-      "answer": "No; coherent probabilities are bounded and can oscillate.",
+      "prompt": "In an isolated two-state system with a constant coupling, can the transition probability grow linearly forever?",
+      "answer": "No: coherent probabilities are bounded and oscillate",
       "options": [
-        "Yes; the golden rule is exact at all times for every spectrum.",
-        "No; coherent probabilities are bounded and can oscillate."
+        "Yes: the golden rule is exact",
+        "Yes: it grows without bound as time goes on",
+        "Yes: P(t) = Γt for a constant coupling",
+        "No: coherent probabilities are bounded and oscillate"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Rate limits have coupling and continuum assumptions.",
+      "hint": "What is the maximum of a probability?",
+      "explanation": "P(t) = sin²(Ωt) oscillates between 0 and 1.",
       "misconceptions": {
         "Yes; the golden rule is exact at all times for every spectrum.": "Rate limits have coupling and continuum assumptions."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Time-dependent perturbation theory and Fermi's golden rule”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ With ℏ=1, |V|²=2 and energy-state density 3, golden-rule Γ divided by 2π is
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Time-dependent perturbation theory and Fermi's golden rule”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Time-dependent perturbation theory and Fermi's golden rule” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Time-dependent perturbation theory and Fermi's golden rule” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

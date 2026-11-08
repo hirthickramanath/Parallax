@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must the likelihood normalize to one over parameters?",
+      "prompt": "The likelihood L(θ) = p(data | θ) is viewed as a function of θ. Must it integrate to one over θ?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, after normalisation by the prior",
+        "Yes, as a likelihood is normalised over the parameter",
+        "No: it is a density in the data, not in the parameter",
+        "Yes: it is a probability density in θ"
       ],
-      "answer": "No",
-      "explanation": "It is a data probability or density viewed as a function of parameters.",
+      "answer": "No: it is a density in the data, not in the parameter",
+      "explanation": "∫p(data | θ)dθ can be any positive number. Only the posterior is normalised over θ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which variable does the likelihood normalise over?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is a uniform prior unchanged under every nonlinear parameter transformation?",
+      "prompt": "You use a uniform prior on θ. If you reparametrise as φ = θ², is the prior uniform in φ?",
       "options": [
-        "No",
-        "Yes"
+        "Yes for increasing maps",
+        "Yes for φ > 0, as the map is one-to-one",
+        "No: the Jacobian changes the density",
+        "Yes: uniform is invariant under reparametrisation, so the prior on φ = θ² is also uniform"
       ],
-      "answer": "No",
-      "explanation": "A Jacobian changes the density.",
+      "answer": "No: the Jacobian changes the density",
+      "explanation": "p(φ) = p(θ)|dθ/dφ| ∝ 1/√φ. 'Uninformative' priors depend on the parametrisation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply the change-of-variables formula."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a narrow posterior guarantee the model is physically correct?",
+      "prompt": "A Bayesian analysis returns a very narrow posterior. Does that confirm the model is correct?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a narrow posterior means the model is correct, since the data have then fixed the parameters tightly",
+        "Yes: it means the data are good",
+        "No: posteriors cannot be narrow",
+        "No: a narrow posterior can come from a misspecified likelihood"
       ],
-      "answer": "No",
-      "explanation": "Misspecified likelihoods can exclude important effects.",
+      "answer": "No: a narrow posterior can come from a misspecified likelihood",
+      "explanation": "The posterior is conditional on the model. Overconfident but wrong models give tight, wrong constraints.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the posterior a statement about the model's truth?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why perform prior-sensitivity checks?",
-      "answer": "Prior assumptions can materially affect inference and evidence",
+      "prompt": "Why run a sensitivity analysis on the prior?",
+      "answer": "Priors can materially change the posterior and the evidence",
       "options": [
-        "Prior assumptions can materially affect inference and evidence",
-        "Normalization removes all prior dependence"
+        "Priors affect the first sample alone, not the final posterior",
+        "Normalisation removes it",
+        "The posterior does not depend on the prior",
+        "Priors can materially change the posterior and the evidence"
       ],
-      "explanation": "The posterior is explicitly a product with the prior.",
+      "explanation": "With weak data the posterior stays close to the prior. Check how conclusions change with reasonable alternatives.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Posterior ∝ likelihood × prior."
     },
     {
       "id": "advanced-math-transfer-1",
@@ -101,14 +113,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does a Bayesian posterior cease to depend on likelihood assumptions?",
-      "answer": "No; updating is conditional on that model.",
+      "prompt": "After collecting data, is the Bayesian posterior independent of the assumed likelihood model?",
+      "answer": "No: the update is conditional on the model and the prior",
       "options": [
-        "Yes; any dataset uniquely determines a model-free posterior.",
-        "No; updating is conditional on that model."
+        "No: the update is conditional on the model and the prior",
+        "Yes: the data fully determine the posterior, so the assumed likelihood model plays no part in it",
+        "Yes, if the data are large",
+        "Yes, if the prior is flat"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Prior and likelihood jointly define the update.",
+      "hint": "What did you assume to write down p(data | θ)?",
+      "explanation": "Different noise models give different likelihoods and posteriors from the same data.",
       "misconceptions": {
         "Yes; any dataset uniquely determines a model-free posterior.": "Prior and likelihood jointly define the update."
       },
@@ -153,7 +167,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Bayesian inference”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -219,19 +233,19 @@ With a uniform Beta(1,1) prior and 3 successes plus 1 failure, the posterior is 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Bayesian inference”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Bayesian inference” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Bayesian inference” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

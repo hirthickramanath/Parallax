@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are arbitrary projected diagonal entries always the splitting eigenvalues?",
+      "prompt": "In a degenerate subspace, you take the diagonal entries of the perturbation matrix in an arbitrary basis. Are they the energy shifts?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: off-diagonal entries can be ignored",
+        "No: the full subspace matrix must be diagonalised",
+        "Yes: the diagonal entries are basis independent",
+        "Yes: diagonal entries are the shifts"
       ],
-      "answer": "No",
-      "explanation": "The full subspace matrix must be diagonalized.",
+      "answer": "No: the full subspace matrix must be diagonalised",
+      "explanation": "Off-diagonal elements mix the states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which basis diagonalises V?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a basis change alter the physical projected eigenvalues?",
+      "prompt": "You change the basis within the degenerate subspace. Do the physical eigenvalues of the projected perturbation change?",
       "options": [
-        "No",
-        "Yes"
+        "No: a similarity transformation preserves them",
+        "Yes: the eigenvalues rotate with the basis",
+        "Yes: some of them shift with the basis",
+        "Yes: their values depend on the chosen states"
       ],
-      "answer": "No",
-      "explanation": "Similarity preserves them.",
+      "answer": "No: a similarity transformation preserves them",
+      "explanation": "Eigenvalues of a matrix are basis independent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is invariant under similarity transformations?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is one fine-structure correction automatically the complete effect?",
+      "prompt": "You compute a relativistic kinetic-energy correction to hydrogen. Is this the complete fine-structure effect?",
       "options": [
-        "Yes",
-        "No"
+        "No: spin–orbit and Darwin terms of the same order must also be combined",
+        "Yes: it is complete, as the relativistic kinetic correction dominates",
+        "Yes: the other fine-structure terms are negligible in comparison",
+        "Yes: no other term contributes at the same order of α"
       ],
-      "answer": "No",
-      "explanation": "Terms of the relevant order must be combined.",
+      "answer": "No: spin–orbit and Darwin terms of the same order must also be combined",
+      "explanation": "All three terms are of order α²E_n.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List the three fine-structure terms."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare energy scales?",
-      "answer": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "prompt": "Why compare the relative sizes of the Zeeman and fine-structure energies?",
+      "answer": "They determine the appropriate basis and the perturbative hierarchy",
       "options": [
-        "They determine the appropriate coupled basis and perturbative hierarchy.",
-        "The perturbation restricted to the degenerate subspace."
+        "They give the lifetime of each level, which sets which perturbation can be neglected",
+        "It sets the units for the energy comparison",
+        "They determine the mass of the electron in the atom",
+        "They determine the appropriate basis and the perturbative hierarchy"
       ],
-      "explanation": "They determine the appropriate coupled basis and perturbative hierarchy.",
+      "explanation": "Weak fields use the coupled basis, and strong fields (Paschen–Back) use the uncoupled one.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which perturbation dominates?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "May diagonal elements in an arbitrary degenerate basis always be read as the first-order shifts?",
-      "answer": "No; diagonalize the restricted perturbation first.",
+      "prompt": "Can you read the first-order shifts from the diagonal elements of V in any chosen degenerate basis?",
+      "answer": "No: you should diagonalise the restricted perturbation first",
       "options": [
-        "Yes; basis mixing never matters in degeneracy.",
-        "No; diagonalize the restricted perturbation first."
+        "Yes: the diagonal elements in a chosen basis give the shifts directly",
+        "No: you should diagonalise the restricted perturbation first",
+        "Yes: diagonal elements are shifts",
+        "Yes: mixing between the basis states can be ignored"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Is the matrix diagonal in your basis?",
       "explanation": "Off-diagonal elements can split the level.",
       "misconceptions": {
         "Yes; basis mixing never matters in degeneracy.": "Off-diagonal elements can split the level."
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Degenerate perturbation theory and fine structure”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For the projected perturbation matrix [[2,1],[1,2]], first-order shifts are 1 an
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Degenerate perturbation theory and fine structure”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Degenerate perturbation theory and fine structure” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Degenerate perturbation theory and fine structure” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

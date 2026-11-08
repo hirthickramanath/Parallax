@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does arcsin return every possible solution angle?",
-      "answer": "No; it returns a principal value",
+      "prompt": "You solve sin θ = 0.5 and your calculator gives arcsin(0.5) = 30°. Is that the full solution set?",
+      "answer": "No: it is the principal value; 150° and further periods also work",
       "options": [
-        "Yes",
-        "No; it returns a principal value"
+        "No: it is the principal value; 150° and further periods also work",
+        "Yes: arcsin returns the complete set, so 30° is the full answer",
+        "Yes: arcsin returns the solutions in the full range of the angle θ",
+        "No: it also needs 210°, the angle in the third quadrant of the circle"
       ],
-      "explanation": "Periodicity produces further solutions.",
+      "explanation": "arcsin returns one value in [−90°, 90°]. By symmetry (180° − θ) and periodicity (360°), the full set is 30° + 360°k and 150° + 360°k.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use the symmetry of the sine curve about 90°."
     },
     {
       "id": "c2",
-      "prompt": "Which angle unit is required for sin θ≈θ?",
+      "prompt": "In which units must θ be measured for the approximation sin θ ≈ θ to hold?",
       "answer": "Radians",
       "options": [
+        "Turns",
         "Radians",
-        "Degrees without conversion"
+        "Degrees",
+        "Gradians"
       ],
-      "explanation": "Radian measure fixes the coefficient at 1.",
+      "explanation": "The limit sin θ/θ → 1 holds only when θ is in radians. In degrees the coefficient would be π/180.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the derivation of d(sin x)/dx = cos x."
     },
     {
       "id": "c3",
-      "prompt": "Can dividing by sin θ lose solutions?",
-      "answer": "Yes, where sin θ=0",
+      "prompt": "You divide both sides of sin θ = sin θ cos θ by sin θ. What risk comes with that step?",
+      "answer": "You lose solutions where sin θ = 0",
       "options": [
-        "No",
-        "Yes, where sin θ=0"
+        "No risk: the step is valid in this case too",
+        "You gain extra solutions",
+        "You lose solutions where sin θ = 0",
+        "The equation becomes undefined for θ"
       ],
-      "explanation": "Division is undefined at those zeros.",
+      "explanation": "Division by sin θ is only legal where sin θ ≠ 0. The solutions with sin θ = 0 (θ = 0, π, …) are discarded unless you check them.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Factor instead of dividing."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Dividing sinθ cosθ=0 by cosθ on [0,2π) loses which solutions?",
-      "answer": "θ=π/2 and 3π/2",
+      "prompt": "On [0, 2π) you solve sin θ cos θ = 0 by dividing both sides by cos θ. Which solutions are lost?",
+      "answer": "θ = π/2 and 3π/2",
       "options": [
-        "θ=0 and π",
-        "θ=π/2 and 3π/2"
+        "No solutions are lost",
+        "θ = π/2 and 3π/2",
+        "θ = π/4 and 3π/4",
+        "θ = 0 and π"
       ],
-      "explanation": "Division by a zero factor discards the factor’s own zeros.",
+      "explanation": "Division by cos θ removes the case cos θ = 0, i.e. θ = π/2 and 3π/2. Factoring gives sin θ = 0 or cos θ = 0.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Factor the product and set each factor to zero.",
       "misconceptions": {
         "θ=0 and π": "Division by a zero factor discards the factor’s own zeros."
       }
@@ -117,14 +128,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does a principal inverse sine value list every solution of sinθ=s?",
-      "answer": "No; other branches and periods can contribute.",
+      "prompt": "Solve sin θ = −½ on 0 ≤ θ < 2π. What does the principal arcsin value alone miss?",
+      "answer": "The second solution in the other quadrant, 7π/6 and 11π/6",
       "options": [
-        "Yes; arcsin returns the complete solution set.",
-        "No; other branches and periods can contribute."
+        "Solutions greater than 2π",
+        "No gap: the principal value is the full solution",
+        "The negative angles, which lie outside the range",
+        "The second solution in the other quadrant, 7π/6 and 11π/6"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Apply symmetry and periodicity.",
+      "hint": "Sketch the sine curve and mark where it equals −½.",
+      "explanation": "The principal value is −π/6, outside [0, 2π). Using symmetry and periodicity gives 7π/6 and 11π/6 in range.",
       "misconceptions": {
         "Yes; arcsin returns the complete solution set.": "Apply symmetry and periodicity."
       },
@@ -211,8 +224,7 @@ The cosine rule $c^2=a^2+b^2-2ab\cos C$ follows by resolving one side along the 
 
 ### Transfer derivation and failure case
 
-A zero product is solved by retaining every factor: $\sin\theta\cos\theta=0$ implies either $\sin\theta=0$ or $\cos\theta=0$. Dividing by the second factor before considering its zeros loses valid solutions. In $[0,2\pi)$, the solutions are $0,\pi/2,\pi,3\pi/2$. For $\sin\theta=1/2$, symmetry gives $\theta=\pi/6$ and $5\pi/6$ in this interval; an inverse-sine principal value alone does not enumerate all roots. State the angle interval and endpoint inclusion before counting solutions.
-
+A zero product is solved by retaining every factor: $\sin\theta\cos\theta=0$ implies either $\sin\theta=0$ or $\cos\theta=0$. Dividing by the second factor before considering its zeros loses valid solutions.
 
 ### Derivation and transfer
 

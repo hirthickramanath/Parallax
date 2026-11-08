@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does stimulated emission by itself establish laser oscillation?",
+      "prompt": "Stimulated emission occurs in a medium. Is this enough for laser oscillation?",
       "options": [
-        "Yes",
-        "No"
+        "No: gain must overcome the losses with suitable feedback",
+        "Yes: stimulated emission is lasing, as gain produces oscillation",
+        "Yes: gain exceeding zero produces oscillation",
+        "Yes: a medium with stimulated emission lases on its own"
       ],
-      "answer": "No",
-      "explanation": "Gain must overcome losses with suitable feedback.",
+      "answer": "No: gain must overcome the losses with suitable feedback",
+      "explanation": "A laser needs population inversion, a cavity and gain above the threshold.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a mirror cavity supply?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does gain saturation matter above threshold?",
+      "prompt": "Above threshold, small-signal gain predicts exponential growth of the intensity. Does gain saturation matter?",
       "options": [
-        "Yes",
-        "No"
+        "No: gain is constant",
+        "No: growth continues",
+        "No: saturation sets in well below the threshold",
+        "Yes: it limits the growth to a steady output level"
       ],
-      "answer": "Yes",
-      "explanation": "It prevents indefinite small-signal exponential growth.",
+      "answer": "Yes: it limits the growth to a steady output level",
+      "explanation": "As intensity grows it depletes the inversion, clamping the gain to the loss.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens to the inversion as the field gets strong?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do equal mean intensities guarantee equal photon statistics?",
+      "prompt": "A laser and a thermal lamp have the same mean intensity. Do they have the same photon statistics?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are thermal, since the same mean intensity gives the same g²(0) = 2 for each source",
+        "Yes: both show Poissonian counting statistics at equal intensity",
+        "Yes: same mean means same statistics",
+        "No: they have different fluctuations and correlations (g²(0) = 1 versus 2)"
       ],
-      "answer": "No",
-      "explanation": "Different states have different fluctuations and correlations.",
+      "answer": "No: they have different fluctuations and correlations (g²(0) = 1 versus 2)",
+      "explanation": "Thermal light is bunched with g²(0) = 2, and laser light is Poissonian.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the g²(0) of each."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why state detection assumptions for g²?",
-      "answer": "Timing, modes and detector response change measured correlations.",
+      "prompt": "Why must a g²(τ) measurement state its detection assumptions?",
+      "answer": "Timing, detected modes and detector response change the measured correlations",
       "options": [
-        "Timing, modes and detector response change measured correlations.",
-        "Round-trip gain balances total loss."
+        "Detectors record the same correlations, so assumptions are moot",
+        "The detection method is a technical detail that leaves g² unchanged",
+        "Timing, detected modes and detector response change the measured correlations",
+        "g² is an exact property of the light, whatever is measured"
       ],
-      "explanation": "Timing, modes and detector response change measured correlations.",
+      "explanation": "Finite resolution blurs the bunching peak.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Would a slow detector see the bunching?"
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "In the stated incoherent two-level rate model with R=Γ=1, find steady excited fraction.",
       "answer": "0.3333333333333333",
       "hint": "Use R/(2R+Γ).",
-      "explanation": "Use R/(2R+Γ). The value in the stated units is 0.333333333333.",
+      "explanation": "The steady excited fraction is R/(2R + Γ) = 1/(2 + 1) = 1/3 ≈ 0.3333.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For cavity energy decay U(t)=U0 exp(−κt) with κ=2, find energy lifetime.",
       "answer": "0.5",
       "hint": "The exponential time constant is 1/κ.",
-      "explanation": "The exponential time constant is 1/κ. The value in the stated units is 0.5.",
+      "explanation": "U = U₀e^(−κt) has time constant 1/κ = 1/2 = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can this symmetric incoherent two-level pump model produce a steady excited fraction above one half?",
-      "answer": "No; the stimulated upward/downward terms saturate below one half.",
+      "prompt": "In a symmetric two-level system with incoherent pumping and stimulated terms equal both ways, can the steady excited fraction exceed one half?",
+      "answer": "No: the upward and downward terms saturate at one half",
       "options": [
-        "Yes; arbitrarily strong pumping produces complete inversion in this model.",
-        "No; the stimulated upward/downward terms saturate below one half."
+        "Yes: arbitrarily strong pumping inverts the medium, since the excited fraction grows without limit",
+        "No: the upward and downward terms saturate at one half",
+        "Yes: strong pumping gives full inversion",
+        "Yes: the inversion can reach one with enough pumping"
       ],
-      "explanation": "Additional levels or a different preparation mechanism are needed to evade the model assumptions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Two-level systems cannot be inverted by symmetric incoherent pumping, which is why lasers use three or four levels.",
+      "hint": "Why do lasers need more than two levels?",
       "misconceptions": {
         "Yes; arbitrarily strong pumping produces complete inversion in this model.": "Additional levels or a different preparation mechanism are needed to evade the model assumptions."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Lasers and quantum optics intro”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If a round-trip mirror product is .25 and distributed loss is zero with L=1, thr
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Lasers and quantum optics intro”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Lasers and quantum optics intro” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Lasers and quantum optics intro” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

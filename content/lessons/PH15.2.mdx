@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can boundary variation always be dropped without conditions?",
+      "prompt": "Deriving the Euler–Lagrange equations drops a boundary term from the variation. When is this legitimate?",
       "options": [
-        "Yes",
-        "No"
+        "Not in the derivation: the boundary term contributes, so the equations pick up an extra piece",
+        "In the derivation, with no conditions on the variations or on the boundary term of the action",
+        "For scalar fields, where the boundary term takes a simple form",
+        "When the variations vanish on the boundary or the boundary conditions control it"
       ],
-      "answer": "No",
-      "explanation": "The variational problem must control it.",
+      "answer": "When the variations vanish on the boundary or the boundary conditions control it",
+      "explanation": "δφ = 0 at the endpoints makes the surface term vanish.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is assumed about δφ at the edge?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is canonical momentum always just the field time derivative?",
+      "prompt": "For a field φ, is the canonical momentum π always equal to ∂φ/∂t?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: for each theory, as the momentum is the time derivative of the field",
+        "No: π = ∂L/∂(∂φ/∂t), which depends on the Lagrangian and may be constrained",
+        "Yes: π is the time derivative of the field, up to a constant",
+        "No: π is zero, as the Lagrangian has no time derivative of the field in the usual case"
       ],
-      "answer": "No",
-      "explanation": "It depends on the Lagrangian and constraints.",
+      "answer": "No: π = ∂L/∂(∂φ/∂t), which depends on the Lagrangian and may be constrained",
+      "explanation": "For a Lagrangian with a coefficient or extra terms, π differs from φ̇.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the definition of π from L."
     },
     {
       "id": "concept-3",
-      "prompt": "Can improved currents differ locally while retaining a controlled total charge?",
+      "prompt": "Two currents differ by a term ∂_ν B^{μν} with B antisymmetric. Do they give the same conserved charge?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the two currents are identical, so the difference has no effect in space",
+        "No: antisymmetric terms are not allowed",
+        "No: the charge changes by a large amount",
+        "Yes: the extra piece is identically conserved and integrates to a surface term"
       ],
-      "answer": "Yes",
-      "explanation": "Identically conserved additions can do that.",
+      "answer": "Yes: the extra piece is identically conserved and integrates to a surface term",
+      "explanation": "The extra piece is identically conserved and integrates to a surface term, so the total charge is unchanged. Improvement terms change the local current, not the total charge.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Show that ∂_μ∂_ν B^{μν} = 0 for any antisymmetric B^{μν}, then integrate over space."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify gauge components?",
-      "answer": "Redundancy does not represent independent physical states.",
+      "prompt": "Why do physicists say gauge-field components are not independent physical degrees of freedom?",
+      "answer": "Gauge redundancy means different components describe the same physical state",
       "options": [
-        "Redundancy does not represent independent physical states.",
-        "Stationarity under admissible field variations."
+        "They are independent, as each component carries a degree of freedom of its own in the field",
+        "They exist in the classical theory alone, not in the quantum field theory",
+        "Gauge redundancy means different components describe the same physical state",
+        "They are fixed by the speed of light"
       ],
-      "explanation": "Redundancy does not represent independent physical states.",
+      "explanation": "A_μ has 4 components but photons have 2 polarisations.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Count components against physical polarisations."
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Must a current be conserved for arbitrary fields that do not satisfy the equations of motion?",
-      "answer": "No; the Noether conservation statement is on shell.",
+      "prompt": "Noether's theorem gives ∂_μ J^μ = 0. For which field configurations does this hold?",
+      "answer": "Only those satisfying the equations of motion (on shell)",
       "options": [
-        "Yes; every arbitrary field configuration conserves that current.",
-        "No; the Noether conservation statement is on shell."
+        "Only the vacuum configuration, where the fields vanish and the equations are satisfied trivially",
+        "Only those satisfying the equations of motion (on shell)",
+        "Only static configurations",
+        "Every configuration, solution or not"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the action and equations together.",
+      "hint": "The proof uses δS = 0.",
+      "explanation": "The derivation uses the field equations.",
       "misconceptions": {
         "Yes; every arbitrary field configuration conserves that current.": "Use the action and equations together."
       },
@@ -162,7 +176,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Classical fields and Noether currents”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -242,7 +256,7 @@ With the stated signature, the free Hamiltonian density is $\mathcal H=\tfrac12\
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Classical fields and Noether currents”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 **Core derivation.** Starting from $\pi\dot\phi-\mathcal L$, derive the Hamiltonian above without discarding the gradient term. State the boundary condition needed to infer constant total energy from its local current.
 
@@ -252,12 +266,12 @@ Answer the tagged questions below. Then alter one hypothesis in the worked argum
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Classical fields and Noether currents” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Classical fields and Noether currents” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

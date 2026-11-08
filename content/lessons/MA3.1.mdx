@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must a subspace contain zero?",
+      "prompt": "Which of these must hold for every subspace W of a vector space V?",
       "options": [
-        "No",
-        "Yes"
+        "W is finite",
+        "W contains each unit vector of V",
+        "W contains the zero vector",
+        "W contains a basis of V"
       ],
-      "answer": "Yes",
-      "explanation": "Closure under zero scalar multiplication produces it.",
+      "answer": "W contains the zero vector",
+      "explanation": "Closure under scalar multiplication includes multiplying by 0, which produces the zero vector, so every subspace contains it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply any vector in W by the scalar 0."
     },
     {
       "id": "concept-2",
-      "prompt": "Is the union of two subspaces always a subspace?",
+      "prompt": "U and W are subspaces of ℝ². Is the union U ∪ W always a subspace?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the union of two subspaces is a subspace, since both contain the zero vector",
+        "Yes, if they contain zero",
+        "No: the sum of a vector from each can fall outside the union",
+        "Yes, if U and W are lines"
       ],
-      "answer": "No",
-      "explanation": "A sum of vectors from different pieces can leave the union.",
+      "answer": "No: the sum of a vector from each can fall outside the union",
+      "explanation": "The x-axis and y-axis are subspaces of ℝ², but (1, 0) + (0, 1) = (1, 1) lies on neither. U ∪ W is a subspace only if one contains the other.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take the x-axis and the y-axis in the plane."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a basis give unique coordinates?",
+      "prompt": "A set of vectors is a basis of V. What does it provide for each vector v in V?",
       "options": [
-        "No",
-        "Yes"
+        "Coordinates only for unit vectors",
+        "Several possible coordinate lists",
+        "No coordinates unless v is a basis vector",
+        "Exactly one set of coordinates"
       ],
-      "answer": "Yes",
-      "explanation": "Spanning gives existence and independence gives uniqueness.",
+      "answer": "Exactly one set of coordinates",
+      "explanation": "Spanning gives existence of a combination; linear independence gives uniqueness.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about both properties of a basis."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why is the set of polynomials of degree exactly n not generally a subspace?",
-      "answer": "Leading terms can cancel and zero is excluded",
+      "prompt": "Why is the set of polynomials of degree exactly n not a vector subspace of the polynomials?",
+      "answer": "Sums can lose the leading term, and zero is excluded",
       "options": [
-        "Leading terms can cancel and zero is excluded",
-        "It has too many points to form a space"
+        "It has no basis, as such polynomials do not span a space",
+        "Sums can lose the leading term, and zero is excluded",
+        "It has too many elements",
+        "It is not closed under scalar multiplication by 1"
       ],
-      "explanation": "Closure and the zero requirement fail.",
+      "explanation": "x^n + (−x^n + 1) = 1 has degree 0, so closure under addition fails, and the zero polynomial is not of degree n.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Add x² to −x² + 1 and look at the degree of the sum."
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "Find the dimension of the subspace x+y+z=0 in real three-dimensional space.",
       "answer": "2",
       "hint": "One independent homogeneous equation removes one dimension.",
-      "explanation": "One independent homogeneous equation removes one dimension. The value in the stated units is 2.",
+      "explanation": "The plane x + y + z = 0 has one independent linear constraint in R³, so its dimension is 3 − 1 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -94,7 +106,7 @@
       "prompt": "A linear map from R^5 has rank 3. Find its kernel dimension.",
       "answer": "2",
       "hint": "Use rank plus nullity equals domain dimension.",
-      "explanation": "Use rank plus nullity equals domain dimension. The value in the stated units is 2.",
+      "explanation": "Rank–nullity: rank + nullity = 5, so the kernel dimension is 5 − 3 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -102,14 +114,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Is the plane x+y+z=1 a vector subspace of R³?",
-      "answer": "No; it does not contain the zero vector.",
+      "prompt": "Is the plane x + y + z = 1 a subspace of ℝ³?",
+      "answer": "No: it does not contain the zero vector",
       "options": [
-        "Yes; every geometric plane is a vector subspace.",
-        "No; it does not contain the zero vector."
+        "Yes: each plane in space is a subspace of it",
+        "No: it does not contain the zero vector",
+        "Yes: it is spanned by two vectors",
+        "Yes: it is closed under addition"
       ],
-      "explanation": "An affine translation generally loses the required zero vector.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "At (0, 0, 0) the equation gives 0 ≠ 1. Only planes through the origin are subspaces.",
+      "hint": "Substitute (0, 0, 0).",
       "misconceptions": {
         "Yes; every geometric plane is a vector subspace.": "An affine translation generally loses the required zero vector."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Vector spaces and subspaces”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,19 +234,19 @@ The vectors (1,−1,0) and (0,1,−1) are independent and span x+y+z=0. For (a,b
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Vector spaces and subspaces”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Vector spaces and subspaces” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Vector spaces and subspaces” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

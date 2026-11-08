@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can one local frame remove all curvature over every finite region?",
+      "prompt": "In a freely falling lab you feel weightless. Can a single local frame remove all gravitational effects over any finite region?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: free fall removes the effects of gravity, as a freely falling frame is inertial over a region",
+        "No: the frame cannot remove even local weight",
+        "Yes: tidal effects are an illusion",
+        "No: over a finite region tidal effects remain, and these reveal spacetime curvature"
       ],
-      "answer": "No",
-      "explanation": "Curvature gives tidal effects.",
+      "answer": "No: over a finite region tidal effects remain, and these reveal spacetime curvature",
+      "explanation": "Two nearby free-falling masses accelerate relative to each other.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of two apples dropped far apart."
     },
     {
       "id": "concept-2",
-      "prompt": "Is coordinate acceleration identical to accelerometer reading?",
+      "prompt": "A particle's coordinate acceleration in some chart is nonzero. Is that the same as what an accelerometer on it reads?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: coordinate acceleration and the accelerometer reading are the same, as both measure the motion",
+        "No: an accelerometer measures proper acceleration",
+        "No: accelerometers read gravity",
+        "Yes: coordinates match the instrument in each chart"
       ],
-      "answer": "No",
-      "explanation": "Coordinates can accelerate independently.",
+      "answer": "No: an accelerometer measures proper acceleration",
+      "explanation": "An accelerometer measures proper acceleration, which is zero in free fall whatever the coordinates do. A geodesic has zero proper acceleration.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Free-falling accelerometers read zero."
     },
     {
       "id": "concept-3",
-      "prompt": "Does free-fall geodesic motion require a test-force regime?",
+      "prompt": "A body follows a geodesic in curved spacetime. When is this a good description?",
       "options": [
-        "No",
-        "Yes"
+        "When the body is a test particle: other forces and its own gravitational field are negligible",
+        "For photons, which move on null geodesics in the spacetime of the source and carry no mass",
+        "For a body that carries charge, as the field bends its geodesic in the spacetime",
+        "For each body in each situation, as the geodesic equation is general in the theory"
       ],
-      "answer": "Yes",
-      "explanation": "Other forces and self-effects can matter.",
+      "answer": "When the body is a test particle: other forces and its own gravitational field are negligible",
+      "explanation": "A charged particle in an electric field or a massive body with strong self-gravity departs from geodesic motion.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does 'test particle' exclude?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does equivalence not supply alone?",
-      "answer": "A complete global metric and source evolution.",
+      "prompt": "The equivalence principle holds locally. What does it not give by itself?",
+      "answer": "The global metric and how sources determine it",
       "options": [
-        "A complete global metric and source evolution.",
-        "Local nongravitational acceleration measured by an ideal accelerometer."
+        "The global metric and how sources determine it",
+        "Equal acceleration of different masses in a uniform gravitational field, which is the content of the principle",
+        "Free fall as inertial motion",
+        "The local flatness of spacetime"
       ],
-      "explanation": "A complete global metric and source evolution.",
+      "explanation": "The field equations are needed to find the metric from the matter distribution.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which part needs Einstein's equations?"
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Can a freely falling frame eliminate tidal curvature throughout a finite region?",
-      "answer": "No; local removal of acceleration does not remove curvature.",
+      "prompt": "An astronaut in free fall feels no acceleration. Does this mean there are no tidal forces over a finite region?",
+      "answer": "No: removing local acceleration does not remove curvature, so tides remain",
       "options": [
-        "Yes; equivalence makes every gravitational effect vanish everywhere.",
-        "No; local removal of acceleration does not remove curvature."
+        "Yes: the effects of gravity vanish for a freely falling observer, so no tides can remain",
+        "Yes: equivalence is exact over a region of a size that is large, as the field is uniform",
+        "No: removing local acceleration does not remove curvature, so tides remain",
+        "No: free fall increases weight"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Distinguish a local inertial frame from a flat spacetime.",
+      "hint": "Compare the head and the feet.",
+      "explanation": "Spaghettification near a black hole is a tidal effect.",
       "misconceptions": {
         "Yes; equivalence makes every gravitational effect vanish everywhere.": "Distinguish a local inertial frame from a flat spacetime."
       },
@@ -162,7 +176,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Equivalence principle and curved spacetime”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -240,7 +254,7 @@ This sign pattern also illustrates why the earlier supplied negative tidal coeff
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Equivalence principle and curved spacetime”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 **Core.** Derive the radial coefficient by subtracting $-GM/(r+\xi_r)^2$ and $-GM/r^2$ to first order. Estimate the fractional correction when $|\xi_r|/r$ is no longer small.
 
@@ -250,12 +264,12 @@ Answer the tagged questions below. Then alter one hypothesis in the worked argum
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Equivalence principle and curved spacetime” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Equivalence principle and curved spacetime” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

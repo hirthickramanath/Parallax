@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a catalyst change the equilibrium constant of the same net reaction at fixed temperature?",
+      "prompt": "A catalyst is added to a reaction at fixed temperature. What happens to its equilibrium constant?",
       "options": [
-        "Yes",
-        "No"
+        "It increases, because the catalyst raises the forward rate and so shifts the equilibrium toward the products",
+        "Nothing: it changes the pathway and rate, not the endpoint thermodynamics",
+        "It becomes infinite, as the reaction is much faster",
+        "It decreases, as the catalyst favours the reactants"
       ],
-      "answer": "No",
-      "explanation": "It changes pathways and rates, not endpoint thermodynamics.",
+      "answer": "Nothing: it changes the pathway and rate, not the endpoint thermodynamics",
+      "explanation": "K depends on ΔG° only. A catalyst lowers the barrier in both directions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a catalyst change ΔG°?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is Langmuir coverage linear at every pressure?",
+      "prompt": "The Langmuir isotherm gives surface coverage θ = KP/(1 + KP). How does θ behave as P grows large?",
       "options": [
-        "No",
-        "Yes"
+        "It grows without limit as the pressure rises",
+        "It saturates towards 1, so coverage is not linear at every pressure",
+        "It stays proportional to P at pressures of any size",
+        "It falls to zero as the pressure rises further"
       ],
-      "answer": "No",
-      "explanation": "Finite site occupancy produces saturation.",
+      "answer": "It saturates towards 1, so coverage is not linear at every pressure",
+      "explanation": "There are only a finite number of sites. θ is linear at low P but saturates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take the limit KP ≫ 1."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a named surface-mechanism family determine every rate law uniquely?",
+      "prompt": "A reaction is called 'Langmuir–Hinshelwood'. Does that name alone fix its rate law?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is first order, as the surface reaction is the step that matters in this model",
+        "Yes: the rate law is first order for the mechanism",
+        "No: the elementary steps and site balance must still be specified",
+        "Yes: the name gives one rate law for the reaction"
       ],
-      "answer": "No",
-      "explanation": "Site balance and elementary steps still need specifying.",
+      "answer": "No: the elementary steps and site balance must still be specified",
+      "explanation": "Different rate-determining steps and competitive adsorption lead to different forms.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List what else you need to write the rate law."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why can very strong adsorption reduce turnover?",
-      "answer": "It can block sites or make product removal slow",
+      "prompt": "A surface binds a reactant very strongly. Why can this reduce the catalytic turnover?",
+      "answer": "It can block sites or make product desorption slow",
       "options": [
-        "It can block sites or make product removal slow",
-        "Any stronger binding must improve every step"
+        "It increases the number of sites",
+        "Strong binding speeds the steps of the cycle",
+        "It raises the temperature",
+        "It can block sites or make product desorption slow"
       ],
-      "explanation": "Binding and release are competing requirements in the cycle.",
+      "explanation": "Sabatier principle: the best catalysts bind neither too weakly nor too strongly.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think about the final step in the cycle."
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For KP=3 in a one-site Langmuir model, find coverage.",
       "answer": "0.75",
       "hint": "Use KP/(1+KP).",
-      "explanation": "Use KP/(1+KP). The value in the stated units is 0.75.",
+      "explanation": "Langmuir coverage is θ = KP/(1 + KP) = 3/4 = 0.75.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For K=2 and P=0.5, find coverage.",
       "answer": "0.5",
       "hint": "The product KP is one.",
-      "explanation": "The product KP is one. The value in the stated units is 0.5.",
+      "explanation": "KP = 2 × 0.5 = 1, so θ = 1/(1 + 1) = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does a catalyst change the thermodynamic equilibrium constant simply by lowering an activation barrier?",
-      "answer": "No; it changes kinetics while equilibrium is set by state free energies.",
+      "prompt": "Does a catalyst alter the equilibrium constant just by lowering an activation barrier?",
+      "answer": "No: it speeds both directions equally, and equilibrium depends on the state free energies",
       "options": [
-        "Yes; faster pathways necessarily create a different equilibrium constant.",
-        "No; it changes kinetics while equilibrium is set by state free energies."
+        "No: it speeds both directions equally, and equilibrium depends on the state free energies",
+        "Yes: the forward barrier alone drops, so the equilibrium shifts toward the products as the catalyst speeds up",
+        "Yes: lower barrier shifts equilibrium",
+        "No: it has no effect on the rates of the reactions"
       ],
-      "explanation": "Forward and reverse detailed thermodynamic constraints must remain consistent.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "By microscopic reversibility, the forward and reverse barriers drop by the same amount.",
+      "hint": "What does the catalyst do to the reverse reaction?",
       "misconceptions": {
         "Yes; faster pathways necessarily create a different equilibrium constant.": "Forward and reverse detailed thermodynamic constraints must remain consistent."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Surfaces and catalysis”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For a declared Langmuir convention with Kp=3, coverage is 3/4=0.75. At Kp=1 it i
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Surfaces and catalysis”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Surfaces and catalysis” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Surfaces and catalysis” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

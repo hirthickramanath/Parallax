@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can an open rocket subsystem use force=d(mv)/dt without a momentum-flux term?",
+      "prompt": "A rocket burns fuel and ejects exhaust. Can you write the thrust equation as F = d(mv)/dt for the rocket alone?",
       "options": [
-        "Always",
-        "Not generally"
+        "Yes: when the exhaust speed is constant",
+        "Yes: Newton's second law takes this form for a rocket as well",
+        "Not generally: the exhaust carries momentum across the system boundary",
+        "Yes: if the mass changes slowly"
       ],
-      "answer": "Not generally",
-      "explanation": "Exhaust carries momentum across the boundary.",
+      "answer": "Not generally: the exhaust carries momentum across the system boundary",
+      "explanation": "F = d(mv)/dt holds for a fixed system. For a variable-mass body you must include the momentum flux of the leaving mass.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the rocket a closed system?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does terminal speed mean gravity vanished?",
+      "prompt": "A skydiver falls at terminal speed. Which statement is correct?",
       "options": [
-        "No; drag balances it",
-        "Yes"
+        "Gravity still acts; drag balances it so the net force is zero",
+        "Gravity has vanished once the speed is steady, because the skydiver has stopped accelerating",
+        "The skydiver is at rest, as the net force on them is zero at that speed",
+        "Drag has vanished, as the speed is constant in the fall"
       ],
-      "answer": "No; drag balances it",
-      "explanation": "Zero acceleration means the net force vanishes.",
+      "answer": "Gravity still acts; drag balances it so the net force is zero",
+      "explanation": "Zero acceleration means the net force is zero, not that individual forces vanish.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does constant velocity say about the net force?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does the ideal rocket logarithm have dimensional units inside it?",
+      "prompt": "The ideal rocket equation is Δv = v_e ln(m₀/m_f). Why can you take a logarithm here?",
       "options": [
-        "Yes",
-        "No; it uses a mass ratio"
+        "v_e is dimensionless, so the logarithm of the ratio of masses can be multiplied by it directly",
+        "The argument m₀/m_f is a dimensionless mass ratio",
+        "Logarithms accept a quantity with units attached to it",
+        "Mass has no units in this equation, so the log is fine"
       ],
-      "answer": "No; it uses a mass ratio",
-      "explanation": "A logarithm takes a dimensionless argument.",
+      "answer": "The argument m₀/m_f is a dimensionless mass ratio",
+      "explanation": "A logarithm needs a dimensionless argument, and the ratio of two masses is dimensionless.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What are the units of m₀/m_f?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why does backward exhaust accelerate the rocket forward?",
-      "answer": "The rocket-plus-exhaust momentum balance includes the outgoing momentum",
+      "prompt": "A rocket in empty space expels gas backward. Why does it accelerate forward?",
+      "answer": "The total momentum of rocket plus exhaust is conserved, so the exhaust's backward momentum is balanced",
       "options": [
-        "The rocket-plus-exhaust momentum balance includes the outgoing momentum",
-        "The expelled mass disappears without carrying momentum"
+        "Gravity pulls the rocket forward, since the exhaust leaving the nozzle changes the direction of the field",
+        "The total momentum of rocket plus exhaust is conserved, so the exhaust's backward momentum is balanced",
+        "Mass disappears with no momentum, so the rocket gains speed from the loss",
+        "The exhaust pushes on the vacuum, and the vacuum pushes back on the rocket and moves it forward"
       ],
-      "explanation": "Momentum exchange accounts for the acceleration.",
+      "explanation": "The rocket gains forward momentum equal and opposite to that carried by the exhaust.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Add up the momentum of rocket and exhaust."
     },
     {
       "id": "mechanics-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "mechanics-model-limits",
-      "prompt": "With fixed relative exhaust speed, no external force and fixed initial/final masses, does burn timing change the ideal rocket Δv?",
-      "answer": "No; the ideal logarithmic result depends on the mass ratio.",
+      "prompt": "With a fixed exhaust speed, no external force and fixed initial and final masses, does burning more slowly change the ideal free-space Δv?",
+      "answer": "No: the ideal result depends only on the mass ratio",
       "options": [
-        "Yes; a slower burn necessarily changes ideal free-space Δv.",
-        "No; the ideal logarithmic result depends on the mass ratio."
+        "Yes: slower burns give more Δv",
+        "Yes: it depends on the burn duration",
+        "No: the ideal result depends only on the mass ratio",
+        "Yes: slower burns give less Δv"
       ],
-      "explanation": "Burn history matters once external forces or changing exhaust conditions are added, not in this stated ideal model.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "Burn history matters only when external forces such as gravity or drag act, or when the exhaust speed changes.",
+      "hint": "Does the rocket equation contain time?",
       "misconceptions": {
         "Yes; a slower burn necessarily changes ideal free-space Δv.": "Burn history matters once external forces or changing exhaust conditions are added, not in this stated ideal model."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Newtonian mechanics with calculus (drag, variable mass)”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -231,19 +245,19 @@ For m=2 kg, c=1 kg/s and g=10 m/s², τ=2 s and terminal speed is 20 m/s. Starti
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Newtonian mechanics with calculus (drag, variable mass)”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Newtonian mechanics with calculus (drag, variable mass)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Newtonian mechanics with calculus (drag, variable mass)” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

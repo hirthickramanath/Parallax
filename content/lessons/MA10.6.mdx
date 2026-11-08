@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are relativistic velocities generally added by ordinary arithmetic?",
+      "prompt": "Two collinear velocities 0.6c and 0.6c are combined relativistically. What is the result?",
       "options": [
-        "Yes",
-        "No"
+        "c, as the sum reaches the limiting speed of light",
+        "0.6c, as velocities do not add here",
+        "1.2c, as the two velocities add in the usual Galilean way",
+        "About 0.88c, since rapidities add, not velocities"
       ],
-      "answer": "No",
-      "explanation": "Collinear rapidities rather than velocities add.",
+      "answer": "About 0.88c, since rapidities add, not velocities",
+      "explanation": "(0.6 + 0.6)/(1 + 0.36) = 0.882. The rapidities add: tanh(a + b).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use (u + v)/(1 + uv/c²)."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the Poincaré group include translations?",
+      "prompt": "Which transformations does the Poincaré group contain?",
       "options": [
-        "Yes",
-        "No"
+        "Lorentz transformations and spacetime translations",
+        "Spatial rotations and translations of Newtonian space",
+        "Translations of space and time, with no boosts",
+        "Lorentz transformations but no translations"
       ],
-      "answer": "Yes",
-      "explanation": "It extends Lorentz transformations.",
+      "answer": "Lorentz transformations and spacetime translations",
+      "explanation": "Poincaré = Lorentz ⋉ translations (10 generators).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the generators: 6 + 4."
     },
     {
       "id": "concept-3",
       "prompt": "Does every curved spacetime have global Poincaré symmetry?",
       "options": [
-        "Yes",
-        "No"
+        "No: it is only locally approximated by flat spacetime",
+        "Yes: always, since any curved spacetime has the same global symmetries as flat Minkowski space",
+        "Yes for static spacetimes",
+        "Yes: at large distances"
       ],
-      "answer": "No",
-      "explanation": "Local inertial structure is not global homogeneity.",
+      "answer": "No: it is only locally approximated by flat spacetime",
+      "explanation": "A generic curved spacetime has no Killing vectors, so no global translations.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the equivalence principle."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What invariant labels massive kinematics?",
-      "answer": "The four-momentum norm.",
+      "prompt": "Which Lorentz-invariant quantity labels the kinematics of a massive particle?",
+      "answer": "The norm of its four-momentum, p^μp_μ = m²c²",
       "options": [
-        "The four-momentum norm.",
-        "A Lorentz transformation."
+        "Its energy in the laboratory frame",
+        "Its velocity relative to the laboratory frame",
+        "The norm of its four-momentum, p^μp_μ = m²c²",
+        "Its three-momentum"
       ],
-      "explanation": "The four-momentum norm.",
+      "explanation": "All inertial observers agree on the invariant mass.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which quantity do all observers agree on?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Do noncollinear boosts generally compose into a pure boost with no rotation?",
-      "answer": "No; a spatial rotation can also appear.",
+      "prompt": "Two boosts in non-parallel directions are applied in succession. What results?",
+      "answer": "A boost combined with a spatial rotation (Wigner/Thomas rotation)",
       "options": [
-        "Yes; all boosts commute.",
-        "No; a spatial rotation can also appear."
+        "A pure boost, as boosts in different directions combine into a boost",
+        "A pure rotation, with the boost part cancelled out",
+        "The identity transformation, as the two boosts undo each other in the end",
+        "A boost combined with a spatial rotation (Wigner/Thomas rotation)"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Lorentz generators have nonzero commutators.",
+      "hint": "Recall the Thomas precession.",
+      "explanation": "Boost generators do not commute: [Kx, Ky] = −iJz.",
       "misconceptions": {
         "Yes; all boosts commute.": "Lorentz generators have nonzero commutators."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Lorentz and Poincare groups”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For E=5,p=3 and c=1 in a one-dimensional massive example, m²=E²−p²=16 and m
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Lorentz and Poincare groups”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Lorentz and Poincare groups” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Lorentz and Poincare groups” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

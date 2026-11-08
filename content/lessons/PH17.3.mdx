@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does increasing N fix missing-support bias automatically?",
+      "prompt": "A Monte Carlo estimate uses a proposal that never samples a region where the target is nonzero. Does a larger N fix this?",
       "options": [
-        "Yes",
-        "No"
+        "No: the bias increases with N, because each extra sample adds more weight outside the target region",
+        "Yes: the bias shrinks as 1/√N, as more samples fill in the missing region of the target",
+        "Yes: more samples cover everything",
+        "No: the estimator targets the wrong region and stays biased however large N gets"
       ],
-      "answer": "No",
-      "explanation": "The estimator targets the wrong measure.",
+      "answer": "No: the estimator targets the wrong region and stays biased however large N gets",
+      "explanation": "Importance sampling needs the proposal's support to cover the target's.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a sample ever land in a region with zero proposal density?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is one realized error guaranteed to halve when N quadruples?",
+      "prompt": "Monte Carlo error scales as 1/√N. If you quadruple N, is the actual error of that one run guaranteed to halve?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: half, with the same result in each run",
+        "No: the scaling describes the typical standard uncertainty",
+        "No: the error doubles, as more samples add more noise to the sum",
+        "Yes: the error halves deterministically"
       ],
-      "answer": "No",
-      "explanation": "The scaling concerns standard uncertainty under assumptions.",
+      "answer": "No: the scaling describes the typical standard uncertainty",
+      "explanation": "The scaling describes the typical standard uncertainty, not each realised error. A single run is a random draw.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about what the standard error describes."
     },
     {
       "id": "concept-3",
-      "prompt": "Are stochastic and model errors distinct?",
+      "prompt": "You run 10⁹ samples with a model that omits an important physical effect. Does the extra sampling help?",
       "options": [
-        "No",
-        "Yes"
+        "It fixes both kinds of error",
+        "It makes the model correct",
+        "It increases the model error",
+        "It reduces statistical error but leaves the model error untouched"
       ],
-      "answer": "Yes",
-      "explanation": "Sampling more does not fix incorrect physics.",
+      "answer": "It reduces statistical error but leaves the model error untouched",
+      "explanation": "Stochastic and systematic errors are different.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Sampling noise and wrong physics are different problems."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why record seeds?",
-      "answer": "To reproduce stochastic runs, with other environment controls.",
+      "prompt": "Why should you record the random seed used in a Monte Carlo run?",
+      "answer": "So the run can be reproduced exactly, along with the code version and environment",
       "options": [
-        "To reproduce stochastic runs, with other environment controls.",
-        "A proposal/weight combination matching the target integral."
+        "So the run can be reproduced exactly, along with the code version and environment",
+        "Seeds have no effect on results, so recording one is a waste of space in the log",
+        "To increase accuracy of the estimate, as a recorded seed lowers the noise in the run",
+        "To make the result more random, as a recorded seed adds noise"
       ],
-      "explanation": "To reproduce stochastic runs, with other environment controls.",
+      "explanation": "Pseudo-random generators are deterministic given a seed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How could someone rerun it?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "May an importance proposal assign zero density where a nonzero target contribution exists?",
-      "answer": "No; the estimator loses required support.",
+      "prompt": "An importance-sampling proposal assigns zero density to a rare region where the target integrand is nonzero. Is the estimate still unbiased?",
+      "answer": "No: the estimator loses the required support and misses that region's contribution",
       "options": [
-        "Yes; rare regions can always be ignored without bias.",
-        "No; the estimator loses required support."
+        "Yes: the importance weights correct for it, as they rescale each sample drawn from q",
+        "Yes: rare regions can be ignored in the estimator, as they are rarely sampled",
+        "No: it increases the variance, but not the bias of the estimator",
+        "No: the estimator loses the required support and misses that region's contribution"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Check support before optimizing variance.",
+      "hint": "What is the weight p/q at q = 0?",
+      "explanation": "Weights w = p/q are infinite where q = 0.",
       "misconceptions": {
         "Yes; rare regions can always be ignored without bias.": "Check support before optimizing variance."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Monte Carlo methods”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If 785 of 1000 independent uniform points fall inside the quadrant, π estimate 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Monte Carlo methods”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Monte Carlo methods” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Monte Carlo methods” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a negative determinant imply negative geometric volume?",
+      "prompt": "A linear map has determinant −3. What does this say about volumes?",
       "options": [
-        "Yes",
-        "No"
+        "Volumes shrink by a factor of 3, since the sign of a determinant has no geometric meaning",
+        "Volumes scale by 3 and orientation reverses",
+        "Volumes scale by −3, with the same orientation",
+        "Volumes become negative"
       ],
-      "answer": "No",
-      "explanation": "The sign records orientation; volume uses magnitude.",
+      "answer": "Volumes scale by 3 and orientation reverses",
+      "explanation": "|det| is the volume scale factor and the sign records orientation reversal.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use |det| for volume and the sign for orientation."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a tiny determinant alone prove ill-conditioning?",
+      "prompt": "A matrix has determinant 10⁻⁹. Does this prove it is ill-conditioned?",
       "options": [
-        "No",
-        "Yes"
+        "No: determinants are integers for matrices of this kind",
+        "No: uniform scaling can make det tiny while conditioning is perfect",
+        "Yes, as a tiny determinant means a nearly singular matrix",
+        "Yes: tiny determinant means ill-conditioned"
       ],
-      "answer": "No",
-      "explanation": "Uniform scaling can make it tiny while relative conditioning stays good.",
+      "answer": "No: uniform scaling can make det tiny while conditioning is perfect",
+      "explanation": "The matrix 10⁻³ I (3×3) has det 10⁻⁹ and condition number 1. Conditioning is about the ratio of singular values.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try a small multiple of the identity."
     },
     {
       "id": "concept-3",
-      "prompt": "Is a conventional determinant defined for every rectangular matrix?",
+      "prompt": "Is the determinant defined for a 2 × 3 matrix?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: by padding with zeros, since a 2 × 3 matrix can be extended to a square one",
+        "Yes: it is the product of the entries",
+        "No: determinants are defined for square matrices",
+        "Yes: it is the sum of the rows"
       ],
-      "answer": "No",
-      "explanation": "It is a square-matrix quantity here.",
+      "answer": "No: determinants are defined for square matrices",
+      "explanation": "The standard determinant needs the same number of rows and columns.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall what you need to define the volume scale factor."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why does adding a multiple of another row preserve determinant?",
-      "answer": "Multilinearity adds a repeated-row determinant equal to zero",
+      "prompt": "Why does adding a multiple of one row to another leave the determinant unchanged?",
+      "answer": "Multilinearity gives an extra term with a repeated row, which is zero",
       "options": [
-        "Multilinearity adds a repeated-row determinant equal to zero",
-        "Every row operation preserves it"
+        "The rows become identical after the operation, so the determinant cannot change under it",
+        "Row operations of each kind preserve the determinant, swaps included",
+        "Multilinearity gives an extra term with a repeated row, which is zero",
+        "The multiple is zero, so the row that is added makes no change to the determinant"
       ],
-      "explanation": "Swaps and scaling have different determinant effects.",
+      "explanation": "det is linear in each row: the added term is k × det of a matrix with two equal rows, which is 0. Swaps and scalings do change det.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Expand using linearity in the changed row."
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "Find determinant of [[2,1],[3,4]].",
       "answer": "5",
       "hint": "Compute 2×4−1×3.",
-      "explanation": "Compute 2×4−1×3. The value in the stated units is 5.",
+      "explanation": "det [[a, b], [c, d]] = ad − bc = 2 × 4 − 1 × 3 = 8 − 3 = 5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "A 2D linear map has determinant −3. Find its unsigned unit-square image area.",
       "answer": "3",
       "hint": "Use absolute determinant for geometric area.",
-      "explanation": "Use absolute determinant for geometric area. The value in the stated units is 3.",
+      "explanation": "The unit square's image has area |det| = |−3| = 3. The minus sign only records that orientation is reversed.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does determinant zero imply a linear map sends every vector to zero?",
-      "answer": "No; it only implies rank loss and noninvertibility.",
+      "prompt": "A matrix has determinant zero. What can you conclude?",
+      "answer": "It loses rank and is not invertible, but need not be the zero matrix",
       "options": [
-        "Yes; a singular matrix is necessarily the zero matrix.",
-        "No; it only implies rank loss and noninvertibility."
+        "It is the zero matrix, as its entries must vanish too",
+        "It is invertible, so the inverse exists and the system has a solution",
+        "It loses rank and is not invertible, but need not be the zero matrix",
+        "It is the identity matrix, scaled by a zero determinant"
       ],
-      "explanation": "Projection matrices are nonzero singular maps.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A projection onto a line has det 0 but is non-zero. det 0 means a non-trivial kernel.",
+      "hint": "Think of a projection.",
       "misconceptions": {
         "Yes; a singular matrix is necessarily the zero matrix.": "Projection matrices are nonzero singular maps."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Determinants”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ For A=[[2,1],[1,3]], determinant is 6−1=5. Swapping its columns gives determin
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Determinants”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Determinants” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Determinants” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

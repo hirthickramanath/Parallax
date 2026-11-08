@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does y=0 settle marginal flow without nonlinear terms?",
+      "prompt": "A coupling has a marginal RG eigenvalue y = 0 at linear order. Does that settle its flow?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a marginal eigenvalue means the coupling is constant",
+        "Yes: it grows, as the flow leads away from the point",
+        "No: nonlinear terms decide whether it grows or shrinks",
+        "Yes: it decays toward the fixed point in the flow"
       ],
-      "answer": "No",
-      "explanation": "Higher-order terms can control it.",
+      "answer": "No: nonlinear terms decide whether it grows or shrinks",
+      "explanation": "dg/dl = bg² (marginally relevant or irrelevant depending on the sign of b).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Include the next term in the beta function."
     },
     {
       "id": "concept-2",
-      "prompt": "Are all original couplings automatically RG eigen-directions?",
+      "prompt": "Are the original couplings automatically the eigen-directions of the linearised RG flow?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, for symmetric theories, since symmetry guarantees that the couplings do not mix under the flow",
+        "No: they can mix, so you must diagonalise the linearised flow",
+        "Yes for scalar theories, where one coupling is present",
+        "Yes: the couplings are the eigen-directions, so each flows by itself"
       ],
-      "answer": "No",
-      "explanation": "They can mix under linearization.",
+      "answer": "No: they can mix, so you must diagonalise the linearised flow",
+      "explanation": "The scaling fields are linear combinations of the couplings.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the linearised flow matrix."
     },
     {
       "id": "concept-3",
-      "prompt": "Can scheme choices affect intermediate coupling values?",
+      "prompt": "Two renormalisation schemes give different values for an intermediate coupling. Is that a contradiction?",
       "options": [
-        "No",
-        "Yes"
+        "No: physical observables, not raw coupling values, must agree",
+        "Yes: one scheme must be wrong, because the intermediate coupling has a single correct numerical value",
+        "Yes: one scheme must be wrong, as the intermediate couplings must agree",
+        "Yes: the intermediate coupling must be scheme independent, so one of the two schemes has an error"
       ],
-      "answer": "Yes",
-      "explanation": "Matched observables rather than raw numbers are physical comparisons.",
+      "answer": "No: physical observables, not raw coupling values, must agree",
+      "explanation": "Schemes differ by finite redefinitions of couplings. Matched predictions are scheme independent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What do experiments measure?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should remain scheme-consistent?",
-      "answer": "Observable predictions and parameter definitions.",
+      "prompt": "When comparing results across renormalisation schemes, what should remain consistent?",
+      "answer": "Observable predictions and the definition of the parameters",
       "options": [
-        "Observable predictions and parameter definitions.",
-        "A perturbation grows away from the fixed point."
+        "Observable predictions and the definition of the parameters",
+        "The cutoff value and the raw coupling numbers, since these are what a physical comparison requires",
+        "The order of calculation",
+        "The raw coupling numbers"
       ],
-      "explanation": "Observable predictions and parameter definitions.",
+      "explanation": "Quote the scheme with every value, and compare physical observables.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What must be scheme independent?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does a zero linear RG eigenvalue alone prove a coupling stays exactly constant?",
-      "answer": "No; nonlinear flow terms can matter.",
+      "prompt": "An RG eigenvalue is exactly zero at linear order. Can you conclude the coupling stays exactly constant?",
+      "answer": "No: nonlinear flow terms can matter",
       "options": [
-        "Yes; marginal means no possible flow.",
-        "No; nonlinear flow terms can matter."
+        "Yes: the coupling is at a fixed point",
+        "Yes: it is a fixed point",
+        "No: nonlinear flow terms can matter",
+        "Yes: it is irrelevant"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Linearization cannot decide all marginal behavior.",
+      "hint": "Think of the running of the QED coupling.",
+      "explanation": "Marginal couplings can flow logarithmically due to higher-order terms.",
       "misconceptions": {
         "Yes; marginal means no possible flow.": "Linearization cannot decide all marginal behavior."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Renormalisation group mathematics”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For b=2,y=3, a small scaling amplitude multiplies by eight. For y_t=2, the eleme
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Renormalisation group mathematics”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Renormalisation group mathematics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Renormalisation group mathematics” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

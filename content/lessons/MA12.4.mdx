@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is δ² automatically defined in ordinary distribution theory?",
+      "prompt": "Is δ(x)² a well-defined distribution in ordinary distribution theory?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it equals δ(2x), by the scaling rule for the delta",
+        "Yes: it equals δ(x), by the sifting rule of the delta distribution",
+        "No: products of singular distributions need extra structure",
+        "Yes: it equals 0, as δ vanishes away from the origin point"
       ],
-      "answer": "No",
-      "explanation": "Products of singular distributions need extra structure.",
+      "answer": "No: products of singular distributions need extra structure",
+      "explanation": "Smoothing δ by a width ε gives δ_ε² ~ 1/ε → ∞, with no limit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Square a narrow Gaussian of width ε."
     },
     {
       "id": "concept-2",
-      "prompt": "Does delta scaling use |a|?",
+      "prompt": "How does δ(ax) relate to δ(x) for a ≠ 0?",
       "options": [
-        "Yes",
-        "No"
+        "δ(ax) = δ(x)",
+        "δ(ax) = δ(x)/a, since the scaling factor enters without the modulus for negative a",
+        "δ(ax) = δ(x)/|a|",
+        "δ(ax) = aδ(x)"
       ],
-      "answer": "Yes",
-      "explanation": "The integration Jacobian has an absolute value.",
+      "answer": "δ(ax) = δ(x)/|a|",
+      "explanation": "Substituting u = ax in ∫δ(ax)φ(x)dx gives φ(0)/|a|, with the absolute value from the Jacobian.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Change variables and keep the sign of the Jacobian."
     },
     {
       "id": "concept-3",
-      "prompt": "Does weak convergence require uniform convergence of kernels?",
+      "prompt": "Do narrow bumps δ_ε converge to the delta distribution uniformly as functions?",
       "options": [
-        "Yes",
-        "No"
+        "No: they do not converge, as the peaks grow without limit",
+        "Yes: pointwise, at each point of the real line",
+        "No: they converge weakly, by their action on test functions",
+        "Yes: uniformly, as the bumps become narrow and the tails are flat"
       ],
-      "answer": "No",
-      "explanation": "It concerns actions on test functions.",
+      "answer": "No: they converge weakly, by their action on test functions",
+      "explanation": "The peak height grows as ε → 0 while ∫δ_εφ → φ(0).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the maximum of the bumps."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What do narrow normalized kernels approach?",
-      "answer": "Delta in a specified weak/distributional sense.",
+      "prompt": "Narrow normalised kernels such as Gaussians of width ε → 0 approach what?",
+      "answer": "The delta distribution, in the weak (distributional) sense",
       "options": [
-        "Delta in a specified weak/distributional sense.",
-        "Evaluates a test function at its support point."
+        "Zero in the limit, as the area of the kernel shrinks",
+        "A bounded function, with a finite peak at the origin",
+        "A step function, as the kernels rise sharply at the origin and stay up",
+        "The delta distribution, in the weak (distributional) sense"
       ],
-      "explanation": "Delta in a specified weak/distributional sense.",
+      "explanation": "∫K_ε(x)φ(x)dx → φ(0) for every test function φ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Test with a smooth φ."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is the delta distribution an ordinary function with a finite value at zero and zero elsewhere?",
-      "answer": "No; it is defined through its action on test functions.",
+      "prompt": "Can the Dirac delta be defined as an ordinary function equal to a finite value at 0 and zero elsewhere?",
+      "answer": "No: it is defined through its action on test functions",
       "options": [
-        "Yes; choosing a tall enough finite spike defines it exactly.",
-        "No; it is defined through its action on test functions."
+        "Yes: take a tall finite spike at the origin and let its height go to infinity at zero",
+        "Yes: take a tall finite spike",
+        "Yes: δ(0) = ∞ defines it as a function",
+        "No: it is defined through its action on test functions"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Normalized approximants are not the distribution itself.",
+      "hint": "What is the integral of a function that is zero almost everywhere?",
+      "explanation": "An ordinary function that vanishes except at one point has zero integral. δ is a distribution with ∫δφ = φ(0).",
       "misconceptions": {
         "Yes; choosing a tall enough finite spike defines it exactly.": "Normalized approximants are not the distribution itself."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Distributions and the Dirac delta”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ The whole-line integral of δ(2x) times a test function with φ(0)=3 is 3/2. The
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Distributions and the Dirac delta”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Distributions and the Dirac delta” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Distributions and the Dirac delta” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

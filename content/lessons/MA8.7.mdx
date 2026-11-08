@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does repeating measurements remove a common calibration bias automatically?",
+      "prompt": "A scale reads 0.5 g too high every time. You average 1,000 readings. What happens to this offset?",
       "options": [
-        "Yes",
-        "No"
+        "It shrinks by 1/√1000, since averaging reduces the offset together with the random scatter of the readings",
+        "It averages to zero, as the errors of the readings cancel in the mean",
+        "It remains: averaging reduces only independent random errors",
+        "It doubles, as the number of readings multiplies the offset in the mean value"
       ],
-      "answer": "No",
-      "explanation": "The same offset persists in the average.",
+      "answer": "It remains: averaging reduces only independent random errors",
+      "explanation": "A shared systematic bias is the same in every measurement, so it survives averaging.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the offset random or fixed?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can parameter-dependent covariance drop its log-determinant term from the likelihood?",
+      "prompt": "In a Gaussian likelihood the covariance depends on the parameters. Can the log-determinant term be dropped when maximising?",
       "options": [
-        "Not generally",
-        "Always"
+        "Yes: it is a constant, so the log-determinant term can be dropped without moving the maximum",
+        "Yes: it cancels with the χ² term",
+        "Not generally: it varies with the parameters and affects the maximum",
+        "No: it is zero, as the covariance enters the likelihood as a fixed constant term"
       ],
-      "answer": "Not generally",
-      "explanation": "It is no longer constant in the parameters.",
+      "answer": "Not generally: it varies with the parameters and affects the maximum",
+      "explanation": "−½ln det C(θ) is part of the log-likelihood and only constant if C does not depend on θ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the full Gaussian log-likelihood."
     },
     {
       "id": "concept-3",
-      "prompt": "Does reduced chi-square near one prove the physical model?",
+      "prompt": "A fit has reduced χ² close to 1. What does that tell you?",
       "options": [
-        "Yes",
-        "No"
+        "The errors are zero, as the fit matches the data points closely",
+        "The model is correct, as the scatter matches the error bars on the data and no more is needed",
+        "The data are noiseless, as the scatter is far below the error bars",
+        "The scatter matches the error bars, but not that the model is physically right"
       ],
-      "answer": "No",
-      "explanation": "It depends on error assumptions and can miss model failures.",
+      "answer": "The scatter matches the error bars, but not that the model is physically right",
+      "explanation": "Wrong error estimates or a flexible model can also give χ²_ν ≈ 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can two different problems both give χ²_ν ≈ 1?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why inspect correlated residuals?",
-      "answer": "They can reveal unmodeled dependence or systematic structure",
+      "prompt": "Why look at the residuals' correlation structure after a fit?",
+      "answer": "Patterns can reveal unmodelled systematics or dependence",
       "options": [
-        "They can reveal unmodeled dependence or systematic structure",
-        "A low residual sum guarantees independent errors"
+        "Residuals are random, so no structure can be present in them",
+        "A small residual sum guarantees independence",
+        "Patterns can reveal unmodelled systematics or dependence",
+        "It matters for large datasets, not for the small ones"
       ],
-      "explanation": "Residual patterns test assumptions beyond the scalar fit objective.",
+      "explanation": "A single scalar objective hides structure such as trends or autocorrelation.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Plot residuals against the fit variable."
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does averaging eliminate a perfectly shared calibration bias?",
-      "answer": "No; the shared contribution persists.",
+      "prompt": "Many experiments share one calibration constant that is wrong by 2%. What does averaging their results do to that error?",
+      "answer": "Leaves the shared error unchanged",
       "options": [
-        "Yes; every uncertainty falls as 1/√n.",
-        "No; the shared contribution persists."
+        "Doubles it, since combining many experiments adds the shared calibration errors together in each result",
+        "Removes it, as the errors average out",
+        "Leaves the shared error unchanged",
+        "Reduces it by 1/√n"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Only independent fluctuations average down that way.",
+      "hint": "Which errors are independent?",
+      "explanation": "Only independent fluctuations average down; a common contribution is fully correlated.",
       "misconceptions": {
         "Yes; every uncertainty falls as 1/√n.": "Only independent fluctuations average down that way."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Error analysis and fitting”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ For independent a=2±0.1 and b=3±0.2 with small standard uncertainties, y=ab=6.
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Error analysis and fitting”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Error analysis and fitting” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Error analysis and fitting” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can one Jones vector represent unpolarized light completely?",
+      "prompt": "Can a single Jones vector describe unpolarised light fully?",
       "options": [
-        "Yes",
-        "No"
+        "No: it needs an ensemble or correlation (coherency matrix) description",
+        "Yes: use (1, 1), since a single Jones vector with equal components describes unpolarised light",
+        "Yes: a Jones matrix applied to the vector describes it fully",
+        "Yes: a Jones vector with a randomly varying phase describes it"
       ],
-      "answer": "No",
-      "explanation": "It needs an ensemble/correlation description.",
+      "answer": "No: it needs an ensemble or correlation (coherency matrix) description",
+      "explanation": "Jones vectors describe fully polarised light.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is unpolarised light a single polarisation state?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a lossless ideal retarder necessarily absorb energy?",
+      "prompt": "A lossless ideal wave plate changes polarisation. Does it absorb energy?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: all of the light is absorbed, since changing polarisation requires removing one component",
+        "No: it only changes the relative phase between components",
+        "Yes: it absorbs part of the power it passes",
+        "Yes: a retarder absorbs light"
       ],
-      "answer": "No",
-      "explanation": "It changes relative phase.",
+      "answer": "No: it only changes the relative phase between components",
+      "explanation": "Its Jones matrix is unitary, so the total power is preserved and only the relative phase between components changes.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a unitary matrix conserve?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must circular-polarization sign conventions be stated?",
+      "prompt": "A paper says 'right-circular polarised light'. Why must the sign convention be stated?",
       "options": [
-        "No",
-        "Yes"
+        "Viewing direction and time-dependence conventions can reverse the label",
+        "Labels agree between texts, as handedness belongs to the wave",
+        "The labels follow one standard that is used throughout optics",
+        "Handedness is fixed by the wave and does not depend on convention"
       ],
-      "answer": "Yes",
-      "explanation": "Viewing/time conventions can reverse labels.",
+      "answer": "Viewing direction and time-dependence conventions can reverse the label",
+      "explanation": "Optics and particle-physics conventions for helicity differ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Looking toward the source or away from it?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What affects real wave-plate performance?",
-      "answer": "Wavelength, direction, alignment and material dispersion.",
+      "prompt": "What can limit the performance of a real quarter-wave plate?",
+      "answer": "Wavelength, direction, alignment and material dispersion",
       "options": [
-        "Wavelength, direction, alignment and material dispersion.",
-        "Different propagation responses for polarization eigenmodes."
+        "Little limits it, as the plate is ideal by design",
+        "Wavelength, direction, alignment and material dispersion",
+        "The colour of the light being used",
+        "The thickness of the plate in use"
       ],
-      "explanation": "Wavelength, direction, alignment and material dispersion.",
+      "explanation": "The retardance δ = 2πΔn d/λ depends on all of these.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "At what wavelength is the retardance exactly 90°?"
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For linearly polarized intensity 8 and analyzer angle 60 degrees, find transmitted intensity.",
       "answer": "2",
       "hint": "Use cos²60°=1/4.",
-      "explanation": "Use cos²60°=1/4. The value in the stated units is 2.",
+      "explanation": "Malus's law: I = I₀ cos²θ = 8 × cos²60° = 8 × 1/4 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For λ=500 nm and Δn=0.01, find quarter-wave plate thickness in nm.",
       "answer": "12500",
       "hint": "Use L=λ/(4Δn).",
-      "explanation": "Use L=λ/(4Δn). The value in the stated units is 12500.",
+      "explanation": "A quarter-wave plate gives a phase of π/2, so Δn·L = λ/4. Then L = λ/(4Δn) = 500/(4 × 0.01) = 12,500 nm.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Is applying Malus law to one fixed incident polarization the same operation as averaging an unpolarized beam?",
-      "answer": "No; the latter requires an orientation average.",
+      "prompt": "Is applying Malus's law cos²θ to one fixed polarisation the same as treating an unpolarised beam?",
+      "answer": "No: an unpolarised beam requires an average over polarisation orientations",
       "options": [
-        "Yes; both cases always transmit the same fraction at every analyzer angle.",
-        "No; the latter requires an orientation average."
+        "Yes: the same cos²θ factor applies to both kinds of beam",
+        "Yes: an unpolarised beam is just a beam with one fixed angle",
+        "Yes: the transmitted fraction is the same whatever the angle",
+        "No: an unpolarised beam requires an average over polarisation orientations"
       ],
-      "explanation": "Specify the incident polarization state.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "An unpolarised beam requires an average over polarisation orientations (giving ½). The average of cos²θ over all θ is 1/2.",
+      "hint": "Average cos²θ over all angles.",
       "misconceptions": {
         "Yes; both cases always transmit the same fraction at every analyzer angle.": "Specify the incident polarization state."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Polarisation and crystal optics”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ An ideal analyser 60° from a linear input transmits one quarter of its intensit
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Polarisation and crystal optics”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Polarisation and crystal optics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Polarisation and crystal optics” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

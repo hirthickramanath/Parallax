@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do gauge-related potentials give different E and B?",
+      "prompt": "Two potentials (φ, A) and (φ′, A′) are related by a gauge transformation. Do they give different E and B?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: E changes, since the added gradient terms shift the field values at each point",
+        "Yes: the gauge terms change the fields",
+        "Yes: different fields",
+        "No: the extra terms cancel in E and B"
       ],
-      "answer": "No",
-      "explanation": "The gradient/time-derivative terms cancel.",
+      "answer": "No: the extra terms cancel in E and B",
+      "explanation": "A′ = A + ∇χ and φ′ = φ − ∂χ/∂t leave E and B unchanged.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute E from the transformed potentials."
     },
     {
       "id": "concept-2",
-      "prompt": "Does choosing Lorenz gauge remove all possible residual gauge freedom automatically?",
+      "prompt": "You choose the Lorenz gauge ∂_μ A^μ = 0. Does that remove all gauge freedom?",
       "options": [
-        "No",
-        "Yes"
+        "No: gauge functions satisfying □χ = 0 remain",
+        "Yes: it fixes everything",
+        "Yes: the condition fixes the potentials",
+        "Yes: the choice leaves a unique potential"
       ],
-      "answer": "No",
-      "explanation": "Homogeneous gauge functions can remain.",
+      "answer": "No: gauge functions satisfying □χ = 0 remain",
+      "explanation": "Residual gauge transformations obey the wave equation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What equation must χ satisfy to preserve the condition?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must initial free fields sometimes supplement retarded source integrals?",
+      "prompt": "You compute the field of a source from the retarded integral. Might you need to add a free (homogeneous) field?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the particular solution need not match the initial conditions",
+        "No: retarded integrals are complete, so no free field can ever be required for initial data",
+        "No: the retarded integral already fits the initial data",
+        "No: free homogeneous fields are zero at later times"
       ],
-      "answer": "Yes",
-      "explanation": "The source particular solution alone need not match initial conditions.",
+      "answer": "Yes: the particular solution need not match the initial conditions",
+      "explanation": "The retarded solution assumes no incoming radiation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What about radiation present at t = 0?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What must be included when differentiating retarded potentials?",
-      "answer": "The dependence of the retarded source time.",
+      "prompt": "What must you include when taking derivatives of retarded potentials?",
+      "answer": "The dependence of the retarded time on position",
       "options": [
-        "The dependence of the retarded source time.",
-        "Redundant potential descriptions of the same fields."
+        "The dependence of the retarded time on position",
+        "No extra terms, as the potentials depend on position directly",
+        "The derivative of the source term",
+        "The gauge function and its derivative"
       ],
-      "explanation": "The dependence of the retarded source time.",
+      "explanation": "t_r = t − |r − r′|/c depends on r.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does t_r depend on the field point?"
     },
     {
       "id": "em-transfer-1",
       "prompt": "A source is R=6 model lengths away and c=3 lengths/time. Find retarded delay.",
       "answer": "2",
       "hint": "Use R/c.",
-      "explanation": "Use R/c. The value in the stated units is 2.",
+      "explanation": "The retarded delay is R/c = 6/3 = 2 time units.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For χ=x t² at x=2,t=3, find the scalar-potential shift −∂χ/∂t.",
       "answer": "-12",
       "hint": "Differentiate with x fixed: −2xt.",
-      "explanation": "Differentiate with x fixed: −2xt. The value in the stated units is -12.",
+      "explanation": "−∂χ/∂t = −∂(xt²)/∂t = −2xt. At x = 2 and t = 3 this is −12.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Can a time-dependent gauge change A→A+gradχ generally leave φ unchanged while preserving E?",
-      "answer": "No; φ must shift by −∂χ/∂t.",
+      "prompt": "Under A → A + ∇χ, can φ stay unchanged while E is preserved in a time-dependent case?",
+      "answer": "No: φ must shift by −∂χ/∂t",
       "options": [
-        "Yes; changing only A is always the full gauge transformation.",
-        "No; φ must shift by −∂χ/∂t."
+        "Yes: E is set by φ",
+        "Yes: φ is invariant",
+        "No: φ must shift by −∂χ/∂t",
+        "Yes: changing A alone is enough"
       ],
-      "explanation": "The electric field contains both scalar and time-dependent vector-potential terms.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "E = −∇φ − ∂A/∂t, so both parts change together.",
+      "hint": "Recompute E with the new A.",
       "misconceptions": {
         "Yes; changing only A is always the full gauge transformation.": "The electric field contains both scalar and time-dependent vector-potential terms."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Potentials, gauge freedom and retarded potentials”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ At a source-observer separation R=6 and wave speed c=2, the retarded time for ob
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Potentials, gauge freedom and retarded potentials”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Potentials, gauge freedom and retarded potentials” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Potentials, gauge freedom and retarded potentials” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

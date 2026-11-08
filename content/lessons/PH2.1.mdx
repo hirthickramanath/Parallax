@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does stationary action always mean a global action minimum?",
+      "prompt": "A path makes the action S stationary. Is it always the path of minimum action?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is the global minimum of the action in space",
+        "Yes: it is a maximum of the action",
+        "No: stationary paths can also be saddle points",
+        "Yes: it is a minimum of the action in each case"
       ],
-      "answer": "No",
-      "explanation": "Stationary paths can be saddles.",
+      "answer": "No: stationary paths can also be saddle points",
+      "explanation": "Stationarity is δS = 0, which includes minima, maxima and saddles.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does δS = 0 require?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is every generalized momentum simply m times that coordinate speed?",
+      "prompt": "In generalised coordinates, is the momentum p = ∂L/∂q̇ always m q̇?",
       "options": [
-        "No",
-        "Yes"
+        "No: it depends on the kinetic expression and the coordinate",
+        "Yes: for angles too, since the momentum conjugate to an angle is the mass times the angular velocity",
+        "Yes: with proper units for the mass and the velocity",
+        "Yes: p = mq̇ in each coordinate system that is used in mechanics"
       ],
-      "answer": "No",
-      "explanation": "It depends on the kinetic expression and coordinate units.",
+      "answer": "No: it depends on the kinetic expression and the coordinate",
+      "explanation": "For an angle θ the conjugate momentum is mr²θ̇, with units of angular momentum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute ∂L/∂θ̇ for a particle on a circle."
     },
     {
       "id": "concept-3",
-      "prompt": "Can every dissipative force be represented by the same quadratic Rayleigh function?",
+      "prompt": "Can every dissipative force be described using the same quadratic Rayleigh dissipation function?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it covers dry friction and nonlinear drag as well",
+        "No: it models a specific class of forces (linear in velocity)",
+        "Yes: including dry friction",
+        "Yes: it covers the drag forces of each kind in a fluid medium"
       ],
-      "answer": "No",
-      "explanation": "That construction models a specific class of forces.",
+      "answer": "No: it models a specific class of forces (linear in velocity)",
+      "explanation": "Rayleigh's function works for forces linear in velocity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What velocity dependence does the Rayleigh function have?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should a coordinate change preserve?",
-      "answer": "The physical admissible configurations and equations under consistent transformation",
+      "prompt": "You change coordinates in a Lagrangian problem. What must be preserved?",
+      "answer": "The physical configurations and the equations of motion, under a consistent transformation",
       "options": [
-        "The physical admissible configurations and equations under consistent transformation",
-        "Every individual numerical momentum component"
+        "The physical configurations and the equations of motion, under a consistent transformation",
+        "The form of the Lagrangian, which must keep one functional expression in each system",
+        "Each numerical momentum component, which must keep its value in the new coordinates of the system",
+        "The coordinate values, which must keep their numbers in the new system"
       ],
-      "explanation": "Coordinate components can change while the physical predictions remain consistent.",
+      "explanation": "Components change with the coordinate system, but the physics must stay the same.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the physical trajectory dependent on coordinates?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "Does adding dF(q,t)/dt alter the Euler–Lagrange trajectory when endpoint coordinate variations are fixed to zero?",
-      "answer": "No; the added action is an endpoint term with zero allowed variation.",
+      "prompt": "You add dF(q,t)/dt to a Lagrangian. Does the trajectory from the Euler–Lagrange equations change when the endpoints are fixed?",
+      "answer": "No: the added term is a boundary contribution whose variation is zero with fixed ends",
       "options": [
-        "Yes; every changed expression for L gives different trajectories.",
-        "No; the added action is an endpoint term with zero allowed variation."
+        "No: the added term is a boundary contribution whose variation is zero with fixed ends",
+        "Yes: if F is large, the added term shifts the action enough to change which path is stationary",
+        "Yes: each change in L alters the motion of the system that is described",
+        "Yes: the momentum changes the path"
       ],
-      "explanation": "Canonical momenta can change while the fixed-endpoint equations remain equivalent.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "The action changes by F(q₂,t₂) − F(q₁,t₁), which has zero variation.",
+      "hint": "Integrate dF/dt over time.",
       "misconceptions": {
         "Yes; every changed expression for L gives different trajectories.": "Canonical momenta can change while the fixed-endpoint equations remain equivalent."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Lagrangian mechanics”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -231,18 +245,18 @@ For a small-angle pendulum with mass m and length ℓ, L≈mℓ²θ̇²/2−mg�
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Lagrangian mechanics”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Lagrangian mechanics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Lagrangian mechanics” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

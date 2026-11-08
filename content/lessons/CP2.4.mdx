@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May preprocessing be fitted on all rows before cross-validation?",
+      "prompt": "You standardise all features with the full dataset's mean and variance, then run cross-validation. What is wrong?",
       "options": [
-        "Yes",
-        "No"
+        "The features should not be standardised, as scaling is not valid for a cross-validation run",
+        "Information from the held-out folds leaked into training",
+        "No concern: standardising is harmless for the folds",
+        "Cross-validation needs unscaled data"
       ],
-      "answer": "No",
-      "explanation": "Held-out information can leak into training.",
+      "answer": "Information from the held-out folds leaked into training",
+      "explanation": "Preprocessing parameters must be learned from the training folds only, e.g. within a pipeline, otherwise the validation scores are too optimistic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which rows are used to compute the mean?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does high classification accuracy prove good minority-class recall?",
+      "prompt": "A classifier for a rare event (1% positives) reports 99% accuracy. What does this show?",
       "options": [
-        "No",
-        "Yes"
+        "Nothing about recall: predicting 'negative' for everything also gives 99%",
+        "That the classifier finds almost all positives, since 99% accuracy means 99% of the rare events are caught",
+        "That the classifier finds almost all positives",
+        "That precision is 99% for the rare class"
       ],
-      "answer": "No",
-      "explanation": "A majority-only classifier can score highly.",
+      "answer": "Nothing about recall: predicting 'negative' for everything also gives 99%",
+      "explanation": "With imbalanced classes, accuracy is dominated by the majority class. Check recall, precision, and PR curves.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What would a classifier that always says 'no' score?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does feature importance establish a causal mechanism?",
+      "prompt": "A model's feature importance ranks a variable highly. What can you conclude?",
       "options": [
-        "Yes",
-        "No"
+        "That it causes the outcome, since a high importance score shows the variable directly drives the result",
+        "It is useful for prediction, but not necessarily a cause",
+        "That it is independent of the others",
+        "That it is physically meaningful"
       ],
-      "answer": "No",
-      "explanation": "Predictive association is not causation.",
+      "answer": "It is useful for prediction, but not necessarily a cause",
+      "explanation": "Importance reflects predictive association, which can come from confounders or correlated proxies. Causal claims need other evidence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does correlation imply causation?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should a scientific model beat?",
-      "answer": "Transparent, appropriately validated simple baselines.",
+      "prompt": "A scientific machine-learning model reports good accuracy. What should it be compared against?",
+      "answer": "Simple, well-validated baselines",
       "options": [
-        "Transparent, appropriately validated simple baselines.",
-        "To keep related observations from leaking across evaluation boundaries."
+        "Its own training score",
+        "No more is needed: accuracy by itself is enough",
+        "A more complex model of the same kind",
+        "Simple, well-validated baselines"
       ],
-      "explanation": "Transparent, appropriately validated simple baselines.",
+      "explanation": "A simple baseline such as a linear fit or physical model shows whether the added complexity buys anything. Without it, a high score is not interpretable.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Ask what the cheapest alternative would score."
     },
     {
       "id": "computing-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "May preprocessing be fit on the full dataset before declaring the test split untouched?",
-      "answer": "No; that can leak test information.",
+      "prompt": "You fit a scaler on the full dataset before splitting off the test set. Is the test score still a clean estimate?",
+      "answer": "No: the test data influenced the preprocessing, so the score can leak",
       "options": [
-        "Yes; preprocessing cannot affect evaluation.",
-        "No; that can leak test information."
+        "Yes, if the model is linear in the features",
+        "Yes: scaling does not affect the performance of the model",
+        "No: the test data influenced the preprocessing, so the score can leak",
+        "No, because scalers cannot be fit on test data"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Fit learned preprocessing only on training data.",
+      "hint": "Does the scaler see any test rows?",
+      "explanation": "Leakage can be subtle: statistics from the test set (mean, variance) enter the training pipeline. Fit transforms on the training split and apply them to the test.",
       "misconceptions": {
         "Yes; preprocessing cannot affect evaluation.": "Fit learned preprocessing only on training data."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Machine learning for science”, read the linked prerequisites and keep a notebook of the code or algorithm you try. State the inputs, the assumptions and the numerical tolerances before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For true values [1,3] and predictions [2,1], residuals are −1 and 2, so MSE=(1
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Machine learning for science”, answer the tagged questions below. Then change one input, step size or algorithmic choice in the worked example and say how the output and its error change. Keep the method, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Machine learning for science” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical run can expose a wrong method, but one successful run does not show that the method converges or is stable.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Machine learning for science” in a simulation or analysis pipeline. Separate what the method guarantees from the assumptions needed in practice. Record which check (convergence, stability or error estimate) comes next.
 
 </LessonSection>

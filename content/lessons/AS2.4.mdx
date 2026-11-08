@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does any redshift directly equal v/c at all values?",
+      "prompt": "A quasar has z = 2. Can you say it recedes at v = 2c using z = v/c?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: z is exactly v/c, so the quasar is receding at twice the speed of light, which relativity allows for distant galaxies",
+        "Yes: faster than light is allowed by relativity, so the formula applies to distant quasars, which recede quickly",
+        "No: z = v/c is only a low-speed approximation, and cosmological redshift is not an ordinary Doppler shift",
+        "Yes: the recession speed follows from v = cz, which gives 2c for a redshift of 2"
       ],
-      "answer": "No",
-      "explanation": "The relation depends on regime and physical model.",
+      "answer": "No: z = v/c is only a low-speed approximation, and cosmological redshift is not an ordinary Doppler shift",
+      "explanation": "The relativistic relation is 1 + z = √((1+β)/(1−β)), and cosmological redshift is from spacetime expansion.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is v/c allowed to exceed 1?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must exact independent shift factors combine by simple addition of z?",
+      "prompt": "Light from a galaxy has a cosmological redshift z₁ = 1 and is then Doppler-shifted by a cluster motion with z₂ = 0.1. What is the total redshift?",
       "options": [
-        "No",
-        "Yes"
+        "z = 1.2, because (1+z) factors multiply: 2 × 1.1 = 2.2",
+        "z = 1.1, as the Doppler redshift of 0.1 adds to the cosmological one: 1 + 0.1",
+        "z = 1.1, adding the Doppler shift to the cosmological value",
+        "z = 1.0, with the Doppler shift added to the cosmological one"
       ],
-      "answer": "No",
-      "explanation": "Their 1+z factors multiply under appropriate composition.",
+      "answer": "z = 1.2, because (1+z) factors multiply: 2 × 1.1 = 2.2",
+      "explanation": "1 + z_tot = (1 + z₁)(1 + z₂) = 2.2, so z_tot = 1.2, not 1.1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply the factors 1 + z."
     },
     {
       "id": "concept-3",
-      "prompt": "Does one ambiguous line guarantee the correct rest identification?",
+      "prompt": "Only one emission line is seen in a faint galaxy. Does it guarantee the correct redshift?",
       "options": [
-        "Yes",
-        "No"
+        "No: it could be a different line at another redshift; more features and checks are needed",
+        "Yes: if the line is strong enough it fixes the redshift of the galaxy",
+        "Yes: a single line is enough to fix the redshift without other features",
+        "Yes: emission lines cannot be confused with one another in the spectrum"
       ],
-      "answer": "No",
-      "explanation": "Multiple consistent features and calibration checks are needed.",
+      "answer": "No: it could be a different line at another redshift; more features and checks are needed",
+      "explanation": "A single line at 3727 Å could be [OII] at z = 0 or Lyα at z ≈ 2.07.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Could another line fall at the same observed wavelength?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why keep cosmological and radial SR interpretations separate?",
-      "answer": "They describe different spacetime and propagation models",
+      "prompt": "Why should the cosmological and special-relativistic readings of a redshift be kept separate?",
+      "answer": "They assume different models of spacetime and light propagation",
       "options": [
-        "They describe different spacetime and propagation models",
-        "The measured wavelength ratio changes definition"
+        "Cosmological redshift is not a measurable shift, so the Doppler reading is physical",
+        "The wavelength ratio is defined differently in the two readings of the shift",
+        "They give the same distance for a given galaxy at the same redshift",
+        "They assume different models of spacetime and light propagation"
       ],
-      "explanation": "The definition is common; the inferred cause and distance relation differ.",
+      "explanation": "The definition of z is the same, but the interpretation and the distance relation differ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the source moving through space or space expanding?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For radial recession β=0.6, find λobserved/λrest in the special-relativistic model.",
       "answer": "2",
       "hint": "Use sqrt((1+β)/(1−β)).",
-      "explanation": "Use sqrt((1+β)/(1−β)). The value in the stated units is 2.",
+      "explanation": "The recession Doppler ratio is λ_obs/λ_rest = √((1 + β)/(1 − β)) = √(1.6/0.4) = √4 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For wavelength redshift z=0.5 interpreted as pure radial special-relativistic recession, find β.",
       "answer": "0.38461538461538464",
       "hint": "Invert the squared wavelength ratio.",
-      "explanation": "Invert the squared wavelength ratio. The value in the stated units is 0.384615384615.",
+      "explanation": "1 + z = 1.5 = √((1 + β)/(1 − β)), so (1 + β)/(1 − β) = 2.25. Solving, 1 + β = 2.25 − 2.25β, so β = 1.25/3.25 ≈ 0.3846.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can z≈v/c be used without qualification for a galaxy with cosmological redshift z=3?",
-      "answer": "No; the small-speed local approximation is outside its regime.",
+      "prompt": "A galaxy has z = 3. Can you apply z ≈ v/c without qualification to find its speed?",
+      "answer": "No: the low-speed local approximation is outside its regime",
       "options": [
-        "Yes; redshift is always a unique global special-relativistic speed.",
-        "No; the small-speed local approximation is outside its regime."
+        "Yes: z is a special-relativistic speed, so z ≈ v/c gives the speed of the galaxy directly",
+        "Yes: for a distant galaxy the formula holds at high redshift, so z = 3 gives the speed",
+        "Yes: v = 3c follows from the formula, which relativity allows for galaxies",
+        "No: the low-speed local approximation is outside its regime"
       ],
-      "explanation": "Cosmological wavelength stretching and local Doppler conventions must be distinguished.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "At z = 3 the approximation is far outside its range, and the shift is cosmological.",
+      "hint": "What does z ≈ v/c assume about v?",
       "misconceptions": {
         "Yes; redshift is always a unique global special-relativistic speed.": "Cosmological wavelength stretching and local Doppler conventions must be distinguished."
       },
@@ -163,7 +177,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Doppler shift and redshift”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -241,19 +255,19 @@ A line with rest wavelength 500 nm observed at 600 nm has z=0.2. If interpreted 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Doppler shift and redshift”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Doppler shift and redshift” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Doppler shift and redshift” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

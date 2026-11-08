@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is every closed form globally exact on every domain?",
+      "prompt": "Is every closed differential form exact on every domain?",
       "options": [
-        "Yes",
-        "No"
+        "Yes on a manifold of each kind, as the Poincaré lemma holds in the large",
+        "No: topology can obstruct a primitive (e.g. dθ on the punctured plane)",
+        "Yes on ℝⁿ minus a point for n ≥ 3",
+        "Yes: the condition dω = 0 implies ω = dη on each domain of the manifold"
       ],
-      "answer": "No",
-      "explanation": "Topology can obstruct a primitive.",
+      "answer": "No: topology can obstruct a primitive (e.g. dθ on the punctured plane)",
+      "explanation": "The Poincaré lemma holds locally (and on star-shaped domains), but dθ is closed and not exact on ℝ² \\ {0}.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the angle form dθ."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the Hodge star need a metric?",
+      "prompt": "Does the Hodge star operator require extra structure on the manifold?",
       "options": [
-        "Yes",
-        "No"
+        "No: the wedge product is enough",
+        "Yes: a volume form is enough",
+        "No: it is topological",
+        "Yes: a metric and an orientation"
       ],
-      "answer": "Yes",
-      "explanation": "It uses metric and orientation.",
+      "answer": "Yes: a metric and an orientation",
+      "explanation": "⋆ maps k-forms to (n−k)-forms using the metric and the orientation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which structure measures lengths?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can boundary orientation be picked independently in Stokes without a sign change?",
+      "prompt": "In Stokes' theorem, can you choose the boundary orientation independently of the surface orientation?",
       "options": [
-        "Yes",
-        "No"
+        "No: the boundary orientation is induced consistently",
+        "Yes: either way gives the same sign",
+        "No: Stokes needs no orientation",
+        "Yes: the signs cancel in the integral, so either choice works"
       ],
-      "answer": "No",
-      "explanation": "It is induced consistently.",
+      "answer": "No: the boundary orientation is induced consistently",
+      "explanation": "∫_M dω = ∫_{∂M} ω requires the induced orientation (outward normal first).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Reverse the boundary direction: what happens to the right side?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What can obstruct exactness?",
-      "answer": "Global topology.",
+      "prompt": "Which factor can prevent a closed form from being exact?",
+      "answer": "Global topology of the domain (holes)",
       "options": [
-        "Global topology.",
-        "Every exact form is closed."
+        "Global topology of the domain (holes)",
+        "The choice of coordinates, because a form that is closed in one chart may fail to be exact in another",
+        "The metric chosen on the domain",
+        "The dimension of the forms"
       ],
-      "explanation": "Global topology.",
+      "explanation": "Closed but not exact forms correspond to non-trivial cohomology, e.g. loops around holes.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of de Rham cohomology."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is dx∧dy equal to dy∧dx?",
-      "answer": "No; exchanging factors reverses the sign.",
+      "prompt": "How does dy ∧ dx relate to dx ∧ dy?",
+      "answer": "dy ∧ dx = −dx ∧ dy",
       "options": [
-        "Yes; wedge multiplication is symmetric.",
-        "No; exchanging factors reverses the sign."
+        "dy ∧ dx = −dx ∧ dy",
+        "dy ∧ dx = 2 dx ∧ dy",
+        "They are equal",
+        "dy ∧ dx = 0"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Orientation is encoded algebraically.",
+      "hint": "Recall the antisymmetry that encodes orientation and area.",
+      "explanation": "The wedge product is antisymmetric: α∧β = (−1)^{pq}β∧α for p- and q-forms.",
       "misconceptions": {
         "Yes; wedge multiplication is symmetric.": "Orientation is encoded algebraically."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Differential forms”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For ω=x dy on a unit square oriented by dx∧dy, dω=dx∧dy and the boundary i
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Differential forms”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Differential forms” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Differential forms” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

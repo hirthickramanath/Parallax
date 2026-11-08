@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does Poynting’s theorem include power transferred to matter?",
+      "prompt": "Poynting's theorem balances field energy and flux. Does it include power transferred to matter?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the term −J·E accounts for work done on charges",
+        "No: the theorem is valid in vacuum, not in matter",
+        "No: matter is ignored",
+        "No: it covers field energy but not matter"
       ],
-      "answer": "Yes",
-      "explanation": "Its source term is −J·E for field energy.",
+      "answer": "Yes: the term −J·E accounts for work done on charges",
+      "explanation": "Poynting's theorem balances stored energy and flux against work on charges: ∂u/∂t + ∇·S = −J·E, so −J·E is the work done on the charges.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does J·E represent?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are peak and RMS electric amplitudes interchangeable in intensity formulas?",
+      "prompt": "An intensity formula uses E₀²/(2μ₀c). Can you substitute the RMS amplitude for E₀ without changing the formula?",
       "options": [
-        "No",
-        "Yes"
+        "No: the squares differ by a factor of 2 for a sine wave",
+        "Yes: RMS and peak amplitudes differ just by a phase",
+        "Yes: they differ by a factor of π, which cancels",
+        "Yes: the RMS value equals the peak amplitude here"
       ],
-      "answer": "No",
-      "explanation": "Their squares differ by two for a sine wave.",
+      "answer": "No: the squares differ by a factor of 2 for a sine wave",
+      "explanation": "E_rms = E₀/√2, so E_rms² = E₀²/2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the average of cos²?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is every local nonzero Poynting vector outward radiation at infinity?",
+      "prompt": "The Poynting vector is nonzero at a point near an antenna. Does that mean energy radiates out to infinity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: S points away from the antenna, so energy is radiated",
+        "Yes: a nonzero S has to mean radiated power",
+        "No: near fields can have reversible or circulating flux",
+        "Yes: the Poynting vector defines radiated power"
       ],
-      "answer": "No",
-      "explanation": "Near fields can have reversible or circulating flux.",
+      "answer": "No: near fields can have reversible or circulating flux",
+      "explanation": "Only the time-averaged flux through a distant sphere is radiated power.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where is the radiated power defined?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify energy formulas in matter?",
-      "answer": "Dispersion, loss and material energy must be included.",
+      "prompt": "Why should the energy density ½ε₀E² + B²/2μ₀ be qualified when used in matter?",
+      "answer": "Dispersion, loss and the material's own energy must be included",
       "options": [
-        "Dispersion, loss and material energy must be included.",
-        "ε₀E²/2+B²/(2μ₀)."
+        "It keeps the same form in matter as in vacuum",
+        "Dispersion, loss and the material's own energy must be included",
+        "Matter stores no energy of its own in the fields",
+        "It remains an exact result in material media"
       ],
-      "explanation": "Dispersion, loss and material energy must be included.",
+      "explanation": "In a medium, energy storage depends on frequency-dependent ε and μ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is ε constant with frequency?"
     },
     {
       "id": "em-transfer-1",
       "prompt": "With μ₀=1, perpendicular field magnitudes E=3 and B=2, find Poynting-vector magnitude.",
       "answer": "6",
       "hint": "Use |E×B|/μ₀.",
-      "explanation": "Use |E×B|/μ₀. The value in the stated units is 6.",
+      "explanation": "For perpendicular fields |S| = |E × B|/μ₀ = 3 × 2/1 = 6.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For E(t)=4cosωt and proportionality constant one, find the time average of E².",
       "answer": "8",
       "hint": "Average cos² over a period to one half.",
-      "explanation": "Average cos² over a period to one half. The value in the stated units is 8.",
+      "explanation": "⟨E²⟩ = 16⟨cos²ωt⟩ = 16 × ½ = 8.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Can peak squared field be used as the sinusoidal time average without a factor adjustment?",
-      "answer": "No; the average of cos² is one half.",
+      "prompt": "Can the peak E² be used as the sinusoidal time average without a factor?",
+      "answer": "No: the average of cos² is one half",
       "options": [
-        "Yes; peak and time-averaged intensities are always identical.",
-        "No; the average of cos² is one half."
+        "No: the average of cos² is one half",
+        "Yes: the average equals the peak value",
+        "Yes: they are identical",
+        "Yes: with intensity"
       ],
-      "explanation": "State amplitude and averaging conventions before comparing power.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "State the amplitude and averaging convention before comparing power.",
+      "hint": "Average cos² over a period.",
       "misconceptions": {
         "Yes; peak and time-averaged intensities are always identical.": "State amplitude and averaging conventions before comparing power."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “EM energy, Poynting vector and momentum”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ In normalized units c=2, a normally absorbed intensity I=6 gives radiation press
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “EM energy, Poynting vector and momentum”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “EM energy, Poynting vector and momentum” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “EM energy, Poynting vector and momentum” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

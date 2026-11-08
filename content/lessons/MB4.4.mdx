@@ -16,9 +16,9 @@
       "answer": "The expectation need not be a value the variable can actually take",
       "options": [
         "The expectation need not be a value the variable can actually take",
-        "The expectation is always the most likely single outcome",
+        "The expectation is the most likely outcome, so it must be rollable",
         "The die must have a face marked 3.5 to give that mean",
-        "The die must be biased, since 3.5 can never be rolled"
+        "The die must be biased, as 3.5 cannot be rolled on a fair die"
       ],
       "explanation": "Expectation is a probability-weighted average, not a prediction of a single roll. Here (1+2+3+4+5+6)/6 = 3.5.",
       "type": "mcq",
@@ -45,8 +45,8 @@
       "prompt": "Which condition lets you write Var(X + Y) = Var(X) + Var(Y)?",
       "answer": "X and Y uncorrelated (for example independent) with finite variances",
       "options": [
-        "X and Y have equal means, so the offsets cancel",
-        "None: variance is linear for all random variables",
+        "X and Y have equal means, so the offsets cancel and the variance of the sum is the sum of the variances",
+        "No condition: variance is linear for random variables of each kind",
         "X and Y have the same probability distribution",
         "X and Y uncorrelated (for example independent) with finite variances"
       ],
@@ -223,8 +223,7 @@ The central limit theorem concerns the suitably standardized sum under stated as
 
 ### Transfer derivation and failure case
 
-For indicators $I_j$ of independent Bernoulli trials, $E[I_j]=p$ and $\operatorname{Var}(I_j)=p(1-p)$. Linearity of expectation needs no independence; adding variances does, or more generally requires zero pairwise covariance. Expanding $E[(X-E[X]+Y-E[Y])^2]$ produces $\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)$. Scaling gives $\operatorname{Var}(aX)=a^2\operatorname{Var}(X)$, not $a\operatorname{Var}(X)$. Correlated instrument errors can therefore invalidate a naive square-root-of-sample-size uncertainty reduction.
-
+Linearity of expectation needs no independence; adding variances does, or more generally requires zero pairwise covariance. Expanding $E[(X-E[X]+Y-E[Y])^2]$ produces $\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)$. Scaling gives $\operatorname{Var}(aX)=a^2\operatorname{Var}(X)$, not $a\operatorname{Var}(X)$. Correlated instrument errors can therefore invalidate a naive square-root-of-sample-size uncertainty reduction.
 
 ### Derivation and transfer
 

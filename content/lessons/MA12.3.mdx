@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are all infinite-dimensional linear operators bounded?",
+      "prompt": "Are all linear operators on infinite-dimensional Hilbert spaces bounded?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, if the operator is closed, since closedness of an operator implies that it is bounded",
+        "Yes, if the operator is closed, as it is bounded",
+        "Yes if self-adjoint, as that gives a norm bound",
+        "No: differential operators such as d/dx are unbounded"
       ],
-      "answer": "No",
-      "explanation": "Differential operators provide counterexamples.",
+      "answer": "No: differential operators such as d/dx are unbounded",
+      "explanation": "‖d/dx sin(nx)‖ = n‖sin nx‖ is unbounded in n.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply d/dx to sin(nx)."
     },
     {
       "id": "concept-2",
-      "prompt": "Is a symmetric operator automatically self-adjoint on any domain?",
+      "prompt": "An operator is symmetric on its domain. Is it automatically self-adjoint?",
       "options": [
-        "No",
-        "Yes"
+        "Yes if densely defined, as the adjoint then has the same domain as the operator",
+        "Yes: symmetric operators are self-adjoint whenever they are densely defined and bounded below",
+        "No: self-adjointness also requires equality of the operator and adjoint domains",
+        "Yes if bounded below, as that makes the operator and its adjoint share a domain"
       ],
-      "answer": "No",
-      "explanation": "Adjoint-domain equality is extra.",
+      "answer": "No: self-adjointness also requires equality of the operator and adjoint domains",
+      "explanation": "−i d/dx on [0,1] with domain C₀^∞ is symmetric but not self-adjoint.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare D(A) with D(A*)."
     },
     {
       "id": "concept-3",
-      "prompt": "Can changing boundary conditions change the operator realization?",
+      "prompt": "The operator −d²/dx² on [0, 1] is considered with Dirichlet and then with periodic boundary conditions. Are these the same operator?",
       "options": [
-        "No",
-        "Yes"
+        "No: the domain is part of the operator, so they are different",
+        "Yes: they are the same operator, since the formula −d²/dx² does not depend on the boundary conditions",
+        "Yes on smooth functions, where the two formulas agree",
+        "Yes up to a sign, as the boundary data flip the sign of the operator"
       ],
-      "answer": "Yes",
-      "explanation": "The domain is part of the operator.",
+      "answer": "No: the domain is part of the operator, so they are different",
+      "explanation": "Different boundary conditions give different domains and different spectra.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare their eigenfunctions."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify commutators?",
-      "answer": "Both operator products need a suitable common domain.",
+      "prompt": "Why must a commutator [A, B] = AB − BA be qualified for unbounded operators?",
+      "answer": "Both products need a suitable common domain",
       "options": [
-        "Both operator products need a suitable common domain.",
-        "The vectors on which its action and required regularity are defined."
+        "The product is bounded, so no domain is needed",
+        "They fail to commute for operators that are unbounded",
+        "Both products need a suitable common domain",
+        "Commutators don't exist"
       ],
-      "explanation": "Both operator products need a suitable common domain.",
+      "explanation": "[x, p] = i holds on a dense domain where both xp and px are defined.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is AB ψ defined for every ψ in D(A)?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does boundedness of every finite spectral truncation prove a uniform bound as the cutoff grows?",
-      "answer": "No; the bound may grow without limit.",
+      "prompt": "Every finite truncation of an operator is a bounded matrix. Does this prove the operator is bounded?",
+      "answer": "No: the norms can grow without bound as the truncation increases",
       "options": [
-        "Yes; finite matrices settle the infinite-dimensional operator.",
-        "No; the bound may grow without limit."
+        "Yes: finite truncations are bounded matrices, so the limiting operator is bounded as well",
+        "Yes: the bounds are inherited from the truncations of it",
+        "Yes: if each truncation is Hermitian",
+        "No: the norms can grow without bound as the truncation increases"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Uniform control is the issue.",
+      "hint": "Look at how the largest eigenvalue behaves as N increases.",
+      "explanation": "The truncated position operator in a harmonic-oscillator basis has norm growing like √N.",
       "misconceptions": {
         "Yes; finite matrices settle the infinite-dimensional operator.": "Uniform control is the issue."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Bounded and unbounded operators”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For normalized periodic mode eⁱⁿˣ, differentiation multiplies norm by |n|. 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Bounded and unbounded operators”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Bounded and unbounded operators” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Bounded and unbounded operators” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

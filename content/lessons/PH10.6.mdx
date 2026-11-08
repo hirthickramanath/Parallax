@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does trace preservation alone ensure physical density matrices?",
+      "prompt": "A proposed master equation preserves the trace of ρ. Does that alone guarantee a physical evolution?",
       "options": [
-        "Yes",
-        "No"
+        "No: positivity, including with ancillas (complete positivity), is also needed",
+        "Yes: preserving the trace means that the probabilities sum to one, as required",
+        "Yes: trace preservation is enough, as the probabilities then sum to one at each time step",
+        "Yes: a trace-preserving map is a physical process of the system"
       ],
-      "answer": "No",
-      "explanation": "Positivity and ancillary consistency also matter.",
+      "answer": "No: positivity, including with ancillas (complete positivity), is also needed",
+      "explanation": "The Lindblad form guarantees complete positivity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Could ρ get a negative eigenvalue?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are dephasing and amplitude damping identical?",
+      "prompt": "Dephasing and amplitude damping both decay the coherence of a qubit. Do they act identically?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: both conserve energy and so act in the same way on the qubit",
+        "No: amplitude damping changes populations, but pure dephasing does not",
+        "Yes: identical, as both are noise channels on the qubit",
+        "Yes: both relax the populations towards the ground state"
       ],
-      "answer": "No",
-      "explanation": "They affect populations differently.",
+      "answer": "No: amplitude damping changes populations, but pure dephasing does not",
+      "explanation": "Amplitude damping drives |1⟩ → |0⟩, and dephasing only randomises phase.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does dephasing change the diagonal elements?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a Markovian bath approximation apply to every environment?",
+      "prompt": "Does the Markovian (memoryless) bath approximation hold for every environment?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: weak coupling makes it memoryless",
+        "Yes: for a coupling of strong or weak size alike, as the bath forgets",
+        "Yes: for baths of each kind, with a short memory",
+        "No: memory effects and timescale assumptions can fail"
       ],
-      "answer": "No",
-      "explanation": "Memory/time-scale assumptions can fail.",
+      "answer": "No: memory effects and timescale assumptions can fail",
+      "explanation": "It needs the bath correlation time to be short.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the bath correlation time with the system timescale."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why state bath approximations?",
-      "answer": "They delimit the valid reduced-dynamics regime.",
+      "prompt": "Why state the bath approximations (Born, Markov, secular) used to derive a master equation?",
+      "answer": "They delimit the regime where the reduced dynamics is valid",
       "options": [
-        "They delimit the valid reduced-dynamics regime.",
-        "Valid evolution including arbitrary untouched ancillas."
+        "The equation is exact, so no statement is needed",
+        "They matter little, as the equation follows from basic laws",
+        "They are decorative details in the derivation of the master equation",
+        "They delimit the regime where the reduced dynamics is valid"
       ],
-      "explanation": "They delimit the valid reduced-dynamics regime.",
+      "explanation": "Outside the regime, the equation can fail.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does each approximation require of the bath?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Must population relaxation and coherence decay have identical rates?",
-      "answer": "No; even simple amplitude damping gives different rates.",
+      "prompt": "In amplitude damping, must population relaxation and coherence decay have the same rate?",
+      "answer": "No: coherences decay at half the population rate, even in the simplest case",
       "options": [
-        "Yes; all density-matrix entries decay identically.",
-        "No; even simple amplitude damping gives different rates."
+        "Yes: both obey a single relaxation rate γ, because the density matrix elements decay together in this channel",
+        "Yes: both decay at the rate γ in the simplest case of the qubit",
+        "Yes: equal in each case, as one rate governs the whole damping",
+        "No: coherences decay at half the population rate, even in the simplest case"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The generator acts differently on populations and coherences.",
+      "hint": "Recall the relation T₂ = 2T₁ for pure relaxation and what extra dephasing adds.",
+      "explanation": "ρ₁₁ decays at γ, while ρ₀₁ decays at γ/2.",
       "misconceptions": {
         "Yes; all density-matrix entries decay identically.": "The generator acts differently on populations and coherences."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Open quantum systems and the Lindblad equation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If p₁(0)=.8 and γt=ln2, the excited population becomes .4. Its lost .4 popula
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Open quantum systems and the Lindblad equation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Open quantum systems and the Lindblad equation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Open quantum systems and the Lindblad equation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can a singular velocity Hessian always be inverted in the ordinary Legendre construction?",
+      "prompt": "The velocity Hessian ∂²L/∂q̇∂q̇ is singular. Can the ordinary Legendre transform be inverted to give H(q, p)?",
       "options": [
-        "Yes",
-        "No"
+        "No: the momenta are constrained and a constrained (Dirac) formulation is needed",
+        "Yes: using p = mq̇ to invert the relation, which works for a Lagrangian with a kinetic term",
+        "Yes: the transform works in each case, as it is a general method",
+        "Yes: by a limit of the Lagrangian, which regularises the singular case of the Hessian"
       ],
-      "answer": "No",
-      "explanation": "A constrained formulation may be needed.",
+      "answer": "No: the momenta are constrained and a constrained (Dirac) formulation is needed",
+      "explanation": "A singular Hessian means q̇ cannot be solved from p.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you solve p = ∂L/∂q̇ for q̇?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is canonical momentum always mechanical mv in a magnetic field?",
+      "prompt": "A charged particle moves in a magnetic field. Is its canonical momentum equal to the mechanical momentum mv?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the momentum is mv, as the field adds no term",
+        "Yes: B does no work, so the momentum is mv in the field",
+        "Yes: for uniform fields",
+        "No: it is mv + qA, which includes the vector potential"
       ],
-      "answer": "No",
-      "explanation": "The vector-potential contribution changes it.",
+      "answer": "No: it is mv + qA, which includes the vector potential",
+      "explanation": "L = ½mv² + qv·A gives p = mv + qA.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute ∂L/∂v for a charge in a magnetic field and see which term appears beyond mv."
     },
     {
       "id": "concept-3",
-      "prompt": "Does phase-space volume preservation guarantee every position projection preserves area?",
+      "prompt": "Liouville's theorem says phase-space volume is preserved. Does a projection onto the (q) axis keep area?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: projections preserve it, as the theorem applies to subspaces",
+        "No: projection discards momentum dimensions and need not preserve area",
+        "Yes: volume is invariant, so the projected area is invariant in the plane as well",
+        "Yes: the flow is incompressible"
       ],
-      "answer": "No",
-      "explanation": "Projection can discard phase-space dimensions.",
+      "answer": "No: projection discards momentum dimensions and need not preserve area",
+      "explanation": "Only the full phase-space volume is conserved.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a projection keep the full phase space?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is required before substituting velocities into H(q,p,t)?",
-      "answer": "An invertible momentum–velocity relation in the regular construction",
+      "prompt": "What must hold before you can substitute velocities in terms of momenta to write H(q, p, t)?",
+      "answer": "The momentum–velocity relation must be invertible",
       "options": [
-        "An invertible momentum–velocity relation in the regular construction",
-        "Only adding p as a new symbol"
+        "No condition: velocities can be eliminated in each case",
+        "Make the Lagrangian zero",
+        "Add p as a new symbol",
+        "The momentum–velocity relation must be invertible"
       ],
-      "explanation": "The Legendre map must actually solve for the velocities.",
+      "explanation": "The Legendre map must actually solve for q̇(q, p, t).",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Can you solve p = ∂L/∂q̇ uniquely for q̇?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For qdot=p/m and pdot=−kq−gamma p with gamma>0, does canonical phase area remain constant?",
-      "answer": "No; the flow divergence is −gamma and area contracts.",
+      "prompt": "For q̇ = p/m and ṗ = −kq − γp with γ > 0, does the phase-space area stay constant?",
+      "answer": "No: the flow has divergence −γ, so area contracts",
       "options": [
-        "Yes; every differential equation preserves Hamiltonian phase area.",
-        "No; the flow divergence is −gamma and area contracts."
+        "No: the flow has divergence −γ, so area contracts",
+        "No: area grows steadily, since the damping term feeds energy into the oscillator",
+        "Yes: it is Hamiltonian",
+        "Yes: each ODE preserves area in phase space"
       ],
-      "explanation": "The damping term changes divergence, so the standard Hamiltonian incompressibility argument no longer applies.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "∇·(q̇, ṗ) = 0 − γ = −γ. Hamiltonian flow has zero divergence.",
+      "hint": "Compute ∂q̇/∂q + ∂ṗ/∂p.",
       "misconceptions": {
         "Yes; every differential equation preserves Hamiltonian phase area.": "The damping term changes divergence, so the standard Hamiltonian incompressibility argument no longer applies."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Hamiltonian mechanics and phase space”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -231,18 +245,18 @@ For m=2, V=q²/2 and state q=3,p=4, H=16/4+9/2=8.5. Hamilton’s equations give 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Hamiltonian mechanics and phase space”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Hamiltonian mechanics and phase space” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Hamiltonian mechanics and phase space” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

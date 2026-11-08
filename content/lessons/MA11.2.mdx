@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a smooth manifold require one global chart?",
+      "prompt": "Must a smooth manifold be covered by a single coordinate chart?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: one global chart is needed, since a manifold must be described by a single coordinate system",
+        "Yes for compact manifolds",
+        "Yes for closed manifolds",
+        "No: compatible local charts are enough"
       ],
-      "answer": "No",
-      "explanation": "Compatible local charts suffice.",
+      "answer": "No: compatible local charts are enough",
+      "explanation": "The sphere S² cannot be covered by one chart; two (stereographic) charts suffice.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a map of the Earth."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a coordinate singularity always mean physical curvature diverges?",
+      "prompt": "A metric component diverges at a point in some coordinates. Does that mean the spacetime curvature diverges there?",
       "options": [
-        "No",
-        "Yes"
+        "No: the metric cannot diverge",
+        "Yes: it is a singularity, since a diverging metric component always means diverging curvature",
+        "Yes: a divergence means the spacetime is singular",
+        "Not necessarily: it may be a coordinate singularity"
       ],
-      "answer": "No",
-      "explanation": "The chart itself can fail.",
+      "answer": "Not necessarily: it may be a coordinate singularity",
+      "explanation": "The Schwarzschild r = 2M is a coordinate artefact; invariants such as the Kretschmann scalar are finite.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute an invariant curvature scalar."
     },
     {
       "id": "concept-3",
-      "prompt": "Is a metric automatically fixed by a smooth atlas?",
+      "prompt": "A smooth atlas is given. Does it determine the metric?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, the atlas determines the metric up to rotation, because it fixes the lengths of the coordinate basis",
+        "Yes, up to a rescaling of the coordinates",
+        "No: the metric is additional geometric data",
+        "Yes: the chart overlaps fix the lengths"
       ],
-      "answer": "No",
-      "explanation": "It is additional geometric data.",
+      "answer": "No: the metric is additional geometric data",
+      "explanation": "A manifold can carry many different metrics.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you rescale lengths on the sphere?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why diagnose singularities invariantly?",
-      "answer": "Coordinate failure can mimic a divergent component.",
+      "prompt": "Why should singularities be diagnosed using invariants rather than coordinate components?",
+      "answer": "A coordinate failure can mimic a divergent component",
       "options": [
-        "Coordinate failure can mimic a divergent component.",
-        "A compatible collection of local charts."
+        "A coordinate failure can mimic a divergent component",
+        "Invariants are easier to compute than the components are",
+        "Components diverge just where the spacetime is singular",
+        "Invariants are zero in a singular spacetime"
       ],
-      "explanation": "Coordinate failure can mimic a divergent component.",
+      "explanation": "Use scalars such as the Ricci or Kretschmann scalars to tell physical from coordinate singularities.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare Schwarzschild at r = 2M and r = 0."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does the failure of polar angle at the origin make the Euclidean plane geometrically singular?",
-      "answer": "No; the coordinates fail there.",
+      "prompt": "The polar angle θ is undefined at the origin. Is the Euclidean plane singular there?",
+      "answer": "No: the coordinates fail; Cartesian coordinates are regular",
       "options": [
-        "Yes; every coordinate singularity is physical.",
-        "No; the coordinates fail there."
+        "Yes: the curvature diverges at the origin, since the polar angle θ is undefined there",
+        "Yes: the metric is not defined",
+        "Yes: it is a physical singularity",
+        "No: the coordinates fail; Cartesian coordinates are regular"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use another regular chart.",
+      "hint": "Is there a good chart at the origin?",
+      "explanation": "The plane is flat everywhere. Choosing a different chart removes the issue.",
       "misconceptions": {
         "Yes; every coordinate singularity is physical.": "Use another regular chart."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Manifolds and coordinates”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ The chart rescaling x′=3x on an interval has Jacobian 3 and inverse Jacobian 1
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Manifolds and coordinates”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Manifolds and coordinates” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Manifolds and coordinates” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is exp(iS/ℏ) an ordinary positive probability?",
+      "prompt": "Each path in a path integral is weighted by e^(iS/ħ). Is that an ordinary positive probability?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: its modulus is the probability",
+        "No: it is a complex amplitude",
+        "Yes: it is positive",
+        "Yes: it is a probability"
       ],
-      "answer": "No",
-      "explanation": "It is a complex amplitude.",
+      "answer": "No: it is a complex amplitude",
+      "explanation": "Amplitudes are added before squaring.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether e^(iS/ħ) is a real positive number, or a unit complex phase."
     },
     {
       "id": "concept-2",
-      "prompt": "Can more than one classical path contribute semiclassically?",
+      "prompt": "In a semiclassical approximation can more than one classical path contribute?",
       "options": [
-        "Yes",
-        "No"
+        "No: the shortest path dominates",
+        "No: one path contributes alone",
+        "Yes: their amplitudes can interfere",
+        "No: just the path of minimum action counts"
       ],
-      "answer": "Yes",
-      "explanation": "Their amplitudes can interfere.",
+      "answer": "Yes: their amplitudes can interfere",
+      "explanation": "Gutzwiller's trace formula sums over all periodic orbits.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the double slit."
     },
     {
       "id": "concept-3",
-      "prompt": "Does the formal path symbol remove the need for regularization/measure definition?",
+      "prompt": "The path-integral symbol ∫Dx looks compact. Does it remove the need to define the measure and regularise?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the measure is trivial, so the compact symbol ∫Dx needs no time slicing or regularisation",
+        "Yes: the symbol defines the measure without a limit procedure",
+        "No: the limiting construction (time slicing) is essential",
+        "Yes: it is well defined as written"
       ],
-      "answer": "No",
-      "explanation": "The limiting construction is essential.",
+      "answer": "No: the limiting construction (time slicing) is essential",
+      "explanation": "The measure is defined as a limit of finite-dimensional integrals.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many integrals are there in the limit?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What qualifies imaginary-time methods?",
-      "answer": "Analytic/operator assumptions and possible sign/continuation problems.",
+      "prompt": "What qualifies the use of imaginary-time (Euclidean) methods?",
+      "answer": "Analytic and operator assumptions",
       "options": [
-        "Analytic/operator assumptions and possible sign/continuation problems.",
-        "A regulated product of short-time propagators."
+        "They are exact once continued back",
+        "They are the same as real time",
+        "Analytic and operator assumptions",
+        "No qualification is needed here"
       ],
-      "explanation": "Analytic/operator assumptions and possible sign/continuation problems.",
+      "explanation": "Analytic and operator assumptions, and possible sign or continuation problems. Continuing back to real time can be ill-posed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens when you continue t → −iτ back?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Are path-integral phase weights ordinary nonnegative probabilities for each path?",
-      "answer": "No; amplitudes interfere before probabilities are formed.",
+      "prompt": "Is the weight e^(iS/ħ) of each path a nonnegative probability?",
+      "answer": "No: amplitudes interfere before probabilities are formed",
       "options": [
-        "Yes; each path carries an independent classical probability.",
-        "No; amplitudes interfere before probabilities are formed."
+        "Yes: the weights are positive, like probabilities",
+        "Yes: each path is a classical probability",
+        "Yes: independent probabilities",
+        "No: amplitudes interfere before probabilities are formed"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Complex phases are essential.",
+      "hint": "What gets squared, the sum or each term?",
+      "explanation": "Complex phases are essential: amplitudes add first, so the interference terms appear before any probability is formed.",
       "misconceptions": {
         "Yes; each path carries an independent classical probability.": "Complex phases are essential."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Path-integral formulation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For a free classical path from x_a=0 to x_b=2 over t=1 with m=3, action is mΔx�
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Path-integral formulation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Path-integral formulation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Path-integral formulation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

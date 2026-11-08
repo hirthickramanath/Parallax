@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Is matrix multiplication generally commutative?",
-      "answer": "No",
+      "prompt": "Are the matrix products AB and BA generally equal?",
+      "answer": "No: matrix multiplication is generally non-commutative",
       "options": [
-        "Yes",
-        "No"
+        "No: matrix multiplication is generally non-commutative",
+        "Yes: matrix products are commutative here",
+        "No, but they commute when both are symmetric",
+        "Yes, when both matrices are square"
       ],
-      "explanation": "Composition order matters.",
+      "explanation": "Applying B then A differs from A then B in general, e.g. rotation then shear versus shear then rotation. Special pairs (such as diagonal matrices) do commute.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of two transformations applied in different orders."
     },
     {
       "id": "c2",
-      "prompt": "Does determinant zero always mean no solution?",
-      "answer": "No; infinitely many can occur",
+      "prompt": "For a square system Ax = b with det A = 0, which statement is correct?",
+      "answer": "It has either no solution or infinitely many, depending on b",
       "options": [
-        "No; infinitely many can occur",
-        "Yes"
+        "It has two solutions, as a singular system has a pair of them",
+        "It has either no solution or infinitely many, depending on b",
+        "It has one solution, as a singular system is still consistent for each b",
+        "It has no solution, as the matrix cannot be inverted"
       ],
-      "explanation": "Consistency depends on the right-hand side.",
+      "explanation": "det A = 0 means A is singular, so it cannot give a unique solution. Whether b is in the range of A decides between none and infinitely many.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Consider x + y = 1 and 2x + 2y = 2 versus 2x + 2y = 3."
     },
     {
       "id": "c3",
-      "prompt": "What does the absolute determinant measure in 2D?",
-      "answer": "Area scale",
+      "prompt": "In two dimensions, what does |det A| tell you geometrically?",
+      "answer": "The factor by which A scales areas",
       "options": [
-        "Only a rotation angle",
-        "Area scale"
+        "The length of the first column",
+        "The factor by which A scales areas",
+        "The angle by which A rotates vectors",
+        "How many fixed points A has"
       ],
-      "explanation": "It scales parallelogram area.",
+      "explanation": "A maps the unit square to a parallelogram of area |det A|. The sign of det adds orientation information.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Map the unit square and compute the area of its image."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A real 2D linear map has determinant −2. What does this say about area and orientation?",
-      "answer": "Area magnitudes double and orientation reverses.",
+      "prompt": "A real 2D linear map has determinant −2. What does that mean?",
+      "answer": "Areas double and orientation is reversed",
       "options": [
-        "Area becomes negative and orientation is preserved.",
-        "Area magnitudes double and orientation reverses."
+        "Areas halve and orientation is reversed",
+        "Areas become negative and orientation is kept",
+        "Areas double and orientation is kept",
+        "Areas double and orientation is reversed"
       ],
-      "explanation": "The determinant is signed; geometric area magnitudes are nonnegative.",
+      "explanation": "The area scale factor is |det| = 2. The negative sign means the map flips orientation (like a reflection), though areas themselves stay positive.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Use |det| for area and the sign for orientation.",
       "misconceptions": {
         "Area becomes negative and orientation is preserved.": "The determinant is signed; geometric area magnitudes are nonnegative."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does a nonzero determinant guarantee a numerically well-conditioned matrix?",
-      "answer": "No; singular values can differ greatly.",
+      "prompt": "A matrix has determinant 10⁻¹² but is not exactly singular. Is solving a system with it numerically reliable?",
+      "answer": "Not necessarily: conditioning depends on the singular values, not only det",
       "options": [
-        "Yes; every invertible matrix is equally stable.",
-        "No; singular values can differ greatly."
+        "Yes, any non-zero determinant is safe, so a system with a determinant of 10⁻¹² can be solved reliably",
+        "Not necessarily: conditioning depends on the singular values, not only det",
+        "No, because the determinant is below one",
+        "Yes, as it is invertible, a solve is then well-behaved in practice"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Invertibility and conditioning differ.",
+      "hint": "Think of a matrix with one tiny and one large singular value.",
+      "explanation": "Invertible and well-conditioned are different. A matrix can have an enormous ratio between its largest and smallest singular values, amplifying rounding errors.",
       "misconceptions": {
         "Yes; every invertible matrix is equally stable.": "Invertibility and conditioning differ."
       },

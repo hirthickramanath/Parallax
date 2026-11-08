@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is L always parallel to ω for a rigid body?",
+      "prompt": "Is the angular momentum L of a rigid body always parallel to its angular velocity ω?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for spheres, as L = Iω holds with a scalar I for a round body",
+        "Yes: the vector L is parallel to ω for a rigid body in each case of rotation",
+        "Yes: L = Iω with a scalar I, as the body is rigid and rotates",
+        "No: an anisotropic inertia tensor changes the weighting of the components"
       ],
-      "answer": "No",
-      "explanation": "An anisotropic inertia tensor changes component weights.",
+      "answer": "No: an anisotropic inertia tensor changes the weighting of the components",
+      "explanation": "L = Iω with a tensor I. They are parallel only for rotation about a principal axis.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is I a number or a matrix?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can torque-free angular velocity components change in body axes?",
+      "prompt": "A torque-free body has constant angular momentum in space. Can the components of ω in body axes change?",
       "options": [
-        "Yes",
-        "No"
+        "No: ω is fixed, so the components of L in the body stay fixed too",
+        "No: torque-free means no rotation",
+        "No: everything is constant",
+        "Yes: a fixed inertial L can have changing body-frame components"
       ],
-      "answer": "Yes",
-      "explanation": "Conserved inertial L need not have fixed body components.",
+      "answer": "Yes: a fixed inertial L can have changing body-frame components",
+      "explanation": "Euler's equations allow ω to precess in the body frame.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the body frame rotate?"
     },
     {
       "id": "concept-3",
-      "prompt": "Which distinct-principal-moment torque-free spin is linearly unstable?",
+      "prompt": "A rigid body with three distinct principal moments spins torque-free. Which axis is unstable?",
       "options": [
-        "Always the largest-moment axis",
-        "The intermediate-moment axis"
+        "The three axes alike",
+        "The intermediate-moment axis",
+        "The largest-moment axis",
+        "The smallest-moment axis"
       ],
       "answer": "The intermediate-moment axis",
-      "explanation": "The perturbation coefficient is positive for the intermediate axis.",
+      "explanation": "Perturbations grow exponentially about the intermediate axis (the tennis-racket theorem).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of flipping a racket."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why do Euler equations retain cross terms in principal axes?",
-      "answer": "The body axes rotate relative to conserved inertial directions",
+      "prompt": "Why do Euler's equations include cross terms such as (I₂ − I₃)ω₂ω₃ even in the principal axes?",
+      "answer": "The body axes rotate relative to the conserved inertial directions",
       "options": [
-        "The body axes rotate relative to conserved inertial directions",
-        "A diagonal tensor makes angular momentum zero"
+        "They come from friction in the body, which brakes the rotation",
+        "The body axes rotate relative to the conserved inertial directions",
+        "A diagonal tensor makes L zero",
+        "The cross terms are external torques"
       ],
-      "explanation": "The rotating-basis derivative contributes ω×L.",
+      "explanation": "The derivative of L in a rotating basis includes ω × L.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is dL/dt in a rotating frame?"
     },
     {
       "id": "mechanics-transfer-1",
@@ -114,13 +126,15 @@
     {
       "id": "mechanics-model-limits",
       "prompt": "For torque-free motion, must the body-axis components of angular momentum each remain constant?",
-      "answer": "No; the body axes rotate even though the inertial angular-momentum vector is constant.",
+      "answer": "No: the body axes rotate even though the vector L is constant in space",
       "options": [
-        "Yes; conservation of a vector fixes its components in every rotating basis.",
-        "No; the body axes rotate even though the inertial angular-momentum vector is constant."
+        "No: the body axes rotate even though the vector L is constant in space",
+        "Yes: conservation fixes the components of L in the body axes",
+        "Yes: in the frame of the body, as well as in the frame of space",
+        "Yes: L has fixed components in the frame fixed to the body"
       ],
-      "explanation": "Use the transport rule to relate an inertially constant vector to its body-frame derivative.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "Conservation applies to the vector in an inertial frame.",
+      "hint": "Which frame is L constant in?",
       "misconceptions": {
         "Yes; conservation of a vector fixes its components in every rotating basis.": "Use the transport rule to relate an inertially constant vector to its body-frame derivative."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes)”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -230,19 +244,19 @@ For principal moments (2,3,4) kg m² and ω=(1,1,0) rad/s, L=(2,3,0) kg m²/s, n
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes)”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Rigid-body dynamics (inertia tensor, Euler's equations, gyroscopes)” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is Klein–Gordon charge density always positive?",
+      "prompt": "The Klein–Gordon conserved density is ρ = (iħ/2m)(ψ*∂ₜψ − ψ∂ₜψ*). Is it always positive?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a probability",
+        "Yes: for the solutions of the equation in the free case",
+        "Yes: it is positive, as for a probability density",
+        "No: it is not a generic one-particle probability density"
       ],
-      "answer": "No",
-      "explanation": "It is not a generic one-particle probability density.",
+      "answer": "No: it is not a generic one-particle probability density",
+      "explanation": "ρ can be negative, which led to the interpretation as a charge density.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check whether ρ is proportional to |ψ|², and what sign the time derivatives allow."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the free equation require two time initial data?",
+      "prompt": "The free Klein–Gordon equation is second order in time. How many initial conditions does it need?",
       "options": [
-        "Yes",
-        "No"
+        "Zero: V fixes it",
+        "Two: ψ and ∂ψ/∂t",
+        "Three: ψ, ψ′, ψ″",
+        "One: ψ is enough"
       ],
-      "answer": "Yes",
-      "explanation": "It is second order in time.",
+      "answer": "Two: ψ and ∂ψ/∂t",
+      "explanation": "Second-order equations need the field and its time derivative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare with Schrödinger's equation."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a controlled nonrelativistic envelope recover Schrödinger behaviour?",
+      "prompt": "Can a slowly varying envelope of a Klein–Gordon solution recover Schrödinger's equation?",
       "options": [
-        "No",
-        "Yes"
+        "No: Schrödinger is exact for a free particle, so it cannot be obtained as a limit of Klein–Gordon",
+        "Yes: after separating the rest-energy phase e^(−imc²t/ħ) in the right regime",
+        "No: the equations cannot be related, as the Klein–Gordon equation is second order in time",
+        "No: they are unrelated, as one is relativistic and the other is not, so no limit exists"
       ],
-      "answer": "Yes",
-      "explanation": "After separating the rest-energy phase in its regime.",
+      "answer": "Yes: after separating the rest-energy phase e^(−imc²t/ħ) in the right regime",
+      "explanation": "ψ = e^(−imc²t/ħ)φ with |∂ₜφ| ≪ mc²φ gives iħ∂ₜφ = −(ħ²/2m)∇²φ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Factor out the rest energy."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What qualifies a nonrelativistic limit?",
-      "answer": "Small momentum and a slowly varying envelope.",
+      "prompt": "What conditions justify a non-relativistic limit of a relativistic equation?",
+      "answer": "Small momentum",
       "options": [
-        "Small momentum and a slowly varying envelope.",
-        "The relativistic mass-shell relation."
+        "Zero mass",
+        "High momentum",
+        "Small momentum",
+        "Large momentum"
       ],
-      "explanation": "Small momentum and a slowly varying envelope.",
+      "explanation": "Small momentum (p ≪ mc) and a slowly varying envelope. Then E ≈ mc² + p²/2m.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare the particle momentum p with mc to see when E ≈ mc² + p²/2m."
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "For a massive relativistic mode, are phase and group velocities generally equal?",
-      "answer": "No; ω/k and k/ω differ in these units.",
+      "prompt": "For a massive relativistic mode, are the phase velocity ω/k and group velocity dω/dk equal?",
+      "answer": "No: v_p v_g = c²",
       "options": [
-        "Yes; every wave has one identical velocity.",
-        "No; ω/k and k/ω differ in these units."
+        "Yes: v_p = v_g = c",
+        "No: v_p v_g = c²",
+        "Yes: both equal c",
+        "Yes: both equal v"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the dispersion relation.",
+      "hint": "Differentiate the dispersion relation.",
+      "explanation": "V_p v_g = c², so they differ unless m = 0. From ω² = k²c² + m²c⁴/ħ².",
       "misconceptions": {
         "Yes; every wave has one identical velocity.": "Use the dispersion relation."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Klein-Gordon equation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ In c=ℏ=1 units, m=3,k=4 gives positive frequency ω=5. The rest frequency is 3
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Klein-Gordon equation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Klein-Gordon equation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Klein-Gordon equation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

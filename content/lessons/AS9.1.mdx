@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is cosmological redshift always one exact Newtonian speed?",
+      "prompt": "A galaxy has redshift z = 0.5. Can you convert this to one exact Newtonian recession speed v = cz?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for each z, as redshift is an ordinary Doppler speed and v = cz holds to high order",
+        "Yes: it is a Doppler speed",
+        "Yes: v = 0.5c is the recession speed of the galaxy",
+        "No: relativistic geometry and peculiar motions matter"
       ],
-      "answer": "No",
-      "explanation": "Relativistic geometry and peculiar motion matter.",
+      "answer": "No: relativistic geometry and peculiar motions matter",
+      "explanation": "Cosmological redshift is due to expansion of space and does not map to a single Newtonian speed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is redshift a Doppler shift at this z?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does averaging remove a shared calibration offset?",
+      "prompt": "Many supernovae are calibrated using the same Cepheid zero point. Does averaging many supernovae remove an error in that zero point?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: averaging many supernovae removes the error in the zero point, since each measurement is independent",
+        "No: the calibration error is shared across the measurements",
+        "Yes: the shared error cancels in the average",
+        "Yes: the error falls by 1/√N for N supernovae"
       ],
-      "answer": "No",
-      "explanation": "It is correlated across measurements.",
+      "answer": "No: the calibration error is shared across the measurements",
+      "explanation": "Averaging reduces independent noise, not a common offset.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does every supernova share the same zero point?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are D_L and D_A identical at every redshift?",
+      "prompt": "Luminosity distance D_L and angular-diameter distance D_A are two measures of distance. Are they equal at every redshift?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they are equal, as both come from the flux and size",
+        "Yes: they are equal in a flat Universe",
+        "Yes: in flat space they agree",
+        "No: they differ by a factor of (1 + z)²"
       ],
-      "answer": "No",
-      "explanation": "Their relation includes redshift and propagation assumptions.",
+      "answer": "No: they differ by a factor of (1 + z)²",
+      "explanation": "They differ by a factor of (1 + z)². D_L = (1 + z)² D_A.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare how flux and angular size scale with z."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why keep covariance?",
-      "answer": "Shared calibration errors do not behave like independent noise.",
+      "prompt": "Why must a distance-ladder analysis keep the covariance between measurements?",
+      "answer": "Shared calibration errors are not independent noise",
       "options": [
-        "Shared calibration errors do not behave like independent noise.",
-        "Low redshift and appropriate flow corrections."
+        "Errors in a distance ladder are independent, so the covariances between steps can be set to zero",
+        "Shared calibration errors are not independent noise",
+        "Covariances vanish for supernovae, so the errors add in quadrature",
+        "It makes plots smaller"
       ],
-      "explanation": "Shared calibration errors do not behave like independent noise.",
+      "explanation": "Ignoring the covariance understates the uncertainty on H₀.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do the rungs share anchors?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "In the nearby approximation with H₀=70 km/s/Mpc and d=20 Mpc, find recession speed in km/s.",
       "answer": "1400",
       "hint": "Multiply H₀ by d.",
-      "explanation": "Multiply H₀ by d. The value in the stated units is 1400.",
+      "explanation": "In the nearby approximation v = H₀d = 70 × 20 = 1400 km/s.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For expansion speed 1400 km/s and peculiar velocity +280 km/s, find the fractional bias of a naive speed-based distance using the same H₀.",
       "answer": "0.2",
       "hint": "The extra speed is 280/1400 of the expansion contribution.",
-      "explanation": "The extra speed is 280/1400 of the expansion contribution. The value in the stated units is 0.2.",
+      "explanation": "A naive distance uses the observed speed 1400 + 280 = 1680 km/s, so it is too large by 280 km/s out of the true 1400, a fractional bias of 280/1400 = 0.2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can the nearby linear Hubble law be used as an exact high-redshift luminosity-distance relation?",
-      "answer": "No; the cosmological expansion history and distance convention enter.",
+      "prompt": "Is the local linear Hubble law v = H₀d an exact luminosity–distance relation at high redshift?",
+      "answer": "No: the expansion history and the distance convention enter",
       "options": [
-        "Yes; one linear slope is exact at every redshift.",
-        "No; the cosmological expansion history and distance convention enter."
+        "Yes: the linear law holds to z = 10, so v = H₀d gives the luminosity distance at a high redshift",
+        "No: the expansion history and the distance convention enter",
+        "Yes: a linear slope at large z, as the expansion is steady",
+        "Yes: it is exact at the distances that are observed"
       ],
-      "explanation": "The local expansion is a low-redshift approximation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The linear law is a low-redshift approximation.",
+      "hint": "What happens to D_L(z) at large z?",
       "misconceptions": {
         "Yes; one linear slope is exact at every redshift.": "The local expansion is a low-redshift approximation."
       },
@@ -163,7 +177,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Hubble's law and the distance ladder”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -237,18 +251,18 @@ In a low-redshift toy model with v=600 and H₀=60 in consistent distance/time u
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Hubble's law and the distance ladder”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Hubble's law and the distance ladder” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Hubble's law and the distance ladder” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a Lagrange-multiplier equation alone prove a maximum?",
+      "prompt": "You solve ∇f = λ∇g with g = c and find a candidate. Have you proved it is a maximum?",
       "options": [
-        "Yes",
-        "No"
+        "No: it is only a stationary candidate that must still be classified",
+        "Yes, if λ > 0, since a positive multiplier shows that the candidate is a maximum of f",
+        "Yes, if g is linear, as the constraint is then a flat surface",
+        "Yes: the multiplier equations prove a maximum"
       ],
-      "answer": "No",
-      "explanation": "It is a stationarity condition requiring classification.",
+      "answer": "No: it is only a stationary candidate that must still be classified",
+      "explanation": "The multiplier condition is necessary, not sufficient. It can give maxima, minima or saddles, and the boundary or compactness must be considered.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare with f′(x) = 0 in one dimension."
     },
     {
       "id": "concept-2",
-      "prompt": "Must singular constraints satisfy the ordinary multiplier condition?",
+      "prompt": "At a point where ∇g = 0 on the constraint g = 0, does the usual condition ∇f = λ∇g have to hold at a constrained extremum?",
       "options": [
-        "No",
-        "Yes"
+        "No: a constraint qualification (∇g ≠ 0) is required for it to be necessary",
+        "Yes: the Lagrange condition holds at each constrained extremum",
+        "No: the constraint is irrelevant",
+        "Yes, with λ = 0, as the condition then holds trivially, so no qualification is needed"
       ],
-      "answer": "No",
-      "explanation": "A constraint qualification is needed.",
+      "answer": "No: a constraint qualification (∇g ≠ 0) is required for it to be necessary",
+      "explanation": "Without regularity, the constraint set can be singular, e.g. g = x², so the extremum need not satisfy ∇f = λ∇g.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try the constraint g = x² = 0."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a semidefinite Hessian settle every extremum type?",
+      "prompt": "The Hessian at a stationary point is positive semidefinite (not definite). What can you conclude?",
       "options": [
-        "Yes",
-        "No"
+        "A local minimum, since a positive semidefinite Hessian is sufficient for a minimum at the point",
+        "A local maximum, as the Hessian is not definite",
+        "A saddle point, as the Hessian has a zero eigenvalue",
+        "Nothing for sure: higher-order terms decide the type"
       ],
-      "answer": "No",
-      "explanation": "Higher-order terms may decide the result.",
+      "answer": "Nothing for sure: higher-order terms decide the type",
+      "explanation": "f = x⁴ and f = x³ both have f″(0) = 0 yet differ in type. Semidefinite Hessians are inconclusive.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare x⁴, −x⁴ and x³ at 0."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What must accompany the multiplier equations?",
-      "answer": "The original constraints and classification of all relevant candidates",
+      "prompt": "Besides the multiplier equations, what else must you do to solve a constrained optimisation problem?",
+      "answer": "Impose the original constraint and classify and compare all candidates",
       "options": [
-        "The original constraints and classification of all relevant candidates",
-        "Only one convenient algebraic solution"
+        "Ignore the constraint after solving the multiplier equations, since the candidates already satisfy it",
+        "Take λ = 1, as that normalises the equations of the multiplier",
+        "Impose the original constraint and classify and compare all candidates",
+        "Use only one algebraic solution"
       ],
-      "explanation": "Feasibility and boundary or global comparisons remain necessary.",
+      "explanation": "Candidates must be feasible, and the extremum needs to be found by comparing values, including boundary points or a compactness argument.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is every solution of the stationarity equations a solution of the problem?"
     },
     {
       "id": "multivariable-transfer-1",
       "prompt": "Find the maximum of x+y on x²+y²=1.",
       "answer": "1.4142135623730951",
       "hint": "Use the unit vector parallel to (1,1).",
-      "explanation": "Use the unit vector parallel to (1,1). The value in the stated units is 1.414213562373.",
+      "explanation": "At the maximum, ∇(x + y) = (1, 1) is parallel to the constraint normal, so (x, y) = (1, 1)/√2. Then x + y = 2/√2 = √2 ≈ 1.414.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "Find the minimum of x²+y² subject to x+y=4.",
       "answer": "8",
       "hint": "The equal split (2,2) minimizes the sum of squares.",
-      "explanation": "The equal split (2,2) minimizes the sum of squares. The value in the stated units is 8.",
+      "explanation": "On x + y = 4 the sum of squares is smallest at the equal split x = y = 2, giving 4 + 4 = 8.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Can a vanishing constraint gradient invalidate the ordinary Lagrange multiplier necessary condition?",
-      "answer": "Yes; regularity is a hypothesis of that condition.",
+      "prompt": "Minimise f = x subject to g = y² − x³ = 0. The minimum is at the origin. Does ∇f = λ∇g hold there?",
+      "answer": "No: ∇g = 0 at the origin, so the regularity condition fails",
       "options": [
-        "No; multiplier equations work unchanged at every singular constraint.",
-        "Yes; regularity is a hypothesis of that condition."
+        "Yes, with λ = 0, as the gradient of f then vanishes at the minimum",
+        "Yes, for each point of the curve, with a suitable multiplier",
+        "No: ∇g = 0 at the origin, so the regularity condition fails",
+        "Yes, with λ = 1, as then ∇f matches ∇g at the origin of the curve here"
       ],
-      "explanation": "A singleton constraint with zero gradient supplies a direct counterexample.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "∇f = (1, 0) while ∇g = (−3x², 2y) = (0, 0) at the origin, so no λ satisfies it.",
+      "hint": "Compute ∇g at (0, 0).",
       "misconceptions": {
         "No; multiplier equations work unchanged at every singular constraint.": "A singleton constraint with zero gradient supplies a direct counterexample."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Extrema and Lagrange multipliers”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,19 +231,19 @@ Maximize xy on x+y=10 with x,y≥0. Substitute y=10−x to get 10x−x² on [0,1
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Extrema and Lagrange multipliers”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Extrema and Lagrange multipliers” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Extrema and Lagrange multipliers” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

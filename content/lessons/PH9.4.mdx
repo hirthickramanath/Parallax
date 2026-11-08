@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a bound for an approximate Hamiltonian automatically bound the exact physical energy?",
+      "prompt": "A variational calculation gives an upper bound for the ground-state energy of an approximate Hamiltonian. Is it automatically a bound for the exact physical energy?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the variational value is a lower bound to the true energy",
+        "Yes: it bounds the true energy from above including model errors",
+        "Yes: the bound holds for the Hamiltonian chosen as a model",
+        "No: errors of the model Hamiltonian are separate from the variational bound"
       ],
-      "answer": "No",
-      "explanation": "Model errors are separate.",
+      "answer": "No: errors of the model Hamiltonian are separate from the variational bound",
+      "explanation": "The theorem holds for the Hamiltonian used in the trial energy, not for the real system.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which Hamiltonian appears in ⟨ψ|H|ψ⟩?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can unconstrained minimization target an excited state automatically?",
+      "prompt": "You minimise ⟨H⟩ over all trial functions with no constraints. Can it find an excited state?",
       "options": [
-        "No",
-        "Yes"
+        "No: it converges to the ground state unless orthogonality or min–max conditions are imposed",
+        "Yes: it finds an excited state, as the principle bounds the excited states",
+        "Yes: it can land on an excited state if the trial form happens to be close",
+        "Yes: it returns the first excited state when the trial function is flexible"
       ],
-      "answer": "No",
-      "explanation": "Orthogonality/min–max conditions are needed.",
+      "answer": "No: it converges to the ground state unless orthogonality or min–max conditions are imposed",
+      "explanation": "Excited states need trial functions orthogonal to lower states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the minimum of ⟨H⟩ over all states?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are WKB phase offsets identical for all boundaries?",
+      "prompt": "The WKB quantisation ∮p dx = (n + ½)h uses a ½ from the turning points. Is the offset the same for a hard wall?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the offset ½ follows from the quantisation rule itself",
+        "Yes: the phase offset is zero for the boundary types",
+        "No: turning points and hard walls give different phase offsets",
+        "Yes: the offset is ½ for the boundary types involved"
       ],
-      "answer": "No",
-      "explanation": "Turning points and hard walls differ.",
+      "answer": "No: turning points and hard walls give different phase offsets",
+      "explanation": "A hard wall gives (n + ¼) with one soft turning point, or n with two hard walls.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is ψ at a hard wall?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish bounds and estimates?",
-      "answer": "Their error guarantees differ.",
+      "prompt": "Why should you distinguish a variational bound from an estimate?",
+      "answer": "Their error guarantees differ",
       "options": [
-        "Their error guarantees differ.",
-        "Self-adjoint lower-bounded H and an admissible normalized trial."
+        "They are the same thing",
+        "Estimates are rigorous bounds",
+        "Their error guarantees differ",
+        "Bounds are close to exact"
       ],
-      "explanation": "Their error guarantees differ.",
+      "explanation": "A bound is a guaranteed inequality, whereas an estimate carries no guarantee.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which one tells you the sign of the error?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Does a variational estimate below another approximation automatically mean the physical Hamiltonians are comparable?",
-      "answer": "No; the Hamiltonian and domain must match.",
+      "prompt": "A variational energy comes out lower than another approximation's result. Does that make it more accurate?",
+      "answer": "Not necessarily: the Hamiltonians and domains must match",
       "options": [
-        "Yes; any smaller number is more accurate.",
-        "No; the Hamiltonian and domain must match."
+        "Yes: it is the true value, since a variational result can never lie below the exact energy",
+        "Yes: lower is more accurate",
+        "Yes: the lower energy is the better approximation",
+        "Not necessarily: the Hamiltonians and domains must match"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Compare like with like.",
+      "hint": "Do both calculations solve the same Hamiltonian?",
+      "explanation": "Two Hamiltonians are only equivalent if their operators and domains match, so you must compare like with like before concluding anything.",
       "misconceptions": {
         "Yes; any smaller number is more accurate.": "Compare like with like."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Variational method and WKB”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ A normalized combination with probabilities .4 and .6 on energies 1 and 3 has ex
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Variational method and WKB”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Variational method and WKB” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Variational method and WKB” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

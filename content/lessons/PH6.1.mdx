@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does nonlinear ω(k) generally preserve packet shape?",
+      "prompt": "A wave packet travels in a medium where ω(k) is nonlinear. What happens to the packet shape?",
       "options": [
-        "Yes",
-        "No"
+        "It stays unchanged, with the envelope moving at the phase speed",
+        "It is preserved, with each component moving at one speed",
+        "It narrows and its peak amplitude grows as it travels",
+        "It generally changes, since different components accumulate different phases"
       ],
-      "answer": "No",
-      "explanation": "Different spectral components accumulate different phases.",
+      "answer": "It generally changes, since different components accumulate different phases",
+      "explanation": "Each Fourier component moves at its own phase speed, so the packet disperses.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do all frequency components travel together?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is numerical dispersion identical to material dispersion?",
+      "prompt": "A finite-difference simulation of a wave equation shows pulses spreading. Is this the same as dispersion in the real medium?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the spreading is physical, not a numerical effect",
+        "Yes: it is material dispersion",
+        "No: it can arise from the discretisation of the scheme",
+        "Yes: the scheme reproduces the true physics faithfully"
       ],
-      "answer": "No",
-      "explanation": "It can arise from the discrete scheme.",
+      "answer": "No: it can arise from the discretisation of the scheme",
+      "explanation": "Numerical dispersion depends on grid spacing and time step.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the continuous equation have the same ω(k) as the scheme?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does group velocity require a meaningful envelope regime?",
+      "prompt": "When is the group velocity dω/dk a meaningful speed of a wave packet?",
       "options": [
-        "No",
-        "Yes"
+        "In vacuum, where the medium adds no dispersion",
+        "When the envelope remains well defined, i.e. weak distortion",
+        "For a monochromatic plane wave in a medium",
+        "In a medium with constant refractive index"
       ],
-      "answer": "Yes",
-      "explanation": "Strong distortion can invalidate that interpretation.",
+      "answer": "When the envelope remains well defined, i.e. weak distortion",
+      "explanation": "Strong dispersion or absorption can distort the envelope so much that no single speed describes it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does v_g describe?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify the wave branch?",
-      "answer": "Different branches can have different propagation and polarization.",
+      "prompt": "Why must you specify which wave branch (mode) you are using?",
+      "answer": "Different branches can have different propagation and polarisation",
       "options": [
-        "Different branches can have different propagation and polarization.",
-        "Frequency-dependent phase evolution across modes."
+        "Branches have the same ω(k), so the choice of mode makes no difference to the wave",
+        "Different branches can have different propagation and polarisation",
+        "Branch labels change but the physics stays the same",
+        "The branches share the same dispersion and polarisation"
       ],
-      "explanation": "Different branches can have different propagation and polarization.",
+      "explanation": "A medium may support several dispersion curves.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a plasma carry only one type of wave?"
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For ω=2k+k³ at k=1 in model units, find phase speed.",
       "answer": "3",
       "hint": "Divide ω by k.",
-      "explanation": "Divide ω by k. The value in the stated units is 3.",
+      "explanation": "v_p = ω/k = (2k + k³)/k = 2 + k² = 3 at k = 1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For that dispersion at k=1, find group speed.",
       "answer": "5",
       "hint": "Differentiate ω with respect to k.",
-      "explanation": "Differentiate ω with respect to k. The value in the stated units is 5.",
+      "explanation": "v_g = dω/dk = 2 + 3k² = 2 + 3 = 5 at k = 1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Are ω/k and dω/dk guaranteed equal for an arbitrary dispersion relation?",
-      "answer": "No; they coincide only in special regimes such as a linear relation through the origin.",
+      "prompt": "For an arbitrary dispersion relation ω(k), are ω/k and dω/dk equal?",
+      "answer": "No: they coincide only in special cases such as a linear relation through the origin",
       "options": [
-        "Yes; all definitions of wave speed are identical.",
-        "No; they coincide only in special regimes such as a linear relation through the origin."
+        "No: they coincide only in special cases such as a linear relation through the origin",
+        "Yes: always equal, since both express the same ratio of frequency to wavenumber for any wave",
+        "Yes: phase and group velocity agree for a wave of this kind",
+        "Yes: the different wave speeds coincide when ω(k) is smooth"
       ],
-      "explanation": "A derivative and a ratio need not agree.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The phase velocity is ω/k, and the group velocity is its derivative.",
+      "hint": "Test ω = ck and ω = ck².",
       "misconceptions": {
         "Yes; all definitions of wave speed are identical.": "A derivative and a ratio need not agree."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Wave equation and dispersion”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For ω=2k+k² and k₀=1 in normalized units, phase velocity is 3 and group velo
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Wave equation and dispersion”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Wave equation and dispersion” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Wave equation and dispersion” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

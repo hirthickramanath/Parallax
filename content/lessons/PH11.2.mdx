@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a photon with zero invariant mass have zero momentum?",
+      "prompt": "A photon has zero invariant mass. Does it have zero momentum?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: with zero mass, p = mv is zero",
+        "Yes: it carries energy but no momentum",
+        "No: E = pc, so a photon carries momentum p = E/c",
+        "Yes: p = 0, as the photon has no rest mass to carry it"
       ],
-      "answer": "No",
-      "explanation": "For a photon E=pc.",
+      "answer": "No: E = pc, so a photon carries momentum p = E/c",
+      "explanation": "E² = (pc)² + (mc²)² with m = 0 gives E = pc.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use E² = (pc)² + (mc²)²."
     },
     {
       "id": "concept-2",
-      "prompt": "Must a stable particle gain invariant mass when accelerated?",
+      "prompt": "A stable particle is accelerated to high speed. Does its invariant mass increase?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it doubles when the speed approaches the speed of light in the frame",
+        "Yes: the mass grows as m = γm₀, which is why a fast particle gets harder and harder to accelerate",
+        "No: energy and momentum change, but the invariant mass stays fixed",
+        "Yes: it increases with γ, as the energy E = γmc² grows"
       ],
-      "answer": "No",
-      "explanation": "Its energy and momentum can change while its invariant mass remains fixed.",
+      "answer": "No: energy and momentum change, but the invariant mass stays fixed",
+      "explanation": "The invariant m² = E²/c⁴ − p²/c² is frame independent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the invariant frame dependent?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a collection of massless particles have positive total invariant mass?",
+      "prompt": "Two photons travel in opposite directions. Does the pair have a positive invariant mass?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the summed four-momentum can be timelike",
+        "No: massless particles sum to massless",
+        "No: it is zero, as the photons have no rest mass",
+        "No: it is positive just for photons travelling in parallel"
       ],
-      "answer": "Yes",
-      "explanation": "The norm of their summed four-momentum can be timelike.",
+      "answer": "Yes: the summed four-momentum can be timelike",
+      "explanation": "M²c⁴ = (E₁ + E₂)² − (p₁ + p₂)²c², and for opposite photons it is positive.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Add the four-momenta."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "How should a composite invariant mass be computed?",
+      "prompt": "How should the invariant mass of a composite system be calculated?",
       "answer": "From the total energy and total momentum in one common frame",
       "options": [
         "From the total energy and total momentum in one common frame",
-        "By adding only individual rest masses regardless of motion"
+        "By adding the energies of the parts and their masses",
+        "By adding the rest masses of the parts, since mass is a conserved additive quantity of the whole system",
+        "By adding the speeds of the parts in the lab frame"
       ],
-      "explanation": "The invariant belongs to the combined four-momentum.",
+      "explanation": "The invariant mass is computed in one common frame from the total energy and momentum: M²c⁴ = E_tot² − p_tot²c². Mixing energies from different frames gives the wrong answer.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Form the total four-momentum first."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Is the invariant mass of a system always the sum of constituent rest masses?",
-      "answer": "No; total four-momentum includes relative motion and binding.",
+      "prompt": "Is the invariant mass of a system always the sum of its constituents' rest masses?",
+      "answer": "No: the total four-momentum includes relative motion and binding energy",
       "options": [
-        "Yes; kinetic energy never contributes to system invariant mass.",
-        "No; total four-momentum includes relative motion and binding."
+        "No: the total four-momentum includes relative motion and binding energy",
+        "Yes: rest masses add, and binding energy plays no role",
+        "Yes: the invariant mass is the sum of the rest masses of the parts",
+        "Yes: kinetic energy does not contribute to the invariant mass of a system"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Form the total four-vector first.",
+      "hint": "Does kinetic energy add to the system's mass?",
+      "explanation": "A hot gas is heavier than a cold gas of the same particles.",
       "misconceptions": {
         "Yes; kinetic energy never contributes to system invariant mass.": "Form the total four-vector first."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Four-vectors and relativistic dynamics”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ For a massive particle moving at 0.6c, γ=1.25. Energy is 1.25mc², kinetic ener
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Four-vectors and relativistic dynamics”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Four-vectors and relativistic dynamics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Four-vectors and relativistic dynamics” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

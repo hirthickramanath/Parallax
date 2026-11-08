@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is chemical potential always the average G per mole?",
+      "prompt": "The chemical potential μᵢ of a component in a mixture is defined as:",
       "options": [
-        "Yes",
-        "No"
+        "The partial derivative (∂G/∂nᵢ) at fixed T, p and other nⱼ",
+        "The total Gibbs energy divided by the total moles, as each component has the same value in a mixture",
+        "The enthalpy per mole of the component",
+        "The pressure of the component"
       ],
-      "answer": "No",
-      "explanation": "It is a partial derivative for one component.",
+      "answer": "The partial derivative (∂G/∂nᵢ) at fixed T, p and other nⱼ",
+      "explanation": "μᵢ = (∂G/∂nᵢ)_{T,p,nⱼ}. It equals G/n only for a pure substance, not in a mixture.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is G/n the same for every component in a mixture?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can chemical equilibrium alone determine how fast it is reached?",
+      "prompt": "You know the equilibrium composition of a reaction. What does that tell you about how fast equilibrium is reached?",
       "options": [
-        "No",
-        "Yes"
+        "It is reached instantly, because the composition at equilibrium is also the composition at the start",
+        "Nothing: the rate requires kinetic information",
+        "It is reached slowly",
+        "It is reached quickly"
       ],
-      "answer": "No",
-      "explanation": "Rates require kinetic information.",
+      "answer": "Nothing: the rate requires kinetic information",
+      "explanation": "Thermodynamics fixes the endpoint, not the speed. Diamond to graphite is favourable but extremely slow.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Thermodynamics gives the endpoint; ask what sets the speed, e.g. for diamond."
     },
     {
       "id": "concept-3",
-      "prompt": "May a dimensionful concentration be put directly inside ln without a standard-state ratio?",
+      "prompt": "Why can't you write RT ln c with c = 0.1 mol/L directly in a chemical potential?",
       "options": [
-        "Yes",
-        "No"
+        "Concentrations are dimensionless in the formula",
+        "ln is defined for integers in this form",
+        "c must be in molar units for the logarithm",
+        "The logarithm needs a dimensionless ratio, such as c/c° or an activity"
       ],
-      "answer": "No",
-      "explanation": "Activity is dimensionless.",
+      "answer": "The logarithm needs a dimensionless ratio, such as c/c° or an activity",
+      "explanation": "μ = μ° + RT ln a with a dimensionless. Using c/c° with a standard state fixes the reference.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is ln of a quantity with units?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What establishes transfer equilibrium between two phases?",
-      "answer": "Equality of the relevant component potentials under the stated constraints",
+      "prompt": "When are two phases in transfer equilibrium for a component?",
+      "answer": "When that component's chemical potential is equal in both phases",
       "options": [
-        "Equality of the relevant component potentials under the stated constraints",
-        "Equality of the total phase volumes"
+        "When the volumes of the phases are equal, since a transfer of a component then has no net direction",
+        "When their temperatures differ",
+        "When that component's chemical potential is equal in both phases",
+        "When their masses are equal"
       ],
-      "explanation": "A permitted small transfer must have no first-order free-energy advantage.",
+      "explanation": "Moving dn from one phase to the other changes G by (μ_β − μ_α)dn, which must vanish at equilibrium.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Move a small amount dn across and demand dG = 0."
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For ΔrG°=−2,RT=1 and reaction quotient Q=e, find actual ΔrG in the same energy units.",
       "answer": "-1",
       "hint": "Add RT ln Q to the standard change.",
-      "explanation": "Add RT ln Q to the standard change. The value in the stated units is -1.",
+      "explanation": "ΔrG = ΔrG° + RT ln Q = −2 + 1 × ln e = −2 + 1 = −1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For RT=2 and activity changing from 1 to 3, find chemical-potential change.",
       "answer": "2.1972245773362196",
       "hint": "Use RT ln(a2/a1).",
-      "explanation": "Use RT ln(a2/a1). The value in the stated units is 2.197224577336.",
+      "explanation": "Δμ = RT ln(a₂/a₁) = 2 ln 3 = 2 × 1.0986 ≈ 2.197.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Can a logarithm of concentration with units replace activity without specifying a reference state?",
-      "answer": "No; the thermodynamic logarithm needs a dimensionless ratio/activity.",
+      "prompt": "Can you replace the activity in μ = μ° + RT ln a with a concentration that has units, without stating a reference state?",
+      "answer": "No: the logarithm requires a dimensionless ratio or activity with a defined standard state",
       "options": [
-        "Yes; units never affect a chemical-potential logarithm.",
-        "No; the thermodynamic logarithm needs a dimensionless ratio/activity."
+        "Yes: units do not matter inside a logarithm, so a concentration with units can replace the activity",
+        "Yes: for gases at low pressure, with units kept",
+        "Yes: for dilute solutions, if the units of concentration are kept in the logarithm",
+        "No: the logarithm requires a dimensionless ratio or activity with a defined standard state"
       ],
-      "explanation": "The standard state defines the dimensionless quantity.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The numerical value of ln(c) would change with the unit used, so μ would be ambiguous.",
+      "hint": "Does ln(0.1 mol/L) equal ln(100 mmol/L)?",
       "misconceptions": {
         "Yes; units never affect a chemical-potential logarithm.": "The standard state defines the dimensionless quantity."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Chemical thermodynamics and chemical potential”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For a component whose activity rises from 1 to 2 at fixed temperature and standa
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Chemical thermodynamics and chemical potential”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Chemical thermodynamics and chemical potential” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Chemical thermodynamics and chemical potential” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

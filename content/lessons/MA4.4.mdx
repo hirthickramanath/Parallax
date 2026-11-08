@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do zero-real-part eigenvalues settle nonlinear stability by the usual linear criterion?",
+      "prompt": "Linearising a nonlinear system at an equilibrium gives eigenvalues with zero real part. What does the linear test say about stability?",
       "options": [
-        "Yes",
-        "No"
+        "Nothing definite: the higher-order terms decide",
+        "The equilibrium is stable",
+        "The equilibrium is asymptotically stable",
+        "The equilibrium is unstable"
       ],
-      "answer": "No",
-      "explanation": "Higher-order terms can determine the result.",
+      "answer": "Nothing definite: the higher-order terms decide",
+      "explanation": "The linearisation theorem only applies when no eigenvalue has zero real part. For x′ = ±x³ the linearisation is the same but the behaviour differs.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare x′ = x³ and x′ = −x³ at 0."
     },
     {
       "id": "concept-2",
-      "prompt": "Does conserved positive energy prove asymptotic attraction?",
+      "prompt": "A system has a conserved positive-definite energy and an equilibrium at the minimum. Does the state converge to the equilibrium?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, always, since a conserved positive-definite energy forces every trajectory to converge to the minimum",
+        "Yes, after a long time, as the motion settles down to the minimum",
+        "Yes, as conserved energy sends it to the minimum",
+        "Not necessarily: it can orbit forever without converging"
       ],
-      "answer": "No",
-      "explanation": "An undamped orbit can remain nearby without converging.",
+      "answer": "Not necessarily: it can orbit forever without converging",
+      "explanation": "Conservation keeps trajectories near the equilibrium (Lyapunov stability) but gives no decay, as for an undamped oscillator.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a frictionless pendulum."
     },
     {
       "id": "concept-3",
-      "prompt": "Are stability and asymptotic stability identical?",
+      "prompt": "How does asymptotic stability differ from (Lyapunov) stability?",
       "options": [
-        "Yes",
-        "No"
+        "Asymptotic stability needs no nearby start",
+        "Asymptotic stability also requires trajectories to converge to the equilibrium",
+        "Stability is stronger than asymptotic stability",
+        "They are identical, as both require trajectories to converge to the equilibrium"
       ],
-      "answer": "No",
-      "explanation": "The second also requires convergence to the equilibrium.",
+      "answer": "Asymptotic stability also requires trajectories to converge to the equilibrium",
+      "explanation": "Stable: trajectories starting near stay near. Asymptotically stable: they also tend to the equilibrium.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare a frictionless oscillator and a damped one."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why does V̇≤0 not automatically establish asymptotic convergence?",
-      "answer": "Trajectories may stay on a larger zero-derivative set",
+      "prompt": "V̇ ≤ 0 along trajectories. Why does that not prove convergence to the equilibrium by itself?",
+      "answer": "Trajectories may stay on a larger set where V̇ = 0",
       "options": [
-        "Trajectories may stay on a larger zero-derivative set",
-        "A nonincreasing function must always reach zero"
+        "Trajectories may stay on a larger set where V̇ = 0",
+        "V̇ ≤ 0 means V is constant",
+        "A non-increasing function must reach zero",
+        "V is not defined along the trajectories in the region"
       ],
-      "explanation": "An invariance or stricter derivative argument can be needed.",
+      "explanation": "V could stop decreasing at a positive value if the trajectory stays in the set where V̇ = 0. LaSalle's invariance principle examines the largest invariant set there.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of a system where V̇ = 0 along an entire orbit."
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "For x′=−x³ and V=x²/2, find dV/dt at x=2.",
       "answer": "-16",
       "hint": "Use Vdot=x xdot=−x⁴.",
-      "explanation": "Use Vdot=x xdot=−x⁴. The value in the stated units is -16.",
+      "explanation": "dV/dt = x ẋ = x(−x³) = −x⁴. At x = 2 this is −16.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For x′=−x³ with x(0)=1, find x at t=1.5.",
       "answer": "0.5",
       "hint": "The exact solution is 1/sqrt(1+2t).",
-      "explanation": "The exact solution is 1/sqrt(1+2t). The value in the stated units is 0.5.",
+      "explanation": "Separating, x⁻³ dx = −dt gives x⁻² = 1 + 2t, so x = 1/√(1 + 2t). At t = 1.5, x = 1/√4 = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does a zero linearization derivative prove that an equilibrium is neither stable nor unstable?",
-      "answer": "No; higher-order terms can establish either behavior.",
+      "prompt": "At an equilibrium of x′ = ax³ the linearisation is x′ = 0. What can be said about its stability?",
+      "answer": "It depends on the nonlinear term: stable for a < 0, unstable for a > 0",
       "options": [
-        "Yes; zero linearization completely determines the nonlinear flow.",
-        "No; higher-order terms can establish either behavior."
+        "It is unstable because the linearisation is zero",
+        "It is neither stable nor unstable",
+        "It depends on the nonlinear term: stable for a < 0, unstable for a > 0",
+        "It is stable because the linearisation is zero"
       ],
-      "explanation": "Opposite cubic signs have identical linearizations and different stability.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Zero linearisation settles nothing. The sign of the cubic term gives opposite behaviour.",
+      "hint": "Solve x′ = −x³ and x′ = x³ for x near 0.",
       "misconceptions": {
         "Yes; zero linearization completely determines the nonlinear flow.": "Opposite cubic signs have identical linearizations and different stability."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Stability and nonlinear dynamics”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,19 +231,19 @@ For x′=−x³ with x(0)=1, separation gives x(t)=1/√(1+2t). At t=4 it is 1/3
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Stability and nonlinear dynamics”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Stability and nonlinear dynamics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Stability and nonlinear dynamics” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

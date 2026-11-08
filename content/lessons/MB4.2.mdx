@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Can a nonzero perpendicular force do zero instantaneous work?",
-      "answer": "Yes",
+      "prompt": "A force of 10 N acts perpendicular to the direction of motion. How much work does it do?",
+      "answer": "Zero, since work is F·d and the dot product vanishes",
       "options": [
-        "No",
-        "Yes"
+        "10 J per metre travelled",
+        "It cannot be zero when the force is non-zero",
+        "Negative work, since it opposes the motion",
+        "Zero, since work is F·d and the dot product vanishes"
       ],
-      "explanation": "Work uses the dot product with displacement.",
+      "explanation": "Work is W = F·d = |F||d|cos θ. At θ = 90° the cosine is zero, so a non-zero force can do zero work.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate cos 90° in the dot product."
     },
     {
       "id": "c2",
-      "prompt": "What happens when cross-product order is reversed?",
-      "answer": "Its sign reverses",
+      "prompt": "What happens to a × b when the order is reversed?",
+      "answer": "It changes sign: b × a = −(a × b)",
       "options": [
-        "Its sign reverses",
-        "It stays unchanged"
+        "It changes sign: b × a = −(a × b)",
+        "It stays the same",
+        "It becomes zero",
+        "It doubles in size"
       ],
-      "explanation": "The product is antisymmetric.",
+      "explanation": "The cross product is anti-commutative. Reversing the order reverses the direction given by the right-hand rule.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use the right-hand rule in both orders."
     },
     {
       "id": "c3",
-      "prompt": "Is the cross product associative?",
-      "answer": "No",
+      "prompt": "Is the cross product associative, i.e. is (a × b) × c = a × (b × c)?",
+      "answer": "No: in general the two differ (the triple-product identity)",
       "options": [
-        "Yes",
-        "No"
+        "No: in general the two differ (the triple-product identity)",
+        "Yes, if the vectors are unit vectors, as the product is then associative",
+        "No, but the two sides are equal in two dimensions, as one is zero",
+        "Yes, as the cross product is associative, like the dot product"
       ],
-      "explanation": "The vector triple-product identity differs from associativity.",
+      "explanation": "(a × b) × c = b(a·c) − a(b·c) while a × (b × c) = b(a·c) − c(a·b). These differ in general.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try i × (i × j) and (i × i) × j."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Two nonzero 3D vectors have zero cross product. Must their dot product be zero?",
-      "answer": "No; parallel or antiparallel vectors have nonzero dot product.",
+      "prompt": "Two non-zero 3D vectors have a × b = 0. What can you say about a · b?",
+      "answer": "It is non-zero: the vectors are parallel or antiparallel",
       "options": [
-        "Yes; a zero cross product proves orthogonality.",
-        "No; parallel or antiparallel vectors have nonzero dot product."
+        "It is zero, as the two vectors are orthogonal",
+        "It is non-zero: the vectors are parallel or antiparallel",
+        "It is positive, as the vectors lie in the same plane",
+        "It is zero, since a × b = 0 means perpendicular"
       ],
-      "explanation": "Cross and dot products test different geometric relations.",
+      "explanation": "|a × b| = |a||b| sin θ = 0 means θ = 0° or 180°, so a · b = ±|a||b| ≠ 0. The cross product vanishes for parallel vectors, the dot product for perpendicular ones.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Compare sin θ and cos θ at 0° and 180°.",
       "misconceptions": {
         "Yes; a zero cross product proves orthogonality.": "Cross and dot products test different geometric relations."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Can a dot product be negative for nonzero vectors?",
-      "answer": "Yes; an obtuse angle gives a negative projection.",
+      "prompt": "Can the dot product of two non-zero vectors be negative?",
+      "answer": "Yes: when the angle between them is obtuse",
       "options": [
-        "No; it is always a length.",
-        "Yes; an obtuse angle gives a negative projection."
+        "No: it is non-negative, as lengths are",
+        "Yes, but just for unit vectors of the same sign",
+        "Yes: when the angle between them is obtuse",
+        "No: a dot product is a length"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The dot product is signed and distinct from a norm.",
+      "hint": "Evaluate cos θ for θ = 120°.",
+      "explanation": "a · b = |a||b| cos θ, which is negative for 90° < θ ≤ 180°. It is a signed scalar and not a norm.",
       "misconceptions": {
         "No; it is always a length.": "The dot product is signed and distinct from a norm."
       },

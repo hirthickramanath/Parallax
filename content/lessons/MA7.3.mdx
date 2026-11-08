@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May a singular Yₘ solution be retained automatically at the centre of a regular full disk?",
+      "prompt": "You solve a vibrating full circular drum, including the centre. May you keep the Y_m Bessel solution?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: Y_m is the physical one",
+        "Yes: both solutions are kept for a full drum",
+        "No: J_m diverges at the origin, inside the domain",
+        "No: Y_m diverges at the origin, which is inside the domain"
       ],
-      "answer": "No",
-      "explanation": "Regularity at the included origin excludes that singular branch.",
+      "answer": "No: Y_m diverges at the origin, which is inside the domain",
+      "explanation": "Regularity at r = 0 selects J_m. Y_m would be allowed for an annulus.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is Y_m finite at r = 0?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are circular Dirichlet membrane frequencies generally integer multiples of the lowest one?",
+      "prompt": "Are the frequencies of a circular drum integer multiples of the lowest one?",
       "options": [
-        "No",
-        "Yes"
+        "No: they follow the zeros of Bessel functions, which are not integer ratios",
+        "Yes, like a string, since a circular membrane has overtones at exact multiples of its fundamental",
+        "Yes, like a string, as the modes are integer multiples of the lowest",
+        "Yes, like a pipe closed at both ends, as the modes are integer multiples"
       ],
-      "answer": "No",
-      "explanation": "Bessel zeros determine the spectrum.",
+      "answer": "No: they follow the zeros of Bessel functions, which are not integer ratios",
+      "explanation": "The ratios are 1 : 1.59 : 2.14 : 2.30 : …, which is why drums sound less harmonic than strings.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the first zeros: 2.405, 3.832, 5.136."
     },
     {
       "id": "concept-3",
-      "prompt": "What radial weight appears in disk-mode orthogonality?",
+      "prompt": "Bessel functions J_m(kr) with different k are orthogonal on [0, a]. Which radial weight appears?",
       "options": [
-        "1 with no radial factor",
+        "1",
+        "r²",
+        "1/r",
         "r"
       ],
       "answer": "r",
-      "explanation": "The polar area element and radial operator supply r.",
+      "explanation": "The polar area element supplies r, and the radial equation is of Sturm–Liouville form with weight r.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the area element in polar coordinates?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What changes when the circular boundary becomes a zero-normal-derivative boundary?",
-      "answer": "The spectral condition uses derivative zeros and possible zero modes",
+      "prompt": "A drum's boundary condition changes from fixed (u = 0) to free (∂u/∂r = 0). What happens to the allowed frequencies?",
+      "answer": "They follow zeros of J′ instead of J, and a zero mode may appear",
       "options": [
-        "The spectral condition uses derivative zeros and possible zero modes",
-        "Nothing; the same zeros always apply"
+        "They follow zeros of J′ instead of J, and a zero mode may appear",
+        "It changes the amplitude, but the frequencies of the modes stay",
+        "They vanish, as the free edge removes the modes of the drum",
+        "They become integer multiples"
       ],
-      "explanation": "Different boundary data select different eigenvalues.",
+      "explanation": "The boundary condition selects the eigenvalues. For Neumann conditions the m = 0 mode with k = 0 (constant) is allowed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which condition gives J(ka) = 0 and which gives J′(ka) = 0?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does choosing an arbitrary radial wave number satisfy every circular boundary condition?",
-      "answer": "No; the boundary condition selects allowed values.",
+      "prompt": "You choose any wave number k in J₀(kr). Does it satisfy a fixed-edge condition at r = a?",
+      "answer": "Only if ka is a zero of J₀; the boundary selects the allowed k",
       "options": [
-        "Yes; every regular Bessel solution has the same boundary zero.",
-        "No; the boundary condition selects allowed values."
+        "No: k is arbitrary, as the edge does not select a value of it",
+        "Only if ka is a zero of J₀; the boundary selects the allowed k",
+        "Yes: any k works, since J₀(kr) is regular at the centre and so vanishes at the edge for every k",
+        "Yes: regularity ensures it"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Regularity and the outer boundary are distinct constraints.",
+      "hint": "Two conditions: centre and edge.",
+      "explanation": "Regularity at r = 0 gives J₀; the outer boundary then gives J₀(ka) = 0.",
       "misconceptions": {
         "Yes; every regular Bessel solution has the same boundary zero.": "Regularity and the outer boundary are distinct constraints."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Bessel functions”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ If a chosen positive J₀ zero is supplied as j=2.4 for an approximate apparatus
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Bessel functions”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Bessel functions” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Bessel functions” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

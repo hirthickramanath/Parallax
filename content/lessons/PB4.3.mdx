@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a static magnetic force alone change kinetic energy?",
-      "answer": "No",
+      "prompt": "A charged particle moves through a static magnetic field only. What happens to its kinetic energy?",
+      "answer": "It stays the same, since the force is perpendicular to the velocity",
       "options": [
-        "Yes",
-        "No"
+        "It stays the same, since the force is perpendicular to the velocity",
+        "It increases steadily, as the field acts on it and does work",
+        "It decreases until the particle stops",
+        "It oscillates as the particle changes direction"
       ],
-      "explanation": "It is perpendicular to velocity.",
+      "explanation": "F = qv × B is perpendicular to v, so it does no work (P = F·v = 0). The speed is unchanged while the direction bends.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute F·v for a force perpendicular to velocity."
     },
     {
       "id": "c2",
-      "prompt": "Does constant field always imply constant flux through a moving loop?",
-      "answer": "No",
+      "prompt": "A loop moves through a region of constant magnetic field. Must the flux through it stay constant?",
+      "answer": "No: rotation or a change in the area inside the field changes the flux",
       "options": [
-        "No",
-        "Yes"
+        "No: rotation or a change in the area inside the field changes the flux",
+        "Yes, as flux depends on the field alone, not on the loop",
+        "Yes, because the field is constant",
+        "No, but just if the loop is a perfect conductor in the field"
       ],
-      "explanation": "Area and orientation can change.",
+      "explanation": "Flux is Φ = ∫B·dA, which depends on the field, the area and the orientation. A rotating coil in a uniform field is the standard generator.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write Φ = BA cos θ and decide which factors can change."
     },
     {
       "id": "c3",
-      "prompt": "Can the induced electric field always be represented by a single electrostatic potential?",
-      "answer": "No",
+      "prompt": "A changing magnetic flux induces an electric field around a loop. Can that field be written as the gradient of a potential?",
+      "answer": "No: its line integral around a closed path is not zero",
       "options": [
-        "Yes",
-        "No"
+        "Yes, as an electric field can be written as a gradient",
+        "No, as it is not a field in the usual sense",
+        "Yes, but just in a conductor, where charges can move freely",
+        "No: its line integral around a closed path is not zero"
       ],
-      "explanation": "It can have nonzero closed-loop circulation.",
+      "explanation": "Faraday's law gives ∮E·dl = −dΦ/dt ≠ 0. A gradient field has zero circulation, so induced E needs more than a scalar potential.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the line integral around a closed loop."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Magnetic flux through a loop is positive but decreasing. In Lenz’s law, does the induced current oppose the decrease or necessarily oppose the existing field?",
-      "answer": "It opposes the decrease; its field can reinforce the existing flux.",
+      "prompt": "The magnetic flux through a loop is positive and decreasing. What does Lenz's law say about the induced current?",
+      "answer": "Its field opposes the decrease, so it adds to the existing flux",
       "options": [
-        "It must always produce flux opposite to the existing field.",
-        "It opposes the decrease; its field can reinforce the existing flux."
+        "Its field opposes the decrease, so it adds to the existing flux",
+        "Its field opposes the existing field, so it reduces the flux even when the flux is already decreasing",
+        "It produces no field, since the flux is positive",
+        "Its field has the same direction as the change of flux"
       ],
-      "explanation": "The minus sign refers to the change of flux, not the flux value alone.",
+      "explanation": "The minus sign opposes the change in flux, not the flux itself. Falling flux is opposed by an induced field that tries to maintain it.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Ask what the loop is trying to prevent: the flux itself or its change.",
       "misconceptions": {
         "It must always produce flux opposite to the existing field.": "The minus sign refers to the change of flux, not the flux value alone."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does a static magnetic-field plot alone determine a time-dependent induced emf?",
-      "answer": "No; the flux history and loop orientation are required.",
+      "prompt": "Two identical loops sit in the same steady magnetic field. What does induced emf depend on?",
+      "answer": "How the flux through each loop changes with time",
       "options": [
-        "Yes; every nonzero magnetic field creates the same emf.",
-        "No; the flux history and loop orientation are required."
+        "The number of field lines in the room, since the emf of a loop depends on the total field around it",
+        "How the flux through each loop changes with time",
+        "The loop's resistance alone",
+        "The field strength alone"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Induction depends on flux change.",
+      "hint": "Look for the time derivative in Faraday's law.",
+      "explanation": "Faraday's law gives ε = −dΦ/dt. A steady field and fixed loop give no emf; it appears when the flux changes through motion or a changing field.",
       "misconceptions": {
         "Yes; every nonzero magnetic field creates the same emf.": "Induction depends on flux change."
       },
@@ -222,8 +235,7 @@ Electrostatic potential alone cannot represent the induced electric field around
 
 ### Transfer derivation and failure case
 
-Integrating the electric field around a stationary loop gives $\oint\mathbf E\cdot d\boldsymbol\ell=-d\Phi_B/dt$. In a changing magnetic field this nonzero circulation prevents a single electrostatic scalar potential from describing the entire induced field. For $N$ identical turns, flux linkage is $N\Phi_B$; confusing linkage with per-turn flux loses a factor of $N$. In an ideal series RL step, $L\,di/dt+Ri=V_0$ has solution $i=(V_0/R)(1-e^{-tR/L})$ for zero initial current. The time constant has units H/Ω = s.
-
+In a changing magnetic field this nonzero circulation prevents a single electrostatic scalar potential from describing the entire induced field. For $N$ identical turns, flux linkage is $N\Phi_B$; confusing linkage with per-turn flux loses a factor of $N$. In an ideal series RL step, $L\,di/dt+Ri=V_0$ has solution $i=(V_0/R)(1-e^{-tR/L})$ for zero initial current. The time constant has units H/Ω = s.
 
 ### Derivation and transfer
 

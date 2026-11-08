@@ -14,7 +14,7 @@
       "id": "concept-1",
       "prompt": "Which statement about normal matrices (AA* = A*A) is correct?",
       "options": [
-        "They are never diagonalisable, which is why Hermitian is a special case",
+        "They are never diagonalisable, which is why the Hermitian case needs separate treatment and a different theorem",
         "All of their eigenvalues are real, since the matrix commutes with its adjoint",
         "Their eigenvalues can be complex; real eigenvalues are guaranteed only for Hermitian ones",
         "All of their eigenvalues have modulus one, as for a unitary matrix"
@@ -29,8 +29,8 @@
       "id": "concept-2",
       "prompt": "For a Hermitian observable A and a state ψ, must the expectation ⟨A⟩ equal one of A's eigenvalues?",
       "options": [
-        "Yes: it always equals the largest eigenvalue of the operator",
-        "Yes: a measurement always returns the expectation value itself",
+        "Yes: it equals the largest eigenvalue of the operator for each state",
+        "Yes: a single measurement returns the expectation value itself",
         "Yes, whenever the state vector has been normalised to length one",
         "No: in general it is a probability-weighted average of the eigenvalues"
       ],
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "A Hermitian matrix has eigenvectors u and v with different eigenvalues λ ≠ μ. What follows?",
       "options": [
-        "Nothing is fixed: the two vectors can make any angle",
+        "No relation is fixed: the vectors can make an angle",
         "They must be parallel, since both are eigenvectors of the same matrix",
         "⟨u,v⟩ = 0, because (λ − μ)⟨u,v⟩ = 0 when A = A*",
-        "They are orthogonal only if the matrix has real entries"
+        "Orthogonal if the matrix has real entries"
       ],
       "answer": "⟨u,v⟩ = 0, because (λ − μ)⟨u,v⟩ = 0 when A = A*",
       "explanation": "⟨Au,v⟩ = λ⟨u,v⟩ and ⟨u,Av⟩ = μ⟨u,v⟩ are equal when A = A*, so (λ − μ)⟨u,v⟩ = 0.",
@@ -81,7 +81,7 @@
       "options": [
         "Real eigenvalues, but possibly too few eigenvectors (defective)",
         "An orthonormal basis of eigenvectors with real eigenvalues",
-        "Distinct eigenvalues, so every eigenspace is one-dimensional",
+        "Distinct eigenvalues, so each eigenspace has dimension one",
         "A basis of eigenvectors that need not be orthogonal"
       ],
       "explanation": "Hermitian matrices are unitarily diagonalisable with real eigenvalues. Repeated eigenvalues are allowed; the eigenspaces then have dimension greater than one.",
@@ -95,7 +95,7 @@
       "prompt": "For symmetric A=[[2,1],[1,2]], find the larger eigenvalue.",
       "answer": "3",
       "hint": "Use in-phase and opposite-phase eigenvectors.",
-      "explanation": "Use in-phase and opposite-phase eigenvectors. The value in the stated units is 3.",
+      "explanation": "The in-phase vector (1, 1) gives A(1, 1) = (3, 3), eigenvalue 3. The opposite-phase vector (1, −1) gives eigenvalue 1. The larger is 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -105,7 +105,7 @@
       "prompt": "For A=diag(1,4) and unit vector (1/√2,1/√2), find Rayleigh quotient.",
       "answer": "2.5",
       "hint": "Average the diagonal values with squared component weights.",
-      "explanation": "Average the diagonal values with squared component weights. The value in the stated units is 2.5.",
+      "explanation": "R = xᵀAx/xᵀx = (1/2)(1) + (1/2)(4) = 2.5, since each diagonal value is weighted by the squared component 1/2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -166,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Spectral theorem and Hermitian operators”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -232,19 +232,19 @@ For A=[[2,1],[1,2]], the normalized sum and difference vectors have eigenvalues 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Spectral theorem and Hermitian operators”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Spectral theorem and Hermitian operators” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Spectral theorem and Hermitian operators” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

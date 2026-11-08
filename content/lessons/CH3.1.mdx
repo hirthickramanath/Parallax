@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is low temperature equivalent to no chemical reactions?",
+      "prompt": "Molecular clouds are at about 10 K. Why do chemical reactions still occur there?",
       "options": [
-        "Yes",
-        "No"
+        "Barrierless ion–molecule and surface routes do not need thermal activation",
+        "Cosmic rays freeze the reactions at 10 K, so molecules seen there must have formed elsewhere",
+        "The temperature is higher inside molecules",
+        "There are no reactions at 10 K"
       ],
-      "answer": "No",
-      "explanation": "Several nonthermal/barrier-free pathways exist.",
+      "answer": "Barrierless ion–molecule and surface routes do not need thermal activation",
+      "explanation": "Ion–molecule reactions and cosmic-ray driven processes have little or no barrier.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which reactions have no activation energy?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a predicted species automatically count as detected?",
+      "prompt": "A chemical model predicts a molecule in a cloud. Can it be listed as detected?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: if the model is published",
+        "Yes: the model is evidence",
+        "No: detection needs spectroscopic evidence",
+        "Yes: if the abundance is large"
       ],
-      "answer": "No",
-      "explanation": "Spectral evidence is separate.",
+      "answer": "No: detection needs spectroscopic evidence",
+      "explanation": "Predictions and observations are separate. Detection requires line identifications.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What did the telescope record?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must abundance fractions state their denominator?",
+      "prompt": "A paper reports 'abundance 10⁻⁸'. What must be specified for this to be meaningful?",
       "options": [
-        "No",
-        "Yes"
+        "No reference: an abundance of 10⁻⁸ has the same meaning whatever the reference quantity or the species",
+        "The year of the observation and the epoch",
+        "The reference quantity, e.g. relative to H₂ or total hydrogen",
+        "The colour of the telescope and the dome"
       ],
-      "answer": "Yes",
-      "explanation": "Reference conventions change values.",
+      "answer": "The reference quantity, e.g. relative to H₂ or total hydrogen",
+      "explanation": "Abundance fractions depend on the denominator; ratios with H₂ and with H differ by a factor of 2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ten to the minus eight of what?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why test multiple transitions?",
-      "answer": "They reduce misidentification and blend ambiguity.",
+      "prompt": "Why do astronomers look for several transitions of a molecule before claiming a detection?",
+      "answer": "Multiple lines reduce misidentification from blends and chance coincidences",
       "options": [
-        "They reduce misidentification and blend ambiguity.",
-        "Environment, network and evolutionary history."
+        "Several lines prove the formation history of the molecule, since each transition probes a different stage",
+        "More lines increase the temperature",
+        "Multiple lines reduce misidentification from blends and chance coincidences",
+        "One line is unique to a molecule in the spectrum"
       ],
-      "explanation": "They reduce misidentification and blend ambiguity.",
+      "explanation": "A single frequency may match several species. A consistent set of lines is far less likely to be a coincidence.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How likely is a coincidence with five matching lines?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For unit level degeneracies and ΔE/(kT)=ln2, find excited-to-ground population ratio.",
       "answer": "0.5",
       "hint": "Use exp(−ΔE/(kT)).",
-      "explanation": "Use exp(−ΔE/(kT)). The value in the stated units is 0.5.",
+      "explanation": "With equal degeneracies N₁/N₀ = exp(−ΔE/kT) = e^(−ln 2) = 1/2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For degeneracy ratio 4 and Boltzmann factor 0.5, find the excited-to-ground population ratio.",
       "answer": "2",
       "hint": "Multiply degeneracy ratio by the Boltzmann factor; this is not a normalized probability.",
-      "explanation": "Multiply degeneracy ratio by the Boltzmann factor; this is not a normalized probability. The value in the stated units is 2.",
+      "explanation": "N₁/N₀ = (g₁/g₀) exp(−ΔE/kT) = 4 × 0.5 = 2. This is a population ratio, not a probability, so it can exceed one.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does a population ratio above one necessarily violate probability normalization?",
-      "answer": "No; a ratio is not itself a normalized probability.",
+      "prompt": "A level-population ratio n₂/n₁ equals 3. Does this violate probability normalisation?",
+      "answer": "No: a ratio of two populations is not itself a probability",
       "options": [
-        "Yes; every population ratio must lie between zero and one.",
-        "No; a ratio is not itself a normalized probability."
+        "Yes: a ratio of populations must equal 1, as probabilities across levels are normalised to unity",
+        "Yes: ratios are at most 1 for a system",
+        "No: but the ratio must be 0",
+        "No: a ratio of two populations is not itself a probability"
       ],
-      "explanation": "Both populations can be normalized after the ratio is formed.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Each population divided by the total is normalised. A ratio can exceed 1.",
+      "hint": "Is a ratio of two probabilities itself a probability?",
       "misconceptions": {
         "Yes; every population ratio must lie between zero and one.": "Both populations can be normalized after the ratio is formed."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Molecules in the interstellar medium”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If P=6 and L=2 in compatible density/time units, the simple steady abundance is 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Molecules in the interstellar medium”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Molecules in the interstellar medium” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Molecules in the interstellar medium” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

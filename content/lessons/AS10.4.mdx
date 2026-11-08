@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "Your plot looks identical to the published figure. What else must you check before calling it a reproduction?",
       "options": [
-        "Nothing more: a figure that matches the published one is the result",
+        "No further checks: a figure that matches the published one is the result",
         "That the input data, units, normalisation and method match",
-        "Only that the colours, line styles and axis labels match the original",
-        "Only that the analysis code runs from start to finish without errors"
+        "That the colours, line styles and axis labels match the original",
+        "That the analysis code runs from start to finish without errors"
       ],
       "answer": "That the input data, units, normalisation and method match",
       "explanation": "Different data, units or normalisation can produce a similar-looking plot. A reproduction means the same inputs and method give the same output.",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "You extend the original analysis by changing its baseline model. How should you report it?",
       "options": [
-        "Replace the baseline quietly with the new one if it fits the data better",
-        "Present it as the original result if the conclusions turn out to agree",
+        "Replace the baseline quietly with the new one if it fits the data better than the old",
+        "Present it as the original result if the conclusions turn out to agree with the paper",
         "Keep the original-baseline reproduction and report the extension separately, stating changed assumptions",
-        "Report only the extension, since it supersedes the original analysis"
+        "Report the extension alone, as it supersedes the original analysis in each respect"
       ],
       "answer": "Keep the original-baseline reproduction and report the extension separately, stating changed assumptions",
       "explanation": "The reader must be able to separate what reproduces the original from what you changed.",
@@ -45,9 +45,9 @@
       "prompt": "The original paper's input table is not accessible. What should the reproduction do?",
       "options": [
         "Document the gap and any substitute, and label the result as not a full reproduction",
-        "Skip the missing step and report the final number exactly as published",
-        "Generate plausible inputs and present the outcome as the original analysis",
-        "Quote the paper's figure value and describe it as if it had been recomputed"
+        "Skip the missing step and report the final number as published, as the gap would not change it",
+        "Generate plausible inputs and present the outcome as the original analysis, noting nothing",
+        "Quote the paper's figure value and describe it as if it had been recomputed here by you today"
       ],
       "answer": "Document the gap and any substitute, and label the result as not a full reproduction",
       "explanation": "Missing evidence cannot be replaced silently; state exactly what was unavailable and what you used instead.",
@@ -79,9 +79,9 @@
       "prompt": "You complete the capstone. What has completion not shown?",
       "answer": "That the original or reproduced scientific claim is independently correct",
       "options": [
-        "That the exact source and version were identified at the start",
-        "That the outputs agree with the original within the stated tolerances",
-        "That a specified method was followed from start to finish",
+        "That the exact source and version of the original work were identified correctly at the beginning",
+        "That the outputs agree with the original within the stated tolerances for each quantity",
+        "That a specified method was followed from the start of the work to the finish",
         "That the original or reproduced scientific claim is independently correct"
       ],
       "explanation": "Completion shows the work was done as specified. It does not certify that the underlying claim is right.",
@@ -95,7 +95,7 @@
       "prompt": "For observed 12, predicted 10 and standard uncertainty 0.5, find standardized residual.",
       "answer": "4",
       "hint": "Divide the signed difference by σ.",
-      "explanation": "Divide the signed difference by σ. The value in the stated units is 4.",
+      "explanation": "The standardized residual is (observed − predicted)/σ = (12 − 10)/0.5 = 4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -105,7 +105,7 @@
       "prompt": "For two independent standardized residuals 1 and 2, find their summed squared residual statistic.",
       "answer": "5",
       "hint": "Compute 1²+2² under the independence assumption.",
-      "explanation": "Compute 1²+2² under the independence assumption. The value in the stated units is 5.",
+      "explanation": "For independent residuals the squared residuals add: 1² + 2² = 1 + 4 = 5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -115,10 +115,10 @@
       "prompt": "You generate a toy model that resembles a published light curve. What have you done?",
       "answer": "Demonstrated a method; a reproduction needs the real data, provenance and analysis",
       "options": [
-        "Replicated it, because the toy model uses the same parameter values",
+        "Replicated it, as the toy model uses the same parameter values",
         "Demonstrated a method; a reproduction needs the real data, provenance and analysis",
-        "Reproduced the result, because the shape of the curve agrees with the paper",
-        "Verified it independently of the authors, since no original data were used"
+        "Reproduced the result, as the shape of the curve agrees with the paper",
+        "Verified it independently of the authors, as no original data were used"
       ],
       "explanation": "A toy fit shows a method can produce that shape. It does not run the actual analysis on the actual data.",
       "hint": "Is the toy's input the real observation?",
@@ -166,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Capstone: reproduce a published result”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -230,18 +230,18 @@ If a hypothetical reference is 10±2 and the reproduced value is 12 with referen
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Capstone: reproduce a published result”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Capstone: reproduce a published result” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Capstone: reproduce a published result” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can a fixed-particle space describe arbitrary particle creation without extension?",
+      "prompt": "Non-relativistic quantum mechanics fixes the particle number. Can that framework describe a process like e⁺e⁻ → γγ without extension?",
       "options": [
-        "Yes",
-        "No"
+        "No: the particle number changes",
+        "Yes: particle number does not matter",
+        "Yes: wavefunctions of fixed N suffice",
+        "No: those processes do not occur"
       ],
-      "answer": "No",
-      "explanation": "Additional sectors are required.",
+      "answer": "No: the particle number changes",
+      "explanation": "The particle number changes, so it needs a space that includes states with different numbers of particles. Fock space allows creation and annihilation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count particles before and after."
     },
     {
       "id": "concept-2",
-      "prompt": "Are virtual lines literal observed particle trajectories?",
+      "prompt": "In a Feynman diagram an internal line connects two vertices. Is it a literal trajectory of a particle that a detector could follow?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: detectors see virtual particles directly, since internal lines are the real paths that particles follow",
+        "No: internal lines organise terms of the perturbative amplitude and need not be on shell",
+        "Yes: it is the real path of a particle between the two vertices of the diagram, drawn to scale in space",
+        "No: diagrams are drawn at random, as the terms of the amplitude have no fixed form in the theory"
       ],
-      "answer": "No",
-      "explanation": "They organize amplitudes in an expansion.",
+      "answer": "No: internal lines organise terms of the perturbative amplitude and need not be on shell",
+      "explanation": "Only external lines correspond to observed particles.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is actually measured, the external or internal lines?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must an effective theory state its validity scale?",
+      "prompt": "An effective field theory describes low-energy physics well. Must it state the energy range where it is valid?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: but just for gravity, where the cutoff matters",
+        "No: validity is a matter of notation",
+        "Yes: omitted higher-dimension operators and heavier degrees of freedom limit it",
+        "No: it holds at each energy, as it is a complete theory"
       ],
-      "answer": "Yes",
-      "explanation": "Omitted operators and degrees of freedom limit it.",
+      "answer": "Yes: omitted higher-dimension operators and heavier degrees of freedom limit it",
+      "explanation": "The Fermi theory fails near the W mass.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does an EFT leave out?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify diagrams?",
-      "answer": "They are calculational terms rather than direct process histories.",
+      "prompt": "Why should a Feynman diagram not be read as the history of one process?",
+      "answer": "It stands for one term in a sum whose total gives the amplitude",
       "options": [
-        "They are calculational terms rather than direct process histories.",
-        "Particles arise from suitable quantum field modes/states."
+        "It is the classical limit of the process, with one trajectory",
+        "It is a picture of the detector",
+        "It stands for one term in a sum whose total gives the amplitude",
+        "It is the complete history"
       ],
-      "explanation": "They are calculational terms rather than direct process histories.",
+      "explanation": "Diagrams are computational aids for the perturbation series.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What do you do with all the diagrams?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Is an arbitrary regulator cutoff itself necessarily a measured physical observable?",
-      "answer": "No; regulator dependence must be interpreted and removed or matched appropriately.",
+      "prompt": "A calculation uses a momentum cutoff Λ as a regulator. Is Λ itself a measured physical quantity?",
+      "answer": "No: regulator dependence must be absorbed by renormalisation or matched to a physical scale",
       "options": [
-        "Yes; any chosen cutoff is directly measured physics.",
-        "No; regulator dependence must be interpreted and removed or matched appropriately."
+        "Yes: Λ is measured in the lab, as the cutoff is a scale that the experiments determine directly",
+        "Yes: Λ is the true size of space, as the cutoff marks its smallest cell",
+        "No: Λ can take a value without consequence for the result of the calculation",
+        "No: regulator dependence must be absorbed by renormalisation or matched to a physical scale"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Separate calculational regulator and prediction.",
+      "hint": "Do observables depend on the arbitrary choice?",
+      "explanation": "Physical predictions should not depend on an arbitrary regulator.",
       "misconceptions": {
         "Yes; any chosen cutoff is directly measured physics.": "Separate calculational regulator and prediction."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Why quantum field theory”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For m=3,c=1, two-rest-mass energy is 6. That arithmetic alone is not a complete 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Why quantum field theory”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Why quantum field theory” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Why quantum field theory” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

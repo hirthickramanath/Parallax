@@ -11,40 +11,48 @@
   "questions": [
     {
       "id": "mass",
-      "prompt": "In the ideal small-angle model, which affects period?",
+      "prompt": "In the ideal small-angle pendulum model, which change alters the period?",
       "options": [
-        "Bob mass",
-        "String length",
-        "Bob colour"
+        "A smaller bob radius",
+        "A heavier bob",
+        "A longer string",
+        "A different bob colour"
       ],
-      "answer": "String length",
-      "explanation": "T = 2π√(L/g), independent of bob mass.",
+      "answer": "A longer string",
+      "explanation": "T = 2π√(L/g). The bob mass cancels because both the restoring force and the inertia scale with it. Only L and g enter.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the equation of motion and see whether the mass survives to the end."
     },
     {
       "id": "angle",
-      "prompt": "Why does a 60° release bias a small-angle estimate of g?",
+      "prompt": "Releasing a pendulum from 60° rather than a few degrees biases a g estimate. Why?",
       "options": [
-        "The approximation sin θ ≈ θ is inadequate",
-        "Gravity changes sign"
+        "Gravity becomes stronger at large angles, so the measured period shortens and g appears too large",
+        "Replacing sin θ with θ is no longer a good approximation",
+        "The period no longer depends on length",
+        "The string stretches at large angles"
       ],
-      "answer": "The approximation sin θ ≈ θ is inadequate",
-      "explanation": "The nonlinear period is longer than the small-angle period.",
+      "answer": "Replacing sin θ with θ is no longer a good approximation",
+      "explanation": "The true restoring torque is proportional to sin θ. At large amplitude the real period is longer than 2π√(L/g), so a g computed from it is too small.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare sin θ and θ in radians for 60°."
     },
     {
       "id": "precision",
-      "prompt": "Does timing more cycles remove large-angle model error?",
+      "prompt": "You time many more swings of a 60° pendulum. What does that fix about the small-angle error?",
       "options": [
-        "Yes",
-        "No"
+        "It converts the bias into random error",
+        "Nothing: it improves timing precision but not the model bias",
+        "It removes the bias, since the errors in timing and in the small-angle model both average out over many swings",
+        "It removes the bias only if the string is long"
       ],
-      "answer": "No",
-      "explanation": "It reduces relative timing uncertainty, not model bias.",
+      "answer": "Nothing: it improves timing precision but not the model bias",
+      "explanation": "Timing more cycles shrinks the relative reading uncertainty. The small-angle formula is still the wrong model at 60°, so the offset remains.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Separate random timing error from a systematic model error."
     },
     {
       "id": "period",

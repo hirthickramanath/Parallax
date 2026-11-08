@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does total charge zero imply zero exterior field?",
+      "prompt": "A localised charge distribution has zero total charge. Is the field outside it zero?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: zero total charge means zero field everywhere outside the distribution",
+        "No: dipole and higher multipoles can remain",
+        "Yes: neutral sources have no field outside",
+        "Yes: Gauss's law forces the exterior field to vanish"
       ],
-      "answer": "No",
-      "explanation": "Higher moments can remain.",
+      "answer": "No: dipole and higher multipoles can remain",
+      "explanation": "A dipole has zero net charge but a nonzero field.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of +q and −q a distance apart."
     },
     {
       "id": "concept-2",
-      "prompt": "Is a dipole approximation exact at every distance?",
+      "prompt": "Is the dipole approximation exact at every distance from the source?",
       "options": [
-        "No",
-        "Yes"
+        "No: it is an exterior far-field approximation",
+        "Yes: point dipoles lack higher multipoles",
+        "Yes: exact everywhere",
+        "Yes: the formula holds close to the source too"
       ],
-      "answer": "No",
-      "explanation": "It is an exterior far-field approximation.",
+      "answer": "No: it is an exterior far-field approximation",
+      "explanation": "Higher multipoles dominate near the source.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens at r comparable to the source size?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is dipole moment origin-independent for any nonzero net charge?",
+      "prompt": "You shift the origin of your coordinates. For a distribution with nonzero total charge Q, what happens to the dipole moment?",
       "options": [
-        "Yes",
-        "No"
+        "It becomes zero, since moving the origin removes the charge from the dipole sum",
+        "It stays the same",
+        "It stays at its old value",
+        "It changes by −Q times the shift"
       ],
-      "answer": "No",
-      "explanation": "It changes by minus total charge times the origin shift.",
+      "answer": "It changes by −Q times the shift",
+      "explanation": "p′ = p − Qa. It is origin-independent only if Q = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recompute ∫ r′ ρ dV with r′ = r − a."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why define a quadrupole convention explicitly?",
-      "answer": "Different normalizations assign different numerical factors to the same potential",
+      "prompt": "Why must you state the quadrupole convention when quoting a quadrupole moment?",
+      "answer": "Different normalisations give different numbers for the same potential",
       "options": [
-        "Different normalizations assign different numerical factors to the same potential",
-        "All conventions have identical tensor entries"
+        "Conventions affect labelling but the magnitude is fixed",
+        "Quadrupoles have no convention",
+        "Different normalisations give different numbers for the same potential",
+        "The convention is standard in physics and needs no statement"
       ],
-      "explanation": "The potential and moment definition must be used consistently.",
+      "explanation": "Some definitions include 1/2 or traceless factors of 3.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the quadrupole tensor traceless in every textbook?"
     },
     {
       "id": "em-transfer-1",
       "prompt": "Far from a fixed ideal dipole, distance doubles along the same non-nodal direction. Find the field-magnitude ratio.",
       "answer": "0.125",
       "hint": "Leading dipole electric field scales as r^−3.",
-      "explanation": "Leading dipole electric field scales as r^−3. The value in the stated units is 0.125.",
+      "explanation": "The leading dipole field falls as r⁻³. Doubling r gives (1/2)³ = 1/8 = 0.125.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For charges +q and −q separated by distance 2a with q=a=1, find dipole-moment magnitude.",
       "answer": "2",
       "hint": "Dipole moment magnitude is charge times separation.",
-      "explanation": "Dipole moment magnitude is charge times separation. The value in the stated units is 2.",
+      "explanation": "p = q × separation = 1 × (2a) = 1 × 2 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does total charge zero guarantee a localized distribution has zero electric field everywhere outside it?",
-      "answer": "No; dipole and higher multipoles can remain.",
+      "prompt": "A localised distribution has zero total charge. Does that guarantee no field anywhere outside?",
+      "answer": "No: higher multipoles can remain",
       "options": [
-        "Yes; a zero monopole eliminates every spatial moment.",
-        "No; dipole and higher multipoles can remain."
+        "Yes: the exterior field is zero",
+        "Yes: zero monopole removes the dipole too",
+        "No: higher multipoles can remain",
+        "Yes: far away"
       ],
-      "explanation": "The multipole hierarchy retains information beyond net charge.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The multipole hierarchy keeps information beyond the net charge.",
+      "hint": "What is the next term after the monopole?",
       "misconceptions": {
         "Yes; a zero monopole eliminates every spatial moment.": "The multipole hierarchy retains information beyond net charge."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Multipole expansion”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -221,18 +235,18 @@ For a neutral far-field dipole with k=1 and p=3, the axial field magnitude at r=
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Multipole expansion”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Multipole expansion” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Multipole expansion” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

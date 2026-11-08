@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does electron counting alone establish aromaticity for every molecule?",
+      "prompt": "Cyclooctatetraene has 8 π electrons, and cyclobutadiene has 4. Does electron counting alone decide aromaticity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the count matters, so a ring with 4n π electrons is aromatic whether or not it is planar",
+        "No: planarity, conjugation and the model's domain also matter",
+        "No: counting is irrelevant",
+        "Yes: 4n π electrons give an aromatic ring"
       ],
-      "answer": "No",
-      "explanation": "Geometry, conjugation and the model domain matter.",
+      "answer": "No: planarity, conjugation and the model's domain also matter",
+      "explanation": "Hückel's rule applies to planar, fully conjugated cycles. Cyclooctatetraene is tub-shaped and non-aromatic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is cyclooctatetraene flat?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are nonaromatic and antiaromatic identical classifications?",
+      "prompt": "Cyclobutadiene is planar and conjugated with 4n π electrons. How is it classified relative to a non-aromatic compound?",
       "options": [
-        "No",
-        "Yes"
+        "Identical to non-aromatic, since a 4n ring has the same energy as a conjugated chain of equal length",
+        "Aromatic, with extra stability from the electrons",
+        "Neither: it does not exist",
+        "Antiaromatic: destabilised, which is distinct from non-aromatic"
       ],
-      "answer": "No",
-      "explanation": "Antiaromaticity requires additional structural and electronic conditions.",
+      "answer": "Antiaromatic: destabilised, which is distinct from non-aromatic",
+      "explanation": "Antiaromaticity requires a planar, fully conjugated 4n system and raises the energy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is it stabilised or destabilised relative to a reference?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must an ortho/para directing substituent always activate the ring?",
+      "prompt": "A methoxy group directs electrophiles to the ortho and para positions. A chlorine does too. Do both activate the ring?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both strongly deactivate",
+        "No: chlorine directs ortho/para but deactivates the ring",
+        "Yes: o/p directors activate the ring",
+        "No: neither affects reactivity"
       ],
-      "answer": "No",
-      "explanation": "Direction and activation are separate tendencies.",
+      "answer": "No: chlorine directs ortho/para but deactivates the ring",
+      "explanation": "Directing effect (resonance) and activation (net electron density) are separate.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the inductive and resonance effects of Cl."
     },
     {
       "id": "numeric",
@@ -69,23 +78,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why can aromatic substitution be favoured relative to a naive addition picture?",
-      "answer": "The pathway can restore the conjugated aromatic system",
+      "prompt": "Benzene reacts with Br₂/FeBr₃ by substitution instead of addition. What is the reason?",
+      "answer": "Substitution restores the stabilised aromatic ring, whereas addition would destroy it",
       "options": [
-        "The pathway can restore the conjugated aromatic system",
-        "Aromatic rings never react"
+        "Benzene cannot react with bromine, as the ring is too stable",
+        "Bromine prefers substitution of C–C",
+        "Addition is impossible for an aromatic ring",
+        "Substitution restores the stabilised aromatic ring, whereas addition would destroy it"
       ],
-      "explanation": "Relative barriers and restored stabilization, not absolute inertness, explain the tendency.",
+      "explanation": "Addition would lose the aromatic stabilisation of about 150 kJ/mol.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the product look like in each case?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For a six-site Hückel ring with α=0,β=−1 and m=0, find orbital energy.",
       "answer": "-2",
       "hint": "Use cos0=1.",
-      "explanation": "Use cos0=1. The value in the stated units is -2.",
+      "explanation": "For a ring E_m = α + 2β cos(2πm/6). With α = 0, β = −1, m = 0: E = 2(−1)(1) = −2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -95,21 +107,23 @@
       "prompt": "For the same ring with m=1, find orbital energy.",
       "answer": "-1",
       "hint": "cos(2π/6)=1/2.",
-      "explanation": "cos(2π/6)=1/2. The value in the stated units is -1.",
+      "explanation": "For m = 1, cos(2π/6) = cos 60° = 1/2, so E = 2(−1)(1/2) = −1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does a 4n+2 electron count alone prove aromaticity without checking conjugation and geometry?",
-      "answer": "No; those structural hypotheses are essential.",
+      "prompt": "A ring has 6 π electrons but one sp³ carbon breaks the conjugation. Is it aromatic?",
+      "answer": "No: the 4n+2 guideline needs a cyclic, planar, fully conjugated system",
       "options": [
-        "Yes; electron count alone settles every ring.",
-        "No; those structural hypotheses are essential."
+        "Yes: 6 π electrons are enough, so a ring with one sp³ carbon is aromatic in the same way as benzene",
+        "No: the 4n+2 guideline needs a cyclic, planar, fully conjugated system",
+        "Yes: a ring with 6 electrons is aromatic",
+        "No: 10 electrons are what count for the ring"
       ],
-      "explanation": "The guideline applies within a specified orbital/geometry setting.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Hückel's rule applies only within its stated structural assumptions.",
+      "hint": "Is the ring conjugated all the way round?",
       "misconceptions": {
         "Yes; electron count alone settles every ring.": "The guideline applies within a specified orbital/geometry setting."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Aromaticity and aromatic reactions”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,18 +234,18 @@ Benzene’s six π electrons satisfy 4n+2 with n=1. Cyclooctatetraene has eight 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Aromaticity and aromatic reactions”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Aromaticity and aromatic reactions” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Aromaticity and aromatic reactions” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

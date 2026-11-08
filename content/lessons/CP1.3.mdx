@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does smaller h always improve a numerical derivative?",
-      "answer": "No",
+      "prompt": "You shrink the step h in a finite-difference derivative from 10⁻⁴ to 10⁻¹⁴. What usually happens to the error?",
+      "answer": "It gets worse once roundoff and cancellation dominate",
       "options": [
-        "Yes",
-        "No"
+        "It stays the same, as the finite-difference error depends on the function and not on h",
+        "It becomes zero, as h gets smaller and smaller",
+        "It gets worse once roundoff and cancellation dominate",
+        "It keeps shrinking in proportion to h"
       ],
-      "explanation": "Cancellation and measurement error grow relative to h.",
+      "explanation": "Truncation error decreases with h, but subtracting nearly equal numbers loses digits, an error of order ε_machine/h. The total error has a minimum at a moderate h.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about subtracting two almost identical floating-point numbers."
     },
     {
       "id": "c2",
-      "prompt": "Does the trapezoidal order claim hold for every nonsmooth integrand?",
-      "answer": "No",
+      "prompt": "The trapezoidal rule is quoted as O(h²) accurate. When does this fail?",
+      "answer": "When the integrand is not smooth enough, e.g. has a kink or singularity",
       "options": [
-        "No",
-        "Yes"
+        "When h is small, because then the error terms of the rule grow rather than shrink with the step",
+        "When the integrand is a polynomial",
+        "When the integrand is not smooth enough, e.g. has a kink or singularity",
+        "When h is small, as roundoff takes over at once"
       ],
-      "explanation": "Smoothness assumptions enter the error derivation.",
+      "explanation": "The O(h²) bound comes from the second derivative of the integrand. Without that smoothness, convergence can be slower.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the error derivation use f″?"
     },
     {
       "id": "c3",
-      "prompt": "Can dense decimal output replace missing measurements?",
-      "answer": "No",
+      "prompt": "A program prints a result to 15 decimal places from data measured to two significant figures. How accurate is the result?",
+      "answer": "No better than the data: printed digits are not information",
       "options": [
-        "Yes",
-        "No"
+        "No better than the data: printed digits are not information",
+        "As accurate as the computer's precision, as the program carries the 15 decimals through each operation",
+        "Accurate to 15 places, as printed on the screen",
+        "Accurate to 8 places, as half of the digits survive"
       ],
-      "explanation": "Printing precision is not information content.",
+      "explanation": "Output precision cannot create information. The result is limited by the uncertainty in the inputs and by the method.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can printing more digits improve a measurement?"
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Should a central finite-difference step always be made as tiny as the computer permits?",
-      "answer": "No; cancellation and roundoff can grow as h decreases.",
+      "prompt": "You choose the step h for a central difference. What is the best strategy?",
+      "answer": "Balance truncation error against roundoff, so h is neither too large nor tiny",
       "options": [
-        "Yes; smaller h always improves the total error.",
-        "No; cancellation and roundoff can grow as h decreases."
+        "Use the smallest h the machine allows, as a smaller step reduces the error of the derivative",
+        "Balance truncation error against roundoff, so h is neither too large nor tiny",
+        "Make h as large as possible, so the roundoff is small",
+        "Use the smallest h the machine allows"
       ],
-      "explanation": "Balance truncation error against subtraction of nearly equal rounded values.",
+      "explanation": "Truncation error is O(h²) while roundoff scales as ε/h, so the optimum is near h ~ ε^{1/3} times a scale of x.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Sketch total error against h: it has a minimum.",
       "misconceptions": {
         "Yes; smaller h always improves the total error.": "Balance truncation error against subtraction of nearly equal rounded values."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Does taking the smallest representable step always improve a finite-difference derivative?",
-      "answer": "No; roundoff and cancellation can dominate.",
+      "prompt": "Why might the smallest representable step h give a poor derivative from f(x + h) − f(x)?",
+      "answer": "The difference of nearly equal numbers loses precision to cancellation",
       "options": [
-        "Yes; truncation is the only numerical error.",
-        "No; roundoff and cancellation can dominate."
+        "The difference of nearly equal numbers loses precision to cancellation",
+        "Truncation error becomes the dominant error in the result",
+        "The function stops being differentiable",
+        "The computer cannot evaluate f at that point"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Compare truncation and floating-point effects.",
+      "hint": "Subtract two numbers that agree in 15 digits.",
+      "explanation": "For tiny h, f(x + h) and f(x) agree in most digits, so the subtraction leaves few correct digits, and dividing by h magnifies the error.",
       "misconceptions": {
         "Yes; truncation is the only numerical error.": "Compare truncation and floating-point effects."
       },
@@ -217,8 +230,7 @@ A refinement check compares n and 2n intervals, while an analytic test establish
 
 ### Transfer derivation and failure case
 
-Taylor expansion of the symmetric quotient gives $[f(x+h)-f(x-h)]/(2h)=f'(x)+h^2 f^{(3)}(x)/6+O(h^4)$ for a sufficiently smooth function. For a cubic, the correction is exactly $h^2$. Floating-point subtraction introduces an error scale proportional to machine precision divided by $h$, so truncation improvement cannot be extrapolated to arbitrarily small steps. Composite trapezoidal quadrature instead averages neighboring endpoint values across each panel; refining panels is a convergence test, not additional measured information. Discontinuities and noisy data require separate error models.
-
+For a cubic, the correction is exactly $h^2$. Floating-point subtraction introduces an error scale proportional to machine precision divided by $h$, so truncation improvement cannot be extrapolated to arbitrarily small steps. Composite trapezoidal quadrature instead averages neighboring endpoint values across each panel; refining panels is a convergence test, not additional measured information. Discontinuities and noisy data require separate error models.
 
 ### Derivation and transfer
 

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are hyperfine and fine structure the same coupling?",
+      "prompt": "Hyperfine splitting and fine structure both split atomic levels. Are they the same coupling?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both involve the nucleus, so they have the same origin in the structure of the atom",
+        "Yes: both are spin–orbit couplings of the electron, and hyperfine is just a smaller version of fine structure",
+        "No: hyperfine involves nuclear spin, and fine structure involves the electron's spin–orbit coupling",
+        "Yes: they are the same, as both arise from the coupling of the electron to its surroundings in the atom"
       ],
-      "answer": "No",
-      "explanation": "Nuclear spin enters hyperfine structure.",
+      "answer": "No: hyperfine involves nuclear spin, and fine structure involves the electron's spin–orbit coupling",
+      "explanation": "Fine structure is ~α² E_n, and hyperfine is smaller by a factor of m_e/m_p.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which spins couple in each?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must A’s units/convention be specified?",
+      "prompt": "A hyperfine constant A is quoted in a paper. Why must its units and convention be specified?",
       "options": [
-        "Yes",
-        "No"
+        "The constant A is defined the same way everywhere, so its numerical value needs no further context",
+        "Units do not matter",
+        "Definitions can absorb factors of ħ",
+        "A has fixed units"
       ],
-      "answer": "Yes",
-      "explanation": "Definitions can absorb ℏ factors.",
+      "answer": "Definitions can absorb factors of ħ",
+      "explanation": "Definitions can absorb factors of ħ, and A can be in energy, frequency or angular frequency. A/h in Hz versus A in joules differ by h.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is A given in J, Hz or rad/s?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does one simple hyperfine model include every radiative correction?",
+      "prompt": "A simple hyperfine model (contact term) is used for hydrogen. Does it include every radiative correction?",
       "options": [
-        "Yes",
-        "No"
+        "No: other terms require separate treatment",
+        "Yes: it includes the corrections",
+        "Yes: includes QED",
+        "Yes: it is exact for the hydrogen atom"
       ],
-      "answer": "No",
-      "explanation": "Other terms require separate treatment.",
+      "answer": "No: other terms require separate treatment",
+      "explanation": "The 21 cm line shows tiny QED corrections of order α.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the contact interaction a complete theory?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why compare energy scales?",
-      "answer": "They choose the appropriate coupled basis and perturbative regime.",
+      "prompt": "Why compare the sizes of the fine-structure, hyperfine and Zeeman energies?",
+      "answer": "They choose the appropriate coupled basis and the perturbative regime",
       "options": [
-        "They choose the appropriate coupled basis and perturbative regime.",
-        "Total nuclear-plus-electronic angular momentum."
+        "They choose the appropriate coupled basis and the perturbative regime",
+        "No reason: the sizes are not compared in practice, as they are small",
+        "They show which interaction is largest, which fixes the nuclear mass used in the calculation of the levels",
+        "They determine the colour of the light that is emitted"
       ],
-      "explanation": "They choose the appropriate coupled basis and perturbative regime.",
+      "explanation": "Weak fields use |F, m_F⟩, and strong fields use |m_I, m_J⟩.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which interaction dominates?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does a principal quantum number alone determine every fine and hyperfine level?",
-      "answer": "No; angular and nuclear couplings also matter.",
+      "prompt": "Does the principal quantum number n alone determine every fine and hyperfine level of hydrogen?",
+      "answer": "No: angular and nuclear couplings also matter",
       "options": [
-        "Yes; all splittings depend only on n.",
-        "No; angular and nuclear couplings also matter."
+        "Yes: n fixes the energy of each fine level",
+        "Yes: for the levels of each kind, as n sets the energy",
+        "Yes: n fixes the level, and splittings are tiny",
+        "No: angular and nuclear couplings also matter"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Are 2s₁/₂ and 2p₃/₂ the same energy?",
       "explanation": "Retain the relevant angular labels.",
       "misconceptions": {
         "Yes; all splittings depend only on n.": "Retain the relevant angular labels."
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Hydrogenic fine and hyperfine structure”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For I=J=.5, the F=1 hyperfine shift is A/4 and F=0 shift −3A/4, giving a gap A
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Hydrogenic fine and hyperfine structure”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Hydrogenic fine and hyperfine structure” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Hydrogenic fine and hyperfine structure” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

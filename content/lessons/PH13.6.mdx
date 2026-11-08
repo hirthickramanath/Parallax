@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are P and CP identical transformations?",
+      "prompt": "A weak decay violates parity P. Does that automatically mean it also violates the combined symmetry CP?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a process that violates parity must also violate each symmetry built from it, including CP itself",
+        "No: P and CP are different transformations, and CP adds charge conjugation which can restore the symmetry",
+        "Yes: P and CP are the same operation, as both flip the signs of the spatial coordinates",
+        "No: CP is a symmetry of gravity alone, so it does not constrain the weak decay of the particle"
       ],
-      "answer": "No",
-      "explanation": "Charge conjugation is an additional operation.",
+      "answer": "No: P and CP are different transformations, and CP adds charge conjugation which can restore the symmetry",
+      "explanation": "The V−A weak interaction violates P and C maximally yet is nearly CP-symmetric.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "CP includes an extra operation beyond P."
     },
     {
       "id": "concept-2",
-      "prompt": "Does one complex matrix phase automatically define a basis-invariant CP observable?",
+      "prompt": "A CKM matrix has one complex phase in its entries. Is that phase alone a physical CP-violating observable?",
       "options": [
-        "No",
-        "Yes"
+        "No: the CKM matrix can always be made real by a choice of basis, so the phase has no physical effect at all",
+        "No: rephasing quark fields changes individual entries, so only rephasing-invariant combinations count",
+        "Yes: the phase of each element is measurable",
+        "Yes: a complex entry violates CP, as the phase cannot be removed from the entry by a redefinition of fields"
       ],
-      "answer": "No",
-      "explanation": "Rephasing can change individual entries.",
+      "answer": "No: rephasing quark fields changes individual entries, so only rephasing-invariant combinations count",
+      "explanation": "Physical CP violation is carried by invariants such as the Jarlskog invariant.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you change the phase of one entry by redefining quark fields?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can detector asymmetry mimic a rate difference?",
+      "prompt": "A detector counts more particles than antiparticles in a decay channel. Could part of that excess be instrumental?",
       "options": [
-        "No",
-        "Yes"
+        "No: raw counts reflect the true production rate, as detectors count each particle",
+        "Yes: differing acceptance or detection efficiency for the two charges can mimic a rate difference",
+        "Yes: but just if the beam is unpolarised in the region of the detector",
+        "No: detectors treat particles and antiparticles identically"
       ],
-      "answer": "Yes",
-      "explanation": "Acceptance must be calibrated.",
+      "answer": "Yes: differing acceptance or detection efficiency for the two charges can mimic a rate difference",
+      "explanation": "Experiments calibrate detection asymmetries using control channels before claiming CP violation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do detector materials treat matter and antimatter identically?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is baryon asymmetry not solved by one CP observation?",
-      "answer": "Cosmological generation requires additional dynamics and conditions.",
+      "prompt": "Why can a single measured CP asymmetry not by itself explain the matter–antimatter asymmetry of the universe?",
+      "answer": "Generating a baryon excess also needs baryon-number violation and departure from equilibrium",
       "options": [
-        "Cosmological generation requires additional dynamics and conditions.",
-        "Channels, transformations and correction/phase conventions."
+        "The measured CP asymmetry is zero in the experiments, so it cannot contribute",
+        "Generating a baryon excess also needs baryon-number violation and departure from equilibrium",
+        "The universe has no baryon asymmetry, so no explanation of it is required today",
+        "CP violation exists in electromagnetism alone, not in the weak sector"
       ],
-      "explanation": "Cosmological generation requires additional dynamics and conditions.",
+      "explanation": "These are the Sakharov conditions, and the Standard Model CP violation is far too small.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall Sakharov's three conditions."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does a raw detector count asymmetry by itself establish fundamental CP violation?",
-      "answer": "No; production and detector effects need control.",
+      "prompt": "A raw yield of particles differs from the yield of antiparticles. Does that settle that the underlying decay violates CP?",
+      "answer": "No: production asymmetries and detector effects must be separated first",
       "options": [
-        "Yes; every unequal count is intrinsic CP violation.",
-        "No; production and detector effects need control."
+        "No: production asymmetries and detector effects must be separated first",
+        "Yes: an unequal count is intrinsic CP violation, as raw yields show the effect",
+        "No: CP violation cannot show up in raw counts, so angular distributions must reveal it",
+        "Yes: if the difference exceeds one event"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Separate apparatus asymmetry from the physical observable.",
+      "hint": "Is the initial state symmetric between matter and antimatter?",
+      "explanation": "At a pp collider the initial state is not CP symmetric, so raw asymmetries include production effects.",
       "misconceptions": {
         "Yes; every unequal count is intrinsic CP violation.": "Separate apparatus asymmetry from the physical observable."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Weak interactions and CP violation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For corrected conjugate rates 12 and 8, the stated asymmetry is .2. If an uncorr
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Weak interactions and CP violation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Weak interactions and CP violation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Weak interactions and CP violation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

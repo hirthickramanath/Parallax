@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is every DFT orbital gap identical to a measured optical gap?",
+      "prompt": "A DFT calculation gives a Kohn–Sham band gap. Is it identical to the optical gap measured experimentally?",
       "options": [
-        "Yes",
-        "No"
+        "No: optical absorption involves excitations and excitonic effects that the Kohn–Sham gap does not capture",
+        "Yes: they are the same quantity, as a correct band structure already includes the excitations in the crystal",
+        "Yes: DFT gaps are exact, as the Kohn–Sham scheme is exact in principle for the ground state",
+        "No: optical gaps are zero, as absorption in a crystal begins at the Fermi level of the electrons in each of the bands"
       ],
-      "answer": "No",
-      "explanation": "Excitations and approximation effects differ.",
+      "answer": "No: optical absorption involves excitations and excitonic effects that the Kohn–Sham gap does not capture",
+      "explanation": "Standard DFT approximations typically underestimate gaps.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a Kohn–Sham orbital a real quasiparticle?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can periodic coupling open an avoided-crossing gap?",
+      "prompt": "Where two free-electron bands would cross at a Brillouin-zone boundary, what does a weak periodic potential do?",
       "options": [
-        "Yes",
-        "No"
+        "It couples the degenerate states and opens a gap",
+        "It makes the bands cross at higher energy",
+        "It removes the zone boundary",
+        "It leaves the crossing as it was, with no coupling"
       ],
-      "answer": "Yes",
-      "explanation": "It mixes compatible states.",
+      "answer": "It couples the degenerate states and opens a gap",
+      "explanation": "Bragg reflection mixes the two plane waves into standing waves with different energies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about the two standing waves at the boundary."
     },
     {
       "id": "concept-3",
-      "prompt": "Does elementary filling classification include all strong correlation?",
+      "prompt": "Band theory says a half-filled band is a metal. Can a material with such a band still be an insulator?",
       "options": [
-        "Yes",
-        "No"
+        "No: half filling gives a metal in the band picture, whatever the interaction",
+        "No: the band picture is exact, so the gap cannot open from the interaction",
+        "Yes: but just at the zone edge, where the bands meet in the crystal",
+        "Yes: strong electron–electron correlation can open a gap (a Mott insulator)"
       ],
-      "answer": "No",
-      "explanation": "Additional many-body physics can matter.",
+      "answer": "Yes: strong electron–electron correlation can open a gap (a Mott insulator)",
+      "explanation": "NiO is a band-theory metal but a real insulator.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Independent-electron bands ignore a large energy cost."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What limits independent-band classification?",
-      "answer": "Correlations, disorder and additional symmetry/topology.",
+      "prompt": "What can invalidate classifying a material as metal or insulator from its independent-electron bands?",
+      "answer": "Strong correlations, disorder and topology beyond simple band filling",
       "options": [
-        "Correlations, disorder and additional symmetry/topology.",
-        "Translation-equivalent crystal momenta."
+        "Having a periodic lattice with a basis of atoms in each unit cell of it",
+        "Counting the number of electrons correctly",
+        "The use of Bloch's theorem to label the states of the crystal by momentum",
+        "Strong correlations, disorder and topology beyond simple band filling"
       ],
-      "explanation": "Correlations, disorder and additional symmetry/topology.",
+      "explanation": "The filling criterion assumes non-interacting electrons in a perfect crystal.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which assumptions does band filling rely on?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does nonzero crystal momentum always imply nonzero group velocity in a band?",
-      "answer": "No; a band edge can have zero slope.",
+      "prompt": "An electron in a band has nonzero crystal momentum. Must its group velocity be nonzero?",
+      "answer": "No: velocity is the slope dE/dk",
       "options": [
-        "Yes; every band is a free-particle parabola.",
-        "No; a band edge can have zero slope."
+        "Yes: nonzero k means motion",
+        "No: velocity is the slope dE/dk",
+        "Yes: v = ħk/m in each band",
+        "No: group velocity is zero in bands"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the actual dispersion derivative.",
+      "hint": "Group velocity is a derivative of the dispersion.",
+      "explanation": "Velocity is the slope dE/dk, which vanishes at band edges and extrema. v = (1/ħ) dE/dk.",
       "misconceptions": {
         "Yes; every band is a free-particle parabola.": "Use the actual dispersion derivative."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Band theory”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For coupling |V_G|=.3 in a two-state crossing model, the gap is .6. A quadratic 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Band theory”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Band theory” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Band theory” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

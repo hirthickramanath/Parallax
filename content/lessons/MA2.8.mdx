@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can fixed-component Cartesian formulas be copied unchanged into spherical unit components?",
+      "prompt": "Can the Cartesian divergence ∂Fx/∂x + ∂Fy/∂y + ∂Fz/∂z be applied directly to spherical components (F_r, F_θ, F_φ)?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: replace x, y, z by r, θ, φ in the same formula",
+        "Yes: with a factor of r in each term, as the scale grows",
+        "Yes for radial fields, where the angular terms drop out of the formula",
+        "No: scale factors and varying basis vectors add extra terms"
       ],
-      "answer": "No",
-      "explanation": "Scale factors and basis variation matter.",
+      "answer": "No: scale factors and varying basis vectors add extra terms",
+      "explanation": "In spherical coordinates, ∇·F = (1/r²)∂(r²F_r)/∂r + …; basis vectors change with position.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do the unit vectors r̂, θ̂, φ̂ stay fixed?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does zero divergence for r>0 settle an excluded singular origin?",
+      "prompt": "For F = r̂/r² the divergence is zero for r > 0. Does that settle what happens at the origin?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the divergence is zero everywhere, including at the origin, so no source is present",
+        "Yes: the divergence is zero in the whole space, origin included",
+        "Yes: it is undefined there, so no source is present",
+        "No: a point source can sit where the formula does not apply"
       ],
-      "answer": "No",
-      "explanation": "A point source can remain outside the ordinary formula domain.",
+      "answer": "No: a point source can sit where the formula does not apply",
+      "explanation": "Gauss's law shows a flux of 4π, which is the delta-function divergence at the origin.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the flux through a small sphere."
     },
     {
       "id": "concept-3",
-      "prompt": "Is every coordinate singularity a physical field singularity?",
+      "prompt": "Spherical coordinates are singular at the poles θ = 0, π. Does that mean the physical field is singular there?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: such singularities are physical, so the field must blow up",
+        "Yes: fields blow up at poles",
+        "No: a smooth field can have ambiguous components at a coordinate pole",
+        "No: the poles are not on the sphere"
       ],
-      "answer": "No",
-      "explanation": "A smooth field may have ambiguous coordinate components at a pole.",
+      "answer": "No: a smooth field can have ambiguous components at a coordinate pole",
+      "explanation": "At the pole φ is undefined. A smooth vector field still exists in Cartesian components.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the longitude at the North Pole."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What field components do the displayed vector formulas use?",
-      "answer": "Components along local orthonormal unit vectors",
+      "prompt": "Which components do the standard curvilinear div, grad and curl formulas use?",
+      "answer": "Components along the local orthonormal unit vectors",
       "options": [
-        "Components along local orthonormal unit vectors",
-        "Arbitrary coordinate-basis components with no conversion"
+        "Components along fixed Cartesian axes, since the unit vectors in curvilinear coordinates do not vary",
+        "Components along the local orthonormal unit vectors",
+        "Cartesian components, converted by the Jacobian of the map",
+        "Components in a natural coordinate basis"
       ],
-      "explanation": "The chosen component convention is part of the formula.",
+      "explanation": "The formulas assume physical components with respect to the unit vectors e_r, e_θ, e_φ. Different conventions change the formulas.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think about unit vs. coordinate basis vectors."
     },
     {
       "id": "multivariable-transfer-1",
       "prompt": "For cylindrical radial field Ar=r, find divergence away from r=0.",
       "answer": "2",
       "hint": "Evaluate (1/r)d(r²)/dr.",
-      "explanation": "Evaluate (1/r)d(r²)/dr. The value in the stated units is 2.",
+      "explanation": "In cylindrical coordinates ∇·A = (1/r) d(rA_r)/dr = (1/r) d(r²)/dr = (1/r)(2r) = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For spherical radial field Ar=r, find divergence away from r=0.",
       "answer": "3",
       "hint": "Evaluate (1/r²)d(r³)/dr.",
-      "explanation": "Evaluate (1/r²)d(r³)/dr. The value in the stated units is 3.",
+      "explanation": "In spherical coordinates ∇·A = (1/r²) d(r²A_r)/dr = (1/r²) d(r³)/dr = (1/r²)(3r²) = 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Are cylindrical and spherical radial divergence formulas interchangeable for the same component function?",
-      "answer": "No; their area scale factors differ.",
+      "prompt": "The same component function F_r = f(r) is used for a radial field in cylindrical and spherical coordinates. Is the divergence the same?",
+      "answer": "No: the area scale factors differ (r versus r²)",
       "options": [
-        "Yes; radial means the same Jacobian in all coordinates.",
-        "No; their area scale factors differ."
+        "Yes: radial means the same thing in both systems, so the divergence has the same form",
+        "No: they differ in sign, as the sphere points outward",
+        "No: the area scale factors differ (r versus r²)",
+        "Yes: both have a factor 1/r in the formula for the area"
       ],
-      "explanation": "Cylindrical circles and spherical shells have different geometric spreading.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Cylindrical: (1/ρ)d(ρF)/dρ; spherical: (1/r²)d(r²F)/dr. Circles and spheres spread differently.",
+      "hint": "Compare the circumference with the sphere's area.",
       "misconceptions": {
         "Yes; radial means the same Jacobian in all coordinates.": "Cylindrical circles and spherical shells have different geometric spreading."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Div, grad, curl in curvilinear coordinates”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -221,19 +235,19 @@ For A=r eᵣ in spherical coordinates with r>0, divergence is r⁻² d(r³)/dr=3
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Div, grad, curl in curvilinear coordinates”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Div, grad, curl in curvilinear coordinates” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Div, grad, curl in curvilinear coordinates” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

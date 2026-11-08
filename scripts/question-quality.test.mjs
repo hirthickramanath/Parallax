@@ -25,8 +25,9 @@ test("every rewritten conceptual question has 3-4 distinct options, a hint and a
     assert.ok(q.options.includes(q.answer), where);
     assert.ok(q.hint && q.hint.length > 20, `${where} needs a hint`);
     assert.ok(
-      q.explanation.length > q.answer.length * 0.6 &&
-        q.explanation !== q.answer,
+      q.explanation.length >= 30 &&
+        q.explanation !== q.answer &&
+        !q.answer.includes(q.explanation),
       `${where} explanation should say why`,
     );
     assert.ok(
@@ -49,4 +50,24 @@ test("answer format does not leak the key", () => {
   );
   for (const count of position)
     assert.ok(count / n <= 0.4, `answer position skew ${position}`);
+});
+test("numeric explanations are worked, not the hint plus a restated value", () => {
+  const all = fs
+    .readdirSync("content/lessons")
+    .filter((f) => f.endsWith(".mdx"))
+    .flatMap((f) => load(f.replace(/\.mdx$/, "")).questions.map((q) => ({ id: f, q })));
+  const numeric = all.filter(({ q }) => q.type === "numeric");
+  assert.ok(numeric.length > 1000);
+  for (const { id, q } of numeric) {
+    const where = `${id}:${q.id}`;
+    assert.ok(
+      !/The value in the stated units is/.test(q.explanation || ""),
+      `${where} still has the templated explanation`,
+    );
+    if (q.hint)
+      assert.ok(
+        !String(q.explanation || "").startsWith(`${q.hint} The value`),
+        `${where} explanation only restates the hint`,
+      );
+  }
 });

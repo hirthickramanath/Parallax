@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does deterministic evolution guarantee practical predictability indefinitely?",
+      "prompt": "A system's equations are fully deterministic. Does that guarantee long-term practical predictability?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: determinism means predictability in practice",
+        "Yes: with a fast enough computer and good data",
+        "No: tiny initial uncertainties can grow exponentially",
+        "Yes: determinism guarantees prediction over long times"
       ],
-      "answer": "No",
-      "explanation": "Initial uncertainty can amplify.",
+      "answer": "No: tiny initial uncertainties can grow exponentially",
+      "explanation": "Chaotic systems have a positive Lyapunov exponent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does sensitivity to initial conditions do?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a finite-time positive growth estimate prove asymptotic chaos?",
+      "prompt": "A finite-time calculation gives a positive growth rate for nearby orbits. Does that prove asymptotic chaos?",
       "options": [
-        "No",
-        "Yes"
+        "No: transients and numerical artifacts must be excluded",
+        "Yes: a positive finite-time growth rate proves chaos, since it is the Lyapunov exponent itself",
+        "Yes: the growth rate is the Lyapunov exponent",
+        "Yes: for a time of the length used in the computation here"
       ],
-      "answer": "No",
-      "explanation": "Transients and numerical artifacts require exclusion.",
+      "answer": "No: transients and numerical artifacts must be excluded",
+      "explanation": "Finite-time exponents fluctuate, and the limit t → ∞ is needed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a finite time the same as an infinite limit?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does nonlinear evolution generally obey superposition?",
+      "prompt": "Two solutions of a nonlinear equation are added. Is the sum a solution?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: in each case, as adding solutions is allowed for equations",
+        "Yes: the sum is a solution of the equation, by superposition",
+        "Yes: the sum solves it when both solutions have small amplitudes",
+        "Generally not: nonlinear equations do not obey superposition"
       ],
-      "answer": "No",
-      "explanation": "The state rule is not linear.",
+      "answer": "Generally not: nonlinear equations do not obey superposition",
+      "explanation": "Superposition holds for linear equations only.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Test y″ + y³ = 0 with y₁ + y₂."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What can a Poincaré section reveal?",
-      "answer": "Reduced recurring structure of the flow under a stated sampling section.",
+      "prompt": "What can a Poincaré section show about a flow?",
+      "answer": "The reduced recurring structure of the flow on a chosen sampling surface",
       "options": [
-        "Reduced recurring structure of the flow under a stated sampling section.",
-        "δẋ=Df δx along the trajectory."
+        "No dynamics: a section is a slice and cannot reveal recurring structure",
+        "The reduced recurring structure of the flow on a chosen sampling surface",
+        "The Lyapunov exponent directly",
+        "The exact trajectory of the flow in time and in space"
       ],
-      "explanation": "Reduced recurring structure of the flow under a stated sampling section.",
+      "explanation": "It reduces a continuous flow to a lower-dimensional map.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does sampling once per period do?"
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For logistic map r=4, find the nonzero fixed point.",
       "answer": "0.75",
       "hint": "Solve x=4x(1−x) with x nonzero.",
-      "explanation": "Solve x=4x(1−x) with x nonzero. The value in the stated units is 0.75.",
+      "explanation": "A fixed point satisfies x = 4x(1 − x). For x ≠ 0, 1 = 4(1 − x), so x = 3/4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "At that fixed point x=0.75 and r=4, find the signed derivative of the logistic map.",
       "answer": "-2",
       "hint": "Differentiate r x(1−x).",
-      "explanation": "Differentiate r x(1−x). The value in the stated units is -2.",
+      "explanation": "f(x) = rx(1 − x) has f′(x) = r(1 − 2x). At r = 4, x = 0.75: f′ = 4(1 − 1.5) = −2, and |f′| > 1 means the fixed point is unstable.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Does a negative discrete-map derivative guarantee attraction of a fixed point?",
-      "answer": "No; the magnitude must be less than one.",
+      "prompt": "A discrete map has a fixed point where the derivative is −2. Is the fixed point stable?",
+      "answer": "No: stability needs |derivative| < 1, and a multiplier −2 amplifies deviations",
       "options": [
-        "Yes; a negative slope always means stability.",
-        "No; the magnitude must be less than one."
+        "Yes: a negative multiplier means the point is stable, since deviations alternate in sign and shrink",
+        "No: stability needs |derivative| < 1, and a multiplier −2 amplifies deviations",
+        "Yes: a slope below zero makes the fixed point stable, as deviations shrink in the map",
+        "Yes: negative slopes attract, as the iteration flips sign in each step of the map"
       ],
-      "explanation": "A multiplier −2 reverses and amplifies small deviations.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The deviation changes by a factor of −2 each step.",
+      "hint": "Iterate a small deviation ε.",
       "misconceptions": {
         "Yes; a negative slope always means stability.": "A multiplier −2 reverses and amplifies small deviations."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Nonlinear oscillators, chaos and Lyapunov exponents”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If a perturbation grows from .01 to .04 during time 2 in a local exponential-gro
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Nonlinear oscillators, chaos and Lyapunov exponents”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Nonlinear oscillators, chaos and Lyapunov exponents” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Nonlinear oscillators, chaos and Lyapunov exponents” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

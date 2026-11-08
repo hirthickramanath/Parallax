@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does electron delocalization alone prove metallic conduction?",
+      "prompt": "Electrons in a crystal are delocalised over the whole lattice, but the bands are completely filled with a large gap above them. Does the material conduct like a metal?",
       "options": [
-        "Yes",
-        "No"
+        "No: crystals have no electrons",
+        "Yes: a crystal with delocalised electrons conducts, as filled bands still carry current",
+        "No: delocalised but fully filled bands with a gap give an insulator",
+        "Yes: delocalised means metallic"
       ],
-      "answer": "No",
-      "explanation": "Occupancy, gaps and interactions matter.",
+      "answer": "No: delocalised but fully filled bands with a gap give an insulator",
+      "explanation": "Metallic conduction needs partially filled bands at the Fermi level. Delocalisation alone is not enough.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can electrons in a full band respond to a field?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is effective mass always the bare rest mass?",
+      "prompt": "An electron in a semiconductor responds to a field as if its mass were 0.1 mₑ. What does this effective mass represent?",
       "options": [
-        "No",
-        "Yes"
+        "The mass of the lattice as a whole",
+        "The curvature of the band, which sets the response to forces",
+        "The bare electron rest mass",
+        "The nuclear mass of the atoms in the lattice, which is much larger"
       ],
-      "answer": "No",
-      "explanation": "It describes band-curvature response.",
+      "answer": "The curvature of the band, which sets the response to forces",
+      "explanation": "m* = ħ²/(d²E/dk²). It packages the lattice's effect on the carrier's dynamics.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the curvature of E(k)."
     },
     {
       "id": "concept-3",
-      "prompt": "Does conductivity depend on scattering or mobility as well as carrier count?",
+      "prompt": "Two samples have the same carrier density but sample B has much higher conductivity. What is the likely reason?",
       "options": [
-        "No",
-        "Yes"
+        "Sample B has more nuclei per unit volume, which supplies a larger number of scattering centres",
+        "A different colour",
+        "Higher mobility, i.e. weaker scattering",
+        "Lower temperature of the sample"
       ],
-      "answer": "Yes",
-      "explanation": "Transport needs carrier dynamics.",
+      "answer": "Higher mobility, i.e. weaker scattering",
+      "explanation": "σ = n e μ. Conductivity depends on carrier number and on how freely carriers move.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write the conductivity formula."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify elementary band classification?",
-      "answer": "Correlations and disorder can alter the independent-particle picture.",
+      "prompt": "Why is an independent-electron band classification (metal vs insulator) only a first step?",
+      "answer": "Electron correlations and disorder can change the classification, as in Mott insulators",
       "options": [
-        "Correlations and disorder can alter the independent-particle picture.",
-        "A plane-wave factor times a lattice-periodic function."
+        "Electron correlations and disorder can change the classification, as in Mott insulators",
+        "It depends on the sample's colour and shape, so band theory cannot be trusted whenever a crystal is not transparent",
+        "It is exact for solids, so no qualification of the classification is needed",
+        "Bands do not exist in a real solid, so the classification is a convention"
       ],
-      "explanation": "Correlations and disorder can alter the independent-particle picture.",
+      "explanation": "NiO has a partly filled d band but is an insulator because of strong correlations.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall materials predicted metallic but observed to be insulating."
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For nearest-neighbor E=ε−2t cos(ka) with t=2, find full band width.",
       "answer": "8",
       "hint": "The energy range spans 4|t|.",
-      "explanation": "The energy range spans 4|t|. The value in the stated units is 8.",
+      "explanation": "E = ε − 2t cos ka runs from ε − 2t to ε + 2t, a full width 4|t| = 8.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For ε=0,t=1 and ka=0, find band energy.",
       "answer": "-2",
       "hint": "Use cos0=1.",
-      "explanation": "Use cos0=1. The value in the stated units is -2.",
+      "explanation": "E = 0 − 2 × 1 × cos 0 = −2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does plotting a nonflat tight-binding band alone prove a real material is metallic?",
-      "answer": "No; filling, gaps and interactions must also be checked.",
+      "prompt": "A tight-binding calculation gives a band with nonzero width. Does this prove that a real material is metallic?",
+      "answer": "No: band filling, gaps and interactions must also be checked",
       "options": [
-        "Yes; any dispersion curve guarantees a metal.",
-        "No; filling, gaps and interactions must also be checked."
+        "No: bands are drawn for insulators and not for metals",
+        "No: band filling, gaps and interactions must also be checked",
+        "Yes: width is conductivity",
+        "Yes: a dispersive band means a metal"
       ],
-      "explanation": "The occupied spectrum and transport conditions determine the physical classification.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A filled dispersive band describes an insulator or semiconductor. Occupation at the Fermi level decides.",
+      "hint": "Where does the Fermi level lie relative to the band?",
       "misconceptions": {
         "Yes; any dispersion curve guarantees a metal.": "The occupied spectrum and transport conditions determine the physical classification."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Metallic and solid-state bonding”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If a quadratic one-dimensional band is E=αk² with α=2 in units ℏ=1, then cu
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Metallic and solid-state bonding”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Metallic and solid-state bonding” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Metallic and solid-state bonding” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

@@ -15,8 +15,8 @@
       "prompt": "Events A and B are disjoint with P(A), P(B) > 0. Are they independent?",
       "answer": "No: if A occurs, B cannot, so P(B|A) = 0",
       "options": [
-        "Only when P(A) = P(B), in which case they cancel",
-        "Yes: disjoint events cannot have any effect on each other",
+        "Just when P(A) = P(B), as then they cancel",
+        "Yes: disjoint events cannot affect each other",
         "Yes: P(A∩B) = 0 is the condition for independence",
         "No: if A occurs, B cannot, so P(B|A) = 0"
       ],
@@ -30,7 +30,7 @@
       "prompt": "A test has sensitivity 0.9. Is the probability that a positive result is genuine also 0.9?",
       "answer": "No: it also depends on how common the condition is and on the false-positive rate",
       "options": [
-        "Yes: sensitivity is the probability that a positive result is genuine",
+        "Yes: sensitivity is the probability that a positive result is genuine, so the two are the same quantity",
         "Yes: the prevalence cancels out of the calculation",
         "No: it also depends on how common the condition is and on the false-positive rate",
         "Yes, provided the test is repeated at least once"
@@ -81,9 +81,9 @@
       "answer": "The prevalence and the false-positive probability",
       "options": [
         "The prevalence and the false-positive probability",
-        "Only the false-negative rate of the test",
-        "Only the prevalence of the condition in the population",
-        "Nothing: it equals 0.9 by symmetry of conditioning"
+        "Just the false-negative rate of the test",
+        "Just the prevalence of the condition itself",
+        "No more: it equals 0.9 by the symmetry of conditioning"
       ],
       "explanation": "Bayes' rule: P(C|+) = P(+|C)P(C) / [P(+|C)P(C) + P(+|no C)P(no C)]. The denominator includes false positives from the larger healthy group.",
       "type": "mcq",
@@ -223,8 +223,7 @@ A continuous distribution assigns zero probability to an exact point while inter
 
 ### Transfer derivation and failure case
 
-Partition the sample space into $A$ and its complement. Then $P(B)=P(B|A)P(A)+P(B|A^c)P(A^c)$, and Bayes gives $P(A|B)=P(B|A)P(A)/P(B)$ when $P(B)>0$. With the stated rates, only 0.009 of the whole population are true positives, while 0.0495 are false positives. A high sensitivity is therefore compatible with a modest posterior probability. Selection effects in astronomical detection have the same denominator problem: the detected sample is not automatically representative of the underlying population.
-
+With the stated rates, only 0.009 of the whole population are true positives, while 0.0495 are false positives. A high sensitivity is therefore compatible with a modest posterior probability. Selection effects in astronomical detection have the same denominator problem: the detected sample is not automatically representative of the underlying population.
 
 ### Derivation and transfer
 

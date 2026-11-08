@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is normal ordering a universal solution to all vacuum-energy problems?",
+      "prompt": "Normal ordering removes the infinite zero-point energy of a free scalar field. Does it solve the cosmological constant problem?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: after normal ordering the vacuum energy is zero, so the problem is solved",
+        "No: gravity couples to vacuum energy, so the physical value still needs explaining",
+        "Yes: it removes each vacuum energy, as normal ordering subtracts the zero-point term",
+        "No: normal ordering is mathematically invalid"
       ],
-      "answer": "No",
-      "explanation": "Its scope is limited by theory and gravity.",
+      "answer": "No: gravity couples to vacuum energy, so the physical value still needs explaining",
+      "explanation": "Redefining the zero of energy is not allowed once gravity is included.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does gravity care about the zero of energy?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are Feynman time-ordered and retarded propagators identical?",
+      "prompt": "The Feynman propagator and the retarded propagator are both Green's functions of the Klein–Gordon equation. Are they the same?",
       "options": [
-        "No",
-        "Yes"
+        "No: they use different pole prescriptions and describe different causal structure",
+        "Yes: the sign differs between the two functions and the poles are the same for them in the end",
+        "Yes: they are identical, as both solve the same equation for the field with a source",
+        "No: one of the two is a Green's function and the other is not, in the strict sense"
       ],
-      "answer": "No",
-      "explanation": "Their prescriptions differ.",
+      "answer": "No: they use different pole prescriptions and describe different causal structure",
+      "explanation": "Retarded is zero for t < 0; Feynman is time ordered.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare their support in time."
     },
     {
       "id": "concept-3",
-      "prompt": "Must momentum measure match commutator normalization?",
+      "prompt": "You choose a normalisation for the momentum-space measure d³p/((2π)³2E_p). Can the commutator normalisation be chosen independently?",
       "options": [
-        "No",
-        "Yes"
+        "No: they must match so the field algebra and Lorentz invariance are consistent",
+        "Yes: the measure is an arbitrary convention, so the commutator normalisation can be chosen independently",
+        "Yes: they are unrelated, as the measure is a convention that the algebra does not fix",
+        "No: neither has a normalisation, as the measure and the algebra are set by hand in the theory"
       ],
-      "answer": "Yes",
-      "explanation": "The factors define the same field algebra.",
+      "answer": "No: they must match so the field algebra and Lorentz invariance are consistent",
+      "explanation": "[a_p, a†_q] = (2π)³ 2E_p δ³(p−q) goes with that measure.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Both define the same algebra."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why separate vacuum reference and excitation energy?",
-      "answer": "They have different physical and renormalization questions.",
+      "prompt": "Why does a quantum field theorist separate the vacuum energy from the excitation energies?",
+      "answer": "They raise different physical and renormalisation questions",
       "options": [
-        "They have different physical and renormalization questions.",
-        "Canonical mode algebra and an appropriate state space."
+        "The vacuum is the observable part of the theory in practice",
+        "They raise different physical and renormalisation questions",
+        "They are equal, as the vacuum matches the excitations",
+        "Excitations have no energy"
       ],
-      "explanation": "They have different physical and renormalization questions.",
+      "explanation": "Excitation energies are measured relative to the vacuum, while the vacuum's absolute energy matters only with gravity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which is measured in particle experiments?"
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does subtracting a free-theory vacuum constant automatically solve the cosmological constant problem?",
-      "answer": "No; gravitational and renormalization questions remain.",
+      "prompt": "Subtracting the free-theory vacuum constant by normal ordering: does this settle every vacuum energy effect?",
+      "answer": "No: gravitational coupling and renormalisation of interacting theories remain open",
       "options": [
-        "Yes; normal ordering settles every vacuum-energy effect.",
-        "No; gravitational and renormalization questions remain."
+        "Yes: it removes each vacuum effect, including the Casimir forces of the zero-point energy",
+        "No: gravitational coupling and renormalisation of interacting theories remain open",
+        "No: normal ordering adds a constant",
+        "Yes: the vacuum effects vanish, as normal ordering subtracts the zero-point energy of the field"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "A reference convention is not a complete physical solution.",
+      "hint": "Consider the Casimir force.",
+      "explanation": "The Casimir effect depends on boundary conditions, not on a constant.",
       "misconceptions": {
         "Yes; normal ordering settles every vacuum-energy effect.": "A reference convention is not a complete physical solution."
       },
@@ -162,7 +176,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Canonical quantisation of the scalar field”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -238,7 +252,7 @@ For one oscillator with frequency 5, a state with occupation three has total osc
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Canonical quantisation of the scalar field”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 **Core.** Compute the commutator of a normal-ordered free Hamiltonian with a creation operator and obtain $[H,a^\dagger_{\mathbf k}]=\omega_k a^\dagger_{\mathbf k}$. Explain why this raises energy independently of the chosen vacuum constant.
 
@@ -248,12 +262,12 @@ Answer the tagged questions below. Then alter one hypothesis in the worked argum
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Canonical quantisation of the scalar field” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Canonical quantisation of the scalar field” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

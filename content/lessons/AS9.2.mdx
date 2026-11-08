@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does spatial flatness imply no gravity?",
+      "prompt": "Our Universe is measured to be spatially flat. Does flatness mean there is no gravity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: flat space has no curvature, so there is no gravity and no expansion in a flat universe",
+        "Yes: a flat Universe has no expansion in it",
+        "No: matter and expansion exist on flat spatial slices",
+        "Yes: flat means the space is empty of matter"
       ],
-      "answer": "No",
-      "explanation": "Matter and expansion can exist on flat slices.",
+      "answer": "No: matter and expansion exist on flat spatial slices",
+      "explanation": "Spatial flatness refers to the geometry of the 3D slices, not to spacetime curvature.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the Universe still expand?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does pressure enter the relativistic acceleration equation?",
+      "prompt": "In the Friedmann acceleration equation ä/a = −(4πG/3)(ρ + 3p/c²), does the pressure matter?",
       "options": [
-        "Yes",
-        "No"
+        "No: pressure enters in the Newtonian limit, and the relativistic acceleration depends on density",
+        "Yes: pressure acts as a gravitational source",
+        "No: density is the one source in the equation",
+        "No: pressure cancels"
       ],
-      "answer": "Yes",
-      "explanation": "ρ+3p/c² contributes.",
+      "answer": "Yes: pressure acts as a gravitational source",
+      "explanation": "Negative pressure (dark energy) can make ä positive.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does w = −1 do to ρ + 3p?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is c/H universally identical to every cosmic horizon?",
+      "prompt": "The Hubble radius c/H is quoted as the size of the observable Universe. Is it the same as every cosmic horizon?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: each horizon in cosmology equals c/H, whatever integral or epoch is used to define it",
+        "No: different horizon definitions use different integrals",
+        "Yes: it is the observable Universe, to the number",
+        "Yes: at the epochs that are of interest"
       ],
-      "answer": "No",
-      "explanation": "Different horizon definitions use different integrals.",
+      "answer": "No: different horizon definitions use different integrals",
+      "explanation": "The particle horizon is ∫c dt/a, which is larger than c/H.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the integral definitions."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why not apply expansion blindly to a laboratory?",
-      "answer": "Local bound dynamics differs from the homogeneous background.",
+      "prompt": "Why shouldn't you apply the Hubble expansion to the distance between objects in a laboratory?",
+      "answer": "Local bound dynamics differ from the homogeneous background",
       "options": [
-        "Local bound dynamics differs from the homogeneous background.",
-        "ȧ/a."
+        "Labs expand with the Universe, though by a very small amount that instruments cannot yet measure",
+        "Space expands there too, at the same rate as in the voids",
+        "Local bound dynamics differ from the homogeneous background",
+        "H is zero in the laboratory, so no expansion occurs there"
       ],
-      "explanation": "Local bound dynamics differs from the homogeneous background.",
+      "explanation": "Gravitationally and electromagnetically bound systems do not expand.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What holds a ruler together?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For Ωm=0.3 and a=0.5 in a flat matter-plus-Λ model, find H²/H₀².",
       "answer": "3.1",
       "hint": "Evaluate 0.3/(0.5³)+0.7.",
-      "explanation": "Evaluate 0.3/(0.5³)+0.7. The value in the stated units is 3.1.",
+      "explanation": "For a flat model H²/H₀² = Ωm a^(−3) + ΩΛ = 0.3/0.125 + 0.7 = 2.4 + 0.7 = 3.1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For conserved pressureless matter, the scale factor doubles. Find the density ratio.",
       "answer": "0.125",
       "hint": "Matter density scales as a^−3.",
-      "explanation": "Matter density scales as a^−3. The value in the stated units is 0.125.",
+      "explanation": "Pressureless matter dilutes as a^(−3). Doubling a gives 2^(−3) = 1/8 = 0.125.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a matter-plus-Λ expression that neglects radiation remain adequate arbitrarily early?",
-      "answer": "No; radiation can dominate at early times.",
+      "prompt": "A model with only matter and a cosmological constant is used to compute expansion at very early times. Is it adequate?",
+      "answer": "No: radiation dominates at early times",
       "options": [
-        "Yes; omitted components never change the regime.",
-        "No; radiation can dominate at early times."
+        "Yes: radiation does not matter for expansion at early or late epochs",
+        "Yes: radiation is negligible at early times",
+        "No: radiation dominates at early times",
+        "Yes: it is exact"
       ],
-      "explanation": "The energy budget evolves and the approximation must be checked.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Radiation density scales as a⁻⁴, dominating before z ≈ 3400.",
+      "hint": "How does radiation density scale with a?",
       "misconceptions": {
         "Yes; omitted components never change the regime.": "The energy budget evolves and the approximation must be checked."
       },
@@ -164,7 +178,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “FLRW metric and Friedmann equations”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -238,18 +252,18 @@ With H=2×10^-18 s^-1 and G≈6.67×10^-11 SI, rho_c≈7.16×10^-27 kg/m³. Unit
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “FLRW metric and Friedmann equations”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “FLRW metric and Friedmann equations” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “FLRW metric and Friedmann equations” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

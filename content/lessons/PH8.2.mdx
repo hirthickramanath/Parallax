@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every energy superposition have stationary density?",
+      "prompt": "A particle is in a superposition of two energy eigenstates. Is its probability density stationary?",
       "options": [
-        "Yes",
-        "No"
+        "No: cross terms oscillate at the frequency (E₂ − E₁)/ħ",
+        "Yes: energy eigenstates are stationary, so a superposition is too",
+        "Yes: the probability density stays unchanged in time",
+        "Yes: the density is constant for a bound particle"
       ],
-      "answer": "No",
-      "explanation": "Different energies can create time-dependent cross terms.",
+      "answer": "No: cross terms oscillate at the frequency (E₂ − E₁)/ħ",
+      "explanation": "Only a single energy eigenstate has a time-independent density.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the cross terms."
     },
     {
       "id": "concept-2",
-      "prompt": "Are transmission probabilities always amplitude squares without velocity factors?",
+      "prompt": "Is the transmission probability through a potential step always the square of the transmitted amplitude |t|²?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it equals |t|² on both sides",
+        "Yes: with equal speeds",
+        "Yes: for steps of equal height",
+        "No: it is a ratio of probability currents"
       ],
-      "answer": "No",
-      "explanation": "They are ratios of probability currents.",
+      "answer": "No: it is a ratio of probability currents",
+      "explanation": "It is a ratio of probability currents, including a velocity factor. T = (k₂/k₁)|t|².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare probability currents on both sides."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a constant nonzero wavefunction satisfy both zero endpoints of an infinite well?",
+      "prompt": "Could a constant nonzero wavefunction satisfy the boundary conditions of an infinite square well?",
       "options": [
-        "Yes",
-        "No"
+        "No: it violates ψ = 0 at the walls",
+        "Yes: it is the lowest state, since a constant function has the least kinetic energy",
+        "Yes: a constant works at E = 0",
+        "Yes: it is the ground state"
       ],
-      "answer": "No",
-      "explanation": "It violates Dirichlet boundary values.",
+      "answer": "No: it violates ψ = 0 at the walls",
+      "explanation": "The ground state is sin(πx/L), which vanishes at both ends.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What must ψ be at x = 0 and x = L?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can tunnelling occur?",
-      "answer": "Finite-barrier solutions match across classically forbidden regions.",
+      "prompt": "Why can a particle tunnel through a finite barrier?",
+      "answer": "The solutions match across the classically forbidden region",
       "options": [
-        "Finite-barrier solutions match across classically forbidden regions.",
-        "The differential equation and boundary/domain conditions."
+        "It breaks the barrier, creating a gap in the potential through which the particle escapes",
+        "The solutions match across the classically forbidden region",
+        "It gains enough energy to pass over the top",
+        "It borrows energy and returns it later"
       ],
-      "explanation": "Finite-barrier solutions match across classically forbidden regions.",
+      "explanation": "The solutions match across the classically forbidden region, giving a nonzero amplitude beyond it. ψ decays exponentially in the barrier but does not vanish.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is ψ zero inside the barrier?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Is probability density at one point the probability of obtaining exactly that point in a continuous measurement?",
-      "answer": "No; interval probability is an integral.",
+      "prompt": "The probability density at a point is 2.0 m⁻¹. Is this the probability of obtaining exactly that position?",
+      "answer": "No: an interval probability is an integral of the density",
       "options": [
-        "Yes; density itself is a dimensionless point probability.",
-        "No; interval probability is an integral."
+        "Yes: it is a dimensionless probability, since the density is already normalised at a point",
+        "Yes: the density value is the probability at that point",
+        "No: an interval probability is an integral of the density",
+        "Yes: the probability is 2.0 at that point"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Density carries inverse-length units.",
+      "hint": "What are the units of density?",
+      "explanation": "The density carries units of inverse length.",
       "misconceptions": {
         "Yes; density itself is a dimensionless point probability.": "Density carries inverse-length units."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Schrodinger equation and 1D problems”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ In units π²ℏ²/(2mL²)=1, the first two infinite-well energies are 1 and 4, 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Schrodinger equation and 1D problems”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Schrodinger equation and 1D problems” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Schrodinger equation and 1D problems” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

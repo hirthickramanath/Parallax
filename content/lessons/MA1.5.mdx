@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does continuity on a bounded open interval always give attained extrema?",
+      "prompt": "f(x) = x is continuous on the open interval (0, 1). Does it attain a maximum there?",
       "options": [
-        "Yes",
-        "No"
+        "No: the supremum 1 is approached but not attained",
+        "Yes, at x = 1, the right-hand end",
+        "Yes, as continuous functions attain a maximum",
+        "Yes, at x = 0.5, the midpoint"
       ],
-      "answer": "No",
-      "explanation": "Boundary values may be approached but excluded.",
+      "answer": "No: the supremum 1 is approached but not attained",
+      "explanation": "The extreme value theorem needs a compact (closed and bounded) domain. On (0,1) the boundary values are excluded.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is x = 1 in the domain?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does compactness alone guarantee every intermediate value of a continuous function?",
+      "prompt": "A continuous function is defined on a compact set that is not an interval, e.g. [0, 1] ∪ [2, 3]. Does it take every value between f(0) and f(3)?",
       "options": [
-        "No; connectedness is also needed",
-        "Yes"
+        "Yes: compactness guarantees that the function takes every value between f(0) and f(3) on the set",
+        "Not necessarily: the domain is disconnected, which can leave gaps",
+        "No, the function is not bounded on the set, so values are missed",
+        "Yes: continuity always does"
       ],
-      "answer": "No; connectedness is also needed",
-      "explanation": "A disconnected domain may have gaps in its image.",
+      "answer": "Not necessarily: the domain is disconnected, which can leave gaps",
+      "explanation": "The intermediate value theorem needs connectedness. A function equal to 0 on [0,1] and 1 on [2,3] skips all values in between.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Define f = 0 on one piece and 1 on the other."
     },
     {
       "id": "concept-3",
-      "prompt": "Is every continuous function on a compact real set uniformly continuous?",
+      "prompt": "f is continuous on a compact real set K. What follows about uniform continuity?",
       "options": [
-        "No",
-        "Yes"
+        "It is continuous only at the endpoints",
+        "It is uniformly continuous: one δ works for all points",
+        "It is uniformly continuous only if monotone",
+        "It need not be uniformly continuous"
       ],
-      "answer": "Yes",
-      "explanation": "A subsequence contradiction supplies one δ for all points.",
+      "answer": "It is uniformly continuous: one δ works for all points",
+      "explanation": "If not, you could find pairs of points with |xₙ − yₙ| → 0 but |f(xₙ) − f(yₙ)| ≥ ε. A convergent subsequence on K yields a contradiction (Heine–Cantor).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare f(x) = 1/x on (0, 1) with a continuous function on [0, 1]."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What prevents the extremum proof from losing its candidate limit?",
-      "answer": "The compact domain contains the subsequential limit",
+      "prompt": "In the proof of the extreme value theorem, why must the domain be compact?",
+      "answer": "So that a limit of points in the domain stays in the domain",
       "options": [
-        "The compact domain contains the subsequential limit",
-        "A dense plot contains enough pixels"
+        "So that a limit of points in the domain stays in the domain",
+        "So that f is monotone on the domain, which the proof needs to choose a maximising point",
+        "So that the plot has enough pixels",
+        "So that f is differentiable"
       ],
-      "explanation": "Closedness and boundedness provide the needed compactness, not plot resolution.",
+      "explanation": "A maximising sequence has a convergent subsequence (boundedness) whose limit lies in the set (closedness). Continuity then carries the maximum value to that point.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where does the limit of the maximising sequence live?"
     },
     {
       "id": "analysis-transfer-1",
@@ -114,14 +126,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "A continuous injective function maps a compact real set K into R. Is its inverse continuous on the image?",
-      "answer": "Yes; images of closed subsets of K are compact and hence closed in the image.",
+      "prompt": "f is continuous and one-to-one on a compact set K. Is the inverse f⁻¹ continuous on f(K)?",
+      "answer": "Yes: compactness makes f a closed map, so the inverse is continuous",
       "options": [
-        "No; compactness is irrelevant to inverse continuity.",
-        "Yes; images of closed subsets of K are compact and hence closed in the image."
+        "Yes: compactness makes f a closed map, so the inverse is continuous",
+        "No: compactness is irrelevant here, so a continuous one-to-one map can have a discontinuous inverse",
+        "Yes, if f is increasing on the set",
+        "Yes, if K is an interval of the line"
       ],
-      "explanation": "Test the inverse using preimages of closed sets.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "Closed subsets of K are compact, so their images are compact and hence closed. So preimages of closed sets under f⁻¹ are closed, and f⁻¹ is continuous.",
+      "hint": "Use the fact that continuous images of compact sets are compact.",
       "misconceptions": {
         "No; compactness is irrelevant to inverse continuity.": "Test the inverse using preimages of closed sets."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Continuity and compactness”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -234,19 +248,19 @@ For f(x)=x² on [−2,3], compactness and continuity guarantee attained extremes
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Continuity and compactness”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Continuity and compactness” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Continuity and compactness” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

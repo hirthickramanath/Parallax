@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are standard Pℓ polynomials unit normalized on [−1,1]?",
+      "prompt": "Are the standard Legendre polynomials Pℓ(x) normalised to unit norm on [−1, 1]?",
       "options": [
-        "Yes",
-        "No"
+        "No: the norm is 1/ℓ, since a polynomial of higher degree has a proportionally smaller integral",
+        "Yes: they have unit norm",
+        "Yes for ℓ = 0 alone",
+        "No: ∫Pℓ² dx = 2/(2ℓ + 1)"
       ],
-      "answer": "No",
-      "explanation": "Their squared norm is 2/(2ℓ+1).",
+      "answer": "No: ∫Pℓ² dx = 2/(2ℓ + 1)",
+      "explanation": "They are normalised by Pℓ(1) = 1, giving squared norm 2/(2ℓ + 1).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute ∫P₀² dx for P₀ = 1 on [−1, 1]."
     },
     {
       "id": "concept-2",
-      "prompt": "What measure defines spherical-harmonic orthogonality?",
+      "prompt": "Spherical harmonics are orthogonal over the sphere. Which measure applies?",
       "options": [
-        "sinθ dθ dφ",
-        "dθ dφ without a weight"
+        "sin θ dθ dφ",
+        "cos θ dθ dφ",
+        "dθ dφ dr",
+        "dθ dφ"
       ],
-      "answer": "sinθ dθ dφ",
-      "explanation": "The spherical area element contains sinθ.",
+      "answer": "sin θ dθ dφ",
+      "explanation": "On the sphere the area element is sin θ dθ dφ; the factor sin θ is the Jacobian that spherical-harmonic integrals must include.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the area element on a unit sphere?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does a sky mask preserve the full-sphere orthogonality calculation automatically?",
+      "prompt": "Part of the sky is masked in a survey. Does full-sphere orthogonality of Yℓm still hold for the observed region?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a property of Yℓm",
+        "No, but the functions become unit normalised",
+        "No: the weighted inner products change on the partial domain",
+        "Yes, if the mask is symmetric"
       ],
-      "answer": "No",
-      "explanation": "The observed domain and weighting change the inner products.",
+      "answer": "No: the weighted inner products change on the partial domain",
+      "explanation": "Orthogonality is an integral over the full sphere. On a cut sky modes mix (mode coupling).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "The integral is now over a smaller region."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What selects regular discrete spherical angular modes?",
-      "answer": "The differential equation together with global regularity and periodicity",
+      "prompt": "What selects the discrete, regular angular modes of the Laplace equation on a sphere?",
+      "answer": "The ODE together with regularity at the poles and periodicity in φ",
       "options": [
-        "The differential equation together with global regularity and periodicity",
-        "Only a convenient plotting interval"
+        "The ODE together with regularity at the poles and periodicity in φ",
+        "The radial equation, together with the condition at the origin of the sphere",
+        "A convenient plotting interval",
+        "The boundary at r = R, which fixes the radial modes"
       ],
-      "explanation": "Boundary and joining requirements restrict the separated solutions.",
+      "explanation": "Regular solutions on both poles exist only for integer ℓ and |m| ≤ ℓ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What conditions must hold on the whole sphere?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does one Legendre polynomial encode every spherical harmonic order and normalization?",
-      "answer": "No; associated order and angular factors also matter.",
+      "prompt": "Does a single Legendre polynomial Pℓ(cos θ) describe all spherical harmonics of degree ℓ?",
+      "answer": "No: it covers only m = 0; the others need order m and a φ-dependent factor",
       "options": [
-        "Yes; degree alone determines every angular state.",
-        "No; associated order and angular factors also matter."
+        "Yes, with normalisation, as each harmonic of the degree is a multiple of Pℓ(cos θ)",
+        "No: it represents only ℓ = 0, since higher degrees need a separate polynomial for each m",
+        "Yes: Pℓ(cos θ) describes all of them, since the other m values are only rotations of m = 0",
+        "No: it covers only m = 0; the others need order m and a φ-dependent factor"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Spherical harmonics have both degree and order.",
+      "hint": "Count the harmonics for a given ℓ.",
+      "explanation": "Yℓm = N Pℓᵐ(cos θ)e^{imφ}. The m = 0 case is axisymmetric.",
       "misconceptions": {
         "Yes; degree alone determines every angular state.": "Spherical harmonics have both degree and order."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Legendre polynomials and spherical harmonics”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,18 +234,18 @@ At x=0, P₂(0)=−1/2. Its squared norm is 2/(2·2+1)=2/5, so P₂ is orthogona
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Legendre polynomials and spherical harmonics”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Legendre polynomials and spherical harmonics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Legendre polynomials and spherical harmonics” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

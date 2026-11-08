@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does mean-square convergence alone imply pointwise convergence everywhere?",
+      "prompt": "A Fourier series converges to f in mean square. Does it converge at every point?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for periodic functions, since mean-square convergence includes convergence at every single point",
+        "Yes, at each point, as mean-square convergence is pointwise",
+        "Not necessarily: L² convergence ignores sets of measure zero",
+        "No: it fails to converge at each point of the full interval"
       ],
-      "answer": "No",
-      "explanation": "L² ignores changes on sets of measure zero.",
+      "answer": "Not necessarily: L² convergence ignores sets of measure zero",
+      "explanation": "Mean-square convergence only controls the integral of the squared error. Pointwise convergence needs extra conditions, e.g. piecewise smoothness.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you change f at one point without affecting its integral?"
     },
     {
       "id": "concept-2",
-      "prompt": "For a piecewise smooth periodic function, what does its Fourier series approach at a jump?",
+      "prompt": "A piecewise smooth periodic function has a jump at x₀. To what value does its Fourier series converge there?",
       "options": [
-        "The midpoint of the one-sided limits",
-        "Always the assigned point value"
+        "Zero, as the sine terms cancel out at the jump",
+        "The value f(x₀) at the jump",
+        "The average of the left and right limits",
+        "The larger of the two limits"
       ],
-      "answer": "The midpoint of the one-sided limits",
-      "explanation": "The Dirichlet jump result uses the two one-sided limits.",
+      "answer": "The average of the left and right limits",
+      "explanation": "Dirichlet's theorem: the series converges to ½[f(x₀⁺) + f(x₀⁻)] at a jump.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a square wave at its jump."
     },
     {
       "id": "concept-3",
-      "prompt": "Does the limiting Gibbs relative overshoot vanish just by retaining more modes?",
+      "prompt": "You add more terms to the Fourier series of a square wave. What happens to the Gibbs overshoot near the jump?",
       "options": [
-        "Yes",
-        "No"
+        "It moves away from the jump and vanishes in the limit of infinitely many terms",
+        "It grows without bound, as the peak rises with the number of terms added",
+        "It narrows toward the jump but its height (about 9%) does not vanish",
+        "It disappears, as the series then converges uniformly to the jump"
       ],
-      "answer": "No",
-      "explanation": "Its width shrinks while the relative overshoot persists for sharp partial sums.",
+      "answer": "It narrows toward the jump but its height (about 9%) does not vanish",
+      "explanation": "The overshoot width shrinks like 1/N, but the relative height tends to a constant (about 9% of the jump).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the Gibbs phenomenon."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What must be justified before differentiating an infinite Fourier series?",
-      "answer": "Sufficient regularity and a valid termwise differentiation theorem",
+      "prompt": "Before differentiating a Fourier series term by term, what must you justify?",
+      "answer": "That f is regular enough for termwise differentiation to be valid",
       "options": [
-        "Sufficient regularity and a valid termwise differentiation theorem",
-        "Only that each term is differentiable"
+        "That the series is finite, since termwise differentiation is valid whenever the sum has finitely many terms",
+        "That each term is differentiable",
+        "No check is needed: termwise differentiation is valid for each Fourier series",
+        "That f is regular enough for termwise differentiation to be valid"
       ],
-      "explanation": "Termwise smoothness alone does not control the differentiated limit.",
+      "explanation": "Each sine and cosine is differentiable, but the differentiated series may diverge. E.g. the square wave series differentiates to a divergent series.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the differentiated series converge?"
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "For f=sin x+2sin3x on [−π,π], find its third sine coefficient under the standard Fourier convention.",
       "answer": "2",
       "hint": "Orthogonality isolates the coefficient of sin3x.",
-      "explanation": "Orthogonality isolates the coefficient of sin3x. The value in the stated units is 2.",
+      "explanation": "The sine coefficient bₙ = (1/π)∫ f sin(nx) dx. By orthogonality only the sin 3x term contributes, so b₃ = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For a jump from left limit −2 to right limit 4, find the Fourier midpoint value under the standard convergence hypotheses.",
       "answer": "1",
       "hint": "Average the one-sided limits.",
-      "explanation": "Average the one-sided limits. The value in the stated units is 1.",
+      "explanation": "At a jump the Fourier series converges to the average of the one-sided limits: (−2 + 4)/2 = 1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does adding Fourier modes remove the limiting fractional Gibbs overshoot near a jump?",
-      "answer": "No; it narrows the overshoot region rather than making that fraction vanish.",
+      "prompt": "More Fourier modes are used for a function with a jump. Does the fractional Gibbs overshoot vanish?",
+      "answer": "No: the overshoot region narrows, but the fraction stays",
       "options": [
-        "Yes; enough modes give uniform convergence to the discontinuous target.",
-        "No; it narrows the overshoot region rather than making that fraction vanish."
+        "No: the overshoot region narrows, but the fraction stays",
+        "Yes: uniform convergence is guaranteed, so the overshoot disappears as more modes are used",
+        "Yes: uniform convergence is guaranteed",
+        "No: it grows as more modes are included in it"
       ],
-      "explanation": "Uniform limits of continuous partial sums would be continuous.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Uniform limits of continuous partial sums are continuous, so a jump cannot be matched uniformly. The overshoot persists.",
+      "hint": "Can continuous functions converge uniformly to a discontinuous one?",
       "misconceptions": {
         "Yes; enough modes give uniform convergence to the discontinuous target.": "Uniform limits of continuous partial sums would be continuous."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Fourier series”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,18 +234,18 @@ For f(x)=3+2cos x−4sin2x, orthogonality gives a₀=6, a₁=2, b₂=−4 and al
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Fourier series”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Fourier series” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Fourier series” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero residue prove a singularity removable?",
+      "prompt": "f has residue 0 at z₀. Is the singularity removable?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a zero residue means that the singularity is removable here",
+        "No: residues are never zero",
+        "Not necessarily: e.g. 1/z² has residue 0 but is a double pole",
+        "Yes: zero residue implies a removable singularity, since all negative powers of the Laurent series then vanish"
       ],
-      "answer": "No",
-      "explanation": "A double pole can have residue zero.",
+      "answer": "Not necessarily: e.g. 1/z² has residue 0 but is a double pole",
+      "explanation": "The residue is the coefficient of (z − z₀)⁻¹ only. Removable means all negative powers vanish.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check 1/z² at 0: what is its residue and what is the singularity?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can one centre support different valid expansions on different annuli?",
+      "prompt": "f(z) = 1/(z(z − 1)) can be expanded about z = 0. How many valid Laurent expansions exist?",
       "options": [
-        "Yes",
-        "No"
+        "Different ones in different annuli, e.g. 0 < |z| < 1 and |z| > 1",
+        "No expansion exists, as the function has a pole at the point z = 0",
+        "One expansion, which holds on the whole plane around z = 0",
+        "Infinitely many in one annulus"
       ],
-      "answer": "Yes",
-      "explanation": "Singularities separate the annular domains.",
+      "answer": "Different ones in different annuli, e.g. 0 < |z| < 1 and |z| > 1",
+      "explanation": "Singularities (here z = 0, 1) separate annuli. The coefficients differ between regions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Expand 1/(1 − z) as a geometric series in two ways."
     },
     {
       "id": "concept-3",
-      "prompt": "Does classifying a singularity at infinity use w=1/z?",
+      "prompt": "How do you classify the singularity of f at z = ∞?",
       "options": [
-        "No",
-        "Yes"
+        "It is essential, as infinity cannot be examined",
+        "Use w = 1/z and examine g(w) = f(1/w) at w = 0",
+        "Compute f(∞) directly",
+        "It cannot be classified"
       ],
-      "answer": "Yes",
-      "explanation": "Infinity becomes the origin in the reciprocal coordinate.",
+      "answer": "Use w = 1/z and examine g(w) = f(1/w) at w = 0",
+      "explanation": "The substitution turns infinity into the origin of w.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Transform infinity to a finite point."
     },
     {
       "id": "numeric",
@@ -69,16 +78,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must accompany every Laurent expansion?",
+      "prompt": "What must accompany a Laurent series for it to be meaningful?",
       "answer": "Its centre and annulus of convergence",
       "options": [
+        "The coefficients, which define the series",
+        "Just its first few coefficients",
         "Its centre and annulus of convergence",
-        "Only its first coefficient"
+        "Just its residue at the centre"
       ],
-      "explanation": "The series represents the function only on its valid annulus.",
+      "explanation": "The same function has different Laurent series in different annuli, and each is valid only in its region.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the series valid everywhere?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Can a Laurent series be used across another singularity without checking its annulus?",
-      "answer": "No; the convergence region is essential.",
+      "prompt": "A Laurent series about 0 converges on 0 < |z| < 1. Can you use it at z = 2?",
+      "answer": "No: the region of convergence ends at the next singularity",
       "options": [
-        "Yes; all local Laurent series converge everywhere.",
-        "No; the convergence region is essential."
+        "Yes, because the function is defined at z = 2, so the series is valid at that point as well",
+        "Yes: it converges everywhere",
+        "Yes: with a correction term for the singularity at z = 1 included",
+        "No: the region of convergence ends at the next singularity"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "The nearest singularities delimit the annulus.",
+      "hint": "Is z = 2 inside the annulus?",
+      "explanation": "The series represents f only inside its annulus; a different expansion is needed outside.",
       "misconceptions": {
         "Yes; all local Laurent series converge everywhere.": "The nearest singularities delimit the annulus."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Laurent series and singularities”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,18 +234,18 @@ For 1/[z(1−z)] on 0&lt;|z|&lt;1, the residue at zero is 1. At z=1, write 1−z
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Laurent series and singularities”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Laurent series and singularities” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Laurent series and singularities” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

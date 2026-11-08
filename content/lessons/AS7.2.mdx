@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does bulk density uniquely determine internal composition?",
+      "prompt": "Two planets have the same bulk density of 3 g/cm³. Must they have the same composition?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are water worlds with a deep ocean",
+        "Yes: both are rock, with a mantle of the same minerals",
+        "Yes: density fixes the composition of a planet uniquely",
+        "No: compression, temperature and mixtures are degenerate"
       ],
-      "answer": "No",
-      "explanation": "Compression, temperature and mixtures are degenerate.",
+      "answer": "No: compression, temperature and mixtures are degenerate",
+      "explanation": "A big water-rich planet and a small rocky planet may have similar density.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does pressure change density?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is scale height a sharp atmospheric edge?",
+      "prompt": "An atmosphere has a pressure scale height H = 8 km. Does the atmosphere end at 8 km?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the atmosphere ends at 10H, which is the height at which the pressure falls to zero",
+        "Yes: the atmosphere ends at 2H, which is the height at which the pressure falls close to zero in this model",
+        "No: H is the e-folding length of an exponential decrease with height",
+        "Yes: it ends at H, where the pressure reaches zero"
       ],
-      "answer": "No",
-      "explanation": "It is a local exponential scale in a model.",
+      "answer": "No: H is the e-folding length of an exponential decrease with height",
+      "explanation": "P = P₀ exp(−z/H). The pressure keeps falling gradually.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does pressure vary with z?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are Jeans and hydrodynamic escape the same approximation?",
+      "prompt": "Jeans escape treats individual fast molecules in the tail of the Maxwell distribution. Is hydrodynamic escape the same approximation?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are thermal processes at the molecular level, so Jeans escape and hydrodynamic escape are the same",
+        "No: hydrodynamic escape is a bulk outflow, a different regime",
+        "Yes: for a planet of whatever mass, as both processes are thermal in origin",
+        "Yes: both are thermal processes at the molecular level"
       ],
-      "answer": "No",
-      "explanation": "They describe different flow regimes.",
+      "answer": "No: hydrodynamic escape is a bulk outflow, a different regime",
+      "explanation": "Hydrodynamic escape applies when heating drives a collective wind.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the outflow a few particles or the whole gas?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify escape rates?",
-      "answer": "Heating, geometry and regime assumptions enter.",
+      "prompt": "Why should a quoted atmospheric escape rate come with its assumptions?",
+      "answer": "Heating, geometry and flow-regime assumptions all enter",
       "options": [
-        "Heating, geometry and regime assumptions enter.",
-        "An EOS, composition and thermal/transport model."
+        "The rate is universal for planets, so no qualifier is needed",
+        "Heating, geometry and flow-regime assumptions all enter",
+        "Escape is independent of heating",
+        "Only planet mass matters"
       ],
-      "explanation": "Heating, geometry and regime assumptions enter.",
+      "explanation": "Energy-limited and Jeans formulas differ by orders of magnitude.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What energy source drives the escape?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "At fixed mean molecular mass, temperature doubles and gravity doubles. Find scale-height ratio.",
       "answer": "1",
       "hint": "H is proportional to T/g.",
-      "explanation": "H is proportional to T/g. The value in the stated units is 1.",
+      "explanation": "H = kT/(μ m_H g) ∝ T/g. Doubling both leaves the ratio unchanged: 2/2 = 1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "In an isothermal atmosphere, find pressure ratio after rising by two scale heights.",
       "answer": "0.1353352832366127",
       "hint": "Use P/P₀=e^(−z/H).",
-      "explanation": "Use P/P₀=e^(−z/H). The value in the stated units is 0.135335283237.",
+      "explanation": "P/P₀ = e^(−z/H). At z = 2H this is e^(−2) ≈ 0.1353.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Is one pressure scale height a sharp outer boundary of an atmosphere?",
-      "answer": "No; it is an exponential decrease scale in this model.",
+      "prompt": "Is a pressure scale height a sharp outer boundary of the atmosphere?",
+      "answer": "No: it is an exponential decay scale in this model",
       "options": [
-        "Yes; all gas ends abruptly there.",
-        "No; it is an exponential decrease scale in this model."
+        "Yes: it marks the exobase, where the gas ends and the atmosphere gives way to empty space",
+        "Yes: the gas ends at that height, and above it is empty",
+        "Yes: at the top of the troposphere",
+        "No: it is an exponential decay scale in this model"
       ],
-      "explanation": "The hydrostatic solution decreases continuously with height.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The hydrostatic solution decreases continuously.",
+      "hint": "Does the exponent ever hit zero?",
       "misconceptions": {
         "Yes; all gas ends abruptly there.": "The hydrostatic solution decreases continuously with height."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Planetary interiors and atmospheres”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ With k_BT=6, mean particle mass 2 and g=3 in consistent units, H=1. Halving grav
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Planetary interiors and atmospheres”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Planetary interiors and atmospheres” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Planetary interiors and atmospheres” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

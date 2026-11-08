@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are NMR and EPR the same magnetic degree of freedom?",
+      "prompt": "NMR and EPR both use a magnetic field and radiofrequency or microwave radiation. What is the main difference?",
       "options": [
-        "Yes",
-        "No"
+        "EPR is for nuclei and NMR is for electrons",
+        "NMR flips nuclear spins; EPR flips unpaired electron spins",
+        "NMR needs unpaired electrons",
+        "They flip the same spins at different fields"
       ],
-      "answer": "No",
-      "explanation": "They primarily address nuclear and electron spin respectively.",
+      "answer": "NMR flips nuclear spins; EPR flips unpaired electron spins",
+      "explanation": "Nuclear and electron magnetic moments differ by roughly three orders of magnitude, so resonance frequencies at a given field differ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which particle has the larger magnetic moment?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is ppm an absolute frequency unit?",
+      "prompt": "A chemical shift is reported as 7.2 ppm. What does ppm mean here?",
       "options": [
-        "No",
-        "Yes"
+        "A dimensionless ratio of the frequency offset to the reference frequency",
+        "A concentration in parts per million, so 7.2 ppm means 7.2 mg of the nucleus in each kilogram of sample",
+        "A field in tesla, scaled to a million",
+        "An absolute frequency in hertz"
       ],
-      "answer": "No",
-      "explanation": "It is a referenced dimensionless ratio.",
+      "answer": "A dimensionless ratio of the frequency offset to the reference frequency",
+      "explanation": "δ = (ν − ν_ref)/ν_ref × 10⁶, so it is independent of spectrometer field.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Divide the offset by the reference frequency."
     },
     {
       "id": "concept-3",
-      "prompt": "Are T₁ and T₂ always the same process/time?",
+      "prompt": "After a pulse, the net magnetisation along z recovers more slowly than the transverse signal decays. What does this say about T₁ and T₂?",
       "options": [
-        "Yes",
-        "No"
+        "They are equal, as the recovery along z and the decay across xy follow one process",
+        "They are equal for a sample of the usual kind",
+        "They are different processes: T₁ is population recovery, T₂ is loss of phase coherence",
+        "T₂ is longer than T₁ for a sample in a magnetic field"
       ],
-      "answer": "No",
-      "explanation": "Population and coherence relaxation differ.",
+      "answer": "They are different processes: T₁ is population recovery, T₂ is loss of phase coherence",
+      "explanation": "T₂ ≤ T₁ in general because coherence can be lost without energy exchange.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare energy exchange with dephasing."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify a linewidth interpretation?",
-      "answer": "Line shape, motion and apparatus contribute.",
+      "prompt": "Why shouldn't a linewidth alone be read as the molecular relaxation rate?",
+      "answer": "Magnetic-field inhomogeneity, motion and line shape also contribute",
       "options": [
-        "Line shape, motion and apparatus contribute.",
-        "Chemical-shift comparisons."
+        "Linewidth measures the sample temperature, so it cannot reflect the relaxation of the spins",
+        "Linewidth equals T₁ for a sample at a given field",
+        "Chemical shifts fix the width",
+        "Magnetic-field inhomogeneity, motion and line shape also contribute"
       ],
-      "explanation": "Line shape, motion and apparatus contribute.",
+      "explanation": "Observed width includes instrument and sample effects as well as intrinsic relaxation.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a poorly shimmed magnet change the width?"
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For an angular gyromagnetic ratio 2 and field 3 in consistent units, find Larmor angular frequency.",
       "answer": "6",
       "hint": "Multiply |γ| by B.",
-      "explanation": "Multiply |γ| by B. The value in the stated units is 6.",
+      "explanation": "ω_L = |γ| B = 2 × 3 = 6 in consistent units.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "A resonance is 1000 Hz above a 400 MHz reference. Find the positive chemical shift in ppm under this sign convention.",
       "answer": "2.5",
       "hint": "Compute (1000/(400×10^6))×10^6.",
-      "explanation": "Compute (1000/(400×10^6))×10^6. The value in the stated units is 2.5.",
+      "explanation": "δ = (Δν/ν_ref) × 10⁶ = (1000/(400 × 10⁶)) × 10⁶ = 2.5 ppm.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Can angular-frequency γ units be used directly as ordinary Hz per field without a 2π conversion?",
-      "answer": "No; the frequency convention must be retained.",
+      "prompt": "A gyromagnetic ratio is quoted as γ in rad s⁻¹ T⁻¹. To get the resonance frequency in Hz at field B, what must you do?",
+      "answer": "Divide γB by 2π",
       "options": [
-        "Yes; radians per second and cycles per second are numerically identical.",
-        "No; the frequency convention must be retained."
+        "Divide γB by 2π",
+        "Multiply by the Boltzmann constant",
+        "Multiply γB by 2π",
+        "Use γB directly as Hz"
       ],
-      "explanation": "One full cycle is 2π radians.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "ω = γB is in rad/s; ν = ω/2π is in cycles per second.",
+      "hint": "How many radians in one cycle?",
       "misconceptions": {
         "Yes; radians per second and cycles per second are numerically identical.": "One full cycle is 2π radians."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “NMR and EPR basics”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For |γ|=3 angular-frequency units per field and B=2, ω_L=6. A referenced frequ
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “NMR and EPR basics”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “NMR and EPR basics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “NMR and EPR basics” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does formal d count uniquely fix spin state?",
+      "prompt": "Two complexes of Fe³⁺ (d⁵) have the same d count. Must they have the same spin state?",
       "options": [
-        "Yes",
-        "No"
+        "No: the ligand field and geometry decide the spin state",
+        "Yes: the d count fixes the spin state, so a Fe³⁺ complex must be high-spin whatever the ligands are",
+        "Yes: the d count fixes the spin state of the complex",
+        "Yes: low-spin in the complexes"
       ],
-      "answer": "No",
-      "explanation": "Geometry and interactions matter.",
+      "answer": "No: the ligand field and geometry decide the spin state",
+      "explanation": "d⁵ ions can be high-spin (5 unpaired) or low-spin (1 unpaired).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare weak-field and strong-field ligands."
     },
     {
       "id": "concept-2",
-      "prompt": "Can redox be ligand centred?",
+      "prompt": "A complex is oxidised, but spectroscopy shows the electron was removed mainly from the ligand. What does this show?",
       "options": [
-        "Yes",
-        "No"
+        "Oxidation involves metals in the complexes",
+        "The metal was oxidised in the reaction",
+        "That is impossible for a complex",
+        "Redox can be ligand-centred when the ligand is non-innocent"
       ],
-      "answer": "Yes",
-      "explanation": "Noninnocent ligand states can participate.",
+      "answer": "Redox can be ligand-centred when the ligand is non-innocent",
+      "explanation": "Ligands such as catecholates and dithiolenes can hold or lose electrons.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where did the electron come from?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are covalent metal populations necessarily exact formal integers?",
+      "prompt": "A covalent metal–ligand complex has formal metal oxidation state +2. Does the calculated metal electron population equal an integer?",
       "options": [
-        "Yes",
-        "No"
+        "No: electron density is shared, so populations are not exact integers",
+        "Yes: equal to the d count of the metal",
+        "Yes: the populations are integers in the complex",
+        "No: populations are random numbers from the calculation"
       ],
-      "answer": "No",
-      "explanation": "Electron density is shared.",
+      "answer": "No: electron density is shared, so populations are not exact integers",
+      "explanation": "Oxidation states count formal electrons. Real densities are delocalised.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does covalency do to the electron count on the metal?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What strengthens a complex assignment?",
-      "answer": "Multiple independent structural/spectroscopic/magnetic tests.",
+      "prompt": "How do you make the assignment of a metal complex's oxidation and spin state more reliable?",
+      "answer": "Combine independent structural, spectroscopic and magnetic tests",
       "options": [
-        "Multiple independent structural/spectroscopic/magnetic tests.",
-        "A formal valence assignment under a declared convention."
+        "Assume the textbook case for the metal and ligands, since the usual oxidation and spin state are rarely wrong",
+        "Use one well-fitted number",
+        "Trust the formula of the complex",
+        "Combine independent structural, spectroscopic and magnetic tests"
       ],
-      "explanation": "Multiple independent structural/spectroscopic/magnetic tests.",
+      "explanation": "Independent measurements cross-check each other.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Would you trust a single measurement?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "A complex has total charge +1 and three singly negative ligands, with all other ligands neutral. Find metal oxidation number.",
       "answer": "4",
       "hint": "Solve metal−3=+1.",
-      "explanation": "Solve metal−3=+1. The value in the stated units is 4.",
+      "explanation": "The charges must sum to the complex charge: metal + 3(−1) = +1, so the metal oxidation number is +4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -94,7 +106,7 @@
       "prompt": "A group-8 metal is formally +2 in the simple d-count convention. Find d-electron count.",
       "answer": "6",
       "hint": "Subtract oxidation number from the group count.",
-      "explanation": "Subtract oxidation number from the group count. The value in the stated units is 6.",
+      "explanation": "A group-8 metal has 8 valence electrons. In the +2 state, d count = 8 − 2 = 6.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -102,14 +114,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Is a formal oxidation number always the same as a directly measured localized atomic charge?",
-      "answer": "No; it is a conventional electron-allocation label.",
+      "prompt": "An oxidation number of +3 is assigned to chromium. Is that the same as a directly measured localised charge on Cr?",
+      "answer": "No: it is a conventional electron-allocation label",
       "options": [
-        "Yes; all charge-partition methods give that exact integer.",
-        "No; it is a conventional electron-allocation label."
+        "No: it is a conventional electron-allocation label",
+        "Yes: the oxidation number is measured, so +3 is the localised charge that a spectrometer finds on Cr",
+        "Yes: partition methods agree on it",
+        "No: chromium has no charge"
       ],
-      "explanation": "Bonding and charge density can be delocalized.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Charge density in a bond is delocalised, so different methods give different numbers.",
+      "hint": "Do charge partition methods agree with each other?",
       "misconceptions": {
         "Yes; all charge-partition methods give that exact integer.": "Bonding and charge density can be delocalized."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Transition metals, oxidation states and coordination”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For group number 8 and oxidation state +2, nominal d count is 6. A different +3 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Transition metals, oxidation states and coordination”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Transition metals, oxidation states and coordination” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Transition metals, oxidation states and coordination” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

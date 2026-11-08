@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does small grain volume imply negligible reactive area automatically?",
+      "prompt": "Dust grains occupy a tiny fraction of the cloud volume. Does that make grain-surface chemistry negligible?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a small volume fraction means a negligible number of reactions, since grains hold little of the cloud's mass",
+        "No: total surface area and rates, not volume, determine the contribution",
+        "Yes: grains are inert and take no part",
+        "No: grains contain the gas of the cloud"
       ],
-      "answer": "No",
-      "explanation": "Surface area and rates determine its effect.",
+      "answer": "No: total surface area and rates, not volume, determine the contribution",
+      "explanation": "Grains provide large surface area. H₂ formation in clouds happens predominantly on grains.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think surface area, not volume."
     },
     {
       "id": "concept-2",
-      "prompt": "Can deterministic mean-product rates fail at rare occupancy?",
+      "prompt": "A grain mantle has on average much less than one reactive atom per grain. Why can mean-rate equations fail?",
       "options": [
-        "Yes",
-        "No"
+        "Occupancy is discrete and fluctuating, so correlations matter",
+        "Grains are too large for the average atom count to describe, so a continuous model of the surface works",
+        "Atoms are continuous in the model of a grain",
+        "Mean rates are exact for the grain"
       ],
-      "answer": "Yes",
-      "explanation": "Correlations and discreteness matter.",
+      "answer": "Occupancy is discrete and fluctuating, so correlations matter",
+      "explanation": "With rare occupancy, the stochastic nature matters and deterministic rates can be wrong.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a grain host 0.01 of an atom?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should an unexplained elemental deficit be ignored if curves look smooth?",
+      "prompt": "A network model loses carbon atoms over time, yet the curves look smooth. What should you conclude?",
       "options": [
-        "Yes",
-        "No"
+        "No error arises: smooth curves show the network is working, and carbon can be lost into the grains invisibly",
+        "No action is needed: smooth curves mean it is fine",
+        "There is an error: element conservation is violated and must be fixed",
+        "The grains absorb the carbon invisibly"
       ],
-      "answer": "No",
-      "explanation": "Conservation is a key check.",
+      "answer": "There is an error: element conservation is violated and must be fixed",
+      "explanation": "Elemental and charge conservation are basic tests. Smoothness does not replace them.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the carbon atoms at the beginning and the end."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What should every network track?",
-      "answer": "Element/charge conservation and specified sinks/sources.",
+      "prompt": "Which checks should every reaction network carry out?",
+      "answer": "Conservation of elements and charge, with declared sources and sinks",
       "options": [
-        "Element/charge conservation and specified sinks/sources.",
-        "Adsorption, surface reactions and desorption."
+        "The fast reactions, as the slow ones have a negligible effect on the conservation of elements",
+        "The largest species in the network",
+        "Conservation of elements and charge, with declared sources and sinks",
+        "A smooth output curve for each species"
       ],
-      "explanation": "Element/charge conservation and specified sinks/sources.",
+      "explanation": "Conservation tests catch missing or mis-balanced reactions.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do the totals add up?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "At fixed surface site density, grain radius doubles. Find adsorption-site-count factor.",
       "answer": "4",
       "hint": "Surface area scales as radius squared.",
-      "explanation": "Surface area scales as radius squared. The value in the stated units is 4.",
+      "explanation": "Surface area ∝ r². Doubling the radius gives 2² = 4 times as many sites at fixed site density.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For a dilute binary rate k nA nB with k=0.5,nA=2,nB=3 in consistent units, find rate density.",
       "answer": "3",
       "hint": "Multiply the rate coefficient and both densities.",
-      "explanation": "Multiply the rate coefficient and both densities. The value in the stated units is 3.",
+      "explanation": "Rate density = k nA nB = 0.5 × 2 × 3 = 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does a large geometric number of grain sites by itself guarantee a fast surface reaction?",
-      "answer": "No; arrival, motion, occupancy and desorption also matter.",
+      "prompt": "A grain has millions of surface sites. Does this by itself guarantee fast surface reactions?",
+      "answer": "No: arrival, hopping, occupancy and desorption also set the rate",
       "options": [
-        "Yes; geometry alone fixes every reaction rate.",
-        "No; arrival, motion, occupancy and desorption also matter."
+        "Yes: more sites mean faster reactions, because the number of sites alone sets the surface reaction rate",
+        "Yes: geometry is what matters for the rate",
+        "Yes: more sites means faster reactions",
+        "No: arrival, hopping, occupancy and desorption also set the rate"
       ],
-      "explanation": "A site budget is different from a kinetic encounter model.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A site count is a capacity. The reaction rate depends on the encounter kinetics.",
+      "hint": "Do reactants need to meet?",
       "misconceptions": {
         "Yes; geometry alone fixes every reaction rate.": "A site budget is different from a kinetic encounter model."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Gas-phase and grain-surface reaction networks”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For distinct reactants n_A=2,n_B=3,k=.5, reaction rate is 3 per volume per time.
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Gas-phase and grain-surface reaction networks”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Gas-phase and grain-surface reaction networks” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Gas-phase and grain-surface reaction networks” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

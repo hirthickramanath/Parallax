@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must the average particle number be an integer?",
+      "prompt": "In the grand canonical ensemble, the average particle number is ⟨N⟩ = 3.7. Is that a contradiction?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: N must be an integer, so a mean of 3.7 shows that the ensemble is inconsistent",
+        "No: it is an average of integer-valued observations",
+        "Yes: particles are discrete",
+        "Yes: ⟨N⟩ must be an integer"
       ],
-      "answer": "No",
-      "explanation": "It averages integer-valued observations.",
+      "answer": "No: it is an average of integer-valued observations",
+      "explanation": "Each measurement gives an integer, and the average need not be one.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the average of 3 and 4 an integer?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does Ω=−pV apply without extensivity qualifications?",
+      "prompt": "Is the relation Ω = −pV for the grand potential valid for every system?",
       "options": [
-        "No",
-        "Yes"
+        "No: boundaries and nonadditive interactions can modify it",
+        "Yes: Ω = −pV is a general identity of statistical physics",
+        "Yes: the identity holds for small systems too",
+        "Yes: it is a definition"
       ],
-      "answer": "No",
-      "explanation": "Boundaries and nonadditive interactions can alter it.",
+      "answer": "No: boundaries and nonadditive interactions can modify it",
+      "explanation": "It holds for large systems in which the free energy is extensive.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does extensivity require?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do allowed occupations enter the definition of Ξ?",
+      "prompt": "Do the allowed occupation numbers of each state enter the definition of the grand partition function Ξ?",
       "options": [
-        "No",
-        "Yes"
+        "No: the sum runs over energies without occupation limits",
+        "No: the chemical potential alone fixes the definition",
+        "No: occupation does not matter",
+        "Yes: the state sum depends on particle statistics and constraints"
       ],
-      "answer": "Yes",
-      "explanation": "The state sum depends on particle statistics and constraints.",
+      "answer": "Yes: the state sum depends on particle statistics and constraints",
+      "explanation": "Fermions have n = 0, 1; bosons have n = 0, 1, 2, …",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many particles can a fermion state hold?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "How does number response relate to fluctuations?",
-      "answer": "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
+      "prompt": "How are the fluctuations of particle number related to the response of ⟨N⟩ to μ?",
+      "answer": "Var(N) = k_B T (∂⟨N⟩/∂μ) at fixed T, V",
       "options": [
-        "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
-        "Chemical potential μ."
+        "Var(N) = μ, so the fluctuation equals the chemical potential",
+        "Var(N) = 0 at fixed μ and T",
+        "Var(N) = ⟨N⟩² at fixed T, V",
+        "Var(N) = k_B T (∂⟨N⟩/∂μ) at fixed T, V"
       ],
-      "explanation": "Var(N)=k_BT(∂N/∂μ) at fixed T,V in the stated ensemble.",
+      "explanation": "This follows from differentiating ln Ξ twice with respect to μ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Differentiate ln Ξ with respect to μ twice."
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For one fermion level with ε=μ at nonzero temperature, find mean occupation.",
       "answer": "0.5",
       "hint": "The exponent is zero.",
-      "explanation": "The exponent is zero. The value in the stated units is 0.5.",
+      "explanation": "n = 1/(e^((ε−μ)/kT) + 1). With ε = μ the exponent is 0, so n = 1/(1 + 1) = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For β=1 and μ=ln2, find fugacity exp(βμ).",
       "answer": "2",
       "hint": "Exponentiate the stated chemical potential.",
-      "explanation": "Exponentiate the stated chemical potential. The value in the stated units is 2.",
+      "explanation": "The fugacity is e^(βμ) = e^(1 × ln 2) = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Does a grand canonical mean particle number imply that particle number never fluctuates?",
-      "answer": "No; exchange with the reservoir generally permits fluctuations.",
+      "prompt": "A grand canonical system has a mean particle number. Does this mean N never fluctuates?",
+      "answer": "No: exchange with the reservoir generally allows fluctuations",
       "options": [
-        "Yes; a mean value is a fixed value for every microstate.",
-        "No; exchange with the reservoir generally permits fluctuations."
+        "Yes: a mean is a fixed value, so N is constant in the ensemble",
+        "No: exchange with the reservoir generally allows fluctuations",
+        "Yes: the microstates share the same particle number",
+        "Yes: the particle number is held fixed by the mean"
       ],
-      "explanation": "Ensemble averages and individual microstate values differ.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Ensemble averages and individual microstates are different things.",
+      "hint": "Is the system coupled to a particle reservoir?",
       "misconceptions": {
         "Yes; a mean value is a fixed value for every microstate.": "Ensemble averages and individual microstate values differ."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Grand canonical ensemble”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For an empty-or-one state with a=3, Ξ=4 and average occupation is 3/4. The numb
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Grand canonical ensemble”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Grand canonical ensemble” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Grand canonical ensemble” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a small algebraic solver residual prove small continuum error?",
+      "prompt": "Your iterative linear solver reports a residual of 10⁻¹² for the discretised PDE. What does this say about the error relative to the true PDE solution?",
       "options": [
-        "Yes",
-        "No"
+        "The grid is fine enough for the equation",
+        "The solution is accurate to 10⁻¹², because the residual measures the error relative to the true solution",
+        "Nothing certain: discretisation and boundary errors can still be large",
+        "The PDE is solved to the accuracy of the residual"
       ],
-      "answer": "No",
-      "explanation": "Discretization and boundary errors remain.",
+      "answer": "Nothing certain: discretisation and boundary errors can still be large",
+      "explanation": "The residual measures how well the algebraic system is solved. The discrete equations themselves differ from the PDE by truncation error, and boundary conditions may be wrong.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Separate solving the discrete equations from the discretisation itself."
     },
     {
       "id": "concept-2",
-      "prompt": "Can an unconditionally stable method still be inaccurate?",
+      "prompt": "An implicit scheme is unconditionally stable. Does that guarantee an accurate answer with a very large time step?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, provided the grid is fine in space, as then the error is small",
+        "Yes: stable means that the answer is accurate",
+        "No: stability keeps errors bounded, but truncation error can still be large",
+        "No: unstable methods are more accurate"
       ],
-      "answer": "Yes",
-      "explanation": "Stability does not bound truncation error at large steps.",
+      "answer": "No: stability keeps errors bounded, but truncation error can still be large",
+      "explanation": "Stability stops errors growing, but accuracy depends on how well the scheme approximates the PDE at that step size.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Stable and accurate are different properties."
     },
     {
       "id": "concept-3",
-      "prompt": "Should explicit updates read only the old time level?",
+      "prompt": "In an explicit time-stepping scheme, which values should the update at step n+1 use?",
       "options": [
-        "No",
-        "Yes"
+        "A mix of new and old values updated in place",
+        "Only values from step n (the old time level)",
+        "Values from the next grid point at step n+2",
+        "Only values from step n+1"
       ],
-      "answer": "Yes",
-      "explanation": "In-place mixing changes the scheme.",
+      "answer": "Only values from step n (the old time level)",
+      "explanation": "Explicit schemes compute the new level entirely from the old one. Mixing new values into the update turns it into a different scheme (like Gauss–Seidel), with different stability.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about what 'explicit' means for the right-hand side."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why keep old and new arrays separate?",
-      "answer": "To preserve the intended time-level stencil.",
+      "prompt": "Why do explicit solvers keep separate arrays for the old and new time levels?",
+      "answer": "To make sure each update uses the intended old values only",
       "options": [
-        "To preserve the intended time-level stencil.",
-        "The discrete equation approaches the PDE under the stated refinement and smoothness assumptions."
+        "To save memory, because NumPy arrays cannot be updated in place and must be copied at each step",
+        "To make sure each update uses the intended old values only",
+        "Because NumPy arrays cannot be changed",
+        "To store the boundary conditions"
       ],
-      "explanation": "To preserve the intended time-level stencil.",
+      "explanation": "Writing new values into the same array while sweeping would let later grid points use already-updated neighbours, changing the stencil and the scheme's properties.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens if u[i-1] has already been overwritten when u[i] is computed?"
     },
     {
       "id": "computing-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Can halving dx at fixed dt destabilize an explicit diffusion solver?",
-      "answer": "Yes; the ratio Ddt/dx² grows by four.",
+      "prompt": "An explicit diffusion solver is stable with Δx = 0.1 and Δt = 0.004 (D = 1). You halve Δx to 0.05 but keep Δt. What is the likely result?",
+      "answer": "It becomes unstable, because DΔt/Δx² rises from 0.4 to 1.6",
       "options": [
-        "No; spatial refinement always increases stability.",
-        "Yes; the ratio Ddt/dx² grows by four."
+        "It becomes unstable, because DΔt/Δx² rises from 0.4 to 1.6",
+        "It becomes more stable, since a finer spatial grid resolves the diffusion better and reduces the numerical error",
+        "It becomes exact, as the step is larger",
+        "No change arises in the solution"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Time and space resolution are coupled.",
+      "hint": "Compute DΔt/Δx² before and after.",
+      "explanation": "The stability limit is DΔt/Δx² ≤ 0.5. Halving Δx quadruples the ratio, here to 1.6, so the explicit scheme blows up.",
       "misconceptions": {
         "No; spatial refinement always increases stability.": "Time and space resolution are coupled."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “PDE solvers (finite differences)”, read the linked prerequisites and keep a notebook of the code or algorithm you try. State the inputs, the assumptions and the numerical tolerances before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ With D=1, Δx=.2 and Δt=.01, r=.25. Halving Δx without changing Δt gives r=1 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “PDE solvers (finite differences)”, answer the tagged questions below. Then change one input, step size or algorithmic choice in the worked example and say how the output and its error change. Keep the method, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “PDE solvers (finite differences)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical run can expose a wrong method, but one successful run does not show that the method converges or is stable.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “PDE solvers (finite differences)” in a simulation or analysis pipeline. Separate what the method guarantees from the assumptions needed in practice. Record which check (convergence, stability or error estimate) comes next.
 
 </LessonSection>

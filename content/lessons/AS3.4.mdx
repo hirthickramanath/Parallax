@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a Rosseland mean an unqualified arithmetic opacity average?",
+      "prompt": "The Rosseland mean opacity is used in stellar interiors. Is it a simple arithmetic average of κ_ν?",
       "options": [
-        "Yes",
-        "No"
+        "No: it is a geometric mean of κ_ν, taken with equal weights over frequency",
+        "Yes: it is a simple average of κ_ν over frequency",
+        "No: it is a weighted harmonic mean, so low-opacity windows dominate",
+        "Yes: it is weighted by frequency in a linear way"
       ],
-      "answer": "No",
-      "explanation": "It is a weighted harmonic diffusion average.",
+      "answer": "No: it is a weighted harmonic mean, so low-opacity windows dominate",
+      "explanation": "1/κ_R = ∫(1/κ_ν)(dB_ν/dT)dν / ∫(dB_ν/dT)dν. Radiation leaks through transparent frequencies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which frequencies carry flux most easily?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does radiative diffusion work unchanged at every optically thin surface?",
+      "prompt": "Near a star's photosphere the optical depth drops below unity. Does the diffusion approximation still work?",
       "options": [
-        "No",
-        "Yes"
+        "No: the near-isotropic radiation field it assumes fails",
+        "Yes: it is exact in the limit of a transparent atmosphere",
+        "No: radiation vanishes near the photosphere, so no energy diffuses",
+        "Yes: it works well in the optically thin layers too"
       ],
-      "answer": "No",
-      "explanation": "Its local near-isotropy approximation fails.",
+      "answer": "No: the near-isotropic radiation field it assumes fails",
+      "explanation": "Diffusion needs many mean free paths, as in the deep interior, so it breaks down at the surface.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does diffusion require of the photon mean free path?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can scattering direction affect transport opacity?",
+      "prompt": "Photons scatter mostly in the forward direction. How does this affect the opacity relevant for radiative transport?",
       "options": [
-        "No",
-        "Yes"
+        "It is higher, as a forward scattering still redirects energy and so adds to the transport opacity",
+        "Scattering stops the transport of energy through the gas, so the opacity falls toward zero",
+        "Transport opacity is lower, since forward scattering barely changes the direction of energy flow",
+        "It does not matter for the transport opacity, which depends on absorption alone in this setting"
       ],
-      "answer": "Yes",
-      "explanation": "Forward scattering transfers direction differently.",
+      "answer": "Transport opacity is lower, since forward scattering barely changes the direction of energy flow",
+      "explanation": "κ_tr = κ_s(1 − ⟨cos θ⟩) is smaller when ⟨cos θ⟩ is positive.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a forward scatter change the flux direction?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What must replace diffusion near thin regions?",
-      "answer": "An appropriate radiative-transfer treatment.",
+      "prompt": "What treatment replaces the diffusion approximation near an optically thin boundary?",
+      "answer": "A full radiative-transfer calculation",
       "options": [
-        "An appropriate radiative-transfer treatment.",
-        "The path integral of extinction per length."
+        "A stronger diffusion coefficient, as diffusion remains valid however thin the boundary becomes",
+        "A full radiative-transfer calculation",
+        "Ignoring radiation in the outer layers",
+        "Setting the opacity to zero in the outer layers"
       ],
-      "explanation": "An appropriate radiative-transfer treatment.",
+      "explanation": "Where mean free paths are long, you solve the transfer equation directly.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of how stellar atmospheres are computed."
     },
     {
       "id": "astro-transfer-1",
       "prompt": "At unchanged local T, density and gradient, opacity triples. Find radiative-flux ratio.",
       "answer": "0.3333333333333333",
       "hint": "The diffusion coefficient is inversely proportional to opacity.",
-      "explanation": "The diffusion coefficient is inversely proportional to opacity. The value in the stated units is 0.333333333333.",
+      "explanation": "Radiative diffusion flux is inversely proportional to opacity at fixed T, density and gradient, so tripling κ gives 1/3 of the flux.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "At fixed opacity and density, temperature doubles while its spatial gradient is held fixed. Find diffusion-flux factor.",
       "answer": "8",
       "hint": "The conductivity contains T³.",
-      "explanation": "The conductivity contains T³. The value in the stated units is 8.",
+      "explanation": "The radiative conductivity contains T³, and the gradient is fixed, so doubling T multiplies the flux by 2³ = 8.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "When opacity rises at fixed required flux, must the temperature gradient remain unchanged?",
-      "answer": "No; a steeper gradient may be needed.",
+      "prompt": "Opacity rises while the required energy flux stays fixed in a radiative zone. What must happen to the temperature gradient?",
+      "answer": "It must steepen: |dT/dr| ∝ κ L ρ/T³",
       "options": [
-        "Yes; opacity and gradient are unrelated in diffusion.",
-        "No; a steeper gradient may be needed."
+        "It stays the same, as the flux is fixed and the gradient depends on flux alone",
+        "It must steepen: |dT/dr| ∝ κ L ρ/T³",
+        "It reverses in sign near the base of the zone",
+        "It flattens near the base of the zone"
       ],
-      "explanation": "Specify which quantity is controlled before interpreting the diffusion relation.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The diffusion equation gives dT/dr ∝ −κ ρ F/T³, so a larger κ needs a larger gradient.",
+      "hint": "Write dT/dr in terms of κ.",
       "misconceptions": {
         "Yes; opacity and gradient are unrelated in diffusion.": "Specify which quantity is controlled before interpreting the diffusion relation."
       },
@@ -164,7 +178,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Opacity and radiative transport”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -238,18 +252,18 @@ In an optically thick, nearly isotropic local-thermal-equilibrium radiation fiel
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Opacity and radiative transport”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Opacity and radiative transport” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Opacity and radiative transport” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

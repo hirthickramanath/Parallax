@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a hole a new elementary positive particle?",
+      "prompt": "In a semiconductor, is a hole a distinct elementary positively charged particle?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a positron in the crystal",
+        "No: it is a quasiparticle describing a missing electron in a nearly full band",
+        "No: it is a neutral excitation of the crystal lattice, like an exciton",
+        "Yes: it is a proton that moves through the crystal as a free particle"
       ],
-      "answer": "No",
-      "explanation": "It is an effective band vacancy.",
+      "answer": "No: it is a quasiparticle describing a missing electron in a nearly full band",
+      "explanation": "Holes have an effective mass and positive charge, but are collective behaviour of many electrons.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is actually missing from the valence band?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does built-in equilibrium junction potential alone supply unlimited extractable work?",
+      "prompt": "A p–n junction has a built-in potential at equilibrium. Can you draw unlimited steady power from it without any other input?",
       "options": [
-        "No",
-        "Yes"
+        "No: at equilibrium there is no net current",
+        "No: the junction has no field",
+        "Yes: the potential gives unlimited current",
+        "Yes: the built-in field is a free battery"
       ],
-      "answer": "No",
-      "explanation": "A full electrochemical circuit balance is required.",
+      "answer": "No: at equilibrium there is no net current",
+      "explanation": "At equilibrium there is no net current, and extracting work needs an energy source such as light or bias. That would be a perpetual motion machine of the second kind.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the net current at equilibrium?"
     },
     {
       "id": "concept-3",
-      "prompt": "Do mobility and density both affect conductivity?",
+      "prompt": "Conductivity in a semiconductor is σ = nqμ. If you double the mobility μ at fixed carrier density, what happens?",
       "options": [
-        "No",
-        "Yes"
+        "σ becomes independent of the carrier density, as the mobility absorbs its dependence",
+        "σ halves, as mobility and conductivity move in opposite ways",
+        "σ doubles, because density and mobility enter independently as factors",
+        "σ is unchanged, as the density sets the conductivity of the sample"
       ],
-      "answer": "Yes",
-      "explanation": "They enter independently.",
+      "answer": "σ doubles, because density and mobility enter independently as factors",
+      "explanation": "Doping changes n, and scattering changes μ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at how n and μ appear in σ = nqμ."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is nondegenerate carrier counting?",
-      "answer": "A low-occupation approximation with its own validity range.",
+      "prompt": "Carrier density in a semiconductor is often written n = N_c e^(−(E_c−E_F)/k_BT). When does this fail?",
+      "answer": "In degenerate doping",
       "options": [
-        "A low-occupation approximation with its own validity range.",
-        "Ionization, compensation and occupation regimes."
+        "In degenerate doping",
+        "In intrinsic material",
+        "Whenever the temperature is above 0 K",
+        "For n-type samples"
       ],
-      "explanation": "A low-occupation approximation with its own validity range.",
+      "explanation": "In degenerate doping, where the Fermi level approaches or enters a band and the low-occupation approximation breaks. The Boltzmann approximation needs E_c − E_F ≫ k_BT.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "The approximation assumes states are rarely occupied."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Does an activation factor alone determine a complete device current?",
-      "answer": "No; prefactors, mobility and device conditions also matter.",
+      "prompt": "Carrier density in a semiconductor follows an activation factor e^(−E/k_BT). Does that alone give the device's current?",
+      "answer": "No: you also need the prefactor, the mobility and the device geometry and bias",
       "options": [
-        "Yes; gap alone fixes every circuit response.",
-        "No; prefactors, mobility and device conditions also matter."
+        "No: activated carriers do not take part in conduction, as band-edge carriers cannot carry current",
+        "No: you also need the prefactor, the mobility and the device geometry and bias",
+        "Yes: the activation factor is the current",
+        "Yes: the band gap fixes the response of each circuit that uses the device, with no more input"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Separate carrier population and transport.",
+      "hint": "Population and transport are two different things.",
+      "explanation": "Carrier population and transport are separate steps.",
       "misconceptions": {
         "Yes; gap alone fixes every circuit response.": "Separate carrier population and transport."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Semiconductors and devices”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For normalized e=1,n=2,μ_n=3,p=1,μ_p=2, conductivity is 8. If electron density
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Semiconductors and devices”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Semiconductors and devices” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Semiconductors and devices” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

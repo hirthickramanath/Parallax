@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a large nuclear mass guarantee one-surface validity at all degeneracies?",
+      "prompt": "Nuclei are much heavier than electrons. Does that guarantee the Born–Oppenheimer picture holds near every degeneracy?",
       "options": [
-        "Yes",
-        "No"
+        "No: electrons are heavier",
+        "No: derivative couplings become large near degeneracies",
+        "Yes: the mass ratio is enough, so the Born–Oppenheimer picture holds near a degeneracy",
+        "Yes: it holds for the molecules that we study"
       ],
-      "answer": "No",
-      "explanation": "Derivative couplings can become important.",
+      "answer": "No: derivative couplings become large near degeneracies",
+      "explanation": "The approximation requires well-separated electronic states. At conical intersections, non-adiabatic coupling is important.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens when two electronic states have the same energy?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a negative Hessian mode indicate a stable minimum?",
+      "prompt": "A geometry has one negative Hessian eigenvalue. What kind of stationary point is it?",
       "options": [
-        "No",
-        "Yes"
+        "A stable minimum, as one negative curvature means the energy rises in each direction",
+        "A stable minimum with a lower energy than the surroundings",
+        "A saddle point (first-order): unstable along that direction",
+        "A maximum in each direction of the surface"
       ],
-      "answer": "No",
-      "explanation": "It is an unstable direction.",
+      "answer": "A saddle point (first-order): unstable along that direction",
+      "explanation": "Minima have all positive eigenvalues; transition states have exactly one negative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall how transition states are characterised."
     },
     {
       "id": "concept-3",
-      "prompt": "Can zero-point motion matter beyond the optimized geometry?",
+      "prompt": "Zero-point motion exists in quantum nuclei. Does it matter beyond the optimised geometry?",
       "options": [
-        "No",
-        "Yes"
+        "No: the minimum matters, as nuclei behave classically and sit at the optimised geometry",
+        "No: nuclei are classical",
+        "For electrons and not for the nuclei",
+        "Yes: nuclei occupy quantum states spread over the surface"
       ],
-      "answer": "Yes",
-      "explanation": "Nuclei occupy quantum states on the surface.",
+      "answer": "Yes: nuclei occupy quantum states spread over the surface",
+      "explanation": "Zero-point energy shifts barriers and isotope effects.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the H/D isotope effect."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why is a barrier not a full rate?",
-      "answer": "Dynamics, states and transmission/prefactors also enter.",
+      "prompt": "A potential energy barrier is computed. Why is it not the full reaction rate?",
+      "answer": "Dynamics, state counting, transmission and prefactors also enter",
       "options": [
-        "Dynamics, states and transmission/prefactors also enter.",
-        "Electronic energy under a clamped-geometry convention plus consistent nuclear terms."
+        "Barriers do not affect rates",
+        "The rate depends on the temperature and on the barrier alone",
+        "Dynamics, state counting, transmission and prefactors also enter",
+        "A barrier is the rate of the reaction"
       ],
-      "explanation": "Dynamics, states and transmission/prefactors also enter.",
+      "explanation": "Rates need partition functions and dynamics, as in transition-state theory.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What multiplies exp(−ΔE/kT)?"
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For the toy surfaces ±sqrt(R²+V²), R=0 and V=0.3, find the energy gap.",
       "answer": "0.6",
       "hint": "Subtract the lower surface from the upper.",
-      "explanation": "Subtract the lower surface from the upper. The value in the stated units is 0.6.",
+      "explanation": "The surfaces are ±√(R² + V²) = ±0.3 at R = 0, so the gap is 0.3 − (−0.3) = 0.6.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For electron/nuclear mass ratio 1/1600, find its positive square root.",
       "answer": "0.025",
       "hint": "Take 1/sqrt(1600).",
-      "explanation": "Take 1/sqrt(1600). The value in the stated units is 0.025.",
+      "explanation": "√(1/1600) = 1/40 = 0.025.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does a large nuclear mass alone guarantee adiabatic electronic following near every small gap?",
-      "answer": "No; gap and coupling dynamics also matter.",
+      "prompt": "Near a small electronic energy gap, does a large nuclear mass alone guarantee the electrons follow nuclear motion adiabatically?",
+      "answer": "No: the size of the gap and the coupling also matter",
       "options": [
-        "Yes; mass ratio by itself settles every avoided crossing.",
-        "No; gap and coupling dynamics also matter."
+        "Yes for large atoms in a molecule",
+        "Yes: a large mass guarantees the electrons follow adiabatically, whatever the size of the gap",
+        "No: the size of the gap and the coupling also matter",
+        "Yes, for a gap of that size"
       ],
-      "explanation": "The separation approximation has spectral and dynamical conditions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Adiabatic following requires the nuclear motion to be slow compared with the gap.",
+      "hint": "Compare the gap with the nuclear velocity coupling.",
       "misconceptions": {
         "Yes; mass ratio by itself settles every avoided crossing.": "The separation approximation has spectral and dynamical conditions."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Born-Oppenheimer approximation and potential energy surfaces”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For a one-mode harmonic expansion with k=8 and reduced mass 2, angular frequency
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Born-Oppenheimer approximation and potential energy surfaces”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Born-Oppenheimer approximation and potential energy surfaces” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Born-Oppenheimer approximation and potential energy surfaces” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

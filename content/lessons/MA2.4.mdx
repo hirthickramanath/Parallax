@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a coordinate change preserve area without a scale factor?",
+      "prompt": "You change variables (x, y) → (u, v). Is the area element dx dy equal to du dv in general?",
       "options": [
-        "Always",
-        "Not generally"
+        "Yes, for a smooth map: the area element is invariant",
+        "Yes, for a smooth map of the plane to itself",
+        "Yes, the area element has the same form in the new variables",
+        "No: it carries the Jacobian factor |∂(x,y)/∂(u,v)|"
       ],
-      "answer": "Not generally",
-      "explanation": "The derivative determinant records local distortion.",
+      "answer": "No: it carries the Jacobian factor |∂(x,y)/∂(u,v)|",
+      "explanation": "The Jacobian determinant measures the local area scaling. In polar coordinates dx dy = r dr dθ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare a small square in (r, θ) with its image in (x, y)."
     },
     {
       "id": "concept-2",
-      "prompt": "Should ordinary volume use a signed determinant without absolute value?",
+      "prompt": "The Jacobian determinant of a coordinate change is negative. How should it be used in an ordinary area integral?",
       "options": [
-        "No",
-        "Yes"
+        "Use the signed value, so that a negative Jacobian gives a negative contribution to the area integral",
+        "Use its square root, to keep the area positive",
+        "Use its absolute value, since area is non-negative",
+        "Skip it, as a negative sign has no effect on the integral"
       ],
-      "answer": "No",
-      "explanation": "Volume is nonnegative; orientation is handled separately.",
+      "answer": "Use its absolute value, since area is non-negative",
+      "explanation": "The sign records orientation. For ordinary (unsigned) integrals use |det J|.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can an area be negative?"
     },
     {
       "id": "concept-3",
-      "prompt": "May every signed improper double integral have its integration order exchanged?",
+      "prompt": "Can you always swap the order of integration in an improper double integral?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, as the order of integration does not change the value",
+        "Yes, whenever the function is continuous",
+        "No: you need hypotheses like absolute integrability (Fubini–Tonelli)",
+        "Yes, if both of the integrals are improper, as the order is then free"
       ],
-      "answer": "No",
-      "explanation": "Appropriate integrability hypotheses are needed.",
+      "answer": "No: you need hypotheses like absolute integrability (Fubini–Tonelli)",
+      "explanation": "There are functions for which the iterated integrals exist but differ. Absolute integrability or a non-negative integrand makes the exchange safe.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the conditions in Fubini's theorem."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify angular ranges and coverage?",
-      "answer": "A coordinate map can cover the physical region multiple times",
+      "prompt": "When integrating over a disk in polar coordinates, why must you specify the range of θ and r carefully?",
+      "answer": "The map can cover the region more than once, or miss part of it",
       "options": [
-        "A coordinate map can cover the physical region multiple times",
-        "The Jacobian alone fixes all counting automatically"
+        "The map can cover the region more than once, or miss part of it",
+        "θ is undefined on the disk, so a range of values cannot be set for it",
+        "r can be negative, a case that the map must exclude for the disk",
+        "The Jacobian fixes the range"
       ],
-      "explanation": "Domain and multiplicity are separate parts of the transformation.",
+      "explanation": "With θ ∈ [0, 4π] the disk would be covered twice. The Jacobian only gives the local scaling, not the domain.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens if θ runs from 0 to 4π?"
     },
     {
       "id": "multivariable-transfer-1",
       "prompt": "Find the area of the annulus 1≤r≤3 in the plane.",
       "answer": "25.132741228718345",
       "hint": "Integrate r dr dθ over a full turn.",
-      "explanation": "Integrate r dr dθ over a full turn. The value in the stated units is 25.132741228718.",
+      "explanation": "A = ∫₀^{2π}∫₁³ r dr dθ = 2π × (9 − 1)/2 = 8π ≈ 25.13.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For x=2u,y=3v, find the absolute area Jacobian.",
       "answer": "6",
       "hint": "The derivative matrix is diagonal (2,3).",
-      "explanation": "The derivative matrix is diagonal (2,3). The value in the stated units is 6.",
+      "explanation": "The Jacobian matrix is diag(2, 3), whose determinant is 6, so areas are scaled by |J| = 6.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Should an orientation-reversing coordinate map make an ordinary scalar area negative?",
-      "answer": "No; scalar area uses the absolute Jacobian determinant.",
+      "prompt": "A coordinate map reverses orientation. What is the correct scalar area element?",
+      "answer": "|det J| du dv, which stays positive",
       "options": [
-        "Yes; geometric area must have the determinant sign.",
-        "No; scalar area uses the absolute Jacobian determinant."
+        "det J du dv, which is negative, so that the area element reflects the reversal of orientation",
+        "|det J| du dv, which stays positive",
+        "1 du dv, with no Jacobian factor",
+        "det J du dv, which is negative"
       ],
-      "explanation": "Oriented differential forms and nonnegative scalar area have different conventions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Scalar area uses the absolute value. Oriented integrals of forms keep the sign.",
+      "hint": "Area is positive regardless of orientation.",
       "misconceptions": {
         "Yes; geometric area must have the determinant sign.": "Oriented differential forms and nonnegative scalar area have different conventions."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Multiple integrals and Jacobians”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,19 +231,19 @@ The unit disk area in polar coordinates is ∫₀²π∫₀¹ r dr dθ=π. Omitt
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Multiple integrals and Jacobians”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Multiple integrals and Jacobians” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Multiple integrals and Jacobians” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

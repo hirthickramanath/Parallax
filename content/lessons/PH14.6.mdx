@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero net magnetization prove no local magnetic order?",
+      "prompt": "A sample shows zero net magnetisation with no applied field. Does that prove there is no local magnetic order?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: order produces a net moment, as the magnetic moments of the atoms add up in the sample whatever the structure",
+        "No: antiferromagnetic cancellation or randomly oriented domains give zero net moment while order exists locally",
+        "Yes: no net moment means no moment on an atom in the sample, so there is no order",
+        "No: but just if the sample is a superconductor, as then the moments are expelled from the volume of the sample at low temperature"
       ],
-      "answer": "No",
-      "explanation": "Domains or antiferromagnetic cancellation can occur.",
+      "answer": "No: antiferromagnetic cancellation or randomly oriented domains give zero net moment while order exists locally",
+      "explanation": "MnO has ordered moments on every Mn site but no net magnetisation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think about neighbouring moments that point opposite ways."
     },
     {
       "id": "concept-2",
-      "prompt": "Does equilibrium susceptibility alone fix a hysteresis loop?",
+      "prompt": "You measure a material's equilibrium susceptibility. Does that determine the shape of its hysteresis loop?",
       "options": [
-        "No",
-        "Yes"
+        "No: loops depend on domain dynamics and metastable states that equilibrium response does not capture",
+        "Yes: once the susceptibility is known, the whole magnetisation curve M(H) follows from it in each field",
+        "Yes: hysteresis is a linear response, so the equilibrium susceptibility gives the loop and its width in full",
+        "No: hysteresis appears in paramagnets alone, where the moments relax slowly after the field is removed"
       ],
-      "answer": "No",
-      "explanation": "Dynamics and metastability matter.",
+      "answer": "No: loops depend on domain dynamics and metastable states that equilibrium response does not capture",
+      "explanation": "Pinning, anisotropy and sweep rate all change coercivity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Hysteresis means the history of the sample matters."
     },
     {
       "id": "concept-3",
-      "prompt": "Does J sign depend on Hamiltonian convention?",
+      "prompt": "A paper writes the exchange energy as H = −J S₁·S₂, another as H = +J S₁·S₂. Does the sign of J mean the same thing in both?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the sign of J is a physical constant of the material, so ferromagnets have the same sign",
+        "Yes: a positive J is ferromagnetic in each paper, whatever convention the Hamiltonian uses",
+        "No: the sign convention in the Hamiltonian decides which alignment is favoured",
+        "No: J has no sign in either case"
       ],
-      "answer": "Yes",
-      "explanation": "The stated minus sign sets which ordering is favoured.",
+      "answer": "No: the sign convention in the Hamiltonian decides which alignment is favoured",
+      "explanation": "With the −J convention positive J favours parallel spins; with +J it favours antiparallel.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check which alignment lowers the energy in each convention."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify ordering claims?",
-      "answer": "Dimension, range, anisotropy and limits matter.",
+      "prompt": "Why must a claim of long-range magnetic order state the dimension, interaction range and anisotropy?",
+      "answer": "These determine whether order can exist at finite temperature at all",
       "options": [
-        "Dimension, range, anisotropy and limits matter.",
-        "An ordered state without the corresponding explicit driving field in the appropriate limit."
+        "They are only needed to fix the units of the coupling constant, and have no bearing on whether order exists",
+        "These determine whether order can exist at finite temperature at all",
+        "Order exists in every model regardless",
+        "They set the colour of the material"
       ],
-      "explanation": "Dimension, range, anisotropy and limits matter.",
+      "explanation": "The Mermin–Wagner theorem forbids order in 1D and 2D isotropic short-range Heisenberg models.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall the Mermin–Wagner theorem."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Is weak-field Curie linearity guaranteed at arbitrarily strong magnetic fields?",
-      "answer": "No; saturation and other effects can matter.",
+      "prompt": "Curie's law gives M ∝ H/T for a paramagnet in weak fields. Does it still hold at very strong fields?",
+      "answer": "No: magnetisation saturates when all moments align, so the response stops being linear",
       "options": [
-        "Yes; every magnetization is linear at all fields.",
-        "No; saturation and other effects can matter."
+        "No: M becomes zero at strong fields",
+        "Yes: M keeps growing linearly with H",
+        "Yes: M decreases linearly with H, so the response stays linear until the field is very large indeed",
+        "No: magnetisation saturates when all moments align, so the response stops being linear"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Respect the response regime.",
+      "hint": "There is a maximum when every moment is aligned.",
+      "explanation": "The Brillouin function saturates at M_s = n g μ_B J.",
       "misconceptions": {
         "Yes; every magnetization is linear at all fields.": "Respect the response regime."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Magnetism”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For a single Ising bond J=2, aligned energy is −2 and opposite energy +2, givi
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Magnetism”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Magnetism” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Magnetism” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

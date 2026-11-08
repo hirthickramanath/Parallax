@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is every preprint automatically peer reviewed?",
+      "prompt": "A paper on arXiv has a polished PDF. Is it peer reviewed?",
       "options": [
-        "Yes",
-        "No"
+        "Not necessarily: check its publication status",
+        "Yes: the PDF looks polished, which signals a review",
+        "Yes: arXiv is a peer-reviewed archive with referees",
+        "Yes: most preprints are reviewed before being posted"
       ],
-      "answer": "No",
-      "explanation": "Its publication status must be checked.",
+      "answer": "Not necessarily: check its publication status",
+      "explanation": "arXiv is a preprint server, so papers can be unrefereed or later revised.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does arXiv referee papers?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a citation count verify a method?",
+      "prompt": "A paper has thousands of citations. Does that verify its method?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: a paper cited thousands of times has been checked by readers, so its method is verified",
+        "Yes: citation counts show that the method has been verified by the community",
+        "No: evidence and assumptions require reading the paper",
+        "Yes: a paper with a thousand citations has had its method confirmed"
       ],
-      "answer": "No",
-      "explanation": "Evidence and assumptions require reading.",
+      "answer": "No: evidence and assumptions require reading the paper",
+      "explanation": "Citations measure attention, not correctness.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a wrong paper be cited many times?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should unverified section/page references be labelled pending?",
+      "prompt": "You cannot verify a page or section reference for a claim. How should it appear in your notes?",
       "options": [
-        "No",
-        "Yes"
+        "With a best-guess page number, so that the note looks complete and can be fixed later",
+        "Removed silently from the note so that it reads cleanly",
+        "Recorded as verified, as it is probably correct anyway",
+        "Labelled pending, so precision is not invented"
       ],
-      "answer": "Yes",
-      "explanation": "Precision must not be invented.",
+      "answer": "Labelled pending, so precision is not invented",
+      "explanation": "Honest source status separates what you checked from what you did not.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a guessed page honest?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What is honest source status?",
-      "answer": "Clearly state which checks remain unperformed.",
+      "prompt": "What is an honest status statement for a source you have partially checked?",
+      "answer": "State clearly which checks remain unperformed",
       "options": [
-        "Clearly state which checks remain unperformed.",
-        "Exact source/version, evidence, assumptions and limitations."
+        "Say it is verified, as most of the checks were done and the rest are unlikely to matter",
+        "State clearly which checks remain unperformed",
+        "Leave the status out of the note and mention it to no one",
+        "Say it is wrong until the remaining checks are complete"
       ],
-      "explanation": "Clearly state which checks remain unperformed.",
+      "explanation": "The reader needs to know what has and has not been checked.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What would a reviewer need to know?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For two independent null tests each with α=0.05, find the chance of at least one false positive.",
       "answer": "0.0975",
       "hint": "Use 1−0.95².",
-      "explanation": "Use 1−0.95². The value in the stated units is 0.0975.",
+      "explanation": "The chance of no false positive in both independent tests is 0.95² = 0.9025, so at least one occurs with probability 1 − 0.9025 = 0.0975.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,7 +105,7 @@
       "prompt": "Ten disjoint analysis choices are tried and only the best is reported. How many choices must be disclosed in the toy trial count?",
       "answer": "10",
       "hint": "Count all attempted choices, not just the selected result.",
-      "explanation": "Count all attempted choices, not just the selected result. The value in the stated units is 10.",
+      "explanation": "A look-elsewhere correction needs every attempted analysis, not only the reported one. All 10 choices were tried, so 10 must be disclosed.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -101,14 +113,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can a paper abstract or citation count replace inspection of its methods and assumptions?",
-      "answer": "No; the underlying argument and evidence must be examined.",
+      "prompt": "Can a paper's abstract or citation count replace reading its methods?",
+      "answer": "No: the underlying argument and evidence must be examined",
       "options": [
-        "Yes; popularity is a complete scientific verification.",
-        "No; the underlying argument and evidence must be examined."
+        "Yes: a widely cited abstract summarises the method well enough to treat it as checked",
+        "No: the underlying argument and evidence must be examined",
+        "Yes: a typical abstract is complete enough to describe the assumptions",
+        "Yes: a high citation count is proof that the methods are sound"
       ],
-      "explanation": "Literature discovery and evidence appraisal are distinct tasks.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Literature discovery and evidence appraisal are different tasks.",
+      "hint": "What does an abstract leave out?",
       "misconceptions": {
         "Yes; popularity is a complete scientific verification.": "Literature discovery and evidence appraisal are distinct tasks."
       },
@@ -153,7 +167,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Reading arXiv and NASA ADS”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,18 +231,18 @@ If an inferred luminosity uses distance D=2 and later D changes to 3 at the same
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Reading arXiv and NASA ADS”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Reading arXiv and NASA ADS” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Reading arXiv and NASA ADS” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

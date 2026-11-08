@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does invariance alone prove good exploration from every start?",
+      "prompt": "A Markov chain leaves the target distribution invariant. Does that prove it explores the whole target quickly from any start?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, within one step of the chain from a starting point",
+        "No: reachability, ergodicity and mixing rate matter too",
+        "Yes for Gaussians, as the target is then smooth and simple",
+        "Yes: invariance is enough to reach the target"
       ],
-      "answer": "No",
-      "explanation": "Reachability and convergence conditions also matter.",
+      "answer": "No: reachability, ergodicity and mixing rate matter too",
+      "explanation": "A chain that never leaves one mode can still preserve the target's invariance on that mode set.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of two disconnected regions."
     },
     {
       "id": "concept-2",
-      "prompt": "Can an asymmetric proposal omit the proposal-density ratio?",
+      "prompt": "A Metropolis–Hastings proposal is asymmetric. Can you use the plain Metropolis acceptance ratio?",
       "options": [
-        "No",
-        "Yes"
+        "Yes if the chain is long",
+        "Yes, the plain Metropolis ratio can be used, since the asymmetry of the proposal averages out in a long run",
+        "No: you must include the ratio of proposal densities",
+        "Yes if the proposal is Gaussian"
       ],
-      "answer": "No",
-      "explanation": "That ratio corrects its directional bias.",
+      "answer": "No: you must include the ratio of proposal densities",
+      "explanation": "The Hastings factor q(x|x′)/q(x′|x) restores detailed balance.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens to q in the ratio when it is symmetric?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does thinning automatically fix poor mixing?",
+      "prompt": "A chain mixes poorly. Does thinning (keeping every k-th sample) fix this?",
       "options": [
-        "Yes",
-        "No"
+        "No: it discards samples but does not cure the exploration failure",
+        "Yes: it improves the target",
+        "Yes: it removes correlation",
+        "Yes: it speeds up the chain"
       ],
-      "answer": "No",
-      "explanation": "It can discard information without curing exploration failures.",
+      "answer": "No: it discards samples but does not cure the exploration failure",
+      "explanation": "Thinning reduces storage but loses information; the chain still explores slowly.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does thinning change how the chain moves?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why check several scientifically relevant functions, not just one parameter trace?",
-      "answer": "Effective sampling and Monte Carlo error are estimand dependent",
+      "prompt": "Why check effective sample size for several quantities of interest rather than one parameter trace?",
+      "answer": "Autocorrelation and Monte Carlo error differ between functions of the chain",
       "options": [
-        "Effective sampling and Monte Carlo error are estimand dependent",
-        "One smooth trace proves every mode is explored"
+        "Just the mean matters, as other functions follow from it in the chain",
+        "Autocorrelation and Monte Carlo error differ between functions of the chain",
+        "The functions of the chain have the same ESS, so one trace is enough to judge it",
+        "One smooth trace proves that the modes are explored, so more checks are redundant"
       ],
-      "explanation": "Different quantities can retain different long correlations.",
+      "explanation": "A parameter can mix fast while another combination (e.g. a ridge) mixes slowly.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does a good trace for x guarantee good mixing of x + y?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Can the proposal ratio be omitted for an arbitrary asymmetric proposal?",
-      "answer": "No; the Hastings correction is required.",
+      "prompt": "In Metropolis–Hastings with an asymmetric proposal, what does omitting the proposal-density ratio do?",
+      "answer": "It breaks detailed balance, so the chain targets the wrong distribution",
       "options": [
-        "Yes; every proposal is effectively symmetric.",
-        "No; the Hastings correction is required."
+        "No effect: the ratio cancels in the long run, so the target is unchanged",
+        "It speeds up convergence, as the chain moves with fewer rejections",
+        "It makes the chain symmetric, so the target is restored in the long run for the sampler",
+        "It breaks detailed balance, so the chain targets the wrong distribution"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Detailed balance includes forward and reverse proposal densities.",
+      "hint": "Write the detailed balance equation.",
+      "explanation": "Detailed balance requires π(x)q(x′|x)α(x→x′) = π(x′)q(x|x′)α(x′→x).",
       "misconceptions": {
         "Yes; every proposal is effectively symmetric.": "Detailed balance includes forward and reverse proposal densities."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “MCMC”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ For a symmetric proposal and target-density ratio π(y)/π(x)=0.25, the acceptan
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “MCMC”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “MCMC” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “MCMC” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

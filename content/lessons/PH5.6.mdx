@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every field varying at a fixed observer prove acceleration radiation?",
+      "prompt": "An observer sees the field of a charge changing in time. Does that prove the charge is radiating?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a field changing with time at a point is radiation",
+        "No: a uniformly moving charge's Coulomb field also varies locally",
+        "Yes: changing field means radiation",
+        "Yes: acceleration is certain"
       ],
-      "answer": "No",
-      "explanation": "A uniformly moving Coulomb field can vary locally.",
+      "answer": "No: a uniformly moving charge's Coulomb field also varies locally",
+      "explanation": "Radiation needs acceleration and a 1/r field falling to infinity.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What about a charge in uniform motion?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can coherent-source powers always be added without field interference?",
+      "prompt": "Two coherent sources radiate. Can you simply add their individual powers?",
       "options": [
-        "No",
-        "Yes"
+        "No: the fields interfere",
+        "Yes: they are independent",
+        "Yes: powers add up",
+        "Yes: intensity is additive"
       ],
-      "answer": "No",
-      "explanation": "Cross terms depend on relative phases.",
+      "answer": "No: the fields interfere",
+      "explanation": "The fields interfere, and the cross terms depend on relative phase. Power ∝ |E₁ + E₂|², which includes 2E₁·E₂.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Add the fields before squaring."
     },
     {
       "id": "concept-3",
-      "prompt": "Does the leading dipole approximation require a small source relative to wavelength?",
+      "prompt": "The leading dipole radiation approximation applies when what is true of the source?",
       "options": [
-        "No",
-        "Yes"
+        "It is at rest in the observer's frame",
+        "Its size is small compared with the wavelength",
+        "It is large compared with the wavelength",
+        "It is perfectly spherical in shape"
       ],
-      "answer": "Yes",
-      "explanation": "It is a long-wavelength multipole approximation.",
+      "answer": "Its size is small compared with the wavelength",
+      "explanation": "Dipole radiation is the long-wavelength limit of the multipole expansion.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the source size d with the radiated wavelength λ."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why may many-charge radiation not equal summed individual powers?",
-      "answer": "Fields interfere before energy flux is formed.",
+      "prompt": "Why may the radiation from many charges differ from the sum of the individual powers?",
+      "answer": "Fields interfere before energy flux is formed",
       "options": [
-        "Fields interfere before energy flux is formed.",
-        "Amplitude proportional to 1/R."
+        "Radiation is non-linear",
+        "Charges screen each other",
+        "Fields interfere before energy flux is formed",
+        "Powers add as independent contributions"
       ],
-      "explanation": "Fields interfere before energy flux is formed.",
+      "explanation": "The energy flux is quadratic in the total field.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the Poynting vector linear in the field?"
     },
     {
       "id": "em-transfer-1",
       "prompt": "In a fixed nonrelativistic Larmor regime, acceleration triples. Find radiated-power factor.",
       "answer": "9",
       "hint": "Power scales as a².",
-      "explanation": "Power scales as a². The value in the stated units is 9.",
+      "explanation": "In the Larmor formula P ∝ q²a². Tripling a gives 3² = 9 times the power.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "At fixed acceleration, charge doubles. Find radiated-power factor.",
       "answer": "4",
       "hint": "Power also scales as q².",
-      "explanation": "Power also scales as q². The value in the stated units is 4.",
+      "explanation": "P ∝ q²a². At fixed acceleration, doubling q gives 2² = 4 times the power.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "em-model-assumptions",
-      "prompt": "Does the Larmor acceleration-radiation term imply a uniformly moving charge in vacuum radiates that power?",
-      "answer": "No; its acceleration is zero in the inertial nonrelativistic setting.",
+      "prompt": "The Larmor formula gives power P ∝ a². Does a uniformly moving charge in vacuum radiate?",
+      "answer": "No: its acceleration is zero, so the Larmor term vanishes",
       "options": [
-        "Yes; every moving charge radiates the same acceleration term.",
-        "No; its acceleration is zero in the inertial nonrelativistic setting."
+        "Yes: a moving charge radiates as it moves along",
+        "No: its acceleration is zero, so the Larmor term vanishes",
+        "Yes: at constant velocity",
+        "Yes: it radiates continuously while moving at a steady speed"
       ],
-      "explanation": "Motion and acceleration are distinct inputs to this formula.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Radiation requires a ≠ 0 (in the inertial non-relativistic setting).",
+      "hint": "What does a uniformly moving charge's acceleration equal?",
       "misconceptions": {
         "Yes; every moving charge radiates the same acceleration term.": "Motion and acceleration are distinct inputs to this formula."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Radiation from accelerating charges”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If q and c are fixed and acceleration doubles within the nonrelativistic Larmor 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Radiation from accelerating charges”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Radiation from accelerating charges” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Radiation from accelerating charges” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

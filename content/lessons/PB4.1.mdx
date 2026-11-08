@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does zero net enclosed charge require zero field everywhere on a surface?",
-      "answer": "No",
+      "prompt": "A closed surface encloses zero net charge. What does Gauss's law say about the field on that surface?",
+      "answer": "The net flux is zero, but the field may be non-zero at points",
       "options": [
-        "Yes",
-        "No"
+        "The field is zero on the surface, as zero net charge implies zero field there",
+        "The field points inwards over the whole surface, by symmetry",
+        "The surface cannot be placed near a charge outside it, or the flux changes",
+        "The net flux is zero, but the field may be non-zero at points"
       ],
-      "explanation": "Only the net flux is fixed at zero.",
+      "explanation": "Gauss's law fixes only the surface integral of E·dA. Flux can enter in one place and leave in another, as with a dipole outside.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Gauss's law constrains a total, not each point."
     },
     {
       "id": "c2",
-      "prompt": "Does adding a constant to potential change the field?",
-      "answer": "No",
+      "prompt": "A constant is added to the electric potential everywhere. What happens to the electric field?",
+      "answer": "Nothing: E = −∇V and a constant has zero gradient",
       "options": [
-        "No",
-        "Yes"
+        "It reverses direction, since adding a constant to V changes the sign of its gradient everywhere",
+        "Nothing: E = −∇V and a constant has zero gradient",
+        "It becomes zero everywhere",
+        "It increases by the same constant"
       ],
-      "explanation": "The gradient is unchanged.",
+      "explanation": "Only potential differences matter physically. The field is the gradient of V, which an additive constant does not change.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Differentiate V + C with respect to position and see what C does."
     },
     {
       "id": "c3",
-      "prompt": "Is a negative test charge forced along the field direction?",
-      "answer": "No; opposite it",
+      "prompt": "A negative test charge is released in a uniform electric field. In which direction does it start to move?",
+      "answer": "Opposite to the field, since F = qE with q < 0",
       "options": [
-        "Yes",
-        "No; opposite it"
+        "It stays at rest until a magnetic field acts, since a negative charge feels no force from an electric field",
+        "Perpendicular to the field",
+        "Along the field, like a positive charge",
+        "Opposite to the field, since F = qE with q < 0"
       ],
-      "explanation": "Force is qE.",
+      "explanation": "The force is F = qE. With q negative, the force points opposite to E.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use the sign of q in F = qE."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "If E=0 throughout a connected electrostatic region, must its potential be zero?",
-      "answer": "No; potential is constant there, with an arbitrary reference value.",
+      "prompt": "E = 0 throughout a connected region of an electrostatic problem. What is true of the potential there?",
+      "answer": "It is constant, and its value depends on the chosen reference",
       "options": [
-        "Yes; zero field fixes the numerical potential to zero.",
-        "No; potential is constant there, with an arbitrary reference value."
+        "It varies linearly with position, since a zero field leaves the potential free to change at a fixed rate",
+        "It cannot be defined, as the field vanishes in the region",
+        "It is constant, and its value depends on the chosen reference",
+        "It is zero, since no field means no potential"
       ],
-      "explanation": "The field depends on the gradient, not the additive constant.",
+      "explanation": "E = −∇V = 0 means V does not vary within the region. The constant itself is arbitrary, as in a conductor held at some potential.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Which quantity is zero when the gradient is zero?",
       "misconceptions": {
         "Yes; zero field fixes the numerical potential to zero.": "The field depends on the gradient, not the additive constant."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does zero electric potential necessarily imply zero electric field?",
-      "answer": "No; the gradient can be nonzero there.",
+      "prompt": "At some point the electric potential is exactly zero. What can you conclude about the electric field there?",
+      "answer": "Nothing definite: the field depends on the slope of V, which can be non-zero",
       "options": [
-        "Yes; potential and field vanish at exactly the same points.",
-        "No; the gradient can be nonzero there."
+        "Nothing definite: the field depends on the slope of V, which can be non-zero",
+        "It equals the potential, so it is zero too, since the field and potential are the same quantity at a point",
+        "It must be zero, since V = 0 means no energy per charge",
+        "It must point away from the point, since V = 0 is a source"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "A value and its spatial derivative differ.",
+      "hint": "Compare a value with its slope: test the midpoint of a dipole.",
+      "explanation": "E = −∇V depends on how V changes nearby, not on its value. Midway between +q and −q the potential is zero while the field is strong.",
       "misconceptions": {
         "Yes; potential and field vanish at exactly the same points.": "A value and its spatial derivative differ."
       },
@@ -222,8 +235,7 @@ Energy density in a linear dielectric under appropriate static conditions is $u=
 
 ### Transfer derivation and failure case
 
-Electrostatic work gives $\Delta U=q\Delta V$ and $\Delta K=-q\Delta V$ when no other forces do work. The sign of the test charge therefore matters: electrons accelerate toward increasing electric potential in this energy balance. Locally, $\mathbf E=-\nabla V$; adding a spatially constant reference to $V$ leaves the field unchanged. For a uniform parallel-plate gap, $|E|=|\Delta V|/d$ neglects fringing. Do not use that relation as a general local field law in a nonuniform geometry.
-
+Electrostatic work gives $\Delta U=q\Delta V$ and $\Delta K=-q\Delta V$ when no other forces do work. The sign of the test charge therefore matters: electrons accelerate toward increasing electric potential in this energy balance. Locally, $\mathbf E=-\nabla V$; adding a spatially constant reference to $V$ leaves the field unchanged. Do not use that relation as a general local field law in a nonuniform geometry.
 
 ### Derivation and transfer
 

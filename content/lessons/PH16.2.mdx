@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does T=0 imply all curvature is zero?",
+      "prompt": "In a region where the stress–energy tensor T_μν is zero, is spacetime necessarily flat?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: curvature needs matter locally, so wherever the stress–energy tensor vanishes the spacetime is flat",
+        "Yes: T = 0 means no curvature, as the metric is then flat in the region around the point",
+        "No: vacuum has constant positive curvature everywhere",
+        "No: vacuum solutions such as Schwarzschild or gravitational waves have curvature"
       ],
-      "answer": "No",
-      "explanation": "Vacuum tidal/wave curvature can remain.",
+      "answer": "No: vacuum solutions such as Schwarzschild or gravitational waves have curvature",
+      "explanation": "Vacuum solutions such as Schwarzschild or gravitational waves have curvature (nonzero Weyl tensor). R_μν = 0 does not imply R_μνρσ = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the field outside the Sun?"
     },
     {
       "id": "concept-2",
-      "prompt": "May arbitrary initial data ignore gravitational constraints?",
+      "prompt": "You pick initial data for a gravitational evolution freely. Is any choice allowed?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the evolution equations determine the solution, so the data are free",
+        "No: the data must satisfy the Hamiltonian and momentum constraint equations",
+        "No: gravity has no initial data",
+        "Yes: constraints apply at late time alone, not on the data at the start of evolution"
       ],
-      "answer": "No",
-      "explanation": "They must satisfy the constraint equations.",
+      "answer": "No: the data must satisfy the Hamiltonian and momentum constraint equations",
+      "explanation": "The constraints are the G_{0μ} equations on the initial slice.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Not all components of Einstein's equations are evolution equations."
     },
     {
       "id": "concept-3",
-      "prompt": "Do stresses contribute to the relativistic source?",
+      "prompt": "In general relativity, does only rest-mass density source gravity?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: rest energy density alone sources gravity",
+        "Yes: rest mass alone sources gravity in the theory of Einstein",
+        "No: pressure alone contributes to gravity in the field equations",
+        "No: pressure and stresses also contribute to T_μν and thus to gravity"
       ],
-      "answer": "Yes",
-      "explanation": "T includes more than rest-mass density.",
+      "answer": "No: pressure and stresses also contribute to T_μν and thus to gravity",
+      "explanation": "T^{00} = ρ, T^{ii} = p, and both appear as sources.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the components of T_μν."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What fixes a physical solution?",
-      "answer": "Sources, compatible initial data and boundary/matching conditions.",
+      "prompt": "What is needed to pick out one physical solution of the Einstein equations?",
+      "answer": "Sources, compatible initial data and boundary or matching conditions",
       "options": [
-        "Sources, compatible initial data and boundary/matching conditions.",
-        "The contracted Bianchi identity and matter dynamics."
+        "The metric signature and the choice of coordinates, as the rest is fixed",
+        "Sources, compatible initial data and boundary or matching conditions",
+        "The equations of the theory, written in a coordinate chart",
+        "A choice of units for the metric and for the sources in the equations"
       ],
-      "explanation": "Sources, compatible initial data and boundary/matching conditions.",
+      "explanation": "Without them the equations admit many solutions, from Minkowski to Kerr.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Differential equations need extra input."
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does vanishing Ricci scalar alone imply all Riemann curvature vanishes?",
-      "answer": "No; Weyl curvature can remain.",
+      "prompt": "The Ricci scalar R is zero everywhere in a region. Does the full Riemann curvature vanish there?",
+      "answer": "No: the Weyl part can survive",
       "options": [
-        "Yes; one scalar determines the whole curvature tensor.",
-        "No; Weyl curvature can remain."
+        "No: R = 0 is impossible",
+        "No: the Weyl part can survive",
+        "Yes: R = 0 means flat",
+        "Yes: one scalar fixes the tensor"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Vacuum black-hole exteriors provide counterexamples.",
+      "hint": "How many independent components does Riemann have?",
+      "explanation": "The Weyl part can survive, as in vacuum black-hole exteriors. Riemann = Weyl + Ricci terms.",
       "misconceptions": {
         "Yes; one scalar determines the whole curvature tensor.": "Vacuum black-hole exteriors provide counterexamples."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Einstein field equations”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ In four dimensions with Λ=0, taking the trace gives −R=κT where κ=8πG/c⁴
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Einstein field equations”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Einstein field equations” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Einstein field equations” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

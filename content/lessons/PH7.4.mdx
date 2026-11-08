@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is subsystem energy fixed in the canonical ensemble?",
+      "prompt": "A system is in thermal contact with a heat bath (canonical ensemble). Is its energy fixed?",
       "options": [
-        "Yes",
-        "No"
+        "No: it fluctuates through exchange with the bath",
+        "Yes: temperature fixes the energy at one value",
+        "Yes: energy is fixed",
+        "Yes: the energy is held constant by the bath"
       ],
-      "answer": "No",
-      "explanation": "It fluctuates through exchange with the bath.",
+      "answer": "No: it fluctuates through exchange with the bath",
+      "explanation": "In the canonical ensemble T is fixed and E fluctuates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is fixed, T or E?"
     },
     {
       "id": "concept-2",
-      "prompt": "Must degeneracy be included in a sum over distinct energy levels?",
+      "prompt": "A level with energy ε has degeneracy g. How does it enter the partition function?",
       "options": [
-        "Yes",
-        "No"
+        "As e^(−gβε), since the degeneracy multiplies the energy inside the exponent",
+        "It does not enter the sum, as the levels share one weight",
+        "As g e^(−βε), since each microstate has its own weight",
+        "Once, as e^(−βε) for the whole level"
       ],
-      "answer": "Yes",
-      "explanation": "Each microstate contributes a weight.",
+      "answer": "As g e^(−βε), since each microstate has its own weight",
+      "explanation": "The sum over states includes all g degenerate states.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the sum over levels or states?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a fixed-Hamiltonian canonical heat capacity be negative?",
+      "prompt": "A system has a fixed Hamiltonian and is in the canonical ensemble. Can its heat capacity be negative?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: for gravitating systems, since the canonical ensemble allows negative C_V",
+        "Yes: it can be negative",
+        "No: C_V ∝ the energy variance",
+        "Yes: in phase transitions"
       ],
-      "answer": "No",
-      "explanation": "It is proportional to a nonnegative energy variance.",
+      "answer": "No: C_V ∝ the energy variance",
+      "explanation": "C_V ∝ the energy variance, which is non-negative. C_V = Var(E)/(kT²) ≥ 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the heat capacity in terms of fluctuations?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What controls canonical energy fluctuations?",
-      "answer": "The second β derivative of lnZ.",
+      "prompt": "What determines the size of canonical energy fluctuations?",
+      "answer": "The second β-derivative of ln Z",
       "options": [
-        "The second β derivative of lnZ.",
-        "A first-order expansion of the large bath entropy."
+        "The temperature of the bath",
+        "The second β-derivative of ln Z",
+        "The first derivative of Z",
+        "The volume of the system"
       ],
-      "explanation": "The second β derivative of lnZ.",
+      "explanation": "The variance of the energy comes from the second derivative of the log partition function: Var(E) = ∂² ln Z/∂β².",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Differentiate ln Z twice."
     },
     {
       "id": "review-core-transfer",
@@ -93,7 +105,7 @@
       "prompt": "For T=k=1 and gap Δ=ln3, find canonical excited probability.",
       "answer": "0.25",
       "hint": "The Boltzmann ratio is exp(−Δ)=1/3.",
-      "explanation": "The Boltzmann ratio is exp(−Δ)=1/3. The value in the stated units is 0.25.",
+      "explanation": "The ratio of excited to ground weights is e^(−Δ) = 1/3, so p = (1/3)/(1 + 1/3) = 1/4 = 0.25.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -103,21 +115,23 @@
       "prompt": "For a unit gap and excited probability 0.25, find energy variance.",
       "answer": "0.1875",
       "hint": "Use Δ²p(1−p).",
-      "explanation": "Use Δ²p(1−p). The value in the stated units is 0.1875.",
+      "explanation": "For a two-level system, Var(E) = Δ²p(1 − p) = 1 × 0.25 × 0.75 = 0.1875.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can level degeneracy be omitted from a partition sum whenever energy values are known?",
-      "answer": "No; every independent state contributes its Boltzmann weight.",
+      "prompt": "You know all the energy values of a system. Can you omit the degeneracy from the partition sum?",
+      "answer": "No: every independent state contributes its Boltzmann weight",
       "options": [
-        "Yes; only distinct numerical energies are counted.",
-        "No; every independent state contributes its Boltzmann weight."
+        "No: every independent state contributes its Boltzmann weight",
+        "Yes: if g is small, since a small degeneracy changes the sum only by a negligible amount",
+        "Yes: only distinct energies count",
+        "Yes: degeneracy is a detail"
       ],
-      "explanation": "Multiplicity changes probabilities and thermodynamics.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Multiplicity changes the probabilities and the thermodynamics.",
+      "hint": "Two states with the same energy: how many terms?",
       "misconceptions": {
         "Yes; only distinct numerical energies are counted.": "Multiplicity changes probabilities and thermodynamics."
       },
@@ -162,7 +176,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Canonical ensemble and partition function”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -240,7 +254,7 @@ For an excited level of degeneracy three and a nondegenerate ground level, choos
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Canonical ensemble and partition function”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 **Core derivation.** For degeneracy ratio $g$ and $x=\Delta/(k_BT)$, derive $C_V/k_B=x^2g e^{-x}/(1+g e^{-x})^2$. Explain why the heat capacity vanishes as both $T\to0$ and $T\to\infty$ for this finite spectrum. The low-temperature exponential beats $x^2$; at high temperature the variance is bounded while $T^{-2}$ vanishes.
 
@@ -250,12 +264,12 @@ Answer the tagged questions below. Then alter one hypothesis in the worked argum
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Canonical ensemble and partition function” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Canonical ensemble and partition function” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

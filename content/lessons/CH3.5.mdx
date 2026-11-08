@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May different energy references be subtracted without checking?",
+      "prompt": "Your computed energies come from two programs that use different zero-energy references. May you subtract them directly to get a reaction energy?",
       "options": [
-        "Yes",
-        "No"
+        "No: first convert both to a common reference and check the conventions",
+        "Yes: if both are in hartree, since the programs use the same zero of energy whatever their conventions",
+        "Yes: the programs agree on the energies",
+        "Yes: energy is energy in each program"
       ],
-      "answer": "No",
-      "explanation": "The comparison needs a common convention.",
+      "answer": "No: first convert both to a common reference and check the conventions",
+      "explanation": "Energies are only comparable when the same reference, method and basis are used for both.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a zero of energy have to be the same in both codes?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a smooth fitted curve prove every input point converged?",
+      "prompt": "A smooth curve is fitted through computed points along a bond stretch. Does this prove every point converged to the same electronic state?",
       "options": [
-        "No",
-        "Yes"
+        "No: state switches and numerical failures can be hidden by the fit",
+        "Yes: a smooth fitted curve shows that each point converged to the same electronic state, with no failures",
+        "No: fits cannot be smooth through such points",
+        "Yes: a smooth curve means convergence"
       ],
-      "answer": "No",
-      "explanation": "State switches and numerical errors can be hidden.",
+      "answer": "No: state switches and numerical failures can be hidden by the fit",
+      "explanation": "A fit can bridge a discontinuity or an SCF that collapsed to another state. Check the points individually.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does fitting do to an outlier point?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should unavailable independent evidence remain an explicit limitation?",
+      "prompt": "You have no experimental value to compare your computed result with. What should the report say?",
       "options": [
-        "No",
-        "Yes"
+        "Quote a plausible experimental value from memory, so that the report can still show a comparison",
+        "Claim the result is validated by the calculation",
+        "Quote a plausible experimental number",
+        "State explicitly that independent evidence was unavailable as a limitation"
       ],
-      "answer": "Yes",
-      "explanation": "It cannot be invented.",
+      "answer": "State explicitly that independent evidence was unavailable as a limitation",
+      "explanation": "Missing evidence is reported, not invented.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is it honest to supply data you do not have?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What belongs in a discrepancy analysis?",
-      "answer": "Differences, assumptions, uncertainty and unresolved causes.",
+      "prompt": "What should the discrepancy analysis section of a project report contain?",
+      "answer": "The differences found, assumptions, uncertainties and causes still unresolved",
       "options": [
-        "Differences, assumptions, uncertainty and unresolved causes.",
-        "One clearly defined species/state/observable and validation scope."
+        "The final energy and its units for the system",
+        "The differences found, assumptions, uncertainties and causes still unresolved",
+        "A statement that the method is exact, so that the section shows no unresolved discrepancies",
+        "Agreement with the reference value that was quoted"
       ],
-      "explanation": "Differences, assumptions, uncertainty and unresolved causes.",
+      "explanation": "Honest analysis shows where and how far results deviate and what remains unexplained.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What would a reader need to judge the result?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For f(x)=x² at x=2 and h=0.1, find the central-difference derivative.",
       "answer": "4",
       "hint": "Evaluate [(2.1)²−(1.9)²]/0.2.",
-      "explanation": "Evaluate [(2.1)²−(1.9)²]/0.2. The value in the stated units is 4.",
+      "explanation": "[f(2.1) − f(1.9)]/(2h) = (4.41 − 3.61)/0.2 = 0.80/0.2 = 4, which equals the exact derivative 2x = 4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "In the truncation-dominated O(h²) regime, halve the step. Find the leading error ratio.",
       "answer": "0.25",
       "hint": "Square the step ratio.",
-      "explanation": "Square the step ratio. The value in the stated units is 0.25.",
+      "explanation": "In the O(h²) regime the error ∝ h². Halving h gives (1/2)² = 0.25 of the error.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does an analytic toy benchmark count as an executed ab initio molecular project?",
-      "answer": "No; the actual molecular inputs, method, computation and provenance are still required.",
+      "prompt": "A project plots an analytic toy-model energy curve. Does it count as an executed ab initio molecular project?",
+      "answer": "No: it needs actual molecular inputs, a method, a computation and provenance",
       "options": [
-        "Yes; any energy plot is a complete molecular calculation.",
-        "No; the actual molecular inputs, method, computation and provenance are still required."
+        "Yes: if the plot looks like a molecule",
+        "Yes: an energy plot counts as a calculation",
+        "Yes: toy models are ab initio calculations",
+        "No: it needs actual molecular inputs, a method, a computation and provenance"
       ],
-      "explanation": "A method demonstration and a performed reproducible project are distinct.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Demonstrating a method differs from performing and documenting a calculation on a real system.",
+      "hint": "Where do the numbers come from?",
       "misconceptions": {
         "Yes; any energy plot is a complete molecular calculation.": "A method demonstration and a performed reproducible project are distinct."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Computational chemistry mini-project”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If E_A=−8 and E_B=−6 in the same energy convention, ΔE=2. If independent re
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Computational chemistry mini-project”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Computational chemistry mini-project” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Computational chemistry mini-project” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

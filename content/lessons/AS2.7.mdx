@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a timing coincidence alone prove a shared source?",
+      "prompt": "A gravitational-wave event and a gamma-ray burst arrive within two seconds. Does the timing coincidence alone prove a shared source?",
       "options": [
-        "Yes",
-        "No"
+        "No: background rates, sky localisation and emission physics must also be assessed",
+        "Yes: a coincidence within two seconds is too unlikely by chance to need further checks",
+        "Yes: it is certain, as the two signals arrive at once and no other cause could do that to us",
+        "No: gravitational and electromagnetic signals cannot be related in a single source"
       ],
-      "answer": "No",
-      "explanation": "Background rates, localization and emission physics also matter.",
+      "answer": "No: background rates, sky localisation and emission physics must also be assessed",
+      "explanation": "The false-alarm probability depends on how often unrelated events happen to coincide.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How often do random coincidences occur?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does an arrival-time difference directly equal a propagation-speed effect?",
+      "prompt": "Gravitational waves and light from the same event arrive 1.7 s apart. Does that prove they travel at different speeds?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the speeds differ by that amount, which is the delay divided by the distance",
+        "Yes: gravitons are slow compared with photons, so they lag behind",
+        "Yes: light is delayed by space on the way, while the waves are not",
+        "No: intrinsic emission delays at the source can contribute"
       ],
-      "answer": "No",
-      "explanation": "Intrinsic emission delays can contribute.",
+      "answer": "No: intrinsic emission delays at the source can contribute",
+      "explanation": "The photons may be emitted after the merger. The delay is a combination of emission and propagation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Were they emitted simultaneously?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can joint detections be treated as an unbiased population without selection modeling?",
+      "prompt": "You collect all joint GW and light detections and treat them as an unbiased sample of all mergers. What is wrong?",
       "options": [
-        "Yes",
-        "No"
+        "A fault in one detector: detections of both signals form a complete and unbiased sample of the mergers",
+        "Joint detections are complete for the mergers in the volume",
+        "Instrument sensitivity and the overlap of both detectors' selection shape the sample",
+        "A mistake in the arithmetic of the sample size, which should be repeated for the sample of mergers again"
       ],
-      "answer": "No",
-      "explanation": "Instrument sensitivities and overlap selection shape the sample.",
+      "answer": "Instrument sensitivity and the overlap of both detectors' selection shape the sample",
+      "explanation": "You see only events bright and well-located in both channels.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which events are missed?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can multiplying posterior maps be problematic?",
-      "answer": "Their common priors may be counted more than once",
+      "prompt": "Two independent probability maps for the same source both include the same prior. Why is multiplying them problematic?",
+      "answer": "The shared prior is counted twice",
       "options": [
-        "Their common priors may be counted more than once",
-        "All probability maps are automatically independent likelihoods"
+        "Probability maps are independent, so multiplying them is the correct combination in this case",
+        "It reduces the area of the map too far",
+        "Multiplication is not permitted for maps",
+        "The shared prior is counted twice"
       ],
-      "explanation": "Likelihood and prior conventions must be reconciled.",
+      "explanation": "Posterior maps = likelihood × prior. Multiplying them squares the prior.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Count the priors in the product."
     },
     {
       "id": "astro-transfer-1",
@@ -93,21 +105,23 @@
       "prompt": "Two independent Gaussian timing errors have standard deviations 3 s and 4 s. Find standard deviation of their difference in seconds.",
       "answer": "5",
       "hint": "Add independent variances, then take the square root.",
-      "explanation": "Add independent variances, then take the square root. The value in the stated units is 5.",
+      "explanation": "Independent variances add even for a difference: σ² = 3² + 4² = 25 s², so σ = 5 s.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can a measured messenger arrival delay always be interpreted entirely as different propagation speeds?",
-      "answer": "No; an intrinsic source emission delay may contribute.",
+      "prompt": "Can a measured delay between two messengers be attributed entirely to a difference in their propagation speeds?",
+      "answer": "No: an intrinsic emission delay may contribute",
       "options": [
-        "Yes; all messengers must be emitted simultaneously.",
-        "No; an intrinsic source emission delay may contribute."
+        "No: the delays are noise in the clocks and carry no physics",
+        "No: an intrinsic emission delay may contribute",
+        "Yes: the speeds explain the delays in full",
+        "Yes: the messengers are emitted at the same instant"
       ],
-      "explanation": "Source physics and propagation both enter the timing model.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Both source physics and propagation enter the timing model.",
+      "hint": "Is simultaneous emission guaranteed?",
       "misconceptions": {
         "Yes; all messengers must be emitted simultaneously.": "Source physics and propagation both enter the timing model."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Multi-messenger astronomy”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ If prior odds for a common source are 1:100 and a justified joint likelihood rat
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Multi-messenger astronomy”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Multi-messenger astronomy” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Multi-messenger astronomy” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

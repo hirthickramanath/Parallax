@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do antibonding electrons reduce the elementary MO bond-order count?",
+      "prompt": "O₂ has 8 bonding and 4 antibonding valence electrons in the simple MO picture. What bond order does it have?",
       "options": [
-        "No",
-        "Yes"
+        "12: the valence electrons are added together, as the antibonding ones also contribute to the bond",
+        "12, the number of valence electrons in the molecule",
+        "2: antibonding electrons are subtracted, (8 − 4)/2",
+        "6, half the number of valence electrons in the molecule"
       ],
-      "answer": "Yes",
-      "explanation": "They enter with a minus sign.",
+      "answer": "2: antibonding electrons are subtracted, (8 − 4)/2",
+      "explanation": "Bond order = (bonding − antibonding)/2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Subtract, then halve."
     },
     {
       "id": "concept-2",
-      "prompt": "Does one MO ordering apply unchanged to every diatomic?",
+      "prompt": "The MO energy ordering for N₂ puts σ₂p above π₂p, but O₂ does not. Why can't one ordering fit all diatomics?",
       "options": [
-        "No",
-        "Yes"
+        "The diatomics share one ordering, as the s–p mixing is the same for each pair of atoms",
+        "s–p mixing depends on the atomic orbital energy gaps, which change along the period",
+        "It depends on the colour of the molecule, which the energy levels follow",
+        "The number of electrons decides the ordering"
       ],
-      "answer": "No",
-      "explanation": "Symmetry mixing and atomic energies can change it.",
+      "answer": "s–p mixing depends on the atomic orbital energy gaps, which change along the period",
+      "explanation": "For lighter atoms the 2s and 2p energies are close, so mixing pushes σ₂p up.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the s–p energy gap for N and O."
     },
     {
       "id": "concept-3",
-      "prompt": "Can magnetism test an all-paired bonding model?",
+      "prompt": "Liquid oxygen is attracted to a magnet. Which model does this support?",
       "options": [
-        "No",
-        "Yes"
+        "MO theory with two unpaired π* electrons rather than an all-paired Lewis structure",
+        "The all-paired Lewis double bond, which predicts that the molecule has no unpaired electrons to respond",
+        "Valence-shell electron repulsion, as in the VSEPR picture",
+        "No model of bonding explains the attraction of the liquid to a magnet"
       ],
-      "answer": "Yes",
-      "explanation": "Unpaired electronic spins affect response.",
+      "answer": "MO theory with two unpaired π* electrons rather than an all-paired Lewis structure",
+      "explanation": "Paramagnetism shows unpaired spins, which simple Lewis O=O does not predict.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the Lewis structure have unpaired electrons?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What constrains orbital models experimentally?",
-      "answer": "Spectra, magnetism and structural/vibrational evidence.",
+      "prompt": "What evidence do you use to test an orbital model of a molecule?",
+      "answer": "Spectra, magnetism and structural or vibrational data",
       "options": [
-        "Spectra, magnetism and structural/vibrational evidence.",
-        "Electronic structure through a selected one-electron basis and many-electron construction."
+        "The number of lines drawn",
+        "Spectra, magnetism and structural or vibrational data",
+        "Elegance of the diagram",
+        "The equations of the model itself"
       ],
-      "explanation": "Spectra, magnetism and structural/vibrational evidence.",
+      "explanation": "Models must be constrained by measurable properties.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Name something you can measure."
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For 8 bonding and 4 antibonding electrons in a stated MO ordering, find bond order.",
       "answer": "2",
       "hint": "Use (8−4)/2.",
-      "explanation": "Use (8−4)/2. The value in the stated units is 2.",
+      "explanation": "Bond order = (8 − 4)/2 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -94,7 +106,7 @@
       "prompt": "Two electrons are added to previously empty antibonding orbitals with bonding occupancy fixed. Find the bond-order change.",
       "answer": "-1",
       "hint": "The antibonding term increases by two inside a half difference.",
-      "explanation": "The antibonding term increases by two inside a half difference. The value in the stated units is -1.",
+      "explanation": "Bond order = (N_b − N_a)/2. Adding 2 antibonding electrons reduces it by 2/2 = 1, so the change is −1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core",
@@ -102,14 +114,16 @@
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does adding electrons always increase MO bond order?",
-      "answer": "No; added antibonding occupancy can decrease it.",
+      "prompt": "In the simple MO picture, going from O₂ to O₂⁻ adds an electron. What happens to the bond order?",
+      "answer": "It decreases from 2 to 1.5 because the added electron enters an antibonding orbital",
       "options": [
-        "Yes; every electron contributes positive bond order.",
-        "No; added antibonding occupancy can decrease it."
+        "It increases from 2 to 2.5 because the added electron goes into a bonding orbital of the molecule",
+        "It stays the same at 2 when the electron is added",
+        "It decreases from 2 to 1.5 because the added electron enters an antibonding orbital",
+        "It increases from 2 to 2.5 as the electron is added"
       ],
-      "explanation": "The orbital character matters, not just total electron count.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The extra electron goes into π*, reducing the bond order.",
+      "hint": "Which orbital is the highest occupied one in O₂?",
       "misconceptions": {
         "Yes; every electron contributes positive bond order.": "The orbital character matters, not just total electron count."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Molecular orbitals in diatomic molecules”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For eight bonding and four antibonding electrons, the elementary bond order is (
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Molecular orbitals in diatomic molecules”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Molecular orbitals in diatomic molecules” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Molecular orbitals in diatomic molecules” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

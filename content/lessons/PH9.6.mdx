@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is dσ/dΩ integrated over θ without the solid-angle weight?",
+      "prompt": "You integrate dσ/dΩ over θ to get the total cross section. What measure must be included?",
       "options": [
-        "Yes",
-        "No"
+        "No weight beyond dσ/dΩ itself",
+        "Just dφ over the azimuth",
+        "Just dθ over the polar angle",
+        "The solid-angle weight sin θ dθ dφ"
       ],
-      "answer": "No",
-      "explanation": "The angular measure includes sinθ and azimuth.",
+      "answer": "The solid-angle weight sin θ dθ dφ",
+      "explanation": "The total cross section integrates the differential cross section over solid angle: σ = ∫(dσ/dΩ) sin θ dθ dφ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is dΩ in spherical coordinates?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is Born approximation exact for every potential?",
+      "prompt": "Is the Born approximation exact for every potential?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it is exact, as it resums the interaction",
+        "Yes: at low energy",
+        "Yes: it holds for strong potentials",
+        "No: its perturbative regime must hold"
       ],
-      "answer": "No",
-      "explanation": "Its perturbative regime must hold.",
+      "answer": "No: its perturbative regime must hold",
+      "explanation": "It requires a weak potential or a high energy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When does the first-order term dominate?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can limited angular acceptance bias inferred total cross section?",
+      "prompt": "A detector covers only part of the angular range. Can this bias an inferred total cross section?",
       "options": [
-        "No",
-        "Yes"
+        "No: the missing part cancels in the integral",
+        "No: the cross section is local",
+        "No: it averages out",
+        "Yes: it samples only part of the scattered flux"
       ],
-      "answer": "Yes",
-      "explanation": "The detector samples only part of the flux.",
+      "answer": "Yes: it samples only part of the scattered flux",
+      "explanation": "You must extrapolate to unobserved angles.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where might the missing flux be?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify Coulomb examples?",
-      "answer": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "prompt": "Why do Coulomb scattering examples need special care in scattering theory?",
+      "answer": "The long range changes the asymptotic and convergence assumptions",
       "options": [
-        "Long-range behaviour changes asymptotic and convergence assumptions.",
-        "A complex asymptotic coefficient tied to flux normalization."
+        "The long range changes the asymptotic and convergence assumptions",
+        "It is no different from short-range scattering, since the same asymptotic assumptions apply",
+        "The phase shifts are finite and well defined",
+        "The Coulomb potential is short-range in practice"
       ],
-      "explanation": "Long-range behaviour changes asymptotic and convergence assumptions.",
+      "explanation": "The Coulomb phase diverges logarithmically.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How fast does 1/r fall compared with the usual assumption?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,13 +112,15 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Can the short-range s-wave model be applied unchanged to long-range Coulomb scattering?",
-      "answer": "No; the interaction and asymptotic assumptions differ.",
+      "prompt": "Can the short-range s-wave scattering-length model be applied unchanged to Coulomb scattering?",
+      "answer": "No: the interaction and asymptotic assumptions differ",
       "options": [
-        "Yes; every potential has the same scattering-length formula.",
-        "No; the interaction and asymptotic assumptions differ."
+        "Yes: formula is universal",
+        "Yes: it works after adding a cut-off",
+        "No: the interaction and asymptotic assumptions differ",
+        "Yes: the Coulomb potential has a scattering length too"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
+      "hint": "Is the Coulomb potential short-range?",
       "explanation": "Check range, channels and energy.",
       "misconceptions": {
         "Yes; every potential has the same scattering-length formula.": "Check range, channels and energy."
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Scattering theory”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If f=2 isotropically in length units with equal speeds, differential cross secti
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Scattering theory”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Scattering theory” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Scattering theory” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

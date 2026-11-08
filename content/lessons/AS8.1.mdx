@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a flat circular-speed curve solid-body rotation?",
+      "prompt": "The Milky Way's rotation curve is roughly flat at about 220 km/s. Is this solid-body rotation?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: both are constant in radius for the Galaxy",
+        "No: in solid-body rotation v rises ∝ R, while here Ω = v/R falls as 1/R",
+        "Yes: a flat curve is solid-body rotation of the disc",
+        "Yes: the same angular speed at the disc radii"
       ],
-      "answer": "No",
-      "explanation": "Ω falls as 1/R.",
+      "answer": "No: in solid-body rotation v rises ∝ R, while here Ω = v/R falls as 1/R",
+      "explanation": "Solid-body rotation has constant Ω and v ∝ R. A flat curve has constant v.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare v(R) for the two cases."
     },
     {
       "id": "concept-2",
-      "prompt": "Is a brightness map automatically a mass map?",
+      "prompt": "A map of the Galaxy's infrared brightness is available. Is it a map of its mass?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: infrared light traces mass, so no population or extinction corrections are needed",
+        "No: the stellar population and extinction weight light differently from mass",
+        "Yes: infrared light traces the mass of the Galaxy, as a rule, without corrections",
+        "Yes: infrared light traces mass in the Galaxy at large"
       ],
-      "answer": "No",
-      "explanation": "Population and extinction weight light differently.",
+      "answer": "No: the stellar population and extinction weight light differently from mass",
+      "explanation": "Mass-to-light ratios vary, and gas and dark matter emit little.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is every mass equally luminous?"
     },
     {
       "id": "concept-3",
-      "prompt": "Must survey selection enter population inference?",
+      "prompt": "You count stars in a magnitude-limited catalogue to infer the Galaxy's structure. Must survey selection be modelled?",
       "options": [
-        "No",
-        "Yes"
+        "No: counts are direct, and need no correction for the limit",
+        "No: catalogues are complete",
+        "Yes: the catalogue is not a complete census of volume",
+        "No: selection is irrelevant"
       ],
-      "answer": "Yes",
-      "explanation": "The catalogue is not a complete volume census.",
+      "answer": "Yes: the catalogue is not a complete census of volume",
+      "explanation": "Distant, faint and obscured stars are missing.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which stars are missed?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What frame inputs affect velocity conversion?",
-      "answer": "Solar position/motion and coordinate conventions.",
+      "prompt": "Which inputs affect the conversion of observed stellar motions into Galactocentric velocities?",
+      "answer": "The Sun's position and motion, and the coordinate conventions",
       "options": [
-        "Solar position/motion and coordinate conventions.",
-        "Stars have random and noncircular motions."
+        "The star's colour and brightness, as the Sun's own position and motion cancel in the conversion",
+        "The Sun's position and motion, and the coordinate conventions",
+        "The star's name in the catalogue",
+        "The star's brightness in one band"
       ],
-      "explanation": "Solar position/motion and coordinate conventions.",
+      "explanation": "R₀, V☉ and the solar peculiar motion all enter.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where are you observing from?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For an exponential vertical profile, find density ratio at height z=2h.",
       "answer": "0.1353352832366127",
       "hint": "Use exp(−|z|/h).",
-      "explanation": "Use exp(−|z|/h). The value in the stated units is 0.135335283237.",
+      "explanation": "ρ(z)/ρ₀ = exp(−|z|/h). At z = 2h this is e^(−2) ≈ 0.1353.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For ρ₀=3 and h=2 in consistent model units, find total vertical column density.",
       "answer": "12",
       "hint": "Integrate symmetrically to obtain 2ρ₀h.",
-      "explanation": "Integrate symmetrically to obtain 2ρ₀h. The value in the stated units is 12.",
+      "explanation": "Σ = ∫ρ₀e^(−|z|/h)dz over −∞..∞ = 2ρ₀h = 2 × 3 × 2 = 12.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a tracer-star density profile alone uniquely specify the total gravitational mass distribution?",
-      "answer": "No; tracer selection and dynamical/mass relations are needed.",
+      "prompt": "Does the density profile of a tracer population alone give the Galaxy's total mass distribution?",
+      "answer": "No: the selection of tracers and the dynamical relation to mass are needed",
       "options": [
-        "Yes; every star count is a direct total-mass measurement.",
-        "No; tracer selection and dynamical/mass relations are needed."
+        "Yes: the density profile of a tracer population directly gives the total mass distribution, with no model",
+        "No: the selection of tracers and the dynamical relation to mass are needed",
+        "Yes: each star counts as mass in the sum, and no model enters into the argument",
+        "Yes: with no model, the profile gives the mass"
       ],
-      "explanation": "Observed tracers and the gravitating distribution are distinct.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Tracers and the gravitating distribution are distinct.",
+      "hint": "Do tracers weigh the whole potential?",
       "misconceptions": {
         "Yes; every star count is a direct total-mass measurement.": "Observed tracers and the gravitating distribution are distinct."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Milky Way structure”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For circular speed 200 and radius 10 in compatible units, angular speed is 20 in
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Milky Way structure”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Milky Way structure” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Milky Way structure” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

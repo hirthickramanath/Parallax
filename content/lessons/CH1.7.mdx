@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can coefficients from concentration and mole-fraction standards be mixed without conversion?",
+      "prompt": "One paper reports an activity coefficient on the mole-fraction scale and another on the molality scale. Can you mix them without conversion?",
       "options": [
-        "Yes",
-        "No"
+        "No: the numerical definitions and standard states differ",
+        "Yes: in water, where the two scales coincide",
+        "Yes: both are activity coefficients",
+        "Yes: they are equal in a given solution"
       ],
-      "answer": "No",
-      "explanation": "Their numerical definitions differ.",
+      "answer": "No: the numerical definitions and standard states differ",
+      "explanation": "Activity coefficients depend on the concentration scale because the reference states differ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check which standard state each uses."
     },
     {
       "id": "concept-2",
-      "prompt": "Is fugacity always exactly equal to pressure?",
+      "prompt": "At 100 bar, a real gas has a fugacity of 85 bar. What does this show?",
       "options": [
-        "No",
-        "Yes"
+        "Fugacity is always equal to the pressure, so the gauge reading must be wrong for this gas",
+        "Fugacity is an effective pressure and equals pressure only in the ideal limit",
+        "Fugacity is lower than the pressure for a real gas",
+        "The pressure gauge is wrong at that reading"
       ],
-      "answer": "No",
-      "explanation": "Equality is the ideal-limit relation under the stated convention.",
+      "answer": "Fugacity is an effective pressure and equals pressure only in the ideal limit",
+      "explanation": "f = φp, with φ = 1 for an ideal gas.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the ratio φ = f/p for these numbers and compare with 1."
     },
     {
       "id": "concept-3",
-      "prompt": "Can arbitrary independently fitted activity curves always satisfy Gibbs–Duhem?",
+      "prompt": "You fit activity coefficient curves for the two components of a binary mixture independently. Must they obey the Gibbs–Duhem relation?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they are linked by thermodynamic consistency, so independent fits can violate it",
+        "No: the two coefficients are independent, so each curve can be fitted on its own without a constraint",
+        "Yes: and a pair of curves satisfies it by default in the fit",
+        "No: they are independent in a binary mixture of this type"
       ],
-      "answer": "No",
-      "explanation": "Thermodynamic consistency links them.",
+      "answer": "Yes: they are linked by thermodynamic consistency, so independent fits can violate it",
+      "explanation": "x₁ d ln γ₁ + x₂ d ln γ₂ = 0 at constant T and p. Fitting both freely can break this.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can you change one component without affecting the other?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why state a standard pressure in μ=μ°+RT ln(f/p°)?",
-      "answer": "It makes the ratio dimensionless and defines the reference",
+      "prompt": "Why must μ = μ° + RT ln(f/p°) include a standard pressure p°?",
+      "answer": "It makes the ratio dimensionless and defines the reference state",
       "options": [
-        "It makes the ratio dimensionless and defines the reference",
-        "A pressure unit can be silently ignored inside a logarithm"
+        "It cancels with f in the logarithm",
+        "It changes the temperature",
+        "It is a formatting convention for the equation",
+        "It makes the ratio dimensionless and defines the reference state"
       ],
-      "explanation": "Changing conventions requires a consistent change of μ°.",
+      "explanation": "The logarithm requires a dimensionless argument, and μ° depends on the chosen p°.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is ln of a pressure in bar?"
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For γ=2 and mole fraction x=0.25, find activity γx under this convention.",
       "answer": "0.5",
       "hint": "Multiply the coefficient by mole fraction.",
-      "explanation": "Multiply the coefficient by mole fraction. The value in the stated units is 0.5.",
+      "explanation": "a = γx = 2 × 0.25 = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "At fixed x and RT=1, activity coefficient doubles. Find chemical-potential increase.",
       "answer": "0.6931471805599453",
       "hint": "Use the logarithm of the coefficient ratio.",
-      "explanation": "Use the logarithm of the coefficient ratio. The value in the stated units is 0.69314718056.",
+      "explanation": "μ = μ° + RT ln(γx), so doubling γ at fixed x raises μ by RT ln 2 = 1 × 0.6931 ≈ 0.6931.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Can activity coefficients be changed arbitrarily without checking standard states or mixture consistency?",
-      "answer": "No; conventions and thermodynamic consistency constrain their use.",
+      "prompt": "May you rescale activity coefficients arbitrarily to improve a fit?",
+      "answer": "No: standard states and thermodynamic consistency constrain them",
       "options": [
-        "Yes; any correction factor leaves all chemical predictions consistent.",
-        "No; conventions and thermodynamic consistency constrain their use."
+        "Yes: a correction of a convenient size is fine",
+        "No: standard states and thermodynamic consistency constrain them",
+        "Yes: if the pressure is low",
+        "Yes: they are fitting constants without a meaning"
       ],
       "explanation": "Activities and standard quantities must be defined together.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "hint": "Does changing γ require a matching change of μ°?",
       "misconceptions": {
         "Yes; any correction factor leaves all chemical predictions consistent.": "Activities and standard quantities must be defined together."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Nonideal mixtures, activity and fugacity”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For a stated mole-fraction convention with x=0.2 and γ=1.5, activity is 0.3. Fo
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Nonideal mixtures, activity and fugacity”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Nonideal mixtures, activity and fugacity” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Nonideal mixtures, activity and fugacity” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

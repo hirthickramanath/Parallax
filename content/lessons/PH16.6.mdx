@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does one dust power law apply through every cosmological epoch?",
+      "prompt": "A matter-only (dust) FLRW universe expands as a ∝ t^(2/3). Does that same power law describe every epoch of our universe?",
       "options": [
-        "Yes",
-        "No"
+        "No: radiation domination gives a ∝ t^(1/2) and a cosmological constant gives exponential growth",
+        "Yes: dust dominates throughout the whole history of the universe, so a ∝ t^(2/3) describes each epoch of it",
+        "Yes: the exponent is a law of nature, so it holds in each epoch of the universe's expansion, as a rule",
+        "No: the universe did not follow a power law in the epochs that we can observe from the data"
       ],
-      "answer": "No",
-      "explanation": "Different content changes the solution.",
+      "answer": "No: radiation domination gives a ∝ t^(1/2) and a cosmological constant gives exponential growth",
+      "explanation": "The exponent depends on the equation of state w: a ∝ t^(2/(3(1+w))).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does ρ scale with a for radiation versus matter?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is a particle horizon defined by a past null-travel integral?",
+      "prompt": "A particle horizon marks how far light could have travelled since the Big Bang. How is it computed?",
       "options": [
-        "Yes",
-        "No"
+        "As the integral c∫dt/a(t) along a light ray, which is not simply c/H",
+        "As the radius of the Hubble sphere, which is the distance at which recession velocity equals light speed",
+        "As c divided by the Hubble parameter",
+        "As c multiplied by the age of the universe"
       ],
-      "answer": "Yes",
-      "explanation": "It is not merely c/H.",
+      "answer": "As the integral c∫dt/a(t) along a light ray, which is not simply c/H",
+      "explanation": "Expansion stretches the path, so the age-times-c estimate fails; the Hubble radius is a different scale.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Light rays satisfy c dt = a dχ."
     },
     {
       "id": "concept-3",
-      "prompt": "Must mixed components be evolved consistently?",
+      "prompt": "A universe contains matter, radiation and dark energy. Can you evolve the matter density alone to get the expansion history?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the dominant component sets the expansion at all times, so the other components can be left out",
+        "No: H² depends on the sum of all components, each evolving with its own scaling",
+        "Yes: other components do not matter",
+        "No: just the radiation matters, as it dominates the expansion of the universe today"
       ],
-      "answer": "Yes",
-      "explanation": "One component’s scaling does not determine the total alone.",
+      "answer": "No: H² depends on the sum of all components, each evolving with its own scaling",
+      "explanation": "H² = (8πG/3)(ρ_m + ρ_r + ρ_Λ) − k/a².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the right-hand side of the Friedmann equation."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify global energy analogies?",
-      "answer": "General expanding spacetimes lack the same time symmetry as a static box.",
+      "prompt": "A student uses the Newtonian energy of a ball in a box to argue total energy is conserved in cosmic expansion. Why is this analogy unreliable in general?",
+      "answer": "An expanding spacetime lacks the time-translation symmetry that gives a conserved energy",
       "options": [
-        "General expanding spacetimes lack the same time symmetry as a static box.",
-        "A pressure-density EOS ratio in the stated units."
+        "An expanding spacetime lacks the time-translation symmetry that gives a conserved energy",
+        "Photon energy increases with expansion, which supplies the energy that the expanding box analogy lacks",
+        "Energy conservation is exact in cosmology, as the total energy of the box stays fixed in the expansion",
+        "Boxes cannot be expanded in the theory, so the argument from the ball in the box fails there"
       ],
-      "explanation": "General expanding spacetimes lack the same time symmetry as a static box.",
+      "explanation": "Radiation redshifts and loses energy with a, and dark energy density stays constant while volume grows.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Noether's theorem needs a symmetry."
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does the matter-only power law remain exact through radiation and dark-energy domination?",
-      "answer": "No; the energy components change the equation.",
+      "prompt": "A matter-only formula for the scale factor is applied through the radiation era and into dark-energy domination. Is it still exact?",
+      "answer": "No: the energy components change the equation and the solution",
       "options": [
-        "Yes; every cosmological epoch has the same exponent.",
-        "No; the energy components change the equation."
+        "No: the energy components change the equation and the solution",
+        "Yes: the epochs share one exponent, as the same law holds in each of them",
+        "Yes: just the constant of proportionality changes between the eras",
+        "No: the formula does not work in the radiation era of the universe"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the correct Friedmann contents.",
+      "hint": "Which term dominates in each epoch?",
+      "explanation": "Each era is a different solution to the Friedmann equations.",
       "misconceptions": {
         "Yes; every cosmological epoch has the same exponent.": "Use the correct Friedmann contents."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Cosmological solutions (FLRW)”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For a dust power-law branch, increasing time by eight increases a by four. For r
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Cosmological solutions (FLRW)”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Cosmological solutions (FLRW)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Cosmological solutions (FLRW)” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "q1",
-      "prompt": "Can a signed integral be zero while total area is positive?",
+      "prompt": "∫ from 0 to 2π of sin x dx equals zero. What does this say about the area between the curve and the axis?",
       "options": [
-        "Yes",
-        "No"
+        "The curve lies on the axis",
+        "The curve encloses no area",
+        "The signed areas cancel, but the total area is positive",
+        "The integral must be wrong"
       ],
-      "answer": "Yes",
-      "explanation": "Positive and negative contributions can cancel.",
+      "answer": "The signed areas cancel, but the total area is positive",
+      "explanation": "The integral counts area above the axis as positive and below as negative. Equal and opposite lobes cancel, though each encloses area.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Sketch sin x on 0 to 2π."
     },
     {
       "id": "q2",
-      "prompt": "What freedom remains after finding an antiderivative?",
+      "prompt": "You find an antiderivative F(x) of f(x). What freedom remains?",
       "options": [
-        "An additive constant",
-        "An arbitrary multiplicative factor"
+        "A multiplicative factor",
+        "No freedom: F is fully unique",
+        "A change of variable",
+        "An additive constant, F(x) + C"
       ],
-      "answer": "An additive constant",
-      "explanation": "Differentiation removes an additive constant.",
+      "answer": "An additive constant, F(x) + C",
+      "explanation": "Differentiating removes any constant, so F + C is also an antiderivative. A multiplicative factor would change the derivative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which operation does differentiation erase?"
     },
     {
       "id": "q3",
-      "prompt": "Why change limits under substitution?",
+      "prompt": "In a definite integral, you substitute u = g(x). What must you do with the limits?",
       "options": [
-        "They refer to the new variable",
-        "Limits never matter"
+        "Drop them and add a constant",
+        "Keep the old x-limits, since the limits of a definite integral do not depend on the variable",
+        "Replace them with 0 and 1",
+        "Convert them to u-values, since they refer to the new variable"
       ],
-      "answer": "They refer to the new variable",
-      "explanation": "Each endpoint must represent the same original point.",
+      "answer": "Convert them to u-values, since they refer to the new variable",
+      "explanation": "Each limit is a value of the integration variable. In terms of u, the endpoints become g(a) and g(b).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask what variable the limits are values of."
     },
     {
       "id": "q4",
@@ -69,16 +78,19 @@
     },
     {
       "id": "q6",
-      "prompt": "Which rule produces integration by parts?",
+      "prompt": "Integration by parts is the integral form of which differentiation rule?",
       "options": [
-        "Product rule",
-        "Only a numerical pattern"
+        "The chain rule",
+        "The power rule",
+        "The product rule",
+        "The quotient rule"
       ],
-      "answer": "Product rule",
-      "explanation": "Integrate (uv)′ = u′v + uv′ and rearrange.",
+      "answer": "The product rule",
+      "explanation": "Integrate (uv)′ = u′v + uv′ to get uv = ∫u′v + ∫uv′, which rearranges to ∫uv′ = uv − ∫u′v.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "The formula involves a product of two functions."
     },
     {
       "id": "depth-transfer-1",
@@ -126,14 +138,16 @@
     },
     {
       "id": "depth-model-limits",
-      "prompt": "When substituting u=x² in an integral from x=1 to x=3, what are the new u-limits?",
-      "answer": "1 and 9",
+      "prompt": "In ∫ from x = 1 to 3 of 2x·f(x²) dx you substitute u = x². What are the new limits?",
+      "answer": "u = 1 to u = 9",
       "options": [
-        "1 and 3",
-        "1 and 9"
+        "u = 0 to u = 9",
+        "u = 1 to u = 3",
+        "u = 1 to u = 6",
+        "u = 1 to u = 9"
       ],
-      "explanation": "A definite integral’s bounds are values of the integration variable.",
-      "hint": "Identify the model assumptions before applying a formula.",
+      "explanation": "A definite integral's bounds are values of the integration variable. When x = 1, u = 1; when x = 3, u = 9.",
+      "hint": "Square the original limits.",
       "misconceptions": {
         "1 and 3": "A definite integral’s bounds are values of the integration variable."
       },

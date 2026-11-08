@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "A uniform slab with source function S is very optically thick (τ≫1). What does the emerging ray approach?",
       "options": [
-        "Zero, because the slab absorbs everything",
+        "Zero, as the slab absorbs the incident ray fully",
         "The source function S, with the incident light forgotten",
-        "Always the Planck function, whatever the emission physics",
-        "The incident intensity, because thick media only redirect light"
+        "The Planck function in the end, whatever the emission physics",
+        "The incident intensity, as thick media redirect light rather than absorbing it"
       ],
       "answer": "The source function S, with the incident light forgotten",
       "explanation": "Iout = Iin·e^(−τ) + S(1−e^(−τ)) tends to S as τ grows. S equals the Planck function only for thermal LTE emission without scattering.",
@@ -32,7 +32,7 @@
         "None: it is dimensionless, a pure number",
         "Column density, kg m⁻², from the product ρ ds",
         "Area per mass, m² kg⁻¹, the units of the opacity",
-        "Inverse length, m⁻¹, because κρ has those units"
+        "Inverse length, m⁻¹, as κρ has those units"
       ],
       "answer": "None: it is dimensionless, a pure number",
       "explanation": "κρ has units of inverse length; integrating over a length leaves a pure number.",
@@ -44,8 +44,8 @@
       "id": "concept-3",
       "prompt": "Which statement about the source function of an LTE medium that also scatters light is correct?",
       "options": [
-        "Scattering only removes light from the ray, so the source function is zero",
-        "The source function always equals the intensity of the incident radiation",
+        "Scattering removes light from the ray, so the source function is zero",
+        "The source function equals the intensity of the incident radiation",
         "LTE forces S = Bν(T) for the matter, regardless of whether it scatters light",
         "The scattered part depends on the radiation field, so S is not simply Bν(T)"
       ],
@@ -79,9 +79,9 @@
       "prompt": "A cloud of optical depth ln 2 lies in front of a bright background. Why must a model include both the attenuated background and the cloud's own emission?",
       "answer": "Both reach the observer, and depending on S they can dim or brighten the ray",
       "options": [
-        "Only the attenuated background reaches the observer; cloud emission is negligible",
-        "The two terms always cancel, leaving the incident brightness",
-        "Emission matters only when τ ≪ 1",
+        "The attenuated background reaches the observer; cloud emission is negligible",
+        "The two terms cancel, leaving the incident brightness unchanged at the observer",
+        "Emission matters when τ ≪ 1, and attenuation matters elsewhere",
         "Both reach the observer, and depending on S they can dim or brighten the ray"
       ],
       "explanation": "Iout = Iin e^(−τ) + S(1−e^(−τ)). With Iin=10 and τ=ln 2, S=2 gives 6 (dimmer) but S=20 gives 15 (brighter).",
@@ -95,7 +95,7 @@
       "prompt": "A purely absorbing slab has optical depth ln(4). Find transmitted fraction I/I₀.",
       "answer": "0.25",
       "hint": "Set source function to zero and use exponential attenuation.",
-      "explanation": "Set source function to zero and use exponential attenuation. The value in the stated units is 0.25.",
+      "explanation": "With no source term, I/I₀ = e^(−τ). Here τ = ln 4, so I/I₀ = e^(−ln 4) = 1/4 = 0.25.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -105,7 +105,7 @@
       "prompt": "For I₀=1, S=3 and optical depth ln(2), find emergent intensity.",
       "answer": "2",
       "hint": "The old intensity and source contribution each have weight one half.",
-      "explanation": "The old intensity and source contribution each have weight one half. The value in the stated units is 2.",
+      "explanation": "I = I₀e^(−τ) + S(1 − e^(−τ)). With τ = ln 2, e^(−τ) = 1/2, so I = 1 × 0.5 + 3 × 0.5 = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -115,9 +115,9 @@
       "prompt": "A slab has source function S greater than the incident intensity Iin. What happens to the emerging intensity as its optical depth increases?",
       "answer": "It rises toward S, so the ray brightens",
       "options": [
-        "It stays at Iin, because absorption and emission always cancel",
-        "It falls toward zero, because more absorption always dims",
-        "It rises without limit, because emission accumulates with τ",
+        "It stays at Iin, as absorption and emission cancel each other",
+        "It falls toward zero, as more absorption dims the ray",
+        "It rises without limit, as emission accumulates with τ along the path",
         "It rises toward S, so the ray brightens"
       ],
       "explanation": "The solution is a weighted mix of Iin and S with weights e^(−τ) and 1−e^(−τ), so it moves from Iin toward S and cannot exceed S.",
@@ -166,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Radiative transfer (optical depth, source function)”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -238,19 +238,19 @@ For incident intensity 10 and source function 2 in shared arbitrary units, τ=ln
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Radiative transfer (optical depth, source function)”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Radiative transfer (optical depth, source function)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Radiative transfer (optical depth, source function)” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must every continuous-spectrum value have a normalizable eigenvector?",
+      "prompt": "A self-adjoint operator has a continuous spectrum (e.g. position operator). Does each spectral value have a normalisable eigenvector?",
       "options": [
-        "Yes",
-        "No"
+        "No: it needs generalised, non-normalisable eigenstates",
+        "Yes: a spectral value has a normalisable eigenvector",
+        "Yes for the discrete part of the spectrum, as usual",
+        "Yes for bounded operators"
       ],
-      "answer": "No",
-      "explanation": "Generalized eigenstates may be needed.",
+      "answer": "No: it needs generalised, non-normalisable eigenstates",
+      "explanation": "δ(x − x₀) is not in L² but acts as an eigenfunction of x.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is δ(x − x₀) square-integrable?"
     },
     {
       "id": "concept-2",
       "prompt": "Does every self-adjoint operator have only discrete eigenvalues?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the eigenvectors are normalisable, so discrete",
+        "Yes on a bounded domain, with a discrete spectrum",
+        "No: continuous spectral components can occur",
+        "Yes if bounded, as the spectrum is then purely discrete"
       ],
-      "answer": "No",
-      "explanation": "Continuous spectral components can occur.",
+      "answer": "No: continuous spectral components can occur",
+      "explanation": "The free-particle Hamiltonian has a purely continuous spectrum [0, ∞).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the free particle."
     },
     {
       "id": "concept-3",
-      "prompt": "Must continuum spectral numerics be checked under refinement?",
+      "prompt": "You discretise an operator with a continuous spectrum on a grid. What check is essential?",
       "options": [
-        "No",
-        "Yes"
+        "Reduce the grid size until the artefacts have disappeared",
+        "Use a single resolution, as the results are then self-consistent",
+        "No check is needed: the spectrum on the grid is exact for the operator",
+        "Refine the grid and cutoff, since truncation can create artefacts"
       ],
-      "answer": "Yes",
-      "explanation": "Truncation can create artifacts.",
+      "answer": "Refine the grid and cutoff, since truncation can create artefacts",
+      "explanation": "A box of size L turns the continuum into a dense discrete spectrum and shifts thresholds.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the picture change with L?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What restricts f(A) for an unbounded f?",
-      "answer": "The functional-calculus domain condition.",
+      "prompt": "When defining f(A) for an unbounded function f of a self-adjoint operator A, what restricts the result?",
+      "answer": "The domain condition from the functional calculus (∫|f|²dμ < ∞)",
       "options": [
-        "The functional-calculus domain condition.",
-        "A projection-valued spectral measure for self-adjoint operators."
+        "The dimension of the Hilbert space, which must be finite",
+        "The boundedness of f, as a bounded function of A is defined everywhere",
+        "No condition: f(A) is defined for each function f of A",
+        "The domain condition from the functional calculus (∫|f|²dμ < ∞)"
       ],
-      "explanation": "The functional-calculus domain condition.",
+      "explanation": "f(A) is defined on vectors for which ∫|f(λ)|² d⟨ψ,E_λψ⟩ is finite.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is f(A)ψ defined for every ψ?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Must every self-adjoint operator have a complete countable basis of ordinary eigenvectors?",
-      "answer": "No; continuous spectrum can occur.",
+      "prompt": "Does every self-adjoint operator have a countable orthonormal basis of eigenvectors?",
+      "answer": "No: continuous spectrum requires projection-valued measures",
       "options": [
-        "Yes; all spectral resolutions are finite-matrix sums.",
-        "No; continuous spectrum can occur."
+        "Yes if unbounded, as the spectrum is then discrete and countable",
+        "Yes: the eigenvectors form a countable orthonormal basis",
+        "No: continuous spectrum requires projection-valued measures",
+        "Yes on L², where the eigenvector basis is countable in size too"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "The spectral theorem also uses projection-valued measures.",
+      "hint": "Think of the position operator.",
+      "explanation": "The spectral theorem is stated through projection-valued measures to cover both discrete and continuous parts.",
       "misconceptions": {
         "Yes; all spectral resolutions are finite-matrix sums.": "The spectral theorem also uses projection-valued measures."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Spectral theory of operators”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For diag(2,5) and normalized weights .6,.4 in its eigenbasis, expectation is 3.2
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Spectral theory of operators”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Spectral theory of operators” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Spectral theory of operators” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

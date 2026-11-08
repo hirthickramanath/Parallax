@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a unique stationary vector alone guarantee point-start convergence for a finite irreducible chain?",
+      "prompt": "A finite irreducible Markov chain has a unique stationary distribution but is periodic (e.g. alternates between two states). Does the state distribution converge from a point start?",
       "options": [
-        "Yes",
-        "No; periodicity can prevent it"
+        "Yes: uniqueness is enough for convergence from each start",
+        "No: it oscillates, since aperiodicity is also needed",
+        "Yes, after burn-in, as the distribution then settles down",
+        "Yes, in 2 steps, as the period is then two"
       ],
-      "answer": "No; periodicity can prevent it",
-      "explanation": "Aperiodicity is needed for the stated convergence theorem.",
+      "answer": "No: it oscillates, since aperiodicity is also needed",
+      "explanation": "The chain 1 → 2 → 1 → … has stationary distribution (½, ½), but starting at state 1 the distribution alternates.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try a two-state chain that always swaps."
     },
     {
       "id": "concept-2",
-      "prompt": "Is detailed balance necessary for every stationary chain?",
+      "prompt": "Is detailed balance necessary for a chain to have a given stationary distribution?",
       "options": [
-        "No",
-        "Yes"
+        "Yes for finite chains, as these are reversible with respect to their stationary distribution",
+        "Yes: detailed balance is necessary, so a chain with a stationary distribution must be reversible",
+        "No: stationary chains do not exist",
+        "No: it is sufficient but not necessary; non-reversible chains can also be stationary"
       ],
-      "answer": "No",
-      "explanation": "Nonreversible chains can be stationary.",
+      "answer": "No: it is sufficient but not necessary; non-reversible chains can also be stationary",
+      "explanation": "A cyclic chain 1 → 2 → 3 → 1 is stationary under uniform π but violates detailed balance.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try a cycle of three states."
     },
     {
       "id": "concept-3",
-      "prompt": "Do Poisson one-time marginals alone prove independent increments?",
+      "prompt": "Counts at a single time follow a Poisson distribution. Does that prove the process has independent increments?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: marginal Poisson implies a Poisson process",
+        "Yes, with a rate λ, as the counts fix the process",
+        "No: Poisson marginals are impossible",
+        "No: the joint temporal structure is additional information"
       ],
-      "answer": "No",
-      "explanation": "Joint temporal structure is additional information.",
+      "answer": "No: the joint temporal structure is additional information",
+      "explanation": "Different processes (e.g. mixed or clustered) can have Poisson marginal counts without independent increments.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a single-time marginal say how counts at different times relate?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What distinguishes stationarity from convergence?",
-      "answer": "One is invariance of a distribution; the other is approach from an initial distribution",
+      "prompt": "What is the difference between stationarity and convergence of a Markov chain?",
+      "answer": "Stationarity is invariance of a distribution; convergence is approach to it from any start",
       "options": [
-        "One is invariance of a distribution; the other is approach from an initial distribution",
-        "They are identical terms"
+        "They are the same thing, since a chain that has a stationary distribution always converges to it from any start",
+        "Stationarity needs two states, and convergence needs a state space that is larger than two states",
+        "Convergence is invariance and stationarity is approach",
+        "Stationarity is invariance of a distribution; convergence is approach to it from any start"
       ],
-      "explanation": "A periodic chain separates the two notions.",
+      "explanation": "A periodic chain can have a stationary distribution without converging to it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare a periodic and an aperiodic chain."
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does matching an observed mean alone establish a Poisson process?",
-      "answer": "No; variance, dependence and timing must also be checked.",
+      "prompt": "Counts per minute have a mean equal to their variance. Is that enough to say they come from a Poisson process?",
+      "answer": "No: you must also check independence of increments and timing",
       "options": [
-        "Yes; any count with that mean is Poisson.",
-        "No; variance, dependence and timing must also be checked."
+        "Yes: equal mean and variance proves a Poisson process, since no other counting process has that property",
+        "No: a Poisson mean must be an integer",
+        "Yes: count data follow a Poisson law in general",
+        "No: you must also check independence of increments and timing"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Many non-Poisson models share a mean.",
+      "hint": "List the other properties of a Poisson process.",
+      "explanation": "Mean = variance is necessary for a Poisson count but not sufficient.",
       "misconceptions": {
         "Yes; any count with that mean is Poisson.": "Many non-Poisson models share a mean."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Markov chains and Poisson processes”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ For rate λ=3 events/s over 2 s, the expected count and variance are both 6. The
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Markov chains and Poisson processes”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Markov chains and Poisson processes” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Markov chains and Poisson processes” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

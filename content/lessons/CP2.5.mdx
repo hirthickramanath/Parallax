@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a Git commit automatically capture every external dataset?",
+      "prompt": "You commit your analysis code to Git. Does the commit capture the dataset you downloaded from an archive?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, if the data are small",
+        "Yes, the commit stores their checksums by default, so the dataset can be checked at a later time",
+        "Yes: Git stores everything in the folder",
+        "No: untracked and remote data need separate provenance"
       ],
-      "answer": "No",
-      "explanation": "Untracked and remote inputs need separate provenance.",
+      "answer": "No: untracked and remote data need separate provenance",
+      "explanation": "Git records tracked files. External data, downloads, and service states change independently, so you need identifiers, checksums or data versioning.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does `git add` run on files you never added?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a random seed guarantee bitwise identity across every parallel platform?",
+      "prompt": "You fix a random seed in a parallel program. Does that guarantee bit-identical results on any machine?",
       "options": [
-        "No",
-        "Yes"
+        "No, but the difference arises for GPUs alone",
+        "No: libraries, floating-point order and scheduling can differ",
+        "Yes, within the same language, as the seed fixes the order of the random draws on a machine",
+        "Yes: the seed fixes everything"
       ],
-      "answer": "No",
-      "explanation": "Libraries, arithmetic and scheduling can differ.",
+      "answer": "No: libraries, floating-point order and scheduling can differ",
+      "explanation": "Seeds control the random stream, but summation order across threads, library versions, and hardware can change floating-point results.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is floating-point addition associative?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should parallel speedup claims include the workload and scaling definition?",
+      "prompt": "A paper claims 'our code scales 90× on 128 cores'. What must be specified to interpret this?",
       "options": [
-        "No",
-        "Yes"
+        "The clock speed of the processors that were used in the run",
+        "Whether the problem size is fixed (strong scaling) or grows (weak scaling)",
+        "The language of the code that was used for the run",
+        "No detail: the number is self-explanatory to a reader"
       ],
-      "answer": "Yes",
-      "explanation": "Fixed-work and growing-work comparisons answer different questions.",
+      "answer": "Whether the problem size is fixed (strong scaling) or grows (weak scaling)",
+      "explanation": "Fixed-work (Amdahl) and growing-work (Gustafson) comparisons answer different questions. Always state the workload and the baseline.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the work per core held fixed or the total?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What belongs outside versioned provenance?",
-      "answer": "Secret credential values and unrelated private data.",
+      "prompt": "Which of these should not be stored in a public repository as part of provenance?",
+      "answer": "Secret credential values and unrelated private data",
       "options": [
-        "Secret credential values and unrelated private data.",
-        "Checked inputs, parameters, environment and execution metadata."
+        "The input checksums of the data files",
+        "Secret credential values and unrelated private data",
+        "The environment file listing package versions, because it reveals which software the analysis depends on",
+        "The run parameters of the analysis"
       ],
-      "explanation": "Secret credential values and unrelated private data.",
+      "explanation": "Provenance should record inputs, parameters, environment and execution details. Secrets, tokens and unrelated private data must stay out of version control.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think about what would be harmful if published."
     },
     {
       "id": "computing-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Does a Git commit alone capture untracked datasets and external service state?",
-      "answer": "No; those need explicit provenance and reproducible configuration.",
+      "prompt": "A colleague says 'it is all in Git, so my result is reproducible'. What is missing if the analysis reads a live web service?",
+      "answer": "The state of that service at run time, which Git does not capture",
       "options": [
-        "Yes; committing source archives every dependency and service.",
-        "No; those need explicit provenance and reproducible configuration."
+        "No gap: Git covers the whole analysis, as a commit hash determines the output of the analysis",
+        "A newer version of Git for the project",
+        "More branches in the repository for each step of the run",
+        "The state of that service at run time, which Git does not capture"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Record artifacts beyond source code.",
+      "hint": "Will the same query return the same data next year?",
+      "explanation": "Reproducibility needs the code, the exact inputs (or their identifiers), the environment and configuration. A live service can change.",
       "misconceptions": {
         "Yes; committing source archives every dependency and service.": "Record artifacts beyond source code."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Git, reproducibility and high-performance computing basics”, read the linked prerequisites and keep a notebook of the code or algorithm you try. State the inputs, the assumptions and the numerical tolerances before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ With parallel fraction p=.8 and N=4, ideal speedup is 1/(.2+.8/4)=2.5. As N tend
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Git, reproducibility and high-performance computing basics”, answer the tagged questions below. Then change one input, step size or algorithmic choice in the worked example and say how the output and its error change. Keep the method, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Git, reproducibility and high-performance computing basics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical run can expose a wrong method, but one successful run does not show that the method converges or is stable.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Git, reproducibility and high-performance computing basics” in a simulation or analysis pipeline. Separate what the method guarantees from the assumptions needed in practice. Record which check (convergence, stability or error estimate) comes next.
 
 </LessonSection>

@@ -8,12 +8,10 @@ export function QuestionCard({
   question,
   lessonId,
   onResult,
-  lockAfterSubmit = false,
 }: {
   question: Question;
   lessonId: string;
   onResult?: (id: string, correct: boolean) => void;
-  lockAfterSubmit?: boolean;
 }) {
   const store = useLearning();
   const saved =
@@ -24,6 +22,8 @@ export function QuestionCard({
       saved?.submitted ?? null,
     ),
     [showHint, setShowHint] = useState(false);
+  // One attempt per question: the first submitted answer is the answer that counts.
+  const locked = submitted !== null;
   function change(value: string) {
     setResponse(value);
     setResult(null);
@@ -36,12 +36,7 @@ export function QuestionCard({
   }
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (
-      !response.trim() ||
-      response === submitted ||
-      (lockAfterSubmit && submitted !== null)
-    )
-      return;
+    if (!response.trim() || locked) return;
     const correct =
       question.type === "numeric"
         ? gradeNumeric(response, Number(question.answer), question.exact)
@@ -78,7 +73,7 @@ export function QuestionCard({
       </span>
       <h3>{question.prompt}</h3>
       {question.options ? (
-        <fieldset disabled={lockAfterSubmit && submitted !== null}>
+        <fieldset disabled={locked}>
           <legend className="sr-only">Choose an answer</legend>
           {question.options.map((option) => (
             <label
@@ -104,7 +99,7 @@ export function QuestionCard({
           Your answer ({question.unit})
           <input
             required
-            disabled={lockAfterSubmit && submitted !== null}
+            disabled={locked}
             type="number"
             step="any"
             value={response}
@@ -120,15 +115,16 @@ export function QuestionCard({
         </label>
       )}
       <Button
-        disabled={
-          !response.trim() ||
-          response === submitted ||
-          (lockAfterSubmit && submitted !== null)
-        }
+        disabled={!response.trim() || locked}
         type="submit"
       >
         Check answer
       </Button>
+      <small className="answer-once">
+        {locked
+          ? "Answer locked: one attempt per question. Restart the lesson from the course map to try again."
+          : "One attempt per question, so choose carefully."}
+      </small>
       {question.hint && (
         <>
           <Button

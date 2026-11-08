@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero mean velocity imply zero mean speed?",
+      "prompt": "A gas at rest has a zero mean velocity. Is the mean speed zero?",
       "options": [
-        "Yes",
-        "No"
+        "No: velocities cancel as vectors",
+        "Yes: both vanish at rest, since the mean speed is the magnitude of the mean velocity",
+        "Yes: molecules do not move",
+        "Yes: zero mean means zero speed"
       ],
-      "answer": "No",
-      "explanation": "Opposite directions cancel as vectors.",
+      "answer": "No: velocities cancel as vectors",
+      "explanation": "Velocities cancel as vectors, but speeds are positive magnitudes. ⟨v⟩ = 0, while ⟨|v|⟩ = √(8kT/πm).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do the magnitudes cancel?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a speed density contain a v² factor from geometry?",
+      "prompt": "The Maxwell speed distribution f(v) contains a factor v². Where does it come from?",
       "options": [
-        "Yes",
-        "No"
+        "A normalisation constant chosen to integrate to one",
+        "The collision rate between molecules",
+        "The potential energy",
+        "The volume of a velocity-space shell, 4πv² dv"
       ],
-      "answer": "Yes",
-      "explanation": "A three-dimensional velocity shell has volume 4πv²dv.",
+      "answer": "The volume of a velocity-space shell, 4πv² dv",
+      "explanation": "More velocity vectors have a given speed at high v.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many velocity vectors have magnitude v?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does classical equipartition always describe low-temperature vibrational modes?",
+      "prompt": "Classical equipartition assigns kT to each vibrational mode. Does it hold at low temperature?",
       "options": [
-        "Yes",
-        "No"
+        "No: quantum excitations can freeze out",
+        "Yes: the modes are classical at low temperature",
+        "Yes: equipartition is exact",
+        "Yes: it works at low temperature too"
       ],
-      "answer": "No",
-      "explanation": "Quantum excitations can be frozen out.",
+      "answer": "No: quantum excitations can freeze out",
+      "explanation": "When kT ≪ ħω the mode is not excited.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the thermal energy kT with the vibrational quantum ħω."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "When can local equilibrium fail?",
-      "answer": "When collisions cannot relax the distribution on macroscopic evolution scales.",
+      "prompt": "When does the assumption of local thermal equilibrium fail?",
+      "answer": "When collisions cannot relax the distribution on the timescale of macroscopic changes",
       "options": [
-        "When collisions cannot relax the distribution on macroscopic evolution scales.",
-        "Speed is a magnitude; velocity includes direction."
+        "At high temperature, where fast molecules collide too rarely to relax it",
+        "At high density, when molecules collide too often to relax",
+        "It is guaranteed whenever the gas is described by a temperature",
+        "When collisions cannot relax the distribution on the timescale of macroscopic changes"
       ],
-      "explanation": "When collisions cannot relax the distribution on macroscopic evolution scales.",
+      "explanation": "Rarefied gases and shocks violate it.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare the collision time with the evolution time."
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For m=k=T=1, find root-mean-square speed.",
       "answer": "1.7320508075688772",
       "hint": "Use sqrt(3kT/m).",
-      "explanation": "Use sqrt(3kT/m). The value in the stated units is 1.732050807569.",
+      "explanation": "v_rms = √(3kT/m) = √3 ≈ 1.732.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For the same classical gas, find rms speed divided by most probable speed.",
       "answer": "1.224744871391589",
       "hint": "Divide sqrt(3kT/m) by sqrt(2kT/m).",
-      "explanation": "Divide sqrt(3kT/m) by sqrt(2kT/m). The value in the stated units is 1.224744871392.",
+      "explanation": "v_rms/v_p = √(3kT/m)/√(2kT/m) = √(3/2) ≈ 1.2247.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Is the value of a continuous speed probability density at one speed itself the probability of that exact speed?",
-      "answer": "No; probabilities are integrals over speed intervals.",
+      "prompt": "The Maxwell speed density has a value f(v₀) at a given speed. Is that the probability the speed equals v₀?",
+      "answer": "No: probabilities are integrals of the density over speed intervals",
       "options": [
-        "Yes; a density value is a point probability.",
-        "No; probabilities are integrals over speed intervals."
+        "Yes: f(v₀) is the probability of the speed taking the value v₀",
+        "Yes: the density is dimensionless like a probability",
+        "No: probabilities are integrals of the density over speed intervals",
+        "Yes: it is the fraction of molecules at v₀"
       ],
-      "explanation": "A density has inverse-speed units and must be integrated.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "f has units of inverse speed, so a probability needs f multiplied by a speed interval, i.e. an integral over speeds.",
+      "hint": "What are the units of f?",
       "misconceptions": {
         "Yes; a density value is a point probability.": "A density has inverse-speed units and must be integrated."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Kinetic theory and Maxwell-Boltzmann”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ In units with k_BT/m=4, v_mp=√8 and v_rms=√12. Their squares are 8 and 12. T
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Kinetic theory and Maxwell-Boltzmann”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Kinetic theory and Maxwell-Boltzmann” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Kinetic theory and Maxwell-Boltzmann” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

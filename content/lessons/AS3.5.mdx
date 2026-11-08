@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does Schwarzschild include arbitrary composition stratification automatically?",
+      "prompt": "Material with a composition gradient (molecular weight increasing inward) is checked with the plain Schwarzschild criterion. What is missing?",
       "options": [
-        "Yes",
-        "No"
+        "No change: the Schwarzschild criterion already includes composition gradients in the test",
+        "The Ledoux composition term, because composition changes stability",
+        "The opacity of the gas, which sets the energy transport",
+        "The rotation of the star, which sets the stability"
       ],
-      "answer": "No",
-      "explanation": "A composition-sensitive criterion is needed.",
+      "answer": "The Ledoux composition term, because composition changes stability",
+      "explanation": "Schwarzschild assumes uniform composition. Ledoux adds a ∇_μ term.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which criterion includes ∇_μ?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is the mixing-length parameter universally fixed by first principles in this closure?",
+      "prompt": "Stellar codes use a mixing length ℓ = α H_p. Is α fixed by first principles in this theory?",
       "options": [
-        "No",
-        "Yes"
+        "No: it is a calibrated parameter (for the Sun ≈ 1.8–2.0)",
+        "No: it does not appear in the theory of convection in this form",
+        "Yes: α = 1, as the mixing length is defined as one pressure scale height",
+        "Yes: it is derived from first principles in the theory"
       ],
-      "answer": "No",
-      "explanation": "It is model/calibration dependent.",
+      "answer": "No: it is a calibrated parameter (for the Sun ≈ 1.8–2.0)",
+      "explanation": "Mixing-length theory is a closure with a free parameter, typically calibrated to the solar radius.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How is α usually determined?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can efficient convection transport energy with a nearly adiabatic gradient?",
+      "prompt": "In a deep convective zone of a star, the actual temperature gradient is nearly adiabatic yet a large flux is carried. How is that possible?",
       "options": [
-        "No",
-        "Yes"
+        "It is impossible: any large flux requires a strongly superadiabatic temperature gradient",
+        "The gradient must be steeper than the adiabatic one by a large factor",
+        "The flux is zero, as convection has stopped in the deep zone",
+        "Efficient convection needs only a tiny superadiabatic excess"
       ],
-      "answer": "Yes",
-      "explanation": "A small superadiabatic excess can sustain a large flux.",
+      "answer": "Efficient convection needs only a tiny superadiabatic excess",
+      "explanation": "Efficient convection carries flux with ∇ − ∇_ad ~ 10⁻⁶ in stellar interiors.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How large is the density of the convective cells?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What can local stability criteria miss?",
-      "answer": "Nonlocal mixing, rotation, fields and diffusive instabilities.",
+      "prompt": "What can a local stability criterion such as Schwarzschild's fail to capture?",
+      "answer": "Nonlocal mixing, rotation, magnetic fields and double-diffusive instabilities",
       "options": [
-        "Nonlocal mixing, rotation, fields and diffusive instabilities.",
-        "The actual and adiabatic logarithmic gradients."
+        "The sign of the temperature gradient, which a nonlocal calculation can determine",
+        "The adiabatic gradient of the gas in the layer, which the criterion does not use",
+        "Nonlocal mixing, rotation, magnetic fields and double-diffusive instabilities",
+        "The pressure of the gas at the base of the layer and its variation"
       ],
-      "explanation": "Nonlocal mixing, rotation, fields and diffusive instabilities.",
+      "explanation": "Overshooting and semi-convection lie beyond a local sign test.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens to a rising blob that crosses the boundary?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For ∇rad=0.52 and ∇ad=0.40 in a homogeneous model, find the instability margin.",
       "answer": "0.12",
       "hint": "Subtract the adiabatic gradient from the radiative gradient.",
-      "explanation": "Subtract the adiabatic gradient from the radiative gradient. The value in the stated units is 0.12.",
+      "explanation": "The margin is ∇rad − ∇ad = 0.52 − 0.40 = 0.12. It is positive, so the layer is convectively unstable under the Schwarzschild criterion.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "A homogeneous layer has ∇rad=0.30 and ∇ad=0.40. Find the signed gradient excess.",
       "answer": "-0.1",
       "hint": "Keep the sign; a negative margin is stable under this criterion.",
-      "explanation": "Keep the sign; a negative margin is stable under this criterion. The value in the stated units is -0.1.",
+      "explanation": "The signed excess is ∇rad − ∇ad = 0.30 − 0.40 = −0.10. A negative margin means the layer is stable.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does the Schwarzschild sign test alone compute the nonlinear convective heat flux?",
-      "answer": "No; a transport closure or dynamical calculation is still needed.",
+      "prompt": "The Schwarzschild criterion says a region is convectively unstable. Does it give you the convective heat flux?",
+      "answer": "No: a transport closure or dynamical calculation is still needed",
       "options": [
-        "Yes; the sign determines a unique flux.",
-        "No; a transport closure or dynamical calculation is still needed."
+        "No: instability does not imply a flux, but the sign gives the size",
+        "Yes: through the sign of the entropy gradient alone",
+        "Yes: it gives a unique flux for each unstable layer",
+        "No: a transport closure or dynamical calculation is still needed"
       ],
       "explanation": "Instability and saturated transport are separate questions.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "hint": "Does 'unstable' tell you how fast?",
       "misconceptions": {
         "Yes; the sign determines a unique flux.": "Instability and saturated transport are separate questions."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Convection and mixing-length theory”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If a homogeneous layer has ∇=.5 and ∇_ad=.4, the excess .1 indicates instabi
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Convection and mixing-length theory”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Convection and mixing-length theory” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Convection and mixing-length theory” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

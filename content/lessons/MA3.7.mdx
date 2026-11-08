@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does SVD require a square diagonalizable matrix?",
+      "prompt": "Which matrices have a singular value decomposition?",
       "options": [
-        "Yes",
-        "No"
+        "Only symmetric matrices",
+        "Only invertible matrices",
+        "Every finite matrix, including rectangular ones",
+        "Only square diagonalisable matrices"
       ],
-      "answer": "No",
-      "explanation": "It applies to every finite rectangular matrix.",
+      "answer": "Every finite matrix, including rectangular ones",
+      "explanation": "The SVD exists for any m × n real or complex matrix: A = UΣV*.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall that SVD applies to all matrices."
     },
     {
       "id": "concept-2",
-      "prompt": "Does a pseudoinverse always solve Ax=b exactly?",
+      "prompt": "You apply the pseudoinverse to solve Ax = b. When does x = A⁺b satisfy Ax = b exactly?",
       "options": [
-        "No",
-        "Yes"
+        "Only if A is square, since a pseudoinverse of a rectangular matrix never gives an exact solution",
+        "Only if b is in the column space of A",
+        "Always, for each vector b in the codomain",
+        "Never, whatever the vector b is"
       ],
-      "answer": "No",
-      "explanation": "An out-of-image component remains as a residual.",
+      "answer": "Only if b is in the column space of A",
+      "explanation": "A⁺b gives the least-squares solution. Any component of b outside the range of A remains as a residual.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is b always in the range of A?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can tiny singular values amplify data errors?",
+      "prompt": "A matrix has a very small singular value. What does that mean for solving Ax = b with noisy b?",
       "options": [
-        "No",
-        "Yes"
+        "Errors in b can be amplified by up to 1/σ_min",
+        "Errors are reduced",
+        "The solution is exact",
+        "No effect: small singular values are benign"
       ],
-      "answer": "Yes",
-      "explanation": "Inversion divides by those small values.",
+      "answer": "Errors in b can be amplified by up to 1/σ_min",
+      "explanation": "Inversion divides components by the singular values. Noise along a direction with tiny σ gets magnified.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write x = Σ (uᵢ·b/σᵢ)vᵢ and see what a tiny σᵢ does."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What must accompany numerical rank truncation?",
-      "answer": "The threshold, scale and modeling justification",
+      "prompt": "You truncate small singular values below a threshold to define numerical rank. What should you report?",
+      "answer": "The threshold, the data scale and a modelling justification",
       "options": [
-        "The threshold, scale and modeling justification",
-        "A claim that the discarded directions never existed"
+        "No quote is needed: the rank is a fact of the matrix, not a choice",
+        "The largest singular value of the matrix, as the scale",
+        "The threshold, the data scale and a modelling justification",
+        "That the discarded directions do not exist"
       ],
-      "explanation": "Finite-precision rank is a decision sensitive to data and scale.",
+      "explanation": "Finite-precision rank is a decision depending on noise level and scale. It should be documented.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is numerical rank a property of the matrix alone?"
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "Fit a constant by unweighted least squares to observations 1,2,6. Find the fitted constant.",
       "answer": "3",
       "hint": "The minimizer is the arithmetic mean.",
-      "explanation": "The minimizer is the arithmetic mean. The value in the stated units is 3.",
+      "explanation": "Minimising Σ(yᵢ − c)² gives c equal to the mean: (1 + 2 + 6)/3 = 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For singular values 10 and 0.5, find the 2-norm condition number.",
       "answer": "20",
       "hint": "Divide largest by smallest singular value.",
-      "explanation": "Divide largest by smallest singular value. The value in the stated units is 20.",
+      "explanation": "The 2-norm condition number is σ_max/σ_min = 10/0.5 = 20.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does a nonzero determinant guarantee numerically stable inversion of noisy data?",
-      "answer": "No; a very small singular value can cause severe amplification.",
+      "prompt": "A matrix has a non-zero determinant. Can solving with noisy data still be unreliable?",
+      "answer": "Yes: a tiny singular value can strongly amplify errors",
       "options": [
-        "Yes; invertibility and numerical conditioning are identical.",
-        "No; a very small singular value can cause severe amplification."
+        "Yes, if the determinant is a negative one",
+        "No: an invertible matrix means the solve is stable, whatever the noise in the data",
+        "No: determinant measures conditioning",
+        "Yes: a tiny singular value can strongly amplify errors"
       ],
-      "explanation": "Condition number measures sensitivity beyond exact rank.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Invertibility is exact; conditioning (σ_max/σ_min) measures sensitivity to perturbation.",
+      "hint": "Compare det with the condition number.",
       "misconceptions": {
         "Yes; invertibility and numerical conditioning are identical.": "Condition number measures sensitivity beyond exact rank."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “SVD and least squares”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ For A=diag(3,1,0), singular values are 3,1,0. The pseudoinverse is diag(1/3,1,0)
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “SVD and least squares”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “SVD and least squares” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “SVD and least squares” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

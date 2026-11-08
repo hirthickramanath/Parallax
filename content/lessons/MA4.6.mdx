@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are boundary conditions separate from the operator-domain question?",
+      "prompt": "For a Sturm–Liouville problem, are the boundary conditions part of the definition of the operator?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: they are needed for it to be self-adjoint",
+        "No: they are irrelevant to eigenvalues",
+        "No: they are separate",
+        "Just for the periodic type of problem"
       ],
-      "answer": "No",
-      "explanation": "They are essential to the self-adjoint formulation.",
+      "answer": "Yes: they are needed for it to be self-adjoint",
+      "explanation": "The boundary term in the symmetry identity must vanish. The domain of the operator includes the boundary conditions.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the boundary term come from in the integration by parts?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does p>0 alone ensure every eigenvalue is positive for arbitrary q?",
+      "prompt": "For −(py′)′ + qy = λwy with p > 0, are all eigenvalues necessarily positive?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, as p > 0 makes the operator positive on the whole domain",
+        "Yes, as w > 0 makes the eigenvalues positive on the whole domain",
+        "No: eigenvalues are complex, as the operator is not symmetric in general",
+        "No: a sufficiently negative q can produce negative eigenvalues"
       ],
-      "answer": "No",
-      "explanation": "A negative potential term can shift eigenvalues.",
+      "answer": "No: a sufficiently negative q can produce negative eigenvalues",
+      "explanation": "Multiplying by y and integrating gives λ = (∫p y′² + q y²)/∫w y² − boundary terms. A negative q can make λ negative.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take q constant and negative."
     },
     {
       "id": "concept-3",
-      "prompt": "Is orthogonality always with unweighted ordinary overlap?",
+      "prompt": "Eigenfunctions of a Sturm–Liouville problem with weight w(x) are orthogonal. Which integral vanishes?",
       "options": [
-        "Yes",
-        "No"
+        "∫ y_m y_n w(x) dx",
+        "∫ y_m′ y_n′ dx",
+        "∫ w(x) dx",
+        "∫ y_m y_n dx"
       ],
-      "answer": "No",
-      "explanation": "The weight w defines the relevant inner product.",
+      "answer": "∫ y_m y_n w(x) dx",
+      "explanation": "The inner product is weighted: ⟨f, g⟩ = ∫ f g w dx.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which function multiplies λ in the equation?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Which step makes distinct eigenfunctions orthogonal?",
-      "answer": "Integration by parts with vanishing boundary form",
+      "prompt": "Which step shows that eigenfunctions with different eigenvalues are orthogonal?",
+      "answer": "Integration by parts with vanishing boundary terms",
       "options": [
-        "Integration by parts with vanishing boundary form",
-        "Only sketching different numbers of nodes"
+        "Counting the number of zeros of each eigenfunction, which differ for different eigenvalues",
+        "Normalising them to unit norm on the interval",
+        "Plotting them on the same axes to compare shapes",
+        "Integration by parts with vanishing boundary terms"
       ],
-      "explanation": "Boundary compatibility eliminates the extra endpoint term.",
+      "explanation": "(λₘ − λₙ)∫wyₘyₙ equals a boundary term that vanishes by the boundary conditions. So the integral is zero when λₘ ≠ λₙ.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Subtract the equations for yₘ and yₙ and integrate."
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "For −y″=λy on [0,π] with zero endpoints, find the second eigenvalue.",
       "answer": "4",
       "hint": "Use λn=n² on this interval.",
-      "explanation": "Use λn=n² on this interval. The value in the stated units is 4.",
+      "explanation": "The eigenfunctions are sin(nx) with λₙ = n². The second eigenvalue is n = 2, so λ₂ = 4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "Find ∫₀^π sin²(x) dx.",
       "answer": "1.5707963267948966",
       "hint": "Use the half-angle identity or orthogonality normalization.",
-      "explanation": "Use the half-angle identity or orthogonality normalization. The value in the stated units is 1.570796326795.",
+      "explanation": "sin²x = (1 − cos 2x)/2, so ∫₀^π sin²x dx = π/2 − 0 = π/2 ≈ 1.5708.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "May the positive Sturm–Liouville weight be ignored in an orthogonality calculation?",
-      "answer": "No; it defines the relevant inner product.",
+      "prompt": "You compute an orthogonality integral for Sturm–Liouville eigenfunctions and leave out the weight w(x). What goes wrong?",
+      "answer": "You use the wrong inner product, so orthogonality generally fails",
       "options": [
-        "Yes; every weight yields the same numerical inner product.",
-        "No; it defines the relevant inner product."
+        "The integral is zero in each case, so orthogonality holds anyway",
+        "The weight is a normalisation, so the zero is kept",
+        "You use the wrong inner product, so orthogonality generally fails",
+        "The eigenvalues change, so the functions are no longer orthogonal on the interval"
       ],
-      "explanation": "The operator symmetry and orthogonality are tied to that measure.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Orthogonality is with respect to the weight w. For Bessel functions J₀(kr), the weight is r.",
+      "hint": "Which inner product makes the operator symmetric?",
       "misconceptions": {
         "Yes; every weight yields the same numerical inner product.": "The operator symmetry and orthogonality are tied to that measure."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Sturm-Liouville theory”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,19 +231,19 @@ For L=π, the first two Dirichlet eigenvalues are 1 and 4, with eigenfunctions s
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Sturm-Liouville theory”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Sturm-Liouville theory” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Sturm-Liouville theory” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

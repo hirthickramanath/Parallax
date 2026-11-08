@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does zero instantaneous contact velocity imply zero contact-point acceleration?",
+      "prompt": "A wheel rolls without slipping, so its contact point is instantaneously at rest. Is the contact point's acceleration also zero?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the contact point is a pivot, so its acceleration is zero as well as its velocity",
+        "Yes: a point at rest has no acceleration at that instant",
+        "No: the contact point has an upward (centripetal) acceleration",
+        "Yes: zero velocity means zero acceleration"
       ],
-      "answer": "No",
-      "explanation": "Velocity can vanish while acceleration is nonzero.",
+      "answer": "No: the contact point has an upward (centripetal) acceleration",
+      "explanation": "The contact point accelerates toward the wheel's centre as ω²R.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Velocity zero is an instant, not a state."
     },
     {
       "id": "concept-2",
-      "prompt": "Does every point of a translating and rotating rigid body have the centre velocity?",
+      "prompt": "A rigid body translates and rotates. Do all its points have the velocity of its centre?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: translation sets the velocity of each point",
+        "No: the rotation term ω × r differs for each position",
+        "Yes: it is rigid, so the points move together",
+        "Yes: the points share one velocity vector in space"
       ],
-      "answer": "No",
-      "explanation": "The rotational cross-product term varies by position.",
+      "answer": "No: the rotation term ω × r differs for each position",
+      "explanation": "v = v_cm + ω × r′, which varies with r′.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does a point on the rim move with the centre?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does centre-of-mass translation require a perfectly rigid system?",
+      "prompt": "The centre of mass of a system accelerates as F_ext/M. Does this require the system to be rigid?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: just in equilibrium, when the net force on the system is zero",
+        "No: it follows from Newton's laws for any system of particles",
+        "Yes: just for solids, as they keep their shape",
+        "Yes: just for rigid bodies, as the parts stay fixed in place"
       ],
-      "answer": "No",
-      "explanation": "The fixed-particle momentum result is more general than rigidity.",
+      "answer": "No: it follows from Newton's laws for any system of particles",
+      "explanation": "Internal forces cancel in pairs, so no rigidity is needed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do internal forces cancel in pairs?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why is an instantaneous contact point not automatically a fixed dynamical pivot?",
-      "answer": "Its acceleration and identity can change",
+      "prompt": "Why is the instantaneous contact point of a rolling wheel not a fixed dynamical pivot?",
+      "answer": "Its acceleration is non-zero and the contact point changes identity",
       "options": [
-        "Its acceleration and identity can change",
-        "Zero velocity makes its acceleration permanently zero"
+        "Its acceleration is non-zero and the contact point changes identity",
+        "It carries no torque, so it acts as a fixed pivot for the wheel as it rolls",
+        "Its velocity is zero for the whole time the wheel is rolling",
+        "It is a fixed pivot, so the wheel turns about it as a point at rest on it"
       ],
-      "explanation": "Kinematic zero velocity is not a fixed-origin torque condition.",
+      "explanation": "Zero velocity at one instant doesn't make a fixed-origin torque equation always valid.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which material point is in contact a moment later?"
     },
     {
       "id": "mechanics-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "mechanics-model-limits",
-      "prompt": "Can a system have zero center-of-mass velocity but nonzero kinetic energy from internal motion?",
-      "answer": "Yes; opposite particle velocities can cancel momentum without canceling energy.",
+      "prompt": "A system has zero centre-of-mass velocity. Can it still have kinetic energy?",
+      "answer": "Yes: opposite velocities cancel momentum but not energy",
       "options": [
-        "No; zero total momentum forces every particle to be at rest.",
-        "Yes; opposite particle velocities can cancel momentum without canceling energy."
+        "No: zero momentum means zero kinetic energy in the system",
+        "No: everything is at rest",
+        "Yes: just for rigid bodies that are rotating",
+        "Yes: opposite velocities cancel momentum but not energy"
       ],
-      "explanation": "Momentum adds signed vector contributions while kinetic energies are nonnegative.",
-      "hint": "Keep the frame, system boundary and model assumptions explicit.",
+      "explanation": "Momentum adds signed vectors, but kinetic energy adds positive terms.",
+      "hint": "Think of two masses moving in opposite directions.",
       "misconceptions": {
         "No; zero total momentum forces every particle to be at rest.": "Momentum adds signed vector contributions while kinetic energies are nonnegative."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Systems of particles and rigid-body kinematics”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -231,19 +245,19 @@ A wheel of radius 0.5 m rolls right with centre speed 2 m/s. Its angular-speed m
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Systems of particles and rigid-body kinematics”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Systems of particles and rigid-body kinematics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Systems of particles and rigid-body kinematics” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

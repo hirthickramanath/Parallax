@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does fitting one selected dataset settle every independent constraint?",
+      "prompt": "A new model fits one selected dataset very well. Does that settle whether it satisfies all other constraints?",
       "options": [
-        "Yes",
-        "No"
+        "No: other independent observations can still reject the explanation",
+        "Yes: one good fit is enough, since a model that matches one dataset well will match the others too",
+        "No: models do not fit data well in practice, even good ones",
+        "Yes: fits to one dataset imply fits to the others in the field"
       ],
-      "answer": "No",
-      "explanation": "Other observations can reject the explanation.",
+      "answer": "No: other independent observations can still reject the explanation",
+      "explanation": "Dark-matter candidates must pass galactic, cosmological and laboratory tests together.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Have other experiments constrained it?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is an order-of-magnitude estimate proof of a mechanism?",
+      "prompt": "An order-of-magnitude estimate shows a proposed mechanism could produce the observed effect. Does that prove it did?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it proves the mechanism",
+        "No: it shows the mechanism is plausible in scale",
+        "Yes: matching the order of magnitude is confirmation",
+        "No: estimates have no scientific value"
       ],
-      "answer": "No",
-      "explanation": "It provides conditional scale reasoning.",
+      "answer": "No: it shows the mechanism is plausible in scale",
+      "explanation": "It shows the mechanism is plausible in scale, not that it is the cause. Many mechanisms can match one number.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Could another mechanism give the same order of magnitude?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should conjecture be labelled separately from observed evidence?",
+      "prompt": "A review of open problems mixes observed facts and speculative ideas. How should it present them?",
       "options": [
-        "No",
-        "Yes"
+        "Evidence omitted, so the speculative ideas are the focus of the review",
+        "Separately labelled, because conjecture and evidence play different roles",
+        "Conjecture presented as established",
+        "Mixed so the story reads smoothly"
       ],
-      "answer": "Yes",
-      "explanation": "Their epistemic roles differ.",
+      "answer": "Separately labelled, because conjecture and evidence play different roles",
+      "explanation": "Readers must tell what is measured from what is proposed.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which claims could a reader check?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What follows a draft course?",
-      "answer": "Independent review and a bounded evidence-based research project.",
+      "prompt": "This is a draft course. What should follow it before it counts as established teaching material?",
+      "answer": "Independent review and a bounded, evidence-based research project",
       "options": [
-        "Independent review and a bounded evidence-based research project.",
-        "Its evidence, regime and unresolved prediction are specified."
+        "Immediate publication, since a draft is complete once the author has checked it carefully",
+        "Independent review and a bounded, evidence-based research project",
+        "Self-approval by the author",
+        "No review is needed: drafts are final once they are written up"
       ],
-      "explanation": "Independent review and a bounded evidence-based research project.",
+      "explanation": "Independent review is how errors are found by someone else.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Who checks the author's work?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does a discrepancy with one model uniquely prove a particular new theory?",
-      "answer": "No; alternatives and systematic effects must be tested.",
+      "prompt": "Observations disagree with one model. Does that uniquely prove a particular new theory?",
+      "answer": "No: alternative explanations and systematic effects must be tested first",
       "options": [
-        "Yes; any mismatch selects one explanation automatically.",
-        "No; alternatives and systematic effects must be tested."
+        "Yes: a mismatch selects one explanation of the data",
+        "Yes: the nearest alternative must be right",
+        "No: models cannot be wrong, as they are tested against the data in the field",
+        "No: alternative explanations and systematic effects must be tested first"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "A failed prediction and a unique explanation are different claims.",
+      "hint": "What else could cause the mismatch?",
+      "explanation": "The muon g−2 tension prompted both new-physics and lattice-calculation explanations.",
       "misconceptions": {
         "Yes; any mismatch selects one explanation automatically.": "A failed prediction and a unique explanation are different claims."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Survey of open problems in physics”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For a hypothetical mechanism with characteristic length 12 and speed 3 in consis
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Survey of open problems in physics”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Survey of open problems in physics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Survey of open problems in physics” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

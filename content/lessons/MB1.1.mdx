@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does a vertical line meeting a graph twice describe a function of x?",
-      "answer": "No",
+      "prompt": "A curve in the xy-plane is crossed twice by a vertical line x = 2. Can it be the graph of a function y = f(x)?",
+      "answer": "No: the input x = 2 would have two outputs",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a function can have several outputs for one input",
+        "No, because the curve must pass through the origin",
+        "No: the input x = 2 would have two outputs",
+        "Yes, if the curve is smooth"
       ],
-      "explanation": "An admitted input must have one output.",
+      "explanation": "A function assigns exactly one output to each allowed input. The vertical line test checks that: two crossings mean two outputs for the same x.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the outputs the graph gives for x = 2."
     },
     {
       "id": "c2",
-      "prompt": "When dividing an inequality by a negative constant, what happens?",
-      "answer": "Reverse its direction",
+      "prompt": "You divide both sides of −3x < 12 by −3. What happens to the inequality sign?",
+      "answer": "It reverses, giving x > −4",
       "options": [
-        "Reverse its direction",
-        "Keep its direction"
+        "It stays the same, giving x < −4",
+        "It reverses, giving x > −4",
+        "It becomes an equals sign",
+        "It reverses, giving x > 4"
       ],
-      "explanation": "Multiplication by a negative reverses order.",
+      "explanation": "Multiplying or dividing by a negative number reverses the order of numbers (2 < 3 but −6 > −9). So −3x < 12 gives x > −4.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Test with numbers: 2 < 3, then multiply both by −1."
     },
     {
       "id": "c3",
-      "prompt": "Is every squared-equation solution automatically valid originally?",
-      "answer": "No; substitute it back",
+      "prompt": "You square both sides of an equation and find two solutions. What must you do before accepting them?",
+      "answer": "Substitute each back, since squaring can create false roots",
       "options": [
-        "Yes",
-        "No; substitute it back"
+        "Square the solutions again to confirm",
+        "Substitute each back, since squaring can create false roots",
+        "Reject a negative solution at once, with no further check",
+        "No check: the roots of the squared equation hold"
       ],
-      "explanation": "Squaring loses sign information.",
+      "explanation": "Squaring loses sign information (a = b and a = −b square to the same equation), so extra roots can appear. Check each in the original.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of x = 2 and x = −2: both have the same square."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "Squaring sqrt(x+6)=x gives candidates 3 and −2. Which satisfies the original equation?",
-      "answer": "Only 3",
+      "prompt": "Squaring √(x+6) = x gives the candidates x = 3 and x = −2. Which satisfies the original equation?",
+      "answer": "Only x = 3",
       "options": [
-        "Both 3 and −2",
-        "Only 3"
+        "Both x = 3 and x = −2",
+        "Only x = −2",
+        "Only x = 3",
+        "Neither of them"
       ],
-      "explanation": "The square root is nonnegative, so x must be nonnegative before substitution.",
+      "explanation": "The square root is non-negative, so x must be ≥ 0. Substituting: √9 = 3 works, but √4 = 2 ≠ −2.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Substitute each candidate and note the sign of the square root.",
       "misconceptions": {
         "Both 3 and −2": "The square root is nonnegative, so x must be nonnegative before substitution."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does multiplying an inequality by a negative number preserve its direction?",
-      "answer": "No; its direction reverses.",
+      "prompt": "Starting from 2 < 5, you multiply both numbers by −1. Which statement is correct?",
+      "answer": "−2 > −5, so the direction reverses",
       "options": [
-        "Yes; only the endpoint numbers change.",
-        "No; its direction reverses."
+        "−2 = −5, since both are multiplied equally",
+        "−2 > −5, so the direction reverses",
+        "−2 < −5, so the direction is kept",
+        "The inequality no longer applies to negatives"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Test the order after multiplication.",
+      "hint": "Mark 2 and 5 on a number line, then reflect them through zero.",
+      "explanation": "Multiplication by a negative reflects the number line, so the larger number becomes the smaller. Always flip the sign when you multiply or divide by a negative.",
       "misconceptions": {
         "Yes; only the endpoint numbers change.": "Test the order after multiplication."
       },
@@ -208,8 +221,7 @@ A transformation $y=a f(b(x-h))+k$ changes the graph horizontally about $h$ and 
 
 ### Transfer derivation and failure case
 
-For a rational inequality, isolate zeros of the numerator and denominator before testing signs on the remaining intervals. A denominator zero is never included even if multiplication appears to remove it. In $\sqrt{x+6}=x$, the domain requires $x\geq0$; squaring yields $(x-3)(x+2)=0$, and substitution eliminates $-2$. An implication produced by squaring is not automatically an equivalence. For $5-2x>11$, subtract 5 and divide by the negative coefficient to get $x<-3$; a test point such as $x=-4$ checks the direction.
-
+For a rational inequality, isolate zeros of the numerator and denominator before testing signs on the remaining intervals. A denominator zero is never included even if multiplication appears to remove it. An implication produced by squaring is not automatically an equivalence.
 
 ### Derivation and transfer
 

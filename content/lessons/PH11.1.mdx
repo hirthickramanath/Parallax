@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are simultaneity and simultaneous photon arrival identical?",
+      "prompt": "Two lightning strikes are simultaneous in a frame. Are they necessarily seen by an observer as simultaneous flashes arriving together?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: simultaneous events produce flashes that reach an observer at the same instant, wherever they are",
+        "Yes: light is instantaneous, so the flashes arrive together for the observer at rest",
+        "No: signal travel times differ, so simultaneity of events is not simultaneity of arrival",
+        "Yes: simultaneity in one frame means the flashes arrive together for a moving observer and a still one"
       ],
-      "answer": "No",
-      "explanation": "Signal travel time and event coordinates are different.",
+      "answer": "No: signal travel times differ, so simultaneity of events is not simultaneity of arrival",
+      "explanation": "Event coordinates are defined by synchronised clocks, not by what the observer sees.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does light take time to arrive?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a Lorentz boost preserve the Minkowski interval?",
+      "prompt": "A Lorentz boost mixes t and x. Does it preserve the interval s² = c²t² − x²?",
       "options": [
-        "Yes",
-        "No"
+        "No: it changes s² as t and x mix together",
+        "Yes: it mixes time and space but keeps the quadratic form",
+        "No: it scales s² by a factor that depends on the boost speed",
+        "No: it rotates s² into a different mix of the time and space terms"
       ],
-      "answer": "Yes",
-      "explanation": "It mixes time and space while preserving the stated quadratic form.",
+      "answer": "Yes: it mixes time and space but keeps the quadratic form",
+      "explanation": "Lorentz transformations are defined as those preserving the interval.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute c²t′² − x′² after the boost and compare it with c²t² − x²."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a spacelike event ordering differ between inertial frames?",
+      "prompt": "Two events are spacelike separated. Can their time order differ between inertial frames?",
       "options": [
-        "No",
-        "Yes"
+        "No: spacelike events keep the same order",
+        "Yes: but no causal influence can connect them",
+        "No: the order is fixed for events of each separation",
+        "No: time order is absolute"
       ],
-      "answer": "Yes",
-      "explanation": "It does not represent a reversible causal influence.",
+      "answer": "Yes: but no causal influence can connect them",
+      "explanation": "Only timelike or lightlike separations have a frame-independent order.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can a signal travel between spacelike events?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is essential in a moving-rod length comparison?",
-      "answer": "Endpoint events simultaneous in the measuring frame",
+      "prompt": "What is essential when you compare the length of a moving rod?",
+      "answer": "The two endpoint events must be simultaneous in the measuring frame",
       "options": [
-        "Endpoint events simultaneous in the measuring frame",
-        "Using any two endpoint events regardless of time"
+        "Take the endpoints at two times, as the length is fixed",
+        "Use the rod's rest frame, in which the rod's length is measured",
+        "Use endpoints at different times",
+        "The two endpoint events must be simultaneous in the measuring frame"
       ],
-      "explanation": "Length contraction includes a simultaneity condition.",
+      "explanation": "Length contraction depends on the simultaneity condition.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "When do you record the positions of both ends?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Can time dilation alone determine every comparison between spatially separated events?",
-      "answer": "No; simultaneity and event coordinates must be specified.",
+      "prompt": "Can time dilation alone determine every comparison between two spatially separated events?",
+      "answer": "No: simultaneity and the full event coordinates must be specified",
       "options": [
-        "Yes; multiply every time interval by γ regardless of separation.",
-        "No; simultaneity and event coordinates must be specified."
+        "Yes: time dilation fixes the comparison for the two separated events here",
+        "Yes: multiplying proper time by γ gives the other interval",
+        "No: simultaneity and the full event coordinates must be specified",
+        "Yes: for a separation of the usual size in space"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Use the full Lorentz transformation.",
+      "hint": "Which term appears when Δx ≠ 0?",
+      "explanation": "Δt′ = γ(Δt − vΔx/c²), which includes the term vΔx/c².",
       "misconceptions": {
         "Yes; multiply every time interval by γ regardless of separation.": "Use the full Lorentz transformation."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Spacetime and Lorentz transformations”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ At v=0.6c, γ=1.25. A 10 m rod aligned with the x-axis and at rest in S′ has l
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Spacetime and Lorentz transformations”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Spacetime and Lorentz transformations” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Spacetime and Lorentz transformations” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

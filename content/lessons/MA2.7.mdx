@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can the ordinary divergence theorem ignore an interior field singularity?",
+      "prompt": "Can you apply the divergence theorem to F = r̂/r² over a region that contains the origin, without modification?",
       "options": [
-        "Yes",
-        "No"
+        "No: the theorem has no restriction",
+        "Yes: there are no restrictions on the field or the region it fills",
+        "No: the field is singular at the origin and violates the theorem's assumptions",
+        "Yes: it gives zero, as the divergence vanishes outside the origin"
       ],
-      "answer": "No",
-      "explanation": "The field must meet the theorem assumptions or the singular region must be handled.",
+      "answer": "No: the field is singular at the origin and violates the theorem's assumptions",
+      "explanation": "The theorem requires a field that is continuously differentiable in the whole region. Excise a small ball or use delta-function divergence.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is F defined at the origin?"
     },
     {
       "id": "concept-2",
-      "prompt": "Do Stokes normal and boundary direction have independent arbitrary signs?",
+      "prompt": "In Stokes' theorem, how are the surface normal and the boundary direction related?",
       "options": [
-        "No",
-        "Yes"
+        "They are parallel, so the normal runs along the boundary direction",
+        "They are opposite, so the normal runs against the boundary",
+        "By the right-hand rule: they follow one consistent convention",
+        "They are chosen independently of one another"
       ],
-      "answer": "No",
-      "explanation": "They must follow one orientation convention.",
+      "answer": "By the right-hand rule: they follow one consistent convention",
+      "explanation": "Orient the boundary so that, with your thumb along the normal, your fingers curl along the boundary direction.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the right-hand rule."
     },
     {
       "id": "concept-3",
-      "prompt": "Does divergence theorem concern circulation around a loop?",
+      "prompt": "Which quantity does the divergence theorem relate to a volume integral?",
       "options": [
-        "Yes",
-        "No; it concerns closed-surface flux"
+        "The circulation around a closed loop, since the divergence theorem converts a loop integral into a volume integral",
+        "The line integral of a scalar",
+        "The flux through the closed boundary surface",
+        "The curl on the surface"
       ],
-      "answer": "No; it concerns closed-surface flux",
-      "explanation": "Curl and circulation belong to Stokes.",
+      "answer": "The flux through the closed boundary surface",
+      "explanation": "∭∇·F dV = ∯F·dS. Circulation and curl belong to Stokes' theorem.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Divergence goes with volume and closed surface."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why do internal boundary contributions cancel in the geometric proof idea?",
-      "answer": "Adjacent cells induce opposite orientations on their shared boundary",
+      "prompt": "In the proof by subdividing a region into cells, why do interior contributions cancel?",
+      "answer": "Neighbouring cells see their common face with opposite orientations",
       "options": [
-        "Adjacent cells induce opposite orientations on their shared boundary",
-        "Every internal field value vanishes"
+        "The faces have zero area, so interior terms vanish",
+        "The field is constant in the interior, so its contributions are equal",
+        "Neighbouring cells see their common face with opposite orientations",
+        "The interior field values are zero, so there is no contribution from the cells"
       ],
-      "explanation": "The cancellation is geometric and signed, not a zero-field assumption.",
+      "explanation": "Each shared face is counted twice with opposite normals, so the contributions add to zero. Only the outer boundary remains.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of two adjacent cubes sharing a face."
     },
     {
       "id": "multivariable-transfer-1",
       "prompt": "For F=(x,y,z), find the volume integral of divergence over a unit ball.",
       "answer": "12.566370614359172",
       "hint": "Divergence three multiplies volume 4π/3.",
-      "explanation": "Divergence three multiplies volume 4π/3. The value in the stated units is 12.566370614359.",
+      "explanation": "∇·F = 3, so the integral over the unit ball is 3 × (4π/3) = 4π ≈ 12.566, which equals the flux in the previous problem.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For F=(−y,x,0), find z component of curl.",
       "answer": "2",
       "hint": "Compute ∂Fy/∂x−∂Fx/∂y.",
-      "explanation": "Compute ∂Fy/∂x−∂Fx/∂y. The value in the stated units is 2.",
+      "explanation": "(∇×F)_z = ∂F_y/∂x − ∂F_x/∂y = 1 − (−1) = 2.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Can the classical smooth divergence theorem be applied across the singular origin of r/r³ without modification?",
-      "answer": "No; excision or a distributional formulation is needed.",
+      "prompt": "F = r̂/r² has zero divergence for r > 0. Can the smooth divergence theorem be applied across the origin?",
+      "answer": "No: the flux through a sphere is 4π, so the origin needs special treatment",
       "options": [
-        "Yes; divergence is zero at every point where it is defined, so no flux is possible.",
-        "No; excision or a distributional formulation is needed."
+        "No: the flux through a sphere is infinite, as the field blows up",
+        "Yes: the divergence is zero for r > 0, so the flux through spheres is zero",
+        "No: the flux through a sphere is 4π, so the origin needs special treatment",
+        "Yes: the flux is 1 through a sphere, so the origin needs no special treatment"
       ],
-      "explanation": "The missing point violates the full-domain regularity hypothesis.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The flux through any sphere around the origin is 4π, but the divergence is zero everywhere else. The theorem needs a distributional or excised formulation.",
+      "hint": "Compute the flux through a sphere of radius R.",
       "misconceptions": {
         "Yes; divergence is zero at every point where it is defined, so no flux is possible.": "The missing point violates the full-domain regularity hypothesis."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Green, Stokes and divergence theorems”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -219,19 +233,19 @@ On the unit cube [0,1]³ with F=(x,y,z), the three faces at coordinate 0 contrib
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Green, Stokes and divergence theorems”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Green, Stokes and divergence theorems” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Green, Stokes and divergence theorems” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

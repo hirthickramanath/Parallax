@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does equal exact molecular mass imply equal connectivity?",
+      "prompt": "Two compounds have the same exact molecular mass in a mass spectrum. Do they have the same connectivity?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the same mass means the same structure, since an exact mass fixes the connectivity of the atoms",
+        "No: constitutional isomers share formula and mass but differ in connectivity",
+        "Yes: unless one of them is a salt, which changes the mass in the spectrum",
+        "No: mass is unrelated to formula"
       ],
-      "answer": "No",
-      "explanation": "Constitutional isomers can have the same formula.",
+      "answer": "No: constitutional isomers share formula and mass but differ in connectivity",
+      "explanation": "Ethanol and dimethyl ether both have mass 46.04 yet differ in bonding.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare ethanol and dimethyl ether."
     },
     {
       "id": "concept-2",
-      "prompt": "Does the n+1 splitting rule cover every NMR spin system?",
+      "prompt": "An NMR multiplet is much more complex than the n+1 rule predicts. What may explain it?",
       "options": [
-        "No",
-        "Yes"
+        "The instrument failed, as the n+1 rule is exact and gives the observed multiplet pattern",
+        "The rule works for each multiplet that is observed, so the instrument has failed",
+        "There are no neighbouring protons, so the multiplet should be a simple singlet",
+        "Strong coupling or non-equivalent neighbours put the system outside the simple n+1 regime"
       ],
-      "answer": "No",
-      "explanation": "It has a restricted simple-coupling regime.",
+      "answer": "Strong coupling or non-equivalent neighbours put the system outside the simple n+1 regime",
+      "explanation": "The n+1 rule holds for first-order spectra with similar coupling constants.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When does n+1 stop applying?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does every attenuation measurement obey linear Beer–Lambert concentration scaling?",
+      "prompt": "A series of dilutions shows absorbance rising less than linearly with concentration at high concentration. What may be responsible?",
       "options": [
-        "Yes",
-        "No"
+        "Beer–Lambert is exact, so a fall below linearity must come from an error in the dilutions",
+        "The concentration is wrong in the stock solution that was used",
+        "Dilutions change the molecule, so the absorbance no longer scales with the amount",
+        "Aggregation, scattering or instrument stray light break Beer–Lambert linearity"
       ],
-      "answer": "No",
-      "explanation": "Scattering, association and instrumental effects can violate the model.",
+      "answer": "Aggregation, scattering or instrument stray light break Beer–Lambert linearity",
+      "explanation": "The Beer–Lambert law holds in a limited regime.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List where the law's assumptions fail."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why combine several spectral methods?",
-      "answer": "Different methods constrain different structural features and ambiguities",
+      "prompt": "Why do chemists combine MS, IR and NMR when identifying a compound?",
+      "answer": "Each method constrains different structural features and ambiguities",
       "options": [
-        "Different methods constrain different structural features and ambiguities",
-        "One correctly positioned peak uniquely fixes every atom"
+        "The methods are the same measurement carried out three times, so combining them reduces random noise",
+        "Each method constrains different structural features and ambiguities",
+        "One method is enough for a compound of the usual kind",
+        "To make the report longer and more complete"
       ],
-      "explanation": "Independent information reduces degeneracy but still needs model checks.",
+      "explanation": "MS gives formula, IR gives functional groups and NMR gives connectivity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does each technique report on?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For ε=2,c=0.5 and path length 3 in consistent units, find absorbance.",
       "answer": "3",
       "hint": "Multiply ε c l.",
-      "explanation": "Multiply ε c l. The value in the stated units is 3.",
+      "explanation": "Beer–Lambert: A = ε c l = 2 × 0.5 × 3 = 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For decadic absorbance A=2, find transmittance.",
       "answer": "0.01",
       "hint": "Use 10^−A.",
-      "explanation": "Use 10^−A. The value in the stated units is 0.01.",
+      "explanation": "T = 10^(−A) = 10^(−2) = 0.01.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does one matched IR or UV absorption feature uniquely determine a complete organic structure?",
-      "answer": "No; multiple spectral and chemical constraints are needed.",
+      "prompt": "A strong IR band at 1715 cm⁻¹ is observed. Does it fully determine the structure?",
+      "answer": "No: it suggests a carbonyl, but other data are needed for the rest of the structure",
       "options": [
-        "Yes; a single band is a full structure proof.",
-        "No; multiple spectral and chemical constraints are needed."
+        "Yes: the compound is acetone, which absorbs strongly in that region",
+        "Yes: it proves an ester, which has a band at that position",
+        "No: it suggests a carbonyl, but other data are needed for the rest of the structure",
+        "No: it suggests a functional group of a different kind, so it adds little"
       ],
-      "explanation": "Different molecules and environments can share features.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Many ketones, aldehydes and acids absorb near that frequency.",
+      "hint": "How many compounds contain C=O?",
       "misconceptions": {
         "Yes; a single band is a full structure proof.": "Different molecules and environments can share features."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Organic spectroscopy and molecular identification”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For transmitted intensity ratio I/I₀=0.1, absorbance is 1. If εℓ=2 in match
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Organic spectroscopy and molecular identification”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Organic spectroscopy and molecular identification” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Organic spectroscopy and molecular identification” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

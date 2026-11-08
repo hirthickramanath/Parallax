@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are physicists’ and probabilists’ Hermite coefficients identical?",
+      "prompt": "Physicists' and probabilists' Hermite polynomials have the same name. Are their coefficients the same?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, up to sign, as the two families differ by an overall sign convention",
+        "No: they use different scalings and weights (e^{−x²} versus e^{−x²/2})",
+        "Yes for even degrees, as the odd ones differ by a sign convention alone",
+        "Yes: identical, as the weight is the same for the two families"
       ],
-      "answer": "No",
-      "explanation": "They use different coordinate and normalization conventions.",
+      "answer": "No: they use different scalings and weights (e^{−x²} versus e^{−x²/2})",
+      "explanation": "H₂ = 4x² − 2 (physicists) and He₂ = x² − 1 (probabilists).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the degree-2 polynomials."
     },
     {
       "id": "concept-2",
-      "prompt": "Can the Laguerre orthogonality weight be dropped without changing its norm statement?",
+      "prompt": "The Laguerre orthogonality integral ∫Lₘ Lₙ e^{−x} dx = δₘₙ. If you drop the factor e^{−x}, what happens?",
       "options": [
-        "No",
-        "Yes"
+        "The polynomials become unit norm in the new inner product, with no weight",
+        "The integral diverges for m = n, as the polynomials grow without the decay",
+        "The orthogonality statement no longer holds: the weight is part of the inner product",
+        "The integral is the same with or without the factor, so orthogonality is unchanged"
       ],
-      "answer": "No",
-      "explanation": "The weight defines the relevant inner product.",
+      "answer": "The orthogonality statement no longer holds: the weight is part of the inner product",
+      "explanation": "The polynomials are orthogonal only with respect to their weight function.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute ∫L₀L₁dx without the weight."
     },
     {
       "id": "concept-3",
-      "prompt": "Do R(r) and u(r)=rR(r) use the same radial integration measure?",
+      "prompt": "R(r) is the hydrogen radial function and u(r) = rR(r). Do they use the same normalisation integral?",
       "options": [
-        "Yes",
-        "No"
+        "No: neither normalises",
+        "Yes: both ∫R²dr = 1",
+        "No: ∫R²r²dr = 1 whereas ∫u²dr = 1",
+        "Yes: both ∫R²r²dr = 1"
       ],
-      "answer": "No",
-      "explanation": "R uses r²dr while u uses dr.",
+      "answer": "No: ∫R²r²dr = 1 whereas ∫u²dr = 1",
+      "explanation": "The volume element r²dr is absorbed into u = rR.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Substitute u = rR into ∫u²dr."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What must a physical interpretation of an oscillator polynomial include?",
-      "answer": "Its envelope, normalization, coordinate scale and Hamiltonian",
+      "prompt": "To interpret an oscillator eigenfunction physically, what must accompany the Hermite polynomial?",
+      "answer": "The Gaussian envelope, normalisation, coordinate scale and the Hamiltonian",
       "options": [
-        "Its envelope, normalization, coordinate scale and Hamiltonian",
-        "Only the polynomial degree"
+        "The particle mass, as the polynomial includes the envelope and the coordinate scale",
+        "The Gaussian envelope, normalisation, coordinate scale and the Hamiltonian",
+        "No more is needed: the polynomial is the eigenfunction itself here",
+        "The polynomial degree, as that fixes the energy and the whole wavefunction in space"
       ],
-      "explanation": "The polynomial alone is not a normalized physical state.",
+      "explanation": "ψₙ(x) = Nₙ Hₙ(x/b)e^{−x²/2b²}; the polynomial alone is not a normalisable state.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is Hₙ(x) square-integrable by itself?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Is a bare nonconstant Hermite polynomial a normalized oscillator wavefunction on the real line?",
-      "answer": "No; the Gaussian factor and normalization are required.",
+      "prompt": "Is H₂(x) = 4x² − 2 by itself a normalisable wavefunction on the real line?",
+      "answer": "No: it grows without bound; the Gaussian factor and normalisation are needed",
       "options": [
-        "Yes; orthogonality removes every weight factor.",
-        "No; the Gaussian factor and normalization are required."
+        "Yes: it is a polynomial, so it is finite everywhere and therefore normalisable on the whole real line",
+        "Yes if n is even, as the even polynomials decay at large values of x",
+        "Yes: orthogonality of the Hermite polynomials ensures that they are normalisable",
+        "No: it grows without bound; the Gaussian factor and normalisation are needed"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Polynomial and weighted eigenfunction are different objects.",
+      "hint": "Check the integral of x⁴ over the whole line.",
+      "explanation": "∫H₂² dx diverges. The weight e^{−x²} makes the state normalisable.",
       "misconceptions": {
         "Yes; orthogonality removes every weight factor.": "Polynomial and weighted eigenfunction are different objects."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Hermite and Laguerre polynomials”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ In the physicists’ convention H₂(0)=−2. For generalized Laguerre with α=2
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Hermite and Laguerre polynomials”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Hermite and Laguerre polynomials” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Hermite and Laguerre polynomials” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

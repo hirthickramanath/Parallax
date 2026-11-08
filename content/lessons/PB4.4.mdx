@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does zero mean signed AC current imply zero heating?",
-      "answer": "No",
+      "prompt": "An AC current has zero mean over a cycle. Does it heat a resistor?",
+      "answer": "Yes: the heating depends on I², which is positive",
       "options": [
-        "Yes",
-        "No"
+        "No, since the average current is zero, so there is no net transfer of energy to the resistor",
+        "Yes: the heating depends on I², which is positive",
+        "Yes, but just in the first half of each full cycle",
+        "No, because positive and negative halves cancel"
       ],
-      "explanation": "Heating depends on squared current.",
+      "explanation": "Power is I²R. The squared current is never negative, so the average heating is I²_rms R, even if the average current is zero.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Replace I by I² before averaging."
     },
     {
       "id": "c2",
-      "prompt": "Does a capacitor current require conduction through an ideal dielectric?",
-      "answer": "No",
+      "prompt": "A current flows through a circuit containing a capacitor whose plates are separated by an insulator. How can this be?",
+      "answer": "Charge builds up on the plates, changing the field in the gap",
       "options": [
-        "No",
-        "Yes"
+        "The current is zero in a circuit with a capacitor, as the gap is open there",
+        "The insulator becomes a conductor",
+        "Charge builds up on the plates, changing the field in the gap",
+        "Charge flows through the insulator"
       ],
-      "explanation": "Charging changes the electric field across the gap.",
+      "explanation": "Current flows to and from the plates while the capacitor charges, and the electric field in the gap changes. No charge crosses the gap itself.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the charge go while the capacitor charges?"
     },
     {
       "id": "c3",
-      "prompt": "Do phasors alone describe the switch-on transient?",
-      "answer": "No",
+      "prompt": "You switch on an AC source connected to an RLC circuit. What do phasors describe?",
+      "answer": "The steady sinusoidal behaviour that follows the transient",
       "options": [
-        "Yes",
-        "No"
+        "Both, with no extra terms",
+        "The steady sinusoidal behaviour that follows the transient",
+        "The exact motion during the switch-on transient",
+        "Just the transient that follows the switch-on"
       ],
-      "explanation": "They describe sinusoidal steady state.",
+      "explanation": "Phasors assume steady-state sinusoids at one frequency. The initial transient has decaying terms that need the full differential equation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Phasors assume everything oscillates at the same frequency."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "An ideal capacitor carries sinusoidal current in steady state. Can its average absorbed power be zero while its current is nonzero?",
-      "answer": "Yes; stored energy is returned during the cycle.",
+      "prompt": "An ideal capacitor carries a sinusoidal current in steady state. What is the average power it absorbs?",
+      "answer": "Zero: it stores energy and then returns it each cycle",
       "options": [
-        "No; any nonzero current implies positive mean dissipation.",
-        "Yes; stored energy is returned during the cycle."
+        "Zero: it stores energy and then returns it each cycle",
+        "Positive, equal to I_rms times V_rms",
+        "Negative, since it releases energy",
+        "Equal to the power in a resistor of equal reactance"
       ],
-      "explanation": "Voltage and current are a quarter-cycle out of phase for an ideal capacitor.",
+      "explanation": "Current leads voltage by 90° for an ideal capacitor, so P = V_rms I_rms cos 90° = 0 on average. Energy only shuttles between the source and the field.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Use P = V_rms I_rms cos φ with φ = 90°.",
       "misconceptions": {
         "No; any nonzero current implies positive mean dissipation.": "Voltage and current are a quarter-cycle out of phase for an ideal capacitor."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Are peak and rms values of a sinusoid interchangeable in a power formula?",
-      "answer": "No; the conversion factor matters.",
+      "prompt": "A sinusoidal voltage has a peak of 325 V. What should you use in a P = V²/R calculation for average power?",
+      "answer": "The rms value, about 230 V",
       "options": [
-        "Yes; they are merely two labels for the same voltage.",
-        "No; the conversion factor matters."
+        "The rms value, about 230 V",
+        "The average of the signed voltage, 0 V",
+        "The peak value, 325 V",
+        "Twice the peak, 650 V"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Average the square rather than the signed sinusoid.",
+      "hint": "Average the square of the voltage, not the voltage.",
+      "explanation": "Average power uses the mean of v², giving V_rms = V_peak/√2 ≈ 230 V. Using the peak overstates the average by a factor of 2.",
       "misconceptions": {
         "Yes; they are merely two labels for the same voltage.": "Average the square rather than the signed sinusoid."
       },

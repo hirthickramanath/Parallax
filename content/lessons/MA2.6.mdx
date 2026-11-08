@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Can nonzero field yield zero flux through a patch?",
+      "prompt": "A non-zero vector field is tangent to a surface patch everywhere. What is the flux through that patch?",
       "options": [
-        "No",
-        "Yes"
+        "Positive, since the field is non-zero and so carries something through the surface patch",
+        "Zero, since the normal component is zero",
+        "Negative, as the field points inward here",
+        "Equal to the field magnitude times area"
       ],
-      "answer": "Yes",
-      "explanation": "A tangent field has zero normal component.",
+      "answer": "Zero, since the normal component is zero",
+      "explanation": "Flux is ∬F·n dS. If F is tangent, F·n = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is F·n for a tangent vector?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does reversing orientation change scalar surface area?",
+      "prompt": "You flip the orientation of a surface. What changes?",
       "options": [
-        "No",
-        "Yes"
+        "The sign of the flux, not the surface area",
+        "The area changes sign",
+        "The area doubles, as the surface is flipped",
+        "The area changes sign along with the flux"
       ],
-      "answer": "No",
-      "explanation": "Area uses magnitude, while flux is signed.",
+      "answer": "The sign of the flux, not the surface area",
+      "explanation": "The unit normal reverses, flipping the sign of F·n. The scalar area element |ru × rv| du dv uses a magnitude.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which quantity involves n?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is every field flux a physical particle flow rate?",
+      "prompt": "The flux of a vector field is computed through a surface. Does it always mean particles per second?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: flux is a rate of particles that cross the surface",
+        "No: its meaning depends on the field's units and what it represents",
+        "No: flux has no meaning outside fluid flow, where particles are counted as such",
+        "Yes, if the surface is closed"
       ],
-      "answer": "No",
-      "explanation": "The field units and interpretation determine meaning.",
+      "answer": "No: its meaning depends on the field's units and what it represents",
+      "explanation": "Flux of a velocity field is a volume rate, of a mass-current density a mass rate, of E a field flux. Interpretation depends on the field.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check the units of F times area."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why not normalize the parameter cross product and then forget its magnitude?",
-      "answer": "Its magnitude supplies the local area scale",
+      "prompt": "A surface is parametrised by r(u, v). Why can't you replace dS by n du dv with a unit normal n?",
+      "answer": "The magnitude |ru × rv| gives the local area scale and must be kept",
       "options": [
-        "Its magnitude supplies the local area scale",
-        "The cross product is always a unit vector"
+        "The cross product is a unit vector, so the local area scale is one",
+        "The normal is not defined for a parametrised surface, so n du dv has no meaning",
+        "dS = du dv, as the parameter area is the surface area",
+        "The magnitude |ru × rv| gives the local area scale and must be kept"
       ],
-      "explanation": "Parameter increments are not generally physical area increments.",
+      "explanation": "Parameter increments du dv are not areas. dS = |ru × rv| du dv accounts for stretching.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compute |ru × rv| for a sphere."
     },
     {
       "id": "multivariable-transfer-1",
       "prompt": "For F=(x,y,z), find outward flux through the unit sphere.",
       "answer": "12.566370614359172",
       "hint": "The normal component is one and sphere area is 4π.",
-      "explanation": "The normal component is one and sphere area is 4π. The value in the stated units is 12.566370614359.",
+      "explanation": "On the unit sphere F·n̂ = r = 1, so the flux is the sphere's area, 4π ≈ 12.566.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For plane z=2x+2y over a unit xy-square, find scalar surface area.",
       "answer": "3",
       "hint": "Use sqrt(1+2²+2²).",
-      "explanation": "Use sqrt(1+2²+2²). The value in the stated units is 3.",
+      "explanation": "For z = 2x + 2y the area element is √(1 + z_x² + z_y²) = √(1 + 4 + 4) = 3 per unit of xy-area, so the area over the unit square is 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "multivariable-model-assumptions",
-      "prompt": "Does reversing a surface orientation change its unsigned geometric area?",
-      "answer": "No; it changes oriented flux sign, not scalar area.",
+      "prompt": "You reverse a surface's orientation. What happens to its scalar area ∬dS?",
+      "answer": "Nothing: area is unsigned",
       "options": [
-        "Yes; scalar area becomes negative.",
-        "No; it changes oriented flux sign, not scalar area."
+        "It doubles",
+        "Nothing: area is unsigned",
+        "It becomes negative, since reversing the orientation also reverses the sign of the area element",
+        "It halves in size"
       ],
-      "explanation": "Magnitude and oriented vector area are different objects.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Orientation changes the sign of oriented quantities like flux, not the unsigned area.",
+      "hint": "Is area a signed quantity?",
       "misconceptions": {
         "Yes; scalar area becomes negative.": "Magnitude and oriented vector area are different objects."
       },
@@ -151,7 +165,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Surface integrals”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -217,19 +231,19 @@ For constant F=(0,0,3) through a horizontal unit square, upward flux is 3 and do
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Surface integrals”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Surface integrals” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Surface integrals” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does local product structure prove a bundle globally trivial?",
+      "prompt": "A fibre bundle looks like a product U × F locally. Does that make it globally a product?",
       "options": [
-        "Yes",
-        "No"
+        "No: transition functions can give a non-trivial global structure (e.g. the Möbius band)",
+        "Yes: local triviality implies global triviality, so a bundle is a product over its base",
+        "Yes: for smooth bundles, as smoothness removes the twisting of the fibres",
+        "Yes: over a circle, as the circle is simple enough that no twisting of the fibre around it can occur"
       ],
-      "answer": "No",
-      "explanation": "Transition topology can be nontrivial.",
+      "answer": "No: transition functions can give a non-trivial global structure (e.g. the Möbius band)",
+      "explanation": "The Möbius band is locally a product of an interval with a circle but globally twisted.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the Möbius band."
     },
     {
       "id": "concept-2",
-      "prompt": "Does an abelian A→A+dχ change local F=dA?",
+      "prompt": "In electromagnetism A → A + dχ. What happens to the field strength F = dA?",
       "options": [
-        "No",
-        "Yes"
+        "It becomes zero",
+        "It changes by dχ, since the field strength F = dA picks up the exact term added to A",
+        "It changes by the exact form dχ",
+        "It is unchanged, since d²χ = 0"
       ],
-      "answer": "No",
-      "explanation": "d²χ=0.",
+      "answer": "It is unchanged, since d²χ = 0",
+      "explanation": "F′ = d(A + dχ) = dA + d²χ = dA.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply the exterior derivative d to dχ, and recall d² = 0."
     },
     {
       "id": "concept-3",
-      "prompt": "Must gauge-coupling/sign conventions be stated?",
+      "prompt": "You compare a gauge-theory formula with another text's. What must you check?",
       "options": [
-        "No",
-        "Yes"
+        "The formulas are universal, so the signs of the connection agree between texts",
+        "The units used for the field in each text, as that settles the comparison",
+        "Coupling and sign conventions, because connection formulas depend on them",
+        "The metric signature used in each text, as that settles the whole comparison"
       ],
-      "answer": "Yes",
-      "explanation": "Connection formulas depend on them.",
+      "answer": "Coupling and sign conventions, because connection formulas depend on them",
+      "explanation": "D = ∂ − iqA versus ∂ + iqA change the sign of the coupling.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the covariant derivative definition."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why distinguish local potentials and global structure?",
-      "answer": "One chart need not describe the whole bundle.",
+      "prompt": "Why distinguish local gauge potentials from global bundle structure?",
+      "answer": "One chart need not describe the whole bundle",
       "options": [
-        "One chart need not describe the whole bundle.",
-        "A local base-times-fibre description."
+        "The bundle is trivial over the whole base",
+        "One chart need not describe the whole bundle",
+        "Potentials are defined on the whole base space as forms",
+        "Fields are zero when a potential is removed"
       ],
-      "explanation": "One chart need not describe the whole bundle.",
+      "explanation": "The Dirac monopole potential cannot be defined by one A over the whole sphere; two patches are needed.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall the Dirac monopole: can one A cover the whole sphere?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is a local gauge potential itself generally gauge invariant?",
-      "answer": "No; gauge transformations change its representative.",
+      "prompt": "Is a local gauge potential A itself gauge invariant?",
+      "answer": "No: gauge transformations change it",
       "options": [
-        "Yes; every component is directly observable.",
-        "No; gauge transformations change its representative."
+        "No: gauge transformations change it",
+        "Yes: the potential A is gauge invariant",
+        "Yes: A is invariant when it is set to zero",
+        "Yes: it is observable"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Distinguish representative and gauge-invariant quantities.",
+      "hint": "Recall that A → A + dχ is allowed, then ask if A changes.",
+      "explanation": "Only gauge-invariant quantities such as F and holonomies are physical.",
       "misconceptions": {
         "Yes; every component is directly observable.": "Distinguish representative and gauge-invariant quantities."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Fibre bundles and gauge connections (intro)”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For an abelian local potential A=x dy on a unit square, curvature F=dx∧dy has 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Fibre bundles and gauge connections (intro)”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Fibre bundles and gauge connections (intro)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Fibre bundles and gauge connections (intro)” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

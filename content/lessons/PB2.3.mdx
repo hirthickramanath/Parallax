@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Can mean velocity vanish while mean squared speed is positive?",
-      "answer": "Yes",
+      "prompt": "In a gas at rest, the mean velocity of the molecules is zero. What is true of the mean squared speed?",
+      "answer": "It is positive, because squaring removes the cancellation",
       "options": [
-        "No",
-        "Yes"
+        "It is positive, because squaring removes the cancellation",
+        "It is zero too, since the mean velocity is zero, so the molecules have no kinetic energy at rest",
+        "It equals the square of the mean speed",
+        "It is negative for half the molecules"
       ],
-      "explanation": "Opposite velocities cancel; their squares do not.",
+      "explanation": "Velocities in opposite directions cancel in the mean, but v² is never negative, so ⟨v²⟩ > 0 whenever the molecules move at all.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare averaging +v and −v with averaging v² for both."
     },
     {
       "id": "c2",
-      "prompt": "Is rms speed identical to mean speed?",
-      "answer": "No",
+      "prompt": "How do the rms speed and the mean speed of a gas compare?",
+      "answer": "They differ, because squaring weights fast molecules more",
       "options": [
-        "No",
-        "Yes"
+        "They differ, because squaring weights fast molecules more",
+        "They are equal for a Maxwell distribution, since both are averages over the same set of molecular speeds",
+        "They are the same for a distribution of that kind",
+        "The mean speed is the larger, as squaring favours the slow"
       ],
-      "explanation": "Different averages weight the speed distribution differently.",
+      "explanation": "rms = √⟨v²⟩ weights high speeds more than the plain average. For a Maxwell distribution v_rms ≈ 1.085 v_mean.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Test with two molecules at speeds 1 and 3."
     },
     {
       "id": "c3",
-      "prompt": "Does classical equipartition apply unchanged to frozen quantum modes?",
-      "answer": "No",
+      "prompt": "At low temperature a diatomic gas shows less heat capacity than classical equipartition predicts. Why?",
+      "answer": "Its vibrational mode is frozen because the energy spacing exceeds kT",
       "options": [
-        "Yes",
-        "No"
+        "Equipartition fails because molecules stop colliding",
+        "Its vibrational mode is frozen because the energy spacing exceeds kT",
+        "The molecules lose mass at low temperature",
+        "Rotation and translation switch off first"
       ],
-      "explanation": "Large energy spacings suppress thermal occupation.",
+      "explanation": "A mode only takes up thermal energy if kT is comparable to its quantum energy spacing. Vibrational spacings are large, so they freeze out first.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare kT with the spacing between quantised levels."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "At low temperature a molecular vibrational mode is quantum-frozen. Should it contribute the full classical equipartition heat capacity?",
-      "answer": "No; excitation is suppressed when its energy spacing is large compared with kT.",
+      "prompt": "A vibrational mode is quantum-frozen at low temperature. Should it add the full classical equipartition heat capacity?",
+      "answer": "No: excitation is suppressed when its spacing is large compared with kT",
       "options": [
-        "Yes; every coordinate contributes classically at all temperatures.",
-        "No; excitation is suppressed when its energy spacing is large compared with kT."
+        "No: it adds twice the classical amount",
+        "Yes: the heat capacity is set by the number of atoms, so the mode adds fully",
+        "Yes: each coordinate adds ½k per degree at low temperature as well",
+        "No: excitation is suppressed when its spacing is large compared with kT"
       ],
-      "explanation": "Compare kT with the mode’s quantum energy spacing.",
+      "explanation": "Equipartition assumes continuous energy levels. When the spacing is much larger than kT, the mode is almost never excited and contributes almost nothing.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Check the assumption behind equipartition against the energy spacing.",
       "misconceptions": {
         "Yes; every coordinate contributes classically at all temperatures.": "Compare kT with the mode’s quantum energy spacing."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Are rms speed and mean speed exactly the same statistic?",
-      "answer": "No; averaging and squaring do not commute.",
+      "prompt": "Why can the rms speed and mean speed of gas molecules not be treated as the same statistic?",
+      "answer": "Squaring, averaging and square-rooting do not commute",
       "options": [
-        "Yes; every characteristic speed is identical.",
-        "No; averaging and squaring do not commute."
+        "Squaring, averaging and square-rooting do not commute",
+        "They are the same, and the units differ just in notation",
+        "rms speed ignores molecules moving slowly",
+        "Mean speed includes the direction, rms does not"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Compare definitions before substituting.",
+      "hint": "Compute both for a small set such as 1, 2 and 6.",
+      "explanation": "√⟨v²⟩ and ⟨|v|⟩ come from different operations on the distribution, and ⟨v²⟩ ≥ ⟨|v|⟩² in general, so the two are different numbers.",
       "misconceptions": {
         "Yes; every characteristic speed is identical.": "Compare definitions before substituting."
       },

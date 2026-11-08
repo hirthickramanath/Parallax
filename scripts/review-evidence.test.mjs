@@ -102,14 +102,23 @@ test("actual partial source ledger matches current drafts and immutable official
   const ledger = JSON.parse(
     fs.readFileSync("content/review/source-inspections.json", "utf8"),
   );
-  assert.ok(ledger.inspections.length >= 195);
-  assert.equal(
-    new Set(ledger.inspections.map((r) => r.lessonId)).size,
-    ledger.inspections.length,
-  );
-  for (const r of ledger.inspections) {
+  const stale = ledger.staleInspections || [];
+  const all = [...ledger.inspections, ...stale];
+  assert.ok(all.length >= 195);
+  assert.equal(new Set(all.map((r) => r.lessonId)).size, all.length);
+  for (const r of stale) {
     const source = fs.readFileSync(`content/lessons/${r.lessonId}.mdx`, "utf8");
-    assert.equal(r.lessonSha256, sourceFingerprint(source));
+    assert.notEqual(
+      r.lessonSha256,
+      sourceFingerprint(source),
+      `${r.lessonId} is listed stale but its text still matches; move it back`,
+    );
+    assert.ok(r.staleReason, `${r.lessonId} needs a staleReason`);
+  }
+  for (const r of all) {
+    const source = fs.readFileSync(`content/lessons/${r.lessonId}.mdx`, "utf8");
+    if (!stale.includes(r))
+      assert.equal(r.lessonSha256, sourceFingerprint(source));
     assert.equal(r.independent, false);
     const official = [
       "https://github.com/openstax/osbooks-university-physics-bundle",

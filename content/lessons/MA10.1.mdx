@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must every group commute?",
+      "prompt": "Must the multiplication of a group be commutative?",
       "options": [
-        "Yes",
-        "No"
+        "Yes for groups with an identity",
+        "Yes: every group multiplication is commutative, since it is required by the associativity of the product",
+        "No: only abelian groups are commutative",
+        "Yes for finite groups"
       ],
-      "answer": "No",
-      "explanation": "Commutativity is an additional abelian property.",
+      "answer": "No: only abelian groups are commutative",
+      "explanation": "S₃ is a non-abelian group: its elements do not always commute.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of permutations."
     },
     {
       "id": "concept-2",
-      "prompt": "Is the kernel of a homomorphism normal?",
+      "prompt": "What can you say about the kernel of a group homomorphism φ: G → H?",
       "options": [
-        "Yes",
-        "No"
+        "It is a normal subgroup of G",
+        "It is a subgroup of H",
+        "It is trivial in the cases that we consider",
+        "It is a subgroup of G of the usual kind"
       ],
-      "answer": "Yes",
-      "explanation": "Conjugation preserves its identity image.",
+      "answer": "It is a normal subgroup of G",
+      "explanation": "For k in ker φ and g in G, φ(gkg⁻¹) = φ(g)eφ(g)⁻¹ = e, so conjugates stay in the kernel.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Conjugate an element of the kernel."
     },
     {
       "id": "concept-3",
-      "prompt": "Does an abstract group alone specify a physical action?",
+      "prompt": "An abstract group is specified. Does that alone determine how it acts on a physical system?",
       "options": [
-        "Yes",
-        "No"
+        "No: you also need the representation or action",
+        "Yes for finite groups",
+        "Yes: an abstract group fixes its action on a physical system, so no representation needs to be given",
+        "Yes for abelian groups"
       ],
-      "answer": "No",
-      "explanation": "The representation/action must also be given.",
+      "answer": "No: you also need the representation or action",
+      "explanation": "SO(3) is abstractly one group but can act on vectors, spinors or tensors differently.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the same group acting on different spaces."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is G/kerφ isomorphic to?",
-      "answer": "The image of φ.",
+      "prompt": "By the first isomorphism theorem, G/ker φ is isomorphic to which set?",
+      "answer": "The image φ(G)",
       "options": [
-        "The image of φ.",
-        "A homomorphism."
+        "The codomain H",
+        "The domain G",
+        "The kernel",
+        "The image φ(G)"
       ],
-      "explanation": "The image of φ.",
+      "explanation": "The map gker φ → φ(g) is a well-defined isomorphism onto the image.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think of the cosets as the fibres of φ."
     },
     {
       "id": "structure-transfer-1",
@@ -102,14 +114,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does every subset of a group define a possible kernel?",
-      "answer": "No; a kernel must be a normal subgroup.",
+      "prompt": "Can any subset of a group serve as the kernel of a homomorphism?",
+      "answer": "No: a kernel must be a normal subgroup",
       "options": [
-        "Yes; every subset is automatically normal.",
-        "No; a kernel must be a normal subgroup."
+        "Yes if it contains e",
+        "Yes if it is finite",
+        "Yes: a subset that contains the identity",
+        "No: a kernel must be a normal subgroup"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Closure and conjugation invariance are required.",
+      "hint": "List the properties a kernel must have.",
+      "explanation": "A kernel is closed and invariant under conjugation; an arbitrary subset has neither property.",
       "misconceptions": {
         "Yes; every subset is automatically normal.": "Closure and conjugation invariance are required."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Groups and homomorphisms”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ The additive map Z₆→Z₃ given by reduction modulo three has kernel the two 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Groups and homomorphisms”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Groups and homomorphisms” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Groups and homomorphisms” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

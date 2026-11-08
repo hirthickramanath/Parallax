@@ -15,9 +15,9 @@
       "prompt": "A prior that is flat in θ is re-expressed in φ = ln θ. Is it still flat in φ?",
       "options": [
         "No: p(φ) = p(θ)·e^φ, so it is no longer flat",
-        "Yes: a flat prior is uninformative in every parametrisation",
-        "No, but only after the data are included",
-        "Yes, but only if the likelihood is Gaussian"
+        "Yes: a flat prior is uninformative in each parametrisation",
+        "No, but that changes after the data are included",
+        "Yes, but if the likelihood is Gaussian"
       ],
       "answer": "No: p(φ) = p(θ)·e^φ, so it is no longer flat",
       "explanation": "A density transforms with the Jacobian |dθ/dφ| = e^φ, so uniform in θ means exponentially weighted in φ. 'Uninformative' depends on the parametrisation.",
@@ -30,9 +30,9 @@
       "prompt": "MCMC chains pass convergence diagnostics (R̂ ≈ 1). What have you learned?",
       "options": [
         "The chains agree on the specified posterior",
-        "The posterior has a single peak, since all chains ended up in the same place",
-        "The physical model is correct, because independent chains agree with one another",
-        "The prior no longer affects the result, because the data have taken over"
+        "The posterior has a single peak, as the chains ended up in the same place",
+        "The physical model is correct, as independent chains agree with one another",
+        "The prior no longer affects the result, as the data have taken over"
       ],
       "answer": "The chains agree on the specified posterior",
       "explanation": "Convergence is a statement about the sampler and the posterior it targets. A wrong model can converge perfectly well.",
@@ -45,9 +45,9 @@
       "prompt": "A survey detects only sources brighter than a flux limit. What must the likelihood include?",
       "options": [
         "The selection: the probability of detection given the parameters, normalised over observable data",
-        "Nothing extra: the detected sources are a random sample of the whole population",
-        "Only the fraction of the sky covered by the survey, as a constant multiplier",
-        "A larger flux uncertainty for faint sources, so that they count for less"
+        "No extra term is needed: the detected sources are a random sample of the population, so the selection can be ignored",
+        "The fraction of the sky covered by the survey, applied as a constant multiplier on the likelihood function",
+        "A larger flux uncertainty for faint sources, so that faint detections count for less in the fit overall"
       ],
       "answer": "The selection: the probability of detection given the parameters, normalised over observable data",
       "explanation": "Only an observable subset enters the sample, so the likelihood must be conditioned on selection, otherwise parameters such as the faint-end slope are biased.",
@@ -79,10 +79,10 @@
       "prompt": "A posterior has two well-separated peaks. Why can a single 68% interval around the mean mislead?",
       "answer": "It can cover low-probability values between the peaks and hide two distinct explanations",
       "options": [
-        "Credible intervals must always be symmetric about the posterior mean",
-        "The mean of a two-peaked posterior is undefined, so no interval can be quoted",
+        "Credible intervals must be symmetric about the posterior mean, and this one is not",
+        "The mean of a two-peaked posterior is undefined, so no interval about it can be quoted",
         "It can cover low-probability values between the peaks and hide two distinct explanations",
-        "A multimodal posterior always means the sampler is broken and must be rerun"
+        "A multimodal posterior means that the sampler is broken and the run must be repeated"
       ],
       "explanation": "A summary interval can sit between the modes where the posterior is small. Report the separate modes, or the full distribution.",
       "type": "mcq",
@@ -95,7 +95,7 @@
       "prompt": "For prior probability 0.2 and likelihood ratio 4, find posterior probability.",
       "answer": "0.5",
       "hint": "Prior odds are 1/4; multiplying by 4 gives odds one.",
-      "explanation": "Prior odds are 1/4; multiplying by 4 gives odds one. The value in the stated units is 0.5.",
+      "explanation": "Prior odds = 0.2/0.8 = 1/4. Multiplying by the likelihood ratio 4 gives posterior odds 1, so the probability is 1/(1 + 1) = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -105,7 +105,7 @@
       "prompt": "For prior probability 0.5 and likelihood ratio 9, find posterior probability.",
       "answer": "0.9",
       "hint": "Posterior odds are 9:1.",
-      "explanation": "Posterior odds are 9:1. The value in the stated units is 0.9.",
+      "explanation": "Prior odds = 0.5/0.5 = 1. Multiplying by 9 gives posterior odds 9:1, so the probability is 9/(9 + 1) = 0.9.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -116,9 +116,9 @@
       "answer": "Posterior ∝ likelihood × prior, normalised by the evidence",
       "options": [
         "Posterior ∝ likelihood divided by the prior, rescaled to total one",
-        "Posterior equals the likelihood, since P(A|B) = P(B|A) for any events A and B",
+        "Posterior equals the likelihood, as P(A|B) = P(B|A) for events A and B",
         "Posterior ∝ likelihood × prior, normalised by the evidence",
-        "Posterior equals prior times evidence, with the data entering only via the prior"
+        "Posterior equals prior times evidence, with the data entering via the prior"
       ],
       "explanation": "Bayes' theorem: P(H|D) = P(D|H)P(H)/P(D). Reversing a conditional needs the prior and the evidence.",
       "hint": "Write down Bayes' theorem and identify each factor.",
@@ -166,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Bayesian inference for astronomy”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -230,18 +230,18 @@ For two equally likely prior hypotheses with likelihoods .8 and .2 for the obser
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Bayesian inference for astronomy”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Bayesian inference for astronomy” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Bayesian inference for astronomy” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

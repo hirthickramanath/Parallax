@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a null result automatically make a project useless?",
+      "prompt": "Your experiment finds no effect. Is the project therefore useless?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: nulls are errors, as an experiment must find an effect to be useful",
+        "No: a well-designed null result constrains the parameter space and tests the method",
+        "No: nulls prove the effect does not exist anywhere",
+        "Yes: just positive results matter in science, and the rest is wasted"
       ],
-      "answer": "No",
-      "explanation": "It can constrain or diagnose a defined question.",
+      "answer": "No: a well-designed null result constrains the parameter space and tests the method",
+      "explanation": "Upper limits are real scientific results.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What can you say about the region you searched?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can untested exploratory tuning be presented as independent confirmation?",
+      "prompt": "After many tries tuning cuts on the data, you report the best one as an independent confirmation. Is that honest?",
       "options": [
-        "No",
-        "Yes"
+        "No: selection on the same data must be disclosed and cannot count as independent confirmation",
+        "Yes: the best cut is the strongest evidence, since selecting it from many tries shows it is genuine",
+        "No: cuts cannot be tuned on the data, so the whole procedure is invalid and the result must be thrown out",
+        "Yes: tuning is a form of confirmation, as the best cut shows that the effect is present in the data"
       ],
-      "answer": "No",
-      "explanation": "Selection must be disclosed.",
+      "answer": "No: selection on the same data must be disclosed and cannot count as independent confirmation",
+      "explanation": "Tuning on the sample inflates significance.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Was the final choice made blind?"
     },
     {
       "id": "concept-3",
-      "prompt": "Should data/equipment access be established in the plan?",
+      "prompt": "You design a project that needs telescope time you have not secured. Should access be addressed in the plan?",
       "options": [
-        "No",
-        "Yes"
+        "No: access is a detail for later",
+        "Yes: missing data or equipment can block execution",
+        "No: someone else will handle it",
+        "Yes: but just after the results arrive in the lab"
       ],
-      "answer": "Yes",
-      "explanation": "Missing inputs can block execution.",
+      "answer": "Yes: missing data or equipment can block execution",
+      "explanation": "Missing data or equipment can block execution, so access belongs in the plan. Feasibility is a part of design.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can the project run without its inputs?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What should a null result report?",
-      "answer": "The tested regime, uncertainty and limitations.",
+      "prompt": "What should the write-up of a null result report?",
+      "answer": "The regime tested, the uncertainty and the limitations",
       "options": [
-        "The tested regime, uncertainty and limitations.",
-        "A specific target, regime and observable."
+        "The regime tested, the uncertainty and the limitations",
+        "That the effect does not exist",
+        "A promise to retry with a better result",
+        "The best-case sensitivity of the experiment alone"
       ],
-      "explanation": "The tested regime, uncertainty and limitations.",
+      "explanation": "State what was excluded and at what confidence.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What did the search actually cover?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Can arbitrarily many independent repeats eliminate an unchanged shared calibration uncertainty?",
-      "answer": "No; a systematic floor remains.",
+      "prompt": "You repeat a measurement a million times with the same calibration. Do statistical errors going to zero also remove the calibration uncertainty?",
+      "answer": "No: a shared systematic uncertainty stays as a floor however large N is",
       "options": [
-        "Yes; all errors vanish with large N.",
-        "No; a systematic floor remains."
+        "Yes: errors vanish with large N, as repeats average away each source",
+        "No: a shared systematic uncertainty stays as a floor however large N is",
+        "Yes: calibration is a random error",
+        "No: statistical errors don't shrink either"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Improve calibration as well as sample size.",
+      "hint": "Does repeating improve the ruler?",
+      "explanation": "Improve the calibration as well as the sample size.",
       "misconceptions": {
         "Yes; all errors vanish with large N.": "Improve calibration as well as sample size."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Designing a research project”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For independent residuals [1,2] with unit variances, χ²=5. That number’s int
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Designing a research project”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Designing a research project” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Designing a research project” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does successful execution prove an array calculation is scientifically correct?",
-      "answer": "No",
+      "prompt": "A NumPy script runs without errors. What does that show about the result?",
+      "answer": "Only that the code ran; shapes, units and assumptions still need checking",
       "options": [
-        "Yes",
-        "No"
+        "That the units are consistent in the script",
+        "That the model is valid for the data in the arrays",
+        "Only that the code ran; shapes, units and assumptions still need checking",
+        "That the result is scientifically correct"
       ],
-      "explanation": "Shape, units and model assumptions can still be wrong.",
+      "explanation": "Python executes what you wrote, not what you meant. A wrong formula or mismatched units can run without error.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is 'it ran' the same as 'it is right'?"
     },
     {
       "id": "c2",
-      "prompt": "Does NumPy * always mean matrix multiplication?",
-      "answer": "No; @ performs matrix products",
+      "prompt": "Two NumPy arrays A and B are multiplied with A * B. What operation is this?",
+      "answer": "Element-wise multiplication; use A @ B for the matrix product",
       "options": [
-        "No; @ performs matrix products",
-        "Yes"
+        "Element-wise multiplication; use A @ B for the matrix product",
+        "A dot product of the two arrays, which is the same as the matrix product A @ B for square shapes",
+        "Matrix multiplication of the two arrays",
+        "A cross product of the two arrays"
       ],
-      "explanation": "The asterisk is elementwise.",
+      "explanation": "In NumPy, * acts element by element (with broadcasting). The @ operator performs matrix multiplication.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall which operator is for matrices."
     },
     {
       "id": "c3",
-      "prompt": "Can a slice share data with its parent array?",
-      "answer": "Yes",
+      "prompt": "You take b = a[2:5] from a NumPy array a and then set b[0] = 99. What happens to a?",
+      "answer": "a[2] also becomes 99, since the slice shares the data",
       "options": [
-        "No",
-        "Yes"
+        "The last element of a changes, and the others stay put",
+        "a[2] also becomes 99, since the slice shares the data",
+        "No change: b is an independent copy of the slice",
+        "An error is raised as the slice is write-protected"
       ],
-      "explanation": "Many slices are views, so edits can affect the source.",
+      "explanation": "Basic slices are views onto the same buffer. Use b = a[2:5].copy() to avoid changing the original.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a slice a copy or a window?"
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A NumPy basic slice is modified in place. Can the parent array change unless a copy was made?",
-      "answer": "Yes; basic slicing can share the parent data buffer.",
+      "prompt": "You modify a view obtained by basic slicing. Under what condition does the parent array stay unchanged?",
+      "answer": "Only if you made an explicit copy first",
       "options": [
-        "No; every slice automatically owns an independent copy.",
-        "Yes; basic slicing can share the parent data buffer."
+        "Always: slices are independent copies",
+        "Only if the dtype differs",
+        "Only if the slice is the whole array",
+        "Only if you made an explicit copy first"
       ],
-      "explanation": "Compare shared views with explicit .copy() semantics.",
+      "explanation": "A basic slice shares memory with its parent. Only .copy() (or advanced indexing) gives an independent array.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Think about what .copy() does.",
       "misconceptions": {
         "No; every slice automatically owns an independent copy.": "Compare shared views with explicit .copy() semantics."
       }
@@ -117,14 +128,16 @@
     },
     {
       "id": "computing-assumptions",
-      "prompt": "Does elementwise array multiplication always equal matrix multiplication?",
-      "answer": "No; the operations and compatible shapes differ.",
+      "prompt": "You need the matrix product of two 3×3 arrays. Why does A * B give the wrong answer?",
+      "answer": "It multiplies element by element instead of performing matrix multiplication",
       "options": [
-        "Yes; broadcasting implements every matrix product.",
-        "No; the operations and compatible shapes differ."
+        "It works for 1D arrays, so for a 3×3 array it adds the entries at each position",
+        "It adds the arrays entry by entry instead of multiplying",
+        "It multiplies element by element instead of performing matrix multiplication",
+        "It gives the transpose of the product instead of the product"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Check both operation and dimensions.",
+      "hint": "Compare the (0,0) entry of A * B with the row-times-column sum.",
+      "explanation": "* multiplies corresponding entries. A matrix product needs @ or np.dot, with compatible shapes.",
       "misconceptions": {
         "Yes; broadcasting implements every matrix product.": "Check both operation and dimensions."
       },
@@ -219,8 +232,7 @@ A reproducible script separates model functions from file access and plotting, v
 
 ### Transfer derivation and failure case
 
-Broadcasting compares shapes from the right; paired dimensions must be equal or one must be 1. For $(4,1)$ and $(1,5)$ the result is $(4,5)$, not $(4,1,5)$. A reduction with axis=0 combines the rows and removes that axis unless keepdims is requested. Basic slicing generally returns a view, so assignment through it can mutate the parent; an explicit copy separates storage. Shape compatibility is not evidence that a calculation represents the intended physical pairing: label which axes denote samples, coordinates and parameters before broadcasting scientific arrays.
-
+Broadcasting compares shapes from the right; paired dimensions must be equal or one must be 1. A reduction with axis=0 combines the rows and removes that axis unless keepdims is requested. Basic slicing generally returns a view, so assignment through it can mutate the parent; an explicit copy separates storage. Shape compatibility is not evidence that a calculation represents the intended physical pairing: label which axes denote samples, coordinates and parameters before broadcasting scientific arrays.
 
 ### Derivation and transfer
 

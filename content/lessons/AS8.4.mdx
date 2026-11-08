@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does colour uniquely determine morphology?",
+      "prompt": "Two galaxies are both red. Must they have the same morphology?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: red means elliptical",
+        "Yes: red means spiral for the galaxies in a survey",
+        "Yes: colour is morphology",
+        "No: stellar population, dust and structure all affect colour"
       ],
-      "answer": "No",
-      "explanation": "Population, dust and structure differ.",
+      "answer": "No: stellar population, dust and structure all affect colour",
+      "explanation": "An edge-on dusty spiral can look red like an elliptical galaxy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can dust redden a spiral?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is a fitted σ⁴ law exact for every galaxy?",
+      "prompt": "The M–σ relation is fitted as M_BH ∝ σ⁴. Is it exact for every galaxy?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: for masses of the black holes in a survey",
+        "No: the fit has scatter, sample selection and regime limits",
+        "Yes: it is a law of nature with no exceptions",
+        "Yes: with no scatter about the fitted line"
       ],
-      "answer": "No",
-      "explanation": "It has sample, scatter and regime qualifications.",
+      "answer": "No: the fit has scatter, sample selection and regime limits",
+      "explanation": "Different samples give slopes from about 4 to 5.5, with intrinsic scatter.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a regression line the same as a law?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a population sequence be assumed to trace one object’s chronology?",
+      "prompt": "Galaxies of different types are arranged in a sequence by mass. Does this sequence trace the life history of one galaxy?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: each galaxy moves along the sequence over time, so ellipticals eventually evolve into spirals",
+        "Yes: ellipticals become spirals as they age over time",
+        "Yes: individual galaxies move along the sequence",
+        "No: a snapshot correlation across the population is not an individual's history"
       ],
-      "answer": "No",
-      "explanation": "Cross-sectional correlations are not direct histories.",
+      "answer": "No: a snapshot correlation across the population is not an individual's history",
+      "explanation": "Different galaxies are seen at one time, not followed through time.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do you observe the same galaxy at different ages?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why record regression choices?",
-      "answer": "Selection and error geometry affect the inferred relation.",
+      "prompt": "Why must a paper record its regression method for a scaling relation?",
+      "answer": "Selection and the treatment of measurement errors affect the slope",
       "options": [
-        "Selection and error geometry affect the inferred relation.",
-        "Orientation, dust, bandpass and resolution."
+        "It matters for the plots, as the regression methods return the same slope for the same data",
+        "Selection and the treatment of measurement errors affect the slope",
+        "Methods give the same slope for a given set of data",
+        "The method is irrelevant to the slope that is quoted"
       ],
-      "explanation": "Selection and error geometry affect the inferred relation.",
+      "explanation": "Ordinary least squares in y and in x give different slopes.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do you regress y on x, or x on y?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "In an illustrative L∝v⁴ relation, v doubles. Find luminosity factor.",
       "answer": "16",
       "hint": "Use 2^4.",
-      "explanation": "Use 2^4. The value in the stated units is 16.",
+      "explanation": "With L ∝ v⁴, doubling v gives 2⁴ = 16.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For log10 L=4 log10 v+C, v rises by a factor of 10. Find the change in log10 L.",
       "answer": "4",
       "hint": "The change in log10 v is one.",
-      "explanation": "The change in log10 v is one. The value in the stated units is 4.",
+      "explanation": "log L = 4 log v + C, so Δlog L = 4 Δlog v. A factor 10 in v is Δlog v = 1, so Δlog L = 4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can a calibrated optical luminosity–velocity relation be silently treated as an exact baryonic-mass law?",
-      "answer": "No; the observable, scatter and calibration differ.",
+      "prompt": "Can a calibrated optical Tully–Fisher relation be silently reused as the baryonic Tully–Fisher law?",
+      "answer": "No: the observable, scatter and calibration differ",
       "options": [
-        "Yes; all galaxy scaling relations measure the same quantity.",
-        "No; the observable, scatter and calibration differ."
+        "Yes: both measure mass",
+        "No: the observable, scatter and calibration differ",
+        "Yes: they have the same slope",
+        "Yes: scaling relations are the same in the optical and the baryonic form"
       ],
-      "explanation": "A relation is tied to its data definition and regime.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A relation is tied to how its variables are defined.",
+      "hint": "Compare luminosity with baryonic mass.",
       "misconceptions": {
         "Yes; all galaxy scaling relations measure the same quantity.": "A relation is tied to its data definition and regime."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Galaxy morphology and scaling relations”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ In a supplied L∝σ⁴ fit regime, doubling σ multiplies predicted L by 16. If
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Galaxy morphology and scaling relations”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Galaxy morphology and scaling relations” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Galaxy morphology and scaling relations” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

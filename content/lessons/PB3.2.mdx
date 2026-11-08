@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Are refraction angles measured from the surface?",
-      "answer": "No; from the normal",
+      "prompt": "A ray meets a flat glass surface. From which line is the angle of incidence measured in Snell's law?",
+      "answer": "The normal to the surface",
       "options": [
-        "Yes",
-        "No; from the normal"
+        "The horizontal",
+        "The surface itself",
+        "The reflected ray",
+        "The normal to the surface"
       ],
-      "explanation": "Snell law uses the surface normal.",
+      "explanation": "Snell's law, n₁ sin θ₁ = n₂ sin θ₂, defines both angles from the normal. Measuring from the surface gives the complementary angle and a wrong answer.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall which line the angles are drawn from in a ray diagram."
     },
     {
       "id": "c2",
-      "prompt": "Can a virtual image be projected directly onto a screen at its apparent position?",
-      "answer": "No",
+      "prompt": "A plane mirror forms a virtual image. Why can you not catch it on a screen placed at the image position?",
+      "answer": "No actual light rays arrive there, since they only appear to diverge from it",
       "options": [
-        "No",
-        "Yes"
+        "No actual light rays arrive there, since they only appear to diverge from it",
+        "The mirror absorbs the light that forms the image",
+        "A screen blocks the rays before they converge",
+        "The image is too dim to be projected"
       ],
-      "explanation": "Actual outgoing rays do not meet there.",
+      "explanation": "A virtual image is where the diverging rays appear to come from. A real image needs rays to converge there so that a screen can intercept the light.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether light actually passes through the image point."
     },
     {
       "id": "c3",
-      "prompt": "Does more magnification always reveal more detail?",
-      "answer": "No",
+      "prompt": "You enlarge a blurry telescope image of two close stars further. Will they separate?",
+      "answer": "Not necessarily: diffraction limits the detail regardless of magnification",
       "options": [
-        "Yes",
-        "No"
+        "Not necessarily: diffraction limits the detail regardless of magnification",
+        "Yes, because more magnification always adds detail, so enlarging the image separates the two stars",
+        "Yes, but only above a certain magnification",
+        "No, because magnification removes the second star"
       ],
-      "explanation": "Resolution and aberrations limit recoverable structure.",
+      "explanation": "Magnification scales the existing pattern. The detail is limited by aperture diffraction and aberrations, so past a point you just get a larger blur.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Magnifying a low-resolution photo shows the same pixels, only larger."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A real object is exactly one positive focal length from a thin converging lens. What does the paraxial model predict?",
-      "answer": "Emerging rays are parallel; there is no finite image distance.",
+      "prompt": "A real object sits exactly one focal length from a thin converging lens. What does the paraxial model predict?",
+      "answer": "The refracted rays emerge parallel, so no finite image forms",
       "options": [
-        "A finite image forms at the opposite focus.",
-        "Emerging rays are parallel; there is no finite image distance."
+        "A virtual image forms at the same point as the object, since the rays from the focal point diverge",
+        "A real image forms at twice the focal length",
+        "The lens forms an image of the same size",
+        "The refracted rays emerge parallel, so no finite image forms"
       ],
-      "explanation": "The lens equation gives 1/v=0.",
+      "explanation": "From 1/u + 1/v = 1/f with u = f, 1/v = 0, so v → ∞. Rays from a point on the focus leave the lens parallel to each other.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Put u = f into the lens equation and see what happens to 1/v.",
       "misconceptions": {
         "A finite image forms at the opposite focus.": "The lens equation gives 1/v=0."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Does the thin-lens equation include all large-angle aberrations?",
-      "answer": "No; it is a paraxial idealization.",
+      "prompt": "A single thin-lens calculation predicts a sharp point image. Why might a real lens still give a blurry spot?",
+      "answer": "The thin-lens model assumes paraxial rays, ignoring aberrations",
       "options": [
-        "Yes; every ray obeys the same exact focal geometry.",
-        "No; it is a paraxial idealization."
+        "Real lenses have no focal length, so the thin-lens equation fails",
+        "Light does not obey Snell's law at the edge",
+        "The equation includes the aberrations, but they are small",
+        "The thin-lens model assumes paraxial rays, ignoring aberrations"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "State the approximation and aperture regime.",
+      "hint": "Recall the conditions under which the thin-lens formula is derived.",
+      "explanation": "The thin-lens equation is a paraxial approximation for rays near the axis at small angles. Spherical aberration and similar effects appear when the aperture is large.",
       "misconceptions": {
         "Yes; every ray obeys the same exact focal geometry.": "State the approximation and aperture regime."
       },
@@ -222,8 +235,7 @@ Energy is not determined by ray intersection alone. Reflection, absorption and f
 
 ### Transfer derivation and failure case
 
-Use one consistent lens sign convention before substituting: for a real object at positive $u$ and positive converging focal length $f$, $1/v=1/f-1/u$. For $u>f$, $v>0$ gives a real image; for $0<u<f$, $v<0$ gives a virtual image. The limit $u\to f$ sends the paraxial image distance to infinity. This divergence is not a physical claim about collecting a finite image on a screen at the focus. Thin-lens and small-angle assumptions exclude thickness effects, large-angle aberration and diffraction-limited resolving power.
-
+The limit $u\to f$ sends the paraxial image distance to infinity. This divergence is not a physical claim about collecting a finite image on a screen at the focus. Thin-lens and small-angle assumptions exclude thickness effects, large-angle aberration and diffraction-limited resolving power.
 
 ### Derivation and transfer
 

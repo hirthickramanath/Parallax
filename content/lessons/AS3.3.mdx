@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the identical-reactant pair factor needed?",
+      "prompt": "The rate of a reaction between two identical nuclei is written with a factor 1/2. Why?",
       "options": [
-        "No",
-        "Yes"
+        "The cross section of identical nuclei is half of that for different nuclei at each energy",
+        "It converts the units of the rate coefficient into cgs",
+        "Half the nuclei are inert, so are not counted",
+        "Otherwise each pair would be counted twice"
       ],
-      "answer": "Yes",
-      "explanation": "Otherwise pairs are counted twice.",
+      "answer": "Otherwise each pair would be counted twice",
+      "explanation": "With n identical particles there are n²/2 distinct pairs.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count the pairs among N identical objects."
     },
     {
       "id": "concept-2",
-      "prompt": "Does every nuclear Q value become local stellar heat?",
+      "prompt": "The proton–proton chain releases 26.7 MeV, but the Sun's heating is slightly less. Why?",
       "options": [
-        "No",
-        "Yes"
+        "Escaping neutrinos carry away part of the energy",
+        "Part of the nuclear energy escapes as protons that leave the Sun without being absorbed",
+        "The Q value changes with the temperature",
+        "The Sun is cooler than the models imply"
       ],
-      "answer": "No",
-      "explanation": "Escaping particles can carry energy away.",
+      "answer": "Escaping neutrinos carry away part of the energy",
+      "explanation": "About 2% of the energy is carried away by neutrinos that leave the star.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which products do not interact with the gas?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is one temperature exponent valid for all reaction regimes?",
+      "prompt": "The rate of energy generation scales as ε ∝ T⁴ for pp and T^(16-20) for CNO in the Sun. What does this show?",
       "options": [
-        "Yes",
-        "No"
+        "The exponent is a universal constant, so the reactions share the same T dependence",
+        "The reactions share one exponent, with differences set by the abundances",
+        "Rates do not depend on T at the temperatures inside a star",
+        "Different networks and cross sections give different temperature exponents"
       ],
-      "answer": "No",
-      "explanation": "Networks and cross sections change the dependence.",
+      "answer": "Different networks and cross sections give different temperature exponents",
+      "explanation": "The Coulomb barrier makes the temperature dependence steeper for higher charge.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the Coulomb barrier heights."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why can degeneracy change burning stability?",
-      "answer": "Pressure may not provide the same thermal expansion feedback.",
+      "prompt": "Why does degeneracy make nuclear burning potentially unstable (as in a helium flash)?",
+      "answer": "Pressure does not rise with temperature, so there is no expansion feedback",
       "options": [
-        "Pressure may not provide the same thermal expansion feedback.",
-        "A distribution average of cross section times relative speed."
+        "The temperature falls as the gas expands, which cools the burning region and stops it",
+        "Pressure does not rise with temperature, so there is no expansion feedback",
+        "Burning stops once the gas has become degenerate, which is a stable condition",
+        "Degenerate gas conducts heat poorly and so the burning region is trapped"
       ],
-      "explanation": "Pressure may not provide the same thermal expansion feedback.",
+      "explanation": "In ordinary gas, heating raises P, expands the gas and cools it. In degenerate gas P is nearly independent of T.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What normally regulates burning?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "In ε∝T⁴ at fixed density/composition, find rate factor for a 10 percent temperature increase.",
       "answer": "1.4641000000000004",
       "hint": "Evaluate 1.1^4, rather than treating the linear estimate as exact.",
-      "explanation": "Evaluate 1.1^4, rather than treating the linear estimate as exact. The value in the stated units is 1.4641.",
+      "explanation": "A 10 percent rise means T → 1.1T, so ε changes by 1.1⁴ = 1.21² = 1.4641. The linear estimate of 1.4 is only approximate.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "An energy release is 100 model units and neutrinos escape with 7. Find deposited thermal energy.",
       "answer": "93",
       "hint": "Subtract escaping energy from total release.",
-      "explanation": "Subtract escaping energy from total release. The value in the stated units is 93.",
+      "explanation": "Energy deposited as heat is the total release minus what neutrinos carry away: 100 − 7 = 93 model units.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does a local temperature exponent determine the total luminosity of a star without its structure?",
-      "answer": "No; luminosity requires integration over density, temperature and composition.",
+      "prompt": "You know that ε ∝ T^n locally. Can you compute the star's total luminosity without its structure?",
+      "answer": "No: luminosity needs integration over the actual density, temperature and composition",
       "options": [
-        "Yes; the exponent alone fixes stellar power.",
-        "No; luminosity requires integration over density, temperature and composition."
+        "Yes: knowing the exponent n in ε ∝ T^n fixes the luminosity without needing the structure",
+        "No: ε has no relation to L, which is set by the surface layers of the star and its radius together",
+        "Yes: L = ε multiplied by the stellar mass, as ε is the same in the whole star",
+        "No: luminosity needs integration over the actual density, temperature and composition"
       ],
-      "explanation": "The local rate must be integrated over the actual star.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "L = ∫ ε dm, and the profiles of ρ and T enter.",
+      "hint": "What multiplies ε in the integral?",
       "misconceptions": {
         "Yes; the exponent alone fixes stellar power.": "The local rate must be integrated over the actual star."
       },
@@ -164,7 +178,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Nuclear reactions and energy generation”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -238,18 +252,18 @@ A fuel lifetime estimate eta*f*M*c²/L also requires a specified accessible fuel
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Nuclear reactions and energy generation”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Nuclear reactions and energy generation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Nuclear reactions and energy generation” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

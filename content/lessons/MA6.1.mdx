@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does smoothness as a real two-variable map guarantee holomorphicity?",
+      "prompt": "The map f(z) = z̄ (complex conjugation) is infinitely differentiable as a map of ℝ². Is it holomorphic?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: its derivative is 1, as z̄ is a linear function of the variable",
+        "Yes: smooth maps are holomorphic",
+        "Yes: it satisfies the Cauchy–Riemann equations",
+        "No: its complex derivative limit depends on the direction of approach"
       ],
-      "answer": "No",
-      "explanation": "Conjugation is smooth but fails the complex derivative limit.",
+      "answer": "No: its complex derivative limit depends on the direction of approach",
+      "explanation": "(z̄ + h̄ − z̄)/h = h̄/h is +1 along the real axis and −1 along the imaginary axis, so the limit does not exist.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute h̄/h along two directions."
     },
     {
       "id": "concept-2",
-      "prompt": "Do Cauchy–Riemann equations at one point without sufficient regularity always prove differentiability?",
+      "prompt": "The Cauchy–Riemann equations hold at a single point, with no other regularity. Does that prove f is complex differentiable there?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, in all cases, since the Cauchy–Riemann equations at a point are enough for complex differentiability",
+        "Yes: they are sufficient",
+        "No: they are never satisfied",
+        "Not necessarily: the full limit may still fail to exist"
       ],
-      "answer": "No",
-      "explanation": "Directional partial information alone need not control the full limit.",
+      "answer": "Not necessarily: the full limit may still fail to exist",
+      "explanation": "CR equations are necessary. Sufficiency needs real differentiability at the point (continuous partials near the point suffice).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the extra hypothesis in the sufficiency theorem."
     },
     {
       "id": "concept-3",
-      "prompt": "Can topology prevent a global harmonic conjugate?",
+      "prompt": "A harmonic function u(x, y) is defined on a punctured disk. Can a single-valued harmonic conjugate always be found?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: a conjugate exists on a connected domain",
+        "No: the domain's topology can obstruct it",
+        "Yes, if u is smooth",
+        "Yes, if u is bounded"
       ],
-      "answer": "Yes",
-      "explanation": "A punctured domain can obstruct a single-valued angle.",
+      "answer": "No: the domain's topology can obstruct it",
+      "explanation": "u = ln r is harmonic on the punctured plane, but its conjugate is the angle θ, which is multivalued.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of ln r and the angle."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What establishes holomorphicity rather than differentiability at one point?",
-      "answer": "Complex differentiability throughout an open neighbourhood",
+      "prompt": "What distinguishes 'holomorphic at a point' from 'complex differentiable at a point'?",
+      "answer": "Holomorphic needs complex differentiability throughout an open neighbourhood",
       "options": [
-        "Complex differentiability throughout an open neighbourhood",
-        "One successful directional quotient"
+        "They are the same, as differentiability at one point is enough",
+        "Holomorphic needs complex differentiability throughout an open neighbourhood",
+        "Holomorphic needs one direction of approach and no more than that for the limit",
+        "Holomorphic needs a real derivative"
       ],
-      "explanation": "Holomorphicity is an open-set property.",
+      "explanation": "Holomorphicity is a property on an open set. |z|² is complex differentiable only at 0, but holomorphic nowhere.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think about the function |z|² at 0."
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does checking Cauchy–Riemann equations at one isolated point automatically establish analyticity on a neighborhood?",
-      "answer": "No; neighborhood regularity and the derivative limit still matter.",
+      "prompt": "You verify the Cauchy–Riemann equations at one isolated point. Can you conclude f is analytic on a neighbourhood of it?",
+      "answer": "No: you need regularity and the derivative limit in a neighbourhood",
       "options": [
-        "Yes; a pointwise check proves every nearby derivative.",
-        "No; neighborhood regularity and the derivative limit still matter."
+        "Yes: the equations at one point imply analyticity, so f is holomorphic on a neighbourhood of it",
+        "No: you need regularity and the derivative limit in a neighbourhood",
+        "Yes, for each continuous f, as continuity of f gives the derivative limit",
+        "Yes, if f is real on the real axis, as CR then holds in a neighbourhood too"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Analyticity is a neighborhood property.",
+      "hint": "Test f = |z|² = x² + y².",
+      "explanation": "f(z) = |z|² satisfies CR at 0 only, and f is not analytic anywhere.",
       "misconceptions": {
         "Yes; a pointwise check proves every nearby derivative.": "Analyticity is a neighborhood property."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Analytic functions and Cauchy-Riemann”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For z² at z=1+2i, f′=2+4i. The real part of the derivative is 2. Also uₓ=2x
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Analytic functions and Cauchy-Riemann”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Analytic functions and Cauchy-Riemann” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Analytic functions and Cauchy-Riemann” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

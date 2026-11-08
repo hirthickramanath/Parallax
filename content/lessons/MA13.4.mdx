@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a local Berry connection gauge invariant?",
+      "prompt": "Is the Berry connection A = i⟨n|∇n⟩ gauge invariant?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, for real eigenvectors, since removing the phase freedom makes the connection gauge invariant",
+        "Yes for real eigenvectors, as the phase is then fixed to zero in the whole space",
+        "No: it shifts by the gradient of a phase when the eigenvector phase changes",
+        "Yes for closed loops, where the phase shift cancels around the loop"
       ],
-      "answer": "No",
-      "explanation": "It shifts by an exact phase derivative.",
+      "answer": "No: it shifts by the gradient of a phase when the eigenvector phase changes",
+      "explanation": "Under |n⟩ → e^{iχ}|n⟩, A → A − ∇χ. Only the curvature and loop integrals (mod 2π) are invariant.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Redefine the phase of |n⟩ and recompute."
     },
     {
       "id": "concept-2",
-      "prompt": "Does an arbitrary open-surface curvature integral have to be an integer multiple of 2π?",
+      "prompt": "Is the integral of the Berry curvature over an arbitrary open surface always an integer multiple of 2π?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the integral over any surface is an integer multiple of 2π, whether the surface is open or closed",
+        "Yes: in 1D, where the surface reduces to a closed interval",
+        "Yes: for any surface in parameter space",
+        "No: that is guaranteed only over a closed surface (a Chern number)"
       ],
-      "answer": "No",
-      "explanation": "Global closed-bundle conditions are required.",
+      "answer": "No: that is guaranteed only over a closed surface (a Chern number)",
+      "explanation": "Over an open surface it equals the Berry phase of the boundary mod 2π, which varies continuously.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare a closed and an open surface."
     },
     {
       "id": "concept-3",
-      "prompt": "Can a gap closure change a topological classification?",
+      "prompt": "The energy gap of a system closes as a parameter is varied. What happens to its topological classification?",
       "options": [
-        "No",
-        "Yes"
+        "It is reset to trivial, as the closing removes the protection of the phase",
+        "It cannot be defined, as the invariant needs an open gap to be well-posed",
+        "It is unchanged, as the gap plays no role in the invariant",
+        "It can change, since the adiabatic protection fails at the gap closure"
       ],
-      "answer": "Yes",
-      "explanation": "The protecting adiabatic structure can fail.",
+      "answer": "It can change, since the adiabatic protection fails at the gap closure",
+      "explanation": "Topological invariants are constant while the gap stays open.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What protects the invariant?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why use global patches?",
-      "answer": "One eigenvector phase convention may not cover the whole parameter space.",
+      "prompt": "Why do global calculations of Berry phase sometimes need several patches?",
+      "answer": "One phase convention for the eigenvector may not cover the whole parameter space",
       "options": [
-        "One eigenvector phase convention may not cover the whole parameter space.",
-        "The gauge-invariant local curvature of the phase connection."
+        "The curvature is not gauge invariant, so it has to be recomputed in a new patch of the parameter space",
+        "Patches are a decorative device in the calculation and do not change the result",
+        "The eigenvector is global, so one phase convention is enough for the whole space",
+        "One phase convention for the eigenvector may not cover the whole parameter space"
       ],
-      "explanation": "One eigenvector phase convention may not cover the whole parameter space.",
+      "explanation": "For a sphere of parameters, a smooth global gauge for the eigenvector can fail, giving non-zero Chern number.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Recall the Dirac monopole."
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Is every Berry phase necessarily an integer topological invariant?",
-      "answer": "No; it can vary continuously modulo 2π.",
+      "prompt": "Is every Berry phase an integer topological invariant?",
+      "answer": "No: a loop's Berry phase varies continuously modulo 2π",
       "options": [
-        "Yes; every geometric phase is an integer.",
-        "No; it can vary continuously modulo 2π."
+        "Yes: it is quantised in units of 2π, like a winding number",
+        "Yes: it is an integer for each closed loop in space",
+        "Yes: it is 2π times an integer",
+        "No: a loop's Berry phase varies continuously modulo 2π"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Distinguish loop phase from a normalized closed-surface Chern number.",
+      "hint": "Is the phase of an arbitrary loop quantised?",
+      "explanation": "A quantised Chern number comes from a closed surface; a loop phase depends on the path.",
       "misconceptions": {
         "Yes; every geometric phase is an integer.": "Distinguish loop phase from a normalized closed-surface Chern number."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Topology in physics (Berry phase, topological invariants)”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For the convention where the tracked spin-up state has γ=−Ω/2, a loop of sol
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Topology in physics (Berry phase, topological invariants)”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Topology in physics (Berry phase, topological invariants)” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Topology in physics (Berry phase, topological invariants)” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

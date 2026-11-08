@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the harmonic potential include a finite dissociation limit?",
+      "prompt": "A molecule is modelled as a harmonic oscillator. Does the model predict a finite dissociation energy?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: at the zero-point energy, as the molecule can no longer stay bound in the well",
+        "No: the harmonic potential rises forever, so the molecule never dissociates in this model",
+        "Yes: at large amplitude, as the bond stretches until the molecule comes apart into atoms",
+        "Yes: it dissociates at ħω, the first excited level of the well, as the bond breaks"
       ],
-      "answer": "No",
-      "explanation": "It is a local quadratic approximation.",
+      "answer": "No: the harmonic potential rises forever, so the molecule never dissociates in this model",
+      "explanation": "It is a local quadratic approximation near the minimum. A Morse potential has a finite D_e.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a parabola do at large r?"
     },
     {
       "id": "concept-2",
-      "prompt": "Do IR and Raman have identical selection mechanisms?",
+      "prompt": "A vibration is IR-inactive but Raman-active. What does this show about the two selection mechanisms?",
       "options": [
-        "No",
-        "Yes"
+        "They are identical",
+        "Raman needs a permanent dipole",
+        "IR needs a changing dipole",
+        "Both need a dipole"
       ],
-      "answer": "No",
-      "explanation": "Dipole and polarizability response differ.",
+      "answer": "IR needs a changing dipole",
+      "explanation": "IR needs a changing dipole; Raman needs a changing polarisability. N₂ is IR-inactive but Raman-active.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which property changes in each?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can isotopic mass alter rotational/vibrational scales?",
+      "prompt": "You replace ¹H by ²H in a diatomic molecule. Do the rotational and vibrational scales change?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the reduced mass and moment of inertia change",
+        "No: nuclei don't matter",
+        "No: just the line intensity changes",
+        "No: the electronic structure is the same, so the spectrum is the same"
       ],
-      "answer": "Yes",
-      "explanation": "It changes inertia and reduced mass.",
+      "answer": "Yes: the reduced mass and moment of inertia change",
+      "explanation": "Isotope substitution leaves the electronic potential unchanged but changes the reduced mass: B ∝ 1/μ and ω ∝ 1/√μ, so rotational and vibrational spacings shift.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How does μ change from H to D?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why retain isotopologue labels?",
-      "answer": "Mass and nuclear statistics affect spectral assignments.",
+      "prompt": "Why label spectra by isotopologue?",
+      "answer": "Mass and nuclear statistics affect the spectral assignments",
       "options": [
-        "Mass and nuclear statistics affect spectral assignments.",
-        "Moment of inertia and J(J+1)."
+        "Isotopologues are identical",
+        "Isotopes do not matter for the assignment of the lines in a spectrum",
+        "Just the colour changes in the spectrum of the molecule, not the lines",
+        "Mass and nuclear statistics affect the spectral assignments"
       ],
-      "explanation": "Mass and nuclear statistics affect spectral assignments.",
+      "explanation": "Line positions and the even/odd intensity alternation change.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does H₂ vs HD vs D₂ look like?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Do predicted energy differences alone determine observed line intensities?",
-      "answer": "No; populations and transition strengths are needed.",
+      "prompt": "You compute the energy difference between two molecular levels. Does it alone give the observed line intensity?",
+      "answer": "No: populations and transition strengths are needed",
       "options": [
-        "Yes; every energy difference appears equally bright.",
-        "No; populations and transition strengths are needed."
+        "Yes: the largest energy gap gives the brightest line, since intensity is proportional to the energy difference",
+        "No: populations and transition strengths are needed",
+        "Yes: intensity is energy",
+        "Yes: each difference is equally bright in the spectrum"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Selection and excitation matter.",
+      "hint": "Is every allowed gap equally populated?",
+      "explanation": "Selection rules and excitation conditions determine the intensity.",
       "misconceptions": {
         "Yes; every energy difference appears equally bright.": "Selection and excitation matter."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Molecular structure and spectra”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ Let B=ℏ²/(2I)=2 energy units. J=1 has energy 4 and J=2 energy 12, so the 2→
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Molecular structure and spectra”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Molecular structure and spectra” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Molecular structure and spectra” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

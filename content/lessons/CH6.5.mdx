@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does DBE uniquely locate a carbonyl group?",
+      "prompt": "A compound of formula C₄H₈O has one degree of unsaturation. Does that prove it contains a carbonyl?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: oxygen in the formula means a carbonyl, so one degree of unsaturation must be the C=O bond",
+        "Yes: DBE = 1 means C=O",
+        "No: it could equally be a ring or a C=C double bond",
+        "No: it has no unsaturation"
       ],
-      "answer": "No",
-      "explanation": "It counts total unsaturation under valence assumptions.",
+      "answer": "No: it could equally be a ring or a C=C double bond",
+      "explanation": "DBE counts rings plus π bonds without telling you which they are.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What else can contribute one DBE?"
     },
     {
       "id": "concept-2",
-      "prompt": "Are all alkene additions governed by the same mechanism?",
+      "prompt": "Bromine adds to an alkene in the dark, and HBr adds with peroxides by another route. What does this show?",
       "options": [
-        "No",
-        "Yes"
+        "Reagents and conditions select different mechanisms for alkene addition",
+        "Alkenes do not add HBr under conditions of the usual kind, and peroxides are inert in additions",
+        "Peroxides are inert in the reaction of the alkene",
+        "Additions share one mechanism for the alkene"
       ],
-      "answer": "No",
-      "explanation": "Reagents and conditions can select different pathways.",
+      "answer": "Reagents and conditions select different mechanisms for alkene addition",
+      "explanation": "Electrophilic and radical additions give different regiochemistry.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare Markovnikov and anti-Markovnikov products."
     },
     {
       "id": "concept-3",
-      "prompt": "Does oxygen enter the stated neutral DBE formula?",
+      "prompt": "You calculate the degree of unsaturation for C₃H₆O. Does the oxygen change the formula's result?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: add one for each oxygen, as an oxygen contributes a further site of unsaturation",
+        "Yes: oxygen doubles it",
+        "No: divalent oxygen does not enter the DBE formula",
+        "Yes: subtract one for each O"
       ],
-      "answer": "No",
-      "explanation": "Its usual divalent valence does not alter that count.",
+      "answer": "No: divalent oxygen does not enter the DBE formula",
+      "explanation": "DBE = (2C + 2 + N − H − X)/2. Oxygen has no term because it inserts without changing the count.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the formula's terms."
     },
     {
       "id": "numeric",
@@ -69,23 +78,26 @@
     },
     {
       "id": "core",
-      "prompt": "What distinguishes acyl substitution from simple carbonyl addition?",
-      "answer": "A subsequent leaving-group replacement pathway at the acyl centre",
+      "prompt": "Why does an acyl chloride react with a nucleophile to give a substitution, while a ketone gives an addition?",
+      "answer": "Acyl chlorides carry a good leaving group that can leave after addition",
       "options": [
-        "A subsequent leaving-group replacement pathway at the acyl centre",
-        "Every carbonyl has the same leaving group"
+        "Ketones are more reactive than acyl chlorides",
+        "Acyl chlorides have no carbonyl",
+        "Both have the same leaving group",
+        "Acyl chlorides carry a good leaving group that can leave after addition"
       ],
-      "explanation": "Attached groups and conditions determine whether substitution is possible.",
+      "explanation": "After the tetrahedral intermediate forms, Cl⁻ can leave to restore C=O. Ketones have no suitable leaving group.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What can leave from the tetrahedral intermediate?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "For the stated ideal addition model, K=2 and nucleophile activity 1. Find equilibrium product fraction.",
       "answer": "0.6666666666666666",
       "hint": "Use K a/(1+K a).",
-      "explanation": "Use K a/(1+K a). The value in the stated units is 0.666666666667.",
+      "explanation": "Fraction = K a/(1 + K a) = 2 × 1/(1 + 2) = 2/3 ≈ 0.6667.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -95,21 +107,23 @@
       "prompt": "With RT=1 and K=4, find standard reaction Gibbs energy.",
       "answer": "-1.3862943611198906",
       "hint": "Use −RT lnK.",
-      "explanation": "Use −RT lnK. The value in the stated units is -1.38629436112.",
+      "explanation": "ΔrG° = −RT ln K = −1 × ln 4 ≈ −1.3863.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Does an equilibrium product fraction by itself determine the elementary rate law?",
-      "answer": "No; multiple mechanisms can share the same equilibrium.",
+      "prompt": "Two mechanisms give the same equilibrium product ratio. Does the equilibrium ratio tell you the elementary rate law?",
+      "answer": "No: several mechanisms can share one equilibrium",
       "options": [
-        "Yes; thermodynamic conversion uniquely fixes every step rate.",
-        "No; multiple mechanisms can share the same equilibrium."
+        "No: equilibrium has no meaning",
+        "No: several mechanisms can share one equilibrium",
+        "Yes: the ratio fixes the rate law, since the equilibrium ratio is set by the elementary rate constants",
+        "Yes: through K = k₁/k₋₁ for each step"
       ],
-      "explanation": "Equilibrium and kinetics are separate constraints.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "K constrains the ratio of forward to reverse rate constants, not the mechanism.",
+      "hint": "Can different routes lead to the same endpoint?",
       "misconceptions": {
         "Yes; thermodynamic conversion uniquely fixes every step rate.": "Equilibrium and kinetics are separate constraints."
       },
@@ -154,7 +168,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Addition, carbonyl chemistry and functional groups”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,18 +234,18 @@ For neutral C₃H₆O, DBE=(2×3+2−6)/2=1. That one unsaturation could be a ca
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Addition, carbonyl chemistry and functional groups”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Addition, carbonyl chemistry and functional groups” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Addition, carbonyl chemistry and functional groups” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Does greater intensity increase photon energy at fixed frequency?",
-      "answer": "No",
+      "prompt": "At a fixed light frequency above the threshold, you double the intensity. What happens to the energy of each photon?",
+      "answer": "It is unchanged, since E = hf",
       "options": [
-        "Yes",
-        "No"
+        "It halves, since E = hf/2",
+        "It rises for the fastest electrons",
+        "It doubles, since E ∝ intensity",
+        "It is unchanged, since E = hf"
       ],
-      "explanation": "Each photon still has energy hf.",
+      "explanation": "Intensity sets the number of photons per second, not the energy of each. The photon energy is hf at the given frequency.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Write E per photon in terms of frequency only."
     },
     {
       "id": "c2",
-      "prompt": "Does the Bohr orbit describe a modern measured electron path?",
-      "answer": "No",
+      "prompt": "The Bohr model gives circular electron orbits with quantised radii. How does it relate to the modern picture of the atom?",
+      "answer": "It is a successful model, but real bound states are quantum states, not paths",
       "options": [
-        "No",
-        "Yes"
+        "It is a successful model, but real bound states are quantum states, not paths",
+        "It describes electrons as classical particles in atoms of each kind",
+        "It was disproved because it predicts the wrong energy levels in hydrogen",
+        "It gives the exact measured paths of electrons"
       ],
-      "explanation": "Modern bound states are quantum states, not classical trajectories.",
+      "explanation": "The Bohr levels E_n = −13.6 eV/n² work for hydrogen, but electrons have probability densities, not trajectories. The orbit picture is a stepping stone.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall what a modern wavefunction gives instead of a path."
     },
     {
       "id": "c3",
-      "prompt": "What does stopping voltage determine?",
-      "answer": "Maximum photoelectron kinetic energy",
+      "prompt": "In a photoelectric experiment, the stopping voltage is measured. What does it tell you?",
+      "answer": "The maximum kinetic energy of the emitted electrons, via eV_s",
       "options": [
-        "Mean photon arrival rate",
-        "Maximum photoelectron kinetic energy"
+        "The energy of the dimmest photon in the beam, since the stopping voltage is set by the least energetic photons",
+        "The maximum kinetic energy of the emitted electrons, via eV_s",
+        "The photon rate hitting the surface",
+        "The number of electrons emitted each second"
       ],
-      "explanation": "eVs equals the maximum emitted kinetic energy.",
+      "explanation": "Raising the retarding voltage until the current stops gives eV_s = K_max, the kinetic energy of the fastest electrons.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "At the stopping voltage even the most energetic electron is turned back."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "In the ordinary single-photon photoelectric model, can increasing intensity overcome a photon energy below the work function?",
-      "answer": "No; each photon still lacks the required energy.",
+      "prompt": "Light with photon energy below the work function shines on a metal at very high intensity. What does the single-photon model predict?",
+      "answer": "No emission, since each photon lacks the energy to free an electron",
       "options": [
-        "Yes; intensity always raises the energy per photon.",
-        "No; each photon still lacks the required energy."
+        "Emission, but with reduced kinetic energy",
+        "Emission, since enough intensity supplies the missing energy by combining the energy of many photons",
+        "No emission, since each photon lacks the energy to free an electron",
+        "Emission after a delay as electrons build up energy"
       ],
-      "explanation": "Distinguish photon energy hf from the number of photons per second.",
+      "explanation": "In the model, one photon is absorbed by one electron. Intensity raises the number of photons, not the energy of each, so the threshold is a frequency condition.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Does extra intensity make any single photon more energetic?",
       "misconceptions": {
         "Yes; intensity always raises the energy per photon.": "Distinguish photon energy hf from the number of photons per second."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "At fixed above-threshold frequency, does higher intensity necessarily raise maximum photoelectron kinetic energy in the single-photon model?",
-      "answer": "No; photon energy is fixed by frequency.",
+      "prompt": "Above threshold, a metal is illuminated at fixed frequency, and the light is made brighter. What happens to the maximum kinetic energy of the electrons?",
+      "answer": "It is unchanged, but more electrons are emitted",
       "options": [
-        "Yes; intensity is the energy of each photon.",
-        "No; photon energy is fixed by frequency."
+        "It increases in proportion to intensity",
+        "It is unchanged, but more electrons are emitted",
+        "It doubles when intensity doubles",
+        "It decreases, as electrons compete for photons"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Separate photon rate and energy per photon.",
+      "hint": "Separate how many photons arrive from how much energy each carries.",
+      "explanation": "K_max = hf − φ depends on frequency and the material. Brighter light means more photons per second and a larger photocurrent.",
       "misconceptions": {
         "Yes; intensity is the energy of each photon.": "Separate photon rate and energy per photon."
       },
@@ -210,8 +223,7 @@ The de Broglie relation λ=h/p links matter wavelength to momentum. It does not 
 
 ### Transfer derivation and failure case
 
-A single absorbed photon supplies energy $hf=\phi+K$ in the elementary photoelectric model, so the maximum kinetic energy is $hf-\phi$ when positive. Increasing intensity at fixed frequency increases the photon arrival rate, not $hf$. The stopping potential measures the maximum electron energy rather than the average emitted energy. Multiphoton effects require a different high-intensity model and do not rescue the single-photon rule below threshold. In the Bohr spectrum, bound levels are negative relative to ionization; excitation energies are differences between levels, not their absolute magnitudes.
-
+Increasing intensity at fixed frequency increases the photon arrival rate, not $hf$. The stopping potential measures the maximum electron energy rather than the average emitted energy. In the Bohr spectrum, bound levels are negative relative to ionization; excitation energies are differences between levels, not their absolute magnitudes.
 
 ### Derivation and transfer
 

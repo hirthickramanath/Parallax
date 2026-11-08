@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does sufficient invariant energy alone guarantee a reaction channel occurs?",
+      "prompt": "A collision has enough invariant energy to produce a new particle pair. Does the reaction then necessarily occur?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: at threshold, as the invariant energy is enough",
+        "No: other conservation laws and the dynamics can forbid it",
+        "Yes: once the invariant energy exceeds the threshold, the reaction is guaranteed to occur with unit probability",
+        "Yes: energy is sufficient"
       ],
-      "answer": "No",
-      "explanation": "Other conservation laws and dynamics can forbid it.",
+      "answer": "No: other conservation laws and the dynamics can forbid it",
+      "explanation": "Charge, baryon number, lepton number and so on must also be conserved.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "List other conserved quantities."
     },
     {
       "id": "concept-2",
-      "prompt": "Are threshold total projectile energy and kinetic energy identical?",
+      "prompt": "The threshold for producing a particle is given as a total projectile energy. Is it the same as the projectile's kinetic energy?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the threshold energy and the kinetic energy are identical, since both measure what the projectile carries",
+        "Yes: they are the same quantity in the lab frame",
+        "No: they differ by the projectile's rest energy",
+        "Yes: E = T for the projectile in the laboratory frame"
       ],
-      "answer": "No",
-      "explanation": "They differ by projectile rest energy.",
+      "answer": "No: they differ by the projectile's rest energy",
+      "explanation": "The total energy of the projectile is E = T + mc², so it exceeds the kinetic energy T by its rest energy mc².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which includes the rest energy?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can parallel photons create a massive pair alone?",
+      "prompt": "Two photons travel in the same direction. Can they alone create an electron–positron pair?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: two photons make a pair at high energy",
+        "Yes: two collinear photons of enough energy can pair-produce, since their total energy exceeds 2mc²",
+        "Yes: at a high enough energy for the pair",
+        "No: their total four-momentum has zero invariant mass"
       ],
-      "answer": "No",
-      "explanation": "Their total four-momentum has zero invariant mass.",
+      "answer": "No: their total four-momentum has zero invariant mass",
+      "explanation": "Parallel photons have s = 0, so they can't produce massive particles.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compute the invariant mass of parallel photons."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why are balanced colliders efficient at producing invariant energy?",
-      "answer": "Their opposing momenta cancel in the centre frame",
+      "prompt": "Why do symmetric colliders reach higher invariant energy than fixed-target setups for the same beam energy?",
+      "answer": "Opposing momenta cancel in the centre-of-momentum frame, so none is wasted on overall motion",
       "options": [
-        "Their opposing momenta cancel in the centre frame",
-        "Every beam particle has zero momentum"
+        "They collide with greater beam intensity, since a symmetric geometry packs more particles into each bunch",
+        "They avoid momentum conservation, so none of the beam energy is lost to the motion",
+        "Opposing momenta cancel in the centre-of-momentum frame, so none is wasted on overall motion",
+        "The beam is hotter, so the particles carry more thermal energy into the collision with the target"
       ],
-      "explanation": "Less supplied energy is tied to overall final-system motion.",
+      "explanation": "√s ≈ 2E for colliders versus √(2Em c²) for fixed targets.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Compare the total momentum in each."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Are equal laboratory projectile energies always equally efficient in collider and fixed-target geometries?",
-      "answer": "No; overall momentum changes the invariant energy.",
+      "prompt": "Do equal laboratory projectile energies give equal invariant energy in collider and fixed-target geometries?",
+      "answer": "No: overall momentum changes the invariant energy",
       "options": [
-        "Yes; geometry cannot affect collision invariant energy.",
-        "No; overall momentum changes the invariant energy."
+        "Yes: invariant energy follows from the lab energies",
+        "Yes: equal energies give equal invariant energy",
+        "No: overall momentum changes the invariant energy",
+        "Yes: geometry doesn't matter"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Compare the total four-momentum.",
+      "hint": "Compute s for each geometry.",
+      "explanation": "The invariant is built from the total four-momentum.",
       "misconceptions": {
         "Yes; geometry cannot affect collision invariant energy.": "Compare the total four-momentum."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Relativistic collisions and particle kinematics”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ Use c=1 and masses m₁=m₂=1. A permitted final state with rest-mass sum M=4 r
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Relativistic collisions and particle kinematics”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Relativistic collisions and particle kinematics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Relativistic collisions and particle kinematics” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>
 

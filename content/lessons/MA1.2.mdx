@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must a supremum belong to its set?",
+      "prompt": "The set (0, 1) has supremum 1. Does the supremum belong to the set?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is the largest element of the set, since no number in (0, 1) is greater than 1",
+        "No: there is no supremum for this set",
+        "No: a supremum need not be an element; only a maximum must be attained",
+        "Yes: every supremum is in its set"
       ],
-      "answer": "No",
-      "explanation": "Only a maximum must be attained.",
+      "answer": "No: a supremum need not be an element; only a maximum must be attained",
+      "explanation": "The supremum is the least upper bound. For (0,1), 1 is the least upper bound but is not in the set, so there is no maximum.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is 1 an element of (0, 1)?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does every increasing real sequence converge to a finite real number?",
+      "prompt": "An increasing real sequence is not bounded above, such as 1, 2, 3, …. What is true of its convergence?",
       "options": [
-        "No; it also needs an upper bound",
-        "Yes"
+        "It does not converge to a finite real number",
+        "It converges to zero",
+        "It converges to the largest term",
+        "It converges, since increasing sequences converge"
       ],
-      "answer": "No; it also needs an upper bound",
-      "explanation": "The positive integers are an increasing unbounded counterexample.",
+      "answer": "It does not converge to a finite real number",
+      "explanation": "The monotone convergence theorem needs a bound. Without an upper bound, an increasing sequence diverges to +∞.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall both hypotheses of the monotone convergence theorem."
     },
     {
       "id": "concept-3",
-      "prompt": "Do all nested nonempty open intervals share a point?",
+      "prompt": "Consider the nested open intervals (0, 1/n) for n = 1, 2, 3, …. What is their intersection?",
       "options": [
-        "Yes",
-        "No"
+        "The interval (0, 1)",
+        "Empty: no positive number lies in all of them",
+        "The single point 1",
+        "The single point 0"
       ],
-      "answer": "No",
-      "explanation": "For example (0,1/n) have empty intersection.",
+      "answer": "Empty: no positive number lies in all of them",
+      "explanation": "Any x > 0 is excluded once 1/n < x, and 0 is not in any interval. Nested closed intervals have a common point, but open ones need not.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does 0 belong to (0, 1/n)?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Which step uses completeness in monotone convergence?",
-      "answer": "Taking a real supremum of the bounded nonempty range",
+      "prompt": "In the proof that a bounded increasing sequence converges, which property of the reals is used?",
+      "answer": "Completeness: the set of terms has a real supremum",
       "options": [
-        "Taking a real supremum of the bounded nonempty range",
-        "Computing one numerical sample"
+        "The ordering of the reals",
+        "The density of the rationals",
+        "The triangle inequality",
+        "Completeness: the set of terms has a real supremum"
       ],
-      "explanation": "The existence of that real boundary is the substantive axiom.",
+      "explanation": "The terms form a non-empty set bounded above, so its supremum exists in R. The sequence is then shown to converge to that supremum.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What guarantees that the least upper bound exists?"
     },
     {
       "id": "analysis-transfer-1",
@@ -114,14 +126,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "Does the least-upper-bound property hold for all nonempty bounded-above subsets of the rational numbers within Q?",
-      "answer": "No; a rational cut can have no rational supremum.",
+      "prompt": "Take the set {q ∈ Q : q² < 2}. It is non-empty and bounded above. Does it have a least upper bound within Q?",
+      "answer": "No: its supremum would be √2, which is irrational",
       "options": [
-        "Yes; bounded rational sets always have rational suprema.",
-        "No; a rational cut can have no rational supremum."
+        "Yes: the supremum is 1.5",
+        "No: its supremum would be √2, which is irrational",
+        "Yes: the supremum is 2",
+        "Yes: a bounded rational set has a rational supremum"
       ],
-      "explanation": "The positive rationals q with q²<2 form a standard counterexample.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "Any rational upper bound can be lowered a little, so no rational is the least. This is why Q lacks completeness.",
+      "hint": "What number would be the least upper bound on the real line?",
       "misconceptions": {
         "Yes; bounded rational sets always have rational suprema.": "The positive rationals q with q²<2 form a standard counterexample."
       },
@@ -165,7 +179,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Real numbers and completeness”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -231,19 +245,19 @@ For $S=\{1-1/n:n\in\mathbb N,\ n\ge1\}$, every term is below 1. Given ε>0 choos
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Real numbers and completeness”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Real numbers and completeness” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Real numbers and completeness” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

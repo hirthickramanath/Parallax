@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are internal lines necessarily physical on-shell particles?",
+      "prompt": "Internal lines in a tree diagram are shown carrying momentum p. Must the particle on that line satisfy p² = m²?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the lines are on shell, as the particles propagate between vertices",
+        "No: internal lines are integrated or off-shell terms of the amplitude",
+        "No: internal lines carry no momentum",
+        "Yes: or energy would not be conserved"
       ],
-      "answer": "No",
-      "explanation": "They are integrated terms in an amplitude.",
+      "answer": "No: internal lines are integrated or off-shell terms of the amplitude",
+      "explanation": "Momentum is conserved at vertices but virtual lines are off shell.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the internal particle detected?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can coherent diagram probabilities always be summed independently?",
+      "prompt": "Two diagrams contribute to the same final state. Can you compute each probability and just add them?",
       "options": [
-        "No",
-        "Yes"
+        "No: you add amplitudes first",
+        "Yes: interference does not occur",
+        "No: a single diagram is allowed",
+        "Yes: probabilities add"
       ],
-      "answer": "No",
-      "explanation": "Amplitudes interfere.",
+      "answer": "No: you add amplitudes first",
+      "explanation": "You add amplitudes first, because the diagrams interfere. |M₁ + M₂|² ≠ |M₁|² + |M₂|².",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of the two-slit experiment."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a rate require phase space and incident normalization?",
+      "prompt": "You computed the amplitude M for a process. Is that already the cross section?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the cross section equals the amplitude up to an overall sign, since both measure the same probability",
+        "Yes: σ = |M|², as the amplitude squared is the rate",
+        "No: you also need phase space and the incident flux normalisation",
+        "No: cross sections do not depend on M"
       ],
-      "answer": "Yes",
-      "explanation": "Amplitude alone is not a cross section.",
+      "answer": "No: you also need phase space and the incident flux normalisation",
+      "explanation": "A cross section is the squared amplitude integrated over final-state phase space and divided by the incident flux: σ ∝ (1/flux) ∫|M|² dΦ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What converts an amplitude to a rate?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why estimate higher orders?",
-      "answer": "The truncation is not an exact prediction.",
+      "prompt": "Why estimate the size of next-order corrections after a leading-order calculation?",
+      "answer": "The truncated series is an approximation, and its error needs an estimate",
       "options": [
-        "The truncation is not an exact prediction.",
-        "Time ordering and interaction expansion."
+        "To reduce the number of diagrams",
+        "Higher orders are zero, as the series stops at the leading term of the expansion",
+        "The truncated series is an approximation, and its error needs an estimate",
+        "The leading order is exact, so the corrections vanish in the amplitude of the process"
       ],
-      "explanation": "The truncation is not an exact prediction.",
+      "explanation": "The scale dependence of α_s is a common uncertainty estimate.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is dropped when you truncate?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "May interfering diagrams be squared separately and added without cross terms?",
-      "answer": "No; amplitudes for the same final state interfere.",
+      "prompt": "Two diagrams lead to the same final state with the same quantum numbers. May you square each and add the results?",
+      "answer": "No: you add the amplitudes and then square",
       "options": [
-        "Yes; every diagram is an independent classical event.",
-        "No; amplitudes for the same final state interfere."
+        "No: you add the amplitudes and then square",
+        "Yes: the cross term is zero",
+        "No: squaring is not allowed in QFT",
+        "Yes: each diagram is a separate classical event"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Identify coherent alternatives.",
+      "hint": "Is the final state distinguishable?",
+      "explanation": "You add the amplitudes and then square, which keeps the cross term. Coherent contributions interfere.",
       "misconceptions": {
         "Yes; every diagram is an independent classical event.": "Identify coherent alternatives."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Interactions and Feynman diagrams”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ Two contributions M₁=1 and M₂=−1 give total probability scale zero, wherea
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Interactions and Feynman diagrams”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Interactions and Feynman diagrams” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Interactions and Feynman diagrams” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

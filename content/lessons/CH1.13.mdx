@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Are incident and absorbed photons identical denominators for quantum yield?",
+      "prompt": "A quantum yield is calculated as molecules reacted per photon. Should the denominator be the photons incident on the sample or the photons absorbed?",
       "options": [
-        "Yes",
-        "No"
+        "Incident photons, always, because the yield is defined by the light that reaches the sample",
+        "Either: they are equal",
+        "Neither: the yield does not use photon counts at all",
+        "Absorbed: only those can drive the reaction"
       ],
-      "answer": "No",
-      "explanation": "Only part of the incident radiation may be absorbed.",
+      "answer": "Absorbed: only those can drive the reaction",
+      "explanation": "Φ = events per absorbed photon. Some incident light passes through or reflects.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which photons can cause chemistry?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a product quantum yield above one necessarily violate energy conservation?",
+      "prompt": "A radical chain reaction gives a product quantum yield of 1000. Does it violate energy conservation?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: more than one event per photon is impossible, so the measurement must violate energy conservation",
+        "No: the measurement is wrong",
+        "No: one photon initiates a chain that uses stored chemical energy",
+        "Yes: photon energy is lost"
       ],
-      "answer": "No",
-      "explanation": "A chain can use chemical reactant energy after initiation.",
+      "answer": "No: one photon initiates a chain that uses stored chemical energy",
+      "explanation": "The photon starts a chain, and the chain's energy comes from the reactants.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the energy of the later steps come from?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does photon energy alone determine a reaction’s product fraction?",
+      "prompt": "Two wavelengths with the same photon energy absorption give different product fractions. What explains this?",
       "options": [
-        "Yes",
-        "No"
+        "Competing excited-state pathways differ between the states reached",
+        "No difference arises: the energies are the same, so the products must be identical too",
+        "The photon energies differ between the two wavelengths",
+        "The photons are different kinds of particle"
       ],
-      "answer": "No",
-      "explanation": "Competing excited-state pathways matter.",
+      "answer": "Competing excited-state pathways differ between the states reached",
+      "explanation": "Product distribution depends on which state is excited and on the deactivation channels.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the same electronic state reached?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why integrate over the irradiation spectrum?",
-      "answer": "Absorption and yields can depend on wavelength",
+      "prompt": "Why must you integrate over the lamp spectrum when computing a photochemical rate?",
+      "answer": "Absorption and yield both depend on wavelength",
       "options": [
-        "Absorption and yields can depend on wavelength",
-        "One photon energy describes every broadband source"
+        "Integration is optional",
+        "One photon energy represents a lamp of broad spectrum well",
+        "Lamp spectra are flat across the band",
+        "Absorption and yield both depend on wavelength"
       ],
-      "explanation": "Local spectral flux and state-dependent response determine the rate.",
+      "explanation": "Rate = ∫ I(λ) ε(λ) Φ(λ) dλ for broadband light.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the lamp monochromatic?"
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For 200 absorbed photons and quantum yield 0.25 for the specified event, find expected event count.",
       "answer": "50",
       "hint": "Multiply absorbed photons by yield.",
-      "explanation": "Multiply absorbed photons by yield. The value in the stated units is 50.",
+      "explanation": "Expected events = absorbed photons × quantum yield = 200 × 0.25 = 50.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "Using hc=1240 eV nm, find photon energy in eV at wavelength 620 nm.",
       "answer": "2",
       "hint": "Divide hc by wavelength.",
-      "explanation": "Divide hc by wavelength. The value in the stated units is 2.",
+      "explanation": "E = hc/λ = 1240 eV nm / 620 nm = 2 eV.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Must every event-defined photochemical quantum yield be at most one even when chain reactions occur?",
-      "answer": "No; one absorbed photon can initiate multiple counted chemical events.",
+      "prompt": "Can a photochemical quantum yield (events per absorbed photon) exceed 1?",
+      "answer": "Yes: one absorbed photon can initiate multiple events, as in chain reactions",
       "options": [
-        "Yes; more than one counted event would always violate energy conservation.",
-        "No; one absorbed photon can initiate multiple counted chemical events."
+        "Yes: one absorbed photon can initiate multiple events, as in chain reactions",
+        "No: a yield is a probability, so it cannot exceed 1 whatever happens to the molecule after absorption",
+        "No: yield is a probability and so cannot exceed one",
+        "Yes: for gases at low pressure, where chains can form"
       ],
-      "explanation": "Stored chemical energy and the event definition must be included.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The definition counts events. A chain amplifies each initiation.",
+      "hint": "Think of a chain reaction.",
       "misconceptions": {
         "Yes; more than one counted event would always violate energy conservation.": "Stored chemical energy and the event definition must be included."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Photochemistry and elementary reaction dynamics”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For two simple excited-state channels k₁=3 and k₂=1 in inverse-time units, l
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Photochemistry and elementary reaction dynamics”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Photochemistry and elementary reaction dynamics” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Photochemistry and elementary reaction dynamics” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

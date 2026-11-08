@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does the Boltzmann collision model require statistical assumptions beyond mechanics?",
+      "prompt": "The Boltzmann collision term uses 'molecular chaos'. Is that an exact consequence of mechanics?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it follows from mechanics, so no extra assumption is needed",
+        "No: it is a statistical assumption that incoming pairs are uncorrelated",
+        "Yes: it is an exact result of the underlying dynamics",
+        "Yes: it follows from time-reversal symmetry of the motion"
       ],
-      "answer": "Yes",
-      "explanation": "Molecular chaos approximates incoming correlations.",
+      "answer": "No: it is a statistical assumption that incoming pairs are uncorrelated",
+      "explanation": "The Stosszahlansatz introduces irreversibility.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does Newtonian mechanics predict uncorrelated incoming pairs?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is mean-squared displacement always the square of the mean displacement?",
+      "prompt": "A random walker has zero mean displacement. Is its mean-squared displacement zero too?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the mean-squared displacement equals the squared mean",
+        "Yes: they are the same",
+        "Yes: a zero mean implies no spread about the origin",
+        "No: fluctuations contribute even when the mean vanishes"
       ],
-      "answer": "No",
-      "explanation": "Fluctuations contribute even when the mean vanishes.",
+      "answer": "No: fluctuations contribute even when the mean vanishes",
+      "explanation": "⟨x²⟩ = 2Dt > 0 while ⟨x⟩ = 0, so the fluctuations contribute even when the mean vanishes.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is ⟨x²⟩ the same as ⟨x⟩²?"
     },
     {
       "id": "concept-3",
-      "prompt": "May equilibrium fluctuation-dissipation formulas be transferred blindly to strongly driven states?",
+      "prompt": "Can the equilibrium fluctuation–dissipation relation be applied blindly to a strongly driven system?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the relation holds in a driven state as in equilibrium",
+        "Yes: the relation is a general law of fluctuations",
+        "Yes: it holds for a strongly driven system as well",
+        "No: stationarity, equilibrium and linear-response conditions matter"
       ],
-      "answer": "No",
-      "explanation": "Stationarity, equilibrium and linear-response conditions matter.",
+      "answer": "No: stationarity, equilibrium and linear-response conditions matter",
+      "explanation": "Driven non-equilibrium states violate it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does the theorem assume about the state?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What does a Green–Kubo relation use?",
-      "answer": "An appropriately defined equilibrium time-correlation integral.",
+      "prompt": "What does a Green–Kubo relation use to compute a transport coefficient?",
+      "answer": "An appropriately defined equilibrium time-correlation integral",
       "options": [
-        "An appropriately defined equilibrium time-correlation integral.",
-        "A quantity conserved by the modeled collisions."
+        "A conserved quantity of the underlying dynamics",
+        "The partition function of the equilibrium ensemble",
+        "A single measurement of the driven response",
+        "An appropriately defined equilibrium time-correlation integral"
       ],
-      "explanation": "An appropriately defined equilibrium time-correlation integral.",
+      "explanation": "D = ∫⟨v(0)v(t)⟩dt, for example.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which function of time is integrated?"
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For the normalized OU model with γ=1, find variance at t=ln2.",
       "answer": "0.75",
       "hint": "Use 1−exp(−2γt).",
-      "explanation": "Use 1−exp(−2γt). The value in the stated units is 0.75.",
+      "explanation": "The variance is 1 − e^(−2γt). At γ = 1, t = ln 2: e^(−2 ln 2) = 1/4, so the variance is 3/4 = 0.75.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For that matched-noise normalized model, find the long-time stationary variance.",
       "answer": "1",
       "hint": "Take the positive-time exponential limit.",
-      "explanation": "Take the positive-time exponential limit. The value in the stated units is 1.",
+      "explanation": "As t → ∞, e^(−2γt) → 0, so the variance tends to 1 − 0 = 1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Can noise strength and damping be varied independently while automatically preserving a specified equilibrium variance?",
-      "answer": "No; their balance sets the stationary fluctuations.",
+      "prompt": "A Langevin model has damping γ and noise strength D. Can you change them independently and still keep the same equilibrium variance?",
+      "answer": "No: their balance sets the stationary fluctuations",
       "options": [
-        "Yes; the stationary variance is independent of both coefficients.",
-        "No; their balance sets the stationary fluctuations."
+        "Yes: the variance is independent of both, so damping and noise can be changed freely",
+        "No: their balance sets the stationary fluctuations",
+        "Yes: variance is fixed",
+        "Yes: the two enter the dynamics separately"
       ],
-      "explanation": "Fluctuation–dissipation requires a consistent relation between coefficients.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "For example, ⟨v²⟩ = D/γ for the Ornstein–Uhlenbeck process.",
+      "hint": "Compute the stationary variance.",
       "misconceptions": {
         "Yes; the stationary variance is independent of both coefficients.": "Fluctuation–dissipation requires a consistent relation between coefficients."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Non-equilibrium: Boltzmann equation and fluctuation-dissipation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ With mobility μ=2 in consistent units and k_BT=3, D=6. A one-dimensional free d
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Non-equilibrium: Boltzmann equation and fluctuation-dissipation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Non-equilibrium: Boltzmann equation and fluctuation-dissipation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Non-equilibrium: Boltzmann equation and fluctuation-dissipation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

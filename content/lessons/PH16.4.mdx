@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the ergoregion boundary always identical to the horizon?",
+      "prompt": "For a rotating Kerr black hole, are the outer event horizon and the boundary of the ergoregion the same surface?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: just for Schwarzschild, where the two coincide",
+        "Yes: they coincide, as the ergosurface is the horizon of the rotating hole",
+        "No: the ergosurface is inside the horizon",
+        "No: the ergosurface lies outside the horizon except at the poles"
       ],
-      "answer": "No",
-      "explanation": "Their geometric definitions differ.",
+      "answer": "No: the ergosurface lies outside the horizon except at the poles",
+      "explanation": "Inside the ergoregion nothing can stay at rest, yet you can still escape.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "One is where static observers stop existing, the other where escape stops."
     },
     {
       "id": "concept-2",
-      "prompt": "Does semiclassical Hawking theory solve all quantum-gravity questions?",
+      "prompt": "Hawking radiation is derived with quantum fields on a fixed curved background. Does it settle all questions of quantum gravity?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it resolves the singularity inside the black hole, which makes it a complete quantum gravity result",
+        "No: it ignores the quantum dynamics of the geometry",
+        "Yes: it is a full quantum gravity theory",
+        "No: it is not a quantum calculation"
       ],
-      "answer": "No",
-      "explanation": "It treats fields on a prescribed geometry.",
+      "answer": "No: it ignores the quantum dynamics of the geometry",
+      "explanation": "It ignores the quantum dynamics of the geometry, leaving the information problem open. It is semiclassical.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the metric quantised in the derivation?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does larger Schwarzschild mass mean lower Hawking temperature?",
+      "prompt": "A Schwarzschild black hole's mass is doubled. What happens to its Hawking temperature?",
       "options": [
-        "No",
-        "Yes"
+        "It quadruples, since T_H grows with the square of M",
+        "It halves, because T_H ∝ 1/M",
+        "It doubles, as T_H ∝ M",
+        "It stays the same"
       ],
-      "answer": "Yes",
-      "explanation": "T_H scales inversely with mass.",
+      "answer": "It halves, because T_H ∝ 1/M",
+      "explanation": "The Hawking temperature T_H = ħc³/(8πGMk_B) is inversely proportional to M, so doubling the mass halves the temperature.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Heavier black holes are colder."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify observational compact-object claims?",
-      "answer": "Emission/transfer and source models enter inference.",
+      "prompt": "Why must an observational claim about a compact object state the emission model used?",
+      "answer": "Inferences such as spin or mass rely on assumptions about emission and radiative transfer",
       "options": [
-        "Emission/transfer and source models enter inference.",
-        "Mass and angular momentum with stated units."
+        "Spin can be read off directly from the light, as the emission model does not enter the inference",
+        "Inferences such as spin or mass rely on assumptions about emission and radiative transfer",
+        "Models affect the colour alone, not the inferences about the spin and the mass of the object",
+        "Observations need no model, as the spin and the mass are measured directly from the data"
       ],
-      "explanation": "Emission/transfer and source models enter inference.",
+      "explanation": "X-ray continuum fitting assumes a thin-disc model.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Do we see the black hole or the light around it?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Are the Kerr horizon, ergosurface and innermost stable circular orbit generally the same surface?",
-      "answer": "No; they are distinct geometric or dynamical loci.",
+      "prompt": "Are the Kerr event horizon, the ergosurface and the innermost stable circular orbit (ISCO) the same location?",
+      "answer": "No: they are distinct loci with different geometric or dynamical definitions",
       "options": [
-        "Yes; rotation changes only their shared name.",
-        "No; they are distinct geometric or dynamical loci."
+        "Yes: Kerr has a single locus that serves as the three",
+        "Yes: rotation changes the name of the surfaces, not their position in the spacetime",
+        "Yes: they coincide for a spin of each size, as the geometry is the same",
+        "No: they are distinct loci with different geometric or dynamical definitions"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "State which radius is being calculated.",
+      "hint": "What defines each of them?",
+      "explanation": "For a = 0 the horizon is at 2M and the ISCO at 6M.",
       "misconceptions": {
         "Yes; rotation changes only their shared name.": "State which radius is being calculated."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Black holes: Kerr, thermodynamics and Hawking radiation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For geometric M=5,a=3, Kerr r_+=5+√16=9. In the Schwarzschild temperature scal
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Black holes: Kerr, thermodynamics and Hawking radiation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Black holes: Kerr, thermodynamics and Hawking radiation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Black holes: Kerr, thermodynamics and Hawking radiation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

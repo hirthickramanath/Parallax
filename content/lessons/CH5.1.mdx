@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is electron-affinity sign convention universal across all tables?",
+      "prompt": "Two tables list chlorine's electron affinity with opposite signs. What explains this?",
       "options": [
-        "Yes",
-        "No"
+        "Chlorine changes sign with temperature, as the table values do",
+        "One table is wrong about the sign and the other is right",
+        "Sign conventions differ: some define it as energy released, others as energy change",
+        "Electron affinity is random from one measurement to the next"
       ],
-      "answer": "No",
-      "explanation": "Definitions must be checked.",
+      "answer": "Sign conventions differ: some define it as energy released, others as energy change",
+      "explanation": "Always check whether the value is ΔE for attachment or the energy released.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Check the definition each table uses."
     },
     {
       "id": "concept-2",
-      "prompt": "Are periodic trends exception-free monotonic laws?",
+      "prompt": "First ionisation energies generally rise across a period, but oxygen is lower than nitrogen. What does this show?",
       "options": [
-        "No",
-        "Yes"
+        "The trend is exact, so oxygen having a lower ionisation energy than nitrogen means the measurement is wrong",
+        "Oxygen is a metal in the period",
+        "Trends have exceptions caused by subshell and pairing effects",
+        "Measurements are wrong for oxygen"
       ],
-      "answer": "No",
-      "explanation": "Subshell and state effects matter.",
+      "answer": "Trends have exceptions caused by subshell and pairing effects",
+      "explanation": "Pairing in the 2p subshell of oxygen raises electron repulsion and eases removal.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the electron configurations of N and O."
     },
     {
       "id": "concept-3",
-      "prompt": "Is oxidation state a direct measured atomic charge?",
+      "prompt": "Sulfur is assigned oxidation state +6 in SO₃. Is this the measured charge on the sulfur atom?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it is a measured charge",
+        "No: oxidation states are random",
+        "No: it is a formal assignment of electrons",
+        "Yes: S has lost six electrons"
       ],
-      "answer": "No",
-      "explanation": "It is a formal assignment.",
+      "answer": "No: it is a formal assignment of electrons",
+      "explanation": "Sulfur's actual charge in SO₃ is much smaller because the bonds are covalent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the S–O bond fully ionic?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why record tabular definitions?",
-      "answer": "Different conventions can reverse or bias a comparison.",
+      "prompt": "Why must a periodic-trend comparison record which table and definitions were used?",
+      "answer": "Different conventions can bias or even reverse a comparison",
       "options": [
-        "Different conventions can reverse or bias a comparison.",
-        "A defined state-energy difference for electron removal."
+        "It saves time, as the tables and definitions in use are identical in textbooks and databases",
+        "Definitions do not change between sources",
+        "Tables are identical in their values",
+        "Different conventions can bias or even reverse a comparison"
       ],
-      "explanation": "Different conventions can reverse or bias a comparison.",
+      "explanation": "Differences in sign, reference state or scale can change which element looks larger.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Could two scales rank elements differently?"
     },
     {
       "id": "chemistry-transfer-1",
       "prompt": "At fixed principal n in a hydrogenic size model, effective charge doubles. Find radius ratio.",
       "answer": "0.5",
       "hint": "The size scale is inverse in Zeff.",
-      "explanation": "The size scale is inverse in Zeff. The value in the stated units is 0.5.",
+      "explanation": "A hydrogenic size scales as n²a₀/Z_eff. Doubling Z_eff at fixed n halves the radius: ratio 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "Using hydrogenic binding energy 13.6 Z²/n² eV, find binding magnitude for Z=2,n=1.",
       "answer": "54.4",
       "hint": "Multiply 13.6 by four.",
-      "explanation": "Multiply 13.6 by four. The value in the stated units is 54.4.",
+      "explanation": "E = 13.6 Z²/n² = 13.6 × 4/1 = 54.4 eV.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "chemistry-model-assumptions",
-      "prompt": "Is one effective-charge hydrogenic model exact for every multi-electron periodic trend?",
-      "answer": "No; shielding, occupancy and correlation introduce additional structure.",
+      "prompt": "Slater-type effective charges Z_eff predict atomic sizes. Does one such model explain every multi-electron trend?",
+      "answer": "No: shielding details, occupancy and correlation add structure",
       "options": [
-        "Yes; a fitted effective charge removes every approximation.",
-        "No; shielding, occupancy and correlation introduce additional structure."
+        "Yes: after fitting Z_eff to the data, one such model explains the multi-electron trends in atomic size",
+        "Yes: after fitting Z_eff to the measured sizes",
+        "No: shielding details, occupancy and correlation add structure",
+        "No: sizes do not depend on charge"
       ],
-      "explanation": "A scaling model is not a complete many-electron theory.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A hydrogen-like scaling is an approximation, not a full many-electron theory.",
+      "hint": "Does fitting a parameter make a model exact?",
       "misconceptions": {
         "Yes; a fitted effective charge removes every approximation.": "A scaling model is not a complete many-electron theory."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Periodicity and selected s/p-block trends”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If E(N)=−10 and E(N−1)=−7 in the same convention, ionization energy is 3. 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Periodicity and selected s/p-block trends”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Periodicity and selected s/p-block trends” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Periodicity and selected s/p-block trends” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>

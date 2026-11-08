@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every stationary point minimize free energy?",
+      "prompt": "You find a stationary point of the Landau free energy. Is it necessarily a minimum?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: a stationary point is a stable minimum of the free energy",
+        "No: curvature and a global comparison distinguish minima, maxima and saddles",
+        "Yes: stationarity is the definition of a minimum",
+        "Yes: the second derivative is positive at the stationary point"
       ],
-      "answer": "No",
-      "explanation": "Curvature and global comparison distinguish extrema.",
+      "answer": "No: curvature and a global comparison distinguish minima, maxima and saddles",
+      "explanation": "At the maximum F″ < 0, an unstable state.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the sign of F″?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is coexistence fixed by equal minimum free energies?",
+      "prompt": "In a first-order transition, what fixes the coexistence point?",
       "options": [
-        "Yes",
-        "No"
+        "The spinodal, the point where the curvature of the free energy changes sign between phases",
+        "Equal minimum free energies of the two phases",
+        "Equal curvatures of the two free energies",
+        "Equal order parameters"
       ],
-      "answer": "Yes",
-      "explanation": "A spinodal concerns local stability instead.",
+      "answer": "Equal minimum free energies of the two phases",
+      "explanation": "The spinodal concerns local stability, whereas coexistence requires equal free energies.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which condition compares the two phases?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are mean-field critical exponents exact in all dimensions?",
+      "prompt": "Mean-field theory gives order-parameter exponent β = 1/2. Is it exact in all dimensions?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the mean-field value holds in two and three dimensions",
+        "No: critical fluctuations change it below the upper critical dimension",
+        "Yes: it is a universal result of the Landau theory",
+        "Yes: the mean-field exponent holds for the Ising magnet"
       ],
-      "answer": "No",
-      "explanation": "Critical fluctuations can change them.",
+      "answer": "No: critical fluctuations change it below the upper critical dimension",
+      "explanation": "Ising exponents in 3D give β ≈ 0.33.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare with the known 3D Ising exponent."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What limits uniform mean field near criticality?",
-      "answer": "Long-range correlated fluctuations.",
+      "prompt": "What limits the validity of uniform mean-field theory near a critical point?",
+      "answer": "Long-range correlated fluctuations",
       "options": [
-        "Long-range correlated fluctuations.",
-        "Macroscopic phases or symmetry-breaking states."
+        "Short-range uncorrelated noise",
+        "Long-range correlated fluctuations",
+        "Macroscopic phases",
+        "Low temperature"
       ],
-      "explanation": "Long-range correlated fluctuations.",
+      "explanation": "Fluctuations at all length scales invalidate the uniform assumption.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What happens to ξ at T_c?"
     },
     {
       "id": "thermal-optics-transfer-1",
       "prompt": "For a=b=1 and T−Tc=−2, find the positive equilibrium branch m.",
       "answer": "1",
       "hint": "Use sqrt(−a(T−Tc)/(2b)).",
-      "explanation": "Use sqrt(−a(T−Tc)/(2b)). The value in the stated units is 1.",
+      "explanation": "m = √(−a(T − T_c)/(2b)) = √(−1 × (−2)/(2 × 1)) = √1 = 1.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For F=t m²−h m above Tc, t=1, find small-field susceptibility dm/dh.",
       "answer": "0.5",
       "hint": "Minimize 2tm−h=0.",
-      "explanation": "Minimize 2tm−h=0. The value in the stated units is 0.5.",
+      "explanation": "Minimising F = tm² − hm gives 2tm − h = 0, so m = h/(2t) and dm/dh = 1/(2t) = 1/2 = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "thermal-optics-model-assumptions",
-      "prompt": "Is the mean-field order-parameter exponent one half guaranteed for every physical critical system?",
-      "answer": "No; fluctuations and universality class can change it.",
+      "prompt": "Is the mean-field exponent β = 1/2 guaranteed for every physical critical system?",
+      "answer": "No: fluctuations and the universality class can change it",
       "options": [
-        "Yes; a quartic toy fixes all dimensions and interactions.",
-        "No; fluctuations and universality class can change it."
+        "No: fluctuations and the universality class can change it",
+        "Yes: the value holds in two and three dimensions",
+        "Yes: the value holds for short and long-range interactions",
+        "Yes: a quartic toy model fixes the exponent for real systems"
       ],
-      "explanation": "Mean-field theory has explicit approximation limits.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Mean-field theory has explicit assumptions.",
+      "hint": "What does the mean-field approximation ignore?",
       "misconceptions": {
         "Yes; a quartic toy fixes all dimensions and interactions.": "Mean-field theory has explicit approximation limits."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Phase transitions and Landau theory”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For a=−4, b=1 and h=0, the minima are m=±2. At m=2 the curvature a+3bm² is �
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Phase transitions and Landau theory”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Phase transitions and Landau theory” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Phase transitions and Landau theory” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

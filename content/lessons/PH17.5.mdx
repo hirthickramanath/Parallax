@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does an agreeing demonstration automatically validate a model independently?",
+      "prompt": "A model agrees with a demonstration whose calibration was tuned using that same model. Does the agreement independently validate the model?",
       "options": [
-        "Yes",
-        "No"
+        "No: calibration and model selection can be circular",
+        "Yes: agreement between model and demonstration counts as validation, however the calibration was made",
+        "Yes: tuning makes the model more valid",
+        "No: validation needs no independent data"
       ],
-      "answer": "No",
-      "explanation": "Calibration and selection can be circular.",
+      "answer": "No: calibration and model selection can be circular",
+      "explanation": "Calibration and model selection can be circular, so independent data are needed. Test on data not used to fit.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Was the test independent of the tuning?"
     },
     {
       "id": "concept-2",
-      "prompt": "May synthetic readings be described as newly measured local g?",
+      "prompt": "A capstone plan generates readings from a pendulum model. May the report call them a new measurement of local g?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: if the model is accurate",
+        "No: g cannot be measured with a pendulum",
+        "Yes: pendulum numbers from a model measure g as well as real data do",
+        "No: they are generated from the model and are not measurements"
       ],
-      "answer": "No",
-      "explanation": "They are generated from a model.",
+      "answer": "No: they are generated from the model and are not measurements",
+      "explanation": "Simulated data can only reproduce the input g.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where did the numbers come from?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a forced zero intercept hide an offset?",
+      "prompt": "In a linear fit you force the line through the origin. Could this hide a systematic offset?",
       "options": [
-        "No",
-        "Yes"
+        "No: fitting through the origin improves accuracy",
+        "Yes: but just for data that are curved",
+        "No: the intercept is zero in the fit",
+        "Yes: it removes the intercept as a diagnostic"
       ],
-      "answer": "Yes",
-      "explanation": "It removes a diagnostic degree of freedom.",
+      "answer": "Yes: it removes the intercept as a diagnostic",
+      "explanation": "It removes the intercept as a diagnostic, so offsets get absorbed into the slope. A free intercept tests the assumed proportionality.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What does a nonzero intercept tell you?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What remains honest without equipment?",
-      "answer": "A labelled design/simulation with unperformed checks explicit.",
+      "prompt": "You have no equipment. What is an honest capstone deliverable?",
+      "answer": "A clearly labelled design or simulation that states which checks have not been performed",
       "options": [
-        "A labelled design/simulation with unperformed checks explicit.",
-        "A prediction with a stated measurement and discrepancy criterion."
+        "No honest capstone can be produced without equipment, so the project should simply be skipped",
+        "A report presenting simulated numbers as data",
+        "A clearly labelled design or simulation that states which checks have not been performed",
+        "A claim that the experiment worked, backed by the simulation that was run in its place and the plots"
       ],
-      "explanation": "A labelled design/simulation with unperformed checks explicit.",
+      "explanation": "Honesty means labelling what is a plan and what is a measurement.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What can you truthfully say you did?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does finishing an analytic planning widget count as completing the real capstone experiment?",
-      "answer": "No; recorded execution and analysis are still required.",
+      "prompt": "You finished building an analytic planning widget for the capstone. Have you completed the experiment?",
+      "answer": "No: a plan and a plot are not evidence until execution and analysis are recorded",
       "options": [
-        "Yes; a plan and a plot are equivalent to collected evidence.",
-        "No; recorded execution and analysis are still required."
+        "Yes: a plan is equivalent to data, since the widget already computes the expected result of the experiment",
+        "No: widgets cannot be built for a capstone, so a plan is not possible",
+        "Yes: the plot is the result, as it shows the behaviour of the system in the plan",
+        "No: a plan and a plot are not evidence until execution and analysis are recorded"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Keep preparation separate from execution.",
+      "hint": "Has anything been measured?",
+      "explanation": "Planning and execution are distinct phases.",
       "misconceptions": {
         "Yes; a plan and a plot are equivalent to collected evidence.": "Keep preparation separate from execution."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Lab capstone design”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If a hypothetical valid T²-versus-L slope is 4 in compatible units, the ideal e
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Lab capstone design”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Lab capstone design” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Lab capstone design” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

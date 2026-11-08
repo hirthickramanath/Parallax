@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does changing basis change the physical state by itself?",
+      "prompt": "You change from the position basis to the momentum basis. Do you change the physical state?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: the energy changes, since momentum eigenstates have a different total energy",
+        "No: it changes the coordinates",
+        "Yes: a new system",
+        "Yes: a different state"
       ],
-      "answer": "No",
-      "explanation": "It changes coordinates when all operators transform consistently.",
+      "answer": "No: it changes the coordinates",
+      "explanation": "It changes the coordinates, with all operators transforming consistently. A basis change is like rotating the axes.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does rotating axes move a vector?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a degenerate projective outcome select one unique vector automatically?",
+      "prompt": "A measurement has a degenerate eigenvalue with two eigenvectors. After measurement, is the state a uniquely chosen vector?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: the first eigenvector is chosen, since the measurement picks the state with label one",
+        "Yes: one particular vector",
+        "Yes: the normalised sum",
+        "No: it is projected onto the degenerate subspace"
       ],
-      "answer": "No",
-      "explanation": "It generally selects a subspace.",
+      "answer": "No: it is projected onto the degenerate subspace",
+      "explanation": "The projection is P|ψ⟩/‖P|ψ⟩‖, which generally is a specific vector but depends on the initial state.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which projector acts?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can a pure joint state have a mixed reduced state?",
+      "prompt": "Two entangled qubits are in a pure joint state. Can the state of one qubit alone be mixed?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: entanglement produces mixed subsystem descriptions",
+        "No: the reduced state is pure, since a pure joint state gives pure states for each part",
+        "No: each qubit is in a pure state of its own",
+        "No: pure joint means pure parts"
       ],
-      "answer": "Yes",
-      "explanation": "Entanglement produces mixed subsystem descriptions.",
+      "answer": "Yes: entanglement produces mixed subsystem descriptions",
+      "explanation": "The Bell state's reduced density matrix is I/2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Trace out one qubit of a Bell state."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What distinguishes a state from a coordinate vector?",
-      "answer": "The physical ray is independent of its chosen basis coordinates.",
+      "prompt": "What distinguishes a quantum state from its coordinate vector in a basis?",
+      "answer": "The physical ray is independent of the chosen basis coordinates",
       "options": [
-        "The physical ray is independent of its chosen basis coordinates.",
-        "A positive trace-one density operator."
+        "The physical ray is independent of the chosen basis coordinates",
+        "The state depends on the basis",
+        "They are identical objects in a given basis",
+        "The state is the list of numbers in the basis"
       ],
-      "explanation": "The physical ray is independent of its chosen basis coordinates.",
+      "explanation": "Coordinates change under a basis change, but the ray is the same.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is the state its components?"
     },
     {
       "id": "quantum-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "quantum-assumptions",
-      "prompt": "Can relative phase affect another-basis measurements even when computational-basis populations are unchanged?",
-      "answer": "Yes; interference depends on phase.",
+      "prompt": "Two states have identical populations in the computational basis but differ in relative phase. Can another-basis measurement tell them apart?",
+      "answer": "Yes: interference depends on the relative phase",
       "options": [
-        "No; populations alone determine every pure state.",
-        "Yes; interference depends on phase."
+        "No: the two states behave identically",
+        "No: phase is unobservable",
+        "No: populations determine the state",
+        "Yes: interference depends on the relative phase"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Specify the measurement basis.",
+      "hint": "Compare the states |+⟩ and |−⟩: same Z populations, different X outcomes.",
+      "explanation": "|+⟩ and |−⟩ have the same Z populations but opposite X outcomes.",
       "misconceptions": {
         "No; populations alone determine every pure state.": "Specify the measurement basis."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Postulates and Dirac notation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For |ψ⟩=√3/2|0⟩+1/2|1⟩, the basis probabilities are 3/4 and 1/4. If A h
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Postulates and Dirac notation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Postulates and Dirac notation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Postulates and Dirac notation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

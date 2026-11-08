@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does transit depth alone yield an absolute planet radius?",
+      "prompt": "A transit lowers a star's flux by 1%. Can you get the planet's absolute radius from only that depth?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: depth gives the radius directly, as R_p equals 1% of the Sun's radius for a one percent dip",
+        "Yes: depth gives radius",
+        "Yes: with the period of the transit, the radius follows",
+        "No: you also need the star's radius and the transit model"
       ],
-      "answer": "No",
-      "explanation": "The host-star scale and transit model matter.",
+      "answer": "No: you also need the star's radius and the transit model",
+      "explanation": "(R_p/R_*)² = depth, so you need R_* in km.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Depth gives a ratio of radii."
     },
     {
       "id": "concept-2",
-      "prompt": "Does radial velocity alone usually remove sin i degeneracy?",
+      "prompt": "A radial-velocity survey measures a velocity semi-amplitude K. Does it usually give the true planet mass?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it gives the true mass",
+        "Yes: if K is large, the mass follows without the inclination",
+        "Yes: it gives inclination",
+        "No: it gives m sin i, because it measures the projected motion"
       ],
-      "answer": "No",
-      "explanation": "It measures projected orbital motion.",
+      "answer": "No: it gives m sin i, because it measures the projected motion",
+      "explanation": "The inclination i is unknown from RV alone.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which component of velocity do you measure?"
     },
     {
       "id": "concept-3",
-      "prompt": "Are detected planets an unbiased occurrence sample?",
+      "prompt": "Detected exoplanets are mostly large and close-in. Does this reflect the true population of planets?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: small planets are rare",
+        "Yes: the sample is unbiased",
+        "No: geometry and survey completeness select them",
+        "Yes: large planets dominate"
       ],
-      "answer": "No",
-      "explanation": "Geometry and survey completeness select them.",
+      "answer": "No: geometry and survey completeness select them",
+      "explanation": "Transit probability ∝ R_*/a and the signal ∝ (R_p/R_*)², favouring close, big planets.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which planets are easiest to find?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What must false-positive validation consider?",
-      "answer": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "prompt": "What alternatives must a false-positive validation of a transit candidate consider?",
+      "answer": "Blends, stellar activity and other astrophysical or instrumental explanations",
       "options": [
-        "Blends, activity and alternative astrophysical/instrumental explanations.",
-        "A radius ratio squared."
+        "The orbital period, as a periodic dip is sufficient to exclude other explanations",
+        "Blends, stellar activity and other astrophysical or instrumental explanations",
+        "The depth of the dip in the light curve, which is a complete test",
+        "The depth of the dip in the light curve, which is a complete test for planets and for stars alike"
       ],
-      "explanation": "Blends, activity and alternative astrophysical/instrumental explanations.",
+      "explanation": "Eclipsing binaries diluted by a brighter star can mimic planets.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What else dims a star periodically?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For a planet/star radius ratio 0.1 and no dilution, find fractional transit depth.",
       "answer": "0.01",
       "hint": "Square the radius ratio.",
-      "explanation": "Square the radius ratio. The value in the stated units is 0.01.",
+      "explanation": "Transit depth is (R_p/R_*)² = 0.1² = 0.01.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "A true transit depth is 0.02 and contaminant flux equals stellar flux. Find observed depth.",
       "answer": "0.01",
       "hint": "Divide by 1+f with f=1.",
-      "explanation": "Divide by 1+f with f=1. The value in the stated units is 0.01.",
+      "explanation": "With contaminating flux f times the star's, the observed depth is true depth/(1 + f) = 0.02/2 = 0.01.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does an observed transit depth alone uniquely determine planet radius without stellar radius and contamination information?",
-      "answer": "No; stellar size and dilution enter the inference.",
+      "prompt": "Can the transit depth alone give a planet's radius without stellar radius and contamination information?",
+      "answer": "No: the stellar size and dilution by other light enter",
       "options": [
-        "Yes; depth directly measures an absolute radius.",
-        "No; stellar size and dilution enter the inference."
+        "No: the stellar size and dilution by other light enter",
+        "Yes: depth is an absolute radius, as a larger planet blocks a larger fraction of the light",
+        "Yes: depth is absolute",
+        "Yes: it is a fixed rule"
       ],
-      "explanation": "A fractional area ratio is not a standalone absolute length.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The depth is a fractional area, and contamination dilutes it.",
+      "hint": "Is a ratio of areas a length?",
       "misconceptions": {
         "Yes; depth directly measures an absolute radius.": "A fractional area ratio is not a standalone absolute length."
       },
@@ -163,7 +177,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Exoplanet detection”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -237,18 +251,18 @@ For R_p/R_*=.1, the uniform-star approximate depth is .01. With R_*/a=.2 and neg
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Exoplanet detection”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Exoplanet detection” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Exoplanet detection” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

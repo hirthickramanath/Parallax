@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does donor mass loss alone determine orbital expansion or shrinkage?",
+      "prompt": "A donor star loses mass to its companion. Does the donor's mass loss alone say whether the orbit widens or shrinks?",
       "options": [
-        "Yes",
-        "No"
+        "No: angular momentum and how much mass the accretor keeps also matter",
+        "No: the orbit stays the same in this case, whatever the mass transfer does",
+        "Yes: mass loss widens it in the cases that matter",
+        "Yes: mass loss shrinks it in the cases that matter"
       ],
-      "answer": "No",
-      "explanation": "Angular momentum and mass retention assumptions matter.",
+      "answer": "No: angular momentum and how much mass the accretor keeps also matter",
+      "explanation": "For conservative transfer the orbit shrinks until the mass ratio reverses, then widens.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the total angular momentum conserved?"
     },
     {
       "id": "concept-2",
-      "prompt": "Is a Roche lobe a rigid physical wall?",
+      "prompt": "Is a Roche lobe a rigid physical wall that confines a star?",
       "options": [
-        "No",
-        "Yes"
+        "No: it is an equipotential surface of the effective potential",
+        "Yes: a solid boundary that confines the gas and keeps the star inside it",
+        "Yes: a magnetic shell around the star that traps the stellar wind",
+        "No: it does not exist as a surface in the potential of the binary"
       ],
-      "answer": "No",
-      "explanation": "It is an effective-potential geometry.",
+      "answer": "No: it is an equipotential surface of the effective potential",
+      "explanation": "Gas can pass through the L1 point when the star fills its lobe.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What defines the Roche surface?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can mass transfer change a star’s evolutionary path?",
+      "prompt": "A star in a close binary has gained mass from its companion. Can its evolutionary path change?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: its colour changes, and that is the end of the story",
+        "No: evolution depends on the birth mass alone",
+        "No: accretion has no effect on the star",
+        "Yes: its mass, composition and spin change"
       ],
-      "answer": "Yes",
-      "explanation": "Mass, composition and spin can change.",
+      "answer": "Yes: its mass, composition and spin change",
+      "explanation": "Mass transfer produces blue stragglers and stripped stars.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the main-sequence lifetime depend on mass?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What qualifies binary mass inference?",
-      "answer": "Inclination, orbit and measurement-model assumptions.",
+      "prompt": "You infer the mass of a star from its binary orbit. What assumptions qualify the result?",
+      "answer": "The inclination, orbit shape and the measurement model",
       "options": [
-        "Inclination, orbit and measurement-model assumptions.",
-        "Specified total mass and angular momentum constraints."
+        "The inclination, orbit shape and the measurement model",
+        "No assumptions: the orbit gives the mass directly, whatever the inclination or the orbit shape",
+        "The distance to the star, and the brightness it has in the sky",
+        "The star's colour and its brightness in the sky"
       ],
-      "explanation": "Inclination, orbit and measurement-model assumptions.",
+      "explanation": "Spectroscopic orbits give m sin³ i, so the unknown inclination matters.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the radial-velocity curve not tell you?"
     },
     {
       "id": "astro-transfer-1",
       "prompt": "For conservative transfer at fixed total mass and angular momentum, the mass product M₁M₂ doubles. Find separation ratio.",
       "answer": "0.25",
       "hint": "Use a∝(M₁M₂)^−2.",
-      "explanation": "Use a∝(M₁M₂)^−2. The value in the stated units is 0.25.",
+      "explanation": "With a ∝ (M₁M₂)^(−2), doubling the product gives a factor 2^(−2) = 1/4 = 0.25.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For equal masses q=1, estimate rL/a from 0.49/(0.6+ln2).",
       "answer": "0.3789205183804563",
       "hint": "Evaluate the stated volume-equivalent Roche approximation.",
-      "explanation": "Evaluate the stated volume-equivalent Roche approximation. The value in the stated units is 0.37892051838.",
+      "explanation": "r_L/a ≈ 0.49 / (0.6 + ln 2) = 0.49 / (0.6 + 0.6931) = 0.49 / 1.2931 ≈ 0.3789.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Does the fact that a donor fills its Roche lobe uniquely determine whether transfer is stable?",
-      "answer": "No; the stellar and lobe responses also matter.",
+      "prompt": "A star fills its Roche lobe. Does that alone tell you whether the mass transfer is stable?",
+      "answer": "No: the star's and the lobe's responses to mass loss also matter",
       "options": [
-        "Yes; all lobe-filling systems evolve identically.",
-        "No; the stellar and lobe responses also matter."
+        "Yes: a star that fills its lobe transfers mass stably, whatever its structure",
+        "No: the star's and the lobe's responses to mass loss also matter",
+        "Yes: lobe-filling systems behave alike in the way that they respond to mass loss",
+        "Yes: transfer is unstable in the cases that matter"
       ],
-      "explanation": "Overflow geometry and dynamical/thermal response are different inputs.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Stability depends on how the donor radius and Roche radius change with mass loss.",
+      "hint": "Compare how both radii respond.",
       "misconceptions": {
         "Yes; all lobe-filling systems evolve identically.": "Overflow geometry and dynamical/thermal response are different inputs."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Binaries and mass transfer”, read the linked prerequisites and keep a notebook. Write down the object, the model assumptions, the units and the scale of the quantities before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ At fixed total mass and orbital angular momentum, reducing product M₁M₂ from
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Binaries and mass transfer”, answer the tagged questions below. Then change one parameter or assumption of the model in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Binaries and mass transfer” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A toy calculation can expose a wrong scaling, but agreement with a few numbers does not show that real astronomical objects behave this way.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Binaries and mass transfer” in interpreting an astronomical observation or model. Separate what the model gives exactly from the approximations that connect it to real objects. Record which assumption must be checked before the next application.
 
 </LessonSection>

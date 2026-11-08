@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "What remains constant on an ellipse?",
-      "answer": "Sum of distances to its foci",
+      "prompt": "What is the same for every point on an ellipse?",
+      "answer": "The sum of its distances to the two foci",
       "options": [
-        "Distance to each focus separately",
-        "Sum of distances to its foci"
+        "Its distance to the centre",
+        "Its distance to each focus separately",
+        "The sum of its distances to the two foci",
+        "The difference of its distances to the foci"
       ],
-      "explanation": "The sum defines the locus.",
+      "explanation": "The ellipse is the locus of points whose distances to the foci add to a constant (2a). The difference is constant on a hyperbola instead.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Recall the string-and-pins construction."
     },
     {
       "id": "c2",
-      "prompt": "Does every quadratic equation describe a nonempty ellipse?",
-      "answer": "No",
+      "prompt": "Does every quadratic equation in x and y describe a non-empty ellipse?",
+      "answer": "No: it can be a hyperbola, parabola, a pair of lines, a point or empty",
       "options": [
-        "No",
-        "Yes"
+        "Yes, if the coefficients are positive, as that gives an ellipse",
+        "No, but it describes some conic in each case, even a degenerate one",
+        "No: it can be a hyperbola, parabola, a pair of lines, a point or empty",
+        "Yes, since it has degree two"
       ],
-      "explanation": "Quadratics can be degenerate, empty or other conics.",
+      "explanation": "x² + y² + 1 = 0 has no real points, and x² − y² = 0 is two lines. Degenerate and empty cases are included in the general quadratic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try the equation x² + y² + 1 = 0 and see what points satisfy it."
     },
     {
       "id": "c3",
-      "prompt": "Does the shape alone establish a gravitational force law?",
-      "answer": "No",
+      "prompt": "A body moves on an exact ellipse. Does the shape alone tell you the force law?",
+      "answer": "No: you also need dynamics and the initial conditions",
       "options": [
-        "Yes",
-        "No"
+        "Yes: ellipses imply an inverse-square force",
+        "No: ellipses cannot be orbits",
+        "No: you also need dynamics and the initial conditions",
+        "Yes, but just for circles, with a central force"
       ],
-      "explanation": "Dynamics needs a force and initial conditions.",
+      "explanation": "Kepler's laws plus Newton give an inverse-square force, but the shape alone does not fix a force: other force laws, such as a spring, also give ellipses (centred differently).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Think of a mass on a 2D spring, which also moves on an ellipse."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A particle moves on a Kepler ellipse. Does advancing true anomaly by equal increments generally advance time by equal increments?",
-      "answer": "No; equal areas, not equal angles, correspond to equal times.",
+      "prompt": "A planet moves on a Kepler ellipse. Does equal increments of the true anomaly correspond to equal increments of time?",
+      "answer": "No: equal areas swept, not equal angles, take equal times",
       "options": [
-        "Yes; an ellipse has constant angular speed.",
-        "No; equal areas, not equal angles, correspond to equal times."
+        "No: the time depends on the planet's mass",
+        "No: the time depends on the mass, so equal angles need equal masses",
+        "Yes: angular speed is constant on an ellipse",
+        "No: equal areas swept, not equal angles, take equal times"
       ],
-      "explanation": "Conserved specific angular momentum gives r² dν/dt constant. Radius changes on a noncircular ellipse.",
+      "explanation": "Conservation of angular momentum gives r² dν/dt = constant. The radius changes, so the angle advances faster near the focus than far from it.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "hint": "Use r² dν/dt = h and ask how r changes round the orbit.",
       "misconceptions": {
         "Yes; an ellipse has constant angular speed.": "Conserved specific angular momentum gives r² dν/dt constant. Radius changes on a noncircular ellipse."
       }

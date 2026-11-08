@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is every bounded function Riemann integrable?",
+      "prompt": "Is every bounded function on [0, 1] Riemann integrable?",
       "options": [
-        "Yes",
-        "No"
+        "No: the indicator of the rationals is bounded but not integrable",
+        "Yes: boundedness is enough, since a bounded function on a closed interval has equal upper and lower sums",
+        "Yes, if it has finitely many zeros",
+        "No: continuous functions are integrable and the rest are not"
       ],
-      "answer": "No",
-      "explanation": "The rational-indicator function on an interval is a counterexample.",
+      "answer": "No: the indicator of the rationals is bounded but not integrable",
+      "explanation": "Riemann integrability needs the upper and lower sums to meet. For the rational indicator the lower sum is 0 and the upper sum is 1 on every partition.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Consider a function that is 1 on rationals and 0 on irrationals."
     },
     {
       "id": "concept-2",
-      "prompt": "Does symmetric cancellation prove ordinary convergence across a singularity?",
+      "prompt": "∫ from −1 to 1 of dx/x has symmetric cancellation (principal value 0). Does it converge as an ordinary improper integral?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it equals 0, because the symmetric cancellation of the two halves makes the ordinary improper integral converge",
+        "Yes: it equals 2 from the symmetric pieces",
+        "Yes, since the function is odd",
+        "No: each one-sided piece diverges separately"
       ],
-      "answer": "No",
-      "explanation": "Both one-sided improper integrals must converge separately.",
+      "answer": "No: each one-sided piece diverges separately",
+      "explanation": "An improper integral across a singularity requires both one-sided limits to converge independently. ∫ dx/x diverges on each side.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate ∫ from ε to 1 of dx/x as ε → 0."
     },
     {
       "id": "concept-3",
-      "prompt": "Where does the integral-defined F have derivative f under the stated theorem?",
+      "prompt": "F(x) = ∫ from a to x of f(t) dt. At which points does the fundamental theorem guarantee F′(x) = f(x)?",
       "options": [
-        "At every point without hypotheses",
-        "At continuity points of f"
+        "Where f is zero on the interval",
+        "At the endpoints of the interval",
+        "At each point, with no conditions",
+        "Where f is continuous"
       ],
-      "answer": "At continuity points of f",
-      "explanation": "Continuity controls the shrinking-interval average.",
+      "answer": "Where f is continuous",
+      "explanation": "F′(x) is the limit of the average of f over a shrinking interval. Continuity at x makes that average tend to f(x).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Change f at a single point: does F change?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why can a numerical grid fail to diagnose the rational-indicator example?",
-      "answer": "Every interval contains both kinds of points, which finite sampling cannot establish",
+      "prompt": "A computer samples the rational indicator at many grid points. Why can it not diagnose non-integrability?",
+      "answer": "Every cell contains both rational and irrational points, which sampling cannot reveal",
       "options": [
-        "Every interval contains both kinds of points, which finite sampling cannot establish",
-        "Every bounded function is automatically integrable"
+        "The grid must be finite, but the function is integrable and sampling would still give the right value",
+        "Computers cannot sum a series with an infinite number of terms",
+        "Every cell contains both rational and irrational points, which sampling cannot reveal",
+        "The sum of the samples is exact when the interval is a finite one"
       ],
-      "explanation": "Integrability depends on upper/lower behaviour throughout each cell.",
+      "explanation": "Integrability depends on the supremum and infimum of f on every cell. A finite set of sample points sees only a few values.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What are the sup and inf of f on any small interval?"
     },
     {
       "id": "analysis-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analysis-hypotheses",
-      "prompt": "For the indicator of rational numbers on [0,1], what are the lower and upper Darboux sums for any finite partition into positive-length cells?",
-      "answer": "Lower 0 and upper 1.",
+      "prompt": "For the indicator of the rationals on [0, 1], what are the Darboux sums on any partition?",
+      "answer": "Lower sum 0 and upper sum 1",
       "options": [
-        "Both tend to the same value on sufficiently fine grids.",
-        "Lower 0 and upper 1."
+        "Both tend to ½",
+        "Both are equal to 1",
+        "Lower sum 0 and upper sum 1",
+        "Both are equal to 0"
       ],
-      "explanation": "Every cell contains both rational and irrational points.",
-      "hint": "Track the quantifiers or theorem hypotheses explicitly.",
+      "explanation": "Every cell contains an irrational (inf = 0) and a rational (sup = 1), so L = 0 and U = 1 always.",
+      "hint": "Look at the infimum and supremum on a typical cell.",
       "misconceptions": {
         "Both tend to the same value on sufficiently fine grids.": "Every cell contains both rational and irrational points."
       },
@@ -164,7 +178,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Riemann integration”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -229,19 +243,19 @@ For f(x)=x on [0,1] with n equal cells, lower sum is (n−1)/(2n) and upper sum 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Riemann integration”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Riemann integration” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Riemann integration” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

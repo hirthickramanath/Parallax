@@ -4,6 +4,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { createEmptyCard, fsrs, type Card } from "ts-fsrs";
 import { useLearning } from "../hooks/useLearning";
 import { course } from "../lib/course";
+import { useQuestions } from "../lib/course-questions";
 import { dateKey } from "../lib/learning-core";
 import { Rating, restoreCard, schedule } from "../lib/fsrs";
 import { QuestionCard } from "../components/learning/QuestionCard";
@@ -28,6 +29,7 @@ export function Revise() {
     [sessionCards, setSessionCards] = useState<Concept[]>([]),
     [whyAnswered, setWhyAnswered] = useState(false),
     [coreCorrect, setCoreCorrect] = useState<boolean | null>(null);
+  const activeQuestions = useQuestions(active?.lessonId);
   const catalog = [...new Map(concepts.map((c) => [c.concept, c])).values()];
   const filtered = catalog.filter((c) =>
     `${c.concept} ${c.front}`.toLowerCase().includes(query.toLowerCase()),
@@ -118,9 +120,15 @@ export function Revise() {
     setStep(5);
   }
   if (active) {
+    if (!activeQuestions)
+      return (
+        <main id="main" className="workspace-page">
+          <p role="status">Loading the concept…</p>
+        </main>
+      );
     const lesson = course.authored[active.lessonId],
-      why = lesson.questions.find((q) => q.conceptual && !q.tier)!,
-      problem = lesson.questions.find((q) => q.tier === "core")!;
+      why = activeQuestions.find((q) => q.conceptual && !q.tier)!,
+      problem = activeQuestions.find((q) => q.tier === "core")!;
     return (
       <main id="main" className="workspace-page">
         <p className="eyebrow">

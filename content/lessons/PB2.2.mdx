@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Is heat a state variable stored inside a system?",
-      "answer": "No",
+      "prompt": "Which statement about heat is correct?",
+      "answer": "Heat is energy in transit, not a stored property of a system",
       "options": [
-        "Yes",
-        "No"
+        "Heat is a state variable, like temperature",
+        "Heat and internal energy are two names for the same thing",
+        "A hot body contains more heat than a cold body",
+        "Heat is energy in transit, not a stored property of a system"
       ],
-      "explanation": "Heat denotes transfer, while internal energy is a state variable.",
+      "explanation": "Internal energy is a state variable. Heat is the energy transferred because of a temperature difference, and it depends on the process.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask whether a system's heat content is fixed by its state alone."
     },
     {
       "id": "c2",
-      "prompt": "Does adiabatic always mean constant temperature?",
-      "answer": "No",
+      "prompt": "A gas is compressed adiabatically. What happens to its temperature?",
+      "answer": "It usually rises, because work raises the internal energy",
       "options": [
-        "No",
-        "Yes"
+        "It stays constant, because adiabatic compression is the same as compression at a fixed temperature",
+        "It cannot change, since Q = 0",
+        "It falls, because no heat flows in",
+        "It usually rises, because work raises the internal energy"
       ],
-      "explanation": "Work can change internal energy when heat transfer is zero.",
+      "explanation": "Adiabatic means Q = 0, not T constant. The first law then gives ΔU = W, so compressing the gas does work on it and heats it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use ΔU = Q + W with Q = 0."
     },
     {
       "id": "c3",
-      "prompt": "May one system decrease entropy by exporting it?",
-      "answer": "Yes",
+      "prompt": "A refrigerator lowers the entropy of its contents. Does this break the second law?",
+      "answer": "No: the total entropy of fridge plus surroundings does not decrease",
       "options": [
-        "No",
-        "Yes"
+        "Yes: entropy of a system must not fall, so the fridge breaks it",
+        "No: entropy is not defined for a refrigerator",
+        "Yes: the contents must have been isolated",
+        "No: the total entropy of fridge plus surroundings does not decrease"
       ],
-      "explanation": "The nondecrease applies to an isolated total system.",
+      "explanation": "The second law applies to an isolated total system. A local drop is allowed if at least as much entropy is exported to the surroundings, here as heat to the room.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Include the surroundings in the entropy count."
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "An insulated ideal gas expands freely into a vacuum and equilibrates. Is its entropy necessarily unchanged?",
-      "answer": "No; the irreversible expansion can increase entropy.",
+      "prompt": "An insulated ideal gas expands freely into a vacuum. Is its entropy necessarily unchanged because no heat flows?",
+      "answer": "No: the irreversible expansion raises entropy by nR ln(V₂/V₁)",
       "options": [
-        "Yes; no heat transfer always means constant entropy.",
-        "No; the irreversible expansion can increase entropy."
+        "No: the irreversible expansion raises entropy by nR ln(V₂/V₁)",
+        "Yes: entropy changes just when heat is transferred",
+        "Yes: the temperature is constant, so entropy is too",
+        "No: the gas must cool, so entropy falls"
       ],
-      "explanation": "Q=W=0 gives ΔU=0. For an ideal gas T stays fixed but ΔS=nR ln(V₂/V₁)>0.",
+      "explanation": "Q = W = 0 gives ΔU = 0, so an ideal gas keeps its temperature. Entropy is a state function, found along a reversible path, and it rises with the volume.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check whether the assumptions of the tempting rule actually hold.",
+      "hint": "Entropy depends on the state reached, not on whether heat flowed in this process.",
       "misconceptions": {
         "Yes; no heat transfer always means constant entropy.": "Q=W=0 gives ΔU=0. For an ideal gas T stays fixed but ΔS=nR ln(V₂/V₁)>0."
       }

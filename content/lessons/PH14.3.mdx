@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every occupied electron have k_BT thermal energy by classical equipartition at low T?",
+      "prompt": "Classical equipartition would give each conduction electron (3/2)k_BT. Why does the measured electronic heat capacity come out far smaller?",
       "options": [
-        "Yes",
-        "No"
+        "Electrons are heavier than atoms, so they carry less thermal energy per particle",
+        "Electrons carry no thermal energy, as they are held in place by the lattice of atoms",
+        "The lattice absorbs the electron energy",
+        "Pauli exclusion lets only electrons within about k_BT of the Fermi level be thermally excited"
       ],
-      "answer": "No",
-      "explanation": "Fermi statistics restrict excitations.",
+      "answer": "Pauli exclusion lets only electrons within about k_BT of the Fermi level be thermally excited",
+      "explanation": "Only a fraction ~T/T_F of electrons contribute, giving C_el ∝ T.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which states have empty neighbours to move into?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does elementary Drude τ derive every scattering mechanism?",
+      "prompt": "The Drude model uses a relaxation time τ. Does it derive all the scattering mechanisms from first principles?",
       "options": [
-        "No",
-        "Yes"
+        "No: τ is a phenomenological parameter that lumps together impurity, phonon and other scattering",
+        "Yes: τ is a universal constant of the model, the same for each metal and each scattering mechanism",
+        "Yes: τ follows from the model's equations",
+        "No: the model has no scattering, so the relaxation time is a placeholder for collisions in the solid"
       ],
-      "answer": "No",
-      "explanation": "It is a closure parameter.",
+      "answer": "No: τ is a phenomenological parameter that lumps together impurity, phonon and other scattering",
+      "explanation": "σ = ne²τ/m takes τ as an input, so the model describes conduction but does not derive the scattering rate itself.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does τ come from in the formula?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does k_F state counting depend on degeneracy/dimension?",
+      "prompt": "You compute k_F for free electrons by filling states up to a given density. Does the result depend on dimension?",
       "options": [
-        "No",
-        "Yes"
+        "No: the relation depends on the electron mass, as the Fermi sphere has the same volume in each dimension",
+        "Yes: but just through the temperature of the electron gas and its heat capacity",
+        "No: n = k_F³/3π² in each dimension, as the Fermi sphere is a sphere of the same kind in space",
+        "Yes: the k-space volume of the Fermi sphere changes with dimension, so n–k_F relation changes"
       ],
-      "answer": "Yes",
-      "explanation": "The available state measure changes.",
+      "answer": "Yes: the k-space volume of the Fermi sphere changes with dimension, so n–k_F relation changes",
+      "explanation": "In 2D n = k_F²/2π and in 1D n = k_F/π, with spin degeneracy 2.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare the volume of a sphere with the area of a disk."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why qualify the free-electron model?",
-      "answer": "Bands, interactions, disorder and phases can change response.",
+      "prompt": "Why do solid-state physicists treat the free-electron model as an approximation?",
+      "answer": "Band structure, interactions and disorder can change the response substantially",
       "options": [
-        "Bands, interactions, disorder and phases can change response.",
-        "Density, state counting and dispersion."
+        "It ignores the Pauli principle, so electrons can share the lowest state",
+        "It disagrees with experiment in the cases that have been measured so far in solids",
+        "It assumes electrons have no charge",
+        "Band structure, interactions and disorder can change the response substantially"
       ],
-      "explanation": "Bands, interactions, disorder and phases can change response.",
+      "explanation": "It works well for alkali metals but fails for transition metals and semiconductors.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Think about what the lattice potential does."
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Is a Fermi occupation curve itself the density of available states?",
-      "answer": "No; occupation and density of states are distinct factors.",
+      "prompt": "The Fermi–Dirac function f(E) gives the occupation of a state. Is it the same thing as the density of states?",
+      "answer": "No: occupation and density of states are separate factors",
       "options": [
-        "Yes; every occupied level has the same density of states.",
-        "No; occupation and density of states are distinct factors."
+        "No: occupation and density of states are separate factors",
+        "No: the density of states is constant in energy",
+        "Yes: f(E) is the density of states at T = 0",
+        "Yes: both count available electron states"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Particle counts integrate their product.",
+      "hint": "One tells you how many states, the other how full they are.",
+      "explanation": "Occupation and density of states are separate factors, and particle number integrates their product. N = ∫ g(E) f(E) dE.",
       "misconceptions": {
         "Yes; every occupied level has the same density of states.": "Particle counts integrate their product."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Free electron model”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For normalized n=3,e=1,τ=2,m=2, Drude conductivity is 3. If temperature doubles
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Free electron model”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Free electron model” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Free electron model” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

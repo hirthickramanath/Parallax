@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Is the tide determined only by gravitational acceleration at the centre?",
-      "answer": "No",
+      "prompt": "The Moon raises tides on Earth. Is the tide set by the Moon's gravitational acceleration at Earth's centre?",
+      "answer": "No: the tide comes from differences in that acceleration across Earth",
       "options": [
-        "Yes",
-        "No"
+        "No: tides come from the Sun, and the Moon has a negligible effect",
+        "No: the tide comes from differences in that acceleration across Earth",
+        "Yes: the tide is set by the Moon's pull at the centre of Earth, which is the dominant effect",
+        "Yes: the Moon's central acceleration alone sets the tide, so differences across Earth do not matter"
       ],
-      "explanation": "Spatial differences across the body matter.",
+      "explanation": "A uniform acceleration moves the whole body; the tidal effect is the spatial variation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What matters, the value or the difference?"
     },
     {
       "id": "c2",
-      "prompt": "Does leading tidal strength scale as inverse distance squared?",
-      "answer": "No; inverse distance cubed",
+      "prompt": "You double the distance to the tide-raising body. How does the leading tidal acceleration change?",
+      "answer": "It falls by a factor of 8, as 1/d³",
       "options": [
-        "No; inverse distance cubed",
-        "Yes"
+        "It falls by a factor of 4, as 1/d², the same law as the gravitational force",
+        "It falls by a factor of 2 when the distance doubles, as 1/d, like a simple field",
+        "It falls by a factor of 8, as 1/d³",
+        "It rises slightly, as the tidal bulge is more strongly stretched"
       ],
-      "explanation": "It is a spatial derivative of inverse-square gravity.",
+      "explanation": "The tidal term is the derivative of GM/d², giving 2GMR/d³.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Differentiate GM/d² with respect to d."
     },
     {
       "id": "c3",
-      "prompt": "Is the fluid Roche coefficient universal for all solids?",
-      "answer": "No",
+      "prompt": "The Roche limit formula d ≈ 2.44 R (ρ_M/ρ_m)^(1/3) is for a fluid body. Does it apply unchanged to a rigid rocky moon?",
+      "answer": "No: material strength and the equilibrium model change the coefficient",
       "options": [
-        "Yes",
-        "No"
+        "Yes: it holds for rigid bodies as well as fluid ones, with the same coefficient",
+        "No: rocky moons feel no tides, so the formula has no meaning for them",
+        "No: material strength and the equilibrium model change the coefficient",
+        "Yes: the Roche limit is a universal distance independent of the body's strength"
       ],
-      "explanation": "Material strength and the equilibrium model matter.",
+      "explanation": "The 2.44 factor assumes a self-gravitating fluid. A rigid body survives closer.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does the coefficient come from?"
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "In vacuum outside a spherical source, does zero trace of the Newtonian tidal tensor mean every component is zero?",
-      "answer": "No; radial stretching can balance transverse compression.",
+      "prompt": "The Newtonian tidal tensor of a point mass has zero trace in vacuum. Does that mean the tidal force is zero?",
+      "answer": "No: radial stretching is balanced by transverse compression",
       "options": [
-        "Yes; zero trace means no tides.",
-        "No; radial stretching can balance transverse compression."
+        "Yes: the force on each part of the body vanishes when the trace is zero",
+        "No: the trace is the tide, and a zero trace means a vanishing tidal force",
+        "No: radial stretching is balanced by transverse compression",
+        "Yes: a zero trace means the stretching and the compression cancel, so there is no net tide on the body"
       ],
-      "explanation": "Trace is a sum of eigenvalues, not their individual values.",
+      "explanation": "The eigenvalues (2, −1, −1)GM/r³ sum to zero but are not themselves zero.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Is a sum of zero the same as every term zero?",
       "misconceptions": {
         "Yes; zero trace means no tides.": "Trace is a sum of eigenvalues, not their individual values."
       }
@@ -99,7 +110,7 @@
       "prompt": "At unchanged perturber mass and body radius, by what factor does the leading tidal acceleration change when separation doubles?",
       "answer": "0.125",
       "hint": "The tide scales as r to power −3.",
-      "explanation": "The tide scales as r to power −3. The value in the stated units is 0.125.",
+      "explanation": "The leading tide scales as r^(−3). Doubling r gives (1/2)³ = 1/8 = 0.125 of the original tidal acceleration.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -109,21 +120,23 @@
       "prompt": "With G=M=1, body radius R=0.2 and separation r=4, find the leading radial tidal acceleration.",
       "answer": "0.00625",
       "hint": "Use 2MR/r³ in the stated model units.",
-      "explanation": "Use 2MR/r³ in the stated model units. The value in the stated units is 0.00625.",
+      "explanation": "a_tide = 2GMR/r³ = 2 × 1 × 0.2 / 4³ = 0.4/64 = 0.00625 in model units.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Can the coefficient in a fluid Roche limit be derived just by equating two pointwise accelerations?",
-      "answer": "No; fluid shape and response determine the coefficient.",
+      "prompt": "Can the fluid Roche coefficient be found just by equating the tidal and self-gravity accelerations at the surface point?",
+      "answer": "No: the equilibrium shape and fluid response determine the coefficient",
       "options": [
-        "Yes; the local linear tide determines every disruption detail.",
-        "No; fluid shape and response determine the coefficient."
+        "No: the equilibrium shape and fluid response determine the coefficient",
+        "Yes: the coefficient follows from a pointwise balance of tidal and self-gravity accelerations",
+        "Yes: a surface force balance gives the value 2.44 with no further modelling",
+        "No: self-gravity is irrelevant to the breakup of a satellite, so tides alone matter"
       ],
-      "explanation": "The local expansion establishes scaling while equilibrium/disruption physics supplies additional structure.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The balance gives the scaling d ∝ R(ρ_M/ρ_m)^(1/3); the coefficient needs the deformed shape.",
+      "hint": "Does the moon stay spherical when stretched?",
       "misconceptions": {
         "Yes; the local linear tide determines every disruption detail.": "The local expansion establishes scaling while equilibrium/disruption physics supplies additional structure."
       },

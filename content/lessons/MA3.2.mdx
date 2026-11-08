@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does changing an operator basis necessarily change the underlying map?",
+      "prompt": "You change the basis in which an operator T is written. What changes?",
       "options": [
-        "Yes",
-        "No"
+        "Its rank, as the map is itself changed when the basis is",
+        "The map itself changes, since a different basis gives a different operator on the space",
+        "Its eigenvalues, as the basis fixes the values taken",
+        "Only its matrix representation; the map itself is unchanged"
       ],
-      "answer": "No",
-      "explanation": "Only its component representation changes.",
+      "answer": "Only its matrix representation; the map itself is unchanged",
+      "explanation": "A basis change relabels coordinates. The underlying linear map, its eigenvalues and rank are intrinsic.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the operator tied to the coordinates?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does injectivity always imply surjectivity in infinite dimensions?",
+      "prompt": "A linear map is one-to-one on an infinite-dimensional space. Is it automatically onto?",
       "options": [
-        "No",
-        "Yes"
+        "Yes, if it is continuous",
+        "No: a linear map on such a space cannot be one-to-one in general",
+        "Yes, as in finite dimensions",
+        "No: the right-shift on sequences is one-to-one but not onto"
       ],
-      "answer": "No",
-      "explanation": "The finite-dimensional square-space theorem has a genuine restriction.",
+      "answer": "No: the right-shift on sequences is one-to-one but not onto",
+      "explanation": "The rank–nullity argument needs finite dimension. The right shift (x₁, x₂, …) → (0, x₁, x₂, …) misses vectors with nonzero first entry.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Try the shift operator on sequences."
     },
     {
       "id": "concept-3",
-      "prompt": "What do matrix columns represent?",
+      "prompt": "What do the columns of a matrix of a linear map represent?",
       "options": [
-        "A list of unrelated eigenvalues",
-        "Images of input basis vectors in output coordinates"
+        "Random constants that depend on the choice of the basis vectors in the space",
+        "The input basis vectors, written in the coordinates of the input space",
+        "The images of the input basis vectors, written in output coordinates",
+        "A list of eigenvalues, listed in the order of the basis vectors of the space"
       ],
-      "answer": "Images of input basis vectors in output coordinates",
-      "explanation": "Linearity fixes the rest of the map from these images.",
+      "answer": "The images of the input basis vectors, written in output coordinates",
+      "explanation": "Column j is T(e_j). Linearity then determines T on every vector.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Apply the matrix to the j-th basis vector."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "When does the similarity transformation S⁻¹AS apply?",
-      "answer": "One operator represented in two bases of the same space",
+      "prompt": "When is the similarity transformation S⁻¹AS the right way to relate two matrices?",
+      "answer": "When the same operator on one space is written in two bases",
       "options": [
-        "One operator represented in two bases of the same space",
-        "Any rectangular array without dimension checks"
+        "When the same operator on one space is written in two bases",
+        "For two matrices of the same size, as S⁻¹AS relates the pair",
+        "For diagonal matrices, where S⁻¹AS is the same map",
+        "When mapping between different spaces"
       ],
-      "explanation": "Different input/output spaces require separate coordinate conversions.",
+      "explanation": "A map between different input and output spaces needs separate basis changes on each side.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Does the map go from a space to itself?"
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "For A=[[1,2],[0,1]], find the first component of A(3,4).",
       "answer": "11",
       "hint": "Matrix rows dot the column vector.",
-      "explanation": "Matrix rows dot the column vector. The value in the stated units is 11.",
+      "explanation": "The first component is the first row dotted with (3, 4): 1 × 3 + 2 × 4 = 11.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "For A=diag(2,3) and B=diag(4,5), find the first diagonal entry of AB.",
       "answer": "8",
       "hint": "Apply B first, then A.",
-      "explanation": "Apply B first, then A. The value in the stated units is 8.",
+      "explanation": "AB is diagonal with entries multiplied entrywise, so the first entry is 2 × 4 = 8.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Do arbitrary linear maps represented by square matrices necessarily commute?",
-      "answer": "No; composition order generally changes the map.",
+      "prompt": "A and B are n × n matrices. Is AB = BA in general?",
+      "answer": "No: composition order generally changes the map",
       "options": [
-        "Yes; matrix multiplication is commutative like scalar multiplication.",
-        "No; composition order generally changes the map."
+        "Yes: matrix products are commutative, so AB = BA",
+        "No: composition order generally changes the map",
+        "Yes, for square matrices",
+        "Yes, for invertible matrices"
       ],
-      "explanation": "A simple shear and rotation provide noncommuting examples.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "A shear followed by a rotation differs from the rotation followed by the shear.",
+      "hint": "Try two simple 2×2 matrices.",
       "misconceptions": {
         "Yes; matrix multiplication is commutative like scalar multiplication.": "A simple shear and rotation provide noncommuting examples."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Linear maps and matrices”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,19 +232,19 @@ The map T(x,y,z)=(x+y,z) from R³ to R² has kernel $\{(t,-t,0):t\in\mathbb R\}$
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Linear maps and matrices”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Linear maps and matrices” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Linear maps and matrices” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>
 

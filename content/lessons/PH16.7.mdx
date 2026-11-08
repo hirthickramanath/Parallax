@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does visually smooth output guarantee constraints are satisfied?",
+      "prompt": "A numerical relativity movie looks smooth and physical. Does that show the constraint equations are satisfied?",
       "options": [
-        "Yes",
-        "No"
+        "No: you need to monitor constraint residuals and check convergence with resolution",
+        "No: constraints do not exist in a 3+1 evolution, so residuals are moot",
+        "Yes: smooth output means correct output",
+        "Yes: constraints are preserved by the evolution scheme itself"
       ],
-      "answer": "No",
-      "explanation": "Residual and convergence checks are needed.",
+      "answer": "No: you need to monitor constraint residuals and check convergence with resolution",
+      "explanation": "Constraint violations can grow even while output looks plausible.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the residual numbers, not the picture."
     },
     {
       "id": "concept-2",
-      "prompt": "Can boundary treatment contaminate extracted waves?",
+      "prompt": "A simulation extracts gravitational waves at the edge of a finite computational domain. What can go wrong?",
       "options": [
-        "Yes",
-        "No"
+        "Boundary reflections and the finite extraction radius can contaminate the waveform",
+        "The waveform becomes gauge invariant at the boundary, so extraction there is reliable",
+        "The waves become stronger near the boundary of the computational box",
+        "No effect: the boundary does not touch the extracted waveform in the run"
       ],
-      "answer": "Yes",
-      "explanation": "Finite domains and reflections matter.",
+      "answer": "Boundary reflections and the finite extraction radius can contaminate the waveform",
+      "explanation": "Practitioners extrapolate to infinity or use Cauchy-characteristic extraction.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What happens when a wave meets an artificial boundary?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does computation cost prove scientific validity?",
+      "prompt": "A group ran a very expensive simulation on a supercomputer. Does the cost alone make the result scientifically valid?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: supercomputers do not make numerical errors, so a result produced at a large facility is scientifically valid",
+        "No: verification (solving the equations correctly) and validation (against the physics) are still required",
+        "Yes: more cost means more accuracy, so the result is reliable whatever the method or the resolution that was used",
+        "No: computing cost is irrelevant to anything"
       ],
-      "answer": "No",
-      "explanation": "Verification and validation remain necessary.",
+      "answer": "No: verification (solving the equations correctly) and validation (against the physics) are still required",
+      "explanation": "Convergence tests and comparison with known solutions establish credibility.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Cost measures effort, not correctness."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What is claimed by this lesson?",
-      "answer": "A study design, not an actually executed merger simulation.",
+      "prompt": "This lesson walks through setting up a binary-merger study. What does it actually provide?",
+      "answer": "A study design with checks to carry out, not an executed merger simulation",
       "options": [
-        "A study design, not an actually executed merger simulation.",
-        "Slicing/coordinate evolution quantities in a 3+1 description."
+        "A study design with checks to carry out, not an executed merger simulation",
+        "A measured gravitational waveform",
+        "Results of an executed black-hole merger run",
+        "A catalogue of detections from the gravitational-wave observatories"
       ],
-      "explanation": "A study design, not an actually executed merger simulation.",
+      "explanation": "The lesson specifies what to evolve and what diagnostics to record.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Is any code actually run in the lesson?"
     },
     {
       "id": "fields-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does a synthetic convergence curve count as an executed numerical relativity simulation?",
-      "answer": "No; the field evolution and recorded diagnostics are still required.",
+      "prompt": "A synthetic curve shows error falling as h². Is this an executed numerical-relativity simulation?",
+      "answer": "No: you still need the actual field evolution and recorded diagnostics to show second-order convergence",
       "options": [
-        "Yes; any h² plot solves Einstein equations.",
-        "No; the field evolution and recorded diagnostics are still required."
+        "Yes: a plot of h² solves Einstein's equations, as the error falls at second order in the code",
+        "No: you still need the actual field evolution and recorded diagnostics to show second-order convergence",
+        "Yes: the curve proves the code works, as the error falls at the expected rate for the scheme",
+        "No: second-order convergence cannot be measured"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Benchmark and research execution are different.",
+      "hint": "Where do the plotted numbers come from?",
+      "explanation": "A plotted line expresses an expectation, not an observation.",
       "misconceptions": {
         "Yes; any h² plot solves Einstein equations.": "Benchmark and research execution are different."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Numerical relativity intro”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ If a second-order error model predicts error ∝h², halving grid spacing reduce
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Numerical relativity intro”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Numerical relativity intro” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Numerical relativity intro” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

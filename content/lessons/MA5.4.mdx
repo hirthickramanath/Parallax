@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does a zero Dirichlet boundary generally conserve total heat in the interval?",
+      "prompt": "A rod has both ends held at 0 °C (Dirichlet boundaries). Is the total heat in the rod conserved?",
       "options": [
-        "Yes",
-        "No"
+        "No, heat is created inside the rod at the ends held at 0 °C",
+        "Yes, as the total heat in the rod cannot change with time",
+        "No: heat flows out through the fixed-temperature ends",
+        "Yes, if the rod is uniform"
       ],
-      "answer": "No",
-      "explanation": "Heat can flow through fixed-temperature boundaries.",
+      "answer": "No: heat flows out through the fixed-temperature ends",
+      "explanation": "With fixed boundary temperature, the flux through the ends is non-zero in general. Conservation holds for insulated (Neumann) ends.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is the flux at an end held colder than the interior?"
     },
     {
       "id": "concept-2",
-      "prompt": "Which modes decay faster for constant positive diffusivity?",
+      "prompt": "In the heat equation with constant diffusivity, which Fourier modes decay fastest?",
       "options": [
-        "Higher spatial frequencies",
-        "All decay at the same rate"
+        "Modes with the highest amplitude",
+        "The modes decay at the same rate for each frequency",
+        "Higher spatial frequencies, with rate Dk²",
+        "Lower spatial frequencies, with rate Dk², since long-wavelength modes relax the quickest"
       ],
-      "answer": "Higher spatial frequencies",
-      "explanation": "Their decay rate is proportional to squared wavenumber.",
+      "answer": "Higher spatial frequencies, with rate Dk²",
+      "explanation": "Each mode decays as exp(−Dk²t). Small-scale structure smooths out first.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Substitute a mode sin(kx) into u_t = Du_xx."
     },
     {
       "id": "concept-3",
-      "prompt": "Does numerical stability alone demonstrate accurate diffusion?",
+      "prompt": "A numerical scheme for diffusion is stable. Does that prove its answer is accurate?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: stable means accurate",
+        "No: stable schemes are wrong",
+        "Yes, for linear equations",
+        "No: you also need grid convergence and consistent boundaries"
       ],
-      "answer": "No",
-      "explanation": "Grid convergence and boundary consistency also matter.",
+      "answer": "No: you also need grid convergence and consistent boundaries",
+      "explanation": "Stability only prevents blow-up. A coarse grid can give a smooth but wrong solution.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does refining the grid change the answer?"
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "What changes for variable conductivity?",
-      "answer": "The conductivity stays inside the spatial divergence",
+      "prompt": "Thermal conductivity k varies with position. How does the heat equation change?",
+      "answer": "k stays inside the divergence: ρc u_t = (k u_x)_x",
       "options": [
-        "The conductivity stays inside the spatial divergence",
-        "It can always be replaced by a constant without conditions"
+        "k stays inside the divergence: ρc u_t = (k u_x)_x",
+        "k comes out of the derivative as a constant",
+        "k disappears from the equation for the rod",
+        "k is replaced by its average"
       ],
-      "explanation": "The flux divergence contains conductivity gradients.",
+      "explanation": "The flux is −k u_x, and its divergence includes k′u_x. Only for constant k does it reduce to k u_xx.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Write the flux first and then take its divergence."
     },
     {
       "id": "linear-ode-transfer-1",
       "prompt": "For κ=1,L=π,n=2, find the positive exponential decay rate.",
       "answer": "4",
       "hint": "The rate is κ(nπ/L)².",
-      "explanation": "The rate is κ(nπ/L)². The value in the stated units is 4.",
+      "explanation": "The decay rate is κ(nπ/L)² = 1 × (2π/π)² = 4.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "A heat mode has decay rate 2 and initial amplitude 3. Find amplitude at t=ln2.",
       "answer": "0.75",
       "hint": "Use 3e^(−2t).",
-      "explanation": "Use 3e^(−2t). The value in the stated units is 0.75.",
+      "explanation": "A(t) = 3e^(−2t). At t = ln 2, e^(−2 ln 2) = 1/4, so A = 3/4 = 0.75.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Does a stable exact heat solution guarantee an explicit numerical method is stable at every time step?",
-      "answer": "No; the discretization has its own stability restrictions.",
+      "prompt": "The exact heat equation solution decays smoothly. Is an explicit finite-difference scheme then stable for any time step?",
+      "answer": "No: it has its own stability limit on the time step",
       "options": [
-        "Yes; physical damping removes all numerical instability.",
-        "No; the discretization has its own stability restrictions."
+        "Yes, in 1D, as the heat equation is then well behaved",
+        "Yes, for small k, as the damping is then weak enough",
+        "Yes: physical damping ensures stability here",
+        "No: it has its own stability limit on the time step"
       ],
-      "explanation": "The amplification factor of a numerical update must be checked.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Explicit FTCS needs DΔt/Δx² ≤ ½. Beyond it, high-frequency modes are amplified.",
+      "hint": "Recall the von Neumann stability analysis.",
       "misconceptions": {
         "Yes; physical damping removes all numerical instability.": "The amplification factor of a numerical update must be checked."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Heat equation”, read the linked prerequisites and keep a notebook of definitions and proofs. State the domain and assumptions before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -220,18 +234,18 @@ Choose L=π, κ=2 and initial u(x,0)=sin x. The exact solution is sin x·e⁻²�
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Heat equation”, answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Heat equation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Heat equation” in a physical model or scientific inference. Separate what the mathematics guarantees from the assumptions that connect it to measurements. Record which hypothesis must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is the small-k acoustic approximation valid across the whole zone automatically?",
+      "prompt": "Near the zone centre an acoustic phonon has ω ≈ v·k. Can you apply this straight line across the whole Brillouin zone?",
       "options": [
-        "Yes",
-        "No"
+        "No: the dispersion becomes steeper towards the zone edge, since the lattice stiffens at short wavelengths",
+        "No: the dispersion curves over and flattens at the zone edge because the lattice is discrete",
+        "Yes: sound is linear, so the relation holds up to the edge of the zone and beyond it, as in a fluid",
+        "Yes: ω = vk is exact for a crystal of the usual kind, whatever the wavelength"
       ],
-      "answer": "No",
-      "explanation": "Curvature appears at larger k.",
+      "answer": "No: the dispersion curves over and flattens at the zone edge because the lattice is discrete",
+      "explanation": "For a monatomic chain ω = 2√(K/m)|sin(ka/2)|, with zero group velocity at the edge.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Look at the sine form of the chain dispersion."
     },
     {
       "id": "concept-2",
-      "prompt": "Can a multi-atom cell have multiple branches?",
+      "prompt": "A crystal has two atoms per primitive cell. How many phonon branches per direction does it have in 3D?",
       "options": [
-        "Yes",
-        "No"
+        "Two: one per atom",
+        "One: a single mode for the cell",
+        "Three: acoustic branches, no optical",
+        "Six: three acoustic and three optical"
       ],
-      "answer": "Yes",
-      "explanation": "Additional displacement degrees of freedom exist.",
+      "answer": "Six: three acoustic and three optical",
+      "explanation": "3N branches for N atoms per cell, with 3 acoustic and 3(N−1) optical.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Count degrees of freedom per cell."
     },
     {
       "id": "concept-3",
-      "prompt": "Does a perfect harmonic model include every heat-scattering mechanism?",
+      "prompt": "A perfectly harmonic crystal would conduct heat how?",
       "options": [
-        "Yes",
-        "No"
+        "With a finite conductivity set by the Debye temperature, since harmonic phonons scatter off the lattice itself",
+        "Like a gas of free electrons, with a thermal conductivity set by their collisions with the lattice",
+        "Not at all, because harmonic modes carry no energy",
+        "With infinite thermal conductivity, since phonons would never scatter off each other"
       ],
-      "answer": "No",
-      "explanation": "Anharmonicity/defects/boundaries are additional.",
+      "answer": "With infinite thermal conductivity, since phonons would never scatter off each other",
+      "explanation": "Finite conductivity needs anharmonicity, defects or boundaries to scatter phonons.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What stops a harmonic phonon from travelling forever?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What limits Debye scaling?",
-      "answer": "Dimensionality and the acoustic/temperature regime.",
+      "prompt": "The Debye model predicts C ∝ T³ at low temperature. What sets the range where this holds?",
+      "answer": "The temperature must be far below the Debye temperature and the crystal three-dimensional",
       "options": [
-        "Dimensionality and the acoustic/temperature regime.",
-        "A quantized lattice normal-mode excitation."
+        "The temperature must be far below the Debye temperature and the crystal three-dimensional",
+        "It depends on the electron density of the metal, as the phonon part is negligible",
+        "It holds at each temperature, as the crystal is a three-dimensional solid",
+        "It holds just above the Debye temperature, in a crystal of three dimensions"
       ],
-      "explanation": "Dimensionality and the acoustic/temperature regime.",
+      "explanation": "In d dimensions C ∝ T^d, and only long-wavelength acoustic modes are excited at low T.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which phonons are populated at low T?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Is a lattice acoustic dispersion exactly linear at every wave number?",
-      "answer": "No; discreteness changes the zone-edge behavior.",
+      "prompt": "Is acoustic dispersion exactly linear at every wave number?",
+      "answer": "No: discreteness of the lattice bends it toward the zone edge",
       "options": [
-        "Yes; the sound approximation is exact throughout the Brillouin zone.",
-        "No; discreteness changes the zone-edge behavior."
+        "Yes: but just in 3D, where the modes of the lattice are linear",
+        "No: discreteness of the lattice bends it toward the zone edge",
+        "Yes: the sound approximation is exact everywhere",
+        "No: it is linear just at the zone edge, not near the centre"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Keep the approximation range.",
+      "hint": "Compare the wavelength with the lattice spacing.",
+      "explanation": "Linear dispersion is a long-wavelength limit.",
       "misconceptions": {
         "Yes; the sound approximation is exact throughout the Brillouin zone.": "Keep the approximation range."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Lattice vibrations and phonons”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -216,18 +230,18 @@ For K=1,m=1 and ka=π, ω=2. Near k=0 with a=3, the leading sound speed is a√(
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Lattice vibrations and phonons”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Lattice vibrations and phonons” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Lattice vibrations and phonons” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

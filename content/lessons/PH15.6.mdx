@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is regularization identical to renormalization?",
+      "prompt": "A loop integral diverges, so a physicist introduces a cutoff to make it finite. Has the theory now been renormalised?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: once the cutoff makes the integral finite, the theory is fully renormalised and no further step is needed at all",
+        "Yes: the two words mean the same thing, as both make the integral finite and fix the parameters against measurements in the same step",
+        "No: regularisation only makes the integral finite; renormalisation then fixes the parameters against measurements",
+        "No: renormalisation is done before regularisation"
       ],
-      "answer": "No",
-      "explanation": "They define singular quantities and fix matched parameters in distinct steps.",
+      "answer": "No: regularisation only makes the integral finite; renormalisation then fixes the parameters against measurements",
+      "explanation": "Regularisation defines the singular quantity; renormalisation matches parameters to data.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which step uses a measured input?"
     },
     {
       "id": "concept-2",
-      "prompt": "Can an EFT with higher operators be predictive at fixed order?",
+      "prompt": "An effective theory has infinitely many higher-dimension operators. Can it still make predictions at a fixed accuracy?",
       "options": [
-        "Yes",
-        "No"
+        "No: each operator contributes equally to the amplitude at that order",
+        "Yes: power counting tells you which few operators contribute at that order",
+        "Yes: but just at infinite energy, where the operators contribute",
+        "No: infinitely many operators mean no predictions"
       ],
-      "answer": "Yes",
-      "explanation": "Power counting limits needed inputs.",
+      "answer": "Yes: power counting tells you which few operators contribute at that order",
+      "explanation": "Power counting tells you which few operators contribute at that order, so only finitely many inputs are needed. Contributions are suppressed by powers of E/Λ.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Each operator is suppressed by a power of E/Λ."
     },
     {
       "id": "concept-3",
-      "prompt": "Does regulator independence remove every theoretical uncertainty?",
+      "prompt": "A result is independent of the regulator you chose. Does this remove all theoretical uncertainty?",
       "options": [
-        "Yes",
-        "No"
+        "No: truncation of the perturbative series and the model's validity still leave uncertainty",
+        "No: regulator independence is not achievable in a calculation, so each result depends on the scheme that is chosen",
+        "Yes: the errors come from the regulator in the calculation, so they are removed",
+        "Yes: regulator independence is exact accuracy"
       ],
-      "answer": "No",
-      "explanation": "Truncation and model errors remain.",
+      "answer": "No: truncation of the perturbative series and the model's validity still leave uncertainty",
+      "explanation": "Regulator independence is a consistency check, not a statement of accuracy.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What else is dropped in a perturbative calculation?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why respect an EFT cutoff?",
-      "answer": "Omitted degrees of freedom/operators can cease to be suppressed.",
+      "prompt": "An EFT is used at energies approaching its cutoff Λ. What goes wrong?",
+      "answer": "Operators and heavy states omitted from the theory are no longer suppressed",
       "options": [
-        "Omitted degrees of freedom/operators can cease to be suppressed.",
-        "A stated matching/measurement condition."
+        "Operators and heavy states omitted from the theory are no longer suppressed",
+        "The EFT becomes more accurate, since higher-energy probes resolve more of the underlying structure",
+        "No problem: the EFT works at each energy, with no limit on its range",
+        "The couplings become zero at the cutoff, so the theory is trivial"
       ],
-      "explanation": "Omitted degrees of freedom/operators can cease to be suppressed.",
+      "explanation": "Terms of order (E/Λ)ⁿ grow to order one.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does E/Λ approaching 1 do to the expansion?"
     },
     {
       "id": "review-core-transfer",
@@ -110,14 +122,16 @@
     },
     {
       "id": "fields-assumptions",
-      "prompt": "Does a perturbative running-coupling pole prove an exact physical infinite observable?",
-      "answer": "No; the approximation breaks down there.",
+      "prompt": "The one-loop running coupling has a pole (Landau pole) at some high scale. Does this prove a physical observable becomes infinite there?",
+      "answer": "No: perturbation theory breaks down before the pole, so the formula cannot be trusted there",
       "options": [
-        "Yes; perturbation theory remains valid at its divergence.",
-        "No; the approximation breaks down there."
+        "No: perturbation theory breaks down before the pole, so the formula cannot be trusted there",
+        "Yes: perturbation theory is exact at each scale, so the pole is a genuine divergence of an observable",
+        "Yes: the pole is a true physical infinity",
+        "No: running couplings do not have poles, as the formula is exact in the theory at one loop"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Check the regime of the expansion.",
+      "hint": "Is the coupling still small near the pole?",
+      "explanation": "The pole signals the need for new physics or non-perturbative methods.",
       "misconceptions": {
         "Yes; perturbation theory remains valid at its divergence.": "Check the regime of the expansion."
       },
@@ -162,7 +176,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Renormalisation”, read the linked prerequisites and keep a notebook. Write down the system, the model assumptions and the units before using any formula. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -242,7 +256,7 @@ For $b=0.1$, $g_0=0.5$ and $\ln(\mu/\mu_0)=2$, the integrated toy running gives 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Renormalisation”, answer the tagged questions below. Then change one assumption in the worked argument and say how the result and its range of validity change. Keep the model, assumptions, steps and conclusion distinct.
 
 **Core.** Derive the matching subtraction and its leading finite-cutoff correction. Check that the correction vanishes at the matching point exactly, at every cutoff.
 
@@ -252,12 +266,12 @@ Answer the tagged questions below. Then alter one hypothesis in the worked argum
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Renormalisation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove the model correct.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one place where “Renormalisation” is used in a physical model or in analysing a measurement. Separate what the theory gives exactly from the approximations that connect it to a real system. Record which assumption must be checked before the next application.
 
 </LessonSection>

@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does doubling reaction coefficients double the cell emf?",
+      "prompt": "A cell reaction is written as Zn + Cu²⁺ → Zn²⁺ + Cu, then doubled to 2Zn + 2Cu²⁺ → 2Zn²⁺ + 2Cu. What happens to the standard cell emf?",
       "options": [
-        "Yes",
-        "No"
+        "It doubles, because the reaction is written twice, so the standard cell voltage is twice as large",
+        "It becomes zero, as the two halves cancel",
+        "It doubles with the reaction",
+        "It is unchanged: ΔG and nF both double"
       ],
-      "answer": "No",
-      "explanation": "Electron amount and reaction Gibbs energy both double.",
+      "answer": "It is unchanged: ΔG and nF both double",
+      "explanation": "E = −ΔG/(nF). Both numerator and denominator scale with the stoichiometry.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Divide the doubled ΔG by the doubled n."
     },
     {
       "id": "concept-2",
-      "prompt": "Is loaded terminal voltage always the reversible emf?",
+      "prompt": "A battery delivers 1.45 V under load, but its open-circuit voltage is 1.60 V. What accounts for the difference?",
       "options": [
-        "No",
-        "Yes"
+        "The emf is lower under load, so the open-circuit reading of 1.60 V is the incorrect value",
+        "A wrong reading of the meter",
+        "Temperature of the cell",
+        "Internal resistance and kinetic overpotentials"
       ],
-      "answer": "No",
-      "explanation": "Kinetic and resistive losses can contribute.",
+      "answer": "Internal resistance and kinetic overpotentials",
+      "explanation": "Under current, ohmic and kinetic losses reduce the terminal voltage below the reversible emf.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare with a no-current measurement."
     },
     {
       "id": "concept-3",
-      "prompt": "Does electrode identity alone determine voltage at every composition?",
+      "prompt": "Two cells use the same electrodes but different ion concentrations. Do they give the same voltage?",
       "options": [
-        "Yes",
-        "No"
+        "Yes: electrodes fix the voltage",
+        "No: activities enter the Nernst equation",
+        "No: electrodes have no effect",
+        "Yes: standard potentials are enough"
       ],
-      "answer": "No",
-      "explanation": "Activities enter the chemical-potential balance.",
+      "answer": "No: activities enter the Nernst equation",
+      "explanation": "E = E° − (RT/nF) ln Q. Concentrations change Q.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask what the reaction quotient Q contains and how it enters the Nernst equation."
     },
     {
       "id": "numeric",
@@ -67,23 +76,26 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify reaction direction with E?",
-      "answer": "Reversing the reaction reverses the voltage sign",
+      "prompt": "Why must you specify the direction of the reaction when quoting E?",
+      "answer": "Reversing the reaction reverses the sign of E",
       "options": [
-        "Reversing the reaction reverses the voltage sign",
-        "Every voltage is a nonnegative magnitude"
+        "Reversing the reaction reverses the sign of E",
+        "Direction changes the temperature of the cell, so the quoted E depends on which way the reaction is written",
+        "Magnitudes are what matter",
+        "E is positive for a reaction"
       ],
-      "explanation": "The energy/charge relation has an orientation.",
+      "explanation": "ΔG = −nFE flips sign if the reaction is written backwards.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does E > 0 mean for spontaneity?"
     },
     {
       "id": "physical-chemistry-transfer-1",
       "prompt": "For E°=1,RT/F=1,n=2 and Q=e, find equilibrium cell voltage.",
       "answer": "0.5",
       "hint": "Subtract (1/2)lnQ.",
-      "explanation": "Subtract (1/2)lnQ. The value in the stated units is 0.5.",
+      "explanation": "Nernst: E = E° − (RT/nF) ln Q = 1 − (1/2) ln e = 1 − 0.5 = 0.5.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
@@ -93,21 +105,23 @@
       "prompt": "A reversible reaction has ΔrG=−6 with n=2 and F=1. Find cell voltage.",
       "answer": "3",
       "hint": "Use −ΔrG/(nF).",
-      "explanation": "Use −ΔrG/(nF). The value in the stated units is 3.",
+      "explanation": "E = −ΔrG/(nF) = −(−6)/(2 × 1) = 3.",
       "type": "numeric",
       "conceptual": false,
       "tier": "core"
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does doubling all reaction coefficients double the same equilibrium cell voltage?",
-      "answer": "No; free energy and electron count scale together.",
+      "prompt": "Is the equilibrium cell voltage extensive (does it scale with the amount of reaction)?",
+      "answer": "No: it is intensive; free energy and electron count scale together",
       "options": [
-        "Yes; voltage is an extensive reaction quantity.",
-        "No; free energy and electron count scale together."
+        "No: it is intensive; free energy and electron count scale together",
+        "Yes: it scales with the stoichiometry, since doubling the amount of reaction doubles the voltage",
+        "Yes: it scales with stoichiometry",
+        "Yes: it doubles with doubling"
       ],
-      "explanation": "Cell voltage is intensive under that stoichiometric rescaling.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "E depends on the ratio ΔG/n, which is independent of how the reaction is scaled.",
+      "hint": "Is voltage like energy or like temperature?",
       "misconceptions": {
         "Yes; voltage is an extensive reaction quantity.": "Cell voltage is intensive under that stoichiometric rescaling."
       },
@@ -152,7 +166,7 @@
 
 <LessonSection id="ready" title="Before you start" layer="before">
 
-Read the linked prerequisites and keep a proof notebook. State the domain, assumptions and units before using any formula. A soft-lock override does not establish prerequisite knowledge.
+Before “Electrochemical potentials and the Nernst equation”, read the linked prerequisites and keep a notebook. Write down the species, the conditions and the units before using any equation, and note which model (ideal, dilute, gas-phase, and so on) is assumed. A soft-lock override does not establish prerequisite knowledge.
 
 </LessonSection>
 
@@ -218,18 +232,18 @@ For a synthetic cell at a temperature where RT/F is represented as 0.025 V, n=1 
 
 <LessonSection id="problems" title="Warm-up and Core" layer="problems" fullOnly>
 
-Answer the tagged questions below. Then alter one hypothesis in the worked argument and either prove the revised claim or give a counterexample. Keep the statement, assumptions, intermediate steps and conclusion distinct.
+For “Electrochemical potentials and the Nernst equation”, answer the tagged questions below. Then change one condition or assumption in the worked example and say how the conclusion changes, or where the model stops applying. Keep the species, conditions, steps and conclusion distinct.
 
 </LessonSection>
 
 <LessonSection id="check" title="Explain before computing" layer="check">
 
-The conceptual checks ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical sample can expose a false theorem or model, but agreement on samples is not a universal proof.
+The conceptual checks on “Electrochemical potentials and the Nernst equation” ask which assumptions make a conclusion valid. Numerical responses use the stated units. A numerical check can expose a wrong model, but agreement with a few values does not prove a mechanism or a rate law.
 
 </LessonSection>
 
 <LessonSection id="connections" title="Connect the idea" layer="connections">
 
-Explain one use of this result in a physical model or scientific inference. Separate an exact mathematical theorem from the assumptions that connect it to measurements. Record which approximation or hypothesis must be checked before the next application.
+Explain one use of “Electrochemical potentials and the Nernst equation” in interpreting a chemical measurement or mechanism. Separate what the model gives exactly from the assumptions that connect it to a real sample. Record which condition must be checked before the next application.
 
 </LessonSection>
