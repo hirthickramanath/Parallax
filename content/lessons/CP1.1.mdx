@@ -232,8 +232,7 @@ A reproducible script separates model functions from file access and plotting, v
 
 ### Transfer derivation and failure case
 
-Broadcasting compares shapes from the right; paired dimensions must be equal or one must be 1. For $(4,1)$ and $(1,5)$ the result is $(4,5)$, not $(4,1,5)$. A reduction with axis=0 combines the rows and removes that axis unless keepdims is requested. Basic slicing generally returns a view, so assignment through it can mutate the parent; an explicit copy separates storage. Shape compatibility is not evidence that a calculation represents the intended physical pairing: label which axes denote samples, coordinates and parameters before broadcasting scientific arrays.
-
+Broadcasting compares shapes from the right; paired dimensions must be equal or one must be 1. A reduction with axis=0 combines the rows and removes that axis unless keepdims is requested. Basic slicing generally returns a view, so assignment through it can mutate the parent; an explicit copy separates storage. Shape compatibility is not evidence that a calculation represents the intended physical pairing: label which axes denote samples, coordinates and parameters before broadcasting scientific arrays.
 
 ### Derivation and transfer
 
