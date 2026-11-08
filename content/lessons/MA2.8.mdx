@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "Can the Cartesian divergence ∂Fx/∂x + ∂Fy/∂y + ∂Fz/∂z be applied directly to spherical components (F_r, F_θ, F_φ)?",
       "options": [
-        "Yes: replace x, y, z by r, θ, φ, since the form of the divergence is the same in every coordinate system",
-        "Yes: with a factor of r",
-        "Only for radial fields",
+        "Yes: replace x, y, z by r, θ, φ in the same formula",
+        "Yes: with a factor of r in each term, as the scale grows",
+        "Yes for radial fields, where the angular terms drop out of the formula",
         "No: scale factors and varying basis vectors add extra terms"
       ],
       "answer": "No: scale factors and varying basis vectors add extra terms",
@@ -30,8 +30,8 @@
       "prompt": "For F = r̂/r² the divergence is zero for r > 0. Does that settle what happens at the origin?",
       "options": [
         "Yes: the divergence is zero everywhere, including at the origin, so no source is present",
-        "Yes: zero everywhere",
-        "Yes: it is undefined so nothing is there",
+        "Yes: the divergence is zero in the whole space, origin included",
+        "Yes: it is undefined there, so no source is present",
         "No: a point source can sit where the formula does not apply"
       ],
       "answer": "No: a point source can sit where the formula does not apply",
@@ -44,7 +44,7 @@
       "id": "concept-3",
       "prompt": "Spherical coordinates are singular at the poles θ = 0, π. Does that mean the physical field is singular there?",
       "options": [
-        "Yes: all coordinate singularities are physical, so the field must blow up at the poles",
+        "Yes: such singularities are physical, so the field must blow up",
         "Yes: fields blow up at poles",
         "No: a smooth field can have ambiguous components at a coordinate pole",
         "No: the poles are not on the sphere"
@@ -81,8 +81,8 @@
       "options": [
         "Components along fixed Cartesian axes, since the unit vectors in curvilinear coordinates do not vary",
         "Components along the local orthonormal unit vectors",
-        "Cartesian components only",
-        "Any coordinate-basis components"
+        "Cartesian components, converted by the Jacobian of the map",
+        "Components in a natural coordinate basis"
       ],
       "explanation": "The formulas assume physical components with respect to the unit vectors e_r, e_θ, e_φ. Different conventions change the formulas.",
       "type": "mcq",
@@ -116,9 +116,9 @@
       "answer": "No: the area scale factors differ (r versus r²)",
       "options": [
         "Yes: radial means the same thing in both systems, so the divergence has the same form",
-        "No: they differ only in sign",
+        "No: they differ in sign, as the sphere points outward",
         "No: the area scale factors differ (r versus r²)",
-        "Yes: both have 1/r"
+        "Yes: both have a factor 1/r in the formula for the area"
       ],
       "explanation": "Cylindrical: (1/ρ)d(ρF)/dρ; spherical: (1/r²)d(r²F)/dr. Circles and spheres spread differently.",
       "hint": "Compare the circumference with the sphere's area.",

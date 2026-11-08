@@ -17,7 +17,7 @@
         "No: only in complete spaces; the rationals are not complete",
         "Yes, in compact subspaces only if closed, since otherwise a Cauchy sequence can run off the edge",
         "Yes: in every metric space, since terms of a Cauchy sequence get arbitrarily close to a limit point",
-        "Yes in bounded spaces"
+        "Yes in bounded spaces, where the points of the sequence cannot escape"
       ],
       "answer": "No: only in complete spaces; the rationals are not complete",
       "explanation": "The sequence 3, 3.1, 3.14, … is Cauchy in ℚ but has no limit there.",
@@ -30,9 +30,9 @@
       "prompt": "In ℝⁿ closed and bounded sets are compact (Heine–Borel). Does this hold in every normed space?",
       "options": [
         "No: in infinite-dimensional spaces the closed unit ball is not compact",
-        "Yes, in every normed space, because closed and bounded sets are compact in any dimension",
-        "Yes in Hilbert spaces",
-        "Yes in Banach spaces"
+        "Yes, in a normed space of each kind, as the finite-dimensional proof carries over",
+        "Yes in Hilbert spaces, as these are complete and carry an inner product too",
+        "Yes in Banach spaces, as completeness is enough to make closed bounded sets compact"
       ],
       "answer": "No: in infinite-dimensional spaces the closed unit ball is not compact",
       "explanation": "In ℓ² the orthonormal sequence eₙ lies in the closed unit ball but has no convergent subsequence.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "A ring-shaped (annular) region is connected. Is it simply connected?",
       "options": [
-        "Yes: a connected annulus is simply connected, since any loop in it can be contracted to a point",
-        "Yes if closed",
+        "Yes: a connected annulus is simply connected",
+        "Yes, if the annulus is closed and bounded as well",
         "No: a loop around the hole cannot be shrunk to a point",
-        "Yes in the plane"
+        "Yes in the plane, where there is no further hole"
       ],
       "answer": "No: a loop around the hole cannot be shrunk to a point",
       "explanation": "Simply connected needs every loop to be contractible.",
@@ -79,10 +79,10 @@
       "prompt": "What can a topological hole in a domain obstruct?",
       "answer": "Global continuation or the existence of primitives (e.g. an angle function)",
       "options": [
-        "Convergence of every Cauchy sequence in the domain, because a hole removes points from the space",
+        "Convergence of the Cauchy sequences in the domain, as a hole removes points from the space",
         "Global continuation or the existence of primitives (e.g. an angle function)",
         "The compactness of the closure",
-        "The metric"
+        "The metric on the domain, as a hole changes the distance between points near it"
       ],
       "explanation": "Holes obstruct global constructions such as a single-valued potential for dθ or a branch of log z.",
       "type": "mcq",
@@ -116,9 +116,9 @@
       "answer": "No: they induce the same topology but can give different values",
       "options": [
         "Yes: equivalent means equal",
-        "Yes up to a rotation",
+        "Yes, up to a rotation of the plane, as the norms differ by a turn of the axes",
         "No: they induce the same topology but can give different values",
-        "Yes in 1D only"
+        "Yes in 1D, where a norm is a fixed multiple of the absolute value"
       ],
       "hint": "Compare the 1-norm and 2-norm of (1, 1).",
       "explanation": "‖(1,1)‖₁ = 2 but ‖(1,1)‖₂ = √2. Equivalent norms are bounded by constants multiples of each other.",

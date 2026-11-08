@@ -17,7 +17,7 @@
         "Yes: the law is basis independent per element",
         "Yes: any basis works for each matrix",
         "Not automatically: a single consistent basis change is required",
-        "Only for abelian groups"
+        "For abelian groups, where a different basis for each g is harmless"
       ],
       "answer": "Not automatically: a single consistent basis change is required",
       "explanation": "A change of basis must be D′(g) = SD(g)S⁻¹ with the same S for all g.",
@@ -31,8 +31,8 @@
       "options": [
         "Yes: similarity transformations preserve the trace",
         "No: it depends on the basis, since the matrix entries change and the trace changes with them",
-        "No: only the determinant is invariant",
-        "Only for 1D representations"
+        "No: the determinant is invariant, the trace is not",
+        "Yes for 1D representations, where D(g) is a single number"
       ],
       "answer": "Yes: similarity transformations preserve the trace",
       "explanation": "tr(SDS⁻¹) = tr(D) by the cyclic property of the trace.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "Finite-group representations are completely reducible. Does this carry over unchanged to every infinite group?",
       "options": [
-        "Yes over any field, since the averaging argument works whatever the group and the number field",
+        "Yes over a field of positive characteristic, whatever the group",
         "No: the averaging argument needs hypotheses, e.g. a finite or compact group",
-        "Yes: always",
-        "Yes for abelian groups"
+        "Yes: the theorem holds for a group of infinite order as well, unchanged",
+        "Yes for abelian groups of infinite order, such as the real line"
       ],
       "answer": "No: the averaging argument needs hypotheses, e.g. a finite or compact group",
       "explanation": "The group ℤ has a 2D representation that is reducible but not completely reducible.",
@@ -80,9 +80,9 @@
       "answer": "Classification and reducibility theorems depend on them",
       "options": [
         "Classification and reducibility theorems depend on them",
-        "Reducibility is always the same",
-        "They only affect notation",
-        "They don't matter"
+        "Reducibility is the same in each field and dimension",
+        "They affect the notation but leave the result unchanged",
+        "They do not matter for the classification or the result"
       ],
       "explanation": "Over ℝ the rotation group SO(2) has irreducible 2D representations, but over ℂ they split.",
       "type": "mcq",
@@ -115,7 +115,7 @@
       "prompt": "You change basis for a representation matrix D(g) to SD(g)S⁻¹. What happens to its character?",
       "answer": "Unchanged, because similarity preserves the trace",
       "options": [
-        "It becomes zero",
+        "It becomes zero, as conjugation kills the trace",
         "It is replaced by its inverse, since conjugating by S sends the trace of D(g) to the trace of D(g⁻¹)",
         "It changes by the factor det S",
         "Unchanged, because similarity preserves the trace"

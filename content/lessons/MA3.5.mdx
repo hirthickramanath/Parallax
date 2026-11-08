@@ -47,7 +47,7 @@
         "No: that formula needs an orthonormal basis",
         "Yes, when the basis vectors have unit length",
         "Yes, when they are independent",
-        "Yes: always"
+        "Yes: the formula holds for each basis of the plane"
       ],
       "answer": "No: that formula needs an orthonormal basis",
       "explanation": "With a non-orthogonal basis the dot products mix the coefficients, so you solve a linear system instead.",
@@ -79,8 +79,8 @@
       "prompt": "Why can solving the normal equations be less accurate than using QR?",
       "answer": "They square the condition number when A has full column rank",
       "options": [
-        "They ignore the data vector b, so the solution depends only on the matrix and not on the measurements",
-        "They need more memory only",
+        "They ignore the data vector b in the solution",
+        "They need more memory, which costs accuracy in the stored numbers",
         "They square the condition number when A has full column rank",
         "They give a different minimiser in exact arithmetic"
       ],
@@ -117,7 +117,7 @@
       "options": [
         "The residual is the new basis vector",
         "The residual is zero, so the division is undefined and dependence must be handled",
-        "Normalisation always works",
+        "Normalisation works in each case, even for a zero residual vector",
         "The residual equals the input vector"
       ],
       "explanation": "A zero residual means the vector adds no new direction. The algorithm must skip it or flag dependence.",

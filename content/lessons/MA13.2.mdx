@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "Is a Wiener process path an ordinary differentiable function of time?",
       "options": [
-        "Yes except at t = 0",
+        "Yes except at t = 0, where the path starts, and the slope exists elsewhere on it",
         "No: it is continuous but nowhere differentiable, with non-zero quadratic variation",
-        "Yes, almost everywhere, since the path has a well-defined slope at all but a few isolated times",
+        "Yes, at most times, as the path has a well-defined slope away from isolated points",
         "Yes: its paths are smooth, since the increments over a short time are small and proportional to dt"
       ],
       "answer": "No: it is continuous but nowhere differentiable, with non-zero quadratic variation",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "In the Fokker–Planck equation with state-dependent diffusion D(x), where does D sit?",
       "options": [
-        "Outside as a constant",
+        "Outside the derivatives, as a constant factor in front",
         "Inside the derivatives, such as ∂²(D p)/∂x² in the Itô form",
-        "In the drift term only, so D(x) does not enter the second-derivative part of the equation",
-        "It disappears"
+        "In the drift term, so D(x) stays out of the second-derivative part",
+        "It disappears, as D(x) cancels against the drift in the equation"
       ],
       "answer": "Inside the derivatives, such as ∂²(D p)/∂x² in the Itô form",
       "explanation": "Gradients of D contribute to the probability evolution and cannot be pulled out.",
@@ -45,7 +45,7 @@
       "prompt": "For geometric Brownian motion, can the mean growth rate of S differ from the growth rate of ln S?",
       "options": [
         "Yes: noise adds a −σ²/2 correction",
-        "No: they are identical, because the growth rate of S and that of ln S are the same for any noise",
+        "No: the rates are identical",
         "No: they are identical",
         "Yes: they differ by σ"
       ],
@@ -79,10 +79,10 @@
       "prompt": "Why compare different numerical discretisations of an SDE?",
       "answer": "Finite-step errors can change distributions or break positivity",
       "options": [
-        "Discretisation never matters",
-        "They always agree",
+        "Discretisation does not matter: the schemes agree to the order needed",
+        "The schemes agree in their results, up to small noise",
         "Finite-step errors can change distributions or break positivity",
-        "Only one scheme exists"
+        "One scheme exists for the SDE, so no comparison can be made here"
       ],
       "explanation": "Euler–Maruyama can give negative values for processes that must stay positive.",
       "type": "mcq",
@@ -118,7 +118,7 @@
         "As Δt², since the variance of a Wiener increment scales with the square of the time step",
         "As √Δt, since its variance is Δt",
         "It does not depend on Δt",
-        "As Δt"
+        "As Δt, as the variance goes as Δt²"
       ],
       "hint": "Variance adds linearly in time.",
       "explanation": "ΔW ~ N(0, Δt). A deterministic velocity increment scales like Δt instead.",

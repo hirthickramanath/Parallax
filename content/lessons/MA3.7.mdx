@@ -31,8 +31,8 @@
       "options": [
         "Only if A is square, since a pseudoinverse of a rectangular matrix never gives an exact solution",
         "Only if b is in the column space of A",
-        "Always",
-        "Never"
+        "Always, for each vector b in the codomain",
+        "Never, whatever the vector b is"
       ],
       "answer": "Only if b is in the column space of A",
       "explanation": "A⁺b gives the least-squares solution. Any component of b outside the range of A remains as a residual.",
@@ -47,7 +47,7 @@
         "Errors in b can be amplified by up to 1/σ_min",
         "Errors are reduced",
         "The solution is exact",
-        "Nothing: small singular values are harmless"
+        "No effect: small singular values are benign"
       ],
       "answer": "Errors in b can be amplified by up to 1/σ_min",
       "explanation": "Inversion divides components by the singular values. Noise along a direction with tiny σ gets magnified.",
@@ -79,10 +79,10 @@
       "prompt": "You truncate small singular values below a threshold to define numerical rank. What should you report?",
       "answer": "The threshold, the data scale and a modelling justification",
       "options": [
-        "Nothing: the rank is a fact of the matrix, so no threshold or justification needs to be quoted",
-        "Only the largest singular value",
+        "No quote is needed: the rank is a fact of the matrix, not a choice",
+        "The largest singular value of the matrix, as the scale",
         "The threshold, the data scale and a modelling justification",
-        "That the discarded directions never existed"
+        "That the discarded directions do not exist"
       ],
       "explanation": "Finite-precision rank is a decision depending on noise level and scale. It should be documented.",
       "type": "mcq",
@@ -115,7 +115,7 @@
       "prompt": "A matrix has a non-zero determinant. Can solving with noisy data still be unreliable?",
       "answer": "Yes: a tiny singular value can strongly amplify errors",
       "options": [
-        "Yes, but only if the determinant is negative",
+        "Yes, if the determinant is a negative one",
         "No: an invertible matrix means the solve is stable, whatever the noise in the data",
         "No: determinant measures conditioning",
         "Yes: a tiny singular value can strongly amplify errors"

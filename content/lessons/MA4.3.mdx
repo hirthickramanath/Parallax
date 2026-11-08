@@ -16,7 +16,7 @@
       "options": [
         "Yes: velocity follows from position, so knowing x(0) alone fixes the whole later motion",
         "No: you also need the velocity as an independent initial condition",
-        "Yes: position is enough",
+        "Yes: position is enough, as the equation then fixes the whole motion from it",
         "No: you need the acceleration"
       ],
       "answer": "No: you also need the velocity as an independent initial condition",
@@ -45,7 +45,7 @@
       "prompt": "Two trajectories appear to cross in a plot of x against y. Does this violate uniqueness of solutions?",
       "options": [
         "Yes, always, since two crossing trajectories in a plot must start from the same state and so coincide",
-        "Yes, always",
+        "Yes, as two solutions cannot meet at a point in the plot",
         "Not necessarily: the plot may hide state variables or time dependence",
         "No: trajectories can never cross"
       ],
@@ -79,10 +79,10 @@
       "prompt": "A simulation of a conservative oscillator shows an outward spiral. Why test smaller time steps?",
       "answer": "The spiral may be numerical energy drift, not physics",
       "options": [
-        "Every spiral shows a drag force, so a smaller time step would not change the outward growth",
+        "A drag force acts, so a smaller step would not help",
         "The spiral may be numerical energy drift, not physics",
-        "Every spiral shows a drag force",
-        "A smaller step always creates a spiral"
+        "A drag force is acting on the oscillator",
+        "A smaller step creates the spiral"
       ],
       "explanation": "Methods like explicit Euler add energy at each step. If the spiral changes with the step size, it is an artefact.",
       "type": "mcq",
@@ -117,7 +117,7 @@
       "options": [
         "A stable node, since the eigenvalues have different signs and both directions are attracting",
         "A saddle: unstable, with one attracting direction",
-        "A centre",
+        "A centre: neutral, with closed orbits in the plane",
         "Asymptotically stable"
       ],
       "explanation": "The +2 direction grows. Stability requires all eigenvalues to have negative real parts.",

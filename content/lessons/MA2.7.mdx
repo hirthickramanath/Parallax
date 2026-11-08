@@ -15,9 +15,9 @@
       "prompt": "Can you apply the divergence theorem to F = r̂/r² over a region that contains the origin, without modification?",
       "options": [
         "No: the theorem has no restriction",
-        "Yes: there are no restrictions",
+        "Yes: there are no restrictions on the field or the region it fills",
         "No: the field is singular at the origin and violates the theorem's assumptions",
-        "Yes: it gives zero"
+        "Yes: it gives zero, as the divergence vanishes outside the origin"
       ],
       "answer": "No: the field is singular at the origin and violates the theorem's assumptions",
       "explanation": "The theorem requires a field that is continuously differentiable in the whole region. Excise a small ball or use delta-function divergence.",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "In Stokes' theorem, how are the surface normal and the boundary direction related?",
       "options": [
-        "They are always parallel",
-        "They are always opposite",
+        "They are parallel, so the normal runs along the boundary direction",
+        "They are opposite, so the normal runs against the boundary",
         "By the right-hand rule: they follow one consistent convention",
-        "They are independent"
+        "They are chosen independently of one another"
       ],
       "answer": "By the right-hand rule: they follow one consistent convention",
       "explanation": "Orient the boundary so that, with your thumb along the normal, your fingers curl along the boundary direction.",
@@ -79,10 +79,10 @@
       "prompt": "In the proof by subdividing a region into cells, why do interior contributions cancel?",
       "answer": "Neighbouring cells see their common face with opposite orientations",
       "options": [
-        "The faces have zero area, so the interior contributions vanish before any orientation is considered",
-        "The field is constant",
+        "The faces have zero area, so interior terms vanish",
+        "The field is constant in the interior, so its contributions are equal",
         "Neighbouring cells see their common face with opposite orientations",
-        "Every interior field value is zero"
+        "The interior field values are zero, so there is no contribution from the cells"
       ],
       "explanation": "Each shared face is counted twice with opposite normals, so the contributions add to zero. Only the outer boundary remains.",
       "type": "mcq",
@@ -115,10 +115,10 @@
       "prompt": "F = r̂/r² has zero divergence for r > 0. Can the smooth divergence theorem be applied across the origin?",
       "answer": "No: the flux through a sphere is 4π, so the origin needs special treatment",
       "options": [
-        "No: the flux is infinite",
-        "Yes: the divergence is zero for r > 0, so the flux through any sphere is zero",
+        "No: the flux through a sphere is infinite, as the field blows up",
+        "Yes: the divergence is zero for r > 0, so the flux through spheres is zero",
         "No: the flux through a sphere is 4π, so the origin needs special treatment",
-        "Yes: the flux is 1"
+        "Yes: the flux is 1 through a sphere, so the origin needs no special treatment"
       ],
       "explanation": "The flux through any sphere around the origin is 4π, but the divergence is zero everywhere else. The theorem needs a distributional or excised formulation.",
       "hint": "Compute the flux through a sphere of radius R.",

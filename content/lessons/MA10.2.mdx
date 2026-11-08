@@ -14,8 +14,8 @@
       "id": "concept-1",
       "prompt": "Two permutations of S₅ share a common symbol in their cycles (e.g. (1 2) and (2 3)). Do they commute?",
       "options": [
-        "Yes: always, because cycles that share a symbol still commute, as the product is independent of the order",
-        "Yes: cycles commute",
+        "Yes: cycles that share a symbol still commute freely",
+        "Yes: overlapping cycles can be swapped without a change",
         "Yes: if they have the same length",
         "Not in general: composition order changes the result"
       ],
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "A permutation is a product of disjoint cycles of lengths 2 and 3. What is its order?",
       "options": [
-        "2",
+        "3, the length of the longer of the two cycles",
         "5, the sum of the lengths, since the order of a product of disjoint cycles is the total of their lengths",
         "6, the least common multiple of the lengths",
-        "1"
+        "5, the sum of the lengths of the two cycles"
       ],
       "answer": "6, the least common multiple of the lengths",
       "explanation": "Each cycle returns to identity after its own length. The product returns when both do, at lcm(2, 3) = 6.",
@@ -45,9 +45,9 @@
       "prompt": "A permutation can be written as a product of transpositions in different ways. What is true of the parity?",
       "options": [
         "The parity (even or odd) is the same for every factorisation",
-        "It is always even",
+        "It is even when the permutation has an even number of fixed points",
         "It depends on the writer, since different factorisations of the same permutation can have different parities",
-        "It can vary"
+        "It can vary with the number of factors that are chosen"
       ],
       "answer": "The parity (even or odd) is the same for every factorisation",
       "explanation": "The sign homomorphism S_n → {±1} is well defined, so even and odd are intrinsic.",
@@ -79,10 +79,10 @@
       "prompt": "Why must a text state its permutation composition convention?",
       "answer": "Without it a written product such as στ is ambiguous (left-to-right or right-to-left)",
       "options": [
-        "Because all conventions agree, so the product στ always means the same permutation whichever order is used",
+        "Conventions agree, so the product στ is the same permutation in either order",
         "Without it a written product such as στ is ambiguous (left-to-right or right-to-left)",
         "Because it changes the order of cycles",
-        "To define the sign"
+        "To define the sign of the permutation, which the order of the factors would otherwise leave open"
       ],
       "explanation": "The product στ can mean 'σ then τ' or 'τ then σ', giving different results for non-commuting permutations.",
       "type": "mcq",

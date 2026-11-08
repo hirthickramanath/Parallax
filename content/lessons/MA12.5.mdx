@@ -15,8 +15,8 @@
       "prompt": "A self-adjoint operator has a continuous spectrum (e.g. position operator). Does each spectral value have a normalisable eigenvector?",
       "options": [
         "No: it needs generalised, non-normalisable eigenstates",
-        "Yes, every spectral value has a normalisable eigenvector, as for the eigenstates of a discrete operator",
-        "Yes for a discrete part only",
+        "Yes: a spectral value has a normalisable eigenvector",
+        "Yes for the discrete part of the spectrum, as usual",
         "Yes for bounded operators"
       ],
       "answer": "No: it needs generalised, non-normalisable eigenstates",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "Does every self-adjoint operator have only discrete eigenvalues?",
       "options": [
-        "Yes: self-adjoint operators always have a complete set of normalisable eigenvectors with discrete eigenvalues",
-        "Yes, if the domain is bounded, since self-adjoint operators on a bounded domain have only eigenvalues",
+        "Yes: the eigenvectors are normalisable, so discrete",
+        "Yes on a bounded domain, with a discrete spectrum",
         "No: continuous spectral components can occur",
-        "Yes if bounded"
+        "Yes if bounded, as the spectrum is then purely discrete"
       ],
       "answer": "No: continuous spectral components can occur",
       "explanation": "The free-particle Hamiltonian has a purely continuous spectrum [0, ∞).",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "You discretise an operator with a continuous spectrum on a grid. What check is essential?",
       "options": [
-        "Reduce the grid",
-        "Use only one resolution",
-        "None: the spectrum is exact",
+        "Reduce the grid size until the artefacts have disappeared",
+        "Use a single resolution, as the results are then self-consistent",
+        "No check is needed: the spectrum on the grid is exact for the operator",
         "Refine the grid and cutoff, since truncation can create artefacts"
       ],
       "answer": "Refine the grid and cutoff, since truncation can create artefacts",
@@ -79,9 +79,9 @@
       "prompt": "When defining f(A) for an unbounded function f of a self-adjoint operator A, what restricts the result?",
       "answer": "The domain condition from the functional calculus (∫|f|²dμ < ∞)",
       "options": [
-        "The dimension",
-        "The boundedness of f only, since any bounded function of A is defined on the whole Hilbert space",
-        "Nothing",
+        "The dimension of the Hilbert space, which must be finite",
+        "The boundedness of f, as a bounded function of A is defined everywhere",
+        "No condition: f(A) is defined for each function f of A",
         "The domain condition from the functional calculus (∫|f|²dμ < ∞)"
       ],
       "explanation": "f(A) is defined on vectors for which ∫|f(λ)|² d⟨ψ,E_λψ⟩ is finite.",
@@ -115,10 +115,10 @@
       "prompt": "Does every self-adjoint operator have a countable orthonormal basis of eigenvectors?",
       "answer": "No: continuous spectrum requires projection-valued measures",
       "options": [
-        "Yes if unbounded",
-        "Yes: a self-adjoint operator always has a countable orthonormal basis of its eigenvectors",
+        "Yes if unbounded, as the spectrum is then discrete and countable",
+        "Yes: the eigenvectors form a countable orthonormal basis",
         "No: continuous spectrum requires projection-valued measures",
-        "Yes on L²"
+        "Yes on L², where the eigenvector basis is countable in size too"
       ],
       "hint": "Think of the position operator.",
       "explanation": "The spectral theorem is stated through projection-valued measures to cover both discrete and continuous parts.",

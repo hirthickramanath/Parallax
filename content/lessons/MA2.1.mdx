@@ -15,8 +15,8 @@
       "prompt": "The partial derivatives ∂f/∂x and ∂f/∂y exist at the origin. Does this prove f is continuous there?",
       "options": [
         "Yes: when both partial derivatives exist at the origin, the function must be continuous there",
-        "No: partials never exist at the origin",
-        "Yes, if f is polynomial",
+        "No: the partials cannot exist at the origin of a function of that kind",
+        "Yes, if the two partials are equal in value at the origin itself",
         "No: f can have partials yet be discontinuous, as along a diagonal"
       ],
       "answer": "No: f can have partials yet be discontinuous, as along a diagonal",
@@ -45,9 +45,9 @@
       "prompt": "For a composition f∘g, does the order of multiplication of Jacobian matrices matter?",
       "options": [
         "No, the order is irrelevant for square matrices",
-        "No: matrices commute",
+        "No: matrices commute, so the order is not relevant here",
         "Yes: D(f∘g) = Df · Dg, and the dimensions must match",
-        "Yes, but only for 1D functions"
+        "Yes, but the rule is valid for 1D functions alone"
       ],
       "answer": "Yes: D(f∘g) = Df · Dg, and the dimensions must match",
       "explanation": "The chain rule composes linear maps: first Dg, then Df. Matrix multiplication is not commutative, and shapes must agree.",
@@ -82,7 +82,7 @@
         "It needs more points on the axes, whereas partial derivatives already control every direction at once",
         "It controls the remainder for every small displacement, in all directions",
         "It only applies in one dimension",
-        "It requires only continuity"
+        "It requires continuity of the function along the axes and no more"
       ],
       "explanation": "Differentiability requires |f(a + h) − f(a) − Df(a)h|/|h| → 0 as h → 0 in any direction, not just along axes.",
       "type": "mcq",
@@ -117,8 +117,8 @@
       "options": [
         "No: differentiability needs the full linear approximation, which is stronger",
         "Yes: when both partial derivatives exist, f has a full linear approximation at that point",
-        "Yes, if f is continuous",
-        "Yes, in 2D"
+        "Yes, if f is continuous, as continuity gives the linear approximation",
+        "Yes, in 2D, where the two partials are enough to fix the linear approximation"
       ],
       "explanation": "Existence of partials is weaker than differentiability. Continuity of the partials in a neighbourhood is sufficient.",
       "hint": "Recall the example with partials but no continuity.",

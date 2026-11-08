@@ -16,7 +16,7 @@
       "options": [
         "Volumes shrink by a factor of 3, since the sign of a determinant has no geometric meaning",
         "Volumes scale by 3 and orientation reverses",
-        "Volumes scale by −3 and nothing else",
+        "Volumes scale by −3, with the same orientation",
         "Volumes become negative"
       ],
       "answer": "Volumes scale by 3 and orientation reverses",
@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "A matrix has determinant 10⁻⁹. Does this prove it is ill-conditioned?",
       "options": [
-        "No: determinants are always integers",
+        "No: determinants are integers for matrices of this kind",
         "No: uniform scaling can make det tiny while conditioning is perfect",
-        "Yes, always, since a tiny determinant means the matrix is nearly singular and so ill-conditioned",
+        "Yes, as a tiny determinant means a nearly singular matrix",
         "Yes: tiny determinant means ill-conditioned"
       ],
       "answer": "No: uniform scaling can make det tiny while conditioning is perfect",
@@ -80,9 +80,9 @@
       "answer": "Multilinearity gives an extra term with a repeated row, which is zero",
       "options": [
         "The rows become identical after the operation, so the determinant cannot change under it",
-        "All row operations preserve the determinant",
+        "Row operations of each kind preserve the determinant, swaps included",
         "Multilinearity gives an extra term with a repeated row, which is zero",
-        "The multiple is always zero"
+        "The multiple is zero, so the row that is added makes no change to the determinant"
       ],
       "explanation": "det is linear in each row: the added term is k × det of a matrix with two equal rows, which is 0. Swaps and scalings do change det.",
       "type": "mcq",
@@ -115,10 +115,10 @@
       "prompt": "A matrix has determinant zero. What can you conclude?",
       "answer": "It loses rank and is not invertible, but need not be the zero matrix",
       "options": [
-        "It is the zero matrix, since a determinant of zero means that every entry must vanish",
-        "It is invertible",
+        "It is the zero matrix, as its entries must vanish too",
+        "It is invertible, so the inverse exists and the system has a solution",
         "It loses rank and is not invertible, but need not be the zero matrix",
-        "It is the identity"
+        "It is the identity matrix, scaled by a zero determinant"
       ],
       "explanation": "A projection onto a line has det 0 but is non-zero. det 0 means a non-trivial kernel.",
       "hint": "Think of a projection.",

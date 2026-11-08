@@ -15,9 +15,9 @@
       "prompt": "Is every geodesic the globally shortest path between its endpoints?",
       "options": [
         "No: geodesics are locally extremal; e.g. a great circle's long arc is not shortest",
-        "Yes: always, since a geodesic is by definition the shortest path between any two of its points",
-        "Yes if timelike",
-        "Yes in flat space only"
+        "Yes: by definition, a geodesic is the shortest path between a pair of its points",
+        "Yes if the geodesic is timelike, as the proper time along it is then a maximum for the path",
+        "Yes in flat space, where a straight line is the shortest path between a pair of points"
       ],
       "answer": "No: geodesics are locally extremal; e.g. a great circle's long arc is not shortest",
       "explanation": "A geodesic is a stationary path. Along the long way round a sphere it still satisfies the equation but is not minimal.",
@@ -30,9 +30,9 @@
       "prompt": "You reparametrise a geodesic by an arbitrary function. Does the geodesic equation keep the same form?",
       "options": [
         "No: a term proportional to the tangent appears unless the parameter is affine",
-        "Yes for timelike curves",
-        "Yes in flat space",
-        "Yes: always, since the geodesic equation is covariant under any change of the curve's parameter"
+        "Yes for timelike curves, as the proper time then serves as a suitable parameter",
+        "Yes in flat space, as the Christoffel terms then vanish in Cartesian coordinates",
+        "Yes: the equation is covariant under a change of parameter"
       ],
       "answer": "No: a term proportional to the tangent appears unless the parameter is affine",
       "explanation": "Only affine parameters (e.g. proper time) give d²x/dλ² + Γ(dx/dλ)² = 0 without extra terms.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "For a timelike path in relativity, proper time is:",
       "options": [
-        "Zero",
+        "Zero for a timelike path, as the clock carried along it records no interval of time",
         "Not a Euclidean spatial length; the Lorentzian norm behaves differently",
-        "Always maximal among nearby paths, so proper time is the same as the Euclidean length of the path",
-        "A Euclidean distance"
+        "Maximal among nearby paths, so proper time equals the Euclidean length of the path",
+        "A Euclidean distance, computed from the spatial length of the path alone"
       ],
       "answer": "Not a Euclidean spatial length; the Lorentzian norm behaves differently",
       "explanation": "Timelike geodesics extremise (often maximise) proper time, unlike Euclidean shortest paths.",
@@ -81,8 +81,8 @@
       "options": [
         "Nothing: coordinates can accelerate while no non-gravitational force acts",
         "The particle is not truly free, since a free particle must have zero coordinate acceleration in every coordinate system",
-        "A force acts",
-        "The geodesic is wrong"
+        "A non-gravitational force acts on the particle in the chosen coordinates",
+        "The geodesic is wrong, so the particle must have left the path set by the equation"
       ],
       "explanation": "The geodesic equation d²x/dτ² = −Γ(dx/dτ)² has acceleration from the connection terms.",
       "type": "mcq",
@@ -126,7 +126,7 @@
       "answer": "No: the connection terms can cancel the ordinary second derivative",
       "options": [
         "Yes, if the parameter is affine, because then the second derivative of each coordinate must vanish along the curve",
-        "Yes in all charts",
+        "Yes in each chart, as the connection drops out of the equation",
         "Yes: geodesic means zero acceleration",
         "No: the connection terms can cancel the ordinary second derivative"
       ],

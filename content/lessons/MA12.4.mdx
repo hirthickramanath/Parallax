@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "Is δ(x)² a well-defined distribution in ordinary distribution theory?",
       "options": [
-        "Yes: it equals δ(2x)",
-        "Yes: it equals δ(x)",
+        "Yes: it equals δ(2x), by the scaling rule for the delta",
+        "Yes: it equals δ(x), by the sifting rule of the delta distribution",
         "No: products of singular distributions need extra structure",
-        "Yes: it equals 0"
+        "Yes: it equals 0, as δ vanishes away from the origin point"
       ],
       "answer": "No: products of singular distributions need extra structure",
       "explanation": "Smoothing δ by a width ε gives δ_ε² ~ 1/ε → ∞, with no limit.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "Do narrow bumps δ_ε converge to the delta distribution uniformly as functions?",
       "options": [
-        "No: they do not converge at all, because the peaks grow without limit as the width shrinks",
-        "Yes: pointwise",
+        "No: they do not converge, as the peaks grow without limit",
+        "Yes: pointwise, at each point of the real line",
         "No: they converge weakly, by their action on test functions",
-        "Yes: uniformly"
+        "Yes: uniformly, as the bumps become narrow and the tails are flat"
       ],
       "answer": "No: they converge weakly, by their action on test functions",
       "explanation": "The peak height grows as ε → 0 while ∫δ_εφ → φ(0).",
@@ -79,9 +79,9 @@
       "prompt": "Narrow normalised kernels such as Gaussians of width ε → 0 approach what?",
       "answer": "The delta distribution, in the weak (distributional) sense",
       "options": [
-        "Zero everywhere, since the area of the kernel shrinks to nothing as the width goes to zero",
-        "A bounded function",
-        "A step function",
+        "Zero in the limit, as the area of the kernel shrinks",
+        "A bounded function, with a finite peak at the origin",
+        "A step function, as the kernels rise sharply at the origin and stay up",
         "The delta distribution, in the weak (distributional) sense"
       ],
       "explanation": "∫K_ε(x)φ(x)dx → φ(0) for every test function φ.",
@@ -117,7 +117,7 @@
       "options": [
         "Yes: take a tall finite spike at the origin and let its height go to infinity at zero",
         "Yes: take a tall finite spike",
-        "Yes: δ(0) = ∞ defines it exactly",
+        "Yes: δ(0) = ∞ defines it as a function",
         "No: it is defined through its action on test functions"
       ],
       "hint": "What is the integral of a function that is zero almost everywhere?",

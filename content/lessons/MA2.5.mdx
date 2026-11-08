@@ -30,9 +30,9 @@
       "prompt": "You compute the arc length of a curve by ∫|r′(t)|dt. Does reversing the path change the result?",
       "options": [
         "No: the integrand uses the magnitude of the tangent",
-        "Yes: it becomes zero",
+        "Yes: it becomes zero, as the two directions cancel out",
         "Yes: it changes sign, because reversing the direction of travel reverses the sign of the length",
-        "Yes: it doubles"
+        "Yes: it doubles, as the path is covered twice over"
       ],
       "answer": "No: the integrand uses the magnitude of the tangent",
       "explanation": "Scalar line integrals ∫f ds use |r′|, which is orientation independent.",
@@ -47,7 +47,7 @@
         "Yes, if the field is smooth",
         "Yes: zero curl gives a potential everywhere",
         "No: a hole can obstruct a global potential",
-        "No: potentials never exist"
+        "No: potentials do not exist on a punctured plane"
       ],
       "answer": "No: a hole can obstruct a global potential",
       "explanation": "F = (−y, x)/(x² + y²) has zero curl away from the origin but circulation 2π around it, so no single-valued potential.",
@@ -81,7 +81,7 @@
       "options": [
         "It is zero at the endpoints",
         "It has the same value at the endpoints",
-        "It is constant",
+        "It is constant, so the work is the same along paths",
         "It has a single-valued potential on a region containing the paths"
       ],
       "explanation": "If F = ∇φ with φ defined on the region, ∫F·dr = φ(end) − φ(start).",
@@ -115,7 +115,7 @@
       "prompt": "A field has curl 0 on a punctured plane. Does every closed line integral vanish?",
       "answer": "Not necessarily: a loop around the hole can have non-zero circulation",
       "options": [
-        "Yes, for smooth loops",
+        "Yes, for smooth loops, as the curl is zero in the region around it",
         "Not necessarily: a loop around the hole can have non-zero circulation",
         "Yes: curl 0 means zero circulation everywhere, including around a loop that encloses the puncture",
         "No: they are always non-zero"

@@ -15,8 +15,8 @@
       "prompt": "Are all linear operators on infinite-dimensional Hilbert spaces bounded?",
       "options": [
         "Yes, if the operator is closed, since closedness of an operator implies that it is bounded",
-        "Yes if closed",
-        "Yes if self-adjoint",
+        "Yes, if the operator is closed, as it is bounded",
+        "Yes if self-adjoint, as that gives a norm bound",
         "No: differential operators such as d/dx are unbounded"
       ],
       "answer": "No: differential operators such as d/dx are unbounded",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "An operator is symmetric on its domain. Is it automatically self-adjoint?",
       "options": [
-        "Yes if densely defined",
+        "Yes if densely defined, as the adjoint then has the same domain as the operator",
         "Yes: symmetric operators are self-adjoint whenever they are densely defined and bounded below",
         "No: self-adjointness also requires equality of the operator and adjoint domains",
-        "Yes if bounded below"
+        "Yes if bounded below, as that makes the operator and its adjoint share a domain"
       ],
       "answer": "No: self-adjointness also requires equality of the operator and adjoint domains",
       "explanation": "−i d/dx on [0,1] with domain C₀^∞ is symmetric but not self-adjoint.",
@@ -46,8 +46,8 @@
       "options": [
         "No: the domain is part of the operator, so they are different",
         "Yes: they are the same operator, since the formula −d²/dx² does not depend on the boundary conditions",
-        "Yes on smooth functions",
-        "Yes up to a sign"
+        "Yes on smooth functions, where the two formulas agree",
+        "Yes up to a sign, as the boundary data flip the sign of the operator"
       ],
       "answer": "No: the domain is part of the operator, so they are different",
       "explanation": "Different boundary conditions give different domains and different spectra.",
@@ -79,8 +79,8 @@
       "prompt": "Why must a commutator [A, B] = AB − BA be qualified for unbounded operators?",
       "answer": "Both products need a suitable common domain",
       "options": [
-        "The product of two unbounded operators is always bounded, so the commutator needs no domain",
-        "They never commute",
+        "The product is bounded, so no domain is needed",
+        "They fail to commute for operators that are unbounded",
         "Both products need a suitable common domain",
         "Commutators don't exist"
       ],
@@ -116,7 +116,7 @@
       "answer": "No: the norms can grow without bound as the truncation increases",
       "options": [
         "Yes: finite truncations are bounded matrices, so the limiting operator is bounded as well",
-        "Yes: bounds are inherited",
+        "Yes: the bounds are inherited from the truncations of it",
         "Yes: if each truncation is Hermitian",
         "No: the norms can grow without bound as the truncation increases"
       ],

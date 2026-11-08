@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "You change variables (x, y) → (u, v). Is the area element dx dy equal to du dv in general?",
       "options": [
-        "Yes, for any smooth map, since the area element is invariant under a change of variables",
-        "Yes, for any smooth map",
-        "Yes, always",
+        "Yes, for a smooth map: the area element is invariant",
+        "Yes, for a smooth map of the plane to itself",
+        "Yes, the area element has the same form in the new variables",
         "No: it carries the Jacobian factor |∂(x,y)/∂(u,v)|"
       ],
       "answer": "No: it carries the Jacobian factor |∂(x,y)/∂(u,v)|",
@@ -30,9 +30,9 @@
       "prompt": "The Jacobian determinant of a coordinate change is negative. How should it be used in an ordinary area integral?",
       "options": [
         "Use the signed value, so that a negative Jacobian gives a negative contribution to the area integral",
-        "Use its square root",
+        "Use its square root, to keep the area positive",
         "Use its absolute value, since area is non-negative",
-        "Skip it"
+        "Skip it, as a negative sign has no effect on the integral"
       ],
       "answer": "Use its absolute value, since area is non-negative",
       "explanation": "The sign records orientation. For ordinary (unsigned) integrals use |det J|.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "Can you always swap the order of integration in an improper double integral?",
       "options": [
-        "Yes, always, since the order of integration never affects the value of an improper double integral",
+        "Yes, as the order of integration does not change the value",
         "Yes, whenever the function is continuous",
         "No: you need hypotheses like absolute integrability (Fubini–Tonelli)",
-        "Yes, if both are improper"
+        "Yes, if both of the integrals are improper, as the order is then free"
       ],
       "answer": "No: you need hypotheses like absolute integrability (Fubini–Tonelli)",
       "explanation": "There are functions for which the iterated integrals exist but differ. Absolute integrability or a non-negative integrand makes the exchange safe.",
@@ -80,8 +80,8 @@
       "answer": "The map can cover the region more than once, or miss part of it",
       "options": [
         "The map can cover the region more than once, or miss part of it",
-        "θ is not defined",
-        "r can be negative only",
+        "θ is undefined on the disk, so a range of values cannot be set for it",
+        "r can be negative, a case that the map must exclude for the disk",
         "The Jacobian fixes the range"
       ],
       "explanation": "With θ ∈ [0, 4π] the disk would be covered twice. The Jacobian only gives the local scaling, not the domain.",
@@ -117,7 +117,7 @@
       "options": [
         "det J du dv, which is negative, so that the area element reflects the reversal of orientation",
         "|det J| du dv, which stays positive",
-        "1 du dv",
+        "1 du dv, with no Jacobian factor",
         "det J du dv, which is negative"
       ],
       "explanation": "Scalar area uses the absolute value. Oriented integrals of forms keep the sign.",

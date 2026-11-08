@@ -16,7 +16,7 @@
       "options": [
         "Positive, since the field is non-zero and so carries something through the surface patch",
         "Zero, since the normal component is zero",
-        "Negative",
+        "Negative, as the field points inward here",
         "Equal to the field magnitude times area"
       ],
       "answer": "Zero, since the normal component is zero",
@@ -31,8 +31,8 @@
       "options": [
         "The sign of the flux, not the surface area",
         "The area changes sign",
-        "The area doubles",
-        "Nothing at all"
+        "The area doubles, as the surface is flipped",
+        "The area changes sign along with the flux"
       ],
       "answer": "The sign of the flux, not the surface area",
       "explanation": "The unit normal reverses, flipping the sign of F·n. The scalar area element |ru × rv| du dv uses a magnitude.",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "The flux of a vector field is computed through a surface. Does it always mean particles per second?",
       "options": [
-        "Yes: flux is always a rate of particles crossing the surface, whatever the field represents",
+        "Yes: flux is a rate of particles that cross the surface",
         "No: its meaning depends on the field's units and what it represents",
-        "No: flux has no meaning",
+        "No: flux has no meaning outside fluid flow, where particles are counted as such",
         "Yes, if the surface is closed"
       ],
       "answer": "No: its meaning depends on the field's units and what it represents",
@@ -79,9 +79,9 @@
       "prompt": "A surface is parametrised by r(u, v). Why can't you replace dS by n du dv with a unit normal n?",
       "answer": "The magnitude |ru × rv| gives the local area scale and must be kept",
       "options": [
-        "The cross product is always a unit vector",
-        "The normal is not defined",
-        "dS = du dv always",
+        "The cross product is a unit vector, so the local area scale is one",
+        "The normal is not defined for a parametrised surface, so n du dv has no meaning",
+        "dS = du dv, as the parameter area is the surface area",
         "The magnitude |ru × rv| gives the local area scale and must be kept"
       ],
       "explanation": "Parameter increments du dv are not areas. dS = |ru × rv| du dv accounts for stretching.",
@@ -118,7 +118,7 @@
         "It doubles",
         "Nothing: area is unsigned",
         "It becomes negative, since reversing the orientation also reverses the sign of the area element",
-        "It halves"
+        "It halves in size"
       ],
       "explanation": "Orientation changes the sign of oriented quantities like flux, not the unsigned area.",
       "hint": "Is area a signed quantity?",
