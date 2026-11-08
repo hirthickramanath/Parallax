@@ -17,6 +17,7 @@ import { Entry } from "./pages/Entry";
 import { AuthProvider } from "./hooks/useAuth";
 import { AccountMenu } from "./components/AccountMenu";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { RouteErrorBoundary } from "./components/RouteErrorBoundary";
 import { RouteTitle } from "./components/RouteTitle";
 import { Login } from "./pages/Login";
 import "@fontsource-variable/literata/wght.css";
@@ -119,61 +120,69 @@ function Renamed({ children }: { children: ReactElement }) {
 }
 function App() {
   return (
-    <Suspense fallback={<SkyLoader />}>
-      <RouteTitle />
-      <Routes>
-        <Route element={<PublicLayout />}>
-          <Route path="/" element={<Entry />} />
-          <Route path="/login" element={<Login />} />
-        </Route>
-        <Route
-          element={
-            <ProtectedRoute>
-              <LearningProvider>
-                <AppLayout />
-              </LearningProvider>
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/labs" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/review" element={<Review />} />
-          <Route path="/revise" element={<Revise />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/author" element={<Author />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/learner-pilot" element={<LearnerPilot />} />
-          <Route path="/plan" element={<WeeklyPlan />} />
-          <Route path="/revision-plan" element={<RevisionPlan />} />
-          <Route path="/foundation-revision" element={<FoundationRevision />} />
+    <RouteErrorBoundary>
+      <Suspense fallback={<SkyLoader />}>
+        <RouteTitle />
+        <Routes>
+          <Route element={<PublicLayout />}>
+            <Route path="/" element={<Entry />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
           <Route
-            path="/foundation-revision/:id"
-            element={<FoundationRevision />}
-          />
-          <Route path="/placement" element={<Placement />} />
-          <Route
-            path="/lesson/:id"
             element={
-              <Renamed>
-                <LessonPlayer />
-              </Renamed>
+              <ProtectedRoute>
+                <LearningProvider>
+                  <AppLayout />
+                </LearningProvider>
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/learn" element={<Learn />} />
+            <Route
+              path="/labs"
+              element={<Navigate to="/dashboard" replace />}
+            />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/review" element={<Review />} />
+            <Route path="/revise" element={<Revise />} />
+            <Route path="/stats" element={<Stats />} />
+            <Route path="/author" element={<Author />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/learner-pilot" element={<LearnerPilot />} />
+            <Route path="/plan" element={<WeeklyPlan />} />
+            <Route path="/revision-plan" element={<RevisionPlan />} />
+            <Route
+              path="/foundation-revision"
+              element={<FoundationRevision />}
+            />
+            <Route
+              path="/foundation-revision/:id"
+              element={<FoundationRevision />}
+            />
+            <Route path="/placement" element={<Placement />} />
+            <Route
+              path="/lesson/:id"
+              element={
+                <Renamed>
+                  <LessonPlayer />
+                </Renamed>
+              }
+            />
+            <Route path="/teaching-lab" element={<TeachingLab />} />
+          </Route>
+          <Route
+            path="*"
+            element={
+              <main id="main" className="workspace-page">
+                <h1>Off the map.</h1>
+                <Link to="/">Return home</Link>
+              </main>
             }
           />
-          <Route path="/teaching-lab" element={<TeachingLab />} />
-        </Route>
-        <Route
-          path="*"
-          element={
-            <main id="main" className="workspace-page">
-              <h1>Off the map.</h1>
-              <Link to="/">Return home</Link>
-            </main>
-          }
-        />
-      </Routes>
-    </Suspense>
+        </Routes>
+      </Suspense>
+    </RouteErrorBoundary>
   );
 }
 ReactDOM.createRoot(document.getElementById("root")!).render(

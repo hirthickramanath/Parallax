@@ -11,7 +11,9 @@ test("public pages have distinct titles", async ({ page }) => {
   expect(await page.title()).not.toBe(home);
 });
 
-test("signed-in pages, lessons and unknown routes update the title", async ({ page }) => {
+test("signed-in pages, lessons and unknown routes update the title", async ({
+  page,
+}) => {
   await signedIn(page);
   await page.goto("/learn");
   await expect(page).toHaveTitle("Course map — Parallax");
@@ -23,4 +25,20 @@ test("signed-in pages, lessons and unknown routes update the title", async ({ pa
   await expect(page).toHaveTitle(`${heading} — Parallax`);
   await page.goto("/no-such-page");
   await expect(page).toHaveTitle("Page not found — Parallax");
+});
+
+// A page chunk that fails to download (flaky network, or a deploy that replaced the file) must not leave a blank page.
+test("a failed page chunk shows a recoverable message", async ({ page }) => {
+  await signedIn(page);
+  await page.route("**/assets/Stats-*.js", (route) => route.abort());
+  await page.goto("/stats");
+  await expect(page.getByRole("alert")).toContainText("This page did not load");
+  await expect(
+    page.getByRole("button", { name: "Reload the page" }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Return home" })).toBeVisible();
+  // Other pages still work, so the failure is contained to the route.
+  await page.unroute("**/assets/Stats-*.js");
+  await page.goto("/settings");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible();
 });
