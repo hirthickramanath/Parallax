@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { signedIn } from "./helpers";
 
+// The production service worker answers chunk requests itself, which page.route cannot intercept.
+test.use({ serviceWorkers: "block" });
+
 // Every route gets its own document title, so tabs, history and screen readers can tell pages apart (WCAG 2.4.2).
 test("public pages have distinct titles", async ({ page }) => {
   await page.goto("/");
