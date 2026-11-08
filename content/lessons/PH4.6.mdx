@@ -15,7 +15,7 @@
       "prompt": "A dielectric has uniform polarisation P. Do all bound charges vanish?",
       "options": [
         "Yes: uniform means no bound charge",
-        "Yes: ρ_b = 0 means none",
+        "Yes: ρ_b = 0 removes the surface term too",
         "No: surface bound charge σ_b = P·n̂ remains",
         "Yes: no polarisation charge"
       ],
@@ -31,7 +31,7 @@
       "options": [
         "Bound charge only: ∇·D = ρ_bound in matter",
         "Free charge only: ∇·D = ρ_free",
-        "Neither",
+        "Total charge: ∇·D = ρ_total",
         "Total charge"
       ],
       "answer": "Free charge only: ∇·D = ρ_free",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "You insert a dielectric into a capacitor that stays connected to a battery. Does the charge on the plates stay fixed?",
       "options": [
-        "Yes: charge is always fixed on the plates, since inserting a dielectric adds no free charge",
+        "Yes: the plate charge is fixed when a dielectric enters",
         "Yes: the capacitor is isolated",
-        "Yes: it is conserved",
+        "Yes: charge conservation keeps the plate charge unchanged",
         "No: the battery supplies extra free charge to hold V constant"
       ],
       "answer": "No: the battery supplies extra free charge to hold V constant",
@@ -79,10 +79,10 @@
       "prompt": "Why does a statement D = εE need a stated constitutive assumption?",
       "answer": "Linearity, isotropy and the material response are additional modelling",
       "options": [
-        "It is exact, since D = εE holds in every material without any assumption about the response",
+        "It is an exact law that holds without further assumptions",
         "Linearity, isotropy and the material response are additional modelling",
-        "It holds identically in every material",
-        "It is a definition"
+        "It is an identity that follows directly from Maxwell's laws",
+        "It is just the definition of D, so no assumption is involved"
       ],
       "explanation": "D = ε₀E + P is the definition; scalar ε is one response model.",
       "type": "mcq",
@@ -116,8 +116,8 @@
       "answer": "No: P·n̂ can be nonzero at a boundary",
       "options": [
         "Yes: no bound charge anywhere, since zero bulk divergence removes surface terms too",
-        "Yes: always",
-        "Yes: zero divergence removes all",
+        "Yes: uniform P has no boundary effect",
+        "Yes: zero divergence removes the surface term",
         "No: P·n̂ can be nonzero at a boundary"
       ],
       "explanation": "Bulk and surface bound charges are separate terms.",

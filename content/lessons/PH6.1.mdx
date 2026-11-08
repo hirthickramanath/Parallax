@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "A wave packet travels in a medium where ω(k) is nonlinear. What happens to the packet shape?",
       "options": [
-        "It stays the same only when k is small",
-        "It is preserved exactly, since each component travels at the same speed in a nonlinear medium",
-        "It sharpens",
+        "It stays unchanged, with the envelope moving at the phase speed",
+        "It is preserved, with each component moving at one speed",
+        "It narrows and its peak amplitude grows as it travels",
         "It generally changes, since different components accumulate different phases"
       ],
       "answer": "It generally changes, since different components accumulate different phases",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "A finite-difference simulation of a wave equation shows pulses spreading. Is this the same as dispersion in the real medium?",
       "options": [
-        "Yes: always physical, since a numerical scheme cannot add spreading of its own",
+        "Yes: the spreading is physical, not a numerical effect",
         "Yes: it is material dispersion",
         "No: it can arise from the discretisation of the scheme",
-        "Yes: identical"
+        "Yes: the scheme reproduces the true physics faithfully"
       ],
       "answer": "No: it can arise from the discretisation of the scheme",
       "explanation": "Numerical dispersion depends on grid spacing and time step.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "When is the group velocity dω/dk a meaningful speed of a wave packet?",
       "options": [
-        "Only in vacuum, since dispersion is absent elsewhere and the envelope is otherwise undefined",
+        "In vacuum, where the medium adds no dispersion",
         "When the envelope remains well defined, i.e. weak distortion",
-        "For any wave",
-        "Only for plane waves"
+        "For a monochromatic plane wave in a medium",
+        "In a medium with constant refractive index"
       ],
       "answer": "When the envelope remains well defined, i.e. weak distortion",
       "explanation": "Strong dispersion or absorption can distort the envelope so much that no single speed describes it.",
@@ -81,8 +81,8 @@
       "options": [
         "Branches have the same ω(k), so the choice of mode makes no difference to the wave",
         "Different branches can have different propagation and polarisation",
-        "It only changes labels",
-        "All branches are the same"
+        "Branch labels change but the physics stays the same",
+        "The branches share the same dispersion and polarisation"
       ],
       "explanation": "A medium may support several dispersion curves.",
       "type": "mcq",
@@ -117,8 +117,8 @@
       "options": [
         "No: they coincide only in special cases such as a linear relation through the origin",
         "Yes: always equal, since both express the same ratio of frequency to wavenumber for any wave",
-        "Yes: for any wave",
-        "Yes: all wave speeds are the same"
+        "Yes: phase and group velocity agree for a wave of this kind",
+        "Yes: the different wave speeds coincide when ω(k) is smooth"
       ],
       "explanation": "The phase velocity is ω/k, and the group velocity is its derivative.",
       "hint": "Test ω = ck and ω = ck².",

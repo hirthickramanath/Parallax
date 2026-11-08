@@ -16,8 +16,8 @@
       "options": [
         "It does not, since E = −∇V and the gradient of a constant is zero",
         "It doubles, since adding the same constant everywhere also scales up the gradient",
-        "It increases by V₀",
-        "It reverses"
+        "It increases by V₀ divided by a characteristic distance",
+        "It reverses direction, as the potential reference is moved"
       ],
       "answer": "It does not, since E = −∇V and the gradient of a constant is zero",
       "explanation": "Only potential differences matter physically.",
@@ -30,7 +30,7 @@
       "prompt": "You set V = 0 at one reference point. Does that replace the boundary data needed for a boundary-value problem?",
       "options": [
         "Yes: for Laplace's equation, since one reference value determines the whole solution inside",
-        "Yes: it is enough",
+        "Yes: a single reference value is sufficient to fix the solution",
         "No: it only fixes the additive constant, not the physical gradients",
         "Yes: one value determines everything"
       ],
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "You specify only the normal derivative (Neumann data) on a closed boundary. Can it be any function you like?",
       "options": [
-        "Yes: if the surface is a sphere, any normal-derivative data are allowed whatever the enclosed charge",
-        "Yes: arbitrary data",
+        "Yes: on a sphere the normal derivative may be freely specified",
+        "Yes: arbitrary data can be imposed on a closed surface",
         "No: it must satisfy a compatibility condition with the enclosed charge",
-        "Yes: any function"
+        "Yes: a smooth normal-derivative function is enough to define it"
       ],
       "answer": "No: it must satisfy a compatibility condition with the enclosed charge",
       "explanation": "∮∂V/∂n dS = −Q/ε₀ by Gauss's theorem.",
@@ -81,8 +81,8 @@
       "options": [
         "It matches at one point, which shows that the potential is correct everywhere in the region",
         "It satisfies the equation and all the boundary data, and the solution is unique",
-        "It looks plausible",
-        "It is simple"
+        "It resembles the expected shape and has sensible limiting behaviour",
+        "It has a simple closed form in the chosen coordinate system"
       ],
       "explanation": "The uniqueness theorem guarantees it is the solution.",
       "type": "mcq",
@@ -117,7 +117,7 @@
       "options": [
         "No: E depends on the gradient, and the dipole's fields add at the midpoint",
         "Yes: zero force at the midpoint, since the field vanishes wherever the potential is zero",
-        "Yes: by symmetry",
+        "Yes: the symmetry of a dipole makes the field vanish at the midpoint",
         "Yes: zero potential means zero field"
       ],
       "explanation": "The two charges' potentials cancel but their fields point the same way.",
