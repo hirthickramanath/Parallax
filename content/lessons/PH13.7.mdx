@@ -17,7 +17,7 @@
         "Yes: the observed counts equal the number of interactions that took place, so no correction is needed at all",
         "Yes: efficiency only affects the uncertainty",
         "No: the counts are only the fraction of events detected and selected, so you must correct for it",
-        "No: but only for neutral particles"
+        "No: but just for neutral particles, as charged ones are detected with full efficiency in the apparatus"
       ],
       "answer": "No: the counts are only the fraction of events detected and selected, so you must correct for it",
       "explanation": "σ = N_obs / (ε · L), where L is the integrated luminosity.",
@@ -30,7 +30,7 @@
       "prompt": "A Monte Carlo simulation reproduces the detector response. Does that replace independent calibration?",
       "options": [
         "Yes: a simulation is a calibration",
-        "No: simulations cannot model detector response at all, so only direct calibration data can ever be trusted",
+        "No: simulations cannot model the response, so calibration data are needed",
         "Yes: if it has enough events",
         "No: the simulation must itself be validated against calibration data"
       ],
@@ -45,7 +45,7 @@
       "prompt": "You unfold a measured spectrum by applying the inverse response matrix directly. What can go wrong?",
       "options": [
         "The unfolded spectrum becomes smoother than the true one, since inversion averages away the fine structure",
-        "Nothing: the inverse is exact and stable",
+        "No problem arises: the inverse is exact and stable in the unfolding",
         "The total event count is destroyed",
         "Statistical noise can be amplified because the matrix is ill conditioned"
       ],
@@ -79,9 +79,9 @@
       "prompt": "An analysis reports a 5σ discovery with a 30% uncertainty on the rate. Why are these two statements about different things?",
       "answer": "Significance measures incompatibility with the null hypothesis; precision measures how well a value is known",
       "options": [
-        "They are two names for the same quantity, since a larger significance always means a smaller fractional uncertainty",
+        "They are two names for the same quantity, as a larger significance means a smaller fractional uncertainty",
         "Significance measures incompatibility with the null hypothesis; precision measures how well a value is known",
-        "Significance measures systematic error only",
+        "Significance measures systematic error, and precision measures the statistical error of the rate",
         "Precision measures the probability of a fluke"
       ],
       "explanation": "You can have a clear discovery with a poor measurement, or a precise measurement of a small effect.",
