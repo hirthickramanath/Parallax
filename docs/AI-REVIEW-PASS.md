@@ -71,10 +71,14 @@ Effects on this report:
 
 - **F1/F2:** addressed in form. Residual leakage (correct answer rarely the shortest; a "since/because" wording tell on
   distractors) is listed in `docs/QUESTION-QUALITY.md`.
-- **F7 (new, medium):** after the rewrite, all 212 AI-assisted source mappings are stale, because every mapped lesson
-  changed. They are kept in `staleInspections` with a reason; none counts as current. The source check must be redone.
+- **F7 (new, medium):** after the rewrite, all 212 AI-assisted source mappings were stale, because every mapped lesson
+  changed. They were re-confirmed by a text-delta check (not a re-read of the sources) and carry their previous
+  hash and the basis; the rewritten questions remain unchecked against sources. They are still non-independent.
 - **Answer-length leak:** the first rewrite pass had the right answer as the longest option in about 91% of
-  questions. A second pass lengthened distractors until the rate fell to 25.7%.
+  questions. A second pass lengthened distractors until the rate fell to 25.7%, and a third wording pass brought it
+  to 22.9% and reduced other tells; the correct option is now most often second-longest. See
+  `docs/QUESTION-QUALITY.md` for the current numbers.
+- **Single attempt:** question cards now lock after the first submit, and mastery counts first attempts only.
 - **Test rule relaxed:** the explanation-length rule changed from 0.6 x answer length to a 30-character floor.
-- F3 (templated numeric explanations) and F5 (boilerplate) are still open.
+- F3 (templated numeric explanations) and F5 (boilerplate and restated blocks) have since been fixed.
 - This remains a non-independent AI pass. No lesson was promoted, and none can be without an independent reviewer's record.
