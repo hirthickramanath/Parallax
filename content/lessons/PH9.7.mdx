@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "A density matrix has trace one. Does that imply the state is pure?",
       "options": [
-        "Yes: for qubits, since a trace-one density matrix of a two-level system is always pure",
+        "Yes: for a two-level system the trace fixes the purity",
         "Yes: trace one means pure",
         "No: trace one is required of all states",
-        "Yes: always"
+        "Yes: unit trace implies a single state vector"
       ],
       "answer": "No: trace one is required of all states",
       "explanation": "Trace one is required of all states, and purity needs Tr ρ² = 1. Mixed states also have trace one.",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "A pure entangled state of two qubits is given. Can one qubit still show decoherence?",
       "options": [
-        "No: only mixed states decohere, since a pure state of the joint system stays pure for each qubit",
-        "No: no decoherence",
+        "No: decoherence needs a mixed joint state",
+        "No: a pure joint state cannot show it locally",
         "Yes: entanglement hides phase information locally",
-        "No: pure stays pure"
+        "No: each qubit stays pure when the whole is pure"
       ],
       "answer": "Yes: entanglement hides phase information locally",
       "explanation": "The reduced state is mixed, so local coherence is lost.",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "You damp the off-diagonal elements of ρ with an arbitrary rate matrix. Is the dynamics always physical?",
       "options": [
-        "Yes: all rates are allowed, since any damping of the off-diagonal elements gives a valid evolution",
-        "Yes: it keeps trace",
-        "Yes: any damping works",
+        "Yes: the rates can be chosen freely for a valid evolution",
+        "Yes: preserving the trace is enough for validity",
+        "Yes: damping the coherences yields a valid density matrix",
         "No: positivity and complete positivity impose constraints"
       ],
       "answer": "No: positivity and complete positivity impose constraints",
@@ -80,9 +80,9 @@
       "answer": "They affect coherence and populations or energy differently",
       "options": [
         "They affect coherence and populations or energy differently",
-        "Neither changes coherence, since both processes act on the energy of the system only",
-        "They are the same",
-        "Both change populations"
+        "Neither changes coherence, as both act on energy",
+        "They are the same process under two different names",
+        "Both change the populations in the same way"
       ],
       "explanation": "T₂ ≤ 2T₁, where dephasing adds to T₂.",
       "type": "mcq",
@@ -115,10 +115,10 @@
       "prompt": "Is an equal coherent superposition (|0⟩ + |1⟩)/√2 identical to an equal incoherent mixture?",
       "answer": "No: their density matrices differ in the off-diagonal coherences",
       "options": [
-        "Yes: equal populations, since both states give identical results for every possible measurement",
+        "Yes: both states have equal populations in the measured basis",
         "Yes: they are the same state",
         "No: their density matrices differ in the off-diagonal coherences",
-        "Yes: all measurements agree"
+        "Yes: measurements give the same statistics for both"
       ],
       "hint": "Measure in the X basis.",
       "explanation": "An X-basis measurement distinguishes them.",

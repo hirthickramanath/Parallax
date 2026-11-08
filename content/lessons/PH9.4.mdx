@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "A variational calculation gives an upper bound for the ground-state energy of an approximate Hamiltonian. Is it automatically a bound for the exact physical energy?",
       "options": [
-        "Yes: it is a lower bound",
-        "Yes: always an upper bound for the true energy",
-        "Yes: for any Hamiltonian",
+        "Yes: the variational value is a lower bound to the true energy",
+        "Yes: it bounds the true energy from above including model errors",
+        "Yes: the bound holds for the Hamiltonian chosen as a model",
         "No: errors of the model Hamiltonian are separate from the variational bound"
       ],
       "answer": "No: errors of the model Hamiltonian are separate from the variational bound",
@@ -30,9 +30,9 @@
       "prompt": "You minimise ⟨H⟩ over all trial functions with no constraints. Can it find an excited state?",
       "options": [
         "No: it converges to the ground state unless orthogonality or min–max conditions are imposed",
-        "Yes: it finds any state, since the variational principle gives a bound on every excited state",
-        "Yes: by chance",
-        "Yes: the first excited state"
+        "Yes: it finds an excited state, as the principle bounds the excited states",
+        "Yes: it can land on an excited state if the trial form happens to be close",
+        "Yes: it returns the first excited state when the trial function is flexible"
       ],
       "answer": "No: it converges to the ground state unless orthogonality or min–max conditions are imposed",
       "explanation": "Excited states need trial functions orthogonal to lower states.",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "The WKB quantisation ∮p dx = (n + ½)h uses a ½ from the turning points. Is the offset the same for a hard wall?",
       "options": [
-        "Yes: for all boundaries, since the phase offset ½ arises from the quantisation condition itself",
-        "Yes: always 0",
+        "Yes: the offset ½ follows from the quantisation rule itself",
+        "Yes: the phase offset is zero for the boundary types",
         "No: turning points and hard walls give different phase offsets",
-        "Yes: always ½"
+        "Yes: the offset is ½ for the boundary types involved"
       ],
       "answer": "No: turning points and hard walls give different phase offsets",
       "explanation": "A hard wall gives (n + ¼) with one soft turning point, or n with two hard walls.",
@@ -80,9 +80,9 @@
       "answer": "Their error guarantees differ",
       "options": [
         "They are the same thing",
-        "Estimates are always rigorous",
+        "Estimates are rigorous bounds",
         "Their error guarantees differ",
-        "Bounds are always tight"
+        "Bounds are close to exact"
       ],
       "explanation": "A bound is a guaranteed inequality, whereas an estimate carries no guarantee.",
       "type": "mcq",
@@ -117,7 +117,7 @@
       "options": [
         "Yes: it is the true value, since a variational result can never lie below the exact energy",
         "Yes: lower is more accurate",
-        "Yes: always",
+        "Yes: the lower energy is the better approximation",
         "Not necessarily: the Hamiltonians and domains must match"
       ],
       "hint": "Do both calculations solve the same Hamiltonian?",
