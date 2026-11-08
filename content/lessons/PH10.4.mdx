@@ -16,8 +16,8 @@
       "options": [
         "No: the canonical anticommutation relations forbid it (c†² = 0)",
         "Yes: two with opposite spin in the same mode, since spin allows two fermions to share one mode",
-        "Yes: any number",
-        "Yes: at low temperature"
+        "Yes: a large number of fermions can sit in one mode at once",
+        "Yes: at low temperature, as the fermions then bunch together in the mode"
       ],
       "answer": "No: the canonical anticommutation relations forbid it (c†² = 0)",
       "explanation": "Spin is part of the mode label. Each full mode has occupation 0 or 1.",
@@ -30,9 +30,9 @@
       "prompt": "You truncate a bosonic mode at a maximum occupation N for a numerical simulation. Is [a, a†] = 1 preserved at the top boundary?",
       "options": [
         "No: the truncated ladder modifies the commutator at the edge",
-        "Yes: the commutator is exactly one everywhere, including at the top of the truncated ladder",
-        "Yes: everywhere",
-        "Yes: for any N"
+        "Yes: the commutator stays one at the top of the ladder",
+        "Yes: everywhere, as the truncation does not touch the algebra of the mode",
+        "Yes: for a large N, where the edge is far away"
       ],
       "answer": "No: the truncated ladder modifies the commutator at the edge",
       "explanation": "At the top state a† cannot raise further, so [a, a†] ≠ 1 there.",
@@ -45,7 +45,7 @@
       "prompt": "Writing a state in Fock notation |n₁, n₂, …⟩. Does that automatically solve an interacting problem?",
       "options": [
         "No: the Hamiltonian still needs to be analysed",
-        "Yes: it solves the problem, since a Fock state is always an eigenstate of the interacting Hamiltonian",
+        "Yes: the Fock state is an eigenstate of it",
         "Yes: it removes interactions",
         "Yes: it diagonalises H"
       ],
@@ -80,9 +80,9 @@
       "answer": "The basis functions and the corresponding creation and annihilation operators",
       "options": [
         "The basis functions and the corresponding creation and annihilation operators",
-        "Only the state labels need to change, since the operators and basis functions are unaffected by it",
-        "Only the Hamiltonian",
-        "Only the occupation"
+        "Just the state labels need to change, as the operators stay fixed",
+        "Just the Hamiltonian, as the operators and basis functions carry over unchanged",
+        "Just the occupation numbers, as the operators and basis functions are unchanged by it"
       ],
       "explanation": "Changing basis mixes the operators with the same coefficients as the modes: a†_k = Σ U_kj b†_j, so the creation operators must be transformed along with the basis functions.",
       "type": "mcq",
@@ -118,8 +118,8 @@
       "answer": "No: its occupation is restricted to zero or one",
       "options": [
         "Yes: up to 2",
-        "Yes: any integer",
-        "Yes: all creation operators have the same algebra",
+        "Yes: a general integer occupation, like a boson mode",
+        "Yes: creation operators share the same algebra",
         "No: its occupation is restricted to zero or one"
       ],
       "hint": "Which algebra do fermions follow?",
