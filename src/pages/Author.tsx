@@ -33,8 +33,8 @@ export function Author() {
             <h2>{lesson.title}</h2>
             <p>
               Sections: {lesson.sections.length} · Conceptual checks:{" "}
-              {lesson.questions.filter((q) => !q.tier && q.conceptual).length}/
-              {lesson.questions.filter((q) => !q.tier).length}
+              {lesson.questionStats.conceptualChecks}/
+              {lesson.questionStats.checks}
             </p>
             <p>Source review: {lesson.verification?.status || "pending"}</p>
             <ul>

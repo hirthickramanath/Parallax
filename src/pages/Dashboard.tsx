@@ -8,6 +8,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useClock, useLearning } from "../hooks/useLearning";
 import { dateKey, streakStats } from "../lib/learning-core";
 import { course, nextLesson, missingNeeds } from "../lib/course";
+import { useQuestions } from "../lib/course-questions";
 import { QuestionCard } from "../components/learning/QuestionCard";
 import { Button } from "../components/ui/button";
 export function Dashboard() {
@@ -37,11 +38,13 @@ export function Dashboard() {
     : last
       ? course.authored[last[0]]
       : course.authored["PB1.1"];
-  const puzzlePool = puzzleSource.questions.filter(
+  const puzzleQuestions = useQuestions(puzzleSource.id);
+  const puzzlePool = (puzzleQuestions || []).filter(
     (q) => !q.tier && q.conceptual === (dayIndex % 2 === 0),
   );
-  const dailyQuestion =
-    puzzlePool[dayIndex % puzzlePool.length] || puzzleSource.questions[0];
+  const dailyQuestion = puzzleQuestions
+    ? puzzlePool[dayIndex % puzzlePool.length] || puzzleQuestions[0]
+    : undefined;
   const due = Object.values(store.records.reviewCards).filter(
     (c) => new Date(c.fsrs.due).getTime() <= now,
   ).length;
@@ -94,6 +97,7 @@ export function Dashboard() {
 
       <div className="today-layout">
         <div className="today-session">
+          {dailyQuestion && (
           <section
             className="session-step daily-puzzle"
             id="daily"
@@ -125,6 +129,7 @@ export function Dashboard() {
               }}
             />
           </section>
+          )}
 
           <section className="session-step review-step" aria-label="Review">
             <span className="step-no" aria-hidden="true">

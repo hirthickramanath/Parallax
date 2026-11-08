@@ -38,7 +38,8 @@ export interface Authored extends Lesson {
     note?: string;
   };
   recap: string[];
-  questions: Question[];
+  /** Counts only; the questions themselves load per lesson with useQuestions(). */
+  questionStats: { checks: number; conceptualChecks: number };
   review: { front: string; back: string; concept: string }[];
   sections: SectionMeta[];
 }
@@ -56,6 +57,8 @@ export interface Question {
   conceptual: boolean;
   tier?: string;
 }
+/** A lesson once its questions have loaded (see useQuestions). */
+export type LessonWithQuestions = Authored & { questions: Question[] };
 export const course = raw as unknown as {
   units: Unit[];
   lessons: Lesson[];

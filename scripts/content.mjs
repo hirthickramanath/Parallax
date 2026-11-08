@@ -212,16 +212,35 @@ export function buildContent() {
     JSON.stringify({
       ...curriculum,
       authored: Object.fromEntries(
-        Object.entries(authored).map(([id, lesson]) => [
-          id,
-          {
-            ...lesson,
-            sections: lesson.sections.map(({ text, ...metadata }) => metadata),
-          },
-        ]),
+        Object.entries(authored).map(([id, lesson]) => {
+          const { questions, ...rest } = lesson;
+          const checks = questions.filter((q) => !q.tier);
+          return [
+            id,
+            {
+              ...rest,
+              sections: lesson.sections.map(({ text, ...metadata }) => metadata),
+              // Questions are about 80% of this file and are only needed once a lesson is open; they
+              // ship as one lazy chunk per lesson (src/generated/questions/<id>.json).
+              questionStats: {
+                checks: checks.length,
+                conceptualChecks: checks.filter((q) => q.conceptual).length,
+              },
+            },
+          ];
+        }),
       ),
     }),
   );
+  fs.mkdirSync("src/generated/questions", { recursive: true });
+  for (const file of fs.readdirSync("src/generated/questions"))
+    if (!authored[file.replace(/\.json$/, "")])
+      fs.unlinkSync(path.join("src/generated/questions", file));
+  for (const [id, lesson] of Object.entries(authored))
+    fs.writeFileSync(
+      `src/generated/questions/${id}.json`,
+      JSON.stringify(lesson.questions),
+    );
   for (const file of fs.readdirSync("public/content"))
     if (
       /^[A-Z]{2}\d*\.\d+\.json$/.test(file) &&

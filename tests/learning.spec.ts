@@ -1084,8 +1084,9 @@ test("adaptive readiness steps up after a correct first attempt and down after a
 }) => {
   await signedIn(page);
   await page.goto("/lesson/PB1.1");
-  const course = JSON.parse(readFileSync("src/generated/course.json", "utf8"));
-  const bank = course.authored["PB1.1"].questions;
+  const bank = JSON.parse(
+    readFileSync("src/generated/questions/PB1.1.json", "utf8"),
+  );
   async function answer(correct: boolean) {
     const form = page.locator(".adaptive-check .question-card");
     const prompt = await form.locator("h3").textContent();
