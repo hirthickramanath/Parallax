@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { useLearning } from "../../hooks/useLearning";
 import { adaptiveNext, adjustChallenge } from "../../lib/journey";
-import type { Authored } from "../../lib/course";
+import type { LessonWithQuestions } from "../../lib/course";
 import { QuestionCard } from "./QuestionCard";
 import { Button } from "../ui/button";
-export function AdaptiveCheck({ lesson }: { lesson: Authored }) {
+export function AdaptiveCheck({ lesson }: { lesson: LessonWithQuestions }) {
   const store = useLearning(),
     saved = store.records.plan[`challenge-${lesson.track}`];
   const session = store.records.lessons[lesson.id]?.interaction?.adaptive;

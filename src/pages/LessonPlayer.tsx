@@ -11,7 +11,14 @@ import {
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { createEmptyCard, type Card } from "ts-fsrs";
-import { course, missingNeeds, nextLesson } from "../lib/course";
+import {
+  course,
+  missingNeeds,
+  nextLesson,
+  type LessonWithQuestions,
+} from "../lib/course";
+import { useQuestions } from "../lib/course-questions";
+import { SkyLoader } from "../components/Sky";
 import { useLearning } from "../hooks/useLearning";
 import {
   SectionContext,
@@ -45,8 +52,10 @@ export function LessonPlayer() {
   useEffect(() => {
     if (!lesson) document.title = "Lesson not found — Parallax";
   }, [lesson]);
-  return lesson ? (
-    <Player key={id} id={id} />
+  const questions = useQuestions(lesson ? id : undefined);
+  if (lesson && !questions) return <SkyLoader />;
+  return lesson && questions ? (
+    <Player key={id} id={id} lesson={{ ...lesson, questions }} />
   ) : (
     <main id="main" className="workspace-page">
       <h1>Lesson not authored yet</h1>
@@ -55,10 +64,9 @@ export function LessonPlayer() {
     </main>
   );
 }
-function Player({ id }: { id: string }) {
+function Player({ id, lesson }: { id: string; lesson: LessonWithQuestions }) {
   const { tutorUrl } = useServices();
-  const store = useLearning(),
-    lesson = course.authored[id];
+  const store = useLearning();
   useEffect(() => {
     document.title = `${lesson.title} — Parallax`;
   }, [lesson.title]);
