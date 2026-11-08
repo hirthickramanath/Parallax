@@ -2,6 +2,19 @@
 
 19 October 2026 · Parallax code baseline: `7359d39` (application changes through `e4bbdb0`). Analysis only; these recommendations are not implemented by this document.
 
+## Follow-up, 8 November 2026
+
+Changes made after this audit, from source inspection and the repository's browser tests (no new learner study):
+
+- **Check answers are single-attempt.** A question card locks after the first submit, and mastery counts first attempts
+  only. The recommendation above about "independent retries" still stands: the only retry is restarting the lesson from
+  the course map, so a short later transfer question is still the better remediation.
+- **Failed page loads are recoverable.** A route error boundary shows a plain message and a way back instead of a
+  blank page when a lazy chunk fails to load (offline, or a deploy replaced a file). It has a browser test.
+- **Route audit.** The routes were walked through in the audit pass and no broken route was found. Public pages, signed-in pages, lessons and unknown routes now each set their own page title (`tests/titles.spec.ts`).
+- **Performance, not changed.** `course.json` (about 2.5 MB) is bundled into the `useLearning` chunk, so it loads with
+  most pages. Loading it per unit or lazily would reduce first-load size. This is a recommendation only.
+
 ## Evidence and comparison boundary
 
 Parallax behavior below is inspected directly in its React components and progress store. This is a source-level interaction audit, not a fresh usability study or verification of the deployed website.
