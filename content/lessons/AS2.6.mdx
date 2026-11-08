@@ -46,8 +46,8 @@
       "options": [
         "Yes: take the absolute value of the net flux, then compute −2.5 log of that value as the magnitude",
         "No: the logarithm of a negative number is undefined; use a likelihood or an upper limit",
-        "Yes: the magnitude is negative",
-        "Yes: set it to zero"
+        "Yes: the magnitude is negative, which means the source is very bright",
+        "Yes: set the flux to zero and compute a finite magnitude from the result"
       ],
       "answer": "No: the logarithm of a negative number is undefined; use a likelihood or an upper limit",
       "explanation": "Noise can make a measured flux negative. Report the flux or a limit.",
@@ -115,9 +115,9 @@
       "prompt": "You subtract the expected sky level exactly. Does it also remove the sky shot noise?",
       "answer": "No: subtraction removes its mean but leaves variance",
       "options": [
-        "No: the sky has no counts",
+        "No: the sky has no counts once its mean level is subtracted",
         "No: subtraction removes its mean but leaves variance",
-        "Yes: a known mean has no noise",
+        "Yes: a known mean has no noise, so the subtraction leaves a clean image",
         "Yes: it removes counting fluctuations"
       ],
       "explanation": "Random arrivals still fluctuate even if the mean is known.",

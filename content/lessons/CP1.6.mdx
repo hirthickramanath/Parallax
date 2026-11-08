@@ -15,7 +15,7 @@
       "prompt": "For all real x, what does sqrt(x**2) equal?",
       "answer": "|x|",
       "options": [
-        "x",
+        "x²",
         "x² / x",
         "|x|",
         "−x"
@@ -30,10 +30,10 @@
       "prompt": "You cancel the factor (x − 2) from (x − 2)(x + 1)/(x − 2). Is the result x + 1 valid at x = 2?",
       "answer": "No: the original expression is undefined at x = 2",
       "options": [
-        "Yes: the factors cancel, so the expression equals x + 1 for every x, including x = 2",
+        "Yes: the factors cancel, so the expression equals x + 1 for x, including x = 2",
         "No: the original expression is undefined at x = 2",
         "Yes: the result equals 3 there",
-        "No, but only on the real line"
+        "No, but just on the real line and not in the complex plane"
       ],
       "explanation": "Cancelling changes the expression's domain unless you track it. The original is undefined at x = 2 even though x + 1 is defined.",
       "type": "mcq",
@@ -48,7 +48,7 @@
         "Yes: root-finders list every root, so one converged answer from x₀ = 1 means there are no others",
         "Not necessarily: a local search finds roots near its starting point",
         "Yes: root-finders list every root",
-        "Yes, if it converged"
+        "Yes, if it converged to a root from the start"
       ],
       "explanation": "Methods like Newton's depend on the initial guess. Other roots may need different starts or an analytic or symbolic approach.",
       "type": "mcq",
@@ -130,10 +130,10 @@
       "prompt": "For an unspecified real x, SymPy should not replace sqrt(x**2) with x. What should it return?",
       "answer": "Abs(x)",
       "options": [
-        "x, because the square root of x squared is x for every real value of x, positive or negative",
+        "x**3",
         "x**2",
         "Abs(x)",
-        "x"
+        "sign(x)"
       ],
       "hint": "SymPy needs an assumption such as positive=True to simplify further.",
       "explanation": "Without an assumption that x ≥ 0, only |x| is correct. Declaring x positive allows sqrt(x**2) → x.",

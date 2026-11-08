@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "The diffusion coefficient D varies with position. Can you pull D outside the divergence in ∇·(D∇c)?",
       "options": [
-        "Yes: D can always be taken outside the divergence, since the gradient of c is the only quantity that varies",
+        "Yes: D can be taken outside the divergence, as the gradient of c is the quantity that varies",
         "No: the gradient of D contributes to the evolution",
-        "Yes: always",
+        "Yes, in a medium of uniform composition",
         "Yes: D is a constant"
       ],
       "answer": "No: the gradient of D contributes to the evolution",
@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "A particle's rms displacement after time t is √(2Dt). Is this the distance each particle travels?",
       "options": [
-        "Yes: each particle travels exactly that far, because diffusion moves every particle in the same way",
-        "Yes: each particle travels exactly that far",
-        "Yes: deterministically",
+        "Yes: each particle travels that far, as diffusion moves the particles in the same way",
+        "Yes: each particle travels that far in time t",
+        "Yes: the motion is deterministic for each one",
         "No: it summarises the spread of an ensemble, and each path is random"
       ],
       "answer": "No: it summarises the spread of an ensemble, and each path is random",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "A boundary is described as 'no flux' in one model and 'zero concentration' in another. Are these the same condition?",
       "options": [
-        "Yes: both mean nothing passes",
+        "Yes: both mean that no matter passes",
         "No: no-flux sets the gradient and zero-concentration sets the value",
-        "No: neither exists",
-        "Yes: they are equivalent"
+        "No: neither boundary exists in a real system",
+        "Yes: they are equivalent boundary conditions"
       ],
       "answer": "No: no-flux sets the gradient and zero-concentration sets the value",
       "explanation": "A wall (no flux) differs from a perfect absorber (c = 0).",
@@ -79,10 +79,10 @@
       "prompt": "Why is Fick's law alone not enough to predict how concentration evolves?",
       "answer": "You also need conservation, boundary and initial conditions",
       "options": [
-        "It predicts only steady states, so conservation of mass is not needed for the time evolution",
+        "It predicts steady states, so conservation of mass is not needed for the time evolution",
         "You also need conservation, boundary and initial conditions",
         "It does not involve concentration",
-        "It is complete"
+        "It is complete for the evolution"
       ],
       "explanation": "Fick gives flux. Conservation (∂c/∂t = −∇·J) turns it into a PDE that needs problem data.",
       "type": "mcq",
@@ -117,8 +117,8 @@
       "options": [
         "6Dt, the sum of three independent components of 2Dt",
         "3Dt, because the three directions of motion share a single total displacement of 2Dt",
-        "2Dt",
-        "Dt"
+        "2Dt, the value for one component of the displacement",
+        "Dt, as the diffusion coefficient times the time"
       ],
       "explanation": "⟨x²⟩ = 2Dt per dimension, so ⟨r²⟩ = 6Dt in 3D.",
       "hint": "Add the three Cartesian components.",

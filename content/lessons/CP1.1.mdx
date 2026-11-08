@@ -15,8 +15,8 @@
       "prompt": "A NumPy script runs without errors. What does that show about the result?",
       "answer": "Only that the code ran; shapes, units and assumptions still need checking",
       "options": [
-        "That the units are consistent",
-        "That the model is valid",
+        "That the units are consistent in the script",
+        "That the model is valid for the data in the arrays",
         "Only that the code ran; shapes, units and assumptions still need checking",
         "That the result is scientifically correct"
       ],
@@ -31,9 +31,9 @@
       "answer": "Element-wise multiplication; use A @ B for the matrix product",
       "options": [
         "Element-wise multiplication; use A @ B for the matrix product",
-        "A dot product of the two arrays, which is the same as the matrix product A @ B for any shapes",
-        "Matrix multiplication",
-        "A cross product"
+        "A dot product of the two arrays, which is the same as the matrix product A @ B for square shapes",
+        "Matrix multiplication of the two arrays",
+        "A cross product of the two arrays"
       ],
       "explanation": "In NumPy, * acts element by element (with broadcasting). The @ operator performs matrix multiplication.",
       "type": "mcq",
@@ -45,10 +45,10 @@
       "prompt": "You take b = a[2:5] from a NumPy array a and then set b[0] = 99. What happens to a?",
       "answer": "a[2] also becomes 99, since the slice shares the data",
       "options": [
-        "Only the last element changes",
+        "The last element of a changes, and the others stay put",
         "a[2] also becomes 99, since the slice shares the data",
-        "Nothing: b is an independent copy",
-        "An error is raised"
+        "No change: b is an independent copy of the slice",
+        "An error is raised as the slice is write-protected"
       ],
       "explanation": "Basic slices are views onto the same buffer. Use b = a[2:5].copy() to avoid changing the original.",
       "type": "mcq",
@@ -131,10 +131,10 @@
       "prompt": "You need the matrix product of two 3×3 arrays. Why does A * B give the wrong answer?",
       "answer": "It multiplies element by element instead of performing matrix multiplication",
       "options": [
-        "It only works for 1D arrays, so for a 3×3 array it adds the entries at each position",
-        "It adds the arrays",
+        "It works for 1D arrays, so for a 3×3 array it adds the entries at each position",
+        "It adds the arrays entry by entry instead of multiplying",
         "It multiplies element by element instead of performing matrix multiplication",
-        "It gives the transpose"
+        "It gives the transpose of the product instead of the product"
       ],
       "hint": "Compare the (0,0) entry of A * B with the row-times-column sum.",
       "explanation": "* multiplies corresponding entries. A matrix product needs @ or np.dot, with compatible shapes.",

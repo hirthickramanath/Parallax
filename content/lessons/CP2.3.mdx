@@ -16,7 +16,7 @@
       "options": [
         "It is converted to a probability automatically, since astropy.units tracks the error along with the value",
         "Nothing automatically: unit conversion does not propagate uncertainties",
-        "It is removed",
+        "It is dropped from the result, as units alone carry no error",
         "It is added in quadrature automatically"
       ],
       "answer": "Nothing automatically: unit conversion does not propagate uncertainties",
@@ -32,7 +32,7 @@
         "The star's position changes between epochs",
         "Epoch sets the units",
         "It does not matter for stars",
-        "Epochs change the star's brightness only"
+        "The brightness of the star, which changes between epochs"
       ],
       "answer": "The star's position changes between epochs",
       "explanation": "Proper motion shifts the apparent position over time, so positions must be propagated to a common epoch, or the matching radius widened.",
@@ -79,9 +79,9 @@
       "prompt": "Why must a distance from the reciprocal of a parallax be treated with care?",
       "answer": "The inverse is nonlinear, so errors and selection bias the estimate",
       "options": [
-        "Parallax has no units, so 1/ϖ is an exact distance for all stars with a positive measurement",
-        "1/ϖ is exact for all stars",
-        "Parallax is never measurable",
+        "Parallax has no units, so 1/ϖ is an exact distance for stars with a positive measurement",
+        "1/ϖ is exact for the stars in a catalogue",
+        "Parallax is not measurable for a star",
         "The inverse is nonlinear, so errors and selection bias the estimate"
       ],
       "explanation": "For noisy parallaxes the distribution of 1/ϖ is skewed and can even give negative or infinite values. A prior-based inference is better at low signal-to-noise.",
@@ -117,7 +117,7 @@
       "options": [
         "Yes, if units are right, because a parallax of 1.0 mas gives a distance of 1 kpc with a small error",
         "No: the low signal-to-noise makes the inversion biased and the uncertainty large",
-        "Yes: the inversion is always unbiased",
+        "Yes: the inversion is unbiased at that signal-to-noise",
         "No, because parallax is in milliarcseconds"
       ],
       "hint": "Compare the parallax with its uncertainty.",

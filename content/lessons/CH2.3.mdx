@@ -15,8 +15,8 @@
       "prompt": "An SCF calculation converges to a tiny residual. What does this prove?",
       "options": [
         "That the result is physically accurate, because a small residual means the functional and basis are adequate",
-        "That the basis is complete",
-        "That the functional is exact",
+        "That the basis set is complete for the system",
+        "That the functional is exact for the molecule",
         "Only that the equations are solved numerically; physical accuracy needs validation"
       ],
       "answer": "Only that the equations are solved numerically; physical accuracy needs validation",
@@ -30,8 +30,8 @@
       "prompt": "Are Kohn–Sham orbital energy differences the exact optical excitation energies?",
       "options": [
         "No: they are auxiliary quantities; excitations need extra theory such as TDDFT",
-        "Yes: the HOMO–LUMO difference in Kohn–Sham theory equals the lowest optical excitation energy exactly",
-        "Yes in the exact functional",
+        "Yes: the HOMO–LUMO difference in Kohn–Sham theory equals the lowest optical excitation energy",
+        "Yes in the exact functional, for the molecule",
         "Yes: Kohn–Sham eigenvalue differences are exact excitation energies, since the theory reproduces the density"
       ],
       "answer": "No: they are auxiliary quantities; excitations need extra theory such as TDDFT",
@@ -45,7 +45,7 @@
       "prompt": "You tune a functional's parameters on a set of molecules. Which benchmark is appropriate for assessing it?",
       "options": [
         "The same set used for tuning, since fitting and testing on one set gives the least biased estimate",
-        "No benchmark",
+        "No benchmark is needed for the tuned functional",
         "The same set used for tuning",
         "A test set independent of the tuning set"
       ],
@@ -80,8 +80,8 @@
       "answer": "Convergence is numerical stability; validation is independent evidence the prediction is adequate",
       "options": [
         "Validation is about the basis set and convergence is about the functional, with no other difference between them",
-        "They are the same",
-        "Convergence is about the functional",
+        "They are the same thing under two names, as both measure agreement",
+        "Convergence is about the choice of functional and the validation about the basis",
         "Convergence is numerical stability; validation is independent evidence the prediction is adequate"
       ],
       "explanation": "A converged calculation with a poor method gives a stable wrong answer.",
@@ -115,9 +115,9 @@
       "prompt": "Is the HOMO–LUMO Kohn–Sham gap guaranteed to equal the true lowest excitation energy?",
       "answer": "No: auxiliary eigenvalues and physical excitations are distinct",
       "options": [
-        "Yes: with hybrid functionals the Kohn–Sham gap equals the true lowest excitation energy for any molecule",
+        "Yes: with hybrid functionals the Kohn–Sham gap equals the true lowest excitation energy for a molecule",
         "No: auxiliary eigenvalues and physical excitations are distinct",
-        "Yes for atoms",
+        "Yes for atoms and ions, where the gap is exact",
         "Yes: the gap is the exact lowest excitation energy, because the orbitals come from the true density"
       ],
       "explanation": "Even the exact functional gives a KS gap that differs from the optical gap by the derivative discontinuity and excitonic effects.",

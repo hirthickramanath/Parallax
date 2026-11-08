@@ -17,7 +17,7 @@
         "That the sequence converges to 1, since a subsequence that approaches 1 forces the whole sequence to 1",
         "That the sequence converges to 1",
         "Nothing about the full sequence: other subsequences approach different values",
-        "That the sequence is unbounded"
+        "That the sequence is unbounded and diverges"
       ],
       "answer": "Nothing about the full sequence: other subsequences approach different values",
       "explanation": "A single convergent subsequence does not control the others. The even terms converge to −1, so the full sequence diverges.",
@@ -30,8 +30,8 @@
       "prompt": "A real sequence converges. What is true of it?",
       "options": [
         "It must be monotone, since the terms of a convergent sequence approach the limit from one side only",
-        "It has no finite limit",
-        "It must be unbounded",
+        "It has no finite limit, as the terms do not settle near a value",
+        "It must be unbounded, as a convergent sequence keeps on growing",
         "It is bounded: the tail stays near the limit and only finitely many terms lie outside"
       ],
       "answer": "It is bounded: the tail stays near the limit and only finitely many terms lie outside",
@@ -45,9 +45,9 @@
       "prompt": "You want lim aₙ/bₙ where aₙ → 3 and bₙ → 0. What can you say about the quotient limit law?",
       "options": [
         "It cannot be applied directly, because the denominator tends to zero",
-        "It gives 0",
-        "It gives 3/0 = ∞ automatically, because the quotient limit law extends to a zero denominator",
-        "It gives 3"
+        "It gives 0, as the denominator tends to 0",
+        "It gives 3/0 = ∞, as the quotient limit law extends to a zero denominator",
+        "It gives 3, as the denominator drops out"
       ],
       "answer": "It cannot be applied directly, because the denominator tends to zero",
       "explanation": "The limit law needs a non-zero limit for the denominator. With bₙ → 0 the quotient can diverge, oscillate or converge depending on the details.",
@@ -130,7 +130,7 @@
       "prompt": "A bounded real sequence has the property that every convergent subsequence tends to L. What follows?",
       "answer": "The whole sequence converges to L",
       "options": [
-        "Nothing: subsequences give no information",
+        "No information: the subsequence says little about the sequence",
         "The whole sequence converges to L",
         "The sequence may still diverge",
         "The sequence is monotone"

@@ -16,9 +16,9 @@
       "answer": "No: an ill-conditioned problem can amplify data errors into the parameters",
       "options": [
         "Yes: a small residual means accurate parameters",
-        "Yes, if the data are noisy",
+        "Yes, if the data are noisy but unbiased",
         "No: an ill-conditioned problem can amplify data errors into the parameters",
-        "No, because residuals are always large"
+        "No, as residuals are large when the fit is poor"
       ],
       "explanation": "A small residual only says the model reproduces the data. If the problem is ill-conditioned, very different parameter sets give almost equal residuals.",
       "type": "mcq",
@@ -33,7 +33,7 @@
         "It becomes perfect, since forming AᵀA removes the dependence of the problem on the matrix A",
         "It gets worse: κ(AᵀA) = κ(A)²",
         "It stays the same",
-        "It improves"
+        "It improves, as the problem is squared and made simpler"
       ],
       "explanation": "For full-column-rank A, the singular values of AᵀA are the squares of those of A, so the condition number is squared.",
       "type": "mcq",
@@ -48,7 +48,7 @@
         "It adds a prior-like assumption that changes the solution",
         "It guarantees the true parameters",
         "It leaves the problem unchanged",
-        "It removes all noise"
+        "It removes noise from the data and the model"
       ],
       "explanation": "Regularisation trades bias for stability. The solution now depends on the penalty and its weight, as well as the data.",
       "type": "mcq",
@@ -80,8 +80,8 @@
       "prompt": "For an ill-conditioned least-squares problem, which approach is preferred numerically?",
       "answer": "QR or SVD on A directly, rather than forming AᵀA",
       "options": [
-        "Always form the normal equations AᵀAx = Aᵀb, since this is the most accurate method for any matrix",
-        "Always form the normal equations",
+        "Form the normal equations AᵀAx = Aᵀb, as this is the most accurate method for a matrix",
+        "Form the normal equations and solve them directly",
         "QR or SVD on A directly, rather than forming AᵀA",
         "Remove the largest singular value"
       ],
@@ -130,7 +130,7 @@
       "prompt": "A linear solve returns x with residual ‖Ax − b‖ about 10⁻¹⁵. Why can the error in x still be large?",
       "answer": "The forward error can be the residual times the condition number",
       "options": [
-        "Residuals are always larger than errors, so a residual of 10⁻¹⁵ means x is exact to machine precision",
+        "Residuals are larger than errors, so a residual of 10⁻¹⁵ means x is exact to machine precision",
         "The forward error can be the residual times the condition number",
         "Residual and error are the same thing",
         "The solver must have a bug"

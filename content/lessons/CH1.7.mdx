@@ -15,9 +15,9 @@
       "prompt": "One paper reports an activity coefficient on the mole-fraction scale and another on the molality scale. Can you mix them without conversion?",
       "options": [
         "No: the numerical definitions and standard states differ",
-        "Yes: only in water",
+        "Yes: in water, where the two scales coincide",
         "Yes: both are activity coefficients",
-        "Yes: they are always equal"
+        "Yes: they are equal in a given solution"
       ],
       "answer": "No: the numerical definitions and standard states differ",
       "explanation": "Activity coefficients depend on the concentration scale because the reference states differ.",
@@ -31,8 +31,8 @@
       "options": [
         "Fugacity is always equal to the pressure, so the gauge reading must be wrong for this gas",
         "Fugacity is an effective pressure and equals pressure only in the ideal limit",
-        "Fugacity is always lower",
-        "The pressure gauge is wrong"
+        "Fugacity is lower than the pressure for a real gas",
+        "The pressure gauge is wrong at that reading"
       ],
       "answer": "Fugacity is an effective pressure and equals pressure only in the ideal limit",
       "explanation": "f = φp, with φ = 1 for an ideal gas.",
@@ -45,9 +45,9 @@
       "prompt": "You fit activity coefficient curves for the two components of a binary mixture independently. Must they obey the Gibbs–Duhem relation?",
       "options": [
         "Yes: they are linked by thermodynamic consistency, so independent fits can violate it",
-        "No: the two coefficients are independent, so each curve can be fitted on its own without any constraint",
-        "Yes: and any pair of curves satisfies it automatically",
-        "No: they are independent"
+        "No: the two coefficients are independent, so each curve can be fitted on its own without a constraint",
+        "Yes: and a pair of curves satisfies it by default in the fit",
+        "No: they are independent in a binary mixture of this type"
       ],
       "answer": "Yes: they are linked by thermodynamic consistency, so independent fits can violate it",
       "explanation": "x₁ d ln γ₁ + x₂ d ln γ₂ = 0 at constant T and p. Fitting both freely can break this.",
@@ -79,9 +79,9 @@
       "prompt": "Why must μ = μ° + RT ln(f/p°) include a standard pressure p°?",
       "answer": "It makes the ratio dimensionless and defines the reference state",
       "options": [
-        "It cancels with f",
+        "It cancels with f in the logarithm",
         "It changes the temperature",
-        "It is a formatting convention only",
+        "It is a formatting convention for the equation",
         "It makes the ratio dimensionless and defines the reference state"
       ],
       "explanation": "The logarithm requires a dimensionless argument, and μ° depends on the chosen p°.",
@@ -115,10 +115,10 @@
       "prompt": "May you rescale activity coefficients arbitrarily to improve a fit?",
       "answer": "No: standard states and thermodynamic consistency constrain them",
       "options": [
-        "Yes: any correction is fine",
+        "Yes: a correction of a convenient size is fine",
         "No: standard states and thermodynamic consistency constrain them",
         "Yes: if the pressure is low",
-        "Yes: they are only fitting constants"
+        "Yes: they are fitting constants without a meaning"
       ],
       "explanation": "Activities and standard quantities must be defined together.",
       "hint": "Does changing γ require a matching change of μ°?",

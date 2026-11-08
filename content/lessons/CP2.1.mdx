@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "Your iterative linear solver reports a residual of 10⁻¹² for the discretised PDE. What does this say about the error relative to the true PDE solution?",
       "options": [
-        "The grid is fine enough",
+        "The grid is fine enough for the equation",
         "The solution is accurate to 10⁻¹², because the residual measures the error relative to the true solution",
         "Nothing certain: discretisation and boundary errors can still be large",
-        "The PDE is solved exactly"
+        "The PDE is solved to the accuracy of the residual"
       ],
       "answer": "Nothing certain: discretisation and boundary errors can still be large",
       "explanation": "The residual measures how well the algebraic system is solved. The discrete equations themselves differ from the PDE by truncation error, and boundary conditions may be wrong.",
@@ -29,8 +29,8 @@
       "id": "concept-2",
       "prompt": "An implicit scheme is unconditionally stable. Does that guarantee an accurate answer with a very large time step?",
       "options": [
-        "Yes, if the grid is fine",
-        "Yes: stable means accurate",
+        "Yes, provided the grid is fine in space, as then the error is small",
+        "Yes: stable means that the answer is accurate",
         "No: stability keeps errors bounded, but truncation error can still be large",
         "No: unstable methods are more accurate"
       ],
@@ -117,8 +117,8 @@
       "options": [
         "It becomes unstable, because DΔt/Δx² rises from 0.4 to 1.6",
         "It becomes more stable, since a finer spatial grid resolves the diffusion better and reduces the numerical error",
-        "It becomes exact",
-        "Nothing changes"
+        "It becomes exact, as the step is larger",
+        "No change arises in the solution"
       ],
       "hint": "Compute DΔt/Δx² before and after.",
       "explanation": "The stability limit is DΔt/Δx² ≤ 0.5. Halving Δx quadruples the ratio, here to 1.6, so the explicit scheme blows up.",

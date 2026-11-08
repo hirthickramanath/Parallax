@@ -14,7 +14,7 @@
       "id": "concept-1",
       "prompt": "In LCAO with non-orthogonal atomic orbitals, can the overlap matrix S be set to the identity?",
       "options": [
-        "Yes for heavy atoms",
+        "Yes for heavy atoms, where the overlap is small",
         "Yes for minimal bases",
         "Yes: for minimal bases the overlap matrix is the identity, so the eigenproblem reduces to Hc = Ec",
         "No: overlap changes the eigenproblem to Hc = ESc"
@@ -31,8 +31,8 @@
       "options": [
         "Small eigenvalues of S amplify errors and worsen conditioning",
         "The basis becomes orthogonal, which makes the calculation faster and the energy more accurate",
-        "The energy is exact",
-        "No problem"
+        "The energy is exact in the large basis",
+        "No problem arises in the calculation"
       ],
       "answer": "Small eigenvalues of S amplify errors and worsen conditioning",
       "explanation": "Inverting a near-singular overlap matrix amplifies rounding errors.",
@@ -45,8 +45,8 @@
       "prompt": "Mulliken atomic populations are computed from LCAO coefficients. Are they uniquely observable?",
       "options": [
         "No: the partition depends on the basis set and the convention",
-        "Yes: they are uniquely observable quantities, and a larger basis set only improves the precision",
-        "Yes with a plot",
+        "Yes: they are uniquely observable quantities, and a larger basis set improves the precision",
+        "Yes, with a plot of the populations",
         "Yes with large basis sets"
       ],
       "answer": "No: the partition depends on the basis set and the convention",
@@ -80,7 +80,7 @@
       "answer": "Coefficients, convergence and conditioning all depend on it",
       "options": [
         "It is required by the journal, since the basis set does not affect the coefficients or the energies",
-        "Basis sets don't matter",
+        "Basis sets do not matter for the result",
         "Coefficients, convergence and conditioning all depend on it",
         "It only affects the title"
       ],
@@ -115,7 +115,7 @@
       "prompt": "A non-orthogonal atomic basis is used. Which statement is correct?",
       "answer": "The generalised eigenproblem retains the overlap matrix",
       "options": [
-        "The basis is automatically orthogonal, so the overlap matrix is the identity and drops out of the equations",
+        "The basis is orthogonal, so the overlap matrix is the identity and drops out of the equations",
         "The overlap matrix is zero",
         "The generalised eigenproblem retains the overlap matrix",
         "The overlap matrix is the identity"

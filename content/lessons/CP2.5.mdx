@@ -15,7 +15,7 @@
       "prompt": "You commit your analysis code to Git. Does the commit capture the dataset you downloaded from an archive?",
       "options": [
         "Yes, if the data are small",
-        "Yes, the commit stores their checksums automatically, so the dataset can be checked at any later time",
+        "Yes, the commit stores their checksums by default, so the dataset can be checked at a later time",
         "Yes: Git stores everything in the folder",
         "No: untracked and remote data need separate provenance"
       ],
@@ -29,9 +29,9 @@
       "id": "concept-2",
       "prompt": "You fix a random seed in a parallel program. Does that guarantee bit-identical results on any machine?",
       "options": [
-        "No, but only for GPUs",
+        "No, but the difference arises for GPUs alone",
         "No: libraries, floating-point order and scheduling can differ",
-        "Yes, within the same language, since the seed fixes the order of every random draw on any machine",
+        "Yes, within the same language, as the seed fixes the order of the random draws on a machine",
         "Yes: the seed fixes everything"
       ],
       "answer": "No: libraries, floating-point order and scheduling can differ",
@@ -44,10 +44,10 @@
       "id": "concept-3",
       "prompt": "A paper claims 'our code scales 90× on 128 cores'. What must be specified to interpret this?",
       "options": [
-        "Only the clock speed",
+        "The clock speed of the processors that were used in the run",
         "Whether the problem size is fixed (strong scaling) or grows (weak scaling)",
-        "The language of the code",
-        "Nothing: the number is self-explanatory"
+        "The language of the code that was used for the run",
+        "No detail: the number is self-explanatory to a reader"
       ],
       "answer": "Whether the problem size is fixed (strong scaling) or grows (weak scaling)",
       "explanation": "Fixed-work (Amdahl) and growing-work (Gustafson) comparisons answer different questions. Always state the workload and the baseline.",
@@ -79,10 +79,10 @@
       "prompt": "Which of these should not be stored in a public repository as part of provenance?",
       "answer": "Secret credential values and unrelated private data",
       "options": [
-        "The input checksums",
+        "The input checksums of the data files",
         "Secret credential values and unrelated private data",
         "The environment file listing package versions, because it reveals which software the analysis depends on",
-        "The run parameters"
+        "The run parameters of the analysis"
       ],
       "explanation": "Provenance should record inputs, parameters, environment and execution details. Secrets, tokens and unrelated private data must stay out of version control.",
       "type": "mcq",
@@ -115,9 +115,9 @@
       "prompt": "A colleague says 'it is all in Git, so my result is reproducible'. What is missing if the analysis reads a live web service?",
       "answer": "The state of that service at run time, which Git does not capture",
       "options": [
-        "Nothing: Git covers everything, because a commit hash fully determines the output of the analysis",
-        "A newer Git version",
-        "More branches",
+        "No gap: Git covers the whole analysis, as a commit hash determines the output of the analysis",
+        "A newer version of Git for the project",
+        "More branches in the repository for each step of the run",
         "The state of that service at run time, which Git does not capture"
       ],
       "hint": "Will the same query return the same data next year?",

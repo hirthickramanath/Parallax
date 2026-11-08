@@ -14,9 +14,9 @@
       "id": "concept-1",
       "prompt": "You standardise all features with the full dataset's mean and variance, then run cross-validation. What is wrong?",
       "options": [
-        "The features should not be standardised at all, because scaling is never valid for a cross-validation run",
+        "The features should not be standardised, as scaling is not valid for a cross-validation run",
         "Information from the held-out folds leaked into training",
-        "Nothing: standardising is harmless",
+        "No concern: standardising is harmless for the folds",
         "Cross-validation needs unscaled data"
       ],
       "answer": "Information from the held-out folds leaked into training",
@@ -32,7 +32,7 @@
         "Nothing about recall: predicting 'negative' for everything also gives 99%",
         "That the classifier finds almost all positives, since 99% accuracy means 99% of the rare events are caught",
         "That the classifier finds almost all positives",
-        "That precision is 99%"
+        "That precision is 99% for the rare class"
       ],
       "answer": "Nothing about recall: predicting 'negative' for everything also gives 99%",
       "explanation": "With imbalanced classes, accuracy is dominated by the majority class. Check recall, precision, and PR curves.",
@@ -80,8 +80,8 @@
       "answer": "Simple, well-validated baselines",
       "options": [
         "Its own training score",
-        "Nothing: accuracy alone is enough",
-        "A more complex model only",
+        "No more is needed: accuracy by itself is enough",
+        "A more complex model of the same kind",
         "Simple, well-validated baselines"
       ],
       "explanation": "A simple baseline such as a linear fit or physical model shows whether the added complexity buys anything. Without it, a high score is not interpretable.",
@@ -115,8 +115,8 @@
       "prompt": "You fit a scaler on the full dataset before splitting off the test set. Is the test score still a clean estimate?",
       "answer": "No: the test data influenced the preprocessing, so the score can leak",
       "options": [
-        "Yes, if the model is linear",
-        "Yes: scaling never affects performance",
+        "Yes, if the model is linear in the features",
+        "Yes: scaling does not affect the performance of the model",
         "No: the test data influenced the preprocessing, so the score can leak",
         "No, because scalers cannot be fit on test data"
       ],
