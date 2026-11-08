@@ -15,7 +15,7 @@
       "prompt": "You use the free-space Green function for a problem with a wall. Does it satisfy the wall boundary condition?",
       "options": [
         "Yes, by symmetry, since the free-space function is unchanged by the presence of a wall",
-        "Yes, for Dirichlet conditions only",
+        "Yes, for Dirichlet conditions at the wall itself",
         "No: it must be corrected to meet the boundary condition",
         "Yes: it applies everywhere"
       ],
@@ -30,9 +30,9 @@
       "prompt": "An operator has a zero eigenvalue. Can you invert it by dividing by that eigenvalue?",
       "options": [
         "No: the source must satisfy a compatibility condition and a constrained inverse is needed",
-        "Yes: it gives zero",
-        "Yes: the inverse is infinite",
-        "Yes: it gives 1"
+        "Yes: it gives zero, as the zero mode drops out of the source and the inverse is then fixed for you",
+        "Yes: the inverse is infinite, so the solution can be defined by a limit of large values",
+        "Yes: it gives 1, as the zero mode is divided out of the solution in the usual way, with no term"
       ],
       "answer": "No: the source must satisfy a compatibility condition and a constrained inverse is needed",
       "explanation": "The zero mode cannot be inverted. A solution exists only if the source is orthogonal to it, and it is unique up to adding that mode.",
@@ -79,10 +79,10 @@
       "prompt": "For an inhomogeneous boundary-value problem, what is needed besides the Green function for the source?",
       "answer": "A contribution from the boundary data, such as a lifting term",
       "options": [
-        "Nothing: the kernel imposes the boundary data itself, so no extra term is needed for the boundary",
-        "A larger domain",
+        "No extra term: the kernel imposes the data itself",
+        "A larger domain, so that the boundary lies farther from the source point",
         "A contribution from the boundary data, such as a lifting term",
-        "Only the source"
+        "Just the source term, as the boundary data then follow from it in the kernel"
       ],
       "explanation": "The homogeneous-boundary Green function inverts the operator with zero boundary data. Non-zero data require an extra term.",
       "type": "mcq",
@@ -116,9 +116,9 @@
       "answer": "Boundary conditions, compatibility and the zero mode differ, so the kernel is not valid",
       "options": [
         "Boundary conditions, compatibility and the zero mode differ, so the kernel is not valid",
-        "Nothing: the operator is the same",
-        "The kernel becomes zero",
-        "The kernel is symmetric"
+        "No difference: the operator is the same, so the kernel carries over",
+        "The kernel becomes zero, as the boundary conditions remove the source from the problem",
+        "The kernel is symmetric, so it still inverts the operator in the new problem, without change"
       ],
       "explanation": "The inverse depends on the domain including its boundary conditions. Neumann has a constant zero mode.",
       "hint": "Compare Dirichlet and Neumann inverses.",

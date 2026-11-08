@@ -14,7 +14,7 @@
       "id": "concept-1",
       "prompt": "You choose the branch cut of √z along the negative real axis. Is every point on that cut a physical singularity?",
       "options": [
-        "No: it has no branch point",
+        "No: it has no branch point, as the cut makes the function single valued along the whole axis",
         "Yes: the function is undefined there",
         "Yes: all points on the cut are singular",
         "No: the cut is a convention; only the branch point itself is intrinsically singular"
@@ -29,7 +29,7 @@
       "id": "concept-2",
       "prompt": "You continue √z once around the origin along a circle. What is the result?",
       "options": [
-        "It becomes zero",
+        "It becomes zero, as the loop closes on the origin",
         "It returns to the same value",
         "The sign flips; two loops are needed to return",
         "It doubles, since the continued function picks up a factor of two on a loop around the origin"
@@ -45,8 +45,8 @@
       "prompt": "Two analytic functions agree at ten isolated points. Are they identical?",
       "options": [
         "Yes, if both are polynomials of degree below 10, since agreement at ten points then forces them to be equal",
-        "No: they never agree",
-        "Yes: ten points are enough",
+        "No: functions that agree at ten points disagree at the next point that is tested in the domain",
+        "Yes: ten points are enough to fix an analytic function in a connected domain",
         "No: the identity theorem needs agreement on a set with an accumulation point inside a connected domain"
       ],
       "answer": "No: the identity theorem needs agreement on a set with an accumulation point inside a connected domain",
@@ -81,8 +81,8 @@
       "prompt": "A physical calculation uses a branch-dependent function. What must you specify?",
       "answer": "The branch domain and the physical condition that selects it",
       "options": [
-        "Nothing: the function name suffices, because every branch of a multivalued function gives the same physical result",
-        "Only the function name in the code",
+        "No branch is needed: the function name suffices, as the branches agree",
+        "Just the function name used in the code file",
         "The numerical value at one point",
         "The branch domain and the physical condition that selects it"
       ],
@@ -117,7 +117,7 @@
       "prompt": "You continue ln z once counterclockwise around the origin. What is the change in value?",
       "answer": "It gains 2πi",
       "options": [
-        "Nothing: ln z is single valued",
+        "It is unchanged",
         "It doubles",
         "It loses 2π",
         "It gains 2πi"

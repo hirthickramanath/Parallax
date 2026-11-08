@@ -15,9 +15,9 @@
       "prompt": "A Fourier series converges to f in mean square. Does it converge at every point?",
       "options": [
         "Yes, for periodic functions, since mean-square convergence includes convergence at every single point",
-        "Yes, at every point",
+        "Yes, at each point, as mean-square convergence is pointwise",
         "Not necessarily: L² convergence ignores sets of measure zero",
-        "No: it never converges"
+        "No: it fails to converge at each point of the full interval"
       ],
       "answer": "Not necessarily: L² convergence ignores sets of measure zero",
       "explanation": "Mean-square convergence only controls the integral of the squared error. Pointwise convergence needs extra conditions, e.g. piecewise smoothness.",
@@ -29,8 +29,8 @@
       "id": "concept-2",
       "prompt": "A piecewise smooth periodic function has a jump at x₀. To what value does its Fourier series converge there?",
       "options": [
-        "Zero",
-        "The value f(x₀) that was assigned at the jump, since the series reproduces the function exactly",
+        "Zero, as the sine terms cancel out at the jump",
+        "The value f(x₀) at the jump",
         "The average of the left and right limits",
         "The larger of the two limits"
       ],
@@ -45,9 +45,9 @@
       "prompt": "You add more terms to the Fourier series of a square wave. What happens to the Gibbs overshoot near the jump?",
       "options": [
         "It moves away from the jump and vanishes in the limit of infinitely many terms",
-        "It grows without bound",
+        "It grows without bound, as the peak rises with the number of terms added",
         "It narrows toward the jump but its height (about 9%) does not vanish",
-        "It disappears"
+        "It disappears, as the series then converges uniformly to the jump"
       ],
       "answer": "It narrows toward the jump but its height (about 9%) does not vanish",
       "explanation": "The overshoot width shrinks like 1/N, but the relative height tends to a constant (about 9% of the jump).",
@@ -81,7 +81,7 @@
       "options": [
         "That the series is finite, since termwise differentiation is valid whenever the sum has finitely many terms",
         "That each term is differentiable",
-        "Nothing",
+        "No check is needed: termwise differentiation is valid for each Fourier series",
         "That f is regular enough for termwise differentiation to be valid"
       ],
       "explanation": "Each sine and cosine is differentiable, but the differentiated series may diverge. E.g. the square wave series differentiates to a divergent series.",
@@ -118,7 +118,7 @@
         "No: the overshoot region narrows, but the fraction stays",
         "Yes: uniform convergence is guaranteed, so the overshoot disappears as more modes are used",
         "Yes: uniform convergence is guaranteed",
-        "No: it grows"
+        "No: it grows as more modes are included in it"
       ],
       "explanation": "Uniform limits of continuous partial sums are continuous, so a jump cannot be matched uniformly. The overshoot persists.",
       "hint": "Can continuous functions converge uniformly to a discontinuous one?",

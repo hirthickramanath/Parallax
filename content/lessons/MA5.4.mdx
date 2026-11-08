@@ -14,8 +14,8 @@
       "id": "concept-1",
       "prompt": "A rod has both ends held at 0 °C (Dirichlet boundaries). Is the total heat in the rod conserved?",
       "options": [
-        "No, heat is created",
-        "Yes, always, since the total heat in an insulated or fixed-temperature rod cannot change with time",
+        "No, heat is created inside the rod at the ends held at 0 °C",
+        "Yes, as the total heat in the rod cannot change with time",
         "No: heat flows out through the fixed-temperature ends",
         "Yes, if the rod is uniform"
       ],
@@ -30,7 +30,7 @@
       "prompt": "In the heat equation with constant diffusivity, which Fourier modes decay fastest?",
       "options": [
         "Modes with the highest amplitude",
-        "All modes at the same rate",
+        "The modes decay at the same rate for each frequency",
         "Higher spatial frequencies, with rate Dk²",
         "Lower spatial frequencies, with rate Dk², since long-wavelength modes relax the quickest"
       ],
@@ -80,8 +80,8 @@
       "answer": "k stays inside the divergence: ρc u_t = (k u_x)_x",
       "options": [
         "k stays inside the divergence: ρc u_t = (k u_x)_x",
-        "k can always be pulled out of the derivative, so the equation keeps the same form as the uniform case",
-        "k disappears",
+        "k comes out of the derivative as a constant",
+        "k disappears from the equation for the rod",
         "k is replaced by its average"
       ],
       "explanation": "The flux is −k u_x, and its divergence includes k′u_x. Only for constant k does it reduce to k u_xx.",
@@ -115,9 +115,9 @@
       "prompt": "The exact heat equation solution decays smoothly. Is an explicit finite-difference scheme then stable for any time step?",
       "answer": "No: it has its own stability limit on the time step",
       "options": [
-        "Yes, in 1D",
-        "Yes, for small k",
-        "Yes: physical damping guarantees stability, so the numerical scheme is stable for every time step",
+        "Yes, in 1D, as the heat equation is then well behaved",
+        "Yes, for small k, as the damping is then weak enough",
+        "Yes: physical damping ensures stability here",
         "No: it has its own stability limit on the time step"
       ],
       "explanation": "Explicit FTCS needs DΔt/Δx² ≤ ½. Beyond it, high-frequency modes are amplified.",

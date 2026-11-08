@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "When closing a contour with a large semicircle, can you drop the arc contribution without checking?",
       "options": [
-        "Yes: large arcs always vanish, so the contribution of the semicircle can be dropped without any check",
-        "Yes: large arcs always vanish",
+        "Yes: large arcs vanish, so it can be dropped",
+        "Yes: large arcs tend to zero in size",
         "No: you must estimate it and show it vanishes",
-        "Yes: it is always finite"
+        "Yes: it is finite, so it can be ignored in the limit"
       ],
       "answer": "No: you must estimate it and show it vanishes",
       "explanation": "The arc vanishes only if the integrand decays fast enough, for example via Jordan's lemma.",
@@ -31,8 +31,8 @@
       "options": [
         "No: it relies on symmetric cancellation, while each one-sided piece diverges",
         "Yes: it converges to 0 as an ordinary improper integral, since the two halves cancel",
-        "Yes: it converges to 2",
-        "Yes: it converges to 0"
+        "Yes: it converges to 2, as the integrand is bounded near zero",
+        "Yes: it converges to 0, as the integrand is odd on the whole interval"
       ],
       "answer": "No: it relies on symmetric cancellation, while each one-sided piece diverges",
       "explanation": "A principal value takes the limit with symmetric excision. An ordinary improper integral requires the separate limits to exist.",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "For k > 0, e^{ikz} decays in which half-plane as |z| → ∞?",
       "options": [
-        "Neither",
+        "Neither, as the exponential oscillates",
         "The upper half-plane, since |e^{ikz}| = e^{−k Im z}",
-        "Both",
+        "Both, as the exponential decays in the plane",
         "The lower half-plane, since |e^{ikz}| = e^{k Im z} decays there for k > 0"
       ],
       "answer": "The upper half-plane, since |e^{ikz}| = e^{−k Im z}",
@@ -80,7 +80,7 @@
       "answer": "State and justify an indentation or limiting prescription",
       "options": [
         "Ignore it, since a single point on the axis has no effect on the value of the integral",
-        "Add it twice",
+        "Add it twice, as it counts on both sides of the contour",
         "State and justify an indentation or limiting prescription",
         "Delete it from the integrand"
       ],
@@ -115,7 +115,7 @@
       "prompt": "You compute residues inside a closed contour made of the real line and a large arc. Do the residues alone give the real integral?",
       "answer": "No: you also need to show the arc contributes zero",
       "options": [
-        "Yes: the arc always vanishes",
+        "Yes: the arc vanishes, so the residues suffice",
         "No: the arc doubles the result, so the residue sum must be divided by two to get the real integral",
         "Yes: residues are enough",
         "No: you also need to show the arc contributes zero"
