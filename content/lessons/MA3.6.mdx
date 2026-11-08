@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must a normal matrix have only real eigenvalues?",
+      "prompt": "Which statement about normal matrices (AA* = A*A) is correct?",
       "options": [
-        "Yes",
-        "No"
+        "They are never diagonalisable, which is why Hermitian is a special case",
+        "All of their eigenvalues are real, since the matrix commutes with its adjoint",
+        "Their eigenvalues can be complex; real eigenvalues are guaranteed only for Hermitian ones",
+        "All of their eigenvalues have modulus one, as for a unitary matrix"
       ],
-      "answer": "No",
-      "explanation": "Hermitian matrices have real eigenvalues; normal is broader.",
+      "answer": "Their eigenvalues can be complex; real eigenvalues are guaranteed only for Hermitian ones",
+      "explanation": "Every Hermitian matrix is normal, but so is a rotation such as [[0,−1],[1,0]], whose eigenvalues are ±i.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is a rotation matrix normal? What are its eigenvalues?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does an expectation have to equal a single eigenvalue?",
+      "prompt": "For a Hermitian observable A and a state ψ, must the expectation ⟨A⟩ equal one of A's eigenvalues?",
       "options": [
-        "No",
-        "Yes"
+        "Yes: it always equals the largest eigenvalue of the operator",
+        "Yes: a measurement always returns the expectation value itself",
+        "Yes, whenever the state vector has been normalised to length one",
+        "No: in general it is a probability-weighted average of the eigenvalues"
       ],
-      "answer": "No",
-      "explanation": "It can be a weighted average of outcomes.",
+      "answer": "No: in general it is a probability-weighted average of the eigenvalues",
+      "explanation": "⟨A⟩ = Σ p_i λ_i. It equals an eigenvalue only when the state is an eigenvector (or the weight sits on one eigenvalue).",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Expand ψ in the eigenbasis and compute ⟨ψ|A|ψ⟩."
     },
     {
       "id": "concept-3",
-      "prompt": "Can distinct Hermitian eigenvalues have nonorthogonal eigenvectors?",
+      "prompt": "A Hermitian matrix has eigenvectors u and v with different eigenvalues λ ≠ μ. What follows?",
       "options": [
-        "Yes",
-        "No"
+        "Nothing is fixed: the two vectors can make any angle",
+        "They must be parallel, since both are eigenvectors of the same matrix",
+        "⟨u,v⟩ = 0, because (λ − μ)⟨u,v⟩ = 0 when A = A*",
+        "They are orthogonal only if the matrix has real entries"
       ],
-      "answer": "No",
-      "explanation": "The adjoint identity forces orthogonality.",
+      "answer": "⟨u,v⟩ = 0, because (λ − μ)⟨u,v⟩ = 0 when A = A*",
+      "explanation": "⟨Au,v⟩ = λ⟨u,v⟩ and ⟨u,Av⟩ = μ⟨u,v⟩ are equal when A = A*, so (λ − μ)⟨u,v⟩ = 0.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Evaluate ⟨Au,v⟩ in two ways using A = A*."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "What does the finite Hermitian spectral theorem guarantee?",
-      "answer": "An orthonormal eigenbasis with real eigenvalues",
+      "prompt": "What does the finite-dimensional spectral theorem guarantee for a Hermitian matrix?",
+      "answer": "An orthonormal basis of eigenvectors with real eigenvalues",
       "options": [
-        "An orthonormal eigenbasis with real eigenvalues",
-        "Only that a determinant can be computed"
+        "Real eigenvalues, but possibly too few eigenvectors (defective)",
+        "An orthonormal basis of eigenvectors with real eigenvalues",
+        "Distinct eigenvalues, so every eigenspace is one-dimensional",
+        "A basis of eigenvectors that need not be orthogonal"
       ],
-      "explanation": "The eigenbasis and reality are the structural conclusions.",
+      "explanation": "Hermitian matrices are unitarily diagonalisable with real eigenvalues. Repeated eigenvalues are allowed; the eigenspaces then have dimension greater than one.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Which two properties does the theorem promise together?"
     },
     {
       "id": "linear-ode-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "linear-ode-model-assumptions",
-      "prompt": "Must any arbitrary pair of vectors in one degenerate eigenspace be orthogonal?",
-      "answer": "No; an orthonormal basis can be chosen, but arbitrary vectors need not be orthogonal.",
+      "prompt": "A Hermitian matrix has a two-dimensional degenerate eigenspace. Are two arbitrary vectors in it orthogonal?",
+      "answer": "Not necessarily; an orthonormal basis can be chosen, but arbitrary vectors need not be orthogonal",
       "options": [
-        "Yes; degeneracy forces every vector pair to be orthogonal.",
-        "No; an orthonormal basis can be chosen, but arbitrary vectors need not be orthogonal."
+        "No, and no orthonormal basis exists inside a degenerate eigenspace",
+        "Yes, provided the two vectors have both been normalised",
+        "Not necessarily; an orthonormal basis can be chosen, but arbitrary vectors need not be orthogonal",
+        "Yes: degeneracy of the eigenvalue forces any two vectors to be orthogonal"
       ],
-      "explanation": "Equal eigenvalues remove the distinct-eigenvalue orthogonality argument.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Orthogonality is automatic only between eigenvectors with different eigenvalues. Inside a degenerate eigenspace any basis works, and an orthonormal one can be selected.",
+      "hint": "Does the proof of orthogonality still apply when the eigenvalues are equal?",
       "misconceptions": {
         "Yes; degeneracy forces every vector pair to be orthogonal.": "Equal eigenvalues remove the distinct-eigenvalue orthogonality argument."
       },

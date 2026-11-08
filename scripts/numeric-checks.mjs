@@ -1065,6 +1065,7 @@ export const CHECKS = [
   ["MA9.1:warmup", "bf0f9275", () => q((3 - 0) / (1 - 0))],
   ["MA9.1:advanced-math-transfer-1", "69d7f5ef", () => q(-4 * 3)], // q'' = -4q
   ["MA9.1:advanced-math-transfer-2", "70572a41", () => q(0)],
+  ["MA9.2:numeric", "7a3d440d", () => q(-12)], // q = λ(t²−t)/2, ∫q dt = −λ/12 = 1
   ["MA9.2:warmup", "9f75b340", () => q(6 * 0.5 * (1 - 0.5))],
   ["MA9.2:advanced-math-transfer-1", "dfb43187", () => q(4 / 2)],
   ["MA9.2:advanced-math-transfer-2", "abac0b36", () => q(2 ** 2 + 2 ** 2)],
@@ -1196,6 +1197,7 @@ export const CHECKS = [
   ["CH6.7:chemistry-transfer-2", "4e5f5d05", () => q(10 ** -2)],
   ["CH6.8:numeric", "bce75659", () => q(6 / 2)],
   ["CH6.8:warmup", "1d61f37f", () => q(1 / 2)],
+  ["CH6.8:chemistry-transfer-1", "de2c5e40", () => q(Math.exp(-1 * Math.log(2)))], // k = k0 exp(-γ AV)
   ["CH6.8:chemistry-transfer-2", "daea8a0a", () => q(Math.exp(-1 * 2 * Math.log(2)))],
 
   // --- AS leftovers: later astronomy tracks (batch 6) ---
@@ -1560,7 +1562,7 @@ export const CHECKS = [
   ["PH9.3:quantum-transfer-1", "84806d4c", () => q(Math.sin((2 * (PI / 2)) / 2) ** 2)],
   ["PH9.3:quantum-transfer-2", "ee365b2d", () => q(PI / 3)],
   ["PH9.4:numeric", "5abc525b", () => q(0.4 * 1 + 0.6 * 3)],
-  ["PH9.4:warmup", "adab3c8e", () => q((2 * PI * (0 + 1 / 2)) / PI)], // closed-orbit action ∮p dq = 2πħ(n+1/2)
+  ["PH9.4:warmup", "719d6f9d", () => q((2 * PI * (0 + 1 / 2)) / PI)], // closed-orbit action ∮p dq = 2πħ(n+1/2)
   ["PH9.4:quantum-transfer-1", "9907d656", () => q((2 + 1 / 2) / 4)],
   ["PH9.4:quantum-transfer-2", "895bf69a", () => q((1 + 1 / 1) / 4)],
   ["PH9.5:numeric", "763627e9", () => q(2 * 2)],
@@ -1664,7 +1666,7 @@ export const CHECKS = [
   ["PH14.8:numeric", "3822dd30", () => q(2)],
   ["PH14.8:warmup", "e712a613", () => q(2 * 3)],
   ["PH14.8:matter-transfer-1", "9626cb17", () => q(3)],
-  ["PH14.8:matter-transfer-2", "56a8369b", () => q(1 / 3)], // plateau of the previous question, ν = 3
+  ["PH14.8:matter-transfer-2", "497b93f4", () => q(1 / 3)], // plateau of the previous question, ν = 3
   ["PH15.2:numeric", "6bb9f8c8", () => q(3)],
   ["PH15.2:warmup", "9d3b15e3", () => q(0.5 * (3 ** 2 + 2 ** 2 * 1 ** 2))],
   ["PH15.2:review-core-transfer", "1482b834", () => q(0.5 * (3 ** 2 + 4 ** 2 + 2 ** 2 * 1 ** 2))],

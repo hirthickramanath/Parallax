@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Is a flat prior invariant under every nonlinear reparameterization?",
+      "prompt": "A prior that is flat in θ is re-expressed in φ = ln θ. Is it still flat in φ?",
       "options": [
-        "Yes",
-        "No"
+        "No: p(φ) = p(θ)·e^φ, so it is no longer flat",
+        "Yes: a flat prior is uninformative in every parametrisation",
+        "No, but only after the data are included",
+        "Yes, but only if the likelihood is Gaussian"
       ],
-      "answer": "No",
-      "explanation": "The density transforms with a Jacobian.",
+      "answer": "No: p(φ) = p(θ)·e^φ, so it is no longer flat",
+      "explanation": "A density transforms with the Jacobian |dθ/dφ| = e^φ, so uniform in θ means exponentially weighted in φ. 'Uninformative' depends on the parametrisation.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Transform the density with the Jacobian."
     },
     {
       "id": "concept-2",
-      "prompt": "Does sampler convergence prove the physical model is correct?",
+      "prompt": "MCMC chains pass convergence diagnostics (R̂ ≈ 1). What have you learned?",
       "options": [
-        "No",
-        "Yes"
+        "The chains agree on the specified posterior",
+        "The posterior has a single peak, since all chains ended up in the same place",
+        "The physical model is correct, because independent chains agree with one another",
+        "The prior no longer affects the result, because the data have taken over"
       ],
-      "answer": "No",
-      "explanation": "It only concerns the specified posterior.",
+      "answer": "The chains agree on the specified posterior",
+      "explanation": "Convergence is a statement about the sampler and the posterior it targets. A wrong model can converge perfectly well.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Does the diagnostic know anything about the physical model?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can selection require likelihood renormalization?",
+      "prompt": "A survey detects only sources brighter than a flux limit. What must the likelihood include?",
       "options": [
-        "No",
-        "Yes"
+        "The selection: the probability of detection given the parameters, normalised over observable data",
+        "Nothing extra: the detected sources are a random sample of the whole population",
+        "Only the fraction of the sky covered by the survey, as a constant multiplier",
+        "A larger flux uncertainty for faint sources, so that they count for less"
       ],
-      "answer": "Yes",
-      "explanation": "Only an observable subset may enter the sample.",
+      "answer": "The selection: the probability of detection given the parameters, normalised over observable data",
+      "explanation": "Only an observable subset enters the sample, so the likelihood must be conditioned on selection, otherwise parameters such as the faint-end slope are biased.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Ask what population the detected sources are a sample of."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why inspect multimodality?",
-      "answer": "One summary interval may conceal separated explanations.",
+      "prompt": "A posterior has two well-separated peaks. Why can a single 68% interval around the mean mislead?",
+      "answer": "It can cover low-probability values between the peaks and hide two distinct explanations",
       "options": [
-        "One summary interval may conceal separated explanations.",
-        "Likelihood times prior, normalized by evidence."
+        "Credible intervals must always be symmetric about the posterior mean",
+        "The mean of a two-peaked posterior is undefined, so no interval can be quoted",
+        "It can cover low-probability values between the peaks and hide two distinct explanations",
+        "A multimodal posterior always means the sampler is broken and must be rerun"
       ],
-      "explanation": "One summary interval may conceal separated explanations.",
+      "explanation": "A summary interval can sit between the modes where the posterior is small. Report the separate modes, or the full distribution.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Where does the mean of a two-peaked distribution lie, and how much probability is there?"
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Is the likelihood P(data|hypothesis) identical to the posterior P(hypothesis|data)?",
-      "answer": "No; Bayes normalization and prior information distinguish them.",
+      "prompt": "Which relation links the posterior to the likelihood?",
+      "answer": "Posterior ∝ likelihood × prior, normalised by the evidence",
       "options": [
-        "Yes; reversing the conditional changes nothing.",
-        "No; Bayes normalization and prior information distinguish them."
+        "Posterior ∝ likelihood divided by the prior, rescaled to total one",
+        "Posterior equals the likelihood, since P(A|B) = P(B|A) for any events A and B",
+        "Posterior ∝ likelihood × prior, normalised by the evidence",
+        "Posterior equals prior times evidence, with the data entering only via the prior"
       ],
-      "explanation": "Conditional probabilities generally cannot be reversed without the prior and evidence.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "Bayes' theorem: P(H|D) = P(D|H)P(H)/P(D). Reversing a conditional needs the prior and the evidence.",
+      "hint": "Write down Bayes' theorem and identify each factor.",
       "misconceptions": {
         "Yes; reversing the conditional changes nothing.": "Conditional probabilities generally cannot be reversed without the prior and evidence."
       },

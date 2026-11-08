@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do zero-real-part eigenvalues settle nonlinear stability by themselves?",
+      "prompt": "A fixed point of a nonlinear system has Jacobian eigenvalues with zero real part. What can you conclude about its stability?",
       "options": [
-        "Yes",
-        "No"
+        "It is stable, because the linear part does not grow in time",
+        "It is unstable, because the linear part does not decay in time",
+        "Nothing from linearisation alone; higher-order terms decide",
+        "It is a centre, exactly as it would be in the linear system"
       ],
-      "answer": "No",
-      "explanation": "Higher-order dynamics can dominate.",
+      "answer": "Nothing from linearisation alone; higher-order terms decide",
+      "explanation": "Linearisation is decisive only at hyperbolic points. ẋ = −x³ and ẋ = x³ both have a zero eigenvalue at 0, yet one is stable and the other unstable.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare ẋ = −x³ and ẋ = x³ at x = 0."
     },
     {
       "id": "concept-2",
-      "prompt": "Are a Lyapunov function and a Lyapunov exponent identical?",
+      "prompt": "What is the difference between a Lyapunov function and a Lyapunov exponent?",
       "options": [
-        "No",
-        "Yes"
+        "The function measures chaos, and the exponent is the tool that proves stability",
+        "They are two names for the same growth rate, used in different books",
+        "The exponent is the rate at which the function decreases along an orbit",
+        "A Lyapunov function is a scalar proving stability"
       ],
-      "answer": "No",
-      "explanation": "One is a monotonic stability tool; the other a growth rate.",
+      "answer": "A Lyapunov function is a scalar proving stability",
+      "explanation": "A Lyapunov function V(x) is a tool for proving stability. A Lyapunov exponent measures sensitivity to initial conditions; a positive one signals chaos.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "One is a function on state space, the other a number describing separation."
     },
     {
       "id": "concept-3",
-      "prompt": "Must planar-flow theorems be transferred unchanged to higher dimensions?",
+      "prompt": "The Poincaré–Bendixson theorem rules out chaos in bounded planar flows. Does that carry over to three dimensions?",
       "options": [
-        "Yes",
-        "No"
+        "No: chaos can appear only in discrete maps, never in flows",
+        "Yes: bounded flows in any dimension are prevented from being chaotic",
+        "Yes, for any autonomous system, whatever its dimension",
+        "No: its hypotheses are planar, and three-dimensional flows such as Lorenz can be chaotic"
       ],
-      "answer": "No",
-      "explanation": "Their dimensional hypotheses matter.",
+      "answer": "No: its hypotheses are planar, and three-dimensional flows such as Lorenz can be chaotic",
+      "explanation": "In the plane, trajectories cannot cross, which restricts the long-time behaviour. In three dimensions that restriction disappears.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What property of planar trajectories does the theorem rely on?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why record precise claims?",
-      "answer": "Local evidence does not establish global behaviour.",
+      "prompt": "Linear analysis shows a fixed point is stable. What does that tell you about the full nonlinear system?",
+      "answer": "Local behaviour near that point only",
       "options": [
-        "Local evidence does not establish global behaviour.",
-        "No relevant linear eigenvalue has zero real part."
+        "No other fixed points or cycles can exist anywhere in the phase space",
+        "Local behaviour near that point only",
+        "The system cannot be chaotic anywhere, since one point is stable",
+        "All trajectories everywhere eventually converge to that fixed point"
       ],
-      "explanation": "Local evidence does not establish global behaviour.",
+      "explanation": "Linearisation describes the neighbourhood of the point. Other fixed points, cycles and chaotic sets may exist elsewhere.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "How far from the fixed point does a linear approximation remain valid?"
     },
     {
       "id": "structure-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "structure-assumptions",
-      "prompt": "Does any nonlinear map automatically have chaotic trajectories?",
-      "answer": "No; stable fixed points and cycles can occur.",
+      "prompt": "The logistic map x → r x(1−x) is nonlinear. For r = 2.5, what do orbits do?",
+      "answer": "They converge to the stable fixed point x* = 0.6",
       "options": [
-        "Yes; nonlinearity alone proves chaos.",
-        "No; stable fixed points and cycles can occur."
+        "They diverge to infinity after a finite number of iterations",
+        "They never settle, because every nonlinear map is chaotic",
+        "They settle onto a period-2 cycle that alternates between two values",
+        "They converge to the stable fixed point x* = 0.6"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Analyze parameters and orbit stability.",
+      "hint": "Find the fixed point and check the size of the slope there.",
+      "explanation": "At x* = 1 − 1/r = 0.6 the slope is r(1−2x*) = −0.5, so |f'| < 1 and the point is stable. Chaos appears only for larger r.",
       "misconceptions": {
         "Yes; nonlinearity alone proves chaos.": "Analyze parameters and orbit stability."
       },

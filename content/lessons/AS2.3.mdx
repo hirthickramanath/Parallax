@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does optically thick always mean a dark observed ray?",
+      "prompt": "A uniform slab with source function S is very optically thick (τ≫1). What does the emerging ray approach?",
       "options": [
-        "Yes",
-        "No"
+        "Zero, because the slab absorbs everything",
+        "The source function S, with the incident light forgotten",
+        "Always the Planck function, whatever the emission physics",
+        "The incident intensity, because thick media only redirect light"
       ],
-      "answer": "No",
-      "explanation": "The medium can emit strongly and approach its source function.",
+      "answer": "The source function S, with the incident light forgotten",
+      "explanation": "Iout = Iin·e^(−τ) + S(1−e^(−τ)) tends to S as τ grows. S equals the Planck function only for thermal LTE emission without scattering.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Let τ→∞ in the formal solution and see which term survives."
     },
     {
       "id": "concept-2",
-      "prompt": "Is optical depth dimensionless?",
+      "prompt": "With τ = ∫κρ ds, κ in m²/kg, ρ in kg/m³ and s in m, what are the units of optical depth?",
       "options": [
-        "Yes",
-        "No"
+        "None: it is dimensionless, a pure number",
+        "Column density, kg m⁻², from the product ρ ds",
+        "Area per mass, m² kg⁻¹, the units of the opacity",
+        "Inverse length, m⁻¹, because κρ has those units"
       ],
-      "answer": "Yes",
-      "explanation": "It integrates an inverse-length coefficient along distance.",
+      "answer": "None: it is dimensionless, a pure number",
+      "explanation": "κρ has units of inverse length; integrating over a length leaves a pure number.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Multiply out the units of κ, ρ and ds."
     },
     {
       "id": "concept-3",
-      "prompt": "Does LTE matter automatically make every scattering-inclusive source Planckian?",
+      "prompt": "Which statement about the source function of an LTE medium that also scatters light is correct?",
       "options": [
-        "Yes",
-        "No"
+        "Scattering only removes light from the ray, so the source function is zero",
+        "The source function always equals the intensity of the incident radiation",
+        "LTE forces S = Bν(T) for the matter, regardless of whether it scatters light",
+        "The scattered part depends on the radiation field, so S is not simply Bν(T)"
       ],
-      "answer": "No",
-      "explanation": "Scattering contributions depend on the radiation field.",
+      "answer": "The scattered part depends on the radiation field, so S is not simply Bν(T)",
+      "explanation": "Thermal emission follows Bν(T), but scattered light comes from the local radiation field rather than from the matter temperature.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Where does scattered light come from, and does it know the local temperature?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why separate transmitted and emitted contributions?",
-      "answer": "Both determine the observed brightness and can compensate",
+      "prompt": "A cloud of optical depth ln 2 lies in front of a bright background. Why must a model include both the attenuated background and the cloud's own emission?",
+      "answer": "Both reach the observer, and depending on S they can dim or brighten the ray",
       "options": [
-        "Both determine the observed brightness and can compensate",
-        "Opacity removes every need to model emission"
+        "Only the attenuated background reaches the observer; cloud emission is negligible",
+        "The two terms always cancel, leaving the incident brightness",
+        "Emission matters only when τ ≪ 1",
+        "Both reach the observer, and depending on S they can dim or brighten the ray"
       ],
-      "explanation": "The same attenuation can yield a bright or dark feature.",
+      "explanation": "Iout = Iin e^(−τ) + S(1−e^(−τ)). With Iin=10 and τ=ln 2, S=2 gives 6 (dimmer) but S=20 gives 15 (brighter).",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "Write the formal solution and say what each term represents."
     },
     {
       "id": "astro-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "astro-model-assumptions",
-      "prompt": "Must increasing optical depth always dim a ray when the slab also emits?",
-      "answer": "No; it brightens toward S if S exceeds the incident intensity.",
+      "prompt": "A slab has source function S greater than the incident intensity Iin. What happens to the emerging intensity as its optical depth increases?",
+      "answer": "It rises toward S, so the ray brightens",
       "options": [
-        "Yes; emission never changes the effect of optical depth.",
-        "No; it brightens toward S if S exceeds the incident intensity."
+        "It stays at Iin, because absorption and emission always cancel",
+        "It falls toward zero, because more absorption always dims",
+        "It rises without limit, because emission accumulates with τ",
+        "It rises toward S, so the ray brightens"
       ],
-      "explanation": "The formal solution contains both attenuated input and local source terms.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The solution is a weighted mix of Iin and S with weights e^(−τ) and 1−e^(−τ), so it moves from Iin toward S and cannot exceed S.",
+      "hint": "Look at the weights on Iin and S as τ grows.",
       "misconceptions": {
         "Yes; emission never changes the effect of optical depth.": "The formal solution contains both attenuated input and local source terms."
       },

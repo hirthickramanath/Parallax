@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "May a degeneracy factor be added again after every microstate was already enumerated?",
+      "prompt": "A canonical partition function is written as a sum over energy levels, and level i contains g_i degenerate states. How is degeneracy included?",
       "options": [
-        "Yes",
-        "No"
+        "Each term is divided by g_i, to avoid counting degenerate states twice",
+        "Each level's term is multiplied by g_i: Z = Σ g_i e^(−βE_i)",
+        "g_i multiplies the whole sum once, not each individual level's term",
+        "It is not needed, because each level is counted just once in the sum"
       ],
-      "answer": "No",
-      "explanation": "That would double-count states.",
+      "answer": "Each level's term is multiplied by g_i: Z = Σ g_i e^(−βE_i)",
+      "explanation": "A level with g_i states contributes g_i equal Boltzmann factors. If you instead sum over every microstate individually, each state already appears once and you must not multiply by g_i again.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "How many equal Boltzmann factors does a level with g_i states contribute?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does every molecular mode obey classical equipartition at low temperature?",
+      "prompt": "At low temperature k_BT is much smaller than a vibrational quantum ℏω. What happens to that mode's contribution to the heat capacity?",
       "options": [
-        "No",
-        "Yes"
+        "It is frozen out: almost all molecules sit in the ground state",
+        "It contributes more heat capacity, because each quantum is large",
+        "It contributes ½k_B per molecule, like one translational degree of freedom",
+        "It still contributes the classical k_B per molecule, as equipartition says"
       ],
-      "answer": "No",
-      "explanation": "Large quantum gaps suppress excitation.",
+      "answer": "It is frozen out: almost all molecules sit in the ground state",
+      "explanation": "With k_BT ≪ ℏω the first excited level is almost never populated, so adding heat barely changes the energy. Classical equipartition needs k_BT large compared with the level spacing.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Compare k_BT with the level spacing: can molecules reach the first excited level?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is the classical N! expression the complete quantum-gas theory at all densities?",
+      "prompt": "For N identical, noninteracting gas particles, Z ≈ q^N/N!. When does this classical form stop being adequate?",
       "options": [
-        "Yes",
-        "No"
+        "At high density or low temperature, when Bose or Fermi statistics start to matter",
+        "At high temperature and low density, where occupation numbers are small",
+        "Never: the N! form is exact for identical particles at any density",
+        "Whenever the molecules have internal rotational and vibrational structure"
       ],
-      "answer": "No",
-      "explanation": "Quantum statistics is required in other regimes.",
+      "answer": "At high density or low temperature, when Bose or Fermi statistics start to matter",
+      "explanation": "The 1/N! form assumes states are almost never multiply occupied. When particles crowd into the same states, quantum statistics changes the counting.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "When is it safe to assume every particle sits in a different state?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why specify an ensemble before differentiating Z?",
-      "answer": "External variables and probability assumptions determine the thermodynamic derivative",
+      "prompt": "The mean energy is U = −∂ln Z/∂β, but a derivative holds something fixed. Why must the ensemble be stated?",
+      "answer": "Fixed-volume and fixed-pressure responses differ",
       "options": [
-        "External variables and probability assumptions determine the thermodynamic derivative",
-        "Every derivative of every partition function gives the same response"
+        "The ensemble only fixes the unit in which the temperature is measured",
+        "It does not matter, because every large system behaves identically",
+        "Fixed-volume and fixed-pressure responses differ",
+        "All derivatives of all partition functions give exactly the same response"
       ],
-      "explanation": "Fixed-volume and fixed-pressure quantities are not interchangeable.",
+      "explanation": "Differentiating with respect to β at fixed V and at fixed p describes different physical responses. Large systems still have different C_V and C_p.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What is held constant when you differentiate, and does that change the answer?"
     },
     {
       "id": "physical-chemistry-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "physical-chemistry-model-assumptions",
-      "prompt": "Does dropping the same zero-point reference term change relative populations if the energy convention is handled consistently?",
-      "answer": "No; ratios between levels remain unchanged.",
+      "prompt": "All level energies are shifted by the same constant, for example by dropping the zero-point term. What happens to the relative populations?",
+      "answer": "They are unchanged: the constant cancels in the normalised Boltzmann ratio",
       "options": [
-        "Yes; a constant shift changes every relative Boltzmann ratio.",
-        "No; ratios between levels remain unchanged."
+        "They change unless the temperature is taken to zero",
+        "Higher levels become more strongly populated, because their energies fall",
+        "All the ratios scale by the same factor, so populations change together",
+        "They are unchanged: the constant cancels in the normalised Boltzmann ratio"
       ],
-      "explanation": "A common energy offset cancels in normalized probabilities.",
-      "hint": "Identify what the model holds fixed and which physics it omits.",
+      "explanation": "The factor e^(−βE₀) appears in every term and in Z, so it cancels in p_i = g_i e^(−βE_i)/Z. Free energies shift by the constant, but probabilities do not.",
+      "hint": "Write the shift into numerator and denominator of p_i and see what survives.",
       "misconceptions": {
         "Yes; a constant shift changes every relative Boltzmann ratio.": "A common energy offset cancels in normalized probabilities."
       },

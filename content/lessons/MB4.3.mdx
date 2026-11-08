@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "c1",
-      "prompt": "Are disjoint nonzero-probability events independent?",
-      "answer": "No",
+      "prompt": "Events A and B are disjoint with P(A), P(B) > 0. Are they independent?",
+      "answer": "No: if A occurs, B cannot, so P(B|A) = 0",
       "options": [
-        "Yes",
-        "No"
+        "Only when P(A) = P(B), in which case they cancel",
+        "Yes: disjoint events cannot have any effect on each other",
+        "Yes: P(A∩B) = 0 is the condition for independence",
+        "No: if A occurs, B cannot, so P(B|A) = 0"
       ],
-      "explanation": "One excludes the other.",
+      "explanation": "Independence means P(B|A) = P(B). Disjoint events with positive probability are strongly dependent.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "If A has occurred, what is the chance that B has?"
     },
     {
       "id": "c2",
-      "prompt": "Does sensitivity equal the probability a positive result is genuine?",
-      "answer": "No",
+      "prompt": "A test has sensitivity 0.9. Is the probability that a positive result is genuine also 0.9?",
+      "answer": "No: it also depends on how common the condition is and on the false-positive rate",
       "options": [
-        "No",
-        "Yes"
+        "Yes: sensitivity is the probability that a positive result is genuine",
+        "Yes: the prevalence cancels out of the calculation",
+        "No: it also depends on how common the condition is and on the false-positive rate",
+        "Yes, provided the test is repeated at least once"
       ],
-      "explanation": "The latter also depends on prevalence and false positives.",
+      "explanation": "Sensitivity is P(positive | condition). The genuine-positive probability is P(condition | positive), which Bayes' rule links to prevalence and false positives.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which direction does each conditional probability run?"
     },
     {
       "id": "c3",
-      "prompt": "What population does conditioning on B retain?",
-      "answer": "Only outcomes in B",
+      "prompt": "After conditioning on event B, which outcomes does the new sample space retain?",
+      "answer": "Only the outcomes in B, with probabilities rescaled by P(B)",
       "options": [
-        "Only outcomes in A",
-        "Only outcomes in B"
+        "Only the outcomes that lie outside B, rescaled to total one",
+        "Only the outcomes in B, with probabilities rescaled by P(B)",
+        "Only the outcomes in A, with probabilities rescaled by P(A)",
+        "All outcomes, with those in B counted twice over"
       ],
-      "explanation": "The denominator is the probability of B.",
+      "explanation": "P(A|B) = P(A∩B)/P(B): we restrict to B and divide by its probability so the total is again 1.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is in the denominator?"
     },
     {
       "id": "n1",
@@ -68,17 +77,19 @@
     },
     {
       "id": "core",
-      "prompt": "A rare condition gives P(positive|condition)=0.9. Is P(condition|positive) determined by this alone?",
-      "answer": "No; prevalence and false-positive probability are also needed.",
+      "prompt": "A rare condition has P(positive | condition) = 0.9. What else do you need to find P(condition | positive)?",
+      "answer": "The prevalence and the false-positive probability",
       "options": [
-        "Yes; the conditional probabilities are interchangeable.",
-        "No; prevalence and false-positive probability are also needed."
+        "The prevalence and the false-positive probability",
+        "Only the false-negative rate of the test",
+        "Only the prevalence of the condition in the population",
+        "Nothing: it equals 0.9 by symmetry of conditioning"
       ],
-      "explanation": "Bayes’ denominator includes positives from people without the condition.",
+      "explanation": "Bayes' rule: P(C|+) = P(+|C)P(C) / [P(+|C)P(C) + P(+|no C)P(no C)]. The denominator includes false positives from the larger healthy group.",
       "type": "mcq",
       "conceptual": true,
       "tier": "core",
-      "hint": "Check the assumptions and explain the tempting alternative.",
+      "hint": "Write out Bayes' rule and list every term in the denominator.",
       "misconceptions": {
         "Yes; the conditional probabilities are interchangeable.": "Bayes’ denominator includes positives from people without the condition."
       }
@@ -116,14 +127,16 @@
     },
     {
       "id": "foundation_next-assumptions",
-      "prompt": "Is P(positive|condition) generally equal to P(condition|positive)?",
-      "answer": "No; prevalence and false positives matter.",
+      "prompt": "Why can P(positive | condition) be very different from P(condition | positive)?",
+      "answer": "P(condition | positive) divides by all positives, including false positives from the larger healthy group",
       "options": [
-        "Yes; conditional probability is symmetric.",
-        "No; prevalence and false positives matter."
+        "They cannot differ, because conditional probability is symmetric",
+        "They differ only when the test happens to be perfect",
+        "P(condition | positive) divides by all positives, including false positives from the larger healthy group",
+        "They differ only through rounding in the arithmetic"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Reverse conditioning requires Bayes' rule.",
+      "hint": "Compare the two denominators.",
+      "explanation": "The two conditionals have different denominators (the condition group versus all positive results), so they differ unless special coincidences hold.",
       "misconceptions": {
         "Yes; conditional probability is symmetric.": "Reverse conditioning requires Bayes' rule."
       },

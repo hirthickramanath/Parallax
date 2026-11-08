@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Must distinct normal modes be orthogonal in the plain coordinate dot product for arbitrary M?",
+      "prompt": "For Mq̈ + Kq = 0 with M not the identity, in which sense are distinct normal modes orthogonal?",
       "options": [
-        "Yes",
-        "No"
+        "They are never orthogonal when the masses differ",
+        "With the plain dot product: uᵀv = 0, whatever M is",
+        "With the mass-weighted product: uᵀM v = 0",
+        "Only when the two frequencies happen to be equal"
       ],
-      "answer": "No",
-      "explanation": "The natural orthogonality uses the mass-weighted product.",
+      "answer": "With the mass-weighted product: uᵀM v = 0",
+      "explanation": "Subtracting the two eigenvalue equations gives (ω₁² − ω₂²) uᵀM v = 0, so orthogonality holds with M as the weight.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Take the two eigenvalue equations and subtract; which matrix sits between u and v?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does in-phase equal displacement stretch the coupling spring in the symmetric model?",
+      "prompt": "Two equal masses are joined to each other and to two walls by identical springs (symmetric model). In the in-phase mode, does the coupling spring stretch?",
       "options": [
-        "No",
-        "Yes"
+        "No: x₂ − x₁ = 0, so only the wall springs act and ω = √(k/m)",
+        "It stretches, but it exerts no force on the masses",
+        "Yes, by half the amplitude of the motion",
+        "Yes, by the full amplitude of the motion"
       ],
-      "answer": "No",
-      "explanation": "The coupling extension x₂−x₁ is zero.",
+      "answer": "No: x₂ − x₁ = 0, so only the wall springs act and ω = √(k/m)",
+      "explanation": "In-phase motion keeps the separation constant, so the coupling spring stays at its natural length and exerts no force.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "What is x₂ − x₁ when the masses move together?"
     },
     {
       "id": "concept-3",
-      "prompt": "Does an arbitrary initial displacement excite only one normal mode?",
+      "prompt": "The masses are released from an arbitrary initial displacement. Which normal modes are excited?",
       "options": [
-        "Yes",
-        "No"
+        "In general several: any initial condition is a combination of the modes",
+        "All the modes, with equal amplitudes",
+        "Exactly one, the mode closest to the displacement",
+        "None, until a driving force is applied to the masses"
       ],
-      "answer": "No",
-      "explanation": "It generally contains multiple modal components.",
+      "answer": "In general several: any initial condition is a combination of the modes",
+      "explanation": "The normal modes form a basis, so an arbitrary displacement has components along each of them.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Can an arbitrary vector be written using only one basis vector?"
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why mass-weight the eigenproblem?",
-      "answer": "It reveals a symmetric operator with the correct modal inner product",
+      "prompt": "Why solve the mass-weighted eigenproblem?",
+      "answer": "It turns Ku = ω²Mu into a symmetric problem with orthogonal eigenvectors",
       "options": [
-        "It reveals a symmetric operator with the correct modal inner product",
-        "Every coordinate has dimensionless unit mass automatically"
+        "It changes the frequencies so that they are easier to compute",
+        "It removes the springs from the problem altogether",
+        "It physically makes all the masses equal to one another",
+        "It turns Ku = ω²Mu into a symmetric problem with orthogonal eigenvectors"
       ],
-      "explanation": "The kinetic form determines the relevant geometry.",
+      "explanation": "With ũ = M^(1/2)u the problem becomes M^(−1/2)K M^(−1/2) ũ = ω²ũ, a symmetric matrix with orthogonal eigenvectors.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the transformation do to the matrix: is it still symmetric?"
     },
     {
       "id": "analytical-transfer-1",
@@ -113,14 +125,16 @@
     },
     {
       "id": "analytical-hypotheses",
-      "prompt": "For a repeated eigenfrequency, must any two supplied eigenvectors be mass-orthogonal?",
-      "answer": "No; a mass-orthogonal basis can be chosen, but arbitrary vectors in the degenerate eigenspace need not be orthogonal.",
+      "prompt": "A normal-mode frequency is repeated. Are two eigenvectors you are given necessarily mass-orthogonal?",
+      "answer": "Not necessarily; a mass-orthogonal basis can be chosen within the degenerate subspace",
       "options": [
-        "Yes; equal eigenvalues force every pair of eigenvectors to be orthogonal.",
-        "No; a mass-orthogonal basis can be chosen, but arbitrary vectors in the degenerate eigenspace need not be orthogonal."
+        "Yes, as long as the eigenvectors have been normalised",
+        "Yes: equal eigenvalues force the eigenvectors to be orthogonal",
+        "Not necessarily; a mass-orthogonal basis can be chosen within the degenerate subspace",
+        "No: no orthogonal choice exists within a degenerate subspace"
       ],
-      "explanation": "Subtracting the two eigenvalue equations gives no orthogonality condition when the eigenvalues coincide.",
-      "hint": "Identify the coordinate convention and hypotheses before using a formal identity.",
+      "explanation": "The orthogonality argument needs ω₁ ≠ ω₂. With equal eigenvalues any combination is again an eigenvector, and an orthogonal pair can be selected.",
+      "hint": "Where did the orthogonality proof use ω₁ ≠ ω₂?",
       "misconceptions": {
         "Yes; equal eigenvalues force every pair of eigenvectors to be orthogonal.": "Subtracting the two eigenvalue equations gives no orthogonality condition when the eigenvalues coincide."
       },

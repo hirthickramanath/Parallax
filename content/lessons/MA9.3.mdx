@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Does every symmetry of the equations automatically meet the stated variational-symmetry condition?",
+      "prompt": "A symmetry of the equations of motion is found. Does it automatically give a Noether charge?",
       "options": [
-        "Yes",
-        "No"
+        "Yes, but only for time translations and spatial translations",
+        "Yes: every symmetry of the equations of motion carries a charge",
+        "No: the theorem only concerns charges that are already known",
+        "Not automatically: it must leave the action unchanged up to a boundary term"
       ],
-      "answer": "No",
-      "explanation": "The action transformation and boundary term must be checked.",
+      "answer": "Not automatically: it must leave the action unchanged up to a boundary term",
+      "explanation": "Noether's theorem applies to symmetries of the action, up to a total derivative. A symmetry of the equations need not be one of the action.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Is the symmetry of the equations the same as a symmetry of the action?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does a discrete symmetry supply the same infinitesimal Noether charge by this theorem?",
+      "prompt": "Noether's theorem uses transformations labelled by a continuous parameter ε. What about a discrete symmetry such as the reflection x → −x?",
       "options": [
-        "No",
-        "Yes"
+        "It does not give a Noether charge by itself",
+        "It gives two charges, one for each sign of the reflection",
+        "It gives the same kind of conserved charge as a continuous one",
+        "It gives a charge only in spaces of odd dimension"
       ],
-      "answer": "No",
-      "explanation": "The construction uses a continuous transformation parameter.",
+      "answer": "It does not give a Noether charge by itself",
+      "explanation": "The charge comes from differentiating with respect to ε at ε = 0. A discrete symmetry has no such parameter.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Which step of the construction needs a derivative with respect to ε?"
     },
     {
       "id": "concept-3",
-      "prompt": "Can changing a charge’s overall sign change whether it is conserved?",
+      "prompt": "Q is a conserved Noether charge. Is −Q conserved?",
       "options": [
-        "Yes",
-        "No"
+        "Only for time-dependent systems",
+        "No: the sign convention fixes whether it is conserved",
+        "Only if Q is zero",
+        "Yes: dQ/dt = 0 implies d(−Q)/dt = 0"
       ],
-      "answer": "No",
-      "explanation": "Its time derivative still vanishes.",
+      "answer": "Yes: dQ/dt = 0 implies d(−Q)/dt = 0",
+      "explanation": "Conservation means the time derivative vanishes, which does not depend on the overall sign or scale of the charge.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Differentiate −Q with respect to time and use dQ/dt = 0."
     },
     {
       "id": "numeric",
@@ -68,15 +77,18 @@
     {
       "id": "core",
       "prompt": "What must be verified before claiming a Noether conservation law?",
-      "answer": "The action symmetry including any total-derivative boundary term",
+      "answer": "That the action changes only by a total derivative",
       "options": [
-        "The action symmetry including any total-derivative boundary term",
-        "Only a symmetric-looking plot"
+        "That a plot of the path looks symmetric under the transformation",
+        "That the Lagrangian has no explicit dependence on time",
+        "That the equations of motion are linear in the coordinates",
+        "That the action changes only by a total derivative"
       ],
-      "explanation": "The theorem has a variational, on-solution hypothesis.",
+      "explanation": "The theorem has a variational hypothesis, and the boundary term B enters the conserved quantity.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What does the theorem assume about δL?"
     },
     {
       "id": "advanced-math-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "advanced-math-assumptions",
-      "prompt": "Does any visually symmetric plotted path by itself establish a Noether symmetry of the action?",
-      "answer": "No; the action transformation must be checked.",
+      "prompt": "A computed trajectory looks symmetric under rotation. Does that establish a Noether symmetry of the action?",
+      "answer": "No: the symmetry must hold for the action up to a boundary term",
       "options": [
-        "Yes; shape alone proves a conserved charge.",
-        "No; the action transformation must be checked."
+        "Only if the path is closed, in which case the symmetry follows",
+        "Yes: a symmetric path implies that the action is symmetric",
+        "No: the symmetry must hold for the action up to a boundary term",
+        "Yes: solutions inherit every symmetry of the underlying system"
       ],
-      "hint": "Check the hypotheses and the scope of the conclusion.",
-      "explanation": "Noether symmetry is a variational statement.",
+      "hint": "Is the symmetry a property of one solution or of the Lagrangian?",
+      "explanation": "A single solution can be symmetric even when the Lagrangian is not. The symmetry condition applies to the action functional.",
       "misconceptions": {
         "Yes; shape alone proves a conserved charge.": "Noether symmetry is a variational statement."
       },

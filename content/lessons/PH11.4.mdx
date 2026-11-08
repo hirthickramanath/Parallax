@@ -12,39 +12,48 @@
   "questions": [
     {
       "id": "concept-1",
-      "prompt": "Do nonparallel boosts generally compose into a pure boost without rotation?",
+      "prompt": "Two non-parallel Lorentz boosts are composed. What is the result in general?",
       "options": [
-        "Yes",
-        "No"
+        "A boost whose speed is the plain sum of the two speeds",
+        "A pure rotation with no change of velocity",
+        "A boost combined with a rotation",
+        "A single pure boost along the average direction"
       ],
-      "answer": "No",
-      "explanation": "A Thomas–Wigner rotation can result.",
+      "answer": "A boost combined with a rotation",
+      "explanation": "Boosts in different directions do not commute and their composition contains a rotation, the origin of Thomas precession.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Do boosts in different directions commute?"
     },
     {
       "id": "concept-2",
-      "prompt": "Does constant proper acceleration mean constant laboratory coordinate acceleration?",
+      "prompt": "A rocket has constant proper acceleration α. How does its acceleration in the launch frame behave?",
       "options": [
-        "No",
-        "Yes"
+        "It stays equal to α throughout the motion",
+        "It increases in proportion to γ as the rocket speeds up",
+        "It decreases as the speed rises, dv/dt = α/γ³",
+        "It becomes exactly zero once the speed reaches c"
       ],
-      "answer": "No",
-      "explanation": "The relation changes with γ.",
+      "answer": "It decreases as the speed rises, dv/dt = α/γ³",
+      "explanation": "For motion along a line, the coordinate acceleration is α/γ³, which tends to zero as v → c but never reaches it.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Transform the proper acceleration to the launch frame: how does γ enter?"
     },
     {
       "id": "concept-3",
-      "prompt": "Is transverse direction frame independent?",
+      "prompt": "A photon moves perpendicular to the boost direction in one frame. How does it move in the boosted frame?",
       "options": [
-        "Yes",
-        "No"
+        "Still perpendicular, since transverse directions are unaffected by a boost",
+        "Its direction is undefined in the boosted frame",
+        "Tilted, with cos θ′ = β: transverse direction is frame dependent",
+        "Exactly along the boost direction, with no component sideways"
       ],
-      "answer": "No",
-      "explanation": "Aberration changes the photon angle between frames.",
+      "answer": "Tilted, with cos θ′ = β: transverse direction is frame dependent",
+      "explanation": "The aberration formula cos θ′ = (cos θ + β)/(1 + β cos θ) gives cos θ′ = β for θ = 90°.",
       "type": "mcq",
-      "conceptual": true
+      "conceptual": true,
+      "hint": "Use the aberration formula at 90 degrees."
     },
     {
       "id": "numeric",
@@ -67,16 +76,19 @@
     },
     {
       "id": "core",
-      "prompt": "Why transform photon angle and frequency together?",
-      "answer": "Both come from its four-momentum transformation",
+      "prompt": "Why must a photon's angle and frequency be transformed together?",
+      "answer": "Both follow from transforming its four-momentum",
       "options": [
-        "Both come from its four-momentum transformation",
-        "The angle stays invariant for every photon"
+        "They transform independently of one another in any frame",
+        "Frequency is invariant and only the direction changes",
+        "The angle is invariant for every photon, so only frequency needs transforming",
+        "Both follow from transforming its four-momentum"
       ],
-      "explanation": "Aberration and Doppler shift are linked.",
+      "explanation": "A photon's four-momentum (E/c, p) transforms as a single object. Its time component gives the Doppler shift and its direction gives aberration.",
       "type": "mcq",
       "conceptual": true,
-      "tier": "core"
+      "tier": "core",
+      "hint": "What single object do both quantities come from?"
     },
     {
       "id": "matter-transfer-1",
@@ -100,14 +112,16 @@
     },
     {
       "id": "matter-assumptions",
-      "prompt": "Can the sign of a boost be changed without changing the frame-transformation convention?",
-      "answer": "No; the direction and frequency formulas change accordingly.",
+      "prompt": "You reverse the direction of the boost between two frames. What changes in the transformation formulas?",
+      "answer": "The sign of β in the Doppler and aberration formulas",
       "options": [
-        "Yes; aberration is independent of boost direction.",
-        "No; the direction and frequency formulas change accordingly."
+        "The sign of β in the Doppler and aberration formulas",
+        "Nothing: aberration is independent of the boost direction",
+        "Only the observed intensity changes, not frequency or direction",
+        "Only the Doppler shift changes sign; aberration is unchanged"
       ],
-      "hint": "Check the domain, transformation and hypotheses.",
-      "explanation": "Label the two frames and axes.",
+      "hint": "Which quantity in the formulas carries the direction information?",
+      "explanation": "Both formulas contain β with a sign fixed by which frame moves in which direction, so conventions must be stated.",
       "misconceptions": {
         "Yes; aberration is independent of boost direction.": "Label the two frames and axes."
       },
