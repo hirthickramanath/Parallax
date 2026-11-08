@@ -17,7 +17,7 @@
         "If the null were true, data this extreme would occur about 3% of the time",
         "There is a 3% chance the null is true",
         "There is a 97% chance the effect is real",
-        "The effect has size 0.03"
+        "The effect has size 0.03, as the p-value measures the effect on the scale of the data"
       ],
       "answer": "If the null were true, data this extreme would occur about 3% of the time",
       "explanation": "The p-value is P(data at least this extreme | null). The probability of the hypothesis needs a prior.",
@@ -29,10 +29,10 @@
       "id": "concept-2",
       "prompt": "Two estimators: one unbiased with large variance, one slightly biased with small variance. Which has the smaller mean squared error?",
       "options": [
-        "They are always equal",
+        "They have the same mean squared error in each case",
         "Neither can be compared",
         "Possibly the biased one, since MSE = bias² + variance",
-        "The unbiased one, always, since an unbiased estimator cannot have a larger mean squared error than a biased one"
+        "The unbiased one, as it cannot have a larger squared error overall"
       ],
       "answer": "Possibly the biased one, since MSE = bias² + variance",
       "explanation": "Unbiasedness alone does not minimise MSE. Shrinkage estimators accept bias to reduce variance.",
@@ -45,9 +45,9 @@
       "prompt": "A study finds p = 0.4 with a small sample. What can you conclude?",
       "options": [
         "Only that there is insufficient evidence; low power could hide a real effect",
-        "That the effect is small",
+        "That the effect is small, as the p-value is large when the effect is small",
         "That there is no effect, because a p-value of 0.4 shows that the null hypothesis is true",
-        "That the null is true"
+        "That the null is true, as the p-value is large enough to confirm it here"
       ],
       "answer": "Only that there is insufficient evidence; low power could hide a real effect",
       "explanation": "Absence of evidence is not evidence of absence. The result is compatible with both no effect and a modest effect.",
@@ -79,10 +79,10 @@
       "prompt": "You test 100 hypotheses and report the smallest p-value. Why is it misleading?",
       "answer": "The selection process changes the false-positive rate; you must correct for multiplicity",
       "options": [
-        "p-values cannot be compared",
+        "p-values cannot be compared, as each one is computed from a different data set in the sample",
         "The selection process changes the false-positive rate; you must correct for multiplicity",
-        "The smallest p-value is always valid, since it is computed in the same way as a single test",
-        "100 tests improve accuracy"
+        "The smallest p-value is valid, as it is computed in the same way as a single test, with no change",
+        "100 tests improve accuracy, as the extra data narrow the uncertainty of the smallest result"
       ],
       "explanation": "With 100 true nulls the smallest p-value will be below 0.05 about 99% of the time.",
       "type": "mcq",
@@ -117,8 +117,8 @@
       "options": [
         "p is computed from the alternative hypothesis, so it measures the probability that the null is false",
         "p is computed assuming the null is true, and it does not give P(null | data)",
-        "p is a prior",
-        "p is always 1 − P(null)"
+        "p is a prior probability, so it gives the chance that the null is false before the data",
+        "p is 1 − P(null), so it gives the probability that the null is false given the data"
       ],
       "hint": "Compare P(data | H) with P(H | data).",
       "explanation": "Posterior probabilities need a prior and an alternative model (Bayes' theorem).",

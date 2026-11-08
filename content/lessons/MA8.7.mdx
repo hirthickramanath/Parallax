@@ -15,9 +15,9 @@
       "prompt": "A scale reads 0.5 g too high every time. You average 1,000 readings. What happens to this offset?",
       "options": [
         "It shrinks by 1/√1000, since averaging reduces the offset together with the random scatter of the readings",
-        "It averages to zero",
+        "It averages to zero, as the errors of the readings cancel in the mean",
         "It remains: averaging reduces only independent random errors",
-        "It doubles"
+        "It doubles, as the number of readings multiplies the offset in the mean value"
       ],
       "answer": "It remains: averaging reduces only independent random errors",
       "explanation": "A shared systematic bias is the same in every measurement, so it survives averaging.",
@@ -32,7 +32,7 @@
         "Yes: it is a constant, so the log-determinant term can be dropped without moving the maximum",
         "Yes: it cancels with the χ² term",
         "Not generally: it varies with the parameters and affects the maximum",
-        "No: it is always zero"
+        "No: it is zero, as the covariance enters the likelihood as a fixed constant term"
       ],
       "answer": "Not generally: it varies with the parameters and affects the maximum",
       "explanation": "−½ln det C(θ) is part of the log-likelihood and only constant if C does not depend on θ.",
@@ -44,9 +44,9 @@
       "id": "concept-3",
       "prompt": "A fit has reduced χ² close to 1. What does that tell you?",
       "options": [
-        "The errors are zero",
-        "The model is correct",
-        "The data are noiseless",
+        "The errors are zero, as the fit matches the data points closely",
+        "The model is correct, as the scatter matches the error bars on the data and no more is needed",
+        "The data are noiseless, as the scatter is far below the error bars",
         "The scatter matches the error bars, but not that the model is physically right"
       ],
       "answer": "The scatter matches the error bars, but not that the model is physically right",
@@ -79,10 +79,10 @@
       "prompt": "Why look at the residuals' correlation structure after a fit?",
       "answer": "Patterns can reveal unmodelled systematics or dependence",
       "options": [
-        "Residuals are always random",
+        "Residuals are random, so no structure can be present in them",
         "A small residual sum guarantees independence",
         "Patterns can reveal unmodelled systematics or dependence",
-        "It only matters for large datasets"
+        "It matters for large datasets, not for the small ones"
       ],
       "explanation": "A single scalar objective hides structure such as trends or autocorrelation.",
       "type": "mcq",
@@ -116,7 +116,7 @@
       "answer": "Leaves the shared error unchanged",
       "options": [
         "Doubles it, since combining many experiments adds the shared calibration errors together in each result",
-        "Eliminates it",
+        "Removes it, as the errors average out",
         "Leaves the shared error unchanged",
         "Reduces it by 1/√n"
       ],

@@ -16,8 +16,8 @@
       "answer": "No: matrix multiplication is generally non-commutative",
       "options": [
         "No: matrix multiplication is generally non-commutative",
-        "Yes: it is always commutative, so the order of multiplication of two matrices never changes the product",
-        "No, only when both are symmetric",
+        "Yes: matrix products are commutative here",
+        "No, but they commute when both are symmetric",
         "Yes, when both matrices are square"
       ],
       "explanation": "Applying B then A differs from A then B in general, e.g. rotation then shear versus shear then rotation. Special pairs (such as diagonal matrices) do commute.",
@@ -30,10 +30,10 @@
       "prompt": "For a square system Ax = b with det A = 0, which statement is correct?",
       "answer": "It has either no solution or infinitely many, depending on b",
       "options": [
-        "It has exactly two solutions, since a singular system has a pair of solutions on either side of the origin",
+        "It has two solutions, as a singular system has a pair of them",
         "It has either no solution or infinitely many, depending on b",
-        "It has exactly one solution",
-        "It has no solution"
+        "It has one solution, as a singular system is still consistent for each b",
+        "It has no solution, as the matrix cannot be inverted"
       ],
       "explanation": "det A = 0 means A is singular, so it cannot give a unique solution. Whether b is in the range of A decides between none and infinitely many.",
       "type": "mcq",
@@ -133,7 +133,7 @@
         "Yes, any non-zero determinant is safe, so a system with a determinant of 10⁻¹² can be solved reliably",
         "Not necessarily: conditioning depends on the singular values, not only det",
         "No, because the determinant is below one",
-        "Yes, since it is invertible"
+        "Yes, as it is invertible, a solve is then well-behaved in practice"
       ],
       "hint": "Think of a matrix with one tiny and one large singular value.",
       "explanation": "Invertible and well-conditioned are different. A matrix can have an enormous ratio between its largest and smallest singular values, amplifying rounding errors.",

@@ -15,7 +15,7 @@
       "prompt": "The ODE y′ = ky has infinitely many solutions y = Ae^{kt}. What selects one trajectory?",
       "options": [
         "The sign of k, since the sign alone determines which one of the exponential curves the system follows",
-        "The choice of units",
+        "The choice of units for the time and for y",
         "An initial condition, which fixes the constant A",
         "The size of the time step"
       ],
@@ -29,7 +29,7 @@
       "id": "q2",
       "prompt": "To solve y′ = ky you divide by y and integrate. What solution might this step miss?",
       "options": [
-        "All positive solutions",
+        "The positive solutions",
         "The decaying solutions",
         "The equilibrium y = 0",
         "No solutions: the step is safe"
@@ -44,8 +44,8 @@
       "id": "q3",
       "prompt": "If F in y′ = F(t, y) is only continuous, is the solution through a given point guaranteed to be unique?",
       "options": [
-        "Yes, if F is positive",
-        "No: ODEs never have unique solutions",
+        "Yes, if F is positive, as the solution is then monotone in t",
+        "No: ODEs have non-unique solutions in the general case",
         "No: extra conditions such as Lipschitz continuity in y are needed",
         "Yes: continuity guarantees uniqueness"
       ],
@@ -80,7 +80,7 @@
       "id": "q6",
       "prompt": "A coarse numerical solution of a stable ODE drifts away from the exact one. What is a likely cause?",
       "options": [
-        "The initial condition is always wrong",
+        "The initial condition is wrong, as the solution would otherwise match",
         "The exact solution changes when plotted",
         "ODEs have no exact solutions",
         "Discretisation error or a step too large for the method's stability"
@@ -142,7 +142,7 @@
       "answer": "The equilibrium y = 0",
       "options": [
         "No extra solution exists",
-        "A solution with k = 0 only",
+        "A solution with k = 0",
         "The equilibrium y = 0",
         "A solution that is infinite"
       ],

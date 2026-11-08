@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "A finite irreducible Markov chain has a unique stationary distribution but is periodic (e.g. alternates between two states). Does the state distribution converge from a point start?",
       "options": [
-        "Yes: uniqueness of the stationary distribution is enough for the distribution of states to converge from any start",
+        "Yes: uniqueness is enough for convergence from each start",
         "No: it oscillates, since aperiodicity is also needed",
-        "Yes, after burn-in",
-        "Yes, in 2 steps"
+        "Yes, after burn-in, as the distribution then settles down",
+        "Yes, in 2 steps, as the period is then two"
       ],
       "answer": "No: it oscillates, since aperiodicity is also needed",
       "explanation": "The chain 1 → 2 → 1 → … has stationary distribution (½, ½), but starting at state 1 the distribution alternates.",
@@ -29,8 +29,8 @@
       "id": "concept-2",
       "prompt": "Is detailed balance necessary for a chain to have a given stationary distribution?",
       "options": [
-        "Yes for finite chains",
-        "Yes: detailed balance is necessary, so every chain with a stationary distribution must be reversible",
+        "Yes for finite chains, as these are reversible with respect to their stationary distribution",
+        "Yes: detailed balance is necessary, so a chain with a stationary distribution must be reversible",
         "No: stationary chains do not exist",
         "No: it is sufficient but not necessary; non-reversible chains can also be stationary"
       ],
@@ -45,7 +45,7 @@
       "prompt": "Counts at a single time follow a Poisson distribution. Does that prove the process has independent increments?",
       "options": [
         "Yes: marginal Poisson implies a Poisson process",
-        "Yes, with a rate λ",
+        "Yes, with a rate λ, as the counts fix the process",
         "No: Poisson marginals are impossible",
         "No: the joint temporal structure is additional information"
       ],
@@ -80,7 +80,7 @@
       "answer": "Stationarity is invariance of a distribution; convergence is approach to it from any start",
       "options": [
         "They are the same thing, since a chain that has a stationary distribution always converges to it from any start",
-        "Stationarity needs two states",
+        "Stationarity needs two states, and convergence needs a state space that is larger than two states",
         "Convergence is invariance and stationarity is approach",
         "Stationarity is invariance of a distribution; convergence is approach to it from any start"
       ],
@@ -117,7 +117,7 @@
       "options": [
         "Yes: equal mean and variance proves a Poisson process, since no other counting process has that property",
         "No: a Poisson mean must be an integer",
-        "Yes: any count data are Poisson",
+        "Yes: count data follow a Poisson law in general",
         "No: you must also check independence of increments and timing"
       ],
       "hint": "List the other properties of a Poisson process.",

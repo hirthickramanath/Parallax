@@ -14,10 +14,10 @@
       "id": "concept-1",
       "prompt": "A Markov chain leaves the target distribution invariant. Does that prove it explores the whole target quickly from any start?",
       "options": [
-        "Yes within one step",
+        "Yes, within one step of the chain from a starting point",
         "No: reachability, ergodicity and mixing rate matter too",
-        "Yes for Gaussians",
-        "Yes: invariance is enough, so the chain reaches every part of the target within a few steps from any start"
+        "Yes for Gaussians, as the target is then smooth and simple",
+        "Yes: invariance is enough to reach the target"
       ],
       "answer": "No: reachability, ergodicity and mixing rate matter too",
       "explanation": "A chain that never leaves one mode can still preserve the target's invariance on that mode set.",
@@ -79,10 +79,10 @@
       "prompt": "Why check effective sample size for several quantities of interest rather than one parameter trace?",
       "answer": "Autocorrelation and Monte Carlo error differ between functions of the chain",
       "options": [
-        "Only the mean matters",
+        "Just the mean matters, as other functions follow from it in the chain",
         "Autocorrelation and Monte Carlo error differ between functions of the chain",
-        "All functions of the chain have the same ESS, so one parameter trace is enough to judge the sampling",
-        "One smooth trace proves all modes are explored"
+        "The functions of the chain have the same ESS, so one trace is enough to judge it",
+        "One smooth trace proves that the modes are explored, so more checks are redundant"
       ],
       "explanation": "A parameter can mix fast while another combination (e.g. a ridge) mixes slowly.",
       "type": "mcq",
@@ -115,9 +115,9 @@
       "prompt": "In Metropolis–Hastings with an asymmetric proposal, what does omitting the proposal-density ratio do?",
       "answer": "It breaks detailed balance, so the chain targets the wrong distribution",
       "options": [
-        "Nothing: the proposal ratio is a normalisation that cancels in the long run, so the target is unchanged",
-        "It speeds up convergence",
-        "It makes the chain symmetric",
+        "No effect: the ratio cancels in the long run, so the target is unchanged",
+        "It speeds up convergence, as the chain moves with fewer rejections",
+        "It makes the chain symmetric, so the target is restored in the long run for the sampler",
         "It breaks detailed balance, so the chain targets the wrong distribution"
       ],
       "hint": "Write the detailed balance equation.",
