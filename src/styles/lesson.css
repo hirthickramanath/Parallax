@@ -206,6 +206,14 @@
     position: sticky;
     top: 24px;
   }
+  /* The revision player has no contents rail: its guide and simulation share two columns, and the tutor
+     button sits on its own row. Without this the guide fell into the 13rem rail column. */
+  .focused-study .revision-player .lesson-layout.with-simulation {
+    grid-template-columns: minmax(0, 44rem) minmax(20rem, 1fr);
+  }
+  .focused-study .revision-player .revision-tutor-entry {
+    grid-column: 1 / -1;
+  }
 }
 @media (max-width: 760px) {
   .lesson-toolbar {
